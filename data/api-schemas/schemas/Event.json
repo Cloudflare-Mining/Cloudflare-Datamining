@@ -2413,121 +2413,6 @@
 			"Cloudforce One Read"
 		]
 	},
-	"POST /accounts/{account_id}/cloudforce-one/events/{dataset_id}/move": {
-		"operationId": "post_EventMoveToNewDS",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "number"
-				}
-			},
-			{
-				"description": "Dataset UUID.",
-				"in": "path",
-				"name": "dataset_id",
-				"required": true,
-				"schema": {
-					"description": "Dataset UUID.",
-					"format": "uuid",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"destDatasetId": {
-								"example": "12345678-1234-1234-1234-1234567890ab",
-								"type": "string"
-							},
-							"eventIds": {
-								"items": {
-									"example": "7632a037-fdef-4899-9b12-148470aae772",
-									"type": "string"
-								},
-								"type": "array"
-							}
-						},
-						"required": [
-							"destDatasetId"
-						],
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"example": 150,
-							"type": "number"
-						}
-					}
-				},
-				"description": "Returns the number of moved events "
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Moves specified events from one dataset to another dataset",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		]
-	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "post_EventUpdate",
 		"parameters": [
@@ -3722,6 +3607,121 @@
 			}
 		],
 		"summary": "Creates bulk events",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/move": {
+		"operationId": "post_EventMoveToNewDS",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Dataset UUID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destDatasetId": {
+								"example": "12345678-1234-1234-1234-1234567890ab",
+								"type": "string"
+							},
+							"eventIds": {
+								"items": {
+									"example": "7632a037-fdef-4899-9b12-148470aae772",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"destDatasetId"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": 150,
+							"type": "number"
+						}
+					}
+				},
+				"description": "Returns the number of moved events "
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Moves specified events from one dataset to another dataset",
 		"tags": [
 			"Event"
 		],

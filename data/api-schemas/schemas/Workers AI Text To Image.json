@@ -53,21 +53,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"image": {
-											"description": "The generated image in Base64 format.",
-											"type": "string"
-										}
-									},
-									"type": "object"
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}
@@ -246,10 +231,9 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
-							"format": "binary",
-							"type": "string"
+							"type": "object"
 						}
 					}
 				},
@@ -427,10 +411,9 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
-							"format": "binary",
-							"type": "string"
+							"type": "object"
 						}
 					}
 				},
@@ -608,10 +591,9 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
-							"format": "binary",
-							"type": "string"
+							"type": "object"
 						}
 					}
 				},
@@ -789,10 +771,9 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
-							"format": "binary",
-							"type": "string"
+							"type": "object"
 						}
 					}
 				},
@@ -970,10 +951,9 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
-							"format": "binary",
-							"type": "string"
+							"type": "object"
 						}
 					}
 				},

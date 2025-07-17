@@ -1,6 +1,6 @@
 {
 	"GET /radar/search/global": {
-		"description": "Searches for locations, autonomous systems, reports, and bots.",
+		"description": "Searches for locations, autonomous systems, reports, bots, certificate logs, and certificate authorities.",
 		"operationId": "radar-get-search-global",
 		"parameters": [
 			{
@@ -23,12 +23,12 @@
 				}
 			},
 			{
-				"description": "Search for locations, autonomous systems and reports.",
+				"description": "String used to perform the search operation.",
 				"in": "query",
 				"name": "query",
 				"required": true,
 				"schema": {
-					"description": "Search for locations, autonomous systems and reports.",
+					"description": "String used to perform the search operation.",
 					"example": "United",
 					"type": "string"
 				}
@@ -43,9 +43,10 @@
 						"enum": [
 							"ASNS",
 							"BOTS",
+							"CERTIFICATE_AUTHORITIES",
+							"CERTIFICATE_LOGS",
 							"LOCATIONS",
-							"NOTEBOOKS",
-							"SPECIAL_EVENTS"
+							"NOTEBOOKS"
 						],
 						"type": "string"
 					},
@@ -62,9 +63,10 @@
 						"enum": [
 							"ASNS",
 							"BOTS",
+							"CERTIFICATE_AUTHORITIES",
+							"CERTIFICATE_LOGS",
 							"LOCATIONS",
-							"NOTEBOOKS",
-							"SPECIAL_EVENTS"
+							"NOTEBOOKS"
 						],
 						"type": "string"
 					},

@@ -1618,6 +1618,366 @@
 			]
 		}
 	},
+	"GET /accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}": {
+		"description": "Fetches the consumer for a queue by consumer id",
+		"operationId": "queues-get-consumer",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "consumer_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"enum": [
+												true
+											],
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"oneOf": [
+												{
+													"properties": {
+														"consumer_id": {
+															"description": "A Resource identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"created_on": {
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"queue_id": {
+															"description": "A Resource identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"script": {
+															"allOf": [
+																{
+																	"description": "Name of a Worker",
+																	"example": "my-consumer-worker",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"readOnly": true,
+																	"type": "string"
+																}
+															],
+															"type": "object"
+														},
+														"script_name": {
+															"allOf": [
+																{
+																	"description": "Name of a Worker",
+																	"example": "my-consumer-worker",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"type": "string",
+																	"writeOnly": true
+																}
+															],
+															"type": "object",
+															"x-auditable": true
+														},
+														"settings": {
+															"properties": {
+																"batch_size": {
+																	"description": "The maximum number of messages to include in a batch.",
+																	"example": 50,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"max_concurrency": {
+																	"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
+																	"example": 10,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"max_retries": {
+																	"description": "The maximum number of retries",
+																	"example": 3,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"max_wait_time_ms": {
+																	"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
+																	"example": 5000,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"retry_delay": {
+																	"description": "The number of seconds to delay before making the message available for another attempt.",
+																	"example": 10,
+																	"type": "number",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"type": {
+															"enum": [
+																"worker"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"consumer_id": {
+															"description": "A Resource identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"created_on": {
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"queue_id": {
+															"description": "A Resource identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"settings": {
+															"properties": {
+																"batch_size": {
+																	"description": "The maximum number of messages to include in a batch.",
+																	"example": 50,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"max_retries": {
+																	"description": "The maximum number of retries",
+																	"example": 3,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"retry_delay": {
+																	"description": "The number of seconds to delay before making the message available for another attempt.",
+																	"example": 10,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"visibility_timeout_ms": {
+																	"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
+																	"example": 6000,
+																	"type": "number",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"type": {
+															"enum": [
+																"http_pull"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Queue Consumer response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Queue Consumer response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Queue Consumer",
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Queues Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.read"
+			]
+		}
+	},
 	"GET /accounts/{account_id}/queues/{queue_id}/purge": {
 		"description": "Get details about a Queue's purge status.",
 		"operationId": "queues-purge-get",

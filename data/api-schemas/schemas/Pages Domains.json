@@ -11,7 +11,8 @@
 					"description": "Name of the domain.",
 					"example": "this-is-my-domain-01.com",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -22,7 +23,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -34,7 +36,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -230,6 +233,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -254,7 +260,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -266,7 +273,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -391,23 +399,28 @@
 														],
 														"example": "lets_encrypt",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"created_on": {
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"domain_id": {
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"example": "example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"status": {
 														"enum": [
@@ -419,19 +432,22 @@
 															"error"
 														],
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"validation_data": {
 														"properties": {
 															"error_message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"method": {
 																"enum": [
 																	"http",
 																	"txt"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"enum": [
@@ -441,13 +457,16 @@
 																	"deactivated",
 																	"error"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"txt_name": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"txt_value": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"readOnly": true,
@@ -456,7 +475,8 @@
 													"verification_data": {
 														"properties": {
 															"error_message": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"enum": [
@@ -474,7 +494,8 @@
 													},
 													"zone_tag": {
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -611,23 +632,28 @@
 																],
 																"example": "lets_encrypt",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"created_on": {
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"domain_id": {
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"enum": [
@@ -639,19 +665,22 @@
 																	"error"
 																],
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"validation_data": {
 																"properties": {
 																	"error_message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"method": {
 																		"enum": [
 																			"http",
 																			"txt"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"enum": [
@@ -661,13 +690,16 @@
 																			"deactivated",
 																			"error"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"txt_name": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"txt_value": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"readOnly": true,
@@ -676,7 +708,8 @@
 															"verification_data": {
 																"properties": {
 																	"error_message": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"enum": [
@@ -694,7 +727,8 @@
 															},
 															"zone_tag": {
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -795,6 +829,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -820,7 +857,8 @@
 					"description": "Name of the domain.",
 					"example": "this-is-my-domain-01.com",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -831,7 +869,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -843,7 +882,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -939,23 +979,28 @@
 													],
 													"example": "lets_encrypt",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_on": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"domain_id": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"enum": [
@@ -967,19 +1012,22 @@
 														"error"
 													],
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"validation_data": {
 													"properties": {
 														"error_message": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"method": {
 															"enum": [
 																"http",
 																"txt"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"enum": [
@@ -989,13 +1037,16 @@
 																"deactivated",
 																"error"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"txt_name": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"txt_value": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"readOnly": true,
@@ -1004,7 +1055,8 @@
 												"verification_data": {
 													"properties": {
 														"error_message": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"enum": [
@@ -1022,7 +1074,8 @@
 												},
 												"zone_tag": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1128,23 +1181,28 @@
 															],
 															"example": "lets_encrypt",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_on": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"domain_id": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"enum": [
@@ -1156,19 +1214,22 @@
 																"error"
 															],
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"validation_data": {
 															"properties": {
 																"error_message": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"method": {
 																	"enum": [
 																		"http",
 																		"txt"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"enum": [
@@ -1178,13 +1239,16 @@
 																		"deactivated",
 																		"error"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"txt_name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"txt_value": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -1193,7 +1257,8 @@
 														"verification_data": {
 															"properties": {
 																"error_message": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"enum": [
@@ -1211,7 +1276,8 @@
 														},
 														"zone_tag": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1310,6 +1376,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1335,7 +1404,8 @@
 					"description": "Name of the domain.",
 					"example": "this-is-my-domain-01.com",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1346,7 +1416,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1358,7 +1429,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1460,23 +1532,28 @@
 													],
 													"example": "lets_encrypt",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_on": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"domain_id": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"enum": [
@@ -1488,19 +1565,22 @@
 														"error"
 													],
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"validation_data": {
 													"properties": {
 														"error_message": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"method": {
 															"enum": [
 																"http",
 																"txt"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"enum": [
@@ -1510,13 +1590,16 @@
 																"deactivated",
 																"error"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"txt_name": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"txt_value": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"readOnly": true,
@@ -1525,7 +1608,8 @@
 												"verification_data": {
 													"properties": {
 														"error_message": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"enum": [
@@ -1543,7 +1627,8 @@
 												},
 												"zone_tag": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1649,23 +1734,28 @@
 															],
 															"example": "lets_encrypt",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_on": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"domain_id": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"enum": [
@@ -1677,19 +1767,22 @@
 																"error"
 															],
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"validation_data": {
 															"properties": {
 																"error_message": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"method": {
 																	"enum": [
 																		"http",
 																		"txt"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"enum": [
@@ -1699,13 +1792,16 @@
 																		"deactivated",
 																		"error"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"txt_name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"txt_value": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -1714,7 +1810,8 @@
 														"verification_data": {
 															"properties": {
 																"error_message": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"enum": [
@@ -1732,7 +1829,8 @@
 														},
 														"zone_tag": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1831,6 +1929,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1855,7 +1956,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1867,7 +1969,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1878,7 +1981,8 @@
 						"properties": {
 							"name": {
 								"example": "example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1979,23 +2083,28 @@
 													],
 													"example": "lets_encrypt",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"created_on": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"domain_id": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"status": {
 													"enum": [
@@ -2007,19 +2116,22 @@
 														"error"
 													],
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"validation_data": {
 													"properties": {
 														"error_message": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"method": {
 															"enum": [
 																"http",
 																"txt"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"enum": [
@@ -2029,13 +2141,16 @@
 																"deactivated",
 																"error"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"txt_name": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"txt_value": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"readOnly": true,
@@ -2044,7 +2159,8 @@
 												"verification_data": {
 													"properties": {
 														"error_message": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"enum": [
@@ -2062,7 +2178,8 @@
 												},
 												"zone_tag": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2168,23 +2285,28 @@
 															],
 															"example": "lets_encrypt",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"created_on": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"domain_id": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"enum": [
@@ -2196,19 +2318,22 @@
 																"error"
 															],
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"validation_data": {
 															"properties": {
 																"error_message": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"method": {
 																	"enum": [
 																		"http",
 																		"txt"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"enum": [
@@ -2218,13 +2343,16 @@
 																		"deactivated",
 																		"error"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"txt_name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"txt_value": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -2233,7 +2361,8 @@
 														"verification_data": {
 															"properties": {
 																"error_message": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"enum": [
@@ -2251,7 +2380,8 @@
 														},
 														"zone_tag": {
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2349,6 +2479,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

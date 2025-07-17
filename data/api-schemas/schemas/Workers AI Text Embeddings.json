@@ -119,56 +119,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"data": {
-													"description": "Embeddings of the requested text values",
-													"items": {
-														"description": "Floating point embedding representation shaped by the embedding model",
-														"items": {
-															"type": "number"
-														},
-														"type": "array"
-													},
-													"type": "array"
-												},
-												"pooling": {
-													"description": "The pooling method used in the embedding process.",
-													"enum": [
-														"mean",
-														"cls"
-													],
-													"type": "string"
-												},
-												"shape": {
-													"items": {
-														"type": "number"
-													},
-													"type": "array"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"request_id": {
-													"description": "The async request id that can be used to obtain the results.",
-													"type": "string"
-												}
-											},
-											"title": "Async response",
-											"type": "object"
-										}
-									]
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}
@@ -366,56 +316,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"data": {
-													"description": "Embeddings of the requested text values",
-													"items": {
-														"description": "Floating point embedding representation shaped by the embedding model",
-														"items": {
-															"type": "number"
-														},
-														"type": "array"
-													},
-													"type": "array"
-												},
-												"pooling": {
-													"description": "The pooling method used in the embedding process.",
-													"enum": [
-														"mean",
-														"cls"
-													],
-													"type": "string"
-												},
-												"shape": {
-													"items": {
-														"type": "number"
-													},
-													"type": "array"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"request_id": {
-													"description": "The async request id that can be used to obtain the results.",
-													"type": "string"
-												}
-											},
-											"title": "Async response",
-											"type": "object"
-										}
-									]
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}
@@ -676,106 +576,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"items": {
-														"properties": {
-															"id": {
-																"description": "Index of the context in the request",
-																"type": "integer"
-															},
-															"score": {
-																"description": "Score of the context under the index.",
-																"type": "number"
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
-												}
-											},
-											"title": "BGE M3 Ouput Query"
-										},
-										{
-											"properties": {
-												"pooling": {
-													"description": "The pooling method used in the embedding process.",
-													"enum": [
-														"mean",
-														"cls"
-													],
-													"type": "string"
-												},
-												"response": {
-													"items": {
-														"items": {
-															"type": "number"
-														},
-														"type": "array"
-													},
-													"type": "array"
-												},
-												"shape": {
-													"items": {
-														"type": "number"
-													},
-													"type": "array"
-												}
-											},
-											"title": "BGE M3 Output Embedding for Contexts"
-										},
-										{
-											"properties": {
-												"data": {
-													"description": "Embeddings of the requested text values",
-													"items": {
-														"description": "Floating point embedding representation shaped by the embedding model",
-														"items": {
-															"type": "number"
-														},
-														"type": "array"
-													},
-													"type": "array"
-												},
-												"pooling": {
-													"description": "The pooling method used in the embedding process.",
-													"enum": [
-														"mean",
-														"cls"
-													],
-													"type": "string"
-												},
-												"shape": {
-													"items": {
-														"type": "number"
-													},
-													"type": "array"
-												}
-											},
-											"title": "BGE M3 Ouput Embedding"
-										},
-										{
-											"properties": {
-												"request_id": {
-													"description": "The async request id that can be used to obtain the results.",
-													"type": "string"
-												}
-											},
-											"title": "Async response",
-											"type": "object"
-										}
-									],
-									"type": "object"
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}
@@ -973,56 +773,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"data": {
-													"description": "Embeddings of the requested text values",
-													"items": {
-														"description": "Floating point embedding representation shaped by the embedding model",
-														"items": {
-															"type": "number"
-														},
-														"type": "array"
-													},
-													"type": "array"
-												},
-												"pooling": {
-													"description": "The pooling method used in the embedding process.",
-													"enum": [
-														"mean",
-														"cls"
-													],
-													"type": "string"
-												},
-												"shape": {
-													"items": {
-														"type": "number"
-													},
-													"type": "array"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"request_id": {
-													"description": "The async request id that can be used to obtain the results.",
-													"type": "string"
-												}
-											},
-											"title": "Async response",
-											"type": "object"
-										}
-									]
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}

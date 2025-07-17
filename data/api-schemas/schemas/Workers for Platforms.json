@@ -1950,6 +1950,7 @@
 															"x-auditable": true
 														},
 														"logpush": {
+															"default": false,
 															"description": "Whether Logpush is turned on for the Worker.",
 															"example": false,
 															"type": "boolean",
@@ -2059,9 +2060,11 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														"usage_model": {
+															"default": "standard",
 															"description": "Usage model for the Worker invocations.",
 															"enum": [
 																"standard"
@@ -3132,7 +3135,8 @@
 																	"type": "string"
 																},
 																"type": "array",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-collection-type": "set"
 															}
 														},
 														"required": [
@@ -3186,7 +3190,8 @@
 												],
 												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"x-stainless-collection-type": "set"
 										}
 									},
 									"required": [
@@ -3757,7 +3762,8 @@
 																	"type": "string"
 																},
 																"type": "array",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-collection-type": "set"
 															}
 														},
 														"required": [
@@ -4168,7 +4174,8 @@
 																"type": "string"
 															},
 															"type": "array",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-collection-type": "set"
 														}
 													},
 													"required": [
@@ -5244,7 +5251,8 @@
 																					"type": "string"
 																				},
 																				"type": "array",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-collection-type": "set"
 																			}
 																		},
 																		"required": [
@@ -5298,7 +5306,8 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														{
 															"default": [],
@@ -6074,7 +6083,8 @@
 																					"type": "string"
 																				},
 																				"type": "array",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-collection-type": "set"
 																			}
 																		},
 																		"required": [
@@ -6128,7 +6138,8 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													]
 												},
@@ -6150,6 +6161,7 @@
 												"compatibility_flags": {
 													"allOf": [
 														{
+															"default": [],
 															"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
 															"example": [
 																"nodejs_compat"
@@ -6160,7 +6172,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														{
 															"default": [],
@@ -6168,7 +6181,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													]
 												},
@@ -6185,19 +6199,11 @@
 													"type": "object"
 												},
 												"logpush": {
-													"allOf": [
-														{
-															"description": "Whether Logpush is turned on for the Worker.",
-															"example": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														{
-															"default": "",
-															"type": "boolean",
-															"x-auditable": true
-														}
-													]
+													"default": false,
+													"description": "Whether Logpush is turned on for the Worker.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"migrations": {
 													"description": "Migrations to apply for Durable Objects associated with this Worker.\n",
@@ -6388,7 +6394,8 @@
 																}
 															]
 														}
-													]
+													],
+													"writeOnly": true
 												},
 												"observability": {
 													"description": "Observability settings for the Worker.",
@@ -6474,7 +6481,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														{
 															"default": [],
@@ -6482,7 +6490,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													]
 												},
@@ -6517,7 +6526,8 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														{
 															"default": [],
@@ -6548,27 +6558,20 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													]
 												},
 												"usage_model": {
-													"allOf": [
-														{
-															"description": "Usage model for the Worker invocations.",
-															"enum": [
-																"standard"
-															],
-															"example": "standard",
-															"type": "string",
-															"x-auditable": true
-														},
-														{
-															"default": "standard",
-															"type": "string",
-															"x-auditable": true
-														}
-													]
+													"default": "standard",
+													"description": "Usage model for the Worker invocations.",
+													"enum": [
+														"standard"
+													],
+													"example": "standard",
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -7832,7 +7835,8 @@
 																		"type": "string"
 																	},
 																	"type": "array",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-collection-type": "set"
 																}
 															},
 															"required": [
@@ -7886,7 +7890,8 @@
 													],
 													"type": "object"
 												},
-												"type": "array"
+												"type": "array",
+												"x-stainless-collection-type": "set"
 											},
 											{
 												"default": [],
@@ -8662,7 +8667,8 @@
 																		"type": "string"
 																	},
 																	"type": "array",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-collection-type": "set"
 																}
 															},
 															"required": [
@@ -8716,7 +8722,8 @@
 													],
 													"type": "object"
 												},
-												"type": "array"
+												"type": "array",
+												"x-stainless-collection-type": "set"
 											}
 										]
 									},
@@ -8738,6 +8745,7 @@
 									"compatibility_flags": {
 										"allOf": [
 											{
+												"default": [],
 												"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
 												"example": [
 													"nodejs_compat"
@@ -8748,7 +8756,8 @@
 													"type": "string",
 													"x-auditable": true
 												},
-												"type": "array"
+												"type": "array",
+												"x-stainless-collection-type": "set"
 											},
 											{
 												"default": [],
@@ -8756,7 +8765,8 @@
 													"type": "string",
 													"x-auditable": true
 												},
-												"type": "array"
+												"type": "array",
+												"x-stainless-collection-type": "set"
 											}
 										]
 									},
@@ -8773,19 +8783,11 @@
 										"type": "object"
 									},
 									"logpush": {
-										"allOf": [
-											{
-												"description": "Whether Logpush is turned on for the Worker.",
-												"example": false,
-												"type": "boolean",
-												"x-auditable": true
-											},
-											{
-												"default": "",
-												"type": "boolean",
-												"x-auditable": true
-											}
-										]
+										"default": false,
+										"description": "Whether Logpush is turned on for the Worker.",
+										"example": false,
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"migrations": {
 										"description": "Migrations to apply for Durable Objects associated with this Worker.\n",
@@ -8976,7 +8978,8 @@
 													}
 												]
 											}
-										]
+										],
+										"writeOnly": true
 									},
 									"observability": {
 										"description": "Observability settings for the Worker.",
@@ -9062,7 +9065,8 @@
 													"type": "string",
 													"x-auditable": true
 												},
-												"type": "array"
+												"type": "array",
+												"x-stainless-collection-type": "set"
 											},
 											{
 												"default": [],
@@ -9070,7 +9074,8 @@
 													"type": "string",
 													"x-auditable": true
 												},
-												"type": "array"
+												"type": "array",
+												"x-stainless-collection-type": "set"
 											}
 										]
 									},
@@ -9105,7 +9110,8 @@
 													],
 													"type": "object"
 												},
-												"type": "array"
+												"type": "array",
+												"x-stainless-collection-type": "set"
 											},
 											{
 												"default": [],
@@ -9136,27 +9142,20 @@
 													],
 													"type": "object"
 												},
-												"type": "array"
+												"type": "array",
+												"x-stainless-collection-type": "set"
 											}
 										]
 									},
 									"usage_model": {
-										"allOf": [
-											{
-												"description": "Usage model for the Worker invocations.",
-												"enum": [
-													"standard"
-												],
-												"example": "standard",
-												"type": "string",
-												"x-auditable": true
-											},
-											{
-												"default": "standard",
-												"type": "string",
-												"x-auditable": true
-											}
-										]
+										"default": "standard",
+										"description": "Usage model for the Worker invocations.",
+										"enum": [
+											"standard"
+										],
+										"example": "standard",
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -10043,7 +10042,8 @@
 																					"type": "string"
 																				},
 																				"type": "array",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-collection-type": "set"
 																			}
 																		},
 																		"required": [
@@ -10097,7 +10097,8 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														{
 															"default": [],
@@ -10873,7 +10874,8 @@
 																					"type": "string"
 																				},
 																				"type": "array",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-collection-type": "set"
 																			}
 																		},
 																		"required": [
@@ -10927,7 +10929,8 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													]
 												},
@@ -10949,6 +10952,7 @@
 												"compatibility_flags": {
 													"allOf": [
 														{
+															"default": [],
 															"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
 															"example": [
 																"nodejs_compat"
@@ -10959,7 +10963,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														{
 															"default": [],
@@ -10967,7 +10972,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													]
 												},
@@ -10984,19 +10990,11 @@
 													"type": "object"
 												},
 												"logpush": {
-													"allOf": [
-														{
-															"description": "Whether Logpush is turned on for the Worker.",
-															"example": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														{
-															"default": "",
-															"type": "boolean",
-															"x-auditable": true
-														}
-													]
+													"default": false,
+													"description": "Whether Logpush is turned on for the Worker.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"migrations": {
 													"description": "Migrations to apply for Durable Objects associated with this Worker.\n",
@@ -11187,7 +11185,8 @@
 																}
 															]
 														}
-													]
+													],
+													"writeOnly": true
 												},
 												"observability": {
 													"description": "Observability settings for the Worker.",
@@ -11273,7 +11272,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														{
 															"default": [],
@@ -11281,7 +11281,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													]
 												},
@@ -11316,7 +11317,8 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														{
 															"default": [],
@@ -11347,27 +11349,20 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													]
 												},
 												"usage_model": {
-													"allOf": [
-														{
-															"description": "Usage model for the Worker invocations.",
-															"enum": [
-																"standard"
-															],
-															"example": "standard",
-															"type": "string",
-															"x-auditable": true
-														},
-														{
-															"default": "standard",
-															"type": "string",
-															"x-auditable": true
-														}
-													]
+													"default": "standard",
+													"description": "Usage model for the Worker invocations.",
+													"enum": [
+														"standard"
+													],
+													"example": "standard",
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -12008,9 +12003,11 @@
 															"description": "The file hash to include in this bucket.",
 															"type": "string"
 														},
-														"type": "array"
+														"type": "array",
+														"x-stainless-collection-type": "set"
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												},
 												"jwt": {
 													"description": "A JWT to use as authentication for uploading assets.",
@@ -12208,28 +12205,34 @@
 					}
 				},
 				"multipart/form-data": {
+					"encoding": {
+						"files": {
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream, application/source-map"
+						}
+					},
 					"schema": {
-						"additionalProperties": {
-							"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present and referenced in the metadata as `main_module` or `body_part` by part name.<br/> Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
-							"items": {
-								"format": "binary",
-								"type": "string"
-							},
-							"type": "array"
-						},
 						"example": {
+							"files": [
+								"export default {\n  async fetch(request, env, ctx) {\n    return new Response(\"Hello, world!\");\n  }\n};"
+							],
 							"metadata": {
 								"compatibility_date": {},
 								"compatibility_flags": [
 									"nodejs_compat"
 								],
 								"main_module": "worker.js"
-							},
-							"worker.js": [
-								"export default {\n  async fetch(request, env, ctx) {\n    return new Response(\"Hello, world!\");\n  }\n};"
-							]
+							}
 						},
 						"properties": {
+							"files": {
+								"description": "An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/>Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
+								"items": {
+									"format": "binary",
+									"type": "string"
+								},
+								"type": "array",
+								"x-stainless-collection-type": "set"
+							},
 							"metadata": {
 								"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
 								"properties": {
@@ -13085,7 +13088,8 @@
 																"type": "string"
 															},
 															"type": "array",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-collection-type": "set"
 														}
 													},
 													"required": [
@@ -13139,7 +13143,8 @@
 											],
 											"type": "object"
 										},
-										"type": "array"
+										"type": "array",
+										"x-stainless-collection-type": "set"
 									},
 									"body_part": {
 										"description": "Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
@@ -13153,6 +13158,7 @@
 										"x-auditable": true
 									},
 									"compatibility_flags": {
+										"default": [],
 										"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
 										"example": [
 											"nodejs_compat"
@@ -13163,7 +13169,8 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"type": "array"
+										"type": "array",
+										"x-stainless-collection-type": "set"
 									},
 									"keep_assets": {
 										"description": "Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.",
@@ -13175,9 +13182,11 @@
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-stainless-collection-type": "set"
 									},
 									"logpush": {
+										"default": false,
 										"description": "Whether Logpush is turned on for the Worker.",
 										"example": false,
 										"type": "boolean",
@@ -13468,7 +13477,8 @@
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-stainless-collection-type": "set"
 									},
 									"tail_consumers": {
 										"description": "List of Workers that will consume logs from the attached Worker.",
@@ -13499,9 +13509,11 @@
 											],
 											"type": "object"
 										},
-										"type": "array"
+										"type": "array",
+										"x-stainless-collection-type": "set"
 									},
 									"usage_model": {
+										"default": "standard",
 										"description": "Usage model for the Worker invocations.",
 										"enum": [
 											"standard"
@@ -13660,6 +13672,7 @@
 																	"x-auditable": true
 																},
 																"logpush": {
+																	"default": false,
 																	"description": "Whether Logpush is turned on for the Worker.",
 																	"example": false,
 																	"type": "boolean",
@@ -13769,9 +13782,11 @@
 																		],
 																		"type": "object"
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-collection-type": "set"
 																},
 																"usage_model": {
+																	"default": "standard",
 																	"description": "Usage model for the Worker invocations.",
 																	"enum": [
 																		"standard"
@@ -14044,16 +14059,22 @@
 		"requestBody": {
 			"content": {
 				"multipart/form-data": {
+					"encoding": {
+						"files": {
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream, application/source-map"
+						}
+					},
 					"schema": {
-						"additionalProperties": {
-							"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present. This should be referenced either in the metadata as `main_module` (esm)/`body_part` (service worker) or as a header `CF-WORKER-MAIN-MODULE-PART` (esm) /`CF-WORKER-BODY-PART` (service worker) by part name.<br/> Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
-							"items": {
-								"format": "binary",
-								"type": "string"
-							},
-							"type": "array"
-						},
 						"properties": {
+							"files": {
+								"description": "An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/>Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
+								"items": {
+									"format": "binary",
+									"type": "string"
+								},
+								"type": "array",
+								"x-stainless-collection-type": "set"
+							},
 							"metadata": {
 								"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
 								"properties": {
@@ -14211,6 +14232,7 @@
 													"x-auditable": true
 												},
 												"logpush": {
+													"default": false,
 													"description": "Whether Logpush is turned on for the Worker.",
 													"example": false,
 													"type": "boolean",
@@ -14320,9 +14342,11 @@
 														],
 														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												},
 												"usage_model": {
+													"default": "standard",
 													"description": "Usage model for the Worker invocations.",
 													"enum": [
 														"standard"
@@ -14641,7 +14665,8 @@
 											"type": "string"
 										},
 										"type": "array",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-collection-type": "set"
 									}
 								},
 								"required": [
@@ -14856,7 +14881,8 @@
 																"type": "string"
 															},
 															"type": "array",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-collection-type": "set"
 														}
 													},
 													"required": [
@@ -15066,7 +15092,8 @@
 							"type": "string",
 							"x-auditable": true
 						},
-						"type": "array"
+						"type": "array",
+						"x-stainless-collection-type": "set"
 					}
 				}
 			},

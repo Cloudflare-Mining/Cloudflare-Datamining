@@ -66,33 +66,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"response": {
-											"items": {
-												"properties": {
-													"id": {
-														"description": "Index of the context in the request",
-														"type": "integer"
-													},
-													"score": {
-														"description": "Score of the context under the index.",
-														"type": "number"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"type": "object"
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}
@@ -217,29 +190,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"description": "An array of classification results for the input text",
-									"items": {
-										"properties": {
-											"label": {
-												"description": "The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE')",
-												"type": "string"
-											},
-											"score": {
-												"description": "Confidence score indicating the likelihood that the text belongs to the specified label",
-												"type": "number"
-											}
-										},
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}

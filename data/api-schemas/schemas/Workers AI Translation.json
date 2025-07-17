@@ -94,35 +94,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"translated_text": {
-													"description": "The translated text in the target language",
-													"type": "string"
-												}
-											}
-										},
-										{
-											"properties": {
-												"request_id": {
-													"description": "The async request id that can be used to obtain the results.",
-													"type": "string"
-												}
-											},
-											"title": "Async response",
-											"type": "object"
-										}
-									],
-									"type": "object"
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}

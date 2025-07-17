@@ -61,7 +61,8 @@
 							"x-auditable": true
 						},
 						{
-							"default": "us-central1"
+							"default": "us-central1",
+							"type": "string"
 						}
 					]
 				}
@@ -153,13 +154,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Number of deleted tests"
+				"description": "Number of deleted tests."
 			},
 			"4XX": {
 				"content": {
@@ -272,10 +274,13 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -357,7 +362,8 @@
 							"x-auditable": true
 						},
 						{
-							"default": "us-central1"
+							"default": "us-central1",
+							"type": "string"
 						}
 					]
 				}
@@ -449,13 +455,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Number of deleted tests"
+				"description": "Number of deleted tests."
 			},
 			"4XX": {
 				"content": {
@@ -568,10 +575,13 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -996,13 +1006,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Page test availability"
+				"description": "Page test availability."
 			},
 			"4XX": {
 				"content": {
@@ -1115,10 +1126,13 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1587,17 +1601,19 @@
 														"type": "string",
 														"x-auditable": true
 													}
-												}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List of pages"
+				"description": "List of pages."
 			},
 			"4XX": {
 				"content": {
@@ -1710,10 +1726,13 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1814,7 +1833,8 @@
 							"x-auditable": true
 						},
 						{
-							"default": "us-central1"
+							"default": "us-central1",
+							"type": "string"
 						}
 					]
 				}
@@ -2192,7 +2212,8 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -2221,13 +2242,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List of test history for a page"
+				"description": "List of test history for a page."
 			},
 			"4XX": {
 				"content": {
@@ -2340,10 +2362,13 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2769,13 +2794,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Page test result"
+				"description": "Page test result."
 			},
 			"4XX": {
 				"content": {
@@ -2888,10 +2914,13 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -3182,13 +3211,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Page trend"
+				"description": "Page trend."
 			},
 			"4XX": {
 				"content": {
@@ -3301,10 +3331,13 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -3387,7 +3420,8 @@
 							"x-auditable": true
 						},
 						{
-							"default": "us-central1"
+							"default": "us-central1",
+							"type": "string"
 						}
 					]
 				}
@@ -3519,13 +3553,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Page test schedule"
+				"description": "Page test schedule."
 			},
 			"4XX": {
 				"content": {
@@ -3638,10 +3673,13 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -3727,7 +3765,8 @@
 										"x-auditable": true
 									},
 									{
-										"default": "us-central1"
+										"default": "us-central1",
+										"type": "string"
 									}
 								]
 							}
@@ -4106,13 +4145,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Page test details"
+				"description": "Page test details."
 			},
 			"4XX": {
 				"content": {
@@ -4225,10 +4265,13 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -4310,7 +4353,8 @@
 							"x-auditable": true
 						},
 						{
-							"default": "us-central1"
+							"default": "us-central1",
+							"type": "string"
 						}
 					]
 				}
@@ -4741,13 +4785,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Page test schedule"
+				"description": "Page test schedule."
 			},
 			"4XX": {
 				"content": {
@@ -4860,10 +4905,13 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

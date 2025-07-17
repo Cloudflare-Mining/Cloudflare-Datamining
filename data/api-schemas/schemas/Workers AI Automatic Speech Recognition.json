@@ -37,49 +37,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"text": {
-											"description": "The transcription",
-											"type": "string"
-										},
-										"vtt": {
-											"type": "string"
-										},
-										"word_count": {
-											"type": "number"
-										},
-										"words": {
-											"items": {
-												"properties": {
-													"end": {
-														"description": "The ending second when the word completes",
-														"type": "number"
-													},
-													"start": {
-														"description": "The second this word begins in the recording",
-														"type": "number"
-													},
-													"word": {
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"text"
-									],
-									"type": "object"
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}
@@ -225,109 +182,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"segments": {
-											"items": {
-												"properties": {
-													"avg_logprob": {
-														"description": "The average log probability of the predictions for the words in this segment, indicating overall confidence.",
-														"type": "number"
-													},
-													"compression_ratio": {
-														"description": "The compression ratio of the input to the output, measuring how much the text was compressed during the transcription process.",
-														"type": "number"
-													},
-													"end": {
-														"description": "The ending time of the segment within the audio, in seconds.",
-														"type": "number"
-													},
-													"no_speech_prob": {
-														"description": "The probability that the segment contains no speech, represented as a decimal between 0 and 1.",
-														"type": "number"
-													},
-													"start": {
-														"description": "The starting time of the segment within the audio, in seconds.",
-														"type": "number"
-													},
-													"temperature": {
-														"description": "The temperature used in the decoding process, controlling randomness in predictions. Lower values result in more deterministic outputs.",
-														"type": "number"
-													},
-													"text": {
-														"description": "The transcription of the segment.",
-														"type": "string"
-													},
-													"words": {
-														"items": {
-															"properties": {
-																"end": {
-																	"description": "The ending time of the word within the audio, in seconds.",
-																	"type": "number"
-																},
-																"start": {
-																	"description": "The starting time of the word within the audio, in seconds.",
-																	"type": "number"
-																},
-																"word": {
-																	"description": "The individual word transcribed from the audio.",
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
-														"type": "array"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"text": {
-											"description": "The complete transcription of the audio.",
-											"type": "string"
-										},
-										"transcription_info": {
-											"properties": {
-												"duration": {
-													"description": "The total duration of the original audio file, in seconds.",
-													"type": "number"
-												},
-												"duration_after_vad": {
-													"description": "The duration of the audio after applying Voice Activity Detection (VAD) to remove silent or irrelevant sections, in seconds.",
-													"type": "number"
-												},
-												"language": {
-													"description": "The language of the audio being transcribed or translated.",
-													"type": "string"
-												},
-												"language_probability": {
-													"description": "The confidence level or probability of the detected language being accurate, represented as a decimal between 0 and 1.",
-													"type": "number"
-												}
-											},
-											"type": "object"
-										},
-										"vtt": {
-											"description": "The transcription in WebVTT format, which includes timing and text information for use in subtitles.",
-											"type": "string"
-										},
-										"word_count": {
-											"description": "The total number of words in the transcription.",
-											"type": "number"
-										}
-									},
-									"required": [
-										"text"
-									],
-									"type": "object"
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}
@@ -443,49 +297,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"text": {
-											"description": "The transcription",
-											"type": "string"
-										},
-										"vtt": {
-											"type": "string"
-										},
-										"word_count": {
-											"type": "number"
-										},
-										"words": {
-											"items": {
-												"properties": {
-													"end": {
-														"description": "The ending second when the word completes",
-														"type": "number"
-													},
-													"start": {
-														"description": "The second this word begins in the recording",
-														"type": "number"
-													},
-													"word": {
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"text"
-									],
-									"type": "object"
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}

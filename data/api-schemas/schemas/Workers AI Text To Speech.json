@@ -51,30 +51,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"audio": {
-													"description": "The generated audio in MP3 format, base64-encoded",
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"description": "The generated audio in MP3 format",
-											"format": "binary",
-											"type": "string"
-										}
-									]
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}

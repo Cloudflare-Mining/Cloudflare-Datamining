@@ -104,13 +104,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Deleted Web Analytics site identifier"
+				"description": "Deleted Web Analytics site identifier."
 			},
 			"4XX": {
 				"content": {
@@ -223,7 +224,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
@@ -362,13 +363,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Deleted Web Analytics rule identifier"
+				"description": "Deleted Web Analytics rule identifier."
 			},
 			"4XX": {
 				"content": {
@@ -481,7 +483,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
@@ -714,13 +716,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Web Analytics site"
+				"description": "Web Analytics site."
 			},
 			"4XX": {
 				"content": {
@@ -833,7 +836,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
@@ -1122,13 +1125,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List of Web Analytics sites"
+				"description": "List of Web Analytics sites."
 			},
 			"4XX": {
 				"content": {
@@ -1241,7 +1245,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
@@ -1445,13 +1449,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List of Web Analytics rules in the ruleset"
+				"description": "List of Web Analytics rules in the ruleset."
 			},
 			"4XX": {
 				"content": {
@@ -1564,7 +1569,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
@@ -1679,7 +1684,7 @@
 													"x-auditable": true
 												},
 												"value": {
-													"description": "Current state of RUM. Returns On, Off, or Manual",
+													"description": "Current state of RUM. Returns On, Off, or Manual.",
 													"example": "on",
 													"type": "string",
 													"x-auditable": true
@@ -1687,13 +1692,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Rum Status"
+				"description": "Rum Status."
 			},
 			"4XX": {
 				"content": {
@@ -1806,7 +1812,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
@@ -1832,7 +1838,7 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/settings/rum": {
-		"description": "Toggles RUM on/off for an existing zone",
+		"description": "Toggles RUM on/off for an existing zone.",
 		"operationId": "web-analytics-toggle-rum",
 		"parameters": [
 			{
@@ -1854,7 +1860,7 @@
 					"schema": {
 						"properties": {
 							"value": {
-								"description": "Value can either be On or Off",
+								"description": "Value can either be On or Off.",
 								"example": "on",
 								"type": "string"
 							}
@@ -1942,7 +1948,7 @@
 													"x-auditable": true
 												},
 												"value": {
-													"description": "Current state of RUM. Returns On, Off, or Manual",
+													"description": "Current state of RUM. Returns On, Off, or Manual.",
 													"example": "on",
 													"type": "string",
 													"x-auditable": true
@@ -1950,7 +1956,8 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2069,7 +2076,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
@@ -2323,13 +2330,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Created Web Analytics site"
+				"description": "Created Web Analytics site."
 			},
 			"4XX": {
 				"content": {
@@ -2442,7 +2450,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
@@ -2646,13 +2654,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Created Web Analytics rule"
+				"description": "Created Web Analytics rule."
 			},
 			"4XX": {
 				"content": {
@@ -2765,7 +2774,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
@@ -3024,13 +3033,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List of modified Web Analytics rules"
+				"description": "List of modified Web Analytics rules."
 			},
 			"4XX": {
 				"content": {
@@ -3143,7 +3153,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
@@ -3420,13 +3430,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Updated Web Analytics site"
+				"description": "Updated Web Analytics site."
 			},
 			"4XX": {
 				"content": {
@@ -3539,7 +3550,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [
@@ -3754,13 +3765,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Updated Web Analytics rule"
+				"description": "Updated Web Analytics rule."
 			},
 			"4XX": {
 				"content": {
@@ -3873,7 +3885,7 @@
 						}
 					}
 				},
-				"description": "Failure response"
+				"description": "Failure response."
 			}
 		},
 		"security": [

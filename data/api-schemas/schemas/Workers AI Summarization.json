@@ -51,21 +51,6 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"summary": {
-											"description": "The summarized version of the input text",
-											"type": "string"
-										}
-									},
-									"type": "object"
-								},
-								"success": {
-									"default": true,
-									"type": "boolean"
-								}
-							},
 							"type": "object"
 						}
 					}

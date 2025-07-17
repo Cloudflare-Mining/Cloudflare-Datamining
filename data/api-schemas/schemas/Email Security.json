@@ -150,6 +150,13 @@
 				}
 			},
 			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
 				"description": "The page number of paginated results.",
 				"in": "query",
 				"name": "page",
@@ -309,6 +316,27 @@
 																	}
 																]
 															},
+															"findings": {
+																"items": {
+																	"properties": {
+																		"detail": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"name": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"value": {
+																			"nullable": true,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"nullable": true,
+																"type": "array"
+															},
 															"from": {
 																"nullable": true,
 																"type": "string"
@@ -335,12 +363,48 @@
 															},
 															"properties": {
 																"properties": {
+																	"allowlisted_pattern": {
+																		"type": "string"
+																	},
 																	"allowlisted_pattern_type": {
+																		"allOf": [
+																			{
+																				"enum": [
+																					"quarantine_release",
+																					"blocked_sender",
+																					"acceptable_sender",
+																					"allowed_sender",
+																					"allowed_recipient",
+																					"domain_similarity",
+																					"domain_recency",
+																					"managed_acceptable_sender"
+																				],
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"blocklisted_message": {
+																		"type": "boolean"
+																	},
+																	"blocklisted_pattern": {
 																		"type": "string"
 																	},
 																	"whitelisted_pattern_type": {
-																		"deprecated": true,
-																		"type": "string"
+																		"allOf": [
+																			{
+																				"enum": [
+																					"quarantine_release",
+																					"blocked_sender",
+																					"acceptable_sender",
+																					"allowed_sender",
+																					"allowed_recipient",
+																					"domain_similarity",
+																					"domain_recency",
+																					"managed_acceptable_sender"
+																				],
+																				"type": "string"
+																			}
+																		]
 																	}
 																},
 																"type": "object"
@@ -486,6 +550,7 @@
 													],
 													"edf_hash": null,
 													"final_disposition": "MALICIOUS",
+													"findings": null,
 													"from": "d1994@example.com",
 													"from_name": "Sender Name",
 													"id": "47JJcT1w6GztQV7-email@example.com",
@@ -819,6 +884,27 @@
 																}
 															]
 														},
+														"findings": {
+															"items": {
+																"properties": {
+																	"detail": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"name": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"value": {
+																		"nullable": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														},
 														"from": {
 															"nullable": true,
 															"type": "string"
@@ -845,12 +931,48 @@
 														},
 														"properties": {
 															"properties": {
+																"allowlisted_pattern": {
+																	"type": "string"
+																},
 																"allowlisted_pattern_type": {
+																	"allOf": [
+																		{
+																			"enum": [
+																				"quarantine_release",
+																				"blocked_sender",
+																				"acceptable_sender",
+																				"allowed_sender",
+																				"allowed_recipient",
+																				"domain_similarity",
+																				"domain_recency",
+																				"managed_acceptable_sender"
+																			],
+																			"type": "string"
+																		}
+																	]
+																},
+																"blocklisted_message": {
+																	"type": "boolean"
+																},
+																"blocklisted_pattern": {
 																	"type": "string"
 																},
 																"whitelisted_pattern_type": {
-																	"deprecated": true,
-																	"type": "string"
+																	"allOf": [
+																		{
+																			"enum": [
+																				"quarantine_release",
+																				"blocked_sender",
+																				"acceptable_sender",
+																				"allowed_sender",
+																				"allowed_recipient",
+																				"domain_similarity",
+																				"domain_recency",
+																				"managed_acceptable_sender"
+																			],
+																			"type": "string"
+																		}
+																	]
 																}
 															},
 															"type": "object"
@@ -996,6 +1118,7 @@
 												],
 												"edf_hash": null,
 												"final_disposition": "MALICIOUS",
+												"findings": null,
 												"from": "d1994@example.com",
 												"from_name": "Sender Name",
 												"id": "47JJcT1w6GztQV7-email@example.com",
@@ -2143,6 +2266,10 @@
 															},
 															"nullable": true,
 															"type": "array"
+														},
+														"pending": {
+															"nullable": true,
+															"type": "boolean"
 														}
 													},
 													"type": "object"
@@ -2173,6 +2300,10 @@
 															},
 															"nullable": true,
 															"type": "array"
+														},
+														"pending": {
+															"nullable": true,
+															"type": "boolean"
 														}
 													},
 													"type": "object"

@@ -1,5 +1,6 @@
 {
 	"GET /zones/{zone_id}/ssl/recommendation": {
+		"deprecated": true,
 		"description": "Retrieve the SSL/TLS Recommender's recommendation for a zone.",
 		"operationId": "ssl/-tls-mode-recommendation-ssl/-tls-recommendation",
 		"parameters": [
@@ -8,11 +9,9 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
-					"x-auditable": true
+					"type": "string"
 				}
 			}
 		],
@@ -21,366 +20,245 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"id": {
-													"description": "Identifier of a recommendation result.",
-													"example": "ssl_recommendation",
-													"type": "string"
-												},
-												"modified_on": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												},
-												"value": {
-													"enum": [
-														"flexible",
-														"full",
-														"strict"
-													],
-													"example": "strict",
-													"type": "string"
-												}
+											"message": {
+												"type": "string"
 											}
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "SSL/TLS Recommendation response"
-			},
-			"4xx": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												}
-											],
-											"type": "object"
 										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"id": {
-															"description": "Identifier of a recommendation result.",
-															"example": "ssl_recommendation",
-															"type": "string"
-														},
-														"modified_on": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"value": {
-															"enum": [
-																"flexible",
-																"full",
-																"strict"
-															],
-															"example": "strict",
-															"type": "string"
-														}
-													}
-												}
-											}
-										}
-									]
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
 								},
-								{
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
 									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"enum": [
-												false
-											],
-											"example": false,
+										"editable": {
+											"description": "Whether this setting can be updated or not.",
+											"readOnly": true,
 											"type": "boolean"
+										},
+										"id": {
+											"example": "ssl_automatic_mode",
+											"readOnly": true,
+											"type": "string"
+										},
+										"modified_on": {
+											"description": "Last time this setting was modified.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"next_scheduled_scan": {
+											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"value": {
+											"description": "Current setting of the automatic SSL/TLS.",
+											"enum": [
+												"auto",
+												"custom"
+											],
+											"example": "auto",
+											"readOnly": true,
+											"type": "string"
 										}
 									},
 									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+										"id",
+										"modified_on",
+										"value",
+										"editable"
 									],
 									"type": "object"
+								},
+								"success": {
+									"description": "Indicates the API call's success or failure.",
+									"example": true,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
-				"description": "SSL/TLS Recommendation response failure"
+				"description": "SSL/TLS Recommendation response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"properties": {
+										"editable": {
+											"description": "Whether this setting can be updated or not.",
+											"readOnly": true,
+											"type": "boolean"
+										},
+										"id": {
+											"example": "ssl_automatic_mode",
+											"readOnly": true,
+											"type": "string"
+										},
+										"modified_on": {
+											"description": "Last time this setting was modified.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"next_scheduled_scan": {
+											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"value": {
+											"description": "Current setting of the automatic SSL/TLS.",
+											"enum": [
+												"auto",
+												"custom"
+											],
+											"example": "auto",
+											"readOnly": true,
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"modified_on",
+										"value",
+										"editable"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates the API call's success or failure.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "SSL/TLS Recommendation response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -406,6 +284,7 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "SSL/TLS Recommender has been decommissioned in favor of Automatic SSL/TLS"
 	}
 }

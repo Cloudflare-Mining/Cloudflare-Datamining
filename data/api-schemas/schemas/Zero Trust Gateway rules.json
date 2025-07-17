@@ -564,9 +564,21 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"not_sharable": {
+														"description": "The rule cannot be shared via the Orgs API",
+														"readOnly": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
 													"precedence": {
 														"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) docs on how to manage precedence via Terraform.",
 														"type": "integer",
+														"x-auditable": true
+													},
+													"read_only": {
+														"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+														"readOnly": true,
+														"type": "boolean",
 														"x-auditable": true
 													},
 													"rule_settings": {
@@ -1149,6 +1161,12 @@
 														},
 														"type": "object"
 													},
+													"source_account": {
+														"description": "account tag of account that created the rule",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
 													"traffic": {
 														"default": "",
 														"description": "The wirefilter expression used for traffic matching.",
@@ -1434,9 +1452,21 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"not_sharable": {
+																"description": "The rule cannot be shared via the Orgs API",
+																"readOnly": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
 															"precedence": {
 																"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) docs on how to manage precedence via Terraform.",
 																"type": "integer",
+																"x-auditable": true
+															},
+															"read_only": {
+																"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+																"readOnly": true,
+																"type": "boolean",
 																"x-auditable": true
 															},
 															"rule_settings": {
@@ -2019,6 +2049,12 @@
 																},
 																"type": "object"
 															},
+															"source_account": {
+																"description": "account tag of account that created the rule",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
 															"traffic": {
 																"default": "",
 																"description": "The wirefilter expression used for traffic matching.",
@@ -2403,9 +2439,21 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"not_sharable": {
+													"description": "The rule cannot be shared via the Orgs API",
+													"readOnly": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"precedence": {
 													"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) docs on how to manage precedence via Terraform.",
 													"type": "integer",
+													"x-auditable": true
+												},
+												"read_only": {
+													"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+													"readOnly": true,
+													"type": "boolean",
 													"x-auditable": true
 												},
 												"rule_settings": {
@@ -2988,6 +3036,12 @@
 													},
 													"type": "object"
 												},
+												"source_account": {
+													"description": "account tag of account that created the rule",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
 												"traffic": {
 													"default": "",
 													"description": "The wirefilter expression used for traffic matching.",
@@ -3241,9 +3295,21 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"not_sharable": {
+															"description": "The rule cannot be shared via the Orgs API",
+															"readOnly": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"precedence": {
 															"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) docs on how to manage precedence via Terraform.",
 															"type": "integer",
+															"x-auditable": true
+														},
+														"read_only": {
+															"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+															"readOnly": true,
+															"type": "boolean",
 															"x-auditable": true
 														},
 														"rule_settings": {
@@ -3825,6 +3891,12 @@
 																}
 															},
 															"type": "object"
+														},
+														"source_account": {
+															"description": "account tag of account that created the rule",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
 														},
 														"traffic": {
 															"default": "",
@@ -4919,9 +4991,21 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"not_sharable": {
+													"description": "The rule cannot be shared via the Orgs API",
+													"readOnly": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"precedence": {
 													"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) docs on how to manage precedence via Terraform.",
 													"type": "integer",
+													"x-auditable": true
+												},
+												"read_only": {
+													"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+													"readOnly": true,
+													"type": "boolean",
 													"x-auditable": true
 												},
 												"rule_settings": {
@@ -5504,6 +5588,12 @@
 													},
 													"type": "object"
 												},
+												"source_account": {
+													"description": "account tag of account that created the rule",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
 												"traffic": {
 													"default": "",
 													"description": "The wirefilter expression used for traffic matching.",
@@ -5757,9 +5847,21 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"not_sharable": {
+															"description": "The rule cannot be shared via the Orgs API",
+															"readOnly": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"precedence": {
 															"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) docs on how to manage precedence via Terraform.",
 															"type": "integer",
+															"x-auditable": true
+														},
+														"read_only": {
+															"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+															"readOnly": true,
+															"type": "boolean",
 															"x-auditable": true
 														},
 														"rule_settings": {
@@ -6341,6 +6443,12 @@
 																}
 															},
 															"type": "object"
+														},
+														"source_account": {
+															"description": "account tag of account that created the rule",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
 														},
 														"traffic": {
 															"default": "",
@@ -6723,9 +6831,21 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"not_sharable": {
+													"description": "The rule cannot be shared via the Orgs API",
+													"readOnly": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"precedence": {
 													"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) docs on how to manage precedence via Terraform.",
 													"type": "integer",
+													"x-auditable": true
+												},
+												"read_only": {
+													"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+													"readOnly": true,
+													"type": "boolean",
 													"x-auditable": true
 												},
 												"rule_settings": {
@@ -7308,6 +7428,12 @@
 													},
 													"type": "object"
 												},
+												"source_account": {
+													"description": "account tag of account that created the rule",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
 												"traffic": {
 													"default": "",
 													"description": "The wirefilter expression used for traffic matching.",
@@ -7558,9 +7684,21 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"not_sharable": {
+															"description": "The rule cannot be shared via the Orgs API",
+															"readOnly": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"precedence": {
 															"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) docs on how to manage precedence via Terraform.",
 															"type": "integer",
+															"x-auditable": true
+														},
+														"read_only": {
+															"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+															"readOnly": true,
+															"type": "boolean",
 															"x-auditable": true
 														},
 														"rule_settings": {
@@ -8142,6 +8280,12 @@
 																}
 															},
 															"type": "object"
+														},
+														"source_account": {
+															"description": "account tag of account that created the rule",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
 														},
 														"traffic": {
 															"default": "",
@@ -9248,9 +9392,21 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"not_sharable": {
+													"description": "The rule cannot be shared via the Orgs API",
+													"readOnly": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"precedence": {
 													"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) docs on how to manage precedence via Terraform.",
 													"type": "integer",
+													"x-auditable": true
+												},
+												"read_only": {
+													"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+													"readOnly": true,
+													"type": "boolean",
 													"x-auditable": true
 												},
 												"rule_settings": {
@@ -9833,6 +9989,12 @@
 													},
 													"type": "object"
 												},
+												"source_account": {
+													"description": "account tag of account that created the rule",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
 												"traffic": {
 													"default": "",
 													"description": "The wirefilter expression used for traffic matching.",
@@ -10086,9 +10248,21 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"not_sharable": {
+															"description": "The rule cannot be shared via the Orgs API",
+															"readOnly": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"precedence": {
 															"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) docs on how to manage precedence via Terraform.",
 															"type": "integer",
+															"x-auditable": true
+														},
+														"read_only": {
+															"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+															"readOnly": true,
+															"type": "boolean",
 															"x-auditable": true
 														},
 														"rule_settings": {
@@ -10670,6 +10844,12 @@
 																}
 															},
 															"type": "object"
+														},
+														"source_account": {
+															"description": "account tag of account that created the rule",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
 														},
 														"traffic": {
 															"default": "",

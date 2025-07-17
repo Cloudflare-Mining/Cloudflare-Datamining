@@ -191,7 +191,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -645,7 +644,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -1138,7 +1136,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -1592,7 +1589,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -2080,7 +2076,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -2541,7 +2536,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -3023,7 +3017,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -3662,9 +3655,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -4137,9 +4130,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -4652,9 +4645,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -5222,9 +5215,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -5738,9 +5731,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -6295,9 +6288,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -6817,9 +6810,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -7360,9 +7353,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -8101,20 +8094,6 @@
 					"description": "Limits the number of attacks per origin/target (refer to `limitDirection` parameter) location.",
 					"example": 10,
 					"type": "integer"
-				}
-			},
-			{
-				"description": "Deprecated parameter. Future support includes only attack magnitude defined by total mitigated requests (MITIGATED_REQUESTS).",
-				"in": "query",
-				"name": "magnitude",
-				"schema": {
-					"description": "Deprecated parameter. Future support includes only attack magnitude defined by total mitigated requests (MITIGATED_REQUESTS).",
-					"enum": [
-						"AFFECTED_ZONES",
-						"MITIGATED_REQUESTS"
-					],
-					"example": "MITIGATED_REQUESTS",
-					"type": "string"
 				}
 			},
 			{

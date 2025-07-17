@@ -259,7 +259,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/entries/integration": {
-		"description": "This will update an existing integration entry",
+		"description": "Integration entries can't be created, this will update an existing integration entry\nThis is needed for our generated terraform API",
 		"operationId": "dlp-entries-create-integration-entry",
 		"parameters": [
 			{

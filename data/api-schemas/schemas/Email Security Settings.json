@@ -1409,6 +1409,13 @@
 						}
 					]
 				}
+			},
+			{
+				"in": "query",
+				"name": "pattern",
+				"schema": {
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -2170,6 +2177,13 @@
 							"type": "string"
 						}
 					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "pattern",
+				"schema": {
+					"type": "string"
 				}
 			}
 		],
@@ -4442,6 +4456,13 @@
 				"name": "is_similarity",
 				"schema": {
 					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pattern",
+				"schema": {
+					"type": "string"
 				}
 			}
 		],

@@ -292,7 +292,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -822,7 +821,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -1366,7 +1364,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -1896,7 +1893,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -2426,7 +2422,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -2956,7 +2951,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -3471,7 +3465,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -3925,7 +3918,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -4430,7 +4422,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -4955,7 +4946,6 @@
 											"description": "Metadata for the results.",
 											"properties": {
 												"confidenceInfo": {
-													"nullable": true,
 													"properties": {
 														"annotations": {
 															"items": {
@@ -5699,9 +5689,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										}
@@ -6234,9 +6224,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -6797,9 +6787,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -7380,9 +7370,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -7943,9 +7933,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -8506,9 +8496,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -9069,9 +9059,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -9617,9 +9607,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -10110,9 +10100,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -10670,9 +10660,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},
@@ -11250,9 +11240,9 @@
 												"dateRange",
 												"confidenceInfo",
 												"normalization",
-												"aggInterval",
 												"lastUpdated",
-												"units"
+												"units",
+												"aggInterval"
 											],
 											"type": "object"
 										},

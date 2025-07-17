@@ -259,7 +259,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/entries/predefined": {
-		"description": "This will update an existing predefined entry",
+		"description": "Predefined entries can't be created, this will update an existing predefined entry\nThis is needed for our generated terraform API",
 		"operationId": "dlp-entries-create-predefined-entry",
 		"parameters": [
 			{

@@ -1487,6 +1487,14 @@
 				"schema": {
 					"type": "string"
 				}
+			},
+			{
+				"description": "Filter by event kind",
+				"in": "query",
+				"name": "k",
+				"schema": {
+					"type": "string"
+				}
 			}
 		],
 		"responses": {

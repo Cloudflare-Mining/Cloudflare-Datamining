@@ -763,15 +763,8 @@
 															},
 															"properties": {
 																"bindings": {
-																	"example": [
+																	"allOf": [
 																		{
-																			"json": "example_binding",
-																			"name": "JSON_VAR",
-																			"type": "json"
-																		}
-																	],
-																	"properties": {
-																		"result": {
 																			"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
 																			"example": [
 																				{
@@ -1552,7 +1545,8 @@
 																									"type": "string"
 																								},
 																								"type": "array",
-																								"x-auditable": true
+																								"x-auditable": true,
+																								"x-stainless-collection-type": "set"
 																							}
 																						},
 																						"required": [
@@ -1606,11 +1600,13 @@
 																				],
 																				"type": "object"
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"x-stainless-collection-type": "set"
+																		},
+																		{
+																			"readOnly": true
 																		}
-																	},
-																	"readOnly": true,
-																	"type": "object"
+																	]
 																},
 																"script": {
 																	"example": {
@@ -1644,7 +1640,8 @@
 																				"type": "string"
 																			},
 																			"readOnly": true,
-																			"type": "array"
+																			"type": "array",
+																			"x-stainless-collection-type": "set"
 																		},
 																		"last_deployed_from": {
 																			"example": "api",
@@ -1678,7 +1675,8 @@
 																							"type": "string"
 																						},
 																						"readOnly": true,
-																						"type": "array"
+																						"type": "array",
+																						"x-stainless-collection-type": "set"
 																					},
 																					"name": {
 																						"example": "MyClass",
@@ -1690,7 +1688,8 @@
 																				"type": "object"
 																			},
 																			"readOnly": true,
-																			"type": "array"
+																			"type": "array",
+																			"x-stainless-collection-type": "set"
 																		}
 																	},
 																	"readOnly": true,
@@ -1710,7 +1709,8 @@
 																				"type": "string"
 																			},
 																			"readOnly": true,
-																			"type": "array"
+																			"type": "array",
+																			"x-stainless-collection-type": "set"
 																		},
 																		"limits": {
 																			"example": {
@@ -1955,15 +1955,8 @@
 																	},
 																	"properties": {
 																		"bindings": {
-																			"example": [
+																			"allOf": [
 																				{
-																					"json": "example_binding",
-																					"name": "JSON_VAR",
-																					"type": "json"
-																				}
-																			],
-																			"properties": {
-																				"result": {
 																					"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
 																					"example": [
 																						{
@@ -2744,7 +2737,8 @@
 																											"type": "string"
 																										},
 																										"type": "array",
-																										"x-auditable": true
+																										"x-auditable": true,
+																										"x-stainless-collection-type": "set"
 																									}
 																								},
 																								"required": [
@@ -2798,11 +2792,13 @@
 																						],
 																						"type": "object"
 																					},
-																					"type": "array"
+																					"type": "array",
+																					"x-stainless-collection-type": "set"
+																				},
+																				{
+																					"readOnly": true
 																				}
-																			},
-																			"readOnly": true,
-																			"type": "object"
+																			]
 																		},
 																		"script": {
 																			"example": {
@@ -2836,7 +2832,8 @@
 																						"type": "string"
 																					},
 																					"readOnly": true,
-																					"type": "array"
+																					"type": "array",
+																					"x-stainless-collection-type": "set"
 																				},
 																				"last_deployed_from": {
 																					"example": "api",
@@ -2870,7 +2867,8 @@
 																									"type": "string"
 																								},
 																								"readOnly": true,
-																								"type": "array"
+																								"type": "array",
+																								"x-stainless-collection-type": "set"
 																							},
 																							"name": {
 																								"example": "MyClass",
@@ -2882,7 +2880,8 @@
 																						"type": "object"
 																					},
 																					"readOnly": true,
-																					"type": "array"
+																					"type": "array",
+																					"x-stainless-collection-type": "set"
 																				}
 																			},
 																			"readOnly": true,
@@ -2902,7 +2901,8 @@
 																						"type": "string"
 																					},
 																					"readOnly": true,
-																					"type": "array"
+																					"type": "array",
+																					"x-stainless-collection-type": "set"
 																				},
 																				"limits": {
 																					"example": {
@@ -3120,16 +3120,22 @@
 		"requestBody": {
 			"content": {
 				"multipart/form-data": {
+					"encoding": {
+						"files": {
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream, application/source-map"
+						}
+					},
 					"schema": {
-						"additionalProperties": {
-							"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present and referenced in the metadata as `main_module`.<br/> Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
-							"items": {
-								"format": "binary",
-								"type": "string"
-							},
-							"type": "array"
-						},
 						"properties": {
+							"files": {
+								"description": "An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/>Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
+								"items": {
+									"format": "binary",
+									"type": "string"
+								},
+								"type": "array",
+								"x-stainless-collection-type": "set"
+							},
 							"metadata": {
 								"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
 								"properties": {
@@ -3931,7 +3937,8 @@
 																"type": "string"
 															},
 															"type": "array",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-collection-type": "set"
 														}
 													},
 													"required": [
@@ -3985,7 +3992,8 @@
 											],
 											"type": "object"
 										},
-										"type": "array"
+										"type": "array",
+										"x-stainless-collection-type": "set"
 									},
 									"compatibility_date": {
 										"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
@@ -3994,6 +4002,7 @@
 										"x-auditable": true
 									},
 									"compatibility_flags": {
+										"default": [],
 										"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
 										"example": [
 											"nodejs_compat"
@@ -4004,21 +4013,24 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"type": "array"
+										"type": "array",
+										"x-stainless-collection-type": "set"
 									},
 									"keep_bindings": {
 										"description": "List of binding types to keep from previous_upload.",
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-stainless-collection-type": "set"
 									},
 									"main_module": {
-										"description": "Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker, which is required for Version Upload.",
+										"description": "Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker, which is required for Version Upload.",
 										"example": "worker.js",
 										"type": "string"
 									},
 									"usage_model": {
+										"default": "standard",
 										"description": "Usage model for the Worker invocations.",
 										"enum": [
 											"standard"
@@ -4230,15 +4242,8 @@
 																	},
 																	"properties": {
 																		"bindings": {
-																			"example": [
+																			"allOf": [
 																				{
-																					"json": "example_binding",
-																					"name": "JSON_VAR",
-																					"type": "json"
-																				}
-																			],
-																			"properties": {
-																				"result": {
 																					"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
 																					"example": [
 																						{
@@ -5019,7 +5024,8 @@
 																											"type": "string"
 																										},
 																										"type": "array",
-																										"x-auditable": true
+																										"x-auditable": true,
+																										"x-stainless-collection-type": "set"
 																									}
 																								},
 																								"required": [
@@ -5073,11 +5079,13 @@
 																						],
 																						"type": "object"
 																					},
-																					"type": "array"
+																					"type": "array",
+																					"x-stainless-collection-type": "set"
+																				},
+																				{
+																					"readOnly": true
 																				}
-																			},
-																			"readOnly": true,
-																			"type": "object"
+																			]
 																		},
 																		"script": {
 																			"example": {
@@ -5111,7 +5119,8 @@
 																						"type": "string"
 																					},
 																					"readOnly": true,
-																					"type": "array"
+																					"type": "array",
+																					"x-stainless-collection-type": "set"
 																				},
 																				"last_deployed_from": {
 																					"example": "api",
@@ -5145,7 +5154,8 @@
 																									"type": "string"
 																								},
 																								"readOnly": true,
-																								"type": "array"
+																								"type": "array",
+																								"x-stainless-collection-type": "set"
 																							},
 																							"name": {
 																								"example": "MyClass",
@@ -5157,7 +5167,8 @@
 																						"type": "object"
 																					},
 																					"readOnly": true,
-																					"type": "array"
+																					"type": "array",
+																					"x-stainless-collection-type": "set"
 																				}
 																			},
 																			"readOnly": true,
@@ -5177,7 +5188,8 @@
 																						"type": "string"
 																					},
 																					"readOnly": true,
-																					"type": "array"
+																					"type": "array",
+																					"x-stainless-collection-type": "set"
 																				},
 																				"limits": {
 																					"example": {
@@ -5438,15 +5450,8 @@
 																			},
 																			"properties": {
 																				"bindings": {
-																					"example": [
+																					"allOf": [
 																						{
-																							"json": "example_binding",
-																							"name": "JSON_VAR",
-																							"type": "json"
-																						}
-																					],
-																					"properties": {
-																						"result": {
 																							"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
 																							"example": [
 																								{
@@ -6227,7 +6232,8 @@
 																													"type": "string"
 																												},
 																												"type": "array",
-																												"x-auditable": true
+																												"x-auditable": true,
+																												"x-stainless-collection-type": "set"
 																											}
 																										},
 																										"required": [
@@ -6281,11 +6287,13 @@
 																								],
 																								"type": "object"
 																							},
-																							"type": "array"
+																							"type": "array",
+																							"x-stainless-collection-type": "set"
+																						},
+																						{
+																							"readOnly": true
 																						}
-																					},
-																					"readOnly": true,
-																					"type": "object"
+																					]
 																				},
 																				"script": {
 																					"example": {
@@ -6319,7 +6327,8 @@
 																								"type": "string"
 																							},
 																							"readOnly": true,
-																							"type": "array"
+																							"type": "array",
+																							"x-stainless-collection-type": "set"
 																						},
 																						"last_deployed_from": {
 																							"example": "api",
@@ -6353,7 +6362,8 @@
 																											"type": "string"
 																										},
 																										"readOnly": true,
-																										"type": "array"
+																										"type": "array",
+																										"x-stainless-collection-type": "set"
 																									},
 																									"name": {
 																										"example": "MyClass",
@@ -6365,7 +6375,8 @@
 																								"type": "object"
 																							},
 																							"readOnly": true,
-																							"type": "array"
+																							"type": "array",
+																							"x-stainless-collection-type": "set"
 																						}
 																					},
 																					"readOnly": true,
@@ -6385,7 +6396,8 @@
 																								"type": "string"
 																							},
 																							"readOnly": true,
-																							"type": "array"
+																							"type": "array",
+																							"x-stainless-collection-type": "set"
 																						},
 																						"limits": {
 																							"example": {

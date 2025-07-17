@@ -629,40 +629,39 @@
 																	"type": "array"
 																},
 																"resources": {
-																	"additionalProperties": {
-																		"oneOf": [
-																			{
-																				"description": "A simple wildcard permission, e.g., \"*\".",
-																				"type": "string"
-																			},
-																			{
+																	"description": "Resource permissions for the policy. Use either simple or nested permissions.",
+																	"properties": {
+																		"nested": {
+																			"additionalProperties": {
 																				"additionalProperties": {
+																					"description": "Permission value for the nested resource.",
 																					"type": "string"
 																				},
-																				"description": "A nested permission grant for further scoping.",
+																				"description": "Nested permission grant for further scoping.",
 																				"type": "object"
-																			}
-																		],
-																		"x-auditable": true
-																	},
-																	"description": "A list of resource names that the policy applies to.",
-																	"example": {
-																		"object": {
-																			"summary": "Nested object value",
-																			"value": {
-																				"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+																			},
+																			"description": "Nested resource permissions for hierarchical scoping.",
+																			"example": {
+																				"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": {
 																					"com.cloudflare.api.account.zone.*": "*"
 																				}
-																			}
+																			},
+																			"type": "object"
 																		},
-																		"string": {
-																			"summary": "Single string value",
-																			"value": {
-																				"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-																			}
+																		"simple": {
+																			"additionalProperties": {
+																				"description": "Permission value (e.g., \"*\" for all permissions).",
+																				"type": "string"
+																			},
+																			"description": "Simple resource permissions where each resource maps to a permission string.",
+																			"example": {
+																				"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": "*"
+																			},
+																			"type": "object"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1143,40 +1142,39 @@
 																"type": "array"
 															},
 															"resources": {
-																"additionalProperties": {
-																	"oneOf": [
-																		{
-																			"description": "A simple wildcard permission, e.g., \"*\".",
-																			"type": "string"
-																		},
-																		{
+																"description": "Resource permissions for the policy. Use either simple or nested permissions.",
+																"properties": {
+																	"nested": {
+																		"additionalProperties": {
 																			"additionalProperties": {
+																				"description": "Permission value for the nested resource.",
 																				"type": "string"
 																			},
-																			"description": "A nested permission grant for further scoping.",
+																			"description": "Nested permission grant for further scoping.",
 																			"type": "object"
-																		}
-																	],
-																	"x-auditable": true
-																},
-																"description": "A list of resource names that the policy applies to.",
-																"example": {
-																	"object": {
-																		"summary": "Nested object value",
-																		"value": {
-																			"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+																		},
+																		"description": "Nested resource permissions for hierarchical scoping.",
+																		"example": {
+																			"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": {
 																				"com.cloudflare.api.account.zone.*": "*"
 																			}
-																		}
+																		},
+																		"type": "object"
 																	},
-																	"string": {
-																		"summary": "Single string value",
-																		"value": {
-																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-																		}
+																	"simple": {
+																		"additionalProperties": {
+																			"description": "Permission value (e.g., \"*\" for all permissions).",
+																			"type": "string"
+																		},
+																		"description": "Simple resource permissions where each resource maps to a permission string.",
+																		"example": {
+																			"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": "*"
+																		},
+																		"type": "object"
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2173,40 +2171,39 @@
 											"type": "array"
 										},
 										"resources": {
-											"additionalProperties": {
-												"oneOf": [
-													{
-														"description": "A simple wildcard permission, e.g., \"*\".",
-														"type": "string"
-													},
-													{
+											"description": "Resource permissions for the policy. Use either simple or nested permissions.",
+											"properties": {
+												"nested": {
+													"additionalProperties": {
 														"additionalProperties": {
+															"description": "Permission value for the nested resource.",
 															"type": "string"
 														},
-														"description": "A nested permission grant for further scoping.",
+														"description": "Nested permission grant for further scoping.",
 														"type": "object"
-													}
-												],
-												"x-auditable": true
-											},
-											"description": "A list of resource names that the policy applies to.",
-											"example": {
-												"object": {
-													"summary": "Nested object value",
-													"value": {
-														"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+													},
+													"description": "Nested resource permissions for hierarchical scoping.",
+													"example": {
+														"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": {
 															"com.cloudflare.api.account.zone.*": "*"
 														}
-													}
+													},
+													"type": "object"
 												},
-												"string": {
-													"summary": "Single string value",
-													"value": {
-														"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-													}
+												"simple": {
+													"additionalProperties": {
+														"description": "Permission value (e.g., \"*\" for all permissions).",
+														"type": "string"
+													},
+													"description": "Simple resource permissions where each resource maps to a permission string.",
+													"example": {
+														"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": "*"
+													},
+													"type": "object"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2516,40 +2513,39 @@
 																		"type": "array"
 																	},
 																	"resources": {
-																		"additionalProperties": {
-																			"oneOf": [
-																				{
-																					"description": "A simple wildcard permission, e.g., \"*\".",
-																					"type": "string"
-																				},
-																				{
+																		"description": "Resource permissions for the policy. Use either simple or nested permissions.",
+																		"properties": {
+																			"nested": {
+																				"additionalProperties": {
 																					"additionalProperties": {
+																						"description": "Permission value for the nested resource.",
 																						"type": "string"
 																					},
-																					"description": "A nested permission grant for further scoping.",
+																					"description": "Nested permission grant for further scoping.",
 																					"type": "object"
-																				}
-																			],
-																			"x-auditable": true
-																		},
-																		"description": "A list of resource names that the policy applies to.",
-																		"example": {
-																			"object": {
-																				"summary": "Nested object value",
-																				"value": {
-																					"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+																				},
+																				"description": "Nested resource permissions for hierarchical scoping.",
+																				"example": {
+																					"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": {
 																						"com.cloudflare.api.account.zone.*": "*"
 																					}
-																				}
+																				},
+																				"type": "object"
 																			},
-																			"string": {
-																				"summary": "Single string value",
-																				"value": {
-																					"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-																				}
+																			"simple": {
+																				"additionalProperties": {
+																					"description": "Permission value (e.g., \"*\" for all permissions).",
+																					"type": "string"
+																				},
+																				"description": "Simple resource permissions where each resource maps to a permission string.",
+																				"example": {
+																					"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": "*"
+																				},
+																				"type": "object"
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -2953,40 +2949,39 @@
 													"type": "array"
 												},
 												"resources": {
-													"additionalProperties": {
-														"oneOf": [
-															{
-																"description": "A simple wildcard permission, e.g., \"*\".",
-																"type": "string"
-															},
-															{
+													"description": "Resource permissions for the policy. Use either simple or nested permissions.",
+													"properties": {
+														"nested": {
+															"additionalProperties": {
 																"additionalProperties": {
+																	"description": "Permission value for the nested resource.",
 																	"type": "string"
 																},
-																"description": "A nested permission grant for further scoping.",
+																"description": "Nested permission grant for further scoping.",
 																"type": "object"
-															}
-														],
-														"x-auditable": true
-													},
-													"description": "A list of resource names that the policy applies to.",
-													"example": {
-														"object": {
-															"summary": "Nested object value",
-															"value": {
-																"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+															},
+															"description": "Nested resource permissions for hierarchical scoping.",
+															"example": {
+																"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": {
 																	"com.cloudflare.api.account.zone.*": "*"
 																}
-															}
+															},
+															"type": "object"
 														},
-														"string": {
-															"summary": "Single string value",
-															"value": {
-																"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-															}
+														"simple": {
+															"additionalProperties": {
+																"description": "Permission value (e.g., \"*\" for all permissions).",
+																"type": "string"
+															},
+															"description": "Simple resource permissions where each resource maps to a permission string.",
+															"example": {
+																"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": "*"
+															},
+															"type": "object"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3314,40 +3309,39 @@
 																"type": "array"
 															},
 															"resources": {
-																"additionalProperties": {
-																	"oneOf": [
-																		{
-																			"description": "A simple wildcard permission, e.g., \"*\".",
-																			"type": "string"
-																		},
-																		{
+																"description": "Resource permissions for the policy. Use either simple or nested permissions.",
+																"properties": {
+																	"nested": {
+																		"additionalProperties": {
 																			"additionalProperties": {
+																				"description": "Permission value for the nested resource.",
 																				"type": "string"
 																			},
-																			"description": "A nested permission grant for further scoping.",
+																			"description": "Nested permission grant for further scoping.",
 																			"type": "object"
-																		}
-																	],
-																	"x-auditable": true
-																},
-																"description": "A list of resource names that the policy applies to.",
-																"example": {
-																	"object": {
-																		"summary": "Nested object value",
-																		"value": {
-																			"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
+																		},
+																		"description": "Nested resource permissions for hierarchical scoping.",
+																		"example": {
+																			"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": {
 																				"com.cloudflare.api.account.zone.*": "*"
 																			}
-																		}
+																		},
+																		"type": "object"
 																	},
-																	"string": {
-																		"summary": "Single string value",
-																		"value": {
-																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-																		}
+																	"simple": {
+																		"additionalProperties": {
+																			"description": "Permission value (e.g., \"*\" for all permissions).",
+																			"type": "string"
+																		},
+																		"description": "Simple resource permissions where each resource maps to a permission string.",
+																		"example": {
+																			"com.cloudflare.api.account.472e41d66440f10635de39c7ffaf6080": "*"
+																		},
+																		"type": "object"
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-auditable": true
 															}
 														},
 														"required": [

@@ -2629,6 +2629,8 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"type": "string"
 				}
 			}
@@ -2846,6 +2848,84 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"properties": {
+										"id": {
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"type": "string"
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates the API call's success or failure.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Request to purge cached content successfull."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
 							"allOf": [
 								{
 									"properties": {
@@ -2857,19 +2937,8 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
-													"documentation_url": {
-														"type": "string"
-													},
 													"message": {
 														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
 													}
 												},
 												"required": [
@@ -2889,19 +2958,8 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
-													"documentation_url": {
-														"type": "string"
-													},
 													"message": {
 														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
 													}
 												},
 												"required": [
@@ -2913,11 +2971,22 @@
 											},
 											"type": "array"
 										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"enum": [
-												true
+										"result": {
+											"nullable": true,
+											"properties": {
+												"id": {
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id"
 											],
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicates the API call's success or failure.",
 											"example": true,
 											"type": "boolean"
 										}
@@ -2926,145 +2995,6 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"nullable": true,
-											"properties": {
-												"id": {
-													"description": "Identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string",
-													"x-auditable": true
-												}
-											},
-											"required": [
-												"id"
-											],
-											"type": "object"
-										}
-									}
-								}
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Purge Cached Content"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true,
-													"properties": {
-														"id": {
-															"description": "Identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"id"
-													],
-													"type": "object"
-												}
-											}
-										}
 									],
 									"type": "object"
 								},
@@ -3080,19 +3010,8 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
-															"documentation_url": {
-																"type": "string"
-															},
 															"message": {
 																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
 															}
 														},
 														"required": [
@@ -3123,19 +3042,8 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
-															"documentation_url": {
-																"type": "string"
-															},
 															"message": {
 																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
 															}
 														},
 														"required": [
@@ -3151,17 +3059,11 @@
 											"example": []
 										},
 										"result": {
-											"enum": [
-												null
-											],
 											"nullable": true,
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
-											"enum": [
-												false
-											],
+											"description": "Indicates the API call's success or failure.",
 											"example": false,
 											"type": "boolean"
 										}
@@ -3178,10 +3080,13 @@
 						}
 					}
 				},
-				"description": "Purge Cached Content failure"
+				"description": "Request to purge cached content failed."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

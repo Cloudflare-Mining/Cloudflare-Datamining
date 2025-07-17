@@ -1053,6 +1053,29 @@
 																					],
 																					"title": "Service Token",
 																					"type": "object"
+																				},
+																				{
+																					"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																					"properties": {
+																						"linked_app_token": {
+																							"properties": {
+																								"app_uid": {
+																									"description": "The ID of an Access OIDC SaaS application",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"app_uid"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"linked_app_token"
+																					],
+																					"title": "Linked App Token",
+																					"type": "object"
 																				}
 																			],
 																			"type": "object"
@@ -1651,6 +1674,29 @@
 																					],
 																					"title": "Service Token",
 																					"type": "object"
+																				},
+																				{
+																					"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																					"properties": {
+																						"linked_app_token": {
+																							"properties": {
+																								"app_uid": {
+																									"description": "The ID of an Access OIDC SaaS application",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"app_uid"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"linked_app_token"
+																					],
+																					"title": "Linked App Token",
+																					"type": "object"
 																				}
 																			],
 																			"type": "object"
@@ -2247,6 +2293,29 @@
 																						"service_token"
 																					],
 																					"title": "Service Token",
+																					"type": "object"
+																				},
+																				{
+																					"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																					"properties": {
+																						"linked_app_token": {
+																							"properties": {
+																								"app_uid": {
+																									"description": "The ID of an Access OIDC SaaS application",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"app_uid"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"linked_app_token"
+																					],
+																					"title": "Linked App Token",
 																					"type": "object"
 																				}
 																			],
@@ -3242,6 +3311,29 @@
 																				],
 																				"title": "Service Token",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																				"properties": {
+																					"linked_app_token": {
+																						"properties": {
+																							"app_uid": {
+																								"description": "The ID of an Access OIDC SaaS application",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"app_uid"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"linked_app_token"
+																				],
+																				"title": "Linked App Token",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -3840,6 +3932,29 @@
 																				],
 																				"title": "Service Token",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																				"properties": {
+																					"linked_app_token": {
+																						"properties": {
+																							"app_uid": {
+																								"description": "The ID of an Access OIDC SaaS application",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"app_uid"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"linked_app_token"
+																				],
+																				"title": "Linked App Token",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -4436,6 +4551,29 @@
 																					"service_token"
 																				],
 																				"title": "Service Token",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																				"properties": {
+																					"linked_app_token": {
+																						"properties": {
+																							"app_uid": {
+																								"description": "The ID of an Access OIDC SaaS application",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"app_uid"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"linked_app_token"
+																				],
+																				"title": "Linked App Token",
 																				"type": "object"
 																			}
 																		],
@@ -5326,6 +5464,29 @@
 															],
 															"title": "Service Token",
 															"type": "object"
+														},
+														{
+															"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+															"properties": {
+																"linked_app_token": {
+																	"properties": {
+																		"app_uid": {
+																			"description": "The ID of an Access OIDC SaaS application",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"app_uid"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"linked_app_token"
+															],
+															"title": "Linked App Token",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -5917,6 +6078,29 @@
 																"service_token"
 															],
 															"title": "Service Token",
+															"type": "object"
+														},
+														{
+															"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+															"properties": {
+																"linked_app_token": {
+																	"properties": {
+																		"app_uid": {
+																			"description": "The ID of an Access OIDC SaaS application",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"app_uid"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"linked_app_token"
+															],
+															"title": "Linked App Token",
 															"type": "object"
 														}
 													],
@@ -6514,6 +6698,29 @@
 																"service_token"
 															],
 															"title": "Service Token",
+															"type": "object"
+														},
+														{
+															"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+															"properties": {
+																"linked_app_token": {
+																	"properties": {
+																		"app_uid": {
+																			"description": "The ID of an Access OIDC SaaS application",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"app_uid"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"linked_app_token"
+															],
+															"title": "Linked App Token",
 															"type": "object"
 														}
 													],
@@ -7318,6 +7525,29 @@
 																				],
 																				"title": "Service Token",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																				"properties": {
+																					"linked_app_token": {
+																						"properties": {
+																							"app_uid": {
+																								"description": "The ID of an Access OIDC SaaS application",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"app_uid"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"linked_app_token"
+																				],
+																				"title": "Linked App Token",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -7916,6 +8146,29 @@
 																				],
 																				"title": "Service Token",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																				"properties": {
+																					"linked_app_token": {
+																						"properties": {
+																							"app_uid": {
+																								"description": "The ID of an Access OIDC SaaS application",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"app_uid"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"linked_app_token"
+																				],
+																				"title": "Linked App Token",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -8512,6 +8765,29 @@
 																					"service_token"
 																				],
 																				"title": "Service Token",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																				"properties": {
+																					"linked_app_token": {
+																						"properties": {
+																							"app_uid": {
+																								"description": "The ID of an Access OIDC SaaS application",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"app_uid"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"linked_app_token"
+																				],
+																				"title": "Linked App Token",
 																				"type": "object"
 																			}
 																		],
@@ -9415,6 +9691,29 @@
 															],
 															"title": "Service Token",
 															"type": "object"
+														},
+														{
+															"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+															"properties": {
+																"linked_app_token": {
+																	"properties": {
+																		"app_uid": {
+																			"description": "The ID of an Access OIDC SaaS application",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"app_uid"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"linked_app_token"
+															],
+															"title": "Linked App Token",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -10006,6 +10305,29 @@
 																"service_token"
 															],
 															"title": "Service Token",
+															"type": "object"
+														},
+														{
+															"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+															"properties": {
+																"linked_app_token": {
+																	"properties": {
+																		"app_uid": {
+																			"description": "The ID of an Access OIDC SaaS application",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"app_uid"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"linked_app_token"
+															],
+															"title": "Linked App Token",
 															"type": "object"
 														}
 													],
@@ -10603,6 +10925,29 @@
 																"service_token"
 															],
 															"title": "Service Token",
+															"type": "object"
+														},
+														{
+															"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+															"properties": {
+																"linked_app_token": {
+																	"properties": {
+																		"app_uid": {
+																			"description": "The ID of an Access OIDC SaaS application",
+																			"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"app_uid"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"linked_app_token"
+															],
+															"title": "Linked App Token",
 															"type": "object"
 														}
 													],
@@ -11407,6 +11752,29 @@
 																				],
 																				"title": "Service Token",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																				"properties": {
+																					"linked_app_token": {
+																						"properties": {
+																							"app_uid": {
+																								"description": "The ID of an Access OIDC SaaS application",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"app_uid"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"linked_app_token"
+																				],
+																				"title": "Linked App Token",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -12005,6 +12373,29 @@
 																				],
 																				"title": "Service Token",
 																				"type": "object"
+																			},
+																			{
+																				"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																				"properties": {
+																					"linked_app_token": {
+																						"properties": {
+																							"app_uid": {
+																								"description": "The ID of an Access OIDC SaaS application",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"app_uid"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"linked_app_token"
+																				],
+																				"title": "Linked App Token",
+																				"type": "object"
 																			}
 																		],
 																		"type": "object"
@@ -12601,6 +12992,29 @@
 																					"service_token"
 																				],
 																				"title": "Service Token",
+																				"type": "object"
+																			},
+																			{
+																				"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																				"properties": {
+																					"linked_app_token": {
+																						"properties": {
+																							"app_uid": {
+																								"description": "The ID of an Access OIDC SaaS application",
+																								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"app_uid"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"linked_app_token"
+																				],
+																				"title": "Linked App Token",
 																				"type": "object"
 																			}
 																		],
@@ -13624,6 +14038,29 @@
 																					],
 																					"title": "Service Token",
 																					"type": "object"
+																				},
+																				{
+																					"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																					"properties": {
+																						"linked_app_token": {
+																							"properties": {
+																								"app_uid": {
+																									"description": "The ID of an Access OIDC SaaS application",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"app_uid"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"linked_app_token"
+																					],
+																					"title": "Linked App Token",
+																					"type": "object"
 																				}
 																			],
 																			"type": "object"
@@ -14222,6 +14659,29 @@
 																					],
 																					"title": "Service Token",
 																					"type": "object"
+																				},
+																				{
+																					"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																					"properties": {
+																						"linked_app_token": {
+																							"properties": {
+																								"app_uid": {
+																									"description": "The ID of an Access OIDC SaaS application",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"app_uid"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"linked_app_token"
+																					],
+																					"title": "Linked App Token",
+																					"type": "object"
 																				}
 																			],
 																			"type": "object"
@@ -14818,6 +15278,29 @@
 																						"service_token"
 																					],
 																					"title": "Service Token",
+																					"type": "object"
+																				},
+																				{
+																					"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																					"properties": {
+																						"linked_app_token": {
+																							"properties": {
+																								"app_uid": {
+																									"description": "The ID of an Access OIDC SaaS application",
+																									"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"app_uid"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"linked_app_token"
+																					],
+																					"title": "Linked App Token",
 																					"type": "object"
 																				}
 																			],

@@ -641,6 +641,7 @@
 															{
 																"properties": {
 																	"ai_context_enabled": {
+																		"default": false,
 																		"type": "boolean"
 																	},
 																	"allowed_match_count": {
@@ -663,9 +664,11 @@
 																				],
 																				"type": "string"
 																			}
-																		]
+																		],
+																		"default": "low"
 																	},
 																	"context_awareness": {
+																		"deprecated": true,
 																		"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																		"properties": {
 																			"enabled": {
@@ -1063,7 +1066,10 @@
 																				}
 																			]
 																		},
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-skip": [
+																			"terraform"
+																		]
 																	},
 																	"id": {
 																		"description": "The id of the profile (uuid).",
@@ -1076,6 +1082,7 @@
 																		"x-auditable": true
 																	},
 																	"ocr_enabled": {
+																		"default": false,
 																		"type": "boolean"
 																	},
 																	"updated_at": {
@@ -1091,7 +1098,6 @@
 																	"created_at",
 																	"updated_at",
 																	"allowed_match_count",
-																	"context_awareness",
 																	"ocr_enabled"
 																],
 																"type": "object"
@@ -1118,6 +1124,7 @@
 															{
 																"properties": {
 																	"ai_context_enabled": {
+																		"default": false,
 																		"type": "boolean"
 																	},
 																	"allowed_match_count": {
@@ -1135,9 +1142,11 @@
 																				],
 																				"type": "string"
 																			}
-																		]
+																		],
+																		"default": "low"
 																	},
 																	"context_awareness": {
+																		"deprecated": true,
 																		"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																		"properties": {
 																			"enabled": {
@@ -1537,6 +1546,7 @@
 																		"type": "string"
 																	},
 																	"ocr_enabled": {
+																		"default": false,
 																		"type": "boolean"
 																	},
 																	"open_access": {
@@ -2250,6 +2260,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -2272,9 +2283,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -2672,7 +2685,10 @@
 																			}
 																		]
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-skip": [
+																		"terraform"
+																	]
 																},
 																"id": {
 																	"description": "The id of the profile (uuid).",
@@ -2685,6 +2701,7 @@
 																	"x-auditable": true
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"updated_at": {
@@ -2700,7 +2717,6 @@
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
-																"context_awareness",
 																"ocr_enabled"
 															],
 															"type": "object"
@@ -2727,6 +2743,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -2744,9 +2761,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -3146,6 +3165,7 @@
 																	"type": "string"
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"open_access": {
@@ -3857,6 +3877,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -3879,9 +3900,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -4279,7 +4302,10 @@
 																			}
 																		]
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-skip": [
+																		"terraform"
+																	]
 																},
 																"id": {
 																	"description": "The id of the profile (uuid).",
@@ -4292,6 +4318,7 @@
 																	"x-auditable": true
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"updated_at": {
@@ -4307,7 +4334,6 @@
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
-																"context_awareness",
 																"ocr_enabled"
 															],
 															"type": "object"
@@ -4334,6 +4360,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -4351,9 +4378,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -4753,6 +4782,7 @@
 																	"type": "string"
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"open_access": {
@@ -5464,6 +5494,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -5486,9 +5517,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -5886,7 +5919,10 @@
 																			}
 																		]
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-skip": [
+																		"terraform"
+																	]
 																},
 																"id": {
 																	"description": "The id of the profile (uuid).",
@@ -5899,6 +5935,7 @@
 																	"x-auditable": true
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"updated_at": {
@@ -5914,7 +5951,6 @@
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
-																"context_awareness",
 																"ocr_enabled"
 															],
 															"type": "object"
@@ -5941,6 +5977,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -5958,9 +5995,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -6360,6 +6399,7 @@
 																	"type": "string"
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"open_access": {
@@ -6966,6 +7006,7 @@
 					"schema": {
 						"properties": {
 							"ai_context_enabled": {
+								"default": false,
 								"type": "boolean"
 							},
 							"allowed_match_count": {
@@ -6978,10 +7019,12 @@
 								"type": "integer"
 							},
 							"confidence_threshold": {
+								"default": "low",
 								"nullable": true,
 								"type": "string"
 							},
 							"context_awareness": {
+								"deprecated": true,
 								"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 								"properties": {
 									"enabled": {
@@ -7078,12 +7121,16 @@
 										}
 									]
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-skip": [
+									"terraform"
+								]
 							},
 							"name": {
 								"type": "string"
 							},
 							"ocr_enabled": {
+								"default": false,
 								"type": "boolean"
 							},
 							"shared_entries": {
@@ -7323,6 +7370,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -7345,9 +7393,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -7745,7 +7795,10 @@
 																			}
 																		]
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-skip": [
+																		"terraform"
+																	]
 																},
 																"id": {
 																	"description": "The id of the profile (uuid).",
@@ -7758,6 +7811,7 @@
 																	"x-auditable": true
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"updated_at": {
@@ -7773,7 +7827,6 @@
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
-																"context_awareness",
 																"ocr_enabled"
 															],
 															"type": "object"
@@ -7800,6 +7853,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -7817,9 +7871,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -8219,6 +8275,7 @@
 																	"type": "string"
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"open_access": {
@@ -8826,18 +8883,25 @@
 							{
 								"properties": {
 									"ai_context_enabled": {
+										"default": false,
 										"type": "boolean"
 									},
 									"allowed_match_count": {
+										"default": 0,
+										"example": 5,
 										"format": "int32",
+										"maximum": 1000,
+										"minimum": 0,
 										"nullable": true,
 										"type": "integer"
 									},
 									"confidence_threshold": {
+										"default": "low",
 										"nullable": true,
 										"type": "string"
 									},
 									"context_awareness": {
+										"deprecated": true,
 										"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 										"properties": {
 											"enabled": {
@@ -8885,6 +8949,7 @@
 										"type": "array"
 									},
 									"ocr_enabled": {
+										"default": false,
 										"type": "boolean"
 									}
 								},
@@ -9011,6 +9076,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -9033,9 +9099,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -9433,7 +9501,10 @@
 																			}
 																		]
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-skip": [
+																		"terraform"
+																	]
 																},
 																"id": {
 																	"description": "The id of the profile (uuid).",
@@ -9446,6 +9517,7 @@
 																	"x-auditable": true
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"updated_at": {
@@ -9461,7 +9533,6 @@
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
-																"context_awareness",
 																"ocr_enabled"
 															],
 															"type": "object"
@@ -9488,6 +9559,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -9505,9 +9577,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -9907,6 +9981,7 @@
 																	"type": "string"
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"open_access": {
@@ -10521,6 +10596,7 @@
 					"schema": {
 						"properties": {
 							"ai_context_enabled": {
+								"default": false,
 								"type": "boolean"
 							},
 							"allowed_match_count": {
@@ -10529,10 +10605,12 @@
 								"type": "integer"
 							},
 							"confidence_threshold": {
+								"default": "low",
 								"nullable": true,
 								"type": "string"
 							},
 							"context_awareness": {
+								"deprecated": true,
 								"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 								"properties": {
 									"enabled": {
@@ -10670,6 +10748,7 @@
 								"type": "string"
 							},
 							"ocr_enabled": {
+								"default": false,
 								"type": "boolean"
 							},
 							"shared_entries": {
@@ -10885,6 +10964,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -10907,9 +10987,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -11307,7 +11389,10 @@
 																			}
 																		]
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-skip": [
+																		"terraform"
+																	]
 																},
 																"id": {
 																	"description": "The id of the profile (uuid).",
@@ -11320,6 +11405,7 @@
 																	"x-auditable": true
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"updated_at": {
@@ -11335,7 +11421,6 @@
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
-																"context_awareness",
 																"ocr_enabled"
 															],
 															"type": "object"
@@ -11362,6 +11447,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -11379,9 +11465,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -11781,6 +11869,7 @@
 																	"type": "string"
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"open_access": {
@@ -12395,18 +12484,25 @@
 					"schema": {
 						"properties": {
 							"ai_context_enabled": {
+								"default": false,
 								"type": "boolean"
 							},
 							"allowed_match_count": {
+								"default": 0,
+								"example": 5,
 								"format": "int32",
+								"maximum": 1000,
+								"minimum": 0,
 								"nullable": true,
 								"type": "integer"
 							},
 							"confidence_threshold": {
+								"default": "low",
 								"nullable": true,
 								"type": "string"
 							},
 							"context_awareness": {
+								"deprecated": true,
 								"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 								"properties": {
 									"enabled": {
@@ -12454,6 +12550,7 @@
 								"type": "array"
 							},
 							"ocr_enabled": {
+								"default": false,
 								"type": "boolean"
 							}
 						},
@@ -12566,6 +12663,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -12588,9 +12686,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -12988,7 +13088,10 @@
 																			}
 																		]
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-skip": [
+																		"terraform"
+																	]
 																},
 																"id": {
 																	"description": "The id of the profile (uuid).",
@@ -13001,6 +13104,7 @@
 																	"x-auditable": true
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"updated_at": {
@@ -13016,7 +13120,6 @@
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
-																"context_awareness",
 																"ocr_enabled"
 															],
 															"type": "object"
@@ -13043,6 +13146,7 @@
 														{
 															"properties": {
 																"ai_context_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"allowed_match_count": {
@@ -13060,9 +13164,11 @@
 																			],
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"default": "low"
 																},
 																"context_awareness": {
+																	"deprecated": true,
 																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																	"properties": {
 																		"enabled": {
@@ -13462,6 +13568,7 @@
 																	"type": "string"
 																},
 																"ocr_enabled": {
+																	"default": false,
 																	"type": "boolean"
 																},
 																"open_access": {

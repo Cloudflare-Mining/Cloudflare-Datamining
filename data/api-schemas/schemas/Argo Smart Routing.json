@@ -1,5 +1,6 @@
 {
 	"GET /zones/{zone_id}/argo/smart_routing": {
+		"description": "Retrieves the value of Argo Smart Routing enablement setting.",
 		"operationId": "argo-smart-routing-get-argo-smart-routing-setting",
 		"parameters": [
 			{
@@ -7,7 +8,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specifies the zone associated with the API call.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -67,22 +68,8 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Describes a successful API response.",
 													"enum": [
 														true
 													],
@@ -93,26 +80,9 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"nullable": true,
-															"type": "object"
-														},
-														{
-															"nullable": true,
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -129,7 +99,7 @@
 						}
 					}
 				},
-				"description": "Get Argo Smart Routing setting response"
+				"description": "Get Argo Smart Routing enablement setting response."
 			},
 			"4XX": {
 				"content": {
@@ -184,22 +154,8 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Describes a successful API response.",
 															"enum": [
 																true
 															],
@@ -210,26 +166,9 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -312,7 +251,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Describes a failed API response.",
 											"enum": [
 												false
 											],
@@ -332,7 +271,7 @@
 						}
 					}
 				},
-				"description": "Get Argo Smart Routing setting response failure"
+				"description": "Get Argo Smart Routing enablement setting failure."
 			}
 		},
 		"security": [
@@ -365,7 +304,7 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/argo/smart_routing": {
-		"description": "Updates enablement of Argo Smart Routing.",
+		"description": "Configures the value of the Argo Smart Routing enablement setting.",
 		"operationId": "argo-smart-routing-patch-argo-smart-routing-setting",
 		"parameters": [
 			{
@@ -373,7 +312,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Specifies the zone associated with the API call.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -385,7 +324,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Update enablement of Argo Smart Routing",
+						"description": "Configures the enablement of Argo Smart Routing.",
 						"properties": {
 							"value": {
 								"description": "Enables Argo Smart Routing.",
@@ -459,22 +398,8 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Describes a successful API response.",
 													"enum": [
 														true
 													],
@@ -485,26 +410,9 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"nullable": true,
-															"type": "object"
-														},
-														{
-															"nullable": true,
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -521,7 +429,7 @@
 						}
 					}
 				},
-				"description": "Patch Argo Smart Routing setting response"
+				"description": "Patch Argo Smart Routing enablement setting response."
 			},
 			"4XX": {
 				"content": {
@@ -576,22 +484,8 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Describes a successful API response.",
 															"enum": [
 																true
 															],
@@ -602,26 +496,9 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -704,7 +581,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Describes a failed API response.",
 											"enum": [
 												false
 											],
@@ -724,7 +601,7 @@
 						}
 					}
 				},
-				"description": "Patch Argo Smart Routing setting response failure"
+				"description": "Patch Argo Smart Routing enablement setting failure."
 			}
 		},
 		"security": [

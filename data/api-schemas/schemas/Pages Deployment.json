@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -23,7 +24,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -35,7 +37,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -231,6 +234,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -255,7 +261,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -267,7 +274,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -404,7 +412,8 @@
 															"https://branchname.projectname.pages.dev"
 														],
 														"items": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"nullable": true,
 														"readOnly": true,
@@ -417,31 +426,36 @@
 																"description": "Enable build caching for the project.",
 																"example": true,
 																"nullable": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"build_command": {
 																"description": "Command used to build project.",
 																"example": "npm run build",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"destination_dir": {
 																"description": "Output directory of the build.",
 																"example": "build",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"root_dir": {
 																"description": "Directory to run the command.",
 																"example": "/",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"web_analytics_tag": {
 																"description": "The classifying tag for analytics.",
 																"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
 																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"web_analytics_token": {
 																"description": "The auth token for analytics.",
@@ -458,7 +472,8 @@
 														"example": "2021-03-09T00:55:03.923456Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"deployment_trigger": {
 														"description": "Info about what caused the deployment.",
@@ -470,19 +485,22 @@
 																		"description": "Where the trigger happened.",
 																		"example": "main",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"commit_hash": {
 																		"description": "Hash of the deployment trigger commit.",
 																		"example": "ad9ccd918a81025731e10e40267e11273a263421",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"commit_message": {
 																		"description": "Message of the deployment trigger commit.",
 																		"example": "Update index.html",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -495,7 +513,8 @@
 																],
 																"example": "ad_hoc",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"readOnly": true,
@@ -523,7 +542,8 @@
 																			"enum": [
 																				"plain_text"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "Environment variable value.",
@@ -548,7 +568,8 @@
 																			"enum": [
 																				"secret_text"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "Secret value.",
@@ -575,19 +596,22 @@
 														],
 														"example": "preview",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Id of the deployment.",
 														"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"is_skipped": {
 														"description": "If the deployment has been skipped.",
 														"example": true,
 														"readOnly": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"latest_stage": {
 														"description": "The status of the deployment.",
@@ -598,7 +622,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The current build stage.",
@@ -610,7 +635,8 @@
 																	"deploy"
 																],
 																"example": "deploy",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"started_on": {
 																"description": "When the stage started.",
@@ -618,7 +644,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "State of the current stage.",
@@ -631,7 +658,8 @@
 																],
 																"example": "success",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"readOnly": true,
@@ -642,60 +670,71 @@
 														"example": "2021-03-09T00:58:59.045655",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"project_id": {
 														"description": "Id of the project.",
 														"example": "7b162ea7-7367-4d67-bcde-1160995d5",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"project_name": {
 														"description": "Name of the project.",
 														"example": "ninjakittens",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"short_id": {
 														"description": "Short Id (8 character) of the deployment.",
 														"example": "f64788e9",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"source": {
 														"properties": {
 															"config": {
 																"properties": {
 																	"deployments_enabled": {
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"owner": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"path_excludes": {
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
 																	"path_includes": {
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
 																	"pr_comments_enabled": {
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"preview_branch_excludes": {
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
 																	"preview_branch_includes": {
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -705,22 +744,27 @@
 																			"none",
 																			"custom"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"production_branch": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"production_deployments_enabled": {
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"repo_name": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
 															},
 															"type": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -768,7 +812,8 @@
 																	"format": "date-time",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The current build stage.",
@@ -780,7 +825,8 @@
 																		"deploy"
 																	],
 																	"example": "deploy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"started_on": {
 																	"description": "When the stage started.",
@@ -788,7 +834,8 @@
 																	"format": "date-time",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "State of the current stage.",
@@ -801,7 +848,8 @@
 																	],
 																	"example": "success",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -814,7 +862,8 @@
 														"description": "The live URL to view this deployment.",
 														"example": "https://f64788e9.ninjakittens.pages.dev",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -950,7 +999,8 @@
 																	"https://branchname.projectname.pages.dev"
 																],
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"nullable": true,
 																"readOnly": true,
@@ -963,31 +1013,36 @@
 																		"description": "Enable build caching for the project.",
 																		"example": true,
 																		"nullable": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"build_command": {
 																		"description": "Command used to build project.",
 																		"example": "npm run build",
 																		"nullable": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"destination_dir": {
 																		"description": "Output directory of the build.",
 																		"example": "build",
 																		"nullable": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"root_dir": {
 																		"description": "Directory to run the command.",
 																		"example": "/",
 																		"nullable": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"web_analytics_tag": {
 																		"description": "The classifying tag for analytics.",
 																		"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
 																		"nullable": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"web_analytics_token": {
 																		"description": "The auth token for analytics.",
@@ -1004,7 +1059,8 @@
 																"example": "2021-03-09T00:55:03.923456Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"deployment_trigger": {
 																"description": "Info about what caused the deployment.",
@@ -1016,19 +1072,22 @@
 																				"description": "Where the trigger happened.",
 																				"example": "main",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"commit_hash": {
 																				"description": "Hash of the deployment trigger commit.",
 																				"example": "ad9ccd918a81025731e10e40267e11273a263421",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"commit_message": {
 																				"description": "Message of the deployment trigger commit.",
 																				"example": "Update index.html",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -1041,7 +1100,8 @@
 																		],
 																		"example": "ad_hoc",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"readOnly": true,
@@ -1069,7 +1129,8 @@
 																					"enum": [
 																						"plain_text"
 																					],
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"value": {
 																					"description": "Environment variable value.",
@@ -1094,7 +1155,8 @@
 																					"enum": [
 																						"secret_text"
 																					],
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"value": {
 																					"description": "Secret value.",
@@ -1121,19 +1183,22 @@
 																],
 																"example": "preview",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Id of the deployment.",
 																"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"is_skipped": {
 																"description": "If the deployment has been skipped.",
 																"example": true,
 																"readOnly": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"latest_stage": {
 																"description": "The status of the deployment.",
@@ -1144,7 +1209,8 @@
 																		"format": "date-time",
 																		"nullable": true,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The current build stage.",
@@ -1156,7 +1222,8 @@
 																			"deploy"
 																		],
 																		"example": "deploy",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"started_on": {
 																		"description": "When the stage started.",
@@ -1164,7 +1231,8 @@
 																		"format": "date-time",
 																		"nullable": true,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "State of the current stage.",
@@ -1177,7 +1245,8 @@
 																		],
 																		"example": "success",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"readOnly": true,
@@ -1188,60 +1257,71 @@
 																"example": "2021-03-09T00:58:59.045655",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"project_id": {
 																"description": "Id of the project.",
 																"example": "7b162ea7-7367-4d67-bcde-1160995d5",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"project_name": {
 																"description": "Name of the project.",
 																"example": "ninjakittens",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"short_id": {
 																"description": "Short Id (8 character) of the deployment.",
 																"example": "f64788e9",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"source": {
 																"properties": {
 																	"config": {
 																		"properties": {
 																			"deployments_enabled": {
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"owner": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"path_excludes": {
 																				"items": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"type": "array"
 																			},
 																			"path_includes": {
 																				"items": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"type": "array"
 																			},
 																			"pr_comments_enabled": {
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"preview_branch_excludes": {
 																				"items": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"type": "array"
 																			},
 																			"preview_branch_includes": {
 																				"items": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"type": "array"
 																			},
@@ -1251,22 +1331,27 @@
 																					"none",
 																					"custom"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"production_branch": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"production_deployments_enabled": {
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"repo_name": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
 																	},
 																	"type": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1314,7 +1399,8 @@
 																			"format": "date-time",
 																			"nullable": true,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "The current build stage.",
@@ -1326,7 +1412,8 @@
 																				"deploy"
 																			],
 																			"example": "deploy",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"started_on": {
 																			"description": "When the stage started.",
@@ -1334,7 +1421,8 @@
 																			"format": "date-time",
 																			"nullable": true,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"status": {
 																			"description": "State of the current stage.",
@@ -1347,7 +1435,8 @@
 																			],
 																			"example": "success",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -1360,7 +1449,8 @@
 																"description": "The live URL to view this deployment.",
 																"example": "https://f64788e9.ninjakittens.pages.dev",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1461,6 +1551,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1487,7 +1580,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1498,7 +1592,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1510,7 +1605,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1592,7 +1688,8 @@
 														"https://branchname.projectname.pages.dev"
 													],
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"nullable": true,
 													"readOnly": true,
@@ -1605,31 +1702,36 @@
 															"description": "Enable build caching for the project.",
 															"example": true,
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"build_command": {
 															"description": "Command used to build project.",
 															"example": "npm run build",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"destination_dir": {
 															"description": "Output directory of the build.",
 															"example": "build",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"root_dir": {
 															"description": "Directory to run the command.",
 															"example": "/",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"web_analytics_tag": {
 															"description": "The classifying tag for analytics.",
 															"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"web_analytics_token": {
 															"description": "The auth token for analytics.",
@@ -1646,7 +1748,8 @@
 													"example": "2021-03-09T00:55:03.923456Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"deployment_trigger": {
 													"description": "Info about what caused the deployment.",
@@ -1658,19 +1761,22 @@
 																	"description": "Where the trigger happened.",
 																	"example": "main",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"commit_hash": {
 																	"description": "Hash of the deployment trigger commit.",
 																	"example": "ad9ccd918a81025731e10e40267e11273a263421",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"commit_message": {
 																	"description": "Message of the deployment trigger commit.",
 																	"example": "Update index.html",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1683,7 +1789,8 @@
 															],
 															"example": "ad_hoc",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"readOnly": true,
@@ -1711,7 +1818,8 @@
 																		"enum": [
 																			"plain_text"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Environment variable value.",
@@ -1736,7 +1844,8 @@
 																		"enum": [
 																			"secret_text"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Secret value.",
@@ -1763,19 +1872,22 @@
 													],
 													"example": "preview",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Id of the deployment.",
 													"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"is_skipped": {
 													"description": "If the deployment has been skipped.",
 													"example": true,
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"latest_stage": {
 													"description": "The status of the deployment.",
@@ -1786,7 +1898,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The current build stage.",
@@ -1798,7 +1911,8 @@
 																"deploy"
 															],
 															"example": "deploy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"started_on": {
 															"description": "When the stage started.",
@@ -1806,7 +1920,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "State of the current stage.",
@@ -1819,7 +1934,8 @@
 															],
 															"example": "success",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"readOnly": true,
@@ -1830,60 +1946,71 @@
 													"example": "2021-03-09T00:58:59.045655",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"project_id": {
 													"description": "Id of the project.",
 													"example": "7b162ea7-7367-4d67-bcde-1160995d5",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"project_name": {
 													"description": "Name of the project.",
 													"example": "ninjakittens",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"short_id": {
 													"description": "Short Id (8 character) of the deployment.",
 													"example": "f64788e9",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"source": {
 													"properties": {
 														"config": {
 															"properties": {
 																"deployments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"owner": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path_excludes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"path_includes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"pr_comments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"preview_branch_excludes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"preview_branch_includes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -1893,22 +2020,27 @@
 																		"none",
 																		"custom"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"production_branch": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"production_deployments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"repo_name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														},
 														"type": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1956,7 +2088,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The current build stage.",
@@ -1968,7 +2101,8 @@
 																	"deploy"
 																],
 																"example": "deploy",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"started_on": {
 																"description": "When the stage started.",
@@ -1976,7 +2110,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "State of the current stage.",
@@ -1989,7 +2124,8 @@
 																],
 																"example": "success",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"readOnly": true,
@@ -2002,7 +2138,8 @@
 													"description": "The live URL to view this deployment.",
 													"example": "https://f64788e9.ninjakittens.pages.dev",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2094,7 +2231,8 @@
 																"https://branchname.projectname.pages.dev"
 															],
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"nullable": true,
 															"readOnly": true,
@@ -2107,31 +2245,36 @@
 																	"description": "Enable build caching for the project.",
 																	"example": true,
 																	"nullable": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"build_command": {
 																	"description": "Command used to build project.",
 																	"example": "npm run build",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"destination_dir": {
 																	"description": "Output directory of the build.",
 																	"example": "build",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"root_dir": {
 																	"description": "Directory to run the command.",
 																	"example": "/",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"web_analytics_tag": {
 																	"description": "The classifying tag for analytics.",
 																	"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"web_analytics_token": {
 																	"description": "The auth token for analytics.",
@@ -2148,7 +2291,8 @@
 															"example": "2021-03-09T00:55:03.923456Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"deployment_trigger": {
 															"description": "Info about what caused the deployment.",
@@ -2160,19 +2304,22 @@
 																			"description": "Where the trigger happened.",
 																			"example": "main",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"commit_hash": {
 																			"description": "Hash of the deployment trigger commit.",
 																			"example": "ad9ccd918a81025731e10e40267e11273a263421",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"commit_message": {
 																			"description": "Message of the deployment trigger commit.",
 																			"example": "Update index.html",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -2185,7 +2332,8 @@
 																	],
 																	"example": "ad_hoc",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -2213,7 +2361,8 @@
 																				"enum": [
 																					"plain_text"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"value": {
 																				"description": "Environment variable value.",
@@ -2238,7 +2387,8 @@
 																				"enum": [
 																					"secret_text"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"value": {
 																				"description": "Secret value.",
@@ -2265,19 +2415,22 @@
 															],
 															"example": "preview",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Id of the deployment.",
 															"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_skipped": {
 															"description": "If the deployment has been skipped.",
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"latest_stage": {
 															"description": "The status of the deployment.",
@@ -2288,7 +2441,8 @@
 																	"format": "date-time",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The current build stage.",
@@ -2300,7 +2454,8 @@
 																		"deploy"
 																	],
 																	"example": "deploy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"started_on": {
 																	"description": "When the stage started.",
@@ -2308,7 +2463,8 @@
 																	"format": "date-time",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "State of the current stage.",
@@ -2321,7 +2477,8 @@
 																	],
 																	"example": "success",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -2332,60 +2489,71 @@
 															"example": "2021-03-09T00:58:59.045655",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"project_id": {
 															"description": "Id of the project.",
 															"example": "7b162ea7-7367-4d67-bcde-1160995d5",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"project_name": {
 															"description": "Name of the project.",
 															"example": "ninjakittens",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"short_id": {
 															"description": "Short Id (8 character) of the deployment.",
 															"example": "f64788e9",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"source": {
 															"properties": {
 																"config": {
 																	"properties": {
 																		"deployments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"owner": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path_excludes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"path_includes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"pr_comments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"preview_branch_excludes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"preview_branch_includes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -2395,22 +2563,27 @@
 																				"none",
 																				"custom"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"production_branch": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"production_deployments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"repo_name": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
 																"type": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2458,7 +2631,8 @@
 																		"format": "date-time",
 																		"nullable": true,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The current build stage.",
@@ -2470,7 +2644,8 @@
 																			"deploy"
 																		],
 																		"example": "deploy",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"started_on": {
 																		"description": "When the stage started.",
@@ -2478,7 +2653,8 @@
 																		"format": "date-time",
 																		"nullable": true,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "State of the current stage.",
@@ -2491,7 +2667,8 @@
 																		],
 																		"example": "success",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"readOnly": true,
@@ -2504,7 +2681,8 @@
 															"description": "The live URL to view this deployment.",
 															"example": "https://f64788e9.ninjakittens.pages.dev",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2603,6 +2781,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -2629,7 +2810,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2640,7 +2822,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2652,7 +2835,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3211,6 +3395,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -3236,7 +3423,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3248,7 +3436,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3260,7 +3449,8 @@
 							"branch": {
 								"description": "The branch to build the new deployment from. The `HEAD` of the branch will be used. If omitted, the production branch will be used by default.",
 								"example": "staging",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -3347,7 +3537,8 @@
 														"https://branchname.projectname.pages.dev"
 													],
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"nullable": true,
 													"readOnly": true,
@@ -3360,31 +3551,36 @@
 															"description": "Enable build caching for the project.",
 															"example": true,
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"build_command": {
 															"description": "Command used to build project.",
 															"example": "npm run build",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"destination_dir": {
 															"description": "Output directory of the build.",
 															"example": "build",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"root_dir": {
 															"description": "Directory to run the command.",
 															"example": "/",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"web_analytics_tag": {
 															"description": "The classifying tag for analytics.",
 															"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"web_analytics_token": {
 															"description": "The auth token for analytics.",
@@ -3401,7 +3597,8 @@
 													"example": "2021-03-09T00:55:03.923456Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"deployment_trigger": {
 													"description": "Info about what caused the deployment.",
@@ -3413,19 +3610,22 @@
 																	"description": "Where the trigger happened.",
 																	"example": "main",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"commit_hash": {
 																	"description": "Hash of the deployment trigger commit.",
 																	"example": "ad9ccd918a81025731e10e40267e11273a263421",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"commit_message": {
 																	"description": "Message of the deployment trigger commit.",
 																	"example": "Update index.html",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3438,7 +3638,8 @@
 															],
 															"example": "ad_hoc",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"readOnly": true,
@@ -3466,7 +3667,8 @@
 																		"enum": [
 																			"plain_text"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Environment variable value.",
@@ -3491,7 +3693,8 @@
 																		"enum": [
 																			"secret_text"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Secret value.",
@@ -3518,19 +3721,22 @@
 													],
 													"example": "preview",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Id of the deployment.",
 													"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"is_skipped": {
 													"description": "If the deployment has been skipped.",
 													"example": true,
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"latest_stage": {
 													"description": "The status of the deployment.",
@@ -3541,7 +3747,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The current build stage.",
@@ -3553,7 +3760,8 @@
 																"deploy"
 															],
 															"example": "deploy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"started_on": {
 															"description": "When the stage started.",
@@ -3561,7 +3769,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "State of the current stage.",
@@ -3574,7 +3783,8 @@
 															],
 															"example": "success",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"readOnly": true,
@@ -3585,60 +3795,71 @@
 													"example": "2021-03-09T00:58:59.045655",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"project_id": {
 													"description": "Id of the project.",
 													"example": "7b162ea7-7367-4d67-bcde-1160995d5",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"project_name": {
 													"description": "Name of the project.",
 													"example": "ninjakittens",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"short_id": {
 													"description": "Short Id (8 character) of the deployment.",
 													"example": "f64788e9",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"source": {
 													"properties": {
 														"config": {
 															"properties": {
 																"deployments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"owner": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path_excludes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"path_includes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"pr_comments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"preview_branch_excludes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"preview_branch_includes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -3648,22 +3869,27 @@
 																		"none",
 																		"custom"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"production_branch": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"production_deployments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"repo_name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														},
 														"type": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3711,7 +3937,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The current build stage.",
@@ -3723,7 +3950,8 @@
 																	"deploy"
 																],
 																"example": "deploy",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"started_on": {
 																"description": "When the stage started.",
@@ -3731,7 +3959,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "State of the current stage.",
@@ -3744,7 +3973,8 @@
 																],
 																"example": "success",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"readOnly": true,
@@ -3757,7 +3987,8 @@
 													"description": "The live URL to view this deployment.",
 													"example": "https://f64788e9.ninjakittens.pages.dev",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3849,7 +4080,8 @@
 																"https://branchname.projectname.pages.dev"
 															],
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"nullable": true,
 															"readOnly": true,
@@ -3862,31 +4094,36 @@
 																	"description": "Enable build caching for the project.",
 																	"example": true,
 																	"nullable": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"build_command": {
 																	"description": "Command used to build project.",
 																	"example": "npm run build",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"destination_dir": {
 																	"description": "Output directory of the build.",
 																	"example": "build",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"root_dir": {
 																	"description": "Directory to run the command.",
 																	"example": "/",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"web_analytics_tag": {
 																	"description": "The classifying tag for analytics.",
 																	"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"web_analytics_token": {
 																	"description": "The auth token for analytics.",
@@ -3903,7 +4140,8 @@
 															"example": "2021-03-09T00:55:03.923456Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"deployment_trigger": {
 															"description": "Info about what caused the deployment.",
@@ -3915,19 +4153,22 @@
 																			"description": "Where the trigger happened.",
 																			"example": "main",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"commit_hash": {
 																			"description": "Hash of the deployment trigger commit.",
 																			"example": "ad9ccd918a81025731e10e40267e11273a263421",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"commit_message": {
 																			"description": "Message of the deployment trigger commit.",
 																			"example": "Update index.html",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -3940,7 +4181,8 @@
 																	],
 																	"example": "ad_hoc",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -3968,7 +4210,8 @@
 																				"enum": [
 																					"plain_text"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"value": {
 																				"description": "Environment variable value.",
@@ -3993,7 +4236,8 @@
 																				"enum": [
 																					"secret_text"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"value": {
 																				"description": "Secret value.",
@@ -4020,19 +4264,22 @@
 															],
 															"example": "preview",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Id of the deployment.",
 															"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_skipped": {
 															"description": "If the deployment has been skipped.",
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"latest_stage": {
 															"description": "The status of the deployment.",
@@ -4043,7 +4290,8 @@
 																	"format": "date-time",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The current build stage.",
@@ -4055,7 +4303,8 @@
 																		"deploy"
 																	],
 																	"example": "deploy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"started_on": {
 																	"description": "When the stage started.",
@@ -4063,7 +4312,8 @@
 																	"format": "date-time",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "State of the current stage.",
@@ -4076,7 +4326,8 @@
 																	],
 																	"example": "success",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -4087,60 +4338,71 @@
 															"example": "2021-03-09T00:58:59.045655",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"project_id": {
 															"description": "Id of the project.",
 															"example": "7b162ea7-7367-4d67-bcde-1160995d5",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"project_name": {
 															"description": "Name of the project.",
 															"example": "ninjakittens",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"short_id": {
 															"description": "Short Id (8 character) of the deployment.",
 															"example": "f64788e9",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"source": {
 															"properties": {
 																"config": {
 																	"properties": {
 																		"deployments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"owner": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path_excludes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"path_includes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"pr_comments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"preview_branch_excludes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"preview_branch_includes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -4150,22 +4412,27 @@
 																				"none",
 																				"custom"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"production_branch": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"production_deployments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"repo_name": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
 																"type": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -4213,7 +4480,8 @@
 																		"format": "date-time",
 																		"nullable": true,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The current build stage.",
@@ -4225,7 +4493,8 @@
 																			"deploy"
 																		],
 																		"example": "deploy",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"started_on": {
 																		"description": "When the stage started.",
@@ -4233,7 +4502,8 @@
 																		"format": "date-time",
 																		"nullable": true,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "State of the current stage.",
@@ -4246,7 +4516,8 @@
 																		],
 																		"example": "success",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"readOnly": true,
@@ -4259,7 +4530,8 @@
 															"description": "The live URL to view this deployment.",
 															"example": "https://f64788e9.ninjakittens.pages.dev",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -4358,6 +4630,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -4383,7 +4658,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4394,7 +4670,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4406,7 +4683,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -4494,7 +4772,8 @@
 														"https://branchname.projectname.pages.dev"
 													],
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"nullable": true,
 													"readOnly": true,
@@ -4507,31 +4786,36 @@
 															"description": "Enable build caching for the project.",
 															"example": true,
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"build_command": {
 															"description": "Command used to build project.",
 															"example": "npm run build",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"destination_dir": {
 															"description": "Output directory of the build.",
 															"example": "build",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"root_dir": {
 															"description": "Directory to run the command.",
 															"example": "/",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"web_analytics_tag": {
 															"description": "The classifying tag for analytics.",
 															"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"web_analytics_token": {
 															"description": "The auth token for analytics.",
@@ -4548,7 +4832,8 @@
 													"example": "2021-03-09T00:55:03.923456Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"deployment_trigger": {
 													"description": "Info about what caused the deployment.",
@@ -4560,19 +4845,22 @@
 																	"description": "Where the trigger happened.",
 																	"example": "main",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"commit_hash": {
 																	"description": "Hash of the deployment trigger commit.",
 																	"example": "ad9ccd918a81025731e10e40267e11273a263421",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"commit_message": {
 																	"description": "Message of the deployment trigger commit.",
 																	"example": "Update index.html",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -4585,7 +4873,8 @@
 															],
 															"example": "ad_hoc",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"readOnly": true,
@@ -4613,7 +4902,8 @@
 																		"enum": [
 																			"plain_text"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Environment variable value.",
@@ -4638,7 +4928,8 @@
 																		"enum": [
 																			"secret_text"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Secret value.",
@@ -4665,19 +4956,22 @@
 													],
 													"example": "preview",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Id of the deployment.",
 													"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"is_skipped": {
 													"description": "If the deployment has been skipped.",
 													"example": true,
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"latest_stage": {
 													"description": "The status of the deployment.",
@@ -4688,7 +4982,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The current build stage.",
@@ -4700,7 +4995,8 @@
 																"deploy"
 															],
 															"example": "deploy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"started_on": {
 															"description": "When the stage started.",
@@ -4708,7 +5004,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "State of the current stage.",
@@ -4721,7 +5018,8 @@
 															],
 															"example": "success",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"readOnly": true,
@@ -4732,60 +5030,71 @@
 													"example": "2021-03-09T00:58:59.045655",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"project_id": {
 													"description": "Id of the project.",
 													"example": "7b162ea7-7367-4d67-bcde-1160995d5",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"project_name": {
 													"description": "Name of the project.",
 													"example": "ninjakittens",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"short_id": {
 													"description": "Short Id (8 character) of the deployment.",
 													"example": "f64788e9",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"source": {
 													"properties": {
 														"config": {
 															"properties": {
 																"deployments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"owner": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path_excludes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"path_includes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"pr_comments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"preview_branch_excludes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"preview_branch_includes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -4795,22 +5104,27 @@
 																		"none",
 																		"custom"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"production_branch": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"production_deployments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"repo_name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														},
 														"type": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -4858,7 +5172,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The current build stage.",
@@ -4870,7 +5185,8 @@
 																	"deploy"
 																],
 																"example": "deploy",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"started_on": {
 																"description": "When the stage started.",
@@ -4878,7 +5194,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "State of the current stage.",
@@ -4891,7 +5208,8 @@
 																],
 																"example": "success",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"readOnly": true,
@@ -4904,7 +5222,8 @@
 													"description": "The live URL to view this deployment.",
 													"example": "https://f64788e9.ninjakittens.pages.dev",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4996,7 +5315,8 @@
 																"https://branchname.projectname.pages.dev"
 															],
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"nullable": true,
 															"readOnly": true,
@@ -5009,31 +5329,36 @@
 																	"description": "Enable build caching for the project.",
 																	"example": true,
 																	"nullable": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"build_command": {
 																	"description": "Command used to build project.",
 																	"example": "npm run build",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"destination_dir": {
 																	"description": "Output directory of the build.",
 																	"example": "build",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"root_dir": {
 																	"description": "Directory to run the command.",
 																	"example": "/",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"web_analytics_tag": {
 																	"description": "The classifying tag for analytics.",
 																	"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"web_analytics_token": {
 																	"description": "The auth token for analytics.",
@@ -5050,7 +5375,8 @@
 															"example": "2021-03-09T00:55:03.923456Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"deployment_trigger": {
 															"description": "Info about what caused the deployment.",
@@ -5062,19 +5388,22 @@
 																			"description": "Where the trigger happened.",
 																			"example": "main",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"commit_hash": {
 																			"description": "Hash of the deployment trigger commit.",
 																			"example": "ad9ccd918a81025731e10e40267e11273a263421",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"commit_message": {
 																			"description": "Message of the deployment trigger commit.",
 																			"example": "Update index.html",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -5087,7 +5416,8 @@
 																	],
 																	"example": "ad_hoc",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -5115,7 +5445,8 @@
 																				"enum": [
 																					"plain_text"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"value": {
 																				"description": "Environment variable value.",
@@ -5140,7 +5471,8 @@
 																				"enum": [
 																					"secret_text"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"value": {
 																				"description": "Secret value.",
@@ -5167,19 +5499,22 @@
 															],
 															"example": "preview",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Id of the deployment.",
 															"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_skipped": {
 															"description": "If the deployment has been skipped.",
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"latest_stage": {
 															"description": "The status of the deployment.",
@@ -5190,7 +5525,8 @@
 																	"format": "date-time",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The current build stage.",
@@ -5202,7 +5538,8 @@
 																		"deploy"
 																	],
 																	"example": "deploy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"started_on": {
 																	"description": "When the stage started.",
@@ -5210,7 +5547,8 @@
 																	"format": "date-time",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "State of the current stage.",
@@ -5223,7 +5561,8 @@
 																	],
 																	"example": "success",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -5234,60 +5573,71 @@
 															"example": "2021-03-09T00:58:59.045655",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"project_id": {
 															"description": "Id of the project.",
 															"example": "7b162ea7-7367-4d67-bcde-1160995d5",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"project_name": {
 															"description": "Name of the project.",
 															"example": "ninjakittens",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"short_id": {
 															"description": "Short Id (8 character) of the deployment.",
 															"example": "f64788e9",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"source": {
 															"properties": {
 																"config": {
 																	"properties": {
 																		"deployments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"owner": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path_excludes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"path_includes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"pr_comments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"preview_branch_excludes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"preview_branch_includes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -5297,22 +5647,27 @@
 																				"none",
 																				"custom"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"production_branch": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"production_deployments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"repo_name": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
 																"type": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -5360,7 +5715,8 @@
 																		"format": "date-time",
 																		"nullable": true,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The current build stage.",
@@ -5372,7 +5728,8 @@
 																			"deploy"
 																		],
 																		"example": "deploy",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"started_on": {
 																		"description": "When the stage started.",
@@ -5380,7 +5737,8 @@
 																		"format": "date-time",
 																		"nullable": true,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "State of the current stage.",
@@ -5393,7 +5751,8 @@
 																		],
 																		"example": "success",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"readOnly": true,
@@ -5406,7 +5765,8 @@
 															"description": "The live URL to view this deployment.",
 															"example": "https://f64788e9.ninjakittens.pages.dev",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -5505,6 +5865,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -5530,7 +5893,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5541,7 +5905,8 @@
 					"description": "Name of the project.",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -5553,7 +5918,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -5641,7 +6007,8 @@
 														"https://branchname.projectname.pages.dev"
 													],
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"nullable": true,
 													"readOnly": true,
@@ -5654,31 +6021,36 @@
 															"description": "Enable build caching for the project.",
 															"example": true,
 															"nullable": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"build_command": {
 															"description": "Command used to build project.",
 															"example": "npm run build",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"destination_dir": {
 															"description": "Output directory of the build.",
 															"example": "build",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"root_dir": {
 															"description": "Directory to run the command.",
 															"example": "/",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"web_analytics_tag": {
 															"description": "The classifying tag for analytics.",
 															"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
 															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"web_analytics_token": {
 															"description": "The auth token for analytics.",
@@ -5695,7 +6067,8 @@
 													"example": "2021-03-09T00:55:03.923456Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"deployment_trigger": {
 													"description": "Info about what caused the deployment.",
@@ -5707,19 +6080,22 @@
 																	"description": "Where the trigger happened.",
 																	"example": "main",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"commit_hash": {
 																	"description": "Hash of the deployment trigger commit.",
 																	"example": "ad9ccd918a81025731e10e40267e11273a263421",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"commit_message": {
 																	"description": "Message of the deployment trigger commit.",
 																	"example": "Update index.html",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -5732,7 +6108,8 @@
 															],
 															"example": "ad_hoc",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"readOnly": true,
@@ -5760,7 +6137,8 @@
 																		"enum": [
 																			"plain_text"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Environment variable value.",
@@ -5785,7 +6163,8 @@
 																		"enum": [
 																			"secret_text"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Secret value.",
@@ -5812,19 +6191,22 @@
 													],
 													"example": "preview",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Id of the deployment.",
 													"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"is_skipped": {
 													"description": "If the deployment has been skipped.",
 													"example": true,
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"latest_stage": {
 													"description": "The status of the deployment.",
@@ -5835,7 +6217,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The current build stage.",
@@ -5847,7 +6230,8 @@
 																"deploy"
 															],
 															"example": "deploy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"started_on": {
 															"description": "When the stage started.",
@@ -5855,7 +6239,8 @@
 															"format": "date-time",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "State of the current stage.",
@@ -5868,7 +6253,8 @@
 															],
 															"example": "success",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"readOnly": true,
@@ -5879,60 +6265,71 @@
 													"example": "2021-03-09T00:58:59.045655",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"project_id": {
 													"description": "Id of the project.",
 													"example": "7b162ea7-7367-4d67-bcde-1160995d5",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"project_name": {
 													"description": "Name of the project.",
 													"example": "ninjakittens",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"short_id": {
 													"description": "Short Id (8 character) of the deployment.",
 													"example": "f64788e9",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"source": {
 													"properties": {
 														"config": {
 															"properties": {
 																"deployments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"owner": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path_excludes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"path_includes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"pr_comments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"preview_branch_excludes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
 																"preview_branch_includes": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -5942,22 +6339,27 @@
 																		"none",
 																		"custom"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"production_branch": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"production_deployments_enabled": {
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"repo_name": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														},
 														"type": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -6005,7 +6407,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The current build stage.",
@@ -6017,7 +6420,8 @@
 																	"deploy"
 																],
 																"example": "deploy",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"started_on": {
 																"description": "When the stage started.",
@@ -6025,7 +6429,8 @@
 																"format": "date-time",
 																"nullable": true,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "State of the current stage.",
@@ -6038,7 +6443,8 @@
 																],
 																"example": "success",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"readOnly": true,
@@ -6051,7 +6457,8 @@
 													"description": "The live URL to view this deployment.",
 													"example": "https://f64788e9.ninjakittens.pages.dev",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -6143,7 +6550,8 @@
 																"https://branchname.projectname.pages.dev"
 															],
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"nullable": true,
 															"readOnly": true,
@@ -6156,31 +6564,36 @@
 																	"description": "Enable build caching for the project.",
 																	"example": true,
 																	"nullable": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"build_command": {
 																	"description": "Command used to build project.",
 																	"example": "npm run build",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"destination_dir": {
 																	"description": "Output directory of the build.",
 																	"example": "build",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"root_dir": {
 																	"description": "Directory to run the command.",
 																	"example": "/",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"web_analytics_tag": {
 																	"description": "The classifying tag for analytics.",
 																	"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"web_analytics_token": {
 																	"description": "The auth token for analytics.",
@@ -6197,7 +6610,8 @@
 															"example": "2021-03-09T00:55:03.923456Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"deployment_trigger": {
 															"description": "Info about what caused the deployment.",
@@ -6209,19 +6623,22 @@
 																			"description": "Where the trigger happened.",
 																			"example": "main",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"commit_hash": {
 																			"description": "Hash of the deployment trigger commit.",
 																			"example": "ad9ccd918a81025731e10e40267e11273a263421",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"commit_message": {
 																			"description": "Message of the deployment trigger commit.",
 																			"example": "Update index.html",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -6234,7 +6651,8 @@
 																	],
 																	"example": "ad_hoc",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -6262,7 +6680,8 @@
 																				"enum": [
 																					"plain_text"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"value": {
 																				"description": "Environment variable value.",
@@ -6287,7 +6706,8 @@
 																				"enum": [
 																					"secret_text"
 																				],
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"value": {
 																				"description": "Secret value.",
@@ -6314,19 +6734,22 @@
 															],
 															"example": "preview",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Id of the deployment.",
 															"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_skipped": {
 															"description": "If the deployment has been skipped.",
 															"example": true,
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"latest_stage": {
 															"description": "The status of the deployment.",
@@ -6337,7 +6760,8 @@
 																	"format": "date-time",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The current build stage.",
@@ -6349,7 +6773,8 @@
 																		"deploy"
 																	],
 																	"example": "deploy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"started_on": {
 																	"description": "When the stage started.",
@@ -6357,7 +6782,8 @@
 																	"format": "date-time",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"status": {
 																	"description": "State of the current stage.",
@@ -6370,7 +6796,8 @@
 																	],
 																	"example": "success",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -6381,60 +6808,71 @@
 															"example": "2021-03-09T00:58:59.045655",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"project_id": {
 															"description": "Id of the project.",
 															"example": "7b162ea7-7367-4d67-bcde-1160995d5",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"project_name": {
 															"description": "Name of the project.",
 															"example": "ninjakittens",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"short_id": {
 															"description": "Short Id (8 character) of the deployment.",
 															"example": "f64788e9",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"source": {
 															"properties": {
 																"config": {
 																	"properties": {
 																		"deployments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"owner": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"path_excludes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"path_includes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"pr_comments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"preview_branch_excludes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
 																		"preview_branch_includes": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -6444,22 +6882,27 @@
 																				"none",
 																				"custom"
 																			],
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"production_branch": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"production_deployments_enabled": {
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"repo_name": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
 																"type": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -6507,7 +6950,8 @@
 																		"format": "date-time",
 																		"nullable": true,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The current build stage.",
@@ -6519,7 +6963,8 @@
 																			"deploy"
 																		],
 																		"example": "deploy",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"started_on": {
 																		"description": "When the stage started.",
@@ -6527,7 +6972,8 @@
 																		"format": "date-time",
 																		"nullable": true,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "State of the current stage.",
@@ -6540,7 +6986,8 @@
 																		],
 																		"example": "success",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"readOnly": true,
@@ -6553,7 +7000,8 @@
 															"description": "The live URL to view this deployment.",
 															"example": "https://f64788e9.ninjakittens.pages.dev",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -6651,6 +7099,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

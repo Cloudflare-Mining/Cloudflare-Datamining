@@ -22,9 +22,10 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Defines an identifier.",
+					"description": "The Account ID for this resource.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
@@ -48,8 +49,8 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Defines the unique ID of the item in the List.",
-													"example": "34b12448945f11eaa1b71c4d701ab86e",
+													"description": "The unique ID of the list.",
+													"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
 													"maxLength": 32,
 													"minLength": 32,
 													"readOnly": true,
@@ -155,8 +156,8 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "Defines the unique ID of the item in the List.",
-															"example": "34b12448945f11eaa1b71c4d701ab86e",
+															"description": "The unique ID of the list.",
+															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
 															"maxLength": 32,
 															"minLength": 32,
 															"readOnly": true,
@@ -381,9 +382,10 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Defines an identifier.",
+					"description": "The Account ID for this resource.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
@@ -778,9 +780,10 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Defines an identifier.",
+					"description": "The Account ID for this resource.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
@@ -1270,9 +1273,10 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Defines an identifier.",
+					"description": "The Account ID for this resource.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
@@ -1721,9 +1725,10 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Defines an identifier.",
+					"description": "The Account ID for this resource.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
@@ -1798,6 +1803,11 @@
 													"hostname": {
 														"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 														"properties": {
+															"exclude_exact_hostname": {
+																"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+																"example": true,
+																"type": "boolean"
+															},
 															"url_hostname": {
 																"example": "example.com",
 																"type": "string",
@@ -2046,6 +2056,11 @@
 															"hostname": {
 																"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 																"properties": {
+																	"exclude_exact_hostname": {
+																		"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+																		"example": true,
+																		"type": "boolean"
+																	},
 																	"url_hostname": {
 																		"example": "example.com",
 																		"type": "string",
@@ -2399,9 +2414,10 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Defines an identifier.",
+					"description": "The Account ID for this resource.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
@@ -2447,6 +2463,11 @@
 												"hostname": {
 													"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 													"properties": {
+														"exclude_exact_hostname": {
+															"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+															"example": true,
+															"type": "boolean"
+														},
 														"url_hostname": {
 															"example": "example.com",
 															"type": "string",
@@ -2672,6 +2693,11 @@
 														"hostname": {
 															"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 															"properties": {
+																"exclude_exact_hostname": {
+																	"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"url_hostname": {
 																	"example": "example.com",
 																	"type": "string",
@@ -2987,9 +3013,10 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Defines an identifier.",
+					"description": "The Account ID for this resource.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
@@ -3409,7 +3436,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/rules/lists": {
-		"description": "Creates a new list of the specified type.",
+		"description": "Creates a new list of the specified kind.",
 		"operationId": "lists-create-a-list",
 		"parameters": [
 			{
@@ -3417,9 +3444,10 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Defines an identifier.",
+					"description": "The Account ID for this resource.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
@@ -3909,9 +3937,10 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Defines an identifier.",
+					"description": "The Account ID for this resource.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
@@ -3941,6 +3970,11 @@
 										"hostname": {
 											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 											"properties": {
+												"exclude_exact_hostname": {
+													"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+													"example": true,
+													"type": "boolean"
+												},
 												"url_hostname": {
 													"example": "example.com",
 													"type": "string",
@@ -4390,9 +4424,10 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Defines an identifier.",
+					"description": "The Account ID for this resource.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
@@ -4860,9 +4895,10 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Defines an identifier.",
+					"description": "The Account ID for this resource.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
@@ -4892,6 +4928,11 @@
 										"hostname": {
 											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 											"properties": {
+												"exclude_exact_hostname": {
+													"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+													"example": true,
+													"type": "boolean"
+												},
 												"url_hostname": {
 													"example": "example.com",
 													"type": "string",

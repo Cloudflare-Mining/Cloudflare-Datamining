@@ -8,11 +8,9 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
-					"x-auditable": true
+					"type": "string"
 				}
 			}
 		],
@@ -50,149 +48,108 @@
 							}
 						},
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"editable": {
+											"description": "Whether this setting can be updated or not.",
+											"readOnly": true,
+											"type": "boolean"
+										},
+										"id": {
+											"example": "ssl_automatic_mode",
+											"readOnly": true,
+											"type": "string"
+										},
+										"modified_on": {
+											"description": "Last time this setting was modified.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"next_scheduled_scan": {
+											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"value": {
+											"description": "Current setting of the automatic SSL/TLS.",
+											"enum": [
+												"auto",
+												"custom"
 											],
-											"type": "object"
+											"example": "auto",
+											"readOnly": true,
+											"type": "string"
 										}
+									},
+									"required": [
+										"id",
+										"modified_on",
+										"value",
+										"editable"
 									],
 									"type": "object"
 								},
-								{
-									"properties": {
-										"result": {
-											"oneOf": [
-												{
-													"properties": {
-														"editable": {
-															"description": "Whether this setting can be updated or not.",
-															"readOnly": true,
-															"type": "boolean"
-														},
-														"id": {
-															"example": "ssl_automatic_mode",
-															"readOnly": true,
-															"type": "string"
-														},
-														"modified_on": {
-															"description": "Last time this setting was modified.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"next_scheduled_scan": {
-															"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
-															"type": "string"
-														},
-														"value": {
-															"description": "Current setting of the automatic SSL/TLS.",
-															"enum": [
-																"auto",
-																"custom"
-															],
-															"example": "auto",
-															"readOnly": true,
-															"type": "string"
-														}
-													},
-													"required": [
-														"id",
-														"modified_on",
-														"value",
-														"editable"
-													],
-													"type": "object"
-												}
-											]
-										}
-									}
+								"success": {
+									"description": "Indicates the API call's success or failure.",
+									"example": true,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -211,7 +168,12 @@
 										}
 									],
 									"messages": [],
-									"result": null,
+									"result": {
+										"editable": true,
+										"id": "ssl_automatic_mode",
+										"modified_on": "2014-01-01T05:20:00.12345Z",
+										"value": "custom"
+									},
 									"success": false
 								}
 							}
@@ -228,19 +190,8 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
-													"documentation_url": {
-														"type": "string"
-													},
 													"message": {
 														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
 													}
 												},
 												"required": [
@@ -271,19 +222,8 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
-													"documentation_url": {
-														"type": "string"
-													},
 													"message": {
 														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
 													}
 												},
 												"required": [
@@ -299,17 +239,53 @@
 									"example": []
 								},
 								"result": {
-									"enum": [
-										null
+									"properties": {
+										"editable": {
+											"description": "Whether this setting can be updated or not.",
+											"readOnly": true,
+											"type": "boolean"
+										},
+										"id": {
+											"example": "ssl_automatic_mode",
+											"readOnly": true,
+											"type": "string"
+										},
+										"modified_on": {
+											"description": "Last time this setting was modified.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"next_scheduled_scan": {
+											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"value": {
+											"description": "Current setting of the automatic SSL/TLS.",
+											"enum": [
+												"auto",
+												"custom"
+											],
+											"example": "auto",
+											"readOnly": true,
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"modified_on",
+										"value",
+										"editable"
 									],
-									"nullable": true,
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful.",
-									"enum": [
-										false
-									],
+									"description": "Indicates the API call's success or failure.",
 									"example": false,
 									"type": "boolean"
 								}
@@ -367,11 +343,9 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
-					"x-auditable": true
+					"type": "string"
 				}
 			}
 		],
@@ -421,149 +395,108 @@
 							}
 						},
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"editable": {
+											"description": "Whether this setting can be updated or not.",
+											"readOnly": true,
+											"type": "boolean"
+										},
+										"id": {
+											"example": "ssl_automatic_mode",
+											"readOnly": true,
+											"type": "string"
+										},
+										"modified_on": {
+											"description": "Last time this setting was modified.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"next_scheduled_scan": {
+											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"value": {
+											"description": "Current setting of the automatic SSL/TLS.",
+											"enum": [
+												"auto",
+												"custom"
 											],
-											"type": "object"
+											"example": "auto",
+											"readOnly": true,
+											"type": "string"
 										}
+									},
+									"required": [
+										"id",
+										"modified_on",
+										"value",
+										"editable"
 									],
 									"type": "object"
 								},
-								{
-									"properties": {
-										"result": {
-											"oneOf": [
-												{
-													"properties": {
-														"editable": {
-															"description": "Whether this setting can be updated or not.",
-															"readOnly": true,
-															"type": "boolean"
-														},
-														"id": {
-															"example": "ssl_automatic_mode",
-															"readOnly": true,
-															"type": "string"
-														},
-														"modified_on": {
-															"description": "Last time this setting was modified.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"next_scheduled_scan": {
-															"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
-															"type": "string"
-														},
-														"value": {
-															"description": "Current setting of the automatic SSL/TLS.",
-															"enum": [
-																"auto",
-																"custom"
-															],
-															"example": "auto",
-															"readOnly": true,
-															"type": "string"
-														}
-													},
-													"required": [
-														"id",
-														"modified_on",
-														"value",
-														"editable"
-													],
-													"type": "object"
-												}
-											]
-										}
-									}
+								"success": {
+									"description": "Indicates the API call's success or failure.",
+									"example": true,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -582,7 +515,12 @@
 										}
 									],
 									"messages": [],
-									"result": null,
+									"result": {
+										"editable": true,
+										"id": "ssl_automatic_mode",
+										"modified_on": "2014-01-01T05:20:00.12345Z",
+										"value": "custom"
+									},
 									"success": false
 								}
 							}
@@ -599,19 +537,8 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
-													"documentation_url": {
-														"type": "string"
-													},
 													"message": {
 														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
 													}
 												},
 												"required": [
@@ -642,19 +569,8 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
-													"documentation_url": {
-														"type": "string"
-													},
 													"message": {
 														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
 													}
 												},
 												"required": [
@@ -670,17 +586,53 @@
 									"example": []
 								},
 								"result": {
-									"enum": [
-										null
+									"properties": {
+										"editable": {
+											"description": "Whether this setting can be updated or not.",
+											"readOnly": true,
+											"type": "boolean"
+										},
+										"id": {
+											"example": "ssl_automatic_mode",
+											"readOnly": true,
+											"type": "string"
+										},
+										"modified_on": {
+											"description": "Last time this setting was modified.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"next_scheduled_scan": {
+											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"value": {
+											"description": "Current setting of the automatic SSL/TLS.",
+											"enum": [
+												"auto",
+												"custom"
+											],
+											"example": "auto",
+											"readOnly": true,
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"modified_on",
+										"value",
+										"editable"
 									],
-									"nullable": true,
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful.",
-									"enum": [
-										false
-									],
+									"description": "Indicates the API call's success or failure.",
 									"example": false,
 									"type": "boolean"
 								}

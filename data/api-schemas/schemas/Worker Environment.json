@@ -315,19 +315,11 @@
 										"result": {
 											"properties": {
 												"logpush": {
-													"allOf": [
-														{
-															"description": "Whether Logpush is turned on for the Worker.",
-															"example": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														{
-															"default": false,
-															"type": "boolean",
-															"x-auditable": true
-														}
-													]
+													"default": false,
+													"description": "Whether Logpush is turned on for the Worker.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"observability": {
 													"allOf": [
@@ -420,7 +412,8 @@
 														"type": "object"
 													},
 													"nullable": true,
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												}
 											},
 											"type": "object"
@@ -701,19 +694,11 @@
 									"result": {
 										"properties": {
 											"logpush": {
-												"allOf": [
-													{
-														"description": "Whether Logpush is turned on for the Worker.",
-														"example": false,
-														"type": "boolean",
-														"x-auditable": true
-													},
-													{
-														"default": false,
-														"type": "boolean",
-														"x-auditable": true
-													}
-												]
+												"default": false,
+												"description": "Whether Logpush is turned on for the Worker.",
+												"example": false,
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"observability": {
 												"allOf": [
@@ -806,7 +791,8 @@
 													"type": "object"
 												},
 												"nullable": true,
-												"type": "array"
+												"type": "array",
+												"x-stainless-collection-type": "set"
 											}
 										},
 										"type": "object"
@@ -916,19 +902,11 @@
 										"result": {
 											"properties": {
 												"logpush": {
-													"allOf": [
-														{
-															"description": "Whether Logpush is turned on for the Worker.",
-															"example": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														{
-															"default": false,
-															"type": "boolean",
-															"x-auditable": true
-														}
-													]
+													"default": false,
+													"description": "Whether Logpush is turned on for the Worker.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"observability": {
 													"allOf": [
@@ -1021,7 +999,8 @@
 														"type": "object"
 													},
 													"nullable": true,
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												}
 											},
 											"type": "object"
@@ -1224,16 +1203,22 @@
 		"requestBody": {
 			"content": {
 				"multipart/form-data": {
+					"encoding": {
+						"files": {
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream, application/source-map"
+						}
+					},
 					"schema": {
-						"additionalProperties": {
-							"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present. This should be referenced either in the metadata as `main_module` (esm)/`body_part` (service worker) or as a header `CF-WORKER-MAIN-MODULE-PART` (esm) /`CF-WORKER-BODY-PART` (service worker) by part name.<br/> Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
-							"items": {
-								"format": "binary",
-								"type": "string"
-							},
-							"type": "array"
-						},
 						"properties": {
+							"files": {
+								"description": "An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/>Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
+								"items": {
+									"format": "binary",
+									"type": "string"
+								},
+								"type": "array",
+								"x-stainless-collection-type": "set"
+							},
 							"metadata": {
 								"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
 								"properties": {
@@ -1391,6 +1376,7 @@
 													"x-auditable": true
 												},
 												"logpush": {
+													"default": false,
 													"description": "Whether Logpush is turned on for the Worker.",
 													"example": false,
 													"type": "boolean",
@@ -1500,9 +1486,11 @@
 														],
 														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												},
 												"usage_model": {
+													"default": "standard",
 													"description": "Usage model for the Worker invocations.",
 													"enum": [
 														"standard"

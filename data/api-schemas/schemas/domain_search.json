@@ -1,5 +1,5 @@
 {
-	"DELETE /api/accounts/{account_id}/queries": {
+	"DELETE /accounts/{account_id}/brand-protection/queries": {
 		"description": "Return a success message after deleting saved string queries by ID",
 		"parameters": [
 			{
@@ -95,9 +95,12 @@
 		"summary": "Delete saved string queries by ID",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	},
-	"GET /api/accounts/{account_id}/matches": {
+	"GET /accounts/{account_id}/brand-protection/matches": {
 		"description": "Return matches for string queries based on ID",
 		"parameters": [
 			{
@@ -219,9 +222,13 @@
 		"summary": "Read matches for string queries by ID",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
-	"GET /api/accounts/{account_id}/matches/download": {
+	"GET /accounts/{account_id}/brand-protection/matches/download": {
 		"description": "Return matches as CSV for string queries based on ID",
 		"parameters": [
 			{
@@ -343,9 +350,13 @@
 		"summary": "Download matches for string queries by ID",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
-	"GET /api/accounts/{account_id}/queries": {
+	"GET /accounts/{account_id}/brand-protection/queries": {
 		"description": "Return string queries based on ID",
 		"responses": {
 			"default": {
@@ -386,9 +397,13 @@
 		"summary": "Read string queries by ID",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
-	"GET /api/accounts/{account_id}/total-queries": {
+	"GET /accounts/{account_id}/brand-protection/total-queries": {
 		"description": "Return the total number of saved string queries",
 		"responses": {
 			"default": {
@@ -429,9 +444,13 @@
 		"summary": "Read the total number of saved string queries",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
 		]
 	},
-	"PATCH /api/accounts/{account_id}/queries": {
+	"PATCH /accounts/{account_id}/brand-protection/queries": {
 		"description": "Return a success message after updating saved string queries by ID",
 		"responses": {
 			"default": {
@@ -472,9 +491,12 @@
 		"summary": "Update saved string queries by ID",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	},
-	"POST /api/accounts/{account_id}/queries": {
+	"POST /accounts/{account_id}/brand-protection/queries": {
 		"description": "Return a success message after creating new saved string queries",
 		"parameters": [
 			{
@@ -599,9 +621,12 @@
 		"summary": "Create new saved string queries",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	},
-	"POST /api/accounts/{account_id}/search": {
+	"POST /accounts/{account_id}/brand-protection/search": {
 		"description": "Return new string queries",
 		"responses": {
 			"default": {
@@ -642,6 +667,9 @@
 		"summary": "Create new string queries",
 		"tags": [
 			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
 		]
 	}
 }
