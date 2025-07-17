@@ -423,6 +423,25 @@
 	"GET /accounts/{account_id}/brand-protection/url-info": {
 		"description": "Return submitted URLs based on ID",
 		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"additionalProperties": {},
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			},
 			"default": {
 				"content": {
 					"application/json": {
@@ -970,6 +989,32 @@
 	"POST /accounts/{account_id}/brand-protection/submit": {
 		"description": "Return new URL submissions",
 		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"skipped_urls": {
+									"items": {
+										"additionalProperties": {},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"submitted_urls": {
+									"items": {
+										"additionalProperties": {},
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Created"
+			},
 			"default": {
 				"content": {
 					"application/json": {

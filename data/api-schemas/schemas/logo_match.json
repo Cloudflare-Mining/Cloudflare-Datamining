@@ -616,5 +616,51 @@
 		"x-api-token-group": [
 			"Intel Write"
 		]
+	},
+	"POST /accounts/{account_id}/brand-protection/scan-page": {
+		"description": "Return new logo queries created from URLs",
+		"responses": {
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create new logo queries from URLs",
+		"tags": [
+			"logo_match"
+		],
+		"x-api-token-group": [
+			"Intel Write"
+		]
 	}
 }

@@ -206,6 +206,17 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/brand-protection/scan-page": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/search": [
 		{
 			"in": "path",

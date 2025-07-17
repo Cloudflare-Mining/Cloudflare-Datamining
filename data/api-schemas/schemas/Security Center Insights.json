@@ -2133,7 +2133,10 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
 	},
 	"GET /accounts/{account_id}/security-center/insights": {
 		"operationId": "get-security-center-insights",
