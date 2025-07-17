@@ -5,28 +5,49 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Texas | Lisbon, Portugal | London, United Kingdom</strong></p>
-<h4><strong>About the Department</strong></h4>
-<p><span style="font-weight: 400;">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</span></p>
-<h4>What you'll do</h4>
-<p>We are looking for an Engineering Manager to join Cloudflare, in charge of a new project. You will lead a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites. You will play an active part in shaping the product and team that will build core infrastructure. You will make sure our company hits our ambitious engineering goals. &nbsp;You will change the way people build applications.</p>
-<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
+<p><strong>Available Locations: Austin, TX<br></strong></p>
+<p><strong>Software Engineer</strong></p>
+<p><strong>About Engineering at Cloudflare</strong></p>
+<p>Cloudflare’s Engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products, help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</p>
+<p>Cloudflare is a system spanning the globe, on a mission to make the Internet better, safer, and more powerful every day. As a Software Engineer at Cloudflare, you’ll work on the code that runs close to the end user, runs at a massive scale, and is deployed to&nbsp;<a href="https://www.cloudflare.com/network/">330+ cities</a>&nbsp;around the world.</p>
+<p><strong>Examples of software systems at Cloudflare:</strong></p>
+<p>Since we don't know what team you'll be working on quite yet, here's some things that we do at Cloudflare. This is not a complete list, but gives a good indica<br>tion of the wide variety of things you might work on.</p>
+<ul>
+	<li>A TLS/HTTP proxy to make the connection from eyeball to edge as fast and secure as possible</li>
+	<li>Filtering malicious traffic and handling good traffic according to customer configuration</li>
+	<li>Content optimization that takes content served from customer sites and makes it more performant</li>
+	<li>A platform that runs “serverless” Workers and provides a key value store</li>
+	<li>A reverse-proxy system that caches customer website content according to customer configuration</li>
+	<li>Optimization of connections from Cloudflare to our customers' origin servers to reduce their load and increase performance</li>
+	<li>Our Authoritative DNS server and our public resolver 1.1.1.1.</li>
+	<li>Data Science diving deep into HTTP request data, identifying malicious and fraudulent traffic patterns, and building novel solutions for mitigating such attacks.</li>
+	<li>Full Machine Learning platform and model development, from feature engineering to model development to release and monitoring.</li>
+	<li>One of the biggest data pipelines in the world, operating at well over 250M events per second</li>
+	<li>We operate some of the fastest, and most widely distributed services on the Internet. Your work will focus on building robust, secure, and high performance distributed systems. We are a small engineering team operating at a massive scale, so what you do will have a huge impact.</li>
+</ul>
+<p><strong>Requirements for any role</strong></p>
+<p>If you think some of this list describes you (or what you aspire to be) we would love to talk to you. While not listed as a requirement, we also want to call out that most roles need the flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
+<ul>
+	<li>First and foremost curiosity and critical thinking</li>
+	<li>Experience (and love for) debugging to ensure the system works in all cases</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
+	<li>Designing and building APIs</li>
+	<li>Understanding of what it takes to build secure systems</li>
+	<li>Confidence to work in multiple programming languages - bonus points for Go and/or Rust</li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>Some team-specific things we think are interesting and want to highlight.</p>
 <ul>
-	<li>Experience leading a team</li>
-	<li>Comfortable leading and hiring a team that builds the backend bits and frontend widgets</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Comfortable building developer-loved APIs that scale</li>
-	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Comfortable managing teams/projections with tight deadlines and short release cycles</li>
+	<li>Understanding systems at the network protocol level, including the differences between what the specs say, and what actually happens on the Internet</li>
+	<li>Strong systems level programming skills</li>
+	<li>Optimization of complex solutions</li>
+	<li>Experience with databases (we use PostgreSQL and Clickhouse)</li>
+	<li>Understanding what it takes to build and maintain distributed systems</li>
+	<li>Good Unix knowledge, having submitted patches to Operating Systems a huge plus for some roles</li>
+	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
+	<li>Fluent in analyses of data sets such as logs</li>
+	<li>Understanding of security and fraud detection systems</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience building massive distributed systems</li>
-	<li>Experience leading teams using any of the following: modern JavaScript, C++, Web Assembly. Rust or Go&nbsp;</li>
-</ul>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
