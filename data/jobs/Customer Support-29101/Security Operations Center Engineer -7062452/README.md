@@ -5,34 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Lisbon, Portugal&nbsp;</p>
-<p><strong>About the team:&nbsp;</strong><br><br>The <strong>Order-to-Cash AR Accountant</strong> processes all facets of Cloudflare’s&nbsp;worldwide Billing and Accounts Receivable (A/R) functions. This role&nbsp;facilitates prompt, correct, and complete billing, collection, and cash&nbsp;application of Cloudflare receivables to support preparation of accurate&nbsp;financial statements, compliance with customer contracts, and optimization of&nbsp;cash flow. Additionally, this position participates in certain regulator&nbsp;compliance activities including sales tax assessment and reporting, and&nbsp;unclaimed property remittance.<br><br><strong>What You'll Do</strong></p>
+<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
+<p><strong>About the Department</strong></p>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h4><strong>Description</strong></h4>
+<p>Security Operations Center Engineers provide premium-level support for Cloudflare’s security products and features. Our largest and most technically sophisticated customers will contact Support for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum, Bot Management and Rate Limiting to help customers.</p>
+<p>Security Operations Center Engineers analyze threats, make detailed and informed suggestions for mitigation and may need to implement mitigation strategies directly on behalf of the customer. The team also provides attack reporting beyond Cloudflare’s self-service reports.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Direct preparation and issuance of customer invoices to ensure prompt and accurate billing in compliance with contract terms.</li>
-	<li>Oversee response to billing and A/R inquiries in a manner that cultivates a culture of exemplary customer service both internal and external.</li>
-	<li>Support Order-to-Cash Accounting team by running credit checks and monitoring credit worthiness of new and existing customers.</li>
-	<li>Participate in month-end close processes associated with Accounts Receivable to support timely and accurate preparation and delivery of financial statements.</li>
-	<li>Facilitate cash receipt and application processes to ensure prompt and accurate deposit of all funds and application to customer accounts.</li>
-	<li>Execute process for managing and refunding customer credit balances in a timely manner, partnering with Accounts Payable to escalate or resolve any A/R related unclaimed property issues.</li>
-	<li>Oversee maintenance of customer account information within Billing System(s) to ensure up-to-date address, terms, tax, and contact information.</li>
-	<li>Collaborate with cross-functional teams on various systems projects including selection, implementation, and upgrades to A/R and Billing systems.</li>
-	<li>Execute policies and procedures for Billing and A/R, driving toward implementation of best practices and business process improvements.</li>
-	<li>Support overall organization’s SOX compliance requirements through adherence to key controls and timely completion of reporting.<br><br><strong>Experience</strong></li>
-	<li>Bachelor’s degree required, with emphasis in Accounting or Finance preferred.</li>
-	<li>2+ years of experience in Billing and A/R functions in a high volume&nbsp;environment.</li>
-	<li>Exposure to international operations preferred.</li>
-	<li>Experience participating in system evaluation and implementation preferred.</li>
-	<li>Demonstrated effective written, verbal and interpersonal communication skills&nbsp;at all levels of the organization.</li>
-	<li>Creative problem solving skills coupled with good judgment.</li>
-	<li>Effective communication skills, verbal and written, in order to research, prepare&nbsp;and present information to Management, as well as effective communication&nbsp;skills with co-workers.</li>
-	<li>Critical thinking and strong analytical skills.</li>
-	<li>Ability to exercise sound judgment, provide leadership, and take initiative&nbsp;under minimal supervision.</li>
-	<li>Advanced Microsoft office skills.</li>
-	<li>Comfort in a fast paced work environment, with multiple concurrent projects and&nbsp;priorities.</li>
-	<li>Ability to plan, execute and deliver on projects in a timely manner; plus the&nbsp;ability to multitask on varying projects and initiatives.</li>
-	<li>Very high attention to detail; organized and thorough with a desire for&nbsp;continuous improvement.</li>
-	<li>Stellar work ethic.</li>
-	<li>CPA/CA a plus.</li>
+	<li>Monitor and investigate the alerts to identify attacks</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
+	<li>Work with Engineering and Product teams to improve the products and tools</li>
+	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
+	<li>Review the latest alerts to determine relevancy and urgency. Create new tracking tickets for alerts that signal an incident and require review or escalation</li>
+	<li>Configure / Manager security monitoring rules and contribute to tool improvements</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blacklisting, whitelisting, and/or rate limiting.</li>
+</ul>
+<p><strong>Key skill sets</strong></p>
+<ul>
+	<li>Modern internet protocols like UDP, TCP, etc.</li>
+	<li>Advanced understanding of iptables</li>
+	<li>Analysis of traffic for attack anomaly detection and creation of mitigation rules</li>
+	<li>Experience in handling attack mitigation and thorough knowledge of various attacks (L3/4 and L7)</li>
+	<li>Knowledge of Cloudflare Security Products &amp; Features</li>
+	<li>Technical Support experience</li>
+	<li>Good communication skills with high-value VIP customers under attack</li>
+	<li>Computer Networking fundamentals&nbsp;</li>
+	<li>Command line / Bash shell</li>
+	<li>Sysadmin skills (Linux/Mac/Windows) &amp; Programming skills (Python, Ruby, PHP, C, C#, Java, Perl, Git etc.)</li>
+	<li>Security skills and certifications: CISSP, GCIA GCIH, GCFA, GCFE, etc.</li>
+	<li>Calm under pressure</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
