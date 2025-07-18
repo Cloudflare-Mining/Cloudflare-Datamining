@@ -3128,7 +3128,9 @@
 		"tags": [
 			"Email Security"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{postfix_id}/reclassify": {
 		"operationId": "email_security_post_reclassify",
@@ -3353,7 +3355,9 @@
 		"tags": [
 			"Email Security"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/move": {
 		"operationId": "email_security_post_bulk_message_move",
@@ -3608,7 +3612,9 @@
 		"tags": [
 			"Email Security"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/preview": {
 		"operationId": "email_security_post_preview",
@@ -3824,7 +3830,9 @@
 		"tags": [
 			"Email Security"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/release": {
 		"operationId": "email_security_post_release",
@@ -4068,6 +4076,8 @@
 		"tags": [
 			"Email Security"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
 	}
 }
