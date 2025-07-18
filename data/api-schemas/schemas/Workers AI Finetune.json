@@ -29,17 +29,20 @@
 										},
 										"id": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"model": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
 											"type": "string"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -191,20 +194,24 @@
 											},
 											"id": {
 												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"model": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"modified_at": {
 												"format": "date-time",
 												"type": "string"
 											},
 											"name": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"public": {
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -323,14 +330,17 @@
 								"type": "string"
 							},
 							"model": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"name": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"public": {
 								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -359,20 +369,24 @@
 										},
 										"id": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"model": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
 											"type": "string"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"public": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -499,54 +513,18 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {
-									"properties": {
-										"bucket_name": {
-											"type": "string"
-										},
-										"created_at": {
-											"format": "date-time",
-											"type": "string"
-										},
-										"file_name": {
-											"type": "string"
-										},
-										"finetune_id": {
-											"example": "bc451aef-f723-4b26-a6b2-901afd2e7a8a",
-											"type": "string"
-										},
-										"id": {
-											"format": "uuid",
-											"type": "string"
-										},
-										"modified_at": {
-											"format": "date-time",
-											"type": "string"
-										}
-									},
-									"required": [
-										"id",
-										"finetune_id",
-										"file_name",
-										"bucket_name",
-										"created_at",
-										"modified_at"
-									],
-									"type": "object"
-								},
 								"success": {
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"success",
-								"result"
+								"success"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Returns the created finetune asset"
+				"description": "Returns successfully if finetunes were uploaded"
 			},
 			"400": {
 				"content": {
