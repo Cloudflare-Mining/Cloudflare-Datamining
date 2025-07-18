@@ -6,37 +6,35 @@
 	</div>
 </div>
 <p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>About The Role&nbsp;</strong></p>
-<p>We are looking to hire a Security Risk Management Specialist on our Governance, Risk, and Compliance team. This role will be responsible for identifying and managing security risk across Cloudflare’s production environment and critical business functions.</p>
-<p>At Cloudflare, risk management lays the foundation for protecting Cloudflare and our customers. The Risk team identifies risk throughout the company and prioritizes mitigation efforts to drive Security team roadmaps. We do not believe in tick-box security, so for us risk management is a pathway to doing things right.&nbsp;</p>
-<p>This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. We guarantee that you won’t get bored!</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>About the Role (or What you'll do)</strong></p>
+<p>As a member of the Network Operating System (NetOS) team you will be a key technical contributor to a cutting-edge network software infrastructure which is used to drive layer2 and layer3 devices on Cloudflare's network. The NetOS team is responsible for enabling, supporting, and growing SONiC within our Production Network.&nbsp;</p>
+<p>You will participate in all stages of the development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, building, managing, and monitoring production deployments. Take ownership of code pieces and features, deep involvement in the system architecture in which the features are implemented.&nbsp;</p>
+<p>Continuous Integration, Continuous Delivery, Observability, System Debuggability Tooling, and System Health Checks are fundamental to our approach to building a healthy and stable product.&nbsp;</p>
+<p>In this role you will work with a wide range of technologies and programming languages, including Go, Python, C++, Prometheus exporters, Redis, gNMI framework, and more. Helping to build, improve, and maintain a robust management interface/framework that operators will automate against. Also provide technical support to Network Engineers, directly in debugging and resolving network operating system issues.</p>
+<p>In addition to helping to maintain our Go based telemetry and management interface infrastructure, this role will help maintain the best security practices across the Network Organization. All aspects of security within the Networking field; from hardware to software to vulnerability analysis and remediation. Including NOS hardening and anomaly detection. We are looking for a security focused SRE/Engineer, with Go development skills.</p>
+<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<p>Also, you will help build, integrate, maintain, and upstream, new SONiC features and bug fixes. Create and improve documentation, specifications, and SONiC high level design documents (HLD). In addition, work with hardware vendors and internal teams to integrate new platforms into SONiC.</p>
+<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Support the governance process for the security risk register. This includes:&nbsp;
-		<ul>
-			<li>Reviewing, triaging, and rating new risks and policy exceptions&nbsp;</li>
-			<li>Keeping the risk register and dependencies up to date (e.g. Control Framework)</li>
-			<li>Working with risk owners to document risk treatment plans&nbsp;</li>
-			<li>Reviewing evidence submitted by the business to mitigate or close risks&nbsp;</li>
-			<li>Re-reviewing accepted risks and exceptions periodically</li>
-		</ul>
-	</li>
-	<li>Drafting status updates and updating risk metrics for leadership&nbsp;</li>
-	<li>Maintaining process documentation and risk register tooling</li>
-	<li>Some travel may be required to engage teammates and stakeholders in San Francisco, Austin, London, Lisbon, or other global Cloudflare locations.&nbsp;</li>
+	<li>BS/MS/PhD in Computer Science or equivalent experience</li>
+	<li>3 years of relevant System Engineering or SRE experience</li>
+	<li>Strong software development skills in Go, Python, and Rust||C||C++</li>
+	<li>Background in yang data modeling and gRPC/gNMI client/servers</li>
+	<li>Experience with SONiC, Cumulus, or Linux based open Network Operating Systems</li>
+	<li>Security tooling, Software Supply Chain analysis, Linux Vulnerability Remediation</li>
+	<li>Solid Linux systems administration experience</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Experience typically gained in 2-5 years working in Security Governance, Risk, and Compliance&nbsp;</li>
-	<li>Experience conducting risk and controls assessments&nbsp;</li>
-	<li>Experience managing risk findings and recommending mitigating controls</li>
-	<li>Experience drafting risk reports and reporting program metrics to management</li>
-	<li>Solid understanding of security control frameworks such as SOC 2, ISO 27001, PCI DSS, and NIST SP 800-53</li>
-	<li>Understanding of risk rating methodologies such as NIST SP 800-30 and ISO 31000</li>
-	<li>Understanding of on-prem &amp; cloud architectures and security controls&nbsp;</li>
-	<li>Experience with data analytics and dashboarding tools such as Tableau, Looker Studio or Power BI is a plus</li>
-	<li>Strong analytical and interpersonal skills</li>
-	<li>Self-starter with the ability to work independently with a sense of curiosity</li>
+	<li>Deep knowledge of BGP and other routing protocols</li>
+	<li>Experience in back-porting patches in SONiC and/or FRR</li>
+	<li>Experience with extending SONiC, in particular SWSS components</li>
+	<li>Deep understanding of SAI API and Ethernet vendor’s SDK</li>
+	<li>Experience with the Linux kernel and Linux/Debian software packaging</li>
+	<li>Static and dynamic analysis tooling</li>
+	<li>SBOM tooling and analysis</li>
+	<li>Experience with Linux boot process (Secure Boot) and provisioning</li>
+	<li>Understanding of Server Architecture (interaction between a processor, memory, PCI Express bus, Operating System, and software applications)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
