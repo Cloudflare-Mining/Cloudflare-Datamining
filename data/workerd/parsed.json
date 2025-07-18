@@ -2988,6 +2988,13 @@
 						"compatEnableFlag": "enable_nodejs_http_modules",
 						"impliedByAfterDate": "unhandled type"
 					}
+				},
+				{
+					"name": "pedanticWpt",
+					"annotations": {
+						"compatDisableFlag": "non_pedantic_wpt",
+						"compatEnableFlag": "pedantic_wpt"
+					}
 				}
 			]
 		},
