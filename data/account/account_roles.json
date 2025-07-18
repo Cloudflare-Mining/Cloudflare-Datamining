@@ -1,5 +1,44 @@
 [
 	{
+		"id": "8e117fdd57cd531947dbdcfd82f7a1a1",
+		"name": "Email Security Policy Admin",
+		"description": "Write acccess to Email Security Policies",
+		"permissions": {
+			"ces_policies": {
+				"read": true,
+				"edit": true
+			},
+			"teams": {
+				"read": true,
+				"edit": false
+			},
+			"ces_integration": {
+				"read": true,
+				"edit": false
+			},
+			"ces_phishguard": {
+				"read": true,
+				"edit": false
+			},
+			"ces_settings": {
+				"read": true,
+				"edit": false
+			},
+			"ces_analytics": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "e58cefd75d7adae0b761796c28815e5c",
 		"name": "Workers Platform (Read-only)",
 		"description": "Can read all resources in the Workers Platform.",
@@ -229,6 +268,10 @@
 		"name": "Email Security Readonly",
 		"description": "Read access to all of CES, cannot see Raw Email, take action on emails, or make Submissions (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"ces_policies": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": false
@@ -278,6 +321,10 @@
 		"name": "Email Security Analyst",
 		"description": "Write acccess to all of CES, except Settings which is read only (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"ces_policies": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": false
@@ -329,6 +376,10 @@
 		"name": "Email Configuration Admin",
 		"description": "Write acccess to all of CES, CASB, DLP, Gateway and Tunnels, except Mail Preview, Raw Email, on-demand reports, actions on emails, and Submissions, Submission Transparency. (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"ces_policies": {
+				"read": true,
+				"edit": true
+			},
 			"teams": {
 				"read": true,
 				"edit": true
@@ -373,6 +424,10 @@
 		"name": "Email Integration Admin",
 		"description": "Write acccess to CES account integration only, CASB, DLP, Gateway and Tunnels",
 		"permissions": {
+			"ces_policies": {
+				"read": true,
+				"edit": true
+			},
 			"teams": {
 				"read": true,
 				"edit": true
@@ -1214,6 +1269,10 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"ces_policies": {
+				"read": true,
+				"edit": true
+			},
 			"teams": {
 				"read": true,
 				"edit": true,
@@ -1306,6 +1365,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"ces_policies": {
+				"read": true,
+				"edit": true
+			},
 			"worker": {
 				"read": true,
 				"edit": true
@@ -1942,6 +2005,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"ces_policies": {
+				"read": true,
+				"edit": false
+			},
 			"blocks": {
 				"read": true,
 				"edit": false
@@ -2137,6 +2204,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"ces_policies": {
+				"read": true,
+				"edit": true
+			},
 			"worker": {
 				"read": true,
 				"edit": true
