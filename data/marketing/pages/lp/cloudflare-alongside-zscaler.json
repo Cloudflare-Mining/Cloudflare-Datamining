@@ -326,7 +326,21 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "ed05c841-95d1-5ff4-9295-4c3cdd3c9166",
+							"altText": "SSH",
+							"title": "SSH",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VWOwTV9LBHqB9PPVo5EhM/9bb5a3bcbf68766f0738920a20bc290b/SSH.png"
+								},
+								"description": "SSH"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
@@ -400,6 +414,39 @@
 						"htmlId": null,
 						"backgroundImage": null,
 						"cards": [
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1FUSW2jgSNiYbKvyZwtvbI",
+								"heading": "Solution brief",
+								"description": "Extend ZTNA without going all-in on Zscaler",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5HbjgKyLYQGXJ8znfHiIdU",
+									"elementName": "Modernize remote access - LP - Extend ZTNA without going all-in on Zscaler - Link",
+									"standardText": null,
+									"text": "Download brief",
+									"url": "https://cfl.re/clientless-access-alongside-ZIA ",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
 							{
 								"contentTypeId": "elementResourceCard",
 								"contentfulId": "3Ufgscokjf9Z0zXr2LiWQp",
@@ -494,6 +541,39 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/R68bUicgjCMdgEBXBM1ey/c350338abc119640172d8876202ffbf8/Webinar-106x165-thumbnail-card.svg"
 										},
 										"description": "Webinar 106x165 - Thumbnail for mosaic card"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "GMe4i2IuMYwFtQkut807D",
+								"heading": "Documentation",
+								"description": "Deploy clientless access",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3VerptIjb25zrPPuL8VhPz",
+									"elementName": "Modernize remote access - LP - Resources -  Deploy clientless access - link",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/ ",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
+										},
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
