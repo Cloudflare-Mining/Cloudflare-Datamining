@@ -45,6 +45,11 @@ for (const item of html) {
 	}
 	const text = await res.text();
 	const doc = cheerio.load(text);
+	doc('script').each((_, el) => {
+		if (!doc(el).attr('src')) {
+			doc(el).remove();
+		}
+	});
 	const htmlText = doc('html').html();
 	await fs.writeFile(filename, jsBeautify.html(htmlText, {
 		indent_size: 4,
