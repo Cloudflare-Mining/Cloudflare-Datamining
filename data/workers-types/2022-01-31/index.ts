@@ -7411,6 +7411,9 @@ export type ImageDrawOptions = {
   bottom?: number;
   right?: number;
 };
+export type ImageInputOptions = {
+  encoding?: "base64";
+};
 export type ImageOutputOptions = {
   format:
     | "image/jpeg"
@@ -7429,13 +7432,19 @@ export interface ImagesBinding {
    * @throws {@link ImagesError} with code 9412 if input is not an image
    * @param stream The image bytes
    */
-  info(stream: ReadableStream<Uint8Array>): Promise<ImageInfoResponse>;
+  info(
+    stream: ReadableStream<Uint8Array>,
+    options?: ImageInputOptions,
+  ): Promise<ImageInfoResponse>;
   /**
    * Begin applying a series of transformations to an image
    * @param stream The image bytes
    * @returns A transform handle
    */
-  input(stream: ReadableStream<Uint8Array>): ImageTransformer;
+  input(
+    stream: ReadableStream<Uint8Array>,
+    options?: ImageInputOptions,
+  ): ImageTransformer;
 }
 export interface ImageTransformer {
   /**
@@ -7461,6 +7470,9 @@ export interface ImageTransformer {
    */
   output(options: ImageOutputOptions): Promise<ImageTransformationResult>;
 }
+export type ImageTransformationOutputOptions = {
+  encoding?: "base64";
+};
 export interface ImageTransformationResult {
   /**
    * The image as a response, ready to store in cache or return to users
@@ -7473,7 +7485,7 @@ export interface ImageTransformationResult {
   /**
    * The bytes of the response
    */
-  image(): ReadableStream<Uint8Array>;
+  image(options?: ImageTransformationOutputOptions): ReadableStream<Uint8Array>;
 }
 export interface ImagesError extends Error {
   readonly code: number;
@@ -7757,7 +7769,7 @@ export declare namespace TailStream {
     readonly type: "fetch";
     readonly method: string;
     readonly url: string;
-    readonly cfJson: string;
+    readonly cfJson?: object;
     readonly headers: Header[];
   }
   interface JsRpcEventInfo {
@@ -7892,7 +7904,7 @@ export declare namespace TailStream {
   interface Log {
     readonly type: "log";
     readonly level: "debug" | "error" | "info" | "log" | "warn";
-    readonly message: string;
+    readonly message: object;
   }
   interface Return {
     readonly type: "return";
