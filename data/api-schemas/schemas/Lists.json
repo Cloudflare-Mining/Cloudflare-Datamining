@@ -58,6 +58,9 @@
 													"x-auditable": true
 												}
 											},
+											"required": [
+												"id"
+											],
 											"type": "object"
 										}
 									},
@@ -165,6 +168,9 @@
 															"x-auditable": true
 														}
 													},
+													"required": [
+														"id"
+													],
 													"type": "object"
 												}
 											},
@@ -440,6 +446,9 @@
 													"x-auditable": true
 												}
 											},
+											"required": [
+												"operation_id"
+											],
 											"type": "object"
 										}
 									},
@@ -561,6 +570,9 @@
 															"x-auditable": true
 														}
 													},
+													"required": [
+														"operation_id"
+													],
 													"type": "object"
 												}
 											},
@@ -854,12 +866,21 @@
 														"x-auditable": true
 													},
 													"num_referencing_filters": {
-														"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+														"description": "The number of [filters](/api/resources/filters/) referencing the list.",
 														"example": 2,
 														"type": "number",
 														"x-auditable": true
 													}
 												},
+												"required": [
+													"id",
+													"name",
+													"kind",
+													"num_items",
+													"num_referencing_filters",
+													"created_on",
+													"modified_on"
+												],
 												"type": "object"
 											},
 											"type": "array"
@@ -1030,12 +1051,21 @@
 																"x-auditable": true
 															},
 															"num_referencing_filters": {
-																"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+																"description": "The number of [filters](/api/resources/filters/) referencing the list.",
 																"example": 2,
 																"type": "number",
 																"x-auditable": true
 															}
 														},
+														"required": [
+															"id",
+															"name",
+															"kind",
+															"num_items",
+															"num_referencing_filters",
+															"created_on",
+															"modified_on"
+														],
 														"type": "object"
 													},
 													"type": "array"
@@ -1346,12 +1376,21 @@
 													"x-auditable": true
 												},
 												"num_referencing_filters": {
-													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+													"description": "The number of [filters](/api/resources/filters/) referencing the list.",
 													"example": 2,
 													"type": "number",
 													"x-auditable": true
 												}
 											},
+											"required": [
+												"id",
+												"name",
+												"kind",
+												"num_items",
+												"num_referencing_filters",
+												"created_on",
+												"modified_on"
+											],
 											"type": "object"
 										}
 									},
@@ -1502,12 +1541,21 @@
 															"x-auditable": true
 														},
 														"num_referencing_filters": {
-															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+															"description": "The number of [filters](/api/resources/filters/) referencing the list.",
 															"example": 2,
 															"type": "number",
 															"x-auditable": true
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"kind",
+														"num_items",
+														"num_referencing_filters",
+														"created_on",
+														"modified_on"
+													],
 													"type": "object"
 												}
 											},
@@ -3032,47 +3080,111 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"completed": {
-													"description": "The RFC 3339 timestamp of when the operation was completed.",
-													"example": "2020-01-01T08:00:00Z",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"error": {
-													"description": "A message describing the error when the status is `failed`.",
-													"example": "This list is at the maximum number of items",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"id": {
-													"description": "The unique operation ID of the asynchronous action.",
-													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"status": {
-													"description": "The current status of the asynchronous operation.",
-													"enum": [
-														"pending",
-														"running",
-														"completed",
-														"failed"
+											"oneOf": [
+												{
+													"properties": {
+														"completed": {
+															"description": "The RFC 3339 timestamp of when the operation was completed.",
+															"example": "2020-01-01T08:00:00Z",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"error": {
+															"description": "A message describing the error when the status is `failed`.",
+															"example": "This list is at the maximum number of items",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The unique operation ID of the asynchronous action.",
+															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "The current status of the asynchronous operation.",
+															"enum": [
+																"failed"
+															],
+															"example": "failed",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"status",
+														"error",
+														"completed"
 													],
-													"example": "failed",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
+													"type": "object"
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "The unique operation ID of the asynchronous action.",
+															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "The current status of the asynchronous operation.",
+															"enum": [
+																"pending",
+																"running"
+															],
+															"example": "pending",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"status"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"completed": {
+															"description": "The RFC 3339 timestamp of when the operation was completed.",
+															"example": "2020-01-01T08:00:00Z",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The unique operation ID of the asynchronous action.",
+															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "The current status of the asynchronous operation.",
+															"enum": [
+																"completed"
+															],
+															"example": "completed",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"status",
+														"completed"
+													],
+													"type": "object"
 												}
-											},
-											"required": [
-												"id",
-												"status"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -3184,47 +3296,111 @@
 										{
 											"properties": {
 												"result": {
-													"properties": {
-														"completed": {
-															"description": "The RFC 3339 timestamp of when the operation was completed.",
-															"example": "2020-01-01T08:00:00Z",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"error": {
-															"description": "A message describing the error when the status is `failed`.",
-															"example": "This list is at the maximum number of items",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The unique operation ID of the asynchronous action.",
-															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"status": {
-															"description": "The current status of the asynchronous operation.",
-															"enum": [
-																"pending",
-																"running",
-																"completed",
-																"failed"
+													"oneOf": [
+														{
+															"properties": {
+																"completed": {
+																	"description": "The RFC 3339 timestamp of when the operation was completed.",
+																	"example": "2020-01-01T08:00:00Z",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"error": {
+																	"description": "A message describing the error when the status is `failed`.",
+																	"example": "This list is at the maximum number of items",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "The unique operation ID of the asynchronous action.",
+																	"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "The current status of the asynchronous operation.",
+																	"enum": [
+																		"failed"
+																	],
+																	"example": "failed",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"status",
+																"error",
+																"completed"
 															],
-															"example": "failed",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "The unique operation ID of the asynchronous action.",
+																	"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "The current status of the asynchronous operation.",
+																	"enum": [
+																		"pending",
+																		"running"
+																	],
+																	"example": "pending",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"status"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"completed": {
+																	"description": "The RFC 3339 timestamp of when the operation was completed.",
+																	"example": "2020-01-01T08:00:00Z",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "The unique operation ID of the asynchronous action.",
+																	"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "The current status of the asynchronous operation.",
+																	"enum": [
+																		"completed"
+																	],
+																	"example": "completed",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"status",
+																"completed"
+															],
+															"type": "object"
 														}
-													},
-													"required": [
-														"id",
-														"status"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
@@ -3558,12 +3734,21 @@
 													"x-auditable": true
 												},
 												"num_referencing_filters": {
-													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+													"description": "The number of [filters](/api/resources/filters/) referencing the list.",
 													"example": 2,
 													"type": "number",
 													"x-auditable": true
 												}
 											},
+											"required": [
+												"id",
+												"name",
+												"kind",
+												"num_items",
+												"num_referencing_filters",
+												"created_on",
+												"modified_on"
+											],
 											"type": "object"
 										}
 									},
@@ -3714,12 +3899,21 @@
 															"x-auditable": true
 														},
 														"num_referencing_filters": {
-															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+															"description": "The number of [filters](/api/resources/filters/) referencing the list.",
 															"example": 2,
 															"type": "number",
 															"x-auditable": true
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"kind",
+														"num_items",
+														"num_referencing_filters",
+														"created_on",
+														"modified_on"
+													],
 													"type": "object"
 												}
 											},
@@ -3952,42 +4146,32 @@
 				"application/json": {
 					"schema": {
 						"items": {
-							"allOf": [
+							"oneOf": [
 								{
 									"properties": {
-										"asn": {
-											"description": "Defines a non-negative 32 bit integer.",
-											"example": 5567,
-											"type": "integer",
-											"x-auditable": true
-										},
 										"comment": {
 											"description": "Defines an informative summary of the list item.",
 											"example": "Private IP address",
 											"type": "string",
 											"x-auditable": true
 										},
-										"hostname": {
-											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-											"properties": {
-												"exclude_exact_hostname": {
-													"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
-													"example": true,
-													"type": "boolean"
-												},
-												"url_hostname": {
-													"example": "example.com",
-													"type": "string",
-													"x-auditable": true
-												}
-											},
-											"required": [
-												"url_hostname"
-											]
-										},
 										"ip": {
 											"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
 											"example": "10.0.0.1",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"ip"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"comment": {
+											"description": "Defines an informative summary of the list item.",
+											"example": "Private IP address",
 											"type": "string",
 											"x-auditable": true
 										},
@@ -4042,6 +4226,61 @@
 											]
 										}
 									},
+									"required": [
+										"redirect"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"comment": {
+											"description": "Defines an informative summary of the list item.",
+											"example": "Private IP address",
+											"type": "string",
+											"x-auditable": true
+										},
+										"hostname": {
+											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+											"properties": {
+												"exclude_exact_hostname": {
+													"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+													"example": true,
+													"type": "boolean"
+												},
+												"url_hostname": {
+													"example": "example.com",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"url_hostname"
+											]
+										}
+									},
+									"required": [
+										"hostname"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"asn": {
+											"description": "Defines a non-negative 32 bit integer.",
+											"example": 5567,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"comment": {
+											"description": "Defines an informative summary of the list item.",
+											"example": "Private IP address",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"asn"
+									],
 									"type": "object"
 								}
 							]
@@ -4070,6 +4309,9 @@
 													"x-auditable": true
 												}
 											},
+											"required": [
+												"operation_id"
+											],
 											"type": "object"
 										}
 									},
@@ -4191,6 +4433,9 @@
 															"x-auditable": true
 														}
 													},
+													"required": [
+														"operation_id"
+													],
 													"type": "object"
 												}
 											},
@@ -4516,12 +4761,21 @@
 													"x-auditable": true
 												},
 												"num_referencing_filters": {
-													"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+													"description": "The number of [filters](/api/resources/filters/) referencing the list.",
 													"example": 2,
 													"type": "number",
 													"x-auditable": true
 												}
 											},
+											"required": [
+												"id",
+												"name",
+												"kind",
+												"num_items",
+												"num_referencing_filters",
+												"created_on",
+												"modified_on"
+											],
 											"type": "object"
 										}
 									},
@@ -4672,12 +4926,21 @@
 															"x-auditable": true
 														},
 														"num_referencing_filters": {
-															"description": "The number of [filters](/operations/filters-list-filters) referencing the list.",
+															"description": "The number of [filters](/api/resources/filters/) referencing the list.",
 															"example": 2,
 															"type": "number",
 															"x-auditable": true
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"kind",
+														"num_items",
+														"num_referencing_filters",
+														"created_on",
+														"modified_on"
+													],
 													"type": "object"
 												}
 											},
@@ -4910,42 +5173,32 @@
 				"application/json": {
 					"schema": {
 						"items": {
-							"allOf": [
+							"oneOf": [
 								{
 									"properties": {
-										"asn": {
-											"description": "Defines a non-negative 32 bit integer.",
-											"example": 5567,
-											"type": "integer",
-											"x-auditable": true
-										},
 										"comment": {
 											"description": "Defines an informative summary of the list item.",
 											"example": "Private IP address",
 											"type": "string",
 											"x-auditable": true
 										},
-										"hostname": {
-											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-											"properties": {
-												"exclude_exact_hostname": {
-													"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
-													"example": true,
-													"type": "boolean"
-												},
-												"url_hostname": {
-													"example": "example.com",
-													"type": "string",
-													"x-auditable": true
-												}
-											},
-											"required": [
-												"url_hostname"
-											]
-										},
 										"ip": {
 											"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
 											"example": "10.0.0.1",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"ip"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"comment": {
+											"description": "Defines an informative summary of the list item.",
+											"example": "Private IP address",
 											"type": "string",
 											"x-auditable": true
 										},
@@ -5000,6 +5253,61 @@
 											]
 										}
 									},
+									"required": [
+										"redirect"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"comment": {
+											"description": "Defines an informative summary of the list item.",
+											"example": "Private IP address",
+											"type": "string",
+											"x-auditable": true
+										},
+										"hostname": {
+											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+											"properties": {
+												"exclude_exact_hostname": {
+													"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+													"example": true,
+													"type": "boolean"
+												},
+												"url_hostname": {
+													"example": "example.com",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"url_hostname"
+											]
+										}
+									},
+									"required": [
+										"hostname"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"asn": {
+											"description": "Defines a non-negative 32 bit integer.",
+											"example": 5567,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"comment": {
+											"description": "Defines an informative summary of the list item.",
+											"example": "Private IP address",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"asn"
+									],
 									"type": "object"
 								}
 							]
@@ -5028,6 +5336,9 @@
 													"x-auditable": true
 												}
 											},
+											"required": [
+												"operation_id"
+											],
 											"type": "object"
 										}
 									},
@@ -5149,6 +5460,9 @@
 															"x-auditable": true
 														}
 													},
+													"required": [
+														"operation_id"
+													],
 													"type": "object"
 												}
 											},
