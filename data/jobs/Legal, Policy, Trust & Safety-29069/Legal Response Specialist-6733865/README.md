@@ -6,21 +6,19 @@
 	</div>
 </div>
 <p><strong>Available Location: Kuala Lumpur</strong></p>
-<p>We are looking for a thoughtful, detail-oriented team member to join our global Trust and Safety Legal Support Team. In this role, you will address legal requests seeking customer information and perform account reviews to assist in combating abuse in line with Cloudflare’s Terms of Service. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies.&nbsp;</p>
+<p>We are looking for a thoughtful, detail-oriented team member to join our global Trust and Safety Legal Response Team. In this role, you will address legal requests seeking customer information and perform account reviews to assist in combating abuse in line with Cloudflare’s Terms of Service. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies.&nbsp;</p>
 <p><strong>Responsibilities</strong><strong>:</strong></p>
 <ul>
 	<li>Be part of a world class globally-distributed team.</li>
 	<li>Help administer efficient and compliant handling of legal requests, including but not limited to requests for information (subpoenas, court orders, etc) from law enforcement and government officials and in response to third-party civil matters.</li>
-	<li>Be responsible for performing operations seamlessly and timely Service-Level Agreement (SLA) delivery along with maintaining a high level of quality and accuracy.&nbsp;</li>
+	<li>Be responsible for performing operations seamlessly along with maintaining a high level of quality and accuracy.&nbsp;</li>
 	<li>Partner with cross functional teams including Public Policy, Legal, and Product Engineering teams to ensure our policies and processes are carried out in a scalable fashion.</li>
-	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanour.</li>
+	<li>Deal with time sensitive escalations with tact and a calm demeanour.</li>
 	<li style="font-weight: bold;"><strong>Participate in a rotating weekend coverage duty.</strong></li>
 </ul>
 <p><strong>Requirements</strong><strong>:</strong></p>
 <ul>
 	<li>3-5 years of legal support experience processing requests for user information, legal documents, or other relevant background experience in Trust &amp; Safety.</li>
-	<li>Demonstrate working knowledge of DNS and how the Internet works.</li>
-	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanour.</li>
 	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks to completion.</li>
 	<li>Comfortable navigating ambiguous matters.&nbsp;</li>
 	<li>A great attitude and team player.&nbsp;</li>
@@ -30,6 +28,7 @@
 	<li>Experience with the global legal considerations related to legal requests seeking customer information.&nbsp;</li>
 	<li>You’ve interacted with law enforcement officials and agencies.</li>
 	<li>Hands-on experience with Cloudflare’s products and services.</li>
+	<li>Demonstrate working knowledge of DNS and how the Internet works.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
