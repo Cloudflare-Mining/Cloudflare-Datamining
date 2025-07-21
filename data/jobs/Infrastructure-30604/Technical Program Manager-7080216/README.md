@@ -5,35 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal or London, UK&nbsp;</strong></p>
-<p><strong>About the team:</strong></p>
+<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
+<p><strong>About The Role&nbsp;</strong></p>
+<p>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Infrastructure Engineering.&nbsp; Your main responsibility will be to work cross functionally across product, engineering, security, technical operations, and more to build and execute on the overall strategy.</p>
+<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
+<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
+<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>We are a team of software engineers who are responsible for the services which receive tens of millions of requests per second from the internet, at millisecond latencies, terminating HTTP and TLS, filtering and routing them, and forwarding them to the appropriate upstream services.</li>
-	<li>Engineers in the team are involved in building and operating production systems at huge scale, handling the full breadth and diversity of traffic patterns on the internet. This includes accepting traffic over all HTTP protocols, working on new standards in conjunction with bodies such as the IETF and industry partners, and measuring and improving the behavior of all related systems.</li>
-	<li>The team mostly works in Rust, with some time spent supporting legacy systems built with C and Lua.</li>
+	<li>Possess a working knowledge of data center infrastructure components like servers, storage, networking, connectivities, and their interdependencies to identify technical risks and potential roadblocks for InfOps programs.</li>
+	<li>Work with stakeholders to align on inputs for Network and Compute Hardware validation cycles, which includes alignment of deliverables.</li>
+	<li>Develop reports and dashboards for tracking of all InfOps delivery KPIs</li>
+	<li>Ability to communicate effectively to all members of teams, programs and senior leadership.&nbsp; Ability to collaborate<strong> </strong>and work effectively with cross-functional teams.&nbsp;</li>
+	<li>Provide clear documentation for infrastructure deliverables (including status reports), processes, and project plans, and provide regular status updates to stakeholders and executives</li>
 </ul>
-<p><strong>Some of the first projects you’ll work on:</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li>Measure performance of HTTP/2 and HTTP/3 at scale in many different environments. Identify areas where the performance can be improved.</li>
-	<li>Build the rust-based next-gen proxy that is replacing nginx and create a migration strategy for a functionality from old software to new software.</li>
-</ul>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Substantial hands-on systems level programming and troubleshooting experience.</li>
-	<li>Experience operating high performance and huge scale services.</li>
-	<li>A drive for continuous improvement when it comes to both operations and new product development</li>
-	<li>Experience of working with Product teams to balance technical agenda, operation of existing systems and new product development</li>
-	<li>Experience analyzing and communicating complex technical requirements and concepts, identify the highest priority areas, and carve a path to deliver&nbsp;</li>
-	<li>Driving communication and consensus across teams</li>
-	<li>Ability to get things done: implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Strong curiosity, a desire to learn new things, and teach others</li>
-</ul>
-<p><strong>Nice to have</strong></p>
-<ul>
-	<li>Knowledge of web server implementations (such as NGINX)</li>
-	<li>Detailed knowledge of HTTP and transport protocols (eg TCP, UDP, QUIC).</li>
-	<li>Knowledge of Layer 4-7 protocols (examples: HTTP, TCP, UDP, QUIC, gRPC).</li>
-	<li>Cryptography experience</li>
+	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
+	<li>5+ years experience in technical program management and a desire for continuous improvement</li>
+	<li>Proven track record on creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
+	<li>Experience working with multiple time zones and multiple cross functional teams</li>
+	<li>Strong competency with Excel/Google Sheet, Smartsheet, Confluence, JIRA, and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)&nbsp;&nbsp;</li>
+	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
+	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
