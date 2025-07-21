@@ -18,13 +18,13 @@
 	<li>Work with Engineering and Product teams to improve the products and tools</li>
 	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
 	<li>Review the latest alerts to determine relevancy and urgency. Create new tracking tickets for alerts that signal an incident and require review or escalation</li>
-	<li>Configure / Manager security monitoring rules and contribute to tool improvements</li>
+	<li>Configure and manage security monitoring rules, and contribute to the improvement of our monitoring tools</li>
 	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blacklisting, whitelisting, and/or rate limiting.</li>
+	<li>Perform DDoS mitigation for OSI Layers 3, 4, and 7. This includes filtering malicious traffic using Cloudflare Products like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, deny lists, allow lists, and rate limiting.</li>
 </ul>
 <p><strong>Key skill sets</strong></p>
 <ul>
-	<li>Modern internet protocols like UDP, TCP, etc.</li>
+	<li>Strong understanding of core internet protocols across OSI Layers 3, 4, and 7 (e.g., IP, TCP, UDP, HTTP/S, DNS, SMTP).</li>
 	<li>Advanced understanding of iptables</li>
 	<li>Analysis of traffic for attack anomaly detection and creation of mitigation rules</li>
 	<li>Experience in handling attack mitigation and thorough knowledge of various attacks (L3/4 and L7)</li>
