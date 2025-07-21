@@ -668,19 +668,7 @@
 																},
 																"resources": {
 																	"additionalProperties": {
-																		"oneOf": [
-																			{
-																				"description": "A simple string permission.",
-																				"type": "string"
-																			},
-																			{
-																				"additionalProperties": {
-																					"type": "string"
-																				},
-																				"description": "A nested permission grant for further scoping.",
-																				"type": "object"
-																			}
-																		],
+																		"description": "An object with string value or nested object.",
 																		"x-auditable": true,
 																		"x-stainless-any": true
 																	},
@@ -1202,19 +1190,7 @@
 															},
 															"resources": {
 																"additionalProperties": {
-																	"oneOf": [
-																		{
-																			"description": "A simple string permission.",
-																			"type": "string"
-																		},
-																		{
-																			"additionalProperties": {
-																				"type": "string"
-																			},
-																			"description": "A nested permission grant for further scoping.",
-																			"type": "object"
-																		}
-																	],
+																	"description": "An object with string value or nested object.",
 																	"x-auditable": true,
 																	"x-stainless-any": true
 																},
@@ -2294,19 +2270,7 @@
 										},
 										"resources": {
 											"additionalProperties": {
-												"oneOf": [
-													{
-														"description": "A simple string permission.",
-														"type": "string"
-													},
-													{
-														"additionalProperties": {
-															"type": "string"
-														},
-														"description": "A nested permission grant for further scoping.",
-														"type": "object"
-													}
-												],
+												"description": "An object with string value or nested object.",
 												"x-auditable": true,
 												"x-stainless-any": true
 											},
@@ -2638,19 +2602,7 @@
 																	},
 																	"resources": {
 																		"additionalProperties": {
-																			"oneOf": [
-																				{
-																					"description": "A simple string permission.",
-																					"type": "string"
-																				},
-																				{
-																					"additionalProperties": {
-																						"type": "string"
-																					},
-																					"description": "A nested permission grant for further scoping.",
-																					"type": "object"
-																				}
-																			],
+																			"description": "An object with string value or nested object.",
 																			"x-auditable": true,
 																			"x-stainless-any": true
 																		},
@@ -3095,19 +3047,7 @@
 												},
 												"resources": {
 													"additionalProperties": {
-														"oneOf": [
-															{
-																"description": "A simple string permission.",
-																"type": "string"
-															},
-															{
-																"additionalProperties": {
-																	"type": "string"
-																},
-																"description": "A nested permission grant for further scoping.",
-																"type": "object"
-															}
-														],
+														"description": "An object with string value or nested object.",
 														"x-auditable": true,
 														"x-stainless-any": true
 													},
@@ -3457,19 +3397,7 @@
 															},
 															"resources": {
 																"additionalProperties": {
-																	"oneOf": [
-																		{
-																			"description": "A simple string permission.",
-																			"type": "string"
-																		},
-																		{
-																			"additionalProperties": {
-																				"type": "string"
-																			},
-																			"description": "A nested permission grant for further scoping.",
-																			"type": "object"
-																		}
-																	],
+																	"description": "An object with string value or nested object.",
 																	"x-auditable": true,
 																	"x-stainless-any": true
 																},
