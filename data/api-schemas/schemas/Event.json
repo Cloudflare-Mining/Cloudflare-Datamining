@@ -199,125 +199,6 @@
 			"Cloudforce One Write"
 		]
 	},
-	"DELETE /accounts/{account_id}/cloudforce-one/events/{event_id}/insight/{insight_id}": {
-		"operationId": "delete_EventInsightDelete",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "number"
-				}
-			},
-			{
-				"description": "Event UUID.",
-				"in": "path",
-				"name": "event_id",
-				"required": true,
-				"schema": {
-					"description": "Event UUID.",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Insight UUID.",
-				"in": "path",
-				"name": "insight_id",
-				"required": true,
-				"schema": {
-					"description": "Insight UUID.",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"success": {
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns success if operation succeeded."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Deletes an event insight",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
-		]
-	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}": {
 		"operationId": "delete_EventTagDelete",
 		"parameters": [
@@ -1143,131 +1024,6 @@
 			"Cloudforce One Read"
 		]
 	},
-	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/insight/{insight_id}": {
-		"operationId": "get_EventInsightRead",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "number"
-				}
-			},
-			{
-				"description": "Event UUID.",
-				"in": "path",
-				"name": "event_id",
-				"required": true,
-				"schema": {
-					"description": "Event UUID.",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Insight UUID.",
-				"in": "path",
-				"name": "insight_id",
-				"required": true,
-				"schema": {
-					"description": "Insight UUID.",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"content": {
-											"example": "Here is some context _in markdown_",
-											"type": "string"
-										},
-										"uuid": {
-											"example": "sdfsd56af-43469-3c23-646345dsffd2",
-											"type": "string"
-										}
-									},
-									"required": [
-										"uuid",
-										"content"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns success if operation succeeded."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Reads an event insight",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		]
-	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
 		"operationId": "get_EventRawRead",
 		"parameters": [
@@ -1588,6 +1344,28 @@
 								"example": "sha256",
 								"type": "string"
 							},
+							"insight": {
+								"example": "new insight",
+								"type": "string"
+							},
+							"raw": {
+								"properties": {
+									"data": {
+										"additionalProperties": true,
+										"nullable": true,
+										"type": "object"
+									},
+									"source": {
+										"example": "example.com",
+										"type": "string"
+									},
+									"tlp": {
+										"example": "amber",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
 							"targetCountry": {
 								"example": "US",
 								"type": "string"
@@ -1805,148 +1583,6 @@
 			}
 		],
 		"summary": "Updates an event",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
-		]
-	},
-	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}/insight/{insight_id}": {
-		"operationId": "patch_EventInsightUpdate",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "number"
-				}
-			},
-			{
-				"description": "Event UUID.",
-				"in": "path",
-				"name": "event_id",
-				"required": true,
-				"schema": {
-					"description": "Event UUID.",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Insight UUID.",
-				"in": "path",
-				"name": "insight_id",
-				"required": true,
-				"schema": {
-					"description": "Insight UUID.",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"content": {
-								"example": "Updated: Here is some additional context _in markdown_",
-								"type": "string"
-							}
-						},
-						"required": [
-							"content"
-						],
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"content": {
-											"example": "Updated: Here is some additional context _in markdown_",
-											"type": "string"
-										},
-										"uuid": {
-											"example": "sdfsd56af-43469-3c23-646345dsffd2",
-											"type": "string"
-										}
-									},
-									"required": [
-										"uuid",
-										"content"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns success if operation succeeded."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Updates an event insight",
 		"tags": [
 			"Event"
 		],
@@ -2471,6 +2107,28 @@
 								"example": "sha256",
 								"type": "string"
 							},
+							"insight": {
+								"example": "new insight",
+								"type": "string"
+							},
+							"raw": {
+								"properties": {
+									"data": {
+										"additionalProperties": true,
+										"nullable": true,
+										"type": "object"
+									},
+									"source": {
+										"example": "example.com",
+										"type": "string"
+									},
+									"tlp": {
+										"example": "amber",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
 							"targetCountry": {
 								"example": "US",
 								"type": "string"
@@ -2688,282 +2346,6 @@
 			}
 		],
 		"summary": "Updates an event",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		]
-	},
-	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}/insight/{insight_id}": {
-		"operationId": "post_EventInsightUpdate",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "number"
-				}
-			},
-			{
-				"description": "Event UUID.",
-				"in": "path",
-				"name": "event_id",
-				"required": true,
-				"schema": {
-					"description": "Event UUID.",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Insight UUID.",
-				"in": "path",
-				"name": "insight_id",
-				"required": true,
-				"schema": {
-					"description": "Insight UUID.",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"content": {
-								"example": "Updated: Here is some additional context _in markdown_",
-								"type": "string"
-							}
-						},
-						"required": [
-							"content"
-						],
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"content": {
-											"example": "Updated: Here is some additional context _in markdown_",
-											"type": "string"
-										},
-										"uuid": {
-											"example": "sdfsd56af-43469-3c23-646345dsffd2",
-											"type": "string"
-										}
-									},
-									"required": [
-										"uuid",
-										"content"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns success if operation succeeded."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Updates an event insight",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		]
-	},
-	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}/insight/create": {
-		"operationId": "post_EventInsightCreate",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "number"
-				}
-			},
-			{
-				"description": "Event UUID.",
-				"in": "path",
-				"name": "event_id",
-				"required": true,
-				"schema": {
-					"description": "Event UUID.",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"content": {
-								"example": "Here is some additional context _in markdown_",
-								"type": "string"
-							}
-						},
-						"required": [
-							"content"
-						],
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"content": {
-											"example": "Here is some context _in markdown_",
-											"type": "string"
-										},
-										"uuid": {
-											"example": "sdfsd56af-43469-3c23-646345dsffd2",
-											"type": "string"
-										}
-									},
-									"required": [
-										"uuid",
-										"content"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns success if operation succeeded."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Adds an insight to an event",
 		"tags": [
 			"Event"
 		],
