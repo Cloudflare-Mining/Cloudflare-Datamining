@@ -14,23 +14,12 @@
 				}
 			},
 			{
-				"description": "The report type to be submitted",
+				"description": "The report type to be submitted. Example: abuse_general",
 				"in": "path",
 				"name": "report_type",
 				"required": true,
 				"schema": {
 					"description": "The abuse report type.",
-					"enum": [
-						"abuse_dmca",
-						"abuse_trademark",
-						"abuse_general",
-						"abuse_phishing",
-						"abuse_children",
-						"abuse_threat",
-						"abuse_registrar_whois",
-						"abuse_ncsei"
-					],
-					"example": "abuse_general",
 					"type": "string"
 				}
 			}
@@ -59,17 +48,18 @@
 										"properties": {
 											"act": {
 												"description": "The abuse report type.",
-												"enum": [
-													"abuse_dmca",
-													"abuse_trademark",
-													"abuse_general",
-													"abuse_phishing",
-													"abuse_children",
-													"abuse_threat",
-													"abuse_registrar_whois",
-													"abuse_ncsei"
-												],
-												"example": "abuse_general",
+												"type": "string"
+											},
+											"comments": {
+												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"maxLength": 2000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"company": {
+												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 100,
+												"minLength": 1,
 												"type": "string"
 											},
 											"email": {
@@ -83,34 +73,6 @@
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
-											},
-											"urls": {
-												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"type": "string"
-											}
-										},
-										"required": [
-											"act",
-											"email",
-											"email2",
-											"name",
-											"urls"
-										],
-										"type": "object"
-									},
-									{
-										"properties": {
-											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
-												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
-											},
-											"company": {
-												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"maxLength": 100,
 												"minLength": 1,
 												"type": "string"
 											},
@@ -137,92 +99,105 @@
 												"maxLength": 255,
 												"minLength": 1,
 												"type": "string"
+											},
+											"urls": {
+												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string"
 											}
 										},
+										"required": [
+											"act",
+											"email",
+											"email2",
+											"name",
+											"urls"
+										],
 										"type": "object"
+									},
+									{
+										"properties": {
+											"act": {
+												"enum": [
+													"abuse_dmca"
+												]
+											},
+											"address1": {
+												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 100,
+												"minLength": 1,
+												"type": "string"
+											},
+											"agent_name": {
+												"description": "The name of the copyright holder. Text not exceeding 60 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 60,
+												"minLength": 1,
+												"type": "string"
+											},
+											"agree": {
+												"description": "Can be `0` for false or `1` for true. Must be value: 1 for DMCA reports",
+												"enum": [
+													1
+												],
+												"type": "integer"
+											},
+											"city": {
+												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											},
+											"country": {
+												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											},
+											"host_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send"
+												],
+												"type": "string"
+											},
+											"original_work": {
+												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											},
+											"owner_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send"
+												],
+												"type": "string"
+											},
+											"signature": {
+												"description": "Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports",
+												"type": "string"
+											},
+											"state": {
+												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											}
+										},
+										"required": [
+											"address1",
+											"agent_name",
+											"agree",
+											"city",
+											"country",
+											"host_notification",
+											"original_work",
+											"owner_notification",
+											"signature",
+											"state"
+										],
+										"title": "DMCA Report"
 									}
 								],
-								"properties": {
-									"act": {
-										"enum": [
-											"abuse_dmca"
-										]
-									},
-									"address1": {
-										"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-										"maxLength": 100,
-										"minLength": 1,
-										"type": "string"
-									},
-									"agent_name": {
-										"description": "The name of the copyright holder. Text not exceeding 60 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-										"maxLength": 60,
-										"minLength": 1,
-										"type": "string"
-									},
-									"agree": {
-										"description": "Can be `0` for false or `1` for true. Must be value: 1 for DMCA reports",
-										"enum": [
-											1
-										],
-										"type": "integer"
-									},
-									"city": {
-										"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-										"maxLength": 255,
-										"minLength": 1,
-										"type": "string"
-									},
-									"country": {
-										"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
-										"maxLength": 255,
-										"minLength": 1,
-										"type": "string"
-									},
-									"host_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send"
-										],
-										"type": "string"
-									},
-									"original_work": {
-										"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
-										"maxLength": 255,
-										"minLength": 1,
-										"type": "string"
-									},
-									"owner_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send"
-										],
-										"type": "string"
-									},
-									"signature": {
-										"description": "Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports",
-										"type": "string"
-									},
-									"state": {
-										"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-										"maxLength": 255,
-										"minLength": 1,
-										"type": "string"
-									}
-								},
-								"required": [
-									"address1",
-									"agent_name",
-									"agree",
-									"city",
-									"country",
-									"host_notification",
-									"original_work",
-									"owner_notification",
-									"signature",
-									"state"
-								],
-								"title": "DMCA Report",
 								"type": "object"
 							},
 							{
@@ -231,17 +206,18 @@
 										"properties": {
 											"act": {
 												"description": "The abuse report type.",
-												"enum": [
-													"abuse_dmca",
-													"abuse_trademark",
-													"abuse_general",
-													"abuse_phishing",
-													"abuse_children",
-													"abuse_threat",
-													"abuse_registrar_whois",
-													"abuse_ncsei"
-												],
-												"example": "abuse_general",
+												"type": "string"
+											},
+											"comments": {
+												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"maxLength": 2000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"company": {
+												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 100,
+												"minLength": 1,
 												"type": "string"
 											},
 											"email": {
@@ -255,34 +231,6 @@
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
-											},
-											"urls": {
-												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"type": "string"
-											}
-										},
-										"required": [
-											"act",
-											"email",
-											"email2",
-											"name",
-											"urls"
-										],
-										"type": "object"
-									},
-									{
-										"properties": {
-											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
-												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
-											},
-											"company": {
-												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"maxLength": 100,
 												"minLength": 1,
 												"type": "string"
 											},
@@ -309,65 +257,78 @@
 												"maxLength": 255,
 												"minLength": 1,
 												"type": "string"
+											},
+											"urls": {
+												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string"
 											}
 										},
+										"required": [
+											"act",
+											"email",
+											"email2",
+											"name",
+											"urls"
+										],
 										"type": "object"
+									},
+									{
+										"properties": {
+											"act": {
+												"enum": [
+													"abuse_trademark"
+												]
+											},
+											"host_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send"
+												],
+												"type": "string"
+											},
+											"justification": {
+												"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
+												"maxLength": 5000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"owner_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send"
+												],
+												"type": "string"
+											},
+											"trademark_number": {
+												"description": "Text not exceeding 1000 characters",
+												"maxLength": 1000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"trademark_office": {
+												"description": "Text not exceeding 1000 characters",
+												"maxLength": 1000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"trademark_symbol": {
+												"description": "Text not exceeding 1000 characters",
+												"maxLength": 1000,
+												"minLength": 1,
+												"type": "string"
+											}
+										},
+										"required": [
+											"host_notification",
+											"justification",
+											"owner_notification",
+											"trademark_number",
+											"trademark_office",
+											"trademark_symbol"
+										],
+										"title": "Trademark Report"
 									}
 								],
-								"properties": {
-									"act": {
-										"enum": [
-											"abuse_trademark"
-										]
-									},
-									"host_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send"
-										],
-										"type": "string"
-									},
-									"justification": {
-										"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
-										"maxLength": 5000,
-										"minLength": 1,
-										"type": "string"
-									},
-									"owner_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send"
-										],
-										"type": "string"
-									},
-									"trademark_number": {
-										"description": "Text not exceeding 1000 characters",
-										"maxLength": 1000,
-										"minLength": 1,
-										"type": "string"
-									},
-									"trademark_office": {
-										"description": "Text not exceeding 1000 characters",
-										"maxLength": 1000,
-										"minLength": 1,
-										"type": "string"
-									},
-									"trademark_symbol": {
-										"description": "Text not exceeding 1000 characters",
-										"maxLength": 1000,
-										"minLength": 1,
-										"type": "string"
-									}
-								},
-								"required": [
-									"host_notification",
-									"justification",
-									"owner_notification",
-									"trademark_number",
-									"trademark_office",
-									"trademark_symbol"
-								],
-								"title": "Trademark Report",
 								"type": "object"
 							},
 							{
@@ -376,17 +337,18 @@
 										"properties": {
 											"act": {
 												"description": "The abuse report type.",
-												"enum": [
-													"abuse_dmca",
-													"abuse_trademark",
-													"abuse_general",
-													"abuse_phishing",
-													"abuse_children",
-													"abuse_threat",
-													"abuse_registrar_whois",
-													"abuse_ncsei"
-												],
-												"example": "abuse_general",
+												"type": "string"
+											},
+											"comments": {
+												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"maxLength": 2000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"company": {
+												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 100,
+												"minLength": 1,
 												"type": "string"
 											},
 											"email": {
@@ -400,34 +362,6 @@
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
-											},
-											"urls": {
-												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"type": "string"
-											}
-										},
-										"required": [
-											"act",
-											"email",
-											"email2",
-											"name",
-											"urls"
-										],
-										"type": "object"
-									},
-									{
-										"properties": {
-											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
-												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
-											},
-											"company": {
-												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"maxLength": 100,
 												"minLength": 1,
 												"type": "string"
 											},
@@ -454,59 +388,72 @@
 												"maxLength": 255,
 												"minLength": 1,
 												"type": "string"
+											},
+											"urls": {
+												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string"
 											}
 										},
+										"required": [
+											"act",
+											"email",
+											"email2",
+											"name",
+											"urls"
+										],
 										"type": "object"
+									},
+									{
+										"properties": {
+											"act": {
+												"enum": [
+													"abuse_general"
+												]
+											},
+											"destination_ips": {
+												"description": "A list of IP addresses separated by ‘\\n’ (new line character). The list of destination IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique.",
+												"type": "string"
+											},
+											"host_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon"
+												],
+												"type": "string"
+											},
+											"justification": {
+												"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
+												"maxLength": 5000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"owner_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon",
+													"none"
+												],
+												"type": "string"
+											},
+											"ports_protocols": {
+												"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
+												"type": "string"
+											},
+											"source_ips": {
+												"description": "A list of IP addresses separated by ‘\\n’ (new line character). The list of source IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"host_notification",
+											"justification",
+											"owner_notification"
+										],
+										"title": "General Report"
 									}
 								],
-								"properties": {
-									"act": {
-										"enum": [
-											"abuse_general"
-										]
-									},
-									"destination_ips": {
-										"description": "A list of IP addresses separated by ‘\\n’ (new line character). The list of destination IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique.",
-										"type": "string"
-									},
-									"host_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon"
-										],
-										"type": "string"
-									},
-									"justification": {
-										"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
-										"maxLength": 5000,
-										"minLength": 1,
-										"type": "string"
-									},
-									"owner_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon",
-											"none"
-										],
-										"type": "string"
-									},
-									"ports_protocols": {
-										"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
-										"type": "string"
-									},
-									"source_ips": {
-										"description": "A list of IP addresses separated by ‘\\n’ (new line character). The list of source IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique.",
-										"type": "string"
-									}
-								},
-								"required": [
-									"host_notification",
-									"justification",
-									"owner_notification"
-								],
-								"title": "General Report",
 								"type": "object"
 							},
 							{
@@ -515,17 +462,18 @@
 										"properties": {
 											"act": {
 												"description": "The abuse report type.",
-												"enum": [
-													"abuse_dmca",
-													"abuse_trademark",
-													"abuse_general",
-													"abuse_phishing",
-													"abuse_children",
-													"abuse_threat",
-													"abuse_registrar_whois",
-													"abuse_ncsei"
-												],
-												"example": "abuse_general",
+												"type": "string"
+											},
+											"comments": {
+												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"maxLength": 2000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"company": {
+												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 100,
+												"minLength": 1,
 												"type": "string"
 											},
 											"email": {
@@ -539,34 +487,6 @@
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
-											},
-											"urls": {
-												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"type": "string"
-											}
-										},
-										"required": [
-											"act",
-											"email",
-											"email2",
-											"name",
-											"urls"
-										],
-										"type": "object"
-									},
-									{
-										"properties": {
-											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
-												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
-											},
-											"company": {
-												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"maxLength": 100,
 												"minLength": 1,
 												"type": "string"
 											},
@@ -593,52 +513,65 @@
 												"maxLength": 255,
 												"minLength": 1,
 												"type": "string"
+											},
+											"urls": {
+												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string"
 											}
 										},
+										"required": [
+											"act",
+											"email",
+											"email2",
+											"name",
+											"urls"
+										],
 										"type": "object"
+									},
+									{
+										"properties": {
+											"act": {
+												"enum": [
+													"abuse_phishing"
+												]
+											},
+											"host_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon"
+												],
+												"type": "string"
+											},
+											"justification": {
+												"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
+												"maxLength": 5000,
+												"minLength": 20,
+												"type": "string"
+											},
+											"original_work": {
+												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											},
+											"owner_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"host_notification",
+											"justification",
+											"owner_notification"
+										],
+										"title": "Phishing Report"
 									}
 								],
-								"properties": {
-									"act": {
-										"enum": [
-											"abuse_phishing"
-										]
-									},
-									"host_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon"
-										],
-										"type": "string"
-									},
-									"justification": {
-										"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
-										"maxLength": 5000,
-										"minLength": 20,
-										"type": "string"
-									},
-									"original_work": {
-										"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
-										"maxLength": 255,
-										"minLength": 1,
-										"type": "string"
-									},
-									"owner_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon"
-										],
-										"type": "string"
-									}
-								},
-								"required": [
-									"host_notification",
-									"justification",
-									"owner_notification"
-								],
-								"title": "Phishing Report",
 								"type": "object"
 							},
 							{
@@ -647,17 +580,18 @@
 										"properties": {
 											"act": {
 												"description": "The abuse report type.",
-												"enum": [
-													"abuse_dmca",
-													"abuse_trademark",
-													"abuse_general",
-													"abuse_phishing",
-													"abuse_children",
-													"abuse_threat",
-													"abuse_registrar_whois",
-													"abuse_ncsei"
-												],
-												"example": "abuse_general",
+												"type": "string"
+											},
+											"comments": {
+												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"maxLength": 2000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"company": {
+												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 100,
+												"minLength": 1,
 												"type": "string"
 											},
 											"email": {
@@ -671,34 +605,6 @@
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
-											},
-											"urls": {
-												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"type": "string"
-											}
-										},
-										"required": [
-											"act",
-											"email",
-											"email2",
-											"name",
-											"urls"
-										],
-										"type": "object"
-									},
-									{
-										"properties": {
-											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
-												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
-											},
-											"company": {
-												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"maxLength": 100,
 												"minLength": 1,
 												"type": "string"
 											},
@@ -725,62 +631,75 @@
 												"maxLength": 255,
 												"minLength": 1,
 												"type": "string"
+											},
+											"urls": {
+												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string"
 											}
 										},
+										"required": [
+											"act",
+											"email",
+											"email2",
+											"name",
+											"urls"
+										],
 										"type": "object"
+									},
+									{
+										"properties": {
+											"act": {
+												"enum": [
+													"abuse_children"
+												]
+											},
+											"country": {
+												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											},
+											"host_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon"
+												],
+												"type": "string"
+											},
+											"justification": {
+												"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
+												"maxLength": 5000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"ncmec_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon"
+												],
+												"type": "string"
+											},
+											"owner_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon",
+													"none"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"host_notification",
+											"justification",
+											"ncmec_notification",
+											"owner_notification"
+										],
+										"title": "Children Abuse Report"
 									}
 								],
-								"properties": {
-									"act": {
-										"enum": [
-											"abuse_children"
-										]
-									},
-									"country": {
-										"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
-										"maxLength": 255,
-										"minLength": 1,
-										"type": "string"
-									},
-									"host_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon"
-										],
-										"type": "string"
-									},
-									"justification": {
-										"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
-										"maxLength": 5000,
-										"minLength": 1,
-										"type": "string"
-									},
-									"ncmec_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon"
-										],
-										"type": "string"
-									},
-									"owner_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon",
-											"none"
-										],
-										"type": "string"
-									}
-								},
-								"required": [
-									"host_notification",
-									"justification",
-									"ncmec_notification",
-									"owner_notification"
-								],
-								"title": "Children Abuse Report",
 								"type": "object"
 							},
 							{
@@ -789,17 +708,18 @@
 										"properties": {
 											"act": {
 												"description": "The abuse report type.",
-												"enum": [
-													"abuse_dmca",
-													"abuse_trademark",
-													"abuse_general",
-													"abuse_phishing",
-													"abuse_children",
-													"abuse_threat",
-													"abuse_registrar_whois",
-													"abuse_ncsei"
-												],
-												"example": "abuse_general",
+												"type": "string"
+											},
+											"comments": {
+												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"maxLength": 2000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"company": {
+												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 100,
+												"minLength": 1,
 												"type": "string"
 											},
 											"email": {
@@ -813,34 +733,6 @@
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
-											},
-											"urls": {
-												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"type": "string"
-											}
-										},
-										"required": [
-											"act",
-											"email",
-											"email2",
-											"name",
-											"urls"
-										],
-										"type": "object"
-									},
-									{
-										"properties": {
-											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
-												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
-											},
-											"company": {
-												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"maxLength": 100,
 												"minLength": 1,
 												"type": "string"
 											},
@@ -867,46 +759,59 @@
 												"maxLength": 255,
 												"minLength": 1,
 												"type": "string"
+											},
+											"urls": {
+												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string"
 											}
 										},
+										"required": [
+											"act",
+											"email",
+											"email2",
+											"name",
+											"urls"
+										],
 										"type": "object"
+									},
+									{
+										"properties": {
+											"act": {
+												"enum": [
+													"abuse_threat"
+												]
+											},
+											"host_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon"
+												],
+												"type": "string"
+											},
+											"justification": {
+												"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
+												"maxLength": 5000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"owner_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"host_notification",
+											"justification",
+											"owner_notification"
+										],
+										"title": "Threat Report"
 									}
 								],
-								"properties": {
-									"act": {
-										"enum": [
-											"abuse_threat"
-										]
-									},
-									"host_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon"
-										],
-										"type": "string"
-									},
-									"justification": {
-										"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
-										"maxLength": 5000,
-										"minLength": 1,
-										"type": "string"
-									},
-									"owner_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon"
-										],
-										"type": "string"
-									}
-								},
-								"required": [
-									"host_notification",
-									"justification",
-									"owner_notification"
-								],
-								"title": "Threat Report",
 								"type": "object"
 							},
 							{
@@ -915,17 +820,18 @@
 										"properties": {
 											"act": {
 												"description": "The abuse report type.",
-												"enum": [
-													"abuse_dmca",
-													"abuse_trademark",
-													"abuse_general",
-													"abuse_phishing",
-													"abuse_children",
-													"abuse_threat",
-													"abuse_registrar_whois",
-													"abuse_ncsei"
-												],
-												"example": "abuse_general",
+												"type": "string"
+											},
+											"comments": {
+												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"maxLength": 2000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"company": {
+												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 100,
+												"minLength": 1,
 												"type": "string"
 											},
 											"email": {
@@ -939,34 +845,6 @@
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
-											},
-											"urls": {
-												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"type": "string"
-											}
-										},
-										"required": [
-											"act",
-											"email",
-											"email2",
-											"name",
-											"urls"
-										],
-										"type": "object"
-									},
-									{
-										"properties": {
-											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
-												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
-											},
-											"company": {
-												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"maxLength": 100,
 												"minLength": 1,
 												"type": "string"
 											},
@@ -993,31 +871,44 @@
 												"maxLength": 255,
 												"minLength": 1,
 												"type": "string"
+											},
+											"urls": {
+												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string"
 											}
 										},
-										"type": "object"
-									}
-								],
-								"properties": {
-									"act": {
-										"enum": [
-											"abuse_registrar_whois"
-										]
-									},
-									"owner_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon",
-											"none"
+										"required": [
+											"act",
+											"email",
+											"email2",
+											"name",
+											"urls"
 										],
-										"type": "string"
+										"type": "object"
+									},
+									{
+										"properties": {
+											"act": {
+												"enum": [
+													"abuse_registrar_whois"
+												]
+											},
+											"owner_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon",
+													"none"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"owner_notification"
+										],
+										"title": "Registrar Whois Report"
 									}
-								},
-								"required": [
-									"owner_notification"
 								],
-								"title": "Registrar Whois Report",
 								"type": "object"
 							},
 							{
@@ -1026,17 +917,18 @@
 										"properties": {
 											"act": {
 												"description": "The abuse report type.",
-												"enum": [
-													"abuse_dmca",
-													"abuse_trademark",
-													"abuse_general",
-													"abuse_phishing",
-													"abuse_children",
-													"abuse_threat",
-													"abuse_registrar_whois",
-													"abuse_ncsei"
-												],
-												"example": "abuse_general",
+												"type": "string"
+											},
+											"comments": {
+												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"maxLength": 2000,
+												"minLength": 1,
+												"type": "string"
+											},
+											"company": {
+												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"maxLength": 100,
+												"minLength": 1,
 												"type": "string"
 											},
 											"email": {
@@ -1050,34 +942,6 @@
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
-											},
-											"urls": {
-												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"type": "string"
-											}
-										},
-										"required": [
-											"act",
-											"email",
-											"email2",
-											"name",
-											"urls"
-										],
-										"type": "object"
-									},
-									{
-										"properties": {
-											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
-												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
-											},
-											"company": {
-												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-												"maxLength": 100,
 												"minLength": 1,
 												"type": "string"
 											},
@@ -1104,51 +968,64 @@
 												"maxLength": 255,
 												"minLength": 1,
 												"type": "string"
+											},
+											"urls": {
+												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string"
 											}
 										},
+										"required": [
+											"act",
+											"email",
+											"email2",
+											"name",
+											"urls"
+										],
 										"type": "object"
+									},
+									{
+										"properties": {
+											"act": {
+												"enum": [
+													"abuse_ncsei"
+												]
+											},
+											"country": {
+												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
+												"maxLength": 255,
+												"minLength": 1,
+												"type": "string"
+											},
+											"host_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon"
+												],
+												"type": "string"
+											},
+											"ncsei_subject_representation": {
+												"description": "If the submitter is the target of NCSEI in the URLs of the abuse report.",
+												"type": "boolean"
+											},
+											"owner_notification": {
+												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"enum": [
+													"send",
+													"send-anon",
+													"none"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"host_notification",
+											"ncsei_subject_representation",
+											"owner_notification"
+										],
+										"title": "NCSEI Report"
 									}
 								],
-								"properties": {
-									"act": {
-										"enum": [
-											"abuse_ncsei"
-										]
-									},
-									"country": {
-										"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
-										"maxLength": 255,
-										"minLength": 1,
-										"type": "string"
-									},
-									"host_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon"
-										],
-										"type": "string"
-									},
-									"ncsei_subject_representation": {
-										"description": "If the submitter is the target of NCSEI in the URLs of the abuse report.",
-										"type": "boolean"
-									},
-									"owner_notification": {
-										"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
-										"enum": [
-											"send",
-											"send-anon",
-											"none"
-										],
-										"type": "string"
-									}
-								},
-								"required": [
-									"host_notification",
-									"ncsei_subject_representation",
-									"owner_notification"
-								],
-								"title": "NCSEI Report",
 								"type": "object"
 							}
 						]
@@ -1171,17 +1048,6 @@
 									"properties": {
 										"act": {
 											"description": "The abuse report type.",
-											"enum": [
-												"abuse_dmca",
-												"abuse_trademark",
-												"abuse_general",
-												"abuse_phishing",
-												"abuse_children",
-												"abuse_threat",
-												"abuse_registrar_whois",
-												"abuse_ncsei"
-											],
-											"example": "abuse_general",
 											"type": "string"
 										}
 									},
@@ -1340,17 +1206,6 @@
 									"properties": {
 										"act": {
 											"description": "The abuse report type.",
-											"enum": [
-												"abuse_dmca",
-												"abuse_trademark",
-												"abuse_general",
-												"abuse_phishing",
-												"abuse_children",
-												"abuse_threat",
-												"abuse_registrar_whois",
-												"abuse_ncsei"
-											],
-											"example": "abuse_general",
 											"type": "string"
 										}
 									},
@@ -1510,17 +1365,6 @@
 									"properties": {
 										"act": {
 											"description": "The abuse report type.",
-											"enum": [
-												"abuse_dmca",
-												"abuse_trademark",
-												"abuse_general",
-												"abuse_phishing",
-												"abuse_children",
-												"abuse_threat",
-												"abuse_registrar_whois",
-												"abuse_ncsei"
-											],
-											"example": "abuse_general",
 											"type": "string"
 										}
 									},
