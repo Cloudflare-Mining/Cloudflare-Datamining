@@ -2,7 +2,7 @@
 	{
 		"id": "8e117fdd57cd531947dbdcfd82f7a1a1",
 		"name": "Email Security Policy Admin",
-		"description": "Write acccess to Email Security Policies",
+		"description": "Write access to Email Security Policies",
 		"permissions": {
 			"ces_policies": {
 				"read": true,
@@ -319,7 +319,7 @@
 	{
 		"id": "d9290f651ced29c9524b79aa5ac4fcaf",
 		"name": "Email Security Analyst",
-		"description": "Write acccess to all of CES, except Settings which is read only (Requires Cloudflare Zero Trust PII)",
+		"description": "Write access to all of CES, except Settings which is read only (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
 			"ces_policies": {
 				"read": true,
@@ -374,7 +374,7 @@
 	{
 		"id": "70035ec03549c8799c170a2afc25c139",
 		"name": "Email Configuration Admin",
-		"description": "Write acccess to all of CES, CASB, DLP, Gateway and Tunnels, except Mail Preview, Raw Email, on-demand reports, actions on emails, and Submissions, Submission Transparency. (Requires Cloudflare Zero Trust PII)",
+		"description": "Write access to all of CES, CASB, DLP, Gateway and Tunnels, except Mail Preview, Raw Email, on-demand reports, actions on emails, and Submissions, Submission Transparency. (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
 			"ces_policies": {
 				"read": true,
@@ -422,7 +422,7 @@
 	{
 		"id": "43801681f525f111da3f15d07ffafdf1",
 		"name": "Email Integration Admin",
-		"description": "Write acccess to CES account integration only, CASB, DLP, Gateway and Tunnels",
+		"description": "Write access to CES account integration only, CASB, DLP, Gateway and Tunnels",
 		"permissions": {
 			"ces_policies": {
 				"read": true,
