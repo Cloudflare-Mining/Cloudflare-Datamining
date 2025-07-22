@@ -830,6 +830,7 @@
 														"type": "string"
 													},
 													"enabled": {
+														"default": false,
 														"description": "Flag that indicates if the job is enabled.",
 														"example": false,
 														"type": "boolean",
@@ -904,18 +905,19 @@
 															{
 																"enum": [
 																	0
-																]
+																],
+																"type": "integer"
 															},
 															{
 																"maximum": 1000000000,
-																"minimum": 5000000
+																"minimum": 5000000,
+																"type": "integer"
 															}
 														],
 														"type": "integer",
 														"x-auditable": true
 													},
 													"max_upload_interval_seconds": {
-														"default": 30,
 														"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
 														"example": 30,
 														"nullable": true,
@@ -923,18 +925,19 @@
 															{
 																"enum": [
 																	0
-																]
+																],
+																"type": "integer"
 															},
 															{
 																"maximum": 300,
-																"minimum": 30
+																"minimum": 30,
+																"type": "integer"
 															}
 														],
 														"type": "integer",
 														"x-auditable": true
 													},
 													"max_upload_records": {
-														"default": 100000,
 														"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
 														"example": 1000,
 														"nullable": true,
@@ -942,11 +945,13 @@
 															{
 																"enum": [
 																	0
-																]
+																],
+																"type": "integer"
 															},
 															{
 																"maximum": 1000000,
-																"minimum": 1000
+																"minimum": 1000,
+																"type": "integer"
 															}
 														],
 														"type": "integer",
@@ -966,7 +971,6 @@
 														"nullable": true,
 														"properties": {
 															"CVE-2021-44228": {
-																"default": false,
 																"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 																"nullable": true,
 																"type": "boolean",
@@ -1004,7 +1008,6 @@
 																"type": "array"
 															},
 															"output_type": {
-																"default": "ndjson",
 																"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
 																"enum": [
 																	"ndjson",
@@ -1039,7 +1042,6 @@
 																"x-auditable": true
 															},
 															"sample_rate": {
-																"default": 1,
 																"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 																"format": "float",
 																"maximum": 1,
@@ -1049,7 +1051,6 @@
 																"x-auditable": true
 															},
 															"timestamp_format": {
-																"default": "unixnano",
 																"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
 																"enum": [
 																	"unixnano",
@@ -1412,6 +1413,7 @@
 														"type": "string"
 													},
 													"enabled": {
+														"default": false,
 														"description": "Flag that indicates if the job is enabled.",
 														"example": false,
 														"type": "boolean",
@@ -1486,18 +1488,19 @@
 															{
 																"enum": [
 																	0
-																]
+																],
+																"type": "integer"
 															},
 															{
 																"maximum": 1000000000,
-																"minimum": 5000000
+																"minimum": 5000000,
+																"type": "integer"
 															}
 														],
 														"type": "integer",
 														"x-auditable": true
 													},
 													"max_upload_interval_seconds": {
-														"default": 30,
 														"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
 														"example": 30,
 														"nullable": true,
@@ -1505,18 +1508,19 @@
 															{
 																"enum": [
 																	0
-																]
+																],
+																"type": "integer"
 															},
 															{
 																"maximum": 300,
-																"minimum": 30
+																"minimum": 30,
+																"type": "integer"
 															}
 														],
 														"type": "integer",
 														"x-auditable": true
 													},
 													"max_upload_records": {
-														"default": 100000,
 														"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
 														"example": 1000,
 														"nullable": true,
@@ -1524,11 +1528,13 @@
 															{
 																"enum": [
 																	0
-																]
+																],
+																"type": "integer"
 															},
 															{
 																"maximum": 1000000,
-																"minimum": 1000
+																"minimum": 1000,
+																"type": "integer"
 															}
 														],
 														"type": "integer",
@@ -1548,7 +1554,6 @@
 														"nullable": true,
 														"properties": {
 															"CVE-2021-44228": {
-																"default": false,
 																"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 																"nullable": true,
 																"type": "boolean",
@@ -1586,7 +1591,6 @@
 																"type": "array"
 															},
 															"output_type": {
-																"default": "ndjson",
 																"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
 																"enum": [
 																	"ndjson",
@@ -1621,7 +1625,6 @@
 																"x-auditable": true
 															},
 															"sample_rate": {
-																"default": 1,
 																"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 																"format": "float",
 																"maximum": 1,
@@ -1631,7 +1634,6 @@
 																"x-auditable": true
 															},
 															"timestamp_format": {
-																"default": "unixnano",
 																"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
 																"enum": [
 																	"unixnano",
@@ -2007,6 +2009,7 @@
 													"type": "string"
 												},
 												"enabled": {
+													"default": false,
 													"description": "Flag that indicates if the job is enabled.",
 													"example": false,
 													"type": "boolean",
@@ -2081,18 +2084,19 @@
 														{
 															"enum": [
 																0
-															]
+															],
+															"type": "integer"
 														},
 														{
 															"maximum": 1000000000,
-															"minimum": 5000000
+															"minimum": 5000000,
+															"type": "integer"
 														}
 													],
 													"type": "integer",
 													"x-auditable": true
 												},
 												"max_upload_interval_seconds": {
-													"default": 30,
 													"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
 													"example": 30,
 													"nullable": true,
@@ -2100,18 +2104,19 @@
 														{
 															"enum": [
 																0
-															]
+															],
+															"type": "integer"
 														},
 														{
 															"maximum": 300,
-															"minimum": 30
+															"minimum": 30,
+															"type": "integer"
 														}
 													],
 													"type": "integer",
 													"x-auditable": true
 												},
 												"max_upload_records": {
-													"default": 100000,
 													"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
 													"example": 1000,
 													"nullable": true,
@@ -2119,11 +2124,13 @@
 														{
 															"enum": [
 																0
-															]
+															],
+															"type": "integer"
 														},
 														{
 															"maximum": 1000000,
-															"minimum": 1000
+															"minimum": 1000,
+															"type": "integer"
 														}
 													],
 													"type": "integer",
@@ -2143,7 +2150,6 @@
 													"nullable": true,
 													"properties": {
 														"CVE-2021-44228": {
-															"default": false,
 															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 															"nullable": true,
 															"type": "boolean",
@@ -2181,7 +2187,6 @@
 															"type": "array"
 														},
 														"output_type": {
-															"default": "ndjson",
 															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
 															"enum": [
 																"ndjson",
@@ -2216,7 +2221,6 @@
 															"x-auditable": true
 														},
 														"sample_rate": {
-															"default": 1,
 															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 															"format": "float",
 															"maximum": 1,
@@ -2226,7 +2230,6 @@
 															"x-auditable": true
 														},
 														"timestamp_format": {
-															"default": "unixnano",
 															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
 															"enum": [
 																"unixnano",
@@ -2488,6 +2491,7 @@
 								"type": "string"
 							},
 							"enabled": {
+								"default": false,
 								"description": "Flag that indicates if the job is enabled.",
 								"example": false,
 								"type": "boolean",
@@ -2542,18 +2546,19 @@
 									{
 										"enum": [
 											0
-										]
+										],
+										"type": "integer"
 									},
 									{
 										"maximum": 1000000000,
-										"minimum": 5000000
+										"minimum": 5000000,
+										"type": "integer"
 									}
 								],
 								"type": "integer",
 								"x-auditable": true
 							},
 							"max_upload_interval_seconds": {
-								"default": 30,
 								"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
 								"example": 30,
 								"nullable": true,
@@ -2561,18 +2566,19 @@
 									{
 										"enum": [
 											0
-										]
+										],
+										"type": "integer"
 									},
 									{
 										"maximum": 300,
-										"minimum": 30
+										"minimum": 30,
+										"type": "integer"
 									}
 								],
 								"type": "integer",
 								"x-auditable": true
 							},
 							"max_upload_records": {
-								"default": 100000,
 								"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
 								"example": 1000,
 								"nullable": true,
@@ -2580,11 +2586,13 @@
 									{
 										"enum": [
 											0
-										]
+										],
+										"type": "integer"
 									},
 									{
 										"maximum": 1000000,
-										"minimum": 1000
+										"minimum": 1000,
+										"type": "integer"
 									}
 								],
 								"type": "integer",
@@ -2604,7 +2612,6 @@
 								"nullable": true,
 								"properties": {
 									"CVE-2021-44228": {
-										"default": false,
 										"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 										"nullable": true,
 										"type": "boolean",
@@ -2642,7 +2649,6 @@
 										"type": "array"
 									},
 									"output_type": {
-										"default": "ndjson",
 										"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
 										"enum": [
 											"ndjson",
@@ -2677,7 +2683,6 @@
 										"x-auditable": true
 									},
 									"sample_rate": {
-										"default": 1,
 										"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 										"format": "float",
 										"maximum": 1,
@@ -2687,7 +2692,6 @@
 										"x-auditable": true
 									},
 									"timestamp_format": {
-										"default": "unixnano",
 										"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
 										"enum": [
 											"unixnano",
@@ -2894,6 +2898,7 @@
 													"type": "string"
 												},
 												"enabled": {
+													"default": false,
 													"description": "Flag that indicates if the job is enabled.",
 													"example": false,
 													"type": "boolean",
@@ -2968,18 +2973,19 @@
 														{
 															"enum": [
 																0
-															]
+															],
+															"type": "integer"
 														},
 														{
 															"maximum": 1000000000,
-															"minimum": 5000000
+															"minimum": 5000000,
+															"type": "integer"
 														}
 													],
 													"type": "integer",
 													"x-auditable": true
 												},
 												"max_upload_interval_seconds": {
-													"default": 30,
 													"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
 													"example": 30,
 													"nullable": true,
@@ -2987,18 +2993,19 @@
 														{
 															"enum": [
 																0
-															]
+															],
+															"type": "integer"
 														},
 														{
 															"maximum": 300,
-															"minimum": 30
+															"minimum": 30,
+															"type": "integer"
 														}
 													],
 													"type": "integer",
 													"x-auditable": true
 												},
 												"max_upload_records": {
-													"default": 100000,
 													"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
 													"example": 1000,
 													"nullable": true,
@@ -3006,11 +3013,13 @@
 														{
 															"enum": [
 																0
-															]
+															],
+															"type": "integer"
 														},
 														{
 															"maximum": 1000000,
-															"minimum": 1000
+															"minimum": 1000,
+															"type": "integer"
 														}
 													],
 													"type": "integer",
@@ -3030,7 +3039,6 @@
 													"nullable": true,
 													"properties": {
 														"CVE-2021-44228": {
-															"default": false,
 															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 															"nullable": true,
 															"type": "boolean",
@@ -3068,7 +3076,6 @@
 															"type": "array"
 														},
 														"output_type": {
-															"default": "ndjson",
 															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
 															"enum": [
 																"ndjson",
@@ -3103,7 +3110,6 @@
 															"x-auditable": true
 														},
 														"sample_rate": {
-															"default": 1,
 															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 															"format": "float",
 															"maximum": 1,
@@ -3113,7 +3119,6 @@
 															"x-auditable": true
 														},
 														"timestamp_format": {
-															"default": "unixnano",
 															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
 															"enum": [
 																"unixnano",
@@ -4836,6 +4841,7 @@
 								"type": "string"
 							},
 							"enabled": {
+								"default": false,
 								"description": "Flag that indicates if the job is enabled.",
 								"example": false,
 								"type": "boolean",
@@ -4890,18 +4896,19 @@
 									{
 										"enum": [
 											0
-										]
+										],
+										"type": "integer"
 									},
 									{
 										"maximum": 1000000000,
-										"minimum": 5000000
+										"minimum": 5000000,
+										"type": "integer"
 									}
 								],
 								"type": "integer",
 								"x-auditable": true
 							},
 							"max_upload_interval_seconds": {
-								"default": 30,
 								"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
 								"example": 30,
 								"nullable": true,
@@ -4909,18 +4916,19 @@
 									{
 										"enum": [
 											0
-										]
+										],
+										"type": "integer"
 									},
 									{
 										"maximum": 300,
-										"minimum": 30
+										"minimum": 30,
+										"type": "integer"
 									}
 								],
 								"type": "integer",
 								"x-auditable": true
 							},
 							"max_upload_records": {
-								"default": 100000,
 								"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
 								"example": 1000,
 								"nullable": true,
@@ -4928,11 +4936,13 @@
 									{
 										"enum": [
 											0
-										]
+										],
+										"type": "integer"
 									},
 									{
 										"maximum": 1000000,
-										"minimum": 1000
+										"minimum": 1000,
+										"type": "integer"
 									}
 								],
 								"type": "integer",
@@ -4952,7 +4962,6 @@
 								"nullable": true,
 								"properties": {
 									"CVE-2021-44228": {
-										"default": false,
 										"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 										"nullable": true,
 										"type": "boolean",
@@ -4990,7 +4999,6 @@
 										"type": "array"
 									},
 									"output_type": {
-										"default": "ndjson",
 										"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
 										"enum": [
 											"ndjson",
@@ -5025,7 +5033,6 @@
 										"x-auditable": true
 									},
 									"sample_rate": {
-										"default": 1,
 										"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 										"format": "float",
 										"maximum": 1,
@@ -5035,7 +5042,6 @@
 										"x-auditable": true
 									},
 									"timestamp_format": {
-										"default": "unixnano",
 										"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
 										"enum": [
 											"unixnano",
@@ -5239,6 +5245,7 @@
 													"type": "string"
 												},
 												"enabled": {
+													"default": false,
 													"description": "Flag that indicates if the job is enabled.",
 													"example": false,
 													"type": "boolean",
@@ -5313,18 +5320,19 @@
 														{
 															"enum": [
 																0
-															]
+															],
+															"type": "integer"
 														},
 														{
 															"maximum": 1000000000,
-															"minimum": 5000000
+															"minimum": 5000000,
+															"type": "integer"
 														}
 													],
 													"type": "integer",
 													"x-auditable": true
 												},
 												"max_upload_interval_seconds": {
-													"default": 30,
 													"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
 													"example": 30,
 													"nullable": true,
@@ -5332,18 +5340,19 @@
 														{
 															"enum": [
 																0
-															]
+															],
+															"type": "integer"
 														},
 														{
 															"maximum": 300,
-															"minimum": 30
+															"minimum": 30,
+															"type": "integer"
 														}
 													],
 													"type": "integer",
 													"x-auditable": true
 												},
 												"max_upload_records": {
-													"default": 100000,
 													"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
 													"example": 1000,
 													"nullable": true,
@@ -5351,11 +5360,13 @@
 														{
 															"enum": [
 																0
-															]
+															],
+															"type": "integer"
 														},
 														{
 															"maximum": 1000000,
-															"minimum": 1000
+															"minimum": 1000,
+															"type": "integer"
 														}
 													],
 													"type": "integer",
@@ -5375,7 +5386,6 @@
 													"nullable": true,
 													"properties": {
 														"CVE-2021-44228": {
-															"default": false,
 															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
 															"nullable": true,
 															"type": "boolean",
@@ -5413,7 +5423,6 @@
 															"type": "array"
 														},
 														"output_type": {
-															"default": "ndjson",
 															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
 															"enum": [
 																"ndjson",
@@ -5448,7 +5457,6 @@
 															"x-auditable": true
 														},
 														"sample_rate": {
-															"default": 1,
 															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 															"format": "float",
 															"maximum": 1,
@@ -5458,7 +5466,6 @@
 															"x-auditable": true
 														},
 														"timestamp_format": {
-															"default": "unixnano",
 															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
 															"enum": [
 																"unixnano",

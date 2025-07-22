@@ -627,7 +627,6 @@
 															},
 															"biso_admin_controls": {
 																"description": "Configure how browser isolation behaves.",
-																"nullable": true,
 																"properties": {
 																	"copy": {
 																		"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -738,7 +737,8 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"block_page": {
 																"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -1518,7 +1518,6 @@
 																	},
 																	"biso_admin_controls": {
 																		"description": "Configure how browser isolation behaves.",
-																		"nullable": true,
 																		"properties": {
 																			"copy": {
 																				"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -1629,7 +1628,8 @@
 																				"x-auditable": true
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"block_page": {
 																		"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -2508,7 +2508,6 @@
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
-															"nullable": true,
 															"properties": {
 																"copy": {
 																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -2619,7 +2618,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -3367,7 +3367,6 @@
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
-																	"nullable": true,
 																	"properties": {
 																		"copy": {
 																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -3478,7 +3477,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -4240,7 +4240,6 @@
 									},
 									"biso_admin_controls": {
 										"description": "Configure how browser isolation behaves.",
-										"nullable": true,
 										"properties": {
 											"copy": {
 												"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -4351,7 +4350,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"block_page": {
 										"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -5069,7 +5069,6 @@
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
-															"nullable": true,
 															"properties": {
 																"copy": {
 																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -5180,7 +5179,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -5928,7 +5928,6 @@
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
-																	"nullable": true,
 																	"properties": {
 																		"copy": {
 																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -6039,7 +6038,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -6915,7 +6915,6 @@
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
-															"nullable": true,
 															"properties": {
 																"copy": {
 																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -7026,7 +7025,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -7771,7 +7771,6 @@
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
-																	"nullable": true,
 																	"properties": {
 																		"copy": {
 																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -7882,7 +7881,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -8656,7 +8656,6 @@
 									},
 									"biso_admin_controls": {
 										"description": "Configure how browser isolation behaves.",
-										"nullable": true,
 										"properties": {
 											"copy": {
 												"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -8767,7 +8766,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"block_page": {
 										"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -9485,7 +9485,6 @@
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
-															"nullable": true,
 															"properties": {
 																"copy": {
 																	"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -9596,7 +9595,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -10344,7 +10344,6 @@
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
-																	"nullable": true,
 																	"properties": {
 																		"copy": {
 																			"description": "Configure whether copy is enabled or not. When set with \"remote_only\", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == \"v2\"`.",
@@ -10455,7 +10454,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
