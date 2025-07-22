@@ -5,36 +5,56 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>What you'll do:</strong></h3>
-<p>As a Distribution Partner Manager, your job will be to manage the full 360 relationship within your assigned Distributors. Your focus will be on expanding Cloudflare's Partner capacity and capabilities by working cross-functionally within the Distributor to recruit, activate and scale Cloudflare's Partners, including resellers, system integrators and MSSPs. KPIs are tied to pipeline generation, booked revenue and Partner activation.</p>
-<h3><strong>&nbsp;Additional responsibilities will include:</strong></h3>
+<p><strong>Location: Washington DC or Austin TX</strong></p>
+<p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</p>
+<p><strong>What you'll do</strong></p>
+<p>As a Software Engineer: Resiliency, you will be part of a Resiliency Organization responsible for developing and maintaining the systems that manage Cloudflare’s infrastructure at scale. We are looking for engineers to join the <strong>Maintenance Optimizer</strong> team and shape the future of infrastructure reliability. We're building a cutting-edge Maintenance Coordination System in Typescript &amp; Go that will be pivotal in guaranteeing our service level capacity, dynamically allocating hardware resources, and supporting our critical capacity SLOs. This is a unique opportunity to work on complex, globally distributed systems which underpin core infrastructure and all Cloudflare products. We ensure the seamless operation of our global network. You will play a key role in the development of the infrastructure that powers Cloudflare’s scale.</p>
+<p>You will collaborate with the team to understand business needs and develop technical solutions. You will thrive in a fast-paced iterative engineering environment and work closely with internal customers to understand their requirements.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Collaborate with Distributor and Cloudflare cross-functional teams (Partner Development, Partner Marketing, Partner Services, etc.) to develop and execute an annual business plan for your Distributors.</li>
-	<li>Maximize Distributors data intelligence through account mapping sessions.</li>
-	<li>Harness the full capabilities of distribution to identify new routes to market and technology alliance opportunities</li>
-	<li>Expand our partner ecosystem through Distributors in a specific region.</li>
-	<li>Train Distributors and their Partners on our technology, programs and GTM strategies.</li>
-	<li>Developing scalable relationships with Distributors and key stakeholders.</li>
-	<li>Act as the orchestrator and enabler of effective day to day engagements across both companies.</li>
-	<li>Work closely with Marketing and the Global Programs team to establish and manage a budget for MDF and other funds to engage in critical Distributor-sponsored programs, resources, activities and events.</li>
-	<li>Partner closely with the sales, marketing and enablement organizations to help them hit their goals.</li>
-	<li>Maintain a robust sales pipeline through Distribution Managed Partners.</li>
-	<li>Maintain and report an accurate Distribution Managed Partner sales forecast in SFDC.</li>
-	<li>Work with Sales Ops to maintain a Distributor performance dashboard</li>
-	<li>Run a cadence of ongoing performance review (QBRs, Executive 5x5s) with Distributors</li>
-	<li>Ensure compliance with company policies and procedures, as well as industry</li>
-	<li>regulations.</li>
+	<li>At least 4 years of hands-on software development experience on meaningfully complex systems.</li>
+	<li>Experience building both backend systems and frontend widgets.</li>
+	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
+	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
+	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
+	<li>Strong verbal and written English language skills.</li>
+	<li>Experience with DCIM, CMDB, IPAM, and other Data Center and Asset Lifecycle Management tools is a plus.</li>
+	<li>Experience with data ingestion and analysis - pulling metrics from hundreds of edge data centers.</li>
+	<li>Experience with graph theory - building a health graph on one of the world's largest physical networks.</li>
 </ul>
-<h3><strong>Examples of desirable skills, knowledge and experience:</strong></h3>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Direct experience in managing distribution partners.</li>
-	<li>Minimum 5 years of experience and a proven track record developing a partner ecosystem of VARs, SI's, MSP’s/MSSP's, within a SaaS model.</li>
-	<li>Existing relationships and/or strong familiarity of the partner ecosystem in the region that they cover.</li>
-	<li>Minimum 5 years in Software/SaaS/Security Sales &amp; Channel management.</li>
-	<li>Experience working in a start-up environment.</li>
-	<li>Ability to travel up to 50% of the time.</li>
+	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $154,000 - 188,000.</span></li>
+	<li><span data-sheets-root="1">For Austin Texas based hires: Estimated annual salary of $137,000 - 167,000.</span></li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
