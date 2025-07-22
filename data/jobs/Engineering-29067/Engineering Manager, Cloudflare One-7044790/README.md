@@ -5,43 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Bengaluru, India&nbsp;</strong></p>
-<p><strong>Overview:</strong>&nbsp;</p>
-<p>As our Global Physical Security Specialist, reporting to our Sr. Director of Physical Security you will take ownership of our physical security technologies across our office and data center footprint.&nbsp;</p>
-<p>We are looking for someone excited about solving physical world challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; implementation as well as partnering with other teams to unify physical and digital access into one cohesive security solution for Cloudflare’s global network powering our products.</p>
-<p><strong>Key Responsibilities:</strong></p>
-<p>Continue to work as a member of a unique global physical security team and program in the following areas:&nbsp;</p>
-<p><strong>Physical security systems:</strong></p>
+<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
+<p><strong>What You’ll Do</strong></p>
+<p>You will lead a team of passionate, talented engineers that are building critical features in Cloudflare One’s Zero Trust security platform. Throughout this product suite, we have offerings ranging from ZTNA (Zero Trust Network Architecture), to SWG (Secure Web Gateway), CASB (Cloud Access Security Broker), and many more that encompass a holistic platform to help secure some of the world’s most important and forward-looking organizations. Your team will directly spearhead a variety of innovative new product features across the whole product portfolio, and directly collaborate with many engineering teams while doing so. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
+<p>You bring a passion for meeting business needs with technically innovative solutions and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of past teams who respect you as both a technical leader and manager.</p>
+<p><strong>Technologies we use -&nbsp;</strong></p>
 <ul>
-	<li>Ability to work within a global physical security program focused on developing and deploying innovative physical security technology &amp; operations across our global network of data centers. This will require traveling to a variety of locations, building relationships with our partners and working in an agile environment.&nbsp;</li>
-	<li>Ability to assist and manage investigations working with Cloudflare’s People’s Team.&nbsp;</li>
-	<li>Work alongside our SIRT Team&nbsp; as required for physical Security related incidents.&nbsp;</li>
-	<li>Deploy and remediate access control and CCTV equipment with vendor support</li>
-	<li>Coordinate and provide facility and personnel safety practices, guidance, assistance, and response as required.</li>
+	<li>Core backend and API services are written in Go, Rust, and Python.</li>
+	<li>Our frontend is written in Typescript and React.</li>
+	<li>We utilize Clickhouse, Postgres, and TimescaleDB as our data stores.</li>
+	<li>Redis is our cache.</li>
+	<li>Kafka plays a large role at Cloudflare and this team with message streaming.</li>
+	<li>For service monitoring we use Prometheus and Grafana.</li>
+	<li>For service logging we use Elasticsearch and Kibana</li>
 </ul>
-<p><strong>Audit and certifications:</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience -&nbsp;</strong></p>
 <ul>
-	<li>Establish, implement, and automate our physical security standards, policies, and processes globally.&nbsp;</li>
-	<li>Support implementation of operational metrics, project tracking, and status/ blockers reporting as needed.</li>
-	<li>Work alongside our infrastructure partners to enhance their standard operating procedures ensuring compliance with physical security standards and controls, including Cloudflare Data Centers and partners.</li>
-	<li>Work with the security compliance and risk management team on developing and implementing physical security controls as it relates to various compliance requirements including but not limited to FedRAMP, ISO 27001 and SOC 2; and support internal and external audits of physical security controls.</li>
+	<li>3+ years experience in engineering management</li>
+	<li>Solid foundation in computer science, with strong competencies in software design, and building large, distributed systems</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You’re as good at explaining “why” as you are “how”</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>Comfortable managing teams/projects with competing priorities and short release cycles</li>
+	<li>Continued personal interest in software engineering with an approach of understanding and helping guide the technical implementation details</li>
+	<li>Ability to navigate technical and process hurdles necessary to drive complex projects across the finish line</li>
 </ul>
-<p><strong>Required Skills and Qualifications:</strong></p>
+<p><strong>Bonus</strong></p>
 <ul>
-	<li>Ability to make decisions on acceptable physical security risk and drive risk mitigation.&nbsp;</li>
-	<li>Experience managing a local physical security program and managing event security practices, preferably with experience of physical security controls.</li>
-	<li>Solid understanding of integrating and deploying access control and CCTV systems at scale, including networking and systems engineering.</li>
-	<li>Ability to coordinate with law enforcement and government agencies at every level</li>
-	<li>Understanding of networking security as it relates to physical security technology</li>
-	<li>Understanding of access control as it relates to granting logical access to systems</li>
-	<li>Previous experience working in Verkada Command and deploying Verkada cameras and access sensors</li>
-	<li>Ability to effectively prioritize and manage a large number of projects simultaneously</li>
-	<li>Equally adept at strategy formulation and tactical execution</li>
-	<li>Demonstrated success in earning trust across a broad variety of stakeholders and making principled decisions</li>
-	<li>Ability to influence and motivate people across a broad variety of job functions</li>
-	<li>Experience communicating physical security risk plans to the executive leadership</li>
-	<li>Experience performing site walk thoughts of data centers, corporate offices, and executive residences, including identification and measurement of risks and threats.</li>
-	<li>Experience in or desire to work with multiple time zones and ability to travel to all Cloudflare locations as required; roughly 35% travel required</li>
+	<li>Hands-on experience with pieces/all of our technology stack.</li>
+	<li>Previous experience working on security products.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
