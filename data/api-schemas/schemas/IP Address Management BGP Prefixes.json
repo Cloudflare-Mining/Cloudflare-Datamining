@@ -172,6 +172,13 @@
 														"type": "integer",
 														"x-auditable": true
 													},
+													"auto_advertise_withdraw": {
+														"default": false,
+														"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
 													"bgp_signal_opts": {
 														"properties": {
 															"enabled": {
@@ -247,13 +254,6 @@
 															}
 														},
 														"type": "object"
-													},
-													"withdraw_if_no_route": {
-														"default": false,
-														"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
-														"example": true,
-														"type": "boolean",
-														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -413,6 +413,13 @@
 																"type": "integer",
 																"x-auditable": true
 															},
+															"auto_advertise_withdraw": {
+																"default": false,
+																"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
 															"bgp_signal_opts": {
 																"properties": {
 																	"enabled": {
@@ -488,13 +495,6 @@
 																	}
 																},
 																"type": "object"
-															},
-															"withdraw_if_no_route": {
-																"default": false,
-																"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
-																"example": true,
-																"type": "boolean",
-																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -791,6 +791,13 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"auto_advertise_withdraw": {
+													"default": false,
+													"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"bgp_signal_opts": {
 													"properties": {
 														"enabled": {
@@ -866,13 +873,6 @@
 														}
 													},
 													"type": "object"
-												},
-												"withdraw_if_no_route": {
-													"default": false,
-													"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
-													"example": true,
-													"type": "boolean",
-													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -999,6 +999,13 @@
 															"type": "integer",
 															"x-auditable": true
 														},
+														"auto_advertise_withdraw": {
+															"default": false,
+															"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"bgp_signal_opts": {
 															"properties": {
 																"enabled": {
@@ -1074,13 +1081,6 @@
 																}
 															},
 															"type": "object"
-														},
-														"withdraw_if_no_route": {
-															"default": false,
-															"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1276,6 +1276,13 @@
 								"type": "integer",
 								"x-auditable": true
 							},
+							"auto_advertise_withdraw": {
+								"default": false,
+								"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"on_demand": {
 								"properties": {
 									"advertised": {
@@ -1283,13 +1290,6 @@
 									}
 								},
 								"type": "object"
-							},
-							"withdraw_if_no_route": {
-								"default": false,
-								"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
-								"example": true,
-								"type": "boolean",
-								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1411,6 +1411,13 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"auto_advertise_withdraw": {
+													"default": false,
+													"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"bgp_signal_opts": {
 													"properties": {
 														"enabled": {
@@ -1486,13 +1493,6 @@
 														}
 													},
 													"type": "object"
-												},
-												"withdraw_if_no_route": {
-													"default": false,
-													"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
-													"example": true,
-													"type": "boolean",
-													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1619,6 +1619,13 @@
 															"type": "integer",
 															"x-auditable": true
 														},
+														"auto_advertise_withdraw": {
+															"default": false,
+															"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"bgp_signal_opts": {
 															"properties": {
 																"enabled": {
@@ -1694,13 +1701,6 @@
 																}
 															},
 															"type": "object"
-														},
-														"withdraw_if_no_route": {
-															"default": false,
-															"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1998,6 +1998,13 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"auto_advertise_withdraw": {
+													"default": false,
+													"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"bgp_signal_opts": {
 													"properties": {
 														"enabled": {
@@ -2073,13 +2080,6 @@
 														}
 													},
 													"type": "object"
-												},
-												"withdraw_if_no_route": {
-													"default": false,
-													"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
-													"example": true,
-													"type": "boolean",
-													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2206,6 +2206,13 @@
 															"type": "integer",
 															"x-auditable": true
 														},
+														"auto_advertise_withdraw": {
+															"default": false,
+															"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"bgp_signal_opts": {
 															"properties": {
 																"enabled": {
@@ -2281,13 +2288,6 @@
 																}
 															},
 															"type": "object"
-														},
-														"withdraw_if_no_route": {
-															"default": false,
-															"description": "Controls whether the BGP prefix is automatically withdrawn when prefix is withdrawn from Magic routing table (for Magic Transit customers using Direct CNI)",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
 														}
 													},
 													"type": "object"

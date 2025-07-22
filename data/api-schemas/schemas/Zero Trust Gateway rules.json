@@ -429,7 +429,7 @@
 											"items": {
 												"properties": {
 													"action": {
-														"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+														"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 														"enum": [
 															"on",
 															"off",
@@ -586,7 +586,10 @@
 														"properties": {
 															"add_headers": {
 																"additionalProperties": {
-																	"type": "string",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
 																	"x-auditable": true
 																},
 																"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
@@ -1317,7 +1320,7 @@
 													"items": {
 														"properties": {
 															"action": {
-																"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+																"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 																"enum": [
 																	"on",
 																	"off",
@@ -1474,7 +1477,10 @@
 																"properties": {
 																	"add_headers": {
 																		"additionalProperties": {
-																			"type": "string",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
 																			"x-auditable": true
 																		},
 																		"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
@@ -2304,7 +2310,7 @@
 										"result": {
 											"properties": {
 												"action": {
-													"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+													"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 													"enum": [
 														"on",
 														"off",
@@ -2461,7 +2467,10 @@
 													"properties": {
 														"add_headers": {
 															"additionalProperties": {
-																"type": "string",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
 																"x-auditable": true
 															},
 															"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
@@ -3160,7 +3169,7 @@
 												"result": {
 													"properties": {
 														"action": {
-															"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+															"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 															"enum": [
 																"on",
 																"off",
@@ -3317,7 +3326,10 @@
 															"properties": {
 																"add_headers": {
 																	"additionalProperties": {
-																		"type": "string",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
 																		"x-auditable": true
 																	},
 																	"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
@@ -4062,7 +4074,7 @@
 					"schema": {
 						"properties": {
 							"action": {
-								"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+								"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 								"enum": [
 									"on",
 									"off",
@@ -4187,7 +4199,10 @@
 								"properties": {
 									"add_headers": {
 										"additionalProperties": {
-											"type": "string",
+											"items": {
+												"type": "string"
+											},
+											"type": "array",
 											"x-auditable": true
 										},
 										"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
@@ -4856,7 +4871,7 @@
 										"result": {
 											"properties": {
 												"action": {
-													"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+													"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 													"enum": [
 														"on",
 														"off",
@@ -5013,7 +5028,10 @@
 													"properties": {
 														"add_headers": {
 															"additionalProperties": {
-																"type": "string",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
 																"x-auditable": true
 															},
 															"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
@@ -5712,7 +5730,7 @@
 												"result": {
 													"properties": {
 														"action": {
-															"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+															"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 															"enum": [
 																"on",
 																"off",
@@ -5869,7 +5887,10 @@
 															"properties": {
 																"add_headers": {
 																	"additionalProperties": {
-																		"type": "string",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
 																		"x-auditable": true
 																	},
 																	"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
@@ -6696,7 +6717,7 @@
 										"result": {
 											"properties": {
 												"action": {
-													"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+													"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 													"enum": [
 														"on",
 														"off",
@@ -6853,7 +6874,10 @@
 													"properties": {
 														"add_headers": {
 															"additionalProperties": {
-																"type": "string",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
 																"x-auditable": true
 															},
 															"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
@@ -7549,7 +7573,7 @@
 												"result": {
 													"properties": {
 														"action": {
-															"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+															"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 															"enum": [
 																"on",
 																"off",
@@ -7706,7 +7730,10 @@
 															"properties": {
 																"add_headers": {
 																	"additionalProperties": {
-																		"type": "string",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
 																		"x-auditable": true
 																	},
 																	"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
@@ -8463,7 +8490,7 @@
 					"schema": {
 						"properties": {
 							"action": {
-								"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+								"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 								"enum": [
 									"on",
 									"off",
@@ -8588,7 +8615,10 @@
 								"properties": {
 									"add_headers": {
 										"additionalProperties": {
-											"type": "string",
+											"items": {
+												"type": "string"
+											},
+											"type": "array",
 											"x-auditable": true
 										},
 										"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
@@ -9257,7 +9287,7 @@
 										"result": {
 											"properties": {
 												"action": {
-													"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+													"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 													"enum": [
 														"on",
 														"off",
@@ -9414,7 +9444,10 @@
 													"properties": {
 														"add_headers": {
 															"additionalProperties": {
-																"type": "string",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
 																"x-auditable": true
 															},
 															"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
@@ -10113,7 +10146,7 @@
 												"result": {
 													"properties": {
 														"action": {
-															"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+															"description": "The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
 															"enum": [
 																"on",
 																"off",
@@ -10270,7 +10303,10 @@
 															"properties": {
 																"add_headers": {
 																	"additionalProperties": {
-																		"type": "string",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
 																		"x-auditable": true
 																	},
 																	"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
