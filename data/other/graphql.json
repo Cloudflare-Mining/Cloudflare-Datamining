@@ -4492,6 +4492,17 @@
 	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountMediaUniqueTransformations": {
+		"__description": "Media unique transfromations per day",
+		"date": "The date uniques are calculated for",
+		"transformations": "Number of unique media transformations per day in sliding window"
+	},
+	"AccountMediaUniqueTransformationsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMediaUniqueTransformationsOrderBy": {
+		"__description": ""
+	},
 	"AccountMnmAWSVPCFlowDataAdaptiveGroups": {
 		"__description": "AWS VPC Flow data collected through Magic Network Monitoring",
 		"avg": "The average of values for a metric per dimension",
@@ -5431,6 +5442,7 @@
 		"mconnTelemetrySnapshotTunnelsStagingAdaptiveGroups": "",
 		"mconnTelemetrySnapshotsAdaptiveGroups": "",
 		"mconnTelemetrySnapshotsStagingAdaptiveGroups": "",
+		"mediaUniqueTransformations": "",
 		"mnmAWSVPCFlowDataAdaptiveGroups": "",
 		"mnmFlowDataAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
@@ -9039,6 +9051,7 @@
 		"mconnTelemetrySnapshotTunnelsStagingAdaptiveGroups": "Aggregated Magic WAN Connector tunnel snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotsAdaptiveGroups": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
 		"mconnTelemetrySnapshotsStagingAdaptiveGroups": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
+		"mediaUniqueTransformations": "Media unique transfromations per day",
 		"mnmAWSVPCFlowDataAdaptiveGroups": "AWS VPC Flow data collected through Magic Network Monitoring",
 		"mnmFlowDataAdaptiveGroups": "Flow data collected through Magic Network Monitoring",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
