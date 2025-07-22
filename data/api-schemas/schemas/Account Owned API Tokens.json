@@ -667,11 +667,6 @@
 																	"type": "array"
 																},
 																"resources": {
-																	"additionalProperties": {
-																		"description": "An object with string value or nested object.",
-																		"x-auditable": true,
-																		"x-stainless-any": true
-																	},
 																	"description": "A list of resource names that the policy applies to.",
 																	"example": {
 																		"object": {
@@ -689,7 +684,28 @@
 																			}
 																		}
 																	},
-																	"type": "object"
+																	"oneOf": [
+																		{
+																			"additionalProperties": {
+																				"description": "Simple permission string like \"*\"",
+																				"type": "string"
+																			},
+																			"description": "Map of simple string resource permissions",
+																			"type": "object"
+																		},
+																		{
+																			"additionalProperties": {
+																				"additionalProperties": {
+																					"type": "string"
+																				},
+																				"description": "Nested permission object",
+																				"type": "object"
+																			},
+																			"description": "Map of nested resource permissions",
+																			"type": "object"
+																		}
+																	],
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1189,11 +1205,6 @@
 																"type": "array"
 															},
 															"resources": {
-																"additionalProperties": {
-																	"description": "An object with string value or nested object.",
-																	"x-auditable": true,
-																	"x-stainless-any": true
-																},
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
 																	"object": {
@@ -1211,7 +1222,28 @@
 																		}
 																	}
 																},
-																"type": "object"
+																"oneOf": [
+																	{
+																		"additionalProperties": {
+																			"description": "Simple permission string like \"*\"",
+																			"type": "string"
+																		},
+																		"description": "Map of simple string resource permissions",
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": {
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"description": "Nested permission object",
+																			"type": "object"
+																		},
+																		"description": "Map of nested resource permissions",
+																		"type": "object"
+																	}
+																],
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2269,11 +2301,6 @@
 											"type": "array"
 										},
 										"resources": {
-											"additionalProperties": {
-												"description": "An object with string value or nested object.",
-												"x-auditable": true,
-												"x-stainless-any": true
-											},
 											"description": "A list of resource names that the policy applies to.",
 											"example": {
 												"object": {
@@ -2291,7 +2318,28 @@
 													}
 												}
 											},
-											"type": "object"
+											"oneOf": [
+												{
+													"additionalProperties": {
+														"description": "Simple permission string like \"*\"",
+														"type": "string"
+													},
+													"description": "Map of simple string resource permissions",
+													"type": "object"
+												},
+												{
+													"additionalProperties": {
+														"additionalProperties": {
+															"type": "string"
+														},
+														"description": "Nested permission object",
+														"type": "object"
+													},
+													"description": "Map of nested resource permissions",
+													"type": "object"
+												}
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2601,11 +2649,6 @@
 																		"type": "array"
 																	},
 																	"resources": {
-																		"additionalProperties": {
-																			"description": "An object with string value or nested object.",
-																			"x-auditable": true,
-																			"x-stainless-any": true
-																		},
 																		"description": "A list of resource names that the policy applies to.",
 																		"example": {
 																			"object": {
@@ -2623,7 +2666,28 @@
 																				}
 																			}
 																		},
-																		"type": "object"
+																		"oneOf": [
+																			{
+																				"additionalProperties": {
+																					"description": "Simple permission string like \"*\"",
+																					"type": "string"
+																				},
+																				"description": "Map of simple string resource permissions",
+																				"type": "object"
+																			},
+																			{
+																				"additionalProperties": {
+																					"additionalProperties": {
+																						"type": "string"
+																					},
+																					"description": "Nested permission object",
+																					"type": "object"
+																				},
+																				"description": "Map of nested resource permissions",
+																				"type": "object"
+																			}
+																		],
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -3046,11 +3110,6 @@
 													"type": "array"
 												},
 												"resources": {
-													"additionalProperties": {
-														"description": "An object with string value or nested object.",
-														"x-auditable": true,
-														"x-stainless-any": true
-													},
 													"description": "A list of resource names that the policy applies to.",
 													"example": {
 														"object": {
@@ -3068,7 +3127,28 @@
 															}
 														}
 													},
-													"type": "object"
+													"oneOf": [
+														{
+															"additionalProperties": {
+																"description": "Simple permission string like \"*\"",
+																"type": "string"
+															},
+															"description": "Map of simple string resource permissions",
+															"type": "object"
+														},
+														{
+															"additionalProperties": {
+																"additionalProperties": {
+																	"type": "string"
+																},
+																"description": "Nested permission object",
+																"type": "object"
+															},
+															"description": "Map of nested resource permissions",
+															"type": "object"
+														}
+													],
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3396,11 +3476,6 @@
 																"type": "array"
 															},
 															"resources": {
-																"additionalProperties": {
-																	"description": "An object with string value or nested object.",
-																	"x-auditable": true,
-																	"x-stainless-any": true
-																},
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
 																	"object": {
@@ -3418,7 +3493,28 @@
 																		}
 																	}
 																},
-																"type": "object"
+																"oneOf": [
+																	{
+																		"additionalProperties": {
+																			"description": "Simple permission string like \"*\"",
+																			"type": "string"
+																		},
+																		"description": "Map of simple string resource permissions",
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": {
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"description": "Nested permission object",
+																			"type": "object"
+																		},
+																		"description": "Map of nested resource permissions",
+																		"type": "object"
+																	}
+																],
+																"x-auditable": true
 															}
 														},
 														"required": [
