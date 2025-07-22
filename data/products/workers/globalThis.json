@@ -302,6 +302,7 @@
 			"nodejs_compat_v2": "boolean",
 			"nodejs_zlib": "boolean",
 			"nonclass_entrypoint_reuses_ctx_across_invocations": "boolean",
+			"pedantic_wpt": "boolean",
 			"python_external_packages": "boolean",
 			"python_workers": "boolean",
 			"queue_consumer_no_wait_for_wait_until": "boolean",
@@ -2383,22 +2384,7 @@
 				"name": "string"
 			}
 		},
-		"IMAGES_BINDING": {
-			"fetcher": {
-				"connect": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string"
-				},
-				"fetch": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string"
-				}
-			}
-		},
+		"IMAGES_BINDING": {},
 		"KV_BINDING": {
 			"delete": {
 				"__proto": "function",
