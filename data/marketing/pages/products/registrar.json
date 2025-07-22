@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-10-17T17:36:11.906Z",
-					"updatedAt": "2025-07-19T06:29:05.742Z"
+					"updatedAt": "2025-07-22T15:36:22.308Z"
 				},
 				"contentfulId": "2UBOeyq0cEUsYGmCOKS8o4",
 				"contentTypeId": "page",
@@ -133,7 +133,7 @@
 						"image": null,
 						"imageAssetFile": {
 							"id": "667c3a44-54b7-5f4f-b9b4-e8ba8c5dd062",
-							"altText": "Registar hero illustration",
+							"altText": "Buy domains or transfer domain registration to Cloudflare Registrar",
 							"title": "Registar hero illustration",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
@@ -141,7 +141,7 @@
 								"file": {
 									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/zhAwUz0Pj3YVFW2jxupDZ/5fb536e7d66ab0087a96f14e5ab8461a/BDES-5097_-_registar-hero-illustration.png"
 								},
-								"description": "Product registrar hero illustration"
+								"description": "Buy domains or transfer domain registration to Cloudflare Registrar\n\n"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -163,7 +163,7 @@
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Registrar eliminates surprise fees and unnecessary add-ons. Only pay the registration and renewal fees charged by your registry.",
+								"description": "Registrar eliminates surprise fees and unnecessary add-ons. Only pay the registration and renewal fees charged by your registry when buying or renewing a domain.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -318,7 +318,28 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Cloudflare offers at-cost domain registration and renewal for hundreds of TLDs, allowing you to:",
+																	"value": "Buying domains from Cloudflare Registrar means at-cost domain registration and renewal for hundreds of TLDs, allowing you to:",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
 																	"marks": [],
 																	"content": null
 																}
@@ -357,7 +378,7 @@
 																						"target": null,
 																						"uri": null
 																					},
-																					"value": "Maintain your existing domains or register new ones — with ",
+																					"value": "Register new domains or maintain your existing ones — with ",
 																					"marks": [],
 																					"content": null
 																				},
@@ -417,7 +438,7 @@
 																						"target": null,
 																						"uri": null
 																					},
-																					"value": " to or from Cloudflare",
+																					"value": " to or from Cloudflare Registrar",
 																					"marks": [],
 																					"content": null
 																				}
@@ -1134,7 +1155,7 @@
 					{
 						"contentTypeId": "bladeCardCarousel",
 						"contentfulId": "2H5XIQs4jOkEpTbcnsw0PZ",
-						"title": "Resources",
+						"title": "Registrar resources",
 						"htmlId": null,
 						"backgroundImage": null,
 						"cards": [
@@ -1369,6 +1390,260 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "1Wve90bgfmSX28N9lQeIom",
+						"bladeName": "Registrar FAQs",
+						"title": "Registrar FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6szdvGo6qnncOTgSHndisY",
+								"title": "What is Cloudflare Registrar?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Registrar allows users to register, renew, and manage domain names without hidden fees or inflated renewal costs. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "635v3p0qqNcdFQhiedVIwq",
+								"title": "How does Cloudflare Registrar offer domains at cost?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Registrar ensures customers only pay the  price charged by registries and ICANN for domain registration and renewal, eliminating extra fees when buying a domain.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "37S5OzkvfuQiOwYvs1YxKP",
+								"title": "What security features does Cloudflare Registrar provide for domains?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Registrar natively integrates with Cloudflare's DNS, CDN, and SSL services for strong backend security. It also offers advanced features such as registry lock, customizable authorization, and out-of-band authentication to protect high-profile domains from hijacking.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5BlcI417HW7eyKm0o2nSf",
+								"title": "Can I transfer my existing domains to Cloudflare Registrar?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Yes, you can easily transfer and manage your existing domains through the Cloudflare Dashboard.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "AvdUlJw9uH6iZ1yiJ0BUs",
+								"title": "What is DNSSEC and how does Cloudflare Registrar support it?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "DNSSEC helps protect your website from on-path attacks, and Cloudflare Registrar provides free, universal DNSSEC for all domains with one-click activation.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "41teNiQKdDMEQo7F9prr1B",
+								"title": "What types of top-level domains (TLDs) does Cloudflare Registrar support?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Registrar supports over 390 top-level domains, including popular ones like .com, .net, and .org.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
