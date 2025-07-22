@@ -422,6 +422,15 @@
 					"minimum": 10,
 					"type": "number"
 				}
+			},
+			{
+				"in": "query",
+				"name": "creator",
+				"schema": {
+					"description": "Internal user ID set within the creator field. Setting to empty string \"\" will return images where creator field is not set",
+					"nullable": true,
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -517,6 +526,14 @@
 												"images": {
 													"items": {
 														"properties": {
+															"creator": {
+																"description": "Can set the creator field with an internal user ID.",
+																"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+																"maxLength": 1024,
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
 															"filename": {
 																"description": "Image file name.",
 																"example": "logo.png",
@@ -703,6 +720,14 @@
 														"images": {
 															"items": {
 																"properties": {
+																	"creator": {
+																		"description": "Can set the creator field with an internal user ID.",
+																		"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
 																	"filename": {
 																		"description": "Image file name.",
 																		"example": "logo.png",
@@ -1045,6 +1070,14 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"creator": {
+													"description": "Can set the creator field with an internal user ID.",
+													"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
 												"filename": {
 													"description": "Image file name.",
 													"example": "logo.png",
@@ -1242,6 +1275,14 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"creator": {
+															"description": "Can set the creator field with an internal user ID.",
+															"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+															"maxLength": 1024,
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
 														"filename": {
 															"description": "Image file name.",
 															"example": "logo.png",
@@ -2068,6 +2109,15 @@
 					],
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "creator",
+				"schema": {
+					"description": "Internal user ID set within the creator field. Setting to empty string \"\" will return images where creator field is not set",
+					"nullable": true,
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -2186,6 +2236,14 @@
 												"images": {
 													"items": {
 														"properties": {
+															"creator": {
+																"description": "Can set the creator field with an internal user ID.",
+																"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+																"maxLength": 1024,
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
 															"filename": {
 																"description": "Image file name.",
 																"example": "logo.png",
@@ -2395,6 +2453,14 @@
 														"images": {
 															"items": {
 																"properties": {
+																	"creator": {
+																		"description": "Can set the creator field with an internal user ID.",
+																		"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
 																	"filename": {
 																		"description": "Image file name.",
 																		"example": "logo.png",
@@ -2633,6 +2699,10 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"creator": {
+								"description": "Can set the creator field with an internal user ID.",
+								"type": "string"
+							},
 							"metadata": {
 								"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. No change if not specified.",
 								"type": "object"
@@ -2759,6 +2829,14 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"creator": {
+													"description": "Can set the creator field with an internal user ID.",
+													"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
 												"filename": {
 													"description": "Image file name.",
 													"example": "logo.png",
@@ -2956,6 +3034,14 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"creator": {
+															"description": "Can set the creator field with an internal user ID.",
+															"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+															"maxLength": 1024,
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
 														"filename": {
 															"description": "Image file name.",
 															"example": "logo.png",
@@ -3175,6 +3261,11 @@
 				"multipart/form-data": {
 					"schema": {
 						"properties": {
+							"creator": {
+								"description": "Can set the creator field with an internal user ID.",
+								"maxLength": 1024,
+								"type": "string"
+							},
 							"file": {
 								"description": "An image binary data. Only needed when type is uploading a file.",
 								"format": "binary",
@@ -3319,6 +3410,14 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"creator": {
+													"description": "Can set the creator field with an internal user ID.",
+													"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
 												"filename": {
 													"description": "Image file name.",
 													"example": "logo.png",
@@ -3516,6 +3615,14 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"creator": {
+															"description": "Can set the creator field with an internal user ID.",
+															"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+															"maxLength": 1024,
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
 														"filename": {
 															"description": "Image file name.",
 															"example": "logo.png",
@@ -3735,6 +3842,10 @@
 				"multipart/form-data": {
 					"schema": {
 						"properties": {
+							"creator": {
+								"description": "Can set the creator field with an internal user ID.",
+								"type": "string"
+							},
 							"expiry": {
 								"default": "Now + 30 minutes",
 								"description": "The date after which the upload will not be accepted. Minimum: Now + 2 minutes. Maximum: Now + 6 hours.",
