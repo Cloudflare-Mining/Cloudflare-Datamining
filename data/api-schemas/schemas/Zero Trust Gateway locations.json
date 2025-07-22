@@ -441,6 +441,7 @@
 														"type": "string"
 													},
 													"dns_destination_ips_id": {
+														"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 														"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
 														"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 														"type": "string",
@@ -494,6 +495,7 @@
 																			],
 																			"type": "object"
 																		},
+																		"nullable": true,
 																		"type": "array"
 																	},
 																	"require_token": {
@@ -529,6 +531,7 @@
 																			],
 																			"type": "object"
 																		},
+																		"nullable": true,
 																		"type": "array"
 																	}
 																},
@@ -569,6 +572,7 @@
 																			],
 																			"type": "object"
 																		},
+																		"nullable": true,
 																		"type": "array"
 																	}
 																},
@@ -623,6 +627,7 @@
 															],
 															"type": "object"
 														},
+														"nullable": true,
 														"type": "array"
 													},
 													"updated_at": {
@@ -765,6 +770,7 @@
 																"type": "string"
 															},
 															"dns_destination_ips_id": {
+																"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 																"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
 																"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 																"type": "string",
@@ -818,6 +824,7 @@
 																					],
 																					"type": "object"
 																				},
+																				"nullable": true,
 																				"type": "array"
 																			},
 																			"require_token": {
@@ -853,6 +860,7 @@
 																					],
 																					"type": "object"
 																				},
+																				"nullable": true,
 																				"type": "array"
 																			}
 																		},
@@ -893,6 +901,7 @@
 																					],
 																					"type": "object"
 																				},
+																				"nullable": true,
 																				"type": "array"
 																			}
 																		},
@@ -947,6 +956,7 @@
 																	],
 																	"type": "object"
 																},
+																"nullable": true,
 																"type": "array"
 															},
 															"updated_at": {
@@ -1190,6 +1200,7 @@
 													"type": "string"
 												},
 												"dns_destination_ips_id": {
+													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
 													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"type": "string",
@@ -1243,6 +1254,7 @@
 																		],
 																		"type": "object"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																},
 																"require_token": {
@@ -1278,6 +1290,7 @@
 																		],
 																		"type": "object"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																}
 															},
@@ -1318,6 +1331,7 @@
 																		],
 																		"type": "object"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																}
 															},
@@ -1372,6 +1386,7 @@
 														],
 														"type": "object"
 													},
+													"nullable": true,
 													"type": "array"
 												},
 												"updated_at": {
@@ -1482,6 +1497,7 @@
 															"type": "string"
 														},
 														"dns_destination_ips_id": {
+															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
 															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"type": "string",
@@ -1535,6 +1551,7 @@
 																				],
 																				"type": "object"
 																			},
+																			"nullable": true,
 																			"type": "array"
 																		},
 																		"require_token": {
@@ -1570,6 +1587,7 @@
 																				],
 																				"type": "object"
 																			},
+																			"nullable": true,
 																			"type": "array"
 																		}
 																	},
@@ -1610,6 +1628,7 @@
 																				],
 																				"type": "object"
 																			},
+																			"nullable": true,
 																			"type": "array"
 																		}
 																	},
@@ -1664,6 +1683,7 @@
 																],
 																"type": "object"
 															},
+															"nullable": true,
 															"type": "array"
 														},
 														"updated_at": {
@@ -1858,6 +1878,7 @@
 													],
 													"type": "object"
 												},
+												"nullable": true,
 												"type": "array"
 											},
 											"require_token": {
@@ -1893,6 +1914,7 @@
 													],
 													"type": "object"
 												},
+												"nullable": true,
 												"type": "array"
 											}
 										},
@@ -1933,6 +1955,7 @@
 													],
 													"type": "object"
 												},
+												"nullable": true,
 												"type": "array"
 											}
 										},
@@ -1963,6 +1986,7 @@
 									],
 									"type": "object"
 								},
+								"nullable": true,
 								"type": "array"
 							}
 						},
@@ -2063,6 +2087,7 @@
 													"type": "string"
 												},
 												"dns_destination_ips_id": {
+													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
 													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"type": "string",
@@ -2116,6 +2141,7 @@
 																		],
 																		"type": "object"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																},
 																"require_token": {
@@ -2151,6 +2177,7 @@
 																		],
 																		"type": "object"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																}
 															},
@@ -2191,6 +2218,7 @@
 																		],
 																		"type": "object"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																}
 															},
@@ -2245,6 +2273,7 @@
 														],
 														"type": "object"
 													},
+													"nullable": true,
 													"type": "array"
 												},
 												"updated_at": {
@@ -2355,6 +2384,7 @@
 															"type": "string"
 														},
 														"dns_destination_ips_id": {
+															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
 															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"type": "string",
@@ -2408,6 +2438,7 @@
 																				],
 																				"type": "object"
 																			},
+																			"nullable": true,
 																			"type": "array"
 																		},
 																		"require_token": {
@@ -2443,6 +2474,7 @@
 																				],
 																				"type": "object"
 																			},
+																			"nullable": true,
 																			"type": "array"
 																		}
 																	},
@@ -2483,6 +2515,7 @@
 																				],
 																				"type": "object"
 																			},
+																			"nullable": true,
 																			"type": "array"
 																		}
 																	},
@@ -2537,6 +2570,7 @@
 																],
 																"type": "object"
 															},
+															"nullable": true,
 															"type": "array"
 														},
 														"updated_at": {
@@ -2740,6 +2774,7 @@
 													],
 													"type": "object"
 												},
+												"nullable": true,
 												"type": "array"
 											},
 											"require_token": {
@@ -2775,6 +2810,7 @@
 													],
 													"type": "object"
 												},
+												"nullable": true,
 												"type": "array"
 											}
 										},
@@ -2815,6 +2851,7 @@
 													],
 													"type": "object"
 												},
+												"nullable": true,
 												"type": "array"
 											}
 										},
@@ -2845,6 +2882,7 @@
 									],
 									"type": "object"
 								},
+								"nullable": true,
 								"type": "array"
 							}
 						},
@@ -2945,6 +2983,7 @@
 													"type": "string"
 												},
 												"dns_destination_ips_id": {
+													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
 													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"type": "string",
@@ -2998,6 +3037,7 @@
 																		],
 																		"type": "object"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																},
 																"require_token": {
@@ -3033,6 +3073,7 @@
 																		],
 																		"type": "object"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																}
 															},
@@ -3073,6 +3114,7 @@
 																		],
 																		"type": "object"
 																	},
+																	"nullable": true,
 																	"type": "array"
 																}
 															},
@@ -3127,6 +3169,7 @@
 														],
 														"type": "object"
 													},
+													"nullable": true,
 													"type": "array"
 												},
 												"updated_at": {
@@ -3237,6 +3280,7 @@
 															"type": "string"
 														},
 														"dns_destination_ips_id": {
+															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
 															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"type": "string",
@@ -3290,6 +3334,7 @@
 																				],
 																				"type": "object"
 																			},
+																			"nullable": true,
 																			"type": "array"
 																		},
 																		"require_token": {
@@ -3325,6 +3370,7 @@
 																				],
 																				"type": "object"
 																			},
+																			"nullable": true,
 																			"type": "array"
 																		}
 																	},
@@ -3365,6 +3411,7 @@
 																				],
 																				"type": "object"
 																			},
+																			"nullable": true,
 																			"type": "array"
 																		}
 																	},
@@ -3419,6 +3466,7 @@
 																],
 																"type": "object"
 															},
+															"nullable": true,
 															"type": "array"
 														},
 														"updated_at": {
