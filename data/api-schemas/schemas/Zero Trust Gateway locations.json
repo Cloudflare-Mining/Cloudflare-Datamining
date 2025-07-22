@@ -472,6 +472,7 @@
 													},
 													"endpoints": {
 														"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+														"nullable": true,
 														"properties": {
 															"doh": {
 																"properties": {
@@ -584,7 +585,8 @@
 																"type": "object"
 															}
 														},
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"id": {
 														"example": "ed35569b41ce4d1facfe683550f54086",
@@ -807,6 +809,7 @@
 															},
 															"endpoints": {
 																"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+																"nullable": true,
 																"properties": {
 																	"doh": {
 																		"properties": {
@@ -919,7 +922,8 @@
 																		"type": "object"
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"id": {
 																"example": "ed35569b41ce4d1facfe683550f54086",
@@ -1243,6 +1247,7 @@
 												},
 												"endpoints": {
 													"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+													"nullable": true,
 													"properties": {
 														"doh": {
 															"properties": {
@@ -1355,7 +1360,8 @@
 															"type": "object"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"example": "ed35569b41ce4d1facfe683550f54086",
@@ -1546,6 +1552,7 @@
 														},
 														"endpoints": {
 															"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+															"nullable": true,
 															"properties": {
 																"doh": {
 																	"properties": {
@@ -1658,7 +1665,8 @@
 																	"type": "object"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"example": "ed35569b41ce4d1facfe683550f54086",
@@ -1878,6 +1886,7 @@
 							},
 							"endpoints": {
 								"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+								"nullable": true,
 								"properties": {
 									"doh": {
 										"properties": {
@@ -1990,7 +1999,8 @@
 										"type": "object"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "The name of the location.",
@@ -2147,6 +2157,7 @@
 												},
 												"endpoints": {
 													"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+													"nullable": true,
 													"properties": {
 														"doh": {
 															"properties": {
@@ -2259,7 +2270,8 @@
 															"type": "object"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"example": "ed35569b41ce4d1facfe683550f54086",
@@ -2450,6 +2462,7 @@
 														},
 														"endpoints": {
 															"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+															"nullable": true,
 															"properties": {
 																"doh": {
 																	"properties": {
@@ -2562,7 +2575,8 @@
 																	"type": "object"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"example": "ed35569b41ce4d1facfe683550f54086",
@@ -2791,6 +2805,7 @@
 							},
 							"endpoints": {
 								"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+								"nullable": true,
 								"properties": {
 									"doh": {
 										"properties": {
@@ -2903,7 +2918,8 @@
 										"type": "object"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "The name of the location.",
@@ -3060,6 +3076,7 @@
 												},
 												"endpoints": {
 													"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+													"nullable": true,
 													"properties": {
 														"doh": {
 															"properties": {
@@ -3172,7 +3189,8 @@
 															"type": "object"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"example": "ed35569b41ce4d1facfe683550f54086",
@@ -3363,6 +3381,7 @@
 														},
 														"endpoints": {
 															"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+															"nullable": true,
 															"properties": {
 																"doh": {
 																	"properties": {
@@ -3475,7 +3494,8 @@
 																	"type": "object"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"example": "ed35569b41ce4d1facfe683550f54086",
