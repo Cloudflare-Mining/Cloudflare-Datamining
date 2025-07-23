@@ -7302,6 +7302,956 @@
 			"Cloud Email Security: Write"
 		]
 	},
+	"POST /accounts/{account_id}/email-security/settings/allow_policies/batch": {
+		"description": "Send a Batch of Allow Policies API calls to be executed together.",
+		"operationId": "email_security_batch_allow_policies",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"deletes": {
+								"items": {
+									"properties": {
+										"id": {
+											"description": "The unique identifier for the allow policy.",
+											"example": 2401,
+											"format": "int32",
+											"title": "identifier",
+											"type": "integer"
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"patches": {
+								"items": {
+									"allOf": [
+										{
+											"additionalProperties": false,
+											"properties": {
+												"comments": {
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"is_acceptable_sender": {
+													"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_exempt_recipient": {
+													"description": "Messages to this recipient will bypass all detections.",
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_regex": {
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_trusted_sender": {
+													"description": "Messages from this sender will bypass all detections and link following.",
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"pattern": {
+													"maxLength": 1024,
+													"minLength": 1,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"pattern_type": {
+													"allOf": [
+														{
+															"enum": [
+																"EMAIL",
+																"DOMAIN",
+																"IP",
+																"UNKNOWN"
+															],
+															"type": "string"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												},
+												"verify_sender": {
+													"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "The unique identifier for the allow policy.",
+													"example": 2401,
+													"format": "int32",
+													"title": "identifier",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"posts": {
+								"items": {
+									"additionalProperties": false,
+									"example": {
+										"comments": "Trust all messages send from test@example.com",
+										"is_acceptable_sender": false,
+										"is_exempt_recipient": false,
+										"is_recipient": false,
+										"is_regex": false,
+										"is_sender": true,
+										"is_spoof": false,
+										"is_trusted_sender": true,
+										"pattern": "test@example.com",
+										"pattern_type": "EMAIL",
+										"verify_sender": true
+									},
+									"properties": {
+										"comments": {
+											"maxLength": 1024,
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"is_acceptable_sender": {
+											"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"is_exempt_recipient": {
+											"description": "Messages to this recipient will bypass all detections.",
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"is_recipient": {
+											"deprecated": true,
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"is_regex": {
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"is_sender": {
+											"deprecated": true,
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"is_spoof": {
+											"deprecated": true,
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"is_trusted_sender": {
+											"description": "Messages from this sender will bypass all detections and link following.",
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"pattern": {
+											"maxLength": 1024,
+											"minLength": 1,
+											"type": "string",
+											"x-auditable": true
+										},
+										"pattern_type": {
+											"enum": [
+												"EMAIL",
+												"DOMAIN",
+												"IP",
+												"UNKNOWN"
+											],
+											"type": "string"
+										},
+										"verify_sender": {
+											"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"is_exempt_recipient",
+										"is_trusted_sender",
+										"is_acceptable_sender",
+										"pattern",
+										"is_regex",
+										"verify_sender",
+										"pattern_type"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"puts": {
+								"items": {
+									"allOf": [
+										{
+											"additionalProperties": false,
+											"example": {
+												"comments": "Trust all messages send from test@example.com",
+												"is_acceptable_sender": false,
+												"is_exempt_recipient": false,
+												"is_recipient": false,
+												"is_regex": false,
+												"is_sender": true,
+												"is_spoof": false,
+												"is_trusted_sender": true,
+												"pattern": "test@example.com",
+												"pattern_type": "EMAIL",
+												"verify_sender": true
+											},
+											"properties": {
+												"comments": {
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"is_acceptable_sender": {
+													"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_exempt_recipient": {
+													"description": "Messages to this recipient will bypass all detections.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_recipient": {
+													"deprecated": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_regex": {
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_sender": {
+													"deprecated": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_spoof": {
+													"deprecated": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_trusted_sender": {
+													"description": "Messages from this sender will bypass all detections and link following.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"pattern": {
+													"maxLength": 1024,
+													"minLength": 1,
+													"type": "string",
+													"x-auditable": true
+												},
+												"pattern_type": {
+													"enum": [
+														"EMAIL",
+														"DOMAIN",
+														"IP",
+														"UNKNOWN"
+													],
+													"type": "string"
+												},
+												"verify_sender": {
+													"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"is_exempt_recipient",
+												"is_trusted_sender",
+												"is_acceptable_sender",
+												"pattern",
+												"is_regex",
+												"verify_sender",
+												"pattern_type"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "The unique identifier for the allow policy.",
+													"example": 2401,
+													"format": "int32",
+													"title": "identifier",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"deletes",
+							"patches",
+							"puts",
+							"posts"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deletes": {
+													"items": {
+														"properties": {
+															"id": {
+																"description": "The unique identifier for the allow policy.",
+																"example": 2401,
+																"format": "int32",
+																"title": "identifier",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"patches": {
+													"items": {
+														"allOf": [
+															{
+																"additionalProperties": false,
+																"example": {
+																	"comments": "Trust all messages send from test@example.com",
+																	"is_acceptable_sender": false,
+																	"is_exempt_recipient": false,
+																	"is_recipient": false,
+																	"is_regex": false,
+																	"is_sender": true,
+																	"is_spoof": false,
+																	"is_trusted_sender": true,
+																	"pattern": "test@example.com",
+																	"pattern_type": "EMAIL",
+																	"verify_sender": true
+																},
+																"properties": {
+																	"comments": {
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"is_acceptable_sender": {
+																		"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_exempt_recipient": {
+																		"description": "Messages to this recipient will bypass all detections.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_recipient": {
+																		"deprecated": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_regex": {
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_sender": {
+																		"deprecated": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_spoof": {
+																		"deprecated": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_trusted_sender": {
+																		"description": "Messages from this sender will bypass all detections and link following.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"pattern": {
+																		"maxLength": 1024,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"pattern_type": {
+																		"enum": [
+																			"EMAIL",
+																			"DOMAIN",
+																			"IP",
+																			"UNKNOWN"
+																		],
+																		"type": "string"
+																	},
+																	"verify_sender": {
+																		"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"is_exempt_recipient",
+																	"is_trusted_sender",
+																	"is_acceptable_sender",
+																	"pattern",
+																	"is_regex",
+																	"verify_sender",
+																	"pattern_type"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique identifier for the allow policy.",
+																		"example": 2401,
+																		"format": "int32",
+																		"title": "identifier",
+																		"type": "integer"
+																	},
+																	"last_modified": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_at",
+																	"last_modified"
+																],
+																"type": "object"
+															}
+														],
+														"example": {
+															"comments": "Trust all messages send from test@example.com",
+															"created_at": "2023-11-14T22:13:20Z",
+															"id": 2401,
+															"is_acceptable_sender": false,
+															"is_exempt_recipient": false,
+															"is_recipient": false,
+															"is_regex": false,
+															"is_sender": true,
+															"is_spoof": false,
+															"is_trusted_sender": true,
+															"last_modified": "2023-11-14T22:13:20Z",
+															"pattern": "test@example.com",
+															"pattern_type": "EMAIL",
+															"verify_sender": true
+														}
+													},
+													"type": "array"
+												},
+												"posts": {
+													"items": {
+														"allOf": [
+															{
+																"additionalProperties": false,
+																"example": {
+																	"comments": "Trust all messages send from test@example.com",
+																	"is_acceptable_sender": false,
+																	"is_exempt_recipient": false,
+																	"is_recipient": false,
+																	"is_regex": false,
+																	"is_sender": true,
+																	"is_spoof": false,
+																	"is_trusted_sender": true,
+																	"pattern": "test@example.com",
+																	"pattern_type": "EMAIL",
+																	"verify_sender": true
+																},
+																"properties": {
+																	"comments": {
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"is_acceptable_sender": {
+																		"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_exempt_recipient": {
+																		"description": "Messages to this recipient will bypass all detections.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_recipient": {
+																		"deprecated": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_regex": {
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_sender": {
+																		"deprecated": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_spoof": {
+																		"deprecated": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_trusted_sender": {
+																		"description": "Messages from this sender will bypass all detections and link following.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"pattern": {
+																		"maxLength": 1024,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"pattern_type": {
+																		"enum": [
+																			"EMAIL",
+																			"DOMAIN",
+																			"IP",
+																			"UNKNOWN"
+																		],
+																		"type": "string"
+																	},
+																	"verify_sender": {
+																		"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"is_exempt_recipient",
+																	"is_trusted_sender",
+																	"is_acceptable_sender",
+																	"pattern",
+																	"is_regex",
+																	"verify_sender",
+																	"pattern_type"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique identifier for the allow policy.",
+																		"example": 2401,
+																		"format": "int32",
+																		"title": "identifier",
+																		"type": "integer"
+																	},
+																	"last_modified": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_at",
+																	"last_modified"
+																],
+																"type": "object"
+															}
+														],
+														"example": {
+															"comments": "Trust all messages send from test@example.com",
+															"created_at": "2023-11-14T22:13:20Z",
+															"id": 2401,
+															"is_acceptable_sender": false,
+															"is_exempt_recipient": false,
+															"is_recipient": false,
+															"is_regex": false,
+															"is_sender": true,
+															"is_spoof": false,
+															"is_trusted_sender": true,
+															"last_modified": "2023-11-14T22:13:20Z",
+															"pattern": "test@example.com",
+															"pattern_type": "EMAIL",
+															"verify_sender": true
+														}
+													},
+													"type": "array"
+												},
+												"puts": {
+													"items": {
+														"allOf": [
+															{
+																"additionalProperties": false,
+																"example": {
+																	"comments": "Trust all messages send from test@example.com",
+																	"is_acceptable_sender": false,
+																	"is_exempt_recipient": false,
+																	"is_recipient": false,
+																	"is_regex": false,
+																	"is_sender": true,
+																	"is_spoof": false,
+																	"is_trusted_sender": true,
+																	"pattern": "test@example.com",
+																	"pattern_type": "EMAIL",
+																	"verify_sender": true
+																},
+																"properties": {
+																	"comments": {
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"is_acceptable_sender": {
+																		"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_exempt_recipient": {
+																		"description": "Messages to this recipient will bypass all detections.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_recipient": {
+																		"deprecated": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_regex": {
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_sender": {
+																		"deprecated": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_spoof": {
+																		"deprecated": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_trusted_sender": {
+																		"description": "Messages from this sender will bypass all detections and link following.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"pattern": {
+																		"maxLength": 1024,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"pattern_type": {
+																		"enum": [
+																			"EMAIL",
+																			"DOMAIN",
+																			"IP",
+																			"UNKNOWN"
+																		],
+																		"type": "string"
+																	},
+																	"verify_sender": {
+																		"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"is_exempt_recipient",
+																	"is_trusted_sender",
+																	"is_acceptable_sender",
+																	"pattern",
+																	"is_regex",
+																	"verify_sender",
+																	"pattern_type"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique identifier for the allow policy.",
+																		"example": 2401,
+																		"format": "int32",
+																		"title": "identifier",
+																		"type": "integer"
+																	},
+																	"last_modified": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_at",
+																	"last_modified"
+																],
+																"type": "object"
+															}
+														],
+														"example": {
+															"comments": "Trust all messages send from test@example.com",
+															"created_at": "2023-11-14T22:13:20Z",
+															"id": 2401,
+															"is_acceptable_sender": false,
+															"is_exempt_recipient": false,
+															"is_recipient": false,
+															"is_regex": false,
+															"is_sender": true,
+															"is_spoof": false,
+															"is_trusted_sender": true,
+															"last_modified": "2023-11-14T22:13:20Z",
+															"pattern": "test@example.com",
+															"pattern_type": "EMAIL",
+															"verify_sender": true
+														}
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"deletes",
+												"patches",
+												"puts",
+												"posts"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": ""
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Batch Allow Policies",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
+	},
 	"POST /accounts/{account_id}/email-security/settings/block_senders": {
 		"operationId": "email_security_create_blocked_sender",
 		"parameters": [
@@ -7615,6 +8565,679 @@
 			"Cloud Email Security: Write"
 		]
 	},
+	"POST /accounts/{account_id}/email-security/settings/block_senders/batch": {
+		"description": "Send a Batch of Block Senders API calls to be executed together.",
+		"operationId": "email_security_batch_blocked_senders",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"deletes": {
+								"items": {
+									"properties": {
+										"id": {
+											"description": "The unique identifier for the allow policy.",
+											"example": 2402,
+											"format": "int32",
+											"title": "identifier",
+											"type": "integer"
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"patches": {
+								"items": {
+									"allOf": [
+										{
+											"additionalProperties": false,
+											"properties": {
+												"comments": {
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"is_regex": {
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"pattern": {
+													"minLength": 1,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"pattern_type": {
+													"allOf": [
+														{
+															"enum": [
+																"EMAIL",
+																"DOMAIN",
+																"IP",
+																"UNKNOWN"
+															],
+															"type": "string"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											},
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "The unique identifier for the allow policy.",
+													"example": 2402,
+													"format": "int32",
+													"title": "identifier",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"posts": {
+								"items": {
+									"additionalProperties": false,
+									"example": {
+										"comments": "block sender with email test@example.com",
+										"is_regex": false,
+										"pattern": "test@example.com",
+										"pattern_type": "EMAIL"
+									},
+									"properties": {
+										"comments": {
+											"maxLength": 1024,
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"is_regex": {
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"pattern": {
+											"maxLength": 1024,
+											"minLength": 1,
+											"type": "string",
+											"x-auditable": true
+										},
+										"pattern_type": {
+											"enum": [
+												"EMAIL",
+												"DOMAIN",
+												"IP",
+												"UNKNOWN"
+											],
+											"type": "string"
+										}
+									},
+									"required": [
+										"pattern",
+										"is_regex",
+										"pattern_type"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"puts": {
+								"items": {
+									"allOf": [
+										{
+											"additionalProperties": false,
+											"example": {
+												"comments": "block sender with email test@example.com",
+												"is_regex": false,
+												"pattern": "test@example.com",
+												"pattern_type": "EMAIL"
+											},
+											"properties": {
+												"comments": {
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"is_regex": {
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"pattern": {
+													"maxLength": 1024,
+													"minLength": 1,
+													"type": "string",
+													"x-auditable": true
+												},
+												"pattern_type": {
+													"enum": [
+														"EMAIL",
+														"DOMAIN",
+														"IP",
+														"UNKNOWN"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"pattern",
+												"is_regex",
+												"pattern_type"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "The unique identifier for the allow policy.",
+													"example": 2402,
+													"format": "int32",
+													"title": "identifier",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"deletes",
+							"patches",
+							"puts",
+							"posts"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deletes": {
+													"items": {
+														"properties": {
+															"id": {
+																"description": "The unique identifier for the allow policy.",
+																"example": 2402,
+																"format": "int32",
+																"title": "identifier",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"patches": {
+													"items": {
+														"allOf": [
+															{
+																"additionalProperties": false,
+																"example": {
+																	"comments": "block sender with email test@example.com",
+																	"is_regex": false,
+																	"pattern": "test@example.com",
+																	"pattern_type": "EMAIL"
+																},
+																"properties": {
+																	"comments": {
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"is_regex": {
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"pattern": {
+																		"maxLength": 1024,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"pattern_type": {
+																		"enum": [
+																			"EMAIL",
+																			"DOMAIN",
+																			"IP",
+																			"UNKNOWN"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pattern",
+																	"is_regex",
+																	"pattern_type"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique identifier for the allow policy.",
+																		"example": 2402,
+																		"format": "int32",
+																		"title": "identifier",
+																		"type": "integer"
+																	},
+																	"last_modified": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_at",
+																	"last_modified"
+																],
+																"type": "object"
+															}
+														],
+														"example": {
+															"comments": "block sender with email test@example.com",
+															"created_at": "2023-11-14T22:13:20Z",
+															"id": 2402,
+															"is_regex": false,
+															"last_modified": "2023-11-14T22:13:20Z",
+															"pattern": "test@example.com",
+															"pattern_type": "EMAIL"
+														}
+													},
+													"type": "array"
+												},
+												"posts": {
+													"items": {
+														"allOf": [
+															{
+																"additionalProperties": false,
+																"example": {
+																	"comments": "block sender with email test@example.com",
+																	"is_regex": false,
+																	"pattern": "test@example.com",
+																	"pattern_type": "EMAIL"
+																},
+																"properties": {
+																	"comments": {
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"is_regex": {
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"pattern": {
+																		"maxLength": 1024,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"pattern_type": {
+																		"enum": [
+																			"EMAIL",
+																			"DOMAIN",
+																			"IP",
+																			"UNKNOWN"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pattern",
+																	"is_regex",
+																	"pattern_type"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique identifier for the allow policy.",
+																		"example": 2402,
+																		"format": "int32",
+																		"title": "identifier",
+																		"type": "integer"
+																	},
+																	"last_modified": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_at",
+																	"last_modified"
+																],
+																"type": "object"
+															}
+														],
+														"example": {
+															"comments": "block sender with email test@example.com",
+															"created_at": "2023-11-14T22:13:20Z",
+															"id": 2402,
+															"is_regex": false,
+															"last_modified": "2023-11-14T22:13:20Z",
+															"pattern": "test@example.com",
+															"pattern_type": "EMAIL"
+														}
+													},
+													"type": "array"
+												},
+												"puts": {
+													"items": {
+														"allOf": [
+															{
+																"additionalProperties": false,
+																"example": {
+																	"comments": "block sender with email test@example.com",
+																	"is_regex": false,
+																	"pattern": "test@example.com",
+																	"pattern_type": "EMAIL"
+																},
+																"properties": {
+																	"comments": {
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"is_regex": {
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"pattern": {
+																		"maxLength": 1024,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"pattern_type": {
+																		"enum": [
+																			"EMAIL",
+																			"DOMAIN",
+																			"IP",
+																			"UNKNOWN"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pattern",
+																	"is_regex",
+																	"pattern_type"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique identifier for the allow policy.",
+																		"example": 2402,
+																		"format": "int32",
+																		"title": "identifier",
+																		"type": "integer"
+																	},
+																	"last_modified": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_at",
+																	"last_modified"
+																],
+																"type": "object"
+															}
+														],
+														"example": {
+															"comments": "block sender with email test@example.com",
+															"created_at": "2023-11-14T22:13:20Z",
+															"id": 2402,
+															"is_regex": false,
+															"last_modified": "2023-11-14T22:13:20Z",
+															"pattern": "test@example.com",
+															"pattern_type": "EMAIL"
+														}
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"deletes",
+												"patches",
+												"puts",
+												"posts"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": ""
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Batch Block Senders",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
+	},
 	"POST /accounts/{account_id}/email-security/settings/impersonation_registry": {
 		"operationId": "email_security_create_display_name",
 		"parameters": [
@@ -7908,6 +9531,244 @@
 			}
 		],
 		"summary": "Create an entry in impersonation registry",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
+	},
+	"POST /accounts/{account_id}/email-security/settings/sending_domain_restrictions/batch": {
+		"description": "Send a Batch of sending_domain_restrictions API calls to be executed together.",
+		"operationId": "email_security_batch_sending_domain_restrictions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"deletes": {
+								"items": {
+									"properties": {
+										"id": {
+											"format": "int32",
+											"title": "identifier",
+											"type": "integer"
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"deletes"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deletes": {
+													"items": {
+														"properties": {
+															"id": {
+																"format": "int32",
+																"title": "identifier",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"deletes"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": ""
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Batch Sending Domain Restrictions",
 		"tags": [
 			"Email Security Settings"
 		],
@@ -8373,6 +10234,689 @@
 			}
 		],
 		"summary": "Create a trusted email domain",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
+	},
+	"POST /accounts/{account_id}/email-security/settings/trusted_domains/batch": {
+		"description": "Send a Batch of Trusted Domains API calls to be executed together.",
+		"operationId": "email_security_batch_trusted_domains",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"deletes": {
+								"items": {
+									"properties": {
+										"id": {
+											"description": "The unique identifier for the trusted domain.",
+											"example": 2401,
+											"format": "int32",
+											"title": "identifier",
+											"type": "integer"
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"patches": {
+								"items": {
+									"allOf": [
+										{
+											"additionalProperties": false,
+											"properties": {
+												"comments": {
+													"maxLength": 1024,
+													"type": "string",
+													"x-auditable": true
+												},
+												"is_recent": {
+													"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_regex": {
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_similarity": {
+													"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"pattern": {
+													"maxLength": 1024,
+													"minLength": 1,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "The unique identifier for the trusted domain.",
+													"example": 2401,
+													"format": "int32",
+													"title": "identifier",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"posts": {
+								"items": {
+									"additionalProperties": false,
+									"example": {
+										"comments": null,
+										"is_recent": true,
+										"is_regex": false,
+										"is_similarity": false,
+										"pattern": "example.com"
+									},
+									"properties": {
+										"comments": {
+											"maxLength": 1024,
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"is_recent": {
+											"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"is_regex": {
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"is_similarity": {
+											"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"pattern": {
+											"maxLength": 1024,
+											"minLength": 1,
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"is_recent",
+										"is_similarity",
+										"is_regex",
+										"pattern"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"puts": {
+								"items": {
+									"allOf": [
+										{
+											"additionalProperties": false,
+											"example": {
+												"comments": null,
+												"is_recent": true,
+												"is_regex": false,
+												"is_similarity": false,
+												"pattern": "example.com"
+											},
+											"properties": {
+												"comments": {
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"is_recent": {
+													"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_regex": {
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"is_similarity": {
+													"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"pattern": {
+													"maxLength": 1024,
+													"minLength": 1,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"is_recent",
+												"is_similarity",
+												"is_regex",
+												"pattern"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "The unique identifier for the trusted domain.",
+													"example": 2401,
+													"format": "int32",
+													"title": "identifier",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"deletes",
+							"patches",
+							"puts",
+							"posts"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deletes": {
+													"items": {
+														"properties": {
+															"id": {
+																"description": "The unique identifier for the trusted domain.",
+																"example": 2401,
+																"format": "int32",
+																"title": "identifier",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"patches": {
+													"items": {
+														"allOf": [
+															{
+																"additionalProperties": false,
+																"example": {
+																	"comments": null,
+																	"is_recent": true,
+																	"is_regex": false,
+																	"is_similarity": false,
+																	"pattern": "example.com"
+																},
+																"properties": {
+																	"comments": {
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"is_recent": {
+																		"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_regex": {
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_similarity": {
+																		"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"pattern": {
+																		"maxLength": 1024,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"is_recent",
+																	"is_similarity",
+																	"is_regex",
+																	"pattern"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique identifier for the trusted domain.",
+																		"example": 2401,
+																		"format": "int32",
+																		"title": "identifier",
+																		"type": "integer"
+																	},
+																	"last_modified": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_at",
+																	"last_modified"
+																],
+																"type": "object"
+															}
+														],
+														"example": {
+															"comments": null,
+															"created_at": "2023-11-14T22:13:20Z",
+															"id": 2401,
+															"is_recent": true,
+															"is_regex": false,
+															"is_similarity": false,
+															"last_modified": "2023-11-14T22:13:20Z",
+															"pattern": "example.com"
+														}
+													},
+													"type": "array"
+												},
+												"posts": {
+													"items": {
+														"allOf": [
+															{
+																"additionalProperties": false,
+																"example": {
+																	"comments": null,
+																	"is_recent": true,
+																	"is_regex": false,
+																	"is_similarity": false,
+																	"pattern": "example.com"
+																},
+																"properties": {
+																	"comments": {
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"is_recent": {
+																		"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_regex": {
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_similarity": {
+																		"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"pattern": {
+																		"maxLength": 1024,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"is_recent",
+																	"is_similarity",
+																	"is_regex",
+																	"pattern"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique identifier for the trusted domain.",
+																		"example": 2401,
+																		"format": "int32",
+																		"title": "identifier",
+																		"type": "integer"
+																	},
+																	"last_modified": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_at",
+																	"last_modified"
+																],
+																"type": "object"
+															}
+														],
+														"example": {
+															"comments": null,
+															"created_at": "2023-11-14T22:13:20Z",
+															"id": 2401,
+															"is_recent": true,
+															"is_regex": false,
+															"is_similarity": false,
+															"last_modified": "2023-11-14T22:13:20Z",
+															"pattern": "example.com"
+														}
+													},
+													"type": "array"
+												},
+												"puts": {
+													"items": {
+														"allOf": [
+															{
+																"additionalProperties": false,
+																"example": {
+																	"comments": null,
+																	"is_recent": true,
+																	"is_regex": false,
+																	"is_similarity": false,
+																	"pattern": "example.com"
+																},
+																"properties": {
+																	"comments": {
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"is_recent": {
+																		"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_regex": {
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"is_similarity": {
+																		"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"pattern": {
+																		"maxLength": 1024,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"is_recent",
+																	"is_similarity",
+																	"is_regex",
+																	"pattern"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique identifier for the trusted domain.",
+																		"example": 2401,
+																		"format": "int32",
+																		"title": "identifier",
+																		"type": "integer"
+																	},
+																	"last_modified": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_at",
+																	"last_modified"
+																],
+																"type": "object"
+															}
+														],
+														"example": {
+															"comments": null,
+															"created_at": "2023-11-14T22:13:20Z",
+															"id": 2401,
+															"is_recent": true,
+															"is_regex": false,
+															"is_similarity": false,
+															"last_modified": "2023-11-14T22:13:20Z",
+															"pattern": "example.com"
+														}
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"deletes",
+												"patches",
+												"puts",
+												"posts"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": ""
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Batch Trusted Domains",
 		"tags": [
 			"Email Security Settings"
 		],

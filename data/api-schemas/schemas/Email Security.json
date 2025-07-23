@@ -371,7 +371,6 @@
 																			{
 																				"enum": [
 																					"quarantine_release",
-																					"blocked_sender",
 																					"acceptable_sender",
 																					"allowed_sender",
 																					"allowed_recipient",
@@ -394,7 +393,6 @@
 																			{
 																				"enum": [
 																					"quarantine_release",
-																					"blocked_sender",
 																					"acceptable_sender",
 																					"allowed_sender",
 																					"allowed_recipient",
@@ -939,7 +937,6 @@
 																		{
 																			"enum": [
 																				"quarantine_release",
-																				"blocked_sender",
 																				"acceptable_sender",
 																				"allowed_sender",
 																				"allowed_recipient",
@@ -962,7 +959,6 @@
 																		{
 																			"enum": [
 																				"quarantine_release",
-																				"blocked_sender",
 																				"acceptable_sender",
 																				"allowed_sender",
 																				"allowed_recipient",
@@ -2531,6 +2527,13 @@
 							"type": "string"
 						}
 					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"type": "string"
 				}
 			},
 			{
