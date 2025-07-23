@@ -39,6 +39,51 @@
 		}
 	},
 	{
+		"id": "c5d1310163c3a1d561a641710f4a1adc",
+		"name": "Realtime",
+		"description": "Grants access to Realtime configuration excluding sensitive data",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "23c0e77be0cb347c05ae9be2f5046c89",
+		"name": "Realtime Admin",
+		"description": "Grants admin access to Realtime configuration",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "8f58ae6bea632a03804326561220615a",
+		"name": "Application Security Reports Read",
+		"description": "Can read Application Security Reports",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "e58cefd75d7adae0b761796c28815e5c",
 		"name": "Workers Platform (Read-only)",
 		"description": "Can read all resources in the Workers Platform.",
