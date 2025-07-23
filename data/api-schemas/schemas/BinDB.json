@@ -1,0 +1,223 @@
+{
+	"GET /accounts/{account_id}/cloudforce-one/binary/{hash}": {
+		"operationId": "get_BinDBGetBinary",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "hash of the binary",
+				"in": "path",
+				"name": "hash",
+				"required": true,
+				"schema": {
+					"description": "hash of the binary",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns file information"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Posts a file to BinDB",
+		"tags": [
+			"BinDB"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/binary": {
+		"operationId": "post_BinDBPost",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"schema": {
+						"properties": {
+							"file": {
+								"description": "The binary file content to upload.",
+								"format": "binary",
+								"type": "string"
+							}
+						},
+						"required": [
+							"file"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "Binary file to be uploaded to the database.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"accountIds": {
+									"items": {
+										"example": "4804423",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"content_type": {
+									"example": "text/plain",
+									"type": "string"
+								},
+								"filenames": {
+									"items": {
+										"example": "0000a7f2692ef479e2e3d02661568882cadec451cc8a64d4e7faca29810cd626.txt",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"first_seen": {
+									"example": 1752260316160,
+									"type": "number"
+								},
+								"is_private": {
+									"type": "boolean"
+								},
+								"md5": {
+									"example": "5d84ade76d2a8387c81175bb0cbe6492",
+									"type": "string"
+								},
+								"sha1": {
+									"example": "9aff6879626d957eafadda044e4f879aae1e7278",
+									"type": "string"
+								},
+								"sha256": {
+									"example": "0000a7f2692ef479e2e3d02661568882cadec451cc8a64d4e7faca29810cd626",
+									"type": "string"
+								}
+							},
+							"required": [
+								"md5",
+								"sha1",
+								"sha256",
+								"accountIds",
+								"content_type",
+								"filenames",
+								"first_seen",
+								"is_private"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns file information"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Posts a file to BinDB",
+		"tags": [
+			"BinDB"
+		]
+	}
+}
