@@ -585,6 +585,12 @@
 																"type": "object"
 															}
 														},
+														"required": [
+															"ipv4",
+															"ipv6",
+															"doh",
+															"dot"
+														],
 														"type": "object",
 														"x-stainless-terraform-configurability": "optional"
 													},
@@ -922,6 +928,12 @@
 																		"type": "object"
 																	}
 																},
+																"required": [
+																	"ipv4",
+																	"ipv6",
+																	"doh",
+																	"dot"
+																],
 																"type": "object",
 																"x-stainless-terraform-configurability": "optional"
 															},
@@ -1360,6 +1372,12 @@
 															"type": "object"
 														}
 													},
+													"required": [
+														"ipv4",
+														"ipv6",
+														"doh",
+														"dot"
+													],
 													"type": "object",
 													"x-stainless-terraform-configurability": "optional"
 												},
@@ -1665,6 +1683,12 @@
 																	"type": "object"
 																}
 															},
+															"required": [
+																"ipv4",
+																"ipv6",
+																"doh",
+																"dot"
+															],
 															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
@@ -1999,6 +2023,12 @@
 										"type": "object"
 									}
 								},
+								"required": [
+									"ipv4",
+									"ipv6",
+									"doh",
+									"dot"
+								],
 								"type": "object",
 								"x-stainless-terraform-configurability": "optional"
 							},
@@ -2270,6 +2300,12 @@
 															"type": "object"
 														}
 													},
+													"required": [
+														"ipv4",
+														"ipv6",
+														"doh",
+														"dot"
+													],
 													"type": "object",
 													"x-stainless-terraform-configurability": "optional"
 												},
@@ -2575,6 +2611,12 @@
 																	"type": "object"
 																}
 															},
+															"required": [
+																"ipv4",
+																"ipv6",
+																"doh",
+																"dot"
+															],
 															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
@@ -2918,6 +2960,12 @@
 										"type": "object"
 									}
 								},
+								"required": [
+									"ipv4",
+									"ipv6",
+									"doh",
+									"dot"
+								],
 								"type": "object",
 								"x-stainless-terraform-configurability": "optional"
 							},
@@ -3189,6 +3237,12 @@
 															"type": "object"
 														}
 													},
+													"required": [
+														"ipv4",
+														"ipv6",
+														"doh",
+														"dot"
+													],
 													"type": "object",
 													"x-stainless-terraform-configurability": "optional"
 												},
@@ -3494,6 +3548,12 @@
 																	"type": "object"
 																}
 															},
+															"required": [
+																"ipv4",
+																"ipv6",
+																"doh",
+																"dot"
+															],
 															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
