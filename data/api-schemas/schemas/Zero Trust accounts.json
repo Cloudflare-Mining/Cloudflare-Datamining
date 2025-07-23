@@ -1253,7 +1253,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"antivirus": {
 																	"description": "Anti-virus settings.",
@@ -1263,19 +1264,22 @@
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"enabled_upload_phase": {
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"fail_closed": {
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"notification_settings": {
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -1302,10 +1306,12 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_page": {
 																	"description": "Block page layout settings.",
@@ -1397,7 +1403,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"body_scanning": {
 																	"description": "DLP body scanning settings.",
@@ -1410,7 +1417,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"browser_isolation": {
 																	"description": "Browser isolation settings.",
@@ -1429,7 +1437,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"certificate": {
 																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
@@ -1445,7 +1454,8 @@
 																	"required": [
 																		"id"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"custom_certificate": {
 																	"deprecated": true,
@@ -1480,7 +1490,8 @@
 																	"required": [
 																		"enabled"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"extended_email_matching": {
 																	"description": "Extended e-mail matching settings.",
@@ -1518,7 +1529,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"host_selector": {
 																	"description": "Setting to enable host selector in egress policies.",
@@ -1531,7 +1543,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
@@ -1544,7 +1557,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"sandbox": {
 																	"description": "Sandbox settings.",
@@ -1566,7 +1580,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"tls_decrypt": {
 																	"description": "TLS interception settings.",
@@ -1579,7 +1594,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																}
 															},
 															"type": "object"
@@ -1707,7 +1723,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"antivirus": {
 																			"description": "Anti-virus settings.",
@@ -1717,19 +1734,22 @@
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				},
 																				"enabled_upload_phase": {
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				},
 																				"fail_closed": {
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				},
 																				"notification_settings": {
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -1756,10 +1776,12 @@
 																							"x-auditable": true
 																						}
 																					},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"block_page": {
 																			"description": "Block page layout settings.",
@@ -1851,7 +1873,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"body_scanning": {
 																			"description": "DLP body scanning settings.",
@@ -1864,7 +1887,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"browser_isolation": {
 																			"description": "Browser isolation settings.",
@@ -1883,7 +1907,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"certificate": {
 																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
@@ -1899,7 +1924,8 @@
 																			"required": [
 																				"id"
 																			],
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"custom_certificate": {
 																			"deprecated": true,
@@ -1934,7 +1960,8 @@
 																			"required": [
 																				"enabled"
 																			],
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"extended_email_matching": {
 																			"description": "Extended e-mail matching settings.",
@@ -1972,7 +1999,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"host_selector": {
 																			"description": "Setting to enable host selector in egress policies.",
@@ -1985,7 +2013,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
@@ -1998,7 +2027,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"sandbox": {
 																			"description": "Sandbox settings.",
@@ -2020,7 +2050,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"tls_decrypt": {
 																			"description": "TLS interception settings.",
@@ -2033,7 +2064,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		}
 																	},
 																	"type": "object"
@@ -2225,7 +2257,8 @@
 							"required": [
 								"enabled"
 							],
-							"type": "object"
+							"type": "object",
+							"x-stainless-terraform-configurability": "computational_optional"
 						}
 					}
 				},
@@ -2269,7 +2302,8 @@
 									"required": [
 										"enabled"
 									],
-									"type": "object"
+									"type": "object",
+									"x-stainless-terraform-configurability": "computational_optional"
 								},
 								{
 									"properties": {
@@ -3290,7 +3324,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"antivirus": {
 										"description": "Anti-virus settings.",
@@ -3300,19 +3335,22 @@
 												"description": "Enable anti-virus scanning on downloads.",
 												"example": false,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computational_optional"
 											},
 											"enabled_upload_phase": {
 												"description": "Enable anti-virus scanning on uploads.",
 												"example": false,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computational_optional"
 											},
 											"fail_closed": {
 												"description": "Block requests for files that cannot be scanned.",
 												"example": false,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computational_optional"
 											},
 											"notification_settings": {
 												"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -3339,10 +3377,12 @@
 														"x-auditable": true
 													}
 												},
-												"type": "object"
+												"type": "object",
+												"x-stainless-terraform-configurability": "computational_optional"
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"block_page": {
 										"description": "Block page layout settings.",
@@ -3434,7 +3474,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"body_scanning": {
 										"description": "DLP body scanning settings.",
@@ -3447,7 +3488,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"browser_isolation": {
 										"description": "Browser isolation settings.",
@@ -3466,7 +3508,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"certificate": {
 										"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
@@ -3482,7 +3525,8 @@
 										"required": [
 											"id"
 										],
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"custom_certificate": {
 										"deprecated": true,
@@ -3517,7 +3561,8 @@
 										"required": [
 											"enabled"
 										],
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"extended_email_matching": {
 										"description": "Extended e-mail matching settings.",
@@ -3555,7 +3600,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"host_selector": {
 										"description": "Setting to enable host selector in egress policies.",
@@ -3568,7 +3614,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"protocol_detection": {
 										"description": "Protocol Detection settings.",
@@ -3581,7 +3628,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"sandbox": {
 										"description": "Sandbox settings.",
@@ -3603,7 +3651,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"tls_decrypt": {
 										"description": "TLS interception settings.",
@@ -3616,7 +3665,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									}
 								},
 								"type": "object"
@@ -3719,7 +3769,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"antivirus": {
 																	"description": "Anti-virus settings.",
@@ -3729,19 +3780,22 @@
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"enabled_upload_phase": {
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"fail_closed": {
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"notification_settings": {
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -3768,10 +3822,12 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_page": {
 																	"description": "Block page layout settings.",
@@ -3863,7 +3919,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"body_scanning": {
 																	"description": "DLP body scanning settings.",
@@ -3876,7 +3933,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"browser_isolation": {
 																	"description": "Browser isolation settings.",
@@ -3895,7 +3953,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"certificate": {
 																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
@@ -3911,7 +3970,8 @@
 																	"required": [
 																		"id"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"custom_certificate": {
 																	"deprecated": true,
@@ -3946,7 +4006,8 @@
 																	"required": [
 																		"enabled"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"extended_email_matching": {
 																	"description": "Extended e-mail matching settings.",
@@ -3984,7 +4045,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"host_selector": {
 																	"description": "Setting to enable host selector in egress policies.",
@@ -3997,7 +4059,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
@@ -4010,7 +4073,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"sandbox": {
 																	"description": "Sandbox settings.",
@@ -4032,7 +4096,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"tls_decrypt": {
 																	"description": "TLS interception settings.",
@@ -4045,7 +4110,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																}
 															},
 															"type": "object"
@@ -4173,7 +4239,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"antivirus": {
 																			"description": "Anti-virus settings.",
@@ -4183,19 +4250,22 @@
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				},
 																				"enabled_upload_phase": {
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				},
 																				"fail_closed": {
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				},
 																				"notification_settings": {
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -4222,10 +4292,12 @@
 																							"x-auditable": true
 																						}
 																					},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"block_page": {
 																			"description": "Block page layout settings.",
@@ -4317,7 +4389,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"body_scanning": {
 																			"description": "DLP body scanning settings.",
@@ -4330,7 +4403,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"browser_isolation": {
 																			"description": "Browser isolation settings.",
@@ -4349,7 +4423,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"certificate": {
 																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
@@ -4365,7 +4440,8 @@
 																			"required": [
 																				"id"
 																			],
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"custom_certificate": {
 																			"deprecated": true,
@@ -4400,7 +4476,8 @@
 																			"required": [
 																				"enabled"
 																			],
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"extended_email_matching": {
 																			"description": "Extended e-mail matching settings.",
@@ -4438,7 +4515,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"host_selector": {
 																			"description": "Setting to enable host selector in egress policies.",
@@ -4451,7 +4529,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
@@ -4464,7 +4543,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"sandbox": {
 																			"description": "Sandbox settings.",
@@ -4486,7 +4566,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"tls_decrypt": {
 																			"description": "TLS interception settings.",
@@ -4499,7 +4580,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		}
 																	},
 																	"type": "object"
@@ -5446,7 +5528,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"antivirus": {
 										"description": "Anti-virus settings.",
@@ -5456,19 +5539,22 @@
 												"description": "Enable anti-virus scanning on downloads.",
 												"example": false,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computational_optional"
 											},
 											"enabled_upload_phase": {
 												"description": "Enable anti-virus scanning on uploads.",
 												"example": false,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computational_optional"
 											},
 											"fail_closed": {
 												"description": "Block requests for files that cannot be scanned.",
 												"example": false,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computational_optional"
 											},
 											"notification_settings": {
 												"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -5495,10 +5581,12 @@
 														"x-auditable": true
 													}
 												},
-												"type": "object"
+												"type": "object",
+												"x-stainless-terraform-configurability": "computational_optional"
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"block_page": {
 										"description": "Block page layout settings.",
@@ -5590,7 +5678,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"body_scanning": {
 										"description": "DLP body scanning settings.",
@@ -5603,7 +5692,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"browser_isolation": {
 										"description": "Browser isolation settings.",
@@ -5622,7 +5712,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"certificate": {
 										"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
@@ -5638,7 +5729,8 @@
 										"required": [
 											"id"
 										],
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"custom_certificate": {
 										"deprecated": true,
@@ -5673,7 +5765,8 @@
 										"required": [
 											"enabled"
 										],
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"extended_email_matching": {
 										"description": "Extended e-mail matching settings.",
@@ -5711,7 +5804,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"host_selector": {
 										"description": "Setting to enable host selector in egress policies.",
@@ -5724,7 +5818,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"protocol_detection": {
 										"description": "Protocol Detection settings.",
@@ -5737,7 +5832,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"sandbox": {
 										"description": "Sandbox settings.",
@@ -5759,7 +5855,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"tls_decrypt": {
 										"description": "TLS interception settings.",
@@ -5772,7 +5869,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									}
 								},
 								"type": "object"
@@ -5875,7 +5973,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"antivirus": {
 																	"description": "Anti-virus settings.",
@@ -5885,19 +5984,22 @@
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"enabled_upload_phase": {
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"fail_closed": {
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"notification_settings": {
 																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -5924,10 +6026,12 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_page": {
 																	"description": "Block page layout settings.",
@@ -6019,7 +6123,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"body_scanning": {
 																	"description": "DLP body scanning settings.",
@@ -6032,7 +6137,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"browser_isolation": {
 																	"description": "Browser isolation settings.",
@@ -6051,7 +6157,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"certificate": {
 																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
@@ -6067,7 +6174,8 @@
 																	"required": [
 																		"id"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"custom_certificate": {
 																	"deprecated": true,
@@ -6102,7 +6210,8 @@
 																	"required": [
 																		"enabled"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"extended_email_matching": {
 																	"description": "Extended e-mail matching settings.",
@@ -6140,7 +6249,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"host_selector": {
 																	"description": "Setting to enable host selector in egress policies.",
@@ -6153,7 +6263,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
@@ -6166,7 +6277,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"sandbox": {
 																	"description": "Sandbox settings.",
@@ -6188,7 +6300,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"tls_decrypt": {
 																	"description": "TLS interception settings.",
@@ -6201,7 +6314,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																}
 															},
 															"type": "object"
@@ -6329,7 +6443,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"antivirus": {
 																			"description": "Anti-virus settings.",
@@ -6339,19 +6454,22 @@
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				},
 																				"enabled_upload_phase": {
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				},
 																				"fail_closed": {
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				},
 																				"notification_settings": {
 																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
@@ -6378,10 +6496,12 @@
 																							"x-auditable": true
 																						}
 																					},
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"block_page": {
 																			"description": "Block page layout settings.",
@@ -6473,7 +6593,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"body_scanning": {
 																			"description": "DLP body scanning settings.",
@@ -6486,7 +6607,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"browser_isolation": {
 																			"description": "Browser isolation settings.",
@@ -6505,7 +6627,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"certificate": {
 																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
@@ -6521,7 +6644,8 @@
 																			"required": [
 																				"id"
 																			],
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"custom_certificate": {
 																			"deprecated": true,
@@ -6556,7 +6680,8 @@
 																			"required": [
 																				"enabled"
 																			],
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"extended_email_matching": {
 																			"description": "Extended e-mail matching settings.",
@@ -6594,7 +6719,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"host_selector": {
 																			"description": "Setting to enable host selector in egress policies.",
@@ -6607,7 +6733,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
@@ -6620,7 +6747,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"sandbox": {
 																			"description": "Sandbox settings.",
@@ -6642,7 +6770,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"tls_decrypt": {
 																			"description": "TLS interception settings.",
@@ -6655,7 +6784,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		}
 																	},
 																	"type": "object"

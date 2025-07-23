@@ -476,7 +476,8 @@
 														"description": "The wirefilter expression used for device posture check matching.",
 														"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computational_optional"
 													},
 													"enabled": {
 														"default": false,
@@ -522,7 +523,8 @@
 														"required": [
 															"expires_at"
 														],
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "computational_optional"
 													},
 													"filters": {
 														"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -556,7 +558,8 @@
 														"description": "The wirefilter expression used for identity matching.",
 														"example": "any(identity.groups.name[*] in {\"finance\"})",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computational_optional"
 													},
 													"name": {
 														"description": "The name of the rule.",
@@ -603,14 +606,16 @@
 																	]
 																},
 																"nullable": true,
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"allow_child_bypass": {
 																"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																"example": false,
 																"nullable": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"audit_ssh": {
 																"description": "Settings for the Audit SSH action.",
@@ -623,7 +628,8 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"biso_admin_controls": {
 																"description": "Configure how browser isolation behaves.",
@@ -738,7 +744,7 @@
 																	}
 																},
 																"type": "object",
-																"x-stainless-terraform-configurability": "optional"
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"block_page": {
 																"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -759,26 +765,30 @@
 																"required": [
 																	"target_uri"
 																],
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"block_page_enabled": {
 																"description": "Enable the custom block page.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"block_reason": {
 																"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																"example": "This website is a security risk",
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"bypass_parent_rule": {
 																"description": "Set by children MSP accounts to bypass their parent's rules.",
 																"example": false,
 																"nullable": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"check_session": {
 																"description": "Configure how session check behaves.",
@@ -797,7 +807,8 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"dns_resolvers": {
 																"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -834,7 +845,8 @@
 																			"required": [
 																				"ip"
 																			],
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"type": "array"
 																	},
@@ -869,12 +881,14 @@
 																			"required": [
 																				"ip"
 																			],
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computational_optional"
 																		},
 																		"type": "array"
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"egress": {
 																"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -899,31 +913,36 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"ignore_cname_category_matches": {
 																"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"insecure_disable_dnssec_validation": {
 																"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																"example": false,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"ip_categories": {
 																"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"ip_indicator_feeds": {
 																"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"l4override": {
 																"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -941,7 +960,8 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"notification_settings": {
 																"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -968,13 +988,15 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"override_host": {
 																"description": "Override matching DNS queries with a hostname.",
 																"example": "example.com",
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"override_ips": {
 																"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -989,7 +1011,8 @@
 																	"x-auditable": true
 																},
 																"nullable": true,
-																"type": "array"
+																"type": "array",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"payload_log": {
 																"description": "Configure DLP payload logging.",
@@ -1002,7 +1025,8 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"quarantine": {
 																"description": "Settings that apply to quarantine rules",
@@ -1032,7 +1056,8 @@
 																		"type": "array"
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"redirect": {
 																"description": "Settings that apply to redirect rules",
@@ -1058,7 +1083,8 @@
 																"required": [
 																	"target_uri"
 																],
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"resolve_dns_internally": {
 																"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -1079,14 +1105,16 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"resolve_dns_through_cloudflare": {
 																"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																"example": true,
 																"nullable": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"untrusted_cert": {
 																"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -1104,10 +1132,12 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															}
 														},
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "computational_optional"
 													},
 													"schedule": {
 														"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -1162,7 +1192,8 @@
 																"x-auditable": true
 															}
 														},
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "computational_optional"
 													},
 													"source_account": {
 														"description": "account tag of account that created the rule",
@@ -1175,7 +1206,8 @@
 														"description": "The wirefilter expression used for traffic matching.",
 														"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computational_optional"
 													},
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -1197,6 +1229,14 @@
 														"type": "string"
 													}
 												},
+												"required": [
+													"name",
+													"precedence",
+													"enabled",
+													"action",
+													"traffic",
+													"filters"
+												],
 												"type": "object"
 											},
 											"type": "array"
@@ -1367,7 +1407,8 @@
 																"description": "The wirefilter expression used for device posture check matching.",
 																"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"enabled": {
 																"default": false,
@@ -1413,7 +1454,8 @@
 																"required": [
 																	"expires_at"
 																],
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"filters": {
 																"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -1447,7 +1489,8 @@
 																"description": "The wirefilter expression used for identity matching.",
 																"example": "any(identity.groups.name[*] in {\"finance\"})",
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"name": {
 																"description": "The name of the rule.",
@@ -1494,14 +1537,16 @@
 																			]
 																		},
 																		"nullable": true,
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"allow_child_bypass": {
 																		"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																		"example": false,
 																		"nullable": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"audit_ssh": {
 																		"description": "Settings for the Audit SSH action.",
@@ -1514,7 +1559,8 @@
 																				"x-auditable": true
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"biso_admin_controls": {
 																		"description": "Configure how browser isolation behaves.",
@@ -1629,7 +1675,7 @@
 																			}
 																		},
 																		"type": "object",
-																		"x-stainless-terraform-configurability": "optional"
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"block_page": {
 																		"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -1650,26 +1696,30 @@
 																		"required": [
 																			"target_uri"
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"block_page_enabled": {
 																		"description": "Enable the custom block page.",
 																		"example": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"block_reason": {
 																		"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																		"example": "This website is a security risk",
 																		"type": "string",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"bypass_parent_rule": {
 																		"description": "Set by children MSP accounts to bypass their parent's rules.",
 																		"example": false,
 																		"nullable": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"check_session": {
 																		"description": "Configure how session check behaves.",
@@ -1688,7 +1738,8 @@
 																				"x-auditable": true
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"dns_resolvers": {
 																		"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -1725,7 +1776,8 @@
 																					"required": [
 																						"ip"
 																					],
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				},
 																				"type": "array"
 																			},
@@ -1760,12 +1812,14 @@
 																					"required": [
 																						"ip"
 																					],
-																					"type": "object"
+																					"type": "object",
+																					"x-stainless-terraform-configurability": "computational_optional"
 																				},
 																				"type": "array"
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"egress": {
 																		"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -1790,31 +1844,36 @@
 																				"x-auditable": true
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"ignore_cname_category_matches": {
 																		"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																		"example": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"insecure_disable_dnssec_validation": {
 																		"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																		"example": false,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"ip_categories": {
 																		"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																		"example": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"ip_indicator_feeds": {
 																		"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																		"example": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"l4override": {
 																		"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -1832,7 +1891,8 @@
 																				"x-auditable": true
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"notification_settings": {
 																		"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -1859,13 +1919,15 @@
 																				"x-auditable": true
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"override_host": {
 																		"description": "Override matching DNS queries with a hostname.",
 																		"example": "example.com",
 																		"type": "string",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"override_ips": {
 																		"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -1880,7 +1942,8 @@
 																			"x-auditable": true
 																		},
 																		"nullable": true,
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"payload_log": {
 																		"description": "Configure DLP payload logging.",
@@ -1893,7 +1956,8 @@
 																				"x-auditable": true
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"quarantine": {
 																		"description": "Settings that apply to quarantine rules",
@@ -1923,7 +1987,8 @@
 																				"type": "array"
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"redirect": {
 																		"description": "Settings that apply to redirect rules",
@@ -1949,7 +2014,8 @@
 																		"required": [
 																			"target_uri"
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"resolve_dns_internally": {
 																		"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -1970,14 +2036,16 @@
 																				"x-auditable": true
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"resolve_dns_through_cloudflare": {
 																		"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																		"example": true,
 																		"nullable": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"untrusted_cert": {
 																		"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -1995,10 +2063,12 @@
 																				"x-auditable": true
 																			}
 																		},
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"schedule": {
 																"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -2053,7 +2123,8 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"source_account": {
 																"description": "account tag of account that created the rule",
@@ -2066,7 +2137,8 @@
 																"description": "The wirefilter expression used for traffic matching.",
 																"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computational_optional"
 															},
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -2088,6 +2160,14 @@
 																"type": "string"
 															}
 														},
+														"required": [
+															"name",
+															"precedence",
+															"enabled",
+															"action",
+															"traffic",
+															"filters"
+														],
 														"type": "object"
 													},
 													"type": "array"
@@ -2357,7 +2437,8 @@
 													"description": "The wirefilter expression used for device posture check matching.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"enabled": {
 													"default": false,
@@ -2403,7 +2484,8 @@
 													"required": [
 														"expires_at"
 													],
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"filters": {
 													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -2437,7 +2519,8 @@
 													"description": "The wirefilter expression used for identity matching.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"name": {
 													"description": "The name of the rule.",
@@ -2484,14 +2567,16 @@
 																]
 															},
 															"nullable": true,
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"allow_child_bypass": {
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"audit_ssh": {
 															"description": "Settings for the Audit SSH action.",
@@ -2504,7 +2589,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
@@ -2619,7 +2705,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -2640,26 +2726,30 @@
 															"required": [
 																"target_uri"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_page_enabled": {
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_reason": {
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"bypass_parent_rule": {
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"check_session": {
 															"description": "Configure how session check behaves.",
@@ -2678,7 +2768,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"dns_resolvers": {
 															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -2715,7 +2806,8 @@
 																		"required": [
 																			"ip"
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"type": "array"
 																},
@@ -2750,12 +2842,14 @@
 																		"required": [
 																			"ip"
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"type": "array"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"egress": {
 															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -2780,31 +2874,36 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ignore_cname_category_matches": {
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ip_categories": {
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ip_indicator_feeds": {
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -2822,7 +2921,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"notification_settings": {
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -2849,13 +2949,15 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"override_host": {
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"override_ips": {
 															"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -2870,7 +2972,8 @@
 																"x-auditable": true
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging.",
@@ -2883,7 +2986,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"quarantine": {
 															"description": "Settings that apply to quarantine rules",
@@ -2913,7 +3017,8 @@
 																	"type": "array"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
@@ -2939,7 +3044,8 @@
 															"required": [
 																"target_uri"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -2960,14 +3066,16 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"resolve_dns_through_cloudflare": {
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -2985,10 +3093,12 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"schedule": {
 													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -3043,7 +3153,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"source_account": {
 													"description": "account tag of account that created the rule",
@@ -3056,7 +3167,8 @@
 													"description": "The wirefilter expression used for traffic matching.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -3078,6 +3190,14 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"name",
+												"precedence",
+												"enabled",
+												"action",
+												"traffic",
+												"filters"
+											],
 											"type": "object"
 										}
 									}
@@ -3216,7 +3336,8 @@
 															"description": "The wirefilter expression used for device posture check matching.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"enabled": {
 															"default": false,
@@ -3262,7 +3383,8 @@
 															"required": [
 																"expires_at"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"filters": {
 															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -3296,7 +3418,8 @@
 															"description": "The wirefilter expression used for identity matching.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"name": {
 															"description": "The name of the rule.",
@@ -3343,14 +3466,16 @@
 																		]
 																	},
 																	"nullable": true,
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"allow_child_bypass": {
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"audit_ssh": {
 																	"description": "Settings for the Audit SSH action.",
@@ -3363,7 +3488,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
@@ -3478,7 +3604,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -3499,26 +3625,30 @@
 																	"required": [
 																		"target_uri"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_page_enabled": {
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_reason": {
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"bypass_parent_rule": {
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"check_session": {
 																	"description": "Configure how session check behaves.",
@@ -3537,7 +3667,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"dns_resolvers": {
 																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -3574,7 +3705,8 @@
 																				"required": [
 																					"ip"
 																				],
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-terraform-configurability": "computational_optional"
 																			},
 																			"type": "array"
 																		},
@@ -3609,12 +3741,14 @@
 																				"required": [
 																					"ip"
 																				],
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-terraform-configurability": "computational_optional"
 																			},
 																			"type": "array"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"egress": {
 																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -3639,31 +3773,36 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ignore_cname_category_matches": {
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ip_categories": {
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ip_indicator_feeds": {
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -3681,7 +3820,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"notification_settings": {
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -3708,13 +3848,15 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"override_host": {
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"override_ips": {
 																	"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -3729,7 +3871,8 @@
 																		"x-auditable": true
 																	},
 																	"nullable": true,
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging.",
@@ -3742,7 +3885,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"quarantine": {
 																	"description": "Settings that apply to quarantine rules",
@@ -3772,7 +3916,8 @@
 																			"type": "array"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
@@ -3798,7 +3943,8 @@
 																	"required": [
 																		"target_uri"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"resolve_dns_internally": {
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -3819,14 +3965,16 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"resolve_dns_through_cloudflare": {
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -3844,10 +3992,12 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"schedule": {
 															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -3902,7 +4052,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"source_account": {
 															"description": "account tag of account that created the rule",
@@ -3915,7 +4066,8 @@
 															"description": "The wirefilter expression used for traffic matching.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -3937,6 +4089,14 @@
 															"type": "string"
 														}
 													},
+													"required": [
+														"name",
+														"precedence",
+														"enabled",
+														"action",
+														"traffic",
+														"filters"
+													],
 													"type": "object"
 												}
 											}
@@ -4108,7 +4268,8 @@
 								"description": "The wirefilter expression used for device posture check matching.",
 								"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computational_optional"
 							},
 							"enabled": {
 								"default": false,
@@ -4154,7 +4315,8 @@
 								"required": [
 									"expires_at"
 								],
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computational_optional"
 							},
 							"filters": {
 								"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -4181,7 +4343,8 @@
 								"description": "The wirefilter expression used for identity matching.",
 								"example": "any(identity.groups.name[*] in {\"finance\"})",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computational_optional"
 							},
 							"name": {
 								"description": "The name of the rule.",
@@ -4216,14 +4379,16 @@
 											]
 										},
 										"nullable": true,
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"allow_child_bypass": {
 										"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 										"example": false,
 										"nullable": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"audit_ssh": {
 										"description": "Settings for the Audit SSH action.",
@@ -4236,7 +4401,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"biso_admin_controls": {
 										"description": "Configure how browser isolation behaves.",
@@ -4351,7 +4517,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"block_page": {
 										"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -4372,26 +4538,30 @@
 										"required": [
 											"target_uri"
 										],
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"block_page_enabled": {
 										"description": "Enable the custom block page.",
 										"example": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"block_reason": {
 										"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 										"example": "This website is a security risk",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"bypass_parent_rule": {
 										"description": "Set by children MSP accounts to bypass their parent's rules.",
 										"example": false,
 										"nullable": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"check_session": {
 										"description": "Configure how session check behaves.",
@@ -4410,7 +4580,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"dns_resolvers": {
 										"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -4447,7 +4618,8 @@
 													"required": [
 														"ip"
 													],
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"type": "array"
 											},
@@ -4482,12 +4654,14 @@
 													"required": [
 														"ip"
 													],
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"type": "array"
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"egress": {
 										"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -4512,31 +4686,36 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"ignore_cname_category_matches": {
 										"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 										"example": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"insecure_disable_dnssec_validation": {
 										"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 										"example": false,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"ip_categories": {
 										"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 										"example": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"ip_indicator_feeds": {
 										"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 										"example": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"l4override": {
 										"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -4554,7 +4733,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"notification_settings": {
 										"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -4581,13 +4761,15 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"override_host": {
 										"description": "Override matching DNS queries with a hostname.",
 										"example": "example.com",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"override_ips": {
 										"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -4602,7 +4784,8 @@
 											"x-auditable": true
 										},
 										"nullable": true,
-										"type": "array"
+										"type": "array",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"payload_log": {
 										"description": "Configure DLP payload logging.",
@@ -4615,7 +4798,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"quarantine": {
 										"description": "Settings that apply to quarantine rules",
@@ -4645,7 +4829,8 @@
 												"type": "array"
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"redirect": {
 										"description": "Settings that apply to redirect rules",
@@ -4671,7 +4856,8 @@
 										"required": [
 											"target_uri"
 										],
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"resolve_dns_internally": {
 										"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -4692,14 +4878,16 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"resolve_dns_through_cloudflare": {
 										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 										"example": true,
 										"nullable": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"untrusted_cert": {
 										"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -4717,10 +4905,12 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computational_optional"
 							},
 							"schedule": {
 								"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -4775,14 +4965,16 @@
 										"x-auditable": true
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computational_optional"
 							},
 							"traffic": {
 								"default": "",
 								"description": "The wirefilter expression used for traffic matching.",
 								"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computational_optional"
 							}
 						},
 						"required": [
@@ -4918,7 +5110,8 @@
 													"description": "The wirefilter expression used for device posture check matching.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"enabled": {
 													"default": false,
@@ -4964,7 +5157,8 @@
 													"required": [
 														"expires_at"
 													],
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"filters": {
 													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -4998,7 +5192,8 @@
 													"description": "The wirefilter expression used for identity matching.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"name": {
 													"description": "The name of the rule.",
@@ -5045,14 +5240,16 @@
 																]
 															},
 															"nullable": true,
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"allow_child_bypass": {
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"audit_ssh": {
 															"description": "Settings for the Audit SSH action.",
@@ -5065,7 +5262,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
@@ -5180,7 +5378,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -5201,26 +5399,30 @@
 															"required": [
 																"target_uri"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_page_enabled": {
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_reason": {
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"bypass_parent_rule": {
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"check_session": {
 															"description": "Configure how session check behaves.",
@@ -5239,7 +5441,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"dns_resolvers": {
 															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -5276,7 +5479,8 @@
 																		"required": [
 																			"ip"
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"type": "array"
 																},
@@ -5311,12 +5515,14 @@
 																		"required": [
 																			"ip"
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"type": "array"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"egress": {
 															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -5341,31 +5547,36 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ignore_cname_category_matches": {
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ip_categories": {
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ip_indicator_feeds": {
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -5383,7 +5594,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"notification_settings": {
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -5410,13 +5622,15 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"override_host": {
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"override_ips": {
 															"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -5431,7 +5645,8 @@
 																"x-auditable": true
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging.",
@@ -5444,7 +5659,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"quarantine": {
 															"description": "Settings that apply to quarantine rules",
@@ -5474,7 +5690,8 @@
 																	"type": "array"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
@@ -5500,7 +5717,8 @@
 															"required": [
 																"target_uri"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -5521,14 +5739,16 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"resolve_dns_through_cloudflare": {
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -5546,10 +5766,12 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"schedule": {
 													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -5604,7 +5826,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"source_account": {
 													"description": "account tag of account that created the rule",
@@ -5617,7 +5840,8 @@
 													"description": "The wirefilter expression used for traffic matching.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -5639,6 +5863,14 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"name",
+												"precedence",
+												"enabled",
+												"action",
+												"traffic",
+												"filters"
+											],
 											"type": "object"
 										}
 									}
@@ -5777,7 +6009,8 @@
 															"description": "The wirefilter expression used for device posture check matching.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"enabled": {
 															"default": false,
@@ -5823,7 +6056,8 @@
 															"required": [
 																"expires_at"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"filters": {
 															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -5857,7 +6091,8 @@
 															"description": "The wirefilter expression used for identity matching.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"name": {
 															"description": "The name of the rule.",
@@ -5904,14 +6139,16 @@
 																		]
 																	},
 																	"nullable": true,
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"allow_child_bypass": {
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"audit_ssh": {
 																	"description": "Settings for the Audit SSH action.",
@@ -5924,7 +6161,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
@@ -6039,7 +6277,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -6060,26 +6298,30 @@
 																	"required": [
 																		"target_uri"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_page_enabled": {
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_reason": {
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"bypass_parent_rule": {
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"check_session": {
 																	"description": "Configure how session check behaves.",
@@ -6098,7 +6340,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"dns_resolvers": {
 																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -6135,7 +6378,8 @@
 																				"required": [
 																					"ip"
 																				],
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-terraform-configurability": "computational_optional"
 																			},
 																			"type": "array"
 																		},
@@ -6170,12 +6414,14 @@
 																				"required": [
 																					"ip"
 																				],
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-terraform-configurability": "computational_optional"
 																			},
 																			"type": "array"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"egress": {
 																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -6200,31 +6446,36 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ignore_cname_category_matches": {
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ip_categories": {
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ip_indicator_feeds": {
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -6242,7 +6493,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"notification_settings": {
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -6269,13 +6521,15 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"override_host": {
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"override_ips": {
 																	"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -6290,7 +6544,8 @@
 																		"x-auditable": true
 																	},
 																	"nullable": true,
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging.",
@@ -6303,7 +6558,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"quarantine": {
 																	"description": "Settings that apply to quarantine rules",
@@ -6333,7 +6589,8 @@
 																			"type": "array"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
@@ -6359,7 +6616,8 @@
 																	"required": [
 																		"target_uri"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"resolve_dns_internally": {
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -6380,14 +6638,16 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"resolve_dns_through_cloudflare": {
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -6405,10 +6665,12 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"schedule": {
 															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -6463,7 +6725,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"source_account": {
 															"description": "account tag of account that created the rule",
@@ -6476,7 +6739,8 @@
 															"description": "The wirefilter expression used for traffic matching.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -6498,6 +6762,14 @@
 															"type": "string"
 														}
 													},
+													"required": [
+														"name",
+														"precedence",
+														"enabled",
+														"action",
+														"traffic",
+														"filters"
+													],
 													"type": "object"
 												}
 											}
@@ -6764,7 +7036,8 @@
 													"description": "The wirefilter expression used for device posture check matching.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"enabled": {
 													"default": false,
@@ -6810,7 +7083,8 @@
 													"required": [
 														"expires_at"
 													],
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"filters": {
 													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -6844,7 +7118,8 @@
 													"description": "The wirefilter expression used for identity matching.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"name": {
 													"description": "The name of the rule.",
@@ -6891,14 +7166,16 @@
 																]
 															},
 															"nullable": true,
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"allow_child_bypass": {
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"audit_ssh": {
 															"description": "Settings for the Audit SSH action.",
@@ -6911,7 +7188,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
@@ -7026,7 +7304,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -7047,26 +7325,30 @@
 															"required": [
 																"target_uri"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_page_enabled": {
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_reason": {
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"bypass_parent_rule": {
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"check_session": {
 															"description": "Configure how session check behaves.",
@@ -7085,7 +7367,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"dns_resolvers": {
 															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -7122,7 +7405,8 @@
 																		"required": [
 																			"ip"
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"type": "array"
 																},
@@ -7157,12 +7441,14 @@
 																		"required": [
 																			"ip"
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"type": "array"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"egress": {
 															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -7187,31 +7473,36 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ignore_cname_category_matches": {
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ip_categories": {
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ip_indicator_feeds": {
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -7229,7 +7520,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"notification_settings": {
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -7256,13 +7548,15 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"override_host": {
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"override_ips": {
 															"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -7277,7 +7571,8 @@
 																"x-auditable": true
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging.",
@@ -7290,7 +7585,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"quarantine": {
 															"description": "Settings that apply to quarantine rules",
@@ -7320,7 +7616,8 @@
 																	"type": "array"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
@@ -7346,7 +7643,8 @@
 															"required": [
 																"target_uri"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -7367,14 +7665,16 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"resolve_dns_through_cloudflare": {
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -7392,10 +7692,12 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"schedule": {
 													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -7450,7 +7752,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"source_account": {
 													"description": "account tag of account that created the rule",
@@ -7463,7 +7766,8 @@
 													"description": "The wirefilter expression used for traffic matching.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -7485,6 +7789,14 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"name",
+												"precedence",
+												"enabled",
+												"action",
+												"traffic",
+												"filters"
+											],
 											"type": "object"
 										}
 									}
@@ -7620,7 +7932,8 @@
 															"description": "The wirefilter expression used for device posture check matching.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"enabled": {
 															"default": false,
@@ -7666,7 +7979,8 @@
 															"required": [
 																"expires_at"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"filters": {
 															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -7700,7 +8014,8 @@
 															"description": "The wirefilter expression used for identity matching.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"name": {
 															"description": "The name of the rule.",
@@ -7747,14 +8062,16 @@
 																		]
 																	},
 																	"nullable": true,
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"allow_child_bypass": {
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"audit_ssh": {
 																	"description": "Settings for the Audit SSH action.",
@@ -7767,7 +8084,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
@@ -7882,7 +8200,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -7903,26 +8221,30 @@
 																	"required": [
 																		"target_uri"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_page_enabled": {
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_reason": {
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"bypass_parent_rule": {
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"check_session": {
 																	"description": "Configure how session check behaves.",
@@ -7941,7 +8263,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"dns_resolvers": {
 																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -7978,7 +8301,8 @@
 																				"required": [
 																					"ip"
 																				],
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-terraform-configurability": "computational_optional"
 																			},
 																			"type": "array"
 																		},
@@ -8013,12 +8337,14 @@
 																				"required": [
 																					"ip"
 																				],
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-terraform-configurability": "computational_optional"
 																			},
 																			"type": "array"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"egress": {
 																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -8043,31 +8369,36 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ignore_cname_category_matches": {
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ip_categories": {
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ip_indicator_feeds": {
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -8085,7 +8416,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"notification_settings": {
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -8112,13 +8444,15 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"override_host": {
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"override_ips": {
 																	"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -8133,7 +8467,8 @@
 																		"x-auditable": true
 																	},
 																	"nullable": true,
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging.",
@@ -8146,7 +8481,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"quarantine": {
 																	"description": "Settings that apply to quarantine rules",
@@ -8176,7 +8512,8 @@
 																			"type": "array"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
@@ -8202,7 +8539,8 @@
 																	"required": [
 																		"target_uri"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"resolve_dns_internally": {
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -8223,14 +8561,16 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"resolve_dns_through_cloudflare": {
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -8248,10 +8588,12 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"schedule": {
 															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -8306,7 +8648,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"source_account": {
 															"description": "account tag of account that created the rule",
@@ -8319,7 +8662,8 @@
 															"description": "The wirefilter expression used for traffic matching.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -8341,6 +8685,14 @@
 															"type": "string"
 														}
 													},
+													"required": [
+														"name",
+														"precedence",
+														"enabled",
+														"action",
+														"traffic",
+														"filters"
+													],
 													"type": "object"
 												}
 											}
@@ -8524,7 +8876,8 @@
 								"description": "The wirefilter expression used for device posture check matching.",
 								"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computational_optional"
 							},
 							"enabled": {
 								"default": false,
@@ -8570,7 +8923,8 @@
 								"required": [
 									"expires_at"
 								],
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computational_optional"
 							},
 							"filters": {
 								"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -8597,7 +8951,8 @@
 								"description": "The wirefilter expression used for identity matching.",
 								"example": "any(identity.groups.name[*] in {\"finance\"})",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computational_optional"
 							},
 							"name": {
 								"description": "The name of the rule.",
@@ -8632,14 +8987,16 @@
 											]
 										},
 										"nullable": true,
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"allow_child_bypass": {
 										"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 										"example": false,
 										"nullable": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"audit_ssh": {
 										"description": "Settings for the Audit SSH action.",
@@ -8652,7 +9009,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"biso_admin_controls": {
 										"description": "Configure how browser isolation behaves.",
@@ -8767,7 +9125,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"block_page": {
 										"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -8788,26 +9146,30 @@
 										"required": [
 											"target_uri"
 										],
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"block_page_enabled": {
 										"description": "Enable the custom block page.",
 										"example": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"block_reason": {
 										"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 										"example": "This website is a security risk",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"bypass_parent_rule": {
 										"description": "Set by children MSP accounts to bypass their parent's rules.",
 										"example": false,
 										"nullable": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"check_session": {
 										"description": "Configure how session check behaves.",
@@ -8826,7 +9188,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"dns_resolvers": {
 										"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -8863,7 +9226,8 @@
 													"required": [
 														"ip"
 													],
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"type": "array"
 											},
@@ -8898,12 +9262,14 @@
 													"required": [
 														"ip"
 													],
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"type": "array"
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"egress": {
 										"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -8928,31 +9294,36 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"ignore_cname_category_matches": {
 										"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 										"example": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"insecure_disable_dnssec_validation": {
 										"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 										"example": false,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"ip_categories": {
 										"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 										"example": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"ip_indicator_feeds": {
 										"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 										"example": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"l4override": {
 										"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -8970,7 +9341,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"notification_settings": {
 										"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -8997,13 +9369,15 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"override_host": {
 										"description": "Override matching DNS queries with a hostname.",
 										"example": "example.com",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"override_ips": {
 										"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -9018,7 +9392,8 @@
 											"x-auditable": true
 										},
 										"nullable": true,
-										"type": "array"
+										"type": "array",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"payload_log": {
 										"description": "Configure DLP payload logging.",
@@ -9031,7 +9406,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"quarantine": {
 										"description": "Settings that apply to quarantine rules",
@@ -9061,7 +9437,8 @@
 												"type": "array"
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"redirect": {
 										"description": "Settings that apply to redirect rules",
@@ -9087,7 +9464,8 @@
 										"required": [
 											"target_uri"
 										],
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"resolve_dns_internally": {
 										"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -9108,14 +9486,16 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"resolve_dns_through_cloudflare": {
 										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 										"example": true,
 										"nullable": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computational_optional"
 									},
 									"untrusted_cert": {
 										"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -9133,10 +9513,12 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computational_optional"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computational_optional"
 							},
 							"schedule": {
 								"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -9191,14 +9573,16 @@
 										"x-auditable": true
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computational_optional"
 							},
 							"traffic": {
 								"default": "",
 								"description": "The wirefilter expression used for traffic matching.",
 								"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computational_optional"
 							}
 						},
 						"required": [
@@ -9334,7 +9718,8 @@
 													"description": "The wirefilter expression used for device posture check matching.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"enabled": {
 													"default": false,
@@ -9380,7 +9765,8 @@
 													"required": [
 														"expires_at"
 													],
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"filters": {
 													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -9414,7 +9800,8 @@
 													"description": "The wirefilter expression used for identity matching.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"name": {
 													"description": "The name of the rule.",
@@ -9461,14 +9848,16 @@
 																]
 															},
 															"nullable": true,
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"allow_child_bypass": {
 															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 															"example": false,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"audit_ssh": {
 															"description": "Settings for the Audit SSH action.",
@@ -9481,7 +9870,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"biso_admin_controls": {
 															"description": "Configure how browser isolation behaves.",
@@ -9596,7 +9986,7 @@
 																}
 															},
 															"type": "object",
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_page": {
 															"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -9617,26 +10007,30 @@
 															"required": [
 																"target_uri"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_page_enabled": {
 															"description": "Enable the custom block page.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"block_reason": {
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"bypass_parent_rule": {
 															"description": "Set by children MSP accounts to bypass their parent's rules.",
 															"example": false,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"check_session": {
 															"description": "Configure how session check behaves.",
@@ -9655,7 +10049,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"dns_resolvers": {
 															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -9692,7 +10087,8 @@
 																		"required": [
 																			"ip"
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"type": "array"
 																},
@@ -9727,12 +10123,14 @@
 																		"required": [
 																			"ip"
 																		],
-																		"type": "object"
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "computational_optional"
 																	},
 																	"type": "array"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"egress": {
 															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -9757,31 +10155,36 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ignore_cname_category_matches": {
 															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 															"example": false,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ip_categories": {
 															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"ip_indicator_feeds": {
 															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -9799,7 +10202,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"notification_settings": {
 															"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -9826,13 +10230,15 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"override_host": {
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"override_ips": {
 															"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -9847,7 +10253,8 @@
 																"x-auditable": true
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"payload_log": {
 															"description": "Configure DLP payload logging.",
@@ -9860,7 +10267,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"quarantine": {
 															"description": "Settings that apply to quarantine rules",
@@ -9890,7 +10298,8 @@
 																	"type": "array"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"redirect": {
 															"description": "Settings that apply to redirect rules",
@@ -9916,7 +10325,8 @@
 															"required": [
 																"target_uri"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"resolve_dns_internally": {
 															"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -9937,14 +10347,16 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"resolve_dns_through_cloudflare": {
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -9962,10 +10374,12 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"schedule": {
 													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -10020,7 +10434,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"source_account": {
 													"description": "account tag of account that created the rule",
@@ -10033,7 +10448,8 @@
 													"description": "The wirefilter expression used for traffic matching.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computational_optional"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -10055,6 +10471,14 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"name",
+												"precedence",
+												"enabled",
+												"action",
+												"traffic",
+												"filters"
+											],
 											"type": "object"
 										}
 									}
@@ -10193,7 +10617,8 @@
 															"description": "The wirefilter expression used for device posture check matching.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"enabled": {
 															"default": false,
@@ -10239,7 +10664,8 @@
 															"required": [
 																"expires_at"
 															],
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"filters": {
 															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -10273,7 +10699,8 @@
 															"description": "The wirefilter expression used for identity matching.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"name": {
 															"description": "The name of the rule.",
@@ -10320,14 +10747,16 @@
 																		]
 																	},
 																	"nullable": true,
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"allow_child_bypass": {
 																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
 																	"example": false,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"audit_ssh": {
 																	"description": "Settings for the Audit SSH action.",
@@ -10340,7 +10769,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"biso_admin_controls": {
 																	"description": "Configure how browser isolation behaves.",
@@ -10455,7 +10885,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_page": {
 																	"description": "Custom block page settings. If missing/null, blocking will use the the account settings.",
@@ -10476,26 +10906,30 @@
 																	"required": [
 																		"target_uri"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_page_enabled": {
 																	"description": "Enable the custom block page.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"block_reason": {
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"bypass_parent_rule": {
 																	"description": "Set by children MSP accounts to bypass their parent's rules.",
 																	"example": false,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"check_session": {
 																	"description": "Configure how session check behaves.",
@@ -10514,7 +10948,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"dns_resolvers": {
 																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
@@ -10551,7 +10986,8 @@
 																				"required": [
 																					"ip"
 																				],
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-terraform-configurability": "computational_optional"
 																			},
 																			"type": "array"
 																		},
@@ -10586,12 +11022,14 @@
 																				"required": [
 																					"ip"
 																				],
-																				"type": "object"
+																				"type": "object",
+																				"x-stainless-terraform-configurability": "computational_optional"
 																			},
 																			"type": "array"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"egress": {
 																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
@@ -10616,31 +11054,36 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ignore_cname_category_matches": {
 																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ip_categories": {
 																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"ip_indicator_feeds": {
 																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port.",
@@ -10658,7 +11101,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"notification_settings": {
 																	"description": "Configure a notification to display on the user's device when this rule is matched.",
@@ -10685,13 +11129,15 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"override_host": {
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"override_ips": {
 																	"description": "Override matching DNS queries with an IP or set of IPs.",
@@ -10706,7 +11152,8 @@
 																		"x-auditable": true
 																	},
 																	"nullable": true,
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"payload_log": {
 																	"description": "Configure DLP payload logging.",
@@ -10719,7 +11166,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"quarantine": {
 																	"description": "Settings that apply to quarantine rules",
@@ -10749,7 +11197,8 @@
 																			"type": "array"
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"redirect": {
 																	"description": "Settings that apply to redirect rules",
@@ -10775,7 +11224,8 @@
 																	"required": [
 																		"target_uri"
 																	],
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"resolve_dns_internally": {
 																	"description": "Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action is set to 'resolve'.",
@@ -10796,14 +11246,16 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"resolve_dns_through_cloudflare": {
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns_resolvers' are specified or 'resolve_dns_internally' is set. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
 																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computational_optional"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -10821,10 +11273,12 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computational_optional"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"schedule": {
 															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
@@ -10879,7 +11333,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"source_account": {
 															"description": "account tag of account that created the rule",
@@ -10892,7 +11347,8 @@
 															"description": "The wirefilter expression used for traffic matching.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computational_optional"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -10914,6 +11370,14 @@
 															"type": "string"
 														}
 													},
+													"required": [
+														"name",
+														"precedence",
+														"enabled",
+														"action",
+														"traffic",
+														"filters"
+													],
 													"type": "object"
 												}
 											}
