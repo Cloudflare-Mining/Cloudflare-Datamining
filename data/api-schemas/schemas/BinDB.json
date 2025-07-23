@@ -74,6 +74,10 @@
 		"summary": "Posts a file to BinDB",
 		"tags": [
 			"BinDB"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/binary": {
@@ -218,6 +222,10 @@
 		"summary": "Posts a file to BinDB",
 		"tags": [
 			"BinDB"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
 		]
 	}
 }
