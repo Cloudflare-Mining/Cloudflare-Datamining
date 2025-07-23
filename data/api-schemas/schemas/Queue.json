@@ -1,4 +1,502 @@
 {
+	"DELETE /accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}": {
+		"description": "Delete an existing event subscription",
+		"operationId": "subscriptions-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "subscription_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"enum": [
+												true
+											],
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"description": "When the subscription was created",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"destination": {
+													"description": "Destination configuration for the subscription",
+													"oneOf": [
+														{
+															"properties": {
+																"queue_id": {
+																	"description": "ID of the target queue",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of destination",
+																	"enum": [
+																		"queues.queue"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"type",
+																"queue_id"
+															],
+															"type": "object"
+														}
+													],
+													"type": "object"
+												},
+												"enabled": {
+													"description": "Whether the subscription is active",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"events": {
+													"description": "List of event types this subscription handles",
+													"items": {
+														"type": "string"
+													},
+													"minItems": 1,
+													"type": "array",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Unique identifier for the subscription",
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_at": {
+													"description": "When the subscription was last modified",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Name of the subscription",
+													"type": "string",
+													"x-auditable": true
+												},
+												"source": {
+													"description": "Source configuration for the subscription",
+													"oneOf": [
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"access"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"application_id": {
+																	"description": "ID of the Access application",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"access.application"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"clipboards"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"clipboard_id": {
+																	"description": "ID of the clipboard",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"clipboards.clipboard"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"dns.zone"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"zone_id": {
+																	"description": "ID of the DNS zone",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"images"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"kv"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"namespace_id": {
+																	"description": "ID of the KV namespace",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"kv.namespace"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"r2"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"bucket_name": {
+																	"description": "Name of the R2 bucket",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"r2.bucket"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"secretsStore"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"store_id": {
+																	"description": "ID of the secrets store",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"secretsStore.store"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"superSlurper"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"vectorize"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"index_name": {
+																	"description": "Name of the Vectorize index",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"vectorize.index"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"model_name": {
+																	"description": "Name of the Workers AI model",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workersAi.model"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workersBuilds.worker"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"worker_name": {
+																	"description": "Name of the worker",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workflows"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workflows.workflow"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"workflow_name": {
+																	"description": "Name of the workflow",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														}
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"created_at",
+												"modified_at",
+												"name",
+												"enabled",
+												"source",
+												"destination",
+												"events"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successfully created event subscription"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete Event Subscription",
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		]
+	},
 	"DELETE /accounts/{account_id}/queues/{queue_id}": {
 		"description": "Deletes a queue",
 		"operationId": "queues-delete",
@@ -349,6 +847,635 @@
 				"com.cloudflare.edge.worker.queue.delete"
 			]
 		}
+	},
+	"GET /accounts/{account_id}/event_subscriptions/subscriptions": {
+		"description": "Get a paginated list of event subscriptions with optional sorting and filtering",
+		"operationId": "subscriptions-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Page number for pagination",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of items per page",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Field to sort by",
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "name",
+					"enum": [
+						"created_at",
+						"name",
+						"enabled",
+						"source"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Sort direction",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"enum": [
+												true
+											],
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"description": "When the subscription was created",
+														"format": "date-time",
+														"type": "string",
+														"x-auditable": true
+													},
+													"destination": {
+														"description": "Destination configuration for the subscription",
+														"oneOf": [
+															{
+																"properties": {
+																	"queue_id": {
+																		"description": "ID of the target queue",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "Type of destination",
+																		"enum": [
+																			"queues.queue"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"type",
+																	"queue_id"
+																],
+																"type": "object"
+															}
+														],
+														"type": "object"
+													},
+													"enabled": {
+														"description": "Whether the subscription is active",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"events": {
+														"description": "List of event types this subscription handles",
+														"items": {
+															"type": "string"
+														},
+														"minItems": 1,
+														"type": "array",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "Unique identifier for the subscription",
+														"type": "string",
+														"x-auditable": true
+													},
+													"modified_at": {
+														"description": "When the subscription was last modified",
+														"format": "date-time",
+														"type": "string",
+														"x-auditable": true
+													},
+													"name": {
+														"description": "Name of the subscription",
+														"type": "string",
+														"x-auditable": true
+													},
+													"source": {
+														"description": "Source configuration for the subscription",
+														"oneOf": [
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"access"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"application_id": {
+																		"description": "ID of the Access application",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"access.application"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"clipboards"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"clipboard_id": {
+																		"description": "ID of the clipboard",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"clipboards.clipboard"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"dns.zone"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"zone_id": {
+																		"description": "ID of the DNS zone",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"images"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"kv"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the KV namespace",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"kv.namespace"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"r2"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"bucket_name": {
+																		"description": "Name of the R2 bucket",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"r2.bucket"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"secretsStore"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"store_id": {
+																		"description": "ID of the secrets store",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"secretsStore.store"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"superSlurper"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"vectorize"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"index_name": {
+																		"description": "Name of the Vectorize index",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"vectorize.index"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"model_name": {
+																		"description": "Name of the Workers AI model",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"workersAi.model"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"workersBuilds.worker"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"worker_name": {
+																		"description": "Name of the worker",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"workflows"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Type of source",
+																		"enum": [
+																			"workflows.workflow"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"workflow_name": {
+																		"description": "Name of the workflow",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"type": "object"
+													}
+												},
+												"required": [
+													"id",
+													"created_at",
+													"modified_at",
+													"name",
+													"enabled",
+													"source",
+													"destination",
+													"events"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"description": "Number of items in current page",
+													"type": "integer"
+												},
+												"page": {
+													"description": "Current page number",
+													"type": "integer"
+												},
+												"per_page": {
+													"description": "Items per page",
+													"type": "integer"
+												},
+												"total_count": {
+													"description": "Total number of items",
+													"type": "integer"
+												},
+												"total_pages": {
+													"description": "Total number of pages",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"count",
+												"total_count",
+												"page",
+												"per_page",
+												"total_pages"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List of event subscriptions"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List Event Subscriptions",
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Queues Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
 	},
 	"GET /accounts/{account_id}/queues": {
 		"description": "Returns the queues owned by an account.",
@@ -2176,6 +3303,679 @@
 			]
 		}
 	},
+	"PATCH /accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}": {
+		"description": "Update an existing event subscription",
+		"operationId": "subscriptions-patch",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "subscription_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destination": {
+								"description": "Destination configuration for the subscription",
+								"oneOf": [
+									{
+										"properties": {
+											"queue_id": {
+												"description": "ID of the target queue",
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": {
+												"description": "Type of destination",
+												"enum": [
+													"queues.queue"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"type",
+											"queue_id"
+										],
+										"type": "object"
+									}
+								],
+								"type": "object"
+							},
+							"enabled": {
+								"description": "Whether the subscription is active",
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"events": {
+								"description": "List of event types this subscription handles",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1,
+								"type": "array",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "Name of the subscription",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"enum": [
+												true
+											],
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"description": "When the subscription was created",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"destination": {
+													"description": "Destination configuration for the subscription",
+													"oneOf": [
+														{
+															"properties": {
+																"queue_id": {
+																	"description": "ID of the target queue",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of destination",
+																	"enum": [
+																		"queues.queue"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"type",
+																"queue_id"
+															],
+															"type": "object"
+														}
+													],
+													"type": "object"
+												},
+												"enabled": {
+													"description": "Whether the subscription is active",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"events": {
+													"description": "List of event types this subscription handles",
+													"items": {
+														"type": "string"
+													},
+													"minItems": 1,
+													"type": "array",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Unique identifier for the subscription",
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_at": {
+													"description": "When the subscription was last modified",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Name of the subscription",
+													"type": "string",
+													"x-auditable": true
+												},
+												"source": {
+													"description": "Source configuration for the subscription",
+													"oneOf": [
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"access"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"application_id": {
+																	"description": "ID of the Access application",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"access.application"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"clipboards"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"clipboard_id": {
+																	"description": "ID of the clipboard",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"clipboards.clipboard"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"dns.zone"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"zone_id": {
+																	"description": "ID of the DNS zone",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"images"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"kv"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"namespace_id": {
+																	"description": "ID of the KV namespace",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"kv.namespace"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"r2"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"bucket_name": {
+																	"description": "Name of the R2 bucket",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"r2.bucket"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"secretsStore"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"store_id": {
+																	"description": "ID of the secrets store",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"secretsStore.store"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"superSlurper"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"vectorize"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"index_name": {
+																	"description": "Name of the Vectorize index",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"vectorize.index"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"model_name": {
+																	"description": "Name of the Workers AI model",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workersAi.model"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workersBuilds.worker"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"worker_name": {
+																	"description": "Name of the worker",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workflows"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workflows.workflow"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"workflow_name": {
+																	"description": "Name of the workflow",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														}
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"created_at",
+												"modified_at",
+												"name",
+												"enabled",
+												"source",
+												"destination",
+												"events"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successfully created event subscription"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request body or validation errors"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Queue does not exist or resource not found on source"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update Event Subscription",
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		]
+	},
 	"PATCH /accounts/{account_id}/queues/{queue_id}": {
 		"description": "Updates a Queue.",
 		"operationId": "queues-update-partial",
@@ -2901,6 +4701,1027 @@
 				"com.cloudflare.edge.worker.queue.update"
 			]
 		}
+	},
+	"POST /accounts/{account_id}/event_subscriptions/subscriptions": {
+		"description": "Create a new event subscription for a queue",
+		"operationId": "subscriptions-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destination": {
+								"description": "Destination configuration for the subscription",
+								"oneOf": [
+									{
+										"properties": {
+											"queue_id": {
+												"description": "ID of the target queue",
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": {
+												"description": "Type of destination",
+												"enum": [
+													"queues.queue"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"type",
+											"queue_id"
+										],
+										"type": "object"
+									}
+								],
+								"type": "object"
+							},
+							"enabled": {
+								"description": "Whether the subscription is active",
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"events": {
+								"description": "List of event types this subscription handles",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1,
+								"type": "array",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "Name of the subscription",
+								"type": "string",
+								"x-auditable": true
+							},
+							"source": {
+								"description": "Source configuration for the subscription",
+								"oneOf": [
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"access"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"application_id": {
+												"description": "ID of the Access application",
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"access.application"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"clipboards"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"clipboard_id": {
+												"description": "ID of the clipboard",
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"clipboards.clipboard"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"dns.zone"
+												],
+												"type": "string",
+												"x-auditable": true
+											},
+											"zone_id": {
+												"description": "ID of the DNS zone",
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"images"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"kv"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"namespace_id": {
+												"description": "ID of the KV namespace",
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"kv.namespace"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"r2"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"bucket_name": {
+												"description": "Name of the R2 bucket",
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"r2.bucket"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"secretsStore"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"store_id": {
+												"description": "ID of the secrets store",
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"secretsStore.store"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"superSlurper"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"vectorize"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"index_name": {
+												"description": "Name of the Vectorize index",
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"vectorize.index"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"model_name": {
+												"description": "Name of the Workers AI model",
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"workersAi.model"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"workersBuilds.worker"
+												],
+												"type": "string",
+												"x-auditable": true
+											},
+											"worker_name": {
+												"description": "Name of the worker",
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"workflows"
+												],
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Type of source",
+												"enum": [
+													"workflows.workflow"
+												],
+												"type": "string",
+												"x-auditable": true
+											},
+											"workflow_name": {
+												"description": "Name of the workflow",
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									}
+								],
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"enum": [
+												true
+											],
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"description": "When the subscription was created",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"destination": {
+													"description": "Destination configuration for the subscription",
+													"oneOf": [
+														{
+															"properties": {
+																"queue_id": {
+																	"description": "ID of the target queue",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of destination",
+																	"enum": [
+																		"queues.queue"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"type",
+																"queue_id"
+															],
+															"type": "object"
+														}
+													],
+													"type": "object"
+												},
+												"enabled": {
+													"description": "Whether the subscription is active",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"events": {
+													"description": "List of event types this subscription handles",
+													"items": {
+														"type": "string"
+													},
+													"minItems": 1,
+													"type": "array",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Unique identifier for the subscription",
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_at": {
+													"description": "When the subscription was last modified",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Name of the subscription",
+													"type": "string",
+													"x-auditable": true
+												},
+												"source": {
+													"description": "Source configuration for the subscription",
+													"oneOf": [
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"access"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"application_id": {
+																	"description": "ID of the Access application",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"access.application"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"clipboards"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"clipboard_id": {
+																	"description": "ID of the clipboard",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"clipboards.clipboard"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"dns.zone"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"zone_id": {
+																	"description": "ID of the DNS zone",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"images"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"kv"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"namespace_id": {
+																	"description": "ID of the KV namespace",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"kv.namespace"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"r2"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"bucket_name": {
+																	"description": "Name of the R2 bucket",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"r2.bucket"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"secretsStore"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"store_id": {
+																	"description": "ID of the secrets store",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"secretsStore.store"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"superSlurper"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"vectorize"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"index_name": {
+																	"description": "Name of the Vectorize index",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"vectorize.index"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"model_name": {
+																	"description": "Name of the Workers AI model",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workersAi.model"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workersBuilds.worker"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"worker_name": {
+																	"description": "Name of the worker",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workflows"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"description": "Type of source",
+																	"enum": [
+																		"workflows.workflow"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"workflow_name": {
+																	"description": "Name of the workflow",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														}
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"created_at",
+												"modified_at",
+												"name",
+												"enabled",
+												"source",
+												"destination",
+												"events"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successfully created event subscription"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request body or validation errors"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Queue does not exist or resource not found on source"
+			},
+			"405": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Multiple subscriptions on same resource not supported"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create Event Subscription",
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		]
 	},
 	"POST /accounts/{account_id}/queues": {
 		"description": "Create a new queue",
