@@ -212,6 +212,24 @@
 														"properties": {
 															"region": {
 																"type": "string"
+															},
+															"speed": {
+																"description": "Bandwidth structure as visible through the customer-facing API.",
+																"enum": [
+																	"50M",
+																	"100M",
+																	"200M",
+																	"300M",
+																	"400M",
+																	"500M",
+																	"1G",
+																	"2G",
+																	"5G",
+																	"10G",
+																	"20G",
+																	"50G"
+																],
+																"type": "string"
 															}
 														},
 														"required": [
@@ -398,6 +416,24 @@
 										{
 											"properties": {
 												"region": {
+													"type": "string"
+												},
+												"speed": {
+													"description": "Bandwidth structure as visible through the customer-facing API.",
+													"enum": [
+														"50M",
+														"100M",
+														"200M",
+														"300M",
+														"400M",
+														"500M",
+														"1G",
+														"2G",
+														"5G",
+														"10G",
+														"20G",
+														"50G"
+													],
 													"type": "string"
 												}
 											},
@@ -860,6 +896,24 @@
 										{
 											"properties": {
 												"region": {
+													"type": "string"
+												},
+												"speed": {
+													"description": "Bandwidth structure as visible through the customer-facing API.",
+													"enum": [
+														"50M",
+														"100M",
+														"200M",
+														"300M",
+														"400M",
+														"500M",
+														"1G",
+														"2G",
+														"5G",
+														"10G",
+														"20G",
+														"50G"
+													],
 													"type": "string"
 												}
 											},
