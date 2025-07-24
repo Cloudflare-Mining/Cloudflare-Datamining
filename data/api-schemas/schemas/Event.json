@@ -460,7 +460,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events": {
-		"description": "The `datasetId` must be defined (to list existing datasets (and their IDs), use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint). Also, must provide query parameters.",
+		"description": "When `datasetId` is unspecified, events will be listed from the `Cloudforce One Threat Events` dataset. To list existing datasets (and their IDs), use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint). Also, must provide query parameters.",
 		"operationId": "get_EventListGet",
 		"parameters": [
 			{
@@ -1147,6 +1147,313 @@
 			}
 		],
 		"summary": "Reads data for a raw event",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/relationships": {
+		"description": "The `event_id` must be defined (to list existing events (and their IDs), use the [`Filter and List Events`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list/) endpoint). Also, must provide query parameters.",
+		"operationId": "get_EventRelationships",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Event UUID.",
+				"in": "path",
+				"name": "event_id",
+				"required": true,
+				"schema": {
+					"description": "Event UUID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The direction to traverse the graph. Defaults to 'both' to search all.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "both",
+					"description": "The direction to traverse the graph. Defaults to 'both' to search all.",
+					"enum": [
+						"ancestors",
+						"descendants",
+						"both"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "The maximum depth to traverse. Defaults to 5.",
+				"in": "query",
+				"name": "maxDepth",
+				"schema": {
+					"description": "The maximum depth to traverse. Defaults to 5.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "An optional array of relationship types to filter by.",
+				"in": "query",
+				"name": "relationshipTypes",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
+						}
+					],
+					"description": "An optional array of relationship types to filter by."
+				}
+			},
+			{
+				"description": "An optional array of indicator type IDs to filter the results by.",
+				"in": "query",
+				"name": "indicatorTypeIds",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "number"
+						},
+						{
+							"items": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "number"
+									}
+								]
+							},
+							"type": "array"
+						}
+					],
+					"description": "An optional array of indicator type IDs to filter the results by."
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"accountId": {
+										"example": 1234,
+										"type": "number"
+									},
+									"attacker": {
+										"example": "Flying Yeti",
+										"type": "string"
+									},
+									"attackerCountry": {
+										"example": "CN",
+										"type": "string"
+									},
+									"category": {
+										"example": "Domain Resolution",
+										"type": "string"
+									},
+									"date": {
+										"example": "2022-04-01T00:00:00Z",
+										"type": "string"
+									},
+									"event": {
+										"example": "An attacker registered the domain domain.com",
+										"type": "string"
+									},
+									"id": {
+										"example": 1223,
+										"type": "number"
+									},
+									"indicator": {
+										"example": "domain",
+										"type": "string"
+									},
+									"indicatorType": {
+										"example": "domain",
+										"type": "string"
+									},
+									"indicatorTypeId": {
+										"example": 5,
+										"type": "number"
+									},
+									"insight": {
+										"type": "string"
+									},
+									"killChain": {
+										"type": "number"
+									},
+									"mitreAttack": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"numReferenced": {
+										"type": "number"
+									},
+									"numReferences": {
+										"type": "number"
+									},
+									"rawId": {
+										"example": "453gw34w3",
+										"type": "string"
+									},
+									"referenced": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"referencedIds": {
+										"items": {
+											"type": "number"
+										},
+										"type": "array"
+									},
+									"references": {
+										"items": {
+											"example": " ",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"referencesIds": {
+										"items": {
+											"type": "number"
+										},
+										"type": "array"
+									},
+									"releasabilityId": {
+										"type": "string"
+									},
+									"tags": {
+										"items": {
+											"example": "malware",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"targetCountry": {
+										"example": "US",
+										"type": "string"
+									},
+									"targetIndustry": {
+										"example": "Agriculture",
+										"type": "string"
+									},
+									"tlp": {
+										"example": "amber",
+										"type": "string"
+									},
+									"uuid": {
+										"example": "12345678-1234-1234-1234-1234567890ab",
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"uuid",
+									"accountId",
+									"date",
+									"targetCountry",
+									"attacker",
+									"attackerCountry",
+									"targetIndustry",
+									"rawId",
+									"indicatorTypeId",
+									"indicator",
+									"event",
+									"numReferenced",
+									"numReferences",
+									"tlp",
+									"category",
+									"indicatorType",
+									"referenced",
+									"references",
+									"tags",
+									"killChain",
+									"mitreAttack",
+									"referencedIds",
+									"referencesIds"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns a list of events related to the specified starting event."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Filter and list events related to specific event",
 		"tags": [
 			"Event"
 		],
@@ -2488,7 +2795,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create": {
-		"description": "Events must be created in a client-specific dataset, which means the `datasetId` parameter must be defined. To create a dataset, see the [`Create Dataset`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/create/) endpoint.",
+		"description": "To create a dataset, see the [`Create Dataset`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/create/) endpoint. When `datasetId` parameter is unspecified, it will be created in a default dataset named `Cloudforce One Threat Events`.",
 		"operationId": "post_EventCreate",
 		"parameters": [
 			{
@@ -3366,6 +3673,129 @@
 			}
 		],
 		"summary": "Creates event references for a event",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/relationships/create": {
+		"description": "Creates a directed relationship between two events. The relationship is from parent to child with a specified type.",
+		"operationId": "post_CreateEventRelationship",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"childId": {
+								"format": "uuid",
+								"type": "string"
+							},
+							"parentId": {
+								"format": "uuid",
+								"type": "string"
+							},
+							"type": {
+								"enum": [
+									"related_to",
+									"caused_by",
+									"attributed_to"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"parentId",
+							"childId",
+							"type"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Relationship created successfully"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create a relationship between two events",
 		"tags": [
 			"Event"
 		],
