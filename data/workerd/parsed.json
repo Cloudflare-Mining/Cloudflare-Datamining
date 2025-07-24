@@ -2995,6 +2995,14 @@
 						"compatDisableFlag": "non_pedantic_wpt",
 						"compatEnableFlag": "pedantic_wpt"
 					}
+				},
+				{
+					"name": "exposeGlobalMessageChannel",
+					"annotations": {
+						"compatDisableFlag": "no_expose_global_message_channel",
+						"compatEnableDate": "2025-08-15",
+						"compatEnableFlag": "expose_global_message_channel"
+					}
 				}
 			]
 		},
