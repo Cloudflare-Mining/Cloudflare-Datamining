@@ -1530,7 +1530,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"fips": {
 																	"description": "FIPS settings.",
@@ -2014,7 +2015,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"fips": {
 																			"description": "FIPS settings.",
@@ -3629,7 +3631,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"fips": {
 										"description": "FIPS settings.",
@@ -4088,7 +4091,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"fips": {
 																	"description": "FIPS settings.",
@@ -4572,7 +4576,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"fips": {
 																			"description": "FIPS settings.",
@@ -5875,7 +5880,8 @@
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"type": "object",
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"fips": {
 										"description": "FIPS settings.",
@@ -6334,7 +6340,8 @@
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"fips": {
 																	"description": "FIPS settings.",
@@ -6818,7 +6825,8 @@
 																					"x-auditable": true
 																				}
 																			},
-																			"type": "object"
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"fips": {
 																			"description": "FIPS settings.",
