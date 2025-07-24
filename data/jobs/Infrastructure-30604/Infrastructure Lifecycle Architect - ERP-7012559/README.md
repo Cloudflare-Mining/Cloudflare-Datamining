@@ -5,39 +5,66 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX | Lisbon, Portugal | London, UK</p>
-<p>This position will be based in Austin, Texas, London, England, or Lisbon, Portugal. You will be reporting into the Support Program Management Organization (PMO).</p>
-<h4>About the Role</h4>
-<p>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage Support Operations initiatives and projects. We are looking for expertise in Support Operations and a detailed understanding of the process flows and challenges a Support team faces. You will monitor Support KPI attainment and make process and staffing recommendations to improve them. You will own and maintain the global Support delivery capacity plan.</p>
-<p>You will recommend, project manage, execute, track, and report on major Support Operations initiatives to successful completion. You will own collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with stakeholders to determine available options, manage expectations, and execute against the roadmap. You have the ability to drive change, ensure adoption, and help team members understand the benefits of your work. Last, you are extremely data driven and use data to inform your decisions.</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.</p>
-<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
-<h4><strong>Major areas of responsibilities</strong></h4>
+<p><strong>Available Locations: Austin, Texas</strong></p>
+<p><strong>About Cloudflare:</strong></p>
+<p>Cloudflare is on a mission to help build a better Internet. Today, Cloudflare’s network is one of the largest in the world, powering billions of internet requests for millions of websites. As we continue to innovate and expand, Cloudflare is heavily investing in upleveling our tools and processes as part of a focused effort to drive our growth to $5B and beyond. A key strategy in achieving this scalable growth is the introduction of a new ERP system, designed with tighter data quality and standardization at its core. This system will be surrounded by integrated processes and solutions that enable increasing levels of automation, streamlining our operations and enhancing efficiency.</p>
+<p><strong>Job Summary:</strong></p>
+<p>We are seeking an experienced ERP Infrastructure Lifecycle Architect to lead the redesign of our existing infrastructure lifecycle in conjunction with a new ERP implementation. The initial goal is to ensure high-quality data inputs and updates into the ERP system. This role will also be responsible for driving process area improvements, leveraging the new ERP capabilities and integrating with new processes and tooling in adjacent areas.</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Document and optimize workflows for Support Engineers</li>
-	<li>Own and maintain global Support capacity plan</li>
-	<li>Understand technical and business requirements of Support programs</li>
-	<li>Effectively balance risk and achieve business objectives</li>
-	<li>Obtain clear requirements, plans, and decisions to proactively tackle critical gaps and mitigate risk</li>
-	<li>Drive creation and roll out of scalable processes to meet Support team goals</li>
-	<li>Set up regular feedback cycles and ensure buy-in from contributors on program plan &amp; roadmap</li>
-	<li>Provide regular status updates to stakeholders and senior management</li>
+	<li>Lead the analysis, design, and implementation of the ERP infrastructure lifecycle to support the new ERP system.</li>
+	<li>Develop and implement data quality standards and procedures for ERP Infrastructure Lifecycle data inputs and updates.</li>
+	<li>Collaborate with cross-functional teams to understand data flows and ensure data integrity with the ERP system.</li>
+	<li>Identify and address bottlenecks and inefficiencies in the existing infrastructure lifecycle.</li>
+	<li>Drive process improvements across various business areas, leveraging the capabilities of the new ERP system.</li>
+	<li>Integrate new ERP processes with existing and new tools in adjacent process areas.</li>
+	<li>Document and maintain the ERP infrastructure lifecycle and associated processes.</li>
+	<li>Provide guidance and support to team members and stakeholders on ERP infrastructure lifecycle and processes.</li>
+	<li>Monitor and report on the performance and effectiveness of the ERP infrastructure lifecycle.</li>
 </ul>
-<h4><strong>Desirable skills and knowledge</strong></h4>
+<p><strong>Examples of Desirable Skills, Knowledge, and Experience:</strong></p>
 <ul>
-	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience</li>
-	<li>3+ years in a Support Operations role or a related role in a Support organization</li>
-	<li>8+ years experience in technical program management and a desire for continuous improvement</li>
-	<li>Advanced proficiency in Microsoft Excel, including pivot tables, VLOOKUP/XLOOKUP, Power Query, macros, and data visualization</li>
-	<li>Proven track record on creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
-	<li>Flexibility and adaptability, experience trying different approaches and adapting as you go based on the needs of your team / project</li>
-	<li>Experience working with multiple time zones and multiple cross functional teams</li>
-	<li>Strong competency with Confluence, JIRA (admin-level experience strongly preferred), and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity</li>
-	<li>Knowledge of web performance, security, and network services a plus</li>
-	<li>Experience with AI, self-service, or voice of the customer programs a plus</li>
+	<li>Extensive experience with ERP implementations and infrastructure / asset lifecycle management.</li>
+	<li>Strong understanding of data quality principles and best practices.</li>
+	<li>Proven ability to drive process improvements and implement new processes.</li>
+	<li>Experience with integrating ERP systems with other tools and applications.</li>
+	<li>Excellent analytical and problem-solving skills.</li>
+	<li>Strong communication and collaboration skills.</li>
+	<li>Familiarity with Oracle ERP (especially its asset management data model and processes).</li>
+</ul>
+<p><strong>Bonus Points:</strong></p>
+<ul>
+	<li>Certifications in relevant areas (e.g., ITIL, project management).</li>
+	<li>Experience with adjacent data center Asset Lifecycle solutions: DCIM, PLM, PIM, CMDB</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
