@@ -1834,7 +1834,8 @@
 									},
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-collection-type": "set"
 							},
 							"remove": {
 								"description": "A list of the item values you want to remove.",
@@ -2336,7 +2337,8 @@
 									},
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-collection-type": "set"
 							},
 							"name": {
 								"description": "The name of the list.",
@@ -2846,7 +2848,8 @@
 									},
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-collection-type": "set"
 							},
 							"name": {
 								"description": "The name of the list.",

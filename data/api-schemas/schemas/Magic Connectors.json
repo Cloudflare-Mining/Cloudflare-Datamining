@@ -97,7 +97,8 @@
 											"properties": {
 												"activated": {
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"device": {
 													"properties": {
@@ -107,7 +108,8 @@
 														},
 														"serial_number": {
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"required": [
@@ -121,11 +123,13 @@
 												},
 												"interrupt_window_duration_hours": {
 													"type": "number",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"interrupt_window_hour_of_day": {
 													"type": "number",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"last_heartbeat": {
 													"type": "string",
@@ -141,11 +145,13 @@
 												},
 												"notes": {
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"timezone": {
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -569,7 +575,8 @@
 												"properties": {
 													"activated": {
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"device": {
 														"properties": {
@@ -579,7 +586,8 @@
 															},
 															"serial_number": {
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -593,11 +601,13 @@
 													},
 													"interrupt_window_duration_hours": {
 														"type": "number",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"interrupt_window_hour_of_day": {
 														"type": "number",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"last_heartbeat": {
 														"type": "string",
@@ -613,11 +623,13 @@
 													},
 													"notes": {
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"timezone": {
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												},
 												"required": [
@@ -1052,7 +1064,8 @@
 											"properties": {
 												"activated": {
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"device": {
 													"properties": {
@@ -1062,7 +1075,8 @@
 														},
 														"serial_number": {
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"required": [
@@ -1076,11 +1090,13 @@
 												},
 												"interrupt_window_duration_hours": {
 													"type": "number",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"interrupt_window_hour_of_day": {
 													"type": "number",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"last_heartbeat": {
 													"type": "string",
@@ -1096,11 +1112,13 @@
 												},
 												"notes": {
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"timezone": {
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -7007,7 +7025,8 @@
 											"properties": {
 												"activated": {
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"device": {
 													"properties": {
@@ -7017,7 +7036,8 @@
 														},
 														"serial_number": {
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"required": [
@@ -7031,11 +7051,13 @@
 												},
 												"interrupt_window_duration_hours": {
 													"type": "number",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"interrupt_window_hour_of_day": {
 													"type": "number",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"last_heartbeat": {
 													"type": "string",
@@ -7051,11 +7073,13 @@
 												},
 												"notes": {
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"timezone": {
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -7538,7 +7562,8 @@
 											"properties": {
 												"activated": {
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"device": {
 													"properties": {
@@ -7548,7 +7573,8 @@
 														},
 														"serial_number": {
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"required": [
@@ -7562,11 +7588,13 @@
 												},
 												"interrupt_window_duration_hours": {
 													"type": "number",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"interrupt_window_hour_of_day": {
 													"type": "number",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"last_heartbeat": {
 													"type": "string",
@@ -7582,11 +7610,13 @@
 												},
 												"notes": {
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"timezone": {
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -8122,7 +8152,8 @@
 											"properties": {
 												"activated": {
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"device": {
 													"properties": {
@@ -8132,7 +8163,8 @@
 														},
 														"serial_number": {
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"required": [
@@ -8146,11 +8178,13 @@
 												},
 												"interrupt_window_duration_hours": {
 													"type": "number",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"interrupt_window_hour_of_day": {
 													"type": "number",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"last_heartbeat": {
 													"type": "string",
@@ -8166,11 +8200,13 @@
 												},
 												"notes": {
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"timezone": {
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [

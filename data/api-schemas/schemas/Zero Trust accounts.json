@@ -1249,6 +1249,7 @@
 																		"enabled": {
 																			"description": "Enable activity logging.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		}
@@ -1263,6 +1264,7 @@
 																		"enabled_download_phase": {
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -1270,6 +1272,7 @@
 																		"enabled_upload_phase": {
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -1277,6 +1280,7 @@
 																		"fail_closed": {
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -1325,6 +1329,7 @@
 																		"enabled": {
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -1381,12 +1386,14 @@
 																		},
 																		"read_only": {
 																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true
@@ -1405,11 +1412,16 @@
 																		"version": {
 																			"description": "Version number of the setting",
 																			"example": 1,
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true
 																		}
 																	},
+																	"required": [
+																		"mode",
+																		"enabled"
+																	],
 																	"type": "object",
 																	"x-stainless-terraform-configurability": "optional"
 																},
@@ -1419,6 +1431,10 @@
 																	"properties": {
 																		"inspection_mode": {
 																			"description": "Set the inspection mode to either `deep` or `shallow`.",
+																			"enum": [
+																				"deep",
+																				"shallow"
+																			],
 																			"example": "deep",
 																			"type": "string",
 																			"x-auditable": true
@@ -1479,6 +1495,7 @@
 																		"enabled": {
 																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -1507,17 +1524,20 @@
 																		"enabled": {
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"read_only": {
 																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true
@@ -1525,6 +1545,7 @@
 																		"version": {
 																			"description": "Version number of the setting",
 																			"example": 1,
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true
@@ -1554,12 +1575,31 @@
 																		"enabled": {
 																			"description": "Enable filtering via hosts for egress policies.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"inspection": {
+																	"description": "Setting to define inspection settings",
+																	"nullable": true,
+																	"properties": {
+																		"mode": {
+																			"description": "Defines the mode of inspection the proxy will use.\n- static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).\n- dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.\n",
+																			"enum": [
+																				"static",
+																				"dynamic"
+																			],
+																			"example": "static",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
@@ -1568,6 +1608,7 @@
 																		"enabled": {
 																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		}
@@ -1582,6 +1623,7 @@
 																		"enabled": {
 																			"description": "Enable sandbox.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -1734,6 +1776,7 @@
 																				"enabled": {
 																					"description": "Enable activity logging.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
@@ -1748,6 +1791,7 @@
 																				"enabled_download_phase": {
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -1755,6 +1799,7 @@
 																				"enabled_upload_phase": {
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -1762,6 +1807,7 @@
 																				"fail_closed": {
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -1810,6 +1856,7 @@
 																				"enabled": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
@@ -1866,12 +1913,14 @@
 																				},
 																				"read_only": {
 																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true
@@ -1890,11 +1939,16 @@
 																				"version": {
 																					"description": "Version number of the setting",
 																					"example": 1,
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true
 																				}
 																			},
+																			"required": [
+																				"mode",
+																				"enabled"
+																			],
 																			"type": "object",
 																			"x-stainless-terraform-configurability": "optional"
 																		},
@@ -1904,6 +1958,10 @@
 																			"properties": {
 																				"inspection_mode": {
 																					"description": "Set the inspection mode to either `deep` or `shallow`.",
+																					"enum": [
+																						"deep",
+																						"shallow"
+																					],
 																					"example": "deep",
 																					"type": "string",
 																					"x-auditable": true
@@ -1964,6 +2022,7 @@
 																				"enabled": {
 																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
@@ -1992,17 +2051,20 @@
 																				"enabled": {
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"read_only": {
 																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true
@@ -2010,6 +2072,7 @@
 																				"version": {
 																					"description": "Version number of the setting",
 																					"example": 1,
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true
@@ -2039,12 +2102,31 @@
 																				"enabled": {
 																					"description": "Enable filtering via hosts for egress policies.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
+																		},
+																		"inspection": {
+																			"description": "Setting to define inspection settings",
+																			"nullable": true,
+																			"properties": {
+																				"mode": {
+																					"description": "Defines the mode of inspection the proxy will use.\n- static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).\n- dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.\n",
+																					"enum": [
+																						"static",
+																						"dynamic"
+																					],
+																					"example": "static",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
@@ -2053,6 +2135,7 @@
 																				"enabled": {
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
@@ -2067,6 +2150,7 @@
 																				"enabled": {
 																					"description": "Enable sandbox.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
@@ -2269,6 +2353,7 @@
 								"enabled": {
 									"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 									"example": true,
+									"nullable": true,
 									"type": "boolean",
 									"x-auditable": true
 								},
@@ -2314,6 +2399,7 @@
 										"enabled": {
 											"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 											"example": true,
+											"nullable": true,
 											"type": "boolean",
 											"x-auditable": true
 										},
@@ -3350,6 +3436,7 @@
 											"enabled": {
 												"description": "Enable activity logging.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											}
@@ -3364,6 +3451,7 @@
 											"enabled_download_phase": {
 												"description": "Enable anti-virus scanning on downloads.",
 												"example": false,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
@@ -3371,6 +3459,7 @@
 											"enabled_upload_phase": {
 												"description": "Enable anti-virus scanning on uploads.",
 												"example": false,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
@@ -3378,6 +3467,7 @@
 											"fail_closed": {
 												"description": "Block requests for files that cannot be scanned.",
 												"example": false,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
@@ -3426,6 +3516,7 @@
 											"enabled": {
 												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
@@ -3482,12 +3573,14 @@
 											},
 											"read_only": {
 												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"source_account": {
 												"description": "Account tag of account that shared this setting",
+												"nullable": true,
 												"readOnly": true,
 												"type": "string",
 												"x-auditable": true
@@ -3506,11 +3599,16 @@
 											"version": {
 												"description": "Version number of the setting",
 												"example": 1,
+												"nullable": true,
 												"readOnly": true,
 												"type": "integer",
 												"x-auditable": true
 											}
 										},
+										"required": [
+											"mode",
+											"enabled"
+										],
 										"type": "object",
 										"x-stainless-terraform-configurability": "optional"
 									},
@@ -3520,6 +3618,10 @@
 										"properties": {
 											"inspection_mode": {
 												"description": "Set the inspection mode to either `deep` or `shallow`.",
+												"enum": [
+													"deep",
+													"shallow"
+												],
 												"example": "deep",
 												"type": "string",
 												"x-auditable": true
@@ -3580,6 +3682,7 @@
 											"enabled": {
 												"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
@@ -3608,17 +3711,20 @@
 											"enabled": {
 												"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"read_only": {
 												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"source_account": {
 												"description": "Account tag of account that shared this setting",
+												"nullable": true,
 												"readOnly": true,
 												"type": "string",
 												"x-auditable": true
@@ -3626,6 +3732,7 @@
 											"version": {
 												"description": "Version number of the setting",
 												"example": 1,
+												"nullable": true,
 												"readOnly": true,
 												"type": "integer",
 												"x-auditable": true
@@ -3655,12 +3762,31 @@
 											"enabled": {
 												"description": "Enable filtering via hosts for egress policies.",
 												"example": false,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
+									},
+									"inspection": {
+										"description": "Setting to define inspection settings",
+										"nullable": true,
+										"properties": {
+											"mode": {
+												"description": "Defines the mode of inspection the proxy will use.\n- static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).\n- dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.\n",
+												"enum": [
+													"static",
+													"dynamic"
+												],
+												"example": "static",
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object",
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"protocol_detection": {
 										"description": "Protocol Detection settings.",
@@ -3669,6 +3795,7 @@
 											"enabled": {
 												"description": "Enable detecting protocol on initial bytes of client traffic.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											}
@@ -3683,6 +3810,7 @@
 											"enabled": {
 												"description": "Enable sandbox.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
@@ -3810,6 +3938,7 @@
 																		"enabled": {
 																			"description": "Enable activity logging.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		}
@@ -3824,6 +3953,7 @@
 																		"enabled_download_phase": {
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -3831,6 +3961,7 @@
 																		"enabled_upload_phase": {
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -3838,6 +3969,7 @@
 																		"fail_closed": {
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -3886,6 +4018,7 @@
 																		"enabled": {
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -3942,12 +4075,14 @@
 																		},
 																		"read_only": {
 																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true
@@ -3966,11 +4101,16 @@
 																		"version": {
 																			"description": "Version number of the setting",
 																			"example": 1,
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true
 																		}
 																	},
+																	"required": [
+																		"mode",
+																		"enabled"
+																	],
 																	"type": "object",
 																	"x-stainless-terraform-configurability": "optional"
 																},
@@ -3980,6 +4120,10 @@
 																	"properties": {
 																		"inspection_mode": {
 																			"description": "Set the inspection mode to either `deep` or `shallow`.",
+																			"enum": [
+																				"deep",
+																				"shallow"
+																			],
 																			"example": "deep",
 																			"type": "string",
 																			"x-auditable": true
@@ -4040,6 +4184,7 @@
 																		"enabled": {
 																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -4068,17 +4213,20 @@
 																		"enabled": {
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"read_only": {
 																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true
@@ -4086,6 +4234,7 @@
 																		"version": {
 																			"description": "Version number of the setting",
 																			"example": 1,
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true
@@ -4115,12 +4264,31 @@
 																		"enabled": {
 																			"description": "Enable filtering via hosts for egress policies.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"inspection": {
+																	"description": "Setting to define inspection settings",
+																	"nullable": true,
+																	"properties": {
+																		"mode": {
+																			"description": "Defines the mode of inspection the proxy will use.\n- static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).\n- dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.\n",
+																			"enum": [
+																				"static",
+																				"dynamic"
+																			],
+																			"example": "static",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
@@ -4129,6 +4297,7 @@
 																		"enabled": {
 																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		}
@@ -4143,6 +4312,7 @@
 																		"enabled": {
 																			"description": "Enable sandbox.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -4295,6 +4465,7 @@
 																				"enabled": {
 																					"description": "Enable activity logging.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
@@ -4309,6 +4480,7 @@
 																				"enabled_download_phase": {
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -4316,6 +4488,7 @@
 																				"enabled_upload_phase": {
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -4323,6 +4496,7 @@
 																				"fail_closed": {
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -4371,6 +4545,7 @@
 																				"enabled": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
@@ -4427,12 +4602,14 @@
 																				},
 																				"read_only": {
 																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true
@@ -4451,11 +4628,16 @@
 																				"version": {
 																					"description": "Version number of the setting",
 																					"example": 1,
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true
 																				}
 																			},
+																			"required": [
+																				"mode",
+																				"enabled"
+																			],
 																			"type": "object",
 																			"x-stainless-terraform-configurability": "optional"
 																		},
@@ -4465,6 +4647,10 @@
 																			"properties": {
 																				"inspection_mode": {
 																					"description": "Set the inspection mode to either `deep` or `shallow`.",
+																					"enum": [
+																						"deep",
+																						"shallow"
+																					],
 																					"example": "deep",
 																					"type": "string",
 																					"x-auditable": true
@@ -4525,6 +4711,7 @@
 																				"enabled": {
 																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
@@ -4553,17 +4740,20 @@
 																				"enabled": {
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"read_only": {
 																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true
@@ -4571,6 +4761,7 @@
 																				"version": {
 																					"description": "Version number of the setting",
 																					"example": 1,
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true
@@ -4600,12 +4791,31 @@
 																				"enabled": {
 																					"description": "Enable filtering via hosts for egress policies.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
+																		},
+																		"inspection": {
+																			"description": "Setting to define inspection settings",
+																			"nullable": true,
+																			"properties": {
+																				"mode": {
+																					"description": "Defines the mode of inspection the proxy will use.\n- static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).\n- dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.\n",
+																					"enum": [
+																						"static",
+																						"dynamic"
+																					],
+																					"example": "static",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
@@ -4614,6 +4824,7 @@
 																				"enabled": {
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
@@ -4628,6 +4839,7 @@
 																				"enabled": {
 																					"description": "Enable sandbox.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
@@ -5599,6 +5811,7 @@
 											"enabled": {
 												"description": "Enable activity logging.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											}
@@ -5613,6 +5826,7 @@
 											"enabled_download_phase": {
 												"description": "Enable anti-virus scanning on downloads.",
 												"example": false,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
@@ -5620,6 +5834,7 @@
 											"enabled_upload_phase": {
 												"description": "Enable anti-virus scanning on uploads.",
 												"example": false,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
@@ -5627,6 +5842,7 @@
 											"fail_closed": {
 												"description": "Block requests for files that cannot be scanned.",
 												"example": false,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
@@ -5675,6 +5891,7 @@
 											"enabled": {
 												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
@@ -5731,12 +5948,14 @@
 											},
 											"read_only": {
 												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"source_account": {
 												"description": "Account tag of account that shared this setting",
+												"nullable": true,
 												"readOnly": true,
 												"type": "string",
 												"x-auditable": true
@@ -5755,11 +5974,16 @@
 											"version": {
 												"description": "Version number of the setting",
 												"example": 1,
+												"nullable": true,
 												"readOnly": true,
 												"type": "integer",
 												"x-auditable": true
 											}
 										},
+										"required": [
+											"mode",
+											"enabled"
+										],
 										"type": "object",
 										"x-stainless-terraform-configurability": "optional"
 									},
@@ -5769,6 +5993,10 @@
 										"properties": {
 											"inspection_mode": {
 												"description": "Set the inspection mode to either `deep` or `shallow`.",
+												"enum": [
+													"deep",
+													"shallow"
+												],
 												"example": "deep",
 												"type": "string",
 												"x-auditable": true
@@ -5829,6 +6057,7 @@
 											"enabled": {
 												"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
@@ -5857,17 +6086,20 @@
 											"enabled": {
 												"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"read_only": {
 												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"source_account": {
 												"description": "Account tag of account that shared this setting",
+												"nullable": true,
 												"readOnly": true,
 												"type": "string",
 												"x-auditable": true
@@ -5875,6 +6107,7 @@
 											"version": {
 												"description": "Version number of the setting",
 												"example": 1,
+												"nullable": true,
 												"readOnly": true,
 												"type": "integer",
 												"x-auditable": true
@@ -5904,12 +6137,31 @@
 											"enabled": {
 												"description": "Enable filtering via hosts for egress policies.",
 												"example": false,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
+									},
+									"inspection": {
+										"description": "Setting to define inspection settings",
+										"nullable": true,
+										"properties": {
+											"mode": {
+												"description": "Defines the mode of inspection the proxy will use.\n- static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).\n- dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.\n",
+												"enum": [
+													"static",
+													"dynamic"
+												],
+												"example": "static",
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"type": "object",
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"protocol_detection": {
 										"description": "Protocol Detection settings.",
@@ -5918,6 +6170,7 @@
 											"enabled": {
 												"description": "Enable detecting protocol on initial bytes of client traffic.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											}
@@ -5932,6 +6185,7 @@
 											"enabled": {
 												"description": "Enable sandbox.",
 												"example": true,
+												"nullable": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
@@ -6059,6 +6313,7 @@
 																		"enabled": {
 																			"description": "Enable activity logging.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		}
@@ -6073,6 +6328,7 @@
 																		"enabled_download_phase": {
 																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -6080,6 +6336,7 @@
 																		"enabled_upload_phase": {
 																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -6087,6 +6344,7 @@
 																		"fail_closed": {
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -6135,6 +6393,7 @@
 																		"enabled": {
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -6191,12 +6450,14 @@
 																		},
 																		"read_only": {
 																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true
@@ -6215,11 +6476,16 @@
 																		"version": {
 																			"description": "Version number of the setting",
 																			"example": 1,
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true
 																		}
 																	},
+																	"required": [
+																		"mode",
+																		"enabled"
+																	],
 																	"type": "object",
 																	"x-stainless-terraform-configurability": "optional"
 																},
@@ -6229,6 +6495,10 @@
 																	"properties": {
 																		"inspection_mode": {
 																			"description": "Set the inspection mode to either `deep` or `shallow`.",
+																			"enum": [
+																				"deep",
+																				"shallow"
+																			],
 																			"example": "deep",
 																			"type": "string",
 																			"x-auditable": true
@@ -6289,6 +6559,7 @@
 																		"enabled": {
 																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -6317,17 +6588,20 @@
 																		"enabled": {
 																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"read_only": {
 																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true
@@ -6335,6 +6609,7 @@
 																		"version": {
 																			"description": "Version number of the setting",
 																			"example": 1,
+																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true
@@ -6364,12 +6639,31 @@
 																		"enabled": {
 																			"description": "Enable filtering via hosts for egress policies.",
 																			"example": false,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"inspection": {
+																	"description": "Setting to define inspection settings",
+																	"nullable": true,
+																	"properties": {
+																		"mode": {
+																			"description": "Defines the mode of inspection the proxy will use.\n- static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).\n- dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.\n",
+																			"enum": [
+																				"static",
+																				"dynamic"
+																			],
+																			"example": "static",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
@@ -6378,6 +6672,7 @@
 																		"enabled": {
 																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		}
@@ -6392,6 +6687,7 @@
 																		"enabled": {
 																			"description": "Enable sandbox.",
 																			"example": true,
+																			"nullable": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -6544,6 +6840,7 @@
 																				"enabled": {
 																					"description": "Enable activity logging.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
@@ -6558,6 +6855,7 @@
 																				"enabled_download_phase": {
 																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -6565,6 +6863,7 @@
 																				"enabled_upload_phase": {
 																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -6572,6 +6871,7 @@
 																				"fail_closed": {
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -6620,6 +6920,7 @@
 																				"enabled": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
@@ -6676,12 +6977,14 @@
 																				},
 																				"read_only": {
 																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true
@@ -6700,11 +7003,16 @@
 																				"version": {
 																					"description": "Version number of the setting",
 																					"example": 1,
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true
 																				}
 																			},
+																			"required": [
+																				"mode",
+																				"enabled"
+																			],
 																			"type": "object",
 																			"x-stainless-terraform-configurability": "optional"
 																		},
@@ -6714,6 +7022,10 @@
 																			"properties": {
 																				"inspection_mode": {
 																					"description": "Set the inspection mode to either `deep` or `shallow`.",
+																					"enum": [
+																						"deep",
+																						"shallow"
+																					],
 																					"example": "deep",
 																					"type": "string",
 																					"x-auditable": true
@@ -6774,6 +7086,7 @@
 																				"enabled": {
 																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
@@ -6802,17 +7115,20 @@
 																				"enabled": {
 																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"read_only": {
 																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true
@@ -6820,6 +7136,7 @@
 																				"version": {
 																					"description": "Version number of the setting",
 																					"example": 1,
+																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true
@@ -6849,12 +7166,31 @@
 																				"enabled": {
 																					"description": "Enable filtering via hosts for egress policies.",
 																					"example": false,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
+																		},
+																		"inspection": {
+																			"description": "Setting to define inspection settings",
+																			"nullable": true,
+																			"properties": {
+																				"mode": {
+																					"description": "Defines the mode of inspection the proxy will use.\n- static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).\n- dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.\n",
+																					"enum": [
+																						"static",
+																						"dynamic"
+																					],
+																					"example": "static",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object",
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
@@ -6863,6 +7199,7 @@
 																				"enabled": {
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
@@ -6877,6 +7214,7 @@
 																				"enabled": {
 																					"description": "Enable sandbox.",
 																					"example": true,
+																					"nullable": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
