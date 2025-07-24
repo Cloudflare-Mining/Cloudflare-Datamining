@@ -1,5 +1,17 @@
 # Change Log
 
+## 7.0.12
+
+### Patch Changes
+
+- @cloudflare/component-button@9.1.6
+- @cloudflare/component-grid@4.0.9
+- @cloudflare/component-listbox@3.0.9
+- @cloudflare/component-search@9.0.9
+- @cloudflare/component-select-2@8.0.9
+- @cloudflare/component-time-period-picker@7.2.7
+- @cloudflare/util-responsive@4.0.9
+
 ## 7.0.11
 
 ### Patch Changes
