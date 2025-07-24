@@ -121,30 +121,9 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"accountIds": {
-									"items": {
-										"example": "4804423",
-										"type": "string"
-									},
-									"type": "array"
-								},
 								"content_type": {
 									"example": "text/plain",
 									"type": "string"
-								},
-								"filenames": {
-									"items": {
-										"example": "0000a7f2692ef479e2e3d02661568882cadec451cc8a64d4e7faca29810cd626.txt",
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"first_seen": {
-									"example": 1752260316160,
-									"type": "number"
-								},
-								"is_private": {
-									"type": "boolean"
 								},
 								"md5": {
 									"example": "5d84ade76d2a8387c81175bb0cbe6492",
@@ -163,11 +142,7 @@
 								"md5",
 								"sha1",
 								"sha256",
-								"accountIds",
-								"content_type",
-								"filenames",
-								"first_seen",
-								"is_private"
+								"content_type"
 							],
 							"type": "object"
 						}
