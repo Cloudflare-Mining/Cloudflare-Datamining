@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "e338082a-706c-5c6b-acbd-318480f9dd87")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "0daf8818-a16e-567b-80e7-c7db85181927")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1143,10 +1143,10 @@
 					t.g.build = yn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "dd4bd5e51ae959f9266fe168a1351d607a1bd79a",
-						dashVersion: "34820334",
+						commit: "ffeb6d79f05214f5a2755c8b2c9bc22e29548450",
+						dashVersion: "34838160",
 						env: "production",
-						builtAt: 1753364610339,
+						builtAt: 1753395105784,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -6051,7 +6051,7 @@
 					isLoading: !1
 				};
 				const F = [];
-				if (h ? (F.push(...h), L && F.push(...L)) : T.contextAccountTag && (F.push(`com.cloudflare.api.account.${T.contextAccountTag}`), T.isUserInDSR && F.push(...O)), F.length === 0) return T.reportSentryException(new Error("authz undefined - likely invalid useIsAuthorized scopes for authz eval"), {
+				if (h && h.length > 0 ? (F.push(...h), L && F.push(...L)) : T.contextAccountTag && (F.push(`com.cloudflare.api.account.${T.contextAccountTag}`), T.isUserInDSR && F.push(...O)), F.length === 0) return T.reportSentryException(new Error("authz undefined - likely invalid useIsAuthorized scopes for authz eval"), {
 					component: "useIsAuthorized",
 					issue: "likely_invalid_scopes"
 				}, {
@@ -26948,4 +26948,4 @@ button.border {
 	}
 ]);
 
-//# debugId=e338082a-706c-5c6b-acbd-318480f9dd87
+//# debugId=0daf8818-a16e-567b-80e7-c7db85181927
