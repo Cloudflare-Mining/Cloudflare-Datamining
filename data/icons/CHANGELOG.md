@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.4.1
+
+### Patch Changes
+
+- 825b12b9e7: Update pin-outline and pin-solid icons
+
 ## 13.4.0
 
 ### Minor Changes
