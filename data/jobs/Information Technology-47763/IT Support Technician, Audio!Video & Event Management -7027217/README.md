@@ -5,8 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="text-decoration: underline;"><strong>Term: 6 months</strong></span></p>
-<p><strong>Available Locations:&nbsp;</strong>Lisbon, onsite</p>
+<p><strong>Available Locations: </strong>Lisbon, onsite</p>
 <p>&nbsp;</p>
 <p><strong>About the role:&nbsp;</strong></p>
 <p>We are looking for an IT Support Technician, Audio/Video &amp; Event Management&nbsp; to join our growing Enterprise Operations team at Cloudflare. This role enhances A/V capabilities for events at the Lisbon office, focusing on setup, processes, and documentation for seamless execution. The individual, with a strong technical background in A/V production and excellent communication skills, will collaborate with internal teams and third-party vendors, while also providing hands-on event support and exceptional customer service.</p>
