@@ -1529,14 +1529,16 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"version": {
 																			"description": "Version number of the setting",
@@ -1544,7 +1546,8 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"type": "object",
@@ -2052,14 +2055,16 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"version": {
 																					"description": "Version number of the setting",
@@ -2067,7 +2072,8 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"type": "object",
@@ -3708,14 +3714,16 @@
 												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"source_account": {
 												"description": "Account tag of account that shared this setting",
 												"nullable": true,
 												"readOnly": true,
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"version": {
 												"description": "Version number of the setting",
@@ -3723,7 +3731,8 @@
 												"nullable": true,
 												"readOnly": true,
 												"type": "integer",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object",
@@ -4206,14 +4215,16 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"version": {
 																			"description": "Version number of the setting",
@@ -4221,7 +4232,8 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"type": "object",
@@ -4729,14 +4741,16 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"version": {
 																					"description": "Version number of the setting",
@@ -4744,7 +4758,8 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"type": "object",
@@ -6071,14 +6086,16 @@
 												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"source_account": {
 												"description": "Account tag of account that shared this setting",
 												"nullable": true,
 												"readOnly": true,
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"version": {
 												"description": "Version number of the setting",
@@ -6086,7 +6103,8 @@
 												"nullable": true,
 												"readOnly": true,
 												"type": "integer",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object",
@@ -6569,14 +6587,16 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"version": {
 																			"description": "Version number of the setting",
@@ -6584,7 +6604,8 @@
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"type": "object",
@@ -7092,14 +7113,16 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"version": {
 																					"description": "Version number of the setting",
@@ -7107,7 +7130,8 @@
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"type": "object",
