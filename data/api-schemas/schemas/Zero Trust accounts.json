@@ -1255,7 +1255,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"antivirus": {
 																	"description": "Anti-virus settings.",
@@ -1515,7 +1515,7 @@
 																		"enabled"
 																	],
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"extended_email_matching": {
 																	"description": "Extended e-mail matching settings.",
@@ -1552,7 +1552,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"fips": {
 																	"description": "FIPS settings.",
@@ -1581,7 +1581,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"inspection": {
 																	"description": "Setting to define inspection settings",
@@ -1599,7 +1599,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
@@ -1638,7 +1638,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"tls_decrypt": {
 																	"description": "TLS interception settings.",
@@ -1782,7 +1782,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"antivirus": {
 																			"description": "Anti-virus settings.",
@@ -2042,7 +2042,7 @@
 																				"enabled"
 																			],
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"extended_email_matching": {
 																			"description": "Extended e-mail matching settings.",
@@ -2079,7 +2079,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"fips": {
 																			"description": "FIPS settings.",
@@ -2108,7 +2108,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"inspection": {
 																			"description": "Setting to define inspection settings",
@@ -2126,7 +2126,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
@@ -2165,7 +2165,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"tls_decrypt": {
 																			"description": "TLS interception settings.",
@@ -2373,7 +2373,7 @@
 								"enabled"
 							],
 							"type": "object",
-							"x-stainless-terraform-configurability": "optional"
+							"x-stainless-terraform-configurability": "computed_optional"
 						}
 					}
 				},
@@ -2419,7 +2419,7 @@
 										"enabled"
 									],
 									"type": "object",
-									"x-stainless-terraform-configurability": "optional"
+									"x-stainless-terraform-configurability": "computed_optional"
 								},
 								{
 									"properties": {
@@ -3442,7 +3442,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"antivirus": {
 										"description": "Anti-virus settings.",
@@ -3702,7 +3702,7 @@
 											"enabled"
 										],
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"extended_email_matching": {
 										"description": "Extended e-mail matching settings.",
@@ -3739,7 +3739,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"fips": {
 										"description": "FIPS settings.",
@@ -3768,7 +3768,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"inspection": {
 										"description": "Setting to define inspection settings",
@@ -3786,7 +3786,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"protocol_detection": {
 										"description": "Protocol Detection settings.",
@@ -3825,7 +3825,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"tls_decrypt": {
 										"description": "TLS interception settings.",
@@ -3944,7 +3944,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"antivirus": {
 																	"description": "Anti-virus settings.",
@@ -4204,7 +4204,7 @@
 																		"enabled"
 																	],
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"extended_email_matching": {
 																	"description": "Extended e-mail matching settings.",
@@ -4241,7 +4241,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"fips": {
 																	"description": "FIPS settings.",
@@ -4270,7 +4270,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"inspection": {
 																	"description": "Setting to define inspection settings",
@@ -4288,7 +4288,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
@@ -4327,7 +4327,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"tls_decrypt": {
 																	"description": "TLS interception settings.",
@@ -4471,7 +4471,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"antivirus": {
 																			"description": "Anti-virus settings.",
@@ -4731,7 +4731,7 @@
 																				"enabled"
 																			],
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"extended_email_matching": {
 																			"description": "Extended e-mail matching settings.",
@@ -4768,7 +4768,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"fips": {
 																			"description": "FIPS settings.",
@@ -4797,7 +4797,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"inspection": {
 																			"description": "Setting to define inspection settings",
@@ -4815,7 +4815,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
@@ -4854,7 +4854,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"tls_decrypt": {
 																			"description": "TLS interception settings.",
@@ -5817,7 +5817,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"antivirus": {
 										"description": "Anti-virus settings.",
@@ -6077,7 +6077,7 @@
 											"enabled"
 										],
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"extended_email_matching": {
 										"description": "Extended e-mail matching settings.",
@@ -6114,7 +6114,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"fips": {
 										"description": "FIPS settings.",
@@ -6143,7 +6143,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"inspection": {
 										"description": "Setting to define inspection settings",
@@ -6161,7 +6161,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"protocol_detection": {
 										"description": "Protocol Detection settings.",
@@ -6200,7 +6200,7 @@
 											}
 										},
 										"type": "object",
-										"x-stainless-terraform-configurability": "optional"
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"tls_decrypt": {
 										"description": "TLS interception settings.",
@@ -6319,7 +6319,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"antivirus": {
 																	"description": "Anti-virus settings.",
@@ -6579,7 +6579,7 @@
 																		"enabled"
 																	],
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"extended_email_matching": {
 																	"description": "Extended e-mail matching settings.",
@@ -6616,7 +6616,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"fips": {
 																	"description": "FIPS settings.",
@@ -6645,7 +6645,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"inspection": {
 																	"description": "Setting to define inspection settings",
@@ -6663,7 +6663,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"protocol_detection": {
 																	"description": "Protocol Detection settings.",
@@ -6702,7 +6702,7 @@
 																		}
 																	},
 																	"type": "object",
-																	"x-stainless-terraform-configurability": "optional"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"tls_decrypt": {
 																	"description": "TLS interception settings.",
@@ -6846,7 +6846,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"antivirus": {
 																			"description": "Anti-virus settings.",
@@ -7106,7 +7106,7 @@
 																				"enabled"
 																			],
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"extended_email_matching": {
 																			"description": "Extended e-mail matching settings.",
@@ -7143,7 +7143,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"fips": {
 																			"description": "FIPS settings.",
@@ -7172,7 +7172,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"inspection": {
 																			"description": "Setting to define inspection settings",
@@ -7190,7 +7190,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"protocol_detection": {
 																			"description": "Protocol Detection settings.",
@@ -7229,7 +7229,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"tls_decrypt": {
 																			"description": "TLS interception settings.",
