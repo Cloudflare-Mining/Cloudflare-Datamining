@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin or San Francisco</strong></p>
+<p><strong>Available Locations: Austin, San Francisco OR Singapore</strong></p>
 <hr>
 <p><strong>About the role</strong></p>
 <p>The Technical Enablement Manager (TEM) is responsible for driving the successful adoption and utilization of the company’s products or solutions by customers and partners. This role focuses on ensuring that clients are equipped with the necessary technical knowledge and resources to integrate and use the company’s solutions effectively. The TEM works closely with customers, internal teams (such as product, engineering, and customer success), and external partners to identify and resolve technical challenges during the onboarding process. By providing hands-on support, training, and guidance, the TEM ensures seamless technical integration and accelerates the time to value for customers. Additionally, the TEM plays a crucial role in identifying potential barriers to adoption, addressing technical issues, and fostering long-term customer success. Their work directly contributes to increasing customer satisfaction, retention, and the overall success of the company’s solutions in the market.</p>
