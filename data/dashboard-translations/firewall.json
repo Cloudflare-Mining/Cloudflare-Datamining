@@ -3448,7 +3448,7 @@
 	"rule_viewer.all_incoming_requests.zone.with_filter": "All incoming requests to %{zoneName} that match the below filter",
 	"rule_viewer.all_incoming_requests.account.with_filter": "All incoming requests to all zones that match the below filter",
 	"rule_viewer.all_incoming_requests.account_ent.with_filter": "All incoming requests to all enterprise zones that match the below filter",
-	"security_analytics.vnext.description": "Analyze incoming HTTP requests for your domain and learn how malicious traffic is mitigated by Cloudflare.",
+	"security_analytics.vnext.description": "Analyze incoming HTTP requests for your domain and learn how malicious traffic is mitigated by Cloudflare. Only includes data on end-user traffic to your <0>Cloudflare-proxied hostnames</0>. Subrequests from Cloudflare Workers are not included.",
 	"security_analytics.vnext.request_activity": "Request activity",
 	"security_analytics.top_ns.title": "Top statistics",
 	"security_analytics.top_ns.description": "Identify the top most occurring properties of incoming requests.",
