@@ -6216,12 +6216,14 @@
 																			"description": "Tag to set as the latest migration tag.",
 																			"example": "v2",
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		},
 																		"old_tag": {
 																			"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
 																			"example": "v1",
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		}
 																	},
@@ -6235,7 +6237,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"new_classes": {
 																			"description": "A list of classes to create Durable Object namespaces from.",
@@ -6243,7 +6246,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"new_sqlite_classes": {
 																			"description": "A list of classes to create Durable Object namespaces with SQLite from.",
@@ -6251,7 +6255,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"renamed_classes": {
 																			"description": "A list of classes with Durable Object namespaces that were renamed.",
@@ -6259,16 +6264,19 @@
 																				"properties": {
 																					"from": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"to": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"transferred_classes": {
 																			"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
@@ -6276,20 +6284,24 @@
 																				"properties": {
 																					"from": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"from_script": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"to": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		}
 																	},
 																	"type": "object"
@@ -6305,12 +6317,14 @@
 																			"description": "Tag to set as the latest migration tag.",
 																			"example": "v2",
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		},
 																		"old_tag": {
 																			"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
 																			"example": "v1",
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		}
 																	},
@@ -6328,7 +6342,8 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
-																						"type": "array"
+																						"type": "array",
+																						"writeOnly": true
 																					},
 																					"new_classes": {
 																						"description": "A list of classes to create Durable Object namespaces from.",
@@ -6336,7 +6351,8 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
-																						"type": "array"
+																						"type": "array",
+																						"writeOnly": true
 																					},
 																					"new_sqlite_classes": {
 																						"description": "A list of classes to create Durable Object namespaces with SQLite from.",
@@ -6344,7 +6360,8 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
-																						"type": "array"
+																						"type": "array",
+																						"writeOnly": true
 																					},
 																					"renamed_classes": {
 																						"description": "A list of classes with Durable Object namespaces that were renamed.",
@@ -6352,16 +6369,19 @@
 																							"properties": {
 																								"from": {
 																									"type": "string",
+																									"writeOnly": true,
 																									"x-auditable": true
 																								},
 																								"to": {
 																									"type": "string",
+																									"writeOnly": true,
 																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
 																						},
-																						"type": "array"
+																						"type": "array",
+																						"writeOnly": true
 																					},
 																					"transferred_classes": {
 																						"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
@@ -6369,25 +6389,30 @@
 																							"properties": {
 																								"from": {
 																									"type": "string",
+																									"writeOnly": true,
 																									"x-auditable": true
 																								},
 																								"from_script": {
 																									"type": "string",
+																									"writeOnly": true,
 																									"x-auditable": true
 																								},
 																								"to": {
 																									"type": "string",
+																									"writeOnly": true,
 																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
 																						},
-																						"type": "array"
+																						"type": "array",
+																						"writeOnly": true
 																					}
 																				},
 																				"type": "object"
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		}
 																	},
 																	"type": "object"
@@ -8800,12 +8825,14 @@
 																"description": "Tag to set as the latest migration tag.",
 																"example": "v2",
 																"type": "string",
+																"writeOnly": true,
 																"x-auditable": true
 															},
 															"old_tag": {
 																"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
 																"example": "v1",
 																"type": "string",
+																"writeOnly": true,
 																"x-auditable": true
 															}
 														},
@@ -8819,7 +8846,8 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															},
 															"new_classes": {
 																"description": "A list of classes to create Durable Object namespaces from.",
@@ -8827,7 +8855,8 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															},
 															"new_sqlite_classes": {
 																"description": "A list of classes to create Durable Object namespaces with SQLite from.",
@@ -8835,7 +8864,8 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															},
 															"renamed_classes": {
 																"description": "A list of classes with Durable Object namespaces that were renamed.",
@@ -8843,16 +8873,19 @@
 																	"properties": {
 																		"from": {
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		},
 																		"to": {
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															},
 															"transferred_classes": {
 																"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
@@ -8860,20 +8893,24 @@
 																	"properties": {
 																		"from": {
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		},
 																		"from_script": {
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		},
 																		"to": {
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															}
 														},
 														"type": "object"
@@ -8889,12 +8926,14 @@
 																"description": "Tag to set as the latest migration tag.",
 																"example": "v2",
 																"type": "string",
+																"writeOnly": true,
 																"x-auditable": true
 															},
 															"old_tag": {
 																"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
 																"example": "v1",
 																"type": "string",
+																"writeOnly": true,
 																"x-auditable": true
 															}
 														},
@@ -8912,7 +8951,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"new_classes": {
 																			"description": "A list of classes to create Durable Object namespaces from.",
@@ -8920,7 +8960,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"new_sqlite_classes": {
 																			"description": "A list of classes to create Durable Object namespaces with SQLite from.",
@@ -8928,7 +8969,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"renamed_classes": {
 																			"description": "A list of classes with Durable Object namespaces that were renamed.",
@@ -8936,16 +8978,19 @@
 																				"properties": {
 																					"from": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"to": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"transferred_classes": {
 																			"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
@@ -8953,25 +8998,30 @@
 																				"properties": {
 																					"from": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"from_script": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"to": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		}
 																	},
 																	"type": "object"
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															}
 														},
 														"type": "object"
@@ -11007,12 +11057,14 @@
 																			"description": "Tag to set as the latest migration tag.",
 																			"example": "v2",
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		},
 																		"old_tag": {
 																			"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
 																			"example": "v1",
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		}
 																	},
@@ -11026,7 +11078,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"new_classes": {
 																			"description": "A list of classes to create Durable Object namespaces from.",
@@ -11034,7 +11087,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"new_sqlite_classes": {
 																			"description": "A list of classes to create Durable Object namespaces with SQLite from.",
@@ -11042,7 +11096,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"renamed_classes": {
 																			"description": "A list of classes with Durable Object namespaces that were renamed.",
@@ -11050,16 +11105,19 @@
 																				"properties": {
 																					"from": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"to": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"transferred_classes": {
 																			"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
@@ -11067,20 +11125,24 @@
 																				"properties": {
 																					"from": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"from_script": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"to": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		}
 																	},
 																	"type": "object"
@@ -11096,12 +11158,14 @@
 																			"description": "Tag to set as the latest migration tag.",
 																			"example": "v2",
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		},
 																		"old_tag": {
 																			"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
 																			"example": "v1",
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		}
 																	},
@@ -11119,7 +11183,8 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
-																						"type": "array"
+																						"type": "array",
+																						"writeOnly": true
 																					},
 																					"new_classes": {
 																						"description": "A list of classes to create Durable Object namespaces from.",
@@ -11127,7 +11192,8 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
-																						"type": "array"
+																						"type": "array",
+																						"writeOnly": true
 																					},
 																					"new_sqlite_classes": {
 																						"description": "A list of classes to create Durable Object namespaces with SQLite from.",
@@ -11135,7 +11201,8 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
-																						"type": "array"
+																						"type": "array",
+																						"writeOnly": true
 																					},
 																					"renamed_classes": {
 																						"description": "A list of classes with Durable Object namespaces that were renamed.",
@@ -11143,16 +11210,19 @@
 																							"properties": {
 																								"from": {
 																									"type": "string",
+																									"writeOnly": true,
 																									"x-auditable": true
 																								},
 																								"to": {
 																									"type": "string",
+																									"writeOnly": true,
 																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
 																						},
-																						"type": "array"
+																						"type": "array",
+																						"writeOnly": true
 																					},
 																					"transferred_classes": {
 																						"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
@@ -11160,25 +11230,30 @@
 																							"properties": {
 																								"from": {
 																									"type": "string",
+																									"writeOnly": true,
 																									"x-auditable": true
 																								},
 																								"from_script": {
 																									"type": "string",
+																									"writeOnly": true,
 																									"x-auditable": true
 																								},
 																								"to": {
 																									"type": "string",
+																									"writeOnly": true,
 																									"x-auditable": true
 																								}
 																							},
 																							"type": "object"
 																						},
-																						"type": "array"
+																						"type": "array",
+																						"writeOnly": true
 																					}
 																				},
 																				"type": "object"
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		}
 																	},
 																	"type": "object"
@@ -12207,7 +12282,7 @@
 				"multipart/form-data": {
 					"encoding": {
 						"files": {
-							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream, application/source-map"
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, text/x-python, text/x-python-requirement, application/wasm, text/plain, application/octet-stream, application/source-map"
 						}
 					},
 					"schema": {
@@ -12225,7 +12300,7 @@
 						},
 						"properties": {
 							"files": {
-								"description": "An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/>Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
+								"description": "An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/>Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `text/x-python`, `text/x-python-requirement`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
 								"items": {
 									"format": "binary",
 									"type": "string"
@@ -13208,12 +13283,14 @@
 																"description": "Tag to set as the latest migration tag.",
 																"example": "v2",
 																"type": "string",
+																"writeOnly": true,
 																"x-auditable": true
 															},
 															"old_tag": {
 																"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
 																"example": "v1",
 																"type": "string",
+																"writeOnly": true,
 																"x-auditable": true
 															}
 														},
@@ -13227,7 +13304,8 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															},
 															"new_classes": {
 																"description": "A list of classes to create Durable Object namespaces from.",
@@ -13235,7 +13313,8 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															},
 															"new_sqlite_classes": {
 																"description": "A list of classes to create Durable Object namespaces with SQLite from.",
@@ -13243,7 +13322,8 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															},
 															"renamed_classes": {
 																"description": "A list of classes with Durable Object namespaces that were renamed.",
@@ -13251,16 +13331,19 @@
 																	"properties": {
 																		"from": {
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		},
 																		"to": {
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															},
 															"transferred_classes": {
 																"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
@@ -13268,20 +13351,24 @@
 																	"properties": {
 																		"from": {
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		},
 																		"from_script": {
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		},
 																		"to": {
 																			"type": "string",
+																			"writeOnly": true,
 																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															}
 														},
 														"type": "object"
@@ -13297,12 +13384,14 @@
 																"description": "Tag to set as the latest migration tag.",
 																"example": "v2",
 																"type": "string",
+																"writeOnly": true,
 																"x-auditable": true
 															},
 															"old_tag": {
 																"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
 																"example": "v1",
 																"type": "string",
+																"writeOnly": true,
 																"x-auditable": true
 															}
 														},
@@ -13320,7 +13409,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"new_classes": {
 																			"description": "A list of classes to create Durable Object namespaces from.",
@@ -13328,7 +13418,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"new_sqlite_classes": {
 																			"description": "A list of classes to create Durable Object namespaces with SQLite from.",
@@ -13336,7 +13427,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"renamed_classes": {
 																			"description": "A list of classes with Durable Object namespaces that were renamed.",
@@ -13344,16 +13436,19 @@
 																				"properties": {
 																					"from": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"to": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		},
 																		"transferred_classes": {
 																			"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
@@ -13361,32 +13456,38 @@
 																				"properties": {
 																					"from": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"from_script": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					},
 																					"to": {
 																						"type": "string",
+																						"writeOnly": true,
 																						"x-auditable": true
 																					}
 																				},
 																				"type": "object"
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"writeOnly": true
 																		}
 																	},
 																	"type": "object"
 																},
-																"type": "array"
+																"type": "array",
+																"writeOnly": true
 															}
 														},
 														"type": "object"
 													}
 												]
 											}
-										]
+										],
+										"writeOnly": true
 									},
 									"observability": {
 										"description": "Observability settings for the Worker.",
@@ -14061,13 +14162,13 @@
 				"multipart/form-data": {
 					"encoding": {
 						"files": {
-							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream, application/source-map"
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, text/x-python, text/x-python-requirement, application/wasm, text/plain, application/octet-stream, application/source-map"
 						}
 					},
 					"schema": {
 						"properties": {
 							"files": {
-								"description": "An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/>Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
+								"description": "An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/>Possible Content-Type(s) are: `application/javascript+module`, `text/javascript+module`, `application/javascript`, `text/javascript`, `text/x-python`, `text/x-python-requirement`, `application/wasm`, `text/plain`, `application/octet-stream`, `application/source-map`.",
 								"items": {
 									"format": "binary",
 									"type": "string"

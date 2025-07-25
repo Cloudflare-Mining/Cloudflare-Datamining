@@ -778,6 +778,7 @@
 															"block_reason": {
 																"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																"example": "This website is a security risk",
+																"nullable": true,
 																"type": "string",
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
@@ -1709,6 +1710,7 @@
 																	"block_reason": {
 																		"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																		"example": "This website is a security risk",
+																		"nullable": true,
 																		"type": "string",
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
@@ -2739,6 +2741,7 @@
 														"block_reason": {
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
+															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
@@ -3638,6 +3641,7 @@
 																"block_reason": {
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
+																	"nullable": true,
 																	"type": "string",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
@@ -4551,6 +4555,7 @@
 									"block_reason": {
 										"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 										"example": "This website is a security risk",
+										"nullable": true,
 										"type": "string",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
@@ -5412,6 +5417,7 @@
 														"block_reason": {
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
+															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
@@ -6311,6 +6317,7 @@
 																"block_reason": {
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
+																	"nullable": true,
 																	"type": "string",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
@@ -7338,6 +7345,7 @@
 														"block_reason": {
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
+															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
@@ -8234,6 +8242,7 @@
 																"block_reason": {
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
+																	"nullable": true,
 																	"type": "string",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
@@ -9159,6 +9168,7 @@
 									"block_reason": {
 										"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 										"example": "This website is a security risk",
+										"nullable": true,
 										"type": "string",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
@@ -10020,6 +10030,7 @@
 														"block_reason": {
 															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 															"example": "This website is a security risk",
+															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
@@ -10919,6 +10930,7 @@
 																"block_reason": {
 																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
 																	"example": "This website is a security risk",
+																	"nullable": true,
 																	"type": "string",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
