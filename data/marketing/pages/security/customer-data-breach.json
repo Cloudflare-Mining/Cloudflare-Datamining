@@ -274,6 +274,251 @@
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "1WqTDqgrPveBUR4oDZVVOQ",
+						"htmlId": null,
+						"mainHeadline": "Common Data Breach Types and Prevention",
+						"backgroundColor": "light-blue",
+						"bladeBorder": "border-bottom",
+						"sectionPadding": null,
+						"columnLayout": null,
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2qQU07Guie0coOPFIV9OLi",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "DNS spoofing",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "A compromised DNS record, or \"poisoned cache,\" can return a malicious answer from the DNS server, sending an unsuspecting visitor to an attacker's website. This enables attackers to steal user credentials and take ownership of legitimate accounts.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare solution",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "/dns/dnssec/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "DNSSEC",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " verifies ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/application-services/products/dns/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "DNS",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " records using cryptographic signatures. By checking the signature associated with a record, DNS resolvers can verify that the requested information comes from its authoritative name server and not a on-path attacker.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "53oWaWvI8TAOB1IJKb82YJ",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "embedded-entry-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "4iTtiQH6hDNm9Rj1qSfqvk",
+														"type": "Link",
+														"linkType": "Entry"
+													},
+													"related_asset": [],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [
+														{
+															"id": "33d0d67c-e950-55de-999e-7c055c444e7a",
+															"altText": "DNS Spoofing Diagram",
+															"title": "DNS Spoofing Diagram",
+															"activeAsset": "Contentful Asset",
+															"locale": "en-US",
+															"contentfulAsset": {
+																"file": {
+																	"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1B6GzfYkJOMeEIqGCa8mCa/a46da8d67a9060845495724d70893202/dns-spoofing.svg"
+																},
+																"description": null
+															},
+															"brandfolderAsset": null,
+															"brandfolderAssetMobile": null
+														}
+													],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "1bFfb19AAawD1Z7Fyp5eFe",
 						"htmlId": null,
 						"mainHeadline": null,
