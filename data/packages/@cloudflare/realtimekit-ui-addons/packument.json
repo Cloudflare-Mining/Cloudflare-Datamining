@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-ui-addons",
 	"dist-tags": {
-		"latest": "0.0.3"
+		"latest": "0.0.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -75,6 +75,34 @@
 					}
 				],
 				"unpackedSize": 340369
+			}
+		},
+		"0.0.4": {
+			"name": "@cloudflare/realtimekit-ui-addons",
+			"version": "0.0.4",
+			"dependencies": {
+				"@cloudflare/realtimekit-virtual-background": "0.0.2"
+			},
+			"devDependencies": {
+				"typescript": "^5.2.2",
+				"vite": "^4.4.8"
+			},
+			"peerDependencies": {
+				"@cloudflare/realtimekit-ui": ">=1.0.1",
+				"@cloudflare/realtimekit": ">=1.0.1"
+			},
+			"dist": {
+				"integrity": "sha512-DsSbwUtixCbSJwb3c9mnAQvGOKj393VG77GkCySMal4yIPrLNLd6tqcnI5j1kPA0pRck1EMXakLfgTdr3JFDWQ==",
+				"shasum": "c1f96a3edd3a893cfe7c38a6c7d3af097ab5c77e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui-addons/-/realtimekit-ui-addons-0.0.4.tgz",
+				"fileCount": 60,
+				"unpackedSize": 340649,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIG1WPI7c/0dg5uMsKsu/K5i7n21etXs/b8nduShUH5FwAiEAhp2vb9zvbdifnD0Zj58Mj34AfyoC3KUNA4L2knO2Jx0="
+					}
+				]
 			}
 		}
 	}
