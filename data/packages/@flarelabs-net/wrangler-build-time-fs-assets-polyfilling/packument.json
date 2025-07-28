@@ -1,7 +1,7 @@
 {
 	"name": "@flarelabs-net/wrangler-build-time-fs-assets-polyfilling",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "0.0.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -29,6 +29,33 @@
 					}
 				],
 				"unpackedSize": 13276
+			}
+		},
+		"0.0.1": {
+			"name": "@flarelabs-net/wrangler-build-time-fs-assets-polyfilling",
+			"version": "0.0.1",
+			"devDependencies": {
+				"@types/node": "^22.14.0",
+				"esbuild": "^0.25.2",
+				"eslint": "^9.24.0",
+				"tsup": "^8.4.0",
+				"typescript": "^5.8.3"
+			},
+			"bin": {
+				"wrangler-build-time-fs-assets-polyfilling": "dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-uT7N77TaKZqGeb3c/KR+UlUs7xR36iU/g3uPaDflpJsXGRk8XwL2Ol2IpCNmv7ok57teModokqcbb6JT8a018Q==",
+				"shasum": "647632253a36b7e65eac3769dd5da4cb0f4545dd",
+				"tarball": "https://registry.npmjs.org/@flarelabs-net/wrangler-build-time-fs-assets-polyfilling/-/wrangler-build-time-fs-assets-polyfilling-0.0.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 15471,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIEAQzJrncE0GlLWtoX5OXIncbBObOs8GKrm+s+HNlAPiAiEA44eSv3pbckNGj3/qIh4BkxvZ+jipcNe2NAHiIzI+9D4="
+					}
+				]
 			}
 		}
 	}
