@@ -1049,6 +1049,96 @@
 		"bits": "Sum of bits",
 		"egressBits": "Sum of egress bits"
 	},
+	"AccountContainersMetricsAdaptiveGroups": {
+		"__description": "Metrics for Cloudchamber applications and deployments",
+		"avg": "The average value of a metric per dimension",
+		"count": "Number of metrics received",
+		"dimensions": "List of dimensions to group by",
+		"max": "Maximum value of a metric per dimension",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountContainersMetricsAdaptiveGroupsAvg": {
+		"__description": "",
+		"cpuLoad": "Average CPU load",
+		"gpuMemory": "Average GPU memory usage",
+		"memory": "Average memory usage",
+		"rxBandwidth": "<small>DEPRECATED (Replaced by rxBandwidthBps):</small> Average RX bandwidth",
+		"rxBandwidthBps": "Average RX bandwidth in bps",
+		"txBandwidth": "<small>DEPRECATED (Replaced by txBandwidthBps):</small> Average TX bandwidth",
+		"txBandwidthBps": "Average TX bandwidth in bps"
+	},
+	"AccountContainersMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"applicationId": "The application ID",
+		"date": "The date the metric was received",
+		"datetimeFifteenMinutes": "The date and time the metric was received, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the metric was received, truncated to five minutes",
+		"datetimeHour": "The date and time the metric was received, truncated to one hour",
+		"datetimeMinute": "The date and time the metric was received, truncated to one minute",
+		"deploymentId": "The deployment ID",
+		"durableObjectId": "If set, this metric was emitted while assigned to a durable object",
+		"location": "Location",
+		"placementId": "The placement ID",
+		"procType": "Process type",
+		"region": "Region"
+	},
+	"AccountContainersMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountContainersMetricsAdaptiveGroupsMax": {
+		"__description": "",
+		"cpuLoad": "Maximum CPU load",
+		"diskAvailable": "Total disk space available, in bytes",
+		"diskUsage": "Disk usage, in bytes",
+		"diskUsagePercentage": "Disk usage as a percentage of total disk space",
+		"gpuMemory": "Maximum GPU memory usage",
+		"memory": "Maximum memory usage",
+		"rxBandwidth": "<small>DEPRECATED (Replaced by rxBandwidthBps):</small> Maximum RX bandwidth",
+		"rxBandwidthBps": "Maximum RX bandwidth",
+		"rxBytes": "<small>DEPRECATED (Replaced by sum { rxBytes }):</small> Total bytes received",
+		"txBandwidth": "<small>DEPRECATED (Replaced by txBandwidthBps):</small> Maximum TX bandwidth",
+		"txBandwidthBps": "Maximum TX bandwidth",
+		"txBytes": "<small>DEPRECATED (Replaced by sum { txBytes }):</small> Total bytes transmitted"
+	},
+	"AccountContainersMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountContainersMetricsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"cpuLoadP50": "CPU load (50th percentile)",
+		"cpuLoadP90": "CPU load (90th percentile)",
+		"cpuLoadP99": "CPU load (99th percentile)",
+		"diskUsageP50": "Disk usage in bytes (50th percentile)",
+		"diskUsageP90": "Disk usage in bytes (90th percentile)",
+		"diskUsageP99": "Disk usage in bytes (99th percentile)",
+		"diskUsagePercentageP50": "Disk usage as a percentage of total disk space (50th percentile)",
+		"diskUsagePercentageP90": "Disk usage as a percentage of total disk space (90th percentile)",
+		"diskUsagePercentageP99": "Disk usage as a percentage of total disk space (99th percentile)",
+		"gpuMemoryP50": "GPU memory usage (50th percentile)",
+		"gpuMemoryP90": "GPU memory usage (90th percentile)",
+		"gpuMemoryP99": "GPU memory usage (99th percentile)",
+		"memoryP50": "Memory usage (50th percentile)",
+		"memoryP90": "Memory usage (90th percentile)",
+		"memoryP99": "Memory usage (99th percentile)",
+		"rxBandwidthBpsP50": "RX bandwidth (50th percentile)",
+		"rxBandwidthBpsP90": "RX bandwidth (90th percentile)",
+		"rxBandwidthBpsP99": "RX bandwidth (99th percentile)",
+		"rxBandwidthP50": "<small>DEPRECATED (Replaced by rxBandwidthBpsP50):</small> RX bandwidth (50th percentile)",
+		"rxBandwidthP90": "<small>DEPRECATED (Replaced by rxBandwidthBpsP90):</small> RX bandwidth (90th percentile)",
+		"rxBandwidthP99": "<small>DEPRECATED (Replaced by rxBandwidthBpsP99):</small> RX bandwidth (99th percentile)",
+		"txBandwidthBpsP50": "TX bandwidth (50th percentile)",
+		"txBandwidthBpsP90": "TX bandwidth (90th percentile)",
+		"txBandwidthBpsP99": "TX bandwidth (99th percentile)",
+		"txBandwidthP50": "<small>DEPRECATED (Replaced by txBandwidthBpsP50):</small> TX bandwidth (50th percentile)",
+		"txBandwidthP90": "<small>DEPRECATED (Replaced by txBandwidthBpsP90):</small> TX bandwidth (90th percentile)",
+		"txBandwidthP99": "<small>DEPRECATED (Replaced by txBandwidthBpsP99):</small> TX bandwidth (99th percentile)"
+	},
+	"AccountContainersMetricsAdaptiveGroupsSum": {
+		"__description": "",
+		"rxBytes": "Sum of bytes received",
+		"txBytes": "Sum of bytes transmitted"
+	},
 	"AccountD1AnalyticsAdaptiveGroups": {
 		"__description": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
@@ -1679,6 +1769,7 @@
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
@@ -1714,7 +1805,9 @@
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
+		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"ja4": "JA4 TLS fingerprint",
@@ -1762,6 +1855,7 @@
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
@@ -1797,7 +1891,9 @@
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
+		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"ja4": "JA4 TLS fingerprint",
@@ -2334,6 +2430,7 @@
 	"AccountHttpRequests1dGroupsAvg": {
 		"__description": "",
 		"bytes": "",
+		"edgeRequestBytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountHttpRequests1dGroupsBrowserMapElem": {
@@ -2394,6 +2491,7 @@
 		"clientSSLMap": "",
 		"contentTypeMap": "",
 		"countryMap": "",
+		"edgeRequestBytes": "Bytes sent from client",
 		"encryptedBytes": "Bytes returned to client using SSL/TLS protocol",
 		"encryptedRequests": "Requests served using SSL/TLS protocol",
 		"ipClassMap": "",
@@ -2422,6 +2520,7 @@
 	"AccountHttpRequests1hGroupsAvg": {
 		"__description": "",
 		"bytes": "",
+		"edgeRequestBytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountHttpRequests1hGroupsBrowserMapElem": {
@@ -2483,6 +2582,7 @@
 		"clientSSLMap": "",
 		"contentTypeMap": "",
 		"countryMap": "",
+		"edgeRequestBytes": "Bytes sent from client",
 		"encryptedBytes": "Bytes returned to client using SSL/TLS protocol",
 		"encryptedRequests": "Requests served using SSL/TLS protocol",
 		"ipClassMap": "",
@@ -2511,6 +2611,7 @@
 	"AccountHttpRequests1mGroupsAvg": {
 		"__description": "",
 		"bytes": "",
+		"edgeRequestBytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountHttpRequests1mGroupsBrowserMapElem": {
@@ -2578,6 +2679,7 @@
 		"clientSSLMap": "",
 		"contentTypeMap": "",
 		"countryMap": "",
+		"edgeRequestBytes": "Bytes sent from client",
 		"encryptedBytes": "Bytes returned to client using SSL/TLS protocol",
 		"encryptedRequests": "Requests served using SSL/TLS protocol",
 		"ipClassMap": "",
@@ -2600,6 +2702,7 @@
 		"__description": "Raw HTTP requests with adaptive sampling",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botManagementDecision": "Judgement of the bot management system",
@@ -2640,7 +2743,9 @@
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
+		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -2700,6 +2805,7 @@
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botManagementDecision": "Judgement of the bot management system",
@@ -2740,7 +2846,9 @@
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
+		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -2802,6 +2910,7 @@
 		"botDetectionTagCountArray": "Count array of bot management detection tags. Elements in this array correspond to elements in botDetectionTagArray by index.",
 		"crossZoneSubrequests": "The number of requests that were inititiated by a Cloudflare Worker on another zone",
 		"edgeDnsResponseTimeMs": "",
+		"edgeRequestBytes": "",
 		"edgeResponseBytes": "",
 		"edgeTimeToFirstByteMs": "",
 		"originResponseDurationMs": "",
@@ -2809,6 +2918,7 @@
 	},
 	"AccountHttpRequestsAdaptiveGroupsSumConfidence": {
 		"__description": "",
+		"edgeRequestBytes": "Confidence interval for the corresponding point estimate",
 		"edgeResponseBytes": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountHttpRequestsAdaptiveJa4SignalsElem": {
@@ -5373,6 +5483,7 @@
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
 		"cloudchamberMetricsAdaptiveGroups": "",
 		"cloudflareTunnelsAnalyticsAdaptiveGroups": "",
+		"containersMetricsAdaptiveGroups": "",
 		"d1AnalyticsAdaptiveGroups": "",
 		"d1QueriesAdaptiveGroups": "",
 		"d1StorageAdaptiveGroups": "",
@@ -5466,6 +5577,7 @@
 		"sippyOperationsAdaptiveGroups": "",
 		"spectrumNetworkAnalyticsAdaptiveGroups": "",
 		"storageTraces": "",
+		"streamCMCDAdaptiveGroups": "",
 		"streamMinutesViewedAdaptiveGroups": "",
 		"turnstileAdaptiveGroups": "",
 		"vectorizeQueriesAdaptiveGroups": "",
@@ -5703,6 +5815,77 @@
 	},
 	"AccountStorageTracesOrderBy": {
 		"__description": ""
+	},
+	"AccountStreamCMCDAdaptiveGroups": {
+		"__description": "Stream CMCD data",
+		"avg": "The average value for a metric per dimension",
+		"count": "The number of values for a metric per dimension",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension",
+		"uniq": "The number of unique values for a metric per dimension"
+	},
+	"AccountStreamCMCDAdaptiveGroupsAvg": {
+		"__description": "",
+		"bufferLength": "Average buffer length",
+		"bufferStarvationDuration": "Average buffer starvation duration in milliseconds",
+		"encodedBitrate": "Average encoded bitrate",
+		"initialBufferStarvationDuration": "Average buffer starvation duration at the start of viewing in milliseconds",
+		"measuredThroughput": "Average throughput"
+	},
+	"AccountStreamCMCDAdaptiveGroupsDimensions": {
+		"__description": "",
+		"bufferLength": "Buffer length of the requested object",
+		"bufferStarvation": "1 if the buffer was starved between the last request and this request, 0 if not",
+		"bufferStarvationDuration": "Buffer starvation duration in milliseconds",
+		"contentId": "Content ID",
+		"country": "Viewer country",
+		"creatorId": "Creator ID",
+		"datetime": "Ingest event timestamp",
+		"datetimeFifteenMinutes": "The date and time of the ingest event truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time of the ingest event truncated to five minutes",
+		"datetimeHour": "The date and time of the ingest event truncated to the hour",
+		"datetimeMinute": "The date and time of the ingest event truncated to the minute",
+		"datetimeSixHours": "The date and time of the ingest event truncated to the start of the six hour window",
+		"encodedBitrate": "Encoded bitrate of the requested object",
+		"hlsType": "HLS type, hls if HLS, ll-hls if LL-HLS, otherwise blank",
+		"initialBufferStarvationDuration": "Initial buffer starvation duration in milliseconds",
+		"inputId": "Input ID",
+		"measuredThroughput": "Throughput between client and server",
+		"objectDuration": "Playback duration in ms of the requested object",
+		"playbackRate": "1 if real-time, 2 if 2x speed, 0 if not playing",
+		"resolution": "Resolution",
+		"sessionId": "Session ID",
+		"startup": "1 if request object is needed for startup, 0 if not",
+		"streamType": "l for live, v for video on demand (VOD)",
+		"streamingFormat": "h if HLS or LL-HLS, d if DASH",
+		"topBitrate": "Highest available bitrate rendition",
+		"videoId": "Video ID"
+	},
+	"AccountStreamCMCDAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountStreamCMCDAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountStreamCMCDAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"bufferStarvationDurationP50": "50th percentile buffer starvation duration in milliseconds",
+		"bufferStarvationDurationP75": "75th percentile buffer starvation duration in milliseconds",
+		"bufferStarvationDurationP90": "90th percentile buffer starvation duration in milliseconds",
+		"bufferStarvationDurationP99": "99th percentile buffer starvation duration in milliseconds",
+		"initialBufferStarvationDurationP50": "50th percentile initial buffer starvation duration in milliseconds",
+		"initialBufferStarvationDurationP75": "75th percentile initial buffer starvation duration in milliseconds",
+		"initialBufferStarvationDurationP90": "90th percentile initial buffer starvation duration in milliseconds",
+		"initialBufferStarvationDurationP99": "99th percentile initial buffer starvation duration in milliseconds"
+	},
+	"AccountStreamCMCDAdaptiveGroupsSum": {
+		"__description": "",
+		"millisecondsViewed": "Estimated time viewed in milliseconds"
+	},
+	"AccountStreamCMCDAdaptiveGroupsUniq": {
+		"__description": "",
+		"viewers": "The number of unique viewers"
 	},
 	"AccountStreamMinutesViewedAdaptiveGroups": {
 		"__description": "A high-level summary of Cloudflare Stream minutes viewed.",
@@ -6535,6 +6718,7 @@
 		"accountTag": "Associated account",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botManagementDecision": "Judgement of the bot management system",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
@@ -6573,7 +6757,9 @@
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
+		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -7155,6 +7341,7 @@
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
@@ -7190,7 +7377,9 @@
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
+		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"ja4": "JA4 TLS fingerprint",
@@ -7233,6 +7422,7 @@
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
@@ -7245,7 +7435,9 @@
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"description": "The description of the rule triggered by this request",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
+		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"ja4": "JA4 TLS fingerprint",
@@ -7291,6 +7483,7 @@
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
@@ -7326,7 +7519,9 @@
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
+		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"ja4": "JA4 TLS fingerprint",
@@ -7506,6 +7701,7 @@
 	"ZoneHttpRequests1dGroupsAvg": {
 		"__description": "",
 		"bytes": "",
+		"edgeRequestBytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneHttpRequests1dGroupsBrowserMapElem": {
@@ -7566,6 +7762,7 @@
 		"clientSSLMap": "",
 		"contentTypeMap": "",
 		"countryMap": "",
+		"edgeRequestBytes": "Bytes sent from client",
 		"encryptedBytes": "Bytes returned to client using SSL/TLS protocol",
 		"encryptedRequests": "Requests served using SSL/TLS protocol",
 		"ipClassMap": "",
@@ -7594,6 +7791,7 @@
 	"ZoneHttpRequests1hGroupsAvg": {
 		"__description": "",
 		"bytes": "",
+		"edgeRequestBytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneHttpRequests1hGroupsBrowserMapElem": {
@@ -7655,6 +7853,7 @@
 		"clientSSLMap": "",
 		"contentTypeMap": "",
 		"countryMap": "",
+		"edgeRequestBytes": "Bytes sent from client",
 		"encryptedBytes": "Bytes returned to client using SSL/TLS protocol",
 		"encryptedRequests": "Requests served using SSL/TLS protocol",
 		"ipClassMap": "",
@@ -7729,6 +7928,7 @@
 	"ZoneHttpRequests1mGroupsAvg": {
 		"__description": "",
 		"bytes": "",
+		"edgeRequestBytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneHttpRequests1mGroupsBrowserMapElem": {
@@ -7796,6 +7996,7 @@
 		"clientSSLMap": "",
 		"contentTypeMap": "",
 		"countryMap": "",
+		"edgeRequestBytes": "Bytes sent from client",
 		"encryptedBytes": "Bytes returned to client using SSL/TLS protocol",
 		"encryptedRequests": "Requests served using SSL/TLS protocol",
 		"ipClassMap": "",
@@ -7818,6 +8019,7 @@
 		"__description": "Raw HTTP requests with adaptive sampling",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botManagementDecision": "Judgement of the bot management system",
@@ -7858,7 +8060,9 @@
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
+		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -7917,6 +8121,7 @@
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botManagementDecision": "Judgement of the bot management system",
@@ -7957,7 +8162,9 @@
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
+		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
 		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -8018,6 +8225,7 @@
 		"botDetectionTagCountArray": "Count array of bot management detection tags. Elements in this array correspond to elements in botDetectionTagArray by index.",
 		"crossZoneSubrequests": "The number of requests that were inititiated by a Cloudflare Worker on another zone",
 		"edgeDnsResponseTimeMs": "",
+		"edgeRequestBytes": "",
 		"edgeResponseBytes": "",
 		"edgeTimeToFirstByteMs": "",
 		"originResponseDurationMs": "",
@@ -8025,6 +8233,7 @@
 	},
 	"ZoneHttpRequestsAdaptiveGroupsSumConfidence": {
 		"__description": "",
+		"edgeRequestBytes": "Confidence interval for the corresponding point estimate",
 		"edgeResponseBytes": "Confidence interval for the corresponding point estimate"
 	},
 	"ZoneHttpRequestsAdaptiveJa4SignalsElem": {
@@ -8982,6 +9191,7 @@
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
 		"cloudchamberMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
 		"cloudflareTunnelsAnalyticsAdaptiveGroups": "Cloudflare tunnel Device Analytics",
+		"containersMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
 		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"d1QueriesAdaptiveGroups": "Beta. D1 query metrics with adaptive sampling",
 		"d1StorageAdaptiveGroups": "Beta. D1 storage with adaptive sampling",
@@ -9076,6 +9286,7 @@
 		"sippyOperationsAdaptiveGroups": "Sippy operations with adaptive sampling",
 		"spectrumNetworkAnalyticsAdaptiveGroups": "Network analytics data for Spectrum traffic",
 		"storageTraces": "Storage Tracing Information",
+		"streamCMCDAdaptiveGroups": "Stream CMCD data",
 		"streamMinutesViewedAdaptiveGroups": "A high-level summary of Cloudflare Stream minutes viewed.",
 		"turnstileAdaptiveGroups": "Beta. Cloudflare Turnstile aggregated events with adaptive sampling",
 		"vectorizeQueriesAdaptiveGroups": "Beta. Vectorize usage with adaptive sampling",
