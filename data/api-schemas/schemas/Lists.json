@@ -1821,125 +1821,316 @@
 									"properties": {
 										"result": {
 											"items": {
-												"example": {
-													"comment": "Private IP address",
-													"created_on": "2020-01-01T08:00:00Z",
-													"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-													"ip": "10.0.0.1",
-													"modified_on": "2020-01-10T14:00:00Z"
-												},
-												"properties": {
-													"asn": {
-														"description": "Defines a non-negative 32 bit integer.",
-														"example": 5567,
-														"type": "integer",
-														"x-auditable": true
-													},
-													"comment": {
-														"description": "Defines an informative summary of the list item.",
-														"example": "Private IP address",
-														"type": "string",
-														"x-auditable": true
-													},
-													"created_on": {
-														"description": "The RFC 3339 timestamp of when the item was created.",
-														"example": "2020-01-01T08:00:00Z",
-														"readOnly": true,
-														"type": "string",
-														"x-auditable": true
-													},
-													"hostname": {
-														"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-														"properties": {
-															"exclude_exact_hostname": {
-																"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
-																"example": true,
-																"type": "boolean"
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"ip": {
+																		"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
+																		"example": "10.0.0.1",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"ip"
+																],
+																"type": "object"
 															},
-															"url_hostname": {
-																"example": "example.com",
-																"type": "string",
-																"x-auditable": true
+															{
+																"example": {
+																	"comment": "Private IP address",
+																	"created_on": "2020-01-01T08:00:00Z",
+																	"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																	"modified_on": "2020-01-10T14:00:00Z"
+																},
+																"properties": {
+																	"comment": {
+																		"description": "Defines an informative summary of the list item.",
+																		"example": "Private IP address",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"created_on": {
+																		"description": "The RFC 3339 timestamp of when the item was created.",
+																		"example": "2020-01-01T08:00:00Z",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique ID of the list.",
+																		"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																		"maxLength": 32,
+																		"minLength": 32,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"modified_on": {
+																		"description": "The RFC 3339 timestamp of when the item was last modified.",
+																		"example": "2020-01-10T14:00:00Z",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_on",
+																	"modified_on"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"url_hostname"
 														]
 													},
-													"id": {
-														"description": "The unique ID of the list.",
-														"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-														"maxLength": 32,
-														"minLength": 32,
-														"readOnly": true,
-														"type": "string",
-														"x-auditable": true
-													},
-													"ip": {
-														"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-														"example": "10.0.0.1",
-														"type": "string",
-														"x-auditable": true
-													},
-													"modified_on": {
-														"description": "The RFC 3339 timestamp of when the item was last modified.",
-														"example": "2020-01-10T14:00:00Z",
-														"readOnly": true,
-														"type": "string",
-														"x-auditable": true
-													},
-													"redirect": {
-														"description": "The definition of the redirect.",
-														"properties": {
-															"include_subdomains": {
-																"default": false,
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"preserve_path_suffix": {
-																"default": false,
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"preserve_query_string": {
-																"default": false,
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"source_url": {
-																"example": "example.com/arch",
-																"type": "string",
-																"x-auditable": true
-															},
-															"status_code": {
-																"default": 301,
-																"enum": [
-																	301,
-																	302,
-																	307,
-																	308
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"hostname": {
+																		"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+																		"properties": {
+																			"exclude_exact_hostname": {
+																				"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"url_hostname": {
+																				"example": "example.com",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"url_hostname"
+																		]
+																	}
+																},
+																"required": [
+																	"hostname"
 																],
-																"type": "integer",
-																"x-auditable": true
+																"type": "object"
 															},
-															"subpath_matching": {
-																"default": false,
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"target_url": {
-																"example": "https://archlinux.org/",
-																"type": "string",
-																"x-auditable": true
+															{
+																"example": {
+																	"comment": "Private IP address",
+																	"created_on": "2020-01-01T08:00:00Z",
+																	"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																	"modified_on": "2020-01-10T14:00:00Z"
+																},
+																"properties": {
+																	"comment": {
+																		"description": "Defines an informative summary of the list item.",
+																		"example": "Private IP address",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"created_on": {
+																		"description": "The RFC 3339 timestamp of when the item was created.",
+																		"example": "2020-01-01T08:00:00Z",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique ID of the list.",
+																		"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																		"maxLength": 32,
+																		"minLength": 32,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"modified_on": {
+																		"description": "The RFC 3339 timestamp of when the item was last modified.",
+																		"example": "2020-01-10T14:00:00Z",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_on",
+																	"modified_on"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"source_url",
-															"target_url"
+														]
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"redirect": {
+																		"description": "The definition of the redirect.",
+																		"properties": {
+																			"include_subdomains": {
+																				"default": false,
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"preserve_path_suffix": {
+																				"default": false,
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"preserve_query_string": {
+																				"default": false,
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"source_url": {
+																				"example": "example.com/arch",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"status_code": {
+																				"default": 301,
+																				"enum": [
+																					301,
+																					302,
+																					307,
+																					308
+																				],
+																				"type": "integer",
+																				"x-auditable": true
+																			},
+																			"subpath_matching": {
+																				"default": false,
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"target_url": {
+																				"example": "https://archlinux.org/",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"source_url",
+																			"target_url"
+																		]
+																	}
+																},
+																"required": [
+																	"redirect"
+																],
+																"type": "object"
+															},
+															{
+																"example": {
+																	"comment": "Private IP address",
+																	"created_on": "2020-01-01T08:00:00Z",
+																	"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																	"modified_on": "2020-01-10T14:00:00Z"
+																},
+																"properties": {
+																	"comment": {
+																		"description": "Defines an informative summary of the list item.",
+																		"example": "Private IP address",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"created_on": {
+																		"description": "The RFC 3339 timestamp of when the item was created.",
+																		"example": "2020-01-01T08:00:00Z",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique ID of the list.",
+																		"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																		"maxLength": 32,
+																		"minLength": 32,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"modified_on": {
+																		"description": "The RFC 3339 timestamp of when the item was last modified.",
+																		"example": "2020-01-10T14:00:00Z",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_on",
+																	"modified_on"
+																],
+																"type": "object"
+															}
+														]
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"asn": {
+																		"description": "Defines a non-negative 32 bit integer.",
+																		"example": 5567,
+																		"type": "integer",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"asn"
+																],
+																"type": "object"
+															},
+															{
+																"example": {
+																	"comment": "Private IP address",
+																	"created_on": "2020-01-01T08:00:00Z",
+																	"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																	"modified_on": "2020-01-10T14:00:00Z"
+																},
+																"properties": {
+																	"comment": {
+																		"description": "Defines an informative summary of the list item.",
+																		"example": "Private IP address",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"created_on": {
+																		"description": "The RFC 3339 timestamp of when the item was created.",
+																		"example": "2020-01-01T08:00:00Z",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The unique ID of the list.",
+																		"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																		"maxLength": 32,
+																		"minLength": 32,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"modified_on": {
+																		"description": "The RFC 3339 timestamp of when the item was last modified.",
+																		"example": "2020-01-10T14:00:00Z",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_on",
+																	"modified_on"
+																],
+																"type": "object"
+															}
 														]
 													}
-												},
-												"type": "object"
+												]
 											},
 											"type": "array"
 										},
@@ -2074,125 +2265,316 @@
 											"properties": {
 												"result": {
 													"items": {
-														"example": {
-															"comment": "Private IP address",
-															"created_on": "2020-01-01T08:00:00Z",
-															"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-															"ip": "10.0.0.1",
-															"modified_on": "2020-01-10T14:00:00Z"
-														},
-														"properties": {
-															"asn": {
-																"description": "Defines a non-negative 32 bit integer.",
-																"example": 5567,
-																"type": "integer",
-																"x-auditable": true
-															},
-															"comment": {
-																"description": "Defines an informative summary of the list item.",
-																"example": "Private IP address",
-																"type": "string",
-																"x-auditable": true
-															},
-															"created_on": {
-																"description": "The RFC 3339 timestamp of when the item was created.",
-																"example": "2020-01-01T08:00:00Z",
-																"readOnly": true,
-																"type": "string",
-																"x-auditable": true
-															},
-															"hostname": {
-																"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-																"properties": {
-																	"exclude_exact_hostname": {
-																		"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
-																		"example": true,
-																		"type": "boolean"
+														"oneOf": [
+															{
+																"allOf": [
+																	{
+																		"properties": {
+																			"ip": {
+																				"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
+																				"example": "10.0.0.1",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"type": "object"
 																	},
-																	"url_hostname": {
-																		"example": "example.com",
-																		"type": "string",
-																		"x-auditable": true
+																	{
+																		"example": {
+																			"comment": "Private IP address",
+																			"created_on": "2020-01-01T08:00:00Z",
+																			"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																			"modified_on": "2020-01-10T14:00:00Z"
+																		},
+																		"properties": {
+																			"comment": {
+																				"description": "Defines an informative summary of the list item.",
+																				"example": "Private IP address",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"created_on": {
+																				"description": "The RFC 3339 timestamp of when the item was created.",
+																				"example": "2020-01-01T08:00:00Z",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "The unique ID of the list.",
+																				"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"modified_on": {
+																				"description": "The RFC 3339 timestamp of when the item was last modified.",
+																				"example": "2020-01-10T14:00:00Z",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"created_on",
+																			"modified_on"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"url_hostname"
 																]
 															},
-															"id": {
-																"description": "The unique ID of the list.",
-																"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																"maxLength": 32,
-																"minLength": 32,
-																"readOnly": true,
-																"type": "string",
-																"x-auditable": true
-															},
-															"ip": {
-																"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-																"example": "10.0.0.1",
-																"type": "string",
-																"x-auditable": true
-															},
-															"modified_on": {
-																"description": "The RFC 3339 timestamp of when the item was last modified.",
-																"example": "2020-01-10T14:00:00Z",
-																"readOnly": true,
-																"type": "string",
-																"x-auditable": true
-															},
-															"redirect": {
-																"description": "The definition of the redirect.",
-																"properties": {
-																	"include_subdomains": {
-																		"default": false,
-																		"type": "boolean",
-																		"x-auditable": true
-																	},
-																	"preserve_path_suffix": {
-																		"default": false,
-																		"type": "boolean",
-																		"x-auditable": true
-																	},
-																	"preserve_query_string": {
-																		"default": false,
-																		"type": "boolean",
-																		"x-auditable": true
-																	},
-																	"source_url": {
-																		"example": "example.com/arch",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"status_code": {
-																		"default": 301,
-																		"enum": [
-																			301,
-																			302,
-																			307,
-																			308
+															{
+																"allOf": [
+																	{
+																		"properties": {
+																			"hostname": {
+																				"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+																				"properties": {
+																					"exclude_exact_hostname": {
+																						"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"url_hostname": {
+																						"example": "example.com",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"url_hostname"
+																				]
+																			}
+																		},
+																		"required": [
+																			"hostname"
 																		],
-																		"type": "integer",
-																		"x-auditable": true
+																		"type": "object"
 																	},
-																	"subpath_matching": {
-																		"default": false,
-																		"type": "boolean",
-																		"x-auditable": true
-																	},
-																	"target_url": {
-																		"example": "https://archlinux.org/",
-																		"type": "string",
-																		"x-auditable": true
+																	{
+																		"example": {
+																			"comment": "Private IP address",
+																			"created_on": "2020-01-01T08:00:00Z",
+																			"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																			"modified_on": "2020-01-10T14:00:00Z"
+																		},
+																		"properties": {
+																			"comment": {
+																				"description": "Defines an informative summary of the list item.",
+																				"example": "Private IP address",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"created_on": {
+																				"description": "The RFC 3339 timestamp of when the item was created.",
+																				"example": "2020-01-01T08:00:00Z",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "The unique ID of the list.",
+																				"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"modified_on": {
+																				"description": "The RFC 3339 timestamp of when the item was last modified.",
+																				"example": "2020-01-10T14:00:00Z",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"created_on",
+																			"modified_on"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"source_url",
-																	"target_url"
+																]
+															},
+															{
+																"allOf": [
+																	{
+																		"properties": {
+																			"redirect": {
+																				"description": "The definition of the redirect.",
+																				"properties": {
+																					"include_subdomains": {
+																						"default": false,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"preserve_path_suffix": {
+																						"default": false,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"preserve_query_string": {
+																						"default": false,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"source_url": {
+																						"example": "example.com/arch",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"status_code": {
+																						"default": 301,
+																						"enum": [
+																							301,
+																							302,
+																							307,
+																							308
+																						],
+																						"type": "integer",
+																						"x-auditable": true
+																					},
+																					"subpath_matching": {
+																						"default": false,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"target_url": {
+																						"example": "https://archlinux.org/",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"source_url",
+																					"target_url"
+																				]
+																			}
+																		},
+																		"required": [
+																			"redirect"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"example": {
+																			"comment": "Private IP address",
+																			"created_on": "2020-01-01T08:00:00Z",
+																			"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																			"modified_on": "2020-01-10T14:00:00Z"
+																		},
+																		"properties": {
+																			"comment": {
+																				"description": "Defines an informative summary of the list item.",
+																				"example": "Private IP address",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"created_on": {
+																				"description": "The RFC 3339 timestamp of when the item was created.",
+																				"example": "2020-01-01T08:00:00Z",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "The unique ID of the list.",
+																				"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"modified_on": {
+																				"description": "The RFC 3339 timestamp of when the item was last modified.",
+																				"example": "2020-01-10T14:00:00Z",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"created_on",
+																			"modified_on"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															{
+																"allOf": [
+																	{
+																		"properties": {
+																			"asn": {
+																				"description": "Defines a non-negative 32 bit integer.",
+																				"example": 5567,
+																				"type": "integer",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"asn"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"example": {
+																			"comment": "Private IP address",
+																			"created_on": "2020-01-01T08:00:00Z",
+																			"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																			"modified_on": "2020-01-10T14:00:00Z"
+																		},
+																		"properties": {
+																			"comment": {
+																				"description": "Defines an informative summary of the list item.",
+																				"example": "Private IP address",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"created_on": {
+																				"description": "The RFC 3339 timestamp of when the item was created.",
+																				"example": "2020-01-01T08:00:00Z",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "The unique ID of the list.",
+																				"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"modified_on": {
+																				"description": "The RFC 3339 timestamp of when the item was last modified.",
+																				"example": "2020-01-10T14:00:00Z",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"created_on",
+																			"modified_on"
+																		],
+																		"type": "object"
+																	}
 																]
 															}
-														},
-														"type": "object"
+														]
 													},
 													"type": "array"
 												},
@@ -2481,125 +2863,316 @@
 								{
 									"properties": {
 										"result": {
-											"example": {
-												"comment": "Private IP address",
-												"created_on": "2020-01-01T08:00:00Z",
-												"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-												"ip": "10.0.0.1",
-												"modified_on": "2020-01-10T14:00:00Z"
-											},
-											"properties": {
-												"asn": {
-													"description": "Defines a non-negative 32 bit integer.",
-													"example": 5567,
-													"type": "integer",
-													"x-auditable": true
-												},
-												"comment": {
-													"description": "Defines an informative summary of the list item.",
-													"example": "Private IP address",
-													"type": "string",
-													"x-auditable": true
-												},
-												"created_on": {
-													"description": "The RFC 3339 timestamp of when the item was created.",
-													"example": "2020-01-01T08:00:00Z",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"hostname": {
-													"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-													"properties": {
-														"exclude_exact_hostname": {
-															"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
-															"example": true,
-															"type": "boolean"
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"ip": {
+																	"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
+																	"example": "10.0.0.1",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"ip"
+															],
+															"type": "object"
 														},
-														"url_hostname": {
-															"example": "example.com",
-															"type": "string",
-															"x-auditable": true
+														{
+															"example": {
+																"comment": "Private IP address",
+																"created_on": "2020-01-01T08:00:00Z",
+																"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																"modified_on": "2020-01-10T14:00:00Z"
+															},
+															"properties": {
+																"comment": {
+																	"description": "Defines an informative summary of the list item.",
+																	"example": "Private IP address",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"created_on": {
+																	"description": "The RFC 3339 timestamp of when the item was created.",
+																	"example": "2020-01-01T08:00:00Z",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "The unique ID of the list.",
+																	"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "The RFC 3339 timestamp of when the item was last modified.",
+																	"example": "2020-01-10T14:00:00Z",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
 														}
-													},
-													"required": [
-														"url_hostname"
 													]
 												},
-												"id": {
-													"description": "The unique ID of the list.",
-													"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-													"maxLength": 32,
-													"minLength": 32,
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"ip": {
-													"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-													"example": "10.0.0.1",
-													"type": "string",
-													"x-auditable": true
-												},
-												"modified_on": {
-													"description": "The RFC 3339 timestamp of when the item was last modified.",
-													"example": "2020-01-10T14:00:00Z",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"redirect": {
-													"description": "The definition of the redirect.",
-													"properties": {
-														"include_subdomains": {
-															"default": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"preserve_path_suffix": {
-															"default": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"preserve_query_string": {
-															"default": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"source_url": {
-															"example": "example.com/arch",
-															"type": "string",
-															"x-auditable": true
-														},
-														"status_code": {
-															"default": 301,
-															"enum": [
-																301,
-																302,
-																307,
-																308
+												{
+													"allOf": [
+														{
+															"properties": {
+																"hostname": {
+																	"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+																	"properties": {
+																		"exclude_exact_hostname": {
+																			"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"url_hostname": {
+																			"example": "example.com",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"url_hostname"
+																	]
+																}
+															},
+															"required": [
+																"hostname"
 															],
-															"type": "integer",
-															"x-auditable": true
+															"type": "object"
 														},
-														"subpath_matching": {
-															"default": false,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"target_url": {
-															"example": "https://archlinux.org/",
-															"type": "string",
-															"x-auditable": true
+														{
+															"example": {
+																"comment": "Private IP address",
+																"created_on": "2020-01-01T08:00:00Z",
+																"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																"modified_on": "2020-01-10T14:00:00Z"
+															},
+															"properties": {
+																"comment": {
+																	"description": "Defines an informative summary of the list item.",
+																	"example": "Private IP address",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"created_on": {
+																	"description": "The RFC 3339 timestamp of when the item was created.",
+																	"example": "2020-01-01T08:00:00Z",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "The unique ID of the list.",
+																	"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "The RFC 3339 timestamp of when the item was last modified.",
+																	"example": "2020-01-10T14:00:00Z",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
 														}
-													},
-													"required": [
-														"source_url",
-														"target_url"
+													]
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"redirect": {
+																	"description": "The definition of the redirect.",
+																	"properties": {
+																		"include_subdomains": {
+																			"default": false,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"preserve_path_suffix": {
+																			"default": false,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"preserve_query_string": {
+																			"default": false,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"source_url": {
+																			"example": "example.com/arch",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"status_code": {
+																			"default": 301,
+																			"enum": [
+																				301,
+																				302,
+																				307,
+																				308
+																			],
+																			"type": "integer",
+																			"x-auditable": true
+																		},
+																		"subpath_matching": {
+																			"default": false,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"target_url": {
+																			"example": "https://archlinux.org/",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"source_url",
+																		"target_url"
+																	]
+																}
+															},
+															"required": [
+																"redirect"
+															],
+															"type": "object"
+														},
+														{
+															"example": {
+																"comment": "Private IP address",
+																"created_on": "2020-01-01T08:00:00Z",
+																"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																"modified_on": "2020-01-10T14:00:00Z"
+															},
+															"properties": {
+																"comment": {
+																	"description": "Defines an informative summary of the list item.",
+																	"example": "Private IP address",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"created_on": {
+																	"description": "The RFC 3339 timestamp of when the item was created.",
+																	"example": "2020-01-01T08:00:00Z",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "The unique ID of the list.",
+																	"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "The RFC 3339 timestamp of when the item was last modified.",
+																	"example": "2020-01-10T14:00:00Z",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													]
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"asn": {
+																	"description": "Defines a non-negative 32 bit integer.",
+																	"example": 5567,
+																	"type": "integer",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"asn"
+															],
+															"type": "object"
+														},
+														{
+															"example": {
+																"comment": "Private IP address",
+																"created_on": "2020-01-01T08:00:00Z",
+																"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																"modified_on": "2020-01-10T14:00:00Z"
+															},
+															"properties": {
+																"comment": {
+																	"description": "Defines an informative summary of the list item.",
+																	"example": "Private IP address",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"created_on": {
+																	"description": "The RFC 3339 timestamp of when the item was created.",
+																	"example": "2020-01-01T08:00:00Z",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "The unique ID of the list.",
+																	"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "The RFC 3339 timestamp of when the item was last modified.",
+																	"example": "2020-01-10T14:00:00Z",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
+														}
 													]
 												}
-											},
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -2711,125 +3284,316 @@
 										{
 											"properties": {
 												"result": {
-													"example": {
-														"comment": "Private IP address",
-														"created_on": "2020-01-01T08:00:00Z",
-														"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-														"ip": "10.0.0.1",
-														"modified_on": "2020-01-10T14:00:00Z"
-													},
-													"properties": {
-														"asn": {
-															"description": "Defines a non-negative 32 bit integer.",
-															"example": 5567,
-															"type": "integer",
-															"x-auditable": true
-														},
-														"comment": {
-															"description": "Defines an informative summary of the list item.",
-															"example": "Private IP address",
-															"type": "string",
-															"x-auditable": true
-														},
-														"created_on": {
-															"description": "The RFC 3339 timestamp of when the item was created.",
-															"example": "2020-01-01T08:00:00Z",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"hostname": {
-															"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-															"properties": {
-																"exclude_exact_hostname": {
-																	"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
-																	"example": true,
-																	"type": "boolean"
+													"oneOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"ip": {
+																			"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
+																			"example": "10.0.0.1",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"ip"
+																	],
+																	"type": "object"
 																},
-																"url_hostname": {
-																	"example": "example.com",
-																	"type": "string",
-																	"x-auditable": true
+																{
+																	"example": {
+																		"comment": "Private IP address",
+																		"created_on": "2020-01-01T08:00:00Z",
+																		"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																		"modified_on": "2020-01-10T14:00:00Z"
+																	},
+																	"properties": {
+																		"comment": {
+																			"description": "Defines an informative summary of the list item.",
+																			"example": "Private IP address",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"created_on": {
+																			"description": "The RFC 3339 timestamp of when the item was created.",
+																			"example": "2020-01-01T08:00:00Z",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "The unique ID of the list.",
+																			"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																			"maxLength": 32,
+																			"minLength": 32,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"modified_on": {
+																			"description": "The RFC 3339 timestamp of when the item was last modified.",
+																			"example": "2020-01-10T14:00:00Z",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"created_on",
+																		"modified_on"
+																	],
+																	"type": "object"
 																}
-															},
-															"required": [
-																"url_hostname"
 															]
 														},
-														"id": {
-															"description": "The unique ID of the list.",
-															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-															"maxLength": 32,
-															"minLength": 32,
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"ip": {
-															"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-															"example": "10.0.0.1",
-															"type": "string",
-															"x-auditable": true
-														},
-														"modified_on": {
-															"description": "The RFC 3339 timestamp of when the item was last modified.",
-															"example": "2020-01-10T14:00:00Z",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"redirect": {
-															"description": "The definition of the redirect.",
-															"properties": {
-																"include_subdomains": {
-																	"default": false,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"preserve_path_suffix": {
-																	"default": false,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"preserve_query_string": {
-																	"default": false,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"source_url": {
-																	"example": "example.com/arch",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"status_code": {
-																	"default": 301,
-																	"enum": [
-																		301,
-																		302,
-																		307,
-																		308
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"hostname": {
+																			"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+																			"properties": {
+																				"exclude_exact_hostname": {
+																					"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"url_hostname": {
+																					"example": "example.com",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"url_hostname"
+																			]
+																		}
+																	},
+																	"required": [
+																		"hostname"
 																	],
-																	"type": "integer",
-																	"x-auditable": true
+																	"type": "object"
 																},
-																"subpath_matching": {
-																	"default": false,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"target_url": {
-																	"example": "https://archlinux.org/",
-																	"type": "string",
-																	"x-auditable": true
+																{
+																	"example": {
+																		"comment": "Private IP address",
+																		"created_on": "2020-01-01T08:00:00Z",
+																		"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																		"modified_on": "2020-01-10T14:00:00Z"
+																	},
+																	"properties": {
+																		"comment": {
+																			"description": "Defines an informative summary of the list item.",
+																			"example": "Private IP address",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"created_on": {
+																			"description": "The RFC 3339 timestamp of when the item was created.",
+																			"example": "2020-01-01T08:00:00Z",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "The unique ID of the list.",
+																			"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																			"maxLength": 32,
+																			"minLength": 32,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"modified_on": {
+																			"description": "The RFC 3339 timestamp of when the item was last modified.",
+																			"example": "2020-01-10T14:00:00Z",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"created_on",
+																		"modified_on"
+																	],
+																	"type": "object"
 																}
-															},
-															"required": [
-																"source_url",
-																"target_url"
+															]
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"redirect": {
+																			"description": "The definition of the redirect.",
+																			"properties": {
+																				"include_subdomains": {
+																					"default": false,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"preserve_path_suffix": {
+																					"default": false,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"preserve_query_string": {
+																					"default": false,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"source_url": {
+																					"example": "example.com/arch",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"status_code": {
+																					"default": 301,
+																					"enum": [
+																						301,
+																						302,
+																						307,
+																						308
+																					],
+																					"type": "integer",
+																					"x-auditable": true
+																				},
+																				"subpath_matching": {
+																					"default": false,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"target_url": {
+																					"example": "https://archlinux.org/",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"source_url",
+																				"target_url"
+																			]
+																		}
+																	},
+																	"required": [
+																		"redirect"
+																	],
+																	"type": "object"
+																},
+																{
+																	"example": {
+																		"comment": "Private IP address",
+																		"created_on": "2020-01-01T08:00:00Z",
+																		"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																		"modified_on": "2020-01-10T14:00:00Z"
+																	},
+																	"properties": {
+																		"comment": {
+																			"description": "Defines an informative summary of the list item.",
+																			"example": "Private IP address",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"created_on": {
+																			"description": "The RFC 3339 timestamp of when the item was created.",
+																			"example": "2020-01-01T08:00:00Z",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "The unique ID of the list.",
+																			"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																			"maxLength": 32,
+																			"minLength": 32,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"modified_on": {
+																			"description": "The RFC 3339 timestamp of when the item was last modified.",
+																			"example": "2020-01-10T14:00:00Z",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"created_on",
+																		"modified_on"
+																	],
+																	"type": "object"
+																}
+															]
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"asn": {
+																			"description": "Defines a non-negative 32 bit integer.",
+																			"example": 5567,
+																			"type": "integer",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"asn"
+																	],
+																	"type": "object"
+																},
+																{
+																	"example": {
+																		"comment": "Private IP address",
+																		"created_on": "2020-01-01T08:00:00Z",
+																		"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																		"modified_on": "2020-01-10T14:00:00Z"
+																	},
+																	"properties": {
+																		"comment": {
+																			"description": "Defines an informative summary of the list item.",
+																			"example": "Private IP address",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"created_on": {
+																			"description": "The RFC 3339 timestamp of when the item was created.",
+																			"example": "2020-01-01T08:00:00Z",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "The unique ID of the list.",
+																			"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																			"maxLength": 32,
+																			"minLength": 32,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"modified_on": {
+																			"description": "The RFC 3339 timestamp of when the item was last modified.",
+																			"example": "2020-01-10T14:00:00Z",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"created_on",
+																		"modified_on"
+																	],
+																	"type": "object"
+																}
 															]
 														}
-													},
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
@@ -3083,48 +3847,6 @@
 											"oneOf": [
 												{
 													"properties": {
-														"completed": {
-															"description": "The RFC 3339 timestamp of when the operation was completed.",
-															"example": "2020-01-01T08:00:00Z",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"error": {
-															"description": "A message describing the error when the status is `failed`.",
-															"example": "This list is at the maximum number of items",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The unique operation ID of the asynchronous action.",
-															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"status": {
-															"description": "The current status of the asynchronous operation.",
-															"enum": [
-																"failed"
-															],
-															"example": "failed",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"id",
-														"status",
-														"error",
-														"completed"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
 														"id": {
 															"description": "The unique operation ID of the asynchronous action.",
 															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
@@ -3180,6 +3902,48 @@
 													"required": [
 														"id",
 														"status",
+														"completed"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"completed": {
+															"description": "The RFC 3339 timestamp of when the operation was completed.",
+															"example": "2020-01-01T08:00:00Z",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"error": {
+															"description": "A message describing the error when the status is `failed`.",
+															"example": "This list is at the maximum number of items",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The unique operation ID of the asynchronous action.",
+															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "The current status of the asynchronous operation.",
+															"enum": [
+																"failed"
+															],
+															"example": "failed",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"status",
+														"error",
 														"completed"
 													],
 													"type": "object"
@@ -3299,48 +4063,6 @@
 													"oneOf": [
 														{
 															"properties": {
-																"completed": {
-																	"description": "The RFC 3339 timestamp of when the operation was completed.",
-																	"example": "2020-01-01T08:00:00Z",
-																	"readOnly": true,
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"error": {
-																	"description": "A message describing the error when the status is `failed`.",
-																	"example": "This list is at the maximum number of items",
-																	"readOnly": true,
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"id": {
-																	"description": "The unique operation ID of the asynchronous action.",
-																	"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-																	"readOnly": true,
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"status": {
-																	"description": "The current status of the asynchronous operation.",
-																	"enum": [
-																		"failed"
-																	],
-																	"example": "failed",
-																	"readOnly": true,
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"required": [
-																"id",
-																"status",
-																"error",
-																"completed"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
 																"id": {
 																	"description": "The unique operation ID of the asynchronous action.",
 																	"example": "4da8780eeb215e6cb7f48dd981c4ea02",
@@ -3396,6 +4118,48 @@
 															"required": [
 																"id",
 																"status",
+																"completed"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"completed": {
+																	"description": "The RFC 3339 timestamp of when the operation was completed.",
+																	"example": "2020-01-01T08:00:00Z",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"error": {
+																	"description": "A message describing the error when the status is `failed`.",
+																	"example": "This list is at the maximum number of items",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "The unique operation ID of the asynchronous action.",
+																	"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "The current status of the asynchronous operation.",
+																	"enum": [
+																		"failed"
+																	],
+																	"example": "failed",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"status",
+																"error",
 																"completed"
 															],
 															"type": "object"
@@ -4148,140 +4912,176 @@
 						"items": {
 							"oneOf": [
 								{
-									"properties": {
-										"comment": {
-											"description": "Defines an informative summary of the list item.",
-											"example": "Private IP address",
-											"type": "string",
-											"x-auditable": true
-										},
-										"ip": {
-											"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-											"example": "10.0.0.1",
-											"type": "string",
-											"x-auditable": true
-										}
-									},
-									"required": [
-										"ip"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"comment": {
-											"description": "Defines an informative summary of the list item.",
-											"example": "Private IP address",
-											"type": "string",
-											"x-auditable": true
-										},
-										"redirect": {
-											"description": "The definition of the redirect.",
+									"allOf": [
+										{
 											"properties": {
-												"include_subdomains": {
-													"default": false,
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"preserve_path_suffix": {
-													"default": false,
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"preserve_query_string": {
-													"default": false,
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"source_url": {
-													"example": "example.com/arch",
+												"ip": {
+													"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
+													"example": "10.0.0.1",
 													"type": "string",
 													"x-auditable": true
-												},
-												"status_code": {
-													"default": 301,
-													"enum": [
-														301,
-														302,
-														307,
-														308
-													],
+												}
+											},
+											"required": [
+												"ip"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"comment": {
+													"description": "Defines an informative summary of the list item.",
+													"example": "Private IP address",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"redirect": {
+													"description": "The definition of the redirect.",
+													"properties": {
+														"include_subdomains": {
+															"default": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"preserve_path_suffix": {
+															"default": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"preserve_query_string": {
+															"default": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"source_url": {
+															"example": "example.com/arch",
+															"type": "string",
+															"x-auditable": true
+														},
+														"status_code": {
+															"default": 301,
+															"enum": [
+																301,
+																302,
+																307,
+																308
+															],
+															"type": "integer",
+															"x-auditable": true
+														},
+														"subpath_matching": {
+															"default": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"target_url": {
+															"example": "https://archlinux.org/",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"source_url",
+														"target_url"
+													]
+												}
+											},
+											"required": [
+												"redirect"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"comment": {
+													"description": "Defines an informative summary of the list item.",
+													"example": "Private IP address",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"hostname": {
+													"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+													"properties": {
+														"exclude_exact_hostname": {
+															"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+															"example": true,
+															"type": "boolean"
+														},
+														"url_hostname": {
+															"example": "example.com",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"url_hostname"
+													]
+												}
+											},
+											"required": [
+												"hostname"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"comment": {
+													"description": "Defines an informative summary of the list item.",
+													"example": "Private IP address",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"asn": {
+													"description": "Defines a non-negative 32 bit integer.",
+													"example": 5567,
 													"type": "integer",
 													"x-auditable": true
-												},
-												"subpath_matching": {
-													"default": false,
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"target_url": {
-													"example": "https://archlinux.org/",
-													"type": "string",
-													"x-auditable": true
 												}
 											},
 											"required": [
-												"source_url",
-												"target_url"
-											]
-										}
-									},
-									"required": [
-										"redirect"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"comment": {
-											"description": "Defines an informative summary of the list item.",
-											"example": "Private IP address",
-											"type": "string",
-											"x-auditable": true
+												"asn"
+											],
+											"type": "object"
 										},
-										"hostname": {
-											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+										{
 											"properties": {
-												"exclude_exact_hostname": {
-													"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
-													"example": true,
-													"type": "boolean"
-												},
-												"url_hostname": {
-													"example": "example.com",
+												"comment": {
+													"description": "Defines an informative summary of the list item.",
+													"example": "Private IP address",
 													"type": "string",
 													"x-auditable": true
 												}
 											},
-											"required": [
-												"url_hostname"
-											]
+											"type": "object"
 										}
-									},
-									"required": [
-										"hostname"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"asn": {
-											"description": "Defines a non-negative 32 bit integer.",
-											"example": 5567,
-											"type": "integer",
-											"x-auditable": true
-										},
-										"comment": {
-											"description": "Defines an informative summary of the list item.",
-											"example": "Private IP address",
-											"type": "string",
-											"x-auditable": true
-										}
-									},
-									"required": [
-										"asn"
-									],
-									"type": "object"
+									]
 								}
 							]
 						},
@@ -5175,140 +5975,176 @@
 						"items": {
 							"oneOf": [
 								{
-									"properties": {
-										"comment": {
-											"description": "Defines an informative summary of the list item.",
-											"example": "Private IP address",
-											"type": "string",
-											"x-auditable": true
-										},
-										"ip": {
-											"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-											"example": "10.0.0.1",
-											"type": "string",
-											"x-auditable": true
-										}
-									},
-									"required": [
-										"ip"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"comment": {
-											"description": "Defines an informative summary of the list item.",
-											"example": "Private IP address",
-											"type": "string",
-											"x-auditable": true
-										},
-										"redirect": {
-											"description": "The definition of the redirect.",
+									"allOf": [
+										{
 											"properties": {
-												"include_subdomains": {
-													"default": false,
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"preserve_path_suffix": {
-													"default": false,
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"preserve_query_string": {
-													"default": false,
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"source_url": {
-													"example": "example.com/arch",
+												"ip": {
+													"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
+													"example": "10.0.0.1",
 													"type": "string",
 													"x-auditable": true
-												},
-												"status_code": {
-													"default": 301,
-													"enum": [
-														301,
-														302,
-														307,
-														308
-													],
+												}
+											},
+											"required": [
+												"ip"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"comment": {
+													"description": "Defines an informative summary of the list item.",
+													"example": "Private IP address",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"redirect": {
+													"description": "The definition of the redirect.",
+													"properties": {
+														"include_subdomains": {
+															"default": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"preserve_path_suffix": {
+															"default": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"preserve_query_string": {
+															"default": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"source_url": {
+															"example": "example.com/arch",
+															"type": "string",
+															"x-auditable": true
+														},
+														"status_code": {
+															"default": 301,
+															"enum": [
+																301,
+																302,
+																307,
+																308
+															],
+															"type": "integer",
+															"x-auditable": true
+														},
+														"subpath_matching": {
+															"default": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"target_url": {
+															"example": "https://archlinux.org/",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"source_url",
+														"target_url"
+													]
+												}
+											},
+											"required": [
+												"redirect"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"comment": {
+													"description": "Defines an informative summary of the list item.",
+													"example": "Private IP address",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"hostname": {
+													"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+													"properties": {
+														"exclude_exact_hostname": {
+															"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+															"example": true,
+															"type": "boolean"
+														},
+														"url_hostname": {
+															"example": "example.com",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"url_hostname"
+													]
+												}
+											},
+											"required": [
+												"hostname"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"comment": {
+													"description": "Defines an informative summary of the list item.",
+													"example": "Private IP address",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"asn": {
+													"description": "Defines a non-negative 32 bit integer.",
+													"example": 5567,
 													"type": "integer",
 													"x-auditable": true
-												},
-												"subpath_matching": {
-													"default": false,
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"target_url": {
-													"example": "https://archlinux.org/",
-													"type": "string",
-													"x-auditable": true
 												}
 											},
 											"required": [
-												"source_url",
-												"target_url"
-											]
-										}
-									},
-									"required": [
-										"redirect"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"comment": {
-											"description": "Defines an informative summary of the list item.",
-											"example": "Private IP address",
-											"type": "string",
-											"x-auditable": true
+												"asn"
+											],
+											"type": "object"
 										},
-										"hostname": {
-											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+										{
 											"properties": {
-												"exclude_exact_hostname": {
-													"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
-													"example": true,
-													"type": "boolean"
-												},
-												"url_hostname": {
-													"example": "example.com",
+												"comment": {
+													"description": "Defines an informative summary of the list item.",
+													"example": "Private IP address",
 													"type": "string",
 													"x-auditable": true
 												}
 											},
-											"required": [
-												"url_hostname"
-											]
+											"type": "object"
 										}
-									},
-									"required": [
-										"hostname"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"asn": {
-											"description": "Defines a non-negative 32 bit integer.",
-											"example": 5567,
-											"type": "integer",
-											"x-auditable": true
-										},
-										"comment": {
-											"description": "Defines an informative summary of the list item.",
-											"example": "Private IP address",
-											"type": "string",
-											"x-auditable": true
-										}
-									},
-									"required": [
-										"asn"
-									],
-									"type": "object"
+									]
 								}
 							]
 						},
