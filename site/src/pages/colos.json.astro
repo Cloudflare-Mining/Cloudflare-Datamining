@@ -1,7 +1,7 @@
 ---
 
 import { airports } from '../airportsWithLocations.js';
-export const prerender = true;
+export const prerender = false;
 
 const colosRaw = await import('../../../data/other/colos-id-map.json');
 const colos = colosRaw.default;
@@ -36,5 +36,11 @@ return Response.json({
 	colos,
 	types,
 	additionalTags,
+}, {
+	headers: {
+		'Content-Type': 'application/json',
+		'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+		'Access-Control-Allow-Origin': '*',
+	},
 });
 ---
