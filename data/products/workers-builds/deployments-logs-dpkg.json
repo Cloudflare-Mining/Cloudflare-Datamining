@@ -185,27 +185,27 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"docker-buildx-plugin": {
-		"version": "0.25.0-1~ubuntu.24.04~noble",
+		"version": "0.26.1-1~ubuntu.24.04~noble",
 		"short_description": "Docker Buildx cli plugin.",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce": {
-		"version": "5:28.3.2-1~ubuntu.24.04~noble",
+		"version": "5:28.3.3-1~ubuntu.24.04~noble",
 		"short_description": "Docker: the open-source application container engine",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce-cli": {
-		"version": "5:28.3.2-1~ubuntu.24.04~noble",
+		"version": "5:28.3.3-1~ubuntu.24.04~noble",
 		"short_description": "Docker CLI: the open-source application container engine",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce-rootless-extras": {
-		"version": "5:28.3.2-1~ubuntu.24.04~noble",
+		"version": "5:28.3.3-1~ubuntu.24.04~noble",
 		"short_description": "Rootless support for Docker.",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-compose-plugin": {
-		"version": "2.38.2-1~ubuntu.24.04~noble",
+		"version": "2.39.1-1~ubuntu.24.04~noble",
 		"short_description": "Docker Compose (V2) plugin for the Docker CLI.",
 		"author": "Docker <support@docker.com>"
 	},
@@ -360,7 +360,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"gir1.2-gdkpixbuf-2.0:amd64": {
-		"version": "2.42.10+dfsg-3ubuntu3.1",
+		"version": "2.42.10+dfsg-3ubuntu3.2",
 		"short_description": "GDK Pixbuf library - GObject-Introspection",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -395,7 +395,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"gir1.2-poppler-0.18:amd64": {
-		"version": "24.02.0-1ubuntu9.4",
+		"version": "24.02.0-1ubuntu9.5",
 		"short_description": "GObject introspection data for poppler-glib",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -415,7 +415,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"git-lfs": {
-		"version": "3.4.1-1ubuntu0.2",
+		"version": "3.4.1-1ubuntu0.3",
 		"short_description": "Git Large File Support",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -515,7 +515,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"jq": {
-		"version": "1.7.1-3build1",
+		"version": "1.7.1-3ubuntu0.24.04.1",
 		"short_description": "lightweight and flexible command-line JSON processor",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -705,17 +705,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libc-bin": {
-		"version": "2.39-0ubuntu8.4",
+		"version": "2.39-0ubuntu8.5",
 		"short_description": "GNU C Library: Binaries",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libc-dev-bin": {
-		"version": "2.39-0ubuntu8.4",
+		"version": "2.39-0ubuntu8.5",
 		"short_description": "GNU C Library: Development binaries",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libc-devtools": {
-		"version": "2.39-0ubuntu8.4",
+		"version": "2.39-0ubuntu8.5",
 		"short_description": "GNU C Library: Development tools",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -735,12 +735,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libc6-dev:amd64": {
-		"version": "2.39-0ubuntu8.4",
+		"version": "2.39-0ubuntu8.5",
 		"short_description": "GNU C Library: Development Libraries and Header Files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libc6:amd64": {
-		"version": "2.39-0ubuntu8.4",
+		"version": "2.39-0ubuntu8.5",
 		"short_description": "GNU C Library: Shared libraries",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1160,17 +1160,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgdk-pixbuf-2.0-0:amd64": {
-		"version": "2.42.10+dfsg-3ubuntu3.1",
+		"version": "2.42.10+dfsg-3ubuntu3.2",
 		"short_description": "GDK Pixbuf library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgdk-pixbuf2.0-bin": {
-		"version": "2.42.10+dfsg-3ubuntu3.1",
+		"version": "2.42.10+dfsg-3ubuntu3.2",
 		"short_description": "GDK Pixbuf library (thumbnailer)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgdk-pixbuf2.0-common": {
-		"version": "2.42.10+dfsg-3ubuntu3.1",
+		"version": "2.42.10+dfsg-3ubuntu3.2",
 		"short_description": "GDK Pixbuf library - data files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1505,7 +1505,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libjq1:amd64": {
-		"version": "1.7.1-3build1",
+		"version": "1.7.1-3ubuntu0.24.04.1",
 		"short_description": "lightweight and flexible command-line JSON processor - shared library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1515,12 +1515,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libjxl-dev:amd64": {
-		"version": "0.7.0-10.2ubuntu6",
+		"version": "0.7.0-10.2ubuntu6.1",
 		"short_description": "JPEG XL Image Coding System - \"JXL\" (development files)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libjxl0.7:amd64": {
-		"version": "0.7.0-10.2ubuntu6",
+		"version": "0.7.0-10.2ubuntu6.1",
 		"short_description": "JPEG XL Image Coding System - \"JXL\" (shared libraries)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1790,7 +1790,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libnss-systemd:amd64": {
-		"version": "255.4-1ubuntu8.8",
+		"version": "255.4-1ubuntu8.10",
 		"short_description": "nss module providing dynamic user and group name resolution",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1865,7 +1865,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpam-systemd:amd64": {
-		"version": "255.4-1ubuntu8.8",
+		"version": "255.4-1ubuntu8.10",
 		"short_description": "system and service manager - PAM module",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1935,7 +1935,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libperl5.38t64:amd64": {
-		"version": "5.38.2-3.2ubuntu0.1",
+		"version": "5.38.2-3.2ubuntu0.2",
 		"short_description": "shared Perl library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1970,17 +1970,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpoppler-dev:amd64": {
-		"version": "24.02.0-1ubuntu9.4",
+		"version": "24.02.0-1ubuntu9.5",
 		"short_description": "PDF rendering library -- development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpoppler-glib8t64:amd64": {
-		"version": "24.02.0-1ubuntu9.4",
+		"version": "24.02.0-1ubuntu9.5",
 		"short_description": "PDF rendering library (GLib-based shared library)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpoppler134:amd64": {
-		"version": "24.02.0-1ubuntu9.4",
+		"version": "24.02.0-1ubuntu9.5",
 		"short_description": "PDF rendering library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2160,7 +2160,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libsqlite3-0:amd64": {
-		"version": "3.45.1-1ubuntu2.3",
+		"version": "3.45.1-1ubuntu2.4",
 		"short_description": "SQLite 3 shared library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2200,12 +2200,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libsystemd-shared:amd64": {
-		"version": "255.4-1ubuntu8.8",
+		"version": "255.4-1ubuntu8.10",
 		"short_description": "systemd shared private library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libsystemd0:amd64": {
-		"version": "255.4-1ubuntu8.8",
+		"version": "255.4-1ubuntu8.10",
 		"short_description": "systemd utility library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2280,7 +2280,7 @@
 		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libudev1:amd64": {
-		"version": "255.4-1ubuntu8.8",
+		"version": "255.4-1ubuntu8.10",
 		"short_description": "libudev shared library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2560,7 +2560,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"linux-libc-dev:amd64": {
-		"version": "6.8.0-63.66",
+		"version": "6.8.0-71.71",
 		"short_description": "Linux Kernel Headers for development",
 		"author": "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
 	},
@@ -2650,7 +2650,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"openssh-client": {
-		"version": "1:9.6p1-3ubuntu13.12",
+		"version": "1:9.6p1-3ubuntu13.13",
 		"short_description": "secure shell (SSH) client, for secure access to remote machines",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2675,17 +2675,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"perl": {
-		"version": "5.38.2-3.2ubuntu0.1",
+		"version": "5.38.2-3.2ubuntu0.2",
 		"short_description": "Larry Wall's Practical Extraction and Report Language",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"perl-base": {
-		"version": "5.38.2-3.2ubuntu0.1",
+		"version": "5.38.2-3.2ubuntu0.2",
 		"short_description": "minimal Perl system",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"perl-modules-5.38": {
-		"version": "5.38.2-3.2ubuntu0.1",
+		"version": "5.38.2-3.2ubuntu0.2",
 		"short_description": "Core Perl modules",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2775,27 +2775,27 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd": {
-		"version": "255.4-1ubuntu8.8",
+		"version": "255.4-1ubuntu8.10",
 		"short_description": "system and service manager",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-dev": {
-		"version": "255.4-1ubuntu8.8",
+		"version": "255.4-1ubuntu8.10",
 		"short_description": "systemd development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-resolved": {
-		"version": "255.4-1ubuntu8.8",
+		"version": "255.4-1ubuntu8.10",
 		"short_description": "systemd DNS resolver",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-sysv": {
-		"version": "255.4-1ubuntu8.8",
+		"version": "255.4-1ubuntu8.10",
 		"short_description": "system and service manager - SysV compatibility symlinks",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-timesyncd": {
-		"version": "255.4-1ubuntu8.8",
+		"version": "255.4-1ubuntu8.10",
 		"short_description": "minimalistic service to synchronize local time with NTP servers",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
