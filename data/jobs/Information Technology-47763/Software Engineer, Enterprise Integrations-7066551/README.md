@@ -11,8 +11,38 @@
 <p><strong>What You’ll Do</strong><strong><br></strong>We’re looking for a software engineer to join our Enterprise Integrations Team. You’ll work on building and maintaining integration workflows between Cloudflare and a variety of SaaS applications. This includes taking work from concept through implementation, including gathering requirements, writing technical specifications, development, testing, and deployment.</p>
 <p>You’ll collaborate closely with internal teams to ensure integrations meet business needs and are built following engineering best practices. As you grow in the role, you’ll have the opportunity to lead larger initiatives and own projects from end to end.</p>
 <p><strong>Qualifications &amp; Skills</strong></p>
-<p><strong>Required:</strong><strong><br></strong>• Bachelor’s degree in Computer Science or a related field, or equivalent work experience<br>• Minimum of 3 years of professional experience as a software engineer<br>• Experience working with internal stakeholders to solve business problems through integration solutions<br>• Proficiency in Go<br>• Experience building RESTful APIs with proper service security practices<br>• Experience working with observability tools such as Grafana, Prometheus, Sentry, or Kibana<br>• Experience with Kubernetes<br>• Experience with GitLab or other CI/CD tools<br>• Willingness to participate in an on-call rotation with 10+ engineers</p>
+<p><strong>Required:</strong><strong><br></strong>• Bachelor’s degree in Computer Science or a related field, or equivalent work experience<br>• Minimum of 3 years of professional experience as a software engineer<br>• Experience working with internal stakeholders to solve business problems through integration solutions<br>• Proficiency in Golang<br>• Experience building RESTful APIs with proper service security practices<br>• Experience working with observability tools such as Grafana, Prometheus, Sentry, or Kibana<br>• Experience with Kubernetes<br>• Experience with GitLab or other CI/CD tools<br>• Willingness to participate in an on-call rotation with 10+ engineers</p>
 <p><strong>Nice to Have:<br></strong>• Experience working with ERP systems such as Oracle or NetSuite<br>• Experience working in an Agile Scrum environment<br>• Familiarity with tools like Jira and Confluence<br>• Familiarity with integration patterns such as pub/sub, CDM (Common Data Model), and batch processing<br>• Experience working with PostgreSQL<br>• Experience with Cloudflare Developer’s Platform</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p>Austin Texas Based Hires: Estimated annual salary $137,000 - $167,000.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
