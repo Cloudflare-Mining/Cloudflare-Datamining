@@ -1,0 +1,40 @@
+---
+
+import { airports } from '../airportsWithLocations.js';
+export const prerender = true;
+
+const colosRaw = await import('../../../data/other/colos-id-map.json');
+const colos = colosRaw.default;
+const types: Record<string, string> = {};
+
+for (const coloId in colos) {
+	const coloIdKey = coloId as keyof typeof colos;
+	const colo = colos[coloIdKey];
+	const airport = airports.find(air => colo.toUpperCase().startsWith(air.code));
+	if (!airport) {
+		continue;
+	}
+	if (airport?.name.includes('China')) {
+		types[colo] = 'JDC';
+	}
+}
+
+const additionalTags: {
+	[key: string]: string[];
+} = {};
+
+const DOColosRes = await fetch('https://colo-route.jross.dev/colo-route/colos');
+const DOColos = await DOColosRes.json();
+for (const colo of DOColos) {
+	if (!additionalTags[colo]) {
+		additionalTags[colo] = [];
+	}
+	additionalTags[colo].push('DOs');
+}
+
+return Response.json({
+	colos,
+	types,
+	additionalTags,
+});
+---
