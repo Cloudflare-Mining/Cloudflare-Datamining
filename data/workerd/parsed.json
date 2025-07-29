@@ -3003,6 +3003,14 @@
 						"compatEnableDate": "2025-08-15",
 						"compatEnableFlag": "expose_global_message_channel"
 					}
+				},
+				{
+					"name": "enableNodejsHttpServerModules",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_http_server_modules",
+						"compatEnableFlag": "enable_nodejs_http_server_modules",
+						"experimental": "true"
+					}
 				}
 			]
 		},
