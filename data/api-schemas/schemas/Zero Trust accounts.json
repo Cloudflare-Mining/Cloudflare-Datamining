@@ -1526,28 +1526,25 @@
 																		},
 																		"read_only": {
 																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
-																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
-																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"version": {
 																			"description": "Version number of the setting",
 																			"example": 1,
-																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object",
@@ -2052,28 +2049,25 @@
 																				},
 																				"read_only": {
 																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
-																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
-																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"version": {
 																					"description": "Version number of the setting",
 																					"example": 1,
-																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "optional"
 																				}
 																			},
 																			"type": "object",
@@ -3711,28 +3705,25 @@
 											},
 											"read_only": {
 												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
-												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"source_account": {
 												"description": "Account tag of account that shared this setting",
-												"nullable": true,
 												"readOnly": true,
 												"type": "string",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"version": {
 												"description": "Version number of the setting",
 												"example": 1,
-												"nullable": true,
 												"readOnly": true,
 												"type": "integer",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											}
 										},
 										"type": "object",
@@ -4212,28 +4203,25 @@
 																		},
 																		"read_only": {
 																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
-																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
-																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"version": {
 																			"description": "Version number of the setting",
 																			"example": 1,
-																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object",
@@ -4738,28 +4726,25 @@
 																				},
 																				"read_only": {
 																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
-																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
-																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"version": {
 																					"description": "Version number of the setting",
 																					"example": 1,
-																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "optional"
 																				}
 																			},
 																			"type": "object",
@@ -6083,28 +6068,25 @@
 											},
 											"read_only": {
 												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
-												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"source_account": {
 												"description": "Account tag of account that shared this setting",
-												"nullable": true,
 												"readOnly": true,
 												"type": "string",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"version": {
 												"description": "Version number of the setting",
 												"example": 1,
-												"nullable": true,
 												"readOnly": true,
 												"type": "integer",
 												"x-auditable": true,
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											}
 										},
 										"type": "object",
@@ -6584,28 +6566,25 @@
 																		},
 																		"read_only": {
 																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
-																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"source_account": {
 																			"description": "Account tag of account that shared this setting",
-																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"version": {
 																			"description": "Version number of the setting",
 																			"example": 1,
-																			"nullable": true,
 																			"readOnly": true,
 																			"type": "integer",
 																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object",
@@ -7110,28 +7089,25 @@
 																				},
 																				"read_only": {
 																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
-																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"source_account": {
 																					"description": "Account tag of account that shared this setting",
-																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"version": {
 																					"description": "Version number of the setting",
 																					"example": 1,
-																					"nullable": true,
 																					"readOnly": true,
 																					"type": "integer",
 																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "optional"
 																				}
 																			},
 																			"type": "object",
