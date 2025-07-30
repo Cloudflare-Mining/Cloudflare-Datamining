@@ -3019,6 +3019,14 @@
 						"compatEnableDate": "2025-08-14",
 						"compatEnableFlag": "python_no_global_handlers"
 					}
+				},
+				{
+					"name": "enableNodeJsFsModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_fs_module",
+						"compatEnableFlag": "enable_nodejs_fs_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
