@@ -5,56 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: London</strong></p>
-<p><strong>About the Role</strong></p>
-<p>As an IT Operations Associate, you will play a dual role in ensuring the seamless operation of our company's IT infrastructure and providing top-notch service desk support. You will be instrumental in installing, configuring, monitoring, and maintaining computer systems, while also serving as the first point of contact for IT support, handling inquiries, and resolving technical issues for end-users. Your responsibilities will span across troubleshooting hardware and software faults, offering timely solutions, and contributing to our IT knowledge base.&nbsp; This role will provide support for our corporate events, on-site management of computer inventory, new hire onboarding, and work with teams across the organization.&nbsp; This role reports to the IT Service Desk Manager..</p>
-<p><strong>About the Team</strong></p>
-<p>You will join a team of technical support professionals that provide enterprise level service for our corporate teams globally.&nbsp; We strive to provide helpful and knowledgeable technical assistance on a daily basis.&nbsp; We’re focused on providing a positive customer service and user experience.&nbsp; Also, we’re obsessed with providing the best user experience possible.</p>
-<p><strong>What You'll Do</strong></p>
+<p><strong>Available Location: Singapore</strong></p>
+<p><strong>About The Team:&nbsp;</strong></p>
+<p>Based in our Singapore hub, the People Experience Team is central to our APJC operations. We are looking for an energetic and motivated People Services Team Coordinator who will bring operational excellence and a service-oriented mindset to our rapidly scaling organisation. Our team is responsible for delivering seamless employee support, driving operational efficiency, and upholding compliance across the diverse regulatory landscapes of the APJC region.</p>
+<p><strong>About the Role:&nbsp;</strong></p>
+<p>This is a 3-month contract role designed to provide critical support during a high-growth period. You will focus on processing a high volume of employee documents, particularly during onboarding, to ensure full compliance with country-specific regulations across the APJC region. You will also be a key point of contact for employee queries, support HR partners with regional reports, and assist with payroll data entry, ensuring accuracy and timeliness.</p>
+<h3><strong>Responsibilities</strong></h3>
 <ul>
-	<li>Act as the primary contact for IT support within the organization, managing service desk tickets and responding to user requests in a timely manner.</li>
-	<li>Install, configure, and update hardware and software, ensuring optimal workstation performance.</li>
-	<li>Troubleshoot system and network problems, diagnosing and solving hardware or software faults with a focus on minimizing downtime.</li>
-	<li>Maintain security through monitoring access and adherence to IT policies, including internet security and data privacy protocols.</li>
-	<li>Guide and support users in the use of IT equipment and software, providing necessary training and documentation.</li>
-	<li>Organize and perform regular maintenance and system upgrades to ensure technology infrastructure runs smoothly.</li>
-	<li>Record and document issues and resolutions within the IT service management system, maintaining detailed logs of all IT incidents.</li>
-	<li>Evaluate user needs and system functionality, ensuring that IT facilities meet these needs.</li>
-	<li>Stay current with system information, changes, and updates to provide effective advice and solutions.</li>
-	<li>Support the development and implementation of new systems and services, including user acceptance testing.</li>
-	<li>Provide on-site and remote technical support</li>
-	<li>Seek guidance from the team when needed</li>
-	<li>Provide audio and video support for company events</li>
-	<li>Create and update technical documentation</li>
+	<li>Process global employee lifecycle transactions such as onboarding, transfers, organizational changes, and offboarding and ensuring high levels of compliance.</li>
+	<li>Maintain people data across People/Payroll systems and implement steps to ensure 100% data integrity, performing regular and ad hoc data audits.</li>
+	<li>Receive and respond to global employee inquiries regarding People and Payroll activities. Escalate issues to tier 2 subject matter experts as needed.</li>
+	<li>Act as a liaison on behalf of the employee and the People/Payroll departments to resolve issues.</li>
+	<li>Work autonomously and efficiently to ensure success of HR projects and operations</li>
+	<li>Utilize a professional and quality-focused approach to handle inquiries, ensuring confidentiality and protection of sensitive employee information.</li>
+	<li>Create and manage employee files and People/Payroll records, ensure all necessary documentation is captured and held in the appropriate places.</li>
+	<li>Help implement any necessary process changes and records administration to support compliance regulations.</li>
+	<li>Support the People Team with ongoing maintenance of electronic employee records and routine audits and other activities as required.</li>
 </ul>
-<p><strong>What You'll Bring</strong></p>
+<p>&nbsp;</p>
+<h3><strong>Skills/experience</strong></h3>
 <ul>
-	<li>Proven experience in IT support, with a solid foundation in both IT operations and service desk responsibilities.</li>
-	<li>Strong problem-solving skills and the ability to diagnose and resolve technical issues efficiently.</li>
-	<li>Familiarity with computer operating systems, hardware, networking, and software applications.</li>
-	<li>Experience with IT service desk software and IT service management principles.</li>
-	<li>Knowledge of internet security and data protection standards.</li>
-	<li>Relevant IT certifications (e.g., CompTIA A+, ITIL Foundation, Microsoft Certified IT Professional) are highly desirable.</li>
-	<li>A degree in Computer Science, Information Technology, or a related field.</li>
-	<li>Excellent communication skills, with an emphasis on providing exceptional customer service.</li>
-	<li>Ability to manage time effectively and work under pressure to meet deadlines.</li>
-	<li>Commitment to continuous learning and improvement in IT service delivery.</li>
-</ul>
-<p><strong>Working Conditions</strong></p>
-<ul>
-	<li>Flexibility to work varying shifts, including evenings and weekends, to accommodate business needs and support 24/7 operations.</li>
-	<li>May involve lifting and transporting IT equipment and peripherals.</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience with Jira Service Desk, JAMF, InTune</li>
-	<li>Experience working in the technology industry</li>
-	<li>Experience working in a Service Desk, Help Desk, or Call Center environment</li>
-	<li>Microsoft Support Certification</li>
-	<li>Apple Support Certification</li>
-	<li>ITIL Foundations</li>
-	<li>HDI Support Center Agent</li>
-	<li>CompTIA A+ Certified</li>
+	<li>1-2 years in HR administration and comfortable handling sensitive employee information</li>
+	<li>Effective communicator, who can clearly explain information - verbally and in writing - to employees across the APJC region</li>
+	<li>Experience with HRIS &amp; ATS systems</li>
+	<li>Excellent verbal and written communication skills</li>
+	<li>Highly detailed and process oriented</li>
+	<li>Comfortable with large data sets and strong Excel/Google Sheets skills</li>
+	<li>Strong customer focus</li>
+	<li>Strong organizational, problem-solving and time management skills</li>
+	<li>Adaptability in a dynamic, fast-paced environment</li>
+	<li>Familiarity with Workday or ZenDesk would be an advantage</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
