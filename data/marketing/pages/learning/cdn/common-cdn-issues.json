@@ -1,0 +1,522 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/cdn/common-cdn-issues/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "7liWF0WzoTdCzJFnxkt4rH",
+				"urlSlug": "cdn/common-cdn-issues",
+				"metaTags": {
+					"metaTitle": "Common CDN issues and how to fix them",
+					"metaDescription": "CDN troubleshooting involves checking caching rules, DNS settings, TTL, and webpage architecture. Learn how to diagnose common CDN problems.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fkUOlpeGbZoV4Cq2NgLlz/69471d35eb36c7d061b415845594c5e4/cdn-lc.png"
+						},
+						"description": "Learning Center CDN OG Image"
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "1TmxktXfUAclAhABE2horM",
+					"learningCenterName": "cdn",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "3D1xEG3yadmgE8mx0qn5MJ",
+							"displayText": "What is a CDN?  ",
+							"url": "/learning/cdn/what-is-a-cdn/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "zygaXlW07J4MrONnddhcM",
+							"name": "CDN Header: CDN Benefits",
+							"displayText": "CDN benefits",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3Rtr5Y3B21KDY5rll94vfV",
+									"displayText": "CDN benefits summary",
+									"url": "/learning/cdn/cdn-benefits/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1TT4G3C7LJsolyiywM89vS",
+									"displayText": "CDN performance",
+									"url": "/learning/cdn/performance/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6jyrxonbzcxCgqdepHymae",
+									"displayText": "CDN reliability",
+									"url": "/learning/cdn/cdn-load-balance-reliability/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6igaSfAmzhyUfouCsoHbVq",
+									"displayText": "How CDNs reduce costs",
+									"url": "/learning/cdn/how-cdns-reduce-bandwidth-cost/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3Pl0qF0hFWqaFsAVHWu7y5",
+							"name": "CDN Header: CDN Metrics",
+							"displayText": "CDN metrics",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1T54LIEtYSk6kRVn76Nj55",
+									"displayText": "Round-trip time (RTT)",
+									"url": "/learning/cdn/glossary/round-trip-time-rtt/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "xRhnt5OShurSlFpIZ8TMV",
+									"displayText": "Time-to-live (TTL)",
+									"url": "/learning/cdn/glossary/time-to-live-ttl/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4P70BNgiPfigHxGdCl803c",
+									"displayText": "Cache hit ratio",
+									"url": "/learning/cdn/what-is-a-cache-hit-ratio/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "PaGO0WjMX7EYeZkB3pdoA",
+							"name": "CDN Header: How Caching Works",
+							"displayText": "How caching works",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7oxj52SCzgMFJWTD2JRMDU",
+									"displayText": "What is caching?",
+									"url": "/learning/cdn/what-is-caching/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "47QfhUCWZNVc492FRdChU5",
+									"displayText": "Static vs. dynamic caching",
+									"url": "/learning/cdn/caching-static-and-dynamic-content/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4SURNvqLXnEF90z0rluKXj",
+									"displayText": "Cache control",
+									"url": "/learning/cdn/glossary/what-is-cache-control/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "63eV3I9XCEzLfNvwycmmmS",
+							"name": "CDN Header: CDN Glossary",
+							"displayText": "CDN glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4qXkaiE0w1Gv6ByBCtJSA1",
+									"displayText": "Anycast",
+									"url": "/learning/cdn/glossary/anycast-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4wiEjYpswyW7KqrYywtFHs",
+									"displayText": "Data center",
+									"url": "/learning/cdn/glossary/data-center/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38ZIPiWHhYthel2M0phbnU",
+									"displayText": "Origin server",
+									"url": "/learning/cdn/glossary/origin-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4uTWD4D65UfywkSudIU392",
+									"displayText": "Edge server",
+									"url": "/learning/cdn/glossary/edge-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5PAq9dBn9Q9KLVLRN84xu8",
+									"displayText": "Internet exchange point (IXP)",
+									"url": "/learning/cdn/glossary/internet-exchange-point-ixp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7BXEVgdbR1yC2UegiHYOFu",
+									"displayText": "Reverse proxy",
+									"url": "/learning/cdn/glossary/reverse-proxy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "58uteVo7HkNVlD4piR5sOu",
+									"displayText": "GSLB",
+									"url": "/learning/cdn/glossary/global-server-load-balancing-gslb/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5sZpyP6Z4glWzcyC45momG",
+									"displayText": "CDN SSL TLS security",
+									"url": "/learning/cdn/cdn-ssl-tls-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "45TluEipOXLFfyI5JctqPV",
+									"displayText": "CDN for WordPress",
+									"url": "/learning/cdn/cdn-for-wordpress/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7JGtmnOGFsd5qEwlMXedrJ",
+									"displayText": "Common CDN issues",
+									"url": "/learning/cdn/common-cdn-issues/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "56VyWmkYkFemEgQYOAy3fR",
+					"learningCenterName": "cdn",
+					"column1Title": "About CDNs",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5AVjzamCJRR1y5yM7Pa8Gc",
+						"name": "CDN Footer: About CDNs",
+						"displayText": "About CDNs",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3D1xEG3yadmgE8mx0qn5MJ",
+								"displayText": "What is a CDN?  ",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xXPQOQueQs8qzgmoFeW7j",
+								"displayText": "What is a reverse proxy?",
+								"url": "/learning/cdn/glossary/reverse-proxy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "47QfhUCWZNVc492FRdChU5",
+								"displayText": "Static vs. dynamic caching",
+								"url": "/learning/cdn/caching-static-and-dynamic-content/"
+							}
+						]
+					},
+					"column2Title": "CDN Features",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3duEHHDQOd8X56Bz17FstV",
+						"name": "CDN Footer: CDN Features",
+						"displayText": "CDN features",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1TT4G3C7LJsolyiywM89vS",
+								"displayText": "CDN performance",
+								"url": "/learning/cdn/performance/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5sZpyP6Z4glWzcyC45momG",
+								"displayText": "CDN SSL TLS security",
+								"url": "/learning/cdn/cdn-ssl-tls-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6jyrxonbzcxCgqdepHymae",
+								"displayText": "CDN reliability",
+								"url": "/learning/cdn/cdn-load-balance-reliability/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3Rtr5Y3B21KDY5rll94vfV",
+								"displayText": "CDN benefits summary",
+								"url": "/learning/cdn/cdn-benefits/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "45TluEipOXLFfyI5JctqPV",
+								"displayText": "CDN for WordPress",
+								"url": "/learning/cdn/cdn-for-wordpress/"
+							}
+						]
+					},
+					"column3Title": "CDN Servers",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2pbRllZTp2moJmAiqqBqAW",
+						"name": "CDN Footer: CDN Servers",
+						"displayText": "CDN servers",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3vp4op7gWBCnIrycqEL521",
+								"displayText": "What is a data center?",
+								"url": "/learning/cdn/glossary/data-center/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2E81TUGCnTdu4FfVl7FW46",
+								"displayText": "What is an edge server?",
+								"url": "/learning/cdn/glossary/edge-server/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5TWEQdIjWPr7s45sNRDPMC",
+								"displayText": "What is an origin server?",
+								"url": "/learning/cdn/glossary/origin-server/"
+							}
+						]
+					},
+					"column4Title": "CDN Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6Lsv77b4iLhQIGUIGiWf9l",
+						"name": "CDN Footer: CDN Glossary",
+						"displayText": "CDN glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4qXkaiE0w1Gv6ByBCtJSA1",
+								"displayText": "Anycast",
+								"url": "/learning/cdn/glossary/anycast-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5PAq9dBn9Q9KLVLRN84xu8",
+								"displayText": "Internet exchange point (IXP)",
+								"url": "/learning/cdn/glossary/internet-exchange-point-ixp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1T54LIEtYSk6kRVn76Nj55",
+								"displayText": "Round-trip time (RTT)",
+								"url": "/learning/cdn/glossary/round-trip-time-rtt/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "xRhnt5OShurSlFpIZ8TMV",
+								"displayText": "Time-to-live (TTL)",
+								"url": "/learning/cdn/glossary/time-to-live-ttl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4SURNvqLXnEF90z0rluKXj",
+								"displayText": "Cache control",
+								"url": "/learning/cdn/glossary/what-is-cache-control/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "58uteVo7HkNVlD4piR5sOu",
+								"displayText": "GSLB",
+								"url": "/learning/cdn/glossary/global-server-load-balancing-gslb/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7JGtmnOGFsd5qEwlMXedrJ",
+								"displayText": "Common CDN issues",
+								"url": "/learning/cdn/common-cdn-issues/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "19U8CIaJEgWH5bbLk56bEF",
+						"name": "CDN Footer: Learning Navigation",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7CoqFqlHQVmsyV0mxgXUs2",
+								"displayText": "AI Learning Center",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							}
+						]
+					}
+				},
+				"header": "Common CDN issues and how to fix them",
+				"blurbSubHeader": "If your website is still slow despite the use of a CDN, check for these common CDN problems.",
+				"objectivesHeader": "CDN Issues",
+				"objectivesList": [
+					"Troubleshoot slow CDN performance",
+					"Fix outdated content coming from a CDN cache",
+					"Identify other common caching issues"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3D1xEG3yadmgE8mx0qn5MJ",
+						"displayText": "What is a CDN?  ",
+						"url": "/learning/cdn/what-is-a-cdn/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3Rtr5Y3B21KDY5rll94vfV",
+						"displayText": "CDN benefits summary",
+						"url": "/learning/cdn/cdn-benefits/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7oxj52SCzgMFJWTD2JRMDU",
+						"displayText": "What is caching?",
+						"url": "/learning/cdn/what-is-caching/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "xRhnt5OShurSlFpIZ8TMV",
+						"displayText": "Time-to-live (TTL)",
+						"url": "/learning/cdn/glossary/time-to-live-ttl/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4P70BNgiPfigHxGdCl803c",
+						"displayText": "Cache hit ratio",
+						"url": "/learning/cdn/what-is-a-cache-hit-ratio/"
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Common CDN issues and how to fix them</h2>\n\n<p>A <a href='/learning/cdn/what-is-a-cdn/'>content delivery network (CDN)</a> is a distributed group of servers that <a href='/learning/cdn/what-is-caching/'>cache</a>, or save copies of, web content for rapid delivery to end users. CDNs can help accelerate content delivery and improve user experiences in a variety of ways besides caching, such as assisting with video <a href='/learning/video/what-is-streaming/'>streaming</a>, <a href='/learning/cdn/caching-static-and-dynamic-content/'>dynamic content</a>, and <a href='/learning/ssl/what-is-ssl/'>SSL encryption and authentication</a>.</p>\n\n<p>Any website can benefit from a CDN. CDNs sit between end users and <a href='/learning/cdn/glossary/origin-server/'>origin servers</a>. They fill user requests with any content they have in the cache before passing requests along to origin servers. This makes a website load faster for users. It is somewhat like how buying food from a grocery store is much faster than driving across the country and visiting multiple farms and factories for one's weekly groceries.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">CDN troubleshooting: How to fix CDN issues</h2>\n\n<p>Most of the time, signing up for a CDN should quickly make a website <a href='/learning/cdn/performance/'>faster</a>, help website operators <a href='/learning/cdn/how-cdns-reduce-bandwidth-cost/'>save on bandwidth costs</a>, improve <a href='/learning/cdn/cdn-load-balance-reliability/'>site reliability</a>, and increase resistance to certain cyber attacks (such as <a href='/learning/ddos/what-is-a-ddos-attack/'>DDoS attacks</a>). However, sometimes CDN issues prevent web properties from seeing these benefits. Here are some potential CDN issues, factors that can cause them, and recommendations for addressing them.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">CDN slow performance issues</h2>\n\n<p>A number of issues can cause a website to fail to see performance benefits or even slow down when using a CDN.</p>\n\n<p><strong>Lack of global reach:</strong> Depending on which CDN is used, performance can be inconsistent in different regions. Be sure to use a CDN that caches content everywhere on its network and has <a href='/network/' target='_blank'>global locations close to end users</a>.</p>\n\n<p><strong>Origin server issues:</strong> If the CDN cannot get the content from the origin server, then it cannot cache or serve content. This can happen when origin servers experience downtime, or when traffic between origin servers and the CDN gets caught in network bottlenecks.</p>\n\n<p><strong>Dynamic content not loading from origin server:</strong> Dynamic content cannot be cached, so if the origin server is not responding to requests correctly, the page may load slowly or fail to load regardless of CDN caching behavior. Some CDNs — such as <a href='/application-services/products/cdn/'>Cloudflare's</a> — come integrated with additional services that can accelerate the delivery of dynamic content.</p>\n\n<p><strong>Files not optimized:</strong> Very large content pieces or certain file types may not be cached, depending on the limits of the CDN. Make sure all content is optimized for fast delivery and a good user experience. Many CDNs have features for optimizing, \"<a href='/learning/performance/how-to-minify-css/'>minifying</a>\" (reducing the file size), or <a href='/learning/performance/glossary/what-is-image-compression/'>compressing</a> content.</p>\n\n<p><strong>Render-blocking resources:</strong> These are elements of a page that prevent the rest of the page from loading. Cascading style sheet (CSS) files, for instance, are render-blocking resources. If the rest of a page is caching properly but CSS files are not, then the CSS file has to be fetched from the web server before the other page elements can be served from the cache. This can slow down page load times. Make sure render-blocking resources are cached, or rearchitect the page so unnecessary resources are not included or are loaded last.</p>\n\n<p><strong>Third-party scripts not cached:</strong> Many websites integrate scripts from other sources; those sources may not use the same CDN. These third-party scripts can take longer to load if their origin servers are far away geographically, not optimized for delivery, or overloaded. If the scripts are render-blocking resources, that can slow down the entire page. Use Chrome developer tools to assess what is loading slowly and where it is coming from. Consider replacing scripts that consistently slow down a page, or using scripts hosted via <a href='https://cdnjs.cloudflare.com/' target='_blank'>CDNJS</a>, a free content delivery network that serves thousands of JavaScript and CSS libraries.</p>\n\n<p><strong>CDN cache hit ratio is low:</strong> In caching, a \"cache miss\" means the requested content was not found in the CDN and must be fetched from the origin server. A \"cache hit\" means the requested content was found in the cache and served from the cache. Cache hit ratio measures the relationship between hits and misses for a given website. A low cache hit ratio means most of the webpage is not being served from the cache, and the user's browser has to get it from the origin server instead. Each cache miss may also incur <a href='/learning/cloud/what-are-data-egress-fees/'>egress fees</a> for websites, depending on the hosting provider, and the result is higher operational costs for those websites.</p>\n\n<p>Low <a href='/learning/cdn/what-is-a-cache-hit-ratio/'>cache hit ratios</a> can happen for several reasons:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Cache rules:</strong> Cache rules can determine what is cached and how long it is cached for. If cache rules are not configured correctly, the right content will not be cached. CDN providers should offer a way to troubleshoot caching on specific URLs. (See, for example, <a href='https://developers.cloudflare.com/rules/trace-request/' target='_blank'>Cloudflare Trace</a>).</li>\n  <li><strong>Caching levels:</strong> Assets may be cached differently depending on their URL type. Some CDNs can cache the same content by base URL regardless of query strings appended to the URL, or different content for each query string, or regardless of query strings (a query string comes after a question mark in the URL, like \"example.com/image.jpg?with=query\"). Assets may be delivered differently depending on the query string attached to URLs, and sometimes this is not intended behavior. To fix this issue, adjust caching levels settings.</li>\n  <li><strong>Cache-control headers:</strong> <a href='/learning/cdn/glossary/what-is-cache-control/'>Cache-control</a> headers are attached to <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a> responses from origin servers. These headers set caching rules for browsers and for intermediaries like CDNs. Cache-control headers may conflict with caching rules set in the CDN, depending on the provider, so compare them against each other to make sure both are set correctly if one is overriding the other.</li>\n</ul>\n\n<p>Bear in mind that cache hit ratio is not the only metric that matters when it comes to website performance. A holistic view of web performance includes the <a href='/learning/performance/what-are-core-web-vitals/'>Core Web Vitals</a> and <a href='/learning/performance/test-the-speed-of-a-website/'>other metrics</a> that impact the user experience, <a href='/learning/performance/how-website-speed-boosts-seo/'>SEO</a>, and AI optimization.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Outdated content showing on website</h2>\n\n<p>If content loads quickly, but it is the wrong content, not reflecting recent updates or changes, the <a href='/learning/cdn/glossary/time-to-live-ttl/'>time-to-live (TTL)</a> may be set too high for cached content. TTL is a setting that measures, in seconds, how long a piece of content should be cached before the CDN (or the browser) refreshes its saved copy. Lower the TTL for content that is not updating quickly enough. Alternatively, try clearing the cache so that the CDN will re-fetch content from the origin server.</p>\n\n<p>Content that is updated frequently may need special caching rules. In some cases, it should not be cached at all. Cloudflare has a <a href='https://developers.cloudflare.com/cache/how-to/purge-cache/' target='_blank'>purge feature</a> that allows content for a webpage to be purged immediately from cache.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">DNS configurations</h2>\n\n<p>If a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a> and all its subdomains are not pointing to the CDN, the content associated with those domains will not be cached and the website will not see any performance benefits.</p>\n\n<p>Make sure subdomains are set up correctly. Subdomains (configured via <a href='/learning/dns/dns-records/dns-cname-record/'>CNAME record</a>) have to be set up separately. If a subdomain is not behind the CDN — even if the primary domain is — its content will not be cached.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">SSL errors with CDN</h2>\n\n<p>CDNs often provide <a href='/learning/ssl/what-is-an-ssl-certificate/'>SSL certificates</a> for websites. SSL certificates help authenticate the user's connection to the website, <a href='/learning/ssl/what-is-encryption/'>encrypt</a> sensitive data entered by the user, and prevent security warnings in the browser for users. But sometimes a website will serve <a href='/learning/ssl/what-is-mixed-content/'>\"mixed\" content</a> — in which some content on a webpage is served over an SSL connection and some is not. Users may get browser warnings about the security of the page, the page may fail to load, or the page might load more slowly (as the browser tries and fails to initiate <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshakes</a>).</p>\n\n<p>These errors may occur if a webpage contains content from external sources or from subdomains that are not listed on the SSL certificate. The Chrome developer console can help developers troubleshoot mixed content errors: Developers can see where content is loading from and what URLs are used.</p>\n\n<p>Other SSL errors may have to do with the domain's certificate. Learn about <a href='/learning/ssl/common-errors/'>common SSL issues here</a>.</p>\n\n<p>Need support with the Cloudflare CDN? <a href='https://community.cloudflare.com/c/application-performance/cdn/131?q=cdn&utm_campaign=learningcenter&utm_content=cdn_troubleshooting_lp' target='_blank'>Join the Cloudflare Community</a> for free support and insights from expert Cloudflare users.</p>\n\n<p>&nbsp;</p>\n\n<h2>FAQs</h2>\n\n<h4>What is a CDN?</h4>\n\n<p>A CDN (content delivery network) is a group of distributed servers that save copies of web content to deliver it quickly to users. Beyond caching, CDNs help accelerate content delivery and improve user experiences through services that support streaming, dynamic content, DDoS mitigation, and TLS usage.</p>\n\n<h4>How can a CDN improve website performance?</h4>\n\n<p>CDNs help websites load faster for users by sitting between end users and origin servers and accelerating website content delivery. They do this by reducing the distance between users and the content they request, and by optimizing files so that they can be delivered more quickly.</p>\n\n<h4>What are some reasons a CDN might perform slowly?</h4>\n\n<p>Several issues can cause slow CDN performance, including a lack of global reach, origin server problems, dynamic content not loading correctly, unoptimized files, render-blocking resources, uncached third-party scripts, or a low cache hit ratio.</p>\n\n<h4>What is a low cache hit ratio and why does it matter?</h4>\n\n<p>A low cache hit ratio means that most of a webpage's content is not being served from the CDN's cache, forcing the user's browser to retrieve it from the origin server instead. Depending on the architecture of the webpage in question, this can lead to slower page load times and potentially higher operational costs due to egress fees.</p>\n\n<h4>What causes a low cache hit ratio?</h4>\n\n<p>Low cache hit ratios can result from incorrectly configured cache rules, varying caching levels for assets based on URL type (such as query strings), or conflicts between cache-control headers from origin servers and CDN caching rules.</p>\n\n<h4>Why might outdated content appear on a website using a CDN?</h4>\n\n<p>Outdated content can appear if the Time-To-Live (TTL) setting for cached content is too high. TTL determines how long content is cached before the CDN or browser refreshes its copy. Lowering the TTL or clearing the cache can resolve this.</p>\n\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is a CDN?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"A CDN (content delivery network) is a group of distributed servers that save copies of web content to deliver it quickly to users. Beyond caching, CDNs help accelerate content delivery and improve user experiences through services that support streaming, dynamic content, DDoS mitigation, and TLS usage.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How can a CDN improve website performance?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"CDNs help websites load faster for users by sitting between end users and origin servers and accelerating website content delivery. They do this by reducing the distance between users and the content they request, and by optimizing files so that they can be delivered more quickly.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are some reasons a CDN might perform slowly?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Several issues can cause slow CDN performance, including a lack of global reach, origin server problems, dynamic content not loading correctly, unoptimized files, render-blocking resources, uncached third-party scripts, or a low cache hit ratio.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is a low cache hit ratio and why does it matter?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"A low cache hit ratio means that most of a webpage's content is not being served from the CDN's cache, forcing the user's browser to retrieve it from the origin server instead. Depending on the architecture of the webpage in question, this can lead to slower page load times and potentially higher operational costs due to egress fees.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What causes a low cache hit ratio?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Low cache hit ratios can result from incorrectly configured cache rules, varying caching levels for assets based on URL type (such as query strings), or conflicts between cache-control headers from origin servers and CDN caching rules.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Why might outdated content appear on a website using a CDN?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Outdated content can appear if the Time-To-Live (TTL) setting for cached content is too high. TTL determines how long content is cached before the CDN or browser refreshes its copy. Lowering the TTL or clearing the cache can resolve this.\"\n      }\n    }\n  ]\n}\n</script>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "English for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "7liWF0WzoTdCzJFnxkt4rH",
+			"pathname": "/learning/cdn/common-cdn-issues/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
