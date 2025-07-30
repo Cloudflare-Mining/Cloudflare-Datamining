@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.5.0
+
+### Minor Changes
+
+- 2eaa562b3a: ading missing icons
+
 ## 13.4.1
 
 ### Patch Changes

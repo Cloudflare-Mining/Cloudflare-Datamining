@@ -1,5 +1,13 @@
 # Change Log
 
+## 7.0.10
+
+### Patch Changes
+
+- @cloudflare/component-button@9.1.7
+- @cloudflare/component-link@9.0.10
+- @cloudflare/component-pagination@11.0.10
+
 ## 7.0.9
 
 ### Patch Changes
