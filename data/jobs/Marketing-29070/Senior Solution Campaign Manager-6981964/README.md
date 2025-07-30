@@ -5,54 +5,54 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, San Francisco</strong></p>
+<p><strong>Available Locations: Austin, San Francisco, Atlanta, Denver, Seattle</strong></p>
+<h2><strong>About the Role</strong></h2>
+<p>Cloudflare’s global campaigns team is seeking a highly motivated Senior Solution Campaign Manager to join and drive end-to-end campaign strategy for one of Cloudflare's core solutions. In this pivotal role, you'll own the complete campaign lifecycle—from strategy and content development to launch, optimization, and measurement—driving awareness, engagement, and, ultimately, pipeline growth.&nbsp;</p>
+<p>In this role, you'll partner with regional teams across the world to identify market-specific challenges and opportunities, then craft campaign strategies that deliver pipeline on a global scale.</p>
+<h2><strong>What You'll Do</strong></h2>
+<p><strong>Own Campaign Strategy &amp; Execution</strong></p>
+<ul>
+	<li>Lead the complete campaign lifecycle for a core Cloudflare solution, from initial planning through launch, measurement, and continuous optimization</li>
+	<li>Define campaign narrative, target audiences, and success metrics</li>
+</ul>
+<p><strong>Drive Cross-Functional Collaboration</strong></p>
+<ul>
+	<li>Partner closely with Product Marketing, Regional Marketing, Content Marketing, and Digital Marketing teams</li>
+	<li>Identify key customer business challenges and translate them into compelling campaign messages across the entire funnel</li>
+	<li>Build strong relationships and influence stakeholders across the organization</li>
+</ul>
+<p><strong>Create &amp; Manage Campaign Content</strong></p>
+<ul>
+	<li>Develop and oversee creation of campaign assets, working with both internal teams and external resources</li>
+	<li>Write compelling campaign copy while leveraging existing messaging frameworks and positioning documents</li>
+	<li>Ensure content consistency and quality across all campaign touchpoints</li>
+</ul>
+<p><strong>Execute Multi-Channel Campaigns</strong></p>
+<ul>
+	<li>Launch and manage campaigns across content syndication, paid digital, email, direct mail, webinar, and sales and BDR channels</li>
+	<li>Continuously monitor performance metrics and optimize campaigns for maximum impact and ROI</li>
+</ul>
+<p><strong>Deliver Data-Driven Insights</strong></p>
+<ul>
+	<li>Track key performance indicators (KPIs) for all campaigns</li>
+	<li>Analyze campaign data to identify trends, opportunities, and areas for improvement</li>
+	<li>Provide regular, actionable insights and recommendations to leadership and stakeholders</li>
+</ul>
+<h2><strong>What We're Looking For</strong></h2>
+<p><strong>Required Qualifications</strong></p>
+<ul>
+	<li>7-10 years of B2B marketing experience in Field Marketing, Product Marketing, Demand Generation, Account-Based Marketing, or Customer Marketing</li>
+	<li>Proven track record of successful end-to-end campaign management and optimization</li>
+	<li>Strong problem-solving abilities with experience finding creative solutions within operational constraints</li>
+	<li>Excellent communication and cross-functional collaboration skills, with demonstrated ability to build trust and influence stakeholders</li>
+	<li>Natural curiosity about people, products, processes, and technologies, with the ability to ask insightful questions to uncover key insights</li>
+	<li>Data-driven mindset with experience interpreting information to make smart business decisions</li>
+	<li>Hands-on experience with marketing technologies including Salesforce, Marketo, Demandbase, PFL, Sendoso, Goldcast, and Tableau</li>
+	<li>Bias for action and willingness to experiment with new approaches, tactics, and channels</li>
+</ul>
+<p><strong>Preferred Qualifications</strong></p>
 <ul>
 	<li>
-		<h2><strong>About the Role</strong></h2>
-		<p>Cloudflare’s global campaigns team is seeking a highly motivated Senior Solution Campaign Manager to join and drive end-to-end campaign strategy for one of Cloudflare's core solutions. In this pivotal role, you'll own the complete campaign lifecycle—from strategy and content development to launch, optimization, and measurement—driving awareness, engagement, and, ultimately, pipeline growth.&nbsp;</p>
-		<p>In this role, you'll partner with regional teams across the world to identify market-specific challenges and opportunities, then craft campaign strategies that deliver pipeline on a global scale.</p>
-		<h2><strong>What You'll Do</strong></h2>
-		<p><strong>Own Campaign Strategy &amp; Execution</strong></p>
-		<ul>
-			<li>Lead the complete campaign lifecycle for a core Cloudflare solution, from initial planning through launch, measurement, and continuous optimization</li>
-			<li>Define campaign narrative, target audiences, and success metrics</li>
-		</ul>
-		<p><strong>Drive Cross-Functional Collaboration</strong></p>
-		<ul>
-			<li>Partner closely with Product Marketing, Regional Marketing, Content Marketing, and Digital Marketing teams</li>
-			<li>Identify key customer business challenges and translate them into compelling campaign messages across the entire funnel</li>
-			<li>Build strong relationships and influence stakeholders across the organization</li>
-		</ul>
-		<p><strong>Create &amp; Manage Campaign Content</strong></p>
-		<ul>
-			<li>Develop and oversee creation of campaign assets, working with both internal teams and external resources</li>
-			<li>Write compelling campaign copy while leveraging existing messaging frameworks and positioning documents</li>
-			<li>Ensure content consistency and quality across all campaign touchpoints</li>
-		</ul>
-		<p><strong>Execute Multi-Channel Campaigns</strong></p>
-		<ul>
-			<li>Launch and manage campaigns across content syndication, paid digital, email, direct mail, webinar, and sales and BDR channels</li>
-			<li>Continuously monitor performance metrics and optimize campaigns for maximum impact and ROI</li>
-		</ul>
-		<p><strong>Deliver Data-Driven Insights</strong></p>
-		<ul>
-			<li>Track key performance indicators (KPIs) for all campaigns</li>
-			<li>Analyze campaign data to identify trends, opportunities, and areas for improvement</li>
-			<li>Provide regular, actionable insights and recommendations to leadership and stakeholders</li>
-		</ul>
-		<h2><strong>What We're Looking For</strong></h2>
-		<p><strong>Required Qualifications</strong></p>
-		<ul>
-			<li>7-10 years of B2B marketing experience in Field Marketing, Product Marketing, Demand Generation, Account-Based Marketing, or Customer Marketing</li>
-			<li>Proven track record of successful end-to-end campaign management and optimization</li>
-			<li>Strong problem-solving abilities with experience finding creative solutions within operational constraints</li>
-			<li>Excellent communication and cross-functional collaboration skills, with demonstrated ability to build trust and influence stakeholders</li>
-			<li>Natural curiosity about people, products, processes, and technologies, with the ability to ask insightful questions to uncover key insights</li>
-			<li>Data-driven mindset with experience interpreting information to make smart business decisions</li>
-			<li>Hands-on experience with marketing technologies including Salesforce, Marketo, Demandbase, PFL, Sendoso, Goldcast, and Tableau</li>
-			<li>Bias for action and willingness to experiment with new approaches, tactics, and channels</li>
-		</ul>
-		<p><strong>Preferred Qualifications</strong></p>
 		<ul>
 			<li>Experience marketing for cloud services providers or cybersecurity companies</li>
 			<li>Background marketing to IT, security, or other technical buyer personas</li>
@@ -66,6 +66,8 @@
 	<li>
 		<p>Compensation may be adjusted depending on work location.</p>
 		<ul>
+			<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $135,000 - $165,000.</li>
+			<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $141,000 - $173,000.</li>
 			<li>For Bay Area based hires: Estimated annual salary of $148,000 - $180,000.</li>
 		</ul>
 		<p>&nbsp;</p>

@@ -26,8 +26,11 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
 				"Austin, US",
-				"San Francisco, US"
+				"Denver, US",
+				"San Francisco, US",
+				"Seattle, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -41,7 +44,7 @@
 		}
 	],
 	"id": 6981964,
-	"updated_at": "2025-07-24T15:46:49-04:00",
+	"updated_at": "2025-07-29T19:22:41-04:00",
 	"requisition_id": "603",
 	"title": "Senior Solution Campaign Manager",
 	"company_name": "Cloudflare",
@@ -66,6 +69,27 @@
 			"id": 19991,
 			"name": "San Francisco, CA",
 			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}
