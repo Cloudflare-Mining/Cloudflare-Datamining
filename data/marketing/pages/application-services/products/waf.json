@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-12-12T21:11:27.978Z",
-					"updatedAt": "2025-07-25T00:28:47.380Z"
+					"updatedAt": "2025-07-29T21:17:35.873Z"
 				},
 				"contentfulId": "7DxWgi2iysGyEUEoKa4oKm",
 				"contentTypeId": "page",
@@ -4070,6 +4070,185 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "301tr0RtDvYptVjJodp51i",
+						"bladeName": "Cloudflare WAF - Accordion FAQ",
+						"title": "FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "45zArJOV4OJQxhfKh2udgJ",
+								"title": "What is Cloudflare WAF?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Cloudflare WAF is a web application firewall that utilizes threat intelligence and machine learning from Cloudflare's connectivity cloud to protect web applications from various real-time attacks, including zero-day threats.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2EnxpcrUzgBdPCDH6oQ8MK",
+								"title": "What are the benefits of using Cloudflare WAF?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Cloudflare WAF offers several benefits, including global threat intelligence from its vast network, detection of new threats using machine learning, quick deployment and simple management, and both managed and custom rulesets for tailored protection.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "59yDuRTxL5Tj83dVj9LLDs",
+								"title": "How does Cloudflare WAF work?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Cloudflare WAF operates on Cloudflare's global network. Positioned in front of web applications, it stops a variety of attacks through powerful rulesets, advanced rate limiting, exposed credentials detection, and content upload scanning. The Cloudflare WAF has rulesets that are continually updated to block the latest threats, in addition to the top OWASP threats. Using machine learning, Cloudflare identifies new and emerging threats in real time, and updates its WAF rules to block those threats. The WAF also integrates with Cloudflare's other application security services for comprehensive protection.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "kDFEn1o4oyLtKaSsg7RiE",
+								"title": "What types of attacks does Cloudflare WAF help block?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Cloudflare WAF helps prevent common attacks like SQL injection and cross-site scripting by applying core OWASP Top 10 rules. It also stops credential stuffing by identifying and blocking the use of stolen login information. And, it detects malware in uploaded files to protect web servers and enterprise networks. Using machine learning, the Cloudflare WAF can also identify and block new and emerging attacks that are not in the OWASP Top 10.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7cfZ64Qc4205lChkGcPVP0",
+								"title": "How easy is it to deploy and manage Cloudflare WAF?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Cloudflare WAF is designed for fast deployment, requiring only a few clicks to set up. It integrates easily with other application security services, eliminating the need for internal teams to receive extensive training.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
