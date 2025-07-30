@@ -9,12 +9,15 @@ declare const _default: {
     'analytics-search': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'api-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     api: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'apple-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     applications: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'arrow-down': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'arrow-external-link': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'auto-rag-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     backward: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     bolt: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'bookmark-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'bookmark-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     byoip: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     calendar: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     calls: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -33,6 +36,7 @@ declare const _default: {
     'caret-up': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'case-study': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     certificate: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'change-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     chart: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     clipboard: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloud-internet-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -94,6 +98,7 @@ declare const _default: {
     'git-branch': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     github: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     globe: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'graduation-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     hamburger: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     help: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'hide-eye': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -106,6 +111,7 @@ declare const _default: {
     key: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     leaf: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     left: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'lighthouse-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     link: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     linkedin: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     list: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -116,6 +122,7 @@ declare const _default: {
     'magic-network-monitoring': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'magic-transit-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     mail: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'mcp-server-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'media-play': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     minus: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     more: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -128,7 +135,10 @@ declare const _default: {
     'office-branch': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'ok-sign': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     ok: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'open-sidepanel-right': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'optimization-scale': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'organization-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    overflow2solid: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'pages-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     pause: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'performance-arrow-up': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -147,12 +157,14 @@ declare const _default: {
     queues: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     r2outline: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     r2: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'refactor-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     refresh: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'registrar-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'reliability-dns': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'reliability-load-balancer': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     remove: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     reorder: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'replatform-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'resize-horizontal': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     retarget: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     revert: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -195,6 +207,7 @@ declare const _default: {
     user: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     vectorize: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     version: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'virtual-machine-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'waiting-room': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     warning: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     warp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

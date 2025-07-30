@@ -3,16 +3,15 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 import * as React from 'react';
 
 var SvgBookmarkOutline = props => /*#__PURE__*/React.createElement("svg", _extends({}, props, {
-  "aria-hidden": !props['aria-label'],
-  focusable: "false",
+  xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
-  xmlns: "http://www.w3.org/2000/svg"
+  "aria-hidden": !props['aria-label'],
+  focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  clipRule: "evenodd",
-  d: "M3.5 1L4.00016 0.5L12.0002 0.502519L12.5 1.00252V15.2525L11.6797 15.6364L7.99861 12.5654L4.32045 15.6363L3.5 15.2525V1ZM4.5 1.50016V14.1837L7.67804 11.5303L8.31879 11.5302L11.5 14.1842V1.50236L4.5 1.50016Z"
+  d: "M3.5 1 4 .5l8 .003.5.5v14.25l-.82.383-3.681-3.07-3.679 3.07-.82-.383V1Zm1 .5v12.684l3.178-2.654h.64l3.182 2.654V1.502l-7-.002Z"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M7.88112 2.71137L7.40403 4.1797H5.86012L5.78665 4.40583L7.03569 5.31331L6.5586 6.78165L6.75096 6.92141L8 6.01392L9.24904 6.92141L9.4414 6.78165L8.96431 5.31331L10.2134 4.40583L10.1399 4.1797H8.59597L8.11888 2.71137H7.88112Z"
+  d: "M7.881 2.711 7.404 4.18H5.86l-.073.226 1.249.907-.477 1.469.192.14L8 6.013l1.249.907.192-.14-.477-1.468 1.25-.907-.074-.226H8.596L8.119 2.71H7.88Z"
 }));
 
 export default SvgBookmarkOutline;

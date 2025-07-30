@@ -2,13 +2,13 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 import * as React from 'react';
 
-var SvgPinSolid = props => /*#__PURE__*/React.createElement("svg", _extends({}, props, {
+var SvgVirtualMachineOutline = props => /*#__PURE__*/React.createElement("svg", _extends({}, props, {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
   focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "m13.115 7.443 1.228-1.228v-.707L10.345 1.51h-.707L8.41 2.738v.707l.716.716-2.821 2.295a2.587 2.587 0 0 0-3.257.617l.032.672 2.16 2.16-3.884 3.885.707.707 3.885-3.885 2.16 2.16h.645l.026.033a2.587 2.587 0 0 0 .617-3.257l2.296-2.821.716.716h.707Z"
+  d: "m3.1 10.71 4.25 2.428V8.29L3.1 5.861v4.849Zm5.25-2.42v4.848l4.25-2.428V5.86L8.35 8.29ZM3.609 5l4.243 2.424L12.093 5 7.85 2.576 3.608 5Zm9.993 6-.252.434-5.25 3h-.496l-5.25-3L2.1 11V5l.252-.434 5.25-3h.496l5.25 3L13.6 5v6Z"
 }));
 
-export default SvgPinSolid;
+export default SvgVirtualMachineOutline;

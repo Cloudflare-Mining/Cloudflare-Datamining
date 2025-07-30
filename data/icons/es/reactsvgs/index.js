@@ -7,12 +7,15 @@ import AnalyticsData from './AnalyticsData';
 import AnalyticsSearch from './AnalyticsSearch';
 import ApiSecurity from './ApiSecurity';
 import Api from './Api';
+import AppleOutline from './AppleOutline';
 import Applications from './Applications';
 import ArrowDown from './ArrowDown';
 import ArrowExternalLink from './ArrowExternalLink';
+import AutoRagOutline from './AutoRagOutline';
 import Backward from './Backward';
 import Bolt from './Bolt';
 import BookmarkOutline from './BookmarkOutline';
+import BookmarkSolid from './BookmarkSolid';
 import Byoip from './Byoip';
 import Calendar from './Calendar';
 import Calls from './Calls';
@@ -31,6 +34,7 @@ import CaretUpStroke from './CaretUpStroke';
 import CaretUp from './CaretUp';
 import CaseStudy from './CaseStudy';
 import Certificate from './Certificate';
+import ChangeOutline from './ChangeOutline';
 import Chart from './Chart';
 import Clipboard from './Clipboard';
 import CloudInternetSolid from './CloudInternetSolid';
@@ -92,6 +96,7 @@ import Gear from './Gear';
 import GitBranch from './GitBranch';
 import Github from './Github';
 import Globe from './Globe';
+import GraduationOutline from './GraduationOutline';
 import Hamburger from './Hamburger';
 import Help from './Help';
 import HideEye from './HideEye';
@@ -104,6 +109,7 @@ import InternetBrowser from './InternetBrowser';
 import Key from './Key';
 import Leaf from './Leaf';
 import Left from './Left';
+import LighthouseOutline from './LighthouseOutline';
 import Link from './Link';
 import Linkedin from './Linkedin';
 import List from './List';
@@ -114,6 +120,7 @@ import MagicFirewall from './MagicFirewall';
 import MagicNetworkMonitoring from './MagicNetworkMonitoring';
 import MagicTransitLogo from './MagicTransitLogo';
 import Mail from './Mail';
+import McpServerOutline from './McpServerOutline';
 import MediaPlay from './MediaPlay';
 import Minus from './Minus';
 import More from './More';
@@ -126,7 +133,10 @@ import Notifications from './Notifications';
 import OfficeBranch from './OfficeBranch';
 import OkSign from './OkSign';
 import Ok from './Ok';
+import OpenSidepanelRight from './OpenSidepanelRight';
 import OptimizationScale from './OptimizationScale';
+import OrganizationOutline from './OrganizationOutline';
+import Overflow2Solid from './Overflow2Solid';
 import PagesLogo from './PagesLogo';
 import Pause from './Pause';
 import PerformanceArrowUp from './PerformanceArrowUp';
@@ -145,12 +155,14 @@ import PullRequest from './PullRequest';
 import Queues from './Queues';
 import R2Outline from './R2Outline';
 import R2 from './R2';
+import RefactorOutline from './RefactorOutline';
 import Refresh from './Refresh';
 import RegistrarLogo from './RegistrarLogo';
 import ReliabilityDns from './ReliabilityDns';
 import ReliabilityLoadBalancer from './ReliabilityLoadBalancer';
 import Remove from './Remove';
 import Reorder from './Reorder';
+import ReplatformOutline from './ReplatformOutline';
 import ResizeHorizontal from './ResizeHorizontal';
 import Retarget from './Retarget';
 import Revert from './Revert';
@@ -193,6 +205,7 @@ import UserOutline from './UserOutline';
 import User from './User';
 import Vectorize from './Vectorize';
 import Version from './Version';
+import VirtualMachineOutline from './VirtualMachineOutline';
 import WaitingRoom from './WaitingRoom';
 import Warning from './Warning';
 import Warp from './Warp';
@@ -222,12 +235,15 @@ export default {
   'analytics-search': AnalyticsSearch,
   'api-security': ApiSecurity,
   api: Api,
+  'apple-outline': AppleOutline,
   applications: Applications,
   'arrow-down': ArrowDown,
   'arrow-external-link': ArrowExternalLink,
+  'auto-rag-outline': AutoRagOutline,
   backward: Backward,
   bolt: Bolt,
   'bookmark-outline': BookmarkOutline,
+  'bookmark-solid': BookmarkSolid,
   byoip: Byoip,
   calendar: Calendar,
   calls: Calls,
@@ -246,6 +262,7 @@ export default {
   'caret-up': CaretUp,
   'case-study': CaseStudy,
   certificate: Certificate,
+  'change-outline': ChangeOutline,
   chart: Chart,
   clipboard: Clipboard,
   'cloud-internet-solid': CloudInternetSolid,
@@ -307,6 +324,7 @@ export default {
   'git-branch': GitBranch,
   github: Github,
   globe: Globe,
+  'graduation-outline': GraduationOutline,
   hamburger: Hamburger,
   help: Help,
   'hide-eye': HideEye,
@@ -319,6 +337,7 @@ export default {
   key: Key,
   leaf: Leaf,
   left: Left,
+  'lighthouse-outline': LighthouseOutline,
   link: Link,
   linkedin: Linkedin,
   list: List,
@@ -329,6 +348,7 @@ export default {
   'magic-network-monitoring': MagicNetworkMonitoring,
   'magic-transit-logo': MagicTransitLogo,
   mail: Mail,
+  'mcp-server-outline': McpServerOutline,
   'media-play': MediaPlay,
   minus: Minus,
   more: More,
@@ -341,7 +361,10 @@ export default {
   'office-branch': OfficeBranch,
   'ok-sign': OkSign,
   ok: Ok,
+  'open-sidepanel-right': OpenSidepanelRight,
   'optimization-scale': OptimizationScale,
+  'organization-outline': OrganizationOutline,
+  overflow2solid: Overflow2Solid,
   'pages-logo': PagesLogo,
   pause: Pause,
   'performance-arrow-up': PerformanceArrowUp,
@@ -360,12 +383,14 @@ export default {
   queues: Queues,
   r2outline: R2Outline,
   r2: R2,
+  'refactor-outline': RefactorOutline,
   refresh: Refresh,
   'registrar-logo': RegistrarLogo,
   'reliability-dns': ReliabilityDns,
   'reliability-load-balancer': ReliabilityLoadBalancer,
   remove: Remove,
   reorder: Reorder,
+  'replatform-outline': ReplatformOutline,
   'resize-horizontal': ResizeHorizontal,
   retarget: Retarget,
   revert: Revert,
@@ -408,6 +433,7 @@ export default {
   user: User,
   vectorize: Vectorize,
   version: Version,
+  'virtual-machine-outline': VirtualMachineOutline,
   'waiting-room': WaitingRoom,
   warning: Warning,
   warp: Warp,

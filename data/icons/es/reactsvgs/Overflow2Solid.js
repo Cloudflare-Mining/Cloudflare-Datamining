@@ -2,13 +2,13 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 import * as React from 'react';
 
-var SvgPinSolid = props => /*#__PURE__*/React.createElement("svg", _extends({}, props, {
+var SvgOverflow2Solid = props => /*#__PURE__*/React.createElement("svg", _extends({}, props, {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
   focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "m13.115 7.443 1.228-1.228v-.707L10.345 1.51h-.707L8.41 2.738v.707l.716.716-2.821 2.295a2.587 2.587 0 0 0-3.257.617l.032.672 2.16 2.16-3.884 3.885.707.707 3.885-3.885 2.16 2.16h.645l.026.033a2.587 2.587 0 0 0 .617-3.257l2.296-2.821.716.716h.707Z"
+  d: "M7.85 4.133a1.084 1.084 0 1 0 0-2.169 1.084 1.084 0 0 0 0 2.17Zm0 4.951a1.084 1.084 0 1 0 0-2.169 1.084 1.084 0 0 0 0 2.17Zm0 4.951a1.084 1.084 0 1 0 0-2.169 1.084 1.084 0 0 0 0 2.17Z"
 }));
 
-export default SvgPinSolid;
+export default SvgOverflow2Solid;

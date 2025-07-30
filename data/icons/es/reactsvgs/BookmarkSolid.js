@@ -2,19 +2,14 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 import * as React from 'react';
 
-var SvgCornerDownRight = props => /*#__PURE__*/React.createElement("svg", _extends({}, props, {
+var SvgBookmarkSolid = props => /*#__PURE__*/React.createElement("svg", _extends({}, props, {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
   focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  clipRule: "evenodd",
-  d: "M2.80621 4.82152C2.80621 6.15719 3.88899 7.23997 5.22466 7.23997H9.65848V8.04612L5.22466 8.04612C3.44375 8.04612 2.00006 6.60243 2.00006 4.82152L2.00006 2L2.80621 2L2.80621 4.82152Z"
-}), /*#__PURE__*/React.createElement("path", {
-  fillRule: "evenodd",
-  clipRule: "evenodd",
-  d: "M7.27457 9.6584L9.28995 7.64303L7.27457 5.62765L7.8446 5.05762L10.43 7.64303L7.8446 10.2284L7.27457 9.6584Z"
+  d: "m4 .5-.5.5v14.252l.82.384L8 12.566l3.68 3.07.821-.383V1.002l-.5-.5L4 .5Zm3.881 2.211L7.404 4.18H5.86l-.073.226 1.249.907-.477 1.469.192.14L8 6.013l1.249.907.192-.14-.477-1.468 1.25-.907-.074-.226H8.596L8.119 2.71H7.88Z"
 }));
 
-export default SvgCornerDownRight;
+export default SvgBookmarkSolid;
