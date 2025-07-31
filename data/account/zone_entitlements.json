@@ -1310,6 +1310,22 @@
 		"deleted_date": ""
 	},
 	{
+		"id": "rulesets.response_compression_max_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1181,
+			"key": "rulesets.response_compression_max_rules",
+			"name": "Rulesets - Response compression max rules"
+		},
+		"allocation": {
+			"value": 10,
+			"type": "max_count"
+		},
+		"created_date": "2025-07-31T18:08:33.000000",
+		"edited_date": "2025-07-31T18:08:33.000000",
+		"deleted_date": ""
+	},
+	{
 		"id": "rulesets.snippets_rule_max",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1318,11 +1334,11 @@
 			"name": "Rulesets - Snippets Rule Max"
 		},
 		"allocation": {
-			"value": 5,
+			"value": 0,
 			"type": "max_count"
 		},
 		"created_date": "2023-05-30T16:57:20.000000",
-		"edited_date": "2023-05-30T16:57:20.000000",
+		"edited_date": "2025-07-31T18:08:33.000000",
 		"deleted_date": ""
 	},
 	{
@@ -1334,11 +1350,27 @@
 			"name": "Snippets - Snippets Allowed Max"
 		},
 		"allocation": {
-			"value": 5,
+			"value": 0,
 			"type": "max_count"
 		},
 		"created_date": "2023-05-30T16:57:20.000000",
-		"edited_date": "2023-05-30T16:57:20.000000",
+		"edited_date": "2025-07-31T18:08:33.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_leaked_credential_checks_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1244,
+			"key": "rulesets.fw_global_rulesets_execute_leaked_credential_checks_allowed",
+			"name": "Rulesets - Executing Leaked Credential Checks managed ruleset allowed"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2025-07-31T18:08:33.000000",
+		"edited_date": "2025-07-31T18:08:33.000000",
 		"deleted_date": ""
 	},
 	{
@@ -1366,11 +1398,11 @@
 			"name": "Cloud Connector - Rule Allowed Max"
 		},
 		"allocation": {
-			"value": 5,
+			"value": 10,
 			"type": "max_count"
 		},
 		"created_date": "2024-09-10T08:20:09.000000",
-		"edited_date": "2024-09-10T08:20:09.000000",
+		"edited_date": "2025-07-31T18:08:33.000000",
 		"deleted_date": ""
 	},
 	{
@@ -1403,6 +1435,22 @@
 		},
 		"created_date": "2024-09-10T08:20:09.000000",
 		"edited_date": "2024-09-10T08:20:09.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.firewall_custom_max_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1721,
+			"key": "rulesets.firewall_custom_max_rules",
+			"name": "Rulesets - Firewall Custom Max Rules"
+		},
+		"allocation": {
+			"value": 5,
+			"type": "max_count"
+		},
+		"created_date": "2025-07-31T18:08:33.000000",
+		"edited_date": "2025-07-31T18:08:33.000000",
 		"deleted_date": ""
 	}
 ]
