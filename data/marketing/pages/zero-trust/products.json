@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-05-02T17:17:34.584Z",
-					"updatedAt": "2025-07-30T01:57:01.327Z"
+					"updatedAt": "2025-07-31T04:38:35.060Z"
 				},
 				"contentfulId": "25N5MNrKXZSTSIkS9MX5vv",
 				"contentTypeId": "page",
@@ -585,7 +585,58 @@
 												"name": "For your employees",
 												"description": null,
 												"mainLink": null,
-												"navigationLinks": null,
+												"navigationLinks": [
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "9Y8PnX49kqJsXjzSsS73z",
+														"locale": "en-US",
+														"title": "SASE & SSE platform",
+														"description": "Zero Trust security (ZTNA, SWG, CASB) & network connectivity (WANaaS, FWaaS) on one platform with Cloud Email Security, DLP, RBI, DEX, DDoS and more built in",
+														"url": "/zero-trust/products/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": false,
+														"isExternalUrl": null
+													}
+												],
+												"navIcon": null,
+												"showIconOnly": false,
+												"hideOnChinaSite": false,
+												"navigationItems": []
+											},
+											{
+												"contentTypeId": "navNavigationItem",
+												"contentfulId": "6gFGrtQDWjlT3eZHzcb6g1",
+												"locale": "en-US",
+												"name": "For apps and infrastructure",
+												"description": null,
+												"mainLink": null,
+												"navigationLinks": [
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "Qq5KXFjlOXa5Y4Tq2hpSj",
+														"locale": "en-US",
+														"title": "Application security & performance",
+														"description": "Protect & accelerate mobile / web apps, APIs & websites with WAF, DDoS, CDN, DNS & more",
+														"url": "/application-services/products/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": false,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "hzRU5MKmCMcSeX5ekIeVX",
+														"locale": "en-US",
+														"title": "Network security & performance",
+														"description": "Protect & accelerate infrastructure with L3 DDoS protection & FW, interconnects and smart routing",
+														"url": "network-services/products",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": false,
+														"isExternalUrl": null
+													}
+												],
 												"navIcon": null,
 												"showIconOnly": false,
 												"hideOnChinaSite": false,
@@ -2714,6 +2765,67 @@
 						"contentTypeId": "bladePadding",
 						"height": 1,
 						"backgroundColor": "blue5"
+					},
+					{
+						"contentfulId": "1o8tSpeCHewPlTAF9qnUaz",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Cloudflare's SSE & SASE services",
+						"titleSize": null,
+						"subtitle": "Zero Trust networking delivered from unified, cloud-native platform of security and connectivity services",
+						"subtitleSize": null,
+						"copy": "Cloudflare products can help you secure corporate applications and web browsing, protect against email attacks, embrace cloud-based networking, and more.\n",
+						"buttonColor": "blue",
+						"buttonColor2": null,
+						"buttonText1": "See zero trust roadmap",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "/lp/zero-trust-roadmap/",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": "Take a product tour",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "/products/zero-trust/interactive-demo/",
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": null,
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": false,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Medium",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "show",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "f68a4f3e-8d25-52d6-af0d-47f4d140cfc3",
+							"altText": "Cloudflare Zero Trust",
+							"title": "Cloudflare Zero Trust",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Fjo8z0O1iJopdtnoCZuhx/3815fb77e54e167adec2946917bf639c/Zero_Trust_main_page.svg"
+								},
+								"description": null
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
 						"locale": "en-US",
