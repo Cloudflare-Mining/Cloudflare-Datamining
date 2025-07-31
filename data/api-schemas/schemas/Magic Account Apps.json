@@ -1,0 +1,1608 @@
+{
+	"DELETE /accounts/{account_id}/magic/apps/{account_app_id}": {
+		"description": "Deletes specific Account App.",
+		"operationId": "magic-account-apps-delete-app",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_app_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Custom app defined for an account.",
+											"properties": {
+												"account_app_id": {
+													"description": "Magic account app ID.",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
+													"type": "string"
+												},
+												"hostnames": {
+													"description": "FQDNs to associate with traffic decisions.",
+													"items": {
+														"example": "auth.cloudflare.com",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"ip_subnets": {
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"items": {
+														"allOf": [
+															{
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															{
+																"example": "1.1.1.1/32"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"name": {
+													"description": "Display name for the app.",
+													"example": "Cloudflare Dashboard",
+													"type": "string"
+												},
+												"type": {
+													"description": "Category of the app.",
+													"example": "Development",
+													"type": "string"
+												}
+											},
+											"required": [
+												"account_app_id"
+											],
+											"title": "Account App",
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete App response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete App response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete Account App",
+		"tags": [
+			"Magic Account Apps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/magic/apps": {
+		"description": "Lists Apps associated with an account.",
+		"operationId": "magic-account-apps-list-apps",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"items": {},
+											"nullable": true,
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "Collection of Hostnames and/or IP Subnets to associate with traffic decisions.",
+												"oneOf": [
+													{
+														"description": "Custom app defined for an account.",
+														"properties": {
+															"account_app_id": {
+																"description": "Magic account app ID.",
+																"example": "ac60d3d0435248289d446cedd870bcf4",
+																"type": "string"
+															},
+															"hostnames": {
+																"description": "FQDNs to associate with traffic decisions.",
+																"items": {
+																	"example": "auth.cloudflare.com",
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"ip_subnets": {
+																"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+																"items": {
+																	"allOf": [
+																		{
+																			"description": "A valid CIDR notation representing an IP range.",
+																			"example": "192.0.2.0/24",
+																			"type": "string"
+																		},
+																		{
+																			"example": "1.1.1.1/32"
+																		}
+																	]
+																},
+																"type": "array"
+															},
+															"name": {
+																"description": "Display name for the app.",
+																"example": "Cloudflare Dashboard",
+																"type": "string"
+															},
+															"type": {
+																"description": "Category of the app.",
+																"example": "Development",
+																"type": "string"
+															}
+														},
+														"required": [
+															"account_app_id"
+														],
+														"title": "Account App",
+														"type": "object"
+													},
+													{
+														"description": "Managed app defined by Cloudflare.",
+														"properties": {
+															"hostnames": {
+																"description": "FQDNs to associate with traffic decisions.",
+																"items": {
+																	"example": "auth.cloudflare.com",
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"ip_subnets": {
+																"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+																"items": {
+																	"allOf": [
+																		{
+																			"description": "A valid CIDR notation representing an IP range.",
+																			"example": "192.0.2.0/24",
+																			"type": "string"
+																		},
+																		{
+																			"example": "1.1.1.1/32"
+																		}
+																	]
+																},
+																"type": "array"
+															},
+															"managed_app_id": {
+																"description": "Managed app ID.",
+																"example": "cloudflare",
+																"type": "string"
+															},
+															"name": {
+																"description": "Display name for the app.",
+																"example": "Cloudflare Dashboard",
+																"type": "string"
+															},
+															"type": {
+																"description": "Category of the app.",
+																"example": "Development",
+																"type": "string"
+															}
+														},
+														"required": [
+															"managed_app_id"
+														],
+														"title": "Managed App",
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Apps response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Apps response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List Apps",
+		"tags": [
+			"Magic Account Apps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /accounts/{account_id}/magic/apps/{account_app_id}": {
+		"description": "Updates an Account App",
+		"operationId": "magic-account-apps-patch-app",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_app_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"anyOf": [
+							{
+								"required": [
+									"name"
+								],
+								"title": "Update App Name"
+							},
+							{
+								"required": [
+									"type"
+								],
+								"title": "Update App Type"
+							},
+							{
+								"required": [
+									"hostnames"
+								],
+								"title": "Update App Hostnames"
+							},
+							{
+								"required": [
+									"ip_subnets"
+								],
+								"title": "Update App Subnets"
+							}
+						],
+						"properties": {
+							"hostnames": {
+								"description": "FQDNs to associate with traffic decisions.",
+								"items": {
+									"example": "auth.cloudflare.com",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"ip_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"name": {
+								"description": "Display name for the app.",
+								"example": "Cloudflare Dashboard",
+								"type": "string"
+							},
+							"type": {
+								"description": "Category of the app.",
+								"example": "Development",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Custom app defined for an account.",
+											"properties": {
+												"account_app_id": {
+													"description": "Magic account app ID.",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
+													"type": "string"
+												},
+												"hostnames": {
+													"description": "FQDNs to associate with traffic decisions.",
+													"items": {
+														"example": "auth.cloudflare.com",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"ip_subnets": {
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"items": {
+														"allOf": [
+															{
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															{
+																"example": "1.1.1.1/32"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"name": {
+													"description": "Display name for the app.",
+													"example": "Cloudflare Dashboard",
+													"type": "string"
+												},
+												"type": {
+													"description": "Category of the app.",
+													"example": "Development",
+													"type": "string"
+												}
+											},
+											"required": [
+												"account_app_id"
+											],
+											"title": "Account App",
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update App response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update App response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update an App",
+		"tags": [
+			"Magic Account Apps"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/magic/apps": {
+		"description": "Creates a new App for an account",
+		"operationId": "magic-account-apps-add-app",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"anyOf": [
+							{
+								"required": [
+									"hostnames"
+								],
+								"title": "Hostnames"
+							},
+							{
+								"required": [
+									"ip_subnets"
+								],
+								"title": "Subnets"
+							}
+						],
+						"properties": {
+							"hostnames": {
+								"description": "FQDNs to associate with traffic decisions.",
+								"items": {
+									"example": "auth.cloudflare.com",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"ip_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"name": {
+								"description": "Display name for the app.",
+								"example": "Cloudflare Dashboard",
+								"type": "string"
+							},
+							"type": {
+								"description": "Category of the app.",
+								"example": "Development",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"type"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Custom app defined for an account.",
+											"properties": {
+												"account_app_id": {
+													"description": "Magic account app ID.",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
+													"type": "string"
+												},
+												"hostnames": {
+													"description": "FQDNs to associate with traffic decisions.",
+													"items": {
+														"example": "auth.cloudflare.com",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"ip_subnets": {
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"items": {
+														"allOf": [
+															{
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															{
+																"example": "1.1.1.1/32"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"name": {
+													"description": "Display name for the app.",
+													"example": "Cloudflare Dashboard",
+													"type": "string"
+												},
+												"type": {
+													"description": "Category of the app.",
+													"example": "Development",
+													"type": "string"
+												}
+											},
+											"required": [
+												"account_app_id"
+											],
+											"title": "Account App",
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Account App response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create Account App response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create a new App",
+		"tags": [
+			"Magic Account Apps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /accounts/{account_id}/magic/apps/{account_app_id}": {
+		"description": "Updates an Account App",
+		"operationId": "magic-account-apps-update-app",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_app_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"anyOf": [
+							{
+								"required": [
+									"name"
+								],
+								"title": "Update App Name"
+							},
+							{
+								"required": [
+									"type"
+								],
+								"title": "Update App Type"
+							},
+							{
+								"required": [
+									"hostnames"
+								],
+								"title": "Update App Hostnames"
+							},
+							{
+								"required": [
+									"ip_subnets"
+								],
+								"title": "Update App Subnets"
+							}
+						],
+						"properties": {
+							"hostnames": {
+								"description": "FQDNs to associate with traffic decisions.",
+								"items": {
+									"example": "auth.cloudflare.com",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"ip_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"name": {
+								"description": "Display name for the app.",
+								"example": "Cloudflare Dashboard",
+								"type": "string"
+							},
+							"type": {
+								"description": "Category of the app.",
+								"example": "Development",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Custom app defined for an account.",
+											"properties": {
+												"account_app_id": {
+													"description": "Magic account app ID.",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
+													"type": "string"
+												},
+												"hostnames": {
+													"description": "FQDNs to associate with traffic decisions.",
+													"items": {
+														"example": "auth.cloudflare.com",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"ip_subnets": {
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"items": {
+														"allOf": [
+															{
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															{
+																"example": "1.1.1.1/32"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"name": {
+													"description": "Display name for the app.",
+													"example": "Cloudflare Dashboard",
+													"type": "string"
+												},
+												"type": {
+													"description": "Category of the app.",
+													"example": "Development",
+													"type": "string"
+												}
+											},
+											"required": [
+												"account_app_id"
+											],
+											"title": "Account App",
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update App response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update App response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update an App",
+		"tags": [
+			"Magic Account Apps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

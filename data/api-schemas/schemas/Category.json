@@ -1,0 +1,760 @@
+{
+	"DELETE /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"operationId": "delete_CategoryDelete",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Category UUID.",
+				"in": "path",
+				"name": "category_id",
+				"required": true,
+				"schema": {
+					"description": "Category UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the uuid of the deleted category."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Deletes a category",
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/categories": {
+		"operationId": "get_CategoryList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"killChain": {
+										"type": "number"
+									},
+									"mitreAttack": {
+										"items": {
+											"example": "T1234",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"name": {
+										"example": "name",
+										"type": "string"
+									},
+									"shortname": {
+										"example": "shortname",
+										"type": "string"
+									},
+									"uuid": {
+										"example": "12345678-1234-1234-1234-1234567890ab",
+										"type": "string"
+									}
+								},
+								"required": [
+									"uuid",
+									"name",
+									"killChain"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns a list of categories."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Lists categories",
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"operationId": "get_CategoryRead",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Category UUID.",
+				"in": "path",
+				"name": "category_id",
+				"required": true,
+				"schema": {
+					"description": "Category UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"items": {
+										"example": "T1234",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"name": {
+									"example": "name",
+									"type": "string"
+								},
+								"shortname": {
+									"example": "shortname",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"killChain"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a category."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Reads a category",
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"PATCH /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"operationId": "patch_CategoryUpdate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Category UUID.",
+				"in": "path",
+				"name": "category_id",
+				"required": true,
+				"schema": {
+					"description": "Category UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"killChain": {
+								"type": "number"
+							},
+							"mitreAttack": {
+								"items": {
+									"example": "T1234",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"name": {
+								"example": "name",
+								"type": "string"
+							},
+							"shortname": {
+								"example": "shortname",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"items": {
+										"example": "T1234",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"name": {
+									"example": "name",
+									"type": "string"
+								},
+								"shortname": {
+									"example": "shortname",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"killChain"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated category."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Updates a category",
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"operationId": "post_CategoryUpdate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Category UUID.",
+				"in": "path",
+				"name": "category_id",
+				"required": true,
+				"schema": {
+					"description": "Category UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"killChain": {
+								"type": "number"
+							},
+							"mitreAttack": {
+								"items": {
+									"example": "T1234",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"name": {
+								"example": "name",
+								"type": "string"
+							},
+							"shortname": {
+								"example": "shortname",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"items": {
+										"example": "T1234",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"name": {
+									"example": "name",
+									"type": "string"
+								},
+								"shortname": {
+									"example": "shortname",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"killChain"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated category."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Updates a category",
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/categories/create": {
+		"operationId": "post_CategoryCreate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"killChain": {
+								"type": "number"
+							},
+							"mitreAttack": {
+								"items": {
+									"example": "T1234",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"name": {
+								"example": "name",
+								"type": "string"
+							},
+							"shortname": {
+								"example": "shortname",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"killChain"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"items": {
+										"example": "T1234",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"name": {
+									"example": "name",
+									"type": "string"
+								},
+								"shortname": {
+									"example": "shortname",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"killChain"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created category."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Creates a new category",
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	}
+}

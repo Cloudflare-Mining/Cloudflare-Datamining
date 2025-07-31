@@ -1,0 +1,206 @@
+{
+	"GET /radar/search/global": {
+		"description": "Searches for locations, autonomous systems, reports, bots, certificate logs, and certificate authorities.",
+		"operationId": "radar-get-search-global",
+		"parameters": [
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Limits the number of objects per search category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per search category.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "String used to perform the search operation.",
+				"in": "query",
+				"name": "query",
+				"required": true,
+				"schema": {
+					"description": "String used to perform the search operation.",
+					"example": "United",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Search types included in results.",
+				"in": "query",
+				"name": "include",
+				"schema": {
+					"description": "Search types included in results.",
+					"items": {
+						"enum": [
+							"ASNS",
+							"BOTS",
+							"CERTIFICATE_AUTHORITIES",
+							"CERTIFICATE_LOGS",
+							"LOCATIONS",
+							"NOTEBOOKS"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Search types excluded from results.",
+				"in": "query",
+				"name": "exclude",
+				"schema": {
+					"description": "Search types excluded from results.",
+					"items": {
+						"enum": [
+							"ASNS",
+							"BOTS",
+							"CERTIFICATE_AUTHORITIES",
+							"CERTIFICATE_LOGS",
+							"LOCATIONS",
+							"NOTEBOOKS"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"search": {
+											"items": {
+												"properties": {
+													"code": {
+														"example": "13335",
+														"type": "string"
+													},
+													"name": {
+														"example": "Cloudflare",
+														"type": "string"
+													},
+													"type": {
+														"example": "asn",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"name",
+													"type"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"search"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Search for locations, ASes, reports, and more",
+		"tags": [
+			"Radar Search"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

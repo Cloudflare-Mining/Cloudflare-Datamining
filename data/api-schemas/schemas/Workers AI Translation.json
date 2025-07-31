@@ -1,0 +1,174 @@
+{
+	"POST /accounts/{account_id}/ai/run/@cf/meta/m2m100-1.2b": {
+		"operationId": "workers-ai-post-run-cf-meta-m2m100-1-2b",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"source_lang": {
+										"default": "en",
+										"description": "The language code of the source text (e.g., 'en' for English). Defaults to 'en' if not specified",
+										"type": "string"
+									},
+									"target_lang": {
+										"description": "The language code to translate the text into (e.g., 'es' for Spanish)",
+										"type": "string"
+									},
+									"text": {
+										"description": "The text to be translated",
+										"minLength": 1,
+										"type": "string"
+									}
+								},
+								"required": [
+									"text",
+									"target_lang"
+								]
+							},
+							{
+								"properties": {
+									"requests": {
+										"description": "Batch of the embeddings requests to run using async-queue",
+										"items": {
+											"properties": {
+												"source_lang": {
+													"default": "en",
+													"description": "The language code of the source text (e.g., 'en' for English). Defaults to 'en' if not specified",
+													"type": "string"
+												},
+												"target_lang": {
+													"description": "The language code to translate the text into (e.g., 'es' for Spanish)",
+													"type": "string"
+												},
+												"text": {
+													"description": "The text to be translated",
+													"minLength": 1,
+													"type": "string"
+												}
+											},
+											"required": [
+												"text",
+												"target_lang"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"requests"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/meta/m2m100-1.2b model.",
+		"tags": [
+			"Workers AI Translation"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

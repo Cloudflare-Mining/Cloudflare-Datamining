@@ -1,0 +1,3176 @@
+{
+	"DELETE /memberships/{membership_id}": {
+		"description": "Remove the associated member from an account.",
+		"operationId": "user'-s-account-memberships-delete-membership",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "membership_id",
+				"required": true,
+				"schema": {
+					"description": "Membership identifier tag.",
+					"example": "4536bcfad5faccb111b47003c79917fa",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Membership identifier tag.",
+													"example": "4536bcfad5faccb111b47003c79917fa",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Membership response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Membership response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Membership",
+		"tags": [
+			"User's Account Memberships"
+		],
+		"x-api-token-group": [
+			"Memberships Write"
+		]
+	},
+	"GET /memberships": {
+		"description": "List memberships of accounts the user can access.",
+		"operationId": "user'-s-account-memberships-list-memberships",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "account.name",
+				"schema": {
+					"description": "Account name",
+					"example": "Demo Account",
+					"maxLength": 100,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Number of memberships per page.",
+					"maximum": 50,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"description": "Field to order memberships by.",
+					"enum": [
+						"id",
+						"account.name",
+						"status"
+					],
+					"example": "status",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"description": "Direction to order memberships.",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Account name",
+					"example": "Demo Account",
+					"maxLength": 100,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"description": "Status of this membership.",
+					"enum": [
+						"accepted",
+						"pending",
+						"rejected"
+					],
+					"example": "accepted",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"oneOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"account": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"created_on": {
+																				"description": "Timestamp for the creation of the account",
+																				"example": "2014-03-01T12:21:02.0000Z",
+																				"format": "date-time",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Identifier",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "Account name",
+																				"example": "Demo Account",
+																				"maxLength": 100,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"settings": {
+																				"description": "Account settings",
+																				"properties": {
+																					"abuse_contact_email": {
+																						"description": "Sets an abuse contact email to notify for abuse reports.",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"enforce_twofactor": {
+																						"default": false,
+																						"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name"
+																		],
+																		"type": "object"
+																	}
+																],
+																"readOnly": true
+															},
+															"api_access_enabled": {
+																"description": "Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account.",
+																"example": true,
+																"nullable": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Membership identifier tag.",
+																"example": "4536bcfad5faccb111b47003c79917fa",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"permissions": {
+																"allOf": [
+																	{
+																		"example": {
+																			"analytics": {
+																				"read": true,
+																				"write": false
+																			},
+																			"zones": {
+																				"read": true,
+																				"write": true
+																			}
+																		},
+																		"properties": {
+																			"analytics": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"billing": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"cache_purge": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"dns": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"dns_records": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"lb": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"logs": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"organization": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"ssl": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"waf": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"zone_settings": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"zones": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"type": "object"
+																	}
+																],
+																"description": "All access permissions for the user at the account.",
+																"readOnly": true
+															},
+															"roles": {
+																"description": "List of role names the membership has for this account.",
+																"items": {
+																	"example": "Account Administrator",
+																	"maxLength": 120,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"readOnly": true,
+																"type": "array"
+															},
+															"status": {
+																"description": "Status of this membership.",
+																"enum": [
+																	"accepted",
+																	"pending",
+																	"rejected"
+																],
+																"example": "accepted",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"title": "memberships_with_roles"
+								},
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"account": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"created_on": {
+																				"description": "Timestamp for the creation of the account",
+																				"example": "2014-03-01T12:21:02.0000Z",
+																				"format": "date-time",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Identifier",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"maxLength": 32,
+																				"minLength": 32,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "Account name",
+																				"example": "Demo Account",
+																				"maxLength": 100,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"settings": {
+																				"description": "Account settings",
+																				"properties": {
+																					"abuse_contact_email": {
+																						"description": "Sets an abuse contact email to notify for abuse reports.",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"enforce_twofactor": {
+																						"default": false,
+																						"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name"
+																		],
+																		"type": "object"
+																	}
+																],
+																"readOnly": true
+															},
+															"api_access_enabled": {
+																"description": "Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account.",
+																"example": true,
+																"nullable": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Membership identifier tag.",
+																"example": "4536bcfad5faccb111b47003c79917fa",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"permissions": {
+																"allOf": [
+																	{
+																		"example": {
+																			"analytics": {
+																				"read": true,
+																				"write": false
+																			},
+																			"zones": {
+																				"read": true,
+																				"write": true
+																			}
+																		},
+																		"properties": {
+																			"analytics": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"billing": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"cache_purge": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"dns": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"dns_records": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"lb": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"logs": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"organization": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"ssl": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"waf": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"zone_settings": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"zones": {
+																				"example": {
+																					"read": true,
+																					"write": false
+																				},
+																				"properties": {
+																					"read": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"write": {
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"type": "object"
+																	}
+																],
+																"description": "All access permissions for the user at the account.",
+																"readOnly": true
+															},
+															"policies": {
+																"description": "Access policy for the membership",
+																"items": {
+																	"properties": {
+																		"access": {
+																			"description": "Allow or deny operations against the resources.",
+																			"enum": [
+																				"allow",
+																				"deny"
+																			],
+																			"example": "allow",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "Policy identifier.",
+																			"example": "f267e341f3dd4697bd3b9f71dd96247f",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-always-send": true
+																		},
+																		"permission_groups": {
+																			"description": "A set of permission groups that are specified to the policy.",
+																			"example": [
+																				{
+																					"id": "c8fed203ed3043cba015a93ad1616f1f",
+																					"meta": {
+																						"label": "load_balancer_admin",
+																						"scopes": "com.cloudflare.api.account"
+																					},
+																					"name": "Zone Read"
+																				},
+																				{
+																					"id": "82e64a83756745bbbb1c9c2701bf816b",
+																					"meta": {
+																						"label": "fbm_user",
+																						"scopes": "com.cloudflare.api.account"
+																					},
+																					"name": "Magic Network Monitoring"
+																				}
+																			],
+																			"items": {
+																				"description": "A named group of permissions that map to a group of operations against resources.",
+																				"properties": {
+																					"id": {
+																						"description": "Identifier of the permission group.",
+																						"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"meta": {
+																						"description": "Attributes associated to the permission group.",
+																						"example": {
+																							"label": "load_balancer_admin",
+																							"scopes": "com.cloudflare.api.account"
+																						},
+																						"properties": {
+																							"key": {
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"value": {
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"name": {
+																						"description": "Name of the permission group.",
+																						"example": "Load Balancer",
+																						"readOnly": true,
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"id"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"resource_groups": {
+																			"description": "A list of resource groups that the policy applies to.",
+																			"items": {
+																				"description": "A group of scoped resources.",
+																				"properties": {
+																					"id": {
+																						"description": "Identifier of the resource group.",
+																						"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																						"readOnly": true,
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"meta": {
+																						"description": "Attributes associated to the resource group.",
+																						"example": {
+																							"editable": "false"
+																						},
+																						"properties": {
+																							"key": {
+																								"type": "string"
+																							},
+																							"value": {
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"name": {
+																						"description": "Name of the resource group.",
+																						"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																						"readOnly": true,
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"scope": {
+																						"description": "The scope associated to the resource group",
+																						"items": {
+																							"description": "A scope is a combination of scope objects which provides additional context.",
+																							"properties": {
+																								"key": {
+																									"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																									"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																									"readOnly": true,
+																									"x-auditable": true
+																								},
+																								"objects": {
+																									"description": "A list of scope objects for additional context.",
+																									"items": {
+																										"description": "A scope object represents any resource that can have actions applied against invite.",
+																										"properties": {
+																											"key": {
+																												"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																												"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																												"readOnly": true,
+																												"x-auditable": true
+																											}
+																										},
+																										"required": [
+																											"key"
+																										],
+																										"type": "object"
+																									},
+																									"type": "array"
+																								}
+																							},
+																							"required": [
+																								"key",
+																								"objects"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"scope"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"title": "list_member_policy"
+																},
+																"type": "array"
+															},
+															"roles": {
+																"description": "List of role names the membership has for this account.",
+																"items": {
+																	"example": "Account Administrator",
+																	"maxLength": 120,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"readOnly": true,
+																"type": "array"
+															},
+															"status": {
+																"description": "Status of this membership.",
+																"enum": [
+																	"accepted",
+																	"pending",
+																	"rejected"
+																],
+																"example": "accepted",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"title": "memberships_with_policies"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Memberships response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Memberships response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Memberships",
+		"tags": [
+			"User's Account Memberships"
+		],
+		"x-api-token-group": [
+			"Memberships Write",
+			"Memberships Read"
+		]
+	},
+	"GET /memberships/{membership_id}": {
+		"description": "Get a specific membership.",
+		"operationId": "user'-s-account-memberships-membership-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "membership_id",
+				"required": true,
+				"schema": {
+					"description": "Membership identifier tag.",
+					"example": "4536bcfad5faccb111b47003c79917fa",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "Timestamp for the creation of the account",
+																	"example": "2014-03-01T12:21:02.0000Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Identifier",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Account name",
+																	"example": "Demo Account",
+																	"maxLength": 100,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"settings": {
+																	"description": "Account settings",
+																	"properties": {
+																		"abuse_contact_email": {
+																			"description": "Sets an abuse contact email to notify for abuse reports.",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"enforce_twofactor": {
+																			"default": false,
+																			"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"required": [
+																"id",
+																"name"
+															],
+															"type": "object"
+														}
+													],
+													"readOnly": true
+												},
+												"api_access_enabled": {
+													"description": "Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account.",
+													"example": true,
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Membership identifier tag.",
+													"example": "4536bcfad5faccb111b47003c79917fa",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"permissions": {
+													"allOf": [
+														{
+															"example": {
+																"analytics": {
+																	"read": true,
+																	"write": false
+																},
+																"zones": {
+																	"read": true,
+																	"write": true
+																}
+															},
+															"properties": {
+																"analytics": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"billing": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"cache_purge": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"dns": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"dns_records": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"lb": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"logs": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"organization": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"ssl": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"waf": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"zone_settings": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"zones": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "All access permissions for the user at the account.",
+													"readOnly": true
+												},
+												"policies": {
+													"description": "Access policy for the membership",
+													"items": {
+														"properties": {
+															"access": {
+																"description": "Allow or deny operations against the resources.",
+																"enum": [
+																	"allow",
+																	"deny"
+																],
+																"example": "allow",
+																"type": "string",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Policy identifier.",
+																"example": "f267e341f3dd4697bd3b9f71dd96247f",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-always-send": true
+															},
+															"permission_groups": {
+																"description": "A set of permission groups that are specified to the policy.",
+																"example": [
+																	{
+																		"id": "c8fed203ed3043cba015a93ad1616f1f",
+																		"meta": {
+																			"label": "load_balancer_admin",
+																			"scopes": "com.cloudflare.api.account"
+																		},
+																		"name": "Zone Read"
+																	},
+																	{
+																		"id": "82e64a83756745bbbb1c9c2701bf816b",
+																		"meta": {
+																			"label": "fbm_user",
+																			"scopes": "com.cloudflare.api.account"
+																		},
+																		"name": "Magic Network Monitoring"
+																	}
+																],
+																"items": {
+																	"description": "A named group of permissions that map to a group of operations against resources.",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the permission group.",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the permission group.",
+																			"example": {
+																				"label": "load_balancer_admin",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"properties": {
+																				"key": {
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"value": {
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"name": {
+																			"description": "Name of the permission group.",
+																			"example": "Load Balancer",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"resource_groups": {
+																"description": "A list of resource groups that the policy applies to.",
+																"items": {
+																	"description": "A group of scoped resources.",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the resource group.",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the resource group.",
+																			"example": {
+																				"editable": "false"
+																			},
+																			"properties": {
+																				"key": {
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"name": {
+																			"description": "Name of the resource group.",
+																			"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"scope": {
+																			"description": "The scope associated to the resource group",
+																			"items": {
+																				"description": "A scope is a combination of scope objects which provides additional context.",
+																				"properties": {
+																					"key": {
+																						"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																						"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																						"readOnly": true,
+																						"x-auditable": true
+																					},
+																					"objects": {
+																						"description": "A list of scope objects for additional context.",
+																						"items": {
+																							"description": "A scope object represents any resource that can have actions applied against invite.",
+																							"properties": {
+																								"key": {
+																									"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																									"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																									"readOnly": true,
+																									"x-auditable": true
+																								}
+																							},
+																							"required": [
+																								"key"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"key",
+																					"objects"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"scope"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"title": "list_member_policy"
+													},
+													"type": "array"
+												},
+												"roles": {
+													"description": "List of role names the membership has for this account.",
+													"items": {
+														"example": "Account Administrator",
+														"maxLength": 120,
+														"type": "string",
+														"x-auditable": true
+													},
+													"readOnly": true,
+													"type": "array"
+												},
+												"status": {
+													"description": "Status of this membership.",
+													"enum": [
+														"accepted",
+														"pending",
+														"rejected"
+													],
+													"example": "accepted",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"title": "response_with_policies"
+						}
+					}
+				},
+				"description": "Membership Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Membership Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Membership Details",
+		"tags": [
+			"User's Account Memberships"
+		],
+		"x-api-token-group": [
+			"Memberships Write",
+			"Memberships Read"
+		]
+	},
+	"PUT /memberships/{membership_id}": {
+		"description": "Accept or reject this account invitation.",
+		"operationId": "user'-s-account-memberships-update-membership",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "membership_id",
+				"required": true,
+				"schema": {
+					"description": "Membership identifier tag.",
+					"example": "4536bcfad5faccb111b47003c79917fa",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"status": {
+								"description": "Whether to accept or reject this account invitation.",
+								"enum": [
+									"accepted",
+									"rejected"
+								],
+								"example": "accepted"
+							}
+						},
+						"required": [
+							"status"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "Timestamp for the creation of the account",
+																	"example": "2014-03-01T12:21:02.0000Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Identifier",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Account name",
+																	"example": "Demo Account",
+																	"maxLength": 100,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"settings": {
+																	"description": "Account settings",
+																	"properties": {
+																		"abuse_contact_email": {
+																			"description": "Sets an abuse contact email to notify for abuse reports.",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"enforce_twofactor": {
+																			"default": false,
+																			"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"required": [
+																"id",
+																"name"
+															],
+															"type": "object"
+														}
+													],
+													"readOnly": true
+												},
+												"api_access_enabled": {
+													"description": "Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account.",
+													"example": true,
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Membership identifier tag.",
+													"example": "4536bcfad5faccb111b47003c79917fa",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"permissions": {
+													"allOf": [
+														{
+															"example": {
+																"analytics": {
+																	"read": true,
+																	"write": false
+																},
+																"zones": {
+																	"read": true,
+																	"write": true
+																}
+															},
+															"properties": {
+																"analytics": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"billing": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"cache_purge": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"dns": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"dns_records": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"lb": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"logs": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"organization": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"ssl": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"waf": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"zone_settings": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"zones": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "All access permissions for the user at the account.",
+													"readOnly": true
+												},
+												"policies": {
+													"description": "Access policy for the membership",
+													"items": {
+														"properties": {
+															"access": {
+																"description": "Allow or deny operations against the resources.",
+																"enum": [
+																	"allow",
+																	"deny"
+																],
+																"example": "allow",
+																"type": "string",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Policy identifier.",
+																"example": "f267e341f3dd4697bd3b9f71dd96247f",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-always-send": true
+															},
+															"permission_groups": {
+																"description": "A set of permission groups that are specified to the policy.",
+																"example": [
+																	{
+																		"id": "c8fed203ed3043cba015a93ad1616f1f",
+																		"meta": {
+																			"label": "load_balancer_admin",
+																			"scopes": "com.cloudflare.api.account"
+																		},
+																		"name": "Zone Read"
+																	},
+																	{
+																		"id": "82e64a83756745bbbb1c9c2701bf816b",
+																		"meta": {
+																			"label": "fbm_user",
+																			"scopes": "com.cloudflare.api.account"
+																		},
+																		"name": "Magic Network Monitoring"
+																	}
+																],
+																"items": {
+																	"description": "A named group of permissions that map to a group of operations against resources.",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the permission group.",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the permission group.",
+																			"example": {
+																				"label": "load_balancer_admin",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"properties": {
+																				"key": {
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"value": {
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"name": {
+																			"description": "Name of the permission group.",
+																			"example": "Load Balancer",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"resource_groups": {
+																"description": "A list of resource groups that the policy applies to.",
+																"items": {
+																	"description": "A group of scoped resources.",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the resource group.",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the resource group.",
+																			"example": {
+																				"editable": "false"
+																			},
+																			"properties": {
+																				"key": {
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"name": {
+																			"description": "Name of the resource group.",
+																			"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"scope": {
+																			"description": "The scope associated to the resource group",
+																			"items": {
+																				"description": "A scope is a combination of scope objects which provides additional context.",
+																				"properties": {
+																					"key": {
+																						"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																						"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																						"readOnly": true,
+																						"x-auditable": true
+																					},
+																					"objects": {
+																						"description": "A list of scope objects for additional context.",
+																						"items": {
+																							"description": "A scope object represents any resource that can have actions applied against invite.",
+																							"properties": {
+																								"key": {
+																									"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																									"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																									"readOnly": true,
+																									"x-auditable": true
+																								}
+																							},
+																							"required": [
+																								"key"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"key",
+																					"objects"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"scope"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"title": "list_member_policy"
+													},
+													"type": "array"
+												},
+												"roles": {
+													"description": "List of role names the membership has for this account.",
+													"items": {
+														"example": "Account Administrator",
+														"maxLength": 120,
+														"type": "string",
+														"x-auditable": true
+													},
+													"readOnly": true,
+													"type": "array"
+												},
+												"status": {
+													"description": "Status of this membership.",
+													"enum": [
+														"accepted",
+														"pending",
+														"rejected"
+													],
+													"example": "accepted",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"title": "response_with_policies"
+						}
+					}
+				},
+				"description": "Update Membership response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update Membership response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Membership",
+		"tags": [
+			"User's Account Memberships"
+		],
+		"x-api-token-group": [
+			"Memberships Write"
+		]
+	}
+}

@@ -1,0 +1,102 @@
+{
+	"GET /accounts/{account_id}/cloudforce-one/events/indicatorTypes": {
+		"operationId": "get_IndicatorTypesList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"items": {
+									"properties": {
+										"type": {
+											"example": "string",
+											"type": "string"
+										}
+									},
+									"required": [
+										"type"
+									],
+									"type": "object"
+								},
+								"type": {
+									"example": "array",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"items"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a list of indicator types."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Lists all indicator types",
+		"tags": [
+			"Indicator Types"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	}
+}

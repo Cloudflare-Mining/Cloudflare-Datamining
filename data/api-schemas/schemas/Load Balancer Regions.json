@@ -1,0 +1,870 @@
+{
+	"GET /accounts/{account_id}/load_balancers/regions": {
+		"description": "List all region mappings.",
+		"operationId": "load-balancer-regions-list-regions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "subdivision_code",
+				"schema": {
+					"description": "Two-letter subdivision code followed in ISO 3166-2.",
+					"example": "CA",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "subdivision_code_a2",
+				"schema": {
+					"description": "Two-letter subdivision code followed in ISO 3166-2.",
+					"example": "CA",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "country_code_a2",
+				"schema": {
+					"description": "Two-letter alpha-2 country code followed in ISO 3166-1.",
+					"example": "US",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Regions response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Regions response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List Regions",
+		"tags": [
+			"Load Balancer Regions"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
+		]
+	},
+	"GET /accounts/{account_id}/load_balancers/regions/{region_id}": {
+		"description": "Get a single region mapping.",
+		"operationId": "load-balancer-regions-get-region",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "region_id",
+				"required": true,
+				"schema": {
+					"description": "A list of Cloudflare regions. WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia).",
+					"enum": [
+						"WNAM",
+						"ENAM",
+						"WEU",
+						"EEU",
+						"NSAM",
+						"SSAM",
+						"OC",
+						"ME",
+						"NAF",
+						"SAF",
+						"SAS",
+						"SEAS",
+						"NEAS"
+					],
+					"example": "WNAM",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A list of countries and subdivisions mapped to a region.",
+											"example": {
+												"iso_standard": "Country and subdivision codes follow ISO 3166-1 alpha-2 and ISO 3166-2",
+												"regions": [
+													{
+														"countries": [
+															{
+																"country_code_a2": "CA",
+																"country_name": "Canada",
+																"country_subdivisions": [
+																	{
+																		"subdivision_code_a2": "AB",
+																		"subdivision_name": "Alberta"
+																	},
+																	{
+																		"subdivision_code_a2": "BC",
+																		"subdivision_name": "British Columbia"
+																	}
+																]
+															},
+															{
+																"country_code_a2": "HT",
+																"country_name": "Haiti"
+															},
+															{
+																"country_code_a2": "MX",
+																"country_name": "Mexico"
+															},
+															{
+																"country_code_a2": "US",
+																"country_name": "United States",
+																"country_subdivisions": [
+																	{
+																		"subdivision_code_a2": "AZ",
+																		"subdivision_name": "Arizona"
+																	},
+																	{
+																		"subdivision_code_a2": "CA",
+																		"subdivision_name": "California"
+																	},
+																	{
+																		"subdivision_code_a2": "CO",
+																		"subdivision_name": "Colorado"
+																	},
+																	{
+																		"subdivision_code_a2": "HI",
+																		"subdivision_name": "Hawaii"
+																	},
+																	{
+																		"subdivision_code_a2": "MN",
+																		"subdivision_name": "Minnesota"
+																	},
+																	{
+																		"subdivision_code_a2": "MO",
+																		"subdivision_name": "Missouri"
+																	},
+																	{
+																		"subdivision_code_a2": "NV",
+																		"subdivision_name": "Nevada"
+																	},
+																	{
+																		"subdivision_code_a2": "OR",
+																		"subdivision_name": "Oregon"
+																	},
+																	{
+																		"subdivision_code_a2": "TX",
+																		"subdivision_name": "Texas"
+																	},
+																	{
+																		"subdivision_code_a2": "UT",
+																		"subdivision_name": "Utah"
+																	},
+																	{
+																		"subdivision_code_a2": "WA",
+																		"subdivision_name": "Washington"
+																	}
+																]
+															}
+														],
+														"region_code": "WNAM"
+													}
+												]
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Region response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "A list of countries and subdivisions mapped to a region.",
+													"example": {
+														"iso_standard": "Country and subdivision codes follow ISO 3166-1 alpha-2 and ISO 3166-2",
+														"regions": [
+															{
+																"countries": [
+																	{
+																		"country_code_a2": "CA",
+																		"country_name": "Canada",
+																		"country_subdivisions": [
+																			{
+																				"subdivision_code_a2": "AB",
+																				"subdivision_name": "Alberta"
+																			},
+																			{
+																				"subdivision_code_a2": "BC",
+																				"subdivision_name": "British Columbia"
+																			}
+																		]
+																	},
+																	{
+																		"country_code_a2": "HT",
+																		"country_name": "Haiti"
+																	},
+																	{
+																		"country_code_a2": "MX",
+																		"country_name": "Mexico"
+																	},
+																	{
+																		"country_code_a2": "US",
+																		"country_name": "United States",
+																		"country_subdivisions": [
+																			{
+																				"subdivision_code_a2": "AZ",
+																				"subdivision_name": "Arizona"
+																			},
+																			{
+																				"subdivision_code_a2": "CA",
+																				"subdivision_name": "California"
+																			},
+																			{
+																				"subdivision_code_a2": "CO",
+																				"subdivision_name": "Colorado"
+																			},
+																			{
+																				"subdivision_code_a2": "HI",
+																				"subdivision_name": "Hawaii"
+																			},
+																			{
+																				"subdivision_code_a2": "MN",
+																				"subdivision_name": "Minnesota"
+																			},
+																			{
+																				"subdivision_code_a2": "MO",
+																				"subdivision_name": "Missouri"
+																			},
+																			{
+																				"subdivision_code_a2": "NV",
+																				"subdivision_name": "Nevada"
+																			},
+																			{
+																				"subdivision_code_a2": "OR",
+																				"subdivision_name": "Oregon"
+																			},
+																			{
+																				"subdivision_code_a2": "TX",
+																				"subdivision_name": "Texas"
+																			},
+																			{
+																				"subdivision_code_a2": "UT",
+																				"subdivision_name": "Utah"
+																			},
+																			{
+																				"subdivision_code_a2": "WA",
+																				"subdivision_name": "Washington"
+																			}
+																		]
+																	}
+																],
+																"region_code": "WNAM"
+															}
+														]
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Region response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Region",
+		"tags": [
+			"Load Balancer Regions"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
+		]
+	}
+}

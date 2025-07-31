@@ -1,0 +1,2407 @@
+{
+	"GET /accounts/{account_id}/audit_logs": {
+		"description": "Gets a list of audit logs for an account. Can be filtered by who made the change, on which zone, and the timeframe of the change.",
+		"operationId": "audit-logs-get-account-audit-logs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"description": "Finds a specific log by its ID.",
+					"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "export",
+				"schema": {
+					"description": "Indicates that this request is an export of logs in CSV format.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action.type",
+				"schema": {
+					"description": "Filters by the action type.",
+					"example": "add",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor.ip",
+				"schema": {
+					"description": "Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range.",
+					"example": "17.168.228.63",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor.email",
+				"schema": {
+					"description": "Filters by the email address of the actor that made the change.",
+					"example": "alice@example.com",
+					"format": "email",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"oneOf": [
+						{
+							"description": "Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339.",
+							"example": "2019-04-30",
+							"format": "date",
+							"type": "string"
+						},
+						{
+							"description": "Limits the returned results to logs newer than the specified date. A `date-time` that conforms to RFC3339.",
+							"example": "2019-04-30T01:12:20Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "before",
+				"schema": {
+					"oneOf": [
+						{
+							"description": "Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339.",
+							"example": "2019-04-30",
+							"format": "date",
+							"type": "string"
+						},
+						{
+							"description": "Limits the returned results to logs older than the specified date. A `date-time` that conforms to RFC3339.",
+							"example": "2019-04-30T01:12:20Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone.name",
+				"schema": {
+					"description": "Filters by the name of the zone associated to the change.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "desc",
+					"description": "Changes the direction of the chronological sorting.",
+					"enum": [
+						"desc",
+						"asc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 100,
+					"description": "Sets the number of results to return per page.",
+					"example": 25,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Defines which page of results to return.",
+					"example": 50,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hide_user_logs",
+				"schema": {
+					"default": false,
+					"description": "Indicates whether or not to hide user level audit logs.",
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"oneOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"items": {
+												"properties": {
+													"action": {
+														"properties": {
+															"result": {
+																"description": "A boolean that indicates if the action attempted was successful.",
+																"example": true,
+																"type": "boolean"
+															},
+															"type": {
+																"description": "A short string that describes the action that was performed.",
+																"example": "change_setting",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"actor": {
+														"properties": {
+															"email": {
+																"description": "The email of the user that performed the action.",
+																"example": "michelle@example.com",
+																"format": "email",
+																"type": "string"
+															},
+															"id": {
+																"description": "The ID of the actor that performed the action. If a user performed the action, this will be their User ID.",
+																"example": "f6b5de0326bb5182b8a4840ee01ec774",
+																"type": "string"
+															},
+															"ip": {
+																"description": "The IP address of the request that performed the action.",
+																"example": "198.41.129.166",
+																"type": "string"
+															},
+															"type": {
+																"description": "The type of actor, whether a User, Cloudflare Admin, or an Automated System.",
+																"enum": [
+																	"user",
+																	"admin",
+																	"Cloudflare"
+																],
+																"example": "user",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"id": {
+														"description": "A string that uniquely identifies the audit log.",
+														"example": "d5b0f326-1232-4452-8858-1089bd7168ef",
+														"type": "string"
+													},
+													"interface": {
+														"description": "The source of the event.",
+														"example": "API",
+														"type": "string"
+													},
+													"metadata": {
+														"description": "An object which can lend more context to the action being logged. This is a flexible value and varies between different actions.",
+														"example": {
+															"name": "security_level",
+															"type": "firewall",
+															"value": "high",
+															"zone_name": "example.com"
+														},
+														"type": "object"
+													},
+													"newValue": {
+														"description": "The new value of the resource that was modified.",
+														"example": "low",
+														"type": "string"
+													},
+													"oldValue": {
+														"description": "The value of the resource before it was modified.",
+														"example": "high",
+														"type": "string"
+													},
+													"owner": {
+														"properties": {
+															"id": {
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"resource": {
+														"properties": {
+															"id": {
+																"description": "An identifier for the resource that was affected by the action.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"type": "string"
+															},
+															"type": {
+																"description": "A short string that describes the resource that was affected by the action.",
+																"example": "zone",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"when": {
+														"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured.",
+														"example": "2017-04-26T17:31:07Z",
+														"format": "date-time",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									}
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get account audit logs response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"oneOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"items": {
+														"properties": {
+															"action": {
+																"properties": {
+																	"result": {
+																		"description": "A boolean that indicates if the action attempted was successful.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"type": {
+																		"description": "A short string that describes the action that was performed.",
+																		"example": "change_setting",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"actor": {
+																"properties": {
+																	"email": {
+																		"description": "The email of the user that performed the action.",
+																		"example": "michelle@example.com",
+																		"format": "email",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The ID of the actor that performed the action. If a user performed the action, this will be their User ID.",
+																		"example": "f6b5de0326bb5182b8a4840ee01ec774",
+																		"type": "string"
+																	},
+																	"ip": {
+																		"description": "The IP address of the request that performed the action.",
+																		"example": "198.41.129.166",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The type of actor, whether a User, Cloudflare Admin, or an Automated System.",
+																		"enum": [
+																			"user",
+																			"admin",
+																			"Cloudflare"
+																		],
+																		"example": "user",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"id": {
+																"description": "A string that uniquely identifies the audit log.",
+																"example": "d5b0f326-1232-4452-8858-1089bd7168ef",
+																"type": "string"
+															},
+															"interface": {
+																"description": "The source of the event.",
+																"example": "API",
+																"type": "string"
+															},
+															"metadata": {
+																"description": "An object which can lend more context to the action being logged. This is a flexible value and varies between different actions.",
+																"example": {
+																	"name": "security_level",
+																	"type": "firewall",
+																	"value": "high",
+																	"zone_name": "example.com"
+																},
+																"type": "object"
+															},
+															"newValue": {
+																"description": "The new value of the resource that was modified.",
+																"example": "low",
+																"type": "string"
+															},
+															"oldValue": {
+																"description": "The value of the resource before it was modified.",
+																"example": "high",
+																"type": "string"
+															},
+															"owner": {
+																"properties": {
+																	"id": {
+																		"description": "Identifier",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"resource": {
+																"properties": {
+																	"id": {
+																		"description": "An identifier for the resource that was affected by the action.",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "A short string that describes the resource that was affected by the action.",
+																		"example": "zone",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"when": {
+																"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured.",
+																"example": "2017-04-26T17:31:07Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"success": {
+													"example": true,
+													"type": "boolean"
+												}
+											}
+										},
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get account audit logs response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get account audit logs",
+		"tags": [
+			"Audit Logs"
+		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/logs/audit": {
+		"description": "Gets a list of audit logs for an account. <br />  <br /> This is the beta release of Audit Logs Version 2. Since this is a beta version, there may be gaps or missing entries in the available audit logs. Be aware of the following limitations.  <br /> <ul> <li>Audit logs are available only for the past 30 days. <br /></li> <li>Error handling is not yet implemented.  <br /> </li> </ul>",
+		"operationId": "audit-logs-v2-get-account-audit-logs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique id that identifies the account.",
+					"example": "a67e14daa5f8dceeb91fe5449ba496ef",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "account_name",
+				"schema": {
+					"description": "Filters by the account name.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action_result",
+				"schema": {
+					"description": "Filters by whether the action was successful or not.",
+					"example": "success",
+					"items": {
+						"enum": [
+							"success",
+							"failure"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action_type",
+				"schema": {
+					"description": "Filters by the action type.",
+					"items": {
+						"enum": [
+							"create",
+							"delete",
+							"view",
+							"update"
+						],
+						"example": "create",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_context",
+				"schema": {
+					"description": "Filters by the actor context.",
+					"items": {
+						"enum": [
+							"api_key",
+							"api_token",
+							"dash",
+							"oauth",
+							"origin_ca_key"
+						],
+						"example": "api_key",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_email",
+				"schema": {
+					"description": "Filters by the actor's email address.",
+					"items": {
+						"example": "alice@example.com",
+						"format": "email",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_id",
+				"schema": {
+					"description": "Filters by the actor ID. This can be either the Account ID or User ID.",
+					"items": {
+						"example": "1d20c3afe174f18b642710cec6298a9d",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_ip_address",
+				"schema": {
+					"description": "The IP address where the action was initiated.",
+					"items": {
+						"example": "17.168.228.63",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_token_id",
+				"schema": {
+					"description": "Filters by the API token ID when the actor context is an api_token or oauth.",
+					"items": {
+						"example": "144cdb2e39c55e203cf225d8d8208647",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_token_name",
+				"schema": {
+					"description": "Filters by the API token name when the actor context is an api_token or oauth.",
+					"items": {
+						"example": "Test Token",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_type",
+				"schema": {
+					"description": "Filters by the actor type.",
+					"items": {
+						"enum": [
+							"account",
+							"cloudflare_admin",
+							"system",
+							"user"
+						],
+						"example": "account",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "audit_log_id",
+				"schema": {
+					"description": "Finds a specific log by its ID.",
+					"items": {
+						"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_cf_ray_id",
+				"schema": {
+					"description": "Filters by the response CF Ray ID.",
+					"items": {
+						"example": "8e8dd2156ef28414",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_method",
+				"schema": {
+					"description": "The HTTP method for the API call.",
+					"items": {
+						"example": "GET",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_status_code",
+				"schema": {
+					"description": "The response status code that was returned.",
+					"items": {
+						"example": 200,
+						"type": "integer"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_uri",
+				"schema": {
+					"description": "Filters by the request URI.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_id",
+				"schema": {
+					"description": "Filters by the resource ID.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_product",
+				"schema": {
+					"description": "Filters audit logs by the Cloudflare product associated with the changed resource.",
+					"items": {
+						"example": "Stream",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_type",
+				"schema": {
+					"description": "Filters audit logs based on the unique type of resource changed by the action.",
+					"items": {
+						"example": "Video",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_scope",
+				"schema": {
+					"description": "Filters by the resource scope, specifying whether the resource is associated with an user, an account, or a zone.",
+					"items": {
+						"enum": [
+							"accounts",
+							"user",
+							"zones",
+							"memberships"
+						],
+						"example": "accounts",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_id",
+				"schema": {
+					"description": "Filters by the zone ID.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_name",
+				"schema": {
+					"description": "Filters by the zone name associated with the change.",
+					"items": {
+						"example": "example.com",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "account_name.not",
+				"schema": {
+					"description": "Filters out audit logs by the account name.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action_result.not",
+				"schema": {
+					"description": "Filters out audit logs by whether the action was successful or not.",
+					"example": "success",
+					"items": {
+						"enum": [
+							"success",
+							"failure"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action_type.not",
+				"schema": {
+					"description": "Filters out audit logs by the action type.",
+					"items": {
+						"enum": [
+							"create",
+							"delete",
+							"view",
+							"update"
+						],
+						"example": "create",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_context.not",
+				"schema": {
+					"description": "Filters out audit logs by the actor context.",
+					"items": {
+						"enum": [
+							"api_key",
+							"api_token",
+							"dash",
+							"oauth",
+							"origin_ca_key"
+						],
+						"example": "api_key",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_email.not",
+				"schema": {
+					"description": "Filters out audit logs by the actor's email address.",
+					"items": {
+						"example": "alice@example.com",
+						"format": "email",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_id.not",
+				"schema": {
+					"description": "Filters out audit logs by the actor ID. This can be either the Account ID or User ID.",
+					"items": {
+						"example": "1d20c3afe174f18b642710cec6298a9d",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_ip_address.not",
+				"schema": {
+					"description": "Filters out audit logs IP address where the action was initiated.",
+					"items": {
+						"example": "17.168.228.63",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_token_id.not",
+				"schema": {
+					"description": "Filters out audit logs by the API token ID when the actor context is an api_token or oauth.",
+					"items": {
+						"example": "144cdb2e39c55e203cf225d8d8208647",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_token_name.not",
+				"schema": {
+					"description": "Filters out audit logs by the API token name when the actor context is an api_token or oauth.",
+					"items": {
+						"example": "Test Token",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor_type.not",
+				"schema": {
+					"description": "Filters out audit logs by the actor type.",
+					"items": {
+						"enum": [
+							"account",
+							"cloudflare_admin",
+							"system",
+							"user"
+						],
+						"example": "account",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "audit_log_id.not",
+				"schema": {
+					"description": "Filters out audit logs by their IDs.",
+					"items": {
+						"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_cf_ray_id.not",
+				"schema": {
+					"description": "Filters out audit logs by the response CF Ray ID.",
+					"items": {
+						"example": "8e8dd2156ef28414",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_method.not",
+				"schema": {
+					"description": "Filters out audit logs by the HTTP method for the API call.",
+					"items": {
+						"example": "GET",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_status_code.not",
+				"schema": {
+					"description": "Filters out audit logs by the response status code that was returned.",
+					"items": {
+						"example": 200,
+						"type": "integer"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "raw_uri.not",
+				"schema": {
+					"description": "Filters out audit logs by the request URI.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_id.not",
+				"schema": {
+					"description": "Filters out audit logs by the resource ID.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_product.not",
+				"schema": {
+					"description": "Filters out audit logs by the Cloudflare product associated with the changed resource.",
+					"items": {
+						"example": "Stream",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_type.not",
+				"schema": {
+					"description": "Filters out audit logs based on the unique type of resource changed by the action.",
+					"items": {
+						"example": "Video",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "resource_scope.not",
+				"schema": {
+					"description": "Filters out audit logs by the resource scope, specifying whether the resource is associated with an user, an account, or a zone.",
+					"items": {
+						"enum": [
+							"accounts",
+							"user",
+							"zones"
+						],
+						"example": "accounts",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_id.not",
+				"schema": {
+					"description": "Filters out audit logs by the zone ID.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_name.not",
+				"schema": {
+					"description": "Filters out audit logs by the zone name associated with the change.",
+					"items": {
+						"example": "example.com",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Limits the returned results to logs newer than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339.",
+				"in": "query",
+				"name": "since",
+				"required": true,
+				"schema": {
+					"example": "2024-10-30",
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limits the returned results to logs older than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339.",
+				"in": "query",
+				"name": "before",
+				"required": true,
+				"schema": {
+					"example": "2024-10-31",
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "desc",
+					"description": "Sets sorting order.",
+					"enum": [
+						"desc",
+						"asc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 100,
+					"description": "The number limits the objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit.",
+					"example": 25,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"description": "The cursor is an opaque token used to paginate through large sets of records. It indicates the position from which to continue when requesting the next set of records. A valid cursor value can be obtained from the cursor object in the result_info structure of a previous response.",
+					"example": "Q1buH-__DQqqig7SVYXT-SsMOTGY2Z3Y80W-fGgva7yaDdmPKveucH5ddOcHsJRhNb-xUK8agZQqkJSMAENGO8NU6g==",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"account": {
+												"description": "Contains account related information.",
+												"properties": {
+													"id": {
+														"description": "A unique identifier for the account.",
+														"example": "4bb334f7c94c4a29a045f03944f072e5",
+														"type": "string"
+													},
+													"name": {
+														"description": "A string that identifies the account name.",
+														"example": "Example Account",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"action": {
+												"description": "Provides information about the action performed.",
+												"properties": {
+													"description": {
+														"description": "A short description of the action performed.",
+														"example": "Add Member",
+														"type": "string"
+													},
+													"result": {
+														"description": "The result of the action, indicating success or failure.",
+														"example": "success",
+														"type": "string"
+													},
+													"time": {
+														"description": "A timestamp indicating when the action was logged.",
+														"example": "2024-04-26T17:31:07Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"type": {
+														"description": "A short string that describes the action that was performed.",
+														"example": "create",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"actor": {
+												"description": "Provides details about the actor who performed the action.",
+												"properties": {
+													"context": {
+														"enum": [
+															"api_key",
+															"api_token",
+															"dash",
+															"oauth",
+															"origin_ca_key"
+														],
+														"example": "dash",
+														"type": "string"
+													},
+													"email": {
+														"description": "The email of the actor who performed the action.",
+														"example": "alice@example.com",
+														"format": "email",
+														"type": "string"
+													},
+													"id": {
+														"description": "The ID of the actor who performed the action. If a user performed the action, this will be their User ID.",
+														"example": "f6b5de0326bb5182b8a4840ee01ec774",
+														"type": "string"
+													},
+													"ip_address": {
+														"description": "The IP address of the request that performed the action.",
+														"example": "198.41.129.166",
+														"format": "ipv4 | ipv6",
+														"type": "string"
+													},
+													"token_id": {
+														"description": "Filters by the API token ID when the actor context is an api_token.",
+														"type": "string"
+													},
+													"token_name": {
+														"description": "Filters by the API token name when the actor context is an api_token.",
+														"type": "string"
+													},
+													"type": {
+														"description": "The type of actor.",
+														"enum": [
+															"account",
+															"cloudflare_admin",
+															"system",
+															"user"
+														],
+														"example": "user",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"id": {
+												"description": "A unique identifier for the audit log entry.",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"maxLength": 32,
+												"readOnly": true,
+												"type": "string"
+											},
+											"raw": {
+												"description": "Provides raw information about the request and response.",
+												"properties": {
+													"cf_ray_id": {
+														"description": "The Cloudflare Ray ID for the request.",
+														"example": "8e9b1c60ef9e1c9a",
+														"type": "string"
+													},
+													"method": {
+														"description": "The HTTP method of the request.",
+														"example": "POST",
+														"type": "string"
+													},
+													"status_code": {
+														"description": "The HTTP response status code returned by the API.",
+														"example": 200,
+														"type": "integer"
+													},
+													"uri": {
+														"description": "The URI of the request.",
+														"example": "/accounts/4bb334f7c94c4a29a045f03944f072e5/members",
+														"type": "string"
+													},
+													"user_agent": {
+														"description": "The client's user agent string sent with the request.",
+														"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Safari/605.1.15",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"resource": {
+												"description": "Provides details about the affected resource.",
+												"properties": {
+													"id": {
+														"description": "The unique identifier for the affected resource.",
+														"type": "string"
+													},
+													"product": {
+														"description": "The Cloudflare product associated with the resource.",
+														"example": "members",
+														"type": "string"
+													},
+													"request": {
+														"type": "object"
+													},
+													"response": {
+														"type": "object"
+													},
+													"scope": {
+														"description": "The scope of the resource.",
+														"example": "accounts",
+														"type": "object"
+													},
+													"type": {
+														"description": "The type of the resource.",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"zone": {
+												"description": "Provides details about the zone affected by the action.",
+												"properties": {
+													"id": {
+														"description": "A string that identifies the zone id.",
+														"type": "string"
+													},
+													"name": {
+														"description": "A string that identifies the zone name.",
+														"example": "example.com",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"description": "Provides information about the result of the request, including count and cursor.",
+									"properties": {
+										"count": {
+											"description": "The number of records returned in the response.",
+											"example": 1,
+											"type": "string"
+										},
+										"cursor": {
+											"description": "The cursor token used for pagination.",
+											"example": "ASqdKd7dKgxh-aZ8bm0mZos1BtW4BdEqifCzNkEeGRzi_5SN_-362Y8sF-C1TRn60_6rd3z2dIajf9EAPyQ_NmIeAMkacmaJPXipqvP7PLU4t72wyqBeJfjmjdE=",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get account audit logs successful response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"description": "A list of error messages.",
+									"items": {
+										"properties": {
+											"message": {
+												"description": "A text description of this message.",
+												"example": "No route for the URI",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates whether the API call was failed",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get account audit logs failed response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get account audit logs (Version 2, Beta release)",
+		"tags": [
+			"Audit Logs"
+		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /user/audit_logs": {
+		"description": "Gets a list of audit logs for a user account. Can be filtered by who made the change, on which zone, and the timeframe of the change.",
+		"operationId": "audit-logs-get-user-audit-logs",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"description": "Finds a specific log by its ID.",
+					"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "export",
+				"schema": {
+					"description": "Indicates that this request is an export of logs in CSV format.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action.type",
+				"schema": {
+					"description": "Filters by the action type.",
+					"example": "add",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor.ip",
+				"schema": {
+					"description": "Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range.",
+					"example": "17.168.228.63",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor.email",
+				"schema": {
+					"description": "Filters by the email address of the actor that made the change.",
+					"example": "alice@example.com",
+					"format": "email",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"oneOf": [
+						{
+							"description": "Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339.",
+							"example": "2019-04-30",
+							"format": "date",
+							"type": "string"
+						},
+						{
+							"description": "Limits the returned results to logs newer than the specified date. A `date-time` that conforms to RFC3339.",
+							"example": "2019-04-30T01:12:20Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "before",
+				"schema": {
+					"oneOf": [
+						{
+							"description": "Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339.",
+							"example": "2019-04-30",
+							"format": "date",
+							"type": "string"
+						},
+						{
+							"description": "Limits the returned results to logs older than the specified date. A `date-time` that conforms to RFC3339.",
+							"example": "2019-04-30T01:12:20Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone.name",
+				"schema": {
+					"description": "Filters by the name of the zone associated to the change.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "desc",
+					"description": "Changes the direction of the chronological sorting.",
+					"enum": [
+						"desc",
+						"asc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 100,
+					"description": "Sets the number of results to return per page.",
+					"example": 25,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Defines which page of results to return.",
+					"example": 50,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hide_user_logs",
+				"schema": {
+					"default": false,
+					"description": "Indicates whether or not to hide user level audit logs.",
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"oneOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"items": {
+												"properties": {
+													"action": {
+														"properties": {
+															"result": {
+																"description": "A boolean that indicates if the action attempted was successful.",
+																"example": true,
+																"type": "boolean"
+															},
+															"type": {
+																"description": "A short string that describes the action that was performed.",
+																"example": "change_setting",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"actor": {
+														"properties": {
+															"email": {
+																"description": "The email of the user that performed the action.",
+																"example": "michelle@example.com",
+																"format": "email",
+																"type": "string"
+															},
+															"id": {
+																"description": "The ID of the actor that performed the action. If a user performed the action, this will be their User ID.",
+																"example": "f6b5de0326bb5182b8a4840ee01ec774",
+																"type": "string"
+															},
+															"ip": {
+																"description": "The IP address of the request that performed the action.",
+																"example": "198.41.129.166",
+																"type": "string"
+															},
+															"type": {
+																"description": "The type of actor, whether a User, Cloudflare Admin, or an Automated System.",
+																"enum": [
+																	"user",
+																	"admin",
+																	"Cloudflare"
+																],
+																"example": "user",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"id": {
+														"description": "A string that uniquely identifies the audit log.",
+														"example": "d5b0f326-1232-4452-8858-1089bd7168ef",
+														"type": "string"
+													},
+													"interface": {
+														"description": "The source of the event.",
+														"example": "API",
+														"type": "string"
+													},
+													"metadata": {
+														"description": "An object which can lend more context to the action being logged. This is a flexible value and varies between different actions.",
+														"example": {
+															"name": "security_level",
+															"type": "firewall",
+															"value": "high",
+															"zone_name": "example.com"
+														},
+														"type": "object"
+													},
+													"newValue": {
+														"description": "The new value of the resource that was modified.",
+														"example": "low",
+														"type": "string"
+													},
+													"oldValue": {
+														"description": "The value of the resource before it was modified.",
+														"example": "high",
+														"type": "string"
+													},
+													"owner": {
+														"properties": {
+															"id": {
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"resource": {
+														"properties": {
+															"id": {
+																"description": "An identifier for the resource that was affected by the action.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"type": "string"
+															},
+															"type": {
+																"description": "A short string that describes the resource that was affected by the action.",
+																"example": "zone",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"when": {
+														"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured.",
+														"example": "2017-04-26T17:31:07Z",
+														"format": "date-time",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									}
+								},
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get user audit logs response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"oneOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"items": {
+														"properties": {
+															"action": {
+																"properties": {
+																	"result": {
+																		"description": "A boolean that indicates if the action attempted was successful.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"type": {
+																		"description": "A short string that describes the action that was performed.",
+																		"example": "change_setting",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"actor": {
+																"properties": {
+																	"email": {
+																		"description": "The email of the user that performed the action.",
+																		"example": "michelle@example.com",
+																		"format": "email",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The ID of the actor that performed the action. If a user performed the action, this will be their User ID.",
+																		"example": "f6b5de0326bb5182b8a4840ee01ec774",
+																		"type": "string"
+																	},
+																	"ip": {
+																		"description": "The IP address of the request that performed the action.",
+																		"example": "198.41.129.166",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The type of actor, whether a User, Cloudflare Admin, or an Automated System.",
+																		"enum": [
+																			"user",
+																			"admin",
+																			"Cloudflare"
+																		],
+																		"example": "user",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"id": {
+																"description": "A string that uniquely identifies the audit log.",
+																"example": "d5b0f326-1232-4452-8858-1089bd7168ef",
+																"type": "string"
+															},
+															"interface": {
+																"description": "The source of the event.",
+																"example": "API",
+																"type": "string"
+															},
+															"metadata": {
+																"description": "An object which can lend more context to the action being logged. This is a flexible value and varies between different actions.",
+																"example": {
+																	"name": "security_level",
+																	"type": "firewall",
+																	"value": "high",
+																	"zone_name": "example.com"
+																},
+																"type": "object"
+															},
+															"newValue": {
+																"description": "The new value of the resource that was modified.",
+																"example": "low",
+																"type": "string"
+															},
+															"oldValue": {
+																"description": "The value of the resource before it was modified.",
+																"example": "high",
+																"type": "string"
+															},
+															"owner": {
+																"properties": {
+																	"id": {
+																		"description": "Identifier",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"resource": {
+																"properties": {
+																	"id": {
+																		"description": "An identifier for the resource that was affected by the action.",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "A short string that describes the resource that was affected by the action.",
+																		"example": "zone",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"when": {
+																"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured.",
+																"example": "2017-04-26T17:31:07Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"success": {
+													"example": true,
+													"type": "boolean"
+												}
+											}
+										},
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get user audit logs response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get user audit logs",
+		"tags": [
+			"Audit Logs"
+		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

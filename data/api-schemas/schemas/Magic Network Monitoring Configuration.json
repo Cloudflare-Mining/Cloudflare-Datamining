@@ -1,0 +1,3058 @@
+{
+	"DELETE /accounts/{account_id}/mnm/config": {
+		"description": "Delete an existing network monitoring configuration.",
+		"operationId": "magic-network-monitoring-configuration-delete-account-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"default_sampling": {
+													"default": 1,
+													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The account name.",
+													"example": "cloudflare user's account",
+													"type": "string",
+													"x-auditable": true
+												},
+												"router_ips": {
+													"items": {
+														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+														"example": "203.0.113.1",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string",
+																"x-auditable": true
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"router_ip"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips",
+												"warp_devices"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete account configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"default_sampling": {
+															"default": 1,
+															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The account name.",
+															"example": "cloudflare user's account",
+															"type": "string",
+															"x-auditable": true
+														},
+														"router_ips": {
+															"items": {
+																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"router_ip"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips",
+														"warp_devices"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete account configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete account configuration",
+		"tags": [
+			"Magic Network Monitoring Configuration"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin"
+		]
+	},
+	"GET /accounts/{account_id}/mnm/config": {
+		"description": "Lists default sampling, router IPs and warp devices for account.",
+		"operationId": "magic-network-monitoring-configuration-list-account-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"default_sampling": {
+													"default": 1,
+													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The account name.",
+													"example": "cloudflare user's account",
+													"type": "string",
+													"x-auditable": true
+												},
+												"router_ips": {
+													"items": {
+														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+														"example": "203.0.113.1",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string",
+																"x-auditable": true
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"router_ip"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips",
+												"warp_devices"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List account configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"default_sampling": {
+															"default": 1,
+															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The account name.",
+															"example": "cloudflare user's account",
+															"type": "string",
+															"x-auditable": true
+														},
+														"router_ips": {
+															"items": {
+																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"router_ip"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips",
+														"warp_devices"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List account configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List account configuration",
+		"tags": [
+			"Magic Network Monitoring Configuration"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write",
+			"Magic Network Monitoring Config Read"
+		]
+	},
+	"GET /accounts/{account_id}/mnm/config/full": {
+		"description": "Lists default sampling, router IPs, warp devices, and rules for account.",
+		"operationId": "magic-network-monitoring-configuration-list-rules-and-account-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"default_sampling": {
+													"default": 1,
+													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The account name.",
+													"example": "cloudflare user's account",
+													"type": "string",
+													"x-auditable": true
+												},
+												"router_ips": {
+													"items": {
+														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+														"example": "203.0.113.1",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string",
+																"x-auditable": true
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"router_ip"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips",
+												"warp_devices"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List rules and account configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"default_sampling": {
+															"default": 1,
+															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The account name.",
+															"example": "cloudflare user's account",
+															"type": "string",
+															"x-auditable": true
+														},
+														"router_ips": {
+															"items": {
+																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"router_ip"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips",
+														"warp_devices"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List rules and account configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List rules and account configuration",
+		"tags": [
+			"Magic Network Monitoring Configuration"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write",
+			"Magic Network Monitoring Config Read"
+		]
+	},
+	"PATCH /accounts/{account_id}/mnm/config": {
+		"description": "Update fields in an existing network monitoring configuration.",
+		"operationId": "magic-network-monitoring-configuration-update-account-configuration-fields",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"default_sampling": {
+								"default": 1,
+								"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+								"minimum": 1,
+								"type": "number",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "The account name.",
+								"example": "cloudflare user's account",
+								"type": "string",
+								"x-auditable": true
+							},
+							"router_ips": {
+								"items": {
+									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+									"example": "203.0.113.1",
+									"type": "string",
+									"x-auditable": true
+								},
+								"type": "array"
+							},
+							"warp_devices": {
+								"items": {
+									"description": "Object representing a warp device with an ID and name.",
+									"properties": {
+										"id": {
+											"description": "Unique identifier for the warp device.",
+											"example": "5360368d-b351-4791-abe1-93550dabd351",
+											"type": "string",
+											"x-auditable": true
+										},
+										"name": {
+											"description": "Name of the warp device.",
+											"example": "My warp device",
+											"type": "string",
+											"x-auditable": true
+										},
+										"router_ip": {
+											"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+											"example": "203.0.113.1",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"router_ip"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"default_sampling": {
+													"default": 1,
+													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The account name.",
+													"example": "cloudflare user's account",
+													"type": "string",
+													"x-auditable": true
+												},
+												"router_ips": {
+													"items": {
+														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+														"example": "203.0.113.1",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string",
+																"x-auditable": true
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"router_ip"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips",
+												"warp_devices"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update account configuration fields response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"default_sampling": {
+															"default": 1,
+															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The account name.",
+															"example": "cloudflare user's account",
+															"type": "string",
+															"x-auditable": true
+														},
+														"router_ips": {
+															"items": {
+																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"router_ip"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips",
+														"warp_devices"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update account configuration fields response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update account configuration fields",
+		"tags": [
+			"Magic Network Monitoring Configuration"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write"
+		]
+	},
+	"POST /accounts/{account_id}/mnm/config": {
+		"description": "Create a new network monitoring configuration.",
+		"operationId": "magic-network-monitoring-configuration-create-account-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"default_sampling": {
+								"default": 1,
+								"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+								"minimum": 1,
+								"type": "number",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "The account name.",
+								"example": "cloudflare user's account",
+								"type": "string",
+								"x-auditable": true
+							},
+							"router_ips": {
+								"items": {
+									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+									"example": "203.0.113.1",
+									"type": "string",
+									"x-auditable": true
+								},
+								"type": "array"
+							},
+							"warp_devices": {
+								"items": {
+									"description": "Object representing a warp device with an ID and name.",
+									"properties": {
+										"id": {
+											"description": "Unique identifier for the warp device.",
+											"example": "5360368d-b351-4791-abe1-93550dabd351",
+											"type": "string",
+											"x-auditable": true
+										},
+										"name": {
+											"description": "Name of the warp device.",
+											"example": "My warp device",
+											"type": "string",
+											"x-auditable": true
+										},
+										"router_ip": {
+											"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+											"example": "203.0.113.1",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"router_ip"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"default_sampling"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"default_sampling": {
+													"default": 1,
+													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The account name.",
+													"example": "cloudflare user's account",
+													"type": "string",
+													"x-auditable": true
+												},
+												"router_ips": {
+													"items": {
+														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+														"example": "203.0.113.1",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string",
+																"x-auditable": true
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"router_ip"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips",
+												"warp_devices"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create account configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"default_sampling": {
+															"default": 1,
+															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The account name.",
+															"example": "cloudflare user's account",
+															"type": "string",
+															"x-auditable": true
+														},
+														"router_ips": {
+															"items": {
+																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"router_ip"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips",
+														"warp_devices"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create account configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create account configuration",
+		"tags": [
+			"Magic Network Monitoring Configuration"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin"
+		]
+	},
+	"PUT /accounts/{account_id}/mnm/config": {
+		"description": "Update an existing network monitoring configuration, requires the entire configuration to be updated at once.",
+		"operationId": "magic-network-monitoring-configuration-update-an-entire-account-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"default_sampling": {
+								"default": 1,
+								"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+								"minimum": 1,
+								"type": "number",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "The account name.",
+								"example": "cloudflare user's account",
+								"type": "string",
+								"x-auditable": true
+							},
+							"router_ips": {
+								"items": {
+									"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+									"example": "203.0.113.1",
+									"type": "string",
+									"x-auditable": true
+								},
+								"type": "array"
+							},
+							"warp_devices": {
+								"items": {
+									"description": "Object representing a warp device with an ID and name.",
+									"properties": {
+										"id": {
+											"description": "Unique identifier for the warp device.",
+											"example": "5360368d-b351-4791-abe1-93550dabd351",
+											"type": "string",
+											"x-auditable": true
+										},
+										"name": {
+											"description": "Name of the warp device.",
+											"example": "My warp device",
+											"type": "string",
+											"x-auditable": true
+										},
+										"router_ip": {
+											"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+											"example": "203.0.113.1",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"router_ip"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"default_sampling"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"default_sampling": {
+													"default": 1,
+													"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The account name.",
+													"example": "cloudflare user's account",
+													"type": "string",
+													"x-auditable": true
+												},
+												"router_ips": {
+													"items": {
+														"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+														"example": "203.0.113.1",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"warp_devices": {
+													"items": {
+														"description": "Object representing a warp device with an ID and name.",
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the warp device.",
+																"example": "5360368d-b351-4791-abe1-93550dabd351",
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Name of the warp device.",
+																"example": "My warp device",
+																"type": "string",
+																"x-auditable": true
+															},
+															"router_ip": {
+																"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"router_ip"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips",
+												"warp_devices"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update an entire account configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"default_sampling": {
+															"default": 1,
+															"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The account name.",
+															"example": "cloudflare user's account",
+															"type": "string",
+															"x-auditable": true
+														},
+														"router_ips": {
+															"items": {
+																"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+																"example": "203.0.113.1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"warp_devices": {
+															"items": {
+																"description": "Object representing a warp device with an ID and name.",
+																"properties": {
+																	"id": {
+																		"description": "Unique identifier for the warp device.",
+																		"example": "5360368d-b351-4791-abe1-93550dabd351",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "Name of the warp device.",
+																		"example": "My warp device",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"router_ip": {
+																		"description": "IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported.",
+																		"example": "203.0.113.1",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"router_ip"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips",
+														"warp_devices"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update an entire account configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update an entire account configuration",
+		"tags": [
+			"Magic Network Monitoring Configuration"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write"
+		]
+	}
+}

@@ -1,0 +1,2531 @@
+{
+	"DELETE /accounts/{account_id}/dns_settings/views/{view_id}": {
+		"description": "Delete an existing Internal DNS View",
+		"operationId": "dns-views-for-an-account-delete-internal-dns-view",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "view_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"id": {
+											"description": "Identifier.",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"type": "string",
+											"x-auditable": true
+										}
+									}
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Internal DNS View response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Internal DNS View response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Internal DNS View",
+		"tags": [
+			"DNS Internal Views for an Account"
+		],
+		"x-api-token-group": [
+			"DNS View Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns.view:delete"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/dns_settings/views": {
+		"description": "List DNS Internal Views for an Account",
+		"operationId": "dns-views-for-an-account-list-internal-dns-views",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Exact value of the DNS view name. This is a convenience alias for `name.exact`.\n",
+					"example": "my view",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.exact",
+				"schema": {
+					"description": "Exact value of the DNS view name.\n",
+					"example": "my view",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.contains",
+				"schema": {
+					"description": "Substring of the DNS view name.\n",
+					"example": "view",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.startswith",
+				"schema": {
+					"description": "Prefix of the DNS view name.\n",
+					"example": "my",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.endswith",
+				"schema": {
+					"description": "Suffix of the DNS view name.\n",
+					"example": "ew",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_id",
+				"schema": {
+					"description": "A zone ID that exists in the zones list for the view.\n",
+					"example": "ae29bea30e2e427ba9cd8d78b628177b",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_name",
+				"schema": {
+					"description": "A zone name that exists in the zones list for the view.\n",
+					"example": "www.example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "match",
+				"schema": {
+					"default": "all",
+					"description": "Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.\n",
+					"enum": [
+						"any",
+						"all"
+					],
+					"example": "any",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 100,
+					"description": "Number of DNS views per page.",
+					"example": 5,
+					"maximum": 5000000,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "type",
+					"description": "Field to order DNS views by.",
+					"enum": [
+						"name",
+						"created_on",
+						"modified_on"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "asc",
+					"description": "Direction to order DNS views in.",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"created_time": {
+																"description": "When the view was created.",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"modified_time": {
+																"description": "When the view was last modified.",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "The name of the view.",
+																"example": "my view",
+																"maxLength": 255,
+																"minLength": 1,
+																"type": "string",
+																"x-auditable": true
+															},
+															"zones": {
+																"description": "The list of zones linked to this view.",
+																"items": {
+																	"description": "zone id",
+																	"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"id": {
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id"
+														],
+														"type": "object"
+													}
+												],
+												"required": [
+													"id",
+													"name",
+													"zones",
+													"created_time",
+													"modified_time"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Internal DNS Views response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"allOf": [
+															{
+																"properties": {
+																	"created_time": {
+																		"description": "When the view was created.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"modified_time": {
+																		"description": "When the view was last modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "The name of the view.",
+																		"example": "my view",
+																		"maxLength": 255,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"zones": {
+																		"description": "The list of zones linked to this view.",
+																		"items": {
+																			"description": "zone id",
+																			"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																			"maxLength": 32,
+																			"minLength": 32,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "Identifier.",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id"
+																],
+																"type": "object"
+															}
+														],
+														"required": [
+															"id",
+															"name",
+															"zones",
+															"created_time",
+															"modified_time"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Internal DNS Views response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Internal DNS Views",
+		"tags": [
+			"DNS Internal Views for an Account"
+		],
+		"x-api-token-group": [
+			"DNS View Write",
+			"DNS View Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns.view:list"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/dns_settings/views/{view_id}": {
+		"description": "Get DNS Internal View",
+		"operationId": "dns-views-for-an-account-get-internal-dns-view",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "view_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_time": {
+															"description": "When the view was created.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_time": {
+															"description": "When the view was last modified.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The name of the view.",
+															"example": "my view",
+															"maxLength": 255,
+															"minLength": 1,
+															"type": "string",
+															"x-auditable": true
+														},
+														"zones": {
+															"description": "The list of zones linked to this view.",
+															"items": {
+																"description": "zone id",
+																"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																"maxLength": 32,
+																"minLength": 32,
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											],
+											"required": [
+												"id",
+												"name",
+												"zones",
+												"created_time",
+												"modified_time"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get DNS Internal View response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_time": {
+																	"description": "When the view was created.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_time": {
+																	"description": "When the view was last modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the view.",
+																	"example": "my view",
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"zones": {
+																	"description": "The list of zones linked to this view.",
+																	"items": {
+																		"description": "zone id",
+																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																		"maxLength": 32,
+																		"minLength": 32,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier.",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														}
+													],
+													"required": [
+														"id",
+														"name",
+														"zones",
+														"created_time",
+														"modified_time"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Internal DNS Views response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "DNS Internal View Details",
+		"tags": [
+			"DNS Internal Views for an Account"
+		],
+		"x-api-token-group": [
+			"DNS View Write",
+			"DNS View Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns.view:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /accounts/{account_id}/dns_settings/views/{view_id}": {
+		"description": "Update an existing Internal DNS View",
+		"operationId": "dns-views-for-an-account-update-internal-dns-view",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "view_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"created_time": {
+										"description": "When the view was created.",
+										"example": "2014-01-01T05:20:00.12345Z",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"modified_time": {
+										"description": "When the view was last modified.",
+										"example": "2014-01-01T05:20:00.12345Z",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"name": {
+										"description": "The name of the view.",
+										"example": "my view",
+										"maxLength": 255,
+										"minLength": 1,
+										"type": "string",
+										"x-auditable": true
+									},
+									"zones": {
+										"description": "The list of zones linked to this view.",
+										"items": {
+											"description": "zone id",
+											"example": "372e67954025e0ba6aaa6d586b9e0b59",
+											"maxLength": 32,
+											"minLength": 32,
+											"type": "string",
+											"x-auditable": true
+										},
+										"type": "array"
+									}
+								},
+								"type": "object"
+							}
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_time": {
+															"description": "When the view was created.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_time": {
+															"description": "When the view was last modified.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The name of the view.",
+															"example": "my view",
+															"maxLength": 255,
+															"minLength": 1,
+															"type": "string",
+															"x-auditable": true
+														},
+														"zones": {
+															"description": "The list of zones linked to this view.",
+															"items": {
+																"description": "zone id",
+																"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																"maxLength": 32,
+																"minLength": 32,
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											],
+											"required": [
+												"id",
+												"name",
+												"zones",
+												"created_time",
+												"modified_time"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Internal DNS View response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_time": {
+																	"description": "When the view was created.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_time": {
+																	"description": "When the view was last modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the view.",
+																	"example": "my view",
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"zones": {
+																	"description": "The list of zones linked to this view.",
+																	"items": {
+																		"description": "zone id",
+																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																		"maxLength": 32,
+																		"minLength": 32,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier.",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														}
+													],
+													"required": [
+														"id",
+														"name",
+														"zones",
+														"created_time",
+														"modified_time"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Internal DNS View response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Internal DNS View",
+		"tags": [
+			"DNS Internal Views for an Account"
+		],
+		"x-api-token-group": [
+			"DNS View Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns.view:update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/dns_settings/views": {
+		"description": "Create Internal DNS View for an account",
+		"operationId": "dns-views-for-an-account-create-internal-dns-views",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"created_time": {
+										"description": "When the view was created.",
+										"example": "2014-01-01T05:20:00.12345Z",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"modified_time": {
+										"description": "When the view was last modified.",
+										"example": "2014-01-01T05:20:00.12345Z",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"name": {
+										"description": "The name of the view.",
+										"example": "my view",
+										"maxLength": 255,
+										"minLength": 1,
+										"type": "string",
+										"x-auditable": true
+									},
+									"zones": {
+										"description": "The list of zones linked to this view.",
+										"items": {
+											"description": "zone id",
+											"example": "372e67954025e0ba6aaa6d586b9e0b59",
+											"maxLength": 32,
+											"minLength": 32,
+											"type": "string",
+											"x-auditable": true
+										},
+										"type": "array"
+									}
+								},
+								"type": "object"
+							}
+						],
+						"required": [
+							"name",
+							"zones"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_time": {
+															"description": "When the view was created.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_time": {
+															"description": "When the view was last modified.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The name of the view.",
+															"example": "my view",
+															"maxLength": 255,
+															"minLength": 1,
+															"type": "string",
+															"x-auditable": true
+														},
+														"zones": {
+															"description": "The list of zones linked to this view.",
+															"items": {
+																"description": "zone id",
+																"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																"maxLength": 32,
+																"minLength": 32,
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											],
+											"required": [
+												"id",
+												"name",
+												"zones",
+												"created_time",
+												"modified_time"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Internal DNS View response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_time": {
+																	"description": "When the view was created.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_time": {
+																	"description": "When the view was last modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the view.",
+																	"example": "my view",
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"zones": {
+																	"description": "The list of zones linked to this view.",
+																	"items": {
+																		"description": "zone id",
+																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																		"maxLength": 32,
+																		"minLength": 32,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier.",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														}
+													],
+													"required": [
+														"id",
+														"name",
+														"zones",
+														"created_time",
+														"modified_time"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Internal DNS View response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Internal DNS View",
+		"tags": [
+			"DNS Internal Views for an Account"
+		],
+		"x-api-token-group": [
+			"DNS View Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns.view:create"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

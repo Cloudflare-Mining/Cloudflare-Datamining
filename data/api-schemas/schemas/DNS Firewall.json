@@ -1,0 +1,4529 @@
+{
+	"DELETE /accounts/{account_id}/dns_firewall/{dns_firewall_id}": {
+		"description": "Delete a DNS Firewall cluster",
+		"operationId": "dns-firewall-delete-dns-firewall-cluster",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "dns_firewall_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete DNS Firewall Cluster response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete DNS Firewall Cluster response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete DNS Firewall Cluster",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-api-token-group": [
+			"DNS Firewall Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/dns_firewall": {
+		"description": "List DNS Firewall clusters for an account",
+		"operationId": "dns-firewall-list-dns-firewall-clusters",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Number of clusters per page",
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"attack_mitigation": {
+																"description": "Attack mitigation settings",
+																"nullable": true,
+																"properties": {
+																	"enabled": {
+																		"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"only_when_upstream_unhealthy": {
+																		"default": true,
+																		"description": "Only mitigate attacks when upstream servers seem unhealthy",
+																		"example": false,
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"deprecate_any_requests": {
+																"description": "Whether to refuse to answer queries for the ANY type",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"ecs_fallback": {
+																"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
+																"example": false,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"maximum_cache_ttl": {
+																"default": 900,
+																"description": "Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+																"example": 900,
+																"maximum": 36000,
+																"minimum": 30,
+																"type": "number",
+																"x-auditable": true
+															},
+															"minimum_cache_ttl": {
+																"default": 60,
+																"description": "Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+																"example": 60,
+																"maximum": 36000,
+																"minimum": 30,
+																"type": "number",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "DNS Firewall cluster name",
+																"example": "My Awesome DNS Firewall cluster",
+																"maxLength": 160,
+																"minLength": 1,
+																"type": "string",
+																"x-auditable": true
+															},
+															"negative_cache_ttl": {
+																"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+																"example": 900,
+																"maximum": 36000,
+																"minimum": 30,
+																"nullable": true,
+																"type": "number",
+																"x-auditable": true
+															},
+															"ratelimit": {
+																"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
+																"example": 600,
+																"maximum": 1000000000,
+																"minimum": 100,
+																"nullable": true,
+																"type": "number",
+																"x-auditable": true
+															},
+															"retries": {
+																"default": 2,
+																"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+																"example": 2,
+																"maximum": 2,
+																"minimum": 0,
+																"type": "number",
+																"x-auditable": true
+															},
+															"upstream_ips": {
+																"example": [
+																	"192.0.2.1",
+																	"198.51.100.1",
+																	"2001:DB8:100::CF"
+																],
+																"items": {
+																	"anyOf": [
+																		{
+																			"description": "Upstream DNS Server IPv4 address",
+																			"example": "192.0.2.1",
+																			"format": "ipv4",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		{
+																			"description": "Upstream DNS Server IPv6 address",
+																			"example": "2001:DB8:100::CF",
+																			"format": "ipv6",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	]
+																},
+																"minLength": 1,
+																"type": "array"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"dns_firewall_ips": {
+																"example": [
+																	"203.0.113.1",
+																	"203.0.113.254",
+																	"2001:DB8:AB::CF",
+																	"2001:DB8:CD::CF"
+																],
+																"items": {
+																	"anyOf": [
+																		{
+																			"description": "Cloudflare-assigned DNS IPv4 address",
+																			"example": "203.0.113.1",
+																			"format": "ipv4",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		{
+																			"description": "Cloudflare-assigned DNS IPv6 address",
+																			"example": "2001:DB8:ab::CF",
+																			"format": "ipv6",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	]
+																},
+																"type": "array"
+															},
+															"id": {
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string",
+																"x-auditable": true
+															},
+															"modified_on": {
+																"description": "Last modification of DNS Firewall cluster",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"dns_firewall_ips",
+															"modified_on"
+														],
+														"type": "object"
+													}
+												],
+												"required": [
+													"name",
+													"upstream_ips",
+													"minimum_cache_ttl",
+													"maximum_cache_ttl",
+													"negative_cache_ttl",
+													"deprecate_any_requests",
+													"ecs_fallback",
+													"ratelimit",
+													"retries"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List DNS Firewall Clusters response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"allOf": [
+															{
+																"properties": {
+																	"attack_mitigation": {
+																		"description": "Attack mitigation settings",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
+																				"example": true,
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"only_when_upstream_unhealthy": {
+																				"default": true,
+																				"description": "Only mitigate attacks when upstream servers seem unhealthy",
+																				"example": false,
+																				"type": "boolean",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"deprecate_any_requests": {
+																		"description": "Whether to refuse to answer queries for the ANY type",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"ecs_fallback": {
+																		"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
+																		"example": false,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"maximum_cache_ttl": {
+																		"default": 900,
+																		"description": "Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+																		"example": 900,
+																		"maximum": 36000,
+																		"minimum": 30,
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"minimum_cache_ttl": {
+																		"default": 60,
+																		"description": "Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+																		"example": 60,
+																		"maximum": 36000,
+																		"minimum": 30,
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "DNS Firewall cluster name",
+																		"example": "My Awesome DNS Firewall cluster",
+																		"maxLength": 160,
+																		"minLength": 1,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"negative_cache_ttl": {
+																		"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+																		"example": 900,
+																		"maximum": 36000,
+																		"minimum": 30,
+																		"nullable": true,
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"ratelimit": {
+																		"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
+																		"example": 600,
+																		"maximum": 1000000000,
+																		"minimum": 100,
+																		"nullable": true,
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"retries": {
+																		"default": 2,
+																		"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+																		"example": 2,
+																		"maximum": 2,
+																		"minimum": 0,
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"upstream_ips": {
+																		"example": [
+																			"192.0.2.1",
+																			"198.51.100.1",
+																			"2001:DB8:100::CF"
+																		],
+																		"items": {
+																			"anyOf": [
+																				{
+																					"description": "Upstream DNS Server IPv4 address",
+																					"example": "192.0.2.1",
+																					"format": "ipv4",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				{
+																					"description": "Upstream DNS Server IPv6 address",
+																					"example": "2001:DB8:100::CF",
+																					"format": "ipv6",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			]
+																		},
+																		"minLength": 1,
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"dns_firewall_ips": {
+																		"example": [
+																			"203.0.113.1",
+																			"203.0.113.254",
+																			"2001:DB8:AB::CF",
+																			"2001:DB8:CD::CF"
+																		],
+																		"items": {
+																			"anyOf": [
+																				{
+																					"description": "Cloudflare-assigned DNS IPv4 address",
+																					"example": "203.0.113.1",
+																					"format": "ipv4",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				{
+																					"description": "Cloudflare-assigned DNS IPv6 address",
+																					"example": "2001:DB8:ab::CF",
+																					"format": "ipv6",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			]
+																		},
+																		"type": "array"
+																	},
+																	"id": {
+																		"description": "Identifier.",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"modified_on": {
+																		"description": "Last modification of DNS Firewall cluster",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"dns_firewall_ips",
+																	"modified_on"
+																],
+																"type": "object"
+															}
+														],
+														"required": [
+															"name",
+															"upstream_ips",
+															"minimum_cache_ttl",
+															"maximum_cache_ttl",
+															"negative_cache_ttl",
+															"deprecate_any_requests",
+															"ecs_fallback",
+															"ratelimit",
+															"retries"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List DNS Firewall Clusters response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List DNS Firewall Clusters",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-api-token-group": [
+			"DNS Firewall Write",
+			"DNS Firewall Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}": {
+		"description": "Show a single DNS Firewall cluster for an account",
+		"operationId": "dns-firewall-dns-firewall-cluster-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "dns_firewall_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"attack_mitigation": {
+															"description": "Attack mitigation settings",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"only_when_upstream_unhealthy": {
+																	"default": true,
+																	"description": "Only mitigate attacks when upstream servers seem unhealthy",
+																	"example": false,
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"deprecate_any_requests": {
+															"description": "Whether to refuse to answer queries for the ANY type",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"ecs_fallback": {
+															"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
+															"example": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"maximum_cache_ttl": {
+															"default": 900,
+															"description": "Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number",
+															"x-auditable": true
+														},
+														"minimum_cache_ttl": {
+															"default": 60,
+															"description": "Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+															"example": 60,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "DNS Firewall cluster name",
+															"example": "My Awesome DNS Firewall cluster",
+															"maxLength": 160,
+															"minLength": 1,
+															"type": "string",
+															"x-auditable": true
+														},
+														"negative_cache_ttl": {
+															"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"nullable": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"ratelimit": {
+															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
+															"example": 600,
+															"maximum": 1000000000,
+															"minimum": 100,
+															"nullable": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"retries": {
+															"default": 2,
+															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+															"example": 2,
+															"maximum": 2,
+															"minimum": 0,
+															"type": "number",
+															"x-auditable": true
+														},
+														"upstream_ips": {
+															"example": [
+																"192.0.2.1",
+																"198.51.100.1",
+																"2001:DB8:100::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Upstream DNS Server IPv4 address",
+																		"example": "192.0.2.1",
+																		"format": "ipv4",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"description": "Upstream DNS Server IPv6 address",
+																		"example": "2001:DB8:100::CF",
+																		"format": "ipv6",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																]
+															},
+															"minLength": 1,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"dns_firewall_ips": {
+															"example": [
+																"203.0.113.1",
+																"203.0.113.254",
+																"2001:DB8:AB::CF",
+																"2001:DB8:CD::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Cloudflare-assigned DNS IPv4 address",
+																		"example": "203.0.113.1",
+																		"format": "ipv4",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"description": "Cloudflare-assigned DNS IPv6 address",
+																		"example": "2001:DB8:ab::CF",
+																		"format": "ipv6",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																]
+															},
+															"type": "array"
+														},
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "Last modification of DNS Firewall cluster",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"dns_firewall_ips",
+														"modified_on"
+													],
+													"type": "object"
+												}
+											],
+											"required": [
+												"name",
+												"upstream_ips",
+												"minimum_cache_ttl",
+												"maximum_cache_ttl",
+												"negative_cache_ttl",
+												"deprecate_any_requests",
+												"ecs_fallback",
+												"ratelimit",
+												"retries"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "DNS Firewall Cluster Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"attack_mitigation": {
+																	"description": "Attack mitigation settings",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"only_when_upstream_unhealthy": {
+																			"default": true,
+																			"description": "Only mitigate attacks when upstream servers seem unhealthy",
+																			"example": false,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"deprecate_any_requests": {
+																	"description": "Whether to refuse to answer queries for the ANY type",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"ecs_fallback": {
+																	"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
+																	"example": false,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"maximum_cache_ttl": {
+																	"default": 900,
+																	"description": "Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"minimum_cache_ttl": {
+																	"default": 60,
+																	"description": "Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+																	"example": 60,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "DNS Firewall cluster name",
+																	"example": "My Awesome DNS Firewall cluster",
+																	"maxLength": 160,
+																	"minLength": 1,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"negative_cache_ttl": {
+																	"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"nullable": true,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"ratelimit": {
+																	"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
+																	"example": 600,
+																	"maximum": 1000000000,
+																	"minimum": 100,
+																	"nullable": true,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"retries": {
+																	"default": 2,
+																	"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+																	"example": 2,
+																	"maximum": 2,
+																	"minimum": 0,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"upstream_ips": {
+																	"example": [
+																		"192.0.2.1",
+																		"198.51.100.1",
+																		"2001:DB8:100::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Upstream DNS Server IPv4 address",
+																				"example": "192.0.2.1",
+																				"format": "ipv4",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			{
+																				"description": "Upstream DNS Server IPv6 address",
+																				"example": "2001:DB8:100::CF",
+																				"format": "ipv6",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		]
+																	},
+																	"minLength": 1,
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"dns_firewall_ips": {
+																	"example": [
+																		"203.0.113.1",
+																		"203.0.113.254",
+																		"2001:DB8:AB::CF",
+																		"2001:DB8:CD::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Cloudflare-assigned DNS IPv4 address",
+																				"example": "203.0.113.1",
+																				"format": "ipv4",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			{
+																				"description": "Cloudflare-assigned DNS IPv6 address",
+																				"example": "2001:DB8:ab::CF",
+																				"format": "ipv6",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		]
+																	},
+																	"type": "array"
+																},
+																"id": {
+																	"description": "Identifier.",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "Last modification of DNS Firewall cluster",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"dns_firewall_ips",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
+													"required": [
+														"name",
+														"upstream_ips",
+														"minimum_cache_ttl",
+														"maximum_cache_ttl",
+														"negative_cache_ttl",
+														"deprecate_any_requests",
+														"ecs_fallback",
+														"ratelimit",
+														"retries"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DNS Firewall Cluster Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "DNS Firewall Cluster Details",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-api-token-group": [
+			"DNS Firewall Write",
+			"DNS Firewall Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns": {
+		"description": "Show reverse DNS configuration (PTR records) for a DNS Firewall cluster",
+		"operationId": "dns-firewall-show-dns-firewall-cluster-reverse-dns",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "dns_firewall_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"ptr": {
+															"additionalProperties": {
+																"description": "PTR record content",
+																"type": "string"
+															},
+															"description": "Map of cluster IP addresses to PTR record contents",
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"required": [
+												"ptr"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Show DNS Firewall Cluster Reverse DNS response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"ptr": {
+																	"additionalProperties": {
+																		"description": "PTR record content",
+																		"type": "string"
+																	},
+																	"description": "Map of cluster IP addresses to PTR record contents",
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"required": [
+														"ptr"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Show DNS Firewall Cluster Reverse DNS response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Show DNS Firewall Cluster Reverse DNS",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-api-token-group": [
+			"DNS Firewall Write",
+			"DNS Firewall Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /accounts/{account_id}/dns_firewall/{dns_firewall_id}": {
+		"description": "Modify the configuration of a DNS Firewall cluster",
+		"operationId": "dns-firewall-update-dns-firewall-cluster",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "dns_firewall_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"attack_mitigation": {
+										"description": "Attack mitigation settings",
+										"nullable": true,
+										"properties": {
+											"enabled": {
+												"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
+												"example": true,
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"only_when_upstream_unhealthy": {
+												"default": true,
+												"description": "Only mitigate attacks when upstream servers seem unhealthy",
+												"example": false,
+												"type": "boolean",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									"deprecate_any_requests": {
+										"description": "Whether to refuse to answer queries for the ANY type",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"ecs_fallback": {
+										"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
+										"example": false,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"maximum_cache_ttl": {
+										"default": 900,
+										"description": "Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+										"example": 900,
+										"maximum": 36000,
+										"minimum": 30,
+										"type": "number",
+										"x-auditable": true
+									},
+									"minimum_cache_ttl": {
+										"default": 60,
+										"description": "Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+										"example": 60,
+										"maximum": 36000,
+										"minimum": 30,
+										"type": "number",
+										"x-auditable": true
+									},
+									"name": {
+										"description": "DNS Firewall cluster name",
+										"example": "My Awesome DNS Firewall cluster",
+										"maxLength": 160,
+										"minLength": 1,
+										"type": "string",
+										"x-auditable": true
+									},
+									"negative_cache_ttl": {
+										"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+										"example": 900,
+										"maximum": 36000,
+										"minimum": 30,
+										"nullable": true,
+										"type": "number",
+										"x-auditable": true
+									},
+									"ratelimit": {
+										"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
+										"example": 600,
+										"maximum": 1000000000,
+										"minimum": 100,
+										"nullable": true,
+										"type": "number",
+										"x-auditable": true
+									},
+									"retries": {
+										"default": 2,
+										"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+										"example": 2,
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number",
+										"x-auditable": true
+									},
+									"upstream_ips": {
+										"example": [
+											"192.0.2.1",
+											"198.51.100.1",
+											"2001:DB8:100::CF"
+										],
+										"items": {
+											"anyOf": [
+												{
+													"description": "Upstream DNS Server IPv4 address",
+													"example": "192.0.2.1",
+													"format": "ipv4",
+													"type": "string",
+													"x-auditable": true
+												},
+												{
+													"description": "Upstream DNS Server IPv6 address",
+													"example": "2001:DB8:100::CF",
+													"format": "ipv6",
+													"type": "string",
+													"x-auditable": true
+												}
+											]
+										},
+										"minLength": 1,
+										"type": "array"
+									}
+								},
+								"type": "object"
+							}
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"attack_mitigation": {
+															"description": "Attack mitigation settings",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"only_when_upstream_unhealthy": {
+																	"default": true,
+																	"description": "Only mitigate attacks when upstream servers seem unhealthy",
+																	"example": false,
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"deprecate_any_requests": {
+															"description": "Whether to refuse to answer queries for the ANY type",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"ecs_fallback": {
+															"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
+															"example": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"maximum_cache_ttl": {
+															"default": 900,
+															"description": "Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number",
+															"x-auditable": true
+														},
+														"minimum_cache_ttl": {
+															"default": 60,
+															"description": "Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+															"example": 60,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "DNS Firewall cluster name",
+															"example": "My Awesome DNS Firewall cluster",
+															"maxLength": 160,
+															"minLength": 1,
+															"type": "string",
+															"x-auditable": true
+														},
+														"negative_cache_ttl": {
+															"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"nullable": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"ratelimit": {
+															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
+															"example": 600,
+															"maximum": 1000000000,
+															"minimum": 100,
+															"nullable": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"retries": {
+															"default": 2,
+															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+															"example": 2,
+															"maximum": 2,
+															"minimum": 0,
+															"type": "number",
+															"x-auditable": true
+														},
+														"upstream_ips": {
+															"example": [
+																"192.0.2.1",
+																"198.51.100.1",
+																"2001:DB8:100::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Upstream DNS Server IPv4 address",
+																		"example": "192.0.2.1",
+																		"format": "ipv4",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"description": "Upstream DNS Server IPv6 address",
+																		"example": "2001:DB8:100::CF",
+																		"format": "ipv6",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																]
+															},
+															"minLength": 1,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"dns_firewall_ips": {
+															"example": [
+																"203.0.113.1",
+																"203.0.113.254",
+																"2001:DB8:AB::CF",
+																"2001:DB8:CD::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Cloudflare-assigned DNS IPv4 address",
+																		"example": "203.0.113.1",
+																		"format": "ipv4",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"description": "Cloudflare-assigned DNS IPv6 address",
+																		"example": "2001:DB8:ab::CF",
+																		"format": "ipv6",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																]
+															},
+															"type": "array"
+														},
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "Last modification of DNS Firewall cluster",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"dns_firewall_ips",
+														"modified_on"
+													],
+													"type": "object"
+												}
+											],
+											"required": [
+												"name",
+												"upstream_ips",
+												"minimum_cache_ttl",
+												"maximum_cache_ttl",
+												"negative_cache_ttl",
+												"deprecate_any_requests",
+												"ecs_fallback",
+												"ratelimit",
+												"retries"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update DNS Firewall Cluster response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"attack_mitigation": {
+																	"description": "Attack mitigation settings",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"only_when_upstream_unhealthy": {
+																			"default": true,
+																			"description": "Only mitigate attacks when upstream servers seem unhealthy",
+																			"example": false,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"deprecate_any_requests": {
+																	"description": "Whether to refuse to answer queries for the ANY type",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"ecs_fallback": {
+																	"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
+																	"example": false,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"maximum_cache_ttl": {
+																	"default": 900,
+																	"description": "Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"minimum_cache_ttl": {
+																	"default": 60,
+																	"description": "Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+																	"example": 60,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "DNS Firewall cluster name",
+																	"example": "My Awesome DNS Firewall cluster",
+																	"maxLength": 160,
+																	"minLength": 1,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"negative_cache_ttl": {
+																	"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"nullable": true,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"ratelimit": {
+																	"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
+																	"example": 600,
+																	"maximum": 1000000000,
+																	"minimum": 100,
+																	"nullable": true,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"retries": {
+																	"default": 2,
+																	"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+																	"example": 2,
+																	"maximum": 2,
+																	"minimum": 0,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"upstream_ips": {
+																	"example": [
+																		"192.0.2.1",
+																		"198.51.100.1",
+																		"2001:DB8:100::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Upstream DNS Server IPv4 address",
+																				"example": "192.0.2.1",
+																				"format": "ipv4",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			{
+																				"description": "Upstream DNS Server IPv6 address",
+																				"example": "2001:DB8:100::CF",
+																				"format": "ipv6",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		]
+																	},
+																	"minLength": 1,
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"dns_firewall_ips": {
+																	"example": [
+																		"203.0.113.1",
+																		"203.0.113.254",
+																		"2001:DB8:AB::CF",
+																		"2001:DB8:CD::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Cloudflare-assigned DNS IPv4 address",
+																				"example": "203.0.113.1",
+																				"format": "ipv4",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			{
+																				"description": "Cloudflare-assigned DNS IPv6 address",
+																				"example": "2001:DB8:ab::CF",
+																				"format": "ipv6",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		]
+																	},
+																	"type": "array"
+																},
+																"id": {
+																	"description": "Identifier.",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "Last modification of DNS Firewall cluster",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"dns_firewall_ips",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
+													"required": [
+														"name",
+														"upstream_ips",
+														"minimum_cache_ttl",
+														"maximum_cache_ttl",
+														"negative_cache_ttl",
+														"deprecate_any_requests",
+														"ecs_fallback",
+														"ratelimit",
+														"retries"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update DNS Firewall Cluster response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update DNS Firewall Cluster",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-api-token-group": [
+			"DNS Firewall Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns": {
+		"description": "Update reverse DNS configuration (PTR records) for a DNS Firewall cluster",
+		"operationId": "dns-firewall-update-dns-firewall-cluster-reverse-dns",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "dns_firewall_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"ptr": {
+										"additionalProperties": {
+											"description": "PTR record content",
+											"type": "string"
+										},
+										"description": "Map of cluster IP addresses to PTR record contents",
+										"type": "object"
+									}
+								},
+								"type": "object"
+							}
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"ptr": {
+															"additionalProperties": {
+																"description": "PTR record content",
+																"type": "string"
+															},
+															"description": "Map of cluster IP addresses to PTR record contents",
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"required": [
+												"ptr"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update DNS Firewall Cluster Reverse DNS response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"ptr": {
+																	"additionalProperties": {
+																		"description": "PTR record content",
+																		"type": "string"
+																	},
+																	"description": "Map of cluster IP addresses to PTR record contents",
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"required": [
+														"ptr"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update DNS Firewall Cluster Reverse DNS response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update DNS Firewall Cluster Reverse DNS",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-api-token-group": [
+			"DNS Firewall Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/dns_firewall": {
+		"description": "Create a DNS Firewall cluster",
+		"operationId": "dns-firewall-create-dns-firewall-cluster",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"attack_mitigation": {
+										"description": "Attack mitigation settings",
+										"nullable": true,
+										"properties": {
+											"enabled": {
+												"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
+												"example": true,
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"only_when_upstream_unhealthy": {
+												"default": true,
+												"description": "Only mitigate attacks when upstream servers seem unhealthy",
+												"example": false,
+												"type": "boolean",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									"deprecate_any_requests": {
+										"description": "Whether to refuse to answer queries for the ANY type",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"ecs_fallback": {
+										"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
+										"example": false,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"maximum_cache_ttl": {
+										"default": 900,
+										"description": "Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+										"example": 900,
+										"maximum": 36000,
+										"minimum": 30,
+										"type": "number",
+										"x-auditable": true
+									},
+									"minimum_cache_ttl": {
+										"default": 60,
+										"description": "Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+										"example": 60,
+										"maximum": 36000,
+										"minimum": 30,
+										"type": "number",
+										"x-auditable": true
+									},
+									"name": {
+										"description": "DNS Firewall cluster name",
+										"example": "My Awesome DNS Firewall cluster",
+										"maxLength": 160,
+										"minLength": 1,
+										"type": "string",
+										"x-auditable": true
+									},
+									"negative_cache_ttl": {
+										"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+										"example": 900,
+										"maximum": 36000,
+										"minimum": 30,
+										"nullable": true,
+										"type": "number",
+										"x-auditable": true
+									},
+									"ratelimit": {
+										"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
+										"example": 600,
+										"maximum": 1000000000,
+										"minimum": 100,
+										"nullable": true,
+										"type": "number",
+										"x-auditable": true
+									},
+									"retries": {
+										"default": 2,
+										"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+										"example": 2,
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number",
+										"x-auditable": true
+									},
+									"upstream_ips": {
+										"example": [
+											"192.0.2.1",
+											"198.51.100.1",
+											"2001:DB8:100::CF"
+										],
+										"items": {
+											"anyOf": [
+												{
+													"description": "Upstream DNS Server IPv4 address",
+													"example": "192.0.2.1",
+													"format": "ipv4",
+													"type": "string",
+													"x-auditable": true
+												},
+												{
+													"description": "Upstream DNS Server IPv6 address",
+													"example": "2001:DB8:100::CF",
+													"format": "ipv6",
+													"type": "string",
+													"x-auditable": true
+												}
+											]
+										},
+										"minLength": 1,
+										"type": "array"
+									}
+								},
+								"type": "object"
+							}
+						],
+						"required": [
+							"name",
+							"upstream_ips"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"attack_mitigation": {
+															"description": "Attack mitigation settings",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"only_when_upstream_unhealthy": {
+																	"default": true,
+																	"description": "Only mitigate attacks when upstream servers seem unhealthy",
+																	"example": false,
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"deprecate_any_requests": {
+															"description": "Whether to refuse to answer queries for the ANY type",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"ecs_fallback": {
+															"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
+															"example": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"maximum_cache_ttl": {
+															"default": 900,
+															"description": "Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number",
+															"x-auditable": true
+														},
+														"minimum_cache_ttl": {
+															"default": 60,
+															"description": "Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+															"example": 60,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "DNS Firewall cluster name",
+															"example": "My Awesome DNS Firewall cluster",
+															"maxLength": 160,
+															"minLength": 1,
+															"type": "string",
+															"x-auditable": true
+														},
+														"negative_cache_ttl": {
+															"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"nullable": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"ratelimit": {
+															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
+															"example": 600,
+															"maximum": 1000000000,
+															"minimum": 100,
+															"nullable": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"retries": {
+															"default": 2,
+															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+															"example": 2,
+															"maximum": 2,
+															"minimum": 0,
+															"type": "number",
+															"x-auditable": true
+														},
+														"upstream_ips": {
+															"example": [
+																"192.0.2.1",
+																"198.51.100.1",
+																"2001:DB8:100::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Upstream DNS Server IPv4 address",
+																		"example": "192.0.2.1",
+																		"format": "ipv4",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"description": "Upstream DNS Server IPv6 address",
+																		"example": "2001:DB8:100::CF",
+																		"format": "ipv6",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																]
+															},
+															"minLength": 1,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"dns_firewall_ips": {
+															"example": [
+																"203.0.113.1",
+																"203.0.113.254",
+																"2001:DB8:AB::CF",
+																"2001:DB8:CD::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Cloudflare-assigned DNS IPv4 address",
+																		"example": "203.0.113.1",
+																		"format": "ipv4",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"description": "Cloudflare-assigned DNS IPv6 address",
+																		"example": "2001:DB8:ab::CF",
+																		"format": "ipv6",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																]
+															},
+															"type": "array"
+														},
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "Last modification of DNS Firewall cluster",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"dns_firewall_ips",
+														"modified_on"
+													],
+													"type": "object"
+												}
+											],
+											"required": [
+												"name",
+												"upstream_ips",
+												"minimum_cache_ttl",
+												"maximum_cache_ttl",
+												"negative_cache_ttl",
+												"deprecate_any_requests",
+												"ecs_fallback",
+												"ratelimit",
+												"retries"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create DNS Firewall Cluster response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"attack_mitigation": {
+																	"description": "Attack mitigation settings",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"only_when_upstream_unhealthy": {
+																			"default": true,
+																			"description": "Only mitigate attacks when upstream servers seem unhealthy",
+																			"example": false,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"deprecate_any_requests": {
+																	"description": "Whether to refuse to answer queries for the ANY type",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"ecs_fallback": {
+																	"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
+																	"example": false,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"maximum_cache_ttl": {
+																	"default": 900,
+																	"description": "Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"minimum_cache_ttl": {
+																	"default": 60,
+																	"description": "Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+																	"example": 60,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "DNS Firewall cluster name",
+																	"example": "My Awesome DNS Firewall cluster",
+																	"maxLength": 160,
+																	"minLength": 1,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"negative_cache_ttl": {
+																	"description": "Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"nullable": true,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"ratelimit": {
+																	"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)",
+																	"example": 600,
+																	"maximum": 1000000000,
+																	"minimum": 100,
+																	"nullable": true,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"retries": {
+																	"default": 2,
+																	"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+																	"example": 2,
+																	"maximum": 2,
+																	"minimum": 0,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"upstream_ips": {
+																	"example": [
+																		"192.0.2.1",
+																		"198.51.100.1",
+																		"2001:DB8:100::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Upstream DNS Server IPv4 address",
+																				"example": "192.0.2.1",
+																				"format": "ipv4",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			{
+																				"description": "Upstream DNS Server IPv6 address",
+																				"example": "2001:DB8:100::CF",
+																				"format": "ipv6",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		]
+																	},
+																	"minLength": 1,
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"dns_firewall_ips": {
+																	"example": [
+																		"203.0.113.1",
+																		"203.0.113.254",
+																		"2001:DB8:AB::CF",
+																		"2001:DB8:CD::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Cloudflare-assigned DNS IPv4 address",
+																				"example": "203.0.113.1",
+																				"format": "ipv4",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			{
+																				"description": "Cloudflare-assigned DNS IPv6 address",
+																				"example": "2001:DB8:ab::CF",
+																				"format": "ipv6",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		]
+																	},
+																	"type": "array"
+																},
+																"id": {
+																	"description": "Identifier.",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "Last modification of DNS Firewall cluster",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"dns_firewall_ips",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
+													"required": [
+														"name",
+														"upstream_ips",
+														"minimum_cache_ttl",
+														"maximum_cache_ttl",
+														"negative_cache_ttl",
+														"deprecate_any_requests",
+														"ecs_fallback",
+														"ratelimit",
+														"retries"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create DNS Firewall Cluster response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create DNS Firewall Cluster",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-api-token-group": [
+			"DNS Firewall Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

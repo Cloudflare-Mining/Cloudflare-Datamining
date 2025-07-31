@@ -1,0 +1,1592 @@
+{
+	"DELETE /zones/{zone_id}/dnssec": {
+		"description": "Delete DNSSEC.",
+		"operationId": "dnssec-delete-dnssec-records",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": "",
+											"type": "string"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete DNSSEC records response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": "",
+													"type": "string"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete DNSSEC records response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete DNSSEC records",
+		"tags": [
+			"DNSSEC"
+		],
+		"x-api-token-group": [
+			"DNS Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/dnssec": {
+		"description": "Details about DNSSEC status and configuration.",
+		"operationId": "dnssec-dnssec-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"algorithm": {
+													"description": "Algorithm key code.",
+													"example": "13",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"digest": {
+													"description": "Digest hash.",
+													"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"digest_algorithm": {
+													"description": "Type of digest algorithm.",
+													"example": "SHA256",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"digest_type": {
+													"description": "Coded type for digest algorithm.",
+													"example": "2",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"dnssec_multi_signer": {
+													"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"dnssec_presigned": {
+													"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"dnssec_use_nsec3": {
+													"description": "If true, enables the use of NSEC3 together with DNSSEC on the zone.\nCombined with setting dnssec_presigned to true, this enables the use of\nNSEC3 records when transferring in from an external provider.\nIf dnssec_presigned is instead set to false (default), NSEC3 records will be\ngenerated and signed at request time.\n\nSee [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"ds": {
+													"description": "Full DS record.",
+													"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"flags": {
+													"description": "Flag for DNSSEC record.",
+													"example": 257,
+													"nullable": true,
+													"readOnly": true,
+													"type": "number",
+													"x-auditable": true
+												},
+												"key_tag": {
+													"description": "Code for key tag.",
+													"example": 42,
+													"nullable": true,
+													"readOnly": true,
+													"type": "number",
+													"x-auditable": true
+												},
+												"key_type": {
+													"description": "Algorithm key type.",
+													"example": "ECDSAP256SHA256",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_on": {
+													"description": "When DNSSEC was last modified.",
+													"example": "2014-01-01T05:20:00Z",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"public_key": {
+													"description": "Public key for DS record.",
+													"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
+													"enum": [
+														"active",
+														"pending",
+														"disabled",
+														"pending-disabled",
+														"error"
+													],
+													"example": "active",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "DNSSEC Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"algorithm": {
+															"description": "Algorithm key code.",
+															"example": "13",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"digest": {
+															"description": "Digest hash.",
+															"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"digest_algorithm": {
+															"description": "Type of digest algorithm.",
+															"example": "SHA256",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"digest_type": {
+															"description": "Coded type for digest algorithm.",
+															"example": "2",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"dnssec_multi_signer": {
+															"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
+															"example": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"dnssec_presigned": {
+															"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"dnssec_use_nsec3": {
+															"description": "If true, enables the use of NSEC3 together with DNSSEC on the zone.\nCombined with setting dnssec_presigned to true, this enables the use of\nNSEC3 records when transferring in from an external provider.\nIf dnssec_presigned is instead set to false (default), NSEC3 records will be\ngenerated and signed at request time.\n\nSee [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.",
+															"example": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"ds": {
+															"description": "Full DS record.",
+															"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"flags": {
+															"description": "Flag for DNSSEC record.",
+															"example": 257,
+															"nullable": true,
+															"readOnly": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"key_tag": {
+															"description": "Code for key tag.",
+															"example": 42,
+															"nullable": true,
+															"readOnly": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"key_type": {
+															"description": "Algorithm key type.",
+															"example": "ECDSAP256SHA256",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "When DNSSEC was last modified.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"public_key": {
+															"description": "Public key for DS record.",
+															"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
+															"enum": [
+																"active",
+																"pending",
+																"disabled",
+																"pending-disabled",
+																"error"
+															],
+															"example": "active",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DNSSEC Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "DNSSEC Details",
+		"tags": [
+			"DNSSEC"
+		],
+		"x-api-token-group": [
+			"DNS Read",
+			"DNS Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/dnssec": {
+		"description": "Enable or disable DNSSEC.",
+		"operationId": "dnssec-edit-dnssec-status",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"dnssec_multi_signer": {
+								"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"dnssec_presigned": {
+								"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"dnssec_use_nsec3": {
+								"description": "If true, enables the use of NSEC3 together with DNSSEC on the zone.\nCombined with setting dnssec_presigned to true, this enables the use of\nNSEC3 records when transferring in from an external provider.\nIf dnssec_presigned is instead set to false (default), NSEC3 records will be\ngenerated and signed at request time.\n\nSee [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"status": {
+								"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
+								"enum": [
+									"active",
+									"disabled"
+								],
+								"example": "active"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"algorithm": {
+													"description": "Algorithm key code.",
+													"example": "13",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"digest": {
+													"description": "Digest hash.",
+													"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"digest_algorithm": {
+													"description": "Type of digest algorithm.",
+													"example": "SHA256",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"digest_type": {
+													"description": "Coded type for digest algorithm.",
+													"example": "2",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"dnssec_multi_signer": {
+													"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"dnssec_presigned": {
+													"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"dnssec_use_nsec3": {
+													"description": "If true, enables the use of NSEC3 together with DNSSEC on the zone.\nCombined with setting dnssec_presigned to true, this enables the use of\nNSEC3 records when transferring in from an external provider.\nIf dnssec_presigned is instead set to false (default), NSEC3 records will be\ngenerated and signed at request time.\n\nSee [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"ds": {
+													"description": "Full DS record.",
+													"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"flags": {
+													"description": "Flag for DNSSEC record.",
+													"example": 257,
+													"nullable": true,
+													"readOnly": true,
+													"type": "number",
+													"x-auditable": true
+												},
+												"key_tag": {
+													"description": "Code for key tag.",
+													"example": 42,
+													"nullable": true,
+													"readOnly": true,
+													"type": "number",
+													"x-auditable": true
+												},
+												"key_type": {
+													"description": "Algorithm key type.",
+													"example": "ECDSAP256SHA256",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_on": {
+													"description": "When DNSSEC was last modified.",
+													"example": "2014-01-01T05:20:00Z",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"public_key": {
+													"description": "Public key for DS record.",
+													"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
+													"enum": [
+														"active",
+														"pending",
+														"disabled",
+														"pending-disabled",
+														"error"
+													],
+													"example": "active",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Edit DNSSEC Status response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"algorithm": {
+															"description": "Algorithm key code.",
+															"example": "13",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"digest": {
+															"description": "Digest hash.",
+															"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"digest_algorithm": {
+															"description": "Type of digest algorithm.",
+															"example": "SHA256",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"digest_type": {
+															"description": "Coded type for digest algorithm.",
+															"example": "2",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"dnssec_multi_signer": {
+															"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
+															"example": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"dnssec_presigned": {
+															"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"dnssec_use_nsec3": {
+															"description": "If true, enables the use of NSEC3 together with DNSSEC on the zone.\nCombined with setting dnssec_presigned to true, this enables the use of\nNSEC3 records when transferring in from an external provider.\nIf dnssec_presigned is instead set to false (default), NSEC3 records will be\ngenerated and signed at request time.\n\nSee [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.",
+															"example": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"ds": {
+															"description": "Full DS record.",
+															"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"flags": {
+															"description": "Flag for DNSSEC record.",
+															"example": 257,
+															"nullable": true,
+															"readOnly": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"key_tag": {
+															"description": "Code for key tag.",
+															"example": 42,
+															"nullable": true,
+															"readOnly": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"key_type": {
+															"description": "Algorithm key type.",
+															"example": "ECDSAP256SHA256",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "When DNSSEC was last modified.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"public_key": {
+															"description": "Public key for DS record.",
+															"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
+															"enum": [
+																"active",
+																"pending",
+																"disabled",
+																"pending-disabled",
+																"error"
+															],
+															"example": "active",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Edit DNSSEC Status response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Edit DNSSEC Status",
+		"tags": [
+			"DNSSEC"
+		],
+		"x-api-token-group": [
+			"DNS Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

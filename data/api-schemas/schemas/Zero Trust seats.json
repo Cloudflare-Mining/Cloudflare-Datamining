@@ -1,0 +1,372 @@
+{
+	"PATCH /accounts/{account_id}/access/seats": {
+		"description": "Removes a user from a Zero Trust seat when both `access_seat` and `gateway_seat` are set to false.",
+		"operationId": "zero-trust-seats-update-a-user-seat",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier.",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"type": "string",
+							"x-auditable": true
+						},
+						{
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"items": {
+							"properties": {
+								"access_seat": {
+									"description": "True if the seat is part of Access.",
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								},
+								"gateway_seat": {
+									"description": "True if the seat is part of Gateway.",
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								},
+								"seat_uid": {
+									"description": "The unique API identifier for the Zero Trust seat.",
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+									"maxLength": 36,
+									"type": "string",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"seat_uid",
+								"gateway_seat",
+								"access_seat"
+							],
+							"type": "object"
+						},
+						"required": [
+							"seat_uid",
+							"gateway_seat",
+							"access_seat"
+						],
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"access_seat": {
+														"description": "True if the seat is part of Access.",
+														"example": false,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"created_at": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"type": "string",
+														"x-auditable": true
+													},
+													"gateway_seat": {
+														"description": "True if the seat is part of Gateway.",
+														"example": false,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"seat_uid": {
+														"description": "The unique API identifier for the Zero Trust seat.",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"type": "string",
+														"x-auditable": true
+													},
+													"updated_at": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update a user seat response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update a user seat response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update a user seat",
+		"tags": [
+			"Zero Trust seats"
+		],
+		"x-api-token-group": [
+			"Zero Trust: Seats Write"
+		]
+	}
+}

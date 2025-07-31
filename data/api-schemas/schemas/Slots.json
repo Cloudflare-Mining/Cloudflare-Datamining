@@ -1,0 +1,274 @@
+{
+	"GET /accounts/{account_id}/cni/slots": {
+		"operationId": "list_slots",
+		"parameters": [
+			{
+				"description": "If specified, only show slots with the given text in their address field",
+				"in": "query",
+				"name": "address_contains",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "If specified, only show slots located at the given site",
+				"in": "query",
+				"name": "site",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "If specified, only show slots that support the given speed",
+				"in": "query",
+				"name": "speed",
+				"schema": {
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "If specified, only show slots with a specific occupied/unoccupied state",
+				"in": "query",
+				"name": "occupied",
+				"schema": {
+					"nullable": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"format": "int32",
+					"nullable": true,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"minimum": 0,
+					"nullable": true,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Customer account tag",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"items": {
+									"items": {
+										"properties": {
+											"account": {
+												"description": "Customer account tag",
+												"type": "string"
+											},
+											"facility": {
+												"properties": {
+													"address": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"address"
+												],
+												"type": "object"
+											},
+											"id": {
+												"description": "Slot ID",
+												"format": "uuid",
+												"type": "string"
+											},
+											"occupied": {
+												"description": "Whether the slot is occupied or not",
+												"type": "boolean"
+											},
+											"site": {
+												"type": "string"
+											},
+											"speed": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"occupied",
+											"site",
+											"speed",
+											"facility"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"next": {
+									"format": "int32",
+									"nullable": true,
+									"type": "integer"
+								}
+							},
+							"required": [
+								"items"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List of matching slots"
+			},
+			"400": {
+				"description": "Bad request"
+			},
+			"500": {
+				"description": "Internal server error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Retrieve a list of all slots matching the specified parameters",
+		"tags": [
+			"Slots"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
+		]
+	},
+	"GET /accounts/{account_id}/cni/slots/{slot}": {
+		"operationId": "get_slot",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "slot",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Customer account tag",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"account": {
+									"description": "Customer account tag",
+									"type": "string"
+								},
+								"facility": {
+									"properties": {
+										"address": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"name",
+										"address"
+									],
+									"type": "object"
+								},
+								"id": {
+									"description": "Slot ID",
+									"format": "uuid",
+									"type": "string"
+								},
+								"occupied": {
+									"description": "Whether the slot is occupied or not",
+									"type": "boolean"
+								},
+								"site": {
+									"type": "string"
+								},
+								"speed": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"occupied",
+								"site",
+								"speed",
+								"facility"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Information about the specified slot"
+			},
+			"400": {
+				"description": "Bad request"
+			},
+			"404": {
+				"description": "Slot not found"
+			},
+			"500": {
+				"description": "Internal server error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get information about the specified slot",
+		"tags": [
+			"Slots"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
+		]
+	}
+}

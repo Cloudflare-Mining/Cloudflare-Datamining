@@ -1,0 +1,387 @@
+{
+	"POST /accounts/{account_id}/workers/observability/telemetry/keys": {
+		"description": "List all the keys in your telemetry events.",
+		"operationId": "telemetry.keys.list",
+		"parameters": [
+			{
+				"description": "Your Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"datasets": {
+								"default": [],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"filters": {
+								"default": [],
+								"items": {
+									"properties": {
+										"key": {
+											"type": "string"
+										},
+										"operation": {
+											"enum": [
+												"includes",
+												"not_includes",
+												"starts_with",
+												"regex",
+												"exists",
+												"is_null",
+												"in",
+												"not_in",
+												"eq",
+												"neq",
+												"gt",
+												"gte",
+												"lt",
+												"lte",
+												"=",
+												"!=",
+												">",
+												">=",
+												"<",
+												"<=",
+												"INCLUDES",
+												"DOES_NOT_INCLUDE",
+												"MATCH_REGEX",
+												"EXISTS",
+												"DOES_NOT_EXIST",
+												"IN",
+												"NOT_IN",
+												"STARTS_WITH"
+											],
+											"type": "string"
+										},
+										"type": {
+											"enum": [
+												"string",
+												"number",
+												"boolean"
+											],
+											"type": "string"
+										},
+										"value": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										}
+									},
+									"required": [
+										"key",
+										"operation",
+										"type"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"keyNeedle": {
+								"description": "Search for a specific substring in the keys.",
+								"properties": {
+									"isRegex": {
+										"type": "boolean"
+									},
+									"matchCase": {
+										"type": "boolean"
+									},
+									"value": {
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "number"
+											},
+											{
+												"type": "boolean"
+											}
+										]
+									}
+								},
+								"required": [
+									"value"
+								],
+								"type": "object"
+							},
+							"limit": {
+								"type": "number"
+							},
+							"needle": {
+								"description": "Search for a specific substring in the event.",
+								"properties": {
+									"isRegex": {
+										"type": "boolean"
+									},
+									"matchCase": {
+										"type": "boolean"
+									},
+									"value": {
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "number"
+											},
+											{
+												"type": "boolean"
+											}
+										]
+									}
+								},
+								"required": [
+									"value"
+								],
+								"type": "object"
+							},
+							"timeframe": {
+								"properties": {
+									"from": {
+										"type": "number"
+									},
+									"to": {
+										"type": "number"
+									}
+								},
+								"required": [
+									"to",
+									"from"
+								],
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"description": "Find keys in your telemetry events, matching a specific filter or needle.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Successful request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"key": {
+												"type": "string"
+											},
+											"lastSeenAt": {
+												"type": "number"
+											},
+											"type": {
+												"enum": [
+													"string",
+													"boolean",
+													"number"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"key",
+											"type",
+											"lastSeenAt"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "List keys",
+		"tags": [
+			"Keys"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		]
+	}
+}

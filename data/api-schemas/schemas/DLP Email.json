@@ -1,0 +1,3018 @@
+{
+	"DELETE /accounts/{account_id}/dlp/email/rules/{rule_id}": {
+		"operationId": "dlp-email-scanner-delete-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action": {
+													"oneOf": [
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"Block"
+																	],
+																	"type": "string"
+																},
+																"message": {
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"action"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"conditions": {
+													"description": "Rule is triggered if all conditions match.",
+													"items": {
+														"properties": {
+															"operator": {
+																"enum": [
+																	"InList",
+																	"NotInList",
+																	"MatchRegex",
+																	"NotMatchRegex"
+																],
+																"type": "string"
+															},
+															"selector": {
+																"enum": [
+																	"Recipients",
+																	"Sender",
+																	"DLPProfiles"
+																],
+																"type": "string"
+															},
+															"value": {
+																"oneOf": [
+																	{
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															}
+														},
+														"required": [
+															"selector",
+															"operator",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"description": {
+													"nullable": true,
+													"type": "string"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"name": {
+													"type": "string"
+												},
+												"priority": {
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"rule_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"rule_id",
+												"name",
+												"priority",
+												"enabled",
+												"conditions",
+												"action",
+												"created_at",
+												"updated_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Email Scanner Rule response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Email Scanner Rule failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete email scanner rule",
+		"tags": [
+			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/dlp/email/account_mapping": {
+		"operationId": "dlp-email-scanner-get-account-mapping",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"addin_identifier_token": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"auth_requirements": {
+													"oneOf": [
+														{
+															"properties": {
+																"allowed_microsoft_organizations": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"type": {
+																	"enum": [
+																		"Org"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"allowed_microsoft_organizations",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"NoAuth"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													]
+												}
+											},
+											"required": [
+												"auth_requirements",
+												"addin_identifier_token"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Email Scanner Account Mapping response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Email Scanner Account Mapping failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get mapping",
+		"tags": [
+			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/dlp/email/rules": {
+		"description": "Lists all email scanner rules for an account.",
+		"operationId": "dlp-email-scanner-list-all-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"action": {
+														"oneOf": [
+															{
+																"properties": {
+																	"action": {
+																		"enum": [
+																			"Block"
+																		],
+																		"type": "string"
+																	},
+																	"message": {
+																		"nullable": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"action"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"conditions": {
+														"description": "Rule is triggered if all conditions match.",
+														"items": {
+															"properties": {
+																"operator": {
+																	"enum": [
+																		"InList",
+																		"NotInList",
+																		"MatchRegex",
+																		"NotMatchRegex"
+																	],
+																	"type": "string"
+																},
+																"selector": {
+																	"enum": [
+																		"Recipients",
+																		"Sender",
+																		"DLPProfiles"
+																	],
+																	"type": "string"
+																},
+																"value": {
+																	"oneOf": [
+																		{
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"selector",
+																"operator",
+																"value"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"created_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"description": {
+														"nullable": true,
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													},
+													"priority": {
+														"format": "int32",
+														"minimum": 0,
+														"type": "integer"
+													},
+													"rule_id": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"updated_at": {
+														"format": "date-time",
+														"type": "string"
+													}
+												},
+												"required": [
+													"rule_id",
+													"name",
+													"priority",
+													"enabled",
+													"conditions",
+													"action",
+													"created_at",
+													"updated_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List all email scanner rules response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List all email scanner rules failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List all email scanner rules",
+		"tags": [
+			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/dlp/email/rules/{rule_id}": {
+		"operationId": "dlp-email-scanner-get-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action": {
+													"oneOf": [
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"Block"
+																	],
+																	"type": "string"
+																},
+																"message": {
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"action"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"conditions": {
+													"description": "Rule is triggered if all conditions match.",
+													"items": {
+														"properties": {
+															"operator": {
+																"enum": [
+																	"InList",
+																	"NotInList",
+																	"MatchRegex",
+																	"NotMatchRegex"
+																],
+																"type": "string"
+															},
+															"selector": {
+																"enum": [
+																	"Recipients",
+																	"Sender",
+																	"DLPProfiles"
+																],
+																"type": "string"
+															},
+															"value": {
+																"oneOf": [
+																	{
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															}
+														},
+														"required": [
+															"selector",
+															"operator",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"description": {
+													"nullable": true,
+													"type": "string"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"name": {
+													"type": "string"
+												},
+												"priority": {
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"rule_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"rule_id",
+												"name",
+												"priority",
+												"enabled",
+												"conditions",
+												"action",
+												"created_at",
+												"updated_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Email Scanner Rule response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Email Scanner Rule failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get an email scanner rule",
+		"tags": [
+			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"PATCH /accounts/{account_id}/dlp/email/rules": {
+		"operationId": "dlp-email-scanner-update-rule-priorities",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Used to update multiple email rule priorities as an atomic action,\nto support patterns such as swapping the priorities of two email rules.",
+						"properties": {
+							"new_priorities": {
+								"additionalProperties": {
+									"format": "int32",
+									"minimum": 0,
+									"type": "integer"
+								},
+								"type": "object"
+							}
+						},
+						"required": [
+							"new_priorities"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "Rule priorities.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action": {
+													"oneOf": [
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"Block"
+																	],
+																	"type": "string"
+																},
+																"message": {
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"action"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"conditions": {
+													"description": "Rule is triggered if all conditions match.",
+													"items": {
+														"properties": {
+															"operator": {
+																"enum": [
+																	"InList",
+																	"NotInList",
+																	"MatchRegex",
+																	"NotMatchRegex"
+																],
+																"type": "string"
+															},
+															"selector": {
+																"enum": [
+																	"Recipients",
+																	"Sender",
+																	"DLPProfiles"
+																],
+																"type": "string"
+															},
+															"value": {
+																"oneOf": [
+																	{
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															}
+														},
+														"required": [
+															"selector",
+															"operator",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"description": {
+													"nullable": true,
+													"type": "string"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"name": {
+													"type": "string"
+												},
+												"priority": {
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"rule_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"rule_id",
+												"name",
+												"priority",
+												"enabled",
+												"conditions",
+												"action",
+												"created_at",
+												"updated_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Email Scanner Rule priorities response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update Email Scanner Rule priorities failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update email scanner rule priorities",
+		"tags": [
+			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/dlp/email/account_mapping": {
+		"operationId": "dlp-email-scanner-create-account-mapping",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"auth_requirements": {
+								"oneOf": [
+									{
+										"properties": {
+											"allowed_microsoft_organizations": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"type": {
+												"enum": [
+													"Org"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"allowed_microsoft_organizations",
+											"type"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"enum": [
+													"NoAuth"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"type"
+										],
+										"type": "object"
+									}
+								]
+							}
+						},
+						"required": [
+							"auth_requirements"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "Account mapping.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"addin_identifier_token": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"auth_requirements": {
+													"oneOf": [
+														{
+															"properties": {
+																"allowed_microsoft_organizations": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"type": {
+																	"enum": [
+																		"Org"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"allowed_microsoft_organizations",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"NoAuth"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													]
+												}
+											},
+											"required": [
+												"auth_requirements",
+												"addin_identifier_token"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "New Email Scanner Account Mapping response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "New Email Scanner Account Mapping failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create mapping",
+		"tags": [
+			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/dlp/email/rules": {
+		"operationId": "dlp-email-scanner-create-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"action": {
+								"oneOf": [
+									{
+										"properties": {
+											"action": {
+												"enum": [
+													"Block"
+												],
+												"type": "string"
+											},
+											"message": {
+												"nullable": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"action"
+										],
+										"type": "object"
+									}
+								]
+							},
+							"conditions": {
+								"description": "Rule is triggered if all conditions match.",
+								"items": {
+									"properties": {
+										"operator": {
+											"enum": [
+												"InList",
+												"NotInList",
+												"MatchRegex",
+												"NotMatchRegex"
+											],
+											"type": "string"
+										},
+										"selector": {
+											"enum": [
+												"Recipients",
+												"Sender",
+												"DLPProfiles"
+											],
+											"type": "string"
+										},
+										"value": {
+											"oneOf": [
+												{
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										}
+									},
+									"required": [
+										"selector",
+										"operator",
+										"value"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"description": {
+								"nullable": true,
+								"type": "string"
+							},
+							"enabled": {
+								"type": "boolean"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"enabled",
+							"conditions",
+							"action"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "Rule description.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action": {
+													"oneOf": [
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"Block"
+																	],
+																	"type": "string"
+																},
+																"message": {
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"action"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"conditions": {
+													"description": "Rule is triggered if all conditions match.",
+													"items": {
+														"properties": {
+															"operator": {
+																"enum": [
+																	"InList",
+																	"NotInList",
+																	"MatchRegex",
+																	"NotMatchRegex"
+																],
+																"type": "string"
+															},
+															"selector": {
+																"enum": [
+																	"Recipients",
+																	"Sender",
+																	"DLPProfiles"
+																],
+																"type": "string"
+															},
+															"value": {
+																"oneOf": [
+																	{
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															}
+														},
+														"required": [
+															"selector",
+															"operator",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"description": {
+													"nullable": true,
+													"type": "string"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"name": {
+													"type": "string"
+												},
+												"priority": {
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"rule_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"rule_id",
+												"name",
+												"priority",
+												"enabled",
+												"conditions",
+												"action",
+												"created_at",
+												"updated_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "New Email Scanner Rule response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "New Email Scanner Rule failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create email scanner rule",
+		"tags": [
+			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"PUT /accounts/{account_id}/dlp/email/rules/{rule_id}": {
+		"operationId": "dlp-email-scanner-update-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"action": {
+								"oneOf": [
+									{
+										"properties": {
+											"action": {
+												"enum": [
+													"Block"
+												],
+												"type": "string"
+											},
+											"message": {
+												"nullable": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"action"
+										],
+										"type": "object"
+									}
+								]
+							},
+							"conditions": {
+								"description": "Rule is triggered if all conditions match.",
+								"items": {
+									"properties": {
+										"operator": {
+											"enum": [
+												"InList",
+												"NotInList",
+												"MatchRegex",
+												"NotMatchRegex"
+											],
+											"type": "string"
+										},
+										"selector": {
+											"enum": [
+												"Recipients",
+												"Sender",
+												"DLPProfiles"
+											],
+											"type": "string"
+										},
+										"value": {
+											"oneOf": [
+												{
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										}
+									},
+									"required": [
+										"selector",
+										"operator",
+										"value"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"description": {
+								"nullable": true,
+								"type": "string"
+							},
+							"enabled": {
+								"type": "boolean"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"enabled",
+							"conditions",
+							"action"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "Rule description.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action": {
+													"oneOf": [
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"Block"
+																	],
+																	"type": "string"
+																},
+																"message": {
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"action"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"conditions": {
+													"description": "Rule is triggered if all conditions match.",
+													"items": {
+														"properties": {
+															"operator": {
+																"enum": [
+																	"InList",
+																	"NotInList",
+																	"MatchRegex",
+																	"NotMatchRegex"
+																],
+																"type": "string"
+															},
+															"selector": {
+																"enum": [
+																	"Recipients",
+																	"Sender",
+																	"DLPProfiles"
+																],
+																"type": "string"
+															},
+															"value": {
+																"oneOf": [
+																	{
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															}
+														},
+														"required": [
+															"selector",
+															"operator",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"description": {
+													"nullable": true,
+													"type": "string"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"name": {
+													"type": "string"
+												},
+												"priority": {
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"rule_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"rule_id",
+												"name",
+												"priority",
+												"enabled",
+												"conditions",
+												"action",
+												"created_at",
+												"updated_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Email Scanner Rule response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update Email Scanner Rule failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update email scanner rule",
+		"tags": [
+			"DLP Email"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	}
+}

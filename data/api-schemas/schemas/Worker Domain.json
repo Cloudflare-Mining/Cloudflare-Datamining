@@ -1,0 +1,1444 @@
+{
+	"DELETE /accounts/{account_id}/workers/domains/{domain_id}": {
+		"description": "Detaches a Worker from a zone and hostname.",
+		"operationId": "worker-domain-detach-from-domain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifer of the account.",
+					"example": "9a7806061c88ada191ed06f989cc3dac",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "domain_id",
+				"required": true,
+				"schema": {
+					"description": "Identifer of the Worker Domain.",
+					"example": "dbe10b4bc17c295377eabd600e1787fd",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {}
+				},
+				"description": "Detach from Domain response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {}
+				},
+				"description": "Detach from Domain response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Detach from Domain",
+		"tags": [
+			"Worker Domain"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
+	},
+	"GET /accounts/{account_id}/workers/domains": {
+		"description": "Lists all Worker Domains for an account.",
+		"operationId": "worker-domain-list-domains",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifer of the account.",
+					"example": "9a7806061c88ada191ed06f989cc3dac",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_name",
+				"schema": {
+					"description": "Name of the zone.",
+					"example": "example.com",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "service",
+				"schema": {
+					"description": "Worker service associated with the zone and hostname.",
+					"example": "foo",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_id",
+				"schema": {
+					"description": "Identifier of the zone.",
+					"example": "593c9c94de529bbbfaac7c53ced0447d",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "hostname",
+				"schema": {
+					"description": "Hostname of the Worker Domain.",
+					"example": "foo.example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "environment",
+				"schema": {
+					"description": "Worker environment associated with the zone and hostname.",
+					"example": "production",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"environment": {
+														"description": "Worker environment associated with the zone and hostname.",
+														"example": "production",
+														"type": "string",
+														"x-auditable": true
+													},
+													"hostname": {
+														"description": "Hostname of the Worker Domain.",
+														"example": "foo.example.com",
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "Identifer of the Worker Domain.",
+														"example": "dbe10b4bc17c295377eabd600e1787fd",
+														"type": "string",
+														"x-auditable": true
+													},
+													"service": {
+														"description": "Worker service associated with the zone and hostname.",
+														"example": "foo",
+														"type": "string",
+														"x-auditable": true
+													},
+													"zone_id": {
+														"description": "Identifier of the zone.",
+														"example": "593c9c94de529bbbfaac7c53ced0447d",
+														"type": "string",
+														"x-auditable": true
+													},
+													"zone_name": {
+														"description": "Name of the zone.",
+														"example": "example.com",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Domains response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"environment": {
+																"description": "Worker environment associated with the zone and hostname.",
+																"example": "production",
+																"type": "string",
+																"x-auditable": true
+															},
+															"hostname": {
+																"description": "Hostname of the Worker Domain.",
+																"example": "foo.example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Identifer of the Worker Domain.",
+																"example": "dbe10b4bc17c295377eabd600e1787fd",
+																"type": "string",
+																"x-auditable": true
+															},
+															"service": {
+																"description": "Worker service associated with the zone and hostname.",
+																"example": "foo",
+																"type": "string",
+																"x-auditable": true
+															},
+															"zone_id": {
+																"description": "Identifier of the zone.",
+																"example": "593c9c94de529bbbfaac7c53ced0447d",
+																"type": "string",
+																"x-auditable": true
+															},
+															"zone_name": {
+																"description": "Name of the zone.",
+																"example": "example.com",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Domains response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Domains",
+		"tags": [
+			"Worker Domain"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
+	},
+	"GET /accounts/{account_id}/workers/domains/{domain_id}": {
+		"description": "Gets a Worker domain.",
+		"operationId": "worker-domain-get-a-domain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifer of the account.",
+					"example": "9a7806061c88ada191ed06f989cc3dac",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "domain_id",
+				"required": true,
+				"schema": {
+					"description": "Identifer of the Worker Domain.",
+					"example": "dbe10b4bc17c295377eabd600e1787fd",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"environment": {
+													"description": "Worker environment associated with the zone and hostname.",
+													"example": "production",
+													"type": "string",
+													"x-auditable": true
+												},
+												"hostname": {
+													"description": "Hostname of the Worker Domain.",
+													"example": "foo.example.com",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Identifer of the Worker Domain.",
+													"example": "dbe10b4bc17c295377eabd600e1787fd",
+													"type": "string",
+													"x-auditable": true
+												},
+												"service": {
+													"description": "Worker service associated with the zone and hostname.",
+													"example": "foo",
+													"type": "string",
+													"x-auditable": true
+												},
+												"zone_id": {
+													"description": "Identifier of the zone.",
+													"example": "593c9c94de529bbbfaac7c53ced0447d",
+													"type": "string",
+													"x-auditable": true
+												},
+												"zone_name": {
+													"description": "Name of the zone.",
+													"example": "example.com",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Domain response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"environment": {
+															"description": "Worker environment associated with the zone and hostname.",
+															"example": "production",
+															"type": "string",
+															"x-auditable": true
+														},
+														"hostname": {
+															"description": "Hostname of the Worker Domain.",
+															"example": "foo.example.com",
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifer of the Worker Domain.",
+															"example": "dbe10b4bc17c295377eabd600e1787fd",
+															"type": "string",
+															"x-auditable": true
+														},
+														"service": {
+															"description": "Worker service associated with the zone and hostname.",
+															"example": "foo",
+															"type": "string",
+															"x-auditable": true
+														},
+														"zone_id": {
+															"description": "Identifier of the zone.",
+															"example": "593c9c94de529bbbfaac7c53ced0447d",
+															"type": "string",
+															"x-auditable": true
+														},
+														"zone_name": {
+															"description": "Name of the zone.",
+															"example": "example.com",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Domain response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a Domain",
+		"tags": [
+			"Worker Domain"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
+	},
+	"PUT /accounts/{account_id}/workers/domains": {
+		"description": "Attaches a Worker to a zone and hostname.",
+		"operationId": "worker-domain-attach-to-domain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifer of the account.",
+					"example": "9a7806061c88ada191ed06f989cc3dac",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"environment": {
+								"description": "Worker environment associated with the zone and hostname.",
+								"example": "production",
+								"type": "string",
+								"x-auditable": true
+							},
+							"hostname": {
+								"description": "Hostname of the Worker Domain.",
+								"example": "foo.example.com",
+								"type": "string",
+								"x-auditable": true
+							},
+							"service": {
+								"description": "Worker service associated with the zone and hostname.",
+								"example": "foo",
+								"type": "string",
+								"x-auditable": true
+							},
+							"zone_id": {
+								"description": "Identifier of the zone.",
+								"example": "593c9c94de529bbbfaac7c53ced0447d",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"zone_id",
+							"hostname",
+							"service",
+							"environment"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"environment": {
+													"description": "Worker environment associated with the zone and hostname.",
+													"example": "production",
+													"type": "string",
+													"x-auditable": true
+												},
+												"hostname": {
+													"description": "Hostname of the Worker Domain.",
+													"example": "foo.example.com",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Identifer of the Worker Domain.",
+													"example": "dbe10b4bc17c295377eabd600e1787fd",
+													"type": "string",
+													"x-auditable": true
+												},
+												"service": {
+													"description": "Worker service associated with the zone and hostname.",
+													"example": "foo",
+													"type": "string",
+													"x-auditable": true
+												},
+												"zone_id": {
+													"description": "Identifier of the zone.",
+													"example": "593c9c94de529bbbfaac7c53ced0447d",
+													"type": "string",
+													"x-auditable": true
+												},
+												"zone_name": {
+													"description": "Name of the zone.",
+													"example": "example.com",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Attach to Domain response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"environment": {
+															"description": "Worker environment associated with the zone and hostname.",
+															"example": "production",
+															"type": "string",
+															"x-auditable": true
+														},
+														"hostname": {
+															"description": "Hostname of the Worker Domain.",
+															"example": "foo.example.com",
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifer of the Worker Domain.",
+															"example": "dbe10b4bc17c295377eabd600e1787fd",
+															"type": "string",
+															"x-auditable": true
+														},
+														"service": {
+															"description": "Worker service associated with the zone and hostname.",
+															"example": "foo",
+															"type": "string",
+															"x-auditable": true
+														},
+														"zone_id": {
+															"description": "Identifier of the zone.",
+															"example": "593c9c94de529bbbfaac7c53ced0447d",
+															"type": "string",
+															"x-auditable": true
+														},
+														"zone_name": {
+															"description": "Name of the zone.",
+															"example": "example.com",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Attach to Domain response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Attach to Domain",
+		"tags": [
+			"Worker Domain"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
+	}
+}

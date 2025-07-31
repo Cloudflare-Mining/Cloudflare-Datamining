@@ -1,0 +1,1038 @@
+{
+	"DELETE /accounts/{account_id}/devices/registrations/{registration_id}": {
+		"description": "Deletes a WARP registration.",
+		"operationId": "delete-registration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "registration_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Registration deleted response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete registration",
+		"tags": [
+			"Registrations"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/devices/registrations": {
+		"description": "Lists WARP registrations.",
+		"operationId": "list-registrations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by user ID.",
+				"explode": true,
+				"in": "query",
+				"name": "user.id",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter by the last_seen timestamp - returns only registrations last seen after this timestamp.",
+				"explode": false,
+				"in": "query",
+				"name": "seen_after",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by the last_seen timestamp - returns only registrations last seen before this timestamp.",
+				"explode": false,
+				"in": "query",
+				"name": "seen_before",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by registration status. Defaults to 'active'.",
+				"explode": false,
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"enum": [
+						"active",
+						"all",
+						"revoked"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "The maximum number of devices to return in a single response.",
+				"explode": false,
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"format": "uint64",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Filter by registration details.",
+				"explode": false,
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "The registration field to order results by.",
+				"explode": false,
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"enum": [
+						"id",
+						"user.name",
+						"user.email",
+						"last_seen_at",
+						"created_at"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Sort direction.",
+				"explode": false,
+				"in": "query",
+				"name": "sort_order",
+				"schema": {
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Opaque token indicating the starting position when requesting the next set of records. A cursor value can be obtained from the result_info.cursor field in the response.",
+				"explode": false,
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by registration ID.",
+				"explode": true,
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter by WARP device ID.",
+				"explode": false,
+				"in": "query",
+				"name": "device.id",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "include",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": [
+								{
+									"created_at": "2025-02-14T13:17:00Z",
+									"deleted_at": null,
+									"device": {
+										"client_version": "1.0.0",
+										"id": "32aa0404-78f1-49a4-99e0-97f575081356",
+										"name": "My Device"
+									},
+									"id": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
+									"key": "U+QTP50RsWfeLGHF4tlGDnmGeuwtsz46KCHr5OyhWq00Rsdfl45mgnQAuEJ6CO0YrkyTl9FUf5iB0bwYR3g4EEFEHhtu6jFaqfMrBMBSz6itv9HQXkaR9OieKQ==",
+									"key_type": "secp256r1",
+									"last_seen_at": "2025-02-14T13:17:00Z",
+									"revoked_at": null,
+									"tunnel_type": "masque",
+									"updated_at": "2025-02-14T13:17:00Z",
+									"user": {
+										"email": "alice@example.org",
+										"id": "30323c1f-318d-4ec9-92c7-5a8c4d25c4fc",
+										"name": "Alice"
+									}
+								},
+								{
+									"created_at": "2025-02-15T10:20:00Z",
+									"deleted_at": null,
+									"device": {
+										"client_version": "1.0.1",
+										"id": "43bb1515-8902-50b5-aa01-a88686192467",
+										"name": "Bob's Laptop"
+									},
+									"id": "22eedc7a-4a1d-5417-c5b3-f73a983c277b",
+									"key": "V/RSP61StXgfmLHJG5umHEonHfvxtz57LDIs6PziXr11Stegm56nhrRBvFK7DP1ZsLzUm0GVg6jC1cxZS4h5FFGFJiju7kGbrgNsCNCT77juw0IRYlS0QpjgLR==",
+									"key_type": "secp256r1",
+									"last_seen_at": "2025-02-15T10:25:00Z",
+									"revoked_at": null,
+									"tunnel_type": "masque",
+									"updated_at": "2025-02-15T10:25:00Z",
+									"user": {
+										"email": "bob@example.com",
+										"id": "41434d2a-429e-5fd0-a3d8-6b9d5e36d5ad",
+										"name": "Bob"
+									}
+								}
+							],
+							"result_info": {
+								"count": 2,
+								"cursor": "ais86dftf.asdf7ba8",
+								"page": null,
+								"per_page": 10,
+								"total_count": null
+							},
+							"success": true
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"description": "A WARP configuration tied to a single user. Multiple registrations can be created from a single WARP device.",
+										"properties": {
+											"created_at": {
+												"description": "The RFC3339 timestamp when the registration was created.",
+												"example": "2025-02-14T13:17:00Z",
+												"type": "string",
+												"x-auditable": true
+											},
+											"deleted_at": {
+												"description": "The RFC3339 timestamp when the registration was deleted.",
+												"example": "2025-02-14T13:17:00Z",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"device": {
+												"description": "Device details embedded inside of a registration.",
+												"properties": {
+													"client_version": {
+														"description": "Version of the WARP client.",
+														"example": "1.0.0",
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "The ID of the device.",
+														"example": "32aa0404-78f1-49a4-99e0-97f575081356",
+														"type": "string",
+														"x-auditable": true
+													},
+													"name": {
+														"description": "The name of the device.",
+														"example": "My Device",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"id",
+													"name"
+												],
+												"type": "object"
+											},
+											"id": {
+												"description": "The ID of the registration.",
+												"example": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
+												"type": "string",
+												"x-auditable": true
+											},
+											"key": {
+												"description": "The public key used to connect to the Cloudflare network.",
+												"example": "U+QTP50RsWfeLGHF4tlGDnmGeuwtsz46KCHr5OyhWq00Rsdfl45mgnQAuEJ6CO0YrkyTl9FUf5iB0bwYR3g4EEFEHhtu6jFaqfMrBMBSz6itv9HQXkaR9OieKQ==",
+												"type": "string",
+												"x-auditable": true
+											},
+											"key_type": {
+												"description": "The type of encryption key used by the WARP client for the active key. Currently 'curve25519' for WireGuard and 'secp256r1' for MASQUE.",
+												"example": "secp256r1",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"last_seen_at": {
+												"description": "The RFC3339 timestamp when the registration was last seen.",
+												"example": "2025-02-14T13:17:00Z",
+												"type": "string",
+												"x-auditable": true
+											},
+											"revoked_at": {
+												"description": "The RFC3339 timestamp when the registration was revoked.",
+												"example": "2025-02-14T13:17:00Z",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"tunnel_type": {
+												"description": "Type of the tunnel - wireguard or masque.",
+												"example": "masque",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"updated_at": {
+												"description": "The RFC3339 timestamp when the registration was last updated.",
+												"example": "2025-02-14T13:17:00Z",
+												"type": "string",
+												"x-auditable": true
+											},
+											"user": {
+												"properties": {
+													"email": {
+														"description": "The contact email address of the user.",
+														"example": "user@example.com",
+														"maxLength": 90,
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "UUID.",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"name": {
+														"description": "The enrolled device user's name.",
+														"example": "John Appleseed",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"required": [
+											"id",
+											"key",
+											"device",
+											"created_at",
+											"updated_at",
+											"last_seen_at"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"description": "V4 public API Pagination/Cursor info.",
+									"example": {
+										"count": 1,
+										"cursor": "ais86dftf.asdf7ba8",
+										"page": null,
+										"per_page": 10,
+										"total_count": null
+									},
+									"properties": {
+										"count": {
+											"description": "Number of records in the response.",
+											"type": "integer"
+										},
+										"cursor": {
+											"description": "Opaque token to request the next set of records.",
+											"type": "string"
+										},
+										"per_page": {
+											"description": "The limit for the number of records in the response.",
+											"type": "integer"
+										},
+										"total_count": {
+											"description": "Total number of records available.",
+											"nullable": true,
+											"type": "integer"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"cursor"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List of registrations response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List registrations",
+		"tags": [
+			"Registrations"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/devices/registrations/{registration_id}": {
+		"description": "Fetches a single WARP registration.",
+		"operationId": "get-registration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "registration_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"description": "A WARP configuration tied to a single user. Multiple registrations can be created from a single WARP device.",
+									"properties": {
+										"created_at": {
+											"description": "The RFC3339 timestamp when the registration was created.",
+											"example": "2025-02-14T13:17:00Z",
+											"type": "string",
+											"x-auditable": true
+										},
+										"deleted_at": {
+											"description": "The RFC3339 timestamp when the registration was deleted.",
+											"example": "2025-02-14T13:17:00Z",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"device": {
+											"description": "Device details embedded inside of a registration.",
+											"properties": {
+												"client_version": {
+													"description": "Version of the WARP client.",
+													"example": "1.0.0",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The ID of the device.",
+													"example": "32aa0404-78f1-49a4-99e0-97f575081356",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The name of the device.",
+													"example": "My Device",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"name"
+											],
+											"type": "object"
+										},
+										"id": {
+											"description": "The ID of the registration.",
+											"example": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
+											"type": "string",
+											"x-auditable": true
+										},
+										"key": {
+											"description": "The public key used to connect to the Cloudflare network.",
+											"example": "U+QTP50RsWfeLGHF4tlGDnmGeuwtsz46KCHr5OyhWq00Rsdfl45mgnQAuEJ6CO0YrkyTl9FUf5iB0bwYR3g4EEFEHhtu6jFaqfMrBMBSz6itv9HQXkaR9OieKQ==",
+											"type": "string",
+											"x-auditable": true
+										},
+										"key_type": {
+											"description": "The type of encryption key used by the WARP client for the active key. Currently 'curve25519' for WireGuard and 'secp256r1' for MASQUE.",
+											"example": "secp256r1",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"last_seen_at": {
+											"description": "The RFC3339 timestamp when the registration was last seen.",
+											"example": "2025-02-14T13:17:00Z",
+											"type": "string",
+											"x-auditable": true
+										},
+										"revoked_at": {
+											"description": "The RFC3339 timestamp when the registration was revoked.",
+											"example": "2025-02-14T13:17:00Z",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"tunnel_type": {
+											"description": "Type of the tunnel - wireguard or masque.",
+											"example": "masque",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"updated_at": {
+											"description": "The RFC3339 timestamp when the registration was last updated.",
+											"example": "2025-02-14T13:17:00Z",
+											"type": "string",
+											"x-auditable": true
+										},
+										"user": {
+											"properties": {
+												"email": {
+													"description": "The contact email address of the user.",
+													"example": "user@example.com",
+													"maxLength": 90,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "UUID.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The enrolled device user's name.",
+													"example": "John Appleseed",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"required": [
+										"id",
+										"key",
+										"device",
+										"created_at",
+										"updated_at",
+										"last_seen_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a Registration."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get registration",
+		"tags": [
+			"Registrations"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/devices/registrations/revoke": {
+		"description": "Revokes a list of WARP registrations.",
+		"operationId": "revoke-registrations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "A list of registration IDs to revoke.",
+				"in": "query",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"result_info": {
+									"description": "V4 public API Pagination/Cursor info.",
+									"example": {
+										"count": 1,
+										"cursor": "ais86dftf.asdf7ba8",
+										"page": null,
+										"per_page": 10,
+										"total_count": null
+									},
+									"properties": {
+										"count": {
+											"description": "Number of records in the response.",
+											"type": "integer"
+										},
+										"cursor": {
+											"description": "Opaque token to request the next set of records.",
+											"type": "string"
+										},
+										"per_page": {
+											"description": "The limit for the number of records in the response.",
+											"type": "integer"
+										},
+										"total_count": {
+											"description": "Total number of records available.",
+											"nullable": true,
+											"type": "integer"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"cursor"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Revoke registrations response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Revoke registrations",
+		"tags": [
+			"Registrations"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/devices/registrations/unrevoke": {
+		"description": "Unrevokes a list of WARP registrations.",
+		"operationId": "unrevoke-registrations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "A list of registration IDs to unrevoke.",
+				"in": "query",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"result_info": {
+									"description": "V4 public API Pagination/Cursor info.",
+									"example": {
+										"count": 1,
+										"cursor": "ais86dftf.asdf7ba8",
+										"page": null,
+										"per_page": 10,
+										"total_count": null
+									},
+									"properties": {
+										"count": {
+											"description": "Number of records in the response.",
+											"type": "integer"
+										},
+										"cursor": {
+											"description": "Opaque token to request the next set of records.",
+											"type": "string"
+										},
+										"per_page": {
+											"description": "The limit for the number of records in the response.",
+											"type": "integer"
+										},
+										"total_count": {
+											"description": "Total number of records available.",
+											"nullable": true,
+											"type": "integer"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"cursor"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unrevoke registrations response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Unrevoke registrations",
+		"tags": [
+			"Registrations"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	}
+}

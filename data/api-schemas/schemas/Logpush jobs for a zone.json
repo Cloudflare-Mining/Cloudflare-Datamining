@@ -1,0 +1,5636 @@
+{
+	"DELETE /zones/{zone_id}/logpush/jobs/{job_id}": {
+		"description": "Deletes a Logpush job.",
+		"operationId": "delete-zones-zone_id-logpush-jobs-job_id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "job_id",
+				"required": true,
+				"schema": {
+					"description": "Unique id of the job.",
+					"minimum": 1,
+					"type": "integer",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Unique id of the job.",
+													"minimum": 1,
+													"type": "integer",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Logpush job response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Logpush job response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete Logpush job",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/logpush/datasets/{dataset_id}/fields": {
+		"description": "Lists all fields available for a dataset. The response result is an object with key-value pairs, where keys are field names, and values are descriptions.",
+		"operationId": "get-zones-zone_id-logpush-datasets-dataset_id-fields",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"default": "http_requests",
+					"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
+					"enum": [
+						"access_requests",
+						"audit_logs",
+						"biso_user_actions",
+						"casb_findings",
+						"device_posture_results",
+						"dlp_forensic_copies",
+						"dns_firewall_logs",
+						"dns_logs",
+						"email_security_alerts",
+						"firewall_events",
+						"gateway_dns",
+						"gateway_http",
+						"gateway_network",
+						"http_requests",
+						"magic_ids_detections",
+						"nel_reports",
+						"network_analytics_logs",
+						"page_shield_events",
+						"sinkhole_http_logs",
+						"spectrum_events",
+						"ssh_logs",
+						"workers_trace_events",
+						"zaraz_events",
+						"zero_trust_network_sessions"
+					],
+					"example": "http_requests",
+					"nullable": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"nullable": true,
+												"properties": {
+													"key": {
+														"example": "value",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List fields response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List fields response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List fields",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/logpush/datasets/{dataset_id}/jobs": {
+		"description": "Lists Logpush jobs for a zone for a dataset.",
+		"operationId": "get-zones-zone_id-logpush-datasets-dataset_id-jobs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"default": "http_requests",
+					"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
+					"enum": [
+						"access_requests",
+						"audit_logs",
+						"biso_user_actions",
+						"casb_findings",
+						"device_posture_results",
+						"dlp_forensic_copies",
+						"dns_firewall_logs",
+						"dns_logs",
+						"email_security_alerts",
+						"firewall_events",
+						"gateway_dns",
+						"gateway_http",
+						"gateway_network",
+						"http_requests",
+						"magic_ids_detections",
+						"nel_reports",
+						"network_analytics_logs",
+						"page_shield_events",
+						"sinkhole_http_logs",
+						"spectrum_events",
+						"ssh_logs",
+						"workers_trace_events",
+						"zaraz_events",
+						"zero_trust_network_sessions"
+					],
+					"example": "http_requests",
+					"nullable": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": [
+								{
+									"dataset": "http_requests",
+									"destination_conf": "s3://mybucket/logs?region=us-west-2",
+									"enabled": false,
+									"error_message": null,
+									"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+									"id": 1,
+									"kind": "",
+									"last_complete": null,
+									"last_error": null,
+									"max_upload_bytes": 5000000,
+									"max_upload_interval_seconds": 30,
+									"max_upload_records": 1000,
+									"name": "example.com",
+									"output_options": {
+										"CVE-2021-44228": false,
+										"batch_prefix": "",
+										"batch_suffix": "",
+										"field_delimiter": ",",
+										"field_names": [
+											"Datetime",
+											"DstIP",
+											"SrcIP"
+										],
+										"output_type": "ndjson",
+										"record_delimiter": "",
+										"record_prefix": "{",
+										"record_suffix": "}\n",
+										"sample_rate": 1,
+										"timestamp_format": "unixnano"
+									}
+								}
+							],
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"nullable": true,
+												"properties": {
+													"dataset": {
+														"default": "http_requests",
+														"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
+														"enum": [
+															"access_requests",
+															"audit_logs",
+															"biso_user_actions",
+															"casb_findings",
+															"device_posture_results",
+															"dlp_forensic_copies",
+															"dns_firewall_logs",
+															"dns_logs",
+															"email_security_alerts",
+															"firewall_events",
+															"gateway_dns",
+															"gateway_http",
+															"gateway_network",
+															"http_requests",
+															"magic_ids_detections",
+															"nel_reports",
+															"network_analytics_logs",
+															"page_shield_events",
+															"sinkhole_http_logs",
+															"spectrum_events",
+															"ssh_logs",
+															"workers_trace_events",
+															"zaraz_events",
+															"zero_trust_network_sessions"
+														],
+														"example": "http_requests",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"destination_conf": {
+														"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+														"example": "s3://mybucket/logs?region=us-west-2",
+														"format": "uri",
+														"maxLength": 4096,
+														"type": "string"
+													},
+													"enabled": {
+														"default": false,
+														"description": "Flag that indicates if the job is enabled.",
+														"example": false,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"error_message": {
+														"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"frequency": {
+														"default": "high",
+														"deprecated": true,
+														"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+														"enum": [
+															"high",
+															"low"
+														],
+														"example": "high",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "Unique id of the job.",
+														"minimum": 1,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"kind": {
+														"default": "",
+														"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).",
+														"enum": [
+															"",
+															"edge"
+														],
+														"example": "",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"last_complete": {
+														"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
+														"format": "date-time",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"last_error": {
+														"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+														"format": "date-time",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"logpull_options": {
+														"deprecated": true,
+														"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+														"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+														"format": "uri-reference",
+														"maxLength": 4096,
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"max_upload_bytes": {
+														"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+														"example": 5000000,
+														"nullable": true,
+														"oneOf": [
+															{
+																"enum": [
+																	0
+																],
+																"type": "integer"
+															},
+															{
+																"maximum": 1000000000,
+																"minimum": 5000000,
+																"type": "integer"
+															}
+														],
+														"type": "integer",
+														"x-auditable": true
+													},
+													"max_upload_interval_seconds": {
+														"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+														"example": 30,
+														"nullable": true,
+														"oneOf": [
+															{
+																"enum": [
+																	0
+																],
+																"type": "integer"
+															},
+															{
+																"maximum": 300,
+																"minimum": 30,
+																"type": "integer"
+															}
+														],
+														"type": "integer",
+														"x-auditable": true
+													},
+													"max_upload_records": {
+														"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+														"example": 1000,
+														"nullable": true,
+														"oneOf": [
+															{
+																"enum": [
+																	0
+																],
+																"type": "integer"
+															},
+															{
+																"maximum": 1000000,
+																"minimum": 1000,
+																"type": "integer"
+															}
+														],
+														"type": "integer",
+														"x-auditable": true
+													},
+													"name": {
+														"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+														"example": "example.com",
+														"maxLength": 512,
+														"nullable": true,
+														"pattern": "^[a-zA-Z0-9\\-\\.]*$",
+														"type": "string",
+														"x-auditable": true
+													},
+													"output_options": {
+														"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+														"nullable": true,
+														"properties": {
+															"CVE-2021-44228": {
+																"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+																"nullable": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"batch_prefix": {
+																"description": "String to be prepended before each batch.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"batch_suffix": {
+																"description": "String to be appended after each batch.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"field_delimiter": {
+																"description": "String to join fields. This field be ignored when `record_template` is set.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"field_names": {
+																"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+																"example": [
+																	"ClientIP",
+																	"EdgeStartTimestamp",
+																	"RayID"
+																],
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
+															"output_type": {
+																"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+																"enum": [
+																	"ndjson",
+																	"csv"
+																],
+																"example": "ndjson",
+																"type": "string",
+																"x-auditable": true
+															},
+															"record_delimiter": {
+																"description": "String to be inserted in-between the records as separator.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"record_prefix": {
+																"description": "String to be prepended before each record.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"record_suffix": {
+																"description": "String to be appended after each record.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"record_template": {
+																"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"sample_rate": {
+																"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+																"format": "float",
+																"maximum": 1,
+																"minimum": 0,
+																"nullable": true,
+																"type": "number",
+																"x-auditable": true
+															},
+															"timestamp_format": {
+																"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+																"enum": [
+																	"unixnano",
+																	"unix",
+																	"rfc3339"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Logpush jobs for a dataset response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Logpush jobs for a dataset response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List Logpush jobs for a dataset",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/logpush/jobs": {
+		"description": "Lists Logpush jobs for a zone.",
+		"operationId": "get-zones-zone_id-logpush-jobs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": [
+								{
+									"dataset": "http_requests",
+									"destination_conf": "s3://mybucket/logs?region=us-west-2",
+									"enabled": false,
+									"error_message": null,
+									"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+									"id": 1,
+									"kind": "",
+									"last_complete": null,
+									"last_error": null,
+									"max_upload_bytes": 5000000,
+									"max_upload_interval_seconds": 30,
+									"max_upload_records": 1000,
+									"name": "example.com",
+									"output_options": {
+										"CVE-2021-44228": false,
+										"batch_prefix": "",
+										"batch_suffix": "",
+										"field_delimiter": ",",
+										"field_names": [
+											"Datetime",
+											"DstIP",
+											"SrcIP"
+										],
+										"output_type": "ndjson",
+										"record_delimiter": "",
+										"record_prefix": "{",
+										"record_suffix": "}\n",
+										"sample_rate": 1,
+										"timestamp_format": "unixnano"
+									}
+								}
+							],
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"nullable": true,
+												"properties": {
+													"dataset": {
+														"default": "http_requests",
+														"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
+														"enum": [
+															"access_requests",
+															"audit_logs",
+															"biso_user_actions",
+															"casb_findings",
+															"device_posture_results",
+															"dlp_forensic_copies",
+															"dns_firewall_logs",
+															"dns_logs",
+															"email_security_alerts",
+															"firewall_events",
+															"gateway_dns",
+															"gateway_http",
+															"gateway_network",
+															"http_requests",
+															"magic_ids_detections",
+															"nel_reports",
+															"network_analytics_logs",
+															"page_shield_events",
+															"sinkhole_http_logs",
+															"spectrum_events",
+															"ssh_logs",
+															"workers_trace_events",
+															"zaraz_events",
+															"zero_trust_network_sessions"
+														],
+														"example": "http_requests",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"destination_conf": {
+														"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+														"example": "s3://mybucket/logs?region=us-west-2",
+														"format": "uri",
+														"maxLength": 4096,
+														"type": "string"
+													},
+													"enabled": {
+														"default": false,
+														"description": "Flag that indicates if the job is enabled.",
+														"example": false,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"error_message": {
+														"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"frequency": {
+														"default": "high",
+														"deprecated": true,
+														"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+														"enum": [
+															"high",
+															"low"
+														],
+														"example": "high",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "Unique id of the job.",
+														"minimum": 1,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"kind": {
+														"default": "",
+														"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).",
+														"enum": [
+															"",
+															"edge"
+														],
+														"example": "",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"last_complete": {
+														"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
+														"format": "date-time",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"last_error": {
+														"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+														"format": "date-time",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"logpull_options": {
+														"deprecated": true,
+														"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+														"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+														"format": "uri-reference",
+														"maxLength": 4096,
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"max_upload_bytes": {
+														"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+														"example": 5000000,
+														"nullable": true,
+														"oneOf": [
+															{
+																"enum": [
+																	0
+																],
+																"type": "integer"
+															},
+															{
+																"maximum": 1000000000,
+																"minimum": 5000000,
+																"type": "integer"
+															}
+														],
+														"type": "integer",
+														"x-auditable": true
+													},
+													"max_upload_interval_seconds": {
+														"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+														"example": 30,
+														"nullable": true,
+														"oneOf": [
+															{
+																"enum": [
+																	0
+																],
+																"type": "integer"
+															},
+															{
+																"maximum": 300,
+																"minimum": 30,
+																"type": "integer"
+															}
+														],
+														"type": "integer",
+														"x-auditable": true
+													},
+													"max_upload_records": {
+														"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+														"example": 1000,
+														"nullable": true,
+														"oneOf": [
+															{
+																"enum": [
+																	0
+																],
+																"type": "integer"
+															},
+															{
+																"maximum": 1000000,
+																"minimum": 1000,
+																"type": "integer"
+															}
+														],
+														"type": "integer",
+														"x-auditable": true
+													},
+													"name": {
+														"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+														"example": "example.com",
+														"maxLength": 512,
+														"nullable": true,
+														"pattern": "^[a-zA-Z0-9\\-\\.]*$",
+														"type": "string",
+														"x-auditable": true
+													},
+													"output_options": {
+														"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+														"nullable": true,
+														"properties": {
+															"CVE-2021-44228": {
+																"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+																"nullable": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"batch_prefix": {
+																"description": "String to be prepended before each batch.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"batch_suffix": {
+																"description": "String to be appended after each batch.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"field_delimiter": {
+																"description": "String to join fields. This field be ignored when `record_template` is set.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"field_names": {
+																"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+																"example": [
+																	"ClientIP",
+																	"EdgeStartTimestamp",
+																	"RayID"
+																],
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
+															"output_type": {
+																"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+																"enum": [
+																	"ndjson",
+																	"csv"
+																],
+																"example": "ndjson",
+																"type": "string",
+																"x-auditable": true
+															},
+															"record_delimiter": {
+																"description": "String to be inserted in-between the records as separator.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"record_prefix": {
+																"description": "String to be prepended before each record.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"record_suffix": {
+																"description": "String to be appended after each record.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"record_template": {
+																"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"sample_rate": {
+																"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+																"format": "float",
+																"maximum": 1,
+																"minimum": 0,
+																"nullable": true,
+																"type": "number",
+																"x-auditable": true
+															},
+															"timestamp_format": {
+																"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+																"enum": [
+																	"unixnano",
+																	"unix",
+																	"rfc3339"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Logpush jobs response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Logpush jobs response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List Logpush jobs",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/logpush/jobs/{job_id}": {
+		"description": "Gets the details of a Logpush job.",
+		"operationId": "get-zones-zone_id-logpush-jobs-job_id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "job_id",
+				"required": true,
+				"schema": {
+					"description": "Unique id of the job.",
+					"minimum": 1,
+					"type": "integer",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"dataset": "http_requests",
+								"destination_conf": "s3://mybucket/logs?region=us-west-2",
+								"enabled": false,
+								"error_message": null,
+								"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+								"id": 1,
+								"kind": "",
+								"last_complete": null,
+								"last_error": null,
+								"max_upload_bytes": 5000000,
+								"max_upload_interval_seconds": 30,
+								"max_upload_records": 1000,
+								"name": "example.com",
+								"output_options": {
+									"CVE-2021-44228": false,
+									"batch_prefix": "",
+									"batch_suffix": "",
+									"field_delimiter": ",",
+									"field_names": [
+										"Datetime",
+										"DstIP",
+										"SrcIP"
+									],
+									"output_type": "ndjson",
+									"record_delimiter": "",
+									"record_prefix": "{",
+									"record_suffix": "}\n",
+									"sample_rate": 1,
+									"timestamp_format": "unixnano"
+								}
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"dataset": {
+													"default": "http_requests",
+													"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
+													"enum": [
+														"access_requests",
+														"audit_logs",
+														"biso_user_actions",
+														"casb_findings",
+														"device_posture_results",
+														"dlp_forensic_copies",
+														"dns_firewall_logs",
+														"dns_logs",
+														"email_security_alerts",
+														"firewall_events",
+														"gateway_dns",
+														"gateway_http",
+														"gateway_network",
+														"http_requests",
+														"magic_ids_detections",
+														"nel_reports",
+														"network_analytics_logs",
+														"page_shield_events",
+														"sinkhole_http_logs",
+														"spectrum_events",
+														"ssh_logs",
+														"workers_trace_events",
+														"zaraz_events",
+														"zero_trust_network_sessions"
+													],
+													"example": "http_requests",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"destination_conf": {
+													"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+													"example": "s3://mybucket/logs?region=us-west-2",
+													"format": "uri",
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"enabled": {
+													"default": false,
+													"description": "Flag that indicates if the job is enabled.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"error_message": {
+													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"frequency": {
+													"default": "high",
+													"deprecated": true,
+													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+													"enum": [
+														"high",
+														"low"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Unique id of the job.",
+													"minimum": 1,
+													"type": "integer",
+													"x-auditable": true
+												},
+												"kind": {
+													"default": "",
+													"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).",
+													"enum": [
+														"",
+														"edge"
+													],
+													"example": "",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"last_complete": {
+													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"last_error": {
+													"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"logpull_options": {
+													"deprecated": true,
+													"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+													"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+													"format": "uri-reference",
+													"maxLength": 4096,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"max_upload_bytes": {
+													"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+													"example": 5000000,
+													"nullable": true,
+													"oneOf": [
+														{
+															"enum": [
+																0
+															],
+															"type": "integer"
+														},
+														{
+															"maximum": 1000000000,
+															"minimum": 5000000,
+															"type": "integer"
+														}
+													],
+													"type": "integer",
+													"x-auditable": true
+												},
+												"max_upload_interval_seconds": {
+													"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+													"example": 30,
+													"nullable": true,
+													"oneOf": [
+														{
+															"enum": [
+																0
+															],
+															"type": "integer"
+														},
+														{
+															"maximum": 300,
+															"minimum": 30,
+															"type": "integer"
+														}
+													],
+													"type": "integer",
+													"x-auditable": true
+												},
+												"max_upload_records": {
+													"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+													"example": 1000,
+													"nullable": true,
+													"oneOf": [
+														{
+															"enum": [
+																0
+															],
+															"type": "integer"
+														},
+														{
+															"maximum": 1000000,
+															"minimum": 1000,
+															"type": "integer"
+														}
+													],
+													"type": "integer",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+													"example": "example.com",
+													"maxLength": 512,
+													"nullable": true,
+													"pattern": "^[a-zA-Z0-9\\-\\.]*$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"output_options": {
+													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+													"nullable": true,
+													"properties": {
+														"CVE-2021-44228": {
+															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"batch_prefix": {
+															"description": "String to be prepended before each batch.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"batch_suffix": {
+															"description": "String to be appended after each batch.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"field_delimiter": {
+															"description": "String to join fields. This field be ignored when `record_template` is set.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"field_names": {
+															"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+															"example": [
+																"ClientIP",
+																"EdgeStartTimestamp",
+																"RayID"
+															],
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"output_type": {
+															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+															"enum": [
+																"ndjson",
+																"csv"
+															],
+															"example": "ndjson",
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_delimiter": {
+															"description": "String to be inserted in-between the records as separator.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_prefix": {
+															"description": "String to be prepended before each record.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_suffix": {
+															"description": "String to be appended after each record.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_template": {
+															"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"sample_rate": {
+															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+															"format": "float",
+															"maximum": 1,
+															"minimum": 0,
+															"nullable": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"timestamp_format": {
+															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+															"enum": [
+																"unixnano",
+																"unix",
+																"rfc3339"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Logpush job details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Logpush job details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Logpush job details",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_id}/logpush/jobs": {
+		"description": "Creates a new Logpush job for a zone.",
+		"operationId": "post-zones-zone_id-logpush-jobs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"example": {
+						"dataset": "http_requests",
+						"destination_conf": "s3://mybucket/logs?region=us-west-2",
+						"enabled": false,
+						"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+						"kind": "",
+						"max_upload_bytes": 5000000,
+						"max_upload_interval_seconds": 30,
+						"max_upload_records": 1000,
+						"name": "example.com",
+						"output_options": {
+							"CVE-2021-44228": false,
+							"batch_prefix": "",
+							"batch_suffix": "",
+							"field_delimiter": ",",
+							"field_names": [
+								"RayID",
+								"ClientIP",
+								"EdgeStartTimestamp"
+							],
+							"output_type": "ndjson",
+							"record_delimiter": "",
+							"record_prefix": "{",
+							"record_suffix": "}\n",
+							"sample_rate": 1,
+							"timestamp_format": "unixnano"
+						},
+						"ownership_challenge\"": "00000000000000000000"
+					},
+					"schema": {
+						"properties": {
+							"dataset": {
+								"default": "http_requests",
+								"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
+								"enum": [
+									"access_requests",
+									"audit_logs",
+									"biso_user_actions",
+									"casb_findings",
+									"device_posture_results",
+									"dlp_forensic_copies",
+									"dns_firewall_logs",
+									"dns_logs",
+									"email_security_alerts",
+									"firewall_events",
+									"gateway_dns",
+									"gateway_http",
+									"gateway_network",
+									"http_requests",
+									"magic_ids_detections",
+									"nel_reports",
+									"network_analytics_logs",
+									"page_shield_events",
+									"sinkhole_http_logs",
+									"spectrum_events",
+									"ssh_logs",
+									"workers_trace_events",
+									"zaraz_events",
+									"zero_trust_network_sessions"
+								],
+								"example": "http_requests",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"destination_conf": {
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"example": "s3://mybucket/logs?region=us-west-2",
+								"format": "uri",
+								"maxLength": 4096,
+								"type": "string"
+							},
+							"enabled": {
+								"default": false,
+								"description": "Flag that indicates if the job is enabled.",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"filter": {
+								"description": "The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).",
+								"example": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+								"nullable": true,
+								"type": "string"
+							},
+							"frequency": {
+								"default": "high",
+								"deprecated": true,
+								"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+								"enum": [
+									"high",
+									"low"
+								],
+								"example": "high",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"kind": {
+								"default": "",
+								"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).",
+								"enum": [
+									"",
+									"edge"
+								],
+								"example": "",
+								"type": "string",
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
+							},
+							"logpull_options": {
+								"deprecated": true,
+								"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+								"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+								"format": "uri-reference",
+								"maxLength": 4096,
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"max_upload_bytes": {
+								"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+								"example": 5000000,
+								"nullable": true,
+								"oneOf": [
+									{
+										"enum": [
+											0
+										],
+										"type": "integer"
+									},
+									{
+										"maximum": 1000000000,
+										"minimum": 5000000,
+										"type": "integer"
+									}
+								],
+								"type": "integer",
+								"x-auditable": true
+							},
+							"max_upload_interval_seconds": {
+								"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+								"example": 30,
+								"nullable": true,
+								"oneOf": [
+									{
+										"enum": [
+											0
+										],
+										"type": "integer"
+									},
+									{
+										"maximum": 300,
+										"minimum": 30,
+										"type": "integer"
+									}
+								],
+								"type": "integer",
+								"x-auditable": true
+							},
+							"max_upload_records": {
+								"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+								"example": 1000,
+								"nullable": true,
+								"oneOf": [
+									{
+										"enum": [
+											0
+										],
+										"type": "integer"
+									},
+									{
+										"maximum": 1000000,
+										"minimum": 1000,
+										"type": "integer"
+									}
+								],
+								"type": "integer",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+								"example": "example.com",
+								"maxLength": 512,
+								"nullable": true,
+								"pattern": "^[a-zA-Z0-9\\-\\.]*$",
+								"type": "string",
+								"x-auditable": true
+							},
+							"output_options": {
+								"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+								"nullable": true,
+								"properties": {
+									"CVE-2021-44228": {
+										"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+										"nullable": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"batch_prefix": {
+										"description": "String to be prepended before each batch.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"batch_suffix": {
+										"description": "String to be appended after each batch.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"field_delimiter": {
+										"description": "String to join fields. This field be ignored when `record_template` is set.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"field_names": {
+										"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+										"example": [
+											"ClientIP",
+											"EdgeStartTimestamp",
+											"RayID"
+										],
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"type": "array"
+									},
+									"output_type": {
+										"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+										"enum": [
+											"ndjson",
+											"csv"
+										],
+										"example": "ndjson",
+										"type": "string",
+										"x-auditable": true
+									},
+									"record_delimiter": {
+										"description": "String to be inserted in-between the records as separator.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"record_prefix": {
+										"description": "String to be prepended before each record.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"record_suffix": {
+										"description": "String to be appended after each record.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"record_template": {
+										"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"sample_rate": {
+										"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+										"format": "float",
+										"maximum": 1,
+										"minimum": 0,
+										"nullable": true,
+										"type": "number",
+										"x-auditable": true
+									},
+									"timestamp_format": {
+										"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+										"enum": [
+											"unixnano",
+											"unix",
+											"rfc3339"
+										],
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"type": "object"
+							},
+							"ownership_challenge": {
+								"description": "Ownership challenge token to prove destination ownership.",
+								"example": "00000000000000000000",
+								"maxLength": 4096,
+								"pattern": "^[a-zA-Z0-9/\\+\\.\\-_]*$",
+								"type": "string",
+								"x-sensitive": true
+							}
+						},
+						"required": [
+							"destination_conf"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"dataset": "http_requests",
+								"destination_conf": "s3://mybucket/logs?region=us-west-2",
+								"enabled": false,
+								"error_message": null,
+								"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+								"id": 1,
+								"kind": "",
+								"last_complete": null,
+								"last_error": null,
+								"max_upload_bytes": 5000000,
+								"max_upload_interval_seconds": 30,
+								"max_upload_records": 1000,
+								"name": "example.com",
+								"output_options": {
+									"CVE-2021-44228": false,
+									"batch_prefix": "",
+									"batch_suffix": "",
+									"field_delimiter": ",",
+									"field_names": [
+										"Datetime",
+										"DstIP",
+										"SrcIP"
+									],
+									"output_type": "ndjson",
+									"record_delimiter": "",
+									"record_prefix": "{",
+									"record_suffix": "}\n",
+									"sample_rate": 1,
+									"timestamp_format": "unixnano"
+								}
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"dataset": {
+													"default": "http_requests",
+													"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
+													"enum": [
+														"access_requests",
+														"audit_logs",
+														"biso_user_actions",
+														"casb_findings",
+														"device_posture_results",
+														"dlp_forensic_copies",
+														"dns_firewall_logs",
+														"dns_logs",
+														"email_security_alerts",
+														"firewall_events",
+														"gateway_dns",
+														"gateway_http",
+														"gateway_network",
+														"http_requests",
+														"magic_ids_detections",
+														"nel_reports",
+														"network_analytics_logs",
+														"page_shield_events",
+														"sinkhole_http_logs",
+														"spectrum_events",
+														"ssh_logs",
+														"workers_trace_events",
+														"zaraz_events",
+														"zero_trust_network_sessions"
+													],
+													"example": "http_requests",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"destination_conf": {
+													"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+													"example": "s3://mybucket/logs?region=us-west-2",
+													"format": "uri",
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"enabled": {
+													"default": false,
+													"description": "Flag that indicates if the job is enabled.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"error_message": {
+													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"frequency": {
+													"default": "high",
+													"deprecated": true,
+													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+													"enum": [
+														"high",
+														"low"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Unique id of the job.",
+													"minimum": 1,
+													"type": "integer",
+													"x-auditable": true
+												},
+												"kind": {
+													"default": "",
+													"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).",
+													"enum": [
+														"",
+														"edge"
+													],
+													"example": "",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"last_complete": {
+													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"last_error": {
+													"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"logpull_options": {
+													"deprecated": true,
+													"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+													"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+													"format": "uri-reference",
+													"maxLength": 4096,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"max_upload_bytes": {
+													"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+													"example": 5000000,
+													"nullable": true,
+													"oneOf": [
+														{
+															"enum": [
+																0
+															],
+															"type": "integer"
+														},
+														{
+															"maximum": 1000000000,
+															"minimum": 5000000,
+															"type": "integer"
+														}
+													],
+													"type": "integer",
+													"x-auditable": true
+												},
+												"max_upload_interval_seconds": {
+													"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+													"example": 30,
+													"nullable": true,
+													"oneOf": [
+														{
+															"enum": [
+																0
+															],
+															"type": "integer"
+														},
+														{
+															"maximum": 300,
+															"minimum": 30,
+															"type": "integer"
+														}
+													],
+													"type": "integer",
+													"x-auditable": true
+												},
+												"max_upload_records": {
+													"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+													"example": 1000,
+													"nullable": true,
+													"oneOf": [
+														{
+															"enum": [
+																0
+															],
+															"type": "integer"
+														},
+														{
+															"maximum": 1000000,
+															"minimum": 1000,
+															"type": "integer"
+														}
+													],
+													"type": "integer",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+													"example": "example.com",
+													"maxLength": 512,
+													"nullable": true,
+													"pattern": "^[a-zA-Z0-9\\-\\.]*$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"output_options": {
+													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+													"nullable": true,
+													"properties": {
+														"CVE-2021-44228": {
+															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"batch_prefix": {
+															"description": "String to be prepended before each batch.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"batch_suffix": {
+															"description": "String to be appended after each batch.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"field_delimiter": {
+															"description": "String to join fields. This field be ignored when `record_template` is set.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"field_names": {
+															"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+															"example": [
+																"ClientIP",
+																"EdgeStartTimestamp",
+																"RayID"
+															],
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"output_type": {
+															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+															"enum": [
+																"ndjson",
+																"csv"
+															],
+															"example": "ndjson",
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_delimiter": {
+															"description": "String to be inserted in-between the records as separator.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_prefix": {
+															"description": "String to be prepended before each record.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_suffix": {
+															"description": "String to be appended after each record.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_template": {
+															"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"sample_rate": {
+															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+															"format": "float",
+															"maximum": 1,
+															"minimum": 0,
+															"nullable": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"timestamp_format": {
+															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+															"enum": [
+																"unixnano",
+																"unix",
+																"rfc3339"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Logpush job response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Logpush job response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create Logpush job",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_id}/logpush/ownership": {
+		"description": "Gets a new ownership challenge sent to your destination.",
+		"operationId": "post-zones-zone_id-logpush-ownership",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destination_conf": {
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"example": "s3://mybucket/logs?region=us-west-2",
+								"format": "uri",
+								"maxLength": 4096,
+								"type": "string"
+							}
+						},
+						"required": [
+							"destination_conf"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"filename": {
+													"example": "logs/challenge-filename.txt",
+													"type": "string",
+													"x-auditable": true
+												},
+												"message": {
+													"example": "",
+													"type": "string",
+													"x-auditable": true
+												},
+												"valid": {
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get ownership challenge response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get ownership challenge response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get ownership challenge",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_id}/logpush/ownership/validate": {
+		"description": "Validates ownership challenge of the destination.",
+		"operationId": "post-zones-zone_id-logpush-ownership-validate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destination_conf": {
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"example": "s3://mybucket/logs?region=us-west-2",
+								"format": "uri",
+								"maxLength": 4096,
+								"type": "string"
+							},
+							"ownership_challenge": {
+								"description": "Ownership challenge token to prove destination ownership.",
+								"example": "00000000000000000000",
+								"maxLength": 4096,
+								"pattern": "^[a-zA-Z0-9/\\+\\.\\-_]*$",
+								"type": "string",
+								"x-sensitive": true
+							}
+						},
+						"required": [
+							"destination_conf",
+							"ownership_challenge"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"valid": {
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Validate ownership challenge response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Validate ownership challenge response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Validate ownership challenge",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_id}/logpush/validate/destination": {
+		"description": "Validates destination.",
+		"operationId": "post-zones-zone_id-logpush-validate-destination",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destination_conf": {
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"example": "s3://mybucket/logs?region=us-west-2",
+								"format": "uri",
+								"maxLength": 4096,
+								"type": "string"
+							}
+						},
+						"required": [
+							"destination_conf"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"message": {
+													"example": "",
+													"type": "string",
+													"x-auditable": true
+												},
+												"valid": {
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Validate destination response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Validate destination response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Validate destination",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_id}/logpush/validate/destination/exists": {
+		"description": "Checks if there is an existing job with a destination.",
+		"operationId": "post-zones-zone_id-logpush-validate-destination-exists",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destination_conf": {
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"example": "s3://mybucket/logs?region=us-west-2",
+								"format": "uri",
+								"maxLength": 4096,
+								"type": "string"
+							}
+						},
+						"required": [
+							"destination_conf"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"exists": {
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Check destination exists response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Check destination exists response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Check destination exists",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_id}/logpush/validate/origin": {
+		"description": "Validates logpull origin with logpull_options.",
+		"operationId": "post-zones-zone_id-logpush-validate-origin",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"logpull_options": {
+								"deprecated": true,
+								"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+								"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+								"format": "uri-reference",
+								"maxLength": 4096,
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"logpull_options"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"message": {
+													"example": "",
+													"type": "string",
+													"x-auditable": true
+												},
+												"valid": {
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Validate origin response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Validate origin response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Validate origin",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /zones/{zone_id}/logpush/jobs/{job_id}": {
+		"description": "Updates a Logpush job.",
+		"operationId": "put-zones-zone_id-logpush-jobs-job_id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "job_id",
+				"required": true,
+				"schema": {
+					"description": "Unique id of the job.",
+					"minimum": 1,
+					"type": "integer",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"example": {
+						"destination_conf": "s3://mybucket/logs?region=us-west-2",
+						"enabled": false,
+						"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+						"kind": "",
+						"max_upload_bytes": 5000000,
+						"max_upload_interval_seconds": 30,
+						"max_upload_records": 1000,
+						"output_options": {
+							"CVE-2021-44228": false,
+							"batch_prefix": "",
+							"batch_suffix": "",
+							"field_delimiter": ",",
+							"field_names": [
+								"RayID",
+								"ClientIP",
+								"EdgeStartTimestamp"
+							],
+							"output_type": "ndjson",
+							"record_delimiter": "",
+							"record_prefix": "{",
+							"record_suffix": "}\n",
+							"sample_rate": 1,
+							"timestamp_format": "unixnano"
+						},
+						"ownership_challenge\"": "00000000000000000000"
+					},
+					"schema": {
+						"properties": {
+							"destination_conf": {
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"example": "s3://mybucket/logs?region=us-west-2",
+								"format": "uri",
+								"maxLength": 4096,
+								"type": "string"
+							},
+							"enabled": {
+								"default": false,
+								"description": "Flag that indicates if the job is enabled.",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"filter": {
+								"description": "The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).",
+								"example": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+								"nullable": true,
+								"type": "string"
+							},
+							"frequency": {
+								"default": "high",
+								"deprecated": true,
+								"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+								"enum": [
+									"high",
+									"low"
+								],
+								"example": "high",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"kind": {
+								"default": "",
+								"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).",
+								"enum": [
+									"",
+									"edge"
+								],
+								"example": "",
+								"type": "string",
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
+							},
+							"logpull_options": {
+								"deprecated": true,
+								"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+								"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+								"format": "uri-reference",
+								"maxLength": 4096,
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"max_upload_bytes": {
+								"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+								"example": 5000000,
+								"nullable": true,
+								"oneOf": [
+									{
+										"enum": [
+											0
+										],
+										"type": "integer"
+									},
+									{
+										"maximum": 1000000000,
+										"minimum": 5000000,
+										"type": "integer"
+									}
+								],
+								"type": "integer",
+								"x-auditable": true
+							},
+							"max_upload_interval_seconds": {
+								"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+								"example": 30,
+								"nullable": true,
+								"oneOf": [
+									{
+										"enum": [
+											0
+										],
+										"type": "integer"
+									},
+									{
+										"maximum": 300,
+										"minimum": 30,
+										"type": "integer"
+									}
+								],
+								"type": "integer",
+								"x-auditable": true
+							},
+							"max_upload_records": {
+								"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+								"example": 1000,
+								"nullable": true,
+								"oneOf": [
+									{
+										"enum": [
+											0
+										],
+										"type": "integer"
+									},
+									{
+										"maximum": 1000000,
+										"minimum": 1000,
+										"type": "integer"
+									}
+								],
+								"type": "integer",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+								"example": "example.com",
+								"maxLength": 512,
+								"nullable": true,
+								"pattern": "^[a-zA-Z0-9\\-\\.]*$",
+								"type": "string",
+								"x-auditable": true
+							},
+							"output_options": {
+								"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+								"nullable": true,
+								"properties": {
+									"CVE-2021-44228": {
+										"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+										"nullable": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"batch_prefix": {
+										"description": "String to be prepended before each batch.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"batch_suffix": {
+										"description": "String to be appended after each batch.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"field_delimiter": {
+										"description": "String to join fields. This field be ignored when `record_template` is set.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"field_names": {
+										"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+										"example": [
+											"ClientIP",
+											"EdgeStartTimestamp",
+											"RayID"
+										],
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"type": "array"
+									},
+									"output_type": {
+										"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+										"enum": [
+											"ndjson",
+											"csv"
+										],
+										"example": "ndjson",
+										"type": "string",
+										"x-auditable": true
+									},
+									"record_delimiter": {
+										"description": "String to be inserted in-between the records as separator.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"record_prefix": {
+										"description": "String to be prepended before each record.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"record_suffix": {
+										"description": "String to be appended after each record.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"record_template": {
+										"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+										"nullable": true,
+										"type": "string",
+										"x-auditable": true
+									},
+									"sample_rate": {
+										"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+										"format": "float",
+										"maximum": 1,
+										"minimum": 0,
+										"nullable": true,
+										"type": "number",
+										"x-auditable": true
+									},
+									"timestamp_format": {
+										"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+										"enum": [
+											"unixnano",
+											"unix",
+											"rfc3339"
+										],
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"type": "object"
+							},
+							"ownership_challenge": {
+								"description": "Ownership challenge token to prove destination ownership.",
+								"example": "00000000000000000000",
+								"maxLength": 4096,
+								"pattern": "^[a-zA-Z0-9/\\+\\.\\-_]*$",
+								"type": "string",
+								"x-sensitive": true
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"dataset": "http_requests",
+								"destination_conf": "s3://mybucket/logs?region=us-west-2",
+								"enabled": false,
+								"error_message": null,
+								"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+								"id": 1,
+								"kind": "",
+								"last_complete": null,
+								"last_error": null,
+								"max_upload_bytes": 5000000,
+								"max_upload_interval_seconds": 30,
+								"max_upload_records": 1000,
+								"name": "example.com",
+								"output_options": {
+									"CVE-2021-44228": false,
+									"batch_prefix": "",
+									"batch_suffix": "",
+									"field_delimiter": ",",
+									"field_names": [
+										"Datetime",
+										"DstIP",
+										"SrcIP"
+									],
+									"output_type": "ndjson",
+									"record_delimiter": "",
+									"record_prefix": "{",
+									"record_suffix": "}\n",
+									"sample_rate": 1,
+									"timestamp_format": "unixnano"
+								}
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"dataset": {
+													"default": "http_requests",
+													"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
+													"enum": [
+														"access_requests",
+														"audit_logs",
+														"biso_user_actions",
+														"casb_findings",
+														"device_posture_results",
+														"dlp_forensic_copies",
+														"dns_firewall_logs",
+														"dns_logs",
+														"email_security_alerts",
+														"firewall_events",
+														"gateway_dns",
+														"gateway_http",
+														"gateway_network",
+														"http_requests",
+														"magic_ids_detections",
+														"nel_reports",
+														"network_analytics_logs",
+														"page_shield_events",
+														"sinkhole_http_logs",
+														"spectrum_events",
+														"ssh_logs",
+														"workers_trace_events",
+														"zaraz_events",
+														"zero_trust_network_sessions"
+													],
+													"example": "http_requests",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"destination_conf": {
+													"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+													"example": "s3://mybucket/logs?region=us-west-2",
+													"format": "uri",
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"enabled": {
+													"default": false,
+													"description": "Flag that indicates if the job is enabled.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"error_message": {
+													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"frequency": {
+													"default": "high",
+													"deprecated": true,
+													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+													"enum": [
+														"high",
+														"low"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Unique id of the job.",
+													"minimum": 1,
+													"type": "integer",
+													"x-auditable": true
+												},
+												"kind": {
+													"default": "",
+													"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).",
+													"enum": [
+														"",
+														"edge"
+													],
+													"example": "",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"last_complete": {
+													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"last_error": {
+													"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"logpull_options": {
+													"deprecated": true,
+													"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+													"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+													"format": "uri-reference",
+													"maxLength": 4096,
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"max_upload_bytes": {
+													"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+													"example": 5000000,
+													"nullable": true,
+													"oneOf": [
+														{
+															"enum": [
+																0
+															],
+															"type": "integer"
+														},
+														{
+															"maximum": 1000000000,
+															"minimum": 5000000,
+															"type": "integer"
+														}
+													],
+													"type": "integer",
+													"x-auditable": true
+												},
+												"max_upload_interval_seconds": {
+													"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+													"example": 30,
+													"nullable": true,
+													"oneOf": [
+														{
+															"enum": [
+																0
+															],
+															"type": "integer"
+														},
+														{
+															"maximum": 300,
+															"minimum": 30,
+															"type": "integer"
+														}
+													],
+													"type": "integer",
+													"x-auditable": true
+												},
+												"max_upload_records": {
+													"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+													"example": 1000,
+													"nullable": true,
+													"oneOf": [
+														{
+															"enum": [
+																0
+															],
+															"type": "integer"
+														},
+														{
+															"maximum": 1000000,
+															"minimum": 1000,
+															"type": "integer"
+														}
+													],
+													"type": "integer",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+													"example": "example.com",
+													"maxLength": 512,
+													"nullable": true,
+													"pattern": "^[a-zA-Z0-9\\-\\.]*$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"output_options": {
+													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+													"nullable": true,
+													"properties": {
+														"CVE-2021-44228": {
+															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"batch_prefix": {
+															"description": "String to be prepended before each batch.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"batch_suffix": {
+															"description": "String to be appended after each batch.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"field_delimiter": {
+															"description": "String to join fields. This field be ignored when `record_template` is set.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"field_names": {
+															"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+															"example": [
+																"ClientIP",
+																"EdgeStartTimestamp",
+																"RayID"
+															],
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"output_type": {
+															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+															"enum": [
+																"ndjson",
+																"csv"
+															],
+															"example": "ndjson",
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_delimiter": {
+															"description": "String to be inserted in-between the records as separator.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_prefix": {
+															"description": "String to be prepended before each record.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_suffix": {
+															"description": "String to be appended after each record.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"record_template": {
+															"description": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"sample_rate": {
+															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+															"format": "float",
+															"maximum": 1,
+															"minimum": 0,
+															"nullable": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"timestamp_format": {
+															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+															"enum": [
+																"unixnano",
+																"unix",
+																"rfc3339"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Logpush job response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Logpush job response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update Logpush job",
+		"tags": [
+			"Logpush jobs for a zone"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

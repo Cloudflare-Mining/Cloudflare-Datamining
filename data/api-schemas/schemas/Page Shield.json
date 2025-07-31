@@ -1,0 +1,4459 @@
+{
+	"DELETE /zones/{zone_id}/page_shield/policies/{policy_id}": {
+		"description": "Delete a Page Shield policy by ID.",
+		"operationId": "page-shield-delete-policy",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "Delete a Page Shield policy response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete a Page Shield policy response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a Page Shield policy",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield",
+			"Zone Settings Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/page_shield": {
+		"description": "Fetches the Page Shield settings.",
+		"operationId": "page-shield-get-settings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"enabled": {
+													"description": "When true, indicates that Page Shield is enabled.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "The timestamp of when Page Shield was last updated.",
+													"example": "2022-10-12T17:56:52.083582+01:00",
+													"type": "string",
+													"x-auditable": true
+												},
+												"use_cloudflare_reporting_endpoint": {
+													"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"use_connection_url_path": {
+													"description": "When true, the paths associated with connections URLs will also be analyzed.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"enabled",
+												"updated_at",
+												"use_cloudflare_reporting_endpoint",
+												"use_connection_url_path"
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Page Shield settings response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Page Shield settings response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Page Shield settings",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield Read",
+			"Domain Page Shield",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/page_shield/connections": {
+		"description": "Lists all connections detected by Page Shield.",
+		"operationId": "page-shield-list-connections",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "exclude_urls",
+				"schema": {
+					"description": "Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.\n",
+					"example": "blog.cloudflare.com,www.example",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "urls",
+				"schema": {
+					"description": "Includes connections whose URL contain one or more URL-encoded URLs separated by commas.\n",
+					"example": "blog.cloudflare.com,www.example",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hosts",
+				"schema": {
+					"description": "Includes connections that match one or more URL-encoded hostnames separated by commas.\n\nWildcards are supported at the start and end of each hostname to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "blog.cloudflare.com,www.example*,*cloudflare.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"description": "The current page number of the paginated results.\n\nWe additionally support a special value \"all\". When \"all\" is used, the API will return all the connections\nwith the applied filters in a single page. This feature is best-effort and it may only work for zones with\na low number of connections\n",
+					"example": 2,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"description": "The number of results per page.",
+					"example": 100,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"description": "The field used to sort returned connections.",
+					"enum": [
+						"first_seen_at",
+						"last_seen_at"
+					],
+					"example": "first_seen_at",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"description": "The direction used to sort returned connections.",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "asc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "prioritize_malicious",
+				"schema": {
+					"description": "When true, malicious connections appear first in the returned connections.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "exclude_cdn_cgi",
+				"schema": {
+					"description": "When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"description": "Filters the returned connections using a comma-separated list of connection statuses. Accepted values: `active`, `infrequent`, and `inactive`. The default value is `active`.",
+					"example": "active,inactive",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page_url",
+				"schema": {
+					"description": "Includes connections that match one or more page URLs (separated by commas) where they were last seen\n\nWildcards are supported at the start and end of each page URL to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "example.com/page,*/checkout,example.com/*,*checkout*",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "export",
+				"schema": {
+					"description": "Export the list of connections as a file.",
+					"enum": [
+						"csv"
+					],
+					"example": "csv",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"required": [
+														"page",
+														"per_page",
+														"count",
+														"total_count",
+														"total_pages"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"result_info"
+											]
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"added_at": {
+														"example": "2021-08-18T10:51:10.09615Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"domain_reported_malicious": {
+														"example": false,
+														"type": "boolean"
+													},
+													"first_page_url": {
+														"example": "blog.cloudflare.com/page",
+														"type": "string"
+													},
+													"first_seen_at": {
+														"example": "2021-08-18T10:51:08Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"host": {
+														"example": "blog.cloudflare.com",
+														"type": "string"
+													},
+													"id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"last_seen_at": {
+														"example": "2021-09-02T09:57:54Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"malicious_domain_categories": {
+														"example": [
+															"Malware"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"malicious_url_categories": {
+														"example": [
+															"Malware"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"page_urls": {
+														"example": [
+															"blog.cloudflare.com/page1",
+															"blog.cloudflare.com/page2"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"url": {
+														"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js",
+														"type": "string"
+													},
+													"url_contains_cdn_cgi_path": {
+														"example": false,
+														"type": "boolean"
+													},
+													"url_reported_malicious": {
+														"example": false,
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"id",
+													"url",
+													"added_at",
+													"first_seen_at",
+													"last_seen_at",
+													"host",
+													"url_contains_cdn_cgi_path"
+												]
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Page Shield connections response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Page Shield connections response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Page Shield connections",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield Read",
+			"Domain Page Shield",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/page_shield/connections/{connection_id}": {
+		"description": "Fetches a connection detected by Page Shield by connection ID.",
+		"operationId": "page-shield-get-connection",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "connection_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"added_at": {
+													"example": "2021-08-18T10:51:10.09615Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"domain_reported_malicious": {
+													"example": false,
+													"type": "boolean"
+												},
+												"first_page_url": {
+													"example": "blog.cloudflare.com/page",
+													"type": "string"
+												},
+												"first_seen_at": {
+													"example": "2021-08-18T10:51:08Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"host": {
+													"example": "blog.cloudflare.com",
+													"type": "string"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"last_seen_at": {
+													"example": "2021-09-02T09:57:54Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"malicious_domain_categories": {
+													"example": [
+														"Malware"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"malicious_url_categories": {
+													"example": [
+														"Malware"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"page_urls": {
+													"example": [
+														"blog.cloudflare.com/page1",
+														"blog.cloudflare.com/page2"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"url": {
+													"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js",
+													"type": "string"
+												},
+												"url_contains_cdn_cgi_path": {
+													"example": false,
+													"type": "boolean"
+												},
+												"url_reported_malicious": {
+													"example": false,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"id",
+												"url",
+												"added_at",
+												"first_seen_at",
+												"last_seen_at",
+												"host",
+												"url_contains_cdn_cgi_path"
+											]
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Page Shield connection response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get a Page Shield connection response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a Page Shield connection",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield Read",
+			"Domain Page Shield",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/page_shield/cookies": {
+		"description": "Lists all cookies collected by Page Shield.",
+		"operationId": "page-shield-list-cookies",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "hosts",
+				"schema": {
+					"description": "Includes cookies that match one or more URL-encoded hostnames separated by commas.\n\nWildcards are supported at the start and end of each hostname to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "blog.cloudflare.com,www.example*,*cloudflare.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"description": "The current page number of the paginated results.\n\nWe additionally support a special value \"all\". When \"all\" is used, the API will return all the cookies\nwith the applied filters in a single page. This feature is best-effort and it may only work for zones with \na low number of cookies\n",
+					"example": 2,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"description": "The number of results per page.",
+					"example": 100,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"description": "The field used to sort returned cookies.",
+					"enum": [
+						"first_seen_at",
+						"last_seen_at"
+					],
+					"example": "first_seen_at",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"description": "The direction used to sort returned cookies.'",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "asc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page_url",
+				"schema": {
+					"description": "Includes connections that match one or more page URLs (separated by commas) where they were last seen\n\nWildcards are supported at the start and end of each page URL to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "example.com/page,*/checkout,example.com/*,*checkout*",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "export",
+				"schema": {
+					"description": "Export the list of cookies as a file.",
+					"enum": [
+						"csv"
+					],
+					"example": "csv",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Filters the returned cookies that match the specified name.\nWildcards are supported at the start and end to support starts with, ends with\nand contains. e.g. session*\n",
+					"example": "session_id",
+					"maxLength": 1024,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "secure",
+				"schema": {
+					"description": "Filters the returned cookies that are set with Secure",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "http_only",
+				"schema": {
+					"description": "Filters the returned cookies that are set with HttpOnly",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "same_site",
+				"schema": {
+					"description": "Filters the returned cookies that match the specified same_site attribute",
+					"enum": [
+						"lax",
+						"strict",
+						"none"
+					],
+					"example": "strict",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "type",
+				"schema": {
+					"description": "Filters the returned cookies that match the specified type attribute",
+					"enum": [
+						"first_party",
+						"unknown"
+					],
+					"example": "first_party",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "path",
+				"schema": {
+					"description": "Filters the returned cookies that match the specified path attribute",
+					"example": "/",
+					"maxLength": 1024,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "domain",
+				"schema": {
+					"description": "Filters the returned cookies that match the specified domain attribute",
+					"example": "example.com",
+					"maxLength": 1024,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"required": [
+														"page",
+														"per_page",
+														"count",
+														"total_count",
+														"total_pages"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"result_info"
+											]
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"domain_attribute": {
+														"example": "cloudflare.com",
+														"type": "string"
+													},
+													"expires_attribute": {
+														"example": "2021-10-02T09:57:54Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"first_seen_at": {
+														"example": "2021-08-18T10:51:08Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"host": {
+														"example": "blog.cloudflare.com",
+														"type": "string"
+													},
+													"http_only_attribute": {
+														"example": true,
+														"type": "boolean"
+													},
+													"id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"last_seen_at": {
+														"example": "2021-09-02T09:57:54Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"max_age_attribute": {
+														"example": 3600,
+														"type": "integer"
+													},
+													"name": {
+														"example": "session_id",
+														"type": "string"
+													},
+													"page_urls": {
+														"example": [
+															"blog.cloudflare.com/page1",
+															"blog.cloudflare.com/page2"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"path_attribute": {
+														"example": "/",
+														"type": "string"
+													},
+													"same_site_attribute": {
+														"enum": [
+															"lax",
+															"strict",
+															"none"
+														],
+														"example": "strict",
+														"type": "string"
+													},
+													"secure_attribute": {
+														"example": true,
+														"type": "boolean"
+													},
+													"type": {
+														"enum": [
+															"first_party",
+															"unknown"
+														],
+														"example": "first_party",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"type",
+													"name",
+													"host",
+													"first_seen_at",
+													"last_seen_at"
+												]
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Page Shield cookies response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Page Shield cookies response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Page Shield Cookies",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield Read",
+			"Domain Page Shield",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/page_shield/cookies/{cookie_id}": {
+		"description": "Fetches a cookie collected by Page Shield by cookie ID.",
+		"operationId": "page-shield-get-cookie",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "cookie_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"domain_attribute": {
+													"example": "cloudflare.com",
+													"type": "string"
+												},
+												"expires_attribute": {
+													"example": "2021-10-02T09:57:54Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"first_seen_at": {
+													"example": "2021-08-18T10:51:08Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"host": {
+													"example": "blog.cloudflare.com",
+													"type": "string"
+												},
+												"http_only_attribute": {
+													"example": true,
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"last_seen_at": {
+													"example": "2021-09-02T09:57:54Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"max_age_attribute": {
+													"example": 3600,
+													"type": "integer"
+												},
+												"name": {
+													"example": "session_id",
+													"type": "string"
+												},
+												"page_urls": {
+													"example": [
+														"blog.cloudflare.com/page1",
+														"blog.cloudflare.com/page2"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"path_attribute": {
+													"example": "/",
+													"type": "string"
+												},
+												"same_site_attribute": {
+													"enum": [
+														"lax",
+														"strict",
+														"none"
+													],
+													"example": "strict",
+													"type": "string"
+												},
+												"secure_attribute": {
+													"example": true,
+													"type": "boolean"
+												},
+												"type": {
+													"enum": [
+														"first_party",
+														"unknown"
+													],
+													"example": "first_party",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"type",
+												"name",
+												"host",
+												"first_seen_at",
+												"last_seen_at"
+											]
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Page Shield cookie response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get a Page Shield cookie response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a Page Shield cookie",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield Read",
+			"Domain Page Shield",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/page_shield/policies": {
+		"description": "Lists all Page Shield policies.",
+		"operationId": "page-shield-list-policies",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"required": [
+														"page",
+														"per_page",
+														"count",
+														"total_count",
+														"total_pages"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"result_info"
+											]
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"action": {
+																"description": "The action to take if the expression matches",
+																"enum": [
+																	"allow",
+																	"log"
+																],
+																"example": "allow",
+																"type": "string",
+																"x-auditable": true
+															},
+															"description": {
+																"description": "A description for the policy",
+																"example": "Checkout page CSP policy",
+																"type": "string",
+																"x-auditable": true
+															},
+															"enabled": {
+																"description": "Whether the policy is enabled",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"expression": {
+																"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+																"example": "ends_with(http.request.uri.path, \"/checkout\")",
+																"type": "string",
+																"x-auditable": true
+															},
+															"value": {
+																"description": "The policy which will be applied",
+																"example": "script-src 'none';",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"description",
+															"action",
+															"expression",
+															"enabled",
+															"value"
+														]
+													},
+													{
+														"properties": {
+															"id": {
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id"
+														]
+													}
+												],
+												"required": [
+													"id",
+													"description",
+													"action",
+													"expression",
+													"enabled",
+													"value"
+												]
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Page Shield policies response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Page Shield policies response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Page Shield policies",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield Read",
+			"Domain Page Shield",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/page_shield/policies/{policy_id}": {
+		"description": "Fetches a Page Shield policy by ID.",
+		"operationId": "page-shield-get-policy",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"action": {
+															"description": "The action to take if the expression matches",
+															"enum": [
+																"allow",
+																"log"
+															],
+															"example": "allow",
+															"type": "string",
+															"x-auditable": true
+														},
+														"description": {
+															"description": "A description for the policy",
+															"example": "Checkout page CSP policy",
+															"type": "string",
+															"x-auditable": true
+														},
+														"enabled": {
+															"description": "Whether the policy is enabled",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"expression": {
+															"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+															"example": "ends_with(http.request.uri.path, \"/checkout\")",
+															"type": "string",
+															"x-auditable": true
+														},
+														"value": {
+															"description": "The policy which will be applied",
+															"example": "script-src 'none';",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"description",
+														"action",
+														"expression",
+														"enabled",
+														"value"
+													]
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id"
+													]
+												}
+											],
+											"required": [
+												"id",
+												"description",
+												"action",
+												"expression",
+												"enabled",
+												"value"
+											]
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Page Shield policy response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get a Page Shield policy response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a Page Shield policy",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield Read",
+			"Domain Page Shield",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/page_shield/scripts": {
+		"description": "Lists all scripts detected by Page Shield.",
+		"operationId": "page-shield-list-scripts",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "exclude_urls",
+				"schema": {
+					"description": "Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas.\n",
+					"example": "blog.cloudflare.com,www.example",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "urls",
+				"schema": {
+					"description": "Includes scripts whose URL contain one or more URL-encoded URLs separated by commas.\n",
+					"example": "blog.cloudflare.com,www.example",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hosts",
+				"schema": {
+					"description": "Includes scripts that match one or more URL-encoded hostnames separated by commas.\n\nWildcards are supported at the start and end of each hostname to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "blog.cloudflare.com,www.example*,*cloudflare.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"description": "The current page number of the paginated results.\n\nWe additionally support a special value \"all\". When \"all\" is used, the API will return all the scripts\nwith the applied filters in a single page. This feature is best-effort and it may only work for zones with \na low number of scripts\n",
+					"example": 2,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"description": "The number of results per page.",
+					"example": 100,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"description": "The field used to sort returned scripts.",
+					"enum": [
+						"first_seen_at",
+						"last_seen_at"
+					],
+					"example": "first_seen_at",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"description": "The direction used to sort returned scripts.",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "asc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "prioritize_malicious",
+				"schema": {
+					"description": "When true, malicious scripts appear first in the returned scripts.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "exclude_cdn_cgi",
+				"schema": {
+					"default": true,
+					"description": "When true, excludes scripts seen in a `/cdn-cgi` path from the returned scripts. The default value is true.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "exclude_duplicates",
+				"schema": {
+					"default": true,
+					"description": "When true, excludes duplicate scripts. We consider a script duplicate of another if their javascript\ncontent matches and they share the same url host and zone hostname. In such case, we return the most\nrecent script for the URL host and zone hostname combination.\n",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"description": "Filters the returned scripts using a comma-separated list of scripts statuses. Accepted values: `active`, `infrequent`, and `inactive`. The default value is `active`.",
+					"example": "active,inactive",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page_url",
+				"schema": {
+					"description": "Includes scripts that match one or more page URLs (separated by commas) where they were last seen\n\nWildcards are supported at the start and end of each page URL to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "example.com/page,*/checkout,example.com/*,*checkout*",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "export",
+				"schema": {
+					"description": "Export the list of scripts as a file.",
+					"enum": [
+						"csv"
+					],
+					"example": "csv",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"required": [
+														"page",
+														"per_page",
+														"count",
+														"total_count",
+														"total_pages"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"result_info"
+											]
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"added_at": {
+														"example": "2021-08-18T10:51:10.09615Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"cryptomining_score": {
+														"description": "The cryptomining score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
+													},
+													"dataflow_score": {
+														"description": "The dataflow score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
+													},
+													"domain_reported_malicious": {
+														"example": false,
+														"type": "boolean"
+													},
+													"fetched_at": {
+														"description": "The timestamp of when the script was last fetched.",
+														"nullable": true,
+														"type": "string"
+													},
+													"first_page_url": {
+														"example": "blog.cloudflare.com/page",
+														"type": "string"
+													},
+													"first_seen_at": {
+														"example": "2021-08-18T10:51:08Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"hash": {
+														"description": "The computed hash of the analyzed script.",
+														"maxLength": 64,
+														"minLength": 64,
+														"nullable": true,
+														"type": "string"
+													},
+													"host": {
+														"example": "blog.cloudflare.com",
+														"type": "string"
+													},
+													"id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"js_integrity_score": {
+														"description": "The integrity score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
+													},
+													"last_seen_at": {
+														"example": "2021-09-02T09:57:54Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"magecart_score": {
+														"description": "The magecart score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
+													},
+													"malicious_domain_categories": {
+														"example": [
+															"Malware"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"malicious_url_categories": {
+														"example": [
+															"Malware"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"malware_score": {
+														"description": "The malware score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
+													},
+													"obfuscation_score": {
+														"description": "The obfuscation score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
+													},
+													"page_urls": {
+														"example": [
+															"blog.cloudflare.com/page1",
+															"blog.cloudflare.com/page2"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"url": {
+														"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js",
+														"type": "string"
+													},
+													"url_contains_cdn_cgi_path": {
+														"example": false,
+														"type": "boolean"
+													},
+													"url_reported_malicious": {
+														"example": false,
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"id",
+													"url",
+													"added_at",
+													"first_seen_at",
+													"last_seen_at",
+													"host",
+													"url_contains_cdn_cgi_path"
+												]
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Page Shield scripts response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Page Shield scripts response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Page Shield scripts",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield Read",
+			"Domain Page Shield",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/page_shield/scripts/{script_id}": {
+		"description": "Fetches a script detected by Page Shield by script ID.",
+		"operationId": "page-shield-get-script",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"added_at": {
+															"example": "2021-08-18T10:51:10.09615Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"cryptomining_score": {
+															"description": "The cryptomining score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
+														"dataflow_score": {
+															"description": "The dataflow score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
+														"domain_reported_malicious": {
+															"example": false,
+															"type": "boolean"
+														},
+														"fetched_at": {
+															"description": "The timestamp of when the script was last fetched.",
+															"nullable": true,
+															"type": "string"
+														},
+														"first_page_url": {
+															"example": "blog.cloudflare.com/page",
+															"type": "string"
+														},
+														"first_seen_at": {
+															"example": "2021-08-18T10:51:08Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"hash": {
+															"description": "The computed hash of the analyzed script.",
+															"maxLength": 64,
+															"minLength": 64,
+															"nullable": true,
+															"type": "string"
+														},
+														"host": {
+															"example": "blog.cloudflare.com",
+															"type": "string"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"js_integrity_score": {
+															"description": "The integrity score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
+														"last_seen_at": {
+															"example": "2021-09-02T09:57:54Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"magecart_score": {
+															"description": "The magecart score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
+														"malicious_domain_categories": {
+															"example": [
+																"Malware"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"malicious_url_categories": {
+															"example": [
+																"Malware"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"malware_score": {
+															"description": "The malware score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
+														"obfuscation_score": {
+															"description": "The obfuscation score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
+														"page_urls": {
+															"example": [
+																"blog.cloudflare.com/page1",
+																"blog.cloudflare.com/page2"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"url": {
+															"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js",
+															"type": "string"
+														},
+														"url_contains_cdn_cgi_path": {
+															"example": false,
+															"type": "boolean"
+														},
+														"url_reported_malicious": {
+															"example": false,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"id",
+														"url",
+														"added_at",
+														"first_seen_at",
+														"last_seen_at",
+														"host",
+														"url_contains_cdn_cgi_path"
+													]
+												},
+												{
+													"properties": {
+														"versions": {
+															"example": [
+																{
+																	"cryptomining_score": 20,
+																	"dataflow_score": 2,
+																	"fetched_at": "2021-08-18T10:51:08Z",
+																	"hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b423",
+																	"js_integrity_score": 2,
+																	"magecart_score": 10,
+																	"malware_score": 5,
+																	"obfuscation_score": 10
+																}
+															],
+															"items": {
+																"description": "The version of the analyzed script.",
+																"properties": {
+																	"cryptomining_score": {
+																		"description": "The cryptomining score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"dataflow_score": {
+																		"description": "The dataflow score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"fetched_at": {
+																		"description": "The timestamp of when the script was last fetched.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"hash": {
+																		"description": "The computed hash of the analyzed script.",
+																		"maxLength": 64,
+																		"minLength": 64,
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"js_integrity_score": {
+																		"description": "The integrity score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"magecart_score": {
+																		"description": "The magecart score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"malware_score": {
+																		"description": "The malware score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"obfuscation_score": {
+																		"description": "The obfuscation score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													}
+												}
+											]
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Page Shield script response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Page Shield script response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a Page Shield script",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield Read",
+			"Domain Page Shield",
+			"Page Shield Read",
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_id}/page_shield/policies": {
+		"description": "Create a Page Shield policy.",
+		"operationId": "page-shield-create-policy",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"action": {
+								"description": "The action to take if the expression matches",
+								"enum": [
+									"allow",
+									"log"
+								],
+								"example": "allow",
+								"type": "string",
+								"x-auditable": true
+							},
+							"description": {
+								"description": "A description for the policy",
+								"example": "Checkout page CSP policy",
+								"type": "string",
+								"x-auditable": true
+							},
+							"enabled": {
+								"description": "Whether the policy is enabled",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"expression": {
+								"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+								"example": "ends_with(http.request.uri.path, \"/checkout\")",
+								"type": "string",
+								"x-auditable": true
+							},
+							"value": {
+								"description": "The policy which will be applied",
+								"example": "script-src 'none';",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"description",
+							"action",
+							"expression",
+							"enabled",
+							"value"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"action": {
+															"description": "The action to take if the expression matches",
+															"enum": [
+																"allow",
+																"log"
+															],
+															"example": "allow",
+															"type": "string",
+															"x-auditable": true
+														},
+														"description": {
+															"description": "A description for the policy",
+															"example": "Checkout page CSP policy",
+															"type": "string",
+															"x-auditable": true
+														},
+														"enabled": {
+															"description": "Whether the policy is enabled",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"expression": {
+															"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+															"example": "ends_with(http.request.uri.path, \"/checkout\")",
+															"type": "string",
+															"x-auditable": true
+														},
+														"value": {
+															"description": "The policy which will be applied",
+															"example": "script-src 'none';",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"description",
+														"action",
+														"expression",
+														"enabled",
+														"value"
+													]
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id"
+													]
+												}
+											],
+											"required": [
+												"id",
+												"description",
+												"action",
+												"expression",
+												"enabled",
+												"value"
+											]
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a Page Shield policy response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create a Page Shield policy response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a Page Shield policy",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield",
+			"Zone Settings Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_id}/page_shield": {
+		"description": "Updates Page Shield settings.",
+		"operationId": "page-shield-update-settings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enabled": {
+								"description": "When true, indicates that Page Shield is enabled.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"use_cloudflare_reporting_endpoint": {
+								"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"use_connection_url_path": {
+								"description": "When true, the paths associated with connections URLs will also be analyzed.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"enabled": {
+													"description": "When true, indicates that Page Shield is enabled.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "The timestamp of when Page Shield was last updated.",
+													"example": "2022-10-12T17:56:52.083582+01:00",
+													"type": "string",
+													"x-auditable": true
+												},
+												"use_cloudflare_reporting_endpoint": {
+													"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"use_connection_url_path": {
+													"description": "When true, the paths associated with connections URLs will also be analyzed.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"enabled",
+												"updated_at",
+												"use_cloudflare_reporting_endpoint",
+												"use_connection_url_path"
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Page Shield settings response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update Page Shield settings response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Page Shield settings",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield",
+			"Zone Settings Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_id}/page_shield/policies/{policy_id}": {
+		"description": "Update a Page Shield policy by ID.",
+		"operationId": "page-shield-update-policy",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"action": {
+								"description": "The action to take if the expression matches",
+								"enum": [
+									"allow",
+									"log"
+								],
+								"example": "allow",
+								"type": "string",
+								"x-auditable": true
+							},
+							"description": {
+								"description": "A description for the policy",
+								"example": "Checkout page CSP policy",
+								"type": "string",
+								"x-auditable": true
+							},
+							"enabled": {
+								"description": "Whether the policy is enabled",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"expression": {
+								"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+								"example": "ends_with(http.request.uri.path, \"/checkout\")",
+								"type": "string",
+								"x-auditable": true
+							},
+							"value": {
+								"description": "The policy which will be applied",
+								"example": "script-src 'none';",
+								"type": "string",
+								"x-auditable": true
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"action": {
+															"description": "The action to take if the expression matches",
+															"enum": [
+																"allow",
+																"log"
+															],
+															"example": "allow",
+															"type": "string",
+															"x-auditable": true
+														},
+														"description": {
+															"description": "A description for the policy",
+															"example": "Checkout page CSP policy",
+															"type": "string",
+															"x-auditable": true
+														},
+														"enabled": {
+															"description": "Whether the policy is enabled",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"expression": {
+															"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+															"example": "ends_with(http.request.uri.path, \"/checkout\")",
+															"type": "string",
+															"x-auditable": true
+														},
+														"value": {
+															"description": "The policy which will be applied",
+															"example": "script-src 'none';",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"description",
+														"action",
+														"expression",
+														"enabled",
+														"value"
+													]
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id"
+													]
+												}
+											],
+											"required": [
+												"id",
+												"description",
+												"action",
+												"expression",
+												"enabled",
+												"value"
+											]
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a Page Shield policy response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update a Page Shield policy response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a Page Shield policy",
+		"tags": [
+			"Page Shield"
+		],
+		"x-api-token-group": [
+			"Page Shield",
+			"Domain Page Shield",
+			"Zone Settings Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	}
+}

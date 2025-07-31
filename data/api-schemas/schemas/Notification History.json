@@ -1,0 +1,630 @@
+{
+	"GET /accounts/{account_id}/alerting/v3/history": {
+		"description": "Gets a list of history records for notifications sent to an account. The records are displayed for last `x` number of days based on the zone plan (free = 30, pro = 30, biz = 30, ent = 90).",
+		"operationId": "notification-history-list-history",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account id",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 25,
+					"description": "Number of items per page.",
+					"maximum": 1000,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "before",
+				"schema": {
+					"description": "Limit the returned results to history records older than the specified date. This must be a timestamp that conforms to RFC3339.",
+					"example": "2022-05-20T20:29:58.679897Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"description": "Limit the returned results to history records newer than the specified date. This must be a timestamp that conforms to RFC3339.",
+					"example": "2022-05-19T20:29:58.679897Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": [
+												{
+													"alert_body": {
+														"data": {
+															"custom_csr_id": "",
+															"expires_on": null,
+															"hosts": [],
+															"id": "11111111111",
+															"issuer": "",
+															"method": "txt",
+															"serial_number": "",
+															"settings": null,
+															"signature": "",
+															"status": "",
+															"type": "",
+															"uploaded_on": null,
+															"validation_errors": [],
+															"validation_records": [
+																{
+																	"cname": "",
+																	"cname_target": "",
+																	"emails": [],
+																	"http_body": "",
+																	"http_url": "",
+																	"txt_name": "_acme-challenge.example.com",
+																	"txt_value": "11111111111"
+																}
+															]
+														},
+														"metadata": {
+															"account": null,
+															"event": {
+																"created_at": null,
+																"id": "",
+																"type": "ssl.certificate.validation.failed"
+															},
+															"zone": {
+																"id": "11111111111"
+															}
+														}
+													},
+													"alert_type": "universal_ssl_event_type",
+													"description": "Universal Certificate validation status, issuance, renewal, and expiration notices.",
+													"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"mechanism": "test@example.com",
+													"mechanism_type": "email",
+													"name": "SSL Notification Event Policy",
+													"policy_id": "35040955-3102-4710-938c-0f4eaf736e25",
+													"sent": "2021-10-08T17:52:17.571336Z"
+												}
+											],
+											"items": {
+												"properties": {
+													"alert_body": {
+														"description": "Message body included in the notification sent.",
+														"example": "SSL certificate has expired",
+														"type": "string"
+													},
+													"alert_type": {
+														"description": "Type of notification that has been dispatched.",
+														"example": "universal_ssl_event_type",
+														"type": "string"
+													},
+													"description": {
+														"description": "Description of the notification policy (if present).",
+														"example": "Universal Certificate validation status, issuance, renewal, and expiration notices",
+														"type": "string"
+													},
+													"id": {
+														"description": "UUID",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"type": "string",
+														"x-auditable": true
+													},
+													"mechanism": {
+														"description": "The mechanism to which the notification has been dispatched.",
+														"example": "test@example.com",
+														"type": "string",
+														"x-auditable": true
+													},
+													"mechanism_type": {
+														"description": "The type of mechanism to which the notification has been dispatched. This can be email/pagerduty/webhook based on the mechanism configured.",
+														"enum": [
+															"email",
+															"pagerduty",
+															"webhook"
+														],
+														"example": "email",
+														"type": "string"
+													},
+													"name": {
+														"description": "Name of the policy.",
+														"example": "SSL Notification Event Policy",
+														"type": "string",
+														"x-auditable": true
+													},
+													"policy_id": {
+														"description": "The unique identifier of a notification policy",
+														"example": "0da2b59e-f118-439d-8097-bdfb215203c9",
+														"maxLength": 36,
+														"type": "string",
+														"x-auditable": true
+													},
+													"sent": {
+														"description": "Timestamp of when the notification was dispatched in ISO 8601 format.",
+														"example": "2021-10-08T17:52:17.571336Z",
+														"format": "date-time",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"example": {
+												"count": 1,
+												"page": 1,
+												"per_page": 20
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List History response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": [
+														{
+															"alert_body": {
+																"data": {
+																	"custom_csr_id": "",
+																	"expires_on": null,
+																	"hosts": [],
+																	"id": "11111111111",
+																	"issuer": "",
+																	"method": "txt",
+																	"serial_number": "",
+																	"settings": null,
+																	"signature": "",
+																	"status": "",
+																	"type": "",
+																	"uploaded_on": null,
+																	"validation_errors": [],
+																	"validation_records": [
+																		{
+																			"cname": "",
+																			"cname_target": "",
+																			"emails": [],
+																			"http_body": "",
+																			"http_url": "",
+																			"txt_name": "_acme-challenge.example.com",
+																			"txt_value": "11111111111"
+																		}
+																	]
+																},
+																"metadata": {
+																	"account": null,
+																	"event": {
+																		"created_at": null,
+																		"id": "",
+																		"type": "ssl.certificate.validation.failed"
+																	},
+																	"zone": {
+																		"id": "11111111111"
+																	}
+																}
+															},
+															"alert_type": "universal_ssl_event_type",
+															"description": "Universal Certificate validation status, issuance, renewal, and expiration notices.",
+															"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"mechanism": "test@example.com",
+															"mechanism_type": "email",
+															"name": "SSL Notification Event Policy",
+															"policy_id": "35040955-3102-4710-938c-0f4eaf736e25",
+															"sent": "2021-10-08T17:52:17.571336Z"
+														}
+													],
+													"items": {
+														"properties": {
+															"alert_body": {
+																"description": "Message body included in the notification sent.",
+																"example": "SSL certificate has expired",
+																"type": "string"
+															},
+															"alert_type": {
+																"description": "Type of notification that has been dispatched.",
+																"example": "universal_ssl_event_type",
+																"type": "string"
+															},
+															"description": {
+																"description": "Description of the notification policy (if present).",
+																"example": "Universal Certificate validation status, issuance, renewal, and expiration notices",
+																"type": "string"
+															},
+															"id": {
+																"description": "UUID",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"type": "string",
+																"x-auditable": true
+															},
+															"mechanism": {
+																"description": "The mechanism to which the notification has been dispatched.",
+																"example": "test@example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"mechanism_type": {
+																"description": "The type of mechanism to which the notification has been dispatched. This can be email/pagerduty/webhook based on the mechanism configured.",
+																"enum": [
+																	"email",
+																	"pagerduty",
+																	"webhook"
+																],
+																"example": "email",
+																"type": "string"
+															},
+															"name": {
+																"description": "Name of the policy.",
+																"example": "SSL Notification Event Policy",
+																"type": "string",
+																"x-auditable": true
+															},
+															"policy_id": {
+																"description": "The unique identifier of a notification policy",
+																"example": "0da2b59e-f118-439d-8097-bdfb215203c9",
+																"maxLength": 36,
+																"type": "string",
+																"x-auditable": true
+															},
+															"sent": {
+																"description": "Timestamp of when the notification was dispatched in ISO 8601 format.",
+																"example": "2021-10-08T17:52:17.571336Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"result_info": {
+													"example": {
+														"count": 1,
+														"page": 1,
+														"per_page": 20
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List History response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List History",
+		"tags": [
+			"Notification History"
+		],
+		"x-api-token-group": [
+			"Zero Trust: PII Read",
+			"Notifications Write",
+			"Notifications Read",
+			"Account Settings Write",
+			"Account Settings Read"
+		]
+	}
+}

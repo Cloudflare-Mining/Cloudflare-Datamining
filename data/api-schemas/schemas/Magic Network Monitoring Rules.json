@@ -1,0 +1,4154 @@
+{
+	"DELETE /accounts/{account_id}/mnm/rules/{rule_id}": {
+		"description": "Delete a network monitoring rule for account.",
+		"operationId": "magic-network-monitoring-rules-delete-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "The id of the rule. Must be unique.",
+					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+													"example": "false",
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"bandwidth_threshold": {
+													"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+													"example": 1000,
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"duration": {
+													"default": "1m",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+													"enum": [
+														"1m",
+														"5m",
+														"10m",
+														"15m",
+														"20m",
+														"30m",
+														"45m",
+														"60m"
+													],
+													"example": "300s",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The id of the rule. Must be unique.",
+													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+													"example": "my_rule_1",
+													"type": "string",
+													"x-auditable": true
+												},
+												"packet_threshold": {
+													"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+													"example": 10000,
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"prefix_match": {
+													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+													"enum": [
+														"exact",
+														"subnet",
+														"supernet"
+													],
+													"example": "exact",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"prefixes": {
+													"items": {
+														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+														"example": "203.0.113.1/32",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"type": {
+													"description": "MNM rule type.",
+													"enum": [
+														"threshold",
+														"zscore",
+														"advanced_ddos"
+													],
+													"example": "zscore",
+													"type": "string",
+													"x-auditable": true
+												},
+												"zscore_sensitivity": {
+													"description": "Level of sensitivity set for zscore rules.",
+													"enum": [
+														"low",
+														"medium",
+														"high"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"zscore_target": {
+													"description": "Target of the zscore rule analysis.",
+													"enum": [
+														"bits",
+														"packets"
+													],
+													"example": "bits",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name",
+												"prefixes",
+												"automatic_advertisement",
+												"type"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+															"example": "false",
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"bandwidth_threshold": {
+															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+															"example": 1000,
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"duration": {
+															"default": "1m",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+															"enum": [
+																"1m",
+																"5m",
+																"10m",
+																"15m",
+																"20m",
+																"30m",
+																"45m",
+																"60m"
+															],
+															"example": "300s",
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The id of the rule. Must be unique.",
+															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+															"example": "my_rule_1",
+															"type": "string",
+															"x-auditable": true
+														},
+														"packet_threshold": {
+															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+															"example": 10000,
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"prefix_match": {
+															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+															"enum": [
+																"exact",
+																"subnet",
+																"supernet"
+															],
+															"example": "exact",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"prefixes": {
+															"items": {
+																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+																"example": "203.0.113.1/32",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"type": {
+															"description": "MNM rule type.",
+															"enum": [
+																"threshold",
+																"zscore",
+																"advanced_ddos"
+															],
+															"example": "zscore",
+															"type": "string",
+															"x-auditable": true
+														},
+														"zscore_sensitivity": {
+															"description": "Level of sensitivity set for zscore rules.",
+															"enum": [
+																"low",
+																"medium",
+																"high"
+															],
+															"example": "high",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"zscore_target": {
+															"description": "Target of the zscore rule analysis.",
+															"enum": [
+																"bits",
+																"packets"
+															],
+															"example": "bits",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"prefixes",
+														"automatic_advertisement",
+														"type"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete rule",
+		"tags": [
+			"Magic Network Monitoring Rules"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin"
+		]
+	},
+	"GET /accounts/{account_id}/mnm/rules": {
+		"description": "Lists network monitoring rules for account.",
+		"operationId": "magic-network-monitoring-rules-list-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"nullable": true,
+												"properties": {
+													"automatic_advertisement": {
+														"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+														"example": "false",
+														"nullable": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"bandwidth_threshold": {
+														"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+														"example": 1000,
+														"minimum": 1,
+														"type": "number",
+														"x-auditable": true
+													},
+													"duration": {
+														"default": "1m",
+														"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+														"enum": [
+															"1m",
+															"5m",
+															"10m",
+															"15m",
+															"20m",
+															"30m",
+															"45m",
+															"60m"
+														],
+														"example": "300s",
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "The id of the rule. Must be unique.",
+														"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+														"type": "string",
+														"x-auditable": true
+													},
+													"name": {
+														"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+														"example": "my_rule_1",
+														"type": "string",
+														"x-auditable": true
+													},
+													"packet_threshold": {
+														"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+														"example": 10000,
+														"minimum": 1,
+														"type": "number",
+														"x-auditable": true
+													},
+													"prefix_match": {
+														"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+														"enum": [
+															"exact",
+															"subnet",
+															"supernet"
+														],
+														"example": "exact",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"prefixes": {
+														"items": {
+															"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+															"example": "203.0.113.1/32",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": "array"
+													},
+													"type": {
+														"description": "MNM rule type.",
+														"enum": [
+															"threshold",
+															"zscore",
+															"advanced_ddos"
+														],
+														"example": "zscore",
+														"type": "string",
+														"x-auditable": true
+													},
+													"zscore_sensitivity": {
+														"description": "Level of sensitivity set for zscore rules.",
+														"enum": [
+															"low",
+															"medium",
+															"high"
+														],
+														"example": "high",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"zscore_target": {
+														"description": "Target of the zscore rule analysis.",
+														"enum": [
+															"bits",
+															"packets"
+														],
+														"example": "bits",
+														"nullable": true,
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"name",
+													"prefixes",
+													"automatic_advertisement",
+													"type"
+												],
+												"type": "object"
+											},
+											"nullable": true,
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List rules response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"nullable": true,
+														"properties": {
+															"automatic_advertisement": {
+																"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+																"example": "false",
+																"nullable": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"bandwidth_threshold": {
+																"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+																"example": 1000,
+																"minimum": 1,
+																"type": "number",
+																"x-auditable": true
+															},
+															"duration": {
+																"default": "1m",
+																"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+																"enum": [
+																	"1m",
+																	"5m",
+																	"10m",
+																	"15m",
+																	"20m",
+																	"30m",
+																	"45m",
+																	"60m"
+																],
+																"example": "300s",
+																"type": "string",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "The id of the rule. Must be unique.",
+																"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+																"example": "my_rule_1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"packet_threshold": {
+																"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+																"example": 10000,
+																"minimum": 1,
+																"type": "number",
+																"x-auditable": true
+															},
+															"prefix_match": {
+																"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+																"enum": [
+																	"exact",
+																	"subnet",
+																	"supernet"
+																],
+																"example": "exact",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"prefixes": {
+																"items": {
+																	"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+																	"example": "203.0.113.1/32",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
+															"type": {
+																"description": "MNM rule type.",
+																"enum": [
+																	"threshold",
+																	"zscore",
+																	"advanced_ddos"
+																],
+																"example": "zscore",
+																"type": "string",
+																"x-auditable": true
+															},
+															"zscore_sensitivity": {
+																"description": "Level of sensitivity set for zscore rules.",
+																"enum": [
+																	"low",
+																	"medium",
+																	"high"
+																],
+																"example": "high",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"zscore_target": {
+																"description": "Target of the zscore rule analysis.",
+																"enum": [
+																	"bits",
+																	"packets"
+																],
+																"example": "bits",
+																"nullable": true,
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"prefixes",
+															"automatic_advertisement",
+															"type"
+														],
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List rules",
+		"tags": [
+			"Magic Network Monitoring Rules"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write",
+			"Magic Network Monitoring Config Read"
+		]
+	},
+	"GET /accounts/{account_id}/mnm/rules/{rule_id}": {
+		"description": "List a single network monitoring rule for account.",
+		"operationId": "magic-network-monitoring-rules-get-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "The id of the rule. Must be unique.",
+					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+													"example": "false",
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"bandwidth_threshold": {
+													"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+													"example": 1000,
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"duration": {
+													"default": "1m",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+													"enum": [
+														"1m",
+														"5m",
+														"10m",
+														"15m",
+														"20m",
+														"30m",
+														"45m",
+														"60m"
+													],
+													"example": "300s",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The id of the rule. Must be unique.",
+													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+													"example": "my_rule_1",
+													"type": "string",
+													"x-auditable": true
+												},
+												"packet_threshold": {
+													"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+													"example": 10000,
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"prefix_match": {
+													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+													"enum": [
+														"exact",
+														"subnet",
+														"supernet"
+													],
+													"example": "exact",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"prefixes": {
+													"items": {
+														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+														"example": "203.0.113.1/32",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"type": {
+													"description": "MNM rule type.",
+													"enum": [
+														"threshold",
+														"zscore",
+														"advanced_ddos"
+													],
+													"example": "zscore",
+													"type": "string",
+													"x-auditable": true
+												},
+												"zscore_sensitivity": {
+													"description": "Level of sensitivity set for zscore rules.",
+													"enum": [
+														"low",
+														"medium",
+														"high"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"zscore_target": {
+													"description": "Target of the zscore rule analysis.",
+													"enum": [
+														"bits",
+														"packets"
+													],
+													"example": "bits",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name",
+												"prefixes",
+												"automatic_advertisement",
+												"type"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+															"example": "false",
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"bandwidth_threshold": {
+															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+															"example": 1000,
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"duration": {
+															"default": "1m",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+															"enum": [
+																"1m",
+																"5m",
+																"10m",
+																"15m",
+																"20m",
+																"30m",
+																"45m",
+																"60m"
+															],
+															"example": "300s",
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The id of the rule. Must be unique.",
+															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+															"example": "my_rule_1",
+															"type": "string",
+															"x-auditable": true
+														},
+														"packet_threshold": {
+															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+															"example": 10000,
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"prefix_match": {
+															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+															"enum": [
+																"exact",
+																"subnet",
+																"supernet"
+															],
+															"example": "exact",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"prefixes": {
+															"items": {
+																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+																"example": "203.0.113.1/32",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"type": {
+															"description": "MNM rule type.",
+															"enum": [
+																"threshold",
+																"zscore",
+																"advanced_ddos"
+															],
+															"example": "zscore",
+															"type": "string",
+															"x-auditable": true
+														},
+														"zscore_sensitivity": {
+															"description": "Level of sensitivity set for zscore rules.",
+															"enum": [
+																"low",
+																"medium",
+																"high"
+															],
+															"example": "high",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"zscore_target": {
+															"description": "Target of the zscore rule analysis.",
+															"enum": [
+																"bits",
+																"packets"
+															],
+															"example": "bits",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"prefixes",
+														"automatic_advertisement",
+														"type"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get rule",
+		"tags": [
+			"Magic Network Monitoring Rules"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write",
+			"Magic Network Monitoring Config Read"
+		]
+	},
+	"PATCH /accounts/{account_id}/mnm/rules/{rule_id}": {
+		"description": "Update a network monitoring rule for account.",
+		"operationId": "magic-network-monitoring-rules-update-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "The id of the rule. Must be unique.",
+					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"automatic_advertisement": {
+								"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+								"example": "false",
+								"nullable": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"bandwidth": {
+								"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+								"example": 1000,
+								"minimum": 1,
+								"type": "number",
+								"x-auditable": true
+							},
+							"duration": {
+								"default": "1m",
+								"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+								"enum": [
+									"1m",
+									"5m",
+									"10m",
+									"15m",
+									"20m",
+									"30m",
+									"45m",
+									"60m"
+								],
+								"example": "300s",
+								"type": "string",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+								"example": "my_rule_1",
+								"type": "string",
+								"x-auditable": true
+							},
+							"packet_threshold": {
+								"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+								"example": 10000,
+								"minimum": 1,
+								"type": "number",
+								"x-auditable": true
+							},
+							"prefixes": {
+								"items": {
+									"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+									"example": "203.0.113.1/32",
+									"type": "string",
+									"x-auditable": true
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+													"example": "false",
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"bandwidth_threshold": {
+													"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+													"example": 1000,
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"duration": {
+													"default": "1m",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+													"enum": [
+														"1m",
+														"5m",
+														"10m",
+														"15m",
+														"20m",
+														"30m",
+														"45m",
+														"60m"
+													],
+													"example": "300s",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The id of the rule. Must be unique.",
+													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+													"example": "my_rule_1",
+													"type": "string",
+													"x-auditable": true
+												},
+												"packet_threshold": {
+													"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+													"example": 10000,
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"prefix_match": {
+													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+													"enum": [
+														"exact",
+														"subnet",
+														"supernet"
+													],
+													"example": "exact",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"prefixes": {
+													"items": {
+														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+														"example": "203.0.113.1/32",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"type": {
+													"description": "MNM rule type.",
+													"enum": [
+														"threshold",
+														"zscore",
+														"advanced_ddos"
+													],
+													"example": "zscore",
+													"type": "string",
+													"x-auditable": true
+												},
+												"zscore_sensitivity": {
+													"description": "Level of sensitivity set for zscore rules.",
+													"enum": [
+														"low",
+														"medium",
+														"high"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"zscore_target": {
+													"description": "Target of the zscore rule analysis.",
+													"enum": [
+														"bits",
+														"packets"
+													],
+													"example": "bits",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name",
+												"prefixes",
+												"automatic_advertisement",
+												"type"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+															"example": "false",
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"bandwidth_threshold": {
+															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+															"example": 1000,
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"duration": {
+															"default": "1m",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+															"enum": [
+																"1m",
+																"5m",
+																"10m",
+																"15m",
+																"20m",
+																"30m",
+																"45m",
+																"60m"
+															],
+															"example": "300s",
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The id of the rule. Must be unique.",
+															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+															"example": "my_rule_1",
+															"type": "string",
+															"x-auditable": true
+														},
+														"packet_threshold": {
+															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+															"example": 10000,
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"prefix_match": {
+															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+															"enum": [
+																"exact",
+																"subnet",
+																"supernet"
+															],
+															"example": "exact",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"prefixes": {
+															"items": {
+																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+																"example": "203.0.113.1/32",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"type": {
+															"description": "MNM rule type.",
+															"enum": [
+																"threshold",
+																"zscore",
+																"advanced_ddos"
+															],
+															"example": "zscore",
+															"type": "string",
+															"x-auditable": true
+														},
+														"zscore_sensitivity": {
+															"description": "Level of sensitivity set for zscore rules.",
+															"enum": [
+																"low",
+																"medium",
+																"high"
+															],
+															"example": "high",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"zscore_target": {
+															"description": "Target of the zscore rule analysis.",
+															"enum": [
+																"bits",
+																"packets"
+															],
+															"example": "bits",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"prefixes",
+														"automatic_advertisement",
+														"type"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update rule",
+		"tags": [
+			"Magic Network Monitoring Rules"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write"
+		]
+	},
+	"PATCH /accounts/{account_id}/mnm/rules/{rule_id}/advertisement": {
+		"description": "Update advertisement for rule.",
+		"operationId": "magic-network-monitoring-rules-update-advertisement-for-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "The id of the rule. Must be unique.",
+					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+													"example": "false",
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"automatic_advertisement"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update advertisement for rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+															"example": "false",
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"automatic_advertisement"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update advertisement for rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update advertisement for rule",
+		"tags": [
+			"Magic Network Monitoring Rules"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write"
+		]
+	},
+	"POST /accounts/{account_id}/mnm/rules": {
+		"description": "Create network monitoring rules for account. Currently only supports creating a single rule per API request.",
+		"operationId": "magic-network-monitoring-rules-create-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"automatic_advertisement": {
+								"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+								"example": "false",
+								"nullable": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"bandwidth": {
+								"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+								"example": 1000,
+								"minimum": 1,
+								"type": "number",
+								"x-auditable": true
+							},
+							"duration": {
+								"default": "1m",
+								"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+								"enum": [
+									"1m",
+									"5m",
+									"10m",
+									"15m",
+									"20m",
+									"30m",
+									"45m",
+									"60m"
+								],
+								"example": "300s",
+								"type": "string",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+								"example": "my_rule_1",
+								"type": "string",
+								"x-auditable": true
+							},
+							"packet_threshold": {
+								"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+								"example": 10000,
+								"minimum": 1,
+								"type": "number",
+								"x-auditable": true
+							},
+							"prefixes": {
+								"items": {
+									"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+									"example": "203.0.113.1/32",
+									"type": "string",
+									"x-auditable": true
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"duration",
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+													"example": "false",
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"bandwidth_threshold": {
+													"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+													"example": 1000,
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"duration": {
+													"default": "1m",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+													"enum": [
+														"1m",
+														"5m",
+														"10m",
+														"15m",
+														"20m",
+														"30m",
+														"45m",
+														"60m"
+													],
+													"example": "300s",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The id of the rule. Must be unique.",
+													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+													"example": "my_rule_1",
+													"type": "string",
+													"x-auditable": true
+												},
+												"packet_threshold": {
+													"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+													"example": 10000,
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"prefix_match": {
+													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+													"enum": [
+														"exact",
+														"subnet",
+														"supernet"
+													],
+													"example": "exact",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"prefixes": {
+													"items": {
+														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+														"example": "203.0.113.1/32",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"type": {
+													"description": "MNM rule type.",
+													"enum": [
+														"threshold",
+														"zscore",
+														"advanced_ddos"
+													],
+													"example": "zscore",
+													"type": "string",
+													"x-auditable": true
+												},
+												"zscore_sensitivity": {
+													"description": "Level of sensitivity set for zscore rules.",
+													"enum": [
+														"low",
+														"medium",
+														"high"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"zscore_target": {
+													"description": "Target of the zscore rule analysis.",
+													"enum": [
+														"bits",
+														"packets"
+													],
+													"example": "bits",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name",
+												"prefixes",
+												"automatic_advertisement",
+												"type"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create rules response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+															"example": "false",
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"bandwidth_threshold": {
+															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+															"example": 1000,
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"duration": {
+															"default": "1m",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+															"enum": [
+																"1m",
+																"5m",
+																"10m",
+																"15m",
+																"20m",
+																"30m",
+																"45m",
+																"60m"
+															],
+															"example": "300s",
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The id of the rule. Must be unique.",
+															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+															"example": "my_rule_1",
+															"type": "string",
+															"x-auditable": true
+														},
+														"packet_threshold": {
+															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+															"example": 10000,
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"prefix_match": {
+															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+															"enum": [
+																"exact",
+																"subnet",
+																"supernet"
+															],
+															"example": "exact",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"prefixes": {
+															"items": {
+																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+																"example": "203.0.113.1/32",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"type": {
+															"description": "MNM rule type.",
+															"enum": [
+																"threshold",
+																"zscore",
+																"advanced_ddos"
+															],
+															"example": "zscore",
+															"type": "string",
+															"x-auditable": true
+														},
+														"zscore_sensitivity": {
+															"description": "Level of sensitivity set for zscore rules.",
+															"enum": [
+																"low",
+																"medium",
+																"high"
+															],
+															"example": "high",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"zscore_target": {
+															"description": "Target of the zscore rule analysis.",
+															"enum": [
+																"bits",
+																"packets"
+															],
+															"example": "bits",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"prefixes",
+														"automatic_advertisement",
+														"type"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create rules",
+		"tags": [
+			"Magic Network Monitoring Rules"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin"
+		]
+	},
+	"PUT /accounts/{account_id}/mnm/rules": {
+		"description": "Update network monitoring rules for account.",
+		"operationId": "magic-network-monitoring-rules-update-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"automatic_advertisement": {
+								"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+								"example": "false",
+								"nullable": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"bandwidth": {
+								"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+								"example": 1000,
+								"minimum": 1,
+								"type": "number",
+								"x-auditable": true
+							},
+							"duration": {
+								"default": "1m",
+								"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+								"enum": [
+									"1m",
+									"5m",
+									"10m",
+									"15m",
+									"20m",
+									"30m",
+									"45m",
+									"60m"
+								],
+								"example": "300s",
+								"type": "string",
+								"x-auditable": true
+							},
+							"id": {
+								"description": "The id of the rule. Must be unique.",
+								"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+								"type": "string",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+								"example": "my_rule_1",
+								"type": "string",
+								"x-auditable": true
+							},
+							"packet_threshold": {
+								"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+								"example": 10000,
+								"minimum": 1,
+								"type": "number",
+								"x-auditable": true
+							},
+							"prefixes": {
+								"items": {
+									"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+									"example": "203.0.113.1/32",
+									"type": "string",
+									"x-auditable": true
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"ID",
+							"duration",
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+													"example": "false",
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"bandwidth_threshold": {
+													"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+													"example": 1000,
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"duration": {
+													"default": "1m",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+													"enum": [
+														"1m",
+														"5m",
+														"10m",
+														"15m",
+														"20m",
+														"30m",
+														"45m",
+														"60m"
+													],
+													"example": "300s",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The id of the rule. Must be unique.",
+													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+													"example": "my_rule_1",
+													"type": "string",
+													"x-auditable": true
+												},
+												"packet_threshold": {
+													"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+													"example": 10000,
+													"minimum": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"prefix_match": {
+													"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+													"enum": [
+														"exact",
+														"subnet",
+														"supernet"
+													],
+													"example": "exact",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"prefixes": {
+													"items": {
+														"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+														"example": "203.0.113.1/32",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"type": {
+													"description": "MNM rule type.",
+													"enum": [
+														"threshold",
+														"zscore",
+														"advanced_ddos"
+													],
+													"example": "zscore",
+													"type": "string",
+													"x-auditable": true
+												},
+												"zscore_sensitivity": {
+													"description": "Level of sensitivity set for zscore rules.",
+													"enum": [
+														"low",
+														"medium",
+														"high"
+													],
+													"example": "high",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"zscore_target": {
+													"description": "Target of the zscore rule analysis.",
+													"enum": [
+														"bits",
+														"packets"
+													],
+													"example": "bits",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name",
+												"prefixes",
+												"automatic_advertisement",
+												"type"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update rules response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+															"example": "false",
+															"nullable": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"bandwidth_threshold": {
+															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+															"example": 1000,
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"duration": {
+															"default": "1m",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
+															"enum": [
+																"1m",
+																"5m",
+																"10m",
+																"15m",
+																"20m",
+																"30m",
+																"45m",
+																"60m"
+															],
+															"example": "300s",
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The id of the rule. Must be unique.",
+															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+															"example": "my_rule_1",
+															"type": "string",
+															"x-auditable": true
+														},
+														"packet_threshold": {
+															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+															"example": 10000,
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"prefix_match": {
+															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
+															"enum": [
+																"exact",
+																"subnet",
+																"supernet"
+															],
+															"example": "exact",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"prefixes": {
+															"items": {
+																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+																"example": "203.0.113.1/32",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"type": {
+															"description": "MNM rule type.",
+															"enum": [
+																"threshold",
+																"zscore",
+																"advanced_ddos"
+															],
+															"example": "zscore",
+															"type": "string",
+															"x-auditable": true
+														},
+														"zscore_sensitivity": {
+															"description": "Level of sensitivity set for zscore rules.",
+															"enum": [
+																"low",
+																"medium",
+																"high"
+															],
+															"example": "high",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"zscore_target": {
+															"description": "Target of the zscore rule analysis.",
+															"enum": [
+																"bits",
+																"packets"
+															],
+															"example": "bits",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"prefixes",
+														"automatic_advertisement",
+														"type"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update rules",
+		"tags": [
+			"Magic Network Monitoring Rules"
+		],
+		"x-api-token-group": [
+			"Magic Network Monitoring Admin",
+			"Magic Network Monitoring Config Write"
+		]
+	}
+}

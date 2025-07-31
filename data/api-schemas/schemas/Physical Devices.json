@@ -1,0 +1,998 @@
+{
+	"DELETE /accounts/{account_id}/devices/physical-devices/{device_id}": {
+		"description": "Deletes a WARP device.",
+		"operationId": "delete-device",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "device_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Device was successfully deleted."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete device",
+		"tags": [
+			"Physical Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"DELETE /accounts/{account_id}/devices/registrations": {
+		"description": "Deletes a list of WARP registrations.",
+		"operationId": "delete-registrations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "A list of registration IDs to delete.",
+				"in": "query",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"result_info": {
+									"description": "V4 public API Pagination/Cursor info.",
+									"example": {
+										"count": 1,
+										"cursor": "ais86dftf.asdf7ba8",
+										"page": null,
+										"per_page": 10,
+										"total_count": null
+									},
+									"properties": {
+										"count": {
+											"description": "Number of records in the response.",
+											"type": "integer"
+										},
+										"cursor": {
+											"description": "Opaque token to request the next set of records.",
+											"type": "string"
+										},
+										"per_page": {
+											"description": "The limit for the number of records in the response.",
+											"type": "integer"
+										},
+										"total_count": {
+											"description": "Total number of records available.",
+											"nullable": true,
+											"type": "integer"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"cursor"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete a list of registrations response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete registrations",
+		"tags": [
+			"Physical Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/devices/physical-devices": {
+		"description": "Lists WARP devices.",
+		"operationId": "list-devices",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Opaque token indicating the starting position when requesting the next set of records. A cursor value can be obtained from the result_info.cursor field in the response.",
+				"explode": false,
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "The device field to order results by.",
+				"explode": false,
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"enum": [
+						"name",
+						"id",
+						"client_version",
+						"last_seen_user.email",
+						"last_seen_at",
+						"active_registrations",
+						"created_at"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Sort direction.",
+				"explode": false,
+				"in": "query",
+				"name": "sort_order",
+				"schema": {
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by the last seen user's email.",
+				"explode": false,
+				"in": "query",
+				"name": "last_seen_user.email",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by the last_seen timestamp - returns only devices last seen after this timestamp.",
+				"explode": false,
+				"in": "query",
+				"name": "seen_after",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by the last_seen timestamp - returns only devices last seen before this timestamp.",
+				"explode": false,
+				"in": "query",
+				"name": "seen_before",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "The maximum number of devices to return in a single response.",
+				"explode": false,
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"format": "uint64",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Search by device details.",
+				"explode": false,
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Include or exclude devices with active registrations. The default is \"only\" - return only devices with active registrations.",
+				"explode": false,
+				"in": "query",
+				"name": "active_registrations",
+				"schema": {
+					"enum": [
+						"include",
+						"only",
+						"exclude"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by a one or more device IDs.",
+				"explode": true,
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "include",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"description": "A WARP Device.",
+										"properties": {
+											"active_registrations": {
+												"description": "The number of active registrations for the device. Active registrations are those which haven't been revoked or deleted.",
+												"example": 1,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"client_version": {
+												"description": "Version of the WARP client.",
+												"example": "1.0.0",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"created_at": {
+												"description": "The RFC3339 timestamp when the device was created.",
+												"example": "2025-02-14T13:17:00Z",
+												"type": "string",
+												"x-auditable": true
+											},
+											"deleted_at": {
+												"description": "The RFC3339 timestamp when the device was deleted.",
+												"example": "2025-02-14T13:17:00Z",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"device_type": {
+												"description": "The device operating system.",
+												"example": "linux",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"hardware_id": {
+												"description": "A string that uniquely identifies the hardware or virtual machine (VM).",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"id": {
+												"description": "The unique ID of the device.",
+												"example": "fc9ab6ab-3b94-4319-9941-459462b3d73e",
+												"type": "string",
+												"x-auditable": true
+											},
+											"last_seen_at": {
+												"description": "The RFC3339 timestamp when the device was last seen.",
+												"example": "2025-02-14T13:17:00Z",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"last_seen_user": {
+												"allOf": [
+													{
+														"properties": {
+															"email": {
+																"description": "The contact email address of the user.",
+																"example": "user@example.com",
+																"maxLength": 90,
+																"type": "string",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "UUID.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "The enrolled device user's name.",
+																"example": "John Appleseed",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												],
+												"description": "The last user to use the WARP device.",
+												"nullable": true,
+												"type": "object"
+											},
+											"mac_address": {
+												"description": "The device MAC address.",
+												"example": "f5:01:73:cf:12:23",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"manufacturer": {
+												"description": "The device manufacturer.",
+												"example": "ACME",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"model": {
+												"description": "The model name of the device.",
+												"example": "Mark VII",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"name": {
+												"description": "The name of the device.",
+												"example": "My Device",
+												"type": "string",
+												"x-auditable": true
+											},
+											"os_version": {
+												"description": "The device operating system version number.",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"os_version_extra": {
+												"description": "Additional operating system version data. For macOS or iOS, the Product Version Extra. For Linux, the kernel release version.",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"public_ip": {
+												"description": "The public IP address of the WARP client.",
+												"example": "1.1.1.1",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"serial_number": {
+												"description": "The device serial number.",
+												"example": "ABS765ASD8A",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"updated_at": {
+												"description": "The RFC3339 timestamp when the device was last updated.",
+												"example": "2025-02-14T13:17:00Z",
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"created_at",
+											"updated_at",
+											"last_seen_at",
+											"active_registrations"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"description": "V4 public API Pagination/Cursor info.",
+									"example": {
+										"count": 1,
+										"cursor": "ais86dftf.asdf7ba8",
+										"page": null,
+										"per_page": 10,
+										"total_count": null
+									},
+									"properties": {
+										"count": {
+											"description": "Number of records in the response.",
+											"type": "integer"
+										},
+										"cursor": {
+											"description": "Opaque token to request the next set of records.",
+											"type": "string"
+										},
+										"per_page": {
+											"description": "The limit for the number of records in the response.",
+											"type": "integer"
+										},
+										"total_count": {
+											"description": "Total number of records available.",
+											"nullable": true,
+											"type": "integer"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"cursor"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a list of Devices."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List devices",
+		"tags": [
+			"Physical Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/devices/physical-devices/{device_id}": {
+		"description": "Fetches a single WARP device.",
+		"operationId": "get-device",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "device_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"description": "A WARP Device.",
+									"properties": {
+										"active_registrations": {
+											"description": "The number of active registrations for the device. Active registrations are those which haven't been revoked or deleted.",
+											"example": 1,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"client_version": {
+											"description": "Version of the WARP client.",
+											"example": "1.0.0",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"created_at": {
+											"description": "The RFC3339 timestamp when the device was created.",
+											"example": "2025-02-14T13:17:00Z",
+											"type": "string",
+											"x-auditable": true
+										},
+										"deleted_at": {
+											"description": "The RFC3339 timestamp when the device was deleted.",
+											"example": "2025-02-14T13:17:00Z",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"device_type": {
+											"description": "The device operating system.",
+											"example": "linux",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"hardware_id": {
+											"description": "A string that uniquely identifies the hardware or virtual machine (VM).",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"id": {
+											"description": "The unique ID of the device.",
+											"example": "fc9ab6ab-3b94-4319-9941-459462b3d73e",
+											"type": "string",
+											"x-auditable": true
+										},
+										"last_seen_at": {
+											"description": "The RFC3339 timestamp when the device was last seen.",
+											"example": "2025-02-14T13:17:00Z",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"last_seen_user": {
+											"allOf": [
+												{
+													"properties": {
+														"email": {
+															"description": "The contact email address of the user.",
+															"example": "user@example.com",
+															"maxLength": 90,
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "The enrolled device user's name.",
+															"example": "John Appleseed",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"description": "The last user to use the WARP device.",
+											"nullable": true,
+											"type": "object"
+										},
+										"mac_address": {
+											"description": "The device MAC address.",
+											"example": "f5:01:73:cf:12:23",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"manufacturer": {
+											"description": "The device manufacturer.",
+											"example": "ACME",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"model": {
+											"description": "The model name of the device.",
+											"example": "Mark VII",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"name": {
+											"description": "The name of the device.",
+											"example": "My Device",
+											"type": "string",
+											"x-auditable": true
+										},
+										"os_version": {
+											"description": "The device operating system version number.",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"os_version_extra": {
+											"description": "Additional operating system version data. For macOS or iOS, the Product Version Extra. For Linux, the kernel release version.",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"public_ip": {
+											"description": "The public IP address of the WARP client.",
+											"example": "1.1.1.1",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"serial_number": {
+											"description": "The device serial number.",
+											"example": "ABS765ASD8A",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"updated_at": {
+											"description": "The RFC3339 timestamp when the device was last updated.",
+											"example": "2025-02-14T13:17:00Z",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"created_at",
+										"updated_at",
+										"last_seen_at",
+										"active_registrations"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a Device."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get device",
+		"tags": [
+			"Physical Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/devices/physical-devices/{device_id}/revoke": {
+		"description": "Revokes all WARP registrations associated with the specified device.",
+		"operationId": "revoke-device",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "device_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Revoke device registrations response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Revoke device registrations",
+		"tags": [
+			"Physical Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	}
+}

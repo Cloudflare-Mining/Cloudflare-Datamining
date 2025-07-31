@@ -1,0 +1,6716 @@
+{
+	"GET /accounts/{account_id}/intel/attack-surface-report/issue-types": {
+		"operationId": "get-security-center-issue-types",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Security Center Issues Types",
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
+	},
+	"GET /accounts/{account_id}/intel/attack-surface-report/issues": {
+		"deprecated": true,
+		"operationId": "get-security-center-issues",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"allOf": [
+						{
+							"description": "Current page within paginated list of results",
+							"example": 1,
+							"type": "integer"
+						}
+					],
+					"default": 1
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"allOf": [
+						{
+							"description": "Number of results per page of results",
+							"example": 25,
+							"maximum": 1000,
+							"minimum": 1,
+							"type": "integer"
+						}
+					],
+					"default": 25
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"properties": {
+														"count": {
+															"description": "Total number of results",
+															"example": 1,
+															"type": "integer",
+															"x-auditable": true
+														},
+														"issues": {
+															"items": {
+																"properties": {
+																	"dismissed": {
+																		"example": false,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"issue_class": {
+																		"example": "always_use_https_not_enabled",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"issue_type": {
+																		"enum": [
+																			"compliance_violation",
+																			"email_security",
+																			"exposed_infrastructure",
+																			"insecure_configuration",
+																			"weak_authentication"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"payload": {
+																		"type": "object"
+																	},
+																	"resolve_link": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"resolve_text": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"severity": {
+																		"enum": [
+																			"Low",
+																			"Moderate",
+																			"Critical"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"since": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"subject": {
+																		"example": "example.com",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"timestamp": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "integer"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 25,
+															"maximum": 1000,
+															"minimum": 1,
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Security Center Issues",
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": null
+	},
+	"GET /accounts/{account_id}/intel/attack-surface-report/issues/class": {
+		"deprecated": true,
+		"operationId": "get-security-center-issue-counts-by-class",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"items": {
+														"properties": {
+															"count": {
+																"example": 1,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Security Center Issue Counts by Class",
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
+	},
+	"GET /accounts/{account_id}/intel/attack-surface-report/issues/severity": {
+		"deprecated": true,
+		"operationId": "get-security-center-issue-counts-by-severity",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"items": {
+														"properties": {
+															"count": {
+																"example": 1,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Security Center Issue Counts by Severity",
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
+	},
+	"GET /accounts/{account_id}/intel/attack-surface-report/issues/type": {
+		"deprecated": true,
+		"operationId": "get-security-center-issue-counts-by-type",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"items": {
+														"properties": {
+															"count": {
+																"example": 1,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Security Center Issue Counts by Type",
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
+	},
+	"GET /accounts/{account_id}/security-center/insights": {
+		"operationId": "get-security-center-insights",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"allOf": [
+						{
+							"description": "Current page within paginated list of results",
+							"example": 1,
+							"type": "integer"
+						}
+					],
+					"default": 1
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"allOf": [
+						{
+							"description": "Number of results per page of results",
+							"example": 25,
+							"maximum": 1000,
+							"minimum": 1,
+							"type": "integer"
+						}
+					],
+					"default": 25
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"properties": {
+														"count": {
+															"description": "Total number of results",
+															"example": 1,
+															"type": "integer",
+															"x-auditable": true
+														},
+														"issues": {
+															"items": {
+																"properties": {
+																	"dismissed": {
+																		"example": false,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"issue_class": {
+																		"example": "always_use_https_not_enabled",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"issue_type": {
+																		"enum": [
+																			"compliance_violation",
+																			"email_security",
+																			"exposed_infrastructure",
+																			"insecure_configuration",
+																			"weak_authentication"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"payload": {
+																		"type": "object"
+																	},
+																	"resolve_link": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"resolve_text": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"severity": {
+																		"enum": [
+																			"Low",
+																			"Moderate",
+																			"Critical"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"since": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"subject": {
+																		"example": "example.com",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"timestamp": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "integer"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 25,
+															"maximum": 1000,
+															"minimum": 1,
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Security Center Insights",
+		"tags": [
+			"Security Center Insights"
+		]
+	},
+	"GET /accounts/{account_id}/security-center/insights/class": {
+		"operationId": "get-security-center-insight-counts-by-class",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"items": {
+														"properties": {
+															"count": {
+																"example": 1,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Security Center Insight Counts by Class",
+		"tags": [
+			"Security Center Insights"
+		]
+	},
+	"GET /accounts/{account_id}/security-center/insights/severity": {
+		"operationId": "get-security-center-insight-counts-by-severity",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"items": {
+														"properties": {
+															"count": {
+																"example": 1,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Security Center Insight Counts by Severity",
+		"tags": [
+			"Security Center Insights"
+		]
+	},
+	"GET /accounts/{account_id}/security-center/insights/type": {
+		"operationId": "get-security-center-insight-counts-by-type",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"items": {
+														"properties": {
+															"count": {
+																"example": 1,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Security Center Insight Counts by Type",
+		"tags": [
+			"Security Center Insights"
+		]
+	},
+	"GET /zones/{zone_id}/security-center/insights": {
+		"operationId": "get-zone-security-center-insights",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"allOf": [
+						{
+							"description": "Current page within paginated list of results",
+							"example": 1,
+							"type": "integer"
+						}
+					],
+					"default": 1
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"allOf": [
+						{
+							"description": "Number of results per page of results",
+							"example": 25,
+							"maximum": 1000,
+							"minimum": 1,
+							"type": "integer"
+						}
+					],
+					"default": 25
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"properties": {
+														"count": {
+															"description": "Total number of results",
+															"example": 1,
+															"type": "integer",
+															"x-auditable": true
+														},
+														"issues": {
+															"items": {
+																"properties": {
+																	"dismissed": {
+																		"example": false,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"issue_class": {
+																		"example": "always_use_https_not_enabled",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"issue_type": {
+																		"enum": [
+																			"compliance_violation",
+																			"email_security",
+																			"exposed_infrastructure",
+																			"insecure_configuration",
+																			"weak_authentication"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"payload": {
+																		"type": "object"
+																	},
+																	"resolve_link": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"resolve_text": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"severity": {
+																		"enum": [
+																			"Low",
+																			"Moderate",
+																			"Critical"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"since": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"subject": {
+																		"example": "example.com",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"timestamp": {
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "integer"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 25,
+															"maximum": 1000,
+															"minimum": 1,
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Zone Security Center Insights",
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		]
+	},
+	"GET /zones/{zone_id}/security-center/insights/class": {
+		"operationId": "get-zone-security-center-insight-counts-by-class",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"items": {
+														"properties": {
+															"count": {
+																"example": 1,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Zone Security Center Insight Counts by Class",
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		]
+	},
+	"GET /zones/{zone_id}/security-center/insights/severity": {
+		"operationId": "get-zone-security-center-insight-counts-by-severity",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"items": {
+														"properties": {
+															"count": {
+																"example": 1,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Zone Security Center Insight Counts by Severity",
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		]
+	},
+	"GET /zones/{zone_id}/security-center/insights/type": {
+		"operationId": "get-zone-security-center-insight-counts-by-type",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "dismissed",
+				"schema": {
+					"example": false,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_class~neq",
+				"schema": {
+					"example": [
+						"a_record_dangling",
+						"always_use_https_not_enabled"
+					],
+					"items": {
+						"example": "always_use_https_not_enabled",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "issue_type~neq",
+				"schema": {
+					"example": [
+						"compliance_violation",
+						"email_security"
+					],
+					"items": {
+						"enum": [
+							"compliance_violation",
+							"email_security",
+							"exposed_infrastructure",
+							"insecure_configuration",
+							"weak_authentication"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "product~neq",
+				"schema": {
+					"example": [
+						"access",
+						"dns"
+					],
+					"items": {
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "severity~neq",
+				"schema": {
+					"example": [
+						"low",
+						"moderate"
+					],
+					"items": {
+						"enum": [
+							"low",
+							"moderate",
+							"critical"
+						],
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "subject~neq",
+				"schema": {
+					"items": {
+						"example": "example.com",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"items": {
+														"properties": {
+															"count": {
+																"example": 1,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Zone Security Center Insight Counts by Type",
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		]
+	},
+	"PUT /accounts/{account_id}/intel/attack-surface-report/{issue_id}/dismiss": {
+		"deprecated": true,
+		"operationId": "archive-security-center-insight-deprecated",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "issue_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"dismiss": {
+								"default": true,
+								"type": "boolean",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Archive Security Center Insight",
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": null
+	},
+	"PUT /accounts/{account_id}/security-center/insights/{issue_id}/dismiss": {
+		"operationId": "archive-security-center-insight",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "issue_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"dismiss": {
+								"default": true,
+								"type": "boolean",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Archive Security Center Insight",
+		"tags": [
+			"Security Center Insights"
+		]
+	},
+	"PUT /zones/{zone_id}/security-center/insights/{issue_id}/dismiss": {
+		"operationId": "archive-zone-security-center-insight",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "issue_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"dismiss": {
+								"default": true,
+								"type": "boolean",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Archive Zone Security Center Insight",
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		]
+	}
+}

@@ -1,0 +1,514 @@
+{
+	"GET /accounts/{account_id}/dex/warp-change-events": {
+		"description": "List WARP configuration and enablement toggle change events by device.",
+		"operationId": "list-warp-change-events",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Page number of paginated results",
+				"in": "query",
+				"name": "page",
+				"required": true,
+				"schema": {
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Number of items per page",
+				"in": "query",
+				"name": "per_page",
+				"required": true,
+				"schema": {
+					"maximum": 50,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Start time for the query in ISO (RFC3339 - ISO 8601) format",
+				"in": "query",
+				"name": "from",
+				"required": true,
+				"schema": {
+					"example": "2023-09-20T17:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End time for the query in ISO (RFC3339 - ISO 8601) format",
+				"in": "query",
+				"name": "to",
+				"required": true,
+				"schema": {
+					"example": "2023-09-20T17:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter events by type 'config' or 'toggle'",
+				"in": "query",
+				"name": "type",
+				"schema": {
+					"enum": [
+						"config",
+						"toggle"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter events by type toggle value. Applicable to type='toggle' events only.",
+				"in": "query",
+				"name": "toggle",
+				"schema": {
+					"enum": [
+						"on",
+						"off"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter events by WARP configuration name changed from or to. Applicable to type='config' events only.",
+				"in": "query",
+				"name": "config_name",
+				"schema": {
+					"example": "MASQUE",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter events by account name.",
+				"in": "query",
+				"name": "account_name",
+				"schema": {
+					"example": "Myorg",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Sort response by event timestamp.",
+				"in": "query",
+				"name": "sort_order",
+				"schema": {
+					"default": "ASC",
+					"enum": [
+						"ASC",
+						"DESC"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"oneOf": [
+													{
+														"properties": {
+															"account_name": {
+																"description": "The account name.",
+																"type": "string"
+															},
+															"account_tag": {
+																"description": "The public account identifier.",
+																"type": "string"
+															},
+															"device_id": {
+																"description": "API Resource UUID tag.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"type": "string"
+															},
+															"device_registration": {
+																"description": "API Resource UUID tag.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"type": "string"
+															},
+															"hostname": {
+																"description": "The hostname of the machine the event is from",
+																"type": "string"
+															},
+															"serial_number": {
+																"description": "The serial number of the machine the event is from",
+																"type": "string"
+															},
+															"timestamp": {
+																"description": "Timestamp in ISO format",
+																"example": "2023-10-11T00:00:00Z",
+																"type": "string"
+															},
+															"toggle": {
+																"description": "The state of the WARP toggle.",
+																"enum": [
+																	"on",
+																	"off"
+																],
+																"type": "string"
+															},
+															"user_email": {
+																"description": "Email tied to the device",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"device_id": {
+																"description": "API Resource UUID tag.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"type": "string"
+															},
+															"device_registration": {
+																"description": "API Resource UUID tag.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"type": "string"
+															},
+															"from": {
+																"properties": {
+																	"account_name": {
+																		"description": "The account name.",
+																		"type": "string"
+																	},
+																	"account_tag": {
+																		"description": "API Resource UUID tag.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string"
+																	},
+																	"config_name": {
+																		"description": "The name of the WARP configuration.",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"hostname": {
+																"description": "The hostname of the machine the event is from",
+																"type": "string"
+															},
+															"serial_number": {
+																"description": "The serial number of the machine the event is from",
+																"type": "string"
+															},
+															"timestamp": {
+																"description": "Timestamp in ISO format",
+																"example": "2023-10-11T00:00:00Z",
+																"type": "string"
+															},
+															"to": {
+																"properties": {
+																	"account_name": {
+																		"description": "The account name.",
+																		"type": "string"
+																	},
+																	"account_tag": {
+																		"description": "API Resource UUID tag.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string"
+																	},
+																	"config_name": {
+																		"description": "The name of the WARP configuration.",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"user_email": {
+																"description": "Email tied to the device",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "success response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List WARP change events failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "List WARP change events.",
+		"tags": [
+			"WARP Change Events"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
+		]
+	}
+}

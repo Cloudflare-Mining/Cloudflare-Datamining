@@ -1,0 +1,1990 @@
+{
+	"DELETE /accounts/{account_id}/pipelines/{pipeline_name}": {
+		"description": "Delete a pipeline.",
+		"operationId": "deleteV4AccountsByAccount_idPipelinesByPipeline_name",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "pipeline_name",
+				"required": true,
+				"schema": {
+					"description": "Defines the name of the pipeline.",
+					"example": "sample_pipeline",
+					"maxLength": 128,
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Indicates a successfully deleted pipeline."
+			},
+			"4XX": {
+				"description": "Indicates an error in deleting a pipeline."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Pipeline",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/pipelines": {
+		"description": "List, filter, and paginate pipelines in an account.",
+		"operationId": "getV4AccountsByAccount_idPipelines",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Specifies the prefix of pipeline name to search.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": "1",
+					"description": "Specifies which page to retrieve.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": "25",
+					"description": "Specifies the number of pipelines per page.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result_info": {
+									"properties": {
+										"count": {
+											"description": "Indicates the number of items on current page.",
+											"example": 1,
+											"type": "number"
+										},
+										"page": {
+											"description": "Indicates the current page number.",
+											"example": 0,
+											"type": "number"
+										},
+										"per_page": {
+											"description": "Indicates the number of items per page.",
+											"example": 10,
+											"type": "number"
+										},
+										"total_count": {
+											"description": "Indicates the total number of items.",
+											"example": 1,
+											"type": "number"
+										}
+									},
+									"required": [
+										"count",
+										"page",
+										"per_page",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"results": {
+									"items": {
+										"description": "Describes the configuration of a pipeline.",
+										"properties": {
+											"destination": {
+												"properties": {
+													"batch": {
+														"properties": {
+															"max_bytes": {
+																"default": 100000000,
+																"description": "Specifies rough maximum size of files.",
+																"maximum": 100000000,
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"max_duration_s": {
+																"default": 300,
+																"description": "Specifies duration to wait to aggregate batches files.",
+																"maximum": 300,
+																"minimum": 0.25,
+																"type": "number"
+															},
+															"max_rows": {
+																"default": 10000000,
+																"description": "Specifies rough maximum number of rows per file.",
+																"maximum": 10000000,
+																"minimum": 100,
+																"type": "integer"
+															}
+														},
+														"required": [
+															"max_rows",
+															"max_bytes",
+															"max_duration_s"
+														],
+														"type": "object"
+													},
+													"compression": {
+														"properties": {
+															"type": {
+																"default": "gzip",
+																"description": "Specifies the desired compression algorithm and format.",
+																"enum": [
+																	"none",
+																	"gzip",
+																	"deflate"
+																],
+																"example": "gzip",
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													},
+													"format": {
+														"description": "Specifies the format of data to deliver.",
+														"enum": [
+															"json"
+														],
+														"type": "string"
+													},
+													"path": {
+														"example": {
+															"bucket": "bucket",
+															"prefix": "base"
+														},
+														"properties": {
+															"bucket": {
+																"description": "Specifies the R2 Bucket to store files.",
+																"example": "bucket",
+																"type": "string"
+															},
+															"filename": {
+																"allOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "string"
+																	}
+																],
+																"description": "Specifies the name pattern to for individual data files.",
+																"example": "${slug}${extension}"
+															},
+															"filepath": {
+																"description": "Specifies the name pattern for directory.",
+																"example": "${date}/${hour}",
+																"type": "string"
+															},
+															"prefix": {
+																"description": "Specifies the base directory within the bucket.",
+																"example": "base",
+																"type": "string"
+															}
+														},
+														"required": [
+															"bucket"
+														],
+														"type": "object"
+													},
+													"type": {
+														"description": "Specifies the type of destination.",
+														"enum": [
+															"r2"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"type",
+													"format",
+													"batch",
+													"compression",
+													"path"
+												],
+												"type": "object"
+											},
+											"endpoint": {
+												"description": "Indicates the endpoint URL to send traffic.",
+												"example": "https://123f8a8258064ed892a347f173372359.pipelines.cloudflare.com",
+												"type": "string"
+											},
+											"id": {
+												"description": "Specifies the pipeline identifier.",
+												"example": "123f8a8258064ed892a347f173372359",
+												"type": "string"
+											},
+											"name": {
+												"description": "Defines the name of the pipeline.",
+												"example": "sample_pipeline",
+												"maxLength": 128,
+												"minLength": 1,
+												"type": "string"
+											},
+											"source": {
+												"items": {
+													"discriminator": {
+														"mapping": {
+															"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+															"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
+														},
+														"propertyName": "type"
+													},
+													"oneOf": [
+														{
+															"properties": {
+																"authentication": {
+																	"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
+																	"type": "boolean"
+																},
+																"cors": {
+																	"properties": {
+																		"origins": {
+																			"description": "Specifies allowed origins to allow Cross Origin HTTP Requests.",
+																			"example": [
+																				"*"
+																			],
+																			"items": {
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"maxItems": 5,
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"format": {
+																	"description": "Specifies the format of source data.",
+																	"enum": [
+																		"json"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"format"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"format": {
+																	"description": "Specifies the format of source data.",
+																	"enum": [
+																		"json"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"format"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"minItems": 1,
+												"type": "array"
+											},
+											"version": {
+												"description": "Indicates the version number of last saved configuration.",
+												"example": 2,
+												"type": "number"
+											}
+										},
+										"required": [
+											"name",
+											"source",
+											"destination",
+											"id",
+											"version",
+											"endpoint"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"results",
+								"result_info"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Lists the pipelines."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"results": {
+									"nullable": true,
+									"type": "object",
+									"x-stainless-empty-object": true
+								},
+								"success": {
+									"allOf": [
+										{
+											"description": "Indicates whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									],
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"results",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates the error trying to list pipelines."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Pipelines",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write",
+			"Pipelines Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/pipelines/{pipeline_name}": {
+		"description": "Get configuration of a pipeline.",
+		"operationId": "getV4AccountsByAccount_idPipelinesByPipeline_name",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "pipeline_name",
+				"required": true,
+				"schema": {
+					"description": "Defines the name of the pipeline.",
+					"example": "sample_pipeline",
+					"maxLength": 128,
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"description": "Describes the configuration of a pipeline.",
+									"properties": {
+										"destination": {
+											"properties": {
+												"batch": {
+													"properties": {
+														"max_bytes": {
+															"default": 100000000,
+															"description": "Specifies rough maximum size of files.",
+															"maximum": 100000000,
+															"minimum": 1000,
+															"type": "integer"
+														},
+														"max_duration_s": {
+															"default": 300,
+															"description": "Specifies duration to wait to aggregate batches files.",
+															"maximum": 300,
+															"minimum": 0.25,
+															"type": "number"
+														},
+														"max_rows": {
+															"default": 10000000,
+															"description": "Specifies rough maximum number of rows per file.",
+															"maximum": 10000000,
+															"minimum": 100,
+															"type": "integer"
+														}
+													},
+													"required": [
+														"max_rows",
+														"max_bytes",
+														"max_duration_s"
+													],
+													"type": "object"
+												},
+												"compression": {
+													"properties": {
+														"type": {
+															"default": "gzip",
+															"description": "Specifies the desired compression algorithm and format.",
+															"enum": [
+																"none",
+																"gzip",
+																"deflate"
+															],
+															"example": "gzip",
+															"type": "string"
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												},
+												"format": {
+													"description": "Specifies the format of data to deliver.",
+													"enum": [
+														"json"
+													],
+													"type": "string"
+												},
+												"path": {
+													"example": {
+														"bucket": "bucket",
+														"prefix": "base"
+													},
+													"properties": {
+														"bucket": {
+															"description": "Specifies the R2 Bucket to store files.",
+															"example": "bucket",
+															"type": "string"
+														},
+														"filename": {
+															"allOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Specifies the name pattern to for individual data files.",
+															"example": "${slug}${extension}"
+														},
+														"filepath": {
+															"description": "Specifies the name pattern for directory.",
+															"example": "${date}/${hour}",
+															"type": "string"
+														},
+														"prefix": {
+															"description": "Specifies the base directory within the bucket.",
+															"example": "base",
+															"type": "string"
+														}
+													},
+													"required": [
+														"bucket"
+													],
+													"type": "object"
+												},
+												"type": {
+													"description": "Specifies the type of destination.",
+													"enum": [
+														"r2"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"format",
+												"batch",
+												"compression",
+												"path"
+											],
+											"type": "object"
+										},
+										"endpoint": {
+											"description": "Indicates the endpoint URL to send traffic.",
+											"example": "https://123f8a8258064ed892a347f173372359.pipelines.cloudflare.com",
+											"type": "string"
+										},
+										"id": {
+											"description": "Specifies the pipeline identifier.",
+											"example": "123f8a8258064ed892a347f173372359",
+											"type": "string"
+										},
+										"name": {
+											"description": "Defines the name of the pipeline.",
+											"example": "sample_pipeline",
+											"maxLength": 128,
+											"minLength": 1,
+											"type": "string"
+										},
+										"source": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+														"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
+													},
+													"propertyName": "type"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"authentication": {
+																"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
+																"type": "boolean"
+															},
+															"cors": {
+																"properties": {
+																	"origins": {
+																		"description": "Specifies allowed origins to allow Cross Origin HTTP Requests.",
+																		"example": [
+																			"*"
+																		],
+																		"items": {
+																			"anyOf": [
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"maxItems": 5,
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"format": {
+																"description": "Specifies the format of source data.",
+																"enum": [
+																	"json"
+																],
+																"type": "string"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"format"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"format": {
+																"description": "Specifies the format of source data.",
+																"enum": [
+																	"json"
+																],
+																"type": "string"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"format"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"minItems": 1,
+											"type": "array"
+										},
+										"version": {
+											"description": "Indicates the version number of last saved configuration.",
+											"example": 2,
+											"type": "number"
+										}
+									},
+									"required": [
+										"name",
+										"source",
+										"destination",
+										"id",
+										"version",
+										"endpoint"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Describes the configuration of a pipeline."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"results": {
+									"nullable": true,
+									"type": "object",
+									"x-stainless-empty-object": true
+								},
+								"success": {
+									"allOf": [
+										{
+											"description": "Indicates whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									],
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"results",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates that the pipeline was not found."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Pipeline",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write",
+			"Pipelines Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/pipelines": {
+		"description": "Create a new pipeline.",
+		"operationId": "postV4AccountsByAccount_idPipelines",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destination": {
+								"properties": {
+									"batch": {
+										"properties": {
+											"max_bytes": {
+												"default": 100000000,
+												"description": "Specifies rough maximum size of files.",
+												"maximum": 100000000,
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"max_duration_s": {
+												"default": 300,
+												"description": "Specifies duration to wait to aggregate batches files.",
+												"maximum": 300,
+												"minimum": 0.25,
+												"type": "number"
+											},
+											"max_rows": {
+												"default": 10000000,
+												"description": "Specifies rough maximum number of rows per file.",
+												"maximum": 10000000,
+												"minimum": 100,
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									},
+									"compression": {
+										"properties": {
+											"type": {
+												"default": "gzip",
+												"description": "Specifies the desired compression algorithm and format.",
+												"enum": [
+													"none",
+													"gzip",
+													"deflate"
+												],
+												"example": "gzip",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"credentials": {
+										"properties": {
+											"access_key_id": {
+												"description": "Specifies the R2 Bucket Access Key Id.",
+												"example": "<access key id>",
+												"type": "string"
+											},
+											"endpoint": {
+												"description": "Specifies the R2 Endpoint.",
+												"example": "https://123f8a8258064ed892a347f173372359.r2.cloudflarestorage.com",
+												"type": "string"
+											},
+											"secret_access_key": {
+												"description": "Specifies the R2 Bucket Secret Access Key.",
+												"example": "<secret key>",
+												"type": "string"
+											}
+										},
+										"required": [
+											"endpoint",
+											"access_key_id",
+											"secret_access_key"
+										],
+										"type": "object"
+									},
+									"format": {
+										"description": "Specifies the format of data to deliver.",
+										"enum": [
+											"json"
+										],
+										"type": "string"
+									},
+									"path": {
+										"example": {
+											"bucket": "bucket",
+											"prefix": "base"
+										},
+										"properties": {
+											"bucket": {
+												"description": "Specifies the R2 Bucket to store files.",
+												"example": "bucket",
+												"type": "string"
+											},
+											"filename": {
+												"allOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "string"
+													}
+												],
+												"description": "Specifies the name pattern to for individual data files.",
+												"example": "${slug}${extension}"
+											},
+											"filepath": {
+												"description": "Specifies the name pattern for directory.",
+												"example": "${date}/${hour}",
+												"type": "string"
+											},
+											"prefix": {
+												"description": "Specifies the base directory within the bucket.",
+												"example": "base",
+												"type": "string"
+											}
+										},
+										"required": [
+											"bucket"
+										],
+										"type": "object"
+									},
+									"type": {
+										"description": "Specifies the type of destination.",
+										"enum": [
+											"r2"
+										],
+										"type": "string"
+									}
+								},
+								"required": [
+									"type",
+									"format",
+									"batch",
+									"compression",
+									"path",
+									"credentials"
+								],
+								"type": "object"
+							},
+							"name": {
+								"description": "Defines the name of the pipeline.",
+								"example": "sample_pipeline",
+								"maxLength": 128,
+								"minLength": 1,
+								"type": "string"
+							},
+							"source": {
+								"items": {
+									"discriminator": {
+										"mapping": {
+											"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+											"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
+										},
+										"propertyName": "type"
+									},
+									"oneOf": [
+										{
+											"properties": {
+												"authentication": {
+													"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
+													"type": "boolean"
+												},
+												"cors": {
+													"properties": {
+														"origins": {
+															"description": "Specifies allowed origins to allow Cross Origin HTTP Requests.",
+															"example": [
+																"*"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															},
+															"maxItems": 5,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"format": {
+													"description": "Specifies the format of source data.",
+													"enum": [
+														"json"
+													],
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"format"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"format": {
+													"description": "Specifies the format of source data.",
+													"enum": [
+														"json"
+													],
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"format"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"minItems": 1,
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"source",
+							"destination"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"description": "Describes the configuration of a pipeline.",
+									"properties": {
+										"destination": {
+											"properties": {
+												"batch": {
+													"properties": {
+														"max_bytes": {
+															"default": 100000000,
+															"description": "Specifies rough maximum size of files.",
+															"maximum": 100000000,
+															"minimum": 1000,
+															"type": "integer"
+														},
+														"max_duration_s": {
+															"default": 300,
+															"description": "Specifies duration to wait to aggregate batches files.",
+															"maximum": 300,
+															"minimum": 0.25,
+															"type": "number"
+														},
+														"max_rows": {
+															"default": 10000000,
+															"description": "Specifies rough maximum number of rows per file.",
+															"maximum": 10000000,
+															"minimum": 100,
+															"type": "integer"
+														}
+													},
+													"required": [
+														"max_rows",
+														"max_bytes",
+														"max_duration_s"
+													],
+													"type": "object"
+												},
+												"compression": {
+													"properties": {
+														"type": {
+															"default": "gzip",
+															"description": "Specifies the desired compression algorithm and format.",
+															"enum": [
+																"none",
+																"gzip",
+																"deflate"
+															],
+															"example": "gzip",
+															"type": "string"
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												},
+												"format": {
+													"description": "Specifies the format of data to deliver.",
+													"enum": [
+														"json"
+													],
+													"type": "string"
+												},
+												"path": {
+													"example": {
+														"bucket": "bucket",
+														"prefix": "base"
+													},
+													"properties": {
+														"bucket": {
+															"description": "Specifies the R2 Bucket to store files.",
+															"example": "bucket",
+															"type": "string"
+														},
+														"filename": {
+															"allOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Specifies the name pattern to for individual data files.",
+															"example": "${slug}${extension}"
+														},
+														"filepath": {
+															"description": "Specifies the name pattern for directory.",
+															"example": "${date}/${hour}",
+															"type": "string"
+														},
+														"prefix": {
+															"description": "Specifies the base directory within the bucket.",
+															"example": "base",
+															"type": "string"
+														}
+													},
+													"required": [
+														"bucket"
+													],
+													"type": "object"
+												},
+												"type": {
+													"description": "Specifies the type of destination.",
+													"enum": [
+														"r2"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"format",
+												"batch",
+												"compression",
+												"path"
+											],
+											"type": "object"
+										},
+										"endpoint": {
+											"description": "Indicates the endpoint URL to send traffic.",
+											"example": "https://123f8a8258064ed892a347f173372359.pipelines.cloudflare.com",
+											"type": "string"
+										},
+										"id": {
+											"description": "Specifies the pipeline identifier.",
+											"example": "123f8a8258064ed892a347f173372359",
+											"type": "string"
+										},
+										"name": {
+											"description": "Defines the name of the pipeline.",
+											"example": "sample_pipeline",
+											"maxLength": 128,
+											"minLength": 1,
+											"type": "string"
+										},
+										"source": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+														"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
+													},
+													"propertyName": "type"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"authentication": {
+																"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
+																"type": "boolean"
+															},
+															"cors": {
+																"properties": {
+																	"origins": {
+																		"description": "Specifies allowed origins to allow Cross Origin HTTP Requests.",
+																		"example": [
+																			"*"
+																		],
+																		"items": {
+																			"anyOf": [
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"maxItems": 5,
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"format": {
+																"description": "Specifies the format of source data.",
+																"enum": [
+																	"json"
+																],
+																"type": "string"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"format"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"format": {
+																"description": "Specifies the format of source data.",
+																"enum": [
+																	"json"
+																],
+																"type": "string"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"format"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"minItems": 1,
+											"type": "array"
+										},
+										"version": {
+											"description": "Indicates the version number of last saved configuration.",
+											"example": 2,
+											"type": "number"
+										}
+									},
+									"required": [
+										"name",
+										"source",
+										"destination",
+										"id",
+										"version",
+										"endpoint"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates a successfully created pipeline."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"results": {
+									"nullable": true,
+									"type": "object",
+									"x-stainless-empty-object": true
+								},
+								"success": {
+									"allOf": [
+										{
+											"description": "Indicates whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									],
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"results",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates an error in creating a pipeline."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Pipeline",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/pipelines/{pipeline_name}": {
+		"description": "Update an existing pipeline.",
+		"operationId": "putV4AccountsByAccount_idPipelinesByPipeline_name",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "pipeline_name",
+				"required": true,
+				"schema": {
+					"description": "Defines the name of the pipeline.",
+					"example": "sample_pipeline",
+					"maxLength": 128,
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destination": {
+								"properties": {
+									"batch": {
+										"properties": {
+											"max_bytes": {
+												"default": 100000000,
+												"description": "Specifies rough maximum size of files.",
+												"maximum": 100000000,
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"max_duration_s": {
+												"default": 300,
+												"description": "Specifies duration to wait to aggregate batches files.",
+												"maximum": 300,
+												"minimum": 0.25,
+												"type": "number"
+											},
+											"max_rows": {
+												"default": 10000000,
+												"description": "Specifies rough maximum number of rows per file.",
+												"maximum": 10000000,
+												"minimum": 100,
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									},
+									"compression": {
+										"properties": {
+											"type": {
+												"default": "gzip",
+												"description": "Specifies the desired compression algorithm and format.",
+												"enum": [
+													"none",
+													"gzip",
+													"deflate"
+												],
+												"example": "gzip",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"credentials": {
+										"properties": {
+											"access_key_id": {
+												"description": "Specifies the R2 Bucket Access Key Id.",
+												"example": "<access key id>",
+												"type": "string"
+											},
+											"endpoint": {
+												"description": "Specifies the R2 Endpoint.",
+												"example": "https://123f8a8258064ed892a347f173372359.r2.cloudflarestorage.com",
+												"type": "string"
+											},
+											"secret_access_key": {
+												"description": "Specifies the R2 Bucket Secret Access Key.",
+												"example": "<secret key>",
+												"type": "string"
+											}
+										},
+										"required": [
+											"endpoint",
+											"access_key_id",
+											"secret_access_key"
+										],
+										"type": "object"
+									},
+									"format": {
+										"description": "Specifies the format of data to deliver.",
+										"enum": [
+											"json"
+										],
+										"type": "string"
+									},
+									"path": {
+										"example": {
+											"bucket": "bucket",
+											"prefix": "base"
+										},
+										"properties": {
+											"bucket": {
+												"description": "Specifies the R2 Bucket to store files.",
+												"example": "bucket",
+												"type": "string"
+											},
+											"filename": {
+												"allOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "string"
+													}
+												],
+												"description": "Specifies the name pattern to for individual data files.",
+												"example": "${slug}${extension}"
+											},
+											"filepath": {
+												"description": "Specifies the name pattern for directory.",
+												"example": "${date}/${hour}",
+												"type": "string"
+											},
+											"prefix": {
+												"description": "Specifies the base directory within the bucket.",
+												"example": "base",
+												"type": "string"
+											}
+										},
+										"required": [
+											"bucket"
+										],
+										"type": "object"
+									},
+									"type": {
+										"description": "Specifies the type of destination.",
+										"enum": [
+											"r2"
+										],
+										"type": "string"
+									}
+								},
+								"required": [
+									"type",
+									"format",
+									"batch",
+									"compression",
+									"path"
+								],
+								"type": "object"
+							},
+							"name": {
+								"description": "Defines the name of the pipeline.",
+								"example": "sample_pipeline",
+								"maxLength": 128,
+								"minLength": 1,
+								"type": "string"
+							},
+							"source": {
+								"items": {
+									"discriminator": {
+										"mapping": {
+											"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+											"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
+										},
+										"propertyName": "type"
+									},
+									"oneOf": [
+										{
+											"properties": {
+												"authentication": {
+													"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
+													"type": "boolean"
+												},
+												"cors": {
+													"properties": {
+														"origins": {
+															"description": "Specifies allowed origins to allow Cross Origin HTTP Requests.",
+															"example": [
+																"*"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															},
+															"maxItems": 5,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"format": {
+													"description": "Specifies the format of source data.",
+													"enum": [
+														"json"
+													],
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"format"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"format": {
+													"description": "Specifies the format of source data.",
+													"enum": [
+														"json"
+													],
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"format"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"minItems": 1,
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"source",
+							"destination"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"description": "Describes the configuration of a pipeline.",
+									"properties": {
+										"destination": {
+											"properties": {
+												"batch": {
+													"properties": {
+														"max_bytes": {
+															"default": 100000000,
+															"description": "Specifies rough maximum size of files.",
+															"maximum": 100000000,
+															"minimum": 1000,
+															"type": "integer"
+														},
+														"max_duration_s": {
+															"default": 300,
+															"description": "Specifies duration to wait to aggregate batches files.",
+															"maximum": 300,
+															"minimum": 0.25,
+															"type": "number"
+														},
+														"max_rows": {
+															"default": 10000000,
+															"description": "Specifies rough maximum number of rows per file.",
+															"maximum": 10000000,
+															"minimum": 100,
+															"type": "integer"
+														}
+													},
+													"required": [
+														"max_rows",
+														"max_bytes",
+														"max_duration_s"
+													],
+													"type": "object"
+												},
+												"compression": {
+													"properties": {
+														"type": {
+															"default": "gzip",
+															"description": "Specifies the desired compression algorithm and format.",
+															"enum": [
+																"none",
+																"gzip",
+																"deflate"
+															],
+															"example": "gzip",
+															"type": "string"
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												},
+												"format": {
+													"description": "Specifies the format of data to deliver.",
+													"enum": [
+														"json"
+													],
+													"type": "string"
+												},
+												"path": {
+													"example": {
+														"bucket": "bucket",
+														"prefix": "base"
+													},
+													"properties": {
+														"bucket": {
+															"description": "Specifies the R2 Bucket to store files.",
+															"example": "bucket",
+															"type": "string"
+														},
+														"filename": {
+															"allOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"description": "Specifies the name pattern to for individual data files.",
+															"example": "${slug}${extension}"
+														},
+														"filepath": {
+															"description": "Specifies the name pattern for directory.",
+															"example": "${date}/${hour}",
+															"type": "string"
+														},
+														"prefix": {
+															"description": "Specifies the base directory within the bucket.",
+															"example": "base",
+															"type": "string"
+														}
+													},
+													"required": [
+														"bucket"
+													],
+													"type": "object"
+												},
+												"type": {
+													"description": "Specifies the type of destination.",
+													"enum": [
+														"r2"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"format",
+												"batch",
+												"compression",
+												"path"
+											],
+											"type": "object"
+										},
+										"endpoint": {
+											"description": "Indicates the endpoint URL to send traffic.",
+											"example": "https://123f8a8258064ed892a347f173372359.pipelines.cloudflare.com",
+											"type": "string"
+										},
+										"id": {
+											"description": "Specifies the pipeline identifier.",
+											"example": "123f8a8258064ed892a347f173372359",
+											"type": "string"
+										},
+										"name": {
+											"description": "Defines the name of the pipeline.",
+											"example": "sample_pipeline",
+											"maxLength": 128,
+											"minLength": 1,
+											"type": "string"
+										},
+										"source": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"binding": "#/components/schemas/cloudflare-pipelines_workers_pipelines_binding_source",
+														"http": "#/components/schemas/cloudflare-pipelines_workers_pipelines_http_source"
+													},
+													"propertyName": "type"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"authentication": {
+																"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
+																"type": "boolean"
+															},
+															"cors": {
+																"properties": {
+																	"origins": {
+																		"description": "Specifies allowed origins to allow Cross Origin HTTP Requests.",
+																		"example": [
+																			"*"
+																		],
+																		"items": {
+																			"anyOf": [
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"maxItems": 5,
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"format": {
+																"description": "Specifies the format of source data.",
+																"enum": [
+																	"json"
+																],
+																"type": "string"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"format"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"format": {
+																"description": "Specifies the format of source data.",
+																"enum": [
+																	"json"
+																],
+																"type": "string"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"format"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"minItems": 1,
+											"type": "array"
+										},
+										"version": {
+											"description": "Indicates the version number of last saved configuration.",
+											"example": 2,
+											"type": "number"
+										}
+									},
+									"required": [
+										"name",
+										"source",
+										"destination",
+										"id",
+										"version",
+										"endpoint"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates a successfully updated pipeline."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"results": {
+									"nullable": true,
+									"type": "object",
+									"x-stainless-empty-object": true
+								},
+								"success": {
+									"allOf": [
+										{
+											"description": "Indicates whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									],
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"results",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates an error updating pipeline."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Pipeline",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	}
+}

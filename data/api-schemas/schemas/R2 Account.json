@@ -1,0 +1,243 @@
+{
+	"GET /accounts/{account_id}/r2/metrics": {
+		"description": "Get Storage/Object Count Metrics across all buckets in your account. Note that Account-Level Metrics may not immediately reflect the latest data.",
+		"operationId": "r2-get-account-level-metrics",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Metrics based on the class they belong to.",
+											"properties": {
+												"infrequentAccess": {
+													"description": "Metrics based on what state they are in(uploaded or published).",
+													"properties": {
+														"published": {
+															"description": "Metrics on number of objects/amount of storage used.",
+															"properties": {
+																"metadataSize": {
+																	"description": "Amount of.",
+																	"type": "number"
+																},
+																"objects": {
+																	"description": "Number of objects stored.",
+																	"type": "number"
+																},
+																"payloadSize": {
+																	"description": "Amount of storage used by object data.",
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														},
+														"uploaded": {
+															"description": "Metrics on number of objects/amount of storage used.",
+															"properties": {
+																"metadataSize": {
+																	"description": "Amount of.",
+																	"type": "number"
+																},
+																"objects": {
+																	"description": "Number of objects stored.",
+																	"type": "number"
+																},
+																"payloadSize": {
+																	"description": "Amount of storage used by object data.",
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"standard": {
+													"description": "Metrics based on what state they are in(uploaded or published).",
+													"properties": {
+														"published": {
+															"description": "Metrics on number of objects/amount of storage used.",
+															"properties": {
+																"metadataSize": {
+																	"description": "Amount of.",
+																	"type": "number"
+																},
+																"objects": {
+																	"description": "Number of objects stored.",
+																	"type": "number"
+																},
+																"payloadSize": {
+																	"description": "Amount of storage used by object data.",
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														},
+														"uploaded": {
+															"description": "Metrics on number of objects/amount of storage used.",
+															"properties": {
+																"metadataSize": {
+																	"description": "Amount of.",
+																	"type": "number"
+																},
+																"objects": {
+																	"description": "Number of objects stored.",
+																	"type": "number"
+																},
+																"payloadSize": {
+																	"description": "Amount of storage used by object data.",
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Account-Level Metrics response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Account-Level Metrics response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Account-Level Metrics",
+		"tags": [
+			"R2 Account"
+		],
+		"x-cfPermissionsRequired": null
+	}
+}

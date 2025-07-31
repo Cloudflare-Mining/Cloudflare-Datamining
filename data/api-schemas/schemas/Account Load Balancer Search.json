@@ -1,0 +1,540 @@
+{
+	"GET /accounts/{account_id}/load_balancers/search": {
+		"description": "Search for Load Balancing resources.",
+		"operationId": "account-load-balancer-search-search-resources",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "query",
+				"schema": {
+					"default": "",
+					"description": "Search query term.",
+					"example": "primary",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "references",
+				"schema": {
+					"default": "",
+					"description": "The type of references to include. \"*\" to include both referral and referrer references. \"\" to not include any reference information.",
+					"enum": [
+						"",
+						"*",
+						"referral",
+						"referrer"
+					],
+					"example": "*",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 25,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results on the current page",
+															"example": 20,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages available",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"required": [
+										"result_info"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"resources": {
+													"description": "A list of resources matching the search query.",
+													"items": {
+														"description": "A reference to a load balancer resource.",
+														"properties": {
+															"reference_type": {
+																"description": "When listed as a reference, the type (direction) of the reference.",
+																"enum": [
+																	"referral",
+																	"referrer"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"references": {
+																"description": "A list of references to (referrer) or from (referral) this resource.",
+																"example": [
+																	{
+																		"reference_type": "referrer",
+																		"resource_id": "699d98642c564d2e855e9661899b7252",
+																		"resource_name": "www.example.com",
+																		"resource_type": "load_balancer"
+																	},
+																	{
+																		"reference_type": "referral",
+																		"resource_id": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+																		"resource_name": "Login page monitor",
+																		"resource_type": "monitor"
+																	}
+																],
+																"items": {
+																	"description": "A reference to a load balancer resource.",
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"resource_id": {
+																"example": "17b5962d775c646f3f9725cbc7a53df4"
+															},
+															"resource_name": {
+																"description": "The human-identifiable name of the resource.",
+																"example": "primary-dc-1",
+																"type": "string",
+																"x-auditable": true
+															},
+															"resource_type": {
+																"description": "The type of the resource.",
+																"enum": [
+																	"load_balancer",
+																	"monitor",
+																	"pool"
+																],
+																"example": "pool",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Search Resources response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results on the current page",
+																	"example": 20,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																},
+																"total_pages": {
+																	"description": "Total number of pages available",
+																	"example": 100,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"required": [
+												"result_info"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"resources": {
+															"description": "A list of resources matching the search query.",
+															"items": {
+																"description": "A reference to a load balancer resource.",
+																"properties": {
+																	"reference_type": {
+																		"description": "When listed as a reference, the type (direction) of the reference.",
+																		"enum": [
+																			"referral",
+																			"referrer"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"references": {
+																		"description": "A list of references to (referrer) or from (referral) this resource.",
+																		"example": [
+																			{
+																				"reference_type": "referrer",
+																				"resource_id": "699d98642c564d2e855e9661899b7252",
+																				"resource_name": "www.example.com",
+																				"resource_type": "load_balancer"
+																			},
+																			{
+																				"reference_type": "referral",
+																				"resource_id": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+																				"resource_name": "Login page monitor",
+																				"resource_type": "monitor"
+																			}
+																		],
+																		"items": {
+																			"description": "A reference to a load balancer resource.",
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"resource_id": {
+																		"example": "17b5962d775c646f3f9725cbc7a53df4"
+																	},
+																	"resource_name": {
+																		"description": "The human-identifiable name of the resource.",
+																		"example": "primary-dc-1",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"resource_type": {
+																		"description": "The type of the resource.",
+																		"enum": [
+																			"load_balancer",
+																			"monitor",
+																			"pool"
+																		],
+																		"example": "pool",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Search Resources response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Search Resources",
+		"tags": [
+			"Account Load Balancer Search"
+		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
+		]
+	}
+}

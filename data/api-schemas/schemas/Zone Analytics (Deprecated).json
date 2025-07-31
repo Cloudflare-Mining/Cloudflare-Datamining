@@ -1,0 +1,2520 @@
+{
+	"GET /zones/{zone_identifier}/analytics/colos": {
+		"deprecated": true,
+		"description": "This view provides a breakdown of analytics data by datacenter. Note: This is available to Enterprise customers only.",
+		"operationId": "zone-analytics-(-deprecated)-get-analytics-by-co-locations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "until",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "integer"
+						}
+					],
+					"default": 0,
+					"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+					"example": "2015-01-02T12:23:00Z"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "integer"
+						}
+					],
+					"default": -10080,
+					"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+					"example": "2015-01-01T12:23:00Z"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continuous",
+				"schema": {
+					"default": true,
+					"description": "When set to true, the API will move the requested time window backward, until it finds a region with completely aggregated data.\n\nThe API response _may not represent the requested time window_.",
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"query": {
+											"description": "The exact parameters/timestamps the analytics service used to return data.",
+											"properties": {
+												"since": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "integer"
+														}
+													],
+													"default": -10080,
+													"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+													"example": "2015-01-01T12:23:00Z"
+												},
+												"time_delta": {
+													"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
+													"type": "integer"
+												},
+												"until": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "integer"
+														}
+													],
+													"default": 0,
+													"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+													"example": "2015-01-02T12:23:00Z"
+												}
+											},
+											"readOnly": true,
+											"type": "object"
+										},
+										"result": {
+											"description": "A breakdown of all dashboard analytics data by co-locations. This is limited to Enterprise zones only.",
+											"items": {
+												"properties": {
+													"colo_id": {
+														"description": "The airport code identifer for the co-location.",
+														"example": "SFO",
+														"type": "string"
+													},
+													"timeseries": {
+														"description": "Time deltas containing metadata about each bucket of time. The number of buckets (resolution) is determined by the amount of time between the since and until parameters.",
+														"items": {
+															"properties": {
+																"bandwidth": {
+																	"description": "Breakdown of totals for bandwidth in the form of bytes.",
+																	"properties": {
+																		"all": {
+																			"description": "The total number of bytes served within the time frame.",
+																			"type": "integer"
+																		},
+																		"cached": {
+																			"description": "The number of bytes that were cached (and served) by Cloudflare.",
+																			"type": "integer"
+																		},
+																		"uncached": {
+																			"description": "The number of bytes that were fetched and served from the origin server.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"requests": {
+																	"description": "Breakdown of totals for requests.",
+																	"properties": {
+																		"all": {
+																			"description": "Total number of requests served.",
+																			"type": "integer"
+																		},
+																		"cached": {
+																			"description": "Total number of cached requests served.",
+																			"type": "integer"
+																		},
+																		"country": {
+																			"additionalProperties": true,
+																			"description": "Key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country.",
+																			"example": {
+																				"AG": 37298,
+																				"GI": 293846,
+																				"US": 4181364
+																			},
+																			"type": "object"
+																		},
+																		"http_status": {
+																			"description": "A variable list of key/value pairs where the key is a HTTP status code and the value is the number of requests with that code served.",
+																			"example": {
+																				"200": 13496983,
+																				"301": 283,
+																				"400": 187936,
+																				"402": 1828,
+																				"404": 1293
+																			},
+																			"type": "object"
+																		},
+																		"uncached": {
+																			"description": "Total number of requests served from the origin.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"since": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "integer"
+																		}
+																	],
+																	"default": -10080,
+																	"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+																	"example": "2015-01-01T12:23:00Z"
+																},
+																"threats": {
+																	"description": "Breakdown of totals for threats.",
+																	"properties": {
+																		"all": {
+																			"description": "The total number of identifiable threats received over the time frame.",
+																			"type": "integer"
+																		},
+																		"country": {
+																			"description": "A list of key/value pairs where the key is a two-digit country code and the value is the number of malicious requests received from that country.",
+																			"example": {
+																				"AU": 91,
+																				"CN": 523423,
+																				"US": 123
+																			},
+																			"type": "object"
+																		},
+																		"type": {
+																			"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests.",
+																			"example": {
+																				"hot.ban.unknown": 5324,
+																				"macro.chl.captchaErr": 1341,
+																				"macro.chl.jschlErr": 5323,
+																				"user.ban.ip": 123
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"until": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "integer"
+																		}
+																	],
+																	"default": 0,
+																	"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+																	"example": "2015-01-02T12:23:00Z"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"totals": {
+														"description": "Breakdown of totals by data type.",
+														"properties": {
+															"bandwidth": {
+																"description": "Breakdown of totals for bandwidth in the form of bytes.",
+																"properties": {
+																	"all": {
+																		"description": "The total number of bytes served within the time frame.",
+																		"type": "integer"
+																	},
+																	"cached": {
+																		"description": "The number of bytes that were cached (and served) by Cloudflare.",
+																		"type": "integer"
+																	},
+																	"uncached": {
+																		"description": "The number of bytes that were fetched and served from the origin server.",
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"requests": {
+																"description": "Breakdown of totals for requests.",
+																"properties": {
+																	"all": {
+																		"description": "Total number of requests served.",
+																		"type": "integer"
+																	},
+																	"cached": {
+																		"description": "Total number of cached requests served.",
+																		"type": "integer"
+																	},
+																	"country": {
+																		"additionalProperties": true,
+																		"description": "Key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country.",
+																		"example": {
+																			"AG": 37298,
+																			"GI": 293846,
+																			"US": 4181364
+																		},
+																		"type": "object"
+																	},
+																	"http_status": {
+																		"description": "A variable list of key/value pairs where the key is a HTTP status code and the value is the number of requests with that code served.",
+																		"example": {
+																			"200": 13496983,
+																			"301": 283,
+																			"400": 187936,
+																			"402": 1828,
+																			"404": 1293
+																		},
+																		"type": "object"
+																	},
+																	"uncached": {
+																		"description": "Total number of requests served from the origin.",
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"since": {
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "integer"
+																	}
+																],
+																"default": -10080,
+																"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+																"example": "2015-01-01T12:23:00Z"
+															},
+															"threats": {
+																"description": "Breakdown of totals for threats.",
+																"properties": {
+																	"all": {
+																		"description": "The total number of identifiable threats received over the time frame.",
+																		"type": "integer"
+																	},
+																	"country": {
+																		"description": "A list of key/value pairs where the key is a two-digit country code and the value is the number of malicious requests received from that country.",
+																		"example": {
+																			"AU": 91,
+																			"CN": 523423,
+																			"US": 123
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests.",
+																		"example": {
+																			"hot.ban.unknown": 5324,
+																			"macro.chl.captchaErr": 1341,
+																			"macro.chl.jschlErr": 5323,
+																			"user.ban.ip": 123
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
+															},
+															"until": {
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "integer"
+																	}
+																],
+																"default": 0,
+																"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+																"example": "2015-01-02T12:23:00Z"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"title": "Analytics data by datacenter",
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get analytics by Co-locations response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"query": {
+													"description": "The exact parameters/timestamps the analytics service used to return data.",
+													"properties": {
+														"since": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "integer"
+																}
+															],
+															"default": -10080,
+															"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+															"example": "2015-01-01T12:23:00Z"
+														},
+														"time_delta": {
+															"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
+															"type": "integer"
+														},
+														"until": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "integer"
+																}
+															],
+															"default": 0,
+															"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+															"example": "2015-01-02T12:23:00Z"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"result": {
+													"description": "A breakdown of all dashboard analytics data by co-locations. This is limited to Enterprise zones only.",
+													"items": {
+														"properties": {
+															"colo_id": {
+																"description": "The airport code identifer for the co-location.",
+																"example": "SFO",
+																"type": "string"
+															},
+															"timeseries": {
+																"description": "Time deltas containing metadata about each bucket of time. The number of buckets (resolution) is determined by the amount of time between the since and until parameters.",
+																"items": {
+																	"properties": {
+																		"bandwidth": {
+																			"description": "Breakdown of totals for bandwidth in the form of bytes.",
+																			"properties": {
+																				"all": {
+																					"description": "The total number of bytes served within the time frame.",
+																					"type": "integer"
+																				},
+																				"cached": {
+																					"description": "The number of bytes that were cached (and served) by Cloudflare.",
+																					"type": "integer"
+																				},
+																				"uncached": {
+																					"description": "The number of bytes that were fetched and served from the origin server.",
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"requests": {
+																			"description": "Breakdown of totals for requests.",
+																			"properties": {
+																				"all": {
+																					"description": "Total number of requests served.",
+																					"type": "integer"
+																				},
+																				"cached": {
+																					"description": "Total number of cached requests served.",
+																					"type": "integer"
+																				},
+																				"country": {
+																					"additionalProperties": true,
+																					"description": "Key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country.",
+																					"example": {
+																						"AG": 37298,
+																						"GI": 293846,
+																						"US": 4181364
+																					},
+																					"type": "object"
+																				},
+																				"http_status": {
+																					"description": "A variable list of key/value pairs where the key is a HTTP status code and the value is the number of requests with that code served.",
+																					"example": {
+																						"200": 13496983,
+																						"301": 283,
+																						"400": 187936,
+																						"402": 1828,
+																						"404": 1293
+																					},
+																					"type": "object"
+																				},
+																				"uncached": {
+																					"description": "Total number of requests served from the origin.",
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"since": {
+																			"anyOf": [
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "integer"
+																				}
+																			],
+																			"default": -10080,
+																			"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+																			"example": "2015-01-01T12:23:00Z"
+																		},
+																		"threats": {
+																			"description": "Breakdown of totals for threats.",
+																			"properties": {
+																				"all": {
+																					"description": "The total number of identifiable threats received over the time frame.",
+																					"type": "integer"
+																				},
+																				"country": {
+																					"description": "A list of key/value pairs where the key is a two-digit country code and the value is the number of malicious requests received from that country.",
+																					"example": {
+																						"AU": 91,
+																						"CN": 523423,
+																						"US": 123
+																					},
+																					"type": "object"
+																				},
+																				"type": {
+																					"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests.",
+																					"example": {
+																						"hot.ban.unknown": 5324,
+																						"macro.chl.captchaErr": 1341,
+																						"macro.chl.jschlErr": 5323,
+																						"user.ban.ip": 123
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"until": {
+																			"anyOf": [
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "integer"
+																				}
+																			],
+																			"default": 0,
+																			"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+																			"example": "2015-01-02T12:23:00Z"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"totals": {
+																"description": "Breakdown of totals by data type.",
+																"properties": {
+																	"bandwidth": {
+																		"description": "Breakdown of totals for bandwidth in the form of bytes.",
+																		"properties": {
+																			"all": {
+																				"description": "The total number of bytes served within the time frame.",
+																				"type": "integer"
+																			},
+																			"cached": {
+																				"description": "The number of bytes that were cached (and served) by Cloudflare.",
+																				"type": "integer"
+																			},
+																			"uncached": {
+																				"description": "The number of bytes that were fetched and served from the origin server.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"requests": {
+																		"description": "Breakdown of totals for requests.",
+																		"properties": {
+																			"all": {
+																				"description": "Total number of requests served.",
+																				"type": "integer"
+																			},
+																			"cached": {
+																				"description": "Total number of cached requests served.",
+																				"type": "integer"
+																			},
+																			"country": {
+																				"additionalProperties": true,
+																				"description": "Key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country.",
+																				"example": {
+																					"AG": 37298,
+																					"GI": 293846,
+																					"US": 4181364
+																				},
+																				"type": "object"
+																			},
+																			"http_status": {
+																				"description": "A variable list of key/value pairs where the key is a HTTP status code and the value is the number of requests with that code served.",
+																				"example": {
+																					"200": 13496983,
+																					"301": 283,
+																					"400": 187936,
+																					"402": 1828,
+																					"404": 1293
+																				},
+																				"type": "object"
+																			},
+																			"uncached": {
+																				"description": "Total number of requests served from the origin.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"since": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "integer"
+																			}
+																		],
+																		"default": -10080,
+																		"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+																		"example": "2015-01-01T12:23:00Z"
+																	},
+																	"threats": {
+																		"description": "Breakdown of totals for threats.",
+																		"properties": {
+																			"all": {
+																				"description": "The total number of identifiable threats received over the time frame.",
+																				"type": "integer"
+																			},
+																			"country": {
+																				"description": "A list of key/value pairs where the key is a two-digit country code and the value is the number of malicious requests received from that country.",
+																				"example": {
+																					"AU": 91,
+																					"CN": 523423,
+																					"US": 123
+																				},
+																				"type": "object"
+																			},
+																			"type": {
+																				"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests.",
+																				"example": {
+																					"hot.ban.unknown": 5324,
+																					"macro.chl.captchaErr": 1341,
+																					"macro.chl.jschlErr": 5323,
+																					"user.ban.ip": 123
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"until": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "integer"
+																			}
+																		],
+																		"default": 0,
+																		"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+																		"example": "2015-01-02T12:23:00Z"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"title": "Analytics data by datacenter",
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get analytics by Co-locations response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get analytics by Co-locations",
+		"tags": [
+			"Zone Analytics (Deprecated)"
+		],
+		"x-api-token-group": [
+			"Analytics Read"
+		],
+		"x-cfDeprecation": {
+			"description": "Please use the new GraphQL Analytics API instead: https://developers.cloudflare.com/analytics/graphql-api/. It provides equivalent data and more features, including the ability to select only the metrics you need. Migration guide: https://developers.cloudflare.com/analytics/migration-guides/zone-analytics/.",
+			"display": true,
+			"eol": "2021-03-01",
+			"id": "zone_analytics_deprecation"
+		},
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#analytics:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/analytics/dashboard": {
+		"deprecated": true,
+		"description": "The dashboard view provides both totals and timeseries data for the given zone and time period across the entire Cloudflare network.",
+		"operationId": "zone-analytics-(-deprecated)-get-dashboard",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "until",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "integer"
+						}
+					],
+					"default": 0,
+					"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+					"example": "2015-01-02T12:23:00Z"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "integer"
+						}
+					],
+					"default": -10080,
+					"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+					"example": "2015-01-01T12:23:00Z"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continuous",
+				"schema": {
+					"default": true,
+					"description": "When set to true, the API will move the requested time window backward, until it finds a region with completely aggregated data.\n\nThe API response _may not represent the requested time window_.",
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"query": {
+											"description": "The exact parameters/timestamps the analytics service used to return data.",
+											"properties": {
+												"since": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "integer"
+														}
+													],
+													"default": -10080,
+													"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+													"example": "2015-01-01T12:23:00Z"
+												},
+												"time_delta": {
+													"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
+													"type": "integer"
+												},
+												"until": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "integer"
+														}
+													],
+													"default": 0,
+													"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+													"example": "2015-01-02T12:23:00Z"
+												}
+											},
+											"readOnly": true,
+											"type": "object"
+										},
+										"result": {
+											"description": "Totals and timeseries data.",
+											"properties": {
+												"timeseries": {
+													"description": "Time deltas containing metadata about each bucket of time. The number of buckets (resolution) is determined by the amount of time between the since and until parameters.",
+													"items": {
+														"properties": {
+															"bandwidth": {
+																"description": "Breakdown of totals for bandwidth in the form of bytes.",
+																"properties": {
+																	"all": {
+																		"description": "The total number of bytes served within the time frame.",
+																		"type": "integer"
+																	},
+																	"cached": {
+																		"description": "The number of bytes that were cached (and served) by Cloudflare.",
+																		"type": "integer"
+																	},
+																	"content_type": {
+																		"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number in bytes served.",
+																		"example": {
+																			"css": 237421,
+																			"gif": 1234242,
+																			"html": 1231290,
+																			"javascript": 123245,
+																			"jpeg": 784278
+																		},
+																		"type": "object"
+																	},
+																	"country": {
+																		"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of bytes served to that country.",
+																		"example": {
+																			"AG": 2342483,
+																			"GI": 984753,
+																			"US": 123145433
+																		},
+																		"type": "object"
+																	},
+																	"ssl": {
+																		"description": "A break down of bytes served over HTTPS.",
+																		"properties": {
+																			"encrypted": {
+																				"description": "The number of bytes served over HTTPS.",
+																				"type": "integer"
+																			},
+																			"unencrypted": {
+																				"description": "The number of bytes served over HTTP.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"ssl_protocols": {
+																		"description": "A breakdown of requests by their SSL protocol.",
+																		"properties": {
+																			"TLSv1": {
+																				"description": "The number of requests served over TLS v1.0.",
+																				"type": "integer"
+																			},
+																			"TLSv1.1": {
+																				"description": "The number of requests served over TLS v1.1.",
+																				"type": "integer"
+																			},
+																			"TLSv1.2": {
+																				"description": "The number of requests served over TLS v1.2.",
+																				"type": "integer"
+																			},
+																			"TLSv1.3": {
+																				"description": "The number of requests served over TLS v1.3.",
+																				"type": "integer"
+																			},
+																			"none": {
+																				"description": "The number of requests served over HTTP.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"uncached": {
+																		"description": "The number of bytes that were fetched and served from the origin server.",
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"pageviews": {
+																"description": "Breakdown of totals for pageviews.",
+																"properties": {
+																	"all": {
+																		"description": "The total number of pageviews served within the time range.",
+																		"type": "integer"
+																	},
+																	"search_engine": {
+																		"description": "A variable list of key/value pairs representing the search engine and number of hits.",
+																		"example": {
+																			"baidubot": 1345,
+																			"bingbot": 5372,
+																			"googlebot": 35272,
+																			"pingdom": 13435
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
+															},
+															"requests": {
+																"description": "Breakdown of totals for requests.",
+																"properties": {
+																	"all": {
+																		"description": "Total number of requests served.",
+																		"type": "integer"
+																	},
+																	"cached": {
+																		"description": "Total number of cached requests served.",
+																		"type": "integer"
+																	},
+																	"content_type": {
+																		"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number of requests.",
+																		"example": {
+																			"css": 15343,
+																			"gif": 23178,
+																			"html": 1234213,
+																			"javascript": 318236,
+																			"jpeg": 1982048
+																		},
+																		"type": "object"
+																	},
+																	"country": {
+																		"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country.",
+																		"example": {
+																			"AG": 37298,
+																			"GI": 293846,
+																			"US": 4181364
+																		},
+																		"type": "object"
+																	},
+																	"http_status": {
+																		"additionalProperties": true,
+																		"description": "Key/value pairs where the key is a HTTP status code and the value is the number of requests served with that code.",
+																		"example": {
+																			"200": 13496983,
+																			"301": 283,
+																			"400": 187936,
+																			"402": 1828,
+																			"404": 1293
+																		},
+																		"type": "object"
+																	},
+																	"ssl": {
+																		"description": "A break down of requests served over HTTPS.",
+																		"properties": {
+																			"encrypted": {
+																				"description": "The number of requests served over HTTPS.",
+																				"type": "integer"
+																			},
+																			"unencrypted": {
+																				"description": "The number of requests served over HTTP.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"ssl_protocols": {
+																		"description": "A breakdown of requests by their SSL protocol.",
+																		"properties": {
+																			"TLSv1": {
+																				"description": "The number of requests served over TLS v1.0.",
+																				"type": "integer"
+																			},
+																			"TLSv1.1": {
+																				"description": "The number of requests served over TLS v1.1.",
+																				"type": "integer"
+																			},
+																			"TLSv1.2": {
+																				"description": "The number of requests served over TLS v1.2.",
+																				"type": "integer"
+																			},
+																			"TLSv1.3": {
+																				"description": "The number of requests served over TLS v1.3.",
+																				"type": "integer"
+																			},
+																			"none": {
+																				"description": "The number of requests served over HTTP.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"uncached": {
+																		"description": "Total number of requests served from the origin.",
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"since": {
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "integer"
+																	}
+																],
+																"default": -10080,
+																"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+																"example": "2015-01-01T12:23:00Z"
+															},
+															"threats": {
+																"description": "Breakdown of totals for threats.",
+																"properties": {
+																	"all": {
+																		"description": "The total number of identifiable threats received over the time frame.",
+																		"type": "integer"
+																	},
+																	"country": {
+																		"description": "A list of key/value pairs where the key is a two-digit country code and the value is the number of malicious requests received from that country.",
+																		"example": {
+																			"AU": 91,
+																			"CN": 523423,
+																			"US": 123
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests.",
+																		"example": {
+																			"hot.ban.unknown": 5324,
+																			"macro.chl.captchaErr": 1341,
+																			"macro.chl.jschlErr": 5323,
+																			"user.ban.ip": 123
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
+															},
+															"uniques": {
+																"properties": {
+																	"all": {
+																		"description": "Total number of unique IP addresses within the time range.",
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"until": {
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "integer"
+																	}
+																],
+																"default": 0,
+																"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+																"example": "2015-01-02T12:23:00Z"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"totals": {
+													"description": "Breakdown of totals by data type.",
+													"properties": {
+														"bandwidth": {
+															"description": "Breakdown of totals for bandwidth in the form of bytes.",
+															"properties": {
+																"all": {
+																	"description": "The total number of bytes served within the time frame.",
+																	"type": "integer"
+																},
+																"cached": {
+																	"description": "The number of bytes that were cached (and served) by Cloudflare.",
+																	"type": "integer"
+																},
+																"content_type": {
+																	"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number in bytes served.",
+																	"example": {
+																		"css": 237421,
+																		"gif": 1234242,
+																		"html": 1231290,
+																		"javascript": 123245,
+																		"jpeg": 784278
+																	},
+																	"type": "object"
+																},
+																"country": {
+																	"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of bytes served to that country.",
+																	"example": {
+																		"AG": 2342483,
+																		"GI": 984753,
+																		"US": 123145433
+																	},
+																	"type": "object"
+																},
+																"ssl": {
+																	"description": "A break down of bytes served over HTTPS.",
+																	"properties": {
+																		"encrypted": {
+																			"description": "The number of bytes served over HTTPS.",
+																			"type": "integer"
+																		},
+																		"unencrypted": {
+																			"description": "The number of bytes served over HTTP.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"ssl_protocols": {
+																	"description": "A breakdown of requests by their SSL protocol.",
+																	"properties": {
+																		"TLSv1": {
+																			"description": "The number of requests served over TLS v1.0.",
+																			"type": "integer"
+																		},
+																		"TLSv1.1": {
+																			"description": "The number of requests served over TLS v1.1.",
+																			"type": "integer"
+																		},
+																		"TLSv1.2": {
+																			"description": "The number of requests served over TLS v1.2.",
+																			"type": "integer"
+																		},
+																		"TLSv1.3": {
+																			"description": "The number of requests served over TLS v1.3.",
+																			"type": "integer"
+																		},
+																		"none": {
+																			"description": "The number of requests served over HTTP.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"uncached": {
+																	"description": "The number of bytes that were fetched and served from the origin server.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"pageviews": {
+															"description": "Breakdown of totals for pageviews.",
+															"properties": {
+																"all": {
+																	"description": "The total number of pageviews served within the time range.",
+																	"type": "integer"
+																},
+																"search_engine": {
+																	"description": "A variable list of key/value pairs representing the search engine and number of hits.",
+																	"example": {
+																		"baidubot": 1345,
+																		"bingbot": 5372,
+																		"googlebot": 35272,
+																		"pingdom": 13435
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"requests": {
+															"description": "Breakdown of totals for requests.",
+															"properties": {
+																"all": {
+																	"description": "Total number of requests served.",
+																	"type": "integer"
+																},
+																"cached": {
+																	"description": "Total number of cached requests served.",
+																	"type": "integer"
+																},
+																"content_type": {
+																	"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number of requests.",
+																	"example": {
+																		"css": 15343,
+																		"gif": 23178,
+																		"html": 1234213,
+																		"javascript": 318236,
+																		"jpeg": 1982048
+																	},
+																	"type": "object"
+																},
+																"country": {
+																	"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country.",
+																	"example": {
+																		"AG": 37298,
+																		"GI": 293846,
+																		"US": 4181364
+																	},
+																	"type": "object"
+																},
+																"http_status": {
+																	"additionalProperties": true,
+																	"description": "Key/value pairs where the key is a HTTP status code and the value is the number of requests served with that code.",
+																	"example": {
+																		"200": 13496983,
+																		"301": 283,
+																		"400": 187936,
+																		"402": 1828,
+																		"404": 1293
+																	},
+																	"type": "object"
+																},
+																"ssl": {
+																	"description": "A break down of requests served over HTTPS.",
+																	"properties": {
+																		"encrypted": {
+																			"description": "The number of requests served over HTTPS.",
+																			"type": "integer"
+																		},
+																		"unencrypted": {
+																			"description": "The number of requests served over HTTP.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"ssl_protocols": {
+																	"description": "A breakdown of requests by their SSL protocol.",
+																	"properties": {
+																		"TLSv1": {
+																			"description": "The number of requests served over TLS v1.0.",
+																			"type": "integer"
+																		},
+																		"TLSv1.1": {
+																			"description": "The number of requests served over TLS v1.1.",
+																			"type": "integer"
+																		},
+																		"TLSv1.2": {
+																			"description": "The number of requests served over TLS v1.2.",
+																			"type": "integer"
+																		},
+																		"TLSv1.3": {
+																			"description": "The number of requests served over TLS v1.3.",
+																			"type": "integer"
+																		},
+																		"none": {
+																			"description": "The number of requests served over HTTP.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"uncached": {
+																	"description": "Total number of requests served from the origin.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"since": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "integer"
+																}
+															],
+															"default": -10080,
+															"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+															"example": "2015-01-01T12:23:00Z"
+														},
+														"threats": {
+															"description": "Breakdown of totals for threats.",
+															"properties": {
+																"all": {
+																	"description": "The total number of identifiable threats received over the time frame.",
+																	"type": "integer"
+																},
+																"country": {
+																	"description": "A list of key/value pairs where the key is a two-digit country code and the value is the number of malicious requests received from that country.",
+																	"example": {
+																		"AU": 91,
+																		"CN": 523423,
+																		"US": 123
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests.",
+																	"example": {
+																		"hot.ban.unknown": 5324,
+																		"macro.chl.captchaErr": 1341,
+																		"macro.chl.jschlErr": 5323,
+																		"user.ban.ip": 123
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"uniques": {
+															"properties": {
+																"all": {
+																	"description": "Total number of unique IP addresses within the time range.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"until": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "integer"
+																}
+															],
+															"default": 0,
+															"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+															"example": "2015-01-02T12:23:00Z"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"title": "Dashboard response",
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get dashboard response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"query": {
+													"description": "The exact parameters/timestamps the analytics service used to return data.",
+													"properties": {
+														"since": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "integer"
+																}
+															],
+															"default": -10080,
+															"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+															"example": "2015-01-01T12:23:00Z"
+														},
+														"time_delta": {
+															"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
+															"type": "integer"
+														},
+														"until": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "integer"
+																}
+															],
+															"default": 0,
+															"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+															"example": "2015-01-02T12:23:00Z"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"result": {
+													"description": "Totals and timeseries data.",
+													"properties": {
+														"timeseries": {
+															"description": "Time deltas containing metadata about each bucket of time. The number of buckets (resolution) is determined by the amount of time between the since and until parameters.",
+															"items": {
+																"properties": {
+																	"bandwidth": {
+																		"description": "Breakdown of totals for bandwidth in the form of bytes.",
+																		"properties": {
+																			"all": {
+																				"description": "The total number of bytes served within the time frame.",
+																				"type": "integer"
+																			},
+																			"cached": {
+																				"description": "The number of bytes that were cached (and served) by Cloudflare.",
+																				"type": "integer"
+																			},
+																			"content_type": {
+																				"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number in bytes served.",
+																				"example": {
+																					"css": 237421,
+																					"gif": 1234242,
+																					"html": 1231290,
+																					"javascript": 123245,
+																					"jpeg": 784278
+																				},
+																				"type": "object"
+																			},
+																			"country": {
+																				"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of bytes served to that country.",
+																				"example": {
+																					"AG": 2342483,
+																					"GI": 984753,
+																					"US": 123145433
+																				},
+																				"type": "object"
+																			},
+																			"ssl": {
+																				"description": "A break down of bytes served over HTTPS.",
+																				"properties": {
+																					"encrypted": {
+																						"description": "The number of bytes served over HTTPS.",
+																						"type": "integer"
+																					},
+																					"unencrypted": {
+																						"description": "The number of bytes served over HTTP.",
+																						"type": "integer"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"ssl_protocols": {
+																				"description": "A breakdown of requests by their SSL protocol.",
+																				"properties": {
+																					"TLSv1": {
+																						"description": "The number of requests served over TLS v1.0.",
+																						"type": "integer"
+																					},
+																					"TLSv1.1": {
+																						"description": "The number of requests served over TLS v1.1.",
+																						"type": "integer"
+																					},
+																					"TLSv1.2": {
+																						"description": "The number of requests served over TLS v1.2.",
+																						"type": "integer"
+																					},
+																					"TLSv1.3": {
+																						"description": "The number of requests served over TLS v1.3.",
+																						"type": "integer"
+																					},
+																					"none": {
+																						"description": "The number of requests served over HTTP.",
+																						"type": "integer"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"uncached": {
+																				"description": "The number of bytes that were fetched and served from the origin server.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"pageviews": {
+																		"description": "Breakdown of totals for pageviews.",
+																		"properties": {
+																			"all": {
+																				"description": "The total number of pageviews served within the time range.",
+																				"type": "integer"
+																			},
+																			"search_engine": {
+																				"description": "A variable list of key/value pairs representing the search engine and number of hits.",
+																				"example": {
+																					"baidubot": 1345,
+																					"bingbot": 5372,
+																					"googlebot": 35272,
+																					"pingdom": 13435
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"requests": {
+																		"description": "Breakdown of totals for requests.",
+																		"properties": {
+																			"all": {
+																				"description": "Total number of requests served.",
+																				"type": "integer"
+																			},
+																			"cached": {
+																				"description": "Total number of cached requests served.",
+																				"type": "integer"
+																			},
+																			"content_type": {
+																				"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number of requests.",
+																				"example": {
+																					"css": 15343,
+																					"gif": 23178,
+																					"html": 1234213,
+																					"javascript": 318236,
+																					"jpeg": 1982048
+																				},
+																				"type": "object"
+																			},
+																			"country": {
+																				"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country.",
+																				"example": {
+																					"AG": 37298,
+																					"GI": 293846,
+																					"US": 4181364
+																				},
+																				"type": "object"
+																			},
+																			"http_status": {
+																				"additionalProperties": true,
+																				"description": "Key/value pairs where the key is a HTTP status code and the value is the number of requests served with that code.",
+																				"example": {
+																					"200": 13496983,
+																					"301": 283,
+																					"400": 187936,
+																					"402": 1828,
+																					"404": 1293
+																				},
+																				"type": "object"
+																			},
+																			"ssl": {
+																				"description": "A break down of requests served over HTTPS.",
+																				"properties": {
+																					"encrypted": {
+																						"description": "The number of requests served over HTTPS.",
+																						"type": "integer"
+																					},
+																					"unencrypted": {
+																						"description": "The number of requests served over HTTP.",
+																						"type": "integer"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"ssl_protocols": {
+																				"description": "A breakdown of requests by their SSL protocol.",
+																				"properties": {
+																					"TLSv1": {
+																						"description": "The number of requests served over TLS v1.0.",
+																						"type": "integer"
+																					},
+																					"TLSv1.1": {
+																						"description": "The number of requests served over TLS v1.1.",
+																						"type": "integer"
+																					},
+																					"TLSv1.2": {
+																						"description": "The number of requests served over TLS v1.2.",
+																						"type": "integer"
+																					},
+																					"TLSv1.3": {
+																						"description": "The number of requests served over TLS v1.3.",
+																						"type": "integer"
+																					},
+																					"none": {
+																						"description": "The number of requests served over HTTP.",
+																						"type": "integer"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"uncached": {
+																				"description": "Total number of requests served from the origin.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"since": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "integer"
+																			}
+																		],
+																		"default": -10080,
+																		"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+																		"example": "2015-01-01T12:23:00Z"
+																	},
+																	"threats": {
+																		"description": "Breakdown of totals for threats.",
+																		"properties": {
+																			"all": {
+																				"description": "The total number of identifiable threats received over the time frame.",
+																				"type": "integer"
+																			},
+																			"country": {
+																				"description": "A list of key/value pairs where the key is a two-digit country code and the value is the number of malicious requests received from that country.",
+																				"example": {
+																					"AU": 91,
+																					"CN": 523423,
+																					"US": 123
+																				},
+																				"type": "object"
+																			},
+																			"type": {
+																				"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests.",
+																				"example": {
+																					"hot.ban.unknown": 5324,
+																					"macro.chl.captchaErr": 1341,
+																					"macro.chl.jschlErr": 5323,
+																					"user.ban.ip": 123
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"uniques": {
+																		"properties": {
+																			"all": {
+																				"description": "Total number of unique IP addresses within the time range.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"until": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "integer"
+																			}
+																		],
+																		"default": 0,
+																		"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+																		"example": "2015-01-02T12:23:00Z"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"totals": {
+															"description": "Breakdown of totals by data type.",
+															"properties": {
+																"bandwidth": {
+																	"description": "Breakdown of totals for bandwidth in the form of bytes.",
+																	"properties": {
+																		"all": {
+																			"description": "The total number of bytes served within the time frame.",
+																			"type": "integer"
+																		},
+																		"cached": {
+																			"description": "The number of bytes that were cached (and served) by Cloudflare.",
+																			"type": "integer"
+																		},
+																		"content_type": {
+																			"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number in bytes served.",
+																			"example": {
+																				"css": 237421,
+																				"gif": 1234242,
+																				"html": 1231290,
+																				"javascript": 123245,
+																				"jpeg": 784278
+																			},
+																			"type": "object"
+																		},
+																		"country": {
+																			"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of bytes served to that country.",
+																			"example": {
+																				"AG": 2342483,
+																				"GI": 984753,
+																				"US": 123145433
+																			},
+																			"type": "object"
+																		},
+																		"ssl": {
+																			"description": "A break down of bytes served over HTTPS.",
+																			"properties": {
+																				"encrypted": {
+																					"description": "The number of bytes served over HTTPS.",
+																					"type": "integer"
+																				},
+																				"unencrypted": {
+																					"description": "The number of bytes served over HTTP.",
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"ssl_protocols": {
+																			"description": "A breakdown of requests by their SSL protocol.",
+																			"properties": {
+																				"TLSv1": {
+																					"description": "The number of requests served over TLS v1.0.",
+																					"type": "integer"
+																				},
+																				"TLSv1.1": {
+																					"description": "The number of requests served over TLS v1.1.",
+																					"type": "integer"
+																				},
+																				"TLSv1.2": {
+																					"description": "The number of requests served over TLS v1.2.",
+																					"type": "integer"
+																				},
+																				"TLSv1.3": {
+																					"description": "The number of requests served over TLS v1.3.",
+																					"type": "integer"
+																				},
+																				"none": {
+																					"description": "The number of requests served over HTTP.",
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"uncached": {
+																			"description": "The number of bytes that were fetched and served from the origin server.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"pageviews": {
+																	"description": "Breakdown of totals for pageviews.",
+																	"properties": {
+																		"all": {
+																			"description": "The total number of pageviews served within the time range.",
+																			"type": "integer"
+																		},
+																		"search_engine": {
+																			"description": "A variable list of key/value pairs representing the search engine and number of hits.",
+																			"example": {
+																				"baidubot": 1345,
+																				"bingbot": 5372,
+																				"googlebot": 35272,
+																				"pingdom": 13435
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"requests": {
+																	"description": "Breakdown of totals for requests.",
+																	"properties": {
+																		"all": {
+																			"description": "Total number of requests served.",
+																			"type": "integer"
+																		},
+																		"cached": {
+																			"description": "Total number of cached requests served.",
+																			"type": "integer"
+																		},
+																		"content_type": {
+																			"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number of requests.",
+																			"example": {
+																				"css": 15343,
+																				"gif": 23178,
+																				"html": 1234213,
+																				"javascript": 318236,
+																				"jpeg": 1982048
+																			},
+																			"type": "object"
+																		},
+																		"country": {
+																			"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country.",
+																			"example": {
+																				"AG": 37298,
+																				"GI": 293846,
+																				"US": 4181364
+																			},
+																			"type": "object"
+																		},
+																		"http_status": {
+																			"additionalProperties": true,
+																			"description": "Key/value pairs where the key is a HTTP status code and the value is the number of requests served with that code.",
+																			"example": {
+																				"200": 13496983,
+																				"301": 283,
+																				"400": 187936,
+																				"402": 1828,
+																				"404": 1293
+																			},
+																			"type": "object"
+																		},
+																		"ssl": {
+																			"description": "A break down of requests served over HTTPS.",
+																			"properties": {
+																				"encrypted": {
+																					"description": "The number of requests served over HTTPS.",
+																					"type": "integer"
+																				},
+																				"unencrypted": {
+																					"description": "The number of requests served over HTTP.",
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"ssl_protocols": {
+																			"description": "A breakdown of requests by their SSL protocol.",
+																			"properties": {
+																				"TLSv1": {
+																					"description": "The number of requests served over TLS v1.0.",
+																					"type": "integer"
+																				},
+																				"TLSv1.1": {
+																					"description": "The number of requests served over TLS v1.1.",
+																					"type": "integer"
+																				},
+																				"TLSv1.2": {
+																					"description": "The number of requests served over TLS v1.2.",
+																					"type": "integer"
+																				},
+																				"TLSv1.3": {
+																					"description": "The number of requests served over TLS v1.3.",
+																					"type": "integer"
+																				},
+																				"none": {
+																					"description": "The number of requests served over HTTP.",
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"uncached": {
+																			"description": "Total number of requests served from the origin.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"since": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "integer"
+																		}
+																	],
+																	"default": -10080,
+																	"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+																	"example": "2015-01-01T12:23:00Z"
+																},
+																"threats": {
+																	"description": "Breakdown of totals for threats.",
+																	"properties": {
+																		"all": {
+																			"description": "The total number of identifiable threats received over the time frame.",
+																			"type": "integer"
+																		},
+																		"country": {
+																			"description": "A list of key/value pairs where the key is a two-digit country code and the value is the number of malicious requests received from that country.",
+																			"example": {
+																				"AU": 91,
+																				"CN": 523423,
+																				"US": 123
+																			},
+																			"type": "object"
+																		},
+																		"type": {
+																			"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests.",
+																			"example": {
+																				"hot.ban.unknown": 5324,
+																				"macro.chl.captchaErr": 1341,
+																				"macro.chl.jschlErr": 5323,
+																				"user.ban.ip": 123
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"uniques": {
+																	"properties": {
+																		"all": {
+																			"description": "Total number of unique IP addresses within the time range.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"until": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "integer"
+																		}
+																	],
+																	"default": 0,
+																	"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+																	"example": "2015-01-02T12:23:00Z"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"title": "Dashboard response",
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get dashboard response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get dashboard",
+		"tags": [
+			"Zone Analytics (Deprecated)"
+		],
+		"x-api-token-group": [
+			"Analytics Read"
+		],
+		"x-cfDeprecation": {
+			"description": "Please use the new GraphQL Analytics API instead: https://developers.cloudflare.com/analytics/graphql-api/. It provides equivalent data and more features, including the ability to select only the metrics you need. Migration guide: https://developers.cloudflare.com/analytics/migration-guides/zone-analytics/.",
+			"display": true,
+			"eol": "2021-03-01",
+			"id": "zone_analytics_deprecation"
+		},
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#analytics:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

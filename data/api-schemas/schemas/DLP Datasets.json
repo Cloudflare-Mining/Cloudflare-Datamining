@@ -1,0 +1,3192 @@
+{
+	"DELETE /accounts/{account_id}/dlp/datasets/{dataset_id}": {
+		"description": "This deletes all versions of the dataset.",
+		"operationId": "dlp-datasets-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Dataset deleted successfully."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Dataset delete failed."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete a dataset",
+		"tags": [
+			"DLP Datasets"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/dlp/datasets": {
+		"operationId": "dlp-datasets-read-all",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"case_sensitive": {
+														"type": "boolean"
+													},
+													"columns": {
+														"items": {
+															"properties": {
+																"entry_id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"header_name": {
+																	"type": "string"
+																},
+																"num_cells": {
+																	"format": "int64",
+																	"type": "integer"
+																},
+																"upload_status": {
+																	"enum": [
+																		"empty",
+																		"uploading",
+																		"pending",
+																		"processing",
+																		"failed",
+																		"complete"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"entry_id",
+																"upload_status",
+																"header_name",
+																"num_cells"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"created_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"description": {
+														"description": "The description of the dataset.",
+														"nullable": true,
+														"type": "string"
+													},
+													"encoding_version": {
+														"format": "int32",
+														"minimum": 0,
+														"type": "integer"
+													},
+													"id": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"num_cells": {
+														"format": "int64",
+														"type": "integer"
+													},
+													"secret": {
+														"type": "boolean"
+													},
+													"status": {
+														"enum": [
+															"empty",
+															"uploading",
+															"pending",
+															"processing",
+															"failed",
+															"complete"
+														],
+														"type": "string"
+													},
+													"updated_at": {
+														"description": "When the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
+														"format": "date-time",
+														"type": "string"
+													},
+													"uploads": {
+														"items": {
+															"properties": {
+																"num_cells": {
+																	"format": "int64",
+																	"type": "integer"
+																},
+																"status": {
+																	"enum": [
+																		"empty",
+																		"uploading",
+																		"pending",
+																		"processing",
+																		"failed",
+																		"complete"
+																	],
+																	"type": "string"
+																},
+																"version": {
+																	"format": "int64",
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"version",
+																"status",
+																"num_cells"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"name",
+													"id",
+													"status",
+													"num_cells",
+													"created_at",
+													"updated_at",
+													"uploads",
+													"secret",
+													"encoding_version",
+													"columns"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Datasets read successfully."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Datasets read failed."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Fetch all datasets",
+		"tags": [
+			"DLP Datasets"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/dlp/datasets/{dataset_id}": {
+		"operationId": "dlp-datasets-read",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"case_sensitive": {
+													"type": "boolean"
+												},
+												"columns": {
+													"items": {
+														"properties": {
+															"entry_id": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"header_name": {
+																"type": "string"
+															},
+															"num_cells": {
+																"format": "int64",
+																"type": "integer"
+															},
+															"upload_status": {
+																"enum": [
+																	"empty",
+																	"uploading",
+																	"pending",
+																	"processing",
+																	"failed",
+																	"complete"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"entry_id",
+															"upload_status",
+															"header_name",
+															"num_cells"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"description": {
+													"description": "The description of the dataset.",
+													"nullable": true,
+													"type": "string"
+												},
+												"encoding_version": {
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"num_cells": {
+													"format": "int64",
+													"type": "integer"
+												},
+												"secret": {
+													"type": "boolean"
+												},
+												"status": {
+													"enum": [
+														"empty",
+														"uploading",
+														"pending",
+														"processing",
+														"failed",
+														"complete"
+													],
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "When the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"uploads": {
+													"items": {
+														"properties": {
+															"num_cells": {
+																"format": "int64",
+																"type": "integer"
+															},
+															"status": {
+																"enum": [
+																	"empty",
+																	"uploading",
+																	"pending",
+																	"processing",
+																	"failed",
+																	"complete"
+																],
+																"type": "string"
+															},
+															"version": {
+																"format": "int64",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"version",
+															"status",
+															"num_cells"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"name",
+												"id",
+												"status",
+												"num_cells",
+												"created_at",
+												"updated_at",
+												"uploads",
+												"secret",
+												"encoding_version",
+												"columns"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Dataset read successfully."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Dataset read failed."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Fetch a specific dataset",
+		"tags": [
+			"DLP Datasets"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/dlp/datasets": {
+		"operationId": "dlp-datasets-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"case_sensitive": {
+								"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if `secret` is true or undefined",
+								"type": "boolean"
+							},
+							"description": {
+								"description": "The description of the dataset.",
+								"nullable": true,
+								"type": "string"
+							},
+							"encoding_version": {
+								"description": "Dataset encoding version\n\nNon-secret custom word lists with no header are always version 1.\nSecret EDM lists with no header are version 1.\nMulticolumn CSV with headers are version 2.\nOmitting this field provides the default value 0, which is interpreted\nthe same as 1.",
+								"format": "int32",
+								"minimum": 0,
+								"type": "integer"
+							},
+							"name": {
+								"type": "string"
+							},
+							"secret": {
+								"description": "Generate a secret dataset.\n\nIf true, the response will include a secret to use with the EDM encoder.\nIf false, the response has no secret and the dataset is uploaded in plaintext.",
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "Dataset description.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"dataset": {
+													"properties": {
+														"case_sensitive": {
+															"type": "boolean"
+														},
+														"columns": {
+															"items": {
+																"properties": {
+																	"entry_id": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"header_name": {
+																		"type": "string"
+																	},
+																	"num_cells": {
+																		"format": "int64",
+																		"type": "integer"
+																	},
+																	"upload_status": {
+																		"enum": [
+																			"empty",
+																			"uploading",
+																			"pending",
+																			"processing",
+																			"failed",
+																			"complete"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"entry_id",
+																	"upload_status",
+																	"header_name",
+																	"num_cells"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"created_at": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"description": {
+															"description": "The description of the dataset.",
+															"nullable": true,
+															"type": "string"
+														},
+														"encoding_version": {
+															"format": "int32",
+															"minimum": 0,
+															"type": "integer"
+														},
+														"id": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														},
+														"num_cells": {
+															"format": "int64",
+															"type": "integer"
+														},
+														"secret": {
+															"type": "boolean"
+														},
+														"status": {
+															"enum": [
+																"empty",
+																"uploading",
+																"pending",
+																"processing",
+																"failed",
+																"complete"
+															],
+															"type": "string"
+														},
+														"updated_at": {
+															"description": "When the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
+															"format": "date-time",
+															"type": "string"
+														},
+														"uploads": {
+															"items": {
+																"properties": {
+																	"num_cells": {
+																		"format": "int64",
+																		"type": "integer"
+																	},
+																	"status": {
+																		"enum": [
+																			"empty",
+																			"uploading",
+																			"pending",
+																			"processing",
+																			"failed",
+																			"complete"
+																		],
+																		"type": "string"
+																	},
+																	"version": {
+																		"format": "int64",
+																		"type": "integer"
+																	}
+																},
+																"required": [
+																	"version",
+																	"status",
+																	"num_cells"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"name",
+														"id",
+														"status",
+														"num_cells",
+														"created_at",
+														"updated_at",
+														"uploads",
+														"secret",
+														"encoding_version",
+														"columns"
+													],
+													"type": "object"
+												},
+												"encoding_version": {
+													"description": "Encoding version to use for dataset.",
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"max_cells": {
+													"format": "int64",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"secret": {
+													"description": "The secret to use for Exact Data Match datasets. This is not present in\nCustom Wordlists.",
+													"format": "password",
+													"type": "string"
+												},
+												"version": {
+													"description": "The version to use when uploading the dataset.",
+													"format": "int64",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"version",
+												"max_cells",
+												"dataset",
+												"encoding_version"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Dataset created successfully."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Dataset creation failed."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create a new dataset",
+		"tags": [
+			"DLP Datasets"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/upload": {
+		"operationId": "dlp-datasets-create-version",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"case_sensitive": {
+													"type": "boolean"
+												},
+												"columns": {
+													"items": {
+														"properties": {
+															"entry_id": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"header_name": {
+																"type": "string"
+															},
+															"num_cells": {
+																"format": "int64",
+																"type": "integer"
+															},
+															"upload_status": {
+																"enum": [
+																	"empty",
+																	"uploading",
+																	"pending",
+																	"processing",
+																	"failed",
+																	"complete"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"entry_id",
+															"upload_status",
+															"header_name",
+															"num_cells"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"encoding_version": {
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"max_cells": {
+													"format": "int64",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"secret": {
+													"format": "password",
+													"type": "string"
+												},
+												"version": {
+													"format": "int64",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"version",
+												"max_cells",
+												"encoding_version"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Dataset version created successfully."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Dataset version creation failed."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Prepare to upload a new version of a dataset",
+		"tags": [
+			"DLP Datasets"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/upload/{version}": {
+		"description": "This is used for single-column EDMv1 and Custom Word Lists. The EDM format\ncan only be created in the Cloudflare dashboard. For other clients, this\noperation can only be used for non-secret Custom Word Lists. The body must\nbe a UTF-8 encoded, newline (NL or CRNL) separated list of words to be matched.",
+		"operationId": "dlp-datasets-upload-version",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "version",
+				"required": true,
+				"schema": {
+					"format": "int64",
+					"type": "integer"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/octet-stream": {
+					"schema": {
+						"format": "binary",
+						"type": "string"
+					}
+				}
+			},
+			"description": "Dataset. For custom wordlists this contains UTF-8 patterns separated by newline characters.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"case_sensitive": {
+													"type": "boolean"
+												},
+												"columns": {
+													"items": {
+														"properties": {
+															"entry_id": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"header_name": {
+																"type": "string"
+															},
+															"num_cells": {
+																"format": "int64",
+																"type": "integer"
+															},
+															"upload_status": {
+																"enum": [
+																	"empty",
+																	"uploading",
+																	"pending",
+																	"processing",
+																	"failed",
+																	"complete"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"entry_id",
+															"upload_status",
+															"header_name",
+															"num_cells"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"description": {
+													"description": "The description of the dataset.",
+													"nullable": true,
+													"type": "string"
+												},
+												"encoding_version": {
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"num_cells": {
+													"format": "int64",
+													"type": "integer"
+												},
+												"secret": {
+													"type": "boolean"
+												},
+												"status": {
+													"enum": [
+														"empty",
+														"uploading",
+														"pending",
+														"processing",
+														"failed",
+														"complete"
+													],
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "When the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"uploads": {
+													"items": {
+														"properties": {
+															"num_cells": {
+																"format": "int64",
+																"type": "integer"
+															},
+															"status": {
+																"enum": [
+																	"empty",
+																	"uploading",
+																	"pending",
+																	"processing",
+																	"failed",
+																	"complete"
+																],
+																"type": "string"
+															},
+															"version": {
+																"format": "int64",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"version",
+															"status",
+															"num_cells"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"name",
+												"id",
+												"status",
+												"num_cells",
+												"created_at",
+												"updated_at",
+												"uploads",
+												"secret",
+												"encoding_version",
+												"columns"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Dataset version uploaded successfully."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Dataset version upload failed."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Upload a new version of a dataset",
+		"tags": [
+			"DLP Datasets"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}": {
+		"description": "This is used for multi-column EDMv2 datasets. The EDMv2 format can only be\ncreated in the Cloudflare dashboard. The columns in the response appear in\nthe same order as in the request.",
+		"operationId": "dlp-datasets-define-columns",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "version",
+				"required": true,
+				"schema": {
+					"format": "int64",
+					"type": "integer"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"items": {
+							"allOf": [
+								{
+									"oneOf": [
+										{
+											"properties": {
+												"entry_id": {
+													"format": "uuid",
+													"type": "string"
+												}
+											},
+											"required": [
+												"entry_id"
+											],
+											"title": "Existing Column",
+											"type": "object"
+										},
+										{
+											"properties": {
+												"entry_name": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"entry_name"
+											],
+											"title": "New Column",
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"header_name": {
+											"type": "string"
+										},
+										"num_cells": {
+											"format": "int64",
+											"type": "integer"
+										}
+									},
+									"required": [
+										"header_name",
+										"num_cells"
+									],
+									"type": "object"
+								}
+							]
+						},
+						"type": "array"
+					}
+				}
+			},
+			"description": "array of new columns to create for this dataset version.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"entry_id": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"header_name": {
+														"type": "string"
+													},
+													"num_cells": {
+														"format": "int64",
+														"type": "integer"
+													},
+													"upload_status": {
+														"enum": [
+															"empty",
+															"uploading",
+															"pending",
+															"processing",
+															"failed",
+															"complete"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"entry_id",
+													"upload_status",
+													"header_name",
+													"num_cells"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Dataset columns created successfully."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to create dataset columns."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Sets the column information for a multi-column upload",
+		"tags": [
+			"DLP Datasets"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}/entries/{entry_id}": {
+		"description": "This is used for multi-column EDMv2 datasets. The EDMv2 format can only be\ncreated in the Cloudflare dashboard.",
+		"operationId": "dlp-datasets-upload-dataset-column",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "version",
+				"required": true,
+				"schema": {
+					"format": "int64",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "path",
+				"name": "entry_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/octet-stream": {
+					"schema": {
+						"format": "binary",
+						"type": "string"
+					}
+				}
+			},
+			"description": "Dataset content.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"entry_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"header_name": {
+													"type": "string"
+												},
+												"num_cells": {
+													"format": "int64",
+													"type": "integer"
+												},
+												"upload_status": {
+													"enum": [
+														"empty",
+														"uploading",
+														"pending",
+														"processing",
+														"failed",
+														"complete"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"entry_id",
+												"upload_status",
+												"header_name",
+												"num_cells"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Dataset column uploaded successfully."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to upload dataset column."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Upload a new version of a multi-column dataset",
+		"tags": [
+			"DLP Datasets"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"PUT /accounts/{account_id}/dlp/datasets/{dataset_id}": {
+		"operationId": "dlp-datasets-update",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"case_sensitive": {
+								"description": "Determines if the words should be matched in a case-sensitive manner.\n\nOnly required for custom word lists.",
+								"type": "boolean"
+							},
+							"description": {
+								"description": "The description of the dataset.",
+								"nullable": true,
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the dataset, must be unique.",
+								"nullable": true,
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"description": "Dataset description.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"case_sensitive": {
+													"type": "boolean"
+												},
+												"columns": {
+													"items": {
+														"properties": {
+															"entry_id": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"header_name": {
+																"type": "string"
+															},
+															"num_cells": {
+																"format": "int64",
+																"type": "integer"
+															},
+															"upload_status": {
+																"enum": [
+																	"empty",
+																	"uploading",
+																	"pending",
+																	"processing",
+																	"failed",
+																	"complete"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"entry_id",
+															"upload_status",
+															"header_name",
+															"num_cells"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"description": {
+													"description": "The description of the dataset.",
+													"nullable": true,
+													"type": "string"
+												},
+												"encoding_version": {
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"num_cells": {
+													"format": "int64",
+													"type": "integer"
+												},
+												"secret": {
+													"type": "boolean"
+												},
+												"status": {
+													"enum": [
+														"empty",
+														"uploading",
+														"pending",
+														"processing",
+														"failed",
+														"complete"
+													],
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "When the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"uploads": {
+													"items": {
+														"properties": {
+															"num_cells": {
+																"format": "int64",
+																"type": "integer"
+															},
+															"status": {
+																"enum": [
+																	"empty",
+																	"uploading",
+																	"pending",
+																	"processing",
+																	"failed",
+																	"complete"
+																],
+																"type": "string"
+															},
+															"version": {
+																"format": "int64",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"version",
+															"status",
+															"num_cells"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"name",
+												"id",
+												"status",
+												"num_cells",
+												"created_at",
+												"updated_at",
+												"uploads",
+												"secret",
+												"encoding_version",
+												"columns"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Dataset updated successfully."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Dataset update failed."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update details about a dataset",
+		"tags": [
+			"DLP Datasets"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	}
+}

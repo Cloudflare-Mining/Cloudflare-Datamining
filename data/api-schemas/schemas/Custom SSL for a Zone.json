@@ -1,0 +1,5127 @@
+{
+	"DELETE /zones/{zone_id}/custom_certificates/{custom_certificate_id}": {
+		"description": "Remove a SSL certificate from a zone.",
+		"operationId": "custom-ssl-for-a-zone-delete-ssl-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "custom_certificate_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete SSL Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete SSL Configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete SSL Configuration",
+		"tags": [
+			"Custom SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"SSL and Certificates Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/custom_certificates": {
+		"description": "List, search, and filter all of your custom SSL certificates. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+		"operationId": "custom-ssl-for-a-zone-list-ssl-configurations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Number of zones per page.",
+					"maximum": 50,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "match",
+				"schema": {
+					"default": "all",
+					"description": "Whether to match all search requirements or at least one (any).",
+					"enum": [
+						"any",
+						"all"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"description": "Status of the zone's custom SSL.",
+					"enum": [
+						"active",
+						"expired",
+						"deleted",
+						"pending",
+						"initializing"
+					],
+					"example": "active",
+					"readOnly": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"bundle_method": {
+														"default": "ubiquitous",
+														"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+														"enum": [
+															"ubiquitous",
+															"optimal",
+															"force"
+														],
+														"example": "ubiquitous",
+														"type": "string",
+														"x-auditable": true
+													},
+													"expires_on": {
+														"description": "When the certificate from the authority expires.",
+														"example": "2016-01-01T05:20:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"geo_restrictions": {
+														"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+														"properties": {
+															"label": {
+																"enum": [
+																	"us",
+																	"eu",
+																	"highest_security"
+																],
+																"example": "us",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"hosts": {
+														"items": {
+															"description": "The valid hosts for the certificates.",
+															"example": "example.com",
+															"maxLength": 253,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": "array"
+													},
+													"id": {
+														"description": "Identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"issuer": {
+														"description": "The certificate authority that issued the certificate.",
+														"example": "GlobalSign",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"keyless_server": {
+														"allOf": [
+															{
+																"properties": {
+																	"created_on": {
+																		"description": "When the Keyless SSL was created.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Whether or not the Keyless SSL is on or off.",
+																		"example": false,
+																		"readOnly": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"host": {
+																		"description": "The keyless SSL name.",
+																		"example": "example.com",
+																		"format": "hostname",
+																		"maxLength": 253,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "Keyless certificate identifier tag.",
+																		"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"modified_on": {
+																		"description": "When the Keyless SSL was last modified.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "The keyless SSL name.",
+																		"example": "example.com Keyless SSL",
+																		"maxLength": 180,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"permissions": {
+																		"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																		"example": [
+																			"#ssl:read",
+																			"#ssl:edit"
+																		],
+																		"items": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"readOnly": true,
+																		"type": "array"
+																	},
+																	"port": {
+																		"default": 24008,
+																		"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																		"example": 24008,
+																		"maxLength": 65535,
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"status": {
+																		"description": "Status of the Keyless SSL.",
+																		"enum": [
+																			"active",
+																			"deleted"
+																		],
+																		"example": "active",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"tunnel": {
+																		"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																		"properties": {
+																			"private_ip": {
+																				"description": "Private IP of the Key Server Host",
+																				"example": "10.0.0.1",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"vnet_id": {
+																				"description": "Cloudflare Tunnel Virtual Network ID",
+																				"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"private_ip",
+																			"vnet_id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"host",
+																	"port",
+																	"status",
+																	"enabled",
+																	"permissions",
+																	"created_on",
+																	"modified_on"
+																],
+																"type": "object"
+															}
+														],
+														"type": "object"
+													},
+													"modified_on": {
+														"description": "When the certificate was last modified.",
+														"example": "2014-01-01T05:20:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"policy": {
+														"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+														"example": "(country: US) or (region: EU)",
+														"type": "string",
+														"x-auditable": true
+													},
+													"priority": {
+														"default": 0,
+														"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+														"example": 1,
+														"type": "number",
+														"x-auditable": true
+													},
+													"signature": {
+														"description": "The type of hash used for the certificate.",
+														"example": "SHA256WithRSA",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"status": {
+														"description": "Status of the zone's custom SSL.",
+														"enum": [
+															"active",
+															"expired",
+															"deleted",
+															"pending",
+															"initializing"
+														],
+														"example": "active",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"uploaded_on": {
+														"description": "When the certificate was uploaded to Cloudflare.",
+														"example": "2014-01-01T05:20:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"zone_id": {
+														"description": "Identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"hosts",
+													"issuer",
+													"signature",
+													"status",
+													"bundle_method",
+													"zone_id",
+													"uploaded_on",
+													"modified_on",
+													"expires_on",
+													"priority"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List SSL Configurations response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"bundle_method": {
+																"default": "ubiquitous",
+																"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+																"enum": [
+																	"ubiquitous",
+																	"optimal",
+																	"force"
+																],
+																"example": "ubiquitous",
+																"type": "string",
+																"x-auditable": true
+															},
+															"expires_on": {
+																"description": "When the certificate from the authority expires.",
+																"example": "2016-01-01T05:20:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"geo_restrictions": {
+																"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+																"properties": {
+																	"label": {
+																		"enum": [
+																			"us",
+																			"eu",
+																			"highest_security"
+																		],
+																		"example": "us",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"hosts": {
+																"items": {
+																	"description": "The valid hosts for the certificates.",
+																	"example": "example.com",
+																	"maxLength": 253,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
+															"id": {
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string"
+															},
+															"issuer": {
+																"description": "The certificate authority that issued the certificate.",
+																"example": "GlobalSign",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"keyless_server": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"created_on": {
+																				"description": "When the Keyless SSL was created.",
+																				"example": "2014-01-01T05:20:00Z",
+																				"format": "date-time",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether or not the Keyless SSL is on or off.",
+																				"example": false,
+																				"readOnly": true,
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"host": {
+																				"description": "The keyless SSL name.",
+																				"example": "example.com",
+																				"format": "hostname",
+																				"maxLength": 253,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Keyless certificate identifier tag.",
+																				"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																				"maxLength": 32,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"modified_on": {
+																				"description": "When the Keyless SSL was last modified.",
+																				"example": "2014-01-01T05:20:00Z",
+																				"format": "date-time",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "The keyless SSL name.",
+																				"example": "example.com Keyless SSL",
+																				"maxLength": 180,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"permissions": {
+																				"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																				"example": [
+																					"#ssl:read",
+																					"#ssl:edit"
+																				],
+																				"items": {
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"readOnly": true,
+																				"type": "array"
+																			},
+																			"port": {
+																				"default": 24008,
+																				"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																				"example": 24008,
+																				"maxLength": 65535,
+																				"type": "number",
+																				"x-auditable": true
+																			},
+																			"status": {
+																				"description": "Status of the Keyless SSL.",
+																				"enum": [
+																					"active",
+																					"deleted"
+																				],
+																				"example": "active",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"tunnel": {
+																				"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																				"properties": {
+																					"private_ip": {
+																						"description": "Private IP of the Key Server Host",
+																						"example": "10.0.0.1",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"vnet_id": {
+																						"description": "Cloudflare Tunnel Virtual Network ID",
+																						"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"private_ip",
+																					"vnet_id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"host",
+																			"port",
+																			"status",
+																			"enabled",
+																			"permissions",
+																			"created_on",
+																			"modified_on"
+																		],
+																		"type": "object"
+																	}
+																],
+																"type": "object"
+															},
+															"modified_on": {
+																"description": "When the certificate was last modified.",
+																"example": "2014-01-01T05:20:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"policy": {
+																"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+																"example": "(country: US) or (region: EU)",
+																"type": "string",
+																"x-auditable": true
+															},
+															"priority": {
+																"default": 0,
+																"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+																"example": 1,
+																"type": "number",
+																"x-auditable": true
+															},
+															"signature": {
+																"description": "The type of hash used for the certificate.",
+																"example": "SHA256WithRSA",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"status": {
+																"description": "Status of the zone's custom SSL.",
+																"enum": [
+																	"active",
+																	"expired",
+																	"deleted",
+																	"pending",
+																	"initializing"
+																],
+																"example": "active",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"uploaded_on": {
+																"description": "When the certificate was uploaded to Cloudflare.",
+																"example": "2014-01-01T05:20:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"zone_id": {
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"hosts",
+															"issuer",
+															"signature",
+															"status",
+															"bundle_method",
+															"zone_id",
+															"uploaded_on",
+															"modified_on",
+															"expires_on",
+															"priority"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List SSL Configurations response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List SSL Configurations",
+		"tags": [
+			"Custom SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/custom_certificates/{custom_certificate_id}": {
+		"operationId": "custom-ssl-for-a-zone-ssl-configuration-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "custom_certificate_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"bundle_method": {
+													"default": "ubiquitous",
+													"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+													"enum": [
+														"ubiquitous",
+														"optimal",
+														"force"
+													],
+													"example": "ubiquitous",
+													"type": "string",
+													"x-auditable": true
+												},
+												"expires_on": {
+													"description": "When the certificate from the authority expires.",
+													"example": "2016-01-01T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"geo_restrictions": {
+													"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+													"properties": {
+														"label": {
+															"enum": [
+																"us",
+																"eu",
+																"highest_security"
+															],
+															"example": "us",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												},
+												"hosts": {
+													"items": {
+														"description": "The valid hosts for the certificates.",
+														"example": "example.com",
+														"maxLength": 253,
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"issuer": {
+													"description": "The certificate authority that issued the certificate.",
+													"example": "GlobalSign",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"keyless_server": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "When the Keyless SSL was created.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether or not the Keyless SSL is on or off.",
+																	"example": false,
+																	"readOnly": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"host": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com",
+																	"format": "hostname",
+																	"maxLength": 253,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Keyless certificate identifier tag.",
+																	"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "When the Keyless SSL was last modified.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com Keyless SSL",
+																	"maxLength": 180,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"permissions": {
+																	"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																	"example": [
+																		"#ssl:read",
+																		"#ssl:edit"
+																	],
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"readOnly": true,
+																	"type": "array"
+																},
+																"port": {
+																	"default": 24008,
+																	"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																	"example": 24008,
+																	"maxLength": 65535,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "Status of the Keyless SSL.",
+																	"enum": [
+																		"active",
+																		"deleted"
+																	],
+																	"example": "active",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"tunnel": {
+																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																	"properties": {
+																		"private_ip": {
+																			"description": "Private IP of the Key Server Host",
+																			"example": "10.0.0.1",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"vnet_id": {
+																			"description": "Cloudflare Tunnel Virtual Network ID",
+																			"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"private_ip",
+																		"vnet_id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"host",
+																"port",
+																"status",
+																"enabled",
+																"permissions",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
+													"type": "object"
+												},
+												"modified_on": {
+													"description": "When the certificate was last modified.",
+													"example": "2014-01-01T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"policy": {
+													"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+													"example": "(country: US) or (region: EU)",
+													"type": "string",
+													"x-auditable": true
+												},
+												"priority": {
+													"default": 0,
+													"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+													"example": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"signature": {
+													"description": "The type of hash used for the certificate.",
+													"example": "SHA256WithRSA",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Status of the zone's custom SSL.",
+													"enum": [
+														"active",
+														"expired",
+														"deleted",
+														"pending",
+														"initializing"
+													],
+													"example": "active",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"uploaded_on": {
+													"description": "When the certificate was uploaded to Cloudflare.",
+													"example": "2014-01-01T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"zone_id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"hosts",
+												"issuer",
+												"signature",
+												"status",
+												"bundle_method",
+												"zone_id",
+												"uploaded_on",
+												"modified_on",
+												"expires_on",
+												"priority"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "SSL Configuration Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"bundle_method": {
+															"default": "ubiquitous",
+															"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+															"enum": [
+																"ubiquitous",
+																"optimal",
+																"force"
+															],
+															"example": "ubiquitous",
+															"type": "string",
+															"x-auditable": true
+														},
+														"expires_on": {
+															"description": "When the certificate from the authority expires.",
+															"example": "2016-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"geo_restrictions": {
+															"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+															"properties": {
+																"label": {
+																	"enum": [
+																		"us",
+																		"eu",
+																		"highest_security"
+																	],
+																	"example": "us",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"hosts": {
+															"items": {
+																"description": "The valid hosts for the certificates.",
+																"example": "example.com",
+																"maxLength": 253,
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"issuer": {
+															"description": "The certificate authority that issued the certificate.",
+															"example": "GlobalSign",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"keyless_server": {
+															"allOf": [
+																{
+																	"properties": {
+																		"created_on": {
+																			"description": "When the Keyless SSL was created.",
+																			"example": "2014-01-01T05:20:00Z",
+																			"format": "date-time",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"enabled": {
+																			"description": "Whether or not the Keyless SSL is on or off.",
+																			"example": false,
+																			"readOnly": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"host": {
+																			"description": "The keyless SSL name.",
+																			"example": "example.com",
+																			"format": "hostname",
+																			"maxLength": 253,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "Keyless certificate identifier tag.",
+																			"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"modified_on": {
+																			"description": "When the Keyless SSL was last modified.",
+																			"example": "2014-01-01T05:20:00Z",
+																			"format": "date-time",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "The keyless SSL name.",
+																			"example": "example.com Keyless SSL",
+																			"maxLength": 180,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"permissions": {
+																			"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																			"example": [
+																				"#ssl:read",
+																				"#ssl:edit"
+																			],
+																			"items": {
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"readOnly": true,
+																			"type": "array"
+																		},
+																		"port": {
+																			"default": 24008,
+																			"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																			"example": 24008,
+																			"maxLength": 65535,
+																			"type": "number",
+																			"x-auditable": true
+																		},
+																		"status": {
+																			"description": "Status of the Keyless SSL.",
+																			"enum": [
+																				"active",
+																				"deleted"
+																			],
+																			"example": "active",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"tunnel": {
+																			"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																			"properties": {
+																				"private_ip": {
+																					"description": "Private IP of the Key Server Host",
+																					"example": "10.0.0.1",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"vnet_id": {
+																					"description": "Cloudflare Tunnel Virtual Network ID",
+																					"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"private_ip",
+																				"vnet_id"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name",
+																		"host",
+																		"port",
+																		"status",
+																		"enabled",
+																		"permissions",
+																		"created_on",
+																		"modified_on"
+																	],
+																	"type": "object"
+																}
+															],
+															"type": "object"
+														},
+														"modified_on": {
+															"description": "When the certificate was last modified.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"policy": {
+															"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+															"example": "(country: US) or (region: EU)",
+															"type": "string",
+															"x-auditable": true
+														},
+														"priority": {
+															"default": 0,
+															"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+															"example": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"signature": {
+															"description": "The type of hash used for the certificate.",
+															"example": "SHA256WithRSA",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "Status of the zone's custom SSL.",
+															"enum": [
+																"active",
+																"expired",
+																"deleted",
+																"pending",
+																"initializing"
+															],
+															"example": "active",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"uploaded_on": {
+															"description": "When the certificate was uploaded to Cloudflare.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"zone_id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"hosts",
+														"issuer",
+														"signature",
+														"status",
+														"bundle_method",
+														"zone_id",
+														"uploaded_on",
+														"modified_on",
+														"expires_on",
+														"priority"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "SSL Configuration Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "SSL Configuration Details",
+		"tags": [
+			"Custom SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /zones/{zone_id}/custom_certificates/{custom_certificate_id}": {
+		"description": "Upload a new private key and/or PEM/CRT for the SSL certificate. Note: PATCHing a configuration for sni_custom certificates will result in a new resource id being returned, and the previous one being deleted.",
+		"operationId": "custom-ssl-for-a-zone-edit-ssl-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "custom_certificate_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"bundle_method": {
+								"default": "ubiquitous",
+								"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+								"enum": [
+									"ubiquitous",
+									"optimal",
+									"force"
+								],
+								"example": "ubiquitous",
+								"type": "string",
+								"x-auditable": true
+							},
+							"certificate": {
+								"description": "The zone's SSL certificate or certificate and the intermediate(s).",
+								"example": "-----BEGIN CERTIFICATE-----\nMIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV\nBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX\naWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF\nMQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50\nZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\nCgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1\nCGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB\nKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5\n0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI\ndZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2\nizNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4\n9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI\nGKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV\nBAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF\nMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2\n2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP\nMlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG\nSvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq\n2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw\nYbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=\n-----END CERTIFICATE-----\n",
+								"type": "string"
+							},
+							"geo_restrictions": {
+								"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+								"properties": {
+									"label": {
+										"enum": [
+											"us",
+											"eu",
+											"highest_security"
+										],
+										"example": "us",
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"type": "object"
+							},
+							"policy": {
+								"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+								"example": "(country: US) or (region: EU)",
+								"type": "string",
+								"x-auditable": true
+							},
+							"private_key": {
+								"description": "The zone's private key.",
+								"example": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n",
+								"type": "string",
+								"x-sensitive": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"bundle_method": {
+													"default": "ubiquitous",
+													"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+													"enum": [
+														"ubiquitous",
+														"optimal",
+														"force"
+													],
+													"example": "ubiquitous",
+													"type": "string",
+													"x-auditable": true
+												},
+												"expires_on": {
+													"description": "When the certificate from the authority expires.",
+													"example": "2016-01-01T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"geo_restrictions": {
+													"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+													"properties": {
+														"label": {
+															"enum": [
+																"us",
+																"eu",
+																"highest_security"
+															],
+															"example": "us",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												},
+												"hosts": {
+													"items": {
+														"description": "The valid hosts for the certificates.",
+														"example": "example.com",
+														"maxLength": 253,
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"issuer": {
+													"description": "The certificate authority that issued the certificate.",
+													"example": "GlobalSign",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"keyless_server": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "When the Keyless SSL was created.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether or not the Keyless SSL is on or off.",
+																	"example": false,
+																	"readOnly": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"host": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com",
+																	"format": "hostname",
+																	"maxLength": 253,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Keyless certificate identifier tag.",
+																	"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "When the Keyless SSL was last modified.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com Keyless SSL",
+																	"maxLength": 180,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"permissions": {
+																	"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																	"example": [
+																		"#ssl:read",
+																		"#ssl:edit"
+																	],
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"readOnly": true,
+																	"type": "array"
+																},
+																"port": {
+																	"default": 24008,
+																	"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																	"example": 24008,
+																	"maxLength": 65535,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "Status of the Keyless SSL.",
+																	"enum": [
+																		"active",
+																		"deleted"
+																	],
+																	"example": "active",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"tunnel": {
+																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																	"properties": {
+																		"private_ip": {
+																			"description": "Private IP of the Key Server Host",
+																			"example": "10.0.0.1",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"vnet_id": {
+																			"description": "Cloudflare Tunnel Virtual Network ID",
+																			"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"private_ip",
+																		"vnet_id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"host",
+																"port",
+																"status",
+																"enabled",
+																"permissions",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
+													"type": "object"
+												},
+												"modified_on": {
+													"description": "When the certificate was last modified.",
+													"example": "2014-01-01T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"policy": {
+													"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+													"example": "(country: US) or (region: EU)",
+													"type": "string",
+													"x-auditable": true
+												},
+												"priority": {
+													"default": 0,
+													"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+													"example": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"signature": {
+													"description": "The type of hash used for the certificate.",
+													"example": "SHA256WithRSA",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Status of the zone's custom SSL.",
+													"enum": [
+														"active",
+														"expired",
+														"deleted",
+														"pending",
+														"initializing"
+													],
+													"example": "active",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"uploaded_on": {
+													"description": "When the certificate was uploaded to Cloudflare.",
+													"example": "2014-01-01T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"zone_id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"hosts",
+												"issuer",
+												"signature",
+												"status",
+												"bundle_method",
+												"zone_id",
+												"uploaded_on",
+												"modified_on",
+												"expires_on",
+												"priority"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Edit SSL Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"bundle_method": {
+															"default": "ubiquitous",
+															"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+															"enum": [
+																"ubiquitous",
+																"optimal",
+																"force"
+															],
+															"example": "ubiquitous",
+															"type": "string",
+															"x-auditable": true
+														},
+														"expires_on": {
+															"description": "When the certificate from the authority expires.",
+															"example": "2016-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"geo_restrictions": {
+															"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+															"properties": {
+																"label": {
+																	"enum": [
+																		"us",
+																		"eu",
+																		"highest_security"
+																	],
+																	"example": "us",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"hosts": {
+															"items": {
+																"description": "The valid hosts for the certificates.",
+																"example": "example.com",
+																"maxLength": 253,
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"issuer": {
+															"description": "The certificate authority that issued the certificate.",
+															"example": "GlobalSign",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"keyless_server": {
+															"allOf": [
+																{
+																	"properties": {
+																		"created_on": {
+																			"description": "When the Keyless SSL was created.",
+																			"example": "2014-01-01T05:20:00Z",
+																			"format": "date-time",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"enabled": {
+																			"description": "Whether or not the Keyless SSL is on or off.",
+																			"example": false,
+																			"readOnly": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"host": {
+																			"description": "The keyless SSL name.",
+																			"example": "example.com",
+																			"format": "hostname",
+																			"maxLength": 253,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "Keyless certificate identifier tag.",
+																			"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"modified_on": {
+																			"description": "When the Keyless SSL was last modified.",
+																			"example": "2014-01-01T05:20:00Z",
+																			"format": "date-time",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "The keyless SSL name.",
+																			"example": "example.com Keyless SSL",
+																			"maxLength": 180,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"permissions": {
+																			"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																			"example": [
+																				"#ssl:read",
+																				"#ssl:edit"
+																			],
+																			"items": {
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"readOnly": true,
+																			"type": "array"
+																		},
+																		"port": {
+																			"default": 24008,
+																			"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																			"example": 24008,
+																			"maxLength": 65535,
+																			"type": "number",
+																			"x-auditable": true
+																		},
+																		"status": {
+																			"description": "Status of the Keyless SSL.",
+																			"enum": [
+																				"active",
+																				"deleted"
+																			],
+																			"example": "active",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"tunnel": {
+																			"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																			"properties": {
+																				"private_ip": {
+																					"description": "Private IP of the Key Server Host",
+																					"example": "10.0.0.1",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"vnet_id": {
+																					"description": "Cloudflare Tunnel Virtual Network ID",
+																					"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"private_ip",
+																				"vnet_id"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name",
+																		"host",
+																		"port",
+																		"status",
+																		"enabled",
+																		"permissions",
+																		"created_on",
+																		"modified_on"
+																	],
+																	"type": "object"
+																}
+															],
+															"type": "object"
+														},
+														"modified_on": {
+															"description": "When the certificate was last modified.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"policy": {
+															"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+															"example": "(country: US) or (region: EU)",
+															"type": "string",
+															"x-auditable": true
+														},
+														"priority": {
+															"default": 0,
+															"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+															"example": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"signature": {
+															"description": "The type of hash used for the certificate.",
+															"example": "SHA256WithRSA",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "Status of the zone's custom SSL.",
+															"enum": [
+																"active",
+																"expired",
+																"deleted",
+																"pending",
+																"initializing"
+															],
+															"example": "active",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"uploaded_on": {
+															"description": "When the certificate was uploaded to Cloudflare.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"zone_id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"hosts",
+														"issuer",
+														"signature",
+														"status",
+														"bundle_method",
+														"zone_id",
+														"uploaded_on",
+														"modified_on",
+														"expires_on",
+														"priority"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Edit SSL Configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Edit SSL Configuration",
+		"tags": [
+			"Custom SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"SSL and Certificates Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_id}/custom_certificates": {
+		"description": "Upload a new SSL certificate for a zone.",
+		"operationId": "custom-ssl-for-a-zone-create-ssl-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"bundle_method": {
+								"default": "ubiquitous",
+								"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+								"enum": [
+									"ubiquitous",
+									"optimal",
+									"force"
+								],
+								"example": "ubiquitous",
+								"type": "string",
+								"x-auditable": true
+							},
+							"certificate": {
+								"description": "The zone's SSL certificate or certificate and the intermediate(s).",
+								"example": "-----BEGIN CERTIFICATE-----\nMIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV\nBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX\naWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF\nMQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50\nZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\nCgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1\nCGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB\nKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5\n0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI\ndZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2\nizNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4\n9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI\nGKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV\nBAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF\nMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2\n2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP\nMlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG\nSvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq\n2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw\nYbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=\n-----END CERTIFICATE-----\n",
+								"type": "string"
+							},
+							"geo_restrictions": {
+								"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+								"properties": {
+									"label": {
+										"enum": [
+											"us",
+											"eu",
+											"highest_security"
+										],
+										"example": "us",
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"type": "object"
+							},
+							"policy": {
+								"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+								"example": "(country: US) or (region: EU)",
+								"type": "string",
+								"x-auditable": true
+							},
+							"private_key": {
+								"description": "The zone's private key.",
+								"example": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n",
+								"type": "string",
+								"x-sensitive": true
+							},
+							"type": {
+								"default": "legacy_custom",
+								"description": "The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.",
+								"enum": [
+									"legacy_custom",
+									"sni_custom"
+								],
+								"example": "sni_custom",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"certificate",
+							"private_key"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"bundle_method": {
+													"default": "ubiquitous",
+													"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+													"enum": [
+														"ubiquitous",
+														"optimal",
+														"force"
+													],
+													"example": "ubiquitous",
+													"type": "string",
+													"x-auditable": true
+												},
+												"expires_on": {
+													"description": "When the certificate from the authority expires.",
+													"example": "2016-01-01T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"geo_restrictions": {
+													"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+													"properties": {
+														"label": {
+															"enum": [
+																"us",
+																"eu",
+																"highest_security"
+															],
+															"example": "us",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												},
+												"hosts": {
+													"items": {
+														"description": "The valid hosts for the certificates.",
+														"example": "example.com",
+														"maxLength": 253,
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"issuer": {
+													"description": "The certificate authority that issued the certificate.",
+													"example": "GlobalSign",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"keyless_server": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "When the Keyless SSL was created.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether or not the Keyless SSL is on or off.",
+																	"example": false,
+																	"readOnly": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"host": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com",
+																	"format": "hostname",
+																	"maxLength": 253,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Keyless certificate identifier tag.",
+																	"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "When the Keyless SSL was last modified.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com Keyless SSL",
+																	"maxLength": 180,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"permissions": {
+																	"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																	"example": [
+																		"#ssl:read",
+																		"#ssl:edit"
+																	],
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"readOnly": true,
+																	"type": "array"
+																},
+																"port": {
+																	"default": 24008,
+																	"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																	"example": 24008,
+																	"maxLength": 65535,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "Status of the Keyless SSL.",
+																	"enum": [
+																		"active",
+																		"deleted"
+																	],
+																	"example": "active",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"tunnel": {
+																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																	"properties": {
+																		"private_ip": {
+																			"description": "Private IP of the Key Server Host",
+																			"example": "10.0.0.1",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"vnet_id": {
+																			"description": "Cloudflare Tunnel Virtual Network ID",
+																			"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"private_ip",
+																		"vnet_id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"host",
+																"port",
+																"status",
+																"enabled",
+																"permissions",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
+													"type": "object"
+												},
+												"modified_on": {
+													"description": "When the certificate was last modified.",
+													"example": "2014-01-01T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"policy": {
+													"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+													"example": "(country: US) or (region: EU)",
+													"type": "string",
+													"x-auditable": true
+												},
+												"priority": {
+													"default": 0,
+													"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+													"example": 1,
+													"type": "number",
+													"x-auditable": true
+												},
+												"signature": {
+													"description": "The type of hash used for the certificate.",
+													"example": "SHA256WithRSA",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Status of the zone's custom SSL.",
+													"enum": [
+														"active",
+														"expired",
+														"deleted",
+														"pending",
+														"initializing"
+													],
+													"example": "active",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"uploaded_on": {
+													"description": "When the certificate was uploaded to Cloudflare.",
+													"example": "2014-01-01T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"zone_id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"hosts",
+												"issuer",
+												"signature",
+												"status",
+												"bundle_method",
+												"zone_id",
+												"uploaded_on",
+												"modified_on",
+												"expires_on",
+												"priority"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create SSL Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"bundle_method": {
+															"default": "ubiquitous",
+															"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+															"enum": [
+																"ubiquitous",
+																"optimal",
+																"force"
+															],
+															"example": "ubiquitous",
+															"type": "string",
+															"x-auditable": true
+														},
+														"expires_on": {
+															"description": "When the certificate from the authority expires.",
+															"example": "2016-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"geo_restrictions": {
+															"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+															"properties": {
+																"label": {
+																	"enum": [
+																		"us",
+																		"eu",
+																		"highest_security"
+																	],
+																	"example": "us",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"hosts": {
+															"items": {
+																"description": "The valid hosts for the certificates.",
+																"example": "example.com",
+																"maxLength": 253,
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"issuer": {
+															"description": "The certificate authority that issued the certificate.",
+															"example": "GlobalSign",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"keyless_server": {
+															"allOf": [
+																{
+																	"properties": {
+																		"created_on": {
+																			"description": "When the Keyless SSL was created.",
+																			"example": "2014-01-01T05:20:00Z",
+																			"format": "date-time",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"enabled": {
+																			"description": "Whether or not the Keyless SSL is on or off.",
+																			"example": false,
+																			"readOnly": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"host": {
+																			"description": "The keyless SSL name.",
+																			"example": "example.com",
+																			"format": "hostname",
+																			"maxLength": 253,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "Keyless certificate identifier tag.",
+																			"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"modified_on": {
+																			"description": "When the Keyless SSL was last modified.",
+																			"example": "2014-01-01T05:20:00Z",
+																			"format": "date-time",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "The keyless SSL name.",
+																			"example": "example.com Keyless SSL",
+																			"maxLength": 180,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"permissions": {
+																			"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																			"example": [
+																				"#ssl:read",
+																				"#ssl:edit"
+																			],
+																			"items": {
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"readOnly": true,
+																			"type": "array"
+																		},
+																		"port": {
+																			"default": 24008,
+																			"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																			"example": 24008,
+																			"maxLength": 65535,
+																			"type": "number",
+																			"x-auditable": true
+																		},
+																		"status": {
+																			"description": "Status of the Keyless SSL.",
+																			"enum": [
+																				"active",
+																				"deleted"
+																			],
+																			"example": "active",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"tunnel": {
+																			"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																			"properties": {
+																				"private_ip": {
+																					"description": "Private IP of the Key Server Host",
+																					"example": "10.0.0.1",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"vnet_id": {
+																					"description": "Cloudflare Tunnel Virtual Network ID",
+																					"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"private_ip",
+																				"vnet_id"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name",
+																		"host",
+																		"port",
+																		"status",
+																		"enabled",
+																		"permissions",
+																		"created_on",
+																		"modified_on"
+																	],
+																	"type": "object"
+																}
+															],
+															"type": "object"
+														},
+														"modified_on": {
+															"description": "When the certificate was last modified.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"policy": {
+															"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+															"example": "(country: US) or (region: EU)",
+															"type": "string",
+															"x-auditable": true
+														},
+														"priority": {
+															"default": 0,
+															"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+															"example": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"signature": {
+															"description": "The type of hash used for the certificate.",
+															"example": "SHA256WithRSA",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "Status of the zone's custom SSL.",
+															"enum": [
+																"active",
+																"expired",
+																"deleted",
+																"pending",
+																"initializing"
+															],
+															"example": "active",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"uploaded_on": {
+															"description": "When the certificate was uploaded to Cloudflare.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"zone_id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"hosts",
+														"issuer",
+														"signature",
+														"status",
+														"bundle_method",
+														"zone_id",
+														"uploaded_on",
+														"modified_on",
+														"expires_on",
+														"priority"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create SSL Configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create SSL Configuration",
+		"tags": [
+			"Custom SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"SSL and Certificates Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /zones/{zone_id}/custom_certificates/prioritize": {
+		"description": "If a zone has multiple SSL certificates, you can set the order in which they should be used during a request. The higher priority will break ties across overlapping 'legacy_custom' certificates.",
+		"operationId": "custom-ssl-for-a-zone-re-prioritize-ssl-certificates",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"certificates": {
+								"description": "Array of ordered certificates.",
+								"example": [
+									{
+										"id": "5a7805061c76ada191ed06f989cc3dac",
+										"priority": 2
+									},
+									{
+										"id": "9a7806061c88ada191ed06f989cc3dac",
+										"priority": 1
+									}
+								],
+								"items": {
+									"properties": {
+										"id": {
+											"description": "Identifier.",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"type": "string"
+										},
+										"priority": {
+											"default": 0,
+											"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+											"example": 1,
+											"type": "number",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"certificates"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"bundle_method": {
+														"default": "ubiquitous",
+														"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+														"enum": [
+															"ubiquitous",
+															"optimal",
+															"force"
+														],
+														"example": "ubiquitous",
+														"type": "string",
+														"x-auditable": true
+													},
+													"expires_on": {
+														"description": "When the certificate from the authority expires.",
+														"example": "2016-01-01T05:20:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"geo_restrictions": {
+														"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+														"properties": {
+															"label": {
+																"enum": [
+																	"us",
+																	"eu",
+																	"highest_security"
+																],
+																"example": "us",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"hosts": {
+														"items": {
+															"description": "The valid hosts for the certificates.",
+															"example": "example.com",
+															"maxLength": 253,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": "array"
+													},
+													"id": {
+														"description": "Identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"issuer": {
+														"description": "The certificate authority that issued the certificate.",
+														"example": "GlobalSign",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"keyless_server": {
+														"allOf": [
+															{
+																"properties": {
+																	"created_on": {
+																		"description": "When the Keyless SSL was created.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Whether or not the Keyless SSL is on or off.",
+																		"example": false,
+																		"readOnly": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"host": {
+																		"description": "The keyless SSL name.",
+																		"example": "example.com",
+																		"format": "hostname",
+																		"maxLength": 253,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "Keyless certificate identifier tag.",
+																		"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"modified_on": {
+																		"description": "When the Keyless SSL was last modified.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "The keyless SSL name.",
+																		"example": "example.com Keyless SSL",
+																		"maxLength": 180,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"permissions": {
+																		"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																		"example": [
+																			"#ssl:read",
+																			"#ssl:edit"
+																		],
+																		"items": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"readOnly": true,
+																		"type": "array"
+																	},
+																	"port": {
+																		"default": 24008,
+																		"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																		"example": 24008,
+																		"maxLength": 65535,
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"status": {
+																		"description": "Status of the Keyless SSL.",
+																		"enum": [
+																			"active",
+																			"deleted"
+																		],
+																		"example": "active",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"tunnel": {
+																		"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																		"properties": {
+																			"private_ip": {
+																				"description": "Private IP of the Key Server Host",
+																				"example": "10.0.0.1",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"vnet_id": {
+																				"description": "Cloudflare Tunnel Virtual Network ID",
+																				"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"private_ip",
+																			"vnet_id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"host",
+																	"port",
+																	"status",
+																	"enabled",
+																	"permissions",
+																	"created_on",
+																	"modified_on"
+																],
+																"type": "object"
+															}
+														],
+														"type": "object"
+													},
+													"modified_on": {
+														"description": "When the certificate was last modified.",
+														"example": "2014-01-01T05:20:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"policy": {
+														"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+														"example": "(country: US) or (region: EU)",
+														"type": "string",
+														"x-auditable": true
+													},
+													"priority": {
+														"default": 0,
+														"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+														"example": 1,
+														"type": "number",
+														"x-auditable": true
+													},
+													"signature": {
+														"description": "The type of hash used for the certificate.",
+														"example": "SHA256WithRSA",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"status": {
+														"description": "Status of the zone's custom SSL.",
+														"enum": [
+															"active",
+															"expired",
+															"deleted",
+															"pending",
+															"initializing"
+														],
+														"example": "active",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"uploaded_on": {
+														"description": "When the certificate was uploaded to Cloudflare.",
+														"example": "2014-01-01T05:20:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"zone_id": {
+														"description": "Identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"hosts",
+													"issuer",
+													"signature",
+													"status",
+													"bundle_method",
+													"zone_id",
+													"uploaded_on",
+													"modified_on",
+													"expires_on",
+													"priority"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Re-prioritize SSL Certificates response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"bundle_method": {
+																"default": "ubiquitous",
+																"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+																"enum": [
+																	"ubiquitous",
+																	"optimal",
+																	"force"
+																],
+																"example": "ubiquitous",
+																"type": "string",
+																"x-auditable": true
+															},
+															"expires_on": {
+																"description": "When the certificate from the authority expires.",
+																"example": "2016-01-01T05:20:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"geo_restrictions": {
+																"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+																"properties": {
+																	"label": {
+																		"enum": [
+																			"us",
+																			"eu",
+																			"highest_security"
+																		],
+																		"example": "us",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"hosts": {
+																"items": {
+																	"description": "The valid hosts for the certificates.",
+																	"example": "example.com",
+																	"maxLength": 253,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
+															"id": {
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string"
+															},
+															"issuer": {
+																"description": "The certificate authority that issued the certificate.",
+																"example": "GlobalSign",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"keyless_server": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"created_on": {
+																				"description": "When the Keyless SSL was created.",
+																				"example": "2014-01-01T05:20:00Z",
+																				"format": "date-time",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether or not the Keyless SSL is on or off.",
+																				"example": false,
+																				"readOnly": true,
+																				"type": "boolean",
+																				"x-auditable": true
+																			},
+																			"host": {
+																				"description": "The keyless SSL name.",
+																				"example": "example.com",
+																				"format": "hostname",
+																				"maxLength": 253,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Keyless certificate identifier tag.",
+																				"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																				"maxLength": 32,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"modified_on": {
+																				"description": "When the Keyless SSL was last modified.",
+																				"example": "2014-01-01T05:20:00Z",
+																				"format": "date-time",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "The keyless SSL name.",
+																				"example": "example.com Keyless SSL",
+																				"maxLength": 180,
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"permissions": {
+																				"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																				"example": [
+																					"#ssl:read",
+																					"#ssl:edit"
+																				],
+																				"items": {
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"readOnly": true,
+																				"type": "array"
+																			},
+																			"port": {
+																				"default": 24008,
+																				"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																				"example": 24008,
+																				"maxLength": 65535,
+																				"type": "number",
+																				"x-auditable": true
+																			},
+																			"status": {
+																				"description": "Status of the Keyless SSL.",
+																				"enum": [
+																					"active",
+																					"deleted"
+																				],
+																				"example": "active",
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"tunnel": {
+																				"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																				"properties": {
+																					"private_ip": {
+																						"description": "Private IP of the Key Server Host",
+																						"example": "10.0.0.1",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"vnet_id": {
+																						"description": "Cloudflare Tunnel Virtual Network ID",
+																						"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"private_ip",
+																					"vnet_id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"host",
+																			"port",
+																			"status",
+																			"enabled",
+																			"permissions",
+																			"created_on",
+																			"modified_on"
+																		],
+																		"type": "object"
+																	}
+																],
+																"type": "object"
+															},
+															"modified_on": {
+																"description": "When the certificate was last modified.",
+																"example": "2014-01-01T05:20:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"policy": {
+																"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+																"example": "(country: US) or (region: EU)",
+																"type": "string",
+																"x-auditable": true
+															},
+															"priority": {
+																"default": 0,
+																"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+																"example": 1,
+																"type": "number",
+																"x-auditable": true
+															},
+															"signature": {
+																"description": "The type of hash used for the certificate.",
+																"example": "SHA256WithRSA",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"status": {
+																"description": "Status of the zone's custom SSL.",
+																"enum": [
+																	"active",
+																	"expired",
+																	"deleted",
+																	"pending",
+																	"initializing"
+																],
+																"example": "active",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"uploaded_on": {
+																"description": "When the certificate was uploaded to Cloudflare.",
+																"example": "2014-01-01T05:20:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"zone_id": {
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"hosts",
+															"issuer",
+															"signature",
+															"status",
+															"bundle_method",
+															"zone_id",
+															"uploaded_on",
+															"modified_on",
+															"expires_on",
+															"priority"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Re-prioritize SSL Certificates response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Re-prioritize SSL Certificates",
+		"tags": [
+			"Custom SSL for a Zone"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"SSL and Certificates Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

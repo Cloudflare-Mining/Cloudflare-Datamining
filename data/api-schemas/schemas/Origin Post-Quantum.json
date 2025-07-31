@@ -1,0 +1,696 @@
+{
+	"GET /zones/{zone_id}/cache/origin_post_quantum_encryption": {
+		"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised",
+		"operationId": "zone-cache-settings-get-origin-post-quantum-encryption-setting",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"editable": {
+															"description": "Whether the setting is editable",
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The identifier of the caching setting",
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "The time when the setting was last modified",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														"value": {
+															"description": "The value of the feature",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"value",
+														"editable"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "Last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"origin_pqe"
+																	],
+																	"example": "origin_pqe",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised",
+													"title": "Origin Post-Quantum Encryption",
+													"type": "object"
+												},
+												{
+													"properties": {
+														"value": {
+															"default": "supported",
+															"description": "Value of the Origin Post Quantum Encryption Setting.",
+															"enum": [
+																"preferred",
+																"supported",
+																"off"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Origin Post-Quantum Encryption setting response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Origin Post-Quantum Encryption setting response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Origin Post-Quantum Encryption setting",
+		"tags": [
+			"Origin Post-Quantum"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read",
+			"Zone Read",
+			"Zone Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_id}/cache/origin_post_quantum_encryption": {
+		"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised",
+		"operationId": "zone-cache-settings-change-origin-post-quantum-encryption-setting",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"value": {
+								"default": "supported",
+								"description": "Value of the Origin Post Quantum Encryption Setting.",
+								"enum": [
+									"preferred",
+									"supported",
+									"off"
+								],
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"value"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"editable": {
+															"description": "Whether the setting is editable",
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The identifier of the caching setting",
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "The time when the setting was last modified",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														"value": {
+															"description": "The value of the feature",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"value",
+														"editable"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "Last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"origin_pqe"
+																	],
+																	"example": "origin_pqe",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised",
+													"title": "Origin Post-Quantum Encryption",
+													"type": "object"
+												},
+												{
+													"properties": {
+														"value": {
+															"default": "supported",
+															"description": "Value of the Origin Post Quantum Encryption Setting.",
+															"enum": [
+																"preferred",
+																"supported",
+																"off"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Change Origin Post-Quantum Encryption setting response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"type": "object"
+									},
+									"minLength": 1,
+									"type": "array"
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Change Origin Post-Quantum Encryption setting response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Change Origin Post-Quantum Encryption setting",
+		"tags": [
+			"Origin Post-Quantum"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

@@ -1,0 +1,856 @@
+{
+	"GET /zones/{zone_id}/ssl/verification": {
+		"description": "Get SSL Verification Info for a Zone.",
+		"operationId": "ssl-verification-ssl-verification-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "retry",
+				"schema": {
+					"description": "Immediately retry SSL Verification.",
+					"enum": [
+						true
+					],
+					"example": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"brand_check": {
+														"description": "Certificate Authority is manually reviewing the order.",
+														"example": false,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"cert_pack_uuid": {
+														"description": "Certificate Pack UUID.",
+														"example": "a77f8bd7-3b47-46b4-a6f1-75cf98109948",
+														"type": "string",
+														"x-auditable": true
+													},
+													"certificate_status": {
+														"description": "Current status of certificate.",
+														"enum": [
+															"initializing",
+															"authorizing",
+															"active",
+															"expired",
+															"issuing",
+															"timing_out",
+															"pending_deployment"
+														],
+														"example": "active",
+														"type": "string",
+														"x-auditable": true
+													},
+													"signature": {
+														"description": "Certificate's signature algorithm.",
+														"enum": [
+															"ECDSAWithSHA256",
+															"SHA1WithRSA",
+															"SHA256WithRSA"
+														],
+														"type": "string",
+														"x-auditable": true
+													},
+													"validation_method": {
+														"description": "Validation method in use for a certificate pack order.",
+														"enum": [
+															"http",
+															"cname",
+															"txt"
+														],
+														"example": "txt",
+														"type": "string",
+														"x-auditable": true
+													},
+													"verification_info": {
+														"description": "Certificate's required verification information.",
+														"properties": {
+															"record_name": {
+																"description": "Name of CNAME record.",
+																"enum": [
+																	"record_name",
+																	"http_url",
+																	"cname",
+																	"txt_name"
+																],
+																"example": "b3b90cfedd89a3e487d3e383c56c4267.example.com",
+																"format": "hostname",
+																"type": "string",
+																"x-auditable": true
+															},
+															"record_target": {
+																"description": "Target of CNAME record.",
+																"enum": [
+																	"record_value",
+																	"http_body",
+																	"cname_target",
+																	"txt_value"
+																],
+																"example": "6979be7e4cfc9e5c603e31df7efac9cc60fee82d.comodoca.com",
+																"format": "hostname",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"verification_status": {
+														"description": "Status of the required verification information, omitted if verification status is unknown.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"verification_type": {
+														"description": "Method of verification.",
+														"enum": [
+															"cname",
+															"meta tag"
+														],
+														"example": "cname",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"certificate_status"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "SSL Verification Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"brand_check": {
+																"description": "Certificate Authority is manually reviewing the order.",
+																"example": false,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"cert_pack_uuid": {
+																"description": "Certificate Pack UUID.",
+																"example": "a77f8bd7-3b47-46b4-a6f1-75cf98109948",
+																"type": "string",
+																"x-auditable": true
+															},
+															"certificate_status": {
+																"description": "Current status of certificate.",
+																"enum": [
+																	"initializing",
+																	"authorizing",
+																	"active",
+																	"expired",
+																	"issuing",
+																	"timing_out",
+																	"pending_deployment"
+																],
+																"example": "active",
+																"type": "string",
+																"x-auditable": true
+															},
+															"signature": {
+																"description": "Certificate's signature algorithm.",
+																"enum": [
+																	"ECDSAWithSHA256",
+																	"SHA1WithRSA",
+																	"SHA256WithRSA"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"validation_method": {
+																"description": "Validation method in use for a certificate pack order.",
+																"enum": [
+																	"http",
+																	"cname",
+																	"txt"
+																],
+																"example": "txt",
+																"type": "string",
+																"x-auditable": true
+															},
+															"verification_info": {
+																"description": "Certificate's required verification information.",
+																"properties": {
+																	"record_name": {
+																		"description": "Name of CNAME record.",
+																		"enum": [
+																			"record_name",
+																			"http_url",
+																			"cname",
+																			"txt_name"
+																		],
+																		"example": "b3b90cfedd89a3e487d3e383c56c4267.example.com",
+																		"format": "hostname",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"record_target": {
+																		"description": "Target of CNAME record.",
+																		"enum": [
+																			"record_value",
+																			"http_body",
+																			"cname_target",
+																			"txt_value"
+																		],
+																		"example": "6979be7e4cfc9e5c603e31df7efac9cc60fee82d.comodoca.com",
+																		"format": "hostname",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"verification_status": {
+																"description": "Status of the required verification information, omitted if verification status is unknown.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"verification_type": {
+																"description": "Method of verification.",
+																"enum": [
+																	"cname",
+																	"meta tag"
+																],
+																"example": "cname",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"certificate_status"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "SSL Verification Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "SSL Verification Details",
+		"tags": [
+			"SSL Verification"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/ssl/verification/{certificate_pack_id}": {
+		"description": "Edit SSL validation method for a certificate pack. A PATCH request will request an immediate validation check on any certificate, and return the updated status. If a validation method is provided, the validation will be immediately attempted using that method.",
+		"operationId": "ssl-verification-edit-ssl-certificate-pack-validation-method",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "certificate_pack_id",
+				"required": true,
+				"schema": {
+					"description": "Certificate Pack UUID.",
+					"example": "a77f8bd7-3b47-46b4-a6f1-75cf98109948",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"validation_method": {
+								"description": "Desired validation method.",
+								"enum": [
+									"http",
+									"cname",
+									"txt",
+									"email"
+								],
+								"example": "txt",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"validation_method"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"status": {
+													"description": "Result status.",
+													"example": "pending_validation",
+													"type": "string",
+													"x-auditable": true
+												},
+												"validation_method": {
+													"description": "Desired validation method.",
+													"enum": [
+														"http",
+														"cname",
+														"txt",
+														"email"
+													],
+													"example": "txt",
+													"type": "string",
+													"x-auditable": true
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Edit SSL Certificate Pack Validation Method response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"status": {
+															"description": "Result status.",
+															"example": "pending_validation",
+															"type": "string",
+															"x-auditable": true
+														},
+														"validation_method": {
+															"description": "Desired validation method.",
+															"enum": [
+																"http",
+																"cname",
+																"txt",
+																"email"
+															],
+															"example": "txt",
+															"type": "string",
+															"x-auditable": true
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Edit SSL Certificate Pack Validation Method response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Edit SSL Certificate Pack Validation Method",
+		"tags": [
+			"SSL Verification"
+		],
+		"x-api-token-group": [
+			"Access: Mutual TLS Certificates Write",
+			"Access: Mutual TLS Certificates Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read",
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

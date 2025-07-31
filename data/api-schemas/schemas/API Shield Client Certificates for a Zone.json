@@ -1,0 +1,2959 @@
+{
+	"DELETE /zones/{zone_id}/client_certificates/{client_certificate_id}": {
+		"description": "Set a API Shield mTLS Client Certificate to pending_revocation status for processing to revoked status.",
+		"operationId": "client-certificate-for-a-zone-delete-client-certificate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "client_certificate_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"certificate": {
+													"description": "The Client Certificate PEM",
+													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+													"readOnly": true,
+													"type": "string"
+												},
+												"certificate_authority": {
+													"description": "Certificate Authority used to issue the Client Certificate",
+													"properties": {
+														"id": {
+															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"example": "Cloudflare Managed CA for account",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												},
+												"common_name": {
+													"description": "Common Name of the Client Certificate",
+													"example": "Cloudflare",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"country": {
+													"description": "Country, provided by the CSR",
+													"example": "US",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"csr": {
+													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
+													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+													"type": "string",
+													"x-auditable": true
+												},
+												"expires_on": {
+													"description": "Date that the Client Certificate expires",
+													"example": "2033-02-20T23:18:00Z",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"fingerprint_sha256": {
+													"description": "Unique identifier of the Client Certificate",
+													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"issued_on": {
+													"description": "Date that the Client Certificate was issued by the Certificate Authority",
+													"example": "2023-02-23T23:18:00Z",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"location": {
+													"description": "Location, provided by the CSR",
+													"example": "Somewhere",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"organization": {
+													"description": "Organization, provided by the CSR",
+													"example": "Organization",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"organizational_unit": {
+													"description": "Organizational Unit, provided by the CSR",
+													"example": "Organizational Unit",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"serial_number": {
+													"description": "The serial number on the created Client Certificate.",
+													"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"signature": {
+													"description": "The type of hash used for the Client Certificate..",
+													"example": "SHA256WithRSA",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"ski": {
+													"description": "Subject Key Identifier",
+													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"state": {
+													"description": "State, provided by the CSR",
+													"example": "CA",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+													"enum": [
+														"active",
+														"pending_reactivation",
+														"pending_revocation",
+														"revoked"
+													],
+													"example": "active",
+													"type": "string",
+													"x-auditable": true
+												},
+												"validity_days": {
+													"description": "The number of days the Client Certificate will be valid after the issued_on date",
+													"example": 3650,
+													"type": "integer",
+													"x-auditable": true
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Revoke Client Certificate Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Revoke Client Certificate Response Failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Revoke Client Certificate",
+		"tags": [
+			"API Shield Client Certificates for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/certificate_authorities/hostname_associations": {
+		"description": "List Hostname Associations",
+		"operationId": "client-certificate-for-a-zone-list-hostname-associations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "mtls_certificate_id",
+				"schema": {
+					"description": "The UUID to match against for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the results will be the hostnames associated to your active Cloudflare Managed CA.",
+					"example": "b2134436-2555-4acf-be5b-26c48136575e",
+					"maxLength": 36,
+					"minLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"hostnames": {
+													"items": {
+														"example": "api.example.com",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Hostname Associations Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Hostname Associations Response Failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Hostname Associations",
+		"tags": [
+			"API Shield Client Certificates for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/client_certificates": {
+		"description": "List all of your Zone's API Shield mTLS Client Certificates by Status and/or using Pagination",
+		"operationId": "client-certificate-for-a-zone-list-client-certificates",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"description": "Client Certitifcate Status to filter results by.",
+					"enum": [
+						"all",
+						"active",
+						"pending_reactivation",
+						"pending_revocation",
+						"revoked"
+					],
+					"example": "all"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Number of records per page.",
+					"maximum": 50,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limit to the number of records returned.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"description": "Offset the results",
+					"example": 10,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"certificate": {
+														"description": "The Client Certificate PEM",
+														"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+														"readOnly": true,
+														"type": "string"
+													},
+													"certificate_authority": {
+														"description": "Certificate Authority used to issue the Client Certificate",
+														"properties": {
+															"id": {
+																"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"example": "Cloudflare Managed CA for account",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"common_name": {
+														"description": "Common Name of the Client Certificate",
+														"example": "Cloudflare",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"country": {
+														"description": "Country, provided by the CSR",
+														"example": "US",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"csr": {
+														"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
+														"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+														"type": "string",
+														"x-auditable": true
+													},
+													"expires_on": {
+														"description": "Date that the Client Certificate expires",
+														"example": "2033-02-20T23:18:00Z",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"fingerprint_sha256": {
+														"description": "Unique identifier of the Client Certificate",
+														"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "Identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"issued_on": {
+														"description": "Date that the Client Certificate was issued by the Certificate Authority",
+														"example": "2023-02-23T23:18:00Z",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"location": {
+														"description": "Location, provided by the CSR",
+														"example": "Somewhere",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"organization": {
+														"description": "Organization, provided by the CSR",
+														"example": "Organization",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"organizational_unit": {
+														"description": "Organizational Unit, provided by the CSR",
+														"example": "Organizational Unit",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"serial_number": {
+														"description": "The serial number on the created Client Certificate.",
+														"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"signature": {
+														"description": "The type of hash used for the Client Certificate..",
+														"example": "SHA256WithRSA",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"ski": {
+														"description": "Subject Key Identifier",
+														"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"state": {
+														"description": "State, provided by the CSR",
+														"example": "CA",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"status": {
+														"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+														"enum": [
+															"active",
+															"pending_reactivation",
+															"pending_revocation",
+															"revoked"
+														],
+														"example": "active",
+														"type": "string",
+														"x-auditable": true
+													},
+													"validity_days": {
+														"description": "The number of days the Client Certificate will be valid after the issued_on date",
+														"example": 3650,
+														"type": "integer",
+														"x-auditable": true
+													}
+												}
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Client Certificates Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Client Certificates Response Failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Client Certificates",
+		"tags": [
+			"API Shield Client Certificates for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/client_certificates/{client_certificate_id}": {
+		"description": "Get Details for a single mTLS API Shield Client Certificate",
+		"operationId": "client-certificate-for-a-zone-client-certificate-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "client_certificate_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"certificate": {
+													"description": "The Client Certificate PEM",
+													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+													"readOnly": true,
+													"type": "string"
+												},
+												"certificate_authority": {
+													"description": "Certificate Authority used to issue the Client Certificate",
+													"properties": {
+														"id": {
+															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"example": "Cloudflare Managed CA for account",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												},
+												"common_name": {
+													"description": "Common Name of the Client Certificate",
+													"example": "Cloudflare",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"country": {
+													"description": "Country, provided by the CSR",
+													"example": "US",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"csr": {
+													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
+													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+													"type": "string",
+													"x-auditable": true
+												},
+												"expires_on": {
+													"description": "Date that the Client Certificate expires",
+													"example": "2033-02-20T23:18:00Z",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"fingerprint_sha256": {
+													"description": "Unique identifier of the Client Certificate",
+													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"issued_on": {
+													"description": "Date that the Client Certificate was issued by the Certificate Authority",
+													"example": "2023-02-23T23:18:00Z",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"location": {
+													"description": "Location, provided by the CSR",
+													"example": "Somewhere",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"organization": {
+													"description": "Organization, provided by the CSR",
+													"example": "Organization",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"organizational_unit": {
+													"description": "Organizational Unit, provided by the CSR",
+													"example": "Organizational Unit",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"serial_number": {
+													"description": "The serial number on the created Client Certificate.",
+													"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"signature": {
+													"description": "The type of hash used for the Client Certificate..",
+													"example": "SHA256WithRSA",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"ski": {
+													"description": "Subject Key Identifier",
+													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"state": {
+													"description": "State, provided by the CSR",
+													"example": "CA",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+													"enum": [
+														"active",
+														"pending_reactivation",
+														"pending_revocation",
+														"revoked"
+													],
+													"example": "active",
+													"type": "string",
+													"x-auditable": true
+												},
+												"validity_days": {
+													"description": "The number of days the Client Certificate will be valid after the issued_on date",
+													"example": 3650,
+													"type": "integer",
+													"x-auditable": true
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Client Certificate Details Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Certificate Details Response Failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Client Certificate Details",
+		"tags": [
+			"API Shield Client Certificates for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/client_certificates/{client_certificate_id}": {
+		"description": "If a API Shield mTLS Client Certificate is in a pending_revocation state, you may reactivate it with this endpoint.",
+		"operationId": "client-certificate-for-a-zone-edit-client-certificate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "client_certificate_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"certificate": {
+													"description": "The Client Certificate PEM",
+													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+													"readOnly": true,
+													"type": "string"
+												},
+												"certificate_authority": {
+													"description": "Certificate Authority used to issue the Client Certificate",
+													"properties": {
+														"id": {
+															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"example": "Cloudflare Managed CA for account",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												},
+												"common_name": {
+													"description": "Common Name of the Client Certificate",
+													"example": "Cloudflare",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"country": {
+													"description": "Country, provided by the CSR",
+													"example": "US",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"csr": {
+													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
+													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+													"type": "string",
+													"x-auditable": true
+												},
+												"expires_on": {
+													"description": "Date that the Client Certificate expires",
+													"example": "2033-02-20T23:18:00Z",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"fingerprint_sha256": {
+													"description": "Unique identifier of the Client Certificate",
+													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"issued_on": {
+													"description": "Date that the Client Certificate was issued by the Certificate Authority",
+													"example": "2023-02-23T23:18:00Z",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"location": {
+													"description": "Location, provided by the CSR",
+													"example": "Somewhere",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"organization": {
+													"description": "Organization, provided by the CSR",
+													"example": "Organization",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"organizational_unit": {
+													"description": "Organizational Unit, provided by the CSR",
+													"example": "Organizational Unit",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"serial_number": {
+													"description": "The serial number on the created Client Certificate.",
+													"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"signature": {
+													"description": "The type of hash used for the Client Certificate..",
+													"example": "SHA256WithRSA",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"ski": {
+													"description": "Subject Key Identifier",
+													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"state": {
+													"description": "State, provided by the CSR",
+													"example": "CA",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+													"enum": [
+														"active",
+														"pending_reactivation",
+														"pending_revocation",
+														"revoked"
+													],
+													"example": "active",
+													"type": "string",
+													"x-auditable": true
+												},
+												"validity_days": {
+													"description": "The number of days the Client Certificate will be valid after the issued_on date",
+													"example": 3650,
+													"type": "integer",
+													"x-auditable": true
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Reactivate Client Certificate Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Reactivate Client Certificate Response Failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Reactivate Client Certificate",
+		"tags": [
+			"API Shield Client Certificates for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_id}/client_certificates": {
+		"description": "Create a new API Shield mTLS Client Certificate",
+		"operationId": "client-certificate-for-a-zone-create-client-certificate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"csr": {
+								"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
+								"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+								"type": "string",
+								"x-auditable": true
+							},
+							"validity_days": {
+								"description": "The number of days the Client Certificate will be valid after the issued_on date",
+								"example": 3650,
+								"type": "integer",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"csr",
+							"validity_days"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"certificate": {
+													"description": "The Client Certificate PEM",
+													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+													"readOnly": true,
+													"type": "string"
+												},
+												"certificate_authority": {
+													"description": "Certificate Authority used to issue the Client Certificate",
+													"properties": {
+														"id": {
+															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"example": "Cloudflare Managed CA for account",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												},
+												"common_name": {
+													"description": "Common Name of the Client Certificate",
+													"example": "Cloudflare",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"country": {
+													"description": "Country, provided by the CSR",
+													"example": "US",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"csr": {
+													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
+													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+													"type": "string",
+													"x-auditable": true
+												},
+												"expires_on": {
+													"description": "Date that the Client Certificate expires",
+													"example": "2033-02-20T23:18:00Z",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"fingerprint_sha256": {
+													"description": "Unique identifier of the Client Certificate",
+													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"issued_on": {
+													"description": "Date that the Client Certificate was issued by the Certificate Authority",
+													"example": "2023-02-23T23:18:00Z",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"location": {
+													"description": "Location, provided by the CSR",
+													"example": "Somewhere",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"organization": {
+													"description": "Organization, provided by the CSR",
+													"example": "Organization",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"organizational_unit": {
+													"description": "Organizational Unit, provided by the CSR",
+													"example": "Organizational Unit",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"serial_number": {
+													"description": "The serial number on the created Client Certificate.",
+													"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"signature": {
+													"description": "The type of hash used for the Client Certificate..",
+													"example": "SHA256WithRSA",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"ski": {
+													"description": "Subject Key Identifier",
+													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"state": {
+													"description": "State, provided by the CSR",
+													"example": "CA",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+													"enum": [
+														"active",
+														"pending_reactivation",
+														"pending_revocation",
+														"revoked"
+													],
+													"example": "active",
+													"type": "string",
+													"x-auditable": true
+												},
+												"validity_days": {
+													"description": "The number of days the Client Certificate will be valid after the issued_on date",
+													"example": 3650,
+													"type": "integer",
+													"x-auditable": true
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Client Certificate Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"certificate": {
+															"description": "The Client Certificate PEM",
+															"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+															"readOnly": true,
+															"type": "string"
+														},
+														"certificate_authority": {
+															"description": "Certificate Authority used to issue the Client Certificate",
+															"properties": {
+																"id": {
+																	"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"example": "Cloudflare Managed CA for account",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"common_name": {
+															"description": "Common Name of the Client Certificate",
+															"example": "Cloudflare",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"country": {
+															"description": "Country, provided by the CSR",
+															"example": "US",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"csr": {
+															"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
+															"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+															"type": "string",
+															"x-auditable": true
+														},
+														"expires_on": {
+															"description": "Date that the Client Certificate expires",
+															"example": "2033-02-20T23:18:00Z",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"fingerprint_sha256": {
+															"description": "Unique identifier of the Client Certificate",
+															"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"issued_on": {
+															"description": "Date that the Client Certificate was issued by the Certificate Authority",
+															"example": "2023-02-23T23:18:00Z",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"location": {
+															"description": "Location, provided by the CSR",
+															"example": "Somewhere",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"organization": {
+															"description": "Organization, provided by the CSR",
+															"example": "Organization",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"organizational_unit": {
+															"description": "Organizational Unit, provided by the CSR",
+															"example": "Organizational Unit",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"serial_number": {
+															"description": "The serial number on the created Client Certificate.",
+															"example": "3bb94ff144ac567b9f75ad664b6c55f8d5e48182",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"signature": {
+															"description": "The type of hash used for the Client Certificate..",
+															"example": "SHA256WithRSA",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"ski": {
+															"description": "Subject Key Identifier",
+															"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"state": {
+															"description": "State, provided by the CSR",
+															"example": "CA",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+															"enum": [
+																"active",
+																"pending_reactivation",
+																"pending_revocation",
+																"revoked"
+															],
+															"example": "active",
+															"type": "string",
+															"x-auditable": true
+														},
+														"validity_days": {
+															"description": "The number of days the Client Certificate will be valid after the issued_on date",
+															"example": 3650,
+															"type": "integer",
+															"x-auditable": true
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Client Certificate Response Failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Client Certificate",
+		"tags": [
+			"API Shield Client Certificates for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_id}/certificate_authorities/hostname_associations": {
+		"description": "Replace Hostname Associations",
+		"operationId": "client-certificate-for-a-zone-put-hostname-associations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"hostnames": {
+								"items": {
+									"example": "api.example.com",
+									"type": "string",
+									"x-auditable": true
+								},
+								"type": "array"
+							},
+							"mtls_certificate_id": {
+								"description": "The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the hostnames will be associated to your active Cloudflare Managed CA.",
+								"maxLength": 36,
+								"minLength": 36,
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"hostnames": {
+													"items": {
+														"example": "api.example.com",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Replace Hostname Associations Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Replace Hostname Associations Response Failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Replace Hostname Associations",
+		"tags": [
+			"API Shield Client Certificates for a Zone"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

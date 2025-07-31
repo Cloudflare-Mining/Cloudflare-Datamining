@@ -1,0 +1,629 @@
+{
+	"GET /zones/{zone_id}/api_gateway/configuration": {
+		"operationId": "api-shield-settings-retrieve-information-about-specific-configuration-properties",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "properties",
+				"schema": {
+					"description": "Requests information about certain properties.",
+					"example": [
+						"auth_id_characteristics"
+					],
+					"items": {
+						"enum": [
+							"auth_id_characteristics"
+						],
+						"example": "auth_id_characteristics",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array",
+					"uniqueItems": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"auth_id_characteristics": {
+													"items": {
+														"anyOf": [
+															{
+																"description": "Auth ID Characteristic",
+																"properties": {
+																	"name": {
+																		"description": "The name of the characteristic field, i.e., the header or cookie name.",
+																		"example": "authorization",
+																		"maxLength": 128,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The type of characteristic.",
+																		"enum": [
+																			"header",
+																			"cookie"
+																		],
+																		"example": "header",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"type",
+																	"name"
+																]
+															},
+															{
+																"description": "Auth ID Characteristic extracted from JWT Token Claims",
+																"properties": {
+																	"name": {
+																		"description": "Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` \nis the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 \nJSONPath (https://goessner.net/articles/JsonPath/, https://www.rfc-editor.org/rfc/rfc9535.html).\nThe JSONPath expression may be in dot or bracket notation, may only specify literal keys\nor array indexes, and must return a singleton value, which will be interpreted as a string.\n",
+																		"example": "e0de1a3a-8c2c-4f90-98d8-cbdf0a3f2cb5:$.foo.bar[0].baz",
+																		"maxLength": 128,
+																		"pattern": "^(?<token_config_id>[a-z0-9\\-]{32,36}):\\$(?<json_path>.*?)$",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The type of characteristic.",
+																		"enum": [
+																			"jwt"
+																		],
+																		"example": "jwt",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"type",
+																	"name"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"maxItems": 10,
+													"type": "array",
+													"uniqueItems": true
+												}
+											},
+											"required": [
+												"auth_id_characteristics"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Retrieve information about specific configuration properties response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Retrieve information about specific configuration properties response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Retrieve information about specific configuration properties",
+		"tags": [
+			"API Shield Settings"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
+		]
+	},
+	"PUT /zones/{zone_id}/api_gateway/configuration": {
+		"operationId": "api-shield-settings-set-configuration-properties",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"auth_id_characteristics": {
+								"items": {
+									"anyOf": [
+										{
+											"description": "Auth ID Characteristic",
+											"properties": {
+												"name": {
+													"description": "The name of the characteristic field, i.e., the header or cookie name.",
+													"example": "authorization",
+													"maxLength": 128,
+													"type": "string",
+													"x-auditable": true
+												},
+												"type": {
+													"description": "The type of characteristic.",
+													"enum": [
+														"header",
+														"cookie"
+													],
+													"example": "header",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"type",
+												"name"
+											]
+										},
+										{
+											"description": "Auth ID Characteristic extracted from JWT Token Claims",
+											"properties": {
+												"name": {
+													"description": "Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` \nis the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 \nJSONPath (https://goessner.net/articles/JsonPath/, https://www.rfc-editor.org/rfc/rfc9535.html).\nThe JSONPath expression may be in dot or bracket notation, may only specify literal keys\nor array indexes, and must return a singleton value, which will be interpreted as a string.\n",
+													"example": "e0de1a3a-8c2c-4f90-98d8-cbdf0a3f2cb5:$.foo.bar[0].baz",
+													"maxLength": 128,
+													"pattern": "^(?<token_config_id>[a-z0-9\\-]{32,36}):\\$(?<json_path>.*?)$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"type": {
+													"description": "The type of characteristic.",
+													"enum": [
+														"jwt"
+													],
+													"example": "jwt",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"type",
+												"name"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"maxItems": 10,
+								"type": "array",
+								"uniqueItems": true
+							}
+						},
+						"required": [
+							"auth_id_characteristics"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Set configuration properties response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Set configuration properties response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Set configuration properties",
+		"tags": [
+			"API Shield Settings"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
+		]
+	}
+}

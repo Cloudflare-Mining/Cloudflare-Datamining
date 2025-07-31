@@ -1,0 +1,1279 @@
+{
+	"GET /zones/{zone_id}/access/organizations": {
+		"description": "Returns the configuration for your Zero Trust organization.",
+		"operationId": "zone-level-zero-trust-organization-get-your-zero-trust-organization",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"auth_domain": {
+													"description": "The unique subdomain assigned to your Zero Trust organization.",
+													"example": "test.cloudflareaccess.com",
+													"type": "string"
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"is_ui_read_only": {
+													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
+													"example": "false",
+													"type": "boolean"
+												},
+												"login_design": {
+													"properties": {
+														"background_color": {
+															"description": "The background color on your login page.",
+															"example": "#c5ed1b",
+															"type": "string"
+														},
+														"footer_text": {
+															"description": "The text at the bottom of your login page.",
+															"example": "This is an example description.",
+															"type": "string"
+														},
+														"header_text": {
+															"description": "The text at the top of your login page.",
+															"example": "This is an example description.",
+															"type": "string"
+														},
+														"logo_path": {
+															"description": "The URL of the logo on your login page.",
+															"example": "https://example.com/logo.png",
+															"type": "string"
+														},
+														"text_color": {
+															"description": "The text color on your login page.",
+															"example": "#c5ed1b",
+															"type": "string"
+														}
+													}
+												},
+												"name": {
+													"description": "The name of your Zero Trust organization.",
+													"example": "Widget Corps Internal Applications",
+													"type": "string"
+												},
+												"ui_read_only_toggle_reason": {
+													"description": "A description of the reason why the UI read only field is being toggled.",
+													"example": "Temporarily turn off the UI read only lock to make a change via the UI",
+													"type": "string"
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"user_seat_expiration_inactive_time": {
+													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
+													"example": "720h",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get your Zero Trust organization response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get your Zero Trust organization response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get your Zero Trust organization",
+		"tags": [
+			"Zone-Level Zero Trust organization"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Revoke",
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Access: Organizations, Identity Providers, and Groups Read"
+		]
+	},
+	"POST /zones/{zone_id}/access/organizations": {
+		"description": "Sets up a Zero Trust organization for your account.",
+		"operationId": "zone-level-zero-trust-organization-create-your-zero-trust-organization",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"auth_domain": {
+								"description": "The unique subdomain assigned to your Zero Trust organization.",
+								"example": "test.cloudflareaccess.com",
+								"type": "string"
+							},
+							"is_ui_read_only": {
+								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
+								"example": "false",
+								"type": "boolean"
+							},
+							"login_design": {
+								"properties": {
+									"background_color": {
+										"description": "The background color on your login page.",
+										"example": "#c5ed1b",
+										"type": "string"
+									},
+									"footer_text": {
+										"description": "The text at the bottom of your login page.",
+										"example": "This is an example description.",
+										"type": "string"
+									},
+									"header_text": {
+										"description": "The text at the top of your login page.",
+										"example": "This is an example description.",
+										"type": "string"
+									},
+									"logo_path": {
+										"description": "The URL of the logo on your login page.",
+										"example": "https://example.com/logo.png",
+										"type": "string"
+									},
+									"text_color": {
+										"description": "The text color on your login page.",
+										"example": "#c5ed1b",
+										"type": "string"
+									}
+								}
+							},
+							"name": {
+								"description": "The name of your Zero Trust organization.",
+								"example": "Widget Corps Internal Applications",
+								"type": "string"
+							},
+							"ui_read_only_toggle_reason": {
+								"description": "A description of the reason why the UI read only field is being toggled.",
+								"example": "Temporarily turn off the UI read only lock to make a change via the UI",
+								"type": "string"
+							},
+							"user_seat_expiration_inactive_time": {
+								"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
+								"example": "720h",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"auth_domain"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"auth_domain": {
+													"description": "The unique subdomain assigned to your Zero Trust organization.",
+													"example": "test.cloudflareaccess.com",
+													"type": "string"
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"is_ui_read_only": {
+													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
+													"example": "false",
+													"type": "boolean"
+												},
+												"login_design": {
+													"properties": {
+														"background_color": {
+															"description": "The background color on your login page.",
+															"example": "#c5ed1b",
+															"type": "string"
+														},
+														"footer_text": {
+															"description": "The text at the bottom of your login page.",
+															"example": "This is an example description.",
+															"type": "string"
+														},
+														"header_text": {
+															"description": "The text at the top of your login page.",
+															"example": "This is an example description.",
+															"type": "string"
+														},
+														"logo_path": {
+															"description": "The URL of the logo on your login page.",
+															"example": "https://example.com/logo.png",
+															"type": "string"
+														},
+														"text_color": {
+															"description": "The text color on your login page.",
+															"example": "#c5ed1b",
+															"type": "string"
+														}
+													}
+												},
+												"name": {
+													"description": "The name of your Zero Trust organization.",
+													"example": "Widget Corps Internal Applications",
+													"type": "string"
+												},
+												"ui_read_only_toggle_reason": {
+													"description": "A description of the reason why the UI read only field is being toggled.",
+													"example": "Temporarily turn off the UI read only lock to make a change via the UI",
+													"type": "string"
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"user_seat_expiration_inactive_time": {
+													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
+													"example": "720h",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create your Zero Trust organization response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create your Zero Trust organization response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create your Zero Trust organization",
+		"tags": [
+			"Zone-Level Zero Trust organization"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
+		]
+	},
+	"POST /zones/{zone_id}/access/organizations/revoke_user": {
+		"description": "Revokes a user's access across all applications.",
+		"operationId": "zone-level-zero-trust-organization-revoke-all-access-tokens-for-a-user",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"email": {
+								"description": "The email of the user to revoke.",
+								"example": "test@example.com",
+								"type": "string"
+							}
+						},
+						"required": [
+							"email"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"result": {
+											"enum": [
+												true,
+												false
+											],
+											"example": true,
+											"type": "boolean"
+										},
+										"success": {
+											"enum": [
+												true,
+												false
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Revoke all Access tokens for a user response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Revoke all Access tokens for a user response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Revoke all Access tokens for a user",
+		"tags": [
+			"Zone-Level Zero Trust organization"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
+		]
+	},
+	"PUT /zones/{zone_id}/access/organizations": {
+		"description": "Updates the configuration for your Zero Trust organization.",
+		"operationId": "zone-level-zero-trust-organization-update-your-zero-trust-organization",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"auth_domain": {
+								"description": "The unique subdomain assigned to your Zero Trust organization.",
+								"example": "test.cloudflareaccess.com",
+								"type": "string"
+							},
+							"is_ui_read_only": {
+								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
+								"example": "false",
+								"type": "boolean"
+							},
+							"login_design": {
+								"properties": {
+									"background_color": {
+										"description": "The background color on your login page.",
+										"example": "#c5ed1b",
+										"type": "string"
+									},
+									"footer_text": {
+										"description": "The text at the bottom of your login page.",
+										"example": "This is an example description.",
+										"type": "string"
+									},
+									"header_text": {
+										"description": "The text at the top of your login page.",
+										"example": "This is an example description.",
+										"type": "string"
+									},
+									"logo_path": {
+										"description": "The URL of the logo on your login page.",
+										"example": "https://example.com/logo.png",
+										"type": "string"
+									},
+									"text_color": {
+										"description": "The text color on your login page.",
+										"example": "#c5ed1b",
+										"type": "string"
+									}
+								}
+							},
+							"name": {
+								"description": "The name of your Zero Trust organization.",
+								"example": "Widget Corps Internal Applications",
+								"type": "string"
+							},
+							"ui_read_only_toggle_reason": {
+								"description": "A description of the reason why the UI read only field is being toggled.",
+								"example": "Temporarily turn off the UI read only lock to make a change via the UI",
+								"type": "string"
+							},
+							"user_seat_expiration_inactive_time": {
+								"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
+								"example": "720h",
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"auth_domain": {
+													"description": "The unique subdomain assigned to your Zero Trust organization.",
+													"example": "test.cloudflareaccess.com",
+													"type": "string"
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"is_ui_read_only": {
+													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
+													"example": "false",
+													"type": "boolean"
+												},
+												"login_design": {
+													"properties": {
+														"background_color": {
+															"description": "The background color on your login page.",
+															"example": "#c5ed1b",
+															"type": "string"
+														},
+														"footer_text": {
+															"description": "The text at the bottom of your login page.",
+															"example": "This is an example description.",
+															"type": "string"
+														},
+														"header_text": {
+															"description": "The text at the top of your login page.",
+															"example": "This is an example description.",
+															"type": "string"
+														},
+														"logo_path": {
+															"description": "The URL of the logo on your login page.",
+															"example": "https://example.com/logo.png",
+															"type": "string"
+														},
+														"text_color": {
+															"description": "The text color on your login page.",
+															"example": "#c5ed1b",
+															"type": "string"
+														}
+													}
+												},
+												"name": {
+													"description": "The name of your Zero Trust organization.",
+													"example": "Widget Corps Internal Applications",
+													"type": "string"
+												},
+												"ui_read_only_toggle_reason": {
+													"description": "A description of the reason why the UI read only field is being toggled.",
+													"example": "Temporarily turn off the UI read only lock to make a change via the UI",
+													"type": "string"
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string",
+													"x-auditable": true
+												},
+												"user_seat_expiration_inactive_time": {
+													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
+													"example": "720h",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update your Zero Trust organization response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update your Zero Trust organization response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update your Zero Trust organization",
+		"tags": [
+			"Zone-Level Zero Trust organization"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
+		]
+	}
+}

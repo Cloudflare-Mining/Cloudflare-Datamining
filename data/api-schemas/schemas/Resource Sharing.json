@@ -1,0 +1,5239 @@
+{
+	"DELETE /accounts/{account_id}/shares/{share_id}": {
+		"description": "Deletion is not immediate, an updated share object with a new status will be returned.",
+		"operationId": "share-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account_id": {
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"account_name": {
+													"description": "The display name of an account.",
+													"example": "Account A",
+													"type": "string"
+												},
+												"created": {
+													"description": "When the share was created.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Share identifier tag.",
+													"example": "3fd85f74b32742f1bff64a85009dda07",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"kind": {
+													"enum": [
+														"sent",
+														"received"
+													],
+													"type": "string"
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the share.",
+													"example": "My Shared WAF Managed Rule",
+													"type": "string"
+												},
+												"organization_id": {
+													"description": "Organization identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"active",
+														"deleting",
+														"deleted"
+													],
+													"type": "string"
+												},
+												"target_type": {
+													"enum": [
+														"account",
+														"organization"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"account_id",
+												"account_name",
+												"organization_id",
+												"created",
+												"modified",
+												"status",
+												"target_type"
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Share deleted."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete share failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete share failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a share",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
+		"description": "Deletion is not immediate, an updated share recipient object with a new status will be returned.",
+		"operationId": "share-recipient-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "recipient_id",
+				"required": true,
+				"schema": {
+					"description": "Share Recipient identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account_id": {
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"association_status": {
+													"description": "Share Recipient association status.",
+													"enum": [
+														"associating",
+														"associated",
+														"disassociating",
+														"disassociated"
+													],
+													"type": "string"
+												},
+												"created": {
+													"description": "When the share was created.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Share Recipient identifier tag.",
+													"example": "3fd85f74b32742f1bff64a85009dda07",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"status_message": {
+													"description": "Share Recipient status message.",
+													"example": "Cannot share to account that owns the resource",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"account_id",
+												"association_status",
+												"status_message",
+												"created",
+												"modified"
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Share recipient deleted."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete share recipient failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete share recipient failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a share recipient",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"DELETE /accounts/{account_id}/shares/{share_id}/resources/{resource_id}": {
+		"description": "Deletion is not immediate, an updated share resource object with a new status will be returned.",
+		"operationId": "share-resource-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "resource_id",
+				"required": true,
+				"schema": {
+					"description": "Share Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created": {
+													"description": "When the share was created.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Share Resource identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"meta": {
+													"description": "Resource Metadata.",
+													"type": "object"
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"resource_account_id": {
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"resource_id": {
+													"description": "Share Resource identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"resource_type": {
+													"description": "Resource Type.",
+													"enum": [
+														"custom-ruleset",
+														"widget"
+													],
+													"type": "string"
+												},
+												"resource_version": {
+													"description": "Resource Version.",
+													"type": "integer"
+												},
+												"status": {
+													"description": "Resource Status.",
+													"enum": [
+														"active",
+														"deleting",
+														"deleted"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"resource_id",
+												"resource_type",
+												"resource_account_id",
+												"meta",
+												"status",
+												"created",
+												"modified",
+												"resource_version"
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Share resource deleted."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete share resource failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete share resource failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a share resource",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/shares": {
+		"description": "Lists all account shares.",
+		"operationId": "shares-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter shares by status.",
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"enum": [
+						"active",
+						"deleting",
+						"deleted"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter shares by kind.",
+				"in": "query",
+				"name": "kind",
+				"schema": {
+					"enum": [
+						"sent",
+						"received"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter shares by target_type.",
+				"in": "query",
+				"name": "target_type",
+				"schema": {
+					"enum": [
+						"account",
+						"organization"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Order shares by values in the given field.",
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "created",
+					"enum": [
+						"name",
+						"created"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Direction to sort objects.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Page number.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"example": 2,
+					"minimum": 0,
+					"multipleOf": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of objects to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"example": 20,
+					"maximum": 100,
+					"minimum": 0,
+					"multipleOf": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages using the given per page.",
+															"example": 50,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"account_id": {
+														"description": "Account identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"account_name": {
+														"description": "The display name of an account.",
+														"example": "Account A",
+														"type": "string"
+													},
+													"created": {
+														"description": "When the share was created.",
+														"example": "2023-09-21T18:56:32.624632Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"id": {
+														"description": "Share identifier tag.",
+														"example": "3fd85f74b32742f1bff64a85009dda07",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"kind": {
+														"enum": [
+															"sent",
+															"received"
+														],
+														"type": "string"
+													},
+													"modified": {
+														"description": "When the share was modified.",
+														"example": "2023-09-21T18:56:32.624632Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"name": {
+														"description": "The name of the share.",
+														"example": "My Shared WAF Managed Rule",
+														"type": "string"
+													},
+													"organization_id": {
+														"description": "Organization identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"status": {
+														"enum": [
+															"active",
+															"deleting",
+															"deleted"
+														],
+														"type": "string"
+													},
+													"target_type": {
+														"enum": [
+															"account",
+															"organization"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"account_id",
+													"account_name",
+													"organization_id",
+													"created",
+													"modified",
+													"status",
+													"target_type"
+												]
+											},
+											"type": "array"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List account shares response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List account shares response failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List account shares response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List account shares",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/shares/{share_id}": {
+		"description": "Fetches share by ID.",
+		"operationId": "shares-get-by-id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account_id": {
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"account_name": {
+													"description": "The display name of an account.",
+													"example": "Account A",
+													"type": "string"
+												},
+												"created": {
+													"description": "When the share was created.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Share identifier tag.",
+													"example": "3fd85f74b32742f1bff64a85009dda07",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"kind": {
+													"enum": [
+														"sent",
+														"received"
+													],
+													"type": "string"
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the share.",
+													"example": "My Shared WAF Managed Rule",
+													"type": "string"
+												},
+												"organization_id": {
+													"description": "Organization identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"active",
+														"deleting",
+														"deleted"
+													],
+													"type": "string"
+												},
+												"target_type": {
+													"enum": [
+														"account",
+														"organization"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"account_id",
+												"account_name",
+												"organization_id",
+												"created",
+												"modified",
+												"status",
+												"target_type"
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get account share response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get account share response failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get account share response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get account share by ID",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/shares/{share_id}/recipients": {
+		"description": "List share recipients by share ID.",
+		"operationId": "share-recipients-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Page number.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"example": 2,
+					"minimum": 0,
+					"multipleOf": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of objects to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"example": 20,
+					"maximum": 100,
+					"minimum": 0,
+					"multipleOf": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages using the given per page.",
+															"example": 50,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"account_id": {
+														"description": "Account identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"association_status": {
+														"description": "Share Recipient association status.",
+														"enum": [
+															"associating",
+															"associated",
+															"disassociating",
+															"disassociated"
+														],
+														"type": "string"
+													},
+													"created": {
+														"description": "When the share was created.",
+														"example": "2023-09-21T18:56:32.624632Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"id": {
+														"description": "Share Recipient identifier tag.",
+														"example": "3fd85f74b32742f1bff64a85009dda07",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"modified": {
+														"description": "When the share was modified.",
+														"example": "2023-09-21T18:56:32.624632Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"status_message": {
+														"description": "Share Recipient status message.",
+														"example": "Cannot share to account that owns the resource",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"account_id",
+													"association_status",
+													"status_message",
+													"created",
+													"modified"
+												]
+											},
+											"type": "array"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List account share recipients response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List account share recipients response failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List account share recipients response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List share recipients by share ID",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
+		"description": "Get share recipient by ID.",
+		"operationId": "share-recipients-get-by-id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "recipient_id",
+				"required": true,
+				"schema": {
+					"description": "Share Recipient identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account_id": {
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"association_status": {
+													"description": "Share Recipient association status.",
+													"enum": [
+														"associating",
+														"associated",
+														"disassociating",
+														"disassociated"
+													],
+													"type": "string"
+												},
+												"created": {
+													"description": "When the share was created.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Share Recipient identifier tag.",
+													"example": "3fd85f74b32742f1bff64a85009dda07",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"status_message": {
+													"description": "Share Recipient status message.",
+													"example": "Cannot share to account that owns the resource",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"account_id",
+												"association_status",
+												"status_message",
+												"created",
+												"modified"
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get account share recipient response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get account share recipient response failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get account share recipient response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get share recipient by ID",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/shares/{share_id}/resources": {
+		"description": "List share resources by share ID.",
+		"operationId": "share-resources-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter share resources by status.",
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"description": "Resource Status.",
+					"enum": [
+						"active",
+						"deleting",
+						"deleted"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter share resources by resource_type.",
+				"in": "query",
+				"name": "resource_type",
+				"schema": {
+					"description": "Resource Type.",
+					"enum": [
+						"custom-ruleset",
+						"widget"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Page number.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"example": 2,
+					"minimum": 0,
+					"multipleOf": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of objects to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"example": 20,
+					"maximum": 100,
+					"minimum": 0,
+					"multipleOf": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages using the given per page.",
+															"example": 50,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created": {
+														"description": "When the share was created.",
+														"example": "2023-09-21T18:56:32.624632Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"id": {
+														"description": "Share Resource identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"meta": {
+														"description": "Resource Metadata.",
+														"type": "object"
+													},
+													"modified": {
+														"description": "When the share was modified.",
+														"example": "2023-09-21T18:56:32.624632Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"resource_account_id": {
+														"description": "Account identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"resource_id": {
+														"description": "Share Resource identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"resource_type": {
+														"description": "Resource Type.",
+														"enum": [
+															"custom-ruleset",
+															"widget"
+														],
+														"type": "string"
+													},
+													"resource_version": {
+														"description": "Resource Version.",
+														"type": "integer"
+													},
+													"status": {
+														"description": "Resource Status.",
+														"enum": [
+															"active",
+															"deleting",
+															"deleted"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"resource_id",
+													"resource_type",
+													"resource_account_id",
+													"meta",
+													"status",
+													"created",
+													"modified",
+													"resource_version"
+												]
+											},
+											"type": "array"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List account share resources response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List account share resources response failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List account share resources response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List share resources by share ID",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/shares/{share_id}/resources/{resource_id}": {
+		"description": "Get share resource by ID.",
+		"operationId": "share-resources-get-by-id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "resource_id",
+				"required": true,
+				"schema": {
+					"description": "Share Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created": {
+													"description": "When the share was created.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Share Resource identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"meta": {
+													"description": "Resource Metadata.",
+													"type": "object"
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"resource_account_id": {
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"resource_id": {
+													"description": "Share Resource identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"resource_type": {
+													"description": "Resource Type.",
+													"enum": [
+														"custom-ruleset",
+														"widget"
+													],
+													"type": "string"
+												},
+												"resource_version": {
+													"description": "Resource Version.",
+													"type": "integer"
+												},
+												"status": {
+													"description": "Resource Status.",
+													"enum": [
+														"active",
+														"deleting",
+														"deleted"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"resource_id",
+												"resource_type",
+												"resource_account_id",
+												"meta",
+												"status",
+												"created",
+												"modified",
+												"resource_version"
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get account share resource response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get account share resource response failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get account share resource response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get share resource by ID",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /organizations/{organization_id}/shares": {
+		"description": "Lists all organization shares.",
+		"operationId": "organization-shares-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"description": "Organization identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter shares by status.",
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"enum": [
+						"active",
+						"deleting",
+						"deleted"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter shares by kind.",
+				"in": "query",
+				"name": "kind",
+				"schema": {
+					"enum": [
+						"sent",
+						"received"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter shares by target_type.",
+				"in": "query",
+				"name": "target_type",
+				"schema": {
+					"enum": [
+						"account",
+						"organization"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Order shares by values in the given field.",
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "created",
+					"enum": [
+						"name",
+						"created"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Direction to sort objects.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Page number.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"example": 2,
+					"minimum": 0,
+					"multipleOf": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of objects to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"example": 20,
+					"maximum": 100,
+					"minimum": 0,
+					"multipleOf": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages using the given per page.",
+															"example": 50,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"account_id": {
+														"description": "Account identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"account_name": {
+														"description": "The display name of an account.",
+														"example": "Account A",
+														"type": "string"
+													},
+													"created": {
+														"description": "When the share was created.",
+														"example": "2023-09-21T18:56:32.624632Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"id": {
+														"description": "Share identifier tag.",
+														"example": "3fd85f74b32742f1bff64a85009dda07",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"kind": {
+														"enum": [
+															"sent",
+															"received"
+														],
+														"type": "string"
+													},
+													"modified": {
+														"description": "When the share was modified.",
+														"example": "2023-09-21T18:56:32.624632Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"name": {
+														"description": "The name of the share.",
+														"example": "My Shared WAF Managed Rule",
+														"type": "string"
+													},
+													"organization_id": {
+														"description": "Organization identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
+													},
+													"status": {
+														"enum": [
+															"active",
+															"deleting",
+															"deleted"
+														],
+														"type": "string"
+													},
+													"target_type": {
+														"enum": [
+															"account",
+															"organization"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"account_id",
+													"account_name",
+													"organization_id",
+													"created",
+													"modified",
+													"status",
+													"target_type"
+												]
+											},
+											"type": "array"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List organization shares response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List organization shares response failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List organization shares response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List organization shares",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/shares": {
+		"operationId": "share-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"name": {
+								"description": "The name of the share.",
+								"example": "My Shared WAF Managed Rule",
+								"type": "string"
+							},
+							"recipients": {
+								"items": {
+									"description": "Account or organization ID must be provided.",
+									"properties": {
+										"account_id": {
+											"description": "Account identifier.",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"type": "string"
+										},
+										"organization_id": {
+											"description": "Organization identifier.",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"resources": {
+								"items": {
+									"properties": {
+										"meta": {
+											"description": "Resource Metadata.",
+											"type": "object"
+										},
+										"resource_account_id": {
+											"description": "Account identifier.",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"type": "string"
+										},
+										"resource_id": {
+											"description": "Share Resource identifier.",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"type": "string"
+										},
+										"resource_type": {
+											"description": "Resource Type.",
+											"enum": [
+												"custom-ruleset",
+												"widget"
+											],
+											"type": "string"
+										}
+									},
+									"required": [
+										"resource_id",
+										"resource_type",
+										"resource_account_id",
+										"meta"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"resources",
+							"recipients"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account_id": {
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"account_name": {
+													"description": "The display name of an account.",
+													"example": "Account A",
+													"type": "string"
+												},
+												"created": {
+													"description": "When the share was created.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Share identifier tag.",
+													"example": "3fd85f74b32742f1bff64a85009dda07",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"kind": {
+													"enum": [
+														"sent",
+														"received"
+													],
+													"type": "string"
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the share.",
+													"example": "My Shared WAF Managed Rule",
+													"type": "string"
+												},
+												"organization_id": {
+													"description": "Organization identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"active",
+														"deleting",
+														"deleted"
+													],
+													"type": "string"
+												},
+												"target_type": {
+													"enum": [
+														"account",
+														"organization"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"account_id",
+												"account_name",
+												"organization_id",
+												"created",
+												"modified",
+												"status",
+												"target_type"
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Share created."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create share failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create share failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new share",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/shares/{share_id}/recipients": {
+		"operationId": "share-recipient-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Account or organization ID must be provided.",
+						"properties": {
+							"account_id": {
+								"description": "Account identifier.",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"type": "string"
+							},
+							"organization_id": {
+								"description": "Organization identifier.",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account_id": {
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"association_status": {
+													"description": "Share Recipient association status.",
+													"enum": [
+														"associating",
+														"associated",
+														"disassociating",
+														"disassociated"
+													],
+													"type": "string"
+												},
+												"created": {
+													"description": "When the share was created.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Share Recipient identifier tag.",
+													"example": "3fd85f74b32742f1bff64a85009dda07",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"status_message": {
+													"description": "Share Recipient status message.",
+													"example": "Cannot share to account that owns the resource",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"account_id",
+												"association_status",
+												"status_message",
+												"created",
+												"modified"
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Share recipient created."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create share recipient failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create share recipient failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new share recipient",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/shares/{share_id}/resources": {
+		"operationId": "share-resource-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"meta": {
+								"description": "Resource Metadata.",
+								"type": "object"
+							},
+							"resource_account_id": {
+								"description": "Account identifier.",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"type": "string"
+							},
+							"resource_id": {
+								"description": "Share Resource identifier.",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"type": "string"
+							},
+							"resource_type": {
+								"description": "Resource Type.",
+								"enum": [
+									"custom-ruleset",
+									"widget"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"resource_id",
+							"resource_type",
+							"resource_account_id",
+							"meta"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created": {
+													"description": "When the share was created.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Share Resource identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"meta": {
+													"description": "Resource Metadata.",
+													"type": "object"
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"resource_account_id": {
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"resource_id": {
+													"description": "Share Resource identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"resource_type": {
+													"description": "Resource Type.",
+													"enum": [
+														"custom-ruleset",
+														"widget"
+													],
+													"type": "string"
+												},
+												"resource_version": {
+													"description": "Resource Version.",
+													"type": "integer"
+												},
+												"status": {
+													"description": "Resource Status.",
+													"enum": [
+														"active",
+														"deleting",
+														"deleted"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"resource_id",
+												"resource_type",
+												"resource_account_id",
+												"meta",
+												"status",
+												"created",
+												"modified",
+												"resource_version"
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Share resource created."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create share resource failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create share resource failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new share resource",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /accounts/{account_id}/shares/{share_id}": {
+		"description": "Updating is not immediate, an updated share object with a new status will be returned.",
+		"operationId": "share-update",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"name": {
+								"description": "The name of the share.",
+								"example": "My Shared WAF Managed Rule",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account_id": {
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"account_name": {
+													"description": "The display name of an account.",
+													"example": "Account A",
+													"type": "string"
+												},
+												"created": {
+													"description": "When the share was created.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Share identifier tag.",
+													"example": "3fd85f74b32742f1bff64a85009dda07",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"kind": {
+													"enum": [
+														"sent",
+														"received"
+													],
+													"type": "string"
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the share.",
+													"example": "My Shared WAF Managed Rule",
+													"type": "string"
+												},
+												"organization_id": {
+													"description": "Organization identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"active",
+														"deleting",
+														"deleted"
+													],
+													"type": "string"
+												},
+												"target_type": {
+													"enum": [
+														"account",
+														"organization"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"account_id",
+												"account_name",
+												"organization_id",
+												"created",
+												"modified",
+												"status",
+												"target_type"
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Share updated."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update share failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update share failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a share",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /accounts/{account_id}/shares/{share_id}/resources/{resource_id}": {
+		"description": "Update is not immediate, an updated share resource object with a new status will be returned.",
+		"operationId": "share-resource-update",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "share_id",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "resource_id",
+				"required": true,
+				"schema": {
+					"description": "Share Resource identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"meta": {
+								"description": "Resource Metadata.",
+								"type": "object"
+							}
+						},
+						"required": [
+							"meta"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created": {
+													"description": "When the share was created.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Share Resource identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"meta": {
+													"description": "Resource Metadata.",
+													"type": "object"
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"resource_account_id": {
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"resource_id": {
+													"description": "Share Resource identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"resource_type": {
+													"description": "Resource Type.",
+													"enum": [
+														"custom-ruleset",
+														"widget"
+													],
+													"type": "string"
+												},
+												"resource_version": {
+													"description": "Resource Version.",
+													"type": "integer"
+												},
+												"status": {
+													"description": "Resource Status.",
+													"enum": [
+														"active",
+														"deleting",
+														"deleted"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"resource_id",
+												"resource_type",
+												"resource_account_id",
+												"meta",
+												"status",
+												"created",
+												"modified",
+												"resource_version"
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Share resource updated."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update share resource failure."
+			},
+			"5XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update share resource failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a share resource",
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

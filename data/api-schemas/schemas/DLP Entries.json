@@ -1,0 +1,3251 @@
+{
+	"DELETE /accounts/{account_id}/dlp/entries/{entry_id}": {
+		"description": "Deletes a DLP custom entry.",
+		"operationId": "dlp-entries-delete-entry",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "entry_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete custom entry response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete custom entry failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete custom entry",
+		"tags": [
+			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/dlp/entries": {
+		"description": "Lists all DLP entries in an account.",
+		"operationId": "dlp-entries-list-all-entries",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"pattern": {
+																		"properties": {
+																			"regex": {
+																				"type": "string"
+																			},
+																			"validation": {
+																				"allOf": [
+																					{
+																						"deprecated": true,
+																						"enum": [
+																							"luhn"
+																						],
+																						"type": "string"
+																					}
+																				]
+																			}
+																		},
+																		"required": [
+																			"regex"
+																		],
+																		"type": "object"
+																	},
+																	"profile_id": {
+																		"format": "uuid",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"updated_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"created_at",
+																	"updated_at",
+																	"pattern",
+																	"enabled"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"custom"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Custom Entry"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"confidence": {
+																		"properties": {
+																			"ai_context_available": {
+																				"description": "Indicates whether this entry has AI remote service validation.",
+																				"type": "boolean"
+																			},
+																			"available": {
+																				"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
+																				"type": "boolean"
+																			}
+																		},
+																		"required": [
+																			"available",
+																			"ai_context_available"
+																		],
+																		"type": "object"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"profile_id": {
+																		"format": "uuid",
+																		"nullable": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"enabled",
+																	"confidence"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"predefined"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Predefined Entry"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"profile_id": {
+																		"format": "uuid",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"updated_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"created_at",
+																	"updated_at",
+																	"enabled"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"integration"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Integration Entry"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"case_sensitive": {
+																		"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																		"type": "boolean"
+																	},
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"secret": {
+																		"type": "boolean"
+																	},
+																	"updated_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"created_at",
+																	"updated_at",
+																	"enabled",
+																	"secret",
+																	"case_sensitive"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"exact_data"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Exact Data Entry"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"updated_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"created_at",
+																	"updated_at",
+																	"enabled"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"document_fingerprint"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Document Fingerprint Entry"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"created_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"profile_id": {
+																		"format": "uuid",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"updated_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"word_list": {}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"created_at",
+																	"updated_at",
+																	"word_list",
+																	"enabled"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"word_list"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Word List Entry"
+													}
+												]
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List all entries response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List all entries failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List all entries",
+		"tags": [
+			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"GET /accounts/{account_id}/dlp/entries/{entry_id}": {
+		"description": "Fetches a DLP entry by ID.",
+		"operationId": "dlp-entries-get-dlp-entry",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "entry_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"pattern": {
+																	"properties": {
+																		"regex": {
+																			"type": "string"
+																		},
+																		"validation": {
+																			"allOf": [
+																				{
+																					"deprecated": true,
+																					"enum": [
+																						"luhn"
+																					],
+																					"type": "string"
+																				}
+																			]
+																		}
+																	},
+																	"required": [
+																		"regex"
+																	],
+																	"type": "object"
+																},
+																"profile_id": {
+																	"format": "uuid",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"created_at",
+																"updated_at",
+																"pattern",
+																"enabled"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"custom"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Custom Entry"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"confidence": {
+																	"properties": {
+																		"ai_context_available": {
+																			"description": "Indicates whether this entry has AI remote service validation.",
+																			"type": "boolean"
+																		},
+																		"available": {
+																			"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"available",
+																		"ai_context_available"
+																	],
+																	"type": "object"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"profile_id": {
+																	"format": "uuid",
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"enabled",
+																"confidence"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"predefined"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Predefined Entry"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"profile_id": {
+																	"format": "uuid",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"created_at",
+																"updated_at",
+																"enabled"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"integration"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Integration Entry"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"case_sensitive": {
+																	"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																	"type": "boolean"
+																},
+																"created_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"secret": {
+																	"type": "boolean"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"created_at",
+																"updated_at",
+																"enabled",
+																"secret",
+																"case_sensitive"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"exact_data"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Exact Data Entry"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"created_at",
+																"updated_at",
+																"enabled"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"document_fingerprint"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Document Fingerprint Entry"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"profile_id": {
+																	"format": "uuid",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"word_list": {}
+															},
+															"required": [
+																"id",
+																"name",
+																"created_at",
+																"updated_at",
+																"word_list",
+																"enabled"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"word_list"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Word List Entry"
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get entry response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get entry failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get DLP Entry",
+		"tags": [
+			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/dlp/entries": {
+		"description": "Creates a DLP custom entry.",
+		"operationId": "dlp-entries-create-entry",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enabled": {
+								"type": "boolean"
+							},
+							"name": {
+								"type": "string"
+							},
+							"pattern": {
+								"properties": {
+									"regex": {
+										"type": "string"
+									},
+									"validation": {
+										"allOf": [
+											{
+												"deprecated": true,
+												"enum": [
+													"luhn"
+												],
+												"type": "string"
+											}
+										]
+									}
+								},
+								"required": [
+									"regex"
+								],
+								"type": "object"
+							},
+							"profile_id": {
+								"format": "uuid",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"profile_id",
+							"pattern",
+							"enabled"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "A new entry to create.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"pattern": {
+													"properties": {
+														"regex": {
+															"type": "string"
+														},
+														"validation": {
+															"allOf": [
+																{
+																	"deprecated": true,
+																	"enum": [
+																		"luhn"
+																	],
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"regex"
+													],
+													"type": "object"
+												},
+												"profile_id": {
+													"format": "uuid",
+													"nullable": true,
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_at",
+												"updated_at",
+												"pattern",
+												"enabled"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create new custom entry response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create new custom entry failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create custom entry",
+		"tags": [
+			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"PUT /accounts/{account_id}/dlp/entries/{entry_id}": {
+		"description": "Updates a DLP entry.",
+		"operationId": "dlp-entries-update-entry",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "entry_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"oneOf": [
+									{
+										"allOf": [
+											{
+												"properties": {
+													"name": {
+														"type": "string"
+													},
+													"pattern": {
+														"properties": {
+															"regex": {
+																"type": "string"
+															},
+															"validation": {
+																"allOf": [
+																	{
+																		"deprecated": true,
+																		"enum": [
+																			"luhn"
+																		],
+																		"type": "string"
+																	}
+																]
+															}
+														},
+														"required": [
+															"regex"
+														],
+														"type": "object"
+													}
+												},
+												"required": [
+													"name",
+													"pattern"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"type": {
+														"enum": [
+															"custom"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"type"
+												],
+												"type": "object"
+											}
+										]
+									},
+									{
+										"properties": {
+											"type": {
+												"enum": [
+													"predefined"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"type"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"enum": [
+													"integration"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"type"
+										],
+										"type": "object"
+									}
+								]
+							},
+							{
+								"properties": {
+									"enabled": {
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"enabled"
+								],
+								"type": "object"
+							}
+						]
+					}
+				}
+			},
+			"description": "Update to be applied to the entry.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"pattern": {
+																	"properties": {
+																		"regex": {
+																			"type": "string"
+																		},
+																		"validation": {
+																			"allOf": [
+																				{
+																					"deprecated": true,
+																					"enum": [
+																						"luhn"
+																					],
+																					"type": "string"
+																				}
+																			]
+																		}
+																	},
+																	"required": [
+																		"regex"
+																	],
+																	"type": "object"
+																},
+																"profile_id": {
+																	"format": "uuid",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"created_at",
+																"updated_at",
+																"pattern",
+																"enabled"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"custom"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Custom Entry"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"confidence": {
+																	"properties": {
+																		"ai_context_available": {
+																			"description": "Indicates whether this entry has AI remote service validation.",
+																			"type": "boolean"
+																		},
+																		"available": {
+																			"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"available",
+																		"ai_context_available"
+																	],
+																	"type": "object"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"profile_id": {
+																	"format": "uuid",
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"enabled",
+																"confidence"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"predefined"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Predefined Entry"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"profile_id": {
+																	"format": "uuid",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"created_at",
+																"updated_at",
+																"enabled"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"integration"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Integration Entry"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"case_sensitive": {
+																	"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																	"type": "boolean"
+																},
+																"created_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"secret": {
+																	"type": "boolean"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"created_at",
+																"updated_at",
+																"enabled",
+																"secret",
+																"case_sensitive"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"exact_data"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Exact Data Entry"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"created_at",
+																"updated_at",
+																"enabled"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"document_fingerprint"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Document Fingerprint Entry"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"profile_id": {
+																	"format": "uuid",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"word_list": {}
+															},
+															"required": [
+																"id",
+																"name",
+																"created_at",
+																"updated_at",
+																"word_list",
+																"enabled"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"word_list"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Word List Entry"
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update entry response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update entry failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update entry",
+		"tags": [
+			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"PUT /accounts/{account_id}/dlp/entries/custom/{entry_id}": {
+		"description": "Updates a DLP custom entry.",
+		"operationId": "dlp-entries-update-custom-entry",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "entry_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"pattern": {
+										"properties": {
+											"regex": {
+												"type": "string"
+											},
+											"validation": {
+												"allOf": [
+													{
+														"deprecated": true,
+														"enum": [
+															"luhn"
+														],
+														"type": "string"
+													}
+												]
+											}
+										},
+										"required": [
+											"regex"
+										],
+										"type": "object"
+									}
+								},
+								"required": [
+									"name",
+									"pattern"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"enabled": {
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"enabled"
+								],
+								"type": "object"
+							}
+						]
+					}
+				}
+			},
+			"description": "Update to be applied to the entry.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"pattern": {
+													"properties": {
+														"regex": {
+															"type": "string"
+														},
+														"validation": {
+															"allOf": [
+																{
+																	"deprecated": true,
+																	"enum": [
+																		"luhn"
+																	],
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"regex"
+													],
+													"type": "object"
+												},
+												"profile_id": {
+													"format": "uuid",
+													"nullable": true,
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_at",
+												"updated_at",
+												"pattern",
+												"enabled"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update entry response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update entry failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update custom entry",
+		"tags": [
+			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"PUT /accounts/{account_id}/dlp/entries/predefined/{entry_id}": {
+		"description": "Updates a DLP entry.",
+		"operationId": "dlp-entries-update-predefined-entry",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "entry_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enabled": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"enabled"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "settings to enable or disable predefined entry in owning profile",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"confidence": {
+													"properties": {
+														"ai_context_available": {
+															"description": "Indicates whether this entry has AI remote service validation.",
+															"type": "boolean"
+														},
+														"available": {
+															"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"available",
+														"ai_context_available"
+													],
+													"type": "object"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"profile_id": {
+													"format": "uuid",
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"enabled",
+												"confidence"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update predefined entry response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update entry failure response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update predefined entry",
+		"tags": [
+			"DLP Entries"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	}
+}
