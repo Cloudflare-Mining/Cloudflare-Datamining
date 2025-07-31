@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6874049?gh_jid=6874049",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7122467?gh_jid=7122467",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3143014,
+	"internal_job_id": 3207381,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -26,7 +26,9 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
-				"Seattle, US"
+				"Denver, US",
+				"Toronto, Canada",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -39,12 +41,12 @@
 			"value_type": "multi_select"
 		}
 	],
-	"id": 6874049,
-	"updated_at": "2025-07-31T13:53:42-04:00",
+	"id": 7122467,
+	"updated_at": "2025-07-31T14:47:00-04:00",
 	"requisition_id": null,
-	"title": "Product Manager, Marketing Engineering & Growth",
+	"title": "Product Manager, Browser Isolation",
 	"company_name": "Cloudflare",
-	"first_published": "2025-05-12T11:59:04-04:00",
+	"first_published": "2025-07-31T14:47:00-04:00",
 	"departments": [
 		{
 			"id": 29072,
@@ -62,11 +64,25 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 72960,
-			"name": "Seattle, WA",
-			"location": null,
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 73335,
+			"name": "Toronto, ON",
+			"location": "Toronto, Ontario, Canada",
+			"child_ids": [],
+			"parent_id": 75883
 		}
 	]
 }
