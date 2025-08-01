@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.5.1
+
+### Patch Changes
+
+- b109159c50: add innovation-thinking and innovation-thinking-outline
+
 ## 13.5.0
 
 ### Minor Changes
