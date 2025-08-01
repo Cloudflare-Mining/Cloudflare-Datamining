@@ -8,7 +8,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1">Part 1</a>, the merits and tradeoffs of <i>subdirectories</i> and <i>subdomains</i> were discussed. &nbsp;The subdirectory strategy is typically superior to subdomains because subdomains suffer from <i>keyword</i> and <i>backlink dilution</i>. &nbsp;The subdirectory strategy more effectively boosts a site's search rankings by ensuring that every keyword is attributed to the root domain instead of diluting across subdomains.</p>
+	<p>In Part 1, the merits and tradeoffs of <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1"><i>subdirectories and subdomains</i></a> were discussed. &nbsp;The subdirectory strategy is typically superior to subdomains because subdomains suffer from <i>keyword</i> and <i>backlink dilution</i>. &nbsp;The subdirectory strategy more effectively boosts a site's search rankings by ensuring that every keyword is attributed to the root domain instead of diluting across subdomains.</p>
 	<div class="flex anchor relative">
 		<h4 id="subdirectory-strategy-without-the-nginx">Subdirectory Strategy without the NGINX</h4>
 		<a href="https://blog.cloudflare.com/#subdirectory-strategy-without-the-nginx" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -17,7 +17,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>In the <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1">first part</a>, our friend Bob set up a hosted Ghost blog at <i>bobtopia.coolghosthost.com</i> that he connected to <i>blog.bobtopia.com</i> using a <code>CNAME</code> DNS record. &nbsp;But what if he wanted his blog to live at <i>bobtopia.com/blog</i> to gain the SEO advantages of subdirectories?</p>
+	<p>In the first part, our friend Bob set up a hosted Ghost blog at <i>bobtopia.coolghosthost.com</i> that he connected to <i>blog.bobtopia.com</i> using a <code>CNAME</code> DNS record. &nbsp;But what if he wanted his blog to live at <i>bobtopia.com/blog</i> to gain the SEO advantages of subdirectories?</p>
 	<p>A reverse proxy like NGINX is normally needed to route traffic from subdirectories to remotely hosted services. &nbsp;We'll demonstrate how to implement the subdirectory strategy with Cloudflare Workers and eliminate our dependency on NGINX. (Cloudflare Workers are <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless">serverless</a> functions that run on the Cloudflare global network.)</p>
 	<div class="flex anchor relative">
 		<h4 id="back-to-bobtopia">Back to Bobtopia</h4>
@@ -172,4 +172,5 @@ addEventListener("fetch", event =&gt; {
 	<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev">workers.dev</a>. <i>If you’re already a Cloudflare customer, you can add Workers to your existing website</i> <a href="https://dash.cloudflare.com/workers"><i>here</i></a>.</p>
 	<p><a href="https://workers.dev">Reserve a workers.dev subdomain</a></p>
 	<hr>
+	<p></p>
 </div>

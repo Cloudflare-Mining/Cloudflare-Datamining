@@ -91,7 +91,7 @@
 	</div>
 	<p>Chunked encoding with HLS and CMAF is growing in use across the web today. Part of what makes this technique great is that HTTP chunked encoding is widely supported by CDNs – it’s been part of the HTTP spec for 20 years.</p>
 	<p>CDN support is critical because it allows low-latency live video to scale up and reach audiences of thousands or millions of concurrent viewers – something that’s currently very difficult to do with other, non-HTTP based protocols.</p>
-	<p>Unfortunately, even if you enable chunking to optimise delivery, your CDN may be working against you by buffering the entire segment. To understand why consider what happens when many people request a live segment at the same time:</p>
+	<p>Unfortunately, even if you enable chunking to optimise delivery, <a href="https://www.cloudflare.com/learning/cdn/common-cdn-issues">your CDN may be working against you</a> by buffering the entire segment. To understand why consider what happens when many people request a live segment at the same time:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72cAKXFSt7jASVx88HncQH/70ac4a2acffeeab6fc60cd2e797392af/Bulk-Request.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
