@@ -120,6 +120,14 @@
 														"description": "A kebab-case identifier derived from the bot name.",
 														"example": "gptbot",
 														"type": "string"
+													},
+													"userAgentPatterns": {
+														"items": {
+															"description": "User agent patterns that identify the bot in web traffic.",
+															"example": "GPTBot",
+															"type": "string"
+														},
+														"type": "array"
 													}
 												},
 												"required": [
@@ -127,7 +135,8 @@
 													"name",
 													"description",
 													"operator",
-													"category"
+													"category",
+													"userAgentPatterns"
 												],
 												"type": "object"
 											},
@@ -813,7 +822,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get bots' HTTP requests distribution by dimension",
+		"summary": "Get bots HTTP requests distribution by dimension",
 		"tags": [
 			"Radar Bots"
 		],
