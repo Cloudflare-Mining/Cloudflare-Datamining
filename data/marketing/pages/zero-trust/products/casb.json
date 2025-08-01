@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-03-18T14:27:03.866Z",
-					"updatedAt": "2025-06-26T17:59:24.622Z"
+					"updatedAt": "2025-08-01T16:30:43.644Z"
 				},
 				"contentfulId": "4oTSpffYgFNj78MlHYQceF",
 				"contentTypeId": "page",
@@ -3885,6 +3885,185 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "6n9CTn1Ow0lr8EgZE4cbbb",
+						"bladeName": "Cloudflare CASB FAQs",
+						"title": "FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7p4HwU9STBahEBSYNTWkGa",
+								"title": "What is Cloudflare's Cloud Access Security Broker (CASB) and what problems does it solve?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's CASB is a modern, SASE-native solution that offers extensive visibility and control over software-as-a-service (SaaS) applications. It helps to eliminate the risk of compromise, prevent data loss, and ensure compliance violations are avoided. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5hwJ5uYTKzHDaICeJi5r2b",
+								"title": "How does Cloudflare's CASB help with data protection?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's CASB provides granular data protection by allowing organizations to apply consistent data loss prevention (DLP) controls across cloud applications. This helps to prevent accidental or risky data sharing, as well as data exfiltration. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5LnvuZQ1CYhhRaJF0BKjyh",
+								"title": "Can Cloudflare's CASB help organizations meet compliance requirements?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's CASB simplifies compliance efforts by offering better visibility across an organization's application portfolio. Cloudflare also helps to minimize data loss with DLP and other data protections. These features assist organizations with meeting various regulatory requirements, including GDPR, CCPA, and HIPAA. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "gNcagXUi5yU9nBK4q5moI",
+								"title": "What are the primary methods Cloudflare's CASB uses to secure SaaS applications?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's CASB uses a multimode approach to secure SaaS applications. It continuously scans applications for misconfigurations, exposed files, and suspicious activities to secure data at rest. Additionally, it deploys inline CASB functionalities through Zero Trust Network Access (ZTNA), Secure Web Gateway (SWG), and Remote Browser Isolation (RBI) controls. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4OeRv7LQSR6vziEfLYEAYX",
+								"title": " How does Cloudflare's CASB address the issue of \"shadow IT\"?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's CASB helps to identify shadow IT by logging every connection and request. This reveals unsanctioned SaaS applications and user actions within them, allowing organizations to easily build and enforce policies to either block or permit access to such applications.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
