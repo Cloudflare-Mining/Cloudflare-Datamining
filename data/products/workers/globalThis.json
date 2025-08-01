@@ -306,6 +306,7 @@
 			"nonclass_entrypoint_reuses_ctx_across_invocations": "boolean",
 			"pedantic_wpt": "boolean",
 			"python_external_packages": "boolean",
+			"python_no_global_handlers": "boolean",
 			"python_workers": "boolean",
 			"queue_consumer_no_wait_for_wait_until": "boolean",
 			"queues_json_messages": "boolean",
@@ -2510,6 +2511,20 @@
 		},
 		"RATE_LIMITER_BINDING": {
 			"limit": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			}
+		},
+		"SECRETS_STORE_BINDING": {
+			"connect": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"fetch": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -10943,6 +10958,73 @@
 				"tls": "boolean"
 			}
 		},
+		"querystring": {
+			"decode": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"encode": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"escape": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"parse": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"stringify": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"unescape": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"unescapeBuffer": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			}
+		},
 		"stream": {
 			"Stream": {
 				"__proto": "function",
@@ -15982,6 +16064,107 @@
 					"name": "undefined",
 					"prototype": "undefined"
 				}
+			}
+		},
+		"timers": {
+			"promises": {
+				"scheduler": {},
+				"setImmediate": {
+					"__proto": "object",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"setInterval": {
+					"__proto": "object",
+					"__type": "function",
+					"length": "number",
+					"name": "string",
+					"_prototype": {}
+				},
+				"setTimeout": {
+					"__proto": "object",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				}
+			},
+			"setTimeout": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"clearTimeout": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"setImmediate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"clearImmediate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"setInterval": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"clearInterval": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"active": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"unenroll": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"enroll": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
 			}
 		},
 		"tls": {
