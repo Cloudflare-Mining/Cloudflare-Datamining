@@ -1399,7 +1399,7 @@
 		]
 	},
 	"prg-banner-whitespace-removal": {
-		"enabled": false
+		"enabled": true
 	},
 	"prg-chat-widget-upsell": {
 		"enabled": true
@@ -1565,6 +1565,13 @@
 		"branches": [
 			"baseline",
 			"experiment"
+		]
+	},
+	"prg-welcome-path-questionnaire-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variant-a"
 		]
 	},
 	"prg-zero-trust-account-home": {
