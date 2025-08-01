@@ -105,6 +105,8 @@ import Hyperdrive from './Hyperdrive';
 import Image from './Image';
 import Inbox from './Inbox';
 import InfoSign from './InfoSign';
+import InnovationThinkingOutline from './InnovationThinkingOutline';
+import InnovationThinkingSolid from './InnovationThinkingSolid';
 import InternetBrowser from './InternetBrowser';
 import Key from './Key';
 import Leaf from './Leaf';
@@ -333,6 +335,8 @@ export default {
   image: Image,
   inbox: Inbox,
   'info-sign': InfoSign,
+  'innovation-thinking-outline': InnovationThinkingOutline,
+  'innovation-thinking-solid': InnovationThinkingSolid,
   'internet-browser': InternetBrowser,
   key: Key,
   leaf: Leaf,

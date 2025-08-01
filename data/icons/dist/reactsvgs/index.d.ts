@@ -107,6 +107,8 @@ declare const _default: {
     image: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     inbox: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'info-sign': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'innovation-thinking-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'innovation-thinking-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'internet-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     key: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     leaf: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
