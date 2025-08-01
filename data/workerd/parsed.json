@@ -3027,6 +3027,14 @@
 						"compatEnableFlag": "enable_nodejs_fs_module",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableNodeJsOsModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_os_module",
+						"compatEnableFlag": "enable_nodejs_os_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
