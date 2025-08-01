@@ -1311,7 +1311,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"type": "object",
@@ -1372,13 +1372,11 @@
 																			"default": "",
 																			"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
 																			"enum": [
-																				"",
 																				"customized_block_page",
 																				"redirect_uri"
 																			],
 																			"type": "string",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "If mode is customized_block_page: block page title.",
@@ -1836,7 +1834,7 @@
 																						}
 																					},
 																					"type": "object",
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"type": "object",
@@ -1897,13 +1895,11 @@
 																					"default": "",
 																					"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
 																					"enum": [
-																						"",
 																						"customized_block_page",
 																						"redirect_uri"
 																					],
 																					"type": "string",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-auditable": true
 																				},
 																				"name": {
 																					"description": "If mode is customized_block_page: block page title.",
@@ -3494,7 +3490,7 @@
 													}
 												},
 												"type": "object",
-												"x-stainless-terraform-configurability": "optional"
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object",
@@ -3555,13 +3551,11 @@
 												"default": "",
 												"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
 												"enum": [
-													"",
 													"customized_block_page",
 													"redirect_uri"
 												],
 												"type": "string",
-												"x-auditable": true,
-												"x-stainless-terraform-configurability": "optional"
+												"x-auditable": true
 											},
 											"name": {
 												"description": "If mode is customized_block_page: block page title.",
@@ -3994,7 +3988,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"type": "object",
@@ -4055,13 +4049,11 @@
 																			"default": "",
 																			"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
 																			"enum": [
-																				"",
 																				"customized_block_page",
 																				"redirect_uri"
 																			],
 																			"type": "string",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "If mode is customized_block_page: block page title.",
@@ -4519,7 +4511,7 @@
 																						}
 																					},
 																					"type": "object",
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"type": "object",
@@ -4580,13 +4572,11 @@
 																					"default": "",
 																					"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
 																					"enum": [
-																						"",
 																						"customized_block_page",
 																						"redirect_uri"
 																					],
 																					"type": "string",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-auditable": true
 																				},
 																				"name": {
 																					"description": "If mode is customized_block_page: block page title.",
@@ -5863,7 +5853,7 @@
 													}
 												},
 												"type": "object",
-												"x-stainless-terraform-configurability": "optional"
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object",
@@ -5924,13 +5914,11 @@
 												"default": "",
 												"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
 												"enum": [
-													"",
 													"customized_block_page",
 													"redirect_uri"
 												],
 												"type": "string",
-												"x-auditable": true,
-												"x-stainless-terraform-configurability": "optional"
+												"x-auditable": true
 											},
 											"name": {
 												"description": "If mode is customized_block_page: block page title.",
@@ -6363,7 +6351,7 @@
 																				}
 																			},
 																			"type": "object",
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"type": "object",
@@ -6424,13 +6412,11 @@
 																			"default": "",
 																			"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
 																			"enum": [
-																				"",
 																				"customized_block_page",
 																				"redirect_uri"
 																			],
 																			"type": "string",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "If mode is customized_block_page: block page title.",
@@ -6888,7 +6874,7 @@
 																						}
 																					},
 																					"type": "object",
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"type": "object",
@@ -6949,13 +6935,11 @@
 																					"default": "",
 																					"description": "Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.",
 																					"enum": [
-																						"",
 																						"customized_block_page",
 																						"redirect_uri"
 																					],
 																					"type": "string",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "optional"
+																					"x-auditable": true
 																				},
 																				"name": {
 																					"description": "If mode is customized_block_page: block page title.",

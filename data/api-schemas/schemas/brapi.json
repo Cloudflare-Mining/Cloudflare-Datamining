@@ -560,10 +560,6 @@
 										"type": "string"
 									},
 									"viewport": {
-										"default": {
-											"height": 1080,
-											"width": 1920
-										},
 										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
 										"properties": {
 											"deviceScaleFactor": {
@@ -1169,27 +1165,6 @@
 										},
 										"type": "array"
 									},
-									"custom_ai": {
-										"description": "Optional list of custom AI models to use for the request. The models will be tried in the order provided, and in case a model returns an error, the next one will be used as fallback.",
-										"items": {
-											"properties": {
-												"authorization": {
-													"description": "Authorization token for the AI model: `Bearer <token>`.",
-													"type": "string"
-												},
-												"model": {
-													"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`",
-													"type": "string"
-												}
-											},
-											"required": [
-												"model",
-												"authorization"
-											],
-											"type": "object"
-										},
-										"type": "array"
-									},
 									"emulateMediaType": {
 										"type": "string"
 									},
@@ -1440,10 +1415,6 @@
 										"type": "string"
 									},
 									"viewport": {
-										"default": {
-											"height": 1080,
-											"width": 1920
-										},
 										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
 										"properties": {
 											"deviceScaleFactor": {
@@ -2265,10 +2236,6 @@
 										"type": "string"
 									},
 									"viewport": {
-										"default": {
-											"height": 1080,
-											"width": 1920
-										},
 										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
 										"properties": {
 											"deviceScaleFactor": {
@@ -3092,10 +3059,6 @@
 										"type": "string"
 									},
 									"viewport": {
-										"default": {
-											"height": 1080,
-											"width": 1920
-										},
 										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
 										"properties": {
 											"deviceScaleFactor": {
@@ -4066,10 +4029,6 @@
 										"type": "string"
 									},
 									"viewport": {
-										"default": {
-											"height": 1080,
-											"width": 1920
-										},
 										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
 										"properties": {
 											"deviceScaleFactor": {
@@ -4870,10 +4829,6 @@
 										"type": "string"
 									},
 									"viewport": {
-										"default": {
-											"height": 1080,
-											"width": 1920
-										},
 										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
 										"properties": {
 											"deviceScaleFactor": {
@@ -5863,10 +5818,6 @@
 										"type": "string"
 									},
 									"viewport": {
-										"default": {
-											"height": 1080,
-											"width": 1920
-										},
 										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
 										"properties": {
 											"deviceScaleFactor": {
@@ -5930,8 +5881,7 @@
 								},
 								"type": "object"
 							}
-						],
-						"default": {}
+						]
 					}
 				}
 			}
@@ -6779,10 +6729,6 @@
 										"type": "string"
 									},
 									"viewport": {
-										"default": {
-											"height": 1080,
-											"width": 1920
-										},
 										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport).",
 										"properties": {
 											"deviceScaleFactor": {
