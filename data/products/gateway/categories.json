@@ -773,7 +773,7 @@
 	{
 		"name": "Security threats",
 		"id": 21,
-		"description": "Sites that contain security threats like malware, phishing, cryptomining and other security threats.",
+		"description": "Sites that contain security threats like malware, phishing, scam, cryptomining and other security threats.",
 		"class": "free",
 		"subcategories": [
 			{
@@ -870,6 +870,15 @@
 				"name": "Private IP Address",
 				"id": 134,
 				"description": "Domains that resolve to private IP Addresses",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Scam",
+				"id": 191,
+				"description": "Fraudulent websites and schemes designed to trick victims into giving away money or personal information.",
 				"class": "free",
 				"subcategories": null,
 				"beta": false,
