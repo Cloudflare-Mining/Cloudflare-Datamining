@@ -297,6 +297,24 @@
 					"example": true,
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of results.",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 200,
+					"description": "Number of results per page.",
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {
@@ -5076,6 +5094,24 @@
 					"example": "ALL_EMPLOYEES",
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of results.",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 100,
+					"description": "Number of results per page.",
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {
@@ -5464,6 +5500,24 @@
 					"description": "The name of the SCIM User resource.",
 					"example": "John Smith",
 					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of results.",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 100,
+					"description": "Number of results per page.",
+					"type": "integer"
 				}
 			}
 		],

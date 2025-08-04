@@ -170,6 +170,24 @@
 					"description": "The IdP-generated Id of the SCIM resource.",
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of results.",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Number of results per page.",
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {

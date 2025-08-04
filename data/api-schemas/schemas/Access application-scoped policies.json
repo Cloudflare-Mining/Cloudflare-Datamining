@@ -316,6 +316,24 @@
 					"type": "string",
 					"x-auditable": true
 				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of results.",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 200,
+					"description": "Number of results per page.",
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {

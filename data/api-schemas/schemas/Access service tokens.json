@@ -353,6 +353,24 @@
 					"description": "Search for service tokens by other listed query parameters.",
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of results.",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 1000,
+					"description": "Number of results per page.",
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {
