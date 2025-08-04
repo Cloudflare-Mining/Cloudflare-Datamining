@@ -1361,6 +1361,24 @@
 								],
 								"title": "Image Text To Text",
 								"type": "object"
+							},
+							{
+								"properties": {
+									"image": {
+										"description": "Image in base64 encoded format.",
+										"minLength": 1,
+										"type": "string"
+									},
+									"text": {
+										"items": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
+								"title": "Multimodal Embeddings",
+								"type": "object"
 							}
 						],
 						"type": "object"
@@ -1634,6 +1652,27 @@
 												}
 											},
 											"title": "Image Text To Text",
+											"type": "object"
+										},
+										{
+											"properties": {
+												"data": {
+													"items": {
+														"items": {
+															"type": "number"
+														},
+														"type": "array"
+													},
+													"type": "array"
+												},
+												"shape": {
+													"items": {
+														"type": "number"
+													},
+													"type": "array"
+												}
+											},
+											"title": "Multimodal Embeddings",
 											"type": "object"
 										}
 									],

@@ -1,0 +1,3151 @@
+{
+	"GET /radar/ct/authorities": {
+		"description": "Retrieves a list of certificate authorities.",
+		"operationId": "radar-get-certificate-authorities",
+		"parameters": [
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Skips the specified number of objects before fetching the results.",
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"description": "Skips the specified number of objects before fetching the results.",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"certificateAuthorities": {
+											"items": {
+												"properties": {
+													"certificateRecordType": {
+														"description": "Specifies the type of certificate in the trust chain.",
+														"enum": [
+															"ROOT_CERTIFICATE",
+															"INTERMEDIATE_CERTIFICATE"
+														],
+														"type": "string"
+													},
+													"country": {
+														"description": "The two-letter ISO country code where the CA organization is based.",
+														"example": "PT",
+														"type": "string"
+													},
+													"countryName": {
+														"description": "The full country name corresponding to the country code.",
+														"example": "Portugal",
+														"type": "string"
+													},
+													"name": {
+														"description": "The full name of the certificate authority (CA).",
+														"example": "MULTICERT Advanced Certification Authority 005",
+														"type": "string"
+													},
+													"owner": {
+														"description": "The organization that owns and operates the CA.",
+														"example": "MULTICERT",
+														"type": "string"
+													},
+													"parentName": {
+														"description": "The name of the parent/root certificate authority that issued this intermediate certificate.",
+														"example": "MULTICERT Root Certification Authority 01",
+														"type": "string"
+													},
+													"parentSha256Fingerprint": {
+														"description": "The SHA-256 fingerprint of the parent certificate.",
+														"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3",
+														"type": "string"
+													},
+													"revocationStatus": {
+														"description": "The current revocation status of a Certificate Authority (CA) certificate.",
+														"enum": [
+															"NOT_REVOKED",
+															"REVOKED",
+															"PARENT_CERT_REVOKED"
+														],
+														"type": "string"
+													},
+													"sha256Fingerprint": {
+														"description": "The SHA-256 fingerprint of the intermediate certificate.",
+														"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3",
+														"type": "string"
+													}
+												},
+												"required": [
+													"sha256Fingerprint",
+													"name",
+													"owner",
+													"parentName",
+													"parentSha256Fingerprint",
+													"certificateRecordType",
+													"country",
+													"countryName",
+													"revocationStatus"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"certificateAuthorities"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List certificate authorities",
+		"tags": [
+			"Radar Certificate Transparency"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/ct/authorities/{ca_slug}": {
+		"description": "Retrieves the requested CA information.",
+		"operationId": "radar-get-certificate-authority-details",
+		"parameters": [
+			{
+				"description": "Certificate authority SHA256 fingerprint.",
+				"in": "path",
+				"name": "ca_slug",
+				"required": true,
+				"schema": {
+					"description": "Certificate authority SHA256 fingerprint.",
+					"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"certificateAuthority": {
+											"properties": {
+												"appleStatus": {
+													"description": "The inclusion status of a Certificate Authority (CA) in the trust store.",
+													"enum": [
+														"INCLUDED",
+														"NOT_YET_INCLUDED",
+														"NOT_INCLUDED",
+														"NOT_BEFORE",
+														"REMOVED",
+														"DISABLED",
+														"BLOCKED"
+													],
+													"type": "string"
+												},
+												"authorityKeyIdentifier": {
+													"description": "The authorityKeyIdentifier value extracted from the certificate PEM.",
+													"example": "1TkcnFtvBKqilUzvIN0pdKTFRXE",
+													"type": "string"
+												},
+												"certificateRecordType": {
+													"description": "Specifies the type of certificate in the trust chain.",
+													"enum": [
+														"ROOT_CERTIFICATE",
+														"INTERMEDIATE_CERTIFICATE"
+													],
+													"type": "string"
+												},
+												"chromeStatus": {
+													"description": "The inclusion status of a Certificate Authority (CA) in the trust store.",
+													"enum": [
+														"INCLUDED",
+														"NOT_YET_INCLUDED",
+														"NOT_INCLUDED",
+														"NOT_BEFORE",
+														"REMOVED",
+														"DISABLED",
+														"BLOCKED"
+													],
+													"type": "string"
+												},
+												"country": {
+													"description": "The two-letter ISO country code where the CA organization is based.",
+													"example": "PT",
+													"type": "string"
+												},
+												"countryName": {
+													"description": "The full country name corresponding to the country code.",
+													"example": "Portugal",
+													"type": "string"
+												},
+												"microsoftStatus": {
+													"description": "The inclusion status of a Certificate Authority (CA) in the trust store.",
+													"enum": [
+														"INCLUDED",
+														"NOT_YET_INCLUDED",
+														"NOT_INCLUDED",
+														"NOT_BEFORE",
+														"REMOVED",
+														"DISABLED",
+														"BLOCKED"
+													],
+													"type": "string"
+												},
+												"mozillaStatus": {
+													"description": "The inclusion status of a Certificate Authority (CA) in the trust store.",
+													"enum": [
+														"INCLUDED",
+														"NOT_YET_INCLUDED",
+														"NOT_INCLUDED",
+														"NOT_BEFORE",
+														"REMOVED",
+														"DISABLED",
+														"BLOCKED"
+													],
+													"type": "string"
+												},
+												"name": {
+													"description": "The full name of the certificate authority (CA).",
+													"example": "MULTICERT Advanced Certification Authority 005",
+													"type": "string"
+												},
+												"owner": {
+													"description": "The organization that owns and operates the CA.",
+													"example": "MULTICERT",
+													"type": "string"
+												},
+												"parentName": {
+													"description": "The name of the parent/root certificate authority that issued this intermediate certificate.",
+													"example": "MULTICERT Root Certification Authority 01",
+													"type": "string"
+												},
+												"parentSha256Fingerprint": {
+													"description": "The SHA-256 fingerprint of the parent certificate.",
+													"example": "604D32D036895AED3BFEFAEB727C009EC0F2B3CDFA42A1C71730E6A72C3BE9D4",
+													"type": "string"
+												},
+												"related": {
+													"description": "CAs from the same owner.",
+													"items": {
+														"properties": {
+															"certificateRecordType": {
+																"description": "Specifies the type of certificate in the trust chain.",
+																"enum": [
+																	"ROOT_CERTIFICATE",
+																	"INTERMEDIATE_CERTIFICATE"
+																],
+																"type": "string"
+															},
+															"name": {
+																"description": "The full name of the certificate authority (CA).",
+																"example": "MULTICERT Advanced Certification Authority 005",
+																"type": "string"
+															},
+															"revocationStatus": {
+																"description": "The current revocation status of a Certificate Authority (CA) certificate.",
+																"enum": [
+																	"NOT_REVOKED",
+																	"REVOKED",
+																	"PARENT_CERT_REVOKED"
+																],
+																"type": "string"
+															},
+															"sha256Fingerprint": {
+																"description": "The SHA-256 fingerprint of the intermediate certificate.",
+																"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3",
+																"type": "string"
+															}
+														},
+														"required": [
+															"sha256Fingerprint",
+															"name",
+															"revocationStatus",
+															"certificateRecordType"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"revocationStatus": {
+													"description": "The current revocation status of a Certificate Authority (CA) certificate.",
+													"enum": [
+														"NOT_REVOKED",
+														"REVOKED",
+														"PARENT_CERT_REVOKED"
+													],
+													"type": "string"
+												},
+												"sha256Fingerprint": {
+													"description": "The SHA-256 fingerprint of the intermediate certificate.",
+													"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3",
+													"type": "string"
+												},
+												"subjectKeyIdentifier": {
+													"description": "The subjectKeyIdentifier value extracted from the certificate PEM.",
+													"example": "VbqXmCURhMmiMtD7nFY6iCr4z",
+													"type": "string"
+												},
+												"validFrom": {
+													"description": "The start date of the certificate’s validity period (ISO format).",
+													"example": "2019-12-09",
+													"type": "string"
+												},
+												"validTo": {
+													"description": "The end date of the certificate’s validity period (ISO format).",
+													"example": "2032-06-08",
+													"type": "string"
+												}
+											},
+											"required": [
+												"sha256Fingerprint",
+												"name",
+												"owner",
+												"parentName",
+												"parentSha256Fingerprint",
+												"certificateRecordType",
+												"country",
+												"countryName",
+												"chromeStatus",
+												"appleStatus",
+												"microsoftStatus",
+												"mozillaStatus",
+												"revocationStatus",
+												"validFrom",
+												"validTo",
+												"authorityKeyIdentifier",
+												"subjectKeyIdentifier",
+												"related"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"certificateAuthority"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get certificate authority details",
+		"tags": [
+			"Radar Certificate Transparency"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/ct/logs": {
+		"description": "Retrieves a list of certificate logs.",
+		"operationId": "radar-get-certificate-logs",
+		"parameters": [
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Skips the specified number of objects before fetching the results.",
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"description": "Skips the specified number of objects before fetching the results.",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"certificateLogs": {
+											"items": {
+												"properties": {
+													"api": {
+														"description": "The API standard that the certificate log follows.",
+														"enum": [
+															"RFC6962",
+															"STATIC"
+														],
+														"type": "string"
+													},
+													"description": {
+														"description": "A brief description of the certificate log.",
+														"example": "Google 'Argon2024' log",
+														"type": "string"
+													},
+													"endExclusive": {
+														"description": "The end date and time for when the log will stop accepting certificates.",
+														"example": "2025-01-01T00:00:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"operator": {
+														"description": "The organization responsible for operating the certificate log.",
+														"example": "Google",
+														"type": "string"
+													},
+													"slug": {
+														"description": "A URL-friendly, kebab-case identifier for the certificate log.",
+														"example": "argon2024",
+														"type": "string"
+													},
+													"startInclusive": {
+														"description": "The start date and time for when the log starts accepting certificates.",
+														"example": "2024-01-01T00:00:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"state": {
+														"description": "The current state of the certificate log. More details about log states can be found here: https://googlechrome.github.io/CertificateTransparency/log_states.html",
+														"enum": [
+															"USABLE",
+															"PENDING",
+															"QUALIFIED",
+															"READ_ONLY",
+															"RETIRED",
+															"REJECTED"
+														],
+														"type": "string"
+													},
+													"stateTimestamp": {
+														"description": "Timestamp of when the log state was last updated.",
+														"example": "2025-02-01T08:53:20Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"url": {
+														"description": "The URL for the certificate log.",
+														"example": "https://ct.googleapis.com/logs/us1/argon2024/",
+														"type": "string"
+													}
+												},
+												"required": [
+													"slug",
+													"description",
+													"operator",
+													"api",
+													"state",
+													"stateTimestamp",
+													"startInclusive",
+													"endExclusive",
+													"url"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"certificateLogs"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List certificate logs",
+		"tags": [
+			"Radar Certificate Transparency"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/ct/logs/{log_slug}": {
+		"description": "Retrieves the requested certificate log information.",
+		"operationId": "radar-get-certificate-log-details",
+		"parameters": [
+			{
+				"description": "Certificate log slug.",
+				"in": "path",
+				"name": "log_slug",
+				"required": true,
+				"schema": {
+					"description": "Certificate log slug.",
+					"example": "argon2024",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"certificateLog": {
+											"properties": {
+												"api": {
+													"description": "The API standard that the certificate log follows.",
+													"enum": [
+														"RFC6962",
+														"STATIC"
+													],
+													"type": "string"
+												},
+												"description": {
+													"description": "A brief description of the certificate log.",
+													"example": "Google 'Argon2024' log",
+													"type": "string"
+												},
+												"endExclusive": {
+													"description": "The end date and time for when the log will stop accepting certificates.",
+													"example": "2025-01-01T00:00:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"operator": {
+													"description": "The organization responsible for operating the certificate log.",
+													"example": "Google",
+													"type": "string"
+												},
+												"performance": {
+													"description": "Log performance metrics, including averages and per-endpoint details.",
+													"nullable": true,
+													"properties": {
+														"endpoints": {
+															"items": {
+																"properties": {
+																	"endpoint": {
+																		"description": "The certificate log endpoint names used in performance metrics.",
+																		"enum": [
+																			"add-chain (new)",
+																			"add-chain (old)",
+																			"add-pre-chain (new)",
+																			"add-pre-chain (old)",
+																			"get-entries",
+																			"get-roots",
+																			"get-sth"
+																		],
+																		"type": "string"
+																	},
+																	"responseTime": {
+																		"type": "number"
+																	},
+																	"uptime": {
+																		"type": "number"
+																	}
+																},
+																"required": [
+																	"endpoint",
+																	"responseTime",
+																	"uptime"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"responseTime": {
+															"type": "number"
+														},
+														"uptime": {
+															"type": "number"
+														}
+													},
+													"required": [
+														"responseTime",
+														"uptime",
+														"endpoints"
+													],
+													"type": "object"
+												},
+												"related": {
+													"description": "Logs from the same operator.",
+													"items": {
+														"properties": {
+															"description": {
+																"description": "A brief description of the certificate log.",
+																"example": "Google 'Argon2024' log",
+																"type": "string"
+															},
+															"endExclusive": {
+																"description": "The end date and time for when the log will stop accepting certificates.",
+																"example": "2025-01-01T00:00:00Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"slug": {
+																"description": "A URL-friendly, kebab-case identifier for the certificate log.",
+																"example": "argon2024",
+																"type": "string"
+															},
+															"startInclusive": {
+																"description": "The start date and time for when the log starts accepting certificates.",
+																"example": "2024-01-01T00:00:00Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"state": {
+																"description": "The current state of the certificate log. More details about log states can be found here: https://googlechrome.github.io/CertificateTransparency/log_states.html",
+																"enum": [
+																	"USABLE",
+																	"PENDING",
+																	"QUALIFIED",
+																	"READ_ONLY",
+																	"RETIRED",
+																	"REJECTED"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"slug",
+															"description",
+															"state",
+															"startInclusive",
+															"endExclusive"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"slug": {
+													"description": "A URL-friendly, kebab-case identifier for the certificate log.",
+													"example": "argon2024",
+													"type": "string"
+												},
+												"startInclusive": {
+													"description": "The start date and time for when the log starts accepting certificates.",
+													"example": "2024-01-01T00:00:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"state": {
+													"description": "The current state of the certificate log. More details about log states can be found here: https://googlechrome.github.io/CertificateTransparency/log_states.html",
+													"enum": [
+														"USABLE",
+														"PENDING",
+														"QUALIFIED",
+														"READ_ONLY",
+														"RETIRED",
+														"REJECTED"
+													],
+													"type": "string"
+												},
+												"stateTimestamp": {
+													"description": "Timestamp of when the log state was last updated.",
+													"example": "2025-02-01T08:53:20Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"url": {
+													"description": "The URL for the certificate log.",
+													"example": "https://ct.googleapis.com/logs/us1/argon2024/",
+													"type": "string"
+												}
+											},
+											"required": [
+												"slug",
+												"description",
+												"operator",
+												"api",
+												"state",
+												"stateTimestamp",
+												"startInclusive",
+												"endExclusive",
+												"url",
+												"performance",
+												"related"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"certificateLog"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get certificate log details",
+		"tags": [
+			"Radar Certificate Transparency"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/ct/summary/{dimension}": {
+		"description": "Retrieves an aggregated summary of certificates grouped by the specified dimension.",
+		"operationId": "radar-get-ct-summary",
+		"parameters": [
+			{
+				"description": "Specifies the certificate attribute by which to group the results.",
+				"in": "path",
+				"name": "dimension",
+				"required": true,
+				"schema": {
+					"description": "Specifies the certificate attribute by which to group the results.",
+					"enum": [
+						"CA",
+						"CA_OWNER",
+						"DURATION",
+						"ENTRY_TYPE",
+						"EXPIRATION_STATUS",
+						"HAS_IPS",
+						"HAS_WILDCARDS",
+						"LOG",
+						"LOG_API",
+						"LOG_OPERATOR",
+						"PUBLIC_KEY_ALGORITHM",
+						"SIGNATURE_ALGORITHM",
+						"TLD",
+						"VALIDATION_LEVEL"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Filters results by certificate authority.",
+				"in": "query",
+				"name": "ca",
+				"schema": {
+					"description": "Filters results by certificate authority.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate authority owner.",
+				"in": "query",
+				"name": "caOwner",
+				"schema": {
+					"description": "Filters results by certificate authority owner.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate duration.",
+				"in": "query",
+				"name": "duration",
+				"schema": {
+					"description": "Filters results by certificate duration.",
+					"items": {
+						"enum": [
+							"LTE_3D",
+							"GT_3D_LTE_7D",
+							"GT_7D_LTE_10D",
+							"GT_10D_LTE_47D",
+							"GT_47D_LTE_100D",
+							"GT_100D_LTE_200D",
+							"GT_200D"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by entry type (certificate vs. pre-certificate).",
+				"in": "query",
+				"name": "entryType",
+				"schema": {
+					"description": "Filters results by entry type (certificate vs. pre-certificate).",
+					"items": {
+						"enum": [
+							"PRECERTIFICATE",
+							"CERTIFICATE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by expiration status (expired vs. valid).",
+				"in": "query",
+				"name": "expirationStatus",
+				"schema": {
+					"description": "Filters results by expiration status (expired vs. valid).",
+					"items": {
+						"enum": [
+							"EXPIRED",
+							"VALID"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
+				"in": "query",
+				"name": "hasIps",
+				"schema": {
+					"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
+					"items": {
+						"type": "boolean"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results based on whether the certificates contain wildcard domains.",
+				"in": "query",
+				"name": "hasWildcards",
+				"schema": {
+					"description": "Filters results based on whether the certificates contain wildcard domains.",
+					"items": {
+						"type": "boolean"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate log.",
+				"in": "query",
+				"name": "log",
+				"schema": {
+					"description": "Filters results by certificate log.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate log API (RFC6962 vs. static).",
+				"in": "query",
+				"name": "logApi",
+				"schema": {
+					"description": "Filters results by certificate log API (RFC6962 vs. static).",
+					"items": {
+						"enum": [
+							"RFC6962",
+							"STATIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate log operator.",
+				"in": "query",
+				"name": "logOperator",
+				"schema": {
+					"description": "Filters results by certificate log operator.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by public key algorithm.",
+				"in": "query",
+				"name": "publicKeyAlgorithm",
+				"schema": {
+					"description": "Filters results by public key algorithm.",
+					"items": {
+						"enum": [
+							"DSA",
+							"ECDSA",
+							"RSA"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by signature algorithm.",
+				"in": "query",
+				"name": "signatureAlgorithm",
+				"schema": {
+					"description": "Filters results by signature algorithm.",
+					"items": {
+						"enum": [
+							"DSA_SHA_1",
+							"DSA_SHA_256",
+							"ECDSA_SHA_1",
+							"ECDSA_SHA_256",
+							"ECDSA_SHA_384",
+							"ECDSA_SHA_512",
+							"PSS_SHA_256",
+							"PSS_SHA_384",
+							"PSS_SHA_512",
+							"RSA_MD2",
+							"RSA_MD5",
+							"RSA_SHA_1",
+							"RSA_SHA_256",
+							"RSA_SHA_384",
+							"RSA_SHA_512"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by top-level domain.",
+				"in": "query",
+				"name": "tld",
+				"schema": {
+					"description": "Filters results by top-level domain.",
+					"example": "com",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by validation level.",
+				"in": "query",
+				"name": "validationLevel",
+				"schema": {
+					"description": "Filters results by validation level.",
+					"items": {
+						"enum": [
+							"DOMAIN",
+							"ORGANIZATION",
+							"EXTENDED"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
+				"in": "query",
+				"name": "uniqueEntries",
+				"schema": {
+					"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
+					"items": {
+						"enum": [
+							"true",
+							"false"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "RAW_VALUES",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"RAW_VALUES",
+						"PERCENTAGE"
+					],
+					"example": "RAW_VALUES",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startDate",
+																	"endDate",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"lastUpdated",
+												"units"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"anyOf": [
+												{
+													"additionalProperties": {
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
+														"type": "string"
+													},
+													"example": {
+														"DigiCert": "10.274394",
+														"GoDaddy": "8.381743",
+														"Internet Security Research Group": "63.40249"
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"rfc6962": {
+															"type": "string"
+														},
+														"static": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"rfc6962",
+														"static"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"gt_121d": {
+															"type": "string"
+														},
+														"gt_16d_lte_31d": {
+															"type": "string"
+														},
+														"gt_31d_lte_91d": {
+															"type": "string"
+														},
+														"gt_3d_lte_16d": {
+															"type": "string"
+														},
+														"gt_91d_lte_121d": {
+															"type": "string"
+														},
+														"lte_3d": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"gt_31d_lte_91d",
+														"gt_121d",
+														"lte_3d",
+														"gt_91d_lte_121d",
+														"gt_16d_lte_31d",
+														"gt_3d_lte_16d"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"CERTIFICATE": {
+															"type": "string"
+														},
+														"PRECERTIFICATE": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"CERTIFICATE",
+														"PRECERTIFICATE"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"EXPIRED": {
+															"type": "string"
+														},
+														"VALID": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"VALID",
+														"EXPIRED"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"NEGATIVE": {
+															"type": "string"
+														},
+														"POSITIVE": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"POSITIVE",
+														"NEGATIVE"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"DSA": {
+															"type": "string"
+														},
+														"ECDSA": {
+															"type": "string"
+														},
+														"RSA": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"RSA",
+														"ECDSA",
+														"DSA"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"domain": {
+															"type": "string"
+														},
+														"extended": {
+															"type": "string"
+														},
+														"organization": {
+															"type": "string"
+														},
+														"unknown": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"domain",
+														"organization",
+														"unknown",
+														"extended"
+													],
+													"type": "object"
+												}
+											]
+										}
+									},
+									"required": [
+										"summary_0",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get certificate distribution by dimension",
+		"tags": [
+			"Radar Certificate Transparency"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/ct/timeseries": {
+		"description": "Retrieves certificate volume over time.",
+		"operationId": "radar-get-ct-timeseries",
+		"parameters": [
+			{
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate authority.",
+				"in": "query",
+				"name": "ca",
+				"schema": {
+					"description": "Filters results by certificate authority.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate authority owner.",
+				"in": "query",
+				"name": "caOwner",
+				"schema": {
+					"description": "Filters results by certificate authority owner.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate duration.",
+				"in": "query",
+				"name": "duration",
+				"schema": {
+					"description": "Filters results by certificate duration.",
+					"items": {
+						"enum": [
+							"LTE_3D",
+							"GT_3D_LTE_7D",
+							"GT_7D_LTE_10D",
+							"GT_10D_LTE_47D",
+							"GT_47D_LTE_100D",
+							"GT_100D_LTE_200D",
+							"GT_200D"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by entry type (certificate vs. pre-certificate).",
+				"in": "query",
+				"name": "entryType",
+				"schema": {
+					"description": "Filters results by entry type (certificate vs. pre-certificate).",
+					"items": {
+						"enum": [
+							"PRECERTIFICATE",
+							"CERTIFICATE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by expiration status (expired vs. valid).",
+				"in": "query",
+				"name": "expirationStatus",
+				"schema": {
+					"description": "Filters results by expiration status (expired vs. valid).",
+					"items": {
+						"enum": [
+							"EXPIRED",
+							"VALID"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
+				"in": "query",
+				"name": "hasIps",
+				"schema": {
+					"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
+					"items": {
+						"type": "boolean"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results based on whether the certificates contain wildcard domains.",
+				"in": "query",
+				"name": "hasWildcards",
+				"schema": {
+					"description": "Filters results based on whether the certificates contain wildcard domains.",
+					"items": {
+						"type": "boolean"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate log.",
+				"in": "query",
+				"name": "log",
+				"schema": {
+					"description": "Filters results by certificate log.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate log API (RFC6962 vs. static).",
+				"in": "query",
+				"name": "logApi",
+				"schema": {
+					"description": "Filters results by certificate log API (RFC6962 vs. static).",
+					"items": {
+						"enum": [
+							"RFC6962",
+							"STATIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate log operator.",
+				"in": "query",
+				"name": "logOperator",
+				"schema": {
+					"description": "Filters results by certificate log operator.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by public key algorithm.",
+				"in": "query",
+				"name": "publicKeyAlgorithm",
+				"schema": {
+					"description": "Filters results by public key algorithm.",
+					"items": {
+						"enum": [
+							"DSA",
+							"ECDSA",
+							"RSA"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by signature algorithm.",
+				"in": "query",
+				"name": "signatureAlgorithm",
+				"schema": {
+					"description": "Filters results by signature algorithm.",
+					"items": {
+						"enum": [
+							"DSA_SHA_1",
+							"DSA_SHA_256",
+							"ECDSA_SHA_1",
+							"ECDSA_SHA_256",
+							"ECDSA_SHA_384",
+							"ECDSA_SHA_512",
+							"PSS_SHA_256",
+							"PSS_SHA_384",
+							"PSS_SHA_512",
+							"RSA_MD2",
+							"RSA_MD5",
+							"RSA_SHA_1",
+							"RSA_SHA_256",
+							"RSA_SHA_384",
+							"RSA_SHA_512"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by top-level domain.",
+				"in": "query",
+				"name": "tld",
+				"schema": {
+					"description": "Filters results by top-level domain.",
+					"example": "com",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by validation level.",
+				"in": "query",
+				"name": "validationLevel",
+				"schema": {
+					"description": "Filters results by validation level.",
+					"items": {
+						"enum": [
+							"DOMAIN",
+							"ORGANIZATION",
+							"EXTENDED"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
+				"in": "query",
+				"name": "uniqueEntries",
+				"schema": {
+					"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
+					"items": {
+						"enum": [
+							"true",
+							"false"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"additionalProperties": {
+										"properties": {
+											"timestamps": {
+												"items": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"values": {
+												"items": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"timestamps",
+											"values"
+										],
+										"type": "object"
+									},
+									"properties": {
+										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startDate",
+																	"endDate",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"lastUpdated",
+												"units",
+												"aggInterval"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get certificates time series",
+		"tags": [
+			"Radar Certificate Transparency"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/ct/timeseries_groups/{dimension}": {
+		"description": "Retrieves the distribution of certificates grouped by chosen the specified dimension over time.",
+		"operationId": "radar-get-ct-timeseries-group",
+		"parameters": [
+			{
+				"description": "Specifies the certificate attribute by which to group the results.",
+				"in": "path",
+				"name": "dimension",
+				"required": true,
+				"schema": {
+					"description": "Specifies the certificate attribute by which to group the results.",
+					"enum": [
+						"CA",
+						"CA_OWNER",
+						"DURATION",
+						"ENTRY_TYPE",
+						"EXPIRATION_STATUS",
+						"HAS_IPS",
+						"HAS_WILDCARDS",
+						"LOG",
+						"LOG_API",
+						"LOG_OPERATOR",
+						"PUBLIC_KEY_ALGORITHM",
+						"SIGNATURE_ALGORITHM",
+						"TLD",
+						"VALIDATION_LEVEL"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Filters results by certificate authority.",
+				"in": "query",
+				"name": "ca",
+				"schema": {
+					"description": "Filters results by certificate authority.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate authority owner.",
+				"in": "query",
+				"name": "caOwner",
+				"schema": {
+					"description": "Filters results by certificate authority owner.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate duration.",
+				"in": "query",
+				"name": "duration",
+				"schema": {
+					"description": "Filters results by certificate duration.",
+					"items": {
+						"enum": [
+							"LTE_3D",
+							"GT_3D_LTE_7D",
+							"GT_7D_LTE_10D",
+							"GT_10D_LTE_47D",
+							"GT_47D_LTE_100D",
+							"GT_100D_LTE_200D",
+							"GT_200D"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by entry type (certificate vs. pre-certificate).",
+				"in": "query",
+				"name": "entryType",
+				"schema": {
+					"description": "Filters results by entry type (certificate vs. pre-certificate).",
+					"items": {
+						"enum": [
+							"PRECERTIFICATE",
+							"CERTIFICATE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by expiration status (expired vs. valid).",
+				"in": "query",
+				"name": "expirationStatus",
+				"schema": {
+					"description": "Filters results by expiration status (expired vs. valid).",
+					"items": {
+						"enum": [
+							"EXPIRED",
+							"VALID"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
+				"in": "query",
+				"name": "hasIps",
+				"schema": {
+					"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
+					"items": {
+						"type": "boolean"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results based on whether the certificates contain wildcard domains.",
+				"in": "query",
+				"name": "hasWildcards",
+				"schema": {
+					"description": "Filters results based on whether the certificates contain wildcard domains.",
+					"items": {
+						"type": "boolean"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate log.",
+				"in": "query",
+				"name": "log",
+				"schema": {
+					"description": "Filters results by certificate log.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate log API (RFC6962 vs. static).",
+				"in": "query",
+				"name": "logApi",
+				"schema": {
+					"description": "Filters results by certificate log API (RFC6962 vs. static).",
+					"items": {
+						"enum": [
+							"RFC6962",
+							"STATIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by certificate log operator.",
+				"in": "query",
+				"name": "logOperator",
+				"schema": {
+					"description": "Filters results by certificate log operator.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by public key algorithm.",
+				"in": "query",
+				"name": "publicKeyAlgorithm",
+				"schema": {
+					"description": "Filters results by public key algorithm.",
+					"items": {
+						"enum": [
+							"DSA",
+							"ECDSA",
+							"RSA"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by signature algorithm.",
+				"in": "query",
+				"name": "signatureAlgorithm",
+				"schema": {
+					"description": "Filters results by signature algorithm.",
+					"items": {
+						"enum": [
+							"DSA_SHA_1",
+							"DSA_SHA_256",
+							"ECDSA_SHA_1",
+							"ECDSA_SHA_256",
+							"ECDSA_SHA_384",
+							"ECDSA_SHA_512",
+							"PSS_SHA_256",
+							"PSS_SHA_384",
+							"PSS_SHA_512",
+							"RSA_MD2",
+							"RSA_MD5",
+							"RSA_SHA_1",
+							"RSA_SHA_256",
+							"RSA_SHA_384",
+							"RSA_SHA_512"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by validation level.",
+				"in": "query",
+				"name": "validationLevel",
+				"schema": {
+					"description": "Filters results by validation level.",
+					"items": {
+						"enum": [
+							"DOMAIN",
+							"ORGANIZATION",
+							"EXTENDED"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by top-level domain.",
+				"in": "query",
+				"name": "tld",
+				"schema": {
+					"description": "Filters results by top-level domain.",
+					"example": "com",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "RAW_VALUES",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"RAW_VALUES",
+						"PERCENTAGE"
+					],
+					"example": "RAW_VALUES",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
+				"in": "query",
+				"name": "uniqueEntries",
+				"schema": {
+					"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
+					"items": {
+						"enum": [
+							"true",
+							"false"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startDate",
+																	"endDate",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"lastUpdated",
+												"units",
+												"aggInterval"
+											],
+											"type": "object"
+										},
+										"serie_0": {
+											"anyOf": [
+												{
+													"additionalProperties": {
+														"items": {
+															"description": "A numeric string.",
+															"example": "10",
+															"pattern": "^\\d+$",
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"example": {
+														"DigiCert": [
+															"10.274394"
+														],
+														"GoDaddy": [
+															"8.381743"
+														],
+														"Internet Security Research Group": [
+															"63.40249"
+														],
+														"timestamps": [
+															"2023-08-08T10:15:00Z"
+														]
+													},
+													"properties": {
+														"timestamps": {
+															"items": {
+																"format": "date-time",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"timestamps"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"rfc6962": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"static": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"rfc6962",
+														"static"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"gt_121d": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"gt_16d_lte_31d": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"gt_31d_lte_91d": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"gt_3d_lte_16d": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"gt_91d_lte_121d": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"lte_3d": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"gt_31d_lte_91d",
+														"gt_121d",
+														"lte_3d",
+														"gt_91d_lte_121d",
+														"gt_16d_lte_31d",
+														"gt_3d_lte_16d"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"CERTIFICATE": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"PRECERTIFICATE": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"CERTIFICATE",
+														"PRECERTIFICATE"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"EXPIRED": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"VALID": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"VALID",
+														"EXPIRED"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"NEGATIVE": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"POSITIVE": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"POSITIVE",
+														"NEGATIVE"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"DSA": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"ECDSA": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"RSA": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"RSA",
+														"ECDSA",
+														"DSA"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"domain": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"extended": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"organization": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"unknown": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"domain",
+														"organization",
+														"unknown",
+														"extended"
+													],
+													"type": "object"
+												}
+											]
+										}
+									},
+									"required": [
+										"serie_0",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get time series of certificate distribution by dimension",
+		"tags": [
+			"Radar Certificate Transparency"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

@@ -2633,6 +2633,14 @@
 												"domains": {
 													"items": {
 														"properties": {
+															"ciphers": {
+																"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true
+															},
 															"domain": {
 																"description": "Domain name of the custom domain to be added.",
 																"type": "string",
@@ -2925,6 +2933,14 @@
 														"zoneName": "example-domain.one.com"
 													},
 													"properties": {
+														"ciphers": {
+															"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+															"items": {
+																"type": "string"
+															},
+															"type": "array",
+															"x-auditable": true
+														},
 														"domain": {
 															"description": "Domain name of the custom domain to be added.",
 															"type": "string",
@@ -4799,6 +4815,14 @@
 							"zoneId": "36ca64a6d92827b8a6b90be344bb1bfd"
 						},
 						"properties": {
+							"ciphers": {
+								"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+								"items": {
+									"type": "string"
+								},
+								"type": "array",
+								"x-auditable": true
+							},
 							"domain": {
 								"description": "Name of the custom domain to be added.",
 								"type": "string",
@@ -4898,6 +4922,14 @@
 												"enabled": true
 											},
 											"properties": {
+												"ciphers": {
+													"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+													"items": {
+														"type": "string"
+													},
+													"type": "array",
+													"x-auditable": true
+												},
 												"domain": {
 													"description": "Domain name of the affected custom domain.",
 													"type": "string",
@@ -5842,6 +5874,14 @@
 							"minTLS": "1.2"
 						},
 						"properties": {
+							"ciphers": {
+								"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+								"items": {
+									"type": "string"
+								},
+								"type": "array",
+								"x-auditable": true
+							},
 							"enabled": {
 								"description": "Whether to enable public bucket access at the specified custom domain.",
 								"type": "boolean",
@@ -5928,6 +5968,14 @@
 														"enabled": true
 													},
 													"properties": {
+														"ciphers": {
+															"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+															"items": {
+																"type": "string"
+															},
+															"type": "array",
+															"x-auditable": true
+														},
 														"domain": {
 															"description": "Domain name of the affected custom domain.",
 															"type": "string",
