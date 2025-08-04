@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-angular-ui",
 	"dist-tags": {
-		"latest": "1.0.3",
+		"latest": "1.0.4",
 		"staging": "1.0.4-staging.5"
 	},
 	"versions": {
@@ -780,19 +780,44 @@
 				"@cloudflare/realtimekit-ui": "1.0.4-staging.5"
 			},
 			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "436232634074f0b4d94c1ad02326702648521669",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.4-staging.5.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-/XVNXZzjVrvgFxVt5oUHB9mfRLMjqF6flQXjlR/ARUDQCmSnQfgFHaeeN/jm//Q1bcCczl0UoV0NtY7JnWi8DQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDsDOmfTcYoVhlYQYJC4vXauBLlkQitzPgDZDCA6ErpLQIgIIZOoRl3HRFksJ7GWprRerZoh6y4TFCt7gM8FD5QSPs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1736322
+			}
+		},
+		"1.0.4": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "1.0.4",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "1.0.4"
+			},
+			"peerDependencies": {
 				"@angular/common": ">=12",
 				"@angular/core": ">=12"
 			},
 			"dist": {
-				"integrity": "sha512-/XVNXZzjVrvgFxVt5oUHB9mfRLMjqF6flQXjlR/ARUDQCmSnQfgFHaeeN/jm//Q1bcCczl0UoV0NtY7JnWi8DQ==",
-				"shasum": "436232634074f0b4d94c1ad02326702648521669",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.4-staging.5.tgz",
+				"integrity": "sha512-yMDy0qgQNJ7VY74T8tMKunvKctNuqVBTs6EvOZgpZxA7IoGrzNpY4ik38hNpAwk5QYGFkuv4UGCACqxhHLXn3w==",
+				"shasum": "c28ae7338019d2ea25366677e8d58fbd774e3b33",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.4.tgz",
 				"fileCount": 19,
-				"unpackedSize": 1736322,
+				"unpackedSize": 1736325,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDsDOmfTcYoVhlYQYJC4vXauBLlkQitzPgDZDCA6ErpLQIgIIZOoRl3HRFksJ7GWprRerZoh6y4TFCt7gM8FD5QSPs="
+						"sig": "MEYCIQDGH0/1db3JblmO74FW3wlAwArN4sCu2kfiZwhTfg+r3gIhAM1XH1+/VQnV+me0DGv3YlRw0VrMuImqEJdDi1OQ8DFJ"
 					}
 				]
 			}
