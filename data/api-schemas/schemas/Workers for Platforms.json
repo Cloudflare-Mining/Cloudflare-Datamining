@@ -1294,6 +1294,13 @@
 														"description": "The current number of scripts in this Dispatch Namespace.",
 														"example": 800,
 														"type": "integer"
+													},
+													"trusted_workers": {
+														"default": false,
+														"description": "Whether the Workers in the namespace are executed in a \"trusted\" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are \"untrusted\".",
+														"example": false,
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1611,6 +1618,13 @@
 													"description": "The current number of scripts in this Dispatch Namespace.",
 													"example": 800,
 													"type": "integer"
+												},
+												"trusted_workers": {
+													"default": false,
+													"description": "Whether the Workers in the namespace are executed in a \"trusted\" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are \"untrusted\".",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -7029,6 +7043,351 @@
 			"Workers Scripts Read"
 		]
 	},
+	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
+		"description": "Patch a Workers for Platforms namespace. Omitted fields are left unchanged.",
+		"operationId": "namespace-worker-patch-namespace",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "dispatch_namespace",
+				"required": true,
+				"schema": {
+					"description": "Name of the Workers for Platforms dispatch namespace.",
+					"example": "my-dispatch-namespace",
+					"pattern": "^.+$",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"name": {
+								"description": "The name of the dispatch namespace.",
+								"example": "my-dispatch-namespace",
+								"type": "string",
+								"x-auditable": true
+							},
+							"trusted_workers": {
+								"default": false,
+								"description": "Whether the Workers in the namespace are executed in a \"trusted\" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are \"untrusted\".",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_by": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												},
+												"created_on": {
+													"description": "When the script was created.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_by": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_on": {
+													"description": "When the script was last modified.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"namespace_id": {
+													"description": "API Resource UUID tag.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string",
+													"x-auditable": true
+												},
+												"namespace_name": {
+													"description": "Name of the Workers for Platforms dispatch namespace.",
+													"example": "my-dispatch-namespace",
+													"pattern": "^.+$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"script_count": {
+													"description": "The current number of scripts in this Dispatch Namespace.",
+													"example": 800,
+													"type": "integer"
+												},
+												"trusted_workers": {
+													"default": false,
+													"description": "Whether the Workers in the namespace are executed in a \"trusted\" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are \"untrusted\".",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch a Workers for Platforms namespace."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure to patch Workers for Platforms namespace."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch dispatch namespace",
+		"tags": [
+			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
+	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
 		"description": "Patch script metadata, such as bindings.",
 		"operationId": "namespace-worker-patch-script-settings",
@@ -11757,6 +12116,13 @@
 													"description": "The current number of scripts in this Dispatch Namespace.",
 													"example": 800,
 													"type": "integer"
+												},
+												"trusted_workers": {
+													"default": false,
+													"description": "Whether the Workers in the namespace are executed in a \"trusted\" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are \"untrusted\".",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -12227,6 +12593,351 @@
 		"summary": "Create Assets Upload Session",
 		"tags": [
 			"Workers for Platforms"
+		]
+	},
+	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
+		"description": "Update a Workers for Platforms namespace.",
+		"operationId": "namespace-worker-put-namespace",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "dispatch_namespace",
+				"required": true,
+				"schema": {
+					"description": "Name of the Workers for Platforms dispatch namespace.",
+					"example": "my-dispatch-namespace",
+					"pattern": "^.+$",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"name": {
+								"description": "The name of the dispatch namespace.",
+								"example": "my-dispatch-namespace",
+								"type": "string",
+								"x-auditable": true
+							},
+							"trusted_workers": {
+								"default": false,
+								"description": "Whether the Workers in the namespace are executed in a \"trusted\" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are \"untrusted\".",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_by": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												},
+												"created_on": {
+													"description": "When the script was created.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_by": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												},
+												"modified_on": {
+													"description": "When the script was last modified.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"namespace_id": {
+													"description": "API Resource UUID tag.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string",
+													"x-auditable": true
+												},
+												"namespace_name": {
+													"description": "Name of the Workers for Platforms dispatch namespace.",
+													"example": "my-dispatch-namespace",
+													"pattern": "^.+$",
+													"type": "string",
+													"x-auditable": true
+												},
+												"script_count": {
+													"description": "The current number of scripts in this Dispatch Namespace.",
+													"example": 800,
+													"type": "integer"
+												},
+												"trusted_workers": {
+													"default": false,
+													"description": "Whether the Workers in the namespace are executed in a \"trusted\" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are \"untrusted\".",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a Workers for Platforms namespace."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure to update Workers for Platforms namespace."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update dispatch namespace",
+		"tags": [
+			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
