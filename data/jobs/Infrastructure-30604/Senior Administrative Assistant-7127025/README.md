@@ -5,38 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Lisbon or London (Hybrid)</strong></p>
-<p><strong>About the Role</strong></p>
-<p>As a Senior Technical Writer at Cloudflare, you play an important role in the Product Content Experience (PCX) team. You will partner with engineers, product managers, customer-facing teams, and users to develop and improve content. You will be the first to explain new products and features for our Developer Platform, impacting and influencing the content experience of a product used by millions of people daily. If you are excited to work with an audience ranging from Wordpress bloggers to development teams at Fortune 100 companies, come help us make the internet better!</p>
-<p>Beyond content development, you will have the opportunity to dive in and create code samples and tutorials –– with thousands of new users signing up every day, your content will very likely be part of their first experience with Cloudflare.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>What You’ll Do:</strong></p>
+<p>Cloudflare is looking for a bright, proactive and detail-oriented Senior Administrative Assistant to support the Vice President, Capacity Planning and Infrastructure &amp; VP, Infrastructure - Network Strategy.&nbsp;</p>
+<p>Your job is to keep our leaders organized, prioritized and productive while we grow from 4500+ employees and beyond. This role requires superior attention to detail, great organizational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude. The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves on being a career EA.&nbsp;</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Create and edit product documentation according to company guidelines, varying from support content to product and developer documentation.</li>
-	<li>Collaborate with content experts and project managers to distill complex, broad concepts about products into usable and accurate documentation.&nbsp;</li>
-	<li>Work closely with a variety of product, engineering, and customer-facing teams to document how to use new product features to both technical and non-technical users.</li>
-	<li>Work independently and manage multiple simultaneous projects.</li>
-	<li>Own, create, and help manage all product, developer, and support content.</li>
+	<li>Admin: Provide excellent administrative support for members of the Executive Leadership team exercising high attention to detail and discretion to every matter. Plan, coordinate and execute meeting set-up and events. Including room set-ups, light catering, Audio/Visual set up, attendance tracking and materials distribution. Provide agendas, detailed data, information and resources in preparation for meetings.&nbsp;</li>
+	<li>Calendar: Proactively own and flawlessly execute on calendars, prioritizing with purpose, deflecting with tact, and understanding both the short- and long-term impacts of each confirmed, declined, and rescheduled meeting. Ensure the leaders are equipped with all the necessary meeting information and manage inbound and outbound requests. If you enjoy “playing Tetris” with different Time Zones and schedules to help people get together, that would be a plus!</li>
+	<li>Travel and Expenses: Plan all aspects of domestic and international travel, optimizing and balancing executives’ time with cost of travel; monitoring flights for up to the minute changes; ensuring all documents are secured and up-to-date. Ensure timely submission of expense reports through Concur.</li>
+	<li>EA Team: Our EA team has a high degree of camaraderie and so the ideal candidate will enjoy partnering closely with their peers and foster teamwork.</li>
 </ul>
 <p><strong>Requirements</strong></p>
 <ul>
-	<li>Strong verbal, written, and interpersonal communication skills - <strong><em>must provide samples of excellent technical writing skills</em></strong></li>
-	<ul>
-		<li><strong><em>Each sample should be 500-1,000 words in length, and at least one sample should be a technical procedure</em></strong></li>
-	</ul>
+	<li>You have 3-5+ years experience as an Executive Assistant in a high growth environment, prior experience supporting senior leaders&nbsp;</li>
+	<li>Excellent verbal and written communication skills</li>
+	<li>Working knowledge of Google Suite and major airline carrier’s platforms</li>
+	<li>Exhibits a strong work ethic, professionalism, confidentiality and good judgment</li>
+	<li>Incredibly organized and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
+	<li>Personable with a can do attitude that sees no task or project to be too small or too big</li>
 </ul>
-<p><strong>Be prepared to discuss your samples, as well</strong></p>
-<ul>
-	<li>4-7 years of professional technical writing experience for technical and general consumer audiences</li>
-	<li>Strong interest and comfort with technical subject matter</li>
-	<li>Familiarity with databases, JavaScript, Git, HTML, Markdown, CSS, and JSON</li>
-	<li>Bachelor's degree or higher in English, Technical Communication, or other major with writing-intensive component and/or a technology emphasis&nbsp;</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Familiarity with Python, Mercurial, or other modern programming languages and frameworks</li>
-	<li>Knowledge of web servers, networking, HTTP, DNS and command line tools on Linux, Windows and Mac</li>
-	<li>Experience with multimedia and graphic design</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
