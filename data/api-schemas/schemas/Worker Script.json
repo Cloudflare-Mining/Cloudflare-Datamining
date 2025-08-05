@@ -11925,6 +11925,9 @@
 					"encoding": {
 						"files": {
 							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, text/x-python, text/x-python-requirement, application/wasm, text/plain, application/octet-stream, application/source-map"
+						},
+						"metadata": {
+							"contentType": "application/json"
 						}
 					},
 					"schema": {
@@ -11951,7 +11954,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"metadata": {
-								"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
+								"description": "JSON-encoded metadata about the uploaded parts and Worker configuration.",
 								"properties": {
 									"assets": {
 										"description": "Configuration for assets within a Worker.",
@@ -13793,6 +13796,9 @@
 					"encoding": {
 						"files": {
 							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, text/x-python, text/x-python-requirement, application/wasm, text/plain, application/octet-stream, application/source-map"
+						},
+						"metadata": {
+							"contentType": "application/json"
 						}
 					},
 					"schema": {
@@ -13807,7 +13813,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"metadata": {
-								"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
+								"description": "JSON-encoded metadata about the uploaded parts and Worker configuration.",
 								"properties": {
 									"body_part": {
 										"description": "Name of the uploaded file that contains the Worker script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",

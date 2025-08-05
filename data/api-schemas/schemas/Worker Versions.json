@@ -3123,6 +3123,9 @@
 					"encoding": {
 						"files": {
 							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, `text/x-python`, text/x-python-requirement, application/wasm, text/plain, application/octet-stream, application/source-map"
+						},
+						"metadata": {
+							"contentType": "application/json"
 						}
 					},
 					"schema": {
@@ -3137,7 +3140,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"metadata": {
-								"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
+								"description": "JSON-encoded metadata about the uploaded parts and Worker configuration.",
 								"properties": {
 									"annotations": {
 										"properties": {
