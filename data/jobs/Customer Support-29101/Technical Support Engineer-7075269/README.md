@@ -9,7 +9,7 @@
 <h4><strong>To the attention of candidates (Mexico City):&nbsp;</strong></h4>
 <h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Sun-Thursday” or “Tues-Sat” 5-day working week schedule. &nbsp;Candidates MUST have right-to-work in Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
 <p><strong>About the Department</strong><br>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<p><br><strong>What You’ll do</strong><br>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work directly with our customers and cross-functionally to solve a variety of technical issues. This is a position where you will learn the inner workings of Cloudflare's products and gain a deeper understanding of internet technologies.</p>
+<p><strong>What You’ll do</strong><br>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work directly with our customers and cross-functionally to solve a variety of technical issues. This is a position where you will learn the inner workings of Cloudflare's products and gain a deeper understanding of internet technologies.</p>
 <p><strong>Skills, Knowledge, And Experience</strong></p>
 <ul>
 	<li>Experience: 2+ years of experience in a Technical Support role, Web Developer Support, or a similar position, with a proven track record of resolving diverse technical issues.</li>
@@ -19,9 +19,15 @@
 	<li>Tooling Expertise: Proficient in command line interfaces and experienced with tools such as browser developer tools, cURL, Git/Wrangler/npm, Postman, TCPDump/Wireshark, SSH, OpenSSL, and similar utilities.</li>
 	<li>Video Technology: Experienced with video encoding and streaming solutions, understanding the associated technical challenges.</li>
 	<li>Scripting Skills: Competent in writing scripts in Bash, Python, JavaScript, or other scripting languages.</li>
-	<li>Customer-Centric Communication: Comfortable communicating through various support channels, with a strong commitment to putting the customer first in every interaction.<strong><br><br>Bonus:<br></strong></li>
+	<li>Customer-Centric Communication: Comfortable communicating through various support channels, with a strong commitment to putting the customer first in every interaction.</li>
+</ul>
+<p><strong><strong>Bonus</strong><br></strong></p>
+<ul>
 	<li>You have a site actively using our platform</li>
-	<li>You are familiar with any of the following Cloudflare products: Cloudflare Workers, Stream, Pages, R2<strong><br><br>Availability And Schedule Requirements<br><br></strong></li>
+	<li>You are familiar with any of the following Cloudflare products: Cloudflare Workers, Stream, Pages, R2</li>
+</ul>
+<p><strong>Availability And Schedule Requirements<br></strong></p>
+<ul>
 	<li>Flexibility to work varying work schedules including; <strong>Pacific time</strong>, holidays, weekends, more than 5 days in a row, or additional hours</li>
 	<li>Ability to work on-site as needed out of one of our US based offices</li>
 </ul>

@@ -24,6 +24,35 @@
 	<li>Experience debugging, optimizing and identifying possible failures in a large-scale distributed system.</li>
 	<li>Experience with containers (Docker &amp; Kubernetes)&nbsp;</li>
 </ul>
+<h4><strong>Compensation</strong></h4>
+<p>Compensation may be adjusted depending on work location.</p>
+<h4><strong>Equity</strong></h4>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<h4><strong>Benefits</strong></h4>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<h4><strong>Health &amp; Welfare Benefits</strong></h4>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<h4><strong>Financial Benefits</strong></h4>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<h4><strong>Time Off</strong></h4>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

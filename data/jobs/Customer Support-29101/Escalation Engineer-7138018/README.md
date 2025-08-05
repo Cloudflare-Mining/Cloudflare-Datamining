@@ -5,44 +5,68 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2><span style="font-size: 12pt;"><strong>Available location: Austin</strong></span></h2>
-<h2><span style="font-size: 12pt;"><strong>About the Team</strong></span></h2>
-<p>The Support Operations &amp; Planning (SOAP) department is made up of a dynamic group of teams and specialists who partner with Product, Engineering, and Support stakeholders to improve the customer experience. Inside the Customer Support organization, the SOAP department consists of Project / Program Management, Support Operations Engineering, Business Analysis, Supportability, and Support Content teams. We focus on customer self service and satisfaction, internal efficiency improvements, as well as initiatives to optimize service delivery.&nbsp;</p>
-<p><strong>About the Role</strong></p>
-<p>A <strong>Senior Support Content Strategist </strong>is responsible for designing, creating and maintaining digital content for the Customer Support team at Cloudflare.<br>You will partner with product, engineering, operations, support delivery teams, and other stakeholders to develop and improve internal and public facing, Support-related content, including structuring the content to be understood by LLMs. <br>You will help improve self serviceability, reduce customer support contacts and internal engineering escalations by creating high quality Support-related content.&nbsp;</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Job Location: </strong>Austin, TX</p>
+<h4><strong>About the Department</strong></h4>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical inquiries via email, chat, phone, and social media. From Enterprise corporations with petabytes of web traffic to Wordpress bloggers using our platform for free, we are here to help. Being the eyes and ears of Cloudflare, we act as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>Role Summary</strong></h4>
+<p>The Cloudflare Escalation Engineer will perform deep, technical troubleshooting for complex, escalated issues. This role owns the customer escalation process and works with various Product and Engineering teams to identify product bugs, network problems, and platform issues. Escalation Engineers foster a close relationship with SRE, Network, Engineering and Product teams. They act as an escalation point, isolate/replicate problems, and gather technical information/expectation.</p>
+<h4><strong>Role Responsibilities</strong></h4>
 <ul>
-	<li>Create and maintain Support documentation and content</li>
-	<li>Develop multimedia content when appropriate</li>
-	<li>Collaborate with experts to create technical content covering products, services, and tools&nbsp;</li>
-	<li>Work with a variety of operations and service delivery teams to document how to use products and tools for both technical and non-technical audiences</li>
-	<li>Manage all Support content and administer a knowledge management process for the Support team</li>
-	<li>Help to develop content strategies that streamline knowledge management, including structuring for AI ingestion</li>
-	<li>Work independently and manage multiple, simultaneous projects</li>
+	<li>Serve as a subject matter expert in supporting Zero Trust technologies such as identity and access management (IAM), secure access service edge (SASE), endpoint security, and network segmentation tools.</li>
+	<li>Troubleshoot complex technical issues across a broad set of systems including authentication flows (SSO, MFA), policy enforcement, and secure application access.</li>
+	<li>Collaborate closely with engineering and product teams to escalate issues, provide root cause analysis, and contribute to product improvements.</li>
+	<li>Create and maintain detailed knowledge base articles, troubleshooting guides, and technical documentation.</li>
+	<li>Provide coverage (shift rotation including possibility of weekends and Pacific Time hours) for technical troubleshooting of escalated issues&nbsp;</li>
+	<li>Triage Customer Escalation issues to find the quickest most efficient path of resolution</li>
+	<li>Work cross-functionally with various teams across the company from engineering to sales</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h4><strong>Role Requirements (Must-Have Skills)</strong></h4>
 <ul>
-	<li>Proven verbal and written communication skills - <strong>must provide samples of excellent technical writing or content creation skills</strong></li>
-	<li>2+ years of professional technical writing or content development experience for technical and general audiences</li>
-	<li>Familiarity with Markdown</li>
-	<li>Familiarity with industry standard content management and authoring tools</li>
-	<li>Familiarity with KCS or other knowledge management methodologies</li>
-	<li>Familiarity with industry standard Support CRMs / ticketing systems</li>
-	<li>Relevant baseline web development knowledge and experience, e.g., HTML, JavaScript, HTTP</li>
-	<li>Bachelor's degree or higher (or equivalent experience) in English, Technical Communication, or other major with writing-intensive component and/or a technology emphasis,</li>
+	<li>Solid understanding of Zero Trust principles and technologies such as:</li>
+	<ul>
+		<li>Identity and Access Management</li>
+		<li>Endpoint Detection &amp; Response&nbsp;</li>
+		<li>Network Security / Microsegmentation&nbsp;</li>
+		<li>Secure Web Gateway / Cloud Access Security Broker (CASB)</li>
+	</ul>
 </ul>
-<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Familiarity with Git, Python, SQL, or other modern programming languages and tools&nbsp;</li>
-	<li>Experience with multimedia and graphic design</li>
+	<li>3-5 years of technical troubleshooting experience, preferably in technical support or system reliability engineering</li>
+	<li>Excellent verbal and written communication skills, ability to disseminate clear and appropriate&nbsp; information to both business and technical audiences</li>
+	<li>Able to manage multiple priorities, commitments, and projects</li>
+	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
+	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
 </ul>
-<p><strong>Compensation</strong></p>
+<h4><strong>Core competencies (“Desired skills, knowledge and experience”)</strong></h4>
+<ul>
+	<li>Extensive technical support experience</li>
+	<li>Expertise in troubleshooting application protocols (L7 - DNS, HTTP, etc)</li>
+	<li>Expertise in troubleshooting network infrastructure (L3/L4)</li>
+	<li>Expert with Linux command line tools&nbsp; (curl, dig, git, traceroute, mtr)</li>
+	<li>Expert at analyzing data using tools like grafana, kibana, and SQL</li>
+	<li>Able to clarify complex technical issues and coordinate efforts to resolve</li>
+	<li>Able to identify and share/suggest process improvements&nbsp;</li>
+	<li>Demonstrated leadership, prior mentoring experience</li>
+	<li>Self-motivated, self-directed, strong relationship building, can positively influence the actions of others, team player</li>
+	<li>Comfortable handling inbound and outbound customer calls</li>
+</ul>
+<h4><strong>Bonus Points</strong></h4>
+<ul>
+	<li>You are familiar with Cloudflare Zero Trust products (Zero Trust / Access / Gateway / Tunnel, WARP client) and have a site actively using our platform</li>
+	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
+	<li>Familiarity with troubleshooting Windows, macOS, and Linux operating systems</li>
+	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+</ul>
+<h4><strong>Compensation</strong></h4>
 <p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
+<h4><strong>Equity</strong></h4>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h4><strong>Benefits</strong></h4>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h4><strong>Health &amp; Welfare Benefits</strong></h4>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -53,18 +77,19 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h4><strong>Financial Benefits</strong></h4>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h4><strong>Time Off</strong></h4>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
