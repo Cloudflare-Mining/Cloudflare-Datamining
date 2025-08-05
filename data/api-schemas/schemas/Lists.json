@@ -3194,93 +3194,76 @@
 									"type": "object"
 								},
 								{
-									"allOf": [
-										{
-											"properties": {
-												"result": {
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
 													"items": {
 														"type": "object"
 													},
-													"nullable": true,
 													"type": "array"
 												}
-											},
-											"type": "object"
+											]
 										},
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+										"success": {
+											"description": "Defines whether the API call was successful.",
+											"enum": [
+												true
 											],
-											"type": "object"
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
 									"type": "object"
 								}
@@ -3615,93 +3598,76 @@
 											"type": "object"
 										},
 										{
-											"allOf": [
-												{
-													"properties": {
-														"result": {
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
 															"items": {
 																"type": "object"
 															},
-															"nullable": true,
 															"type": "array"
 														}
-													},
-													"type": "object"
+													]
 												},
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
+												"success": {
+													"description": "Defines whether the API call was successful.",
+													"enum": [
+														true
 													],
-													"type": "object"
+													"example": true,
+													"type": "boolean"
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											],
 											"type": "object"
 										}
