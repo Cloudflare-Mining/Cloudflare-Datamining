@@ -13,10 +13,6 @@
 		"tags": [],
 		"properties": [
 			{
-				"property_id": "beta",
-				"value": "true"
-			},
-			{
 				"property_id": "context_window",
 				"value": "128000"
 			},
@@ -1925,10 +1921,6 @@
 		"tags": [],
 		"properties": [
 			{
-				"property_id": "beta",
-				"value": "true"
-			},
-			{
 				"property_id": "context_window",
 				"value": "128000"
 			},
@@ -1937,12 +1929,12 @@
 				"value": [
 					{
 						"unit": "per M input tokens",
-						"price": 0,
+						"price": 0.2,
 						"currency": "USD"
 					},
 					{
 						"unit": "per M output tokens",
-						"price": 0,
+						"price": 0.3,
 						"currency": "USD"
 					}
 				]
