@@ -964,11 +964,6 @@
 		"short_description": "Userspace interface to intel-specific kernel DRM services -- runtime",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
-	"libdrm-radeon1:amd64": {
-		"version": "2.4.122-1~ubuntu0.24.04.1",
-		"short_description": "Userspace interface to radeon-specific kernel DRM services -- runtime",
-		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
-	},
 	"libdrm2:amd64": {
 		"version": "2.4.122-1~ubuntu0.24.04.1",
 		"short_description": "Userspace interface to kernel DRM services -- runtime",
@@ -1120,7 +1115,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgbm1:amd64": {
-		"version": "24.2.8-1ubuntu1~24.04.1",
+		"version": "25.0.7-0ubuntu0.24.04.1",
 		"short_description": "generic buffer management API -- runtime",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1187,11 +1182,6 @@
 	"libgirepository-2.0-0:amd64": {
 		"version": "2.80.0-6ubuntu3.4",
 		"short_description": "GLib runtime library for handling GObject introspection data",
-		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
-	},
-	"libglapi-mesa:amd64": {
-		"version": "24.2.8-1ubuntu1~24.04.1",
-		"short_description": "free implementation of the GL API -- shared library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libglib2.0-0t64:amd64": {
@@ -2384,11 +2374,6 @@
 		"short_description": "X11 authorisation library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
-	"libxcb-dri2-0:amd64": {
-		"version": "1.15-1ubuntu2",
-		"short_description": "X C Binding, dri2 extension",
-		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
-	},
 	"libxcb-dri3-0:amd64": {
 		"version": "1.15-1ubuntu2",
 		"short_description": "X C Binding, dri3 extension",
@@ -2600,7 +2585,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"mesa-libgallium:amd64": {
-		"version": "24.2.8-1ubuntu1~24.04.1",
+		"version": "25.0.7-0ubuntu0.24.04.1",
 		"short_description": "shared infrastructure for Mesa drivers",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
