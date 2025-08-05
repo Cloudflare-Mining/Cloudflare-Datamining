@@ -40805,6 +40805,67 @@
 										"planValues": [
 											{
 												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "7oq23KBL2smrhMubJZqx58",
+												"textValue": "Add on",
+												"plan": {
+													"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Free Plan",
+													"name": "Free",
+													"description": "For personal or hobby projects that aren't business-critical.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0/month",
+													"monthlyPricingText": "$0/month",
+													"annualPricingText": "$0/month",
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+														"elementName": "Add a website (Free Plan CTA)",
+														"standardText": null,
+														"text": "Add a Website",
+														"url": "https://dash.cloudflare.com/sign-up?pt=f",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+														"elementName": "Add a website (Free Plan CTA)",
+														"standardText": null,
+														"text": "Add a Website",
+														"url": "https://dash.cloudflare.com/sign-up?pt=f",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"annualPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+														"elementName": "Add a website (Free Plan CTA)",
+														"standardText": null,
+														"text": "Add a Website",
+														"url": "https://dash.cloudflare.com/sign-up?pt=f",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													}
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "1a4DyC8MOb6PwBgr1TSm8Y",
 												"textValue": "Add on",
 												"plan": {
@@ -46759,6 +46820,156 @@
 									"loggedInUrl": null,
 									"buttonModal": null,
 									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Addon - Log Explorer - Performance",
+								"contentfulId": "5Kh3XJn9JFZnN0oPCMr3Qa",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "ae8d2da4-916f-56fe-b14a-95f6cbb7fc45",
+									"altText": "Documentation logs - Icon",
+									"title": "Documentation logs - Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FthXkLDn6d6w07MKxjxaI/f4f7590c02039e4aae03ad6ae26b55d4/documentation-logs.png"
+										},
+										"description": "Documentation logs icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Log Explorer",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Log Explorer helps organizations meet log retention requirements, and enables them to quickly detect security and performance issues, investigate root cause, and mitigate impact—all without adding complexity or cost.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Performance",
+								"pricingText": "$1 per GB ingested; first 10 GB are free",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6xgGAVdbNUHrrfUbpMvhx7",
+									"elementName": "Addon - Log Explorer - Link",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/application-services/products/log-explorer/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "31Nj8CHIeGnFOrkjMUYaMI",
+									"elementName": "Addon - Log Explorer - Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=LOG_EXPLORER_BASIC",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Addon - Log Explorer - Security",
+								"contentfulId": "2WhvZGXzeJw868LxkLHm2G",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "ae8d2da4-916f-56fe-b14a-95f6cbb7fc45",
+									"altText": "Documentation logs - Icon",
+									"title": "Documentation logs - Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FthXkLDn6d6w07MKxjxaI/f4f7590c02039e4aae03ad6ae26b55d4/documentation-logs.png"
+										},
+										"description": "Documentation logs icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Log Explorer",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Log Explorer helps organizations meet log retention requirements, and enables them to quickly detect security and performance issues, investigate root cause, and mitigate impact—all without adding complexity or cost.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Security",
+								"pricingText": " $1 per GB ingested; first 10 GB are free",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6xgGAVdbNUHrrfUbpMvhx7",
+									"elementName": "Addon - Log Explorer - Link",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/application-services/products/log-explorer/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "31Nj8CHIeGnFOrkjMUYaMI",
+									"elementName": "Addon - Log Explorer - Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=LOG_EXPLORER_BASIC",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": true,
 									"locale": "en-US"
 								}
 							}
