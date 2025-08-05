@@ -21,81 +21,101 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Describes a successful API response.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"editable": {
+											"description": "Specifies if the setting is editable.",
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"id": {
+											"description": "Specifies the identifier of the Argo Smart Routing setting.",
+											"type": "string",
+											"x-auditable": true
+										},
+										"modified_on": {
+											"description": "Specifies the time when the setting was last modified.",
+											"format": "date-time",
+											"type": "string",
+											"x-auditable": true
+										},
+										"value": {
+											"description": "Specifies the enablement value of Argo Smart Routing.",
+											"enum": [
+												"on",
+												"off"
 											],
-											"type": "object"
+											"example": "on",
+											"type": "string",
+											"x-auditable": true
 										}
+									},
+									"required": [
+										"id",
+										"value",
+										"editable"
 									],
 									"type": "object"
 								},
-								{
-									"properties": {
-										"result": {
-											"type": "object"
-										}
-									},
-									"type": "object"
+								"success": {
+									"description": "Describes a successful API response.",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -106,83 +126,6 @@
 					"application/json": {
 						"schema": {
 							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Describes a successful API response.",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
-											},
-											"type": "object"
-										}
-									]
-								},
 								{
 									"properties": {
 										"errors": {
@@ -327,7 +270,7 @@
 						"description": "Configures the enablement of Argo Smart Routing.",
 						"properties": {
 							"value": {
-								"description": "Enables Argo Smart Routing.",
+								"description": "Specifies the enablement value of Argo Smart Routing.",
 								"enum": [
 									"on",
 									"off"
@@ -351,81 +294,101 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Describes a successful API response.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"editable": {
+											"description": "Specifies if the setting is editable.",
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"id": {
+											"description": "Specifies the identifier of the Argo Smart Routing setting.",
+											"type": "string",
+											"x-auditable": true
+										},
+										"modified_on": {
+											"description": "Specifies the time when the setting was last modified.",
+											"format": "date-time",
+											"type": "string",
+											"x-auditable": true
+										},
+										"value": {
+											"description": "Specifies the enablement value of Argo Smart Routing.",
+											"enum": [
+												"on",
+												"off"
 											],
-											"type": "object"
+											"example": "on",
+											"type": "string",
+											"x-auditable": true
 										}
+									},
+									"required": [
+										"id",
+										"value",
+										"editable"
 									],
 									"type": "object"
 								},
-								{
-									"properties": {
-										"result": {
-											"type": "object"
-										}
-									},
-									"type": "object"
+								"success": {
+									"description": "Describes a successful API response.",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -436,83 +399,6 @@
 					"application/json": {
 						"schema": {
 							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Describes a successful API response.",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
-											},
-											"type": "object"
-										}
-									]
-								},
 								{
 									"properties": {
 										"errors": {
