@@ -4,7 +4,7 @@
 		"arch": "wasm32",
 		"platform": "emscripten_4_0_9",
 		"python": "3.13.2",
-		"version": "0.28.0"
+		"version": "0.28.1"
 	},
 	"packages": {
 		"aiohappyeyeballs": {
@@ -16,7 +16,7 @@
 			"install_dir": "site",
 			"name": "aiohappyeyeballs",
 			"package_type": "package",
-			"sha256": "e1647ca7c246750c99338fa2f8ec80a3eaaa7fa513cbb238fe216ee05216d20b",
+			"sha256": "13804e1cf24fbddcb8819b34564f9266a84214f524ba85a6385200d6e8de2ffd",
 			"unvendored_tests": false,
 			"version": "2.6.1"
 		},
@@ -38,7 +38,7 @@
 			"install_dir": "site",
 			"name": "aiohttp",
 			"package_type": "package",
-			"sha256": "7c33685399f31f0159df71d4edb6179b47bfdafb5650775d9d8f6617728f1c87",
+			"sha256": "fc1c6bc67e17ece6a1a8dcce82ecf6fb31769c81e2b3116727e05bfef35b52c5",
 			"unvendored_tests": true,
 			"version": "3.11.13"
 		},
@@ -51,7 +51,7 @@
 			"install_dir": "site",
 			"name": "aiohttp-tests",
 			"package_type": "package",
-			"sha256": "8610c6ecff9b0317690ae501b90127449e44c82964aa1804b6937e86efc916e7",
+			"sha256": "2e3ce59b315e1048d1b4e289c181342392bc9322ae1ff7a778dabbec300b00f0",
 			"unvendored_tests": false,
 			"version": "3.11.13"
 		},
@@ -66,9 +66,52 @@
 			"install_dir": "site",
 			"name": "aiosignal",
 			"package_type": "package",
-			"sha256": "01e06f7ceda12e88c6df7aa62cb162c2159a397e564fd5c767a885a7b65b5bde",
+			"sha256": "bffee13b8354682d262e29f461a33a7dbb3da91505a9a9cd6897cf94185983ca",
 			"unvendored_tests": false,
 			"version": "1.3.2"
+		},
+		"annotated-types": {
+			"depends": [],
+			"file_name": "annotated_types-0.7.0-py3-none-any.tar.gz",
+			"imports": [
+				"annotated_types"
+			],
+			"install_dir": "site",
+			"name": "annotated-types",
+			"package_type": "package",
+			"sha256": "d2255820e3edc543d2723805b257535f4440995374c2a1dd7364b0f00ce0c034",
+			"unvendored_tests": true,
+			"version": "0.7.0"
+		},
+		"annotated-types-tests": {
+			"depends": [
+				"annotated-types"
+			],
+			"file_name": "annotated-types-tests.tar",
+			"imports": [],
+			"install_dir": "site",
+			"name": "annotated-types-tests",
+			"package_type": "package",
+			"sha256": "774e53f1af13c70d501e1bc09de9afa79073976d8fd0120ef7bcd30e626df8bd",
+			"unvendored_tests": false,
+			"version": "0.7.0"
+		},
+		"anyio": {
+			"depends": [
+				"ssl",
+				"sniffio",
+				"typing-extensions"
+			],
+			"file_name": "anyio-4.9.0-py3-none-any.tar.gz",
+			"imports": [
+				"anyio"
+			],
+			"install_dir": "site",
+			"name": "anyio",
+			"package_type": "package",
+			"sha256": "5063de4ddd64f1f7fee02088a2cdf6f40bc7ba00503af6ed0bdb2136351259a8",
+			"unvendored_tests": false,
+			"version": "4.9.0"
 		},
 		"async-timeout": {
 			"depends": [],
@@ -79,7 +122,7 @@
 			"install_dir": "site",
 			"name": "async-timeout",
 			"package_type": "package",
-			"sha256": "e160dafb042d1ee1e6b567f26587b6e40e70d42ba77f951bf1ef5849197f76d3",
+			"sha256": "f4775b43afdd1e039095a2e7304f3f8518b0cd46f4083f951121e86d3378f88a",
 			"unvendored_tests": false,
 			"version": "5.0.1"
 		},
@@ -95,7 +138,7 @@
 			"install_dir": "site",
 			"name": "attrs",
 			"package_type": "package",
-			"sha256": "14273b0d0067c7aa608c94cc4b971d1ae15f09eb1cd2f9fa6095dc2c103915c2",
+			"sha256": "79dde94fafda8cccb2893e9a3f27fc1678a751a801c9c241538f5e158d8fed0b",
 			"unvendored_tests": false,
 			"version": "25.2.0"
 		},
@@ -111,7 +154,7 @@
 			"install_dir": "site",
 			"name": "beautifulsoup4",
 			"package_type": "package",
-			"sha256": "eb80ea02743c32b8ed319f3b7876d4bd5df965b687b7ef7a4bdb5f27b23ac744",
+			"sha256": "64630138fa7eafcb3533b15dc214feb80388aae1d2879d8e2fdfd4fa12bc2da9",
 			"unvendored_tests": true,
 			"version": "4.13.3"
 		},
@@ -124,22 +167,22 @@
 			"install_dir": "site",
 			"name": "beautifulsoup4-tests",
 			"package_type": "package",
-			"sha256": "9f19711f28001a4bf816a88d55ce004e28b0fe9347d981ea6e640c5e0889d306",
+			"sha256": "4ca55646d18f96399f1d0e4a2abd9f4179ee603869572d3d63778f9fc80c126a",
 			"unvendored_tests": false,
 			"version": "4.13.3"
 		},
 		"certifi": {
 			"depends": [],
-			"file_name": "certifi-2025.6.15-py3-none-any.tar.gz",
+			"file_name": "certifi-2025.7.14-py3-none-any.tar.gz",
 			"imports": [
 				"certifi"
 			],
 			"install_dir": "site",
 			"name": "certifi",
 			"package_type": "package",
-			"sha256": "957f49e0c7480fd5c7f33fb7b572bb3ab5d3591293d3a2f3b2502d9ee1769c64",
+			"sha256": "4a57445e5a58d02682dfe273320f5e20c3a45391b1b56c31e5986ea7f0020f88",
 			"unvendored_tests": false,
-			"version": "2025.6.15"
+			"version": "2025.7.14"
 		},
 		"cffi": {
 			"depends": [
@@ -152,7 +195,7 @@
 			"install_dir": "site",
 			"name": "cffi",
 			"package_type": "package",
-			"sha256": "23ba51c30e971097259b3b2dd95f71971d0fae2aa8991412c9dbf6a7b5c8c81d",
+			"sha256": "fe91c16c0f0b1f7a914869c3b1363ab16c60b3ecbbbf276154a8c37f76ff8c57",
 			"unvendored_tests": false,
 			"version": "1.17.1"
 		},
@@ -165,7 +208,7 @@
 			"install_dir": "site",
 			"name": "charset-normalizer",
 			"package_type": "package",
-			"sha256": "5e2733d2ed3d140372d84b050fd3d71fa884d75947dd91cf3e4761097463b057",
+			"sha256": "8dc70517c5583eb577d745cd43a63a7c44429a3c14ede6739a43baa1a2b30f4c",
 			"unvendored_tests": false,
 			"version": "3.4.2"
 		},
@@ -175,16 +218,35 @@
 				"six",
 				"cffi"
 			],
-			"file_name": "cryptography-45.0.4-cp313-abi3-pyodide_2025_0_wasm32.tar.gz",
+			"file_name": "cryptography-45.0.5-cp313-abi3-pyodide_2025_0_wasm32.tar.gz",
 			"imports": [
 				"cryptography"
 			],
 			"install_dir": "site",
 			"name": "cryptography",
 			"package_type": "package",
-			"sha256": "a577a669d40aba042ea0d4eda702e8a5bd0609d44ed7e099946606adbf6c2a65",
+			"sha256": "610a7efcbc8a3572419e630f97d44ff17200fdb17c6513017f693b473625d497",
 			"unvendored_tests": false,
-			"version": "45.0.4"
+			"version": "45.0.5"
+		},
+		"fastapi": {
+			"depends": [
+				"httpx",
+				"jinja2",
+				"pydantic",
+				"starlette",
+				"anyio"
+			],
+			"file_name": "fastapi-0.116.1-py3-none-any.tar.gz",
+			"imports": [
+				"fastapi"
+			],
+			"install_dir": "site",
+			"name": "fastapi",
+			"package_type": "package",
+			"sha256": "4797793c2c3080a4ebe5cac7c071d6c446d85fef77dfb058aaeeb6c2f84818da",
+			"unvendored_tests": false,
+			"version": "0.116.1"
 		},
 		"frozenlist": {
 			"depends": [],
@@ -195,7 +257,7 @@
 			"install_dir": "site",
 			"name": "frozenlist",
 			"package_type": "package",
-			"sha256": "3dbc42b2e400be3bc25c8e5bb5ae5e1339062c2ee5303a263c0b9b7d1f6810a4",
+			"sha256": "74e2ece2b0d5739b4d8694eeb935b1ba44933b238d49a8f1d61711da93e26112",
 			"unvendored_tests": false,
 			"version": "1.6.0"
 		},
@@ -208,7 +270,7 @@
 			"install_dir": "site",
 			"name": "h11",
 			"package_type": "package",
-			"sha256": "20874ab374d666f18af3e678321040057f5cde702f73f50978e1da547a1914e3",
+			"sha256": "ecb2f7a5d24e2595bc8d8e8ec00e040a1ecf37caf66fe8ae4b60628c15a3740a",
 			"unvendored_tests": true,
 			"version": "0.14.0"
 		},
@@ -221,7 +283,7 @@
 			"install_dir": "site",
 			"name": "h11-tests",
 			"package_type": "package",
-			"sha256": "73d6c3429d2ba97fa68448070656f4b244c9b56172abe0e860e548d078ee22e1",
+			"sha256": "b8aaf5dc7e42015768ea7861ade2702d349ffa4d70ac489d56be2298c0ba1c93",
 			"unvendored_tests": false,
 			"version": "0.14.0"
 		},
@@ -236,7 +298,7 @@
 			"install_dir": "site",
 			"name": "hashlib",
 			"package_type": "cpython_module",
-			"sha256": "467b1482a13e3bcb3c708d0858ae8a80f6791e173a4b70712848ed0081b4fbf6",
+			"sha256": "dc8ae15b7128cbe59424acc50595f1e2e060b5753bd543f0321f5cd6cd6ffd58",
 			"unvendored_tests": false,
 			"version": "1.0.0"
 		},
@@ -253,9 +315,22 @@
 			"install_dir": "site",
 			"name": "httpcore",
 			"package_type": "package",
-			"sha256": "c0e3275d15f4c315a9db212b5a0290c935ce5849d021837f5725b662a237c638",
+			"sha256": "cc1e4c8a4905b744ca9ed9eff3b6c97520c98aaf94671919a9e383a4d576a45a",
 			"unvendored_tests": false,
 			"version": "1.0.7"
+		},
+		"httpx": {
+			"depends": [],
+			"file_name": "httpx-0.28.1-py3-none-any.tar.gz",
+			"imports": [
+				"httpx"
+			],
+			"install_dir": "site",
+			"name": "httpx",
+			"package_type": "package",
+			"sha256": "a70563768ca26ce778d19ea32c0a86526aecf6a8b0b596bb7bf8bce1905947c2",
+			"unvendored_tests": false,
+			"version": "0.28.1"
 		},
 		"idna": {
 			"depends": [],
@@ -266,9 +341,24 @@
 			"install_dir": "site",
 			"name": "idna",
 			"package_type": "package",
-			"sha256": "95a4e72b8b52cef8eb8f34fb882c79fdab1b051b4a4a343c917ec0a5da1d43d2",
+			"sha256": "f98d1748064743fcc5ac37e5c63d46f8982a7d23b26b5550188045ee3daa0151",
 			"unvendored_tests": false,
 			"version": "3.10"
+		},
+		"jinja2": {
+			"depends": [
+				"markupsafe"
+			],
+			"file_name": "jinja2-3.1.6-py3-none-any.tar.gz",
+			"imports": [
+				"jinja2"
+			],
+			"install_dir": "site",
+			"name": "Jinja2",
+			"package_type": "package",
+			"sha256": "12d7ec54a68aa4593c22b122d8d8745a161563ff14a848d18308a176e83f44fe",
+			"unvendored_tests": false,
+			"version": "3.1.6"
 		},
 		"libopenssl": {
 			"depends": [],
@@ -277,7 +367,7 @@
 			"install_dir": "dynlib",
 			"name": "libopenssl",
 			"package_type": "shared_library",
-			"sha256": "d15dbe5a2e3d71e44a4d0cfac44641fcbd34f8723d70f41ac761b6c338562051",
+			"sha256": "3b45fd27ed479a4efea38039ac7dd392972dd954f7bf5b631a365371e3864816",
 			"unvendored_tests": false,
 			"version": "1.1.1w"
 		},
@@ -291,9 +381,22 @@
 			"install_dir": "site",
 			"name": "lzma",
 			"package_type": "cpython_module",
-			"sha256": "f898df9a36a1b55816948d157b3675a0339277f1c0259525aa7ed302c899d46e",
+			"sha256": "7f625cfead4e44658caf2d60e87bc6f269bfceee077e3482185a707c89b6eebb",
 			"unvendored_tests": false,
 			"version": "1.0.0"
+		},
+		"markupsafe": {
+			"depends": [],
+			"file_name": "markupsafe-3.0.2-cp313-cp313-pyodide_2025_0_wasm32.tar.gz",
+			"imports": [
+				"markupsafe"
+			],
+			"install_dir": "site",
+			"name": "MarkupSafe",
+			"package_type": "package",
+			"sha256": "767aeef1a7e356bcc5092572e8fade10ea3add7abb7cbbf7bc3017f328eb4662",
+			"unvendored_tests": false,
+			"version": "3.0.2"
 		},
 		"micropip": {
 			"depends": [],
@@ -304,22 +407,22 @@
 			"install_dir": "site",
 			"name": "micropip",
 			"package_type": "package",
-			"sha256": "ed5952175067f9f9dd729522ad259a5da7835c773aaf567aab13782dbef209e9",
+			"sha256": "6233859bbda8936a95eb37e36744bde06a3375117a120135bb20d271a7b30c7c",
 			"unvendored_tests": false,
 			"version": "0.10.1"
 		},
 		"multidict": {
 			"depends": [],
-			"file_name": "multidict-6.5.0-cp313-cp313-pyodide_2025_0_wasm32.tar.gz",
+			"file_name": "multidict-6.6.3-cp313-cp313-pyodide_2025_0_wasm32.tar.gz",
 			"imports": [
 				"multidict"
 			],
 			"install_dir": "site",
 			"name": "multidict",
 			"package_type": "package",
-			"sha256": "b640e645ecd7be341e988ad98dc8887fa883540c739fbc30dd3f4e6d013c19c3",
+			"sha256": "7289f0bd6ab60943d115acbabf25ebaf1eb745cc5788ba5ce2cb22bf6c092bf4",
 			"unvendored_tests": false,
-			"version": "6.5.0"
+			"version": "6.6.3"
 		},
 		"numpy": {
 			"depends": [],
@@ -330,7 +433,7 @@
 			"install_dir": "site",
 			"name": "numpy",
 			"package_type": "package",
-			"sha256": "64037010fa04f8faea96bc3864909b72d0a9b81b5a83aeb9fed7950b9c49e7f5",
+			"sha256": "1e1a49a4147be63953bc0efbf50ab3287ceffc3fdd46fbe974fb587f18ab9aec",
 			"unvendored_tests": false,
 			"version": "2.3.1"
 		},
@@ -343,7 +446,7 @@
 			"install_dir": "site",
 			"name": "propcache",
 			"package_type": "package",
-			"sha256": "e4500601d8ccd150c92178620cdf3917354c9e6770784417e12b4b8567ff685f",
+			"sha256": "fe723a0db2eab76d7123824ebf46d9bded8471c2fa9dd09c22feda5cbac086df",
 			"unvendored_tests": false,
 			"version": "0.3.0"
 		},
@@ -356,9 +459,41 @@
 			"install_dir": "site",
 			"name": "pycparser",
 			"package_type": "package",
-			"sha256": "4c738a5cb88594c636fd63e81b8334ad563efe0b0e11d9832b267141810741d7",
+			"sha256": "a84e8b45f159aa2c1f6aa9373525af2f983b3843fbc0b6ba89b960a347eb869a",
 			"unvendored_tests": false,
 			"version": "2.22"
+		},
+		"pydantic": {
+			"depends": [
+				"typing-extensions",
+				"pydantic_core",
+				"annotated-types"
+			],
+			"file_name": "pydantic-2.10.6-py3-none-any.tar.gz",
+			"imports": [
+				"pydantic"
+			],
+			"install_dir": "site",
+			"name": "pydantic",
+			"package_type": "package",
+			"sha256": "140b4cf640fc62e15971578398d152c4f7d25f6330cf5d37dfec4a38b7fe617d",
+			"unvendored_tests": false,
+			"version": "2.10.6"
+		},
+		"pydantic-core": {
+			"depends": [
+				"typing-extensions"
+			],
+			"file_name": "pydantic_core-2.27.2-cp313-cp313-pyodide_2025_0_wasm32.tar.gz",
+			"imports": [
+				"pydantic_core"
+			],
+			"install_dir": "site",
+			"name": "pydantic_core",
+			"package_type": "package",
+			"sha256": "5bca84f15a7a6643d5e5c73f0e70d2e6648abb727db78f73462239c217bd25a9",
+			"unvendored_tests": false,
+			"version": "2.27.2"
 		},
 		"pydecimal": {
 			"depends": [],
@@ -369,7 +504,7 @@
 			"install_dir": "site",
 			"name": "pydecimal",
 			"package_type": "cpython_module",
-			"sha256": "e595420ea44509e7ac4402b086a335d18bde3125ec77e2cf45619d56342ebdde",
+			"sha256": "6406c298889523aedefb85ac5c405db3fdbab04a4f9c10a54ebadda18d7a662c",
 			"unvendored_tests": false,
 			"version": "1.0.0"
 		},
@@ -382,7 +517,7 @@
 			"install_dir": "site",
 			"name": "pydoc_data",
 			"package_type": "cpython_module",
-			"sha256": "62049ce90d7be600f7d5a4c5f64cd3f4d3d1df1aaf13ec786255c99c2807d1e5",
+			"sha256": "693822dbd8efbdd87a6d67d067f77bbb6d6cb8e5199b091a6532246da38e2637",
 			"unvendored_tests": false,
 			"version": "1.0.0"
 		},
@@ -400,7 +535,7 @@
 			"install_dir": "site",
 			"name": "requests",
 			"package_type": "package",
-			"sha256": "b1b0f0d6de1ffd47693e7dde7053454e9242b46ba081eff0ba1d706e2185f44a",
+			"sha256": "e9b42e4c03b671bd9f343aa4b2d29e4291c5b6723fc9e40ef20f7b5accf529ae",
 			"unvendored_tests": false,
 			"version": "2.32.4"
 		},
@@ -413,9 +548,35 @@
 			"install_dir": "site",
 			"name": "six",
 			"package_type": "package",
-			"sha256": "1de12d52c65480c1e59ea16b346c5b1ab4b41345fa299aac2e91a1250f319ff6",
+			"sha256": "8a1e3e65d1e5c397ac776465cb1dd10245f20bea6638c8680bad631a7f4d6ee0",
 			"unvendored_tests": false,
 			"version": "1.17.0"
+		},
+		"sniffio": {
+			"depends": [],
+			"file_name": "sniffio-1.3.1-py3-none-any.tar.gz",
+			"imports": [
+				"sniffio"
+			],
+			"install_dir": "site",
+			"name": "sniffio",
+			"package_type": "package",
+			"sha256": "61b1ab6c987ab5b7ca9d584a13557440ca4c26595d8cefcd1946103b7205b4d4",
+			"unvendored_tests": true,
+			"version": "1.3.1"
+		},
+		"sniffio-tests": {
+			"depends": [
+				"sniffio"
+			],
+			"file_name": "sniffio-tests.tar",
+			"imports": [],
+			"install_dir": "site",
+			"name": "sniffio-tests",
+			"package_type": "package",
+			"sha256": "c32d9561ea35c7a385c8503b9e8379e25e0c25fd6a5098695692ca580cb90a3d",
+			"unvendored_tests": false,
+			"version": "1.3.1"
 		},
 		"soupsieve": {
 			"depends": [],
@@ -426,7 +587,7 @@
 			"install_dir": "site",
 			"name": "soupsieve",
 			"package_type": "package",
-			"sha256": "06221a1f141f5336b79a2a137ff089b87f574e34c3d20b78edd46571789c736f",
+			"sha256": "9a798087ba62a9e4807e70cfefc35bab83432385be806479adb8b4fda7a4e7e8",
 			"unvendored_tests": false,
 			"version": "2.6"
 		},
@@ -442,7 +603,7 @@
 			"install_dir": "site",
 			"name": "sqlalchemy",
 			"package_type": "package",
-			"sha256": "4cab2b614a114f30a3cad0c7f4d2c68b524aa5b3a94e1e22cb5f30571c29d4d0",
+			"sha256": "ec7f99beb1cccc21b7334e5f6ad454946c230dce5f85d4faedf8b00216291d99",
 			"unvendored_tests": true,
 			"version": "2.0.39"
 		},
@@ -455,7 +616,7 @@
 			"install_dir": "site",
 			"name": "sqlalchemy-tests",
 			"package_type": "package",
-			"sha256": "2e36265a3156ccbd2cd2dc9ab3edbc7ad09e3c377b736c898412454286250e88",
+			"sha256": "972ab2165332bf7c155babd7480076a1561b20ef80320b4349299e64d47a90cc",
 			"unvendored_tests": false,
 			"version": "2.0.39"
 		},
@@ -469,7 +630,7 @@
 			"install_dir": "site",
 			"name": "sqlite3",
 			"package_type": "cpython_module",
-			"sha256": "f102ab0ecccf13e41e2d1c1212958ede160d2bcee19336c9ed4f525c855e0f58",
+			"sha256": "299a0c3234b39d69e4a5e3df8764ba6a823d54f321fed45db090edba538479e9",
 			"unvendored_tests": false,
 			"version": "1.0.0"
 		},
@@ -485,9 +646,22 @@
 			"install_dir": "site",
 			"name": "ssl",
 			"package_type": "cpython_module",
-			"sha256": "86f59cc5040855df3d69687a480c9c7a8d51a3e3ec9906ff3dfe474def9dd61b",
+			"sha256": "d342bab119d9ebafafa43adeeca74071c23967c45a0d7b2b149dcedd2b3455ae",
 			"unvendored_tests": false,
 			"version": "1.0.0"
+		},
+		"starlette": {
+			"depends": [],
+			"file_name": "starlette-0.47.2-py3-none-any.tar.gz",
+			"imports": [
+				"starlette"
+			],
+			"install_dir": "site",
+			"name": "starlette",
+			"package_type": "package",
+			"sha256": "8d4cf2d10bc18311500caed05ad1fc655b9cbc1e5359c3b7b5dc98bd50b93943",
+			"unvendored_tests": false,
+			"version": "0.47.2"
 		},
 		"tblib": {
 			"depends": [],
@@ -498,22 +672,22 @@
 			"install_dir": "site",
 			"name": "tblib",
 			"package_type": "package",
-			"sha256": "213870388299a628843789664244f3b1062bca93ef4f8fe98c5eed172e06a58a",
+			"sha256": "6c8a061efaa944b744bea9f7044ceef017264e92f105f0c848dc815324827cb5",
 			"unvendored_tests": false,
 			"version": "3.0.0"
 		},
 		"typing-extensions": {
 			"depends": [],
-			"file_name": "typing_extensions-4.14.0-py3-none-any.tar.gz",
+			"file_name": "typing_extensions-4.14.1-py3-none-any.tar.gz",
 			"imports": [
 				"typing_extensions"
 			],
 			"install_dir": "site",
 			"name": "typing-extensions",
 			"package_type": "package",
-			"sha256": "ec303f9d6f8ad570ef6b41227f4b8ef900376ce1d2e8ab5f4dd72cdcea0f7568",
+			"sha256": "f72f5cc029cb3ebdce5b17fa1587562f708e8821cdb2bcea9b1b37dee67b978e",
 			"unvendored_tests": false,
-			"version": "4.14.0"
+			"version": "4.14.1"
 		},
 		"urllib3": {
 			"depends": [],
@@ -524,7 +698,7 @@
 			"install_dir": "site",
 			"name": "urllib3",
 			"package_type": "package",
-			"sha256": "12344784c72e779b61259984a6758ea1cf30ba56d56e7c8a2649c9307fee07ce",
+			"sha256": "25ccef4fcb2f29130cd60f003cc1df3611ab0e4faf3a02d1d17a8daab48b94aa",
 			"unvendored_tests": false,
 			"version": "2.5.0"
 		},
@@ -541,7 +715,7 @@
 			"install_dir": "site",
 			"name": "yarl",
 			"package_type": "package",
-			"sha256": "4d18257331413c63d1946053a09647b682d378ee22593b04a1f375e4488e7e15",
+			"sha256": "7e5a10ec5e85ef57d3cf87f71ad6af08e33b08075dcdacc2374fabed344e1c07",
 			"unvendored_tests": false,
 			"version": "1.18.3"
 		}
