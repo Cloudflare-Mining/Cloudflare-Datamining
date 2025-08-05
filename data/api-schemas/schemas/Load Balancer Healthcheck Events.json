@@ -127,7 +127,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -148,34 +148,35 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results on the current page",
+															"description": "Total number of results on the current page.",
 															"example": 20,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page",
+															"description": "Number of results per page.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														},
 														"total_pages": {
-															"description": "Total number of pages available",
+															"description": "Total number of pages available.",
 															"example": 100,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"required": [
@@ -274,13 +275,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List Healthcheck Events response"
+				"description": "List Healthcheck Events response."
 			},
 			"4XX": {
 				"content": {
@@ -336,7 +338,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -357,34 +359,35 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results on the current page",
+																	"description": "Total number of results on the current page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page",
+																	"description": "Number of results per page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																},
 																"total_pages": {
-																	"description": "Total number of pages available",
+																	"description": "Total number of pages available.",
 																	"example": 100,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"required": [
@@ -483,7 +486,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -555,7 +559,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -575,7 +579,7 @@
 						}
 					}
 				},
-				"description": "List Healthcheck Events response failure"
+				"description": "List Healthcheck Events response failure."
 			}
 		},
 		"security": [

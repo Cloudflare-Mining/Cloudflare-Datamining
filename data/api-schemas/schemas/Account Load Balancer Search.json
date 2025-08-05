@@ -8,7 +8,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -114,7 +114,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -135,34 +135,35 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results on the current page",
+															"description": "Total number of results on the current page.",
 															"example": 20,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page",
+															"description": "Number of results per page.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														},
 														"total_pages": {
-															"description": "Total number of pages available",
+															"description": "Total number of pages available.",
 															"example": 100,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"required": [
@@ -211,7 +212,8 @@
 																"type": "array"
 															},
 															"resource_id": {
-																"example": "17b5962d775c646f3f9725cbc7a53df4"
+																"example": "17b5962d775c646f3f9725cbc7a53df4",
+																"type": "string"
 															},
 															"resource_name": {
 																"description": "The human-identifiable name of the resource.",
@@ -245,7 +247,7 @@
 						}
 					}
 				},
-				"description": "Search Resources response"
+				"description": "Search Resources response."
 			},
 			"4XX": {
 				"content": {
@@ -301,7 +303,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -322,34 +324,35 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results on the current page",
+																	"description": "Total number of results on the current page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page",
+																	"description": "Number of results per page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																},
 																"total_pages": {
-																	"description": "Total number of pages available",
+																	"description": "Total number of pages available.",
 																	"example": 100,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"required": [
@@ -398,7 +401,8 @@
 																		"type": "array"
 																	},
 																	"resource_id": {
-																		"example": "17b5962d775c646f3f9725cbc7a53df4"
+																		"example": "17b5962d775c646f3f9725cbc7a53df4",
+																		"type": "string"
 																	},
 																	"resource_name": {
 																		"description": "The human-identifiable name of the resource.",
@@ -498,7 +502,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -518,7 +522,7 @@
 						}
 					}
 				},
-				"description": "Search Resources response failure"
+				"description": "Search Resources response failure."
 			}
 		},
 		"security": [

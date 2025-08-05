@@ -18,7 +18,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -86,7 +86,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -116,7 +116,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -133,13 +134,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete Monitor response"
+				"description": "Delete Monitor response."
 			},
 			"4XX": {
 				"content": {
@@ -195,7 +197,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -225,7 +227,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -242,7 +245,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -314,7 +318,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -334,7 +338,7 @@
 						}
 					}
 				},
-				"description": "Delete Monitor response failure"
+				"description": "Delete Monitor response failure."
 			}
 		},
 		"security": [
@@ -361,7 +365,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -423,7 +427,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -444,34 +448,35 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results on the current page",
+															"description": "Total number of results on the current page.",
 															"example": 20,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page",
+															"description": "Number of results per page.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														},
 														"total_pages": {
-															"description": "Total number of pages available",
+															"description": "Total number of pages available.",
 															"example": 100,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"required": [
@@ -494,30 +499,31 @@
 																"x-auditable": true
 															},
 															"consecutive_down": {
-																"default": 0,
 																"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 																"type": "integer",
 																"x-auditable": true
 															},
 															"consecutive_up": {
-																"default": 0,
 																"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 																"type": "integer",
 																"x-auditable": true
 															},
 															"description": {
+																"default": "",
 																"description": "Object description.",
 																"example": "Login page monitor",
 																"type": "string",
 																"x-auditable": true
 															},
 															"expected_body": {
+																"default": "",
 																"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 																"example": "alive",
 																"type": "string",
 																"x-auditable": true
 															},
 															"expected_codes": {
+																"default": "",
 																"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 																"example": "2xx",
 																"type": "string",
@@ -556,26 +562,26 @@
 																"x-auditable": true
 															},
 															"method": {
-																"default": "GET",
 																"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 																"example": "GET",
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"path": {
-																"default": "/",
 																"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 																"example": "/health",
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"port": {
-																"default": 0,
 																"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 																"type": "integer",
 																"x-auditable": true
 															},
 															"probe_zone": {
+																"default": "",
 																"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 																"example": "example.com",
 																"type": "string",
@@ -639,13 +645,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List Monitors response"
+				"description": "List Monitors response."
 			},
 			"4XX": {
 				"content": {
@@ -701,7 +708,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -722,34 +729,35 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results on the current page",
+																	"description": "Total number of results on the current page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page",
+																	"description": "Number of results per page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																},
 																"total_pages": {
-																	"description": "Total number of pages available",
+																	"description": "Total number of pages available.",
 																	"example": 100,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"required": [
@@ -772,30 +780,31 @@
 																		"x-auditable": true
 																	},
 																	"consecutive_down": {
-																		"default": 0,
 																		"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 																		"type": "integer",
 																		"x-auditable": true
 																	},
 																	"consecutive_up": {
-																		"default": 0,
 																		"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 																		"type": "integer",
 																		"x-auditable": true
 																	},
 																	"description": {
+																		"default": "",
 																		"description": "Object description.",
 																		"example": "Login page monitor",
 																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"expected_body": {
+																		"default": "",
 																		"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 																		"example": "alive",
 																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"expected_codes": {
+																		"default": "",
 																		"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 																		"example": "2xx",
 																		"type": "string",
@@ -834,26 +843,26 @@
 																		"x-auditable": true
 																	},
 																	"method": {
-																		"default": "GET",
 																		"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 																		"example": "GET",
 																		"type": "string",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"path": {
-																		"default": "/",
 																		"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 																		"example": "/health",
 																		"type": "string",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"port": {
-																		"default": 0,
 																		"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 																		"type": "integer",
 																		"x-auditable": true
 																	},
 																	"probe_zone": {
+																		"default": "",
 																		"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 																		"example": "example.com",
 																		"type": "string",
@@ -917,7 +926,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -989,7 +999,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1009,7 +1019,7 @@
 						}
 					}
 				},
-				"description": "List Monitors response failure"
+				"description": "List Monitors response failure."
 			}
 		},
 		"security": [
@@ -1047,7 +1057,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1109,7 +1119,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1139,7 +1149,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1158,30 +1169,31 @@
 															"x-auditable": true
 														},
 														"consecutive_down": {
-															"default": 0,
 															"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"consecutive_up": {
-															"default": 0,
 															"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"description": {
+															"default": "",
 															"description": "Object description.",
 															"example": "Login page monitor",
 															"type": "string",
 															"x-auditable": true
 														},
 														"expected_body": {
+															"default": "",
 															"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "alive",
 															"type": "string",
 															"x-auditable": true
 														},
 														"expected_codes": {
+															"default": "",
 															"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "2xx",
 															"type": "string",
@@ -1220,26 +1232,26 @@
 															"x-auditable": true
 														},
 														"method": {
-															"default": "GET",
 															"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 															"example": "GET",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"path": {
-															"default": "/",
 															"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "/health",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"port": {
-															"default": 0,
 															"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"probe_zone": {
+															"default": "",
 															"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "example.com",
 															"type": "string",
@@ -1301,13 +1313,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Monitor Details response"
+				"description": "Monitor Details response."
 			},
 			"4XX": {
 				"content": {
@@ -1363,7 +1376,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1393,7 +1406,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1412,30 +1426,31 @@
 																	"x-auditable": true
 																},
 																"consecutive_down": {
-																	"default": 0,
 																	"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"consecutive_up": {
-																	"default": 0,
 																	"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"description": {
+																	"default": "",
 																	"description": "Object description.",
 																	"example": "Login page monitor",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"expected_body": {
+																	"default": "",
 																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "alive",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"expected_codes": {
+																	"default": "",
 																	"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "2xx",
 																	"type": "string",
@@ -1474,26 +1489,26 @@
 																	"x-auditable": true
 																},
 																"method": {
-																	"default": "GET",
 																	"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 																	"example": "GET",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"path": {
-																	"default": "/",
 																	"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "/health",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"port": {
-																	"default": 0,
 																	"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"probe_zone": {
+																	"default": "",
 																	"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "example.com",
 																	"type": "string",
@@ -1555,7 +1570,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1627,7 +1643,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1647,7 +1663,7 @@
 						}
 					}
 				},
-				"description": "Monitor Details response failure"
+				"description": "Monitor Details response failure."
 			}
 		},
 		"security": [
@@ -1685,7 +1701,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1745,7 +1761,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -1801,13 +1817,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List Monitor References response"
+				"description": "List Monitor References response."
 			},
 			"4XX": {
 				"content": {
@@ -1861,7 +1878,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1917,7 +1934,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1989,7 +2007,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2009,7 +2027,7 @@
 						}
 					}
 				},
-				"description": "List Monitor References response failure"
+				"description": "List Monitor References response failure."
 			}
 		},
 		"security": [
@@ -2046,7 +2064,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2108,7 +2126,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2138,7 +2156,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2155,7 +2174,7 @@
 													"origins": {
 														"items": {
 															"additionalProperties": {
-																"description": "The origin ipv4/ipv6 address or domain name mapped to it's health data.",
+																"description": "The origin ipv4/ipv6 address or domain name mapped to its health data.",
 																"example": {
 																	"failure_reason": "No failures",
 																	"healthy": true,
@@ -2209,13 +2228,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Preview Result response"
+				"description": "Preview Result response."
 			},
 			"4XX": {
 				"content": {
@@ -2271,7 +2291,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2301,7 +2321,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2318,7 +2339,7 @@
 															"origins": {
 																"items": {
 																	"additionalProperties": {
-																		"description": "The origin ipv4/ipv6 address or domain name mapped to it's health data.",
+																		"description": "The origin ipv4/ipv6 address or domain name mapped to its health data.",
 																		"example": {
 																			"failure_reason": "No failures",
 																			"healthy": true,
@@ -2372,7 +2393,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2444,7 +2466,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2464,7 +2486,7 @@
 						}
 					}
 				},
-				"description": "Preview Result response failure"
+				"description": "Preview Result response failure."
 			}
 		},
 		"security": [
@@ -2502,7 +2524,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2526,30 +2548,31 @@
 										"x-auditable": true
 									},
 									"consecutive_down": {
-										"default": 0,
 										"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"consecutive_up": {
-										"default": 0,
 										"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"description": {
+										"default": "",
 										"description": "Object description.",
 										"example": "Login page monitor",
 										"type": "string",
 										"x-auditable": true
 									},
 									"expected_body": {
+										"default": "",
 										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "alive",
 										"type": "string",
 										"x-auditable": true
 									},
 									"expected_codes": {
+										"default": "",
 										"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "2xx",
 										"type": "string",
@@ -2588,26 +2611,26 @@
 										"x-auditable": true
 									},
 									"method": {
-										"default": "GET",
 										"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 										"example": "GET",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"path": {
-										"default": "/",
 										"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "/health",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"port": {
-										"default": 0,
 										"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"probe_zone": {
+										"default": "",
 										"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "example.com",
 										"type": "string",
@@ -2702,7 +2725,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2732,7 +2755,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2751,30 +2775,31 @@
 															"x-auditable": true
 														},
 														"consecutive_down": {
-															"default": 0,
 															"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"consecutive_up": {
-															"default": 0,
 															"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"description": {
+															"default": "",
 															"description": "Object description.",
 															"example": "Login page monitor",
 															"type": "string",
 															"x-auditable": true
 														},
 														"expected_body": {
+															"default": "",
 															"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "alive",
 															"type": "string",
 															"x-auditable": true
 														},
 														"expected_codes": {
+															"default": "",
 															"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "2xx",
 															"type": "string",
@@ -2813,26 +2838,26 @@
 															"x-auditable": true
 														},
 														"method": {
-															"default": "GET",
 															"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 															"example": "GET",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"path": {
-															"default": "/",
 															"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "/health",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"port": {
-															"default": 0,
 															"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"probe_zone": {
+															"default": "",
 															"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "example.com",
 															"type": "string",
@@ -2894,13 +2919,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Patch Monitor response"
+				"description": "Patch Monitor response."
 			},
 			"4XX": {
 				"content": {
@@ -2956,7 +2982,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2986,7 +3012,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -3005,30 +3032,31 @@
 																	"x-auditable": true
 																},
 																"consecutive_down": {
-																	"default": 0,
 																	"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"consecutive_up": {
-																	"default": 0,
 																	"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"description": {
+																	"default": "",
 																	"description": "Object description.",
 																	"example": "Login page monitor",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"expected_body": {
+																	"default": "",
 																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "alive",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"expected_codes": {
+																	"default": "",
 																	"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "2xx",
 																	"type": "string",
@@ -3067,26 +3095,26 @@
 																	"x-auditable": true
 																},
 																"method": {
-																	"default": "GET",
 																	"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 																	"example": "GET",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"path": {
-																	"default": "/",
 																	"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "/health",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"port": {
-																	"default": 0,
 																	"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"probe_zone": {
+																	"default": "",
 																	"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "example.com",
 																	"type": "string",
@@ -3148,7 +3176,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3220,7 +3249,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3240,7 +3269,7 @@
 						}
 					}
 				},
-				"description": "Patch Monitor response failure"
+				"description": "Patch Monitor response failure."
 			}
 		},
 		"security": [
@@ -3267,7 +3296,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3291,30 +3320,31 @@
 										"x-auditable": true
 									},
 									"consecutive_down": {
-										"default": 0,
 										"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"consecutive_up": {
-										"default": 0,
 										"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"description": {
+										"default": "",
 										"description": "Object description.",
 										"example": "Login page monitor",
 										"type": "string",
 										"x-auditable": true
 									},
 									"expected_body": {
+										"default": "",
 										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "alive",
 										"type": "string",
 										"x-auditable": true
 									},
 									"expected_codes": {
+										"default": "",
 										"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "2xx",
 										"type": "string",
@@ -3353,26 +3383,26 @@
 										"x-auditable": true
 									},
 									"method": {
-										"default": "GET",
 										"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 										"example": "GET",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"path": {
-										"default": "/",
 										"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "/health",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"port": {
-										"default": 0,
 										"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"probe_zone": {
+										"default": "",
 										"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "example.com",
 										"type": "string",
@@ -3467,7 +3497,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3497,7 +3527,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -3516,30 +3547,31 @@
 															"x-auditable": true
 														},
 														"consecutive_down": {
-															"default": 0,
 															"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"consecutive_up": {
-															"default": 0,
 															"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"description": {
+															"default": "",
 															"description": "Object description.",
 															"example": "Login page monitor",
 															"type": "string",
 															"x-auditable": true
 														},
 														"expected_body": {
+															"default": "",
 															"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "alive",
 															"type": "string",
 															"x-auditable": true
 														},
 														"expected_codes": {
+															"default": "",
 															"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "2xx",
 															"type": "string",
@@ -3578,26 +3610,26 @@
 															"x-auditable": true
 														},
 														"method": {
-															"default": "GET",
 															"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 															"example": "GET",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"path": {
-															"default": "/",
 															"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "/health",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"port": {
-															"default": 0,
 															"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"probe_zone": {
+															"default": "",
 															"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "example.com",
 															"type": "string",
@@ -3659,13 +3691,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create Monitor response"
+				"description": "Create Monitor response."
 			},
 			"4XX": {
 				"content": {
@@ -3721,7 +3754,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3751,7 +3784,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -3770,30 +3804,31 @@
 																	"x-auditable": true
 																},
 																"consecutive_down": {
-																	"default": 0,
 																	"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"consecutive_up": {
-																	"default": 0,
 																	"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"description": {
+																	"default": "",
 																	"description": "Object description.",
 																	"example": "Login page monitor",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"expected_body": {
+																	"default": "",
 																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "alive",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"expected_codes": {
+																	"default": "",
 																	"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "2xx",
 																	"type": "string",
@@ -3832,26 +3867,26 @@
 																	"x-auditable": true
 																},
 																"method": {
-																	"default": "GET",
 																	"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 																	"example": "GET",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"path": {
-																	"default": "/",
 																	"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "/health",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"port": {
-																	"default": 0,
 																	"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"probe_zone": {
+																	"default": "",
 																	"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "example.com",
 																	"type": "string",
@@ -3913,7 +3948,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3985,7 +4021,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4005,7 +4041,7 @@
 						}
 					}
 				},
-				"description": "Create Monitor response failure"
+				"description": "Create Monitor response failure."
 			}
 		},
 		"security": [
@@ -4042,7 +4078,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -4066,30 +4102,31 @@
 										"x-auditable": true
 									},
 									"consecutive_down": {
-										"default": 0,
 										"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"consecutive_up": {
-										"default": 0,
 										"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"description": {
+										"default": "",
 										"description": "Object description.",
 										"example": "Login page monitor",
 										"type": "string",
 										"x-auditable": true
 									},
 									"expected_body": {
+										"default": "",
 										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "alive",
 										"type": "string",
 										"x-auditable": true
 									},
 									"expected_codes": {
+										"default": "",
 										"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "2xx",
 										"type": "string",
@@ -4128,26 +4165,26 @@
 										"x-auditable": true
 									},
 									"method": {
-										"default": "GET",
 										"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 										"example": "GET",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"path": {
-										"default": "/",
 										"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "/health",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"port": {
-										"default": 0,
 										"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"probe_zone": {
+										"default": "",
 										"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "example.com",
 										"type": "string",
@@ -4242,7 +4279,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4272,7 +4309,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -4302,13 +4340,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Preview Monitor response"
+				"description": "Preview Monitor response."
 			},
 			"4XX": {
 				"content": {
@@ -4364,7 +4403,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -4394,7 +4433,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -4424,7 +4464,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4496,7 +4537,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4516,7 +4557,7 @@
 						}
 					}
 				},
-				"description": "Preview Monitor response failure"
+				"description": "Preview Monitor response failure."
 			}
 		},
 		"security": [
@@ -4550,7 +4591,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -4574,30 +4615,31 @@
 										"x-auditable": true
 									},
 									"consecutive_down": {
-										"default": 0,
 										"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"consecutive_up": {
-										"default": 0,
 										"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"description": {
+										"default": "",
 										"description": "Object description.",
 										"example": "Login page monitor",
 										"type": "string",
 										"x-auditable": true
 									},
 									"expected_body": {
+										"default": "",
 										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "alive",
 										"type": "string",
 										"x-auditable": true
 									},
 									"expected_codes": {
+										"default": "",
 										"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "2xx",
 										"type": "string",
@@ -4636,26 +4678,26 @@
 										"x-auditable": true
 									},
 									"method": {
-										"default": "GET",
 										"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 										"example": "GET",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"path": {
-										"default": "/",
 										"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "/health",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"port": {
-										"default": 0,
 										"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"probe_zone": {
+										"default": "",
 										"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "example.com",
 										"type": "string",
@@ -4750,7 +4792,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4780,7 +4822,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -4799,30 +4842,31 @@
 															"x-auditable": true
 														},
 														"consecutive_down": {
-															"default": 0,
 															"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"consecutive_up": {
-															"default": 0,
 															"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"description": {
+															"default": "",
 															"description": "Object description.",
 															"example": "Login page monitor",
 															"type": "string",
 															"x-auditable": true
 														},
 														"expected_body": {
+															"default": "",
 															"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "alive",
 															"type": "string",
 															"x-auditable": true
 														},
 														"expected_codes": {
+															"default": "",
 															"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "2xx",
 															"type": "string",
@@ -4861,26 +4905,26 @@
 															"x-auditable": true
 														},
 														"method": {
-															"default": "GET",
 															"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 															"example": "GET",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"path": {
-															"default": "/",
 															"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "/health",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"port": {
-															"default": 0,
 															"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 															"type": "integer",
 															"x-auditable": true
 														},
 														"probe_zone": {
+															"default": "",
 															"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": "example.com",
 															"type": "string",
@@ -4942,13 +4986,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update Monitor response"
+				"description": "Update Monitor response."
 			},
 			"4XX": {
 				"content": {
@@ -5004,7 +5049,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -5034,7 +5079,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -5053,30 +5099,31 @@
 																	"x-auditable": true
 																},
 																"consecutive_down": {
-																	"default": 0,
 																	"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"consecutive_up": {
-																	"default": 0,
 																	"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"description": {
+																	"default": "",
 																	"description": "Object description.",
 																	"example": "Login page monitor",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"expected_body": {
+																	"default": "",
 																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "alive",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"expected_codes": {
+																	"default": "",
 																	"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "2xx",
 																	"type": "string",
@@ -5115,26 +5162,26 @@
 																	"x-auditable": true
 																},
 																"method": {
-																	"default": "GET",
 																	"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 																	"example": "GET",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"path": {
-																	"default": "/",
 																	"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "/health",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"port": {
-																	"default": 0,
 																	"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"probe_zone": {
+																	"default": "",
 																	"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": "example.com",
 																	"type": "string",
@@ -5196,7 +5243,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -5268,7 +5316,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -5288,7 +5336,7 @@
 						}
 					}
 				},
-				"description": "Update Monitor response failure"
+				"description": "Update Monitor response failure."
 			}
 		},
 		"security": [

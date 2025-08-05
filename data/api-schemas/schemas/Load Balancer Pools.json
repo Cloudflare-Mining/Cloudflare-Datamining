@@ -73,7 +73,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -103,7 +103,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -120,13 +121,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete Pool response"
+				"description": "Delete Pool response."
 			},
 			"4XX": {
 				"content": {
@@ -182,7 +184,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -212,7 +214,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -229,7 +232,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -301,7 +305,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -321,7 +325,7 @@
 						}
 					}
 				},
-				"description": "Delete Pool response failure"
+				"description": "Delete Pool response failure."
 			}
 		},
 		"security": [
@@ -405,7 +409,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -426,34 +430,35 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results on the current page",
+															"description": "Total number of results on the current page.",
 															"example": 20,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page",
+															"description": "Number of results per page.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														},
 														"total_pages": {
-															"description": "Total number of pages available",
+															"description": "Total number of pages available.",
 															"example": 100,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"required": [
@@ -611,7 +616,8 @@
 																"jdcloud"
 															],
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"type": "array"
 													},
@@ -767,13 +773,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List Pools response"
+				"description": "List Pools response."
 			},
 			"4XX": {
 				"content": {
@@ -829,7 +836,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -850,34 +857,35 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results on the current page",
+																	"description": "Total number of results on the current page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page",
+																	"description": "Number of results per page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																},
 																"total_pages": {
-																	"description": "Total number of pages available",
+																	"description": "Total number of pages available.",
 																	"example": 100,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"required": [
@@ -1035,7 +1043,8 @@
 																		"jdcloud"
 																	],
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"type": "array"
 															},
@@ -1191,7 +1200,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1263,7 +1273,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1283,7 +1293,7 @@
 						}
 					}
 				},
-				"description": "List Pools response failure"
+				"description": "List Pools response failure."
 			}
 		},
 		"security": [
@@ -1370,7 +1380,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1400,7 +1410,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1554,7 +1565,8 @@
 															"jdcloud"
 														],
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"type": "array"
 												},
@@ -1708,13 +1720,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Pool Details response"
+				"description": "Pool Details response."
 			},
 			"4XX": {
 				"content": {
@@ -1770,7 +1783,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1800,7 +1813,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1954,7 +1968,8 @@
 																	"jdcloud"
 																],
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"type": "array"
 														},
@@ -2108,7 +2123,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2180,7 +2196,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2200,7 +2216,7 @@
 						}
 					}
 				},
-				"description": "Pool Details response failure"
+				"description": "Pool Details response failure."
 			}
 		},
 		"security": [
@@ -2287,7 +2303,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2317,7 +2333,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2346,7 +2363,7 @@
 											},
 											"properties": {
 												"pool_id": {
-													"description": "Pool ID",
+													"description": "Pool ID.",
 													"example": "17b5962d775c646f3f9725cbc7a53df4",
 													"type": "string",
 													"x-auditable": true
@@ -2403,13 +2420,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Pool Health Details response"
+				"description": "Pool Health Details response."
 			},
 			"4XX": {
 				"content": {
@@ -2465,7 +2483,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2495,7 +2513,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2524,7 +2543,7 @@
 													},
 													"properties": {
 														"pool_id": {
-															"description": "Pool ID",
+															"description": "Pool ID.",
 															"example": "17b5962d775c646f3f9725cbc7a53df4",
 															"type": "string",
 															"x-auditable": true
@@ -2581,7 +2600,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2653,7 +2673,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2673,7 +2693,7 @@
 						}
 					}
 				},
-				"description": "Pool Health Details response failure"
+				"description": "Pool Health Details response failure."
 			}
 		},
 		"security": [
@@ -2758,7 +2778,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -2820,13 +2840,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List Pool References response"
+				"description": "List Pool References response."
 			},
 			"4XX": {
 				"content": {
@@ -2880,7 +2901,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2942,7 +2963,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3014,7 +3036,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3034,7 +3056,7 @@
 						}
 					}
 				},
-				"description": "List Pool References response failure"
+				"description": "List Pool References response failure."
 			}
 		},
 		"security": [
@@ -3069,7 +3091,8 @@
 								"example": "",
 								"type": "string"
 							}
-						}
+						},
+						"type": "string"
 					}
 				}
 			},
@@ -3128,7 +3151,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3149,34 +3172,35 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results on the current page",
+															"description": "Total number of results on the current page.",
 															"example": 20,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page",
+															"description": "Number of results per page.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														},
 														"total_pages": {
-															"description": "Total number of pages available",
+															"description": "Total number of pages available.",
 															"example": 100,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"required": [
@@ -3334,7 +3358,8 @@
 																"jdcloud"
 															],
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"type": "array"
 													},
@@ -3490,13 +3515,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Patch Pools response"
+				"description": "Patch Pools response."
 			},
 			"4XX": {
 				"content": {
@@ -3552,7 +3578,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3573,34 +3599,35 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results on the current page",
+																	"description": "Total number of results on the current page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page",
+																	"description": "Number of results per page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																},
 																"total_pages": {
-																	"description": "Total number of pages available",
+																	"description": "Total number of pages available.",
 																	"example": 100,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"required": [
@@ -3758,7 +3785,8 @@
 																		"jdcloud"
 																	],
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"type": "array"
 															},
@@ -3914,7 +3942,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3986,7 +4015,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4006,7 +4035,7 @@
 						}
 					}
 				},
-				"description": "Patch Pools response failure"
+				"description": "Patch Pools response failure."
 			}
 		},
 		"security": [
@@ -4309,7 +4338,8 @@
 								},
 								"type": "array"
 							}
-						}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -4368,7 +4398,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4398,7 +4428,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -4552,7 +4583,8 @@
 															"jdcloud"
 														],
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"type": "array"
 												},
@@ -4706,13 +4738,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Patch Pool response"
+				"description": "Patch Pool response."
 			},
 			"4XX": {
 				"content": {
@@ -4768,7 +4801,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -4798,7 +4831,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -4952,7 +4986,8 @@
 																	"jdcloud"
 																],
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"type": "array"
 														},
@@ -5106,7 +5141,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -5178,7 +5214,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -5198,7 +5234,7 @@
 						}
 					}
 				},
-				"description": "Patch Pool response failure"
+				"description": "Patch Pool response failure."
 			}
 		},
 		"security": [
@@ -5343,7 +5379,8 @@
 										"jdcloud"
 									],
 									"type": "string",
-									"x-auditable": true
+									"x-auditable": true,
+									"x-stainless-terraform-configurability": "computed_optional"
 								},
 								"type": "array"
 							},
@@ -5498,7 +5535,8 @@
 						"required": [
 							"origins",
 							"name"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -5557,7 +5595,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -5587,7 +5625,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -5741,7 +5780,8 @@
 															"jdcloud"
 														],
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"type": "array"
 												},
@@ -5895,13 +5935,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create Pool response"
+				"description": "Create Pool response."
 			},
 			"4XX": {
 				"content": {
@@ -5957,7 +5998,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -5987,7 +6028,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -6141,7 +6183,8 @@
 																	"jdcloud"
 																],
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"type": "array"
 														},
@@ -6295,7 +6338,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -6367,7 +6411,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -6387,7 +6431,7 @@
 						}
 					}
 				},
-				"description": "Create Pool response failure"
+				"description": "Create Pool response failure."
 			}
 		},
 		"security": [
@@ -6435,30 +6479,31 @@
 										"x-auditable": true
 									},
 									"consecutive_down": {
-										"default": 0,
 										"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"consecutive_up": {
-										"default": 0,
 										"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"description": {
+										"default": "",
 										"description": "Object description.",
 										"example": "Login page monitor",
 										"type": "string",
 										"x-auditable": true
 									},
 									"expected_body": {
+										"default": "",
 										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "alive",
 										"type": "string",
 										"x-auditable": true
 									},
 									"expected_codes": {
+										"default": "",
 										"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "2xx",
 										"type": "string",
@@ -6497,26 +6542,26 @@
 										"x-auditable": true
 									},
 									"method": {
-										"default": "GET",
 										"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
 										"example": "GET",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"path": {
-										"default": "/",
 										"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "/health",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"port": {
-										"default": 0,
 										"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 										"type": "integer",
 										"x-auditable": true
 									},
 									"probe_zone": {
+										"default": "",
 										"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": "example.com",
 										"type": "string",
@@ -6611,7 +6656,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -6641,7 +6686,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -6671,13 +6717,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Preview Pool response"
+				"description": "Preview Pool response."
 			},
 			"4XX": {
 				"content": {
@@ -6733,7 +6780,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -6763,7 +6810,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -6793,7 +6841,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -6865,7 +6914,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -6885,7 +6934,7 @@
 						}
 					}
 				},
-				"description": "Preview Pool response failure"
+				"description": "Preview Pool response failure."
 			}
 		},
 		"security": [
@@ -7046,7 +7095,8 @@
 										"jdcloud"
 									],
 									"type": "string",
-									"x-auditable": true
+									"x-auditable": true,
+									"x-stainless-terraform-configurability": "computed_optional"
 								},
 								"type": "array"
 							},
@@ -7201,7 +7251,8 @@
 						"required": [
 							"origins",
 							"name"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -7260,7 +7311,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -7290,7 +7341,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -7444,7 +7496,8 @@
 															"jdcloud"
 														],
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"type": "array"
 												},
@@ -7598,13 +7651,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update Pool response"
+				"description": "Update Pool response."
 			},
 			"4XX": {
 				"content": {
@@ -7660,7 +7714,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -7690,7 +7744,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -7844,7 +7899,8 @@
 																	"jdcloud"
 																],
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"type": "array"
 														},
@@ -7998,7 +8054,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -8070,7 +8127,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -8090,7 +8147,7 @@
 						}
 					}
 				},
-				"description": "Update Pool response failure"
+				"description": "Update Pool response failure."
 			}
 		},
 		"security": [
