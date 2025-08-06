@@ -13,7 +13,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -179,11 +180,13 @@
 												},
 												"enterprise_billing_email": {
 													"example": "johndoe@gmail.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"enterprise_primary_email": {
 													"example": "johndoe@gmail.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"first_name": {
 													"example": "John",
@@ -194,7 +197,8 @@
 													"example": "b69a9f3492637782896352daae219e7d",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"is_partner": {
 													"example": false,
@@ -255,7 +259,8 @@
 												},
 												"primary_email": {
 													"example": "johndoe@gmail.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"state": {
 													"example": "AnyState",
@@ -460,11 +465,13 @@
 														},
 														"enterprise_billing_email": {
 															"example": "johndoe@gmail.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"enterprise_primary_email": {
 															"example": "johndoe@gmail.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"first_name": {
 															"example": "John",
@@ -475,7 +482,8 @@
 															"example": "b69a9f3492637782896352daae219e7d",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_partner": {
 															"example": false,
@@ -536,7 +544,8 @@
 														},
 														"primary_email": {
 															"example": "johndoe@gmail.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"state": {
 															"example": "AnyState",

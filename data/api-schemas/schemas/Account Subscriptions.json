@@ -12,7 +12,8 @@
 					"example": "506e3185e9c882d175a2d0cb0093d9f2",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -24,7 +25,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -145,7 +147,8 @@
 													"example": "506e3185e9c882d175a2d0cb0093d9f2",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -270,7 +273,8 @@
 															"example": "506e3185e9c882d175a2d0cb0093d9f2",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -403,7 +407,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -538,7 +543,8 @@
 																"properties": {
 																	"install_id": {
 																		"description": "app install id.",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																}
 															},
@@ -550,22 +556,26 @@
 																		"default": {
 																			"description": "The default amount assigned.",
 																			"example": 5,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "The name of the component value.",
 																			"example": "page_rules",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"price": {
 																			"description": "The unit price for the component value.",
 																			"example": 5,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The amount of the component value assigned.",
 																			"example": 20,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -576,21 +586,24 @@
 																"description": "The monetary unit in which pricing information is displayed.",
 																"example": "USD",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"current_period_end": {
 																"description": "The end of the current period and also when the next billing is due.",
 																"example": "2014-03-31T12:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"current_period_start": {
 																"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 																"example": "2014-05-11T12:20:00Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"frequency": {
 																"description": "How often the subscription is renewed automatically.",
@@ -601,20 +614,23 @@
 																	"yearly"
 																],
 																"example": "monthly",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Subscription identifier tag.",
 																"example": "506e3185e9c882d175a2d0cb0093d9f2",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"price": {
 																"description": "The price of the subscription that will be billed, in US dollars.",
 																"example": 20,
 																"readOnly": true,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"rate_plan": {
 																"description": "The rate plan applied to the subscription.",
@@ -622,37 +638,44 @@
 																	"currency": {
 																		"description": "The currency applied to the rate plan subscription.",
 																		"example": "USD",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"externally_managed": {
 																		"description": "Whether this rate plan is managed externally from Cloudflare.",
 																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "The ID of the rate plan.",
 																		"example": "free",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"is_contract": {
 																		"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"public_name": {
 																		"description": "The full name of the rate plan.",
 																		"example": "Business Plan",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"scope": {
 																		"description": "The scope that this rate plan applies to.",
 																		"example": "zone",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"sets": {
 																		"description": "The list of sets this rate plan applies to.",
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	}
@@ -672,7 +695,8 @@
 																],
 																"example": "Paid",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"zone": {
 																"description": "A simple zone object. May have null properties if not a zone subscription.",
@@ -682,7 +706,8 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The domain name",
@@ -690,7 +715,8 @@
 																		"maxLength": 253,
 																		"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -844,7 +870,8 @@
 																		"properties": {
 																			"install_id": {
 																				"description": "app install id.",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		}
 																	},
@@ -856,22 +883,26 @@
 																				"default": {
 																					"description": "The default amount assigned.",
 																					"example": 5,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"name": {
 																					"description": "The name of the component value.",
 																					"example": "page_rules",
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"price": {
 																					"description": "The unit price for the component value.",
 																					"example": 5,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"value": {
 																					"description": "The amount of the component value assigned.",
 																					"example": 20,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -882,21 +913,24 @@
 																		"description": "The monetary unit in which pricing information is displayed.",
 																		"example": "USD",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"current_period_end": {
 																		"description": "The end of the current period and also when the next billing is due.",
 																		"example": "2014-03-31T12:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"current_period_start": {
 																		"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 																		"example": "2014-05-11T12:20:00Z",
 																		"format": "date-time",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"frequency": {
 																		"description": "How often the subscription is renewed automatically.",
@@ -907,20 +941,23 @@
 																			"yearly"
 																		],
 																		"example": "monthly",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Subscription identifier tag.",
 																		"example": "506e3185e9c882d175a2d0cb0093d9f2",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"price": {
 																		"description": "The price of the subscription that will be billed, in US dollars.",
 																		"example": 20,
 																		"readOnly": true,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"rate_plan": {
 																		"description": "The rate plan applied to the subscription.",
@@ -928,37 +965,44 @@
 																			"currency": {
 																				"description": "The currency applied to the rate plan subscription.",
 																				"example": "USD",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"externally_managed": {
 																				"description": "Whether this rate plan is managed externally from Cloudflare.",
 																				"example": false,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"id": {
 																				"description": "The ID of the rate plan.",
 																				"example": "free",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"is_contract": {
 																				"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																				"example": false,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"x-auditable": true
 																			},
 																			"public_name": {
 																				"description": "The full name of the rate plan.",
 																				"example": "Business Plan",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"scope": {
 																				"description": "The scope that this rate plan applies to.",
 																				"example": "zone",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"sets": {
 																				"description": "The list of sets this rate plan applies to.",
 																				"items": {
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"type": "array"
 																			}
@@ -978,7 +1022,8 @@
 																		],
 																		"example": "Paid",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"zone": {
 																		"description": "A simple zone object. May have null properties if not a zone subscription.",
@@ -988,7 +1033,8 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"name": {
 																				"description": "The domain name",
@@ -996,7 +1042,8 @@
 																				"maxLength": 253,
 																				"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -1145,7 +1192,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1158,7 +1206,8 @@
 								"properties": {
 									"install_id": {
 										"description": "app install id.",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								}
 							},
@@ -1170,22 +1219,26 @@
 										"default": {
 											"description": "The default amount assigned.",
 											"example": 5,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										},
 										"name": {
 											"description": "The name of the component value.",
 											"example": "page_rules",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"price": {
 											"description": "The unit price for the component value.",
 											"example": 5,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										},
 										"value": {
 											"description": "The amount of the component value assigned.",
 											"example": 20,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -1196,21 +1249,24 @@
 								"description": "The monetary unit in which pricing information is displayed.",
 								"example": "USD",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"current_period_end": {
 								"description": "The end of the current period and also when the next billing is due.",
 								"example": "2014-03-31T12:20:00Z",
 								"format": "date-time",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"current_period_start": {
 								"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 								"example": "2014-05-11T12:20:00Z",
 								"format": "date-time",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"frequency": {
 								"description": "How often the subscription is renewed automatically.",
@@ -1221,20 +1277,23 @@
 									"yearly"
 								],
 								"example": "monthly",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"id": {
 								"description": "Subscription identifier tag.",
 								"example": "506e3185e9c882d175a2d0cb0093d9f2",
 								"maxLength": 32,
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"price": {
 								"description": "The price of the subscription that will be billed, in US dollars.",
 								"example": 20,
 								"readOnly": true,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"rate_plan": {
 								"description": "The rate plan applied to the subscription.",
@@ -1242,37 +1301,44 @@
 									"currency": {
 										"description": "The currency applied to the rate plan subscription.",
 										"example": "USD",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"externally_managed": {
 										"description": "Whether this rate plan is managed externally from Cloudflare.",
 										"example": false,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"id": {
 										"description": "The ID of the rate plan.",
 										"example": "free",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"is_contract": {
 										"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 										"example": false,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"public_name": {
 										"description": "The full name of the rate plan.",
 										"example": "Business Plan",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"scope": {
 										"description": "The scope that this rate plan applies to.",
 										"example": "zone",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"sets": {
 										"description": "The list of sets this rate plan applies to.",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									}
@@ -1292,7 +1358,8 @@
 								],
 								"example": "Paid",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"zone": {
 								"description": "A simple zone object. May have null properties if not a zone subscription.",
@@ -1302,7 +1369,8 @@
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"name": {
 										"description": "The domain name",
@@ -1310,7 +1378,8 @@
 										"maxLength": 253,
 										"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -1434,7 +1503,8 @@
 															"properties": {
 																"install_id": {
 																	"description": "app install id.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														},
@@ -1446,22 +1516,26 @@
 																	"default": {
 																		"description": "The default amount assigned.",
 																		"example": 5,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The name of the component value.",
 																		"example": "page_rules",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"price": {
 																		"description": "The unit price for the component value.",
 																		"example": 5,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The amount of the component value assigned.",
 																		"example": 20,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1472,21 +1546,24 @@
 															"description": "The monetary unit in which pricing information is displayed.",
 															"example": "USD",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"current_period_end": {
 															"description": "The end of the current period and also when the next billing is due.",
 															"example": "2014-03-31T12:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"current_period_start": {
 															"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 															"example": "2014-05-11T12:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"frequency": {
 															"description": "How often the subscription is renewed automatically.",
@@ -1497,20 +1574,23 @@
 																"yearly"
 															],
 															"example": "monthly",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Subscription identifier tag.",
 															"example": "506e3185e9c882d175a2d0cb0093d9f2",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"price": {
 															"description": "The price of the subscription that will be billed, in US dollars.",
 															"example": 20,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"rate_plan": {
 															"description": "The rate plan applied to the subscription.",
@@ -1518,37 +1598,44 @@
 																"currency": {
 																	"description": "The currency applied to the rate plan subscription.",
 																	"example": "USD",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"externally_managed": {
 																	"description": "Whether this rate plan is managed externally from Cloudflare.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "The ID of the rate plan.",
 																	"example": "free",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"is_contract": {
 																	"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"public_name": {
 																	"description": "The full name of the rate plan.",
 																	"example": "Business Plan",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scope": {
 																	"description": "The scope that this rate plan applies to.",
 																	"example": "zone",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sets": {
 																	"description": "The list of sets this rate plan applies to.",
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																}
@@ -1568,7 +1655,8 @@
 															],
 															"example": "Paid",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone": {
 															"description": "A simple zone object. May have null properties if not a zone subscription.",
@@ -1578,7 +1666,8 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The domain name",
@@ -1586,7 +1675,8 @@
 																	"maxLength": 253,
 																	"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -1719,7 +1809,8 @@
 																	"properties": {
 																		"install_id": {
 																			"description": "app install id.",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																},
@@ -1731,22 +1822,26 @@
 																			"default": {
 																				"description": "The default amount assigned.",
 																				"example": 5,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"name": {
 																				"description": "The name of the component value.",
 																				"example": "page_rules",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"price": {
 																				"description": "The unit price for the component value.",
 																				"example": 5,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"value": {
 																				"description": "The amount of the component value assigned.",
 																				"example": 20,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -1757,21 +1852,24 @@
 																	"description": "The monetary unit in which pricing information is displayed.",
 																	"example": "USD",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"current_period_end": {
 																	"description": "The end of the current period and also when the next billing is due.",
 																	"example": "2014-03-31T12:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"current_period_start": {
 																	"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 																	"example": "2014-05-11T12:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"frequency": {
 																	"description": "How often the subscription is renewed automatically.",
@@ -1782,20 +1880,23 @@
 																		"yearly"
 																	],
 																	"example": "monthly",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Subscription identifier tag.",
 																	"example": "506e3185e9c882d175a2d0cb0093d9f2",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"price": {
 																	"description": "The price of the subscription that will be billed, in US dollars.",
 																	"example": 20,
 																	"readOnly": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"rate_plan": {
 																	"description": "The rate plan applied to the subscription.",
@@ -1803,37 +1904,44 @@
 																		"currency": {
 																			"description": "The currency applied to the rate plan subscription.",
 																			"example": "USD",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"externally_managed": {
 																			"description": "Whether this rate plan is managed externally from Cloudflare.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "The ID of the rate plan.",
 																			"example": "free",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"is_contract": {
 																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"public_name": {
 																			"description": "The full name of the rate plan.",
 																			"example": "Business Plan",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scope": {
 																			"description": "The scope that this rate plan applies to.",
 																			"example": "zone",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sets": {
 																			"description": "The list of sets this rate plan applies to.",
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		}
@@ -1853,7 +1961,8 @@
 																	],
 																	"example": "Paid",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"zone": {
 																	"description": "A simple zone object. May have null properties if not a zone subscription.",
@@ -1863,7 +1972,8 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "The domain name",
@@ -1871,7 +1981,8 @@
 																			"maxLength": 253,
 																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -2018,7 +2129,8 @@
 					"example": "506e3185e9c882d175a2d0cb0093d9f2",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2030,7 +2142,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2043,7 +2156,8 @@
 								"properties": {
 									"install_id": {
 										"description": "app install id.",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								}
 							},
@@ -2055,22 +2169,26 @@
 										"default": {
 											"description": "The default amount assigned.",
 											"example": 5,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										},
 										"name": {
 											"description": "The name of the component value.",
 											"example": "page_rules",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"price": {
 											"description": "The unit price for the component value.",
 											"example": 5,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										},
 										"value": {
 											"description": "The amount of the component value assigned.",
 											"example": 20,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -2081,21 +2199,24 @@
 								"description": "The monetary unit in which pricing information is displayed.",
 								"example": "USD",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"current_period_end": {
 								"description": "The end of the current period and also when the next billing is due.",
 								"example": "2014-03-31T12:20:00Z",
 								"format": "date-time",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"current_period_start": {
 								"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 								"example": "2014-05-11T12:20:00Z",
 								"format": "date-time",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"frequency": {
 								"description": "How often the subscription is renewed automatically.",
@@ -2106,20 +2227,23 @@
 									"yearly"
 								],
 								"example": "monthly",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"id": {
 								"description": "Subscription identifier tag.",
 								"example": "506e3185e9c882d175a2d0cb0093d9f2",
 								"maxLength": 32,
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"price": {
 								"description": "The price of the subscription that will be billed, in US dollars.",
 								"example": 20,
 								"readOnly": true,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"rate_plan": {
 								"description": "The rate plan applied to the subscription.",
@@ -2127,37 +2251,44 @@
 									"currency": {
 										"description": "The currency applied to the rate plan subscription.",
 										"example": "USD",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"externally_managed": {
 										"description": "Whether this rate plan is managed externally from Cloudflare.",
 										"example": false,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"id": {
 										"description": "The ID of the rate plan.",
 										"example": "free",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"is_contract": {
 										"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 										"example": false,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"public_name": {
 										"description": "The full name of the rate plan.",
 										"example": "Business Plan",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"scope": {
 										"description": "The scope that this rate plan applies to.",
 										"example": "zone",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"sets": {
 										"description": "The list of sets this rate plan applies to.",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": "array"
 									}
@@ -2177,7 +2308,8 @@
 								],
 								"example": "Paid",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"zone": {
 								"description": "A simple zone object. May have null properties if not a zone subscription.",
@@ -2187,7 +2319,8 @@
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"name": {
 										"description": "The domain name",
@@ -2195,7 +2328,8 @@
 										"maxLength": 253,
 										"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -2319,7 +2453,8 @@
 															"properties": {
 																"install_id": {
 																	"description": "app install id.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														},
@@ -2331,22 +2466,26 @@
 																	"default": {
 																		"description": "The default amount assigned.",
 																		"example": 5,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The name of the component value.",
 																		"example": "page_rules",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"price": {
 																		"description": "The unit price for the component value.",
 																		"example": 5,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "The amount of the component value assigned.",
 																		"example": 20,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -2357,21 +2496,24 @@
 															"description": "The monetary unit in which pricing information is displayed.",
 															"example": "USD",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"current_period_end": {
 															"description": "The end of the current period and also when the next billing is due.",
 															"example": "2014-03-31T12:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"current_period_start": {
 															"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 															"example": "2014-05-11T12:20:00Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"frequency": {
 															"description": "How often the subscription is renewed automatically.",
@@ -2382,20 +2524,23 @@
 																"yearly"
 															],
 															"example": "monthly",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Subscription identifier tag.",
 															"example": "506e3185e9c882d175a2d0cb0093d9f2",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"price": {
 															"description": "The price of the subscription that will be billed, in US dollars.",
 															"example": 20,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"rate_plan": {
 															"description": "The rate plan applied to the subscription.",
@@ -2403,37 +2548,44 @@
 																"currency": {
 																	"description": "The currency applied to the rate plan subscription.",
 																	"example": "USD",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"externally_managed": {
 																	"description": "Whether this rate plan is managed externally from Cloudflare.",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "The ID of the rate plan.",
 																	"example": "free",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"is_contract": {
 																	"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"public_name": {
 																	"description": "The full name of the rate plan.",
 																	"example": "Business Plan",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"scope": {
 																	"description": "The scope that this rate plan applies to.",
 																	"example": "zone",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"sets": {
 																	"description": "The list of sets this rate plan applies to.",
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																}
@@ -2453,7 +2605,8 @@
 															],
 															"example": "Paid",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"zone": {
 															"description": "A simple zone object. May have null properties if not a zone subscription.",
@@ -2463,7 +2616,8 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The domain name",
@@ -2471,7 +2625,8 @@
 																	"maxLength": 253,
 																	"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2604,7 +2759,8 @@
 																	"properties": {
 																		"install_id": {
 																			"description": "app install id.",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	}
 																},
@@ -2616,22 +2772,26 @@
 																			"default": {
 																				"description": "The default amount assigned.",
 																				"example": 5,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"name": {
 																				"description": "The name of the component value.",
 																				"example": "page_rules",
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"price": {
 																				"description": "The unit price for the component value.",
 																				"example": 5,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			},
 																			"value": {
 																				"description": "The amount of the component value assigned.",
 																				"example": 20,
-																				"type": "number"
+																				"type": "number",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -2642,21 +2802,24 @@
 																	"description": "The monetary unit in which pricing information is displayed.",
 																	"example": "USD",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"current_period_end": {
 																	"description": "The end of the current period and also when the next billing is due.",
 																	"example": "2014-03-31T12:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"current_period_start": {
 																	"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 																	"example": "2014-05-11T12:20:00Z",
 																	"format": "date-time",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"frequency": {
 																	"description": "How often the subscription is renewed automatically.",
@@ -2667,20 +2830,23 @@
 																		"yearly"
 																	],
 																	"example": "monthly",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Subscription identifier tag.",
 																	"example": "506e3185e9c882d175a2d0cb0093d9f2",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"price": {
 																	"description": "The price of the subscription that will be billed, in US dollars.",
 																	"example": 20,
 																	"readOnly": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"rate_plan": {
 																	"description": "The rate plan applied to the subscription.",
@@ -2688,37 +2854,44 @@
 																		"currency": {
 																			"description": "The currency applied to the rate plan subscription.",
 																			"example": "USD",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"externally_managed": {
 																			"description": "Whether this rate plan is managed externally from Cloudflare.",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"id": {
 																			"description": "The ID of the rate plan.",
 																			"example": "free",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"is_contract": {
 																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-auditable": true
 																		},
 																		"public_name": {
 																			"description": "The full name of the rate plan.",
 																			"example": "Business Plan",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"scope": {
 																			"description": "The scope that this rate plan applies to.",
 																			"example": "zone",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"sets": {
 																			"description": "The list of sets this rate plan applies to.",
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		}
@@ -2738,7 +2911,8 @@
 																	],
 																	"example": "Paid",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"zone": {
 																	"description": "A simple zone object. May have null properties if not a zone subscription.",
@@ -2748,7 +2922,8 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "The domain name",
@@ -2756,7 +2931,8 @@
 																			"maxLength": 253,
 																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"

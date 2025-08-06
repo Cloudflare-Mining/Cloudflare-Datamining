@@ -47,7 +47,8 @@
 					"example": "2014-03-01T12:21:59.3456Z",
 					"format": "date-time",
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -203,53 +204,61 @@
 														"example": "subscription",
 														"maxLength": 30,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"amount": {
 														"description": "The amount associated with this billing item.",
 														"example": 20.99,
 														"readOnly": true,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"currency": {
 														"description": "The monetary unit in which pricing information is displayed.",
 														"example": "USD",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"description": {
 														"description": "The billing item description.",
 														"example": "The billing item description",
 														"maxLength": 255,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Billing item identifier tag.",
 														"example": "b69a9f3492637782896352daae219e7d",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"occurred_at": {
 														"description": "When the billing item was created.",
 														"example": "2014-03-01T12:21:59.3456Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"type": {
 														"description": "The billing item type.",
 														"example": "charge",
 														"maxLength": 30,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"zone": {
 														"properties": {
 															"name": {
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -408,53 +417,61 @@
 																"example": "subscription",
 																"maxLength": 30,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"amount": {
 																"description": "The amount associated with this billing item.",
 																"example": 20.99,
 																"readOnly": true,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"currency": {
 																"description": "The monetary unit in which pricing information is displayed.",
 																"example": "USD",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "The billing item description.",
 																"example": "The billing item description",
 																"maxLength": 255,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Billing item identifier tag.",
 																"example": "b69a9f3492637782896352daae219e7d",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"occurred_at": {
 																"description": "When the billing item was created.",
 																"example": "2014-03-01T12:21:59.3456Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"type": {
 																"description": "The billing item type.",
 																"example": "charge",
 																"maxLength": 30,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"zone": {
 																"properties": {
 																	"name": {
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"

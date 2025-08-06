@@ -626,6 +626,103 @@
 			"Intel Write"
 		]
 	},
+	"POST /accounts/{account_id}/brand-protection/queries/bulk": {
+		"description": "Return a success message after creating new saved string queries in bulk",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"queries": {
+								"items": {
+									"additionalProperties": {},
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"204": {
+				"description": "No Content"
+			},
+			"422": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unprocessable Content"
+			},
+			"default": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"additionalProperties": {},
+									"description": "Errors",
+									"type": "object"
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Default error response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create new saved string queries in bulk",
+		"tags": [
+			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
+		]
+	},
 	"POST /accounts/{account_id}/brand-protection/search": {
 		"description": "Return new string queries",
 		"responses": {

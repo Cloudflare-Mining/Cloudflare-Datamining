@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -145,19 +146,22 @@
 														"default": false,
 														"description": "Indicates whether you can subscribe to this plan.",
 														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"currency": {
 														"description": "The monetary unit in which pricing information is displayed.",
 														"example": "USD",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"externally_managed": {
 														"default": false,
 														"description": "Indicates whether this plan is managed externally.",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"frequency": {
 														"description": "The frequency at which you will be billed for this plan.",
@@ -169,44 +173,51 @@
 														],
 														"example": "monthly",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"is_subscribed": {
 														"default": false,
 														"description": "Indicates whether you are currently subscribed to this plan.",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"legacy_discount": {
 														"default": false,
 														"description": "Indicates whether this plan has a legacy discount applied.",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"legacy_id": {
 														"description": "The legacy identifier for this rate plan, if any.",
 														"example": "free",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The plan name.",
 														"example": "Free Plan",
 														"maxLength": 80,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"price": {
 														"description": "The amount you will be billed for this plan.",
 														"example": 0,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -351,19 +362,22 @@
 																"default": false,
 																"description": "Indicates whether you can subscribe to this plan.",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"currency": {
 																"description": "The monetary unit in which pricing information is displayed.",
 																"example": "USD",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"externally_managed": {
 																"default": false,
 																"description": "Indicates whether this plan is managed externally.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"frequency": {
 																"description": "The frequency at which you will be billed for this plan.",
@@ -375,44 +389,51 @@
 																],
 																"example": "monthly",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"is_subscribed": {
 																"default": false,
 																"description": "Indicates whether you are currently subscribed to this plan.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"legacy_discount": {
 																"default": false,
 																"description": "Indicates whether this plan has a legacy discount applied.",
 																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"legacy_id": {
 																"description": "The legacy identifier for this rate plan, if any.",
 																"example": "free",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The plan name.",
 																"example": "Free Plan",
 																"maxLength": 80,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"price": {
 																"description": "The amount you will be billed for this plan.",
 																"example": 0,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -554,7 +575,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -566,7 +588,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -680,19 +703,22 @@
 													"default": false,
 													"description": "Indicates whether you can subscribe to this plan.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"currency": {
 													"description": "The monetary unit in which pricing information is displayed.",
 													"example": "USD",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"externally_managed": {
 													"default": false,
 													"description": "Indicates whether this plan is managed externally.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"frequency": {
 													"description": "The frequency at which you will be billed for this plan.",
@@ -704,44 +730,51 @@
 													],
 													"example": "monthly",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"is_subscribed": {
 													"default": false,
 													"description": "Indicates whether you are currently subscribed to this plan.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"legacy_discount": {
 													"default": false,
 													"description": "Indicates whether this plan has a legacy discount applied.",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"legacy_id": {
 													"description": "The legacy identifier for this rate plan, if any.",
 													"example": "free",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The plan name.",
 													"example": "Free Plan",
 													"maxLength": 80,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"price": {
 													"description": "The amount you will be billed for this plan.",
 													"example": 0,
-													"type": "number"
+													"type": "number",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -865,19 +898,22 @@
 															"default": false,
 															"description": "Indicates whether you can subscribe to this plan.",
 															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"currency": {
 															"description": "The monetary unit in which pricing information is displayed.",
 															"example": "USD",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"externally_managed": {
 															"default": false,
 															"description": "Indicates whether this plan is managed externally.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"frequency": {
 															"description": "The frequency at which you will be billed for this plan.",
@@ -889,44 +925,51 @@
 															],
 															"example": "monthly",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"is_subscribed": {
 															"default": false,
 															"description": "Indicates whether you are currently subscribed to this plan.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"legacy_discount": {
 															"default": false,
 															"description": "Indicates whether this plan has a legacy discount applied.",
 															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"legacy_id": {
 															"description": "The legacy identifier for this rate plan, if any.",
 															"example": "free",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The plan name.",
 															"example": "Free Plan",
 															"maxLength": 80,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"price": {
 															"description": "The amount you will be billed for this plan.",
 															"example": 0,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1066,7 +1109,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1204,7 +1248,8 @@
 																		"default": {
 																			"description": "The default amount allocated.",
 																			"example": 5,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "The unique component.",
@@ -1214,13 +1259,15 @@
 																				"dedicated_certificates",
 																				"dedicated_certificates_custom"
 																			],
-																			"example": "page_rules"
+																			"example": "page_rules",
+																			"x-auditable": true
 																		},
 																		"unit_price": {
 																			"description": "The unit price of the addon.",
 																			"example": 1,
 																			"readOnly": true,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -1231,12 +1278,14 @@
 																"description": "The monetary unit in which pricing information is displayed.",
 																"example": "USD",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"duration": {
 																"description": "The duration of the plan subscription.",
 																"example": 1,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"frequency": {
 																"description": "The frequency at which you will be billed for this plan.",
@@ -1248,20 +1297,23 @@
 																],
 																"example": "monthly",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"id": {
 																"description": "Plan identifier tag.",
 																"example": "free",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The plan name.",
 																"example": "Free Plan",
 																"maxLength": 80,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1415,7 +1467,8 @@
 																				"default": {
 																					"description": "The default amount allocated.",
 																					"example": 5,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				},
 																				"name": {
 																					"description": "The unique component.",
@@ -1425,13 +1478,15 @@
 																						"dedicated_certificates",
 																						"dedicated_certificates_custom"
 																					],
-																					"example": "page_rules"
+																					"example": "page_rules",
+																					"x-auditable": true
 																				},
 																				"unit_price": {
 																					"description": "The unit price of the addon.",
 																					"example": 1,
 																					"readOnly": true,
-																					"type": "number"
+																					"type": "number",
+																					"x-auditable": true
 																				}
 																			},
 																			"type": "object"
@@ -1442,12 +1497,14 @@
 																		"description": "The monetary unit in which pricing information is displayed.",
 																		"example": "USD",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"duration": {
 																		"description": "The duration of the plan subscription.",
 																		"example": 1,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"frequency": {
 																		"description": "The frequency at which you will be billed for this plan.",
@@ -1459,20 +1516,23 @@
 																		],
 																		"example": "monthly",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Plan identifier tag.",
 																		"example": "free",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The plan name.",
 																		"example": "Free Plan",
 																		"maxLength": 80,
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
