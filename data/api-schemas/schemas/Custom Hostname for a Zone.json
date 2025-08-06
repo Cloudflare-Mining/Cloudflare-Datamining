@@ -10,7 +10,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -21,7 +22,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -41,7 +43,8 @@
 									"description": "Identifier.",
 									"example": "023e105f4ecef8ad9ca31a8372d0c353",
 									"maxLength": 32,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -61,7 +64,8 @@
 											"description": "Identifier.",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
 											"maxLength": 32,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -216,7 +220,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -227,7 +232,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -238,7 +244,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -249,7 +256,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -269,7 +277,8 @@
 									"description": "Identifier.",
 									"example": "023e105f4ecef8ad9ca31a8372d0c353",
 									"maxLength": 32,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"type": "object"
@@ -289,7 +298,8 @@
 											"description": "Identifier.",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
 											"maxLength": 32,
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"type": "object"
@@ -439,7 +449,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -639,7 +650,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -690,7 +702,8 @@
 																"description": "Identifier.",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"ownership_verification": {
 																"description": "This is a record which can be placed to activate a hostname.",
@@ -1073,7 +1086,8 @@
 														"description": "Identifier.",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ssl": {
 														"description": "SSL properties for the custom hostname.",
@@ -1489,7 +1503,8 @@
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1540,7 +1555,8 @@
 																		"description": "Identifier.",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"ownership_verification": {
 																		"description": "This is a record which can be placed to activate a hostname.",
@@ -1923,7 +1939,8 @@
 																"description": "Identifier.",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"ssl": {
 																"description": "SSL properties for the custom hostname.",
@@ -2367,7 +2384,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2378,7 +2396,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2522,7 +2541,8 @@
 																	"description": "Identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"ownership_verification": {
 																	"description": "This is a record which can be placed to activate a hostname.",
@@ -2905,7 +2925,8 @@
 															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ssl": {
 															"description": "SSL properties for the custom hostname.",
@@ -3345,7 +3366,8 @@
 																			"description": "Identifier.",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"ownership_verification": {
 																			"description": "This is a record which can be placed to activate a hostname.",
@@ -3728,7 +3750,8 @@
 																	"description": "Identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"ssl": {
 																	"description": "SSL properties for the custom hostname.",
@@ -4174,7 +4197,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -4185,7 +4209,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -4527,7 +4552,8 @@
 																	"description": "Identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"ownership_verification": {
 																	"description": "This is a record which can be placed to activate a hostname.",
@@ -4910,7 +4936,8 @@
 															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ssl": {
 															"description": "SSL properties for the custom hostname.",
@@ -5350,7 +5377,8 @@
 																			"description": "Identifier.",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"ownership_verification": {
 																			"description": "This is a record which can be placed to activate a hostname.",
@@ -5733,7 +5761,8 @@
 																	"description": "Identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"ssl": {
 																	"description": "SSL properties for the custom hostname.",
@@ -6178,7 +6207,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -6519,7 +6549,8 @@
 																	"description": "Identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"ownership_verification": {
 																	"description": "This is a record which can be placed to activate a hostname.",
@@ -6902,7 +6933,8 @@
 															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ssl": {
 															"description": "SSL properties for the custom hostname.",
@@ -7342,7 +7374,8 @@
 																			"description": "Identifier.",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"ownership_verification": {
 																			"description": "This is a record which can be placed to activate a hostname.",
@@ -7725,7 +7758,8 @@
 																	"description": "Identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"ssl": {
 																	"description": "SSL properties for the custom hostname.",
@@ -8170,7 +8204,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -8181,7 +8216,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -8192,7 +8228,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -8203,7 +8240,8 @@
 					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -8374,7 +8412,8 @@
 																	"description": "Identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"ownership_verification": {
 																	"description": "This is a record which can be placed to activate a hostname.",
@@ -8757,7 +8796,8 @@
 															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"ssl": {
 															"description": "SSL properties for the custom hostname.",
@@ -9197,7 +9237,8 @@
 																			"description": "Identifier.",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"ownership_verification": {
 																			"description": "This is a record which can be placed to activate a hostname.",
@@ -9580,7 +9621,8 @@
 																	"description": "Identifier.",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"ssl": {
 																	"description": "SSL properties for the custom hostname.",
