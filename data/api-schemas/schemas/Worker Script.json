@@ -856,6 +856,15 @@
 					"type": "string",
 					"x-auditable": true
 				}
+			},
+			{
+				"description": "Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.",
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "production:yes,staging:no",
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
