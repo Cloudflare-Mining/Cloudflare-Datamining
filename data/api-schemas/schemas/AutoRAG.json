@@ -56,6 +56,48 @@
 				},
 				"description": "Returns the autorag sync status"
 			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7032,
+												"type": "number"
+											},
+											"message": {
+												"example": "autorag_is_paused",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "autorag_is_paused"
+			},
 			"404": {
 				"content": {
 					"application/json": {
