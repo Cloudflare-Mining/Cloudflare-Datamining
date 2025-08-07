@@ -1250,6 +1250,16 @@
 					],
 					"description": "An optional array of indicator type IDs to filter the results by."
 				}
+			},
+			{
+				"description": "The dataset ID to search within.",
+				"in": "query",
+				"name": "datasetId",
+				"required": true,
+				"schema": {
+					"description": "The dataset ID to search within.",
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -3709,6 +3719,9 @@
 								"format": "uuid",
 								"type": "string"
 							},
+							"datasetId": {
+								"type": "string"
+							},
 							"parentId": {
 								"format": "uuid",
 								"type": "string"
@@ -3725,7 +3738,8 @@
 						"required": [
 							"parentId",
 							"childId",
-							"type"
+							"type",
+							"datasetId"
 						],
 						"type": "object"
 					}

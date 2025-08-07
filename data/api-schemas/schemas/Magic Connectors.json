@@ -108,8 +108,7 @@
 														},
 														"serial_number": {
 															"type": "string",
-															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -586,8 +585,7 @@
 															},
 															"serial_number": {
 																"type": "string",
-																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1075,8 +1073,7 @@
 														},
 														"serial_number": {
 															"type": "string",
-															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -6927,23 +6924,28 @@
 						"properties": {
 							"activated": {
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"interrupt_window_duration_hours": {
 								"type": "number",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"interrupt_window_hour_of_day": {
 								"type": "number",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"notes": {
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"timezone": {
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"type": "object"
@@ -7036,8 +7038,7 @@
 														},
 														"serial_number": {
 															"type": "string",
-															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -7442,11 +7443,13 @@
 										"properties": {
 											"id": {
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"serial_number": {
 												"type": "string",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object"
@@ -7461,23 +7464,28 @@
 								"properties": {
 									"activated": {
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"interrupt_window_duration_hours": {
 										"type": "number",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"interrupt_window_hour_of_day": {
 										"type": "number",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"notes": {
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"timezone": {
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								},
 								"type": "object"
@@ -7573,8 +7581,7 @@
 														},
 														"serial_number": {
 															"type": "string",
-															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -8054,23 +8061,28 @@
 						"properties": {
 							"activated": {
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"interrupt_window_duration_hours": {
 								"type": "number",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"interrupt_window_hour_of_day": {
 								"type": "number",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"notes": {
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"timezone": {
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"type": "object"
@@ -8163,8 +8175,7 @@
 														},
 														"serial_number": {
 															"type": "string",
-															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-auditable": true
 														}
 													},
 													"required": [
