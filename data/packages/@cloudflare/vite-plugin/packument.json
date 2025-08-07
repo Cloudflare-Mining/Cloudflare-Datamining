@@ -32337,48 +32337,48 @@
 			"name": "@cloudflare/vite-plugin",
 			"version": "1.11.2",
 			"dependencies": {
-				"@mjackson/node-fetch-server": "^0.6.1",
-				"@rollup/plugin-replace": "^6.0.1",
+				"ws": "8.18.0",
+				"unenv": "2.0.0-rc.19",
 				"get-port": "^7.1.0",
+				"wrangler": "4.28.1",
+				"miniflare": "4.20250803.0",
 				"picocolors": "^1.1.1",
 				"tinyglobby": "^0.2.12",
-				"unenv": "2.0.0-rc.19",
-				"ws": "8.18.0",
+				"@rollup/plugin-replace": "^6.0.1",
 				"@cloudflare/unenv-preset": "2.6.0",
-				"miniflare": "4.20250803.0",
-				"wrangler": "4.28.1"
+				"@mjackson/node-fetch-server": "^0.6.1"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20250803.0",
-				"@types/node": "^22.10.1",
-				"@types/ws": "^8.5.13",
-				"magic-string": "^0.30.12",
 				"mlly": "^1.7.4",
 				"tsup": "8.3.0",
-				"typescript": "^5.8.3",
 				"vite": "7.0.0",
 				"vitest": "~3.2.0",
-				"@cloudflare/mock-npm-registry": "0.0.0",
-				"@cloudflare/containers-shared": "0.2.8",
+				"@types/ws": "^8.5.13",
+				"typescript": "^5.8.3",
+				"@types/node": "^22.10.1",
+				"magic-string": "^0.30.12",
+				"@cloudflare/workers-types": "^4.20250803.0",
 				"@cloudflare/workers-shared": "0.18.5",
-				"@cloudflare/workers-tsconfig": "0.0.0"
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/containers-shared": "0.2.8",
+				"@cloudflare/mock-npm-registry": "0.0.0"
 			},
 			"peerDependencies": {
 				"vite": "^6.1.0 || ^7.0.0",
 				"wrangler": "^4.28.1"
 			},
 			"dist": {
-				"integrity": "sha512-iY/XTYE3TCZLXaIYGljGQeG81XmUkQ2ZOqzVs56a+5QQyxkA9S8sqfBh/FX0vwzUASLFVUru0WsyqCB4fxrSAA==",
 				"shasum": "895f725c8f23d1b6f274d5a5135ca26b8e18f070",
 				"tarball": "https://registry.npmjs.org/@cloudflare/vite-plugin/-/vite-plugin-1.11.2.tgz",
 				"fileCount": 8,
-				"unpackedSize": 1056452,
+				"integrity": "sha512-iY/XTYE3TCZLXaIYGljGQeG81XmUkQ2ZOqzVs56a+5QQyxkA9S8sqfBh/FX0vwzUASLFVUru0WsyqCB4fxrSAA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIGmMbGEYOlxM65ycELLoygMF1w58RGZHwGooq0bWA3uaAiEAuFqWKWBPmQ6zYsHhfB39vu253G8t7eFV80HTBY632Ww="
+						"sig": "MEUCIGmMbGEYOlxM65ycELLoygMF1w58RGZHwGooq0bWA3uaAiEAuFqWKWBPmQ6zYsHhfB39vu253G8t7eFV80HTBY632Ww=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 1056452
 			}
 		}
 	}
