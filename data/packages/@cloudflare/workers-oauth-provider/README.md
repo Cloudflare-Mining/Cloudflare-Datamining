@@ -2,10 +2,6 @@
 
 This is a TypeScript library that implements the provider side of the OAuth 2.1 protocol with PKCE support. The library is intended to be used on Cloudflare Workers.
 
-## Beta
-
-As of March, 2025, this library is very new, prerelease software. The API is still subject to change.
-
 ## Benefits of this library
 
 * The library acts as a wrapper around your Worker code, which adds authorization for your API endpoints.
@@ -20,8 +16,7 @@ As of March, 2025, this library is very new, prerelease software. The API is sti
 A Worker that uses the library might look like this:
 
 ```ts
-import { OAuthProvider } from "my-oauth";
-import type { ExportedHandler } from "@cloudflare/workers-types";
+import { OAuthProvider } from "@cloudflare/workers-oauth-provider";
 import { WorkerEntrypoint } from "cloudflare:workers";
 
 // We export the OAuthProvider instance as the entrypoint to our Worker. This means it
@@ -328,7 +323,7 @@ This library (including the schema documentation) was largely written with the h
 
 "haha gpus go brrr"
 
-In all seriousness, two months ago (January 2025), I ([@kentonv](https://github.com/kentonv)) would have agreed. I was an AI skeptic. I thoughts LLMs were glorified Markov chain generators that didn't actually understand code and couldn't produce anything novel. I started this project on a lark, fully expecting the AI to produce terrible code for me to laugh at. And then, uh... the code actually looked pretty good. Not perfect, but I just told the AI to fix things, and it did. I was shocked.
+In all seriousness, two months ago (January 2025), I ([@kentonv](https://github.com/kentonv)) would have agreed. I was an AI skeptic. I thought LLMs were glorified Markov chain generators that didn't actually understand code and couldn't produce anything novel. I started this project on a lark, fully expecting the AI to produce terrible code for me to laugh at. And then, uh... the code actually looked pretty good. Not perfect, but I just told the AI to fix things, and it did. I was shocked.
 
 To emphasize, **this is not "vibe coded"**. Every line was thoroughly reviewed and cross-referenced with relevant RFCs, by security experts with previous experience with those RFCs. I was *trying* to validate my skepticism. I ended up proving myself wrong.
 
