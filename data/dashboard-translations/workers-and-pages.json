@@ -760,7 +760,7 @@
 	"workers_and_pages.deploy_to_workers.validation.no_wrangler_file": "Could not find a wrangler.json, wrangler.jsonc, or wrangler.toml file in the provided directory.",
 	"workers_and_pages.deploy_to_workers.validation.no_package_json_file": "Could not find a package.json file in the provided directory.",
 	"workers_and_pages.deploy_to_workers.validation.failed_to_parse_repository_url": "Only repositories hosted on github.com or gitlab.com are currently supported.",
-	"workers_and_pages.deploy_to_workers.validation.failed_to_parse_wrangler_config": "This repository must contain a valid Wrangler configuration file.",
+	"workers_and_pages.deploy_to_workers.validation.failed_to_parse_wrangler_config": "There was a problem parsing the Wrangler configuration file. Please raise an issue in the <0>Workers SDK repo</0>.",
 	"workers_and_pages.deploy_to_workers.steps.select_a_repository": "Select a repository",
 	"workers_and_pages.deploy_to_workers.steps.configure_project": "Configure project",
 	"workers_and_pages.repository_created_notification.title": "u{1F389}  We've created the repository <0>%{repositoryName}</0> on your %{provider} account",
