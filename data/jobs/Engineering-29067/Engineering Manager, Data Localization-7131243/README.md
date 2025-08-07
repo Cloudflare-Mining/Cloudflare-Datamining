@@ -5,47 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations </strong>- Austin, TX&nbsp;</p>
-<hr>
-<h3><strong>Role Overview</strong></h3>
-<p>We’re looking for a strategic, data-driven, and creative <strong>Senior Director of Global Partner Marketing</strong> to lead the development and execution of Cloudflare’s partner marketing strategy. In this role, you’ll oversee the planning, enablement, and co-marketing efforts across our global partner ecosystem. You’ll work closely with Partner Sales, Product Marketing, Field Marketing, and Corporate Communications to drive joint pipeline, increase partner-sourced revenue, and scale the impact of our partner programs.</p>
-<h3><strong>Key Responsibilities</strong></h3>
-<p><strong>Strategy &amp; Leadership</strong><strong><br></strong></p>
+<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
+<p><strong>Role Summary</strong></p>
+<p>Lead a team of engineers responsible for the Data Localization Suite of products that allows our customers to harness Cloudflare's massive and performant network to meet their federal Data Sovereignty standards as well as their internal regionalization policies.</p>
+<p>You will guide the career growth of the team members, and ensure we have the right skills and behaviours in the team. You will need to identify high level strategies to meet the needs of the company, and apply those to balance short and long term priorities for the team. Additionally, you will be responsible for building relationships with teams across the company, identifying their needs and supporting them in building products for customers. You will also be involved in direct product development for customers, working closely with our product, support and customer facing teams.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Own the global partner marketing strategy across all partner segments (channel, alliances, GSIs, MSPs, tech partners).</li>
-	<li>Define and track KPIs for partner-sourced and influenced pipeline, revenue, and engagement.</li>
-	<li>Build and lead a high-performing global partner marketing team.&nbsp; &nbsp;</li>
+	<li>Prioritise short and long term tasks to balance the immediate needs and long term strategic goals of the company.</li>
+	<li>Support and guide the career growth of the team.</li>
+	<li>Actively participate in the hiring process to expand the team, identifying and attracting top talent who can contribute to Cloudflare's mission and culture..</li>
+	<li>Ensure quality of engineering.</li>
+	<li>Effectively communicate team progress, challenges, and strategic direction to senior leadership, stakeholders, and the wider organization. Represent the team's work internally and externally, including through blog posts and presentations.</li>
+	<li>Participate in our incident management process.</li>
+	<li>Organise the team to provide effective 24/7 escalation support for the system in case of critical incidents.</li>
 </ul>
-<p><strong>Partner Campaigns &amp; Co-Marketing</strong></p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <ul>
-	<li>Develop and execute integrated co-marketing campaigns with strategic partners that drive awareness, pipeline, and joint value.</li>
-	<li>Scale MDF usage through repeatable campaign-in-a-box programs and partner enablement tools.</li>
-	<li>Manage partner events, sponsorships, and joint field activations.&nbsp; &nbsp; &nbsp;</li>
+	<li>Minimum 2 years experience in engineering management.</li>
+	<li>Significant experience as a hands-on engineer.</li>
+	<li>Track record of shipping high-quality products and features at scale</li>
+	<li>Excellent at planning, creating teams and overseeing execution to meet commitments and deliver with predictability.</li>
+	<li>Experience of managing multiple concurrent projects with competing priorities.</li>
+	<li>Track record of managing a diverse team including hiring, onboarding, and professional development. You inspire your team to reach higher and to get there by collaborating. You’re as good at explaining “why” as you are “how”.</li>
+	<li>Working with other managers, maintaining clear lines of communication across and upwards in an organisation.</li>
 </ul>
-<p><strong>Partner Communications &amp; Enablement</strong></p>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>Own the partner messaging strategy, content development, and communication cadence (newsletters, webinars, portals).</li>
-	<li>Collaborate with Enablement and Product Marketing to launch training, playbooks, and assets that accelerate partner sales motion.&nbsp;</li>
+	<li>Experience of operating high performance and large scale software systems.</li>
+	<li>Customer focused experience - managing difficult conversations with customers.</li>
 </ul>
-<p><strong>Ecosystem &amp; Program Support</strong></p>
-<ul>
-	<li>Partner with Product, BD, and Partner Sales to support go-to-market efforts for technology integrations and marketplace listings.</li>
-	<li>Support Cloudflare One, Zero Trust, and AI partner ecosystem expansion through targeted marketing programs.</li>
-	<li>Evolve the Cloudflare Partner Network (CPN) branding and marketing framework.</li>
-</ul>
-<h3><strong>Qualifications</strong></h3>
-<ul>
-	<li>15+ years of B2B marketing experience, with at least 5 years in partner or channel marketing roles.</li>
-	<li>Experience in cybersecurity, cloud, or enterprise SaaS preferred.</li>
-	<li>Proven success developing global partner programs and marketing strategies that deliver measurable pipeline impact.</li>
-	<li>Strong leadership experience, including managing distributed teams and cross-functional stakeholders.</li>
-	<li>Excellent communication, executive presence, and storytelling skills.</li>
-	<li>Deep understanding of partner ecosystems: resellers, GSIs, alliances, marketplaces, and co-selling motions.</li>
-	<li>Proficiency with Salesforce, PRM systems, and partner marketing automation tools (e.g., Impartner, Allbound, Crossbeam).</li>
-</ul>
-<h3><strong>Why Join Us?</strong></h3>
-<p>This is a high-impact leadership role at the intersection of product, partnerships, and growth. You’ll have the opportunity to shape how Cloudflare goes to market with one of the most strategic levers for scale: our partner ecosystem.</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
