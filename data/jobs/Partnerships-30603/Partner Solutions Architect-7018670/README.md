@@ -37,8 +37,13 @@
 		<li>Detailed understanding of workflow from user to application including hybrid architectures with Azure, AWS, GCP</li>
 	</ul>
 </ul>
-<p><strong>Compensation/</strong><strong>Commissions</strong></p>
-<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.<br><br><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.<br><br><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.<br><br><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado, Hawaii, and Illinois based hires: Estimated annual salary of $248,000 - $303,000</li>
+	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $257,000 - $314,000</li>
+	<li>For Bay Area based hires: Estimated annual salary of $270,000 - $330,000</li>
+</ul>
+<p><strong>Commissions</strong><br>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.<br><br><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.<br><br><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.<br><br><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -61,6 +66,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<div id="te-floating-button-container"></div>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
