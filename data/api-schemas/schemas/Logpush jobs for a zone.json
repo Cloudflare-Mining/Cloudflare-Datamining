@@ -134,13 +134,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete Logpush job response"
+				"description": "Delete Logpush job response."
 			},
 			"4XX": {
 				"content": {
@@ -257,7 +258,7 @@
 						}
 					}
 				},
-				"description": "Delete Logpush job response failure"
+				"description": "Delete Logpush job response failure."
 			}
 		},
 		"security": [
@@ -287,7 +288,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/logpush/datasets/{dataset_id}/fields": {
-		"description": "Lists all fields available for a dataset. The response result is an object with key-value pairs, where keys are field names, and values are descriptions.",
+		"description": "Lists all fields available for a dataset. The response result is. an object with key-value pairs, where keys are field names, and values are descriptions.",
 		"operationId": "get-zones-zone_id-logpush-datasets-dataset_id-fields",
 		"parameters": [
 			{
@@ -446,13 +447,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List fields response"
+				"description": "List fields response."
 			},
 			"4XX": {
 				"content": {
@@ -569,7 +571,7 @@
 						}
 					}
 				},
-				"description": "List fields response failure"
+				"description": "List fields response failure."
 			}
 		},
 		"security": [
@@ -823,7 +825,7 @@
 														"x-auditable": true
 													},
 													"destination_conf": {
-														"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+														"description": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.",
 														"example": "s3://mybucket/logs?region=us-west-2",
 														"format": "uri",
 														"maxLength": 4096,
@@ -837,7 +839,7 @@
 														"x-auditable": true
 													},
 													"error_message": {
-														"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+														"description": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 														"nullable": true,
 														"type": "string",
 														"x-auditable": true
@@ -845,7 +847,7 @@
 													"frequency": {
 														"default": "high",
 														"deprecated": true,
-														"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+														"description": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 														"enum": [
 															"high",
 															"low"
@@ -881,7 +883,7 @@
 														"x-auditable": true
 													},
 													"last_error": {
-														"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+														"description": "Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
 														"format": "date-time",
 														"nullable": true,
 														"type": "string",
@@ -958,7 +960,7 @@
 														"x-auditable": true
 													},
 													"name": {
-														"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+														"description": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
 														"example": "example.com",
 														"maxLength": 512,
 														"nullable": true,
@@ -1068,13 +1070,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List Logpush jobs for a dataset response"
+				"description": "List Logpush jobs for a dataset response."
 			},
 			"4XX": {
 				"content": {
@@ -1191,7 +1194,7 @@
 						}
 					}
 				},
-				"description": "List Logpush jobs for a dataset response failure"
+				"description": "List Logpush jobs for a dataset response failure."
 			}
 		},
 		"security": [
@@ -1406,7 +1409,7 @@
 														"x-auditable": true
 													},
 													"destination_conf": {
-														"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+														"description": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.",
 														"example": "s3://mybucket/logs?region=us-west-2",
 														"format": "uri",
 														"maxLength": 4096,
@@ -1420,7 +1423,7 @@
 														"x-auditable": true
 													},
 													"error_message": {
-														"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+														"description": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 														"nullable": true,
 														"type": "string",
 														"x-auditable": true
@@ -1428,7 +1431,7 @@
 													"frequency": {
 														"default": "high",
 														"deprecated": true,
-														"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+														"description": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 														"enum": [
 															"high",
 															"low"
@@ -1464,7 +1467,7 @@
 														"x-auditable": true
 													},
 													"last_error": {
-														"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+														"description": "Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
 														"format": "date-time",
 														"nullable": true,
 														"type": "string",
@@ -1541,7 +1544,7 @@
 														"x-auditable": true
 													},
 													"name": {
-														"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+														"description": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
 														"example": "example.com",
 														"maxLength": 512,
 														"nullable": true,
@@ -1651,13 +1654,14 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "List Logpush jobs response"
+				"description": "List Logpush jobs response."
 			},
 			"4XX": {
 				"content": {
@@ -1774,7 +1778,7 @@
 						}
 					}
 				},
-				"description": "List Logpush jobs response failure"
+				"description": "List Logpush jobs response failure."
 			}
 		},
 		"security": [
@@ -2002,7 +2006,7 @@
 													"x-auditable": true
 												},
 												"destination_conf": {
-													"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+													"description": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.",
 													"example": "s3://mybucket/logs?region=us-west-2",
 													"format": "uri",
 													"maxLength": 4096,
@@ -2016,7 +2020,7 @@
 													"x-auditable": true
 												},
 												"error_message": {
-													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+													"description": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 													"nullable": true,
 													"type": "string",
 													"x-auditable": true
@@ -2024,7 +2028,7 @@
 												"frequency": {
 													"default": "high",
 													"deprecated": true,
-													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 													"enum": [
 														"high",
 														"low"
@@ -2060,7 +2064,7 @@
 													"x-auditable": true
 												},
 												"last_error": {
-													"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+													"description": "Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
 													"format": "date-time",
 													"nullable": true,
 													"type": "string",
@@ -2137,7 +2141,7 @@
 													"x-auditable": true
 												},
 												"name": {
-													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+													"description": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
 													"example": "example.com",
 													"maxLength": 512,
 													"nullable": true,
@@ -2245,13 +2249,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get Logpush job details response"
+				"description": "Get Logpush job details response."
 			},
 			"4XX": {
 				"content": {
@@ -2368,7 +2373,7 @@
 						}
 					}
 				},
-				"description": "Get Logpush job details response failure"
+				"description": "Get Logpush job details response failure."
 			}
 		},
 		"security": [
@@ -2445,7 +2450,7 @@
 							"sample_rate": 1,
 							"timestamp_format": "unixnano"
 						},
-						"ownership_challenge\"": "00000000000000000000"
+						"ownership_challenge": "00000000000000000000"
 					},
 					"schema": {
 						"properties": {
@@ -2484,7 +2489,7 @@
 								"x-auditable": true
 							},
 							"destination_conf": {
-								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
@@ -2506,7 +2511,7 @@
 							"frequency": {
 								"default": "high",
 								"deprecated": true,
-								"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+								"description": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 								"enum": [
 									"high",
 									"low"
@@ -2599,7 +2604,7 @@
 								"x-auditable": true
 							},
 							"name": {
-								"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+								"description": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
 								"example": "example.com",
 								"maxLength": 512,
 								"nullable": true,
@@ -2715,7 +2720,8 @@
 						},
 						"required": [
 							"destination_conf"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -2891,7 +2897,7 @@
 													"x-auditable": true
 												},
 												"destination_conf": {
-													"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+													"description": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.",
 													"example": "s3://mybucket/logs?region=us-west-2",
 													"format": "uri",
 													"maxLength": 4096,
@@ -2905,7 +2911,7 @@
 													"x-auditable": true
 												},
 												"error_message": {
-													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+													"description": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 													"nullable": true,
 													"type": "string",
 													"x-auditable": true
@@ -2913,7 +2919,7 @@
 												"frequency": {
 													"default": "high",
 													"deprecated": true,
-													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 													"enum": [
 														"high",
 														"low"
@@ -2949,7 +2955,7 @@
 													"x-auditable": true
 												},
 												"last_error": {
-													"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+													"description": "Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
 													"format": "date-time",
 													"nullable": true,
 													"type": "string",
@@ -3026,7 +3032,7 @@
 													"x-auditable": true
 												},
 												"name": {
-													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+													"description": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
 													"example": "example.com",
 													"maxLength": 512,
 													"nullable": true,
@@ -3134,13 +3140,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create Logpush job response"
+				"description": "Create Logpush job response."
 			},
 			"4XX": {
 				"content": {
@@ -3257,7 +3264,7 @@
 						}
 					}
 				},
-				"description": "Create Logpush job response failure"
+				"description": "Create Logpush job response failure."
 			}
 		},
 		"security": [
@@ -3309,7 +3316,7 @@
 					"schema": {
 						"properties": {
 							"destination_conf": {
-								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
@@ -3318,7 +3325,8 @@
 						},
 						"required": [
 							"destination_conf"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -3435,13 +3443,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get ownership challenge response"
+				"description": "Get ownership challenge response."
 			},
 			"4XX": {
 				"content": {
@@ -3558,7 +3567,7 @@
 						}
 					}
 				},
-				"description": "Get ownership challenge response failure"
+				"description": "Get ownership challenge response failure."
 			}
 		},
 		"security": [
@@ -3610,7 +3619,7 @@
 					"schema": {
 						"properties": {
 							"destination_conf": {
-								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
@@ -3628,7 +3637,8 @@
 						"required": [
 							"destination_conf",
 							"ownership_challenge"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -3735,13 +3745,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Validate ownership challenge response"
+				"description": "Validate ownership challenge response."
 			},
 			"4XX": {
 				"content": {
@@ -3858,7 +3869,7 @@
 						}
 					}
 				},
-				"description": "Validate ownership challenge response failure"
+				"description": "Validate ownership challenge response failure."
 			}
 		},
 		"security": [
@@ -3910,7 +3921,7 @@
 					"schema": {
 						"properties": {
 							"destination_conf": {
-								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
@@ -3919,7 +3930,8 @@
 						},
 						"required": [
 							"destination_conf"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -4031,13 +4043,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Validate destination response"
+				"description": "Validate destination response."
 			},
 			"4XX": {
 				"content": {
@@ -4154,7 +4167,7 @@
 						}
 					}
 				},
-				"description": "Validate destination response failure"
+				"description": "Validate destination response failure."
 			}
 		},
 		"security": [
@@ -4206,7 +4219,7 @@
 					"schema": {
 						"properties": {
 							"destination_conf": {
-								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
@@ -4215,7 +4228,8 @@
 						},
 						"required": [
 							"destination_conf"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -4322,13 +4336,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Check destination exists response"
+				"description": "Check destination exists response."
 			},
 			"4XX": {
 				"content": {
@@ -4445,7 +4460,7 @@
 						}
 					}
 				},
-				"description": "Check destination exists response failure"
+				"description": "Check destination exists response failure."
 			}
 		},
 		"security": [
@@ -4509,7 +4524,8 @@
 						},
 						"required": [
 							"logpull_options"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -4621,13 +4637,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Validate origin response"
+				"description": "Validate origin response."
 			},
 			"4XX": {
 				"content": {
@@ -4744,7 +4761,7 @@
 						}
 					}
 				},
-				"description": "Validate origin response failure"
+				"description": "Validate origin response failure."
 			}
 		},
 		"security": [
@@ -4829,12 +4846,12 @@
 							"sample_rate": 1,
 							"timestamp_format": "unixnano"
 						},
-						"ownership_challenge\"": "00000000000000000000"
+						"ownership_challenge": "00000000000000000000"
 					},
 					"schema": {
 						"properties": {
 							"destination_conf": {
-								"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+								"description": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"format": "uri",
 								"maxLength": 4096,
@@ -4856,7 +4873,7 @@
 							"frequency": {
 								"default": "high",
 								"deprecated": true,
-								"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+								"description": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 								"enum": [
 									"high",
 									"low"
@@ -4949,7 +4966,7 @@
 								"x-auditable": true
 							},
 							"name": {
-								"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+								"description": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
 								"example": "example.com",
 								"maxLength": 512,
 								"nullable": true,
@@ -5062,7 +5079,8 @@
 								"type": "string",
 								"x-sensitive": true
 							}
-						}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -5238,7 +5256,7 @@
 													"x-auditable": true
 												},
 												"destination_conf": {
-													"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+													"description": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.",
 													"example": "s3://mybucket/logs?region=us-west-2",
 													"format": "uri",
 													"maxLength": 4096,
@@ -5252,7 +5270,7 @@
 													"x-auditable": true
 												},
 												"error_message": {
-													"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+													"description": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 													"nullable": true,
 													"type": "string",
 													"x-auditable": true
@@ -5260,7 +5278,7 @@
 												"frequency": {
 													"default": "high",
 													"deprecated": true,
-													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 													"enum": [
 														"high",
 														"low"
@@ -5296,7 +5314,7 @@
 													"x-auditable": true
 												},
 												"last_error": {
-													"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+													"description": "Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
 													"format": "date-time",
 													"nullable": true,
 													"type": "string",
@@ -5373,7 +5391,7 @@
 													"x-auditable": true
 												},
 												"name": {
-													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+													"description": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
 													"example": "example.com",
 													"maxLength": 512,
 													"nullable": true,
@@ -5481,13 +5499,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update Logpush job response"
+				"description": "Update Logpush job response."
 			},
 			"4XX": {
 				"content": {
@@ -5604,7 +5623,7 @@
 						}
 					}
 				},
-				"description": "Update Logpush job response failure"
+				"description": "Update Logpush job response failure."
 			}
 		},
 		"security": [
