@@ -3318,6 +3318,244 @@
 			"Cloudforce One Read"
 		]
 	},
+	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk/relationships": {
+		"description": "Creates bulk DOS attack events along with their corresponding indicator events and establishes relationships between them. The `datasetId` parameter must be defined. To list existing datasets (and their IDs) in your account, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
+		"operationId": "post_EventCreateBulkWithRelationships",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"data": {
+								"items": {
+									"properties": {
+										"accountId": {
+											"example": 123456,
+											"type": "number"
+										},
+										"attacker": {
+											"example": "Flying Yeti",
+											"nullable": true,
+											"type": "string"
+										},
+										"attackerCountry": {
+											"example": "CN",
+											"type": "string"
+										},
+										"category": {
+											"example": "Domain Resolution",
+											"type": "string"
+										},
+										"datasetId": {
+											"example": "durableObjectName",
+											"type": "string"
+										},
+										"date": {
+											"example": "2022-04-01T00:00:00Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"event": {
+											"example": "An attacker registered the domain domain.com",
+											"type": "string"
+										},
+										"indicator": {
+											"example": "domain.com",
+											"type": "string"
+										},
+										"indicatorType": {
+											"example": "domain",
+											"type": "string"
+										},
+										"raw": {
+											"properties": {
+												"data": {
+													"additionalProperties": true,
+													"nullable": true,
+													"type": "object"
+												},
+												"source": {
+													"example": "example.com",
+													"type": "string"
+												},
+												"tlp": {
+													"example": "amber",
+													"type": "string"
+												}
+											},
+											"required": [
+												"data"
+											],
+											"type": "object"
+										},
+										"tags": {
+											"items": {
+												"example": "malware",
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"targetCountry": {
+											"example": "US",
+											"type": "string"
+										},
+										"targetIndustry": {
+											"example": "Agriculture",
+											"type": "string"
+										},
+										"tlp": {
+											"example": "amber",
+											"type": "string"
+										}
+									},
+									"required": [
+										"date",
+										"category",
+										"indicatorType",
+										"event",
+										"tlp",
+										"raw"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"datasetId": {
+								"example": "durableObjectName",
+								"type": "string"
+							}
+						},
+						"required": [
+							"data",
+							"datasetId"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Result of bulk relationship creation operation",
+							"properties": {
+								"createdEventsCount": {
+									"description": "Number of events created",
+									"type": "number"
+								},
+								"createdIndicatorsCount": {
+									"description": "Number of indicators created",
+									"type": "number"
+								},
+								"createdRelationshipsCount": {
+									"description": "Number of relationships created",
+									"type": "number"
+								},
+								"errorCount": {
+									"description": "Number of errors encountered",
+									"type": "number"
+								},
+								"errors": {
+									"description": "Array of error details",
+									"items": {
+										"properties": {
+											"error": {
+												"description": "Error message",
+												"type": "string"
+											},
+											"eventIndex": {
+												"description": "Index of the event that caused the error",
+												"type": "number"
+											}
+										},
+										"required": [
+											"eventIndex",
+											"error"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"createdEventsCount",
+								"createdIndicatorsCount",
+								"createdRelationshipsCount",
+								"errorCount"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the number of created bulk events with relationships."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Creates bulk DOS event with relationships and indicators",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/move": {
 		"operationId": "post_EventMoveToNewDS",
 		"parameters": [
