@@ -149,6 +149,13 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"is_robots_txt_managed": {
+																			"default": false,
+																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
@@ -255,6 +262,13 @@
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"is_robots_txt_managed": {
+																			"default": false,
+																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -369,6 +383,13 @@
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"is_robots_txt_managed": {
+																			"default": false,
+																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -489,6 +510,13 @@
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"is_robots_txt_managed": {
+																			"default": false,
+																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -720,6 +748,13 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"is_robots_txt_managed": {
+																					"default": false,
+																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																					"type": "boolean",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
@@ -826,6 +861,13 @@
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"is_robots_txt_managed": {
+																					"default": false,
+																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -940,6 +982,13 @@
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"is_robots_txt_managed": {
+																					"default": false,
+																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -1060,6 +1109,13 @@
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"is_robots_txt_managed": {
+																					"default": false,
+																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -1317,7 +1373,8 @@
 								"ai_bots_protection": "disabled",
 								"crawler_protection": "disabled",
 								"enable_js": true,
-								"fight_mode": true
+								"fight_mode": true,
+								"is_robots_txt_managed": false
 							}
 						},
 						"example2": {
@@ -1326,6 +1383,7 @@
 								"ai_bots_protection": "disabled",
 								"crawler_protection": "disabled",
 								"enable_js": true,
+								"is_robots_txt_managed": false,
 								"sbfm_definitely_automated": "block",
 								"sbfm_static_resource_protection": true,
 								"sbfm_verified_bots": "block"
@@ -1337,6 +1395,7 @@
 								"ai_bots_protection": "disabled",
 								"crawler_protection": "disabled",
 								"enable_js": true,
+								"is_robots_txt_managed": false,
 								"sbfm_definitely_automated": "block",
 								"sbfm_likely_automated": "managed_challenge",
 								"sbfm_static_resource_protection": true,
@@ -1349,7 +1408,8 @@
 								"ai_bots_protection": "disabled",
 								"auto_update_model": true,
 								"crawler_protection": "disabled",
-								"enable_js": true
+								"enable_js": true,
+								"is_robots_txt_managed": false
 							}
 						},
 						"example5": {
@@ -1428,6 +1488,13 @@
 													"enable_js": {
 														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 														"example": true,
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"is_robots_txt_managed": {
+														"default": false,
+														"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 														"type": "boolean",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
@@ -1542,6 +1609,13 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
+													"is_robots_txt_managed": {
+														"default": false,
+														"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"using_latest_model": {
 														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 														"example": true,
@@ -1652,6 +1726,13 @@
 													"enable_js": {
 														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 														"example": true,
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"is_robots_txt_managed": {
+														"default": false,
+														"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 														"type": "boolean",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
@@ -1772,6 +1853,13 @@
 													"enable_js": {
 														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 														"example": true,
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"is_robots_txt_managed": {
+														"default": false,
+														"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 														"type": "boolean",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
@@ -1998,6 +2086,13 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"is_robots_txt_managed": {
+																			"default": false,
+																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"using_latest_model": {
 																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																			"example": true,
@@ -2104,6 +2199,13 @@
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"is_robots_txt_managed": {
+																			"default": false,
+																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -2218,6 +2320,13 @@
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"is_robots_txt_managed": {
+																			"default": false,
+																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -2338,6 +2447,13 @@
 																		"enable_js": {
 																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"is_robots_txt_managed": {
+																			"default": false,
+																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -2569,6 +2685,13 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"is_robots_txt_managed": {
+																					"default": false,
+																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																					"type": "boolean",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"using_latest_model": {
 																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
 																					"example": true,
@@ -2675,6 +2798,13 @@
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"is_robots_txt_managed": {
+																					"default": false,
+																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -2789,6 +2919,13 @@
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"is_robots_txt_managed": {
+																					"default": false,
+																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -2909,6 +3046,13 @@
 																				"enable_js": {
 																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
 																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"is_robots_txt_managed": {
+																					"default": false,
+																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
