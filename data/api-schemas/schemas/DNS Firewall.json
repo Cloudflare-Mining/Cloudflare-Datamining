@@ -138,11 +138,14 @@
 													"type": "string",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -156,108 +159,106 @@
 								{
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
 																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"documentation_url": {
+																	"pointer": {
 																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
 																	}
 																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+																"type": "object"
+															}
 														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
 													],
-													"type": "object"
+													"example": true,
+													"type": "boolean"
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"id": {
-															"description": "Identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string",
-															"x-auditable": true
-														}
-													}
-												}
-											}
 										}
-									]
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -365,7 +366,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -373,6 +375,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -672,7 +677,8 @@
 																			"type": "string",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"type": "string"
 																},
 																"minLength": 1,
 																"type": "array"
@@ -705,7 +711,8 @@
 																			"type": "string",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"type": "string"
 																},
 																"type": "array"
 															},
@@ -747,9 +754,11 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -993,7 +1002,8 @@
 																					"type": "string",
 																					"x-auditable": true
 																				}
-																			]
+																			],
+																			"type": "string"
 																		},
 																		"minLength": 1,
 																		"type": "array"
@@ -1026,7 +1036,8 @@
 																					"type": "string",
 																					"x-auditable": true
 																				}
-																			]
+																			],
+																			"type": "string"
 																		},
 																		"type": "array"
 																	},
@@ -1068,9 +1079,11 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1178,7 +1191,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1186,6 +1200,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1446,7 +1463,8 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																]
+																],
+																"type": "string"
 															},
 															"minLength": 1,
 															"type": "array"
@@ -1479,7 +1497,8 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																]
+																],
+																"type": "string"
 															},
 															"type": "array"
 														},
@@ -1519,9 +1538,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1734,7 +1755,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"type": "string"
 																	},
 																	"minLength": 1,
 																	"type": "array"
@@ -1767,7 +1789,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"type": "string"
 																	},
 																	"type": "array"
 																},
@@ -1807,9 +1830,11 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1917,7 +1942,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1925,6 +1951,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2095,9 +2124,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2220,9 +2251,11 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -2330,7 +2363,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2338,6 +2372,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2506,7 +2543,8 @@
 													"type": "string",
 													"x-auditable": true
 												}
-											]
+											],
+											"type": "string"
 										},
 										"minLength": 1,
 										"type": "array"
@@ -2727,7 +2765,8 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																]
+																],
+																"type": "string"
 															},
 															"minLength": 1,
 															"type": "array"
@@ -2760,7 +2799,8 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																]
+																],
+																"type": "string"
 															},
 															"type": "array"
 														},
@@ -2800,9 +2840,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -3015,7 +3057,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"type": "string"
 																	},
 																	"minLength": 1,
 																	"type": "array"
@@ -3048,7 +3091,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"type": "string"
 																	},
 																	"type": "array"
 																},
@@ -3088,9 +3132,11 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -3198,7 +3244,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -3206,6 +3253,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -3400,9 +3450,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -3525,9 +3577,11 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -3635,7 +3689,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -3643,6 +3698,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -3798,7 +3856,8 @@
 													"type": "string",
 													"x-auditable": true
 												}
-											]
+											],
+											"type": "string"
 										},
 										"minLength": 1,
 										"type": "array"
@@ -4023,7 +4082,8 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																]
+																],
+																"type": "string"
 															},
 															"minLength": 1,
 															"type": "array"
@@ -4056,7 +4116,8 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																]
+																],
+																"type": "string"
 															},
 															"type": "array"
 														},
@@ -4096,9 +4157,11 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4311,7 +4374,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"type": "string"
 																	},
 																	"minLength": 1,
 																	"type": "array"
@@ -4344,7 +4408,8 @@
 																				"type": "string",
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"type": "string"
 																	},
 																	"type": "array"
 																},
@@ -4384,9 +4449,11 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -4494,7 +4561,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4502,6 +4570,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

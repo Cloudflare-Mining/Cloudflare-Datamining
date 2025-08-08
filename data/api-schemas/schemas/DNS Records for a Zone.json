@@ -184,7 +184,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -192,6 +193,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1009,7 +1013,8 @@
 																								"type": "boolean",
 																								"x-auditable": true
 																							}
-																						}
+																						},
+																						"type": "object"
 																					},
 																					"type": {
 																						"description": "Record type.",
@@ -2178,7 +2183,7 @@
 																						"description": "Components of a HTTPS record.",
 																						"properties": {
 																							"priority": {
-																								"description": "priority.",
+																								"description": "Priority.",
 																								"example": 1,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -2186,13 +2191,13 @@
 																								"x-auditable": true
 																							},
 																							"target": {
-																								"description": "target.",
+																								"description": "Target.",
 																								"example": ".",
 																								"type": "string",
 																								"x-auditable": true
 																							},
 																							"value": {
-																								"description": "value.",
+																								"description": "Value.",
 																								"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																								"type": "string",
 																								"x-auditable": true
@@ -2329,6 +2334,7 @@
 																									"S"
 																								],
 																								"example": "N",
+																								"type": "string",
 																								"x-auditable": true
 																							},
 																							"lat_minutes": {
@@ -2362,6 +2368,7 @@
 																									"W"
 																								],
 																								"example": "W",
+																								"type": "string",
 																								"x-auditable": true
 																							},
 																							"long_minutes": {
@@ -2934,7 +2941,7 @@
 																						"description": "Components of a SSHFP record.",
 																						"properties": {
 																							"algorithm": {
-																								"description": "algorithm.",
+																								"description": "Algorithm.",
 																								"example": 2,
 																								"maximum": 255,
 																								"minimum": 0,
@@ -2942,12 +2949,12 @@
 																								"x-auditable": true
 																							},
 																							"fingerprint": {
-																								"description": "fingerprint.",
+																								"description": "Fingerprint.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
 																							"type": {
-																								"description": "type.",
+																								"description": "Type.",
 																								"example": 1,
 																								"maximum": 255,
 																								"minimum": 0,
@@ -3063,7 +3070,7 @@
 																						"description": "Components of a SVCB record.",
 																						"properties": {
 																							"priority": {
-																								"description": "priority.",
+																								"description": "Priority.",
 																								"example": 1,
 																								"maximum": 65535,
 																								"minimum": 0,
@@ -3071,13 +3078,13 @@
 																								"x-auditable": true
 																							},
 																							"target": {
-																								"description": "target.",
+																								"description": "Target.",
 																								"example": ".",
 																								"type": "string",
 																								"x-auditable": true
 																							},
 																							"value": {
-																								"description": "value.",
+																								"description": "Value.",
 																								"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																								"type": "string",
 																								"x-auditable": true
@@ -3191,7 +3198,7 @@
 																						"description": "Components of a TLSA record.",
 																						"properties": {
 																							"certificate": {
-																								"description": "certificate.",
+																								"description": "Certificate.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
@@ -3457,7 +3464,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -3896,7 +3904,8 @@
 																										"type": "boolean",
 																										"x-auditable": true
 																									}
-																								}
+																								},
+																								"type": "object"
 																							},
 																							"type": {
 																								"description": "Record type.",
@@ -5065,7 +5074,7 @@
 																								"description": "Components of a HTTPS record.",
 																								"properties": {
 																									"priority": {
-																										"description": "priority.",
+																										"description": "Priority.",
 																										"example": 1,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -5073,13 +5082,13 @@
 																										"x-auditable": true
 																									},
 																									"target": {
-																										"description": "target.",
+																										"description": "Target.",
 																										"example": ".",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"value": {
-																										"description": "value.",
+																										"description": "Value.",
 																										"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																										"type": "string",
 																										"x-auditable": true
@@ -5216,6 +5225,7 @@
 																											"S"
 																										],
 																										"example": "N",
+																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"lat_minutes": {
@@ -5249,6 +5259,7 @@
 																											"W"
 																										],
 																										"example": "W",
+																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"long_minutes": {
@@ -5821,7 +5832,7 @@
 																								"description": "Components of a SSHFP record.",
 																								"properties": {
 																									"algorithm": {
-																										"description": "algorithm.",
+																										"description": "Algorithm.",
 																										"example": 2,
 																										"maximum": 255,
 																										"minimum": 0,
@@ -5829,12 +5840,12 @@
 																										"x-auditable": true
 																									},
 																									"fingerprint": {
-																										"description": "fingerprint.",
+																										"description": "Fingerprint.",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"type": {
-																										"description": "type.",
+																										"description": "Type.",
 																										"example": 1,
 																										"maximum": 255,
 																										"minimum": 0,
@@ -5950,7 +5961,7 @@
 																								"description": "Components of a SVCB record.",
 																								"properties": {
 																									"priority": {
-																										"description": "priority.",
+																										"description": "Priority.",
 																										"example": 1,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -5958,13 +5969,13 @@
 																										"x-auditable": true
 																									},
 																									"target": {
-																										"description": "target.",
+																										"description": "Target.",
 																										"example": ".",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"value": {
-																										"description": "value.",
+																										"description": "Value.",
 																										"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																										"type": "string",
 																										"x-auditable": true
@@ -6078,7 +6089,7 @@
 																								"description": "Components of a TLSA record.",
 																								"properties": {
 																									"certificate": {
-																										"description": "certificate.",
+																										"description": "Certificate.",
 																										"type": "string",
 																										"x-auditable": true
 																									},
@@ -6344,7 +6355,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -6452,7 +6464,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -6460,6 +6473,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -6914,7 +6930,8 @@
 																							"type": "boolean",
 																							"x-auditable": true
 																						}
-																					}
+																					},
+																					"type": "object"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -8083,7 +8100,7 @@
 																					"description": "Components of a HTTPS record.",
 																					"properties": {
 																						"priority": {
-																							"description": "priority.",
+																							"description": "Priority.",
 																							"example": 1,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -8091,13 +8108,13 @@
 																							"x-auditable": true
 																						},
 																						"target": {
-																							"description": "target.",
+																							"description": "Target.",
 																							"example": ".",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"value": {
-																							"description": "value.",
+																							"description": "Value.",
 																							"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																							"type": "string",
 																							"x-auditable": true
@@ -8234,6 +8251,7 @@
 																								"S"
 																							],
 																							"example": "N",
+																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"lat_minutes": {
@@ -8267,6 +8285,7 @@
 																								"W"
 																							],
 																							"example": "W",
+																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"long_minutes": {
@@ -8839,7 +8858,7 @@
 																					"description": "Components of a SSHFP record.",
 																					"properties": {
 																						"algorithm": {
-																							"description": "algorithm.",
+																							"description": "Algorithm.",
 																							"example": 2,
 																							"maximum": 255,
 																							"minimum": 0,
@@ -8847,12 +8866,12 @@
 																							"x-auditable": true
 																						},
 																						"fingerprint": {
-																							"description": "fingerprint.",
+																							"description": "Fingerprint.",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"type": {
-																							"description": "type.",
+																							"description": "Type.",
 																							"example": 1,
 																							"maximum": 255,
 																							"minimum": 0,
@@ -8968,7 +8987,7 @@
 																					"description": "Components of a SVCB record.",
 																					"properties": {
 																						"priority": {
-																							"description": "priority.",
+																							"description": "Priority.",
 																							"example": 1,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -8976,13 +8995,13 @@
 																							"x-auditable": true
 																						},
 																						"target": {
-																							"description": "target.",
+																							"description": "Target.",
 																							"example": ".",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"value": {
-																							"description": "value.",
+																							"description": "Value.",
 																							"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																							"type": "string",
 																							"x-auditable": true
@@ -9096,7 +9115,7 @@
 																					"description": "Components of a TLSA record.",
 																					"properties": {
 																						"certificate": {
-																							"description": "certificate.",
+																							"description": "Certificate.",
 																							"type": "string",
 																							"x-auditable": true
 																						},
@@ -9360,7 +9379,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -9768,7 +9788,8 @@
 																									"type": "boolean",
 																									"x-auditable": true
 																								}
-																							}
+																							},
+																							"type": "object"
 																						},
 																						"type": {
 																							"description": "Record type.",
@@ -10937,7 +10958,7 @@
 																							"description": "Components of a HTTPS record.",
 																							"properties": {
 																								"priority": {
-																									"description": "priority.",
+																									"description": "Priority.",
 																									"example": 1,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -10945,13 +10966,13 @@
 																									"x-auditable": true
 																								},
 																								"target": {
-																									"description": "target.",
+																									"description": "Target.",
 																									"example": ".",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"value": {
-																									"description": "value.",
+																									"description": "Value.",
 																									"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																									"type": "string",
 																									"x-auditable": true
@@ -11088,6 +11109,7 @@
 																										"S"
 																									],
 																									"example": "N",
+																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"lat_minutes": {
@@ -11121,6 +11143,7 @@
 																										"W"
 																									],
 																									"example": "W",
+																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"long_minutes": {
@@ -11693,7 +11716,7 @@
 																							"description": "Components of a SSHFP record.",
 																							"properties": {
 																								"algorithm": {
-																									"description": "algorithm.",
+																									"description": "Algorithm.",
 																									"example": 2,
 																									"maximum": 255,
 																									"minimum": 0,
@@ -11701,12 +11724,12 @@
 																									"x-auditable": true
 																								},
 																								"fingerprint": {
-																									"description": "fingerprint.",
+																									"description": "Fingerprint.",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"type": {
-																									"description": "type.",
+																									"description": "Type.",
 																									"example": 1,
 																									"maximum": 255,
 																									"minimum": 0,
@@ -11822,7 +11845,7 @@
 																							"description": "Components of a SVCB record.",
 																							"properties": {
 																								"priority": {
-																									"description": "priority.",
+																									"description": "Priority.",
 																									"example": 1,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -11830,13 +11853,13 @@
 																									"x-auditable": true
 																								},
 																								"target": {
-																									"description": "target.",
+																									"description": "Target.",
 																									"example": ".",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"value": {
-																									"description": "value.",
+																									"description": "Value.",
 																									"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																									"type": "string",
 																									"x-auditable": true
@@ -11950,7 +11973,7 @@
 																							"description": "Components of a TLSA record.",
 																							"properties": {
 																								"certificate": {
-																									"description": "certificate.",
+																									"description": "Certificate.",
 																									"type": "string",
 																									"x-auditable": true
 																								},
@@ -12214,7 +12237,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -12322,7 +12346,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -12330,6 +12355,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -12500,6 +12528,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -12861,7 +12892,8 @@
 																"type": "boolean",
 																"x-auditable": true
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": {
 														"description": "Record type.",
@@ -14030,7 +14062,7 @@
 														"description": "Components of a HTTPS record.",
 														"properties": {
 															"priority": {
-																"description": "priority.",
+																"description": "Priority.",
 																"example": 1,
 																"maximum": 65535,
 																"minimum": 0,
@@ -14038,13 +14070,13 @@
 																"x-auditable": true
 															},
 															"target": {
-																"description": "target.",
+																"description": "Target.",
 																"example": ".",
 																"type": "string",
 																"x-auditable": true
 															},
 															"value": {
-																"description": "value.",
+																"description": "Value.",
 																"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																"type": "string",
 																"x-auditable": true
@@ -14181,6 +14213,7 @@
 																	"S"
 																],
 																"example": "N",
+																"type": "string",
 																"x-auditable": true
 															},
 															"lat_minutes": {
@@ -14214,6 +14247,7 @@
 																	"W"
 																],
 																"example": "W",
+																"type": "string",
 																"x-auditable": true
 															},
 															"long_minutes": {
@@ -14786,7 +14820,7 @@
 														"description": "Components of a SSHFP record.",
 														"properties": {
 															"algorithm": {
-																"description": "algorithm.",
+																"description": "Algorithm.",
 																"example": 2,
 																"maximum": 255,
 																"minimum": 0,
@@ -14794,12 +14828,12 @@
 																"x-auditable": true
 															},
 															"fingerprint": {
-																"description": "fingerprint.",
+																"description": "Fingerprint.",
 																"type": "string",
 																"x-auditable": true
 															},
 															"type": {
-																"description": "type.",
+																"description": "Type.",
 																"example": 1,
 																"maximum": 255,
 																"minimum": 0,
@@ -14915,7 +14949,7 @@
 														"description": "Components of a SVCB record.",
 														"properties": {
 															"priority": {
-																"description": "priority.",
+																"description": "Priority.",
 																"example": 1,
 																"maximum": 65535,
 																"minimum": 0,
@@ -14923,13 +14957,13 @@
 																"x-auditable": true
 															},
 															"target": {
-																"description": "target.",
+																"description": "Target.",
 																"example": ".",
 																"type": "string",
 																"x-auditable": true
 															},
 															"value": {
-																"description": "value.",
+																"description": "Value.",
 																"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																"type": "string",
 																"x-auditable": true
@@ -15043,7 +15077,7 @@
 														"description": "Components of a TLSA record.",
 														"properties": {
 															"certificate": {
-																"description": "certificate.",
+																"description": "Certificate.",
 																"type": "string",
 																"x-auditable": true
 															},
@@ -15631,7 +15665,8 @@
 																							"type": "boolean",
 																							"x-auditable": true
 																						}
-																					}
+																					},
+																					"type": "object"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -16800,7 +16835,7 @@
 																					"description": "Components of a HTTPS record.",
 																					"properties": {
 																						"priority": {
-																							"description": "priority.",
+																							"description": "Priority.",
 																							"example": 1,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -16808,13 +16843,13 @@
 																							"x-auditable": true
 																						},
 																						"target": {
-																							"description": "target.",
+																							"description": "Target.",
 																							"example": ".",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"value": {
-																							"description": "value.",
+																							"description": "Value.",
 																							"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																							"type": "string",
 																							"x-auditable": true
@@ -16951,6 +16986,7 @@
 																								"S"
 																							],
 																							"example": "N",
+																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"lat_minutes": {
@@ -16984,6 +17020,7 @@
 																								"W"
 																							],
 																							"example": "W",
+																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"long_minutes": {
@@ -17556,7 +17593,7 @@
 																					"description": "Components of a SSHFP record.",
 																					"properties": {
 																						"algorithm": {
-																							"description": "algorithm.",
+																							"description": "Algorithm.",
 																							"example": 2,
 																							"maximum": 255,
 																							"minimum": 0,
@@ -17564,12 +17601,12 @@
 																							"x-auditable": true
 																						},
 																						"fingerprint": {
-																							"description": "fingerprint.",
+																							"description": "Fingerprint.",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"type": {
-																							"description": "type.",
+																							"description": "Type.",
 																							"example": 1,
 																							"maximum": 255,
 																							"minimum": 0,
@@ -17685,7 +17722,7 @@
 																					"description": "Components of a SVCB record.",
 																					"properties": {
 																						"priority": {
-																							"description": "priority.",
+																							"description": "Priority.",
 																							"example": 1,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -17693,13 +17730,13 @@
 																							"x-auditable": true
 																						},
 																						"target": {
-																							"description": "target.",
+																							"description": "Target.",
 																							"example": ".",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"value": {
-																							"description": "value.",
+																							"description": "Value.",
 																							"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																							"type": "string",
 																							"x-auditable": true
@@ -17813,7 +17850,7 @@
 																					"description": "Components of a TLSA record.",
 																					"properties": {
 																						"certificate": {
-																							"description": "certificate.",
+																							"description": "Certificate.",
 																							"type": "string",
 																							"x-auditable": true
 																						},
@@ -18077,7 +18114,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -18485,7 +18523,8 @@
 																									"type": "boolean",
 																									"x-auditable": true
 																								}
-																							}
+																							},
+																							"type": "object"
 																						},
 																						"type": {
 																							"description": "Record type.",
@@ -19654,7 +19693,7 @@
 																							"description": "Components of a HTTPS record.",
 																							"properties": {
 																								"priority": {
-																									"description": "priority.",
+																									"description": "Priority.",
 																									"example": 1,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -19662,13 +19701,13 @@
 																									"x-auditable": true
 																								},
 																								"target": {
-																									"description": "target.",
+																									"description": "Target.",
 																									"example": ".",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"value": {
-																									"description": "value.",
+																									"description": "Value.",
 																									"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																									"type": "string",
 																									"x-auditable": true
@@ -19805,6 +19844,7 @@
 																										"S"
 																									],
 																									"example": "N",
+																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"lat_minutes": {
@@ -19838,6 +19878,7 @@
 																										"W"
 																									],
 																									"example": "W",
+																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"long_minutes": {
@@ -20410,7 +20451,7 @@
 																							"description": "Components of a SSHFP record.",
 																							"properties": {
 																								"algorithm": {
-																									"description": "algorithm.",
+																									"description": "Algorithm.",
 																									"example": 2,
 																									"maximum": 255,
 																									"minimum": 0,
@@ -20418,12 +20459,12 @@
 																									"x-auditable": true
 																								},
 																								"fingerprint": {
-																									"description": "fingerprint.",
+																									"description": "Fingerprint.",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"type": {
-																									"description": "type.",
+																									"description": "Type.",
 																									"example": 1,
 																									"maximum": 255,
 																									"minimum": 0,
@@ -20539,7 +20580,7 @@
 																							"description": "Components of a SVCB record.",
 																							"properties": {
 																								"priority": {
-																									"description": "priority.",
+																									"description": "Priority.",
 																									"example": 1,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -20547,13 +20588,13 @@
 																									"x-auditable": true
 																								},
 																								"target": {
-																									"description": "target.",
+																									"description": "Target.",
 																									"example": ".",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"value": {
-																									"description": "value.",
+																									"description": "Value.",
 																									"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																									"type": "string",
 																									"x-auditable": true
@@ -20667,7 +20708,7 @@
 																							"description": "Components of a TLSA record.",
 																							"properties": {
 																								"certificate": {
-																									"description": "certificate.",
+																									"description": "Certificate.",
 																									"type": "string",
 																									"x-auditable": true
 																								},
@@ -20931,7 +20972,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -21039,7 +21081,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -21047,6 +21090,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -21395,7 +21441,8 @@
 																"type": "boolean",
 																"x-auditable": true
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": {
 														"description": "Record type.",
@@ -22564,7 +22611,7 @@
 														"description": "Components of a HTTPS record.",
 														"properties": {
 															"priority": {
-																"description": "priority.",
+																"description": "Priority.",
 																"example": 1,
 																"maximum": 65535,
 																"minimum": 0,
@@ -22572,13 +22619,13 @@
 																"x-auditable": true
 															},
 															"target": {
-																"description": "target.",
+																"description": "Target.",
 																"example": ".",
 																"type": "string",
 																"x-auditable": true
 															},
 															"value": {
-																"description": "value.",
+																"description": "Value.",
 																"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																"type": "string",
 																"x-auditable": true
@@ -22715,6 +22762,7 @@
 																	"S"
 																],
 																"example": "N",
+																"type": "string",
 																"x-auditable": true
 															},
 															"lat_minutes": {
@@ -22748,6 +22796,7 @@
 																	"W"
 																],
 																"example": "W",
+																"type": "string",
 																"x-auditable": true
 															},
 															"long_minutes": {
@@ -23320,7 +23369,7 @@
 														"description": "Components of a SSHFP record.",
 														"properties": {
 															"algorithm": {
-																"description": "algorithm.",
+																"description": "Algorithm.",
 																"example": 2,
 																"maximum": 255,
 																"minimum": 0,
@@ -23328,12 +23377,12 @@
 																"x-auditable": true
 															},
 															"fingerprint": {
-																"description": "fingerprint.",
+																"description": "Fingerprint.",
 																"type": "string",
 																"x-auditable": true
 															},
 															"type": {
-																"description": "type.",
+																"description": "Type.",
 																"example": 1,
 																"maximum": 255,
 																"minimum": 0,
@@ -23449,7 +23498,7 @@
 														"description": "Components of a SVCB record.",
 														"properties": {
 															"priority": {
-																"description": "priority.",
+																"description": "Priority.",
 																"example": 1,
 																"maximum": 65535,
 																"minimum": 0,
@@ -23457,13 +23506,13 @@
 																"x-auditable": true
 															},
 															"target": {
-																"description": "target.",
+																"description": "Target.",
 																"example": ".",
 																"type": "string",
 																"x-auditable": true
 															},
 															"value": {
-																"description": "value.",
+																"description": "Value.",
 																"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																"type": "string",
 																"x-auditable": true
@@ -23577,7 +23626,7 @@
 														"description": "Components of a TLSA record.",
 														"properties": {
 															"certificate": {
-																"description": "certificate.",
+																"description": "Certificate.",
 																"type": "string",
 																"x-auditable": true
 															},
@@ -24165,7 +24214,8 @@
 																							"type": "boolean",
 																							"x-auditable": true
 																						}
-																					}
+																					},
+																					"type": "object"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -25334,7 +25384,7 @@
 																					"description": "Components of a HTTPS record.",
 																					"properties": {
 																						"priority": {
-																							"description": "priority.",
+																							"description": "Priority.",
 																							"example": 1,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -25342,13 +25392,13 @@
 																							"x-auditable": true
 																						},
 																						"target": {
-																							"description": "target.",
+																							"description": "Target.",
 																							"example": ".",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"value": {
-																							"description": "value.",
+																							"description": "Value.",
 																							"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																							"type": "string",
 																							"x-auditable": true
@@ -25485,6 +25535,7 @@
 																								"S"
 																							],
 																							"example": "N",
+																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"lat_minutes": {
@@ -25518,6 +25569,7 @@
 																								"W"
 																							],
 																							"example": "W",
+																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"long_minutes": {
@@ -26090,7 +26142,7 @@
 																					"description": "Components of a SSHFP record.",
 																					"properties": {
 																						"algorithm": {
-																							"description": "algorithm.",
+																							"description": "Algorithm.",
 																							"example": 2,
 																							"maximum": 255,
 																							"minimum": 0,
@@ -26098,12 +26150,12 @@
 																							"x-auditable": true
 																						},
 																						"fingerprint": {
-																							"description": "fingerprint.",
+																							"description": "Fingerprint.",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"type": {
-																							"description": "type.",
+																							"description": "Type.",
 																							"example": 1,
 																							"maximum": 255,
 																							"minimum": 0,
@@ -26219,7 +26271,7 @@
 																					"description": "Components of a SVCB record.",
 																					"properties": {
 																						"priority": {
-																							"description": "priority.",
+																							"description": "Priority.",
 																							"example": 1,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -26227,13 +26279,13 @@
 																							"x-auditable": true
 																						},
 																						"target": {
-																							"description": "target.",
+																							"description": "Target.",
 																							"example": ".",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"value": {
-																							"description": "value.",
+																							"description": "Value.",
 																							"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																							"type": "string",
 																							"x-auditable": true
@@ -26347,7 +26399,7 @@
 																					"description": "Components of a TLSA record.",
 																					"properties": {
 																						"certificate": {
-																							"description": "certificate.",
+																							"description": "Certificate.",
 																							"type": "string",
 																							"x-auditable": true
 																						},
@@ -26611,7 +26663,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -27019,7 +27072,8 @@
 																									"type": "boolean",
 																									"x-auditable": true
 																								}
-																							}
+																							},
+																							"type": "object"
 																						},
 																						"type": {
 																							"description": "Record type.",
@@ -28188,7 +28242,7 @@
 																							"description": "Components of a HTTPS record.",
 																							"properties": {
 																								"priority": {
-																									"description": "priority.",
+																									"description": "Priority.",
 																									"example": 1,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -28196,13 +28250,13 @@
 																									"x-auditable": true
 																								},
 																								"target": {
-																									"description": "target.",
+																									"description": "Target.",
 																									"example": ".",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"value": {
-																									"description": "value.",
+																									"description": "Value.",
 																									"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																									"type": "string",
 																									"x-auditable": true
@@ -28339,6 +28393,7 @@
 																										"S"
 																									],
 																									"example": "N",
+																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"lat_minutes": {
@@ -28372,6 +28427,7 @@
 																										"W"
 																									],
 																									"example": "W",
+																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"long_minutes": {
@@ -28944,7 +29000,7 @@
 																							"description": "Components of a SSHFP record.",
 																							"properties": {
 																								"algorithm": {
-																									"description": "algorithm.",
+																									"description": "Algorithm.",
 																									"example": 2,
 																									"maximum": 255,
 																									"minimum": 0,
@@ -28952,12 +29008,12 @@
 																									"x-auditable": true
 																								},
 																								"fingerprint": {
-																									"description": "fingerprint.",
+																									"description": "Fingerprint.",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"type": {
-																									"description": "type.",
+																									"description": "Type.",
 																									"example": 1,
 																									"maximum": 255,
 																									"minimum": 0,
@@ -29073,7 +29129,7 @@
 																							"description": "Components of a SVCB record.",
 																							"properties": {
 																								"priority": {
-																									"description": "priority.",
+																									"description": "Priority.",
 																									"example": 1,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -29081,13 +29137,13 @@
 																									"x-auditable": true
 																								},
 																								"target": {
-																									"description": "target.",
+																									"description": "Target.",
 																									"example": ".",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"value": {
-																									"description": "value.",
+																									"description": "Value.",
 																									"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																									"type": "string",
 																									"x-auditable": true
@@ -29201,7 +29257,7 @@
 																							"description": "Components of a TLSA record.",
 																							"properties": {
 																								"certificate": {
-																									"description": "certificate.",
+																									"description": "Certificate.",
 																									"type": "string",
 																									"x-auditable": true
 																								},
@@ -29465,7 +29521,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -29573,7 +29630,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -29581,6 +29639,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -29957,7 +30018,8 @@
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
-																			}
+																			},
+																			"type": "object"
 																		},
 																		"type": {
 																			"description": "Record type.",
@@ -31126,7 +31188,7 @@
 																			"description": "Components of a HTTPS record.",
 																			"properties": {
 																				"priority": {
-																					"description": "priority.",
+																					"description": "Priority.",
 																					"example": 1,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -31134,13 +31196,13 @@
 																					"x-auditable": true
 																				},
 																				"target": {
-																					"description": "target.",
+																					"description": "Target.",
 																					"example": ".",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"value": {
-																					"description": "value.",
+																					"description": "Value.",
 																					"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																					"type": "string",
 																					"x-auditable": true
@@ -31277,6 +31339,7 @@
 																						"S"
 																					],
 																					"example": "N",
+																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"lat_minutes": {
@@ -31310,6 +31373,7 @@
 																						"W"
 																					],
 																					"example": "W",
+																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"long_minutes": {
@@ -31882,7 +31946,7 @@
 																			"description": "Components of a SSHFP record.",
 																			"properties": {
 																				"algorithm": {
-																					"description": "algorithm.",
+																					"description": "Algorithm.",
 																					"example": 2,
 																					"maximum": 255,
 																					"minimum": 0,
@@ -31890,12 +31954,12 @@
 																					"x-auditable": true
 																				},
 																				"fingerprint": {
-																					"description": "fingerprint.",
+																					"description": "Fingerprint.",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"type": {
-																					"description": "type.",
+																					"description": "Type.",
 																					"example": 1,
 																					"maximum": 255,
 																					"minimum": 0,
@@ -32011,7 +32075,7 @@
 																			"description": "Components of a SVCB record.",
 																			"properties": {
 																				"priority": {
-																					"description": "priority.",
+																					"description": "Priority.",
 																					"example": 1,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -32019,13 +32083,13 @@
 																					"x-auditable": true
 																				},
 																				"target": {
-																					"description": "target.",
+																					"description": "Target.",
 																					"example": ".",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"value": {
-																					"description": "value.",
+																					"description": "Value.",
 																					"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																					"type": "string",
 																					"x-auditable": true
@@ -32139,7 +32203,7 @@
 																			"description": "Components of a TLSA record.",
 																			"properties": {
 																				"certificate": {
-																					"description": "certificate.",
+																					"description": "Certificate.",
 																					"type": "string",
 																					"x-auditable": true
 																				},
@@ -32646,7 +32710,8 @@
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
-																			}
+																			},
+																			"type": "object"
 																		},
 																		"type": {
 																			"description": "Record type.",
@@ -33815,7 +33880,7 @@
 																			"description": "Components of a HTTPS record.",
 																			"properties": {
 																				"priority": {
-																					"description": "priority.",
+																					"description": "Priority.",
 																					"example": 1,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -33823,13 +33888,13 @@
 																					"x-auditable": true
 																				},
 																				"target": {
-																					"description": "target.",
+																					"description": "Target.",
 																					"example": ".",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"value": {
-																					"description": "value.",
+																					"description": "Value.",
 																					"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																					"type": "string",
 																					"x-auditable": true
@@ -33966,6 +34031,7 @@
 																						"S"
 																					],
 																					"example": "N",
+																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"lat_minutes": {
@@ -33999,6 +34065,7 @@
 																						"W"
 																					],
 																					"example": "W",
+																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"long_minutes": {
@@ -34571,7 +34638,7 @@
 																			"description": "Components of a SSHFP record.",
 																			"properties": {
 																				"algorithm": {
-																					"description": "algorithm.",
+																					"description": "Algorithm.",
 																					"example": 2,
 																					"maximum": 255,
 																					"minimum": 0,
@@ -34579,12 +34646,12 @@
 																					"x-auditable": true
 																				},
 																				"fingerprint": {
-																					"description": "fingerprint.",
+																					"description": "Fingerprint.",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"type": {
-																					"description": "type.",
+																					"description": "Type.",
 																					"example": 1,
 																					"maximum": 255,
 																					"minimum": 0,
@@ -34700,7 +34767,7 @@
 																			"description": "Components of a SVCB record.",
 																			"properties": {
 																				"priority": {
-																					"description": "priority.",
+																					"description": "Priority.",
 																					"example": 1,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -34708,13 +34775,13 @@
 																					"x-auditable": true
 																				},
 																				"target": {
-																					"description": "target.",
+																					"description": "Target.",
 																					"example": ".",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"value": {
-																					"description": "value.",
+																					"description": "Value.",
 																					"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																					"type": "string",
 																					"x-auditable": true
@@ -34828,7 +34895,7 @@
 																			"description": "Components of a TLSA record.",
 																			"properties": {
 																				"certificate": {
-																					"description": "certificate.",
+																					"description": "Certificate.",
 																					"type": "string",
 																					"x-auditable": true
 																				},
@@ -35011,7 +35078,8 @@
 											],
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -35322,7 +35390,8 @@
 																					"type": "boolean",
 																					"x-auditable": true
 																				}
-																			}
+																			},
+																			"type": "object"
 																		},
 																		"type": {
 																			"description": "Record type.",
@@ -36491,7 +36560,7 @@
 																			"description": "Components of a HTTPS record.",
 																			"properties": {
 																				"priority": {
-																					"description": "priority.",
+																					"description": "Priority.",
 																					"example": 1,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -36499,13 +36568,13 @@
 																					"x-auditable": true
 																				},
 																				"target": {
-																					"description": "target.",
+																					"description": "Target.",
 																					"example": ".",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"value": {
-																					"description": "value.",
+																					"description": "Value.",
 																					"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																					"type": "string",
 																					"x-auditable": true
@@ -36642,6 +36711,7 @@
 																						"S"
 																					],
 																					"example": "N",
+																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"lat_minutes": {
@@ -36675,6 +36745,7 @@
 																						"W"
 																					],
 																					"example": "W",
+																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"long_minutes": {
@@ -37247,7 +37318,7 @@
 																			"description": "Components of a SSHFP record.",
 																			"properties": {
 																				"algorithm": {
-																					"description": "algorithm.",
+																					"description": "Algorithm.",
 																					"example": 2,
 																					"maximum": 255,
 																					"minimum": 0,
@@ -37255,12 +37326,12 @@
 																					"x-auditable": true
 																				},
 																				"fingerprint": {
-																					"description": "fingerprint.",
+																					"description": "Fingerprint.",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"type": {
-																					"description": "type.",
+																					"description": "Type.",
 																					"example": 1,
 																					"maximum": 255,
 																					"minimum": 0,
@@ -37376,7 +37447,7 @@
 																			"description": "Components of a SVCB record.",
 																			"properties": {
 																				"priority": {
-																					"description": "priority.",
+																					"description": "Priority.",
 																					"example": 1,
 																					"maximum": 65535,
 																					"minimum": 0,
@@ -37384,13 +37455,13 @@
 																					"x-auditable": true
 																				},
 																				"target": {
-																					"description": "target.",
+																					"description": "Target.",
 																					"example": ".",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"value": {
-																					"description": "value.",
+																					"description": "Value.",
 																					"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																					"type": "string",
 																					"x-auditable": true
@@ -37504,7 +37575,7 @@
 																			"description": "Components of a TLSA record.",
 																			"properties": {
 																				"certificate": {
-																					"description": "certificate.",
+																					"description": "Certificate.",
 																					"type": "string",
 																					"x-auditable": true
 																				},
@@ -38115,7 +38186,8 @@
 																										"type": "boolean",
 																										"x-auditable": true
 																									}
-																								}
+																								},
+																								"type": "object"
 																							},
 																							"type": {
 																								"description": "Record type.",
@@ -39284,7 +39356,7 @@
 																								"description": "Components of a HTTPS record.",
 																								"properties": {
 																									"priority": {
-																										"description": "priority.",
+																										"description": "Priority.",
 																										"example": 1,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -39292,13 +39364,13 @@
 																										"x-auditable": true
 																									},
 																									"target": {
-																										"description": "target.",
+																										"description": "Target.",
 																										"example": ".",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"value": {
-																										"description": "value.",
+																										"description": "Value.",
 																										"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																										"type": "string",
 																										"x-auditable": true
@@ -39435,6 +39507,7 @@
 																											"S"
 																										],
 																										"example": "N",
+																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"lat_minutes": {
@@ -39468,6 +39541,7 @@
 																											"W"
 																										],
 																										"example": "W",
+																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"long_minutes": {
@@ -40040,7 +40114,7 @@
 																								"description": "Components of a SSHFP record.",
 																								"properties": {
 																									"algorithm": {
-																										"description": "algorithm.",
+																										"description": "Algorithm.",
 																										"example": 2,
 																										"maximum": 255,
 																										"minimum": 0,
@@ -40048,12 +40122,12 @@
 																										"x-auditable": true
 																									},
 																									"fingerprint": {
-																										"description": "fingerprint.",
+																										"description": "Fingerprint.",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"type": {
-																										"description": "type.",
+																										"description": "Type.",
 																										"example": 1,
 																										"maximum": 255,
 																										"minimum": 0,
@@ -40169,7 +40243,7 @@
 																								"description": "Components of a SVCB record.",
 																								"properties": {
 																									"priority": {
-																										"description": "priority.",
+																										"description": "Priority.",
 																										"example": 1,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -40177,13 +40251,13 @@
 																										"x-auditable": true
 																									},
 																									"target": {
-																										"description": "target.",
+																										"description": "Target.",
 																										"example": ".",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"value": {
-																										"description": "value.",
+																										"description": "Value.",
 																										"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																										"type": "string",
 																										"x-auditable": true
@@ -40297,7 +40371,7 @@
 																								"description": "Components of a TLSA record.",
 																								"properties": {
 																									"certificate": {
-																										"description": "certificate.",
+																										"description": "Certificate.",
 																										"type": "string",
 																										"x-auditable": true
 																									},
@@ -40867,7 +40941,8 @@
 																										"type": "boolean",
 																										"x-auditable": true
 																									}
-																								}
+																								},
+																								"type": "object"
 																							},
 																							"type": {
 																								"description": "Record type.",
@@ -42036,7 +42111,7 @@
 																								"description": "Components of a HTTPS record.",
 																								"properties": {
 																									"priority": {
-																										"description": "priority.",
+																										"description": "Priority.",
 																										"example": 1,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -42044,13 +42119,13 @@
 																										"x-auditable": true
 																									},
 																									"target": {
-																										"description": "target.",
+																										"description": "Target.",
 																										"example": ".",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"value": {
-																										"description": "value.",
+																										"description": "Value.",
 																										"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																										"type": "string",
 																										"x-auditable": true
@@ -42187,6 +42262,7 @@
 																											"S"
 																										],
 																										"example": "N",
+																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"lat_minutes": {
@@ -42220,6 +42296,7 @@
 																											"W"
 																										],
 																										"example": "W",
+																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"long_minutes": {
@@ -42792,7 +42869,7 @@
 																								"description": "Components of a SSHFP record.",
 																								"properties": {
 																									"algorithm": {
-																										"description": "algorithm.",
+																										"description": "Algorithm.",
 																										"example": 2,
 																										"maximum": 255,
 																										"minimum": 0,
@@ -42800,12 +42877,12 @@
 																										"x-auditable": true
 																									},
 																									"fingerprint": {
-																										"description": "fingerprint.",
+																										"description": "Fingerprint.",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"type": {
-																										"description": "type.",
+																										"description": "Type.",
 																										"example": 1,
 																										"maximum": 255,
 																										"minimum": 0,
@@ -42921,7 +42998,7 @@
 																								"description": "Components of a SVCB record.",
 																								"properties": {
 																									"priority": {
-																										"description": "priority.",
+																										"description": "Priority.",
 																										"example": 1,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -42929,13 +43006,13 @@
 																										"x-auditable": true
 																									},
 																									"target": {
-																										"description": "target.",
+																										"description": "Target.",
 																										"example": ".",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"value": {
-																										"description": "value.",
+																										"description": "Value.",
 																										"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																										"type": "string",
 																										"x-auditable": true
@@ -43049,7 +43126,7 @@
 																								"description": "Components of a TLSA record.",
 																								"properties": {
 																									"certificate": {
-																										"description": "certificate.",
+																										"description": "Certificate.",
 																										"type": "string",
 																										"x-auditable": true
 																									},
@@ -43619,7 +43696,8 @@
 																										"type": "boolean",
 																										"x-auditable": true
 																									}
-																								}
+																								},
+																								"type": "object"
 																							},
 																							"type": {
 																								"description": "Record type.",
@@ -44788,7 +44866,7 @@
 																								"description": "Components of a HTTPS record.",
 																								"properties": {
 																									"priority": {
-																										"description": "priority.",
+																										"description": "Priority.",
 																										"example": 1,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -44796,13 +44874,13 @@
 																										"x-auditable": true
 																									},
 																									"target": {
-																										"description": "target.",
+																										"description": "Target.",
 																										"example": ".",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"value": {
-																										"description": "value.",
+																										"description": "Value.",
 																										"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																										"type": "string",
 																										"x-auditable": true
@@ -44939,6 +45017,7 @@
 																											"S"
 																										],
 																										"example": "N",
+																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"lat_minutes": {
@@ -44972,6 +45051,7 @@
 																											"W"
 																										],
 																										"example": "W",
+																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"long_minutes": {
@@ -45544,7 +45624,7 @@
 																								"description": "Components of a SSHFP record.",
 																								"properties": {
 																									"algorithm": {
-																										"description": "algorithm.",
+																										"description": "Algorithm.",
 																										"example": 2,
 																										"maximum": 255,
 																										"minimum": 0,
@@ -45552,12 +45632,12 @@
 																										"x-auditable": true
 																									},
 																									"fingerprint": {
-																										"description": "fingerprint.",
+																										"description": "Fingerprint.",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"type": {
-																										"description": "type.",
+																										"description": "Type.",
 																										"example": 1,
 																										"maximum": 255,
 																										"minimum": 0,
@@ -45673,7 +45753,7 @@
 																								"description": "Components of a SVCB record.",
 																								"properties": {
 																									"priority": {
-																										"description": "priority.",
+																										"description": "Priority.",
 																										"example": 1,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -45681,13 +45761,13 @@
 																										"x-auditable": true
 																									},
 																									"target": {
-																										"description": "target.",
+																										"description": "Target.",
 																										"example": ".",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"value": {
-																										"description": "value.",
+																										"description": "Value.",
 																										"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																										"type": "string",
 																										"x-auditable": true
@@ -45801,7 +45881,7 @@
 																								"description": "Components of a TLSA record.",
 																								"properties": {
 																									"certificate": {
-																										"description": "certificate.",
+																										"description": "Certificate.",
 																										"type": "string",
 																										"x-auditable": true
 																									},
@@ -46371,7 +46451,8 @@
 																										"type": "boolean",
 																										"x-auditable": true
 																									}
-																								}
+																								},
+																								"type": "object"
 																							},
 																							"type": {
 																								"description": "Record type.",
@@ -47540,7 +47621,7 @@
 																								"description": "Components of a HTTPS record.",
 																								"properties": {
 																									"priority": {
-																										"description": "priority.",
+																										"description": "Priority.",
 																										"example": 1,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -47548,13 +47629,13 @@
 																										"x-auditable": true
 																									},
 																									"target": {
-																										"description": "target.",
+																										"description": "Target.",
 																										"example": ".",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"value": {
-																										"description": "value.",
+																										"description": "Value.",
 																										"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																										"type": "string",
 																										"x-auditable": true
@@ -47691,6 +47772,7 @@
 																											"S"
 																										],
 																										"example": "N",
+																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"lat_minutes": {
@@ -47724,6 +47806,7 @@
 																											"W"
 																										],
 																										"example": "W",
+																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"long_minutes": {
@@ -48296,7 +48379,7 @@
 																								"description": "Components of a SSHFP record.",
 																								"properties": {
 																									"algorithm": {
-																										"description": "algorithm.",
+																										"description": "Algorithm.",
 																										"example": 2,
 																										"maximum": 255,
 																										"minimum": 0,
@@ -48304,12 +48387,12 @@
 																										"x-auditable": true
 																									},
 																									"fingerprint": {
-																										"description": "fingerprint.",
+																										"description": "Fingerprint.",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"type": {
-																										"description": "type.",
+																										"description": "Type.",
 																										"example": 1,
 																										"maximum": 255,
 																										"minimum": 0,
@@ -48425,7 +48508,7 @@
 																								"description": "Components of a SVCB record.",
 																								"properties": {
 																									"priority": {
-																										"description": "priority.",
+																										"description": "Priority.",
 																										"example": 1,
 																										"maximum": 65535,
 																										"minimum": 0,
@@ -48433,13 +48516,13 @@
 																										"x-auditable": true
 																									},
 																									"target": {
-																										"description": "target.",
+																										"description": "Target.",
 																										"example": ".",
 																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"value": {
-																										"description": "value.",
+																										"description": "Value.",
 																										"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																										"type": "string",
 																										"x-auditable": true
@@ -48553,7 +48636,7 @@
 																								"description": "Components of a TLSA record.",
 																								"properties": {
 																									"certificate": {
-																										"description": "certificate.",
+																										"description": "Certificate.",
 																										"type": "string",
 																										"x-auditable": true
 																									},
@@ -48822,7 +48905,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -48939,7 +49023,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -48947,6 +49032,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -49127,7 +49215,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -49247,7 +49336,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -49355,7 +49445,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -49363,6 +49454,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -49523,7 +49617,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -49643,7 +49738,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -49751,7 +49847,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -49759,6 +49856,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -50119,7 +50219,8 @@
 																"type": "boolean",
 																"x-auditable": true
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": {
 														"description": "Record type.",
@@ -51288,7 +51389,7 @@
 														"description": "Components of a HTTPS record.",
 														"properties": {
 															"priority": {
-																"description": "priority.",
+																"description": "Priority.",
 																"example": 1,
 																"maximum": 65535,
 																"minimum": 0,
@@ -51296,13 +51397,13 @@
 																"x-auditable": true
 															},
 															"target": {
-																"description": "target.",
+																"description": "Target.",
 																"example": ".",
 																"type": "string",
 																"x-auditable": true
 															},
 															"value": {
-																"description": "value.",
+																"description": "Value.",
 																"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																"type": "string",
 																"x-auditable": true
@@ -51439,6 +51540,7 @@
 																	"S"
 																],
 																"example": "N",
+																"type": "string",
 																"x-auditable": true
 															},
 															"lat_minutes": {
@@ -51472,6 +51574,7 @@
 																	"W"
 																],
 																"example": "W",
+																"type": "string",
 																"x-auditable": true
 															},
 															"long_minutes": {
@@ -52044,7 +52147,7 @@
 														"description": "Components of a SSHFP record.",
 														"properties": {
 															"algorithm": {
-																"description": "algorithm.",
+																"description": "Algorithm.",
 																"example": 2,
 																"maximum": 255,
 																"minimum": 0,
@@ -52052,12 +52155,12 @@
 																"x-auditable": true
 															},
 															"fingerprint": {
-																"description": "fingerprint.",
+																"description": "Fingerprint.",
 																"type": "string",
 																"x-auditable": true
 															},
 															"type": {
-																"description": "type.",
+																"description": "Type.",
 																"example": 1,
 																"maximum": 255,
 																"minimum": 0,
@@ -52173,7 +52276,7 @@
 														"description": "Components of a SVCB record.",
 														"properties": {
 															"priority": {
-																"description": "priority.",
+																"description": "Priority.",
 																"example": 1,
 																"maximum": 65535,
 																"minimum": 0,
@@ -52181,13 +52284,13 @@
 																"x-auditable": true
 															},
 															"target": {
-																"description": "target.",
+																"description": "Target.",
 																"example": ".",
 																"type": "string",
 																"x-auditable": true
 															},
 															"value": {
-																"description": "value.",
+																"description": "Value.",
 																"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																"type": "string",
 																"x-auditable": true
@@ -52301,7 +52404,7 @@
 														"description": "Components of a TLSA record.",
 														"properties": {
 															"certificate": {
-																"description": "certificate.",
+																"description": "Certificate.",
 																"type": "string",
 																"x-auditable": true
 															},
@@ -52889,7 +52992,8 @@
 																							"type": "boolean",
 																							"x-auditable": true
 																						}
-																					}
+																					},
+																					"type": "object"
 																				},
 																				"type": {
 																					"description": "Record type.",
@@ -54058,7 +54162,7 @@
 																					"description": "Components of a HTTPS record.",
 																					"properties": {
 																						"priority": {
-																							"description": "priority.",
+																							"description": "Priority.",
 																							"example": 1,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -54066,13 +54170,13 @@
 																							"x-auditable": true
 																						},
 																						"target": {
-																							"description": "target.",
+																							"description": "Target.",
 																							"example": ".",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"value": {
-																							"description": "value.",
+																							"description": "Value.",
 																							"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																							"type": "string",
 																							"x-auditable": true
@@ -54209,6 +54313,7 @@
 																								"S"
 																							],
 																							"example": "N",
+																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"lat_minutes": {
@@ -54242,6 +54347,7 @@
 																								"W"
 																							],
 																							"example": "W",
+																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"long_minutes": {
@@ -54814,7 +54920,7 @@
 																					"description": "Components of a SSHFP record.",
 																					"properties": {
 																						"algorithm": {
-																							"description": "algorithm.",
+																							"description": "Algorithm.",
 																							"example": 2,
 																							"maximum": 255,
 																							"minimum": 0,
@@ -54822,12 +54928,12 @@
 																							"x-auditable": true
 																						},
 																						"fingerprint": {
-																							"description": "fingerprint.",
+																							"description": "Fingerprint.",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"type": {
-																							"description": "type.",
+																							"description": "Type.",
 																							"example": 1,
 																							"maximum": 255,
 																							"minimum": 0,
@@ -54943,7 +55049,7 @@
 																					"description": "Components of a SVCB record.",
 																					"properties": {
 																						"priority": {
-																							"description": "priority.",
+																							"description": "Priority.",
 																							"example": 1,
 																							"maximum": 65535,
 																							"minimum": 0,
@@ -54951,13 +55057,13 @@
 																							"x-auditable": true
 																						},
 																						"target": {
-																							"description": "target.",
+																							"description": "Target.",
 																							"example": ".",
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"value": {
-																							"description": "value.",
+																							"description": "Value.",
 																							"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																							"type": "string",
 																							"x-auditable": true
@@ -55071,7 +55177,7 @@
 																					"description": "Components of a TLSA record.",
 																					"properties": {
 																						"certificate": {
-																							"description": "certificate.",
+																							"description": "Certificate.",
 																							"type": "string",
 																							"x-auditable": true
 																						},
@@ -55335,7 +55441,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -55743,7 +55850,8 @@
 																									"type": "boolean",
 																									"x-auditable": true
 																								}
-																							}
+																							},
+																							"type": "object"
 																						},
 																						"type": {
 																							"description": "Record type.",
@@ -56912,7 +57020,7 @@
 																							"description": "Components of a HTTPS record.",
 																							"properties": {
 																								"priority": {
-																									"description": "priority.",
+																									"description": "Priority.",
 																									"example": 1,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -56920,13 +57028,13 @@
 																									"x-auditable": true
 																								},
 																								"target": {
-																									"description": "target.",
+																									"description": "Target.",
 																									"example": ".",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"value": {
-																									"description": "value.",
+																									"description": "Value.",
 																									"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																									"type": "string",
 																									"x-auditable": true
@@ -57063,6 +57171,7 @@
 																										"S"
 																									],
 																									"example": "N",
+																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"lat_minutes": {
@@ -57096,6 +57205,7 @@
 																										"W"
 																									],
 																									"example": "W",
+																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"long_minutes": {
@@ -57668,7 +57778,7 @@
 																							"description": "Components of a SSHFP record.",
 																							"properties": {
 																								"algorithm": {
-																									"description": "algorithm.",
+																									"description": "Algorithm.",
 																									"example": 2,
 																									"maximum": 255,
 																									"minimum": 0,
@@ -57676,12 +57786,12 @@
 																									"x-auditable": true
 																								},
 																								"fingerprint": {
-																									"description": "fingerprint.",
+																									"description": "Fingerprint.",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"type": {
-																									"description": "type.",
+																									"description": "Type.",
 																									"example": 1,
 																									"maximum": 255,
 																									"minimum": 0,
@@ -57797,7 +57907,7 @@
 																							"description": "Components of a SVCB record.",
 																							"properties": {
 																								"priority": {
-																									"description": "priority.",
+																									"description": "Priority.",
 																									"example": 1,
 																									"maximum": 65535,
 																									"minimum": 0,
@@ -57805,13 +57915,13 @@
 																									"x-auditable": true
 																								},
 																								"target": {
-																									"description": "target.",
+																									"description": "Target.",
 																									"example": ".",
 																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"value": {
-																									"description": "value.",
+																									"description": "Value.",
 																									"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
 																									"type": "string",
 																									"x-auditable": true
@@ -57925,7 +58035,7 @@
 																							"description": "Components of a TLSA record.",
 																							"properties": {
 																								"certificate": {
-																									"description": "certificate.",
+																									"description": "Certificate.",
 																									"type": "string",
 																									"x-auditable": true
 																								},
@@ -58189,7 +58299,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -58297,7 +58408,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -58305,6 +58417,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
