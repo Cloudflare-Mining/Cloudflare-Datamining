@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-09-29T00:40:58.812Z",
-					"updatedAt": "2025-08-06T08:57:24.034Z"
+					"updatedAt": "2025-08-07T19:16:50.986Z"
 				},
 				"contentfulId": "5gWAo8ZMyta4O1Gds9O80R",
 				"contentTypeId": "page",
@@ -2834,7 +2834,7 @@
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Avoid vulnerabilities of other authentication methods. Unlike one-time PINs, FIDO2 MFA cannot be intercepted by an attacker. Implement MFA broadly — and require it — through Zero Trust policies.",
+								"description": "Stop phishing attacks with FIDO2-compliant MFA. Expand phishing protection beyond the inbox to other channels such as SMS or social media.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3486,6 +3486,185 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "7fh3hk32wOBGFrY2GDpRQ8",
+						"bladeName": "Phishing-resistant MFA FAQs",
+						"title": "Phishing-resistant MFA FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1sl1PqzOBQm2PEQyIPyPZS",
+								"title": "What is phishing-resistant MFA?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Phishing-resistant multi-factor authentication (MFA) is the use of FIDO2-compliant security keys to authenticate access requests. This approach it nearly impossible for attackers to intercept or steal user credentials due to the difficulty of obtaining a legitimate key. It effectively neutralizes the threat posed by credential theft via phishing.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "vWISQtxFSqUVFZM5ikhX6",
+								"title": "How does Cloudflare help to defeat phishing attacks?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's Zero Trust platform enforces FIDO2 MFA consistently across various types of resources like SaaS, self-hosted applications, and non-web applications. This allows organizations to require strong authentication methods, even for applications that don't natively support FIDO2 MFA.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4hxZ2QXCghyHz37igHUgeT",
+								"title": "What are the benefits of using FIDO2 MFA with Cloudflare?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Implementing FIDO2 MFA with Cloudflare significantly reduces the risk of multi-channel phishing by preventing attackers from intercepting credentials. It also enhances access management by augmenting existing identity providers.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "48WIJUshB49XyYuVz4P0aB",
+								"title": "Can you provide an example of how Cloudflare's phishing-resistant MFA works in a real-world scenario?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's own security team experienced a phishing attack where employee login credentials were stolen. However, due to the mandatory security key login requirement enforced by Cloudflare's Zero Trust implementation, the attackers were unable to gain access to their systems.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7mboQHkgoNxl7neMTRLiaR",
+								"title": "What types of attacks does Cloudflare's phishing-resistant MFA help mitigate?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Enforcing FIDO2-compliant MFA with Cloudflare helps to mitigate account takeovers, supply chain attacks, data exfiltration, and ransomware, in addition to containing the fallout from phishing attacks.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,

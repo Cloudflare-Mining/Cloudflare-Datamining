@@ -8,7 +8,7 @@
 				"contentfulId": "4eF6QC4MmxFqTeEP4XsudG",
 				"urlSlug": "security/what-is-quishing",
 				"metaTags": {
-					"metaTitle": "What is quishing",
+					"metaTitle": "What is quishing?",
 					"metaDescription": "Quishing involves attackers creating QR codes to redirect victims into visiting or downloading malicious content with the intent to exfiltrate sensitive information or extortion.",
 					"twitterCustomImage": null,
 					"metaImage": {
@@ -1014,37 +1014,37 @@
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
-						"displayText": "Phishing attack",
-						"url": "/learning/access-management/phishing-attack/"
+						"contentfulId": "2Dg5Q4JDGkBwOFWJN8wgsC",
+						"displayText": "What is a social engineering attack?",
+						"url": "/learning/security/threats/social-engineering-attack/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "2mU3sgCbzy5UNjjkYF3Yst",
-						"displayText": "How to prevent phishing",
-						"url": "/learning/email-security/how-to-prevent-phishing/"
+						"contentfulId": "7B34gNUdmG55POcpXlcGLo",
+						"displayText": "Ransomware",
+						"url": "/learning/security/ransomware/what-is-ransomware/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "38fUyzILExC1obGHBctS0a",
-						"displayText": "What is email security?",
-						"url": "/learning/email-security/what-is-email-security/"
+						"contentfulId": "2lH9xh74JZ8zsMn2gLOLzG",
+						"displayText": "Endpoint security",
+						"url": "/learning/security/glossary/endpoint-security/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "5ywJIjtcGqzgBemMQz6M2M",
-						"displayText": "Business email compromise (BEC)",
-						"url": "/learning/email-security/business-email-compromise-bec/"
+						"contentfulId": "67hyyJkFehDZPSijR5982x",
+						"displayText": "What is API security?",
+						"url": "/learning/security/api/what-is-api-security/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4n7B2PtVZCC7mvJKeE54mr",
-						"displayText": "Email attachment security",
-						"url": "/learning/email-security/email-attachments/"
+						"contentfulId": "265Cektgw28NG3ss1yKbCQ",
+						"displayText": "How to prevent ransomware attacks",
+						"url": "/learning/security/ransomware/how-to-prevent-ransomware/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is quishing?</h2>\n<p>Quishing, or QR phishing, is a cybersecurity threat in which attackers use QR codes to redirect victims to malicious websites or prompt them to download harmful content. The goal of this attack is to steal sensitive information, such as passwords, financial data, or <a href='/learning/privacy/what-is-pii/'>personally identifiable information (PII)</a>, and use that information for other purposes, such as identity theft, financial fraud, or <a href='/learning/security/ransomware/what-is-ransomware/'>ransomware</a>.</p>\n<p>This type of <a href='/learning/access-management/phishing-attack/'>phishing</a> often bypasses conventional defenses like <a href='/learning/email-security/secure-email-gateway-seg/'>secure email gateways</a>. Notably, QR codes in emails are perceived by many secure email gateways as meaningless images, making the users vulnerable to specific forms of phishing attacks. QR codes can also be presented to intended victims in a number of other ways.\n</p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are QR codes?</h2>\n\n<p>QR codes, or Quick Response codes, are two-dimensional barcodes that can be scanned easily with a camera or a code reader application. The main component of a QR code is data storage. QR codes have the capability to store significant amounts of information including URLs, product details, or contact information. Scanning technology allows smartphone cameras or code readers to easily and quickly access the website to which the URL points.\n</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does quishing work?</h2>\n<p>In a quishing attack, the attackers create a QR code and link it to a malicious website. Typically, the attacker will embed the QR code in phishing emails, social media, printed flyers, or physical objects, and use social engineering techniques to entice the victims. For example, victims might receive an email urging them to access an encrypted voice message via a QR code for a chance to win a cash prize. </p>\n<p>Upon using their phones to scan the QR code, victims are directed to the malicious site. The site may prompt victims to enter private information, such as login information, financial details, or personal information. In the example above, the site may request the user's name, email, address, date of birth, or account login information.</p>\n<p>Once this sensitive information is captured, attackers can exploit it for various malicious purposes, including identity theft, financial fraud, or ransomware.</p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can end-users  prevent quishing?</h2>\n<p>Make sure to verify the URL associated with the code, and refrain from submitting personal information, making payments, or downloading anything from a site assessed through a QR code. By adopting these practices, individuals can reduce the risk of falling victim to quishing attacks.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare help organizations defend against quishing attacks?</h2>\n<p>Most <a href='https://www.cloudflare.com/zero-trust/solutions/email-security-services/'>email security solutions</a> are designed to inspect text, URLs, and attachments. However, QR codes are essentially just images. On their own, the pixels are meaningless, but once decoded, the QR code resolves to a URL. If the email security solution cannot interpret QR codes to uncover malicious URL hidden behind them, users are left unable to determine where the QR code will lead unless they scan and decode it. At that point, the trap is sprung, potentially exposing users to malware or credential harvesting. \nCloudflare Email Security's advanced protection with native image analysis processing, enables the service to identify and resolve QR codes in real time. The resulting URLs are then assessed against our detection models. If necessary, they may be crawled in real time if our detection models are unable to make an immediate assessment. <a href='/products/zero-trust/email-security/'>Learn how Cloudflare Email Security</a> can protect you from quishing attacks.</p>\n",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is quishing?</h2>\n<p>Quishing, or QR phishing, is a cybersecurity threat in which attackers use QR codes to redirect victims to malicious websites or prompt them to download harmful content. The goal of this attack is to steal sensitive information, such as passwords, financial data, or <a href='/learning/privacy/what-is-pii/'>personally identifiable information (PII)</a>, and use that information for other purposes, such as identity theft, financial fraud, or <a href='/learning/security/ransomware/what-is-ransomware/'>ransomware</a>.</p>\n<p>This type of <a href='/learning/access-management/phishing-attack/'>phishing</a> often bypasses conventional defenses like <a href='/learning/email-security/secure-email-gateway-seg/'>secure email gateways</a>. Notably, QR codes in emails are perceived by many secure email gateways as meaningless images, making the users vulnerable to specific forms of phishing attacks. QR codes can also be presented to intended victims in a number of other ways.\n</p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are QR codes?</h2>\n\n<p>QR codes, or Quick Response codes, are two-dimensional barcodes that can be scanned easily with a camera or a code reader application. The main component of a QR code is data storage. QR codes have the capability to store significant amounts of information including URLs, product details, or contact information. Scanning technology allows smartphone cameras or code readers to easily and quickly access the website to which the URL points.\n</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does quishing work?</h2>\n<p>In a quishing attack, the attackers create a QR code and link it to a malicious website. Typically, the attacker will embed the QR code in phishing emails, social media, printed flyers, or physical objects, and use social engineering techniques to entice the victims. For example, victims might receive an email urging them to access an encrypted voice message via a QR code for a chance to win a cash prize. </p>\n<p>Upon using their phones to scan the QR code, victims are directed to the malicious site. The site may prompt victims to enter private information, such as login information, financial details, or personal information. In the example above, the site may request the user's name, email, address, date of birth, or account login information.</p>\n<p>Once this sensitive information is captured, attackers can exploit it for various malicious purposes, including identity theft, financial fraud, or ransomware.</p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can end-users  prevent quishing?</h2>\n<p>Make sure to verify the URL associated with the code, and refrain from submitting personal information, making payments, or downloading anything from a site assessed through a QR code. By adopting these practices, individuals can reduce the risk of falling victim to quishing attacks.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare help organizations defend against quishing attacks?</h2>\n<p>Most <a href='https://www.cloudflare.com/zero-trust/solutions/email-security-services/'>email security solutions</a> are designed to inspect text, URLs, and attachments. However, QR codes are essentially just images. On their own, the pixels are meaningless, but once decoded, the QR code resolves to a URL. If the email security solution cannot interpret QR codes to uncover malicious URL hidden behind them, users are left unable to determine where the QR code will lead unless they scan and decode it. At that point, the trap is sprung, potentially exposing users to malware or credential harvesting.</p>\n<p>Cloudflare Email Security's advanced protection with native image analysis processing, enables the service to identify and resolve QR codes in real time. The resulting URLs are then assessed against our detection models. If necessary, they may be crawled in real time if our detection models are unable to make an immediate assessment. <a href='/products/zero-trust/email-security/'>Learn how Cloudflare Email Security</a> can protect you from quishing attacks.</p>\n",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
