@@ -1,11 +1,5 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MS1FJyHeF1ZHRn406L9Ff/7da2582030aad8f6581dda3bc11e07b0/pin-and-unpin-in-rust.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Qc7EGaZtlXsYT0s2mE4G/831cb4d71ac1fd19be9b56872e0fda78/Screen-Shot-2021-08-25-at-11.43.24-PM.png" alt="" class="kg-image" width="1209" height="761" loading="lazy">
-
-	</figure>
-	<p></p>
 	<p>Using async Rust libraries is usually easy. It's just like using normal Rust code, with a little <code>async</code> or <code>.await</code> here and there. But writing your own async libraries can be hard. The first time I tried this, I got really confused by arcane, esoteric syntax like <code>T: ?Unpin</code> and <code>Pin&lt;&amp;mut Self&gt;</code>. I had never seen these types before, and I didn't understand what they were doing. Now that I understand them, I've written the explainer I wish I could have read back then. In this post, we're gonna learn</p>
 	<ul>
 		<li>
@@ -93,7 +87,7 @@ fn poll(self: Pin&amp;lt;&amp;amp;mut Self&amp;gt;, _cx: &amp;amp;mut Context) -
 	future: Fut,
 }</code></pre>
 	<p></p>
-	<p>OK, so a <code>TimedWrapper</code> is generic over a type <code>Fut</code>, which must be a <code>Future</code>. And it will store a future of that type as a field. It'll also have a <code>start</code> field which will record when it first was first polled. Let's write a constructor:</p>
+	<p>OK, so a <code>TimedWrapper</code> is generic over a type <code>Fut</code>, which must be a <code>Future</code>. And it will store a future of that type as a field. It'll also have a <code>start</code> field which will record when it was first polled. Let's write a constructor:</p>
 	<pre class="language-bash"><code class="language-bash">impl&lt;Fut: Future&gt; TimedWrapper&lt;Fut&gt; {
 	pub fn new(future: Fut) -&gt; Self {
 		Self { future, start: None }
