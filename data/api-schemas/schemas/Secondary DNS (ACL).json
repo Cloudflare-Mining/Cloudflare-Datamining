@@ -144,7 +144,7 @@
 						}
 					}
 				},
-				"description": "Delete ACL response"
+				"description": "Delete ACL response."
 			},
 			"4XX": {
 				"content": {
@@ -367,10 +367,13 @@
 						}
 					}
 				},
-				"description": "Delete ACL response failure"
+				"description": "Delete ACL response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -568,7 +571,7 @@
 						}
 					}
 				},
-				"description": "List ACLs response"
+				"description": "List ACLs response."
 			},
 			"4XX": {
 				"content": {
@@ -841,10 +844,13 @@
 						}
 					}
 				},
-				"description": "List ACLs response failure"
+				"description": "List ACLs response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1021,7 +1027,7 @@
 						}
 					}
 				},
-				"description": "ACL Details response"
+				"description": "ACL Details response."
 			},
 			"4XX": {
 				"content": {
@@ -1261,10 +1267,13 @@
 						}
 					}
 				},
-				"description": "ACL Details response failure"
+				"description": "ACL Details response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1458,7 +1467,7 @@
 						}
 					}
 				},
-				"description": "Create ACL response"
+				"description": "Create ACL response."
 			},
 			"4XX": {
 				"content": {
@@ -1698,10 +1707,13 @@
 						}
 					}
 				},
-				"description": "Create ACL response failure"
+				"description": "Create ACL response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1912,7 +1924,7 @@
 						}
 					}
 				},
-				"description": "Update ACL response"
+				"description": "Update ACL response."
 			},
 			"4XX": {
 				"content": {
@@ -2152,10 +2164,13 @@
 						}
 					}
 				},
-				"description": "Update ACL response failure"
+				"description": "Update ACL response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

@@ -133,7 +133,7 @@
 						}
 					}
 				},
-				"description": "Delete Secondary Zone Configuration response"
+				"description": "Delete Secondary Zone Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -356,10 +356,13 @@
 						}
 					}
 				},
-				"description": "Delete Secondary Zone Configuration response failure"
+				"description": "Delete Secondary Zone Configuration response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -559,7 +562,7 @@
 						}
 					}
 				},
-				"description": "Secondary Zone Configuration Details response"
+				"description": "Secondary Zone Configuration Details response."
 			},
 			"4XX": {
 				"content": {
@@ -832,10 +835,13 @@
 						}
 					}
 				},
-				"description": "Secondary Zone Configuration Details response failure"
+				"description": "Secondary Zone Configuration Details response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -977,7 +983,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "When force_axfr query parameter is set to true, the response is a simple string",
+											"description": "When force_axfr query parameter is set to true, the response is a simple string.",
 											"example": "OK",
 											"type": "string",
 											"x-auditable": true
@@ -988,7 +994,7 @@
 						}
 					}
 				},
-				"description": "Force AXFR response"
+				"description": "Force AXFR response."
 			},
 			"4XX": {
 				"content": {
@@ -1087,7 +1093,7 @@
 										{
 											"properties": {
 												"result": {
-													"description": "When force_axfr query parameter is set to true, the response is a simple string",
+													"description": "When force_axfr query parameter is set to true, the response is a simple string.",
 													"example": "OK",
 													"type": "string",
 													"x-auditable": true
@@ -1206,10 +1212,13 @@
 						}
 					}
 				},
-				"description": "Force AXFR response failure"
+				"description": "Force AXFR response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1459,7 +1468,7 @@
 						}
 					}
 				},
-				"description": "Create Secondary Zone Configuration response"
+				"description": "Create Secondary Zone Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -1732,10 +1741,13 @@
 						}
 					}
 				},
-				"description": "Create Secondary Zone Configuration response failure"
+				"description": "Create Secondary Zone Configuration response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1985,7 +1997,7 @@
 						}
 					}
 				},
-				"description": "Update Secondary Zone Configuration response"
+				"description": "Update Secondary Zone Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -2258,10 +2270,13 @@
 						}
 					}
 				},
-				"description": "Update Secondary Zone Configuration response failure"
+				"description": "Update Secondary Zone Configuration response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

@@ -133,7 +133,7 @@
 						}
 					}
 				},
-				"description": "Delete Primary Zone Configuration response"
+				"description": "Delete Primary Zone Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -356,10 +356,13 @@
 						}
 					}
 				},
-				"description": "Delete Primary Zone Configuration response failure"
+				"description": "Delete Primary Zone Configuration response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -553,7 +556,7 @@
 						}
 					}
 				},
-				"description": "Primary Zone Configuration Details response"
+				"description": "Primary Zone Configuration Details response."
 			},
 			"4XX": {
 				"content": {
@@ -820,10 +823,13 @@
 						}
 					}
 				},
-				"description": "Primary Zone Configuration Details response failure"
+				"description": "Primary Zone Configuration Details response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -959,7 +965,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "The zone transfer status of a primary zone",
+											"description": "The zone transfer status of a primary zone.",
 											"example": "Enabled",
 											"type": "string",
 											"x-auditable": true
@@ -970,7 +976,7 @@
 						}
 					}
 				},
-				"description": "Get Outgoing Zone Transfer Status response"
+				"description": "Get Outgoing Zone Transfer Status response."
 			},
 			"4XX": {
 				"content": {
@@ -1069,7 +1075,7 @@
 										{
 											"properties": {
 												"result": {
-													"description": "The zone transfer status of a primary zone",
+													"description": "The zone transfer status of a primary zone.",
 													"example": "Enabled",
 													"type": "string",
 													"x-auditable": true
@@ -1188,10 +1194,13 @@
 						}
 					}
 				},
-				"description": "Get Outgoing Zone Transfer Status response failure"
+				"description": "Get Outgoing Zone Transfer Status response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1429,7 +1438,7 @@
 						}
 					}
 				},
-				"description": "Create Primary Zone Configuration response"
+				"description": "Create Primary Zone Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -1696,10 +1705,13 @@
 						}
 					}
 				},
-				"description": "Create Primary Zone Configuration response failure"
+				"description": "Create Primary Zone Configuration response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1839,7 +1851,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "The zone transfer status of a primary zone",
+											"description": "The zone transfer status of a primary zone.",
 											"example": "Disabled",
 											"type": "string",
 											"x-auditable": true
@@ -1850,7 +1862,7 @@
 						}
 					}
 				},
-				"description": "Disable Outgoing Zone Transfers response"
+				"description": "Disable Outgoing Zone Transfers response."
 			},
 			"4XX": {
 				"content": {
@@ -1949,7 +1961,7 @@
 										{
 											"properties": {
 												"result": {
-													"description": "The zone transfer status of a primary zone",
+													"description": "The zone transfer status of a primary zone.",
 													"example": "Disabled",
 													"type": "string",
 													"x-auditable": true
@@ -2068,10 +2080,13 @@
 						}
 					}
 				},
-				"description": "Disable Outgoing Zone Transfers response failure"
+				"description": "Disable Outgoing Zone Transfers response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2211,7 +2226,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "The zone transfer status of a primary zone",
+											"description": "The zone transfer status of a primary zone.",
 											"example": "Enabled",
 											"type": "string",
 											"x-auditable": true
@@ -2222,7 +2237,7 @@
 						}
 					}
 				},
-				"description": "Enable Outgoing Zone Transfers response"
+				"description": "Enable Outgoing Zone Transfers response."
 			},
 			"4XX": {
 				"content": {
@@ -2321,7 +2336,7 @@
 										{
 											"properties": {
 												"result": {
-													"description": "The zone transfer status of a primary zone",
+													"description": "The zone transfer status of a primary zone.",
 													"example": "Enabled",
 													"type": "string",
 													"x-auditable": true
@@ -2440,10 +2455,13 @@
 						}
 					}
 				},
-				"description": "Enable Outgoing Zone Transfers response failure"
+				"description": "Enable Outgoing Zone Transfers response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2583,7 +2601,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "When force_notify query parameter is set to true, the response is a simple string",
+											"description": "When force_notify query parameter is set to true, the response is a simple string.",
 											"example": "OK",
 											"type": "string",
 											"x-auditable": true
@@ -2594,7 +2612,7 @@
 						}
 					}
 				},
-				"description": "Force DNS NOTIFY response"
+				"description": "Force DNS NOTIFY response."
 			},
 			"4XX": {
 				"content": {
@@ -2693,7 +2711,7 @@
 										{
 											"properties": {
 												"result": {
-													"description": "When force_notify query parameter is set to true, the response is a simple string",
+													"description": "When force_notify query parameter is set to true, the response is a simple string.",
 													"example": "OK",
 													"type": "string",
 													"x-auditable": true
@@ -2812,10 +2830,13 @@
 						}
 					}
 				},
-				"description": "Force DNS NOTIFY response failure"
+				"description": "Force DNS NOTIFY response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -3051,7 +3072,7 @@
 						}
 					}
 				},
-				"description": "Update Primary Zone Configuration response"
+				"description": "Update Primary Zone Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -3318,10 +3339,13 @@
 						}
 					}
 				},
-				"description": "Update Primary Zone Configuration response failure"
+				"description": "Update Primary Zone Configuration response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

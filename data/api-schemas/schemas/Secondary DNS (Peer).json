@@ -144,7 +144,7 @@
 						}
 					}
 				},
-				"description": "Delete Peer response"
+				"description": "Delete Peer response."
 			},
 			"4XX": {
 				"content": {
@@ -367,10 +367,13 @@
 						}
 					}
 				},
-				"description": "Delete Peer response failure"
+				"description": "Delete Peer response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -585,7 +588,7 @@
 						}
 					}
 				},
-				"description": "List Peers response"
+				"description": "List Peers response."
 			},
 			"4XX": {
 				"content": {
@@ -875,10 +878,13 @@
 						}
 					}
 				},
-				"description": "List Peers response failure"
+				"description": "List Peers response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1072,7 +1078,7 @@
 						}
 					}
 				},
-				"description": "Peer Details response"
+				"description": "Peer Details response."
 			},
 			"4XX": {
 				"content": {
@@ -1329,10 +1335,13 @@
 						}
 					}
 				},
-				"description": "Peer Details response failure"
+				"description": "Peer Details response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1383,7 +1392,8 @@
 						},
 						"required": [
 							"name"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -1535,7 +1545,7 @@
 						}
 					}
 				},
-				"description": "Create Peer response"
+				"description": "Create Peer response."
 			},
 			"4XX": {
 				"content": {
@@ -1792,10 +1802,13 @@
 						}
 					}
 				},
-				"description": "Create Peer response failure"
+				"description": "Create Peer response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2040,7 +2053,7 @@
 						}
 					}
 				},
-				"description": "Update Peer response"
+				"description": "Update Peer response."
 			},
 			"4XX": {
 				"content": {
@@ -2297,10 +2310,13 @@
 						}
 					}
 				},
-				"description": "Update Peer response failure"
+				"description": "Update Peer response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

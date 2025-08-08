@@ -144,7 +144,7 @@
 						}
 					}
 				},
-				"description": "Delete TSIG response"
+				"description": "Delete TSIG response."
 			},
 			"4XX": {
 				"content": {
@@ -367,10 +367,13 @@
 						}
 					}
 				},
-				"description": "Delete TSIG response failure"
+				"description": "Delete TSIG response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -575,7 +578,7 @@
 						}
 					}
 				},
-				"description": "List TSIGs response"
+				"description": "List TSIGs response."
 			},
 			"4XX": {
 				"content": {
@@ -855,10 +858,13 @@
 						}
 					}
 				},
-				"description": "List TSIGs response failure"
+				"description": "List TSIGs response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1042,7 +1048,7 @@
 						}
 					}
 				},
-				"description": "TSIG Details response"
+				"description": "TSIG Details response."
 			},
 			"4XX": {
 				"content": {
@@ -1289,10 +1295,13 @@
 						}
 					}
 				},
-				"description": "TSIG Details response failure"
+				"description": "TSIG Details response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1507,7 +1516,7 @@
 						}
 					}
 				},
-				"description": "Create TSIG response"
+				"description": "Create TSIG response."
 			},
 			"4XX": {
 				"content": {
@@ -1754,10 +1763,13 @@
 						}
 					}
 				},
-				"description": "Create TSIG response failure"
+				"description": "Create TSIG response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1982,7 +1994,7 @@
 						}
 					}
 				},
-				"description": "Update TSIG response"
+				"description": "Update TSIG response."
 			},
 			"4XX": {
 				"content": {
@@ -2229,10 +2241,13 @@
 						}
 					}
 				},
-				"description": "Update TSIG response failure"
+				"description": "Update TSIG response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
