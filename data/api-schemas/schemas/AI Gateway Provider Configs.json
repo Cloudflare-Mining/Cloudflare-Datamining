@@ -1,0 +1,852 @@
+{
+	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}": {
+		"operationId": "aig-config-delete-providers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
+										"alias": {
+											"type": "string"
+										},
+										"default_config": {
+											"type": "boolean"
+										},
+										"gateway_id": {
+											"description": "gateway id",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string",
+											"x-auditable": true
+										},
+										"id": {
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"provider_slug": {
+											"type": "string"
+										},
+										"rate_limit": {
+											"type": "number"
+										},
+										"rate_limit_period": {
+											"default": 60,
+											"type": "number"
+										},
+										"secret_id": {
+											"type": "string"
+										},
+										"secret_preview": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"provider_slug",
+										"secret_preview",
+										"default_config",
+										"gateway_id",
+										"modified_at",
+										"account_id",
+										"account_tag",
+										"alias",
+										"secret_id"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the Object if it was successfully deleted"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a Provider Configs",
+		"tags": [
+			"AI Gateway Provider Configs"
+		],
+		"x-api-token-group": [
+			"Secrets Store Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs": {
+		"operationId": "aig-config-list-providers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"account_id": {
+												"type": "string"
+											},
+											"account_tag": {
+												"type": "string"
+											},
+											"alias": {
+												"type": "string"
+											},
+											"default_config": {
+												"type": "boolean"
+											},
+											"gateway_id": {
+												"description": "gateway id",
+												"example": "my-gateway",
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+												"type": "string",
+												"x-auditable": true
+											},
+											"id": {
+												"type": "string"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"provider_slug": {
+												"type": "string"
+											},
+											"rate_limit": {
+												"type": "number"
+											},
+											"rate_limit_period": {
+												"default": 60,
+												"type": "number"
+											},
+											"secret_id": {
+												"type": "string"
+											},
+											"secret_preview": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"provider_slug",
+											"secret_preview",
+											"default_config",
+											"gateway_id",
+											"modified_at",
+											"account_id",
+											"account_tag",
+											"alias",
+											"secret_id"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List objects"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Provider Configs",
+		"tags": [
+			"AI Gateway Provider Configs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs": {
+		"operationId": "aig-config-create-providers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"alias": {
+								"type": "string"
+							},
+							"default_config": {
+								"type": "boolean"
+							},
+							"provider_slug": {
+								"type": "string"
+							},
+							"rate_limit": {
+								"type": "number"
+							},
+							"rate_limit_period": {
+								"default": 60,
+								"type": "number"
+							},
+							"secret": {
+								"type": "string"
+							},
+							"secret_id": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"provider_slug",
+							"default_config",
+							"alias",
+							"secret_id",
+							"secret"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
+										"alias": {
+											"type": "string"
+										},
+										"default_config": {
+											"type": "boolean"
+										},
+										"gateway_id": {
+											"description": "gateway id",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string",
+											"x-auditable": true
+										},
+										"id": {
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"provider_slug": {
+											"type": "string"
+										},
+										"rate_limit": {
+											"type": "number"
+										},
+										"rate_limit_period": {
+											"default": 60,
+											"type": "number"
+										},
+										"secret_id": {
+											"type": "string"
+										},
+										"secret_preview": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"provider_slug",
+										"secret_preview",
+										"default_config",
+										"gateway_id",
+										"modified_at",
+										"account_id",
+										"account_tag",
+										"alias",
+										"secret_id"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created Object"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new Provider Configs",
+		"tags": [
+			"AI Gateway Provider Configs"
+		],
+		"x-api-token-group": [
+			"Secrets Store Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}": {
+		"operationId": "aig-config-update-providers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"secret": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"secret"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
+										"alias": {
+											"type": "string"
+										},
+										"default_config": {
+											"type": "boolean"
+										},
+										"gateway_id": {
+											"description": "gateway id",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string",
+											"x-auditable": true
+										},
+										"id": {
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"provider_slug": {
+											"type": "string"
+										},
+										"rate_limit": {
+											"type": "number"
+										},
+										"rate_limit_period": {
+											"default": 60,
+											"type": "number"
+										},
+										"secret_id": {
+											"type": "string"
+										},
+										"secret_preview": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"provider_slug",
+										"secret_preview",
+										"default_config",
+										"gateway_id",
+										"modified_at",
+										"account_id",
+										"account_tag",
+										"alias",
+										"secret_id"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated Object"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a Provider Configs",
+		"tags": [
+			"AI Gateway Provider Configs"
+		],
+		"x-api-token-group": [
+			"Secrets Store Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

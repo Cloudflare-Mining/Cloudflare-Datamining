@@ -125,6 +125,10 @@
 											],
 											"type": "string",
 											"x-auditable": true
+										},
+										"store_id": {
+											"nullable": true,
+											"type": "string"
 										}
 									},
 									"required": [
@@ -365,6 +369,10 @@
 												],
 												"type": "string",
 												"x-auditable": true
+											},
+											"store_id": {
+												"nullable": true,
+												"type": "string"
 											}
 										},
 										"required": [
@@ -720,6 +728,10 @@
 											],
 											"type": "string",
 											"x-auditable": true
+										},
+										"store_id": {
+											"nullable": true,
+											"type": "string"
 										}
 									},
 									"required": [
@@ -1027,6 +1039,10 @@
 											],
 											"type": "string",
 											"x-auditable": true
+										},
+										"store_id": {
+											"nullable": true,
+											"type": "string"
 										}
 									},
 									"required": [
@@ -1231,6 +1247,10 @@
 								],
 								"type": "string",
 								"x-auditable": true
+							},
+							"store_id": {
+								"nullable": true,
+								"type": "string"
 							}
 						},
 						"required": [
@@ -1345,6 +1365,10 @@
 											],
 											"type": "string",
 											"x-auditable": true
+										},
+										"store_id": {
+											"nullable": true,
+											"type": "string"
 										}
 									},
 									"required": [
