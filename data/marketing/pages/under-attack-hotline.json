@@ -72,7 +72,32 @@
 						"buttonText": null,
 						"buttonColor": "orange",
 						"htmlId": "uaform",
-						"marketoEmbeddedForm": null,
+						"marketoEmbeddedForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "3ulRPSnRj7O6phb0X9Ht4V",
+							"bladeName": "Under Attack Hotline Marketo Form (1639) Variation",
+							"backgroundColor": "blue",
+							"marketoFormId": 1639,
+							"marketoFormLeadSource": "Inbound - Under Attack Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Under Attack",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": true,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": "Get help",
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": true
+						},
 						"title": "Comprehensive protection against cyber attacks",
 						"subtitle": null,
 						"copy": null,
@@ -168,6 +193,47 @@
 								}
 							}
 						]
+					},
+					{
+						"backgroundColor": "white",
+						"contentfulId": "6ramsKSRWgvisfAncZyCEv",
+						"contentTypeId": "bladeThreeFeatures",
+						"subtitle": null,
+						"bladeBorder": "none",
+						"sectionTitle": "Attack mitigation process:",
+						"title1": "Step 1. Onboarding and diagnosis",
+						"copy1": "A Cloudflare security specialist will reach out, gather the necessary information to get started, and diagnose the type of attack that is occurring.",
+						"locale": "en-US",
+						"htmlId": "ua-onboarding",
+						"image1": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mYUDEjNlXbjQaceoFUhzU/378a4b79f7b51e7677fd6ab442eb3e82/documentation-list.png"
+							},
+							"description": ""
+						},
+						"imageAssetFile1": null,
+						"learnMoreUrl1": null,
+						"title2": "Step 2. Attack mitigation strategy",
+						"copy2": "Our Cloudflare attack mitigation team will work with you to scope, mitigate, and match you with the appropriate solutions to stop the attack.",
+						"learnMoreUrl2": null,
+						"image2": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KPlWZN5s1sQQeavuAaMa4/cb02c2544821d099f24ee3270c374367/target.png"
+							},
+							"description": ""
+						},
+						"imageAssetFile2": null,
+						"title3": "Step 3. Remediation and monitoring",
+						"copy3": "Once onboarded, users will be able to monitor the impact of the attack and affected properties, and begin remediation planning with a Cloudflare specialist.",
+						"image3": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2iaZGHR7NSRdBzpq8wiboE/de2d9d0f908ec37deea865b055af42df/cloudflare-spectrum.png"
+							},
+							"description": ""
+						},
+						"imageAssetFile3": null,
+						"learnMoreUrl3": null,
+						"features": []
 					},
 					{
 						"contentfulId": "3DLn4Yn8yzgcQiv32mJVuc",
@@ -521,6 +587,51 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "fp04A3BQT65XPTnX6050z",
+						"title": "Get enterprise cyber security today",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "3Ai2HuEXwd7bRSaWMoGy7D",
+							"elementName": "Talk to an Expert enterprise enablement button",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": "/plans/enterprise/contact/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1TA7QwHojUChR3hfNOG5fu",
+							"elementName": "Request Demo (link to: plans/enterprise/demo ) btn",
+							"standardText": null,
+							"text": "Request a demo",
+							"url": "/plans/enterprise/demo/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeTrustedBy",
