@@ -3042,6 +3042,14 @@
 						"compatEnableDate": "2025-08-11",
 						"compatEnableFlag": "python_workers_force_new_vendor_path"
 					}
+				},
+				{
+					"name": "removeNodejsCompatEOL",
+					"annotations": {
+						"compatDisableFlag": "add_nodejs_compat_eol",
+						"compatEnableFlag": "remove_nodejs_compat_eol",
+						"impliedByAfterDate": "unhandled type"
+					}
 				}
 			]
 		},
