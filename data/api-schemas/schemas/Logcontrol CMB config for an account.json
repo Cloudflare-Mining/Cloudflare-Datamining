@@ -383,14 +383,16 @@
 												"allow_out_of_region_access": {
 													"description": "Allow out of region access",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"regions": {
 													"description": "Name of the region.",
 													"example": "eu",
 													"maxLength": 256,
 													"pattern": "^[a-z]*$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -569,14 +571,16 @@
 							"allow_out_of_region_access": {
 								"description": "Allow out of region access",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"regions": {
 								"description": "Name of the region.",
 								"example": "eu",
 								"maxLength": 256,
 								"pattern": "^[a-z]*$",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -686,14 +690,16 @@
 												"allow_out_of_region_access": {
 													"description": "Allow out of region access",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"regions": {
 													"description": "Name of the region.",
 													"example": "eu",
 													"maxLength": 256,
 													"pattern": "^[a-z]*$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

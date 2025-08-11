@@ -117,7 +117,8 @@
 												"flag": {
 													"description": "The log retention flag for Logpull API.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -887,7 +888,8 @@
 							"flag": {
 								"description": "The log retention flag for Logpull API.",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -997,7 +999,8 @@
 												"flag": {
 													"description": "The log retention flag for Logpull API.",
 													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
