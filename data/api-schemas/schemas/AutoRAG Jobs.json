@@ -497,32 +497,24 @@
 								"result": {
 									"items": {
 										"properties": {
-											"end_reason": {
-												"type": "string"
-											},
-											"ended_at": {
-												"type": "string"
+											"created_at": {
+												"type": "number"
 											},
 											"id": {
+												"type": "integer"
+											},
+											"message": {
 												"type": "string"
 											},
-											"last_seen_at": {
-												"type": "string"
-											},
-											"source": {
-												"enum": [
-													"user",
-													"schedule"
-												],
-												"type": "string"
-											},
-											"started_at": {
-												"type": "string"
+											"message_type": {
+												"type": "integer"
 											}
 										},
 										"required": [
 											"id",
-											"source"
+											"message",
+											"message_type",
+											"created_at"
 										],
 										"type": "object"
 									},
