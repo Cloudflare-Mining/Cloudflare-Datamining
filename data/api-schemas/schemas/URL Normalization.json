@@ -354,7 +354,8 @@
 													"description": "The scope of the URL normalization.",
 													"enum": [
 														"incoming",
-														"both"
+														"both",
+														"none"
 													],
 													"example": "incoming",
 													"title": "Scope",
@@ -624,7 +625,8 @@
 								"description": "The scope of the URL normalization.",
 								"enum": [
 									"incoming",
-									"both"
+									"both",
+									"none"
 								],
 								"example": "incoming",
 								"title": "Scope",
@@ -784,7 +786,8 @@
 													"description": "The scope of the URL normalization.",
 													"enum": [
 														"incoming",
-														"both"
+														"both",
+														"none"
 													],
 													"example": "incoming",
 													"title": "Scope",

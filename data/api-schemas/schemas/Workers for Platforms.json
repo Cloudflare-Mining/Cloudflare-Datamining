@@ -265,6 +265,281 @@
 			"Workers Scripts Write"
 		]
 	},
+	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts": {
+		"description": "Delete multiple scripts from a Workers for Platforms namespace based on optional tag filters.",
+		"operationId": "namespace-worker-delete-scripts",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "dispatch_namespace",
+				"required": true,
+				"schema": {
+					"description": "Name of the Workers for Platforms dispatch namespace.",
+					"example": "my-dispatch-namespace",
+					"pattern": "^.+$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Filter scripts by tags before deletion. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.",
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "production:yes,staging:no",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete scripts in namespace response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete scripts in namespace response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Scripts in Namespace",
+		"tags": [
+			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
+	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"description": "Delete a worker from a Workers for Platforms namespace. This call has no response body on a successful delete.",
 		"operationId": "namespace-worker-script-delete-worker",
@@ -1771,6 +2046,472 @@
 			"Workers Scripts Read"
 		]
 	},
+	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts": {
+		"description": "Fetch a list of scripts uploaded to a Workers for Platforms namespace.",
+		"operationId": "namespace-worker-list-scripts",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "dispatch_namespace",
+				"required": true,
+				"schema": {
+					"description": "Name of the Workers for Platforms dispatch namespace.",
+					"example": "my-dispatch-namespace",
+					"pattern": "^.+$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.",
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "production:yes,staging:no",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "Details about a worker uploaded to a Workers for Platforms namespace.",
+												"properties": {
+													"created_on": {
+														"description": "When the script was created.",
+														"example": "2017-01-01T00:00:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"dispatch_namespace": {
+														"description": "Name of the Workers for Platforms dispatch namespace.",
+														"example": "my-dispatch-namespace",
+														"pattern": "^.+$",
+														"type": "string",
+														"x-auditable": true
+													},
+													"modified_on": {
+														"description": "When the script was last modified.",
+														"example": "2017-01-01T00:00:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"script": {
+														"properties": {
+															"created_on": {
+																"description": "When the script was created.",
+																"example": "2017-01-01T00:00:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"etag": {
+																"description": "Hashed script content, can be used in a If-None-Match header when updating.",
+																"example": "ea95132c15732412d22c1476fa83f27a",
+																"readOnly": true,
+																"type": "string"
+															},
+															"has_assets": {
+																"description": "Whether a Worker contains assets.",
+																"example": false,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"has_modules": {
+																"description": "Whether a Worker contains modules.",
+																"example": false,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "The id of the script in the Workers system. Usually the script name.",
+																"example": "my-workers-script",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"logpush": {
+																"default": false,
+																"description": "Whether Logpush is turned on for the Worker.",
+																"example": false,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"modified_on": {
+																"description": "When the script was last modified.",
+																"example": "2017-01-01T00:00:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"placement": {
+																"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																"properties": {
+																	"last_analyzed_at": {
+																		"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																		"example": "2025-01-01T00:00:00Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"mode": {
+																		"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																		"enum": [
+																			"smart"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"status": {
+																		"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																		"enum": [
+																			"SUCCESS",
+																			"UNSUPPORTED_APPLICATION",
+																			"INSUFFICIENT_INVOCATIONS"
+																		],
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"placement_mode": {
+																"allOf": [
+																	{
+																		"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																		"enum": [
+																			"smart"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"deprecated": true,
+																		"type": "string"
+																	}
+																]
+															},
+															"placement_status": {
+																"allOf": [
+																	{
+																		"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																		"enum": [
+																			"SUCCESS",
+																			"UNSUPPORTED_APPLICATION",
+																			"INSUFFICIENT_INVOCATIONS"
+																		],
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"deprecated": true,
+																		"type": "string"
+																	}
+																]
+															},
+															"tail_consumers": {
+																"description": "List of Workers that will consume logs from the attached Worker.",
+																"items": {
+																	"description": "A reference to a script that will consume logs from the attached Worker.",
+																	"properties": {
+																		"environment": {
+																			"description": "Optional environment if the Worker utilizes one.",
+																			"example": "production",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"namespace": {
+																			"description": "Optional dispatch namespace the script belongs to.",
+																			"example": "my-namespace",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"service": {
+																			"description": "Name of Worker that is to be the consumer.",
+																			"example": "my-log-consumer",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"service"
+																	],
+																	"type": "object"
+																},
+																"type": "array",
+																"x-stainless-collection-type": "set"
+															},
+															"usage_model": {
+																"default": "standard",
+																"description": "Usage model for the Worker invocations.",
+																"enum": [
+																	"standard"
+																],
+																"example": "standard",
+																"type": "string",
+																"x-auditable": true
+															}
+														}
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List scripts in namespace response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List scripts in namespace response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Scripts in Namespace",
+		"tags": [
+			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
+	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"description": "Fetch information about a script uploaded to a Workers for Platforms namespace.",
 		"operationId": "namespace-worker-script-worker-details",
@@ -3204,8 +3945,7 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
-											"x-stainless-collection-type": "set"
+											"type": "array"
 										}
 									},
 									"required": [
@@ -5320,8 +6060,7 @@
 																],
 																"type": "object"
 															},
-															"type": "array",
-															"x-stainless-collection-type": "set"
+															"type": "array"
 														},
 														{
 															"default": [],
@@ -6152,8 +6891,7 @@
 																],
 																"type": "object"
 															},
-															"type": "array",
-															"x-stainless-collection-type": "set"
+															"type": "array"
 														}
 													]
 												},
@@ -8274,8 +9012,7 @@
 													],
 													"type": "object"
 												},
-												"type": "array",
-												"x-stainless-collection-type": "set"
+												"type": "array"
 											},
 											{
 												"default": [],
@@ -9106,8 +9843,7 @@
 													],
 													"type": "object"
 												},
-												"type": "array",
-												"x-stainless-collection-type": "set"
+												"type": "array"
 											}
 										]
 									},
@@ -10506,8 +11242,7 @@
 																],
 																"type": "object"
 															},
-															"type": "array",
-															"x-stainless-collection-type": "set"
+															"type": "array"
 														},
 														{
 															"default": [],
@@ -11338,8 +12073,7 @@
 																],
 																"type": "object"
 															},
-															"type": "array",
-															"x-stainless-collection-type": "set"
+															"type": "array"
 														}
 													]
 												},
@@ -13932,8 +14666,7 @@
 											],
 											"type": "object"
 										},
-										"type": "array",
-										"x-stainless-collection-type": "set"
+										"type": "array"
 									},
 									"body_part": {
 										"description": "Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
