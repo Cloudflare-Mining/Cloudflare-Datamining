@@ -137,6 +137,16 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"config_src": {
+															"default": "local",
+															"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+															"enum": [
+																"local",
+																"cloudflare"
+															],
+															"example": "cloudflare",
+															"type": "string"
+														},
 														"connections": {
 															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -250,10 +260,13 @@
 															"type": "string"
 														},
 														"remote_config": {
+															"deprecated": true,
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use the config_src field instead.",
+															"x-stainless-ignore": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -544,6 +557,16 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"config_src": {
+																	"default": "local",
+																	"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																	"enum": [
+																		"local",
+																		"cloudflare"
+																	],
+																	"example": "cloudflare",
+																	"type": "string"
+																},
 																"connections": {
 																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -657,10 +680,13 @@
 																	"type": "string"
 																},
 																"remote_config": {
+																	"deprecated": true,
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use the config_src field instead.",
+																	"x-stainless-ignore": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -1464,6 +1490,16 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"config_src": {
+															"default": "local",
+															"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+															"enum": [
+																"local",
+																"cloudflare"
+															],
+															"example": "cloudflare",
+															"type": "string"
+														},
 														"connections": {
 															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -1577,10 +1613,13 @@
 															"type": "string"
 														},
 														"remote_config": {
+															"deprecated": true,
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use the config_src field instead.",
+															"x-stainless-ignore": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -1871,6 +1910,16 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"config_src": {
+																	"default": "local",
+																	"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																	"enum": [
+																		"local",
+																		"cloudflare"
+																	],
+																	"example": "cloudflare",
+																	"type": "string"
+																},
 																"connections": {
 																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -1984,10 +2033,13 @@
 																	"type": "string"
 																},
 																"remote_config": {
+																	"deprecated": true,
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use the config_src field instead.",
+																	"x-stainless-ignore": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -2553,6 +2605,16 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"config_src": {
+																"default": "local",
+																"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																"enum": [
+																	"local",
+																	"cloudflare"
+																],
+																"example": "cloudflare",
+																"type": "string"
+															},
 															"connections": {
 																"deprecated": true,
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -2666,10 +2728,13 @@
 																"type": "string"
 															},
 															"remote_config": {
+																"deprecated": true,
 																"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use the config_src field instead.",
+																"x-stainless-ignore": true
 															},
 															"status": {
 																"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -3002,6 +3067,16 @@
 																		"type": "string",
 																		"x-auditable": true
 																	},
+																	"config_src": {
+																		"default": "local",
+																		"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																		"enum": [
+																			"local",
+																			"cloudflare"
+																		],
+																		"example": "cloudflare",
+																		"type": "string"
+																	},
 																	"connections": {
 																		"deprecated": true,
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -3115,10 +3190,13 @@
 																		"type": "string"
 																	},
 																	"remote_config": {
+																		"deprecated": true,
 																		"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																		"example": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-deprecation-message": "Use the config_src field instead.",
+																		"x-stainless-ignore": true
 																	},
 																	"status": {
 																		"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -3554,6 +3632,16 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"config_src": {
+															"default": "local",
+															"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+															"enum": [
+																"local",
+																"cloudflare"
+															],
+															"example": "cloudflare",
+															"type": "string"
+														},
 														"connections": {
 															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -3667,10 +3755,13 @@
 															"type": "string"
 														},
 														"remote_config": {
+															"deprecated": true,
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use the config_src field instead.",
+															"x-stainless-ignore": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -3961,6 +4052,16 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"config_src": {
+																	"default": "local",
+																	"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																	"enum": [
+																		"local",
+																		"cloudflare"
+																	],
+																	"example": "cloudflare",
+																	"type": "string"
+																},
 																"connections": {
 																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -4074,10 +4175,13 @@
 																	"type": "string"
 																},
 																"remote_config": {
+																	"deprecated": true,
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use the config_src field instead.",
+																	"x-stainless-ignore": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -6199,6 +6303,16 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"config_src": {
+																"default": "local",
+																"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																"enum": [
+																	"local",
+																	"cloudflare"
+																],
+																"example": "cloudflare",
+																"type": "string"
+															},
 															"connections": {
 																"deprecated": true,
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -6312,10 +6426,13 @@
 																"type": "string"
 															},
 															"remote_config": {
+																"deprecated": true,
 																"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use the config_src field instead.",
+																"x-stainless-ignore": true
 															},
 															"status": {
 																"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -6648,6 +6765,16 @@
 																		"type": "string",
 																		"x-auditable": true
 																	},
+																	"config_src": {
+																		"default": "local",
+																		"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																		"enum": [
+																			"local",
+																			"cloudflare"
+																		],
+																		"example": "cloudflare",
+																		"type": "string"
+																	},
 																	"connections": {
 																		"deprecated": true,
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -6761,10 +6888,13 @@
 																		"type": "string"
 																	},
 																	"remote_config": {
+																		"deprecated": true,
 																		"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																		"example": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-deprecation-message": "Use the config_src field instead.",
+																		"x-stainless-ignore": true
 																	},
 																	"status": {
 																		"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -7336,6 +7466,16 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"config_src": {
+																"default": "local",
+																"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																"enum": [
+																	"local",
+																	"cloudflare"
+																],
+																"example": "cloudflare",
+																"type": "string"
+															},
 															"connections": {
 																"deprecated": true,
 																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -7449,10 +7589,13 @@
 																"type": "string"
 															},
 															"remote_config": {
+																"deprecated": true,
 																"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use the config_src field instead.",
+																"x-stainless-ignore": true
 															},
 															"status": {
 																"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -7785,6 +7928,16 @@
 																		"type": "string",
 																		"x-auditable": true
 																	},
+																	"config_src": {
+																		"default": "local",
+																		"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																		"enum": [
+																			"local",
+																			"cloudflare"
+																		],
+																		"example": "cloudflare",
+																		"type": "string"
+																	},
 																	"connections": {
 																		"deprecated": true,
 																		"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -7898,10 +8051,13 @@
 																		"type": "string"
 																	},
 																	"remote_config": {
+																		"deprecated": true,
 																		"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																		"example": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-deprecation-message": "Use the config_src field instead.",
+																		"x-stainless-ignore": true
 																	},
 																	"status": {
 																		"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -8335,6 +8491,16 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"config_src": {
+															"default": "local",
+															"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+															"enum": [
+																"local",
+																"cloudflare"
+															],
+															"example": "cloudflare",
+															"type": "string"
+														},
 														"connections": {
 															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -8448,10 +8614,13 @@
 															"type": "string"
 														},
 														"remote_config": {
+															"deprecated": true,
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use the config_src field instead.",
+															"x-stainless-ignore": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -8742,6 +8911,16 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"config_src": {
+																	"default": "local",
+																	"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																	"enum": [
+																		"local",
+																		"cloudflare"
+																	],
+																	"example": "cloudflare",
+																	"type": "string"
+																},
 																"connections": {
 																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -8855,10 +9034,13 @@
 																	"type": "string"
 																},
 																"remote_config": {
+																	"deprecated": true,
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use the config_src field instead.",
+																	"x-stainless-ignore": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -9653,6 +9835,16 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"config_src": {
+															"default": "local",
+															"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+															"enum": [
+																"local",
+																"cloudflare"
+															],
+															"example": "cloudflare",
+															"type": "string"
+														},
 														"connections": {
 															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -9766,10 +9958,13 @@
 															"type": "string"
 														},
 														"remote_config": {
+															"deprecated": true,
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use the config_src field instead.",
+															"x-stainless-ignore": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -10060,6 +10255,16 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"config_src": {
+																	"default": "local",
+																	"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																	"enum": [
+																		"local",
+																		"cloudflare"
+																	],
+																	"example": "cloudflare",
+																	"type": "string"
+																},
 																"connections": {
 																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -10173,10 +10378,13 @@
 																	"type": "string"
 																},
 																"remote_config": {
+																	"deprecated": true,
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use the config_src field instead.",
+																	"x-stainless-ignore": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -10630,6 +10838,16 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"config_src": {
+															"default": "local",
+															"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+															"enum": [
+																"local",
+																"cloudflare"
+															],
+															"example": "cloudflare",
+															"type": "string"
+														},
 														"connections": {
 															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -10743,10 +10961,13 @@
 															"type": "string"
 														},
 														"remote_config": {
+															"deprecated": true,
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use the config_src field instead.",
+															"x-stainless-ignore": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -11037,6 +11258,16 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"config_src": {
+																	"default": "local",
+																	"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																	"enum": [
+																		"local",
+																		"cloudflare"
+																	],
+																	"example": "cloudflare",
+																	"type": "string"
+																},
 																"connections": {
 																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -11150,10 +11381,13 @@
 																	"type": "string"
 																},
 																"remote_config": {
+																	"deprecated": true,
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use the config_src field instead.",
+																	"x-stainless-ignore": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -11605,6 +11839,16 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"config_src": {
+															"default": "local",
+															"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+															"enum": [
+																"local",
+																"cloudflare"
+															],
+															"example": "cloudflare",
+															"type": "string"
+														},
 														"connections": {
 															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -11718,10 +11962,13 @@
 															"type": "string"
 														},
 														"remote_config": {
+															"deprecated": true,
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use the config_src field instead.",
+															"x-stainless-ignore": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -12012,6 +12259,16 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"config_src": {
+																	"default": "local",
+																	"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																	"enum": [
+																		"local",
+																		"cloudflare"
+																	],
+																	"example": "cloudflare",
+																	"type": "string"
+																},
 																"connections": {
 																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -12125,10 +12382,13 @@
 																	"type": "string"
 																},
 																"remote_config": {
+																	"deprecated": true,
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use the config_src field instead.",
+																	"x-stainless-ignore": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -12931,6 +13191,16 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"config_src": {
+															"default": "local",
+															"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+															"enum": [
+																"local",
+																"cloudflare"
+															],
+															"example": "cloudflare",
+															"type": "string"
+														},
 														"connections": {
 															"deprecated": true,
 															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -13044,10 +13314,13 @@
 															"type": "string"
 														},
 														"remote_config": {
+															"deprecated": true,
 															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use the config_src field instead.",
+															"x-stainless-ignore": true
 														},
 														"status": {
 															"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",
@@ -13338,6 +13611,16 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"config_src": {
+																	"default": "local",
+																	"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+																	"enum": [
+																		"local",
+																		"cloudflare"
+																	],
+																	"example": "cloudflare",
+																	"type": "string"
+																},
 																"connections": {
 																	"deprecated": true,
 																	"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
@@ -13451,10 +13734,13 @@
 																	"type": "string"
 																},
 																"remote_config": {
+																	"deprecated": true,
 																	"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																	"example": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use the config_src field instead.",
+																	"x-stainless-ignore": true
 																},
 																"status": {
 																	"description": "The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).",

@@ -340,13 +340,16 @@
 																},
 																"required": [
 																	"metrics"
-																]
-															}
+																],
+																"type": "object"
+															},
+															"type": "array"
 														}
 													},
 													"required": [
 														"data"
-													]
+													],
+													"type": "object"
 												}
 											]
 										}
@@ -606,13 +609,16 @@
 																		},
 																		"required": [
 																			"metrics"
-																		]
-																	}
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
 																}
 															},
 															"required": [
 																"data"
-															]
+															],
+															"type": "object"
 														}
 													]
 												}
@@ -735,6 +741,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1104,12 +1113,9 @@
 																		"description": "Array with one item per requested metric. Each item is an array of values, broken down by time interval.",
 																		"items": {
 																			"description": "Nominal metric values, broken down by time interval.",
-																			"items": {},
-																			"properties": {
-																				"items": {
-																					"description": "Nominal metric value.",
-																					"type": "number"
-																				}
+																			"items": {
+																				"description": "Nominal metric value.",
+																				"type": "number"
 																			},
 																			"type": "array"
 																		},
@@ -1118,8 +1124,10 @@
 																},
 																"required": [
 																	"metrics"
-																]
-															}
+																],
+																"type": "object"
+															},
+															"type": "array"
 														},
 														"query": {
 															"properties": {
@@ -1165,7 +1173,8 @@
 														"time_intervals",
 														"query",
 														"data"
-													]
+													],
+													"type": "object"
 												}
 											]
 										}
@@ -1418,12 +1427,9 @@
 																				"description": "Array with one item per requested metric. Each item is an array of values, broken down by time interval.",
 																				"items": {
 																					"description": "Nominal metric values, broken down by time interval.",
-																					"items": {},
-																					"properties": {
-																						"items": {
-																							"description": "Nominal metric value.",
-																							"type": "number"
-																						}
+																					"items": {
+																						"description": "Nominal metric value.",
+																						"type": "number"
 																					},
 																					"type": "array"
 																				},
@@ -1432,8 +1438,10 @@
 																		},
 																		"required": [
 																			"metrics"
-																		]
-																	}
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
 																},
 																"query": {
 																	"properties": {
@@ -1479,7 +1487,8 @@
 																"time_intervals",
 																"query",
 																"data"
-															]
+															],
+															"type": "object"
 														}
 													]
 												}
@@ -1602,6 +1611,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

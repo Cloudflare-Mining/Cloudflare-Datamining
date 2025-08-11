@@ -1,0 +1,962 @@
+{
+	"GET /zones/{zone_id}/pay-per-crawl/configuration": {
+		"description": "Gets the DARIC config for a zone that includes the bot configuration",
+		"operationId": "pay-per-crawl.getConfig",
+		"parameters": [
+			{
+				"description": "zone id",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"items": "[Circular ~.GET /zones/{zone_id}/pay-per-crawl/configuration.responses.200.content.application/json.schema.properties.errors.items]",
+												"type": "array"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"items": "[Circular ~.GET /zones/{zone_id}/pay-per-crawl/configuration.responses.200.content.application/json.schema.properties.messages.items]",
+												"type": "array"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"bot_overrides": {
+											"additionalProperties": {
+												"enum": [
+													"charge",
+													"bypass"
+												],
+												"type": "string"
+											},
+											"type": "object"
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"price_usd_microcents": {
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get DARIC config for a zone",
+		"tags": [
+			"daric_config"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		]
+	},
+	"PATCH /accounts/{account_id}/pay-per-crawl/zones_can_be_enabled": {
+		"description": "Allows an account admin to set the can_be_enabled settings on a list of zones.",
+		"operationId": "pay-per-crawl.setZonesCanBeEnabled",
+		"parameters": [
+			{
+				"description": "account id",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"zones": {
+								"items": {
+									"properties": {
+										"can_be_enabled": {
+											"type": "boolean"
+										},
+										"id": {
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"description": "Data for setting flag on zones",
+			"required": true,
+			"x-auditable": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"items": "[Circular ~.PATCH /accounts/{account_id}/pay-per-crawl/zones_can_be_enabled.responses.200.content.application/json.schema.properties.errors.items]",
+												"type": "array"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"items": "[Circular ~.PATCH /accounts/{account_id}/pay-per-crawl/zones_can_be_enabled.responses.200.content.application/json.schema.properties.messages.items]",
+												"type": "array"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Set can_be_enabled setting on zones",
+		"tags": [
+			"daric_config"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
+		]
+	},
+	"PATCH /zones/{zone_id}/pay-per-crawl/configuration": {
+		"description": "Changes the DARIC config for a zone",
+		"operationId": "pay-per-crawl.patchConfig",
+		"parameters": [
+			{
+				"description": "zone id",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"bot_overrides": {
+								"additionalProperties": {
+									"enum": [
+										"charge",
+										"bypass"
+									],
+									"type": "string"
+								},
+								"type": "object"
+							},
+							"enabled": {
+								"type": "boolean"
+							},
+							"price_usd_microcents": {
+								"type": "integer"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"description": "Data for setting flag on zones",
+			"required": true,
+			"x-auditable": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"items": "[Circular ~.PATCH /zones/{zone_id}/pay-per-crawl/configuration.responses.200.content.application/json.schema.properties.errors.items]",
+												"type": "array"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"items": "[Circular ~.PATCH /zones/{zone_id}/pay-per-crawl/configuration.responses.200.content.application/json.schema.properties.messages.items]",
+												"type": "array"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"bot_overrides": {
+											"additionalProperties": {
+												"enum": [
+													"charge",
+													"bypass"
+												],
+												"type": "string"
+											},
+											"type": "object"
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"price_usd_microcents": {
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Changes DARIC config for a zone",
+		"tags": [
+			"daric_config"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		]
+	},
+	"POST /accounts/{account_id}/pay-per-crawl/zones_can_be_enabled/query": {
+		"description": "Provided a list of daric configured zones this method will return whether they can enabled daric or not",
+		"operationId": "pay-per-crawl.queryZonesCanBeEnabled",
+		"parameters": [
+			{
+				"description": "account id",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"zones": {
+								"items": {
+									"properties": {
+										"can_be_enabled": {
+											"type": "boolean"
+										},
+										"id": {
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"description": "Data for setting flag on zones",
+			"required": true,
+			"x-auditable": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"items": "[Circular ~.POST /accounts/{account_id}/pay-per-crawl/zones_can_be_enabled/query.responses.200.content.application/json.schema.properties.errors.items]",
+												"type": "array"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"items": "[Circular ~.POST /accounts/{account_id}/pay-per-crawl/zones_can_be_enabled/query.responses.200.content.application/json.schema.properties.messages.items]",
+												"type": "array"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"zones": {
+											"items": {
+												"properties": {
+													"can_be_enabled": {
+														"type": "boolean"
+													},
+													"id": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Gets the can_be_enabled zone setting",
+		"tags": [
+			"daric_config"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"DNS View Write",
+			"DNS View Read",
+			"SCIM Provisioning",
+			"Load Balancers Account Write",
+			"Load Balancers Account Read",
+			"Zero Trust: PII Read",
+			"DDoS Botnet Feed Write",
+			"DDoS Botnet Feed Read",
+			"Workers R2 Storage Write",
+			"Workers R2 Storage Read",
+			"DDoS Protection Write",
+			"DDoS Protection Read",
+			"Workers Tail Read",
+			"Workers KV Storage Write",
+			"Workers KV Storage Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read",
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read",
+			"Account Firewall Access Rules Write",
+			"Account Firewall Access Rules Read",
+			"DNS Firewall Write",
+			"DNS Firewall Read",
+			"Billing Write",
+			"Billing Read",
+			"Account Settings Write",
+			"Account Settings Read"
+		]
+	}
+}
