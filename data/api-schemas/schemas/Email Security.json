@@ -3171,8 +3171,11 @@
 						"properties": {
 							"eml_content": {
 								"description": "Base64 encoded content of the EML file",
-								"nullable": true,
 								"type": "string"
+							},
+							"escalated_submission_id": {
+								"type": "string",
+								"x-auditable": true
 							},
 							"expected_disposition": {
 								"enum": [
