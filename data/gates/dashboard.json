@@ -300,6 +300,9 @@
 	"billing-legacy-plan-pricing": {
 		"enabled": true
 	},
+	"billing-on-session-payment": {
+		"enabled": false
+	},
 	"billing-pay-my-bill-enabled": {
 		"enabled": true
 	},
@@ -346,6 +349,9 @@
 		"enabled": false
 	},
 	"bola-detection-enabled": {
+		"enabled": false
+	},
+	"bola-enumeration-session-severity-enable": {
 		"enabled": false
 	},
 	"bot-detection-ids": {
@@ -586,7 +592,7 @@
 		"enabled": false
 	},
 	"data-audit-logs-v2-ga": {
-		"enabled": false
+		"enabled": true
 	},
 	"data-dx-containers-landing": {
 		"enabled": true
