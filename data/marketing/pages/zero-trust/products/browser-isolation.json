@@ -62,7 +62,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-02-01T18:40:00.258Z",
-					"updatedAt": "2025-07-23T07:58:49.284Z"
+					"updatedAt": "2025-08-11T23:07:48.999Z"
 				},
 				"contentfulId": "yIEpGRuNKpdJxw7SP6Iky",
 				"contentTypeId": "page",
@@ -3866,6 +3866,185 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "7wbFJpJHBkjBeyuzf2Pill",
+						"bladeName": "Cloudflare Browser Isolation FAQs",
+						"title": "FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5b2ZEkHYuRkapwyERDgaf0",
+								"title": "What is Cloudflare Browser Isolation?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Browser Isolation is a high-performance remote browser isolation (RBI) solution that runs all web code at the edge of Cloudflare's global network. It protects users and networks from ransomware, phishing, and zero-day browser vulnerabilities by insulating them from malicious code. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6piGVBUtpLSBYzIpXLvlzt",
+								"title": "How does Cloudflare Browser Isolation enhance security?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " Typically, browsers load and execute code locally on the user device, and this includes code from unknown or untrusted sources. Cloudflare Browser Isolation loads and executes code in an isolated environment in the cloud, away from user devices and local networks. This ensures that unsafe or malicious code does not impact those devices and networks, just as quarantining can stop the spread of disease. The result is that users, devices, and organizations are insulated from ransomware, drive-by downloads, zero-day threats, and other attacks.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7sFNh1ch5ASzsU51PGBn6s",
+								"title": "What are the key benefits of using Cloudflare Browser Isolation?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The benefits of Cloudflare Browser Isolation include quick deployment of RBI policies, conditional isolation of resources (by application, policy, or for suspicious sites only), extended security controls through native integration with other Cloudflare Zero Trust services, and extremely low latency so that RBI does not slow users down. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7DN0WGQzSjHzG4VrEV6RDE",
+								"title": "What kinds of threats does Cloudflare Browser Isolation help prevent?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Browser Isolation helps protect against ransomware attacks, drive-by downloads, vulnerability exploits, zero-day threats, click-jacking, malvertising, redirect attacks, and other browser-based attacks by isolating browser sessions so that malicious code does not execute locally. It also helps thwart phishing attempts by opening suspicious email links in an isolated browser. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1G7ltsdV61m53vrNKwndGm",
+								"title": "How does Cloudflare Browser Isolation help with third-party access?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Browser Isolation works with personal or unmanaged devices, making it easier for organizations to securely onboard third-party users and contractors.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,

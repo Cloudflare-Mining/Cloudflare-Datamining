@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2021-06-25T16:32:45.600Z",
-					"updatedAt": "2025-05-21T23:37:24.329Z"
+					"updatedAt": "2025-08-11T23:04:11.126Z"
 				},
 				"contentfulId": "6G5OTQJ1EJ25ZiSGz2DY8m",
 				"contentTypeId": "page",
@@ -63,6 +63,12 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "7mH78JqApPgq8Vj7zZwKTz",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Introducing pre-configured Enterprise solution packages for your public, and internal-facing systems |</span>\n\n        <a class=\"link-helper\" href=\"https://www.cloudflare.com/plans/enterprise/externa/\">\n           <strong>See packages ></strong>\n        </a>\n    </div>\n</section>\n</section>",
+						"htmlId": null
+					},
 					{
 						"contentfulId": "4QqNYqwXYvSIHl1yvqyuqe",
 						"contentTypeId": "bladeHeroAnimation",

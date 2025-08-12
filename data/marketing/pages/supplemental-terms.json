@@ -882,7 +882,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" is any Zone that only utilizes Cloudflare for DNS resolution and has 0 Gigabytes (GB) of data transfer per month.",
+													"value": "\" is any Zone that only utilizes Cloudflare for DNS resolution and has 0 Gigabytes (GB) of data transfer per month.  It cannot have any Gigabytes (GB) of data transfer or HTTP/S traffic.",
 													"marks": [],
 													"content": null
 												}
@@ -927,7 +927,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" is any domain receiving Cloudflare's Enterprise Services that utilizes more than 50 Gigabytes (GB) of data transfer per month.",
+													"value": "\" is any Zone receiving Cloudflare's Enterprise Services.",
 													"marks": [],
 													"content": null
 												}
@@ -972,7 +972,225 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" is any domain receiving Enterprise Services that utilizes 50 GB or less of data transfer per month.",
+													"value": "\" is any Zone receiving Enterprise Services that utilizes 50 GB or less of data transfer per month and/or utilizes Cloudflare for DNS resolution.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Externa Advantage",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" means the package of Services specifically identified as included in the Externa Advantage package (",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "http://www.cloudflare.com/plans/enterprise/externa"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "www.cloudflare.com/plans/enterprise/externa",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ") on the Cloudflare website (or such successor URL as Cloudflare may designate).",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"Externa Essentials\"",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " means the package of Services specifically identified as included in the Externa Essentials package (",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "http://www.cloudflare.com/plans/enterprise/externa"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "www.cloudflare.com/plans/enterprise/externa",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ") on the Cloudflare website (or such successor URL as Cloudflare may designate).",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Externa Premier",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" means the package of Services specifically identified as included in the Externa Premier package (",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "http://www.cloudflare.com/plans/enterprise/externa"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "www.cloudflare.com/plans/enterprise/externa",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ") on the Cloudflare website (or such successor URL as Cloudflare may designate).",
 													"marks": [],
 													"content": null
 												}
@@ -1063,6 +1281,224 @@
 														"uri": null
 													},
 													"value": "\" means images stored in Cloudflare Images at any time during the applicable billing period. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Interna Advantage",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" means the package of Services specifically identified as included in the Interna Advantage package (",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "http://www.cloudflare.com/plans/enterprise/interna/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "www.cloudflare.com/plans/enterprise/interna/",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ") on the Cloudflare website (or such successor URL as Cloudflare may designate).",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"Interna Essentials\"",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " means the package of Services specifically identified as included in the Interna Essentials package (",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "http://www.cloudflare.com/plans/enterprise/interna/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "www.cloudflare.com/plans/enterprise/interna/",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ") on the Cloudflare website (or such successor URL as Cloudflare may designate).",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Interna Premier",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" means the package of Services specifically identified as included in the Interna Premier package (",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "http://www.cloudflare.com/plans/enterprise/interna/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "www.cloudflare.com/plans/enterprise/interna/",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ") on the Cloudflare website (or such successor URL as Cloudflare may designate).",
 													"marks": [],
 													"content": null
 												}
@@ -1694,51 +2130,6 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Uncached Image",
-													"marks": [
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\" is an image that is not cached on any Cloudflare server.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\"",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
 													"value": "Storage",
 													"marks": [
 														{
@@ -1823,6 +2214,51 @@
 														"uri": null
 													},
 													"value": "\" is (i) an image variant resulting from a resize and/or other Customer request(s) (e.g., blur, sharpen, crop/trim, etc.) applied to a source image or video or (ii) one second of an output video variant resulting from a resize and/or other Customer request(s) applied to a source video. For billing purposes, the initial Customer request(s) and resulting image or each second of output video counts as a single Transformation that will be available for a 30-day period following generation. By way of example, a 30 second output video variant will be billed as 30 Transformations.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Uncached Image",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" is an image that is not cached on any Cloudflare server.",
 													"marks": [],
 													"content": null
 												}
@@ -2040,7 +2476,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" is an instance configured in the Cloudflare Services dashboard which has a unique zone id assigned to it. In general, a zone would be associated with a single registrable domain and would include all of that domain's child subdomains unless one or more of the child subdomains requires a different performance or security setting, in which case each child subdomain could either be assigned its own zone id or be grouped together with other child subdomains that share the same performance or security settings under a single zone id.",
+													"value": "\" is an instance configured in the Cloudflare Services dashboard which has a unique zone ID assigned to it. In general, a zone would be associated with a single registrable domain and would include all of that domain's child subdomains unless one or more of the child subdomains requires a different performance or security setting, in which case each child subdomain could either be assigned its own zone ID or be grouped together with other child subdomains that share the same performance or security settings under a single zone ID.  Unless explicitly authorized in writing, Cloudflare Services are for use only with Zones that are associated with Domains owned by Customer (i.e., Customers may not configure Zones in Cloudflare for their end customers' Domains).",
 													"marks": [],
 													"content": null
 												}
@@ -4472,7 +4908,127 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Cloudflare Gateway is subject to an Average Monthly DNS Queries limit of 10,000 DNS queries per Seat per day. \"Average Monthly DNS Queries\" means the number of DNS queries by your total Seats in a month divided by the number of days in such a month and further divided by the number of licensed Seats. For example, if you purchased licenses for 1,000 Seats and your Seats submitted a total of 30,000,000 DNS queries in the prior 30-day calendar month, your Average Monthly DNS Queries would be 1,000 (calculated as follows: (30,000,000 / 30) / 1,000 = 1,000). Cloudflare may continuously monitor your usage of Cloudflare Gateway on a monthly basis to determine your Average Monthly DNS Queries. If Cloudflare determines that your Average Monthly DNS Queries has exceeded 10,000 DNS queries per Seat per day, Cloudflare reserves the right to require you to purchase additional licenses as required. In the event you purchase the Service in the middle of a month, the Average Monthly DNS Queries calculation for that month shall be based on the number of days that you were subscribed for the Service in that month.",
+													"value": " Cloudflare Gateway DNS only is subject to an Average Monthly DNS Queries limit of ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "150,000 per Seat which is the equivalent of 5,000",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " DNS queries per Seat per day ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "(assuming a 30-day month). Cloudflare may monitor your usage of Cloudflare Gateway on a monthly basis to determine your Average Monthly DNS Queries. If Cloudflare determines that your Average Monthly DNS Queries has exceeded 150,000 per Seat, Cloudflare reserves the right to require you to purchase additional Seats as required.  ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "For example, if you purchased licenses for 1,000 Seats ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "(which covers up to 150,000,000 total monthly DNS queries)",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " and your Seats ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "actually ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "submitted ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "200,000,000 total monthly DNS queries in the subsequent calendar month",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", your ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "new number of monthly Seats will be calculated as follows (200,000,000 total monthly DNS queries / 30 days) / 5,000 daily maximum DNS queries per Seat = 1,334 Seats (Cloudflare will always round up to the next whole number of Seats).  ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " In the event you purchase the Service in the middle of a month, the Average Monthly DNS Queries calculation for that month shall be based on the number of days that you were subscribed for the Service in that month.",
 													"marks": [],
 													"content": null
 												}
@@ -6746,6 +7302,20 @@
 													"value": "China Service",
 													"marks": [],
 													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "; China Global Acceleration Service",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
 												}
 											]
 										},
@@ -6771,6 +7341,258 @@
 											]
 										},
 										{
+											"nodeType": "ordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "China Service",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "\n\nCloudflare's China Service is operated by its Chinese partner JD Cloud (the \"",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "China Service Partner",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "\").  To use this Service, Customer must sign the China Service Partner's terms of acceptance and adhere to its conditions.  Customer acknowledges that as part of the China Service the China Service Partner will process a portion of Customer's data in mainland China (including Zone configuration information and bindings with Cloudflare's Developer Suite when a Customer enables the China Service for a particular Zone), and as a result such Customer data may be subject to Chinese law, including China's Cybersecurity Law. By using Cloudflare's China Service, Customer acknowledges and agrees that: (i) it will be solely responsible for obtaining and maintaining a valid Internet Content Provider (ICP) license (the \"",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "ICP License",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "\") throughout the Term, as required by the Chinese Ministry of Industry and Information Technology, (ii) Cloudflare will not be liable for Customer's inability to obtain or maintain such an ICP License, (iii) in the absence of such an ICP License, Cloudflare or its China Service Partner may refuse to provide the China Service to Customer without liability, and (iv) Cloudflare may share ICP License information, as well as Customer address and contact information with the China Service Partner. ",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Optional Add-on: China Global Acceleration Service ",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																}
+															]
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "\nThe China Global Acceleration Service is operated by a Chinese telecommunication service provider (the \"",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "China Service Provider",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "\"). To use this Service, Customer must sign the China Service Provider's terms of acceptance for accessing its telecommunications network and adhere to its conditions and all applicable local laws. The China Global Acceleration Service has the bandwidth usage cap specified in Customer's Order. The China Global Acceleration Service is exclusively for Customer employee use, unless Customer is using the Cloudflare China Network Service together with the China Global Acceleration Service and has a valid ICP License for such traffic.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "General Terms for China-Related Services\n\n",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Notwithstanding any provision of the Agreement to the contrary, the China Service and the China Global Acceleration Service are provided to Customer \"AS-IS,\" with all faults, and without warranty, obligation, or service level of any kind, and unless otherwise explicitly agreed to in writing, any custom security requirements that have been negotiated between Customer and Cloudflare will not apply to the China Service. Cloudflare, its China Service Partner, and its China Service Provider reserve the right to terminate or suspend the Service in China, ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "including by routing Customer traffic outside of China, at",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " any time and without liability, in response to Chinese law, rule, regulation, or if needed to protect the Services or the infrastructure supporting the Services; provided, that (a) Cloudflare provides notice to Customer of such termination or suspension as soon as reasonably practicable, and (b) Cloudflare works to promptly route Customer's traffic to the next nearest data center(s) outside of China. Termination or suspension of the China Service and/or the China Global Acceleration Service will have no effect upon any other Services provided to Customer under the Agreement, which will remain in full force and effect. Customer's use of the China Service and the China Global Acceleration Service is subject to Chinese law including laws governing the dissemination of certain types of content.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -6785,55 +7607,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare's China Service is operated by its Chinese partner JD Cloud (the \"",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "China Service Partner",
-													"marks": [
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\"). Customer acknowledges that as part of the China Service the China Service Partner will process a portion of Customer's data in mainland China (including Zone configuration information and bindings with Cloudflare's Developer Suite when a Customer enables the China Service for a particular Zone), and as a result such Customer data may be subject to Chinese law, including China's Cybersecurity Law. By using Cloudflare's China Service, Customer acknowledges and agrees that: (i) it will be solely responsible for obtaining and maintaining a valid Internet Content Provider (ICP) license (the \"",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "ICP License",
-													"marks": [
-														{
-															"type": "bold"
-														}
-													],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\") throughout the Term, as required by the Chinese Ministry of Industry and Information Technology, (ii) Cloudflare will not be liable for Customer's inability to obtain or maintain such an ICP License, (iii) in the absence of such an ICP License, Cloudflare or its China Service Partner may refuse to provide the China Service to Customer without liability, and (iv) Cloudflare may share ICP License information, as well as Customer address and contact information with the China Service Partner. Notwithstanding any provision of the Agreement to the contrary, the China Service is provided to Customer \"AS-IS,\" with all faults, and without warranty, obligation, or service level of any kind, and unless otherwise explicitly agreed to in writing, any custom security requirements that have been negotiated between Customer and Cloudflare will not apply to the China Service. Cloudflare and its China Service Partner reserve the right to terminate or suspend Customer's right to use or access the Service in China, at any time and without liability, in response to Chinese law, rule, regulation, or court order; provided, that (a) Cloudflare provides notice to Customer of such termination or suspension as soon as reasonably practicable, and (b) Cloudflare works to promptly route Customer's traffic to the next nearest data center(s) outside of China. Termination or suspension of the China Service will have no effect upon any other Services provided to Customer under the Agreement, which will remain in full force and effect. Customer's use of the China Service is subject to Chinese law including laws governing the dissemination of certain types of content.",
+													"value": "",
 													"marks": [],
 													"content": null
 												}
