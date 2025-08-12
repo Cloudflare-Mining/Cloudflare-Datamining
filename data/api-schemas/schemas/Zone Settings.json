@@ -560,37 +560,9 @@
 																	},
 																	"value": {
 																		"default": 14400,
-																		"description": "Value of the zone setting.\nNotes: Setting a TTL of 0 is equivalent to selecting `Respect Existing Headers`",
-																		"enum": [
-																			0,
-																			30,
-																			60,
-																			120,
-																			300,
-																			1200,
-																			1800,
-																			3600,
-																			7200,
-																			10800,
-																			14400,
-																			18000,
-																			28800,
-																			43200,
-																			57600,
-																			72000,
-																			86400,
-																			172800,
-																			259200,
-																			345600,
-																			432000,
-																			691200,
-																			1382400,
-																			2073600,
-																			2678400,
-																			5356800,
-																			16070400,
-																			31536000
-																		],
+																		"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+																		"maximum": 31536000,
+																		"minimum": 0,
 																		"type": "integer"
 																	}
 																}
@@ -3565,7 +3537,7 @@
 																		"example": "transformations_allowed_origins"
 																	},
 																	"value": {
-																		"description": "Comma-separated list of allowed origins. \nRefer to the [Image Transformations](https://developers.cloudflare.com/images/transform-images/sources/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information.",
+																		"description": "Comma-separated list of allowed origins.\nRefer to the [Image Transformations](https://developers.cloudflare.com/images/transform-images/sources/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information.",
 																		"type": "string"
 																	}
 																}
@@ -4516,37 +4488,9 @@
 																},
 																"value": {
 																	"default": 14400,
-																	"description": "Value of the zone setting.\nNotes: Setting a TTL of 0 is equivalent to selecting `Respect Existing Headers`",
-																	"enum": [
-																		0,
-																		30,
-																		60,
-																		120,
-																		300,
-																		1200,
-																		1800,
-																		3600,
-																		7200,
-																		10800,
-																		14400,
-																		18000,
-																		28800,
-																		43200,
-																		57600,
-																		72000,
-																		86400,
-																		172800,
-																		259200,
-																		345600,
-																		432000,
-																		691200,
-																		1382400,
-																		2073600,
-																		2678400,
-																		5356800,
-																		16070400,
-																		31536000
-																	],
+																	"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+																	"maximum": 31536000,
+																	"minimum": 0,
 																	"type": "integer"
 																}
 															}
@@ -7583,7 +7527,7 @@
 																	"example": "transformations_allowed_origins"
 																},
 																"value": {
-																	"description": "Comma-separated list of allowed origins. \nRefer to the [Image Transformations](https://developers.cloudflare.com/images/transform-images/sources/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information.",
+																	"description": "Comma-separated list of allowed origins.\nRefer to the [Image Transformations](https://developers.cloudflare.com/images/transform-images/sources/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information.",
 																	"type": "string"
 																}
 															}
@@ -10029,37 +9973,9 @@
 												},
 												"value": {
 													"default": 14400,
-													"description": "Value of the zone setting.\nNotes: Setting a TTL of 0 is equivalent to selecting `Respect Existing Headers`",
-													"enum": [
-														0,
-														30,
-														60,
-														120,
-														300,
-														1200,
-														1800,
-														3600,
-														7200,
-														10800,
-														14400,
-														18000,
-														28800,
-														43200,
-														57600,
-														72000,
-														86400,
-														172800,
-														259200,
-														345600,
-														432000,
-														691200,
-														1382400,
-														2073600,
-														2678400,
-														5356800,
-														16070400,
-														31536000
-													],
+													"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+													"maximum": 31536000,
+													"minimum": 0,
 													"type": "integer"
 												}
 											}
@@ -13722,37 +13638,9 @@
 																	},
 																	"value": {
 																		"default": 14400,
-																		"description": "Value of the zone setting.\nNotes: Setting a TTL of 0 is equivalent to selecting `Respect Existing Headers`",
-																		"enum": [
-																			0,
-																			30,
-																			60,
-																			120,
-																			300,
-																			1200,
-																			1800,
-																			3600,
-																			7200,
-																			10800,
-																			14400,
-																			18000,
-																			28800,
-																			43200,
-																			57600,
-																			72000,
-																			86400,
-																			172800,
-																			259200,
-																			345600,
-																			432000,
-																			691200,
-																			1382400,
-																			2073600,
-																			2678400,
-																			5356800,
-																			16070400,
-																			31536000
-																		],
+																		"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+																		"maximum": 31536000,
+																		"minimum": 0,
 																		"type": "integer"
 																	}
 																}
@@ -16727,7 +16615,7 @@
 																		"example": "transformations_allowed_origins"
 																	},
 																	"value": {
-																		"description": "Comma-separated list of allowed origins. \nRefer to the [Image Transformations](https://developers.cloudflare.com/images/transform-images/sources/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information.",
+																		"description": "Comma-separated list of allowed origins.\nRefer to the [Image Transformations](https://developers.cloudflare.com/images/transform-images/sources/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information.",
 																		"type": "string"
 																	}
 																}
@@ -17226,37 +17114,9 @@
 											},
 											{
 												"default": 14400,
-												"description": "Value of the zone setting.\nNotes: Setting a TTL of 0 is equivalent to selecting `Respect Existing Headers`",
-												"enum": [
-													0,
-													30,
-													60,
-													120,
-													300,
-													1200,
-													1800,
-													3600,
-													7200,
-													10800,
-													14400,
-													18000,
-													28800,
-													43200,
-													57600,
-													72000,
-													86400,
-													172800,
-													259200,
-													345600,
-													432000,
-													691200,
-													1382400,
-													2073600,
-													2678400,
-													5356800,
-													16070400,
-													31536000
-												],
+												"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+												"maximum": 31536000,
+												"minimum": 0,
 												"type": "integer"
 											},
 											{
@@ -18406,37 +18266,9 @@
 																},
 																"value": {
 																	"default": 14400,
-																	"description": "Value of the zone setting.\nNotes: Setting a TTL of 0 is equivalent to selecting `Respect Existing Headers`",
-																	"enum": [
-																		0,
-																		30,
-																		60,
-																		120,
-																		300,
-																		1200,
-																		1800,
-																		3600,
-																		7200,
-																		10800,
-																		14400,
-																		18000,
-																		28800,
-																		43200,
-																		57600,
-																		72000,
-																		86400,
-																		172800,
-																		259200,
-																		345600,
-																		432000,
-																		691200,
-																		1382400,
-																		2073600,
-																		2678400,
-																		5356800,
-																		16070400,
-																		31536000
-																	],
+																	"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+																	"maximum": 31536000,
+																	"minimum": 0,
 																	"type": "integer"
 																}
 															}
@@ -21473,7 +21305,7 @@
 																	"example": "transformations_allowed_origins"
 																},
 																"value": {
-																	"description": "Comma-separated list of allowed origins. \nRefer to the [Image Transformations](https://developers.cloudflare.com/images/transform-images/sources/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information.",
+																	"description": "Comma-separated list of allowed origins.\nRefer to the [Image Transformations](https://developers.cloudflare.com/images/transform-images/sources/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information.",
 																	"type": "string"
 																}
 															}
