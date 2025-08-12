@@ -48,7 +48,8 @@
 											"type": "string",
 											"x-auditable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							},
 							"type": "object"
@@ -73,7 +74,8 @@
 													"type": "string",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -184,7 +186,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -192,6 +195,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -516,7 +522,7 @@
 															"zones": {
 																"description": "The list of zones linked to this view.",
 																"items": {
-																	"description": "zone id",
+																	"description": "The zone ID.",
 																	"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																	"maxLength": 32,
 																	"minLength": 32,
@@ -558,7 +564,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -722,7 +729,7 @@
 																	"zones": {
 																		"description": "The list of zones linked to this view.",
 																		"items": {
-																			"description": "zone id",
+																			"description": "The zone ID.",
 																			"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																			"maxLength": 32,
 																			"minLength": 32,
@@ -764,7 +771,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -872,7 +880,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -880,6 +889,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1060,7 +1072,7 @@
 														"zones": {
 															"description": "The list of zones linked to this view.",
 															"items": {
-																"description": "zone id",
+																"description": "The zone ID.",
 																"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																"maxLength": 32,
 																"minLength": 32,
@@ -1100,7 +1112,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1233,7 +1246,7 @@
 																"zones": {
 																	"description": "The list of zones linked to this view.",
 																	"items": {
-																		"description": "zone id",
+																		"description": "The zone ID.",
 																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																		"maxLength": 32,
 																		"minLength": 32,
@@ -1273,7 +1286,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1381,7 +1395,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1389,6 +1404,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1477,7 +1495,7 @@
 									"zones": {
 										"description": "The list of zones linked to this view.",
 										"items": {
-											"description": "zone id",
+											"description": "The zone ID.",
 											"example": "372e67954025e0ba6aaa6d586b9e0b59",
 											"maxLength": 32,
 											"minLength": 32,
@@ -1622,7 +1640,7 @@
 														"zones": {
 															"description": "The list of zones linked to this view.",
 															"items": {
-																"description": "zone id",
+																"description": "The zone ID.",
 																"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																"maxLength": 32,
 																"minLength": 32,
@@ -1662,7 +1680,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1795,7 +1814,7 @@
 																"zones": {
 																	"description": "The list of zones linked to this view.",
 																	"items": {
-																		"description": "zone id",
+																		"description": "The zone ID.",
 																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																		"maxLength": 32,
 																		"minLength": 32,
@@ -1835,7 +1854,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1943,7 +1963,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1951,6 +1972,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2026,7 +2050,7 @@
 									"zones": {
 										"description": "The list of zones linked to this view.",
 										"items": {
-											"description": "zone id",
+											"description": "The zone ID.",
 											"example": "372e67954025e0ba6aaa6d586b9e0b59",
 											"maxLength": 32,
 											"minLength": 32,
@@ -2175,7 +2199,7 @@
 														"zones": {
 															"description": "The list of zones linked to this view.",
 															"items": {
-																"description": "zone id",
+																"description": "The zone ID.",
 																"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																"maxLength": 32,
 																"minLength": 32,
@@ -2215,7 +2239,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2348,7 +2373,7 @@
 																"zones": {
 																	"description": "The list of zones linked to this view.",
 																	"items": {
-																		"description": "zone id",
+																		"description": "The zone ID.",
 																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																		"maxLength": 32,
 																		"minLength": 32,
@@ -2388,7 +2413,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -2496,7 +2522,8 @@
 									],
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2504,6 +2531,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
