@@ -1,5 +1,5 @@
 {
-	"GET /zones/{zone_id}/logpush/edge": {
+	"GET /zones/{zone_id}/logpush/edge/jobs": {
 		"description": "Lists Instant Logs jobs for a zone.",
 		"operationId": "get-zones-zone_id-logpush-edge-jobs",
 		"parameters": [
@@ -417,6 +417,15 @@
 		"tags": [
 			"Instant Logs jobs for a zone"
 		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -424,7 +433,7 @@
 			"pro": false
 		}
 	},
-	"POST /zones/{zone_id}/logpush/edge": {
+	"POST /zones/{zone_id}/logpush/edge/jobs": {
 		"description": "Creates a new Instant Logs job for a zone.",
 		"operationId": "post-zones-zone_id-logpush-edge-jobs",
 		"parameters": [
@@ -876,6 +885,15 @@
 		"tags": [
 			"Instant Logs jobs for a zone"
 		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,

@@ -473,7 +473,7 @@
 													},
 													"device_posture": {
 														"default": "",
-														"description": "The wirefilter expression used for device posture check matching.",
+														"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 														"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 														"type": "string",
 														"x-auditable": true,
@@ -555,7 +555,7 @@
 													},
 													"identity": {
 														"default": "",
-														"description": "The wirefilter expression used for identity matching.",
+														"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 														"example": "any(identity.groups.name[*] in {\"finance\"})",
 														"type": "string",
 														"x-auditable": true,
@@ -796,7 +796,7 @@
 																"nullable": true,
 																"properties": {
 																	"duration": {
-																		"description": "Configure how fresh the session needs to be to be considered valid.",
+																		"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																		"example": "300s",
 																		"type": "string",
 																		"x-auditable": true
@@ -1204,7 +1204,7 @@
 													},
 													"traffic": {
 														"default": "",
-														"description": "The wirefilter expression used for traffic matching.",
+														"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 														"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 														"type": "string",
 														"x-auditable": true,
@@ -1405,7 +1405,7 @@
 															},
 															"device_posture": {
 																"default": "",
-																"description": "The wirefilter expression used for device posture check matching.",
+																"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 																"type": "string",
 																"x-auditable": true,
@@ -1487,7 +1487,7 @@
 															},
 															"identity": {
 																"default": "",
-																"description": "The wirefilter expression used for identity matching.",
+																"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																"example": "any(identity.groups.name[*] in {\"finance\"})",
 																"type": "string",
 																"x-auditable": true,
@@ -1728,7 +1728,7 @@
 																		"nullable": true,
 																		"properties": {
 																			"duration": {
-																				"description": "Configure how fresh the session needs to be to be considered valid.",
+																				"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																				"example": "300s",
 																				"type": "string",
 																				"x-auditable": true
@@ -2136,7 +2136,7 @@
 															},
 															"traffic": {
 																"default": "",
-																"description": "The wirefilter expression used for traffic matching.",
+																"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 																"type": "string",
 																"x-auditable": true,
@@ -2436,7 +2436,7 @@
 												},
 												"device_posture": {
 													"default": "",
-													"description": "The wirefilter expression used for device posture check matching.",
+													"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string",
 													"x-auditable": true,
@@ -2518,7 +2518,7 @@
 												},
 												"identity": {
 													"default": "",
-													"description": "The wirefilter expression used for identity matching.",
+													"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string",
 													"x-auditable": true,
@@ -2759,7 +2759,7 @@
 															"nullable": true,
 															"properties": {
 																"duration": {
-																	"description": "Configure how fresh the session needs to be to be considered valid.",
+																	"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																	"example": "300s",
 																	"type": "string",
 																	"x-auditable": true
@@ -3167,7 +3167,7 @@
 												},
 												"traffic": {
 													"default": "",
-													"description": "The wirefilter expression used for traffic matching.",
+													"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string",
 													"x-auditable": true,
@@ -3336,7 +3336,7 @@
 														},
 														"device_posture": {
 															"default": "",
-															"description": "The wirefilter expression used for device posture check matching.",
+															"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string",
 															"x-auditable": true,
@@ -3418,7 +3418,7 @@
 														},
 														"identity": {
 															"default": "",
-															"description": "The wirefilter expression used for identity matching.",
+															"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string",
 															"x-auditable": true,
@@ -3659,7 +3659,7 @@
 																	"nullable": true,
 																	"properties": {
 																		"duration": {
-																			"description": "Configure how fresh the session needs to be to be considered valid.",
+																			"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																			"example": "300s",
 																			"type": "string",
 																			"x-auditable": true
@@ -4067,7 +4067,7 @@
 														},
 														"traffic": {
 															"default": "",
-															"description": "The wirefilter expression used for traffic matching.",
+															"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string",
 															"x-auditable": true,
@@ -4269,7 +4269,7 @@
 							},
 							"device_posture": {
 								"default": "",
-								"description": "The wirefilter expression used for device posture check matching.",
+								"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 								"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 								"type": "string",
 								"x-auditable": true,
@@ -4344,7 +4344,7 @@
 							},
 							"identity": {
 								"default": "",
-								"description": "The wirefilter expression used for identity matching.",
+								"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 								"example": "any(identity.groups.name[*] in {\"finance\"})",
 								"type": "string",
 								"x-auditable": true,
@@ -4573,7 +4573,7 @@
 										"nullable": true,
 										"properties": {
 											"duration": {
-												"description": "Configure how fresh the session needs to be to be considered valid.",
+												"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 												"example": "300s",
 												"type": "string",
 												"x-auditable": true
@@ -4975,7 +4975,7 @@
 							},
 							"traffic": {
 								"default": "",
-								"description": "The wirefilter expression used for traffic matching.",
+								"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 								"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 								"type": "string",
 								"x-auditable": true,
@@ -5112,7 +5112,7 @@
 												},
 												"device_posture": {
 													"default": "",
-													"description": "The wirefilter expression used for device posture check matching.",
+													"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string",
 													"x-auditable": true,
@@ -5194,7 +5194,7 @@
 												},
 												"identity": {
 													"default": "",
-													"description": "The wirefilter expression used for identity matching.",
+													"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string",
 													"x-auditable": true,
@@ -5435,7 +5435,7 @@
 															"nullable": true,
 															"properties": {
 																"duration": {
-																	"description": "Configure how fresh the session needs to be to be considered valid.",
+																	"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																	"example": "300s",
 																	"type": "string",
 																	"x-auditable": true
@@ -5843,7 +5843,7 @@
 												},
 												"traffic": {
 													"default": "",
-													"description": "The wirefilter expression used for traffic matching.",
+													"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string",
 													"x-auditable": true,
@@ -6012,7 +6012,7 @@
 														},
 														"device_posture": {
 															"default": "",
-															"description": "The wirefilter expression used for device posture check matching.",
+															"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string",
 															"x-auditable": true,
@@ -6094,7 +6094,7 @@
 														},
 														"identity": {
 															"default": "",
-															"description": "The wirefilter expression used for identity matching.",
+															"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string",
 															"x-auditable": true,
@@ -6335,7 +6335,7 @@
 																	"nullable": true,
 																	"properties": {
 																		"duration": {
-																			"description": "Configure how fresh the session needs to be to be considered valid.",
+																			"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																			"example": "300s",
 																			"type": "string",
 																			"x-auditable": true
@@ -6743,7 +6743,7 @@
 														},
 														"traffic": {
 															"default": "",
-															"description": "The wirefilter expression used for traffic matching.",
+															"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string",
 															"x-auditable": true,
@@ -7040,7 +7040,7 @@
 												},
 												"device_posture": {
 													"default": "",
-													"description": "The wirefilter expression used for device posture check matching.",
+													"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string",
 													"x-auditable": true,
@@ -7122,7 +7122,7 @@
 												},
 												"identity": {
 													"default": "",
-													"description": "The wirefilter expression used for identity matching.",
+													"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string",
 													"x-auditable": true,
@@ -7363,7 +7363,7 @@
 															"nullable": true,
 															"properties": {
 																"duration": {
-																	"description": "Configure how fresh the session needs to be to be considered valid.",
+																	"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																	"example": "300s",
 																	"type": "string",
 																	"x-auditable": true
@@ -7771,7 +7771,7 @@
 												},
 												"traffic": {
 													"default": "",
-													"description": "The wirefilter expression used for traffic matching.",
+													"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string",
 													"x-auditable": true,
@@ -7937,7 +7937,7 @@
 														},
 														"device_posture": {
 															"default": "",
-															"description": "The wirefilter expression used for device posture check matching.",
+															"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string",
 															"x-auditable": true,
@@ -8019,7 +8019,7 @@
 														},
 														"identity": {
 															"default": "",
-															"description": "The wirefilter expression used for identity matching.",
+															"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string",
 															"x-auditable": true,
@@ -8260,7 +8260,7 @@
 																	"nullable": true,
 																	"properties": {
 																		"duration": {
-																			"description": "Configure how fresh the session needs to be to be considered valid.",
+																			"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																			"example": "300s",
 																			"type": "string",
 																			"x-auditable": true
@@ -8668,7 +8668,7 @@
 														},
 														"traffic": {
 															"default": "",
-															"description": "The wirefilter expression used for traffic matching.",
+															"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string",
 															"x-auditable": true,
@@ -8882,7 +8882,7 @@
 							},
 							"device_posture": {
 								"default": "",
-								"description": "The wirefilter expression used for device posture check matching.",
+								"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 								"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 								"type": "string",
 								"x-auditable": true,
@@ -8957,7 +8957,7 @@
 							},
 							"identity": {
 								"default": "",
-								"description": "The wirefilter expression used for identity matching.",
+								"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 								"example": "any(identity.groups.name[*] in {\"finance\"})",
 								"type": "string",
 								"x-auditable": true,
@@ -9186,7 +9186,7 @@
 										"nullable": true,
 										"properties": {
 											"duration": {
-												"description": "Configure how fresh the session needs to be to be considered valid.",
+												"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 												"example": "300s",
 												"type": "string",
 												"x-auditable": true
@@ -9588,7 +9588,7 @@
 							},
 							"traffic": {
 								"default": "",
-								"description": "The wirefilter expression used for traffic matching.",
+								"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 								"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 								"type": "string",
 								"x-auditable": true,
@@ -9725,7 +9725,7 @@
 												},
 												"device_posture": {
 													"default": "",
-													"description": "The wirefilter expression used for device posture check matching.",
+													"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 													"type": "string",
 													"x-auditable": true,
@@ -9807,7 +9807,7 @@
 												},
 												"identity": {
 													"default": "",
-													"description": "The wirefilter expression used for identity matching.",
+													"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "any(identity.groups.name[*] in {\"finance\"})",
 													"type": "string",
 													"x-auditable": true,
@@ -10048,7 +10048,7 @@
 															"nullable": true,
 															"properties": {
 																"duration": {
-																	"description": "Configure how fresh the session needs to be to be considered valid.",
+																	"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																	"example": "300s",
 																	"type": "string",
 																	"x-auditable": true
@@ -10456,7 +10456,7 @@
 												},
 												"traffic": {
 													"default": "",
-													"description": "The wirefilter expression used for traffic matching.",
+													"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 													"type": "string",
 													"x-auditable": true,
@@ -10625,7 +10625,7 @@
 														},
 														"device_posture": {
 															"default": "",
-															"description": "The wirefilter expression used for device posture check matching.",
+															"description": "The wirefilter expression used for device posture check matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
 															"type": "string",
 															"x-auditable": true,
@@ -10707,7 +10707,7 @@
 														},
 														"identity": {
 															"default": "",
-															"description": "The wirefilter expression used for identity matching.",
+															"description": "The wirefilter expression used for identity matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "any(identity.groups.name[*] in {\"finance\"})",
 															"type": "string",
 															"x-auditable": true,
@@ -10948,7 +10948,7 @@
 																	"nullable": true,
 																	"properties": {
 																		"duration": {
-																			"description": "Configure how fresh the session needs to be to be considered valid.",
+																			"description": "Configure how fresh the session needs to be to be considered valid. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 																			"example": "300s",
 																			"type": "string",
 																			"x-auditable": true
@@ -11356,7 +11356,7 @@
 														},
 														"traffic": {
 															"default": "",
-															"description": "The wirefilter expression used for traffic matching.",
+															"description": "The wirefilter expression used for traffic matching. The API automatically formats and sanitizes this expression. This returns a normalized version that may differ from your input and cause Terraform state drift.",
 															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
 															"type": "string",
 															"x-auditable": true,
