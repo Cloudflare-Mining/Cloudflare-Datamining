@@ -461,7 +461,8 @@
 														"description": "The description of the list.",
 														"example": "The serial numbers for administrators",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"id": {
 														"description": "API Resource UUID tag.",
@@ -659,7 +660,8 @@
 																"description": "The description of the list.",
 																"example": "The serial numbers for administrators",
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"id": {
 																"description": "API Resource UUID tag.",
@@ -959,7 +961,8 @@
 													"description": "The description of the list.",
 													"example": "The serial numbers for administrators",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "API Resource UUID tag.",
@@ -1126,7 +1129,8 @@
 															"description": "The description of the list.",
 															"example": "The serial numbers for administrators",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"description": "API Resource UUID tag.",
@@ -1945,7 +1949,8 @@
 													"description": "The description of the list.",
 													"example": "The serial numbers for administrators",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "API Resource UUID tag.",
@@ -2112,7 +2117,8 @@
 															"description": "The description of the list.",
 															"example": "The serial numbers for administrators",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"description": "API Resource UUID tag.",
@@ -2316,7 +2322,8 @@
 								"description": "The description of the list.",
 								"example": "The serial numbers for administrators",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"items": {
 								"description": "items to add to the list.",
@@ -2454,7 +2461,8 @@
 													"description": "The description of the list.",
 													"example": "The serial numbers for administrators",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "API Resource UUID tag.",
@@ -2613,7 +2621,8 @@
 															"description": "The description of the list.",
 															"example": "The serial numbers for administrators",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"description": "API Resource UUID tag.",
@@ -2827,7 +2836,8 @@
 								"description": "The description of the list.",
 								"example": "The serial numbers for administrators",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"items": {
 								"description": "items to add to the list.",
@@ -2957,7 +2967,8 @@
 													"description": "The description of the list.",
 													"example": "The serial numbers for administrators",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "API Resource UUID tag.",
@@ -3124,7 +3135,8 @@
 															"description": "The description of the list.",
 															"example": "The serial numbers for administrators",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"description": "API Resource UUID tag.",
