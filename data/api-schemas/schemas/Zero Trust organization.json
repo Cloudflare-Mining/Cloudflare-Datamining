@@ -117,6 +117,7 @@
 										"result": {
 											"properties": {
 												"allow_authenticate_via_warp": {
+													"default": false,
 													"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
 													"example": "false",
 													"type": "boolean",
@@ -156,6 +157,7 @@
 													"type": "object"
 												},
 												"is_ui_read_only": {
+													"default": false,
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 													"example": "false",
 													"type": "boolean",
@@ -722,6 +724,7 @@
 					"schema": {
 						"properties": {
 							"allow_authenticate_via_warp": {
+								"default": false,
 								"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
 								"example": "false",
 								"type": "boolean",
@@ -740,6 +743,7 @@
 								"x-auditable": true
 							},
 							"is_ui_read_only": {
+								"default": false,
 								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 								"example": "false",
 								"type": "boolean",
@@ -914,6 +918,7 @@
 										"result": {
 											"properties": {
 												"allow_authenticate_via_warp": {
+													"default": false,
 													"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
 													"example": "false",
 													"type": "boolean",
@@ -953,6 +958,7 @@
 													"type": "object"
 												},
 												"is_ui_read_only": {
+													"default": false,
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 													"example": "false",
 													"type": "boolean",
@@ -1408,6 +1414,7 @@
 					"schema": {
 						"properties": {
 							"allow_authenticate_via_warp": {
+								"default": false,
 								"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
 								"example": "false",
 								"type": "boolean",
@@ -1441,6 +1448,7 @@
 								"type": "object"
 							},
 							"is_ui_read_only": {
+								"default": false,
 								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 								"example": "false",
 								"type": "boolean",
@@ -1611,6 +1619,7 @@
 										"result": {
 											"properties": {
 												"allow_authenticate_via_warp": {
+													"default": false,
 													"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
 													"example": "false",
 													"type": "boolean",
@@ -1650,6 +1659,7 @@
 													"type": "object"
 												},
 												"is_ui_read_only": {
+													"default": false,
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 													"example": "false",
 													"type": "boolean",
