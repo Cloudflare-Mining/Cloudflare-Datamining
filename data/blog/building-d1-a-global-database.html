@@ -17,7 +17,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>D1 is Cloudflare's built-in, serverless relational database. For Worker applications, D1 offers SQL's expressiveness, leveraging SQLite's SQL dialect, and developer tooling integrations, including object-relational mappers (ORMs) like Drizzle ORM. D1 is accessible via <a href="https://developers.cloudflare.com/d1/build-with-d1/d1-client-api">Workers</a> or an <a href="https://developers.cloudflare.com/api/operations/cloudflare-d1-create-database">HTTP API</a>.</p>
+	<p>D1 is Cloudflare's built-in, serverless relational database. For Worker applications, D1 offers SQL's expressiveness, leveraging SQLite's SQL dialect, and developer tooling integrations, including object-relational mappers (ORMs) like <a href="https://orm.drizzle.team/docs/connect-cloudflare-d1">Drizzle ORM</a>. D1 is accessible via <a href="https://developers.cloudflare.com/d1/build-with-d1/d1-client-api">Workers</a> or an <a href="https://developers.cloudflare.com/api/operations/cloudflare-d1-create-database">HTTP API</a>.</p>
 	<p>Serverless means no provisioning, default disaster recovery with <a href="https://developers.cloudflare.com/d1/reference/time-travel">Time Travel</a>, and <a href="https://developers.cloudflare.com/d1/platform/pricing">usage-based pricing</a>. D1 includes a generous free tier that allows developers to experiment with D1 and then graduate those trials to production.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-to-make-data-global">How to make data global?</h3>
@@ -253,7 +253,7 @@ async function handleRequest(request: Request, session: D1DatabaseSession) {
 		</a>
 	</div>
 	<p>Since D1’s open beta in October 2023, we’ve focused on D1’s reliability, scalability, and developer experience demanded of critical services. We’ve invested in several new features that allow developers to build and debug applications faster with D1.</p>
-	<p><b>Build bigger with larger databases</b>We’ve listened to developers who requested larger databases. D1 now supports up to 10GB databases, with 50K databases on the Workers Paid plan. With D1’s horizontal scaleout, applications can model database-per-business-entity use cases. Since beta, new D1 databases process 40x more requests than D1 alpha databases in a given period.</p>
+	<p><b>Build bigger with larger databases</b>We’ve listened to developers who requested larger databases. D1 now supports up to 10&nbsp;GB databases, with 50K databases on the Workers Paid plan. With D1’s horizontal scaleout, applications can model database-per-business-entity use cases. Since beta, new D1 databases process 40x more requests than D1 alpha databases in a given period.</p>
 	<p><b>Import &amp; export bulk data</b>Developers import and export data for multiple reasons:</p>
 	<ul>
 		<li>
