@@ -374,7 +374,10 @@
 																		},
 																		"readOnly": true,
 																		"title": "Conflicts with",
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-skip": [
+																			"terraform"
+																		]
 																	},
 																	"enabled": {
 																		"description": "Whether the Managed Transform is enabled.",
@@ -387,7 +390,10 @@
 																		"example": false,
 																		"readOnly": true,
 																		"title": "Has conflict",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-stainless-skip": [
+																			"terraform"
+																		]
 																	},
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
@@ -440,7 +446,10 @@
 																		},
 																		"readOnly": true,
 																		"title": "Conflicts with",
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-skip": [
+																			"terraform"
+																		]
 																	},
 																	"enabled": {
 																		"description": "Whether the Managed Transform is enabled.",
@@ -453,7 +462,10 @@
 																		"example": false,
 																		"readOnly": true,
 																		"title": "Has conflict",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-stainless-skip": [
+																			"terraform"
+																		]
 																	},
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
@@ -756,7 +768,10 @@
 													},
 													"readOnly": true,
 													"title": "Conflicts with",
-													"type": "array"
+													"type": "array",
+													"x-stainless-skip": [
+														"terraform"
+													]
 												},
 												"enabled": {
 													"description": "Whether the Managed Transform is enabled.",
@@ -769,7 +784,10 @@
 													"example": false,
 													"readOnly": true,
 													"title": "Has conflict",
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-skip": [
+														"terraform"
+													]
 												},
 												"id": {
 													"description": "The human-readable identifier of the Managed Transform.",
@@ -822,7 +840,10 @@
 													},
 													"readOnly": true,
 													"title": "Conflicts with",
-													"type": "array"
+													"type": "array",
+													"x-stainless-skip": [
+														"terraform"
+													]
 												},
 												"enabled": {
 													"description": "Whether the Managed Transform is enabled.",
@@ -835,7 +856,10 @@
 													"example": false,
 													"readOnly": true,
 													"title": "Has conflict",
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-skip": [
+														"terraform"
+													]
 												},
 												"id": {
 													"description": "The human-readable identifier of the Managed Transform.",
@@ -1028,7 +1052,10 @@
 																		},
 																		"readOnly": true,
 																		"title": "Conflicts with",
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-skip": [
+																			"terraform"
+																		]
 																	},
 																	"enabled": {
 																		"description": "Whether the Managed Transform is enabled.",
@@ -1041,7 +1068,10 @@
 																		"example": false,
 																		"readOnly": true,
 																		"title": "Has conflict",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-stainless-skip": [
+																			"terraform"
+																		]
 																	},
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
@@ -1094,7 +1124,10 @@
 																		},
 																		"readOnly": true,
 																		"title": "Conflicts with",
-																		"type": "array"
+																		"type": "array",
+																		"x-stainless-skip": [
+																			"terraform"
+																		]
 																	},
 																	"enabled": {
 																		"description": "Whether the Managed Transform is enabled.",
@@ -1107,7 +1140,10 @@
 																		"example": false,
 																		"readOnly": true,
 																		"title": "Has conflict",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-stainless-skip": [
+																			"terraform"
+																		]
 																	},
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
