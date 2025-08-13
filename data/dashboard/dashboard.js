@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "48b3eb45-f3c0-5312-a5fa-e660fbd41b45")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "e8232940-b2f2-5e88-8ffd-7dd7eac56117")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1149,10 +1149,10 @@
 					t.g.build = hn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "8e232e605756203cd6a87d702f214d13ba04070d",
-						dashVersion: "35250086",
+						commit: "dc4edee93a725002a319863b990cb0ecfa83276b",
+						dashVersion: "35277247",
 						env: "production",
-						builtAt: 1755012524608,
+						builtAt: 1755092863436,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -23519,6 +23519,9 @@
   .z-50 {
     z-index: 50;
   }
+  .z-100 {
+    z-index: 100;
+  }
   .col-span-2 {
     grid-column: span 2 / span 2;
   }
@@ -23551,6 +23554,9 @@
   }
   .m-1 {
     margin: calc(var(--spacing) * 1);
+  }
+  .m-2 {
+    margin: calc(var(--spacing) * 2);
   }
   .m-4 {
     margin: calc(var(--spacing) * 4);
@@ -26155,10 +26161,6 @@
   .delay-200 {
     transition-delay: 200ms;
   }
-  .duration-100 {
-    --tw-duration: 100ms;
-    transition-duration: 100ms;
-  }
   .duration-150 {
     --tw-duration: 150ms;
     transition-duration: 150ms;
@@ -26281,43 +26283,6 @@
   .placeholder\\:text-neutral-400 {
     &::placeholder {
       color: var(--color-neutral-400);
-    }
-  }
-  .before\\:absolute {
-    &::before {
-      content: var(--tw-content);
-      position: absolute;
-    }
-  }
-  .before\\:top-0 {
-    &::before {
-      content: var(--tw-content);
-      top: calc(var(--spacing) * 0);
-    }
-  }
-  .before\\:left-0 {
-    &::before {
-      content: var(--tw-content);
-      left: calc(var(--spacing) * 0);
-    }
-  }
-  .before\\:size-full {
-    &::before {
-      content: var(--tw-content);
-      width: 100%;
-      height: 100%;
-    }
-  }
-  .before\\:scale-\\[1\\.5\\] {
-    &::before {
-      content: var(--tw-content);
-      scale: 1.5;
-    }
-  }
-  .before\\:bg-transparent {
-    &::before {
-      content: var(--tw-content);
-      background-color: transparent;
     }
   }
   .first\\:mt-1 {
@@ -26716,6 +26681,12 @@
   .focus-visible\\:bg-blue-50 {
     &:focus-visible {
       background-color: var(--color-blue-50);
+    }
+  }
+  .focus-visible\\:ring {
+    &:focus-visible {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
   .focus-visible\\:ring-1 {
@@ -27859,6 +27830,11 @@
       border-color: var(--color-active);
     }
   }
+  .\\[\\&\\>div\\:first-child\\]\\:\\!py-3 {
+    &>div:first-child {
+      padding-block: calc(var(--spacing) * 3) !important;
+    }
+  }
   .\\[\\&\\>pre\\]\\:\\!p-2\\.5 {
     &>pre {
       padding: calc(var(--spacing) * 2.5) !important;
@@ -28379,11 +28355,6 @@ button.border {
   syntax: "*";
   inherits: false;
 }
-@property --tw-content {
-  syntax: "*";
-  initial-value: "";
-  inherits: false;
-}
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -28469,7 +28440,6 @@ button.border {
       --tw-backdrop-sepia: initial;
       --tw-duration: initial;
       --tw-ease: initial;
-      --tw-content: "";
     }
   }
 }
@@ -28501,4 +28471,4 @@ button.border {
 	}
 ]);
 
-//# debugId=48b3eb45-f3c0-5312-a5fa-e660fbd41b45
+//# debugId=e8232940-b2f2-5e88-8ffd-7dd7eac56117
