@@ -313,6 +313,7 @@
 			"queues_json_messages": "boolean",
 			"r2_list_honor_include": "boolean",
 			"r2_public_beta_bindings": "boolean",
+			"remove_nodejs_compat_eol": "boolean",
 			"request_cf_overrides_cache_rules": "boolean",
 			"request_signal_passthrough": "boolean",
 			"response_redirect_url_standard": "boolean",
@@ -2358,6 +2359,12 @@
 		},
 		"DURABLE_OBJECT_BINDING": {
 			"get": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"getByName": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -15984,6 +15991,90 @@
 					"name": "undefined",
 					"prototype": "undefined"
 				}
+			},
+			"isBoolean": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isBuffer": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isDate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isError": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isFunction": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isNull": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isNullOrUndefined": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isNumber": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isObject": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isPrimitive": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isRegExp": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isString": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isSymbol": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isUndefined": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
 			}
 		},
 		"tls": {
@@ -17197,6 +17288,13 @@
 				}
 			},
 			"getCiphers": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createSecurePair": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -24277,6 +24375,13 @@
 		},
 		"sockets": {
 			"connect": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"internalNewHttpClient": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
