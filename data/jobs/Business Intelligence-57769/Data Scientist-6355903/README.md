@@ -8,7 +8,7 @@
 <p><strong>Locations - </strong>Austin, Texas or major Texas cities who are willing to travel to Austin once a month for team meetings. If not in Texas, you must be willing to relocate.&nbsp;</p>
 <hr>
 <p><strong>About the Team</strong></p>
-<p>The BI team at Cloudflare is responsible for building and managing the cloud data analytics platform. Our focus is on developing a centralized cloud data analytics platform using open source technologies for internal Business Partners and Machine Learning teams. The team aims to make data more accessible, meet Cloudflare's critical business needs, and provide self-service reporting and analytics tools to support current and new business initiatives.</p>
+<p>The Data Analytics &amp; Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
 <p><strong>Data Scientist Responsibilities</strong></p>
 <ul>
 	<li>Partner and align with business leaders, stakeholders, product managers and internal teams to understand the business and product challenges and goals and address them using predictive analytics in a globally distributed environment.</li>

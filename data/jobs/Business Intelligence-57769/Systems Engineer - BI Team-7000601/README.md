@@ -8,7 +8,7 @@
 <p><strong>Location -&nbsp;</strong>Austin, TX Must be willing to relocate if not in area.&nbsp;</p>
 <hr>
 <p><strong>About the team</strong></p>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
+<p>The Data Analytics &amp; Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
 <p><strong>About the role</strong></p>
 <p>We are looking for a Systems Engineer to join our Austin team to scale our development efforts on Platform Tooling initiatives. You will work on building data application tools and frameworks which empowers our Internal Teams. You&nbsp; will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, and Clickhouse.</p>
 <p><strong>What you'll do</strong></p>
