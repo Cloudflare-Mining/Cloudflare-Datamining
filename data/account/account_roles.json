@@ -1314,14 +1314,14 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
-			"ces_policies": {
-				"read": true,
-				"edit": true
-			},
 			"teams": {
 				"read": true,
 				"edit": true,
 				"report": true
+			},
+			"ces_policies": {
+				"read": true,
+				"edit": true
 			},
 			"cds": {
 				"read": true,
@@ -1410,6 +1410,12 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"pii": true,
+				"report": true
+			},
 			"lb": {
 				"read": true,
 				"edit": true
@@ -1441,12 +1447,6 @@
 			"resilience": {
 				"read": true,
 				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"pii": true,
-				"report": true
 			},
 			"waitingroom": {
 				"read": true,
@@ -2050,6 +2050,11 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
 			"lb": {
 				"read": true,
 				"edit": false
@@ -2081,11 +2086,6 @@
 			"resilience": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
 			},
 			"waitingroom": {
 				"read": true,
@@ -2249,6 +2249,11 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
 			"lb": {
 				"read": true,
 				"edit": true
@@ -2280,11 +2285,6 @@
 			"resilience": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
 			},
 			"waitingroom": {
 				"read": true,
