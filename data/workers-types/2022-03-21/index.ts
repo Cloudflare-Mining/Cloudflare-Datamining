@@ -6012,6 +6012,12 @@ export type GatewayOptions = {
   requestTimeoutMs?: number;
   retries?: GatewayRetries;
 };
+export type UniversalGatewayOptions = Exclude<GatewayOptions, "id"> & {
+  /**
+   ** @deprecated
+   */
+  id?: string;
+};
 export type AiGatewayPatchLog = {
   score?: number | null;
   feedback?: -1 | 1 | null;
@@ -6105,7 +6111,7 @@ export declare abstract class AiGateway {
   run(
     data: AIGatewayUniversalRequest | AIGatewayUniversalRequest[],
     options?: {
-      gateway?: GatewayOptions;
+      gateway?: UniversalGatewayOptions;
       extraHeaders?: object;
     },
   ): Promise<Response>;
@@ -6136,6 +6142,7 @@ export type AutoRagSearchRequest = {
 };
 export type AutoRagAiSearchRequest = AutoRagSearchRequest & {
   stream?: boolean;
+  system_prompt?: string;
 };
 export type AutoRagAiSearchRequestStreaming = Omit<
   AutoRagAiSearchRequest,
