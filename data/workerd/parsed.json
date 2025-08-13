@@ -3081,6 +3081,13 @@
 						"compatEnableFlag": "enable_nodejs_http2_module",
 						"impliedByAfterDate": "unhandled type"
 					}
+				},
+				{
+					"name": "experimentalAllowEvalAlways",
+					"annotations": {
+						"compatEnableFlag": "allow_insecure_inefficient_logged_eval",
+						"experimental": "true"
+					}
 				}
 			]
 		},
