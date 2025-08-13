@@ -3073,6 +3073,14 @@
 						"compatEnableFlag": "typescript_strip_types",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableNodeJsHttp2Module",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_http2_module",
+						"compatEnableFlag": "enable_nodejs_http2_module",
+						"impliedByAfterDate": "unhandled type"
+					}
 				}
 			]
 		},
@@ -6483,9 +6491,6 @@
 		"workerd/src/workerd/jsg/rtti.capnp",
 		"workerd/src/workerd/server/docker-api.capnp",
 		"workerd/src/workerd/server/log-schema.capnp",
-		"workerd/src/workerd/server/workerd-meta.capnp",
-		"workerd/src/workerd/server/workerd-meta.capnp:cppCapnpSchema",
-		"workerd/src/workerd/server/workerd-meta.capnp:workerdCapnpSchema",
 		"workerd/src/workerd/server/workerd.capnp"
 	]
 }
