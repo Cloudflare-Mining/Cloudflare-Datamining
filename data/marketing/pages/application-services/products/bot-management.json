@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2019-03-20T20:46:41.176Z",
-					"updatedAt": "2025-08-06T00:38:20.060Z"
+					"updatedAt": "2025-08-13T18:57:30.884Z"
 				},
 				"contentfulId": "1MFKT7svIM8e8IcqMemoKW",
 				"contentTypeId": "page",
@@ -827,6 +827,39 @@
 						"cards": [
 							{
 								"contentTypeId": "elementResourceCard",
+								"contentfulId": "4eLUDlIGFiIxs93ow9RA9w",
+								"heading": "Product brief",
+								"description": "Bot Management Datasheet",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "t1CwDL9tp46YtjFNW7cqW",
+									"elementName": "Bot Management - Resources cards carousel - link",
+									"standardText": null,
+									"text": "Get the product brief",
+									"url": "https://cfl.re/4oHdMHx",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "39b5574f-06ad-5bdd-a7b5-8a93f5e8a3df",
+									"altText": "Build AI with Cloudflare - thumbnail ",
+									"title": "Build AI with Cloudflare - thumbnail ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
 								"contentfulId": "2H8H6eQtSsGtEpoTwzcbgv",
 								"heading": "Demo",
 								"description": "See how our network protects your most critical web applications",
@@ -1029,6 +1062,185 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "5jnr6RTQ3JB6BQERmek80U",
+						"bladeName": "Bot Management FAQs",
+						"title": "Bot Management FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4qJgw4IH3agWE3Qk71rjY5",
+								"title": "What is Cloudflare Bot Management?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Bot Management mitigates bot attacks and manages bot activity without impacting legitimate users or good bots. The service leverages global threat intelligence and machine learning to automatically protect against unwanted bot activity, without the use of user-unfriendly measures like CAPTCHA. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4UoXqKM1KJYJpYeDtJHQO2",
+								"title": "How does Cloudflare identify and categorize bots?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare utilizes multiple detection techniques, including machine learning, analysis of bot behavior, and fingerprinting, to precisely identify and classify bots. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7n61FjEHWJ3H9p8kwiCSvO",
+								"title": "What types of malicious activities can Cloudflare Bot Management prevent?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Bot Management can defend against all types of malicious bot activity, including credential stuffing, content scraping, inventory hoarding, brute force attacks, click fraud, and distributed denial of service (DDoS) attacks. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4rstK0yXFuqJOhx5TQjDen",
+								"title": "Does Cloudflare Bot Management rely on CAPTCHAs to stop bots?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare does not use CAPTCHAs. Cloudflare Bot Management has developed several methods to challenge bots without inconveniencing legitimate users with CAPTCHAs. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5NOBZMCJoTgbWQSXitk8Ql",
+								"title": "What are Private Access Tokens, and how do they benefit users?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Private Access Tokens authenticate users with Apple devices while preserving their privacy, eliminating the need for CAPTCHAs and avoiding the collection of personal data. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
