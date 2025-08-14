@@ -747,6 +747,15 @@
 	"log_explorer.enable_datasets.enable_selected_datasets": "Enable selected datasets",
 	"log_explorer.enable_datasets.successfully_enabled.title": "%{datasetsCount} dataset(s) have been enabled",
 	"log_explorer.enable_datasets.successfully_enabled.description": "Dataset(s) enabled, it may take a few moments for logs to be available to query.",
+	"log_explorer.details.title": "Log",
+	"log_explorer.details.open.tooltip": "View log details",
+	"log_explorer.details.go_to_documentation": "Go to documentation",
+	"log_explorer.details.investigate_ip": "Investigate IP address",
+	"log_explorer.details.investigate_asn": "Investigate ASN",
+	"log_explorer.details.investigate_ja3": "Investigate JA3 Hash",
+	"log_explorer.details.edit_rule": "Edit rule",
+	"log_explorer.details.view_application": "View application",
+	"log_explorer.details.view_policy": "View policy",
 	"logpush.job_name": "Job name",
 	"logpush.job_name.help": "Optional field that helps identify and organize your logpush jobs.",
 	"logpush.form.validation.job_name_format": "Job name can only contain letters, numbers, hyphens, and periods",
@@ -1140,5 +1149,6 @@
 	"eos.datasets.scopes.zone": "Domain scoped datasets",
 	"eos.datasets.scopes.account": "Account scoped datasets",
 	"eos.log_search.title": "Log Search",
-	"eos.log_search.documentation": "Log Search documentation"
+	"eos.log_search.documentation": "Log Search documentation",
+	"eos.log_search.dataset.pii_permission": "Dataset %{dataset} requires Zero Trust PII permissions"
 }

@@ -108,6 +108,8 @@
 	"organizations.meta.actions.invite_org_admin": "Invite organization administrator",
 	"organizations.meta.actions.move_account": "Move account",
 	"organizations.meta.actions.migrate_account": "Assign an account",
+	"organizations.meta.actions.migrate_account_forbidden": "You don't have the right privileges to migrate this account",
+	"organizations.meta.actions.migrate_account_bad_request_already_migrated": "The account %{account_name} is already assigned to %{organization_name}",
 	"organizations.meta.actions.rename_org": "Rename organization",
 	"organizations.meta.actions.create_rootorg": "Create root organization",
 	"organizations.meta.actions.disable_rootorg": "Please make sure the name field is not empty.",
