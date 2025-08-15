@@ -5,65 +5,62 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Washington DC, Austin, TX</strong></p>
-<p><strong>About the role</strong></p>
-<p>As Litigation Paralegal, you will help organize and manage our global response to legal requests and litigation, work closely with all parts of the business to develop facts and respond to discovery requests, build and manage systems to scale with our growing business, and collaborate closely with internal and external counsel. The ideal candidate has the passion to keep pace with a fast moving docket, the curiosity to dive deep into evolving technology and law, the organizational skills to manage a steady flow of documents and deadlines, and the initiative to build new systems and processes to make our team better.</p>
-<p>In this role you will:</p>
+<p><strong>Available Location: </strong>Austin, TX</p>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>Role Summary</strong></h4>
+<p>The Cloudflare Escalation Engineer will perform deep, technical troubleshooting for complex, escalated issues. This role owns the customer escalation process and works with various Product and Engineering teams to identify product bugs, network problems, and platform issues. Escalation Engineers foster a close relationship with SRE, Network, Engineering and Product teams. They act as an escalation point, isolate/replicate problems, and gather technical information/expectation.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Help respond to discovery orders, threatened disputes, litigation, and government inquiries;</li>
-	<li>Manage the litigation hold and document collection process;</li>
-	<li>Help conduct factual investigations and collect relevant records;</li>
-	<li>Manage internal trackers for litigation, pre-litigation, and government requests for records and enforcement matters;&nbsp;</li>
-	<li>Create, manage, and improve processes to scale our litigation function within the company;</li>
-	<li>Work closely with our litigation and legal operations team to support outside counsel onboarding and billing review, and to onboard and utilize litigation-related tools;</li>
-	<li>Collaborate with legal team members to improve processes, provide training, and ensure business needs are met.</li>
+	<li>Serve as a subject-matter expert in supporting network, routing and transport layer protocols such as BGP, OSPF, IPSec, GRE, TCP, UDP, etc.</li>
+	<li>Serve as a subject-matter expert in supporting Security products and technologies such as WAF, Firewall, IPS, DDoS, etc.</li>
+	<li>Collaborate closely with engineering and product teams to escalate issues, provide root cause analysis, and contribute to product improvements.</li>
+	<li>Create and maintain detailed knowledge base articles, troubleshooting guides, and technical documentation.</li>
+	<li>Provide coverage (shift rotation, including possibility of weekends and Pacific Time hours) for technical troubleshooting of escalated issues.</li>
+	<li>Triage Customer Escalation issues to find the quickest, most efficient path of resolution.</li>
+	<li>Work cross-functionally with various teams across the company, from engineering to sales.</li>
 </ul>
-<p>You have:</p>
+<h4><strong>Requirements</strong></h4>
 <ul>
-	<li>BS/BA Degree</li>
-	<li>5+ years of litigation paralegal experience either at a law firm, in the government, or in a company</li>
-	<li>Prior experience at an in-house litigation department is a plus</li>
-	<li>Experience working on litigation matters involving technology issues or for technology companies is preferred Experience with Google drive and related products preferred. Experience with other ebilling, ediscovery, and other commonly used tools a plus</li>
-	<li>Analytical, process oriented, and strong communication and organizational skills</li>
-	<li>Ability to work cross-functionally, with lawyers and non-lawyers, to establish effective solutions efficiently and in an amenable manner</li>
-	<li>Ability to operate autonomously while being a team player who brings a positive attitude to the workplace. Lead with empathy and understanding while embracing diverse points of view. Flexibility to adapt and thrive in a fast paced environment</li>
-	<li>Understanding of law firm and vendor services as it relates to process development</li>
-	<li>Interest in learning about Cloudflare’s services and technology, and how they intersect with developing law and policy</li>
+	<li>Minimum of <strong>3 years’ hands-on experience</strong> supporting enterprise network and/or security environments.</li>
+	<li>Strong foundation in networking and security principles, technologies, and troubleshooting, including:</li>
+	<ul>
+		<li>TCP/IP fundamentals, including OSI model, IPv4/IPv6 addressing, subnetting, routing, and switching</li>
+		<li>Common network protocols such as DNS, DHCP, HTTP/S, SNMP, SMTP, NTP, and FTP/SFTP</li>
+		<li>Routing protocols including BGP, OSPF, and EIGRP, with an understanding of path selection</li>
+		<li>Firewall concepts such as stateful/stateless inspection, rule sets, NAT, and ACLs</li>
+		<li>VPN technologies and encryption methods (IPSec, SSL/TLS)</li>
+		<li>Network segmentation and Zero Trust security models</li>
+		<li>Intrusion detection and prevention (IDS/IPS)</li>
+		<li>Endpoint and network threat mitigation strategies</li>
+		<li>Security incident response processes and basic forensic principles<br><br></li>
+	</ul>
+	<li>Proficiency in <strong>network troubleshooting</strong> using packet capture and analysis tools (e.g., Wireshark, tcpdump).</li>
+	<li><strong>Excellent verbal and written communication skills</strong>, with the ability to convey technical information clearly to both technical and non-technical audiences.</li>
+	<li>Demonstrated ability to <strong>manage multiple priorities and projects</strong> effectively in a fast-paced environment.</li>
+</ul>
+<h4><strong>Core competencies (“Desired skills, knowledge and experience”)</strong></h4>
+<ul>
+	<li>Extensive technical support experience.</li>
+	<li>Expertise in troubleshooting application protocols (L7 - DNS, HTTP, etc).</li>
+	<li>Expertise in troubleshooting network infrastructure (L3/L4).</li>
+	<li>Expert with Linux command line tools&nbsp; (curl, dig, git, traceroute, mtr).</li>
+	<li>Expert at analyzing data using tools like Grafana, Kibana, and SQL.</li>
+	<li>Able to clarify complex technical issues and coordinate efforts to resolve.</li>
+	<li>Able to identify and share/suggest process improvements.</li>
+	<li>Demonstrated leadership, prior mentoring experience.</li>
+	<li>Self-motivated, self-directed, strong relationship building, can positively influence the actions of others, team player.</li>
+	<li>Comfortable handling inbound and outbound customer calls.</li>
+</ul>
+<h4><strong>Bonus Points</strong></h4>
+<ul>
+	<li>You are familiar with Cloudflare and are actively using our platform.</li>
+	<li>Experience with regular expressions.</li>
+	<li>Knowledge of web programming (HTML, Javascript, PHP) and scripting (bash, Python).</li>
+	<li>Experience managing/configuring non-HTTP applications (email, DNS, FTP, SSH, etc).</li>
+	<li>Experience with cloud networking and security in AWS, Azure, or GCP.</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $105,000 - $129,000.</li>
-	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $118,000 - $144,000.</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
