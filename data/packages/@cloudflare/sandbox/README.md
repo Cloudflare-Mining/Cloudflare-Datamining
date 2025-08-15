@@ -72,7 +72,7 @@ npm install @cloudflare/sandbox
 1. **Create a Dockerfile** (temporary requirement, will be removed in future releases):
 
 ```dockerfile
-FROM docker.io/cloudflare/sandbox:0.2.4
+FROM docker.io/cloudflare/sandbox:0.3.0
 
 # Expose the ports you want to expose
 EXPOSE 3000
@@ -253,6 +253,14 @@ console.log(result.stdout); // "production"
 - `exposePort(port, options?)` - Expose a port and get a public URL
 - `unexposePort(port)` - Remove port exposure
 - `getExposedPorts()` - List all exposed ports with their URLs
+
+#### Session Methods
+
+- `createSession(options)` - Create an isolated execution session
+  - `name`: Session identifier
+  - `env`: Environment variables for this session
+  - `cwd`: Working directory
+  - `isolation`: Enable PID namespace isolation (requires CAP_SYS_ADMIN)
 
 <h2 id="code-interpreter">🧪 Code Interpreter</h2>
 
@@ -703,16 +711,70 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 ### Session Management
 
-Maintain context across commands:
+The SDK provides two approaches for managing execution context:
+
+#### Implicit Sessions (Recommended)
+
+Each sandbox maintains its own persistent session automatically:
 
 ```typescript
-const sessionId = crypto.randomUUID();
+const sandbox = getSandbox(env.Sandbox, "my-app");
 
-// Commands in the same session share working directory
-await sandbox.exec("cd /workspace", { sessionId });
-await sandbox.exec("npm install", { sessionId });
-const app = await sandbox.startProcess("npm start", { sessionId });
+// These commands share state (pwd, env vars, etc.)
+await sandbox.exec("cd /app");
+await sandbox.exec("pwd");  // Output: /app
+await sandbox.exec("export MY_VAR=hello");
+await sandbox.exec("echo $MY_VAR");  // Output: hello
 ```
+
+#### Explicit Sessions for Advanced Use Cases
+
+Create isolated execution contexts within the same sandbox:
+
+```typescript
+const sandbox = getSandbox(env.Sandbox, "multi-env");
+
+// Create independent sessions with different environments
+const buildSession = await sandbox.createSession({
+  name: "build",
+  env: { NODE_ENV: "production" },
+  cwd: "/build"
+});
+
+const testSession = await sandbox.createSession({
+  name: "test",
+  env: { NODE_ENV: "test" },
+  cwd: "/test"
+});
+
+// Run commands in parallel with different contexts
+await Promise.all([
+  buildSession.exec("npm run build"),
+  testSession.exec("npm test")
+]);
+```
+
+#### Security with AI Agents
+
+When using AI coding agents, separate development from execution:
+
+```typescript
+// Phase 1: AI agent writes code (with API keys)
+const devSession = await sandbox.createSession({
+  name: "ai-development",
+  env: { ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY }
+});
+await devSession.exec('opencode "build a web server"');
+
+// Phase 2: Run the generated code (without API keys)
+const appSession = await sandbox.createSession({
+  name: "app-runtime",
+  env: { PORT: "3000" }  // Only app-specific vars
+});
+await appSession.exec("node server.js");
+```
+
+> **Best Practice**: Keep AI agent credentials separate from your application runtime to prevent accidental exposure of API keys.
 
 <h2 id="debugging">🔍 Debugging</h2>
 
