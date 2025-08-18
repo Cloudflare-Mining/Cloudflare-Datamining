@@ -12,6 +12,9 @@
 	"2fa-recovery-user-delete": {
 		"enabled": true
 	},
+	"abuse-reports-appeals-v-next-phase-1": {
+		"enabled": false
+	},
 	"account-blocked-content-relocation-enabled": {
 		"enabled": true
 	},
@@ -25,9 +28,6 @@
 		"enabled": true
 	},
 	"account-owned-api-tokens": {
-		"enabled": true
-	},
-	"account-security-center-blocked-content-enabled": {
 		"enabled": true
 	},
 	"account-traffic-analytics": {
@@ -1256,9 +1256,6 @@
 	"magic-wan-site-ha": {
 		"enabled": true
 	},
-	"manage-account-abuse-enabled": {
-		"enabled": true
-	},
 	"managed-challenge-ui": {
 		"enabled": true
 	},
@@ -1477,6 +1474,13 @@
 	},
 	"prg-free-trial": {
 		"enabled": true
+	},
+	"prg-image-optimization-video-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
 	},
 	"prg-images-checkout-consolidation-experiment": {
 		"enabled": true,
