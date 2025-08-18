@@ -966,7 +966,55 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Link wrapping is designed by vendors like Proofpoint to protect users by routing all clicked URLs through a scanning service, allowing them to block known malicious destinations at the moment of click. For example, an email link to http://malicioussite[.]com might become https://urldefense[.]proofpoint[.]com/v2/url?u=httpp-3A__malicioussite[.]com. While this is effective against known threats, attacks can still succeed if the wrapped link hasn't been flagged by the scanner at click time. ",
+													"value": "Link wrapping is designed by vendors like Proofpoint to protect users by routing all clicked URLs through a scanning service, allowing them to block known malicious destinations at the moment of click. For example, an email link to ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "http://malicioussite[.]com",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " might become ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "https://urldefense[.]proofpoint[.]com/v2/url?u=httpp-3A__malicioussite[.]com",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". While this is effective against known threats, attacks can still succeed if the wrapped link hasn't been flagged by the scanner at click time. ",
 													"marks": [],
 													"content": null
 												}
@@ -1458,7 +1506,11 @@
 														"uri": null
 													},
 													"value": "https://s7ku6[.]lu/lnk/AVoAAHBNPHAAAc6tFoQAA-YEUe0AAYKJ…",
-													"marks": [],
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -1500,7 +1552,11 @@
 														"uri": null
 													},
 													"value": "https://urldefense[.]proofpoint[.]com/v2/url?u=http-3A_scra..",
-													"marks": [],
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -1542,7 +1598,11 @@
 														"uri": null
 													},
 													"value": "https://scratchpaperjournal[.]com",
-													"marks": [],
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -1604,7 +1664,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The Intermedia link wrapping abuse we observed also focused on gaining unauthorized access to email accounts protected by link wrapping. Below is an example of a phishing message in which the attacker compromised an email account within an Intermedia-protected organization and used it to send phishing emails containing malicious links. Because the emails were sent from within the organization, Intermedia automatically rewrote the links as they passed through its infrastructure.",
+													"value": "The Intermedia link wrapping abuse we observed also focused on gaining unauthorized access to email accounts protected by link wrapping, though we have confirmed that Intermedia itself was not compromised in this campaign.  Below is an example of a phishing message in which the attacker compromised an email account within an Intermedia-protected organization and used it to send phishing emails containing malicious links. Because the emails were sent from within the organization, Intermedia automatically rewrote the links as they passed through its infrastructure.",
 													"marks": [],
 													"content": null
 												}
@@ -2938,7 +2998,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Indicators of compromise",
+													"value": "Indicators of Compromise",
 													"marks": [],
 													"content": null
 												}
@@ -3103,7 +3163,7 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "38nfX7mkZGs0w3pPIvJykw",
-						"htmlContent": "<style>\n  .top-nav__logo{\n    width: 200px !important;\n    max-width: unset !important;\n  }\n\n  .button-cta a:hover, a:visited:hover {\n    background-color: white !important;\n  }\n\n  .bg-focus-orange-3-400_01:focus, .h-bg-orange-3-400_01:hover {\n    background-color: white !important;\n  }\n\n  @media screen and (max-width: 576px){\n    .main-header-logo {\n      overflow: hidden;\n      min-width: 58px !important;\n    }\n  }\n\n  .rich-text-renderer ul {\n    list-style: unset;\n  }\n  </style>\n",
+						"htmlContent": "<style>\n  .top-nav__logo{\n    width: 200px !important;\n    max-width: unset !important;\n  }\n\n  .button-cta a:hover, a:visited:hover {\n    background-color: white !important;\n  }\n\n  .bg-focus-orange-3-400_01:focus, .h-bg-orange-3-400_01:hover {\n    background-color: white !important;\n  }\n\n  @media screen and (max-width: 576px){\n    .main-header-logo {\n      overflow: hidden;\n      min-width: 58px !important;\n    }\n  }\n\n  .rich-text-renderer ul {\n    list-style: unset;\n  }\n\n  .rich-text-renderer .lazyload-wrapper + p:has(i) {\n    text-align: center;\n  }\n</style>\n",
 						"htmlId": null
 					},
 					{
