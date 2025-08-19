@@ -6,34 +6,42 @@
 	</div>
 </div>
 <p><strong>Available Location: Singapore, or Kuala Lumpur (Malaysia)</strong></p>
-<h3><strong>About the Team</strong></h3>
+<h3>About the Team</h3>
 <p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h3><strong>What You'll Do</strong></h3>
-<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Technical </strong><strong>Support Engineer</strong><strong> for CDN </strong>to join our team. You will work with our largest and most technically sophisticated customers on a variety of technical support issues to ensure they can deploy and operate Cloudflare's CDN solutions with confidence.&nbsp;</p>
+<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced Technical Support Engineer to join our team. You will work with our broad customer base on a variety of technical support issues ranging from troubleshooting network performance and security concerns to providing guidance on product configurations and best practices.</p>
 <ul>
-	<li>Serve as a trusted technical advisor for our Premium customers, responding to and resolving inquiries and incidents related to CDN services, while delivering timely, high-quality and personalized assistance.</li>
-	<li>Work directly with customers to diagnose, troubleshoot and resolve complex technical issues involving DDoS mitigation, firewall rules, SSL/TLS, network confirmation, and other security configurations.</li>
-	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
+	<li>Serve as a trusted technical advisor, providing advanced support for enterprise customers using Cloudflare’s suite of products.</li>
+	<li>Engage with customers through email, phone, and chat, providing clear, concise, and empathetic communication to effectively address their technical needs and ensure a positive support experience.</li>
 	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
-	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
-	<li>Work with Engineering and Product teams to improve products and tools</li>
+	<li>Partner with Cloudflare’s Product, Engineering, and Security teams to escalate and resolve advanced customer issues.</li>
+	<li>Provide feedback based on customer interactions to drive product improvements and ensure alignment with user needs.</li>
+	<li>Assist customers in identifying and responding to security incidents, leveraging Cloudflare’s threat intelligence and security tools.</li>
+	<li>This role requires working in rotational shifts, including evenings, weekends, and public holidays, to support our global customer base.</li>
 </ul>
-<h3><strong>What We're Looking For</strong></h3>
+<p><strong>What We're Looking For</strong></p>
 <ul>
-	<li>You have a minimum of 4 years experience working as a Technical Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
+	<li>You have a minimum of 4 years experience working as a Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
 	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
-	<li>Strong customer service orientation and communication skills, both written and verbal, fluent in English and preferably a second language like Mandarin, Hindi, Tamil, Korean or Japanese.</li>
+	<li>Strong customer service orientation and communication skills, both written and verbal, and you are fluent in English.</li>
 	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
-	<li>Strong understanding of network protocols, including TCP/IP, DNS, HTTP/S, and BGP, with a particular focus on anycast routing concepts and implementation, as well as tools such as iptables and looking glass.</li>
-	<li>Proven experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels, and performing packet capture analysis</li>
-	<li>Confident with command line and tools, including curl, dig, traceroute, openssl, git</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
-	<li>You are competent writing scripts in Bash, Python, JavaScript or other scripting language</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
-	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience)</li>
-	<li>Relevant certifications such as CISSP, GCIA GCIH, GCFA, GCFE or equivalent</li>
+	<li>Motivated self-starter who always looking to expand your skill sets, you take initiatives and capable of learning new technologies / systems / features with little guidance</li>
+	<li>Solid grasp of problem solving with command line tools (dig/traceroute/curl/tcpdump)</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting language</li>
+	<li>Experience installing and configuring web servers like Apache, Nginx, and IIS</li>
+	<li>Proficiency in networking fundamentals, including DNS, VPNs, firewalls, and traffic routing.</li>
+	<li>Experience supporting cloud platforms (AWS, Azure, GCP) and SaaS application integrations.</li>
+	<li>Familiarity with Cloudflare and have a site actively using our platform</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers.</li>
+	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience).</li>
+	<li>Relevant certifications such as CISSP, CCSP, GCIA, GCIH, GCFA or equivalent.</li>
 </ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Experience in a shift-based or global support environment.</li>
+	<li>Familiarity with SLA/KPI metrics and real-time queue management.</li>
+	<li>Prior exposure to ITIL or similar incident management frameworks.</li>
+</ul>
+<div id="te-floating-button-container"></div>
 <div id="te-floating-button-container"></div>
 <div id="te-floating-button-container"></div>
 <div id="te-floating-button-container"></div>
