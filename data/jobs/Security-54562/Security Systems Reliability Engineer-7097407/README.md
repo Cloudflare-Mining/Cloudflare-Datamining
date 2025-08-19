@@ -7,18 +7,13 @@
 </div>
 <p><strong>Available Location</strong></p>
 <p>Lisbon, Portugal</p>
-<p>&nbsp;</p>
 <p><strong>Job Title&nbsp;</strong></p>
 <p>Security Systems Reliability Engineer</p>
-<p>&nbsp;</p>
 <p><strong>About the Department</strong></p>
 <p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Security Systems Reliability Engineering team supports tooling and infrastructure across the Security team.</p>
-<p>&nbsp;</p>
 <p><strong>About the Role</strong></p>
 <p>As a Security Systems Reliability Engineer, you will play a key role in designing, implementing, managing, and supporting infrastructure and security technologies.&nbsp; You will be responsible for ensuring systems are secure, highly available, fault tolerant, and scale to meet business needs.&nbsp;</p>
-<p>&nbsp;</p>
 <p>Work may include documenting new standard operating procedures, ensuring vendor recommended security baseline configurations are implemented, designing repeatable deployment patterns, performing disaster recovery testing, performing chaos testing, configuring new integrations, implementing new technologies, patching applications and operating systems, performing upgrades and other maintenance tasks, establishing integrations, documenting the as-built architecture, establishing monitoring and logging, and participating in investigations and service restorations.</p>
-<p>&nbsp;</p>
 <p>As part of our team, you will be expected to:</p>
 <ul>
 	<li>Design, implement, and maintain secure infrastructure across various environments (non-production and production).</li>
@@ -30,10 +25,8 @@
 	<li>Ensure company data is managed in a secure and scalable manner.</li>
 	<li>Contribute to the creation and dissemination of knowledge about the designs within the company.</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <p>Security Systems Reliability Engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
-<p>&nbsp;</p>
 <ul>
 	<li>Bachelor's degree in Computer Science, Information Systems, Cybersecurity, related technical field, or equivalent practical experience</li>
 	<li>Experience performing the functions of a Site Reliability Engineer (SRE).</li>
