@@ -8081,10 +8081,6 @@ declare namespace TailStream {
       | HibernatableWebSocketEventInfoError
       | HibernatableWebSocketEventInfoMessage;
   }
-  interface Resume {
-    readonly type: "resume";
-    readonly attachment?: any;
-  }
   interface CustomEventInfo {
     readonly type: "custom";
   }
@@ -8132,7 +8128,6 @@ declare namespace TailStream {
       | EmailEventInfo
       | TraceEventInfo
       | HibernatableWebSocketEventInfo
-      | Resume
       | CustomEventInfo;
   }
   interface Outcome {
@@ -8140,9 +8135,6 @@ declare namespace TailStream {
     readonly outcome: EventOutcome;
     readonly cpuTime: number;
     readonly wallTime: number;
-  }
-  interface Hibernate {
-    readonly type: "hibernate";
   }
   interface SpanOpen {
     readonly type: "spanOpen";
@@ -8173,13 +8165,6 @@ declare namespace TailStream {
     readonly type: "return";
     readonly info?: FetchResponseInfo;
   }
-  interface Link {
-    readonly type: "link";
-    readonly label?: string;
-    readonly traceId: string;
-    readonly invocationId: string;
-    readonly spanId: string;
-  }
   interface Attribute {
     readonly name: string;
     readonly value:
@@ -8199,14 +8184,12 @@ declare namespace TailStream {
   type EventType =
     | Onset
     | Outcome
-    | Hibernate
     | SpanOpen
     | SpanClose
     | DiagnosticChannelEvent
     | Exception
     | Log
     | Return
-    | Link
     | Attributes;
   interface TailEvent<Event extends EventType> {
     readonly invocationId: string;
@@ -8220,14 +8203,12 @@ declare namespace TailStream {
   ) => void | Promise<void>;
   type TailEventHandlerObject = {
     outcome?: TailEventHandler<Outcome>;
-    hibernate?: TailEventHandler<Hibernate>;
     spanOpen?: TailEventHandler<SpanOpen>;
     spanClose?: TailEventHandler<SpanClose>;
     diagnosticChannel?: TailEventHandler<DiagnosticChannelEvent>;
     exception?: TailEventHandler<Exception>;
     log?: TailEventHandler<Log>;
     return?: TailEventHandler<Return>;
-    link?: TailEventHandler<Link>;
     attributes?: TailEventHandler<Attributes>;
   };
   type TailEventHandlerType = TailEventHandler | TailEventHandlerObject;
