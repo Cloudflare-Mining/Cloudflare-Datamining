@@ -1693,7 +1693,7 @@
 	"rate-limiting-migration": {
 		"enabled": true
 	},
-	"realtime-agent": {
+	"realtime-agents": {
 		"enabled": false
 	},
 	"realtime-ui": {
@@ -1888,6 +1888,9 @@
 			"lets-get-started",
 			"build-protect-connect"
 		]
+	},
+	"signed-agents": {
+		"enabled": true
 	},
 	"signup-form-background-illustration": {
 		"enabled": false,
