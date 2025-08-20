@@ -312,6 +312,7 @@
 			"python_no_global_handlers": "boolean",
 			"python_workers": "boolean",
 			"python_workers_force_new_vendor_path": "boolean",
+			"python_workflows": "boolean",
 			"queue_consumer_no_wait_for_wait_until": "boolean",
 			"queues_json_messages": "boolean",
 			"r2_list_honor_include": "boolean",
@@ -1616,10 +1617,14 @@
 		"__type": "function",
 		"_prototype": {
 			"BYTES_PER_ELEMENT": "number",
+			"fromBase64": "undefined",
+			"fromHex": "undefined",
 			"length": "number",
 			"name": "undefined",
 			"prototype": "undefined"
 		},
+		"fromBase64": "function",
+		"fromHex": "function",
 		"length": "number",
 		"name": "string"
 	},
