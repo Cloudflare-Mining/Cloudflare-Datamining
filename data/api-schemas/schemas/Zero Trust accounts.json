@@ -883,7 +883,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -918,7 +918,7 @@
 													"type": "string"
 												},
 												"provider_name": {
-													"description": "The name of the provider. Usually Cloudflare.",
+													"description": "Provider Name. Usually Cloudflare.",
 													"example": "Cloudflare",
 													"type": "string"
 												}
@@ -932,7 +932,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust account information response"
+				"description": "Get Zero Trust account information response."
 			},
 			"4XX": {
 				"content": {
@@ -991,7 +991,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1026,7 +1026,7 @@
 															"type": "string"
 														},
 														"provider_name": {
-															"description": "The name of the provider. Usually Cloudflare.",
+															"description": "Provider Name. Usually Cloudflare.",
 															"example": "Cloudflare",
 															"type": "string"
 														}
@@ -1108,7 +1108,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1128,7 +1128,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust account information response failure"
+				"description": "Get Zero Trust account information response failure."
 			}
 		},
 		"security": [
@@ -1214,7 +1214,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1237,10 +1237,10 @@
 										"result": {
 											"allOf": [
 												{
-													"description": "Account settings",
+													"description": "Account settings.",
 													"properties": {
 														"settings": {
-															"description": "Account settings",
+															"description": "Account settings.",
 															"properties": {
 																"activity_log": {
 																	"description": "Activity log settings.",
@@ -1290,12 +1290,12 @@
 																			"nullable": true,
 																			"properties": {
 																				"enabled": {
-																					"description": "Set notification on",
+																					"description": "Set notification on.",
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"include_context": {
-																					"description": "If true, context information will be passed as query parameters",
+																					"description": "If true, context information will be passed as query parameters.",
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
@@ -1327,7 +1327,7 @@
 																			"x-auditable": true
 																		},
 																		"enabled": {
-																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																			"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																			"example": true,
 																			"nullable": true,
 																			"type": "boolean",
@@ -1387,14 +1387,14 @@
 																			"x-auditable": true
 																		},
 																		"read_only": {
-																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"source_account": {
-																			"description": "Account tag of account that shared this setting",
+																			"description": "Account tag of account that shared this setting.",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
@@ -1412,7 +1412,7 @@
 																			"x-auditable": true
 																		},
 																		"version": {
-																			"description": "Version number of the setting",
+																			"description": "Version number of the setting.",
 																			"example": 1,
 																			"nullable": true,
 																			"readOnly": true,
@@ -1480,7 +1480,7 @@
 																},
 																"custom_certificate": {
 																	"deprecated": true,
-																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).",
 																	"nullable": true,
 																	"properties": {
 																		"binding_status": {
@@ -1491,7 +1491,7 @@
 																			"x-auditable": true
 																		},
 																		"enabled": {
-																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+																			"description": "Enable use of custom certificate authority for signing Gateway. traffic.",
 																			"example": true,
 																			"nullable": true,
 																			"type": "boolean",
@@ -1527,21 +1527,21 @@
 																			"x-auditable": true
 																		},
 																		"read_only": {
-																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"source_account": {
-																			"description": "Account tag of account that shared this setting",
+																			"description": "Account tag of account that shared this setting.",
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"version": {
-																			"description": "Version number of the setting",
+																			"description": "Version number of the setting.",
 																			"example": 1,
 																			"readOnly": true,
 																			"type": "integer",
@@ -1557,7 +1557,7 @@
 																	"nullable": true,
 																	"properties": {
 																		"tls": {
-																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																			"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true
@@ -1582,7 +1582,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"inspection": {
-																	"description": "Setting to define inspection settings",
+																	"description": "Setting to define inspection settings.",
 																	"nullable": true,
 																	"properties": {
 																		"mode": {
@@ -1683,7 +1683,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust account configuration response"
+				"description": "Get Zero Trust account configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -1739,7 +1739,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1762,10 +1762,10 @@
 												"result": {
 													"allOf": [
 														{
-															"description": "Account settings",
+															"description": "Account settings.",
 															"properties": {
 																"settings": {
-																	"description": "Account settings",
+																	"description": "Account settings.",
 																	"properties": {
 																		"activity_log": {
 																			"description": "Activity log settings.",
@@ -1815,12 +1815,12 @@
 																					"nullable": true,
 																					"properties": {
 																						"enabled": {
-																							"description": "Set notification on",
+																							"description": "Set notification on.",
 																							"type": "boolean",
 																							"x-auditable": true
 																						},
 																						"include_context": {
-																							"description": "If true, context information will be passed as query parameters",
+																							"description": "If true, context information will be passed as query parameters.",
 																							"type": "boolean",
 																							"x-auditable": true
 																						},
@@ -1852,7 +1852,7 @@
 																					"x-auditable": true
 																				},
 																				"enabled": {
-																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																					"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																					"example": true,
 																					"nullable": true,
 																					"type": "boolean",
@@ -1912,14 +1912,14 @@
 																					"x-auditable": true
 																				},
 																				"read_only": {
-																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"source_account": {
-																					"description": "Account tag of account that shared this setting",
+																					"description": "Account tag of account that shared this setting.",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
@@ -1937,7 +1937,7 @@
 																					"x-auditable": true
 																				},
 																				"version": {
-																					"description": "Version number of the setting",
+																					"description": "Version number of the setting.",
 																					"example": 1,
 																					"nullable": true,
 																					"readOnly": true,
@@ -2005,7 +2005,7 @@
 																		},
 																		"custom_certificate": {
 																			"deprecated": true,
-																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).",
 																			"nullable": true,
 																			"properties": {
 																				"binding_status": {
@@ -2016,7 +2016,7 @@
 																					"x-auditable": true
 																				},
 																				"enabled": {
-																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+																					"description": "Enable use of custom certificate authority for signing Gateway. traffic.",
 																					"example": true,
 																					"nullable": true,
 																					"type": "boolean",
@@ -2052,21 +2052,21 @@
 																					"x-auditable": true
 																				},
 																				"read_only": {
-																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"source_account": {
-																					"description": "Account tag of account that shared this setting",
+																					"description": "Account tag of account that shared this setting.",
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"version": {
-																					"description": "Version number of the setting",
+																					"description": "Version number of the setting.",
 																					"example": 1,
 																					"readOnly": true,
 																					"type": "integer",
@@ -2082,7 +2082,7 @@
 																			"nullable": true,
 																			"properties": {
 																				"tls": {
-																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																					"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																					"example": true,
 																					"type": "boolean",
 																					"x-auditable": true
@@ -2107,7 +2107,7 @@
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"inspection": {
-																			"description": "Setting to define inspection settings",
+																			"description": "Setting to define inspection settings.",
 																			"nullable": true,
 																			"properties": {
 																				"mode": {
@@ -2276,7 +2276,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2296,7 +2296,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust account configuration response failure"
+				"description": "Get Zero Trust account configuration response failure."
 			}
 		},
 		"security": [
@@ -2336,7 +2336,7 @@
 					"application/json": {
 						"schema": {
 							"deprecated": true,
-							"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+							"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).",
 							"nullable": true,
 							"properties": {
 								"binding_status": {
@@ -2347,7 +2347,7 @@
 									"x-auditable": true
 								},
 								"enabled": {
-									"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+									"description": "Enable use of custom certificate authority for signing Gateway. traffic.",
 									"example": true,
 									"nullable": true,
 									"type": "boolean",
@@ -2373,7 +2373,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust account configuration response"
+				"description": "Get Zero Trust account configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -2382,7 +2382,7 @@
 							"allOf": [
 								{
 									"deprecated": true,
-									"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+									"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).",
 									"nullable": true,
 									"properties": {
 										"binding_status": {
@@ -2393,7 +2393,7 @@
 											"x-auditable": true
 										},
 										"enabled": {
-											"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+											"description": "Enable use of custom certificate authority for signing Gateway. traffic.",
 											"example": true,
 											"nullable": true,
 											"type": "boolean",
@@ -2487,7 +2487,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2507,7 +2507,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust account configuration response failure"
+				"description": "Get Zero Trust account configuration response failure."
 			}
 		},
 		"security": [
@@ -2593,7 +2593,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2694,7 +2694,7 @@
 						}
 					}
 				},
-				"description": "Get logging settings for the Zero Trust account response"
+				"description": "Get logging settings for the Zero Trust account response."
 			},
 			"4XX": {
 				"content": {
@@ -2750,7 +2750,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2919,7 +2919,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2939,7 +2939,7 @@
 						}
 					}
 				},
-				"description": "Get logging settings for the Zero Trust account response failure"
+				"description": "Get logging settings for the Zero Trust account response failure."
 			}
 		},
 		"security": [
@@ -3420,10 +3420,10 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Account settings",
+						"description": "Account settings.",
 						"properties": {
 							"settings": {
-								"description": "Account settings",
+								"description": "Account settings.",
 								"properties": {
 									"activity_log": {
 										"description": "Activity log settings.",
@@ -3473,12 +3473,12 @@
 												"nullable": true,
 												"properties": {
 													"enabled": {
-														"description": "Set notification on",
+														"description": "Set notification on.",
 														"type": "boolean",
 														"x-auditable": true
 													},
 													"include_context": {
-														"description": "If true, context information will be passed as query parameters",
+														"description": "If true, context information will be passed as query parameters.",
 														"type": "boolean",
 														"x-auditable": true
 													},
@@ -3510,7 +3510,7 @@
 												"x-auditable": true
 											},
 											"enabled": {
-												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+												"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 												"example": true,
 												"nullable": true,
 												"type": "boolean",
@@ -3570,14 +3570,14 @@
 												"x-auditable": true
 											},
 											"read_only": {
-												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"source_account": {
-												"description": "Account tag of account that shared this setting",
+												"description": "Account tag of account that shared this setting.",
 												"nullable": true,
 												"readOnly": true,
 												"type": "string",
@@ -3595,7 +3595,7 @@
 												"x-auditable": true
 											},
 											"version": {
-												"description": "Version number of the setting",
+												"description": "Version number of the setting.",
 												"example": 1,
 												"nullable": true,
 												"readOnly": true,
@@ -3663,7 +3663,7 @@
 									},
 									"custom_certificate": {
 										"deprecated": true,
-										"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+										"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).",
 										"nullable": true,
 										"properties": {
 											"binding_status": {
@@ -3674,7 +3674,7 @@
 												"x-auditable": true
 											},
 											"enabled": {
-												"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+												"description": "Enable use of custom certificate authority for signing Gateway. traffic.",
 												"example": true,
 												"nullable": true,
 												"type": "boolean",
@@ -3710,21 +3710,21 @@
 												"x-auditable": true
 											},
 											"read_only": {
-												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "optional"
 											},
 											"source_account": {
-												"description": "Account tag of account that shared this setting",
+												"description": "Account tag of account that shared this setting.",
 												"readOnly": true,
 												"type": "string",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "optional"
 											},
 											"version": {
-												"description": "Version number of the setting",
+												"description": "Version number of the setting.",
 												"example": 1,
 												"readOnly": true,
 												"type": "integer",
@@ -3740,7 +3740,7 @@
 										"nullable": true,
 										"properties": {
 											"tls": {
-												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+												"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true
@@ -3765,7 +3765,7 @@
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"inspection": {
-										"description": "Setting to define inspection settings",
+										"description": "Setting to define inspection settings.",
 										"nullable": true,
 										"properties": {
 											"mode": {
@@ -3897,7 +3897,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3920,10 +3920,10 @@
 										"result": {
 											"allOf": [
 												{
-													"description": "Account settings",
+													"description": "Account settings.",
 													"properties": {
 														"settings": {
-															"description": "Account settings",
+															"description": "Account settings.",
 															"properties": {
 																"activity_log": {
 																	"description": "Activity log settings.",
@@ -3973,12 +3973,12 @@
 																			"nullable": true,
 																			"properties": {
 																				"enabled": {
-																					"description": "Set notification on",
+																					"description": "Set notification on.",
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"include_context": {
-																					"description": "If true, context information will be passed as query parameters",
+																					"description": "If true, context information will be passed as query parameters.",
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
@@ -4010,7 +4010,7 @@
 																			"x-auditable": true
 																		},
 																		"enabled": {
-																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																			"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																			"example": true,
 																			"nullable": true,
 																			"type": "boolean",
@@ -4070,14 +4070,14 @@
 																			"x-auditable": true
 																		},
 																		"read_only": {
-																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"source_account": {
-																			"description": "Account tag of account that shared this setting",
+																			"description": "Account tag of account that shared this setting.",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
@@ -4095,7 +4095,7 @@
 																			"x-auditable": true
 																		},
 																		"version": {
-																			"description": "Version number of the setting",
+																			"description": "Version number of the setting.",
 																			"example": 1,
 																			"nullable": true,
 																			"readOnly": true,
@@ -4163,7 +4163,7 @@
 																},
 																"custom_certificate": {
 																	"deprecated": true,
-																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).",
 																	"nullable": true,
 																	"properties": {
 																		"binding_status": {
@@ -4174,7 +4174,7 @@
 																			"x-auditable": true
 																		},
 																		"enabled": {
-																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+																			"description": "Enable use of custom certificate authority for signing Gateway. traffic.",
 																			"example": true,
 																			"nullable": true,
 																			"type": "boolean",
@@ -4210,21 +4210,21 @@
 																			"x-auditable": true
 																		},
 																		"read_only": {
-																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"source_account": {
-																			"description": "Account tag of account that shared this setting",
+																			"description": "Account tag of account that shared this setting.",
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"version": {
-																			"description": "Version number of the setting",
+																			"description": "Version number of the setting.",
 																			"example": 1,
 																			"readOnly": true,
 																			"type": "integer",
@@ -4240,7 +4240,7 @@
 																	"nullable": true,
 																	"properties": {
 																		"tls": {
-																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																			"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true
@@ -4265,7 +4265,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"inspection": {
-																	"description": "Setting to define inspection settings",
+																	"description": "Setting to define inspection settings.",
 																	"nullable": true,
 																	"properties": {
 																		"mode": {
@@ -4366,7 +4366,7 @@
 						}
 					}
 				},
-				"description": "Update Zero Trust account configuration response"
+				"description": "Update Zero Trust account configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -4422,7 +4422,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -4445,10 +4445,10 @@
 												"result": {
 													"allOf": [
 														{
-															"description": "Account settings",
+															"description": "Account settings.",
 															"properties": {
 																"settings": {
-																	"description": "Account settings",
+																	"description": "Account settings.",
 																	"properties": {
 																		"activity_log": {
 																			"description": "Activity log settings.",
@@ -4498,12 +4498,12 @@
 																					"nullable": true,
 																					"properties": {
 																						"enabled": {
-																							"description": "Set notification on",
+																							"description": "Set notification on.",
 																							"type": "boolean",
 																							"x-auditable": true
 																						},
 																						"include_context": {
-																							"description": "If true, context information will be passed as query parameters",
+																							"description": "If true, context information will be passed as query parameters.",
 																							"type": "boolean",
 																							"x-auditable": true
 																						},
@@ -4535,7 +4535,7 @@
 																					"x-auditable": true
 																				},
 																				"enabled": {
-																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																					"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																					"example": true,
 																					"nullable": true,
 																					"type": "boolean",
@@ -4595,14 +4595,14 @@
 																					"x-auditable": true
 																				},
 																				"read_only": {
-																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"source_account": {
-																					"description": "Account tag of account that shared this setting",
+																					"description": "Account tag of account that shared this setting.",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
@@ -4620,7 +4620,7 @@
 																					"x-auditable": true
 																				},
 																				"version": {
-																					"description": "Version number of the setting",
+																					"description": "Version number of the setting.",
 																					"example": 1,
 																					"nullable": true,
 																					"readOnly": true,
@@ -4688,7 +4688,7 @@
 																		},
 																		"custom_certificate": {
 																			"deprecated": true,
-																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).",
 																			"nullable": true,
 																			"properties": {
 																				"binding_status": {
@@ -4699,7 +4699,7 @@
 																					"x-auditable": true
 																				},
 																				"enabled": {
-																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+																					"description": "Enable use of custom certificate authority for signing Gateway. traffic.",
 																					"example": true,
 																					"nullable": true,
 																					"type": "boolean",
@@ -4735,21 +4735,21 @@
 																					"x-auditable": true
 																				},
 																				"read_only": {
-																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"source_account": {
-																					"description": "Account tag of account that shared this setting",
+																					"description": "Account tag of account that shared this setting.",
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"version": {
-																					"description": "Version number of the setting",
+																					"description": "Version number of the setting.",
 																					"example": 1,
 																					"readOnly": true,
 																					"type": "integer",
@@ -4765,7 +4765,7 @@
 																			"nullable": true,
 																			"properties": {
 																				"tls": {
-																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																					"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																					"example": true,
 																					"type": "boolean",
 																					"x-auditable": true
@@ -4790,7 +4790,7 @@
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"inspection": {
-																			"description": "Setting to define inspection settings",
+																			"description": "Setting to define inspection settings.",
 																			"nullable": true,
 																			"properties": {
 																				"mode": {
@@ -4959,7 +4959,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4979,7 +4979,7 @@
 						}
 					}
 				},
-				"description": "Update Zero Trust account configuration response failure"
+				"description": "Update Zero Trust account configuration response failure."
 			}
 		},
 		"security": [
@@ -5064,7 +5064,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -5099,7 +5099,7 @@
 													"type": "string"
 												},
 												"provider_name": {
-													"description": "The name of the provider. Usually Cloudflare.",
+													"description": "Provider Name. Usually Cloudflare.",
 													"example": "Cloudflare",
 													"type": "string"
 												}
@@ -5113,7 +5113,7 @@
 						}
 					}
 				},
-				"description": "Create Zero Trust account response"
+				"description": "Create Zero Trust account response."
 			},
 			"4XX": {
 				"content": {
@@ -5172,7 +5172,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -5207,7 +5207,7 @@
 															"type": "string"
 														},
 														"provider_name": {
-															"description": "The name of the provider. Usually Cloudflare.",
+															"description": "Provider Name. Usually Cloudflare.",
 															"example": "Cloudflare",
 															"type": "string"
 														}
@@ -5289,7 +5289,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -5309,7 +5309,7 @@
 						}
 					}
 				},
-				"description": "Create Zero Trust account response failure"
+				"description": "Create Zero Trust account response failure."
 			}
 		},
 		"security": [
@@ -5773,7 +5773,7 @@
 	},
 	"PUT /accounts/{account_id}/gateway/configuration": {
 		"description": "Updates the current Zero Trust account configuration.",
-		"operationId": "zero-trust-accounts-update-zero-trust-account-configuration",
+		"operationId": "zero-trust-accounts-update-zero-trust-account-configuration.",
 		"parameters": [
 			{
 				"in": "path",
@@ -5789,10 +5789,10 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Account settings",
+						"description": "Account settings.",
 						"properties": {
 							"settings": {
-								"description": "Account settings",
+								"description": "Account settings.",
 								"properties": {
 									"activity_log": {
 										"description": "Activity log settings.",
@@ -5842,12 +5842,12 @@
 												"nullable": true,
 												"properties": {
 													"enabled": {
-														"description": "Set notification on",
+														"description": "Set notification on.",
 														"type": "boolean",
 														"x-auditable": true
 													},
 													"include_context": {
-														"description": "If true, context information will be passed as query parameters",
+														"description": "If true, context information will be passed as query parameters.",
 														"type": "boolean",
 														"x-auditable": true
 													},
@@ -5879,7 +5879,7 @@
 												"x-auditable": true
 											},
 											"enabled": {
-												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+												"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 												"example": true,
 												"nullable": true,
 												"type": "boolean",
@@ -5939,14 +5939,14 @@
 												"x-auditable": true
 											},
 											"read_only": {
-												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 												"nullable": true,
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"source_account": {
-												"description": "Account tag of account that shared this setting",
+												"description": "Account tag of account that shared this setting.",
 												"nullable": true,
 												"readOnly": true,
 												"type": "string",
@@ -5964,7 +5964,7 @@
 												"x-auditable": true
 											},
 											"version": {
-												"description": "Version number of the setting",
+												"description": "Version number of the setting.",
 												"example": 1,
 												"nullable": true,
 												"readOnly": true,
@@ -6032,7 +6032,7 @@
 									},
 									"custom_certificate": {
 										"deprecated": true,
-										"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+										"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).",
 										"nullable": true,
 										"properties": {
 											"binding_status": {
@@ -6043,7 +6043,7 @@
 												"x-auditable": true
 											},
 											"enabled": {
-												"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+												"description": "Enable use of custom certificate authority for signing Gateway. traffic.",
 												"example": true,
 												"nullable": true,
 												"type": "boolean",
@@ -6079,21 +6079,21 @@
 												"x-auditable": true
 											},
 											"read_only": {
-												"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+												"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 												"readOnly": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "optional"
 											},
 											"source_account": {
-												"description": "Account tag of account that shared this setting",
+												"description": "Account tag of account that shared this setting.",
 												"readOnly": true,
 												"type": "string",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "optional"
 											},
 											"version": {
-												"description": "Version number of the setting",
+												"description": "Version number of the setting.",
 												"example": 1,
 												"readOnly": true,
 												"type": "integer",
@@ -6109,7 +6109,7 @@
 										"nullable": true,
 										"properties": {
 											"tls": {
-												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+												"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true
@@ -6134,7 +6134,7 @@
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"inspection": {
-										"description": "Setting to define inspection settings",
+										"description": "Setting to define inspection settings.",
 										"nullable": true,
 										"properties": {
 											"mode": {
@@ -6266,7 +6266,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -6289,10 +6289,10 @@
 										"result": {
 											"allOf": [
 												{
-													"description": "Account settings",
+													"description": "Account settings.",
 													"properties": {
 														"settings": {
-															"description": "Account settings",
+															"description": "Account settings.",
 															"properties": {
 																"activity_log": {
 																	"description": "Activity log settings.",
@@ -6342,12 +6342,12 @@
 																			"nullable": true,
 																			"properties": {
 																				"enabled": {
-																					"description": "Set notification on",
+																					"description": "Set notification on.",
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"include_context": {
-																					"description": "If true, context information will be passed as query parameters",
+																					"description": "If true, context information will be passed as query parameters.",
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
@@ -6379,7 +6379,7 @@
 																			"x-auditable": true
 																		},
 																		"enabled": {
-																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																			"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																			"example": true,
 																			"nullable": true,
 																			"type": "boolean",
@@ -6439,14 +6439,14 @@
 																			"x-auditable": true
 																		},
 																		"read_only": {
-																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"source_account": {
-																			"description": "Account tag of account that shared this setting",
+																			"description": "Account tag of account that shared this setting.",
 																			"nullable": true,
 																			"readOnly": true,
 																			"type": "string",
@@ -6464,7 +6464,7 @@
 																			"x-auditable": true
 																		},
 																		"version": {
-																			"description": "Version number of the setting",
+																			"description": "Version number of the setting.",
 																			"example": 1,
 																			"nullable": true,
 																			"readOnly": true,
@@ -6532,7 +6532,7 @@
 																},
 																"custom_certificate": {
 																	"deprecated": true,
-																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).",
 																	"nullable": true,
 																	"properties": {
 																		"binding_status": {
@@ -6543,7 +6543,7 @@
 																			"x-auditable": true
 																		},
 																		"enabled": {
-																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+																			"description": "Enable use of custom certificate authority for signing Gateway. traffic.",
 																			"example": true,
 																			"nullable": true,
 																			"type": "boolean",
@@ -6579,21 +6579,21 @@
 																			"x-auditable": true
 																		},
 																		"read_only": {
-																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																			"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																			"readOnly": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"source_account": {
-																			"description": "Account tag of account that shared this setting",
+																			"description": "Account tag of account that shared this setting.",
 																			"readOnly": true,
 																			"type": "string",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"version": {
-																			"description": "Version number of the setting",
+																			"description": "Version number of the setting.",
 																			"example": 1,
 																			"readOnly": true,
 																			"type": "integer",
@@ -6609,7 +6609,7 @@
 																	"nullable": true,
 																	"properties": {
 																		"tls": {
-																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																			"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true
@@ -6634,7 +6634,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"inspection": {
-																	"description": "Setting to define inspection settings",
+																	"description": "Setting to define inspection settings.",
 																	"nullable": true,
 																	"properties": {
 																		"mode": {
@@ -6735,7 +6735,7 @@
 						}
 					}
 				},
-				"description": "Update Zero Trust account configuration response"
+				"description": "Update Zero Trust account configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -6791,7 +6791,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -6814,10 +6814,10 @@
 												"result": {
 													"allOf": [
 														{
-															"description": "Account settings",
+															"description": "Account settings.",
 															"properties": {
 																"settings": {
-																	"description": "Account settings",
+																	"description": "Account settings.",
 																	"properties": {
 																		"activity_log": {
 																			"description": "Activity log settings.",
@@ -6867,12 +6867,12 @@
 																					"nullable": true,
 																					"properties": {
 																						"enabled": {
-																							"description": "Set notification on",
+																							"description": "Set notification on.",
 																							"type": "boolean",
 																							"x-auditable": true
 																						},
 																						"include_context": {
-																							"description": "If true, context information will be passed as query parameters",
+																							"description": "If true, context information will be passed as query parameters.",
 																							"type": "boolean",
 																							"x-auditable": true
 																						},
@@ -6904,7 +6904,7 @@
 																					"x-auditable": true
 																				},
 																				"enabled": {
-																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																					"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																					"example": true,
 																					"nullable": true,
 																					"type": "boolean",
@@ -6964,14 +6964,14 @@
 																					"x-auditable": true
 																				},
 																				"read_only": {
-																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true
 																				},
 																				"source_account": {
-																					"description": "Account tag of account that shared this setting",
+																					"description": "Account tag of account that shared this setting.",
 																					"nullable": true,
 																					"readOnly": true,
 																					"type": "string",
@@ -6989,7 +6989,7 @@
 																					"x-auditable": true
 																				},
 																				"version": {
-																					"description": "Version number of the setting",
+																					"description": "Version number of the setting.",
 																					"example": 1,
 																					"nullable": true,
 																					"readOnly": true,
@@ -7057,7 +7057,7 @@
 																		},
 																		"custom_certificate": {
 																			"deprecated": true,
-																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).",
 																			"nullable": true,
 																			"properties": {
 																				"binding_status": {
@@ -7068,7 +7068,7 @@
 																					"x-auditable": true
 																				},
 																				"enabled": {
-																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+																					"description": "Enable use of custom certificate authority for signing Gateway. traffic.",
 																					"example": true,
 																					"nullable": true,
 																					"type": "boolean",
@@ -7104,21 +7104,21 @@
 																					"x-auditable": true
 																				},
 																				"read_only": {
-																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account",
+																					"description": "This setting was shared via the Orgs API and cannot be edited by the current account.",
 																					"readOnly": true,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"source_account": {
-																					"description": "Account tag of account that shared this setting",
+																					"description": "Account tag of account that shared this setting.",
 																					"readOnly": true,
 																					"type": "string",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "optional"
 																				},
 																				"version": {
-																					"description": "Version number of the setting",
+																					"description": "Version number of the setting.",
 																					"example": 1,
 																					"readOnly": true,
 																					"type": "integer",
@@ -7134,7 +7134,7 @@
 																			"nullable": true,
 																			"properties": {
 																				"tls": {
-																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																					"description": "Enable only cipher suites and TLS versions compliant with FIPS. 140-2.",
 																					"example": true,
 																					"type": "boolean",
 																					"x-auditable": true
@@ -7159,7 +7159,7 @@
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"inspection": {
-																			"description": "Setting to define inspection settings",
+																			"description": "Setting to define inspection settings.",
 																			"nullable": true,
 																			"properties": {
 																				"mode": {
@@ -7328,7 +7328,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -7348,7 +7348,7 @@
 						}
 					}
 				},
-				"description": "Update Zero Trust account configuration response failure"
+				"description": "Update Zero Trust account configuration response failure."
 			}
 		},
 		"security": [
@@ -7515,7 +7515,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -7616,7 +7616,7 @@
 						}
 					}
 				},
-				"description": "Update logging settings for the Zero Trust account response"
+				"description": "Update logging settings for the Zero Trust account response."
 			},
 			"4XX": {
 				"content": {
@@ -7672,7 +7672,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -7841,7 +7841,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -7861,7 +7861,7 @@
 						}
 					}
 				},
-				"description": "Update logging settings for the Zero Trust account response failure"
+				"description": "Update logging settings for the Zero Trust account response. failure"
 			}
 		},
 		"security": [

@@ -13466,48 +13466,17 @@
 					"schema": {
 						"properties": {
 							"input": {
-								"oneOf": [
+								"anyOf": [
 									{
 										"type": "string"
 									},
 									{
-										"items": {
-											"properties": {
-												"content": {
-													"oneOf": [
-														{
-															"description": "The content of the message as a string.",
-															"type": "string"
-														},
-														{
-															"description": "Refer to OpenAI Responses API docs to learn more about supported content types.",
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"role": {
-													"description": "The role of the message input. One of user, assistant, system, or developer.",
-													"enum": [
-														"user",
-														"assistant",
-														"system",
-														"developer"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"role",
-												"content"
-											],
-											"type": "object"
-										},
+										"items": {},
 										"type": "array"
 									}
-								]
+								],
+								"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
+								"title": "Input"
 							},
 							"reasoning": {
 								"properties": {
@@ -13653,48 +13622,17 @@
 					"schema": {
 						"properties": {
 							"input": {
-								"oneOf": [
+								"anyOf": [
 									{
 										"type": "string"
 									},
 									{
-										"items": {
-											"properties": {
-												"content": {
-													"oneOf": [
-														{
-															"description": "The content of the message as a string.",
-															"type": "string"
-														},
-														{
-															"description": "Refer to OpenAI Responses API docs to learn more about supported content types.",
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"role": {
-													"description": "The role of the message input. One of user, assistant, system, or developer.",
-													"enum": [
-														"user",
-														"assistant",
-														"system",
-														"developer"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"role",
-												"content"
-											],
-											"type": "object"
-										},
+										"items": {},
 										"type": "array"
 									}
-								]
+								],
+								"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
+								"title": "Input"
 							},
 							"reasoning": {
 								"properties": {

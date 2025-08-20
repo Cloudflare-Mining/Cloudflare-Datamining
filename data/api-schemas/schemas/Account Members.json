@@ -511,6 +511,13 @@
 										"result": {
 											"items": {
 												"properties": {
+													"email": {
+														"description": "The contact email address of the user.",
+														"example": "user@example.com",
+														"maxLength": 90,
+														"type": "string",
+														"x-auditable": true
+													},
 													"id": {
 														"description": "Membership identifier tag.",
 														"example": "4536bcfad5faccb111b47003c79917fa",
@@ -1324,6 +1331,13 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"email": {
+													"description": "The contact email address of the user.",
+													"example": "user@example.com",
+													"maxLength": 90,
+													"type": "string",
+													"x-auditable": true
+												},
 												"id": {
 													"description": "Membership identifier tag.",
 													"example": "4536bcfad5faccb111b47003c79917fa",
@@ -2273,6 +2287,13 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"email": {
+													"description": "The contact email address of the user.",
+													"example": "user@example.com",
+													"maxLength": 90,
+													"type": "string",
+													"x-auditable": true
+												},
 												"id": {
 													"description": "Membership identifier tag.",
 													"example": "4536bcfad5faccb111b47003c79917fa",
@@ -3540,6 +3561,13 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"email": {
+													"description": "The contact email address of the user.",
+													"example": "user@example.com",
+													"maxLength": 90,
+													"type": "string",
+													"x-auditable": true
+												},
 												"id": {
 													"description": "Membership identifier tag.",
 													"example": "4536bcfad5faccb111b47003c79917fa",

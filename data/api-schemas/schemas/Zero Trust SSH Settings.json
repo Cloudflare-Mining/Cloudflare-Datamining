@@ -67,7 +67,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -102,7 +102,7 @@
 													"x-auditable": true
 												},
 												"seed_id": {
-													"description": "Seed ID",
+													"description": "Seed ID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
@@ -124,7 +124,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust SSH settings response"
+				"description": "Get Zero Trust SSH settings response."
 			},
 			"4XX": {
 				"content": {
@@ -180,7 +180,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -215,7 +215,7 @@
 															"x-auditable": true
 														},
 														"seed_id": {
-															"description": "Seed ID",
+															"description": "Seed ID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
@@ -305,7 +305,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -326,7 +326,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust SSH Settings response failure"
+				"description": "Get Zero Trust SSH Settings response failure."
 			}
 		},
 		"security": [
@@ -413,7 +413,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -448,7 +448,7 @@
 													"x-auditable": true
 												},
 												"seed_id": {
-													"description": "Seed ID",
+													"description": "Seed ID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
@@ -470,7 +470,7 @@
 						}
 					}
 				},
-				"description": "Rotate Zero Trust SSH Account Seed response"
+				"description": "Rotate Zero Trust SSH Account Seed response."
 			},
 			"4XX": {
 				"content": {
@@ -526,7 +526,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -561,7 +561,7 @@
 															"x-auditable": true
 														},
 														"seed_id": {
-															"description": "Seed ID",
+															"description": "Seed ID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
@@ -651,7 +651,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -672,7 +672,7 @@
 						}
 					}
 				},
-				"description": "Rotate Zero Trust SSH Account Seed failure"
+				"description": "Rotate Zero Trust SSH Account Seed failure."
 			}
 		},
 		"security": [
@@ -779,7 +779,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -814,7 +814,7 @@
 													"x-auditable": true
 												},
 												"seed_id": {
-													"description": "Seed ID",
+													"description": "Seed ID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
@@ -836,7 +836,7 @@
 						}
 					}
 				},
-				"description": "Update Zero Trust SSH Setting response"
+				"description": "Update Zero Trust SSH Setting response."
 			},
 			"4XX": {
 				"content": {
@@ -892,7 +892,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -927,7 +927,7 @@
 															"x-auditable": true
 														},
 														"seed_id": {
-															"description": "Seed ID",
+															"description": "Seed ID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
@@ -1017,7 +1017,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1038,7 +1038,7 @@
 						}
 					}
 				},
-				"description": "Update Zero Trust SSH Setting response failure"
+				"description": "Update Zero Trust SSH Setting response failure."
 			}
 		},
 		"security": [

@@ -12,7 +12,9 @@
 					"description": "Specifies the attribute by which to group the results.",
 					"enum": [
 						"USER_AGENT",
-						"CRAWL_PURPOSE"
+						"CRAWL_PURPOSE",
+						"INDUSTRY",
+						"VERTICAL"
 					],
 					"type": "string"
 				}
@@ -119,6 +121,35 @@
 				"schema": {
 					"description": "Filters results by bot crawl purpose.",
 					"items": {
+						"maxLength": 100,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by vertical.",
+				"in": "query",
+				"name": "vertical",
+				"schema": {
+					"description": "Filters results by vertical.",
+					"items": {
+						"maxLength": 100,
+						"pattern": "^[ -~]*$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by industry.",
+				"in": "query",
+				"name": "industry",
+				"schema": {
+					"description": "Filters results by industry.",
+					"items": {
+						"maxLength": 100,
+						"pattern": "^[ -~]*$",
 						"type": "string"
 					},
 					"type": "array"
@@ -878,6 +909,7 @@
 				"schema": {
 					"description": "Filters results by bot crawl purpose.",
 					"items": {
+						"maxLength": 100,
 						"type": "string"
 					},
 					"type": "array"
@@ -890,6 +922,35 @@
 				"schema": {
 					"description": "Filters results by user agent.",
 					"items": {
+						"maxLength": 100,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by industry.",
+				"in": "query",
+				"name": "industry",
+				"schema": {
+					"description": "Filters results by industry.",
+					"items": {
+						"maxLength": 100,
+						"pattern": "^[ -~]*$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by vertical.",
+				"in": "query",
+				"name": "vertical",
+				"schema": {
+					"description": "Filters results by vertical.",
+					"items": {
+						"maxLength": 100,
+						"pattern": "^[ -~]*$",
 						"type": "string"
 					},
 					"type": "array"
@@ -1196,7 +1257,9 @@
 					"description": "Specifies the attribute by which to group the results.",
 					"enum": [
 						"USER_AGENT",
-						"CRAWL_PURPOSE"
+						"CRAWL_PURPOSE",
+						"INDUSTRY",
+						"VERTICAL"
 					],
 					"type": "string"
 				}
@@ -1319,6 +1382,35 @@
 				"schema": {
 					"description": "Filters results by bot crawl purpose.",
 					"items": {
+						"maxLength": 100,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by industry.",
+				"in": "query",
+				"name": "industry",
+				"schema": {
+					"description": "Filters results by industry.",
+					"items": {
+						"maxLength": 100,
+						"pattern": "^[ -~]*$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by vertical.",
+				"in": "query",
+				"name": "vertical",
+				"schema": {
+					"description": "Filters results by vertical.",
+					"items": {
+						"maxLength": 100,
+						"pattern": "^[ -~]*$",
 						"type": "string"
 					},
 					"type": "array"

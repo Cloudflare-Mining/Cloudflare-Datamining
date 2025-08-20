@@ -85,7 +85,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -204,7 +204,7 @@
 						}
 					}
 				},
-				"description": "Delete Zero Trust certificate response"
+				"description": "Delete Zero Trust certificate response."
 			},
 			"4XX": {
 				"content": {
@@ -260,7 +260,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -447,7 +447,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -467,7 +467,7 @@
 						}
 					}
 				},
-				"description": "Delete Zero Trust certificate response failure"
+				"description": "Delete Zero Trust certificate response failure."
 			}
 		},
 		"security": [
@@ -553,7 +553,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -573,22 +573,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -704,7 +704,7 @@
 						}
 					}
 				},
-				"description": "List Zero Trust certificates response"
+				"description": "List Zero Trust certificates response."
 			},
 			"4XX": {
 				"content": {
@@ -760,7 +760,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -780,22 +780,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -979,7 +979,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1000,7 +1000,7 @@
 						}
 					}
 				},
-				"description": "List Zero Trust certificates response failure"
+				"description": "List Zero Trust certificates response failure."
 			}
 		},
 		"security": [
@@ -1099,7 +1099,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1218,7 +1218,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust certificate details response"
+				"description": "Get Zero Trust certificate details response."
 			},
 			"4XX": {
 				"content": {
@@ -1274,7 +1274,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1461,7 +1461,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1482,7 +1482,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust certificate details response failure"
+				"description": "Get Zero Trust certificate details response failure."
 			}
 		},
 		"security": [
@@ -1586,7 +1586,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1705,7 +1705,7 @@
 						}
 					}
 				},
-				"description": "Create Zero Trust certificate response"
+				"description": "Create Zero Trust certificate response."
 			},
 			"4XX": {
 				"content": {
@@ -1761,7 +1761,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1948,7 +1948,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1969,7 +1969,7 @@
 						}
 					}
 				},
-				"description": "Create Zero Trust certificate response failure"
+				"description": "Create Zero Trust certificate response failure."
 			}
 		},
 		"security": [
@@ -2073,7 +2073,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2192,7 +2192,7 @@
 						}
 					}
 				},
-				"description": "Activate Zero Trust certificate details response"
+				"description": "Activate Zero Trust certificate details response."
 			},
 			"4XX": {
 				"content": {
@@ -2248,7 +2248,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2435,7 +2435,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2455,7 +2455,7 @@
 						}
 					}
 				},
-				"description": "Activate Zero Trust certificate details response failure"
+				"description": "Activate Zero Trust certificate details response failure."
 			}
 		},
 		"security": [
@@ -2474,7 +2474,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates/{certificate_id}/deactivate": {
-		"description": "Unbinds a single Zero Trust certificate from the edge",
+		"description": "Unbinds a single Zero Trust certificate from the edge.",
 		"operationId": "zero-trust-certificates-deactivate-zero-trust-certificate",
 		"parameters": [
 			{
@@ -2559,7 +2559,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2678,7 +2678,7 @@
 						}
 					}
 				},
-				"description": "Deactivate Zero Trust certificate details response"
+				"description": "Deactivate Zero Trust certificate details response."
 			},
 			"4XX": {
 				"content": {
@@ -2734,7 +2734,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2921,7 +2921,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2942,7 +2942,7 @@
 						}
 					}
 				},
-				"description": "Deactivate Zero Trust certificate details response failure"
+				"description": "Deactivate Zero Trust certificate details response failure."
 			}
 		},
 		"security": [

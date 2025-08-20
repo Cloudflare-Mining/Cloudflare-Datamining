@@ -345,6 +345,10 @@
 																"nullable": true,
 																"type": "string"
 															},
+															"htmltext_structure_hash": {
+																"nullable": true,
+																"type": "string"
+															},
 															"is_phish_submission": {
 																"type": "boolean"
 															},
@@ -387,22 +391,6 @@
 																	},
 																	"blocklisted_pattern": {
 																		"type": "string"
-																	},
-																	"whitelisted_pattern_type": {
-																		"allOf": [
-																			{
-																				"enum": [
-																					"quarantine_release",
-																					"acceptable_sender",
-																					"allowed_sender",
-																					"allowed_recipient",
-																					"domain_similarity",
-																					"domain_recency",
-																					"managed_acceptable_sender"
-																				],
-																				"type": "string"
-																			}
-																		]
 																	}
 																},
 																"type": "object"
@@ -551,6 +539,7 @@
 													"findings": null,
 													"from": "d1994@example.com",
 													"from_name": "Sender Name",
+													"htmltext_structure_hash": null,
 													"id": "47JJcT1w6GztQV7-email@example.com",
 													"is_phish_submission": false,
 													"is_quarantined": false,
@@ -911,6 +900,10 @@
 															"nullable": true,
 															"type": "string"
 														},
+														"htmltext_structure_hash": {
+															"nullable": true,
+															"type": "string"
+														},
 														"is_phish_submission": {
 															"type": "boolean"
 														},
@@ -953,22 +946,6 @@
 																},
 																"blocklisted_pattern": {
 																	"type": "string"
-																},
-																"whitelisted_pattern_type": {
-																	"allOf": [
-																		{
-																			"enum": [
-																				"quarantine_release",
-																				"acceptable_sender",
-																				"allowed_sender",
-																				"allowed_recipient",
-																				"domain_similarity",
-																				"domain_recency",
-																				"managed_acceptable_sender"
-																			],
-																			"type": "string"
-																		}
-																	]
 																}
 															},
 															"type": "object"
@@ -1117,6 +1094,7 @@
 												"findings": null,
 												"from": "d1994@example.com",
 												"from_name": "Sender Name",
+												"htmltext_structure_hash": null,
 												"id": "47JJcT1w6GztQV7-email@example.com",
 												"is_phish_submission": false,
 												"is_quarantined": false,

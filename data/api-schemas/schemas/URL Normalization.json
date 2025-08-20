@@ -11,7 +11,7 @@
 					"description": "The unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
-					"title": "ID",
+					"title": "Zone ID",
 					"type": "string"
 				}
 			}
@@ -71,7 +71,8 @@
 												"type": "object"
 											},
 											"title": "Errors",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
@@ -116,7 +117,8 @@
 												"type": "object"
 											},
 											"title": "Messages",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"result": {
 											"description": "A result.",
@@ -217,7 +219,7 @@
 					"description": "The unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
-					"title": "ID",
+					"title": "Zone ID",
 					"type": "string"
 				}
 			}
@@ -274,7 +276,8 @@
 												"type": "object"
 											},
 											"title": "Errors",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
@@ -319,7 +322,8 @@
 												"type": "object"
 											},
 											"title": "Messages",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"result": {
 											"description": "A result.",
@@ -443,7 +447,8 @@
 												"type": "object"
 											},
 											"title": "Errors",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
@@ -488,7 +493,8 @@
 												"type": "object"
 											},
 											"title": "Messages",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"result": {
 											"description": "A result.",
@@ -610,7 +616,7 @@
 					"description": "The unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
-					"title": "ID",
+					"title": "Zone ID",
 					"type": "string"
 				}
 			}
@@ -706,7 +712,8 @@
 												"type": "object"
 											},
 											"title": "Errors",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
@@ -751,7 +758,8 @@
 												"type": "object"
 											},
 											"title": "Messages",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"result": {
 											"description": "A result.",
@@ -875,7 +883,8 @@
 												"type": "object"
 											},
 											"title": "Errors",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
@@ -920,7 +929,8 @@
 												"type": "object"
 											},
 											"title": "Messages",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"result": {
 											"description": "A result.",

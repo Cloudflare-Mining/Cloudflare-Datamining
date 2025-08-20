@@ -11958,6 +11958,32 @@
 							},
 							"metadata": {
 								"description": "JSON-encoded metadata about the uploaded parts and Worker configuration.",
+								"oneOf": [
+									{
+										"properties": {
+											"main_module": {
+												"description": "Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
+												"example": "worker.js",
+												"type": "string"
+											}
+										},
+										"required": [
+											"main_module"
+										]
+									},
+									{
+										"properties": {
+											"body_part": {
+												"description": "Name of the uploaded file that contains the Worker script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
+												"example": "worker.js",
+												"type": "string"
+											}
+										},
+										"required": [
+											"body_part"
+										]
+									}
+								],
 								"properties": {
 									"assets": {
 										"description": "Configuration for assets within a Worker.",
@@ -12868,11 +12894,6 @@
 										},
 										"type": "array"
 									},
-									"body_part": {
-										"description": "Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
-										"example": "worker.js",
-										"type": "string"
-									},
 									"compatibility_date": {
 										"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 										"example": "2021-01-01",
@@ -12913,11 +12934,6 @@
 										"example": false,
 										"type": "boolean",
 										"x-auditable": true
-									},
-									"main_module": {
-										"description": "Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
-										"example": "worker.js",
-										"type": "string"
 									},
 									"migrations": {
 										"description": "Migrations to apply for Durable Objects associated with this Worker.",
@@ -13816,18 +13832,32 @@
 							},
 							"metadata": {
 								"description": "JSON-encoded metadata about the uploaded parts and Worker configuration.",
-								"properties": {
-									"body_part": {
-										"description": "Name of the uploaded file that contains the Worker script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
-										"example": "worker.js",
-										"type": "string"
+								"oneOf": [
+									{
+										"properties": {
+											"main_module": {
+												"description": "Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
+												"example": "worker.js",
+												"type": "string"
+											}
+										},
+										"required": [
+											"main_module"
+										]
 									},
-									"main_module": {
-										"description": "Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
-										"example": "worker.js",
-										"type": "string"
+									{
+										"properties": {
+											"body_part": {
+												"description": "Name of the uploaded file that contains the Worker script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
+												"example": "worker.js",
+												"type": "string"
+											}
+										},
+										"required": [
+											"body_part"
+										]
 									}
-								},
+								],
 								"type": "object"
 							}
 						},

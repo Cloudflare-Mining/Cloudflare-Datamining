@@ -85,7 +85,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -115,7 +115,7 @@
 						}
 					}
 				},
-				"description": "Delete a Zero Trust Gateway rule response"
+				"description": "Delete a Zero Trust Gateway rule response."
 			},
 			"4XX": {
 				"content": {
@@ -171,7 +171,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -269,7 +269,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -290,7 +290,7 @@
 						}
 					}
 				},
-				"description": "Delete a Zero Trust Gateway rule response failure"
+				"description": "Delete a Zero Trust Gateway rule response failure."
 			}
 		},
 		"security": [
@@ -376,7 +376,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -396,22 +396,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -527,7 +527,7 @@
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"filters": {
-														"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+														"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 														"example": [
 															"http"
 														],
@@ -568,7 +568,7 @@
 														"x-auditable": true
 													},
 													"not_sharable": {
-														"description": "The rule cannot be shared via the Orgs API",
+														"description": "The rule cannot be shared via the Orgs API.",
 														"readOnly": true,
 														"type": "boolean",
 														"x-auditable": true
@@ -580,7 +580,7 @@
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"read_only": {
-														"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+														"description": "The rule was shared via the Orgs API and cannot be edited by the current account.",
 														"readOnly": true,
 														"type": "boolean",
 														"x-auditable": true
@@ -752,12 +752,12 @@
 																"nullable": true,
 																"properties": {
 																	"include_context": {
-																		"description": "If true, context information will be passed as query parameters",
+																		"description": "If true, context information will be passed as query parameters.",
 																		"type": "boolean",
 																		"x-auditable": true
 																	},
 																	"target_uri": {
-																		"description": "URI to which the user will be redirected",
+																		"description": "URI to which the user will be redirected.",
 																		"format": "uri",
 																		"type": "string",
 																		"x-auditable": true
@@ -947,7 +947,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"l4override": {
-																"description": "Send matching traffic to the supplied destination IP address and port.",
+																"description": "Send matching traffic to the supplied destination IP address. and port.",
 																"nullable": true,
 																"properties": {
 																	"ip": {
@@ -970,12 +970,12 @@
 																"nullable": true,
 																"properties": {
 																	"enabled": {
-																		"description": "Set notification on",
+																		"description": "Set notification on.",
 																		"type": "boolean",
 																		"x-auditable": true
 																	},
 																	"include_context": {
-																		"description": "If true, context information will be passed as query parameters",
+																		"description": "If true, context information will be passed as query parameters.",
 																		"type": "boolean",
 																		"x-auditable": true
 																	},
@@ -1031,7 +1031,7 @@
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"quarantine": {
-																"description": "Settings that apply to quarantine rules",
+																"description": "Settings that apply to quarantine rules.",
 																"nullable": true,
 																"properties": {
 																	"file_types": {
@@ -1062,21 +1062,21 @@
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"redirect": {
-																"description": "Settings that apply to redirect rules",
+																"description": "Settings that apply to redirect rules.",
 																"nullable": true,
 																"properties": {
 																	"include_context": {
-																		"description": "If true, context information will be passed as query parameters",
+																		"description": "If true, context information will be passed as query parameters.",
 																		"type": "boolean",
 																		"x-auditable": true
 																	},
 																	"preserve_path_and_query": {
-																		"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																		"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 																		"type": "boolean",
 																		"x-auditable": true
 																	},
 																	"target_uri": {
-																		"description": "URI to which the user will be redirected",
+																		"description": "URI to which the user will be redirected.",
 																		"format": "uri",
 																		"type": "string",
 																		"x-auditable": true
@@ -1198,7 +1198,7 @@
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"source_account": {
-														"description": "account tag of account that created the rule",
+														"description": "account tag of account that created the rule.",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
@@ -1218,7 +1218,7 @@
 														"type": "string"
 													},
 													"version": {
-														"description": "version number of the rule",
+														"description": "version number of the rule.",
 														"example": 1,
 														"readOnly": true,
 														"type": "integer",
@@ -1250,7 +1250,7 @@
 						}
 					}
 				},
-				"description": "List Zero Trust Gateway rules response"
+				"description": "List Zero Trust Gateway rules response."
 			},
 			"4XX": {
 				"content": {
@@ -1309,7 +1309,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1329,22 +1329,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -1460,7 +1460,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"filters": {
-																"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+																"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 																"example": [
 																	"http"
 																],
@@ -1501,7 +1501,7 @@
 																"x-auditable": true
 															},
 															"not_sharable": {
-																"description": "The rule cannot be shared via the Orgs API",
+																"description": "The rule cannot be shared via the Orgs API.",
 																"readOnly": true,
 																"type": "boolean",
 																"x-auditable": true
@@ -1513,7 +1513,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"read_only": {
-																"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+																"description": "The rule was shared via the Orgs API and cannot be edited by the current account.",
 																"readOnly": true,
 																"type": "boolean",
 																"x-auditable": true
@@ -1685,12 +1685,12 @@
 																		"nullable": true,
 																		"properties": {
 																			"include_context": {
-																				"description": "If true, context information will be passed as query parameters",
+																				"description": "If true, context information will be passed as query parameters.",
 																				"type": "boolean",
 																				"x-auditable": true
 																			},
 																			"target_uri": {
-																				"description": "URI to which the user will be redirected",
+																				"description": "URI to which the user will be redirected.",
 																				"format": "uri",
 																				"type": "string",
 																				"x-auditable": true
@@ -1880,7 +1880,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"l4override": {
-																		"description": "Send matching traffic to the supplied destination IP address and port.",
+																		"description": "Send matching traffic to the supplied destination IP address. and port.",
 																		"nullable": true,
 																		"properties": {
 																			"ip": {
@@ -1903,12 +1903,12 @@
 																		"nullable": true,
 																		"properties": {
 																			"enabled": {
-																				"description": "Set notification on",
+																				"description": "Set notification on.",
 																				"type": "boolean",
 																				"x-auditable": true
 																			},
 																			"include_context": {
-																				"description": "If true, context information will be passed as query parameters",
+																				"description": "If true, context information will be passed as query parameters.",
 																				"type": "boolean",
 																				"x-auditable": true
 																			},
@@ -1964,7 +1964,7 @@
 																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"quarantine": {
-																		"description": "Settings that apply to quarantine rules",
+																		"description": "Settings that apply to quarantine rules.",
 																		"nullable": true,
 																		"properties": {
 																			"file_types": {
@@ -1995,21 +1995,21 @@
 																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"redirect": {
-																		"description": "Settings that apply to redirect rules",
+																		"description": "Settings that apply to redirect rules.",
 																		"nullable": true,
 																		"properties": {
 																			"include_context": {
-																				"description": "If true, context information will be passed as query parameters",
+																				"description": "If true, context information will be passed as query parameters.",
 																				"type": "boolean",
 																				"x-auditable": true
 																			},
 																			"preserve_path_and_query": {
-																				"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																				"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 																				"type": "boolean",
 																				"x-auditable": true
 																			},
 																			"target_uri": {
-																				"description": "URI to which the user will be redirected",
+																				"description": "URI to which the user will be redirected.",
 																				"format": "uri",
 																				"type": "string",
 																				"x-auditable": true
@@ -2131,7 +2131,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"source_account": {
-																"description": "account tag of account that created the rule",
+																"description": "account tag of account that created the rule.",
 																"readOnly": true,
 																"type": "string",
 																"x-auditable": true
@@ -2151,7 +2151,7 @@
 																"type": "string"
 															},
 															"version": {
-																"description": "version number of the rule",
+																"description": "version number of the rule.",
 																"example": 1,
 																"readOnly": true,
 																"type": "integer",
@@ -2251,7 +2251,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2272,7 +2272,7 @@
 						}
 					}
 				},
-				"description": "List Zero Trust Gateway rules response failure"
+				"description": "List Zero Trust Gateway rules response failure."
 			}
 		},
 		"security": [
@@ -2371,7 +2371,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2492,7 +2492,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filters": {
-													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 													"example": [
 														"http"
 													],
@@ -2533,7 +2533,7 @@
 													"x-auditable": true
 												},
 												"not_sharable": {
-													"description": "The rule cannot be shared via the Orgs API",
+													"description": "The rule cannot be shared via the Orgs API.",
 													"readOnly": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -2545,7 +2545,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"read_only": {
-													"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+													"description": "The rule was shared via the Orgs API and cannot be edited by the current account.",
 													"readOnly": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -2717,12 +2717,12 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"target_uri": {
-																	"description": "URI to which the user will be redirected",
+																	"description": "URI to which the user will be redirected.",
 																	"format": "uri",
 																	"type": "string",
 																	"x-auditable": true
@@ -2912,7 +2912,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"l4override": {
-															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"description": "Send matching traffic to the supplied destination IP address. and port.",
 															"nullable": true,
 															"properties": {
 																"ip": {
@@ -2935,12 +2935,12 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"description": "Set notification on",
+																	"description": "Set notification on.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
@@ -2996,7 +2996,7 @@
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"quarantine": {
-															"description": "Settings that apply to quarantine rules",
+															"description": "Settings that apply to quarantine rules.",
 															"nullable": true,
 															"properties": {
 																"file_types": {
@@ -3027,21 +3027,21 @@
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"redirect": {
-															"description": "Settings that apply to redirect rules",
+															"description": "Settings that apply to redirect rules.",
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"preserve_path_and_query": {
-																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																	"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"target_uri": {
-																	"description": "URI to which the user will be redirected",
+																	"description": "URI to which the user will be redirected.",
 																	"format": "uri",
 																	"type": "string",
 																	"x-auditable": true
@@ -3163,7 +3163,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"source_account": {
-													"description": "account tag of account that created the rule",
+													"description": "account tag of account that created the rule.",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
@@ -3183,7 +3183,7 @@
 													"type": "string"
 												},
 												"version": {
-													"description": "version number of the rule",
+													"description": "version number of the rule.",
 													"example": 1,
 													"readOnly": true,
 													"type": "integer",
@@ -3272,7 +3272,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3393,7 +3393,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"filters": {
-															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 															"example": [
 																"http"
 															],
@@ -3434,7 +3434,7 @@
 															"x-auditable": true
 														},
 														"not_sharable": {
-															"description": "The rule cannot be shared via the Orgs API",
+															"description": "The rule cannot be shared via the Orgs API.",
 															"readOnly": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -3446,7 +3446,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"read_only": {
-															"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+															"description": "The rule was shared via the Orgs API and cannot be edited by the current account.",
 															"readOnly": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -3618,12 +3618,12 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"target_uri": {
-																			"description": "URI to which the user will be redirected",
+																			"description": "URI to which the user will be redirected.",
 																			"format": "uri",
 																			"type": "string",
 																			"x-auditable": true
@@ -3813,7 +3813,7 @@
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"l4override": {
-																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"description": "Send matching traffic to the supplied destination IP address. and port.",
 																	"nullable": true,
 																	"properties": {
 																		"ip": {
@@ -3836,12 +3836,12 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"description": "Set notification on",
+																			"description": "Set notification on.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -3897,7 +3897,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"quarantine": {
-																	"description": "Settings that apply to quarantine rules",
+																	"description": "Settings that apply to quarantine rules.",
 																	"nullable": true,
 																	"properties": {
 																		"file_types": {
@@ -3928,21 +3928,21 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"redirect": {
-																	"description": "Settings that apply to redirect rules",
+																	"description": "Settings that apply to redirect rules.",
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"preserve_path_and_query": {
-																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																			"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"target_uri": {
-																			"description": "URI to which the user will be redirected",
+																			"description": "URI to which the user will be redirected.",
 																			"format": "uri",
 																			"type": "string",
 																			"x-auditable": true
@@ -4064,7 +4064,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"source_account": {
-															"description": "account tag of account that created the rule",
+															"description": "account tag of account that created the rule.",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
@@ -4084,7 +4084,7 @@
 															"type": "string"
 														},
 														"version": {
-															"description": "version number of the rule",
+															"description": "version number of the rule.",
 															"example": 1,
 															"readOnly": true,
 															"type": "integer",
@@ -4182,7 +4182,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4212,7 +4212,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Zero Trust Gateway rule details",
+		"summary": "Get Zero Trust Gateway rule details.",
 		"tags": [
 			"Zero Trust Gateway rules"
 		],
@@ -4327,7 +4327,7 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"filters": {
-								"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+								"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 								"example": [
 									"http"
 								],
@@ -4533,12 +4533,12 @@
 										"nullable": true,
 										"properties": {
 											"include_context": {
-												"description": "If true, context information will be passed as query parameters",
+												"description": "If true, context information will be passed as query parameters.",
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"target_uri": {
-												"description": "URI to which the user will be redirected",
+												"description": "URI to which the user will be redirected.",
 												"format": "uri",
 												"type": "string",
 												"x-auditable": true
@@ -4728,7 +4728,7 @@
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"l4override": {
-										"description": "Send matching traffic to the supplied destination IP address and port.",
+										"description": "Send matching traffic to the supplied destination IP address. and port.",
 										"nullable": true,
 										"properties": {
 											"ip": {
@@ -4751,12 +4751,12 @@
 										"nullable": true,
 										"properties": {
 											"enabled": {
-												"description": "Set notification on",
+												"description": "Set notification on.",
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"include_context": {
-												"description": "If true, context information will be passed as query parameters",
+												"description": "If true, context information will be passed as query parameters.",
 												"type": "boolean",
 												"x-auditable": true
 											},
@@ -4812,7 +4812,7 @@
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"quarantine": {
-										"description": "Settings that apply to quarantine rules",
+										"description": "Settings that apply to quarantine rules.",
 										"nullable": true,
 										"properties": {
 											"file_types": {
@@ -4843,21 +4843,21 @@
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"redirect": {
-										"description": "Settings that apply to redirect rules",
+										"description": "Settings that apply to redirect rules.",
 										"nullable": true,
 										"properties": {
 											"include_context": {
-												"description": "If true, context information will be passed as query parameters",
+												"description": "If true, context information will be passed as query parameters.",
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"preserve_path_and_query": {
-												"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+												"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"target_uri": {
-												"description": "URI to which the user will be redirected",
+												"description": "URI to which the user will be redirected.",
 												"format": "uri",
 												"type": "string",
 												"x-auditable": true
@@ -5050,7 +5050,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -5171,7 +5171,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filters": {
-													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 													"example": [
 														"http"
 													],
@@ -5212,7 +5212,7 @@
 													"x-auditable": true
 												},
 												"not_sharable": {
-													"description": "The rule cannot be shared via the Orgs API",
+													"description": "The rule cannot be shared via the Orgs API.",
 													"readOnly": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -5224,7 +5224,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"read_only": {
-													"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+													"description": "The rule was shared via the Orgs API and cannot be edited by the current account.",
 													"readOnly": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -5396,12 +5396,12 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"target_uri": {
-																	"description": "URI to which the user will be redirected",
+																	"description": "URI to which the user will be redirected.",
 																	"format": "uri",
 																	"type": "string",
 																	"x-auditable": true
@@ -5591,7 +5591,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"l4override": {
-															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"description": "Send matching traffic to the supplied destination IP address. and port.",
 															"nullable": true,
 															"properties": {
 																"ip": {
@@ -5614,12 +5614,12 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"description": "Set notification on",
+																	"description": "Set notification on.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
@@ -5675,7 +5675,7 @@
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"quarantine": {
-															"description": "Settings that apply to quarantine rules",
+															"description": "Settings that apply to quarantine rules.",
 															"nullable": true,
 															"properties": {
 																"file_types": {
@@ -5706,21 +5706,21 @@
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"redirect": {
-															"description": "Settings that apply to redirect rules",
+															"description": "Settings that apply to redirect rules.",
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"preserve_path_and_query": {
-																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																	"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"target_uri": {
-																	"description": "URI to which the user will be redirected",
+																	"description": "URI to which the user will be redirected.",
 																	"format": "uri",
 																	"type": "string",
 																	"x-auditable": true
@@ -5842,7 +5842,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"source_account": {
-													"description": "account tag of account that created the rule",
+													"description": "account tag of account that created the rule.",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
@@ -5862,7 +5862,7 @@
 													"type": "string"
 												},
 												"version": {
-													"description": "version number of the rule",
+													"description": "version number of the rule.",
 													"example": 1,
 													"readOnly": true,
 													"type": "integer",
@@ -5892,7 +5892,7 @@
 						}
 					}
 				},
-				"description": "Create a Zero Trust Gateway rule response"
+				"description": "Create a Zero Trust Gateway rule response."
 			},
 			"4XX": {
 				"content": {
@@ -5951,7 +5951,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -6072,7 +6072,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"filters": {
-															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 															"example": [
 																"http"
 															],
@@ -6113,7 +6113,7 @@
 															"x-auditable": true
 														},
 														"not_sharable": {
-															"description": "The rule cannot be shared via the Orgs API",
+															"description": "The rule cannot be shared via the Orgs API.",
 															"readOnly": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -6125,7 +6125,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"read_only": {
-															"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+															"description": "The rule was shared via the Orgs API and cannot be edited by the current account.",
 															"readOnly": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -6297,12 +6297,12 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"target_uri": {
-																			"description": "URI to which the user will be redirected",
+																			"description": "URI to which the user will be redirected.",
 																			"format": "uri",
 																			"type": "string",
 																			"x-auditable": true
@@ -6492,7 +6492,7 @@
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"l4override": {
-																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"description": "Send matching traffic to the supplied destination IP address. and port.",
 																	"nullable": true,
 																	"properties": {
 																		"ip": {
@@ -6515,12 +6515,12 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"description": "Set notification on",
+																			"description": "Set notification on.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -6576,7 +6576,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"quarantine": {
-																	"description": "Settings that apply to quarantine rules",
+																	"description": "Settings that apply to quarantine rules.",
 																	"nullable": true,
 																	"properties": {
 																		"file_types": {
@@ -6607,21 +6607,21 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"redirect": {
-																	"description": "Settings that apply to redirect rules",
+																	"description": "Settings that apply to redirect rules.",
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"preserve_path_and_query": {
-																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																			"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"target_uri": {
-																			"description": "URI to which the user will be redirected",
+																			"description": "URI to which the user will be redirected.",
 																			"format": "uri",
 																			"type": "string",
 																			"x-auditable": true
@@ -6743,7 +6743,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"source_account": {
-															"description": "account tag of account that created the rule",
+															"description": "account tag of account that created the rule.",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
@@ -6763,7 +6763,7 @@
 															"type": "string"
 														},
 														"version": {
-															"description": "version number of the rule",
+															"description": "version number of the rule.",
 															"example": 1,
 															"readOnly": true,
 															"type": "integer",
@@ -6861,7 +6861,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -6882,7 +6882,7 @@
 						}
 					}
 				},
-				"description": "Create a Zero Trust Gateway rule response failure"
+				"description": "Create a Zero Trust Gateway rule response failure."
 			}
 		},
 		"security": [
@@ -6980,7 +6980,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -7101,7 +7101,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filters": {
-													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 													"example": [
 														"http"
 													],
@@ -7142,7 +7142,7 @@
 													"x-auditable": true
 												},
 												"not_sharable": {
-													"description": "The rule cannot be shared via the Orgs API",
+													"description": "The rule cannot be shared via the Orgs API.",
 													"readOnly": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -7154,7 +7154,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"read_only": {
-													"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+													"description": "The rule was shared via the Orgs API and cannot be edited by the current account.",
 													"readOnly": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -7326,12 +7326,12 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"target_uri": {
-																	"description": "URI to which the user will be redirected",
+																	"description": "URI to which the user will be redirected.",
 																	"format": "uri",
 																	"type": "string",
 																	"x-auditable": true
@@ -7521,7 +7521,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"l4override": {
-															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"description": "Send matching traffic to the supplied destination IP address. and port.",
 															"nullable": true,
 															"properties": {
 																"ip": {
@@ -7544,12 +7544,12 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"description": "Set notification on",
+																	"description": "Set notification on.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
@@ -7605,7 +7605,7 @@
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"quarantine": {
-															"description": "Settings that apply to quarantine rules",
+															"description": "Settings that apply to quarantine rules.",
 															"nullable": true,
 															"properties": {
 																"file_types": {
@@ -7636,21 +7636,21 @@
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"redirect": {
-															"description": "Settings that apply to redirect rules",
+															"description": "Settings that apply to redirect rules.",
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"preserve_path_and_query": {
-																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																	"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"target_uri": {
-																	"description": "URI to which the user will be redirected",
+																	"description": "URI to which the user will be redirected.",
 																	"format": "uri",
 																	"type": "string",
 																	"x-auditable": true
@@ -7772,7 +7772,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"source_account": {
-													"description": "account tag of account that created the rule",
+													"description": "account tag of account that created the rule.",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
@@ -7792,7 +7792,7 @@
 													"type": "string"
 												},
 												"version": {
-													"description": "version number of the rule",
+													"description": "version number of the rule.",
 													"example": 1,
 													"readOnly": true,
 													"type": "integer",
@@ -7878,7 +7878,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -7999,7 +7999,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"filters": {
-															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 															"example": [
 																"http"
 															],
@@ -8040,7 +8040,7 @@
 															"x-auditable": true
 														},
 														"not_sharable": {
-															"description": "The rule cannot be shared via the Orgs API",
+															"description": "The rule cannot be shared via the Orgs API.",
 															"readOnly": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -8052,7 +8052,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"read_only": {
-															"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+															"description": "The rule was shared via the Orgs API and cannot be edited by the current account.",
 															"readOnly": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -8224,12 +8224,12 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"target_uri": {
-																			"description": "URI to which the user will be redirected",
+																			"description": "URI to which the user will be redirected.",
 																			"format": "uri",
 																			"type": "string",
 																			"x-auditable": true
@@ -8419,7 +8419,7 @@
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"l4override": {
-																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"description": "Send matching traffic to the supplied destination IP address. and port.",
 																	"nullable": true,
 																	"properties": {
 																		"ip": {
@@ -8442,12 +8442,12 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"description": "Set notification on",
+																			"description": "Set notification on.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -8503,7 +8503,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"quarantine": {
-																	"description": "Settings that apply to quarantine rules",
+																	"description": "Settings that apply to quarantine rules.",
 																	"nullable": true,
 																	"properties": {
 																		"file_types": {
@@ -8534,21 +8534,21 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"redirect": {
-																	"description": "Settings that apply to redirect rules",
+																	"description": "Settings that apply to redirect rules.",
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"preserve_path_and_query": {
-																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																			"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"target_uri": {
-																			"description": "URI to which the user will be redirected",
+																			"description": "URI to which the user will be redirected.",
 																			"format": "uri",
 																			"type": "string",
 																			"x-auditable": true
@@ -8670,7 +8670,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"source_account": {
-															"description": "account tag of account that created the rule",
+															"description": "account tag of account that created the rule.",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
@@ -8690,7 +8690,7 @@
 															"type": "string"
 														},
 														"version": {
-															"description": "version number of the rule",
+															"description": "version number of the rule.",
 															"example": 1,
 															"readOnly": true,
 															"type": "integer",
@@ -8788,7 +8788,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -8945,7 +8945,7 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"filters": {
-								"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+								"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 								"example": [
 									"http"
 								],
@@ -9151,12 +9151,12 @@
 										"nullable": true,
 										"properties": {
 											"include_context": {
-												"description": "If true, context information will be passed as query parameters",
+												"description": "If true, context information will be passed as query parameters.",
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"target_uri": {
-												"description": "URI to which the user will be redirected",
+												"description": "URI to which the user will be redirected.",
 												"format": "uri",
 												"type": "string",
 												"x-auditable": true
@@ -9346,7 +9346,7 @@
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"l4override": {
-										"description": "Send matching traffic to the supplied destination IP address and port.",
+										"description": "Send matching traffic to the supplied destination IP address. and port.",
 										"nullable": true,
 										"properties": {
 											"ip": {
@@ -9369,12 +9369,12 @@
 										"nullable": true,
 										"properties": {
 											"enabled": {
-												"description": "Set notification on",
+												"description": "Set notification on.",
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"include_context": {
-												"description": "If true, context information will be passed as query parameters",
+												"description": "If true, context information will be passed as query parameters.",
 												"type": "boolean",
 												"x-auditable": true
 											},
@@ -9430,7 +9430,7 @@
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"quarantine": {
-										"description": "Settings that apply to quarantine rules",
+										"description": "Settings that apply to quarantine rules.",
 										"nullable": true,
 										"properties": {
 											"file_types": {
@@ -9461,21 +9461,21 @@
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"redirect": {
-										"description": "Settings that apply to redirect rules",
+										"description": "Settings that apply to redirect rules.",
 										"nullable": true,
 										"properties": {
 											"include_context": {
-												"description": "If true, context information will be passed as query parameters",
+												"description": "If true, context information will be passed as query parameters.",
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"preserve_path_and_query": {
-												"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+												"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"target_uri": {
-												"description": "URI to which the user will be redirected",
+												"description": "URI to which the user will be redirected.",
 												"format": "uri",
 												"type": "string",
 												"x-auditable": true
@@ -9668,7 +9668,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -9789,7 +9789,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filters": {
-													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 													"example": [
 														"http"
 													],
@@ -9830,7 +9830,7 @@
 													"x-auditable": true
 												},
 												"not_sharable": {
-													"description": "The rule cannot be shared via the Orgs API",
+													"description": "The rule cannot be shared via the Orgs API.",
 													"readOnly": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -9842,7 +9842,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"read_only": {
-													"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+													"description": "The rule was shared via the Orgs API and cannot be edited by the current account.",
 													"readOnly": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -10014,12 +10014,12 @@
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"target_uri": {
-																	"description": "URI to which the user will be redirected",
+																	"description": "URI to which the user will be redirected.",
 																	"format": "uri",
 																	"type": "string",
 																	"x-auditable": true
@@ -10209,7 +10209,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"l4override": {
-															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"description": "Send matching traffic to the supplied destination IP address. and port.",
 															"nullable": true,
 															"properties": {
 																"ip": {
@@ -10232,12 +10232,12 @@
 															"nullable": true,
 															"properties": {
 																"enabled": {
-																	"description": "Set notification on",
+																	"description": "Set notification on.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
@@ -10293,7 +10293,7 @@
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"quarantine": {
-															"description": "Settings that apply to quarantine rules",
+															"description": "Settings that apply to quarantine rules.",
 															"nullable": true,
 															"properties": {
 																"file_types": {
@@ -10324,21 +10324,21 @@
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"redirect": {
-															"description": "Settings that apply to redirect rules",
+															"description": "Settings that apply to redirect rules.",
 															"nullable": true,
 															"properties": {
 																"include_context": {
-																	"description": "If true, context information will be passed as query parameters",
+																	"description": "If true, context information will be passed as query parameters.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"preserve_path_and_query": {
-																	"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																	"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"target_uri": {
-																	"description": "URI to which the user will be redirected",
+																	"description": "URI to which the user will be redirected.",
 																	"format": "uri",
 																	"type": "string",
 																	"x-auditable": true
@@ -10460,7 +10460,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"source_account": {
-													"description": "account tag of account that created the rule",
+													"description": "account tag of account that created the rule.",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
@@ -10480,7 +10480,7 @@
 													"type": "string"
 												},
 												"version": {
-													"description": "version number of the rule",
+													"description": "version number of the rule.",
 													"example": 1,
 													"readOnly": true,
 													"type": "integer",
@@ -10510,7 +10510,7 @@
 						}
 					}
 				},
-				"description": "Update a Zero Trust Gateway rule response"
+				"description": "Update a Zero Trust Gateway rule response."
 			},
 			"4XX": {
 				"content": {
@@ -10569,7 +10569,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -10690,7 +10690,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"filters": {
-															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"description": "The protocol or layer to evaluate the traffic, identity, and device. posture expressions.",
 															"example": [
 																"http"
 															],
@@ -10731,7 +10731,7 @@
 															"x-auditable": true
 														},
 														"not_sharable": {
-															"description": "The rule cannot be shared via the Orgs API",
+															"description": "The rule cannot be shared via the Orgs API.",
 															"readOnly": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -10743,7 +10743,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"read_only": {
-															"description": "The rule was shared via the Orgs API and cannot be edited by the current account",
+															"description": "The rule was shared via the Orgs API and cannot be edited by the current account.",
 															"readOnly": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -10915,12 +10915,12 @@
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"target_uri": {
-																			"description": "URI to which the user will be redirected",
+																			"description": "URI to which the user will be redirected.",
 																			"format": "uri",
 																			"type": "string",
 																			"x-auditable": true
@@ -11110,7 +11110,7 @@
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"l4override": {
-																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"description": "Send matching traffic to the supplied destination IP address. and port.",
 																	"nullable": true,
 																	"properties": {
 																		"ip": {
@@ -11133,12 +11133,12 @@
 																	"nullable": true,
 																	"properties": {
 																		"enabled": {
-																			"description": "Set notification on",
+																			"description": "Set notification on.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
@@ -11194,7 +11194,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"quarantine": {
-																	"description": "Settings that apply to quarantine rules",
+																	"description": "Settings that apply to quarantine rules.",
 																	"nullable": true,
 																	"properties": {
 																		"file_types": {
@@ -11225,21 +11225,21 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"redirect": {
-																	"description": "Settings that apply to redirect rules",
+																	"description": "Settings that apply to redirect rules.",
 																	"nullable": true,
 																	"properties": {
 																		"include_context": {
-																			"description": "If true, context information will be passed as query parameters",
+																			"description": "If true, context information will be passed as query parameters.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"preserve_path_and_query": {
-																			"description": "If true, the path and query parameters from the original request will be appended to target_uri",
+																			"description": "If true, the path and query parameters from the original request will be appended to target_uri.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"target_uri": {
-																			"description": "URI to which the user will be redirected",
+																			"description": "URI to which the user will be redirected.",
 																			"format": "uri",
 																			"type": "string",
 																			"x-auditable": true
@@ -11361,7 +11361,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"source_account": {
-															"description": "account tag of account that created the rule",
+															"description": "account tag of account that created the rule.",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
@@ -11381,7 +11381,7 @@
 															"type": "string"
 														},
 														"version": {
-															"description": "version number of the rule",
+															"description": "version number of the rule.",
 															"example": 1,
 															"readOnly": true,
 															"type": "integer",
@@ -11479,7 +11479,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -11499,7 +11499,7 @@
 						}
 					}
 				},
-				"description": "Update a Zero Trust Gateway rule response failure"
+				"description": "Update a Zero Trust Gateway rule response failure."
 			}
 		},
 		"security": [

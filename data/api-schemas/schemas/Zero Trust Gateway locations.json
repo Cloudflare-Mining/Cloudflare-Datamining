@@ -83,7 +83,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -113,7 +113,7 @@
 						}
 					}
 				},
-				"description": "Delete a Zero Trust Gateway location response"
+				"description": "Delete a Zero Trust Gateway location response."
 			},
 			"4XX": {
 				"content": {
@@ -169,7 +169,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -267,7 +267,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -288,7 +288,7 @@
 						}
 					}
 				},
-				"description": "Delete a Zero Trust Gateway location response failure"
+				"description": "Delete a Zero Trust Gateway location response failure."
 			}
 		},
 		"security": [
@@ -375,7 +375,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -395,22 +395,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -667,7 +667,7 @@
 						}
 					}
 				},
-				"description": "List Zero Trust Gateway locations response"
+				"description": "List Zero Trust Gateway locations response."
 			},
 			"4XX": {
 				"content": {
@@ -723,7 +723,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -743,22 +743,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -1083,7 +1083,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1104,7 +1104,7 @@
 						}
 					}
 				},
-				"description": "List Zero Trust Gateway locations response failure"
+				"description": "List Zero Trust Gateway locations response failure."
 			}
 		},
 		"security": [
@@ -1202,7 +1202,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1462,7 +1462,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust Gateway location details response"
+				"description": "Get Zero Trust Gateway location details response."
 			},
 			"4XX": {
 				"content": {
@@ -1518,7 +1518,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1846,7 +1846,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1867,7 +1867,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust Gateway location details response failure"
+				"description": "Get Zero Trust Gateway location details response failure."
 			}
 		},
 		"security": [
@@ -2145,7 +2145,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2405,7 +2405,7 @@
 						}
 					}
 				},
-				"description": "Create a Zero Trust Gateway location response"
+				"description": "Create a Zero Trust Gateway location response."
 			},
 			"4XX": {
 				"content": {
@@ -2461,7 +2461,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2789,7 +2789,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2810,7 +2810,7 @@
 						}
 					}
 				},
-				"description": "Create a Zero Trust Gateway location response failure"
+				"description": "Create a Zero Trust Gateway location response failure."
 			}
 		},
 		"security": [
@@ -3097,7 +3097,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3357,7 +3357,7 @@
 						}
 					}
 				},
-				"description": "Update a Zero Trust Gateway location response"
+				"description": "Update a Zero Trust Gateway location response."
 			},
 			"4XX": {
 				"content": {
@@ -3413,7 +3413,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3741,7 +3741,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3762,7 +3762,7 @@
 						}
 					}
 				},
-				"description": "Update a Zero Trust Gateway location response failure"
+				"description": "Update a Zero Trust Gateway location response failure."
 			}
 		},
 		"security": [

@@ -1,6 +1,6 @@
 {
 	"GET /radar/search/global": {
-		"description": "Searches for locations, autonomous systems, reports, bots, certificate logs, and certificate authorities.",
+		"description": "Searches for locations, autonomous systems, reports, bots, certificate logs, certificate authorities, industries and verticals",
 		"operationId": "radar-get-search-global",
 		"parameters": [
 			{
@@ -46,7 +46,9 @@
 							"CERTIFICATE_AUTHORITIES",
 							"CERTIFICATE_LOGS",
 							"LOCATIONS",
-							"NOTEBOOKS"
+							"NOTEBOOKS",
+							"VERTICALS",
+							"INDUSTRIES"
 						],
 						"type": "string"
 					},
@@ -66,7 +68,9 @@
 							"CERTIFICATE_AUTHORITIES",
 							"CERTIFICATE_LOGS",
 							"LOCATIONS",
-							"NOTEBOOKS"
+							"NOTEBOOKS",
+							"VERTICALS",
+							"INDUSTRIES"
 						],
 						"type": "string"
 					},

@@ -83,7 +83,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -113,7 +113,7 @@
 						}
 					}
 				},
-				"description": "Delete a proxy endpoint response"
+				"description": "Delete a proxy endpoint response."
 			},
 			"4XX": {
 				"content": {
@@ -172,7 +172,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -270,7 +270,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -291,7 +291,7 @@
 						}
 					}
 				},
-				"description": "Delete a proxy endpoint response failure"
+				"description": "Delete a proxy endpoint response failure."
 			}
 		},
 		"security": [
@@ -377,7 +377,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -449,7 +449,7 @@
 						}
 					}
 				},
-				"description": "List proxy endpoints response"
+				"description": "List proxy endpoints response."
 			},
 			"4XX": {
 				"content": {
@@ -505,7 +505,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -645,7 +645,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -666,7 +666,7 @@
 						}
 					}
 				},
-				"description": "List proxy endpoints response failure"
+				"description": "List proxy endpoints response failure."
 			}
 		},
 		"security": [
@@ -763,7 +763,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -783,22 +783,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -867,7 +867,7 @@
 						}
 					}
 				},
-				"description": "Get a proxy endpoint response"
+				"description": "Get a proxy endpoint response."
 			},
 			"4XX": {
 				"content": {
@@ -926,7 +926,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -946,22 +946,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -1098,7 +1098,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1119,7 +1119,7 @@
 						}
 					}
 				},
-				"description": "Get a proxy endpoint response failure"
+				"description": "Get a proxy endpoint response failure."
 			}
 		},
 		"security": [
@@ -1244,7 +1244,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1316,7 +1316,7 @@
 						}
 					}
 				},
-				"description": "Update a proxy endpoint response"
+				"description": "Update a proxy endpoint response."
 			},
 			"4XX": {
 				"content": {
@@ -1372,7 +1372,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1512,7 +1512,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1533,7 +1533,7 @@
 						}
 					}
 				},
-				"description": "Update a proxy endpoint response failure"
+				"description": "Update a proxy endpoint response failure."
 			}
 		},
 		"security": [
@@ -1651,7 +1651,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1723,7 +1723,7 @@
 						}
 					}
 				},
-				"description": "Create a proxy endpoint response"
+				"description": "Create a proxy endpoint response."
 			},
 			"4XX": {
 				"content": {
@@ -1779,7 +1779,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1919,7 +1919,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1940,7 +1940,7 @@
 						}
 					}
 				},
-				"description": "Create a proxy endpoint response failure"
+				"description": "Create a proxy endpoint response failure."
 			}
 		},
 		"security": [

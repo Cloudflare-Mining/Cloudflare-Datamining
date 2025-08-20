@@ -162,86 +162,6 @@
 																"type": {
 																	"description": "Type of source",
 																	"enum": [
-																		"access"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"application_id": {
-																	"description": "ID of the Access application",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"access.application"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"clipboards"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"clipboard_id": {
-																	"description": "ID of the clipboard",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"clipboards.clipboard"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"dns.zone"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"zone_id": {
-																	"description": "ID of the DNS zone",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
 																		"images"
 																	],
 																	"type": "string",
@@ -265,77 +185,10 @@
 														},
 														{
 															"properties": {
-																"namespace_id": {
-																	"description": "ID of the KV namespace",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"kv.namespace"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
 																"type": {
 																	"description": "Type of source",
 																	"enum": [
 																		"r2"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"bucket_name": {
-																	"description": "Name of the R2 bucket",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"r2.bucket"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"secretsStore"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"store_id": {
-																	"description": "ID of the secrets store",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"secretsStore.store"
 																	],
 																	"type": "string",
 																	"x-auditable": true
@@ -362,24 +215,6 @@
 																	"description": "Type of source",
 																	"enum": [
 																		"vectorize"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"index_name": {
-																	"description": "Name of the Vectorize index",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"vectorize.index"
 																	],
 																	"type": "string",
 																	"x-auditable": true
@@ -417,19 +252,6 @@
 																},
 																"worker_name": {
 																	"description": "Name of the worker",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"workflows"
-																	],
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -1048,86 +870,6 @@
 																	"type": {
 																		"description": "Type of source",
 																		"enum": [
-																			"access"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"application_id": {
-																		"description": "ID of the Access application",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "Type of source",
-																		"enum": [
-																			"access.application"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
-																		"description": "Type of source",
-																		"enum": [
-																			"clipboards"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"clipboard_id": {
-																		"description": "ID of the clipboard",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "Type of source",
-																		"enum": [
-																			"clipboards.clipboard"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
-																		"description": "Type of source",
-																		"enum": [
-																			"dns.zone"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"zone_id": {
-																		"description": "ID of the DNS zone",
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
-																		"description": "Type of source",
-																		"enum": [
 																			"images"
 																		],
 																		"type": "string",
@@ -1151,77 +893,10 @@
 															},
 															{
 																"properties": {
-																	"namespace_id": {
-																		"description": "ID of the KV namespace",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "Type of source",
-																		"enum": [
-																			"kv.namespace"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
 																	"type": {
 																		"description": "Type of source",
 																		"enum": [
 																			"r2"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"bucket_name": {
-																		"description": "Name of the R2 bucket",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "Type of source",
-																		"enum": [
-																			"r2.bucket"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
-																		"description": "Type of source",
-																		"enum": [
-																			"secretsStore"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"store_id": {
-																		"description": "ID of the secrets store",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "Type of source",
-																		"enum": [
-																			"secretsStore.store"
 																		],
 																		"type": "string",
 																		"x-auditable": true
@@ -1248,24 +923,6 @@
 																		"description": "Type of source",
 																		"enum": [
 																			"vectorize"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"index_name": {
-																		"description": "Name of the Vectorize index",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "Type of source",
-																		"enum": [
-																			"vectorize.index"
 																		],
 																		"type": "string",
 																		"x-auditable": true
@@ -1303,19 +960,6 @@
 																	},
 																	"worker_name": {
 																		"description": "Name of the worker",
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
-																		"description": "Type of source",
-																		"enum": [
-																			"workflows"
-																		],
 																		"type": "string",
 																		"x-auditable": true
 																	}
@@ -3525,86 +3169,6 @@
 																"type": {
 																	"description": "Type of source",
 																	"enum": [
-																		"access"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"application_id": {
-																	"description": "ID of the Access application",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"access.application"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"clipboards"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"clipboard_id": {
-																	"description": "ID of the clipboard",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"clipboards.clipboard"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"dns.zone"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"zone_id": {
-																	"description": "ID of the DNS zone",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
 																		"images"
 																	],
 																	"type": "string",
@@ -3628,77 +3192,10 @@
 														},
 														{
 															"properties": {
-																"namespace_id": {
-																	"description": "ID of the KV namespace",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"kv.namespace"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
 																"type": {
 																	"description": "Type of source",
 																	"enum": [
 																		"r2"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"bucket_name": {
-																	"description": "Name of the R2 bucket",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"r2.bucket"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"secretsStore"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"store_id": {
-																	"description": "ID of the secrets store",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"secretsStore.store"
 																	],
 																	"type": "string",
 																	"x-auditable": true
@@ -3725,24 +3222,6 @@
 																	"description": "Type of source",
 																	"enum": [
 																		"vectorize"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"index_name": {
-																	"description": "Name of the Vectorize index",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"vectorize.index"
 																	],
 																	"type": "string",
 																	"x-auditable": true
@@ -3780,19 +3259,6 @@
 																},
 																"worker_name": {
 																	"description": "Name of the worker",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"workflows"
-																	],
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -4780,86 +4246,6 @@
 											"type": {
 												"description": "Type of source",
 												"enum": [
-													"access"
-												],
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
-									{
-										"properties": {
-											"application_id": {
-												"description": "ID of the Access application",
-												"type": "string",
-												"x-auditable": true
-											},
-											"type": {
-												"description": "Type of source",
-												"enum": [
-													"access.application"
-												],
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
-									{
-										"properties": {
-											"type": {
-												"description": "Type of source",
-												"enum": [
-													"clipboards"
-												],
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
-									{
-										"properties": {
-											"clipboard_id": {
-												"description": "ID of the clipboard",
-												"type": "string",
-												"x-auditable": true
-											},
-											"type": {
-												"description": "Type of source",
-												"enum": [
-													"clipboards.clipboard"
-												],
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
-									{
-										"properties": {
-											"type": {
-												"description": "Type of source",
-												"enum": [
-													"dns.zone"
-												],
-												"type": "string",
-												"x-auditable": true
-											},
-											"zone_id": {
-												"description": "ID of the DNS zone",
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
-									{
-										"properties": {
-											"type": {
-												"description": "Type of source",
-												"enum": [
 													"images"
 												],
 												"type": "string",
@@ -4883,77 +4269,10 @@
 									},
 									{
 										"properties": {
-											"namespace_id": {
-												"description": "ID of the KV namespace",
-												"type": "string",
-												"x-auditable": true
-											},
-											"type": {
-												"description": "Type of source",
-												"enum": [
-													"kv.namespace"
-												],
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
-									{
-										"properties": {
 											"type": {
 												"description": "Type of source",
 												"enum": [
 													"r2"
-												],
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
-									{
-										"properties": {
-											"bucket_name": {
-												"description": "Name of the R2 bucket",
-												"type": "string",
-												"x-auditable": true
-											},
-											"type": {
-												"description": "Type of source",
-												"enum": [
-													"r2.bucket"
-												],
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
-									{
-										"properties": {
-											"type": {
-												"description": "Type of source",
-												"enum": [
-													"secretsStore"
-												],
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
-									{
-										"properties": {
-											"store_id": {
-												"description": "ID of the secrets store",
-												"type": "string",
-												"x-auditable": true
-											},
-											"type": {
-												"description": "Type of source",
-												"enum": [
-													"secretsStore.store"
 												],
 												"type": "string",
 												"x-auditable": true
@@ -4980,24 +4299,6 @@
 												"description": "Type of source",
 												"enum": [
 													"vectorize"
-												],
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
-									{
-										"properties": {
-											"index_name": {
-												"description": "Name of the Vectorize index",
-												"type": "string",
-												"x-auditable": true
-											},
-											"type": {
-												"description": "Type of source",
-												"enum": [
-													"vectorize.index"
 												],
 												"type": "string",
 												"x-auditable": true
@@ -5035,19 +4336,6 @@
 											},
 											"worker_name": {
 												"description": "Name of the worker",
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
-									},
-									{
-										"properties": {
-											"type": {
-												"description": "Type of source",
-												"enum": [
-													"workflows"
-												],
 												"type": "string",
 												"x-auditable": true
 											}
@@ -5214,86 +4502,6 @@
 																"type": {
 																	"description": "Type of source",
 																	"enum": [
-																		"access"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"application_id": {
-																	"description": "ID of the Access application",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"access.application"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"clipboards"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"clipboard_id": {
-																	"description": "ID of the clipboard",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"clipboards.clipboard"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"dns.zone"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"zone_id": {
-																	"description": "ID of the DNS zone",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
 																		"images"
 																	],
 																	"type": "string",
@@ -5317,77 +4525,10 @@
 														},
 														{
 															"properties": {
-																"namespace_id": {
-																	"description": "ID of the KV namespace",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"kv.namespace"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
 																"type": {
 																	"description": "Type of source",
 																	"enum": [
 																		"r2"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"bucket_name": {
-																	"description": "Name of the R2 bucket",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"r2.bucket"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"secretsStore"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"store_id": {
-																	"description": "ID of the secrets store",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"secretsStore.store"
 																	],
 																	"type": "string",
 																	"x-auditable": true
@@ -5414,24 +4555,6 @@
 																	"description": "Type of source",
 																	"enum": [
 																		"vectorize"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"index_name": {
-																	"description": "Name of the Vectorize index",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"vectorize.index"
 																	],
 																	"type": "string",
 																	"x-auditable": true
@@ -5469,19 +4592,6 @@
 																},
 																"worker_name": {
 																	"description": "Name of the worker",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														{
-															"properties": {
-																"type": {
-																	"description": "Type of source",
-																	"enum": [
-																		"workflows"
-																	],
 																	"type": "string",
 																	"x-auditable": true
 																}

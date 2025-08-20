@@ -1,18 +1,17 @@
 {
-	"GET /accounts/{account_id}/gateway/categories": {
-		"description": "Fetches a list of all categories.",
-		"operationId": "zero-trust-gateway-categories-list-categories",
+	"GET /accounts/{account_id}/addressing/leases": {
+		"description": "List all leases owned by the account.",
+		"operationId": "ip-address-management-list-leases",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Identifier of a Cloudflare account.",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
-					"x-auditable": true
+					"type": "string"
 				}
 			}
 		],
@@ -34,8 +33,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -55,8 +65,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -111,7 +132,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -121,99 +143,62 @@
 										"result": {
 											"items": {
 												"properties": {
-													"beta": {
-														"description": "True if the category is in beta and subject to change.",
-														"example": false,
-														"type": "boolean",
-														"x-auditable": true
-													},
-													"class": {
-														"description": "Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.",
-														"enum": [
-															"free",
-															"premium",
-															"blocked",
-															"removalPending",
-															"noBlock"
-														],
-														"example": "premium",
-														"type": "string",
-														"x-auditable": true
-													},
-													"description": {
-														"description": "A short summary of domains in the category.",
-														"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
-														"type": "string",
-														"x-auditable": true
-													},
-													"id": {
-														"description": "The identifier for this category. There is only one category per ID.",
-														"type": "integer",
-														"x-auditable": true
-													},
-													"name": {
-														"description": "The name of the category.",
-														"example": "Education",
+													"active_from": {
+														"description": "Timestamp of the moment the lease was created.\n",
+														"example": "2020-01-01T00:00:00Z",
+														"format": "date-time",
 														"type": "string"
 													},
-													"subcategories": {
-														"description": "All subcategories for this category.",
+													"cidrs": {
+														"description": "CIDRs attached to the lease",
+														"example": [
+															"192.0.2.100/32",
+															"192.0.2.101/32"
+														],
 														"items": {
-															"properties": {
-																"beta": {
-																	"description": "True if the category is in beta and subject to change.",
-																	"example": false,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"class": {
-																	"description": "Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.",
-																	"enum": [
-																		"free",
-																		"premium",
-																		"blocked",
-																		"removalPending",
-																		"noBlock"
-																	],
-																	"example": "premium",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"description": {
-																	"description": "A short summary of domains in the category.",
-																	"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"id": {
-																	"description": "The identifier for this category. There is only one category per ID.",
-																	"type": "integer",
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "The name of the category.",
-																	"example": "Education",
-																	"type": "string"
-																}
-															},
-															"type": "object"
+															"description": "IP Prefix in Classless Inter-Domain Routing format.",
+															"example": "192.0.2.0/24",
+															"type": "string"
 														},
 														"type": "array"
+													},
+													"created_at": {
+														"description": "Timestamp of the moment the object was created.",
+														"format": "date-time",
+														"type": "string"
+													},
+													"id": {
+														"description": "Identifier for the lease",
+														"example": "8fee4b6fd361283a72381ccfda355471",
+														"type": "string"
+													},
+													"modified_at": {
+														"description": "Timestamp of the moment the object was modified.",
+														"format": "date-time",
+														"type": "string"
+													},
+													"owner_id": {
+														"description": "Cloudflare account ID of the account owning the lease.",
+														"example": "3a7d3de1d0682240cf046c7f50866cc5",
+														"type": "string"
+													},
+													"purpose": {
+														"description": "Describes the purpose of the addresses.",
+														"example": "Spectrum Static IPs",
+														"type": "string"
 													}
 												},
-												"readOnly": true,
 												"type": "object"
 											},
 											"type": "array"
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "List categories response."
+				"description": "List Leases response"
 			},
 			"4XX": {
 				"content": {
@@ -234,8 +219,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -255,8 +251,19 @@
 																		"minimum": 1000,
 																		"type": "integer"
 																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -311,7 +318,8 @@
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -321,95 +329,58 @@
 												"result": {
 													"items": {
 														"properties": {
-															"beta": {
-																"description": "True if the category is in beta and subject to change.",
-																"example": false,
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"class": {
-																"description": "Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.",
-																"enum": [
-																	"free",
-																	"premium",
-																	"blocked",
-																	"removalPending",
-																	"noBlock"
-																],
-																"example": "premium",
-																"type": "string",
-																"x-auditable": true
-															},
-															"description": {
-																"description": "A short summary of domains in the category.",
-																"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
-																"type": "string",
-																"x-auditable": true
-															},
-															"id": {
-																"description": "The identifier for this category. There is only one category per ID.",
-																"type": "integer",
-																"x-auditable": true
-															},
-															"name": {
-																"description": "The name of the category.",
-																"example": "Education",
+															"active_from": {
+																"description": "Timestamp of the moment the lease was created.\n",
+																"example": "2020-01-01T00:00:00Z",
+																"format": "date-time",
 																"type": "string"
 															},
-															"subcategories": {
-																"description": "All subcategories for this category.",
+															"cidrs": {
+																"description": "CIDRs attached to the lease",
+																"example": [
+																	"192.0.2.100/32",
+																	"192.0.2.101/32"
+																],
 																"items": {
-																	"properties": {
-																		"beta": {
-																			"description": "True if the category is in beta and subject to change.",
-																			"example": false,
-																			"type": "boolean",
-																			"x-auditable": true
-																		},
-																		"class": {
-																			"description": "Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.",
-																			"enum": [
-																				"free",
-																				"premium",
-																				"blocked",
-																				"removalPending",
-																				"noBlock"
-																			],
-																			"example": "premium",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"description": {
-																			"description": "A short summary of domains in the category.",
-																			"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"id": {
-																			"description": "The identifier for this category. There is only one category per ID.",
-																			"type": "integer",
-																			"x-auditable": true
-																		},
-																		"name": {
-																			"description": "The name of the category.",
-																			"example": "Education",
-																			"type": "string"
-																		}
-																	},
-																	"type": "object"
+																	"description": "IP Prefix in Classless Inter-Domain Routing format.",
+																	"example": "192.0.2.0/24",
+																	"type": "string"
 																},
 																"type": "array"
+															},
+															"created_at": {
+																"description": "Timestamp of the moment the object was created.",
+																"format": "date-time",
+																"type": "string"
+															},
+															"id": {
+																"description": "Identifier for the lease",
+																"example": "8fee4b6fd361283a72381ccfda355471",
+																"type": "string"
+															},
+															"modified_at": {
+																"description": "Timestamp of the moment the object was modified.",
+																"format": "date-time",
+																"type": "string"
+															},
+															"owner_id": {
+																"description": "Cloudflare account ID of the account owning the lease.",
+																"example": "3a7d3de1d0682240cf046c7f50866cc5",
+																"type": "string"
+															},
+															"purpose": {
+																"description": "Describes the purpose of the addresses.",
+																"example": "Spectrum Static IPs",
+																"type": "string"
 															}
 														},
-														"readOnly": true,
 														"type": "object"
 													},
 													"type": "array"
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -423,8 +394,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -443,8 +425,7 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
+											"minLength": 1
 										},
 										"messages": {
 											"allOf": [
@@ -456,8 +437,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -470,8 +462,7 @@
 													"type": "array"
 												}
 											],
-											"example": [],
-											"type": "object"
+											"example": []
 										},
 										"result": {
 											"enum": [
@@ -497,28 +488,22 @@
 									],
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "List categories response failure."
+				"description": "List Leases response failure"
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
-		"summary": "List categories",
+		"summary": "List Leases",
 		"tags": [
-			"Zero Trust Gateway categories"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
+			"IP Address Management Leases"
 		]
 	}
 }

@@ -481,6 +481,36 @@
 																		"format": "uuid",
 																		"nullable": true,
 																		"type": "string"
+																	},
+																	"variant": {
+																		"allOf": [
+																			{
+																				"oneOf": [
+																					{
+																						"properties": {
+																							"topic_type": {
+																								"enum": [
+																									"Intent",
+																									"Content"
+																								],
+																								"type": "string"
+																							},
+																							"type": {
+																								"enum": [
+																									"PromptTopic"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"topic_type",
+																							"type"
+																						],
+																						"type": "object"
+																					}
+																				]
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -1099,6 +1129,36 @@
 																	"format": "uuid",
 																	"nullable": true,
 																	"type": "string"
+																},
+																"variant": {
+																	"allOf": [
+																		{
+																			"oneOf": [
+																				{
+																					"properties": {
+																						"topic_type": {
+																							"enum": [
+																								"Intent",
+																								"Content"
+																							],
+																							"type": "string"
+																						},
+																						"type": {
+																							"enum": [
+																								"PromptTopic"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"topic_type",
+																						"type"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		}
+																	]
 																}
 															},
 															"required": [
@@ -2177,6 +2237,36 @@
 																	"format": "uuid",
 																	"nullable": true,
 																	"type": "string"
+																},
+																"variant": {
+																	"allOf": [
+																		{
+																			"oneOf": [
+																				{
+																					"properties": {
+																						"topic_type": {
+																							"enum": [
+																								"Intent",
+																								"Content"
+																							],
+																							"type": "string"
+																						},
+																						"type": {
+																							"enum": [
+																								"PromptTopic"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"topic_type",
+																						"type"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		}
+																	]
 																}
 															},
 															"required": [
@@ -3100,6 +3190,36 @@
 													"format": "uuid",
 													"nullable": true,
 													"type": "string"
+												},
+												"variant": {
+													"allOf": [
+														{
+															"oneOf": [
+																{
+																	"properties": {
+																		"topic_type": {
+																			"enum": [
+																				"Intent",
+																				"Content"
+																			],
+																			"type": "string"
+																		},
+																		"type": {
+																			"enum": [
+																				"PromptTopic"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"topic_type",
+																		"type"
+																	],
+																	"type": "object"
+																}
+															]
+														}
+													]
 												}
 											},
 											"required": [

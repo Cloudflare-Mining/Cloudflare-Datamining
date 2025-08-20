@@ -156,9 +156,6 @@
 		"summary": "Delete target",
 		"tags": [
 			"Infrastructure Access Targets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"DELETE /accounts/{account_id}/infrastructure/targets/batch": {
@@ -334,9 +331,6 @@
 		"summary": "Delete targets (Deprecated)",
 		"tags": [
 			"Infrastructure Access Targets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/infrastructure/targets": {
@@ -723,7 +717,8 @@
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"format": "uuid",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"type": "object"
@@ -740,7 +735,8 @@
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"format": "uuid",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"type": "object"
@@ -899,10 +895,6 @@
 		"summary": "List all targets",
 		"tags": [
 			"Infrastructure Access Targets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/infrastructure/targets/{target_id}": {
@@ -1065,7 +1057,8 @@
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
 															"type": "object"
@@ -1082,7 +1075,8 @@
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
 															"type": "object"
@@ -1239,10 +1233,6 @@
 		"summary": "Get target",
 		"tags": [
 			"Infrastructure Access Targets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/infrastructure/targets": {
@@ -1286,7 +1276,8 @@
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object"
@@ -1303,7 +1294,8 @@
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object"
@@ -1453,7 +1445,8 @@
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
 															"type": "object"
@@ -1470,7 +1463,8 @@
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
 															"type": "object"
@@ -1627,9 +1621,6 @@
 		"summary": "Create new target",
 		"tags": [
 			"Infrastructure Access Targets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/infrastructure/targets/batch_delete": {
@@ -1804,9 +1795,6 @@
 		"summary": "Delete targets",
 		"tags": [
 			"Infrastructure Access Targets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/{target_id}": {
@@ -1863,7 +1851,8 @@
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object"
@@ -1880,7 +1869,8 @@
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object"
@@ -2030,7 +2020,8 @@
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
 															"type": "object"
@@ -2047,7 +2038,8 @@
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
 															"type": "object"
@@ -2204,9 +2196,6 @@
 		"summary": "Update target",
 		"tags": [
 			"Infrastructure Access Targets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/batch": {
@@ -2252,7 +2241,8 @@
 													"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 													"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"type": "object"
@@ -2269,7 +2259,8 @@
 													"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 													"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"type": "object"
@@ -2422,7 +2413,8 @@
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"format": "uuid",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"type": "object"
@@ -2439,7 +2431,8 @@
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"format": "uuid",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"type": "object"
@@ -2598,9 +2591,6 @@
 		"summary": "Create new targets",
 		"tags": [
 			"Infrastructure Access Targets"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

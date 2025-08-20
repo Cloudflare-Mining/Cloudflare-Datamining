@@ -478,8 +478,19 @@
 				}
 			},
 			{
+				"deprecated": true,
 				"in": "query",
 				"name": "is_default",
+				"schema": {
+					"description": "If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.",
+					"type": "boolean"
+				},
+				"x-stainless-deprecation-message": "Use the is_default_network property instead.",
+				"x-stainless-ignore": true
+			},
+			{
+				"in": "query",
+				"name": "is_default_network",
 				"schema": {
 					"description": "If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.",
 					"type": "boolean"

@@ -13,7 +13,9 @@
 					"enum": [
 						"USER_AGENT",
 						"REFERER",
-						"CRAWL_REFER_RATIO"
+						"CRAWL_REFER_RATIO",
+						"VERTICAL",
+						"INDUSTRY"
 					],
 					"type": "string"
 				}
@@ -91,6 +93,35 @@
 				"schema": {
 					"description": "Filters results by bot operator.",
 					"items": {
+						"maxLength": 100,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by vertical.",
+				"in": "query",
+				"name": "vertical",
+				"schema": {
+					"description": "Filters results by vertical.",
+					"items": {
+						"maxLength": 100,
+						"pattern": "^[ -~]*$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by industry.",
+				"in": "query",
+				"name": "industry",
+				"schema": {
+					"description": "Filters results by industry.",
+					"items": {
+						"maxLength": 100,
+						"pattern": "^[ -~]*$",
 						"type": "string"
 					},
 					"type": "array"
@@ -257,9 +288,9 @@
 										},
 										"summary_0": {
 											"additionalProperties": {
-												"description": "A numeric string.",
-												"example": "10",
-												"pattern": "^\\d+$",
+												"description": "A numeric string that can include decimals and infinity values.",
+												"example": "10.5",
+												"pattern": "^-?(?:\\d+(?:\\.\\d+)?|inf)$",
 												"type": "string"
 											},
 											"example": {
@@ -366,7 +397,9 @@
 					"enum": [
 						"USER_AGENT",
 						"REFERER",
-						"CRAWL_REFER_RATIO"
+						"CRAWL_REFER_RATIO",
+						"VERTICAL",
+						"INDUSTRY"
 					],
 					"type": "string"
 				}
@@ -460,6 +493,35 @@
 				"schema": {
 					"description": "Filters results by bot operator.",
 					"items": {
+						"maxLength": 100,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by vertical.",
+				"in": "query",
+				"name": "vertical",
+				"schema": {
+					"description": "Filters results by vertical.",
+					"items": {
+						"maxLength": 100,
+						"pattern": "^[ -~]*$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by industry.",
+				"in": "query",
+				"name": "industry",
+				"schema": {
+					"description": "Filters results by industry.",
+					"items": {
+						"maxLength": 100,
+						"pattern": "^[ -~]*$",
 						"type": "string"
 					},
 					"type": "array"
@@ -639,9 +701,9 @@
 										"serie_0": {
 											"additionalProperties": {
 												"items": {
-													"description": "A numeric string.",
-													"example": "10",
-													"pattern": "^\\d+$",
+													"description": "A numeric string that can include decimals and infinity values.",
+													"example": "10.5",
+													"pattern": "^-?(?:\\d+(?:\\.\\d+)?|inf)$",
 													"type": "string"
 												},
 												"type": "array"

@@ -390,6 +390,78 @@
 				},
 				"description": "Forbidden"
 			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -1354,6 +1426,78 @@
 					}
 				},
 				"description": "Forbidden"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
 			},
 			"500": {
 				"content": {
@@ -7320,6 +7464,78 @@
 				},
 				"description": "Forbidden"
 			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -8456,6 +8672,78 @@
 					}
 				},
 				"description": "Forbidden"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"messages": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minLength": 1,
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
 			},
 			"500": {
 				"content": {

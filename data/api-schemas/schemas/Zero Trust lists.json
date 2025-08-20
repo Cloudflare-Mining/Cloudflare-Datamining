@@ -85,7 +85,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -115,7 +115,7 @@
 						}
 					}
 				},
-				"description": "Delete Zero Trust list response"
+				"description": "Delete Zero Trust list response."
 			},
 			"4XX": {
 				"content": {
@@ -171,7 +171,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -269,7 +269,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -290,7 +290,7 @@
 						}
 					}
 				},
-				"description": "Delete Zero Trust list response failure"
+				"description": "Delete Zero Trust list response failure."
 			}
 		},
 		"security": [
@@ -393,7 +393,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -413,22 +413,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -482,7 +482,7 @@
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the list item, if present",
+																	"description": "The description of the list item, if present.",
 																	"example": "Austin office IP",
 																	"minimum": 0,
 																	"type": "string"
@@ -536,7 +536,7 @@
 						}
 					}
 				},
-				"description": "List Zero Trust lists response"
+				"description": "List Zero Trust lists response."
 			},
 			"4XX": {
 				"content": {
@@ -592,7 +592,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -612,22 +612,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -681,7 +681,7 @@
 																			"type": "string"
 																		},
 																		"description": {
-																			"description": "The description of the list item, if present",
+																			"description": "The description of the list item, if present.",
 																			"example": "Austin office IP",
 																			"minimum": 0,
 																			"type": "string"
@@ -803,7 +803,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -824,7 +824,7 @@
 						}
 					}
 				},
-				"description": "List Zero Trust lists response failure"
+				"description": "List Zero Trust lists response failure."
 			}
 		},
 		"security": [
@@ -923,7 +923,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -982,7 +982,7 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "The description of the list item, if present",
+																"description": "The description of the list item, if present.",
 																"example": "Austin office IP",
 																"minimum": 0,
 																"type": "string"
@@ -1035,7 +1035,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust list details response"
+				"description": "Get Zero Trust list details response."
 			},
 			"4XX": {
 				"content": {
@@ -1091,7 +1091,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1150,7 +1150,7 @@
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "The description of the list item, if present",
+																		"description": "The description of the list item, if present.",
 																		"example": "Austin office IP",
 																		"minimum": 0,
 																		"type": "string"
@@ -1271,7 +1271,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1292,7 +1292,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust list details response failure"
+				"description": "Get Zero Trust list details response failure."
 			}
 		},
 		"security": [
@@ -1391,7 +1391,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1411,22 +1411,22 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
@@ -1452,7 +1452,7 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "The description of the list item, if present",
+															"description": "The description of the list item, if present.",
 															"example": "Austin office IP",
 															"minimum": 0,
 															"type": "string"
@@ -1507,7 +1507,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust list items response"
+				"description": "Get Zero Trust list items response."
 			},
 			"4XX": {
 				"content": {
@@ -1563,7 +1563,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1583,22 +1583,22 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
@@ -1624,7 +1624,7 @@
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the list item, if present",
+																	"description": "The description of the list item, if present.",
 																	"example": "Austin office IP",
 																	"minimum": 0,
 																	"type": "string"
@@ -1747,7 +1747,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1768,7 +1768,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust list items response failure"
+				"description": "Get Zero Trust list items response failure."
 			}
 		},
 		"security": [
@@ -1824,7 +1824,7 @@
 								"items": {
 									"properties": {
 										"description": {
-											"description": "The description of the list item, if present",
+											"description": "The description of the list item, if present.",
 											"example": "Austin office IP",
 											"minimum": 0,
 											"type": "string"
@@ -1911,7 +1911,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1970,7 +1970,7 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "The description of the list item, if present",
+																"description": "The description of the list item, if present.",
 																"example": "Austin office IP",
 																"minimum": 0,
 																"type": "string"
@@ -2023,7 +2023,7 @@
 						}
 					}
 				},
-				"description": "Patch Zero Trust list response"
+				"description": "Patch Zero Trust list response."
 			},
 			"4XX": {
 				"content": {
@@ -2079,7 +2079,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2138,7 +2138,7 @@
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "The description of the list item, if present",
+																		"description": "The description of the list item, if present.",
 																		"example": "Austin office IP",
 																		"minimum": 0,
 																		"type": "string"
@@ -2259,7 +2259,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2280,7 +2280,7 @@
 						}
 					}
 				},
-				"description": "Patch Zero Trust list response failure"
+				"description": "Patch Zero Trust list response failure."
 			}
 		},
 		"security": [
@@ -2290,7 +2290,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Patch Zero Trust list",
+		"summary": "Patch Zero Trust list.",
 		"tags": [
 			"Zero Trust lists"
 		],
@@ -2330,7 +2330,7 @@
 								"items": {
 									"properties": {
 										"description": {
-											"description": "The description of the list item, if present",
+											"description": "The description of the list item, if present.",
 											"example": "Austin office IP",
 											"minimum": 0,
 											"type": "string"
@@ -2429,7 +2429,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2482,7 +2482,7 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "The description of the list item, if present",
+																"description": "The description of the list item, if present.",
 																"example": "Austin office IP",
 																"minimum": 0,
 																"type": "string"
@@ -2533,7 +2533,7 @@
 						}
 					}
 				},
-				"description": "Create Zero Trust list response"
+				"description": "Create Zero Trust list response."
 			},
 			"4XX": {
 				"content": {
@@ -2589,7 +2589,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2642,7 +2642,7 @@
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "The description of the list item, if present",
+																		"description": "The description of the list item, if present.",
 																		"example": "Austin office IP",
 																		"minimum": 0,
 																		"type": "string"
@@ -2761,7 +2761,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2782,7 +2782,7 @@
 						}
 					}
 				},
-				"description": "Create Zero Trust list response failure"
+				"description": "Create Zero Trust list response failure."
 			}
 		},
 		"security": [
@@ -2844,7 +2844,7 @@
 								"items": {
 									"properties": {
 										"description": {
-											"description": "The description of the list item, if present",
+											"description": "The description of the list item, if present.",
 											"example": "Austin office IP",
 											"minimum": 0,
 											"type": "string"
@@ -2929,7 +2929,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2988,7 +2988,7 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "The description of the list item, if present",
+																"description": "The description of the list item, if present.",
 																"example": "Austin office IP",
 																"minimum": 0,
 																"type": "string"
@@ -3041,7 +3041,7 @@
 						}
 					}
 				},
-				"description": "Update Zero Trust list response"
+				"description": "Update Zero Trust list response."
 			},
 			"4XX": {
 				"content": {
@@ -3097,7 +3097,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3156,7 +3156,7 @@
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "The description of the list item, if present",
+																		"description": "The description of the list item, if present.",
 																		"example": "Austin office IP",
 																		"minimum": 0,
 																		"type": "string"
@@ -3277,7 +3277,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3298,7 +3298,7 @@
 						}
 					}
 				},
-				"description": "Update Zero Trust list response failure"
+				"description": "Update Zero Trust list response failure."
 			}
 		},
 		"security": [

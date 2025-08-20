@@ -55,6 +55,7 @@
 				"name": "botOperator",
 				"schema": {
 					"description": "Filters results by bot operator.",
+					"maxLength": 100,
 					"type": "string"
 				}
 			},
@@ -529,6 +530,7 @@
 				"schema": {
 					"description": "Filters results by bot operator.",
 					"items": {
+						"maxLength": 100,
 						"type": "string"
 					},
 					"type": "array"
@@ -971,6 +973,7 @@
 				"schema": {
 					"description": "Filters results by bot operator.",
 					"items": {
+						"maxLength": 100,
 						"type": "string"
 					},
 					"type": "array"
@@ -1460,6 +1463,7 @@
 				"schema": {
 					"description": "Filters results by bot operator.",
 					"items": {
+						"maxLength": 100,
 						"type": "string"
 					},
 					"type": "array"

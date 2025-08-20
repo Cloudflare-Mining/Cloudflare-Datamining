@@ -11,7 +11,7 @@
 					"description": "The unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
-					"title": "ID",
+					"title": "Zone ID",
 					"type": "string"
 				}
 			}
@@ -71,7 +71,8 @@
 												"type": "object"
 											},
 											"title": "Errors",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
@@ -116,7 +117,8 @@
 												"type": "object"
 											},
 											"title": "Messages",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"result": {
 											"description": "A result.",
@@ -217,7 +219,7 @@
 					"description": "The unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
-					"title": "ID",
+					"title": "Zone ID",
 					"type": "string"
 				}
 			}
@@ -274,7 +276,8 @@
 												"type": "object"
 											},
 											"title": "Errors",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
@@ -319,7 +322,8 @@
 												"type": "object"
 											},
 											"title": "Messages",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"result": {
 											"description": "A result.",
@@ -364,7 +368,7 @@
 																				{
 																					"description": "The human-readable identifier of the Managed Transform.",
 																					"minLength": 1,
-																					"title": "ID",
+																					"title": "Transform ID",
 																					"type": "string"
 																				},
 																				{
@@ -372,9 +376,11 @@
 																				}
 																			]
 																		},
+																		"minItems": 1,
 																		"readOnly": true,
-																		"title": "Conflicts with",
+																		"title": "Conflicts With",
 																		"type": "array",
+																		"uniqueItems": true,
 																		"x-stainless-skip": [
 																			"terraform"
 																		]
@@ -389,7 +395,7 @@
 																		"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
 																		"example": false,
 																		"readOnly": true,
-																		"title": "Has conflict",
+																		"title": "Has Conflict",
 																		"type": "boolean",
 																		"x-stainless-skip": [
 																			"terraform"
@@ -398,7 +404,7 @@
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
 																		"minLength": 1,
-																		"title": "ID",
+																		"title": "Transform ID",
 																		"type": "string"
 																	}
 																},
@@ -420,7 +426,8 @@
 														]
 													},
 													"title": "Managed Request Transforms",
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"managed_response_headers": {
 													"description": "The list of Managed Response Transforms.",
@@ -436,7 +443,7 @@
 																				{
 																					"description": "The human-readable identifier of the Managed Transform.",
 																					"minLength": 1,
-																					"title": "ID",
+																					"title": "Transform ID",
 																					"type": "string"
 																				},
 																				{
@@ -444,9 +451,11 @@
 																				}
 																			]
 																		},
+																		"minItems": 1,
 																		"readOnly": true,
-																		"title": "Conflicts with",
+																		"title": "Conflicts With",
 																		"type": "array",
+																		"uniqueItems": true,
 																		"x-stainless-skip": [
 																			"terraform"
 																		]
@@ -461,7 +470,7 @@
 																		"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
 																		"example": false,
 																		"readOnly": true,
-																		"title": "Has conflict",
+																		"title": "Has Conflict",
 																		"type": "boolean",
 																		"x-stainless-skip": [
 																			"terraform"
@@ -470,7 +479,7 @@
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
 																		"minLength": 1,
-																		"title": "ID",
+																		"title": "Transform ID",
 																		"type": "string"
 																	}
 																},
@@ -492,7 +501,8 @@
 														]
 													},
 													"title": "Managed Response Transforms",
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												}
 											},
 											"required": [
@@ -566,7 +576,8 @@
 												"type": "object"
 											},
 											"title": "Errors",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
@@ -611,7 +622,8 @@
 												"type": "object"
 											},
 											"title": "Messages",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"result": {
 											"description": "A result.",
@@ -733,7 +745,7 @@
 					"description": "The unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
-					"title": "ID",
+					"title": "Zone ID",
 					"type": "string"
 				}
 			}
@@ -758,7 +770,7 @@
 															{
 																"description": "The human-readable identifier of the Managed Transform.",
 																"minLength": 1,
-																"title": "ID",
+																"title": "Transform ID",
 																"type": "string"
 															},
 															{
@@ -766,9 +778,11 @@
 															}
 														]
 													},
+													"minItems": 1,
 													"readOnly": true,
-													"title": "Conflicts with",
+													"title": "Conflicts With",
 													"type": "array",
+													"uniqueItems": true,
 													"x-stainless-skip": [
 														"terraform"
 													]
@@ -783,7 +797,7 @@
 													"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
 													"example": false,
 													"readOnly": true,
-													"title": "Has conflict",
+													"title": "Has Conflict",
 													"type": "boolean",
 													"x-stainless-skip": [
 														"terraform"
@@ -792,7 +806,7 @@
 												"id": {
 													"description": "The human-readable identifier of the Managed Transform.",
 													"minLength": 1,
-													"title": "ID",
+													"title": "Transform ID",
 													"type": "string"
 												}
 											},
@@ -814,7 +828,8 @@
 									]
 								},
 								"title": "Managed Request Transforms",
-								"type": "array"
+								"type": "array",
+								"uniqueItems": true
 							},
 							"managed_response_headers": {
 								"description": "The list of Managed Response Transforms.",
@@ -830,7 +845,7 @@
 															{
 																"description": "The human-readable identifier of the Managed Transform.",
 																"minLength": 1,
-																"title": "ID",
+																"title": "Transform ID",
 																"type": "string"
 															},
 															{
@@ -838,9 +853,11 @@
 															}
 														]
 													},
+													"minItems": 1,
 													"readOnly": true,
-													"title": "Conflicts with",
+													"title": "Conflicts With",
 													"type": "array",
+													"uniqueItems": true,
 													"x-stainless-skip": [
 														"terraform"
 													]
@@ -855,7 +872,7 @@
 													"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
 													"example": false,
 													"readOnly": true,
-													"title": "Has conflict",
+													"title": "Has Conflict",
 													"type": "boolean",
 													"x-stainless-skip": [
 														"terraform"
@@ -864,7 +881,7 @@
 												"id": {
 													"description": "The human-readable identifier of the Managed Transform.",
 													"minLength": 1,
-													"title": "ID",
+													"title": "Transform ID",
 													"type": "string"
 												}
 											},
@@ -886,7 +903,8 @@
 									]
 								},
 								"title": "Managed Response Transforms",
-								"type": "array"
+								"type": "array",
+								"uniqueItems": true
 							}
 						},
 						"required": [
@@ -952,7 +970,8 @@
 												"type": "object"
 											},
 											"title": "Errors",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
@@ -997,7 +1016,8 @@
 												"type": "object"
 											},
 											"title": "Messages",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"result": {
 											"description": "A result.",
@@ -1042,7 +1062,7 @@
 																				{
 																					"description": "The human-readable identifier of the Managed Transform.",
 																					"minLength": 1,
-																					"title": "ID",
+																					"title": "Transform ID",
 																					"type": "string"
 																				},
 																				{
@@ -1050,9 +1070,11 @@
 																				}
 																			]
 																		},
+																		"minItems": 1,
 																		"readOnly": true,
-																		"title": "Conflicts with",
+																		"title": "Conflicts With",
 																		"type": "array",
+																		"uniqueItems": true,
 																		"x-stainless-skip": [
 																			"terraform"
 																		]
@@ -1067,7 +1089,7 @@
 																		"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
 																		"example": false,
 																		"readOnly": true,
-																		"title": "Has conflict",
+																		"title": "Has Conflict",
 																		"type": "boolean",
 																		"x-stainless-skip": [
 																			"terraform"
@@ -1076,7 +1098,7 @@
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
 																		"minLength": 1,
-																		"title": "ID",
+																		"title": "Transform ID",
 																		"type": "string"
 																	}
 																},
@@ -1098,7 +1120,8 @@
 														]
 													},
 													"title": "Managed Request Transforms",
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												},
 												"managed_response_headers": {
 													"description": "The list of Managed Response Transforms.",
@@ -1114,7 +1137,7 @@
 																				{
 																					"description": "The human-readable identifier of the Managed Transform.",
 																					"minLength": 1,
-																					"title": "ID",
+																					"title": "Transform ID",
 																					"type": "string"
 																				},
 																				{
@@ -1122,9 +1145,11 @@
 																				}
 																			]
 																		},
+																		"minItems": 1,
 																		"readOnly": true,
-																		"title": "Conflicts with",
+																		"title": "Conflicts With",
 																		"type": "array",
+																		"uniqueItems": true,
 																		"x-stainless-skip": [
 																			"terraform"
 																		]
@@ -1139,7 +1164,7 @@
 																		"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
 																		"example": false,
 																		"readOnly": true,
-																		"title": "Has conflict",
+																		"title": "Has Conflict",
 																		"type": "boolean",
 																		"x-stainless-skip": [
 																			"terraform"
@@ -1148,7 +1173,7 @@
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
 																		"minLength": 1,
-																		"title": "ID",
+																		"title": "Transform ID",
 																		"type": "string"
 																	}
 																},
@@ -1170,7 +1195,8 @@
 														]
 													},
 													"title": "Managed Response Transforms",
-													"type": "array"
+													"type": "array",
+													"uniqueItems": true
 												}
 											},
 											"required": [
@@ -1244,7 +1270,8 @@
 												"type": "object"
 											},
 											"title": "Errors",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
@@ -1289,7 +1316,8 @@
 												"type": "object"
 											},
 											"title": "Messages",
-											"type": "array"
+											"type": "array",
+											"uniqueItems": true
 										},
 										"result": {
 											"description": "A result.",

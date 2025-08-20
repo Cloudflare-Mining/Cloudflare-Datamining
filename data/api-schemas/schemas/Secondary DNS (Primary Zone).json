@@ -543,7 +543,8 @@
 														"type": "string",
 														"x-auditable": true
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												},
 												"soa_serial": {
 													"description": "The serial number of the SOA for the given zone.",
@@ -704,7 +705,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														"soa_serial": {
 															"description": "The serial number of the SOA for the given zone.",
@@ -1281,7 +1283,8 @@
 									"type": "string",
 									"x-auditable": true
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-collection-type": "set"
 							}
 						},
 						"required": [
@@ -1433,7 +1436,8 @@
 														"type": "string",
 														"x-auditable": true
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												},
 												"soa_serial": {
 													"description": "The serial number of the SOA for the given zone.",
@@ -1594,7 +1598,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														"soa_serial": {
 															"description": "The serial number of the SOA for the given zone.",
@@ -2931,7 +2936,8 @@
 									"type": "string",
 									"x-auditable": true
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-collection-type": "set"
 							}
 						},
 						"required": [
@@ -3083,7 +3089,8 @@
 														"type": "string",
 														"x-auditable": true
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												},
 												"soa_serial": {
 													"description": "The serial number of the SOA for the given zone.",
@@ -3244,7 +3251,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														"soa_serial": {
 															"description": "The serial number of the SOA for the given zone.",
