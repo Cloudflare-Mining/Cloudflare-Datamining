@@ -624,9 +624,17 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"autoCreateType": {
+								"description": "Global flag to automatically create indicator types if they don't exist. Individual indicators can override this with their own autoCreateType flag.",
+								"type": "boolean"
+							},
 							"indicators": {
 								"items": {
 									"properties": {
+										"autoCreateType": {
+											"description": "If true, automatically create the indicator type if it doesn't exist. If false (default), throw an error when the indicator type doesn't exist.",
+											"type": "boolean"
+										},
 										"indicatorType": {
 											"example": "domain",
 											"type": "string"
@@ -758,6 +766,10 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"autoCreateType": {
+								"description": "If true, automatically create the indicator type if it doesn't exist. If false (default), throw an error when the indicator type doesn't exist.",
+								"type": "boolean"
+							},
 							"indicatorType": {
 								"example": "domain",
 								"type": "string"

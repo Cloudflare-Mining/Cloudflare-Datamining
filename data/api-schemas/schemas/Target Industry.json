@@ -1,4 +1,115 @@
 {
+	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/targetIndustries": {
+		"operationId": "get_TargetIndustryListByDataset",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Dataset UUID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"items": {
+									"properties": {
+										"type": {
+											"example": "string",
+											"type": "string"
+										}
+									},
+									"required": [
+										"type"
+									],
+									"type": "object"
+								},
+								"type": {
+									"example": "array",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"items"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a list of target industries for the dataset."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Lists all target industries for a specific dataset",
+		"tags": [
+			"Target Industry"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries": {
 		"operationId": "get_TargetIndustryList",
 		"parameters": [

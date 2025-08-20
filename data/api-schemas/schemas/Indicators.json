@@ -1,0 +1,220 @@
+{
+	"POST /accounts/{account_id}/cloudforce-one/events/indicatorTypes/create": {
+		"description": "Creates a new indicator type and initializes its dedicated Durable Object",
+		"operationId": "post_IndicatorTypeCreate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"description": "Optional description for the indicator type",
+								"type": "string"
+							},
+							"indicatorType": {
+								"description": "The indicator type to create (e.g., 'DOMAIN', 'IP', 'URL', 'HASH', 'EMAIL')",
+								"maxLength": 50,
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"indicatorType"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"durableObjectId": {
+									"example": "account:123:DOMAIN",
+									"type": "string"
+								},
+								"indicatorType": {
+									"example": "DOMAIN",
+									"type": "string"
+								},
+								"message": {
+									"example": "Indicator type created successfully",
+									"type": "string"
+								}
+							},
+							"required": [
+								"indicatorType",
+								"message",
+								"durableObjectId"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicator type created successfully"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"content": {
+									"properties": {
+										"application/json": {
+											"properties": {
+												"schema": {
+													"properties": {
+														"errors": {
+															"items": {
+																"properties": {
+																	"message": {
+																		"example": "An error occurred.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"message"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"result": {
+															"type": "object"
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"result",
+														"success",
+														"errors"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"schema"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"application/json"
+									],
+									"type": "object"
+								},
+								"description": {
+									"example": "Bad Request.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"description",
+								"content"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"content": {
+									"properties": {
+										"application/json": {
+											"properties": {
+												"schema": {
+													"properties": {
+														"errors": {
+															"items": {
+																"properties": {
+																	"message": {
+																		"example": "An error occurred.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"message"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"result": {
+															"type": "object"
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"result",
+														"success",
+														"errors"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"schema"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"application/json"
+									],
+									"type": "object"
+								},
+								"description": {
+									"example": "Bad Request.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"description",
+								"content"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal Server Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create a new indicator type",
+		"tags": [
+			"Indicators"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	}
+}

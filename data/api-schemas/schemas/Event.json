@@ -590,10 +590,6 @@
 						"schema": {
 							"items": {
 								"properties": {
-									"accountId": {
-										"example": 1234,
-										"type": "number"
-									},
 									"attacker": {
 										"example": "Flying Yeti",
 										"type": "string"
@@ -614,21 +610,9 @@
 										"example": "An attacker registered the domain domain.com",
 										"type": "string"
 									},
-									"id": {
-										"example": 1223,
-										"type": "number"
-									},
 									"indicator": {
 										"example": "domain",
 										"type": "string"
-									},
-									"indicatorType": {
-										"example": "domain",
-										"type": "string"
-									},
-									"indicatorTypeId": {
-										"example": 5,
-										"type": "number"
 									},
 									"insight": {
 										"type": "string"
@@ -648,10 +632,6 @@
 									},
 									"numReferences": {
 										"type": "number"
-									},
-									"rawId": {
-										"example": "453gw34w3",
-										"type": "string"
 									},
 									"referenced": {
 										"items": {
@@ -679,9 +659,6 @@
 										},
 										"type": "array"
 									},
-									"releasabilityId": {
-										"type": "string"
-									},
 									"tags": {
 										"items": {
 											"example": "malware",
@@ -707,23 +684,18 @@
 									}
 								},
 								"required": [
-									"id",
 									"uuid",
-									"accountId",
 									"date",
 									"targetCountry",
 									"attacker",
 									"attackerCountry",
 									"targetIndustry",
-									"rawId",
-									"indicatorTypeId",
-									"indicator",
 									"event",
 									"numReferenced",
 									"numReferences",
 									"tlp",
 									"category",
-									"indicatorType",
+									"indicator",
 									"referenced",
 									"references",
 									"tags",
@@ -823,10 +795,6 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"accountId": {
-									"example": 1234,
-									"type": "number"
-								},
 								"attacker": {
 									"example": "Flying Yeti",
 									"type": "string"
@@ -847,21 +815,9 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
-								"id": {
-									"example": 1223,
-									"type": "number"
-								},
 								"indicator": {
 									"example": "domain",
 									"type": "string"
-								},
-								"indicatorType": {
-									"example": "domain",
-									"type": "string"
-								},
-								"indicatorTypeId": {
-									"example": 5,
-									"type": "number"
 								},
 								"insight": {
 									"type": "string"
@@ -881,10 +837,6 @@
 								},
 								"numReferences": {
 									"type": "number"
-								},
-								"rawId": {
-									"example": "453gw34w3",
-									"type": "string"
 								},
 								"referenced": {
 									"items": {
@@ -912,9 +864,6 @@
 									},
 									"type": "array"
 								},
-								"releasabilityId": {
-									"type": "string"
-								},
 								"tags": {
 									"items": {
 										"example": "malware",
@@ -940,23 +889,18 @@
 								}
 							},
 							"required": [
-								"id",
 								"uuid",
-								"accountId",
 								"date",
 								"targetCountry",
 								"attacker",
 								"attackerCountry",
 								"targetIndustry",
-								"rawId",
-								"indicatorTypeId",
-								"indicator",
 								"event",
 								"numReferenced",
 								"numReferences",
 								"tlp",
 								"category",
-								"indicatorType",
+								"indicator",
 								"referenced",
 								"references",
 								"tags",
@@ -1223,32 +1167,15 @@
 				}
 			},
 			{
-				"description": "An optional array of indicator type IDs to filter the results by.",
+				"description": "An optional array of indicator type strings to filter the results by (e.g., ['DOMAIN', 'IP']).",
 				"in": "query",
-				"name": "indicatorTypeIds",
+				"name": "indicatorTypes",
 				"schema": {
-					"anyOf": [
-						{
-							"type": "string"
-						},
-						{
-							"type": "number"
-						},
-						{
-							"items": {
-								"anyOf": [
-									{
-										"type": "string"
-									},
-									{
-										"type": "number"
-									}
-								]
-							},
-							"type": "array"
-						}
-					],
-					"description": "An optional array of indicator type IDs to filter the results by."
+					"description": "An optional array of indicator type strings to filter the results by (e.g., ['DOMAIN', 'IP']).",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -1269,10 +1196,6 @@
 						"schema": {
 							"items": {
 								"properties": {
-									"accountId": {
-										"example": 1234,
-										"type": "number"
-									},
 									"attacker": {
 										"example": "Flying Yeti",
 										"type": "string"
@@ -1293,21 +1216,9 @@
 										"example": "An attacker registered the domain domain.com",
 										"type": "string"
 									},
-									"id": {
-										"example": 1223,
-										"type": "number"
-									},
 									"indicator": {
 										"example": "domain",
 										"type": "string"
-									},
-									"indicatorType": {
-										"example": "domain",
-										"type": "string"
-									},
-									"indicatorTypeId": {
-										"example": 5,
-										"type": "number"
 									},
 									"insight": {
 										"type": "string"
@@ -1327,10 +1238,6 @@
 									},
 									"numReferences": {
 										"type": "number"
-									},
-									"rawId": {
-										"example": "453gw34w3",
-										"type": "string"
 									},
 									"referenced": {
 										"items": {
@@ -1358,9 +1265,6 @@
 										},
 										"type": "array"
 									},
-									"releasabilityId": {
-										"type": "string"
-									},
 									"tags": {
 										"items": {
 											"example": "malware",
@@ -1386,23 +1290,18 @@
 									}
 								},
 								"required": [
-									"id",
 									"uuid",
-									"accountId",
 									"date",
 									"targetCountry",
 									"attacker",
 									"attackerCountry",
 									"targetIndustry",
-									"rawId",
-									"indicatorTypeId",
-									"indicator",
 									"event",
 									"numReferenced",
 									"numReferences",
 									"tlp",
 									"category",
-									"indicatorType",
+									"indicator",
 									"referenced",
 									"references",
 									"tags",
@@ -1658,10 +1557,6 @@
 								"example": "domain2.com",
 								"type": "string"
 							},
-							"indicatorType": {
-								"example": "sha256",
-								"type": "string"
-							},
 							"insight": {
 								"example": "new insight",
 								"type": "string"
@@ -1708,10 +1603,6 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"accountId": {
-									"example": 1234,
-									"type": "number"
-								},
 								"attacker": {
 									"example": "Flying Yeti",
 									"type": "string"
@@ -1732,21 +1623,9 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
-								"id": {
-									"example": 1223,
-									"type": "number"
-								},
 								"indicator": {
 									"example": "domain",
 									"type": "string"
-								},
-								"indicatorType": {
-									"example": "domain",
-									"type": "string"
-								},
-								"indicatorTypeId": {
-									"example": 5,
-									"type": "number"
 								},
 								"insight": {
 									"type": "string"
@@ -1766,10 +1645,6 @@
 								},
 								"numReferences": {
 									"type": "number"
-								},
-								"rawId": {
-									"example": "453gw34w3",
-									"type": "string"
 								},
 								"referenced": {
 									"items": {
@@ -1797,9 +1672,6 @@
 									},
 									"type": "array"
 								},
-								"releasabilityId": {
-									"type": "string"
-								},
 								"tags": {
 									"items": {
 										"example": "malware",
@@ -1825,23 +1697,18 @@
 								}
 							},
 							"required": [
-								"id",
 								"uuid",
-								"accountId",
 								"date",
 								"targetCountry",
 								"attacker",
 								"attackerCountry",
 								"targetIndustry",
-								"rawId",
-								"indicatorTypeId",
-								"indicator",
 								"event",
 								"numReferenced",
 								"numReferences",
 								"tlp",
 								"category",
-								"indicatorType",
+								"indicator",
 								"referenced",
 								"references",
 								"tags",
@@ -2164,10 +2031,6 @@
 						"schema": {
 							"items": {
 								"properties": {
-									"accountId": {
-										"example": 1234,
-										"type": "number"
-									},
 									"attacker": {
 										"example": "Flying Yeti",
 										"type": "string"
@@ -2188,21 +2051,9 @@
 										"example": "An attacker registered the domain domain.com",
 										"type": "string"
 									},
-									"id": {
-										"example": 1223,
-										"type": "number"
-									},
 									"indicator": {
 										"example": "domain",
 										"type": "string"
-									},
-									"indicatorType": {
-										"example": "domain",
-										"type": "string"
-									},
-									"indicatorTypeId": {
-										"example": 5,
-										"type": "number"
 									},
 									"insight": {
 										"type": "string"
@@ -2222,10 +2073,6 @@
 									},
 									"numReferences": {
 										"type": "number"
-									},
-									"rawId": {
-										"example": "453gw34w3",
-										"type": "string"
 									},
 									"referenced": {
 										"items": {
@@ -2253,9 +2100,6 @@
 										},
 										"type": "array"
 									},
-									"releasabilityId": {
-										"type": "string"
-									},
 									"tags": {
 										"items": {
 											"example": "malware",
@@ -2281,23 +2125,18 @@
 									}
 								},
 								"required": [
-									"id",
 									"uuid",
-									"accountId",
 									"date",
 									"targetCountry",
 									"attacker",
 									"attackerCountry",
 									"targetIndustry",
-									"rawId",
-									"indicatorTypeId",
-									"indicator",
 									"event",
 									"numReferenced",
 									"numReferences",
 									"tlp",
 									"category",
-									"indicatorType",
+									"indicator",
 									"referenced",
 									"references",
 									"tags",
@@ -2422,10 +2261,6 @@
 								"example": "domain2.com",
 								"type": "string"
 							},
-							"indicatorType": {
-								"example": "sha256",
-								"type": "string"
-							},
 							"insight": {
 								"example": "new insight",
 								"type": "string"
@@ -2472,10 +2307,6 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"accountId": {
-									"example": 1234,
-									"type": "number"
-								},
 								"attacker": {
 									"example": "Flying Yeti",
 									"type": "string"
@@ -2496,21 +2327,9 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
-								"id": {
-									"example": 1223,
-									"type": "number"
-								},
 								"indicator": {
 									"example": "domain",
 									"type": "string"
-								},
-								"indicatorType": {
-									"example": "domain",
-									"type": "string"
-								},
-								"indicatorTypeId": {
-									"example": 5,
-									"type": "number"
 								},
 								"insight": {
 									"type": "string"
@@ -2530,10 +2349,6 @@
 								},
 								"numReferences": {
 									"type": "number"
-								},
-								"rawId": {
-									"example": "453gw34w3",
-									"type": "string"
 								},
 								"referenced": {
 									"items": {
@@ -2561,9 +2376,6 @@
 									},
 									"type": "array"
 								},
-								"releasabilityId": {
-									"type": "string"
-								},
 								"tags": {
 									"items": {
 										"example": "malware",
@@ -2589,23 +2401,18 @@
 								}
 							},
 							"required": [
-								"id",
 								"uuid",
-								"accountId",
 								"date",
 								"targetCountry",
 								"attacker",
 								"attackerCountry",
 								"targetIndustry",
-								"rawId",
-								"indicatorTypeId",
-								"indicator",
 								"event",
 								"numReferenced",
 								"numReferences",
 								"tlp",
 								"category",
-								"indicatorType",
+								"indicator",
 								"referenced",
 								"references",
 								"tags",
@@ -2860,10 +2667,6 @@
 								"example": "domain.com",
 								"type": "string"
 							},
-							"indicatorType": {
-								"example": "domain",
-								"type": "string"
-							},
 							"raw": {
 								"properties": {
 									"data": {
@@ -2908,7 +2711,6 @@
 						"required": [
 							"date",
 							"category",
-							"indicatorType",
 							"event",
 							"tlp",
 							"raw"
@@ -2924,10 +2726,6 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"accountId": {
-									"example": 1234,
-									"type": "number"
-								},
 								"attacker": {
 									"example": "Flying Yeti",
 									"type": "string"
@@ -2948,21 +2746,9 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
-								"id": {
-									"example": 1223,
-									"type": "number"
-								},
 								"indicator": {
 									"example": "domain",
 									"type": "string"
-								},
-								"indicatorType": {
-									"example": "domain",
-									"type": "string"
-								},
-								"indicatorTypeId": {
-									"example": 5,
-									"type": "number"
 								},
 								"insight": {
 									"type": "string"
@@ -2982,10 +2768,6 @@
 								},
 								"numReferences": {
 									"type": "number"
-								},
-								"rawId": {
-									"example": "453gw34w3",
-									"type": "string"
 								},
 								"referenced": {
 									"items": {
@@ -3013,9 +2795,6 @@
 									},
 									"type": "array"
 								},
-								"releasabilityId": {
-									"type": "string"
-								},
 								"tags": {
 									"items": {
 										"example": "malware",
@@ -3041,23 +2820,18 @@
 								}
 							},
 							"required": [
-								"id",
 								"uuid",
-								"accountId",
 								"date",
 								"targetCountry",
 								"attacker",
 								"attackerCountry",
 								"targetIndustry",
-								"rawId",
-								"indicatorTypeId",
-								"indicator",
 								"event",
 								"numReferenced",
 								"numReferences",
 								"tlp",
 								"category",
-								"indicatorType",
+								"indicator",
 								"referenced",
 								"references",
 								"tags",
@@ -3182,10 +2956,6 @@
 											"example": "domain.com",
 											"type": "string"
 										},
-										"indicatorType": {
-											"example": "domain",
-											"type": "string"
-										},
 										"raw": {
 											"properties": {
 												"data": {
@@ -3230,7 +3000,6 @@
 									"required": [
 										"date",
 										"category",
-										"indicatorType",
 										"event",
 										"tlp",
 										"raw"
@@ -3375,10 +3144,6 @@
 											"example": "domain.com",
 											"type": "string"
 										},
-										"indicatorType": {
-											"example": "domain",
-											"type": "string"
-										},
 										"raw": {
 											"properties": {
 												"data": {
@@ -3423,7 +3188,6 @@
 									"required": [
 										"date",
 										"category",
-										"indicatorType",
 										"event",
 										"tlp",
 										"raw"
