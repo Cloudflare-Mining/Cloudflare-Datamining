@@ -2963,6 +2963,9 @@
 													"last_modified": "2023-11-14T22:13:20Z",
 													"lookback_hops": 2,
 													"o365_tenant_id": "c3c3239d-8858-47df-9618-0e2d9bdf6aa8",
+													"regions": [
+														"GLOBAL"
+													],
 													"require_tls_inbound": false,
 													"require_tls_outbound": true,
 													"transport": "example.com"
@@ -3129,6 +3132,19 @@
 														"nullable": true,
 														"type": "string"
 													},
+													"regions": {
+														"items": {
+															"enum": [
+																"GLOBAL",
+																"AU",
+																"DE",
+																"IN",
+																"US"
+															],
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"require_tls_inbound": {
 														"nullable": true,
 														"type": "boolean"
@@ -3150,7 +3166,8 @@
 													"lookback_hops",
 													"ip_restrictions",
 													"transport",
-													"drop_dispositions"
+													"drop_dispositions",
+													"regions"
 												],
 												"type": "object"
 											},
@@ -3407,6 +3424,9 @@
 												"last_modified": "2023-11-14T22:13:20Z",
 												"lookback_hops": 2,
 												"o365_tenant_id": "c3c3239d-8858-47df-9618-0e2d9bdf6aa8",
+												"regions": [
+													"GLOBAL"
+												],
 												"require_tls_inbound": false,
 												"require_tls_outbound": true,
 												"transport": "example.com"
@@ -3573,6 +3593,19 @@
 													"nullable": true,
 													"type": "string"
 												},
+												"regions": {
+													"items": {
+														"enum": [
+															"GLOBAL",
+															"AU",
+															"DE",
+															"IN",
+															"US"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
 												"require_tls_inbound": {
 													"nullable": true,
 													"type": "boolean"
@@ -3594,7 +3627,8 @@
 												"lookback_hops",
 												"ip_restrictions",
 												"transport",
-												"drop_dispositions"
+												"drop_dispositions",
+												"regions"
 											],
 											"type": "object"
 										}
@@ -5864,6 +5898,19 @@
 								"type": "integer",
 								"x-auditable": true
 							},
+							"regions": {
+								"items": {
+									"enum": [
+										"GLOBAL",
+										"AU",
+										"DE",
+										"IN",
+										"US"
+									],
+									"type": "string"
+								},
+								"type": "array"
+							},
 							"require_tls_inbound": {
 								"type": "boolean",
 								"x-auditable": true
@@ -5971,6 +6018,9 @@
 												"last_modified": "2023-11-14T22:13:20Z",
 												"lookback_hops": 2,
 												"o365_tenant_id": "c3c3239d-8858-47df-9618-0e2d9bdf6aa8",
+												"regions": [
+													"GLOBAL"
+												],
 												"require_tls_inbound": false,
 												"require_tls_outbound": true,
 												"transport": "example.com"
@@ -6137,6 +6187,19 @@
 													"nullable": true,
 													"type": "string"
 												},
+												"regions": {
+													"items": {
+														"enum": [
+															"GLOBAL",
+															"AU",
+															"DE",
+															"IN",
+															"US"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
 												"require_tls_inbound": {
 													"nullable": true,
 													"type": "boolean"
@@ -6158,7 +6221,8 @@
 												"lookback_hops",
 												"ip_restrictions",
 												"transport",
-												"drop_dispositions"
+												"drop_dispositions",
+												"regions"
 											],
 											"type": "object"
 										}
