@@ -249,6 +249,59 @@
 						"htmlId": null
 					},
 					{
+						"contentfulId": "4NTXQCnZdfNYyv4M8tOBMR",
+						"title": "Build stateful applications with Cloudflare Workers without managing any infrastructure",
+						"copy": "Durable Objects provides globally unique instances each with its own fast, strongly consistent SQL storage - allowing you create stateful serverless applications.\n\nYou can build real-time, collaborative experiences that scale automatically with low-latency access across Cloudflare's network, all without managing any infrastructure.\n",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "3dafa86e-ec9e-5eea-a824-c5a12a921a93",
+							"altText": "Running Serverless Puppeteer with Workers and Durable Objects",
+							"title": "Running Serverless Puppeteer with Workers and Durable Objects",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/v4nFNhahVjDoRe4tyKqMI/86038271e0409f62d55646dadab98939/Running_Serverless_Puppeteer_with_Workers_and_Durable_Objects.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "HOW IT WORKS",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "6Dqa8zmYSJgEOQFGgxyNUJ",
 						"title": "Learn how developers are building applications with Cloudflare Durable Objects",
@@ -688,6 +741,42 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1tfUYpUvfKln0oyWLaZt3o",
+								"title": "Enable real-time interactions",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "You can launch chat apps, multiplayer games or live notifications. Durable Objects helps with handling event orchestration and persistence so you don't have to.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
+									"altText": "Internet globe orange",
+									"title": "Internet globe orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						],
 						"sectionPadding": null,
@@ -760,6 +849,42 @@
 								"description": "We improved the speed and accuracy of Durable Objects to help developers write their code in an intuitive way, with optimal results.",
 								"learnMoreUrl": "https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/",
 								"learnMoreText": "Read the blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1qcIDW6SHKKfw6rEDKwb1j",
+								"title": "What are Durable Objects?",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how to trigger a Durable Object and perform compute at customizable intervals.",
+								"learnMoreUrl": "https://developers.cloudflare.com/durable-objects/what-are-durable-objects/",
+								"learnMoreText": "View documentation",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
