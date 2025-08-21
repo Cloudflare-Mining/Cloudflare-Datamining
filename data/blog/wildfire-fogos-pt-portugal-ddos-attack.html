@@ -1,0 +1,104 @@
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DpFJKNshNad5YAeFiYEkr/f9c178a49dc32420d286fb8a60057d30/BLOG-2934_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>On July 31, 2025, just as Portugal entered the peak of another intense wildfire season, João Pina, also known as <a href="https://x.com/tomahock"><u>Tomahock</u></a>, received an automated alert from Cloudflare. His volunteer-run project, <a href="https://fogos.pt"><u>fogos.pt</u></a>, now a trusted source of real-time wildfire information for millions across Portugal, was under attack.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dgHHbPyF5op5kCreLO8Zz/b69e125f95751f5dd056d1145604fcd2/BLOG-2934_2.png" alt="BLOG-2934 2" class="kg-image" width="1320" height="1166" loading="lazy">
+	</figure>
+	<p><sub>One of the several alerts </sub><a href="http://fogos.pt"><sub><u>fogos.pt</u></sub></a><sub> received related to the DDoS attack</sub></p>
+	<p>What started in 2015 as a late-night side project with friends around a dinner table in Aveiro has grown into a critical public resource. During wildfires, the site is where firefighters, journalists, citizens, and even government agencies go to understand what’s happening on the ground. Over the years, fogos.pt has evolved from parsing PDFs into visual maps to a full-featured app and website with historical data, weather overlays, and more. It’s also part of Project Galileo, Cloudflare’s initiative to protect vulnerable but important public interest sites at no cost.</p>
+	<p>Wildfires are not just a Portuguese challenge. They are frequent across southern Europe (Spain, Greece, currently also under alert), California, Australia, and in Canada, which in 2023 faced <a href="https://en.wikipedia.org/wiki/2023_Canadian_wildfires"><u>record-setting</u></a> fires. In all these cases, reliable information can be crucial, sometimes life-saving. Other organizations offering similar public services can also apply to join <a href="https://www.cloudflare.com/galileo"><u>Project Galileo</u></a> to receive protection and handle heavy traffic.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-side-project-that-became-a-national-reference">A side project that became a national reference</h2>
+		<a href="https://blog.cloudflare.com/#a-side-project-that-became-a-national-reference" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Fogos.pt began with a simple question: why was fire data only available in hard-to-read PDF documents? João and a group of friends, including volunteer firefighters, decided to build something better. They pulled the data, geolocated the fire reports, and visualized them on a map.</p>
+	<p>Soon, thousands of people were using it. Then tens of thousands. Today, fogos.pt is integrated into official communications, including mentions from the Portuguese government on social media and direct links from the national wildfire information portal (<a href="https://www.sgifr.gov.pt"><u>SGIFR.gov.pt</u></a>).</p>
+	<p>In 2018, fogos.pt formally joined forces with<a href="https://vost.pt"><u> VOST Portugal</u></a>, a digital volunteer organization that was early on also part of our <a href="https://www.cloudflare.com/galileo"><u>Project Galileo</u></a> — whose<a href="https://www.cloudflare.com/case-studies/vost-portugal"><u> story was also featured in an earlier case study</u></a>. João Pina is also a co-founder of VOSTPT. Together, they created a complementary model: fogos.pt provides data and the platform; VOSTPT validates and communicates it to the public in real-time during emergencies.</p>
+	<p>It’s an operation run entirely by volunteers, with no funding, no formal team — just passion, and the help of partners.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6NjIxtp7YJjI8IPkDTdVtC/1a14e97700ab05992c1ea0610747d624/BLOG-2934_3.jpg" alt="BLOG-2934 3" class="kg-image" width="1999" height="1423" loading="lazy">
+	</figure>
+	<p><sub>Homepage of fogos.pt on August 20, 2025, highlighting a major wildfire near Piódão in central Portugal.</sub></p>
+	<div class="flex anchor relative">
+		<h3 id="under-attack-during-fire-season">Under attack during fire season</h3>
+		<a href="https://blog.cloudflare.com/#under-attack-during-fire-season" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>On July 31 and August 1, 2025, two Distributed Denial of Service (DDoS) attacks targeted fogos.pt. Cloudflare automatically detected and mitigated both attacks.</p>
+	<p><b>July 31 attack:</b>
+		• Duration: 7 minutes
+		• Peak: 33,000 requests per second at 11:27 UTC
+		• Bandwidth: 1.7 Gbps (Max)
+
+		How the attack looks like in requests per second:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HF7TpL7tF66oK6plP5N7T/a2bce9539e21b216b8d3ae1fd7885623/BLOG-2934_4.png" alt="BLOG-2934 4" class="kg-image" width="1999" height="411" loading="lazy">
+	</figure>
+	<p><b>August 1 attack</b>:
+		• Duration: 5 minutes
+		• Peak: 31,000 requests per second at 10:24 UTC
+		• Bandwidth: 849 Mbps (Max)
+
+		How the attack looks like in requests per second from our perspective:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/iaaqt3cvSbjQ5M9cODkhH/6202d16fc65aeeb510ba761317f0f43f/BLOG-2934_5.png" alt="BLOG-2934 5" class="kg-image" width="1999" height="640" loading="lazy">
+	</figure>
+	<p>By Cloudflare’s standards, these were small. For comparison, last year we mitigated an attack exceeding <a href="https://blog.cloudflare.com/exploring-internet-traffic-shifts-and-cyber-attacks-during-the-2024-us-election"><u>700,000 requests per second</u></a> against a high-profile US election campaign site. But for an civic project like fogos.pt, even tens of thousands of requests per second — if unprotected — can be enough to take services offline at the worst possible time.</p>
+	<p>Attackers typically use three main methods for DDoS attacks:</p>
+	<ul>
+		<li>
+			<p>IoT devices: hacked cameras, routers, or smart gadgets sending traffic.</p>
+		</li>
+		<li>
+			<p>Proxies: open or misconfigured servers, residential proxy networks, or anonymity tools that hide attackers’ IPs.</p>
+		</li>
+		<li>
+			<p>Cloud machines: compromised or rented servers from cloud providers.</p>
+		</li>
+	</ul>
+	<p>The July 31 attack likely relied on open proxies, with much of the traffic arriving unencrypted (a common sign of proxy-based attacks). The August 1 attack, in contrast, came largely from cloud machines, matching patterns we see from botnets that exploit cloud infrastructure.</p>
+	<p>These attacks were blocked without disruption. Cloudflare’s autonomous mitigation systems kicked in, and email alerts were automatically sent to João and the team. No downtime, no manual intervention required.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-role-of-project-galileo-traffic-surges">The role of Project Galileo: traffic surges</h3>
+		<a href="https://blog.cloudflare.com/#the-role-of-project-galileo-traffic-surges" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Fogos.pt has used Cloudflare’s free services since the beginning, starting with DNS and gradually expanding to DDoS mitigation, caching, rate limiting, and more. The site joined Project Galileo, which protects journalists, human rights defenders, and public service projects, to get stronger, upgraded features and service at no cost.</p>
+	<blockquote>
+		<p><i>“Without Cloudflare, the site would have gone down many times during fire season,” says João Pina. “We use almost every product — but protection against attacks is critical.”</i></p>
+	</blockquote>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NGImat2Q9nujadgXBf22K/96e0aca2752f135e86efdb25d6502a18/BLOG-2934_6.png" alt="BLOG-2934 6" class="kg-image" width="1784" height="1594" loading="lazy">
+	</figure>
+	<p><sub>August 11, 2025, detail the area of interest of a wildfire in central Portugal.&nbsp;</sub></p>
+	<p>Traffic to fogos.pt surges when wildfires hit the news or get mentioned by authorities. These spikes can bring tens of thousands of visitors per day. And as attention grows, so does the risk. Attacks can be used to silence or disrupt critical services, or simply as distractions for more malicious activity. In August 2025, the site often had close to 60,000 people browsing at the same time, with around 40,000 being the norm across the web and app services.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dNqwHSVBjXdWZqA5jkJiq/f2eed592d0e09df61e14285a0167197c/BLOG-2934_7.png" alt="BLOG-2934 7" class="kg-image" width="678" height="330" loading="lazy">
+	</figure>
+	<p>In just two weeks (with an August 15 peak of almost 70 million requests), fogos.pt handled over 550 million requests (more than 25 million per day) 9 TB of data transfer, nearly 100 million page views, 15 million visits, and 240 million API calls. A massive load for a volunteer-run project, as the next screenshot from the <a href="http://fogos.pt"><u>fogos.pt</u></a> team shows:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ofxc7GGgKgWiEbcj4JEiv/2368a8f6ec344d77a044c0a1b371201a/BLOG-2934_8.png" alt="BLOG-2934 8" class="kg-image" width="1999" height="1179" loading="lazy">
+	</figure>
+	<p>In a time when timely wildfire updates can mean the difference between safety and danger, keeping the site online is essential.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="built-by-community-supported-by-allies">Built by community, supported by allies</h3>
+		<a href="https://blog.cloudflare.com/#built-by-community-supported-by-allies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Fogos.pt is a reminder of what’s possible when public service meets technology, and why we launched Project Galileo: to protect the digital infrastructure that keeps people informed and safe. Built with no formal funding or full-time team, it runs on volunteers, partners, and a shared sense of purpose, an authenticity that João Pina believes is why it works, and why it matters.</p>
+	<p>And while this story is about Portugal, wildfires are a global challenge. Other organizations providing critical public services can also apply to join <a href="https://www.cloudflare.com/galileo"><u>Project Galileo</u></a> and receive this protection.</p>
+	<p>From a dinner-table idea by an engineer to critical national infrastructure, fogos.pt shows the Internet at its best. Cloudflare is proud to help protect it.</p>
+</div>
