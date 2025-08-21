@@ -38,8 +38,8 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "theNET | Combating shadow AI",
-					"metaDescription": "As governments enact more AI laws, public sector organizations must implement controls to guard against the dangers of AI in government, including shadow AI.",
+					"metaTitle": "Combat the risks of shadow AI with proper governance",
+					"metaDescription": "Increased use of AI tools presents unique challenges to public sector organizations. Discover how to avoid shadow AI risks and comply with new regulations.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -924,6 +924,27 @@
 														"target": null,
 														"uri": null
 													},
+													"value": "One emerging concern highlighted by this wave of legislation is the rise of shadow AI — unsanctioned use of public AI tools and models by employees or departments without oversight. Like \"shadow IT\" before it, shadow AI introduces governance and data leakage risks that regulations are increasingly aiming to address.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
 													"value": "",
 													"marks": [],
 													"content": null
@@ -1022,7 +1043,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "On the other hand, poorly developed or malicious AI crawlers can scrape content to train public AI platforms without consideration for the privacy of that content. There could be numerous intellectual property and privacy issues if this data ends up training models. When left unchecked, these bots can also hamper the performance of public websites for all users by consuming resources from legitimate interactions.",
+													"value": "On the other hand, poorly developed or malicious AI crawlers can scrape content to train public AI platforms without consideration for the privacy of that content. There could be numerous intellectual property and privacy issues if this data ends up training models. When left unchecked, these ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/bots/what-is-a-bot/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "bots",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " can also hamper the performance of public websites for all users by consuming resources from legitimate interactions.",
 													"marks": [],
 													"content": null
 												}
@@ -1280,7 +1332,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", shadow and insecure APIs, along with various other bot-related threats.",
+													"value": ", shadow and insecure ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/security/api/what-is-api-security/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "APIs",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", along with various other bot-related threats.",
 													"marks": [],
 													"content": null
 												}
@@ -1492,7 +1575,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " challenges, access to citizen services, food and water safety, among others. However, without governance, organizations could be complicit in leaking regulated data sets to insecure public language model training data.",
+													"value": " challenges, access to citizen services, food and water safety, among others. However, without AI governance, organizations could be complicit in leaking regulated data sets to insecure public language model training data.",
 													"marks": [],
 													"content": null
 												}
@@ -1544,7 +1627,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" — they now need to understand the scope of \"shadow AI\" consumption within their organizations. The increase of shadow AI is making headlines. A ",
+													"value": "\" — they now need to understand the scope of \"shadow AI\" consumption within their organizations. The increase of shadow AI is making headlines. A global study by ",
 													"marks": [],
 													"content": null
 												},
@@ -1552,7 +1635,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.zdnet.com/article/employees-input-sensitive-data-into-generative-ai-tools-despite-the-risks/"
+														"uri": "https://theconversation.com/major-survey-finds-most-people-use-ai-regularly-at-work-but-almost-half-admit-to-doing-so-inappropriately-255405"
 													},
 													"value": null,
 													"marks": null,
@@ -1563,7 +1646,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "3Gem study",
+															"value": "The Conversation",
 															"marks": [],
 															"content": null
 														}
@@ -1575,7 +1658,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " of over 11,500 employees worldwide showed that 57% of employees used public generative AI tools in the office at least once a week. In the same study, 39% of respondents agreed that there is a risk of sensitive data being leaked through these interactions.",
+													"value": " involving more than 32,000 employees across 47 countries found that nearly 70% of workers favor using free, public AI tools over employer-provided solutions. Alarmingly, almost half admitted to uploading sensitive company or customer data into public generative AI platforms, and 44% acknowledged using AI at work in ways that violate their organization's policies.",
 													"marks": [],
 													"content": null
 												}
@@ -1604,7 +1687,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.axios.com/2023/08/28/ai-content-flood-model-collapse"
+														"uri": "https://votiro.com/blog/the-hidden-risks-in-ai-training-data-and-how-to-eliminate-them/"
 													},
 													"value": null,
 													"marks": null,
@@ -1648,7 +1731,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Control 1: Determine appropriate use",
+													"value": "Control 1: Determine appropriate use of AI",
 													"marks": [
 														{
 															"type": "bold"
@@ -2025,7 +2108,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Protecting constituents",
+													"value": "Protecting constituents with AI governance",
 													"marks": [
 														{
 															"type": "bold"
@@ -2050,7 +2133,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Governance should start with a policy or a mission, not with technology. To evaluate the benefits and risks of AI, an agency's leaders should appoint focused teams that can evaluate the potential intersections of AI and the agency's mission.",
+													"value": "AI governance should start with a policy or a mission, not with technology. To evaluate the benefits and risks of AI, an agency's leaders should appoint focused teams that can evaluate the potential intersections of AI and the agency's mission.",
 													"marks": [],
 													"content": null
 												}
@@ -2071,7 +2154,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "As the public continues to increase engagement with government through technology, there will be larger, richer data sets that could be used to train AI models. Public sector organizations might choose a conservative approach by blocking all AI crawlers, for example, until the impact of allowing those interactions is understood. For organizations that see a potential benefit from legitimate crawling of public properties, teams must be able to control access by verified AI crawlers and protect against malicious actions.\n\nTo get ahead of increased AI regulation, teams should also establish which roles and tasks require access to AI platforms. Determining who gets access and when, and controlling the kinds of data posted to AI models, can address shadow AI without sacrificing the tangible benefits of this technology.",
+													"value": "As the public continues to increase engagement with government through technology, there will be larger, richer data sets that could be used to train AI models. Public sector organizations might choose a conservative approach by blocking all AI crawlers, for example, until the impact of allowing those interactions is understood. For organizations that see a potential benefit from legitimate crawling of public properties, teams must be able to control access by verified AI crawlers and protect against malicious actions.\n\nTo get ahead of increased AI regulation, teams should also establish which roles and tasks require access to AI platforms. Determining who gets access and when, and controlling the kinds of data posted to AI models, can address shadow AI risks without sacrificing the tangible benefits of this technology.",
 													"marks": [],
 													"content": null
 												}
@@ -2154,7 +2237,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " security capabilities are core to helping government entities reduce risk in the face of proliferating AI usage. Protecting public web properties and maintaining responsible consumption of AI should be top of mind when developing mitigation strategies.",
+													"value": " security capabilities are core to helping government entities reduce risk in the face of proliferating AI usage. Protecting public web properties and maintaining responsible us of AI should be top of mind when developing mitigation strategies.",
 													"marks": [],
 													"content": null
 												}
