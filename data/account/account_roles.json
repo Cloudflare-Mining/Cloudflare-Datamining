@@ -467,13 +467,9 @@
 	{
 		"id": "43801681f525f111da3f15d07ffafdf1",
 		"name": "Email Integration Admin",
-		"description": "Write access to CES account integration only, CASB, DLP, Gateway and Tunnels",
+		"description": "Write access to Email Security account integration only",
 		"permissions": {
 			"ces_policies": {
-				"read": true,
-				"edit": true
-			},
-			"teams": {
 				"read": true,
 				"edit": true
 			},
