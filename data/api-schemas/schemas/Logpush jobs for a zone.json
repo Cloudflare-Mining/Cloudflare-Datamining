@@ -587,12 +587,11 @@
 			"Logpush jobs for a zone"
 		],
 		"x-api-token-group": [
-			"Logs Write",
 			"Logs Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#logs:edit"
+				"#logs:read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -1212,8 +1211,7 @@
 			"Logpush jobs for a zone"
 		],
 		"x-api-token-group": [
-			"Logs Write",
-			"Logs Read"
+			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1797,8 +1795,7 @@
 			"Logpush jobs for a zone"
 		],
 		"x-api-token-group": [
-			"Logs Write",
-			"Logs Read"
+			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2393,8 +2390,7 @@
 			"Logpush jobs for a zone"
 		],
 		"x-api-token-group": [
-			"Logs Write",
-			"Logs Read"
+			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -1,0 +1,2189 @@
+{
+	"DELETE /accounts/{account_id}/workers/workers/{worker_id}": {
+		"description": "Delete a Worker and all its associated resources (versions, deployments, etc.).",
+		"operationId": "deleteWorker",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Identifier for the Worker, which can be ID (e.g. e8f70fdbc8b1fb0b8ddb1af166186758) or name (e.g. my-worker).",
+				"in": "path",
+				"name": "worker_id",
+				"required": true,
+				"schema": {
+					"anyOf": [
+						{
+							"description": "Identifier.",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"type": "string",
+							"x-auditable": true
+						},
+						{
+							"description": "Name of the script, used in URLs and route configuration.",
+							"example": "this-is_my_script-01",
+							"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+							"type": "string",
+							"x-auditable": true
+						}
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Worker success."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Worker failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Worker",
+		"tags": [
+			"Workers"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
+	},
+	"GET /accounts/{account_id}/workers/workers": {
+		"description": "List all Workers for an account.",
+		"operationId": "listWorkers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Current page.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Items per-page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 10,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created_on": {
+														"description": "When the Worker was created.",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"id": {
+														"allOf": [
+															{
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string",
+																"x-auditable": true
+															}
+														],
+														"readOnly": true
+													},
+													"logpush": {
+														"default": false,
+														"description": "Whether logpush is enabled for the Worker.",
+														"type": "boolean"
+													},
+													"name": {
+														"description": "Name of the Worker.",
+														"example": "my-worker",
+														"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+														"type": "string"
+													},
+													"observability": {
+														"description": "Observability settings for the Worker.",
+														"properties": {
+															"enabled": {
+																"default": false,
+																"description": "Whether observability is enabled for the Worker.",
+																"type": "boolean"
+															},
+															"head_sampling_rate": {
+																"default": 1,
+																"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																"type": "number"
+															},
+															"logs": {
+																"description": "Log settings for the Worker.",
+																"properties": {
+																	"enabled": {
+																		"default": false,
+																		"description": "Whether logs are enabled for the Worker.",
+																		"type": "boolean"
+																	},
+																	"head_sampling_rate": {
+																		"default": 1,
+																		"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																		"type": "number"
+																	},
+																	"invocation_logs": {
+																		"default": true,
+																		"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"subdomain": {
+														"description": "Subdomain settings for the Worker.",
+														"properties": {
+															"enabled": {
+																"default": false,
+																"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
+																"type": "boolean"
+															},
+															"previews_enabled": {
+																"default": false,
+																"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
+																"type": "boolean"
+															}
+														},
+														"type": "object"
+													},
+													"tags": {
+														"default": [],
+														"description": "Tags associated with the Worker.",
+														"example": [
+															"my-team",
+															"my-public-api"
+														],
+														"items": {
+															"maxLength": 1024,
+															"type": "string"
+														},
+														"maxItems": 8,
+														"type": "array",
+														"x-stainless-collection-type": "set"
+													},
+													"tail_consumers": {
+														"default": [],
+														"description": "Other Workers that should consume logs from the Worker.",
+														"items": {
+															"properties": {
+																"name": {
+																	"description": "Name of the consumer Worker.",
+																	"example": "my-tail-consumer",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"type": "array",
+														"x-stainless-collection-type": "set"
+													},
+													"updated_on": {
+														"description": "When the Worker was most recently updated.",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"created_on",
+													"updated_on"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Workers success."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Workers failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Workers",
+		"tags": [
+			"Workers"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
+	},
+	"GET /accounts/{account_id}/workers/workers/{worker_id}": {
+		"description": "Get details about a specific Worker.",
+		"operationId": "getWorker",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Identifier for the Worker, which can be ID (e.g. e8f70fdbc8b1fb0b8ddb1af166186758) or name (e.g. my-worker).",
+				"in": "path",
+				"name": "worker_id",
+				"required": true,
+				"schema": {
+					"anyOf": [
+						{
+							"description": "Identifier.",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"type": "string",
+							"x-auditable": true
+						},
+						{
+							"description": "Name of the script, used in URLs and route configuration.",
+							"example": "this-is_my_script-01",
+							"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+							"type": "string",
+							"x-auditable": true
+						}
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"description": "When the Worker was created.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"logpush": {
+													"default": false,
+													"description": "Whether logpush is enabled for the Worker.",
+													"type": "boolean"
+												},
+												"name": {
+													"description": "Name of the Worker.",
+													"example": "my-worker",
+													"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+													"type": "string"
+												},
+												"observability": {
+													"description": "Observability settings for the Worker.",
+													"properties": {
+														"enabled": {
+															"default": false,
+															"description": "Whether observability is enabled for the Worker.",
+															"type": "boolean"
+														},
+														"head_sampling_rate": {
+															"default": 1,
+															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+															"type": "number"
+														},
+														"logs": {
+															"description": "Log settings for the Worker.",
+															"properties": {
+																"enabled": {
+																	"default": false,
+																	"description": "Whether logs are enabled for the Worker.",
+																	"type": "boolean"
+																},
+																"head_sampling_rate": {
+																	"default": 1,
+																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"type": "number"
+																},
+																"invocation_logs": {
+																	"default": true,
+																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"subdomain": {
+													"description": "Subdomain settings for the Worker.",
+													"properties": {
+														"enabled": {
+															"default": false,
+															"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
+															"type": "boolean"
+														},
+														"previews_enabled": {
+															"default": false,
+															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"tags": {
+													"default": [],
+													"description": "Tags associated with the Worker.",
+													"example": [
+														"my-team",
+														"my-public-api"
+													],
+													"items": {
+														"maxLength": 1024,
+														"type": "string"
+													},
+													"maxItems": 8,
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"tail_consumers": {
+													"default": [],
+													"description": "Other Workers that should consume logs from the Worker.",
+													"items": {
+														"properties": {
+															"name": {
+																"description": "Name of the consumer Worker.",
+																"example": "my-tail-consumer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"updated_on": {
+													"description": "When the Worker was most recently updated.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_on",
+												"updated_on"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Worker success."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Worker failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Worker",
+		"tags": [
+			"Workers"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
+	},
+	"POST /accounts/{account_id}/workers/workers": {
+		"description": "Create a new Worker.",
+		"operationId": "createWorker",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"created_on": {
+								"description": "When the Worker was created.",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"id": {
+								"allOf": [
+									{
+										"description": "Identifier.",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"maxLength": 32,
+										"type": "string",
+										"x-auditable": true
+									}
+								],
+								"readOnly": true
+							},
+							"logpush": {
+								"default": false,
+								"description": "Whether logpush is enabled for the Worker.",
+								"type": "boolean"
+							},
+							"name": {
+								"description": "Name of the Worker.",
+								"example": "my-worker",
+								"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+								"type": "string"
+							},
+							"observability": {
+								"description": "Observability settings for the Worker.",
+								"properties": {
+									"enabled": {
+										"default": false,
+										"description": "Whether observability is enabled for the Worker.",
+										"type": "boolean"
+									},
+									"head_sampling_rate": {
+										"default": 1,
+										"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+										"type": "number"
+									},
+									"logs": {
+										"description": "Log settings for the Worker.",
+										"properties": {
+											"enabled": {
+												"default": false,
+												"description": "Whether logs are enabled for the Worker.",
+												"type": "boolean"
+											},
+											"head_sampling_rate": {
+												"default": 1,
+												"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+												"type": "number"
+											},
+											"invocation_logs": {
+												"default": true,
+												"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"subdomain": {
+								"description": "Subdomain settings for the Worker.",
+								"properties": {
+									"enabled": {
+										"default": false,
+										"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
+										"type": "boolean"
+									},
+									"previews_enabled": {
+										"default": false,
+										"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"tags": {
+								"default": [],
+								"description": "Tags associated with the Worker.",
+								"example": [
+									"my-team",
+									"my-public-api"
+								],
+								"items": {
+									"maxLength": 1024,
+									"type": "string"
+								},
+								"maxItems": 8,
+								"type": "array",
+								"x-stainless-collection-type": "set"
+							},
+							"tail_consumers": {
+								"default": [],
+								"description": "Other Workers that should consume logs from the Worker.",
+								"items": {
+									"properties": {
+										"name": {
+											"description": "Name of the consumer Worker.",
+											"example": "my-tail-consumer",
+											"type": "string"
+										}
+									},
+									"required": [
+										"name"
+									],
+									"type": "object"
+								},
+								"type": "array",
+								"x-stainless-collection-type": "set"
+							},
+							"updated_on": {
+								"description": "When the Worker was most recently updated.",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"created_on",
+							"updated_on"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "Worker creation parameters.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"description": "When the Worker was created.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"logpush": {
+													"default": false,
+													"description": "Whether logpush is enabled for the Worker.",
+													"type": "boolean"
+												},
+												"name": {
+													"description": "Name of the Worker.",
+													"example": "my-worker",
+													"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+													"type": "string"
+												},
+												"observability": {
+													"description": "Observability settings for the Worker.",
+													"properties": {
+														"enabled": {
+															"default": false,
+															"description": "Whether observability is enabled for the Worker.",
+															"type": "boolean"
+														},
+														"head_sampling_rate": {
+															"default": 1,
+															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+															"type": "number"
+														},
+														"logs": {
+															"description": "Log settings for the Worker.",
+															"properties": {
+																"enabled": {
+																	"default": false,
+																	"description": "Whether logs are enabled for the Worker.",
+																	"type": "boolean"
+																},
+																"head_sampling_rate": {
+																	"default": 1,
+																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"type": "number"
+																},
+																"invocation_logs": {
+																	"default": true,
+																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"subdomain": {
+													"description": "Subdomain settings for the Worker.",
+													"properties": {
+														"enabled": {
+															"default": false,
+															"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
+															"type": "boolean"
+														},
+														"previews_enabled": {
+															"default": false,
+															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"tags": {
+													"default": [],
+													"description": "Tags associated with the Worker.",
+													"example": [
+														"my-team",
+														"my-public-api"
+													],
+													"items": {
+														"maxLength": 1024,
+														"type": "string"
+													},
+													"maxItems": 8,
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"tail_consumers": {
+													"default": [],
+													"description": "Other Workers that should consume logs from the Worker.",
+													"items": {
+														"properties": {
+															"name": {
+																"description": "Name of the consumer Worker.",
+																"example": "my-tail-consumer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"updated_on": {
+													"description": "When the Worker was most recently updated.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_on",
+												"updated_on"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Worker success."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create Worker failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Worker",
+		"tags": [
+			"Workers"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
+	},
+	"PUT /accounts/{account_id}/workers/workers/{worker_id}": {
+		"description": "Update an existing Worker.",
+		"operationId": "updateWorker",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Identifier for the Worker, which can be ID (e.g. e8f70fdbc8b1fb0b8ddb1af166186758) or name (e.g. my-worker).",
+				"in": "path",
+				"name": "worker_id",
+				"required": true,
+				"schema": {
+					"anyOf": [
+						{
+							"description": "Identifier.",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"type": "string",
+							"x-auditable": true
+						},
+						{
+							"description": "Name of the script, used in URLs and route configuration.",
+							"example": "this-is_my_script-01",
+							"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+							"type": "string",
+							"x-auditable": true
+						}
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"created_on": {
+								"description": "When the Worker was created.",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"id": {
+								"allOf": [
+									{
+										"description": "Identifier.",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"maxLength": 32,
+										"type": "string",
+										"x-auditable": true
+									}
+								],
+								"readOnly": true
+							},
+							"logpush": {
+								"default": false,
+								"description": "Whether logpush is enabled for the Worker.",
+								"type": "boolean"
+							},
+							"name": {
+								"description": "Name of the Worker.",
+								"example": "my-worker",
+								"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+								"type": "string"
+							},
+							"observability": {
+								"description": "Observability settings for the Worker.",
+								"properties": {
+									"enabled": {
+										"default": false,
+										"description": "Whether observability is enabled for the Worker.",
+										"type": "boolean"
+									},
+									"head_sampling_rate": {
+										"default": 1,
+										"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+										"type": "number"
+									},
+									"logs": {
+										"description": "Log settings for the Worker.",
+										"properties": {
+											"enabled": {
+												"default": false,
+												"description": "Whether logs are enabled for the Worker.",
+												"type": "boolean"
+											},
+											"head_sampling_rate": {
+												"default": 1,
+												"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+												"type": "number"
+											},
+											"invocation_logs": {
+												"default": true,
+												"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"subdomain": {
+								"description": "Subdomain settings for the Worker.",
+								"properties": {
+									"enabled": {
+										"default": false,
+										"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
+										"type": "boolean"
+									},
+									"previews_enabled": {
+										"default": false,
+										"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"tags": {
+								"default": [],
+								"description": "Tags associated with the Worker.",
+								"example": [
+									"my-team",
+									"my-public-api"
+								],
+								"items": {
+									"maxLength": 1024,
+									"type": "string"
+								},
+								"maxItems": 8,
+								"type": "array",
+								"x-stainless-collection-type": "set"
+							},
+							"tail_consumers": {
+								"default": [],
+								"description": "Other Workers that should consume logs from the Worker.",
+								"items": {
+									"properties": {
+										"name": {
+											"description": "Name of the consumer Worker.",
+											"example": "my-tail-consumer",
+											"type": "string"
+										}
+									},
+									"required": [
+										"name"
+									],
+									"type": "object"
+								},
+								"type": "array",
+								"x-stainless-collection-type": "set"
+							},
+							"updated_on": {
+								"description": "When the Worker was most recently updated.",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"created_on",
+							"updated_on"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "Worker update parameters.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"description": "When the Worker was created.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"logpush": {
+													"default": false,
+													"description": "Whether logpush is enabled for the Worker.",
+													"type": "boolean"
+												},
+												"name": {
+													"description": "Name of the Worker.",
+													"example": "my-worker",
+													"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+													"type": "string"
+												},
+												"observability": {
+													"description": "Observability settings for the Worker.",
+													"properties": {
+														"enabled": {
+															"default": false,
+															"description": "Whether observability is enabled for the Worker.",
+															"type": "boolean"
+														},
+														"head_sampling_rate": {
+															"default": 1,
+															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+															"type": "number"
+														},
+														"logs": {
+															"description": "Log settings for the Worker.",
+															"properties": {
+																"enabled": {
+																	"default": false,
+																	"description": "Whether logs are enabled for the Worker.",
+																	"type": "boolean"
+																},
+																"head_sampling_rate": {
+																	"default": 1,
+																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"type": "number"
+																},
+																"invocation_logs": {
+																	"default": true,
+																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"subdomain": {
+													"description": "Subdomain settings for the Worker.",
+													"properties": {
+														"enabled": {
+															"default": false,
+															"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
+															"type": "boolean"
+														},
+														"previews_enabled": {
+															"default": false,
+															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"tags": {
+													"default": [],
+													"description": "Tags associated with the Worker.",
+													"example": [
+														"my-team",
+														"my-public-api"
+													],
+													"items": {
+														"maxLength": 1024,
+														"type": "string"
+													},
+													"maxItems": 8,
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"tail_consumers": {
+													"default": [],
+													"description": "Other Workers that should consume logs from the Worker.",
+													"items": {
+														"properties": {
+															"name": {
+																"description": "Name of the consumer Worker.",
+																"example": "my-tail-consumer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"updated_on": {
+													"description": "When the Worker was most recently updated.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_on",
+												"updated_on"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Worker success."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update Worker failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Worker",
+		"tags": [
+			"Workers"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		]
+	}
+}

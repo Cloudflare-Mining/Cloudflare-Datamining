@@ -1510,7 +1510,9 @@
 													"default": "standard",
 													"description": "Usage model for the Worker invocations.",
 													"enum": [
-														"standard"
+														"standard",
+														"bundled",
+														"unbound"
 													],
 													"example": "standard",
 													"type": "string",

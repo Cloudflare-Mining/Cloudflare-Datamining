@@ -8,7 +8,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -70,7 +70,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -90,17 +90,17 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
@@ -171,7 +171,7 @@
 						}
 					}
 				},
-				"description": "Delete variants setting response"
+				"description": "Delete variants setting response."
 			},
 			"4XX": {
 				"content": {
@@ -252,7 +252,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -270,7 +270,7 @@
 						}
 					}
 				},
-				"description": "Delete variants setting response failure"
+				"description": "Delete variants setting response failure."
 			}
 		},
 		"security": [
@@ -311,7 +311,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -387,7 +387,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -407,23 +407,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -517,7 +517,7 @@
 						}
 					}
 				},
-				"description": "Get Cache Reserve setting response"
+				"description": "Get Cache Reserve setting response."
 			},
 			"4XX": {
 				"content": {
@@ -613,7 +613,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -631,7 +631,7 @@
 						}
 					}
 				},
-				"description": "Get Cache Reserve setting response failure"
+				"description": "Get Cache Reserve setting response failure."
 			}
 		},
 		"security": [
@@ -674,7 +674,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -761,7 +761,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -867,7 +867,7 @@
 						}
 					}
 				},
-				"description": "Get Cache Reserve Clear response"
+				"description": "Get Cache Reserve Clear response."
 			},
 			"4XX": {
 				"content": {
@@ -963,7 +963,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -981,7 +981,7 @@
 						}
 					}
 				},
-				"description": "Get Cache Reserve Clear failure response"
+				"description": "Get Cache Reserve Clear failure response."
 			}
 		},
 		"security": [
@@ -1024,7 +1024,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1086,7 +1086,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1106,23 +1106,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -1216,7 +1216,7 @@
 						}
 					}
 				},
-				"description": "Get Regional Tiered Cache setting response"
+				"description": "Get Regional Tiered Cache setting response."
 			},
 			"4XX": {
 				"content": {
@@ -1297,7 +1297,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1315,7 +1315,7 @@
 						}
 					}
 				},
-				"description": "Get Regional Tiered Cache setting response failure"
+				"description": "Get Regional Tiered Cache setting response failure."
 			}
 		},
 		"security": [
@@ -1358,7 +1358,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1420,7 +1420,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1440,23 +1440,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -1689,7 +1689,7 @@
 						}
 					}
 				},
-				"description": "Get variants setting response"
+				"description": "Get variants setting response."
 			},
 			"4XX": {
 				"content": {
@@ -1770,7 +1770,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -1788,7 +1788,7 @@
 						}
 					}
 				},
-				"description": "Get variants setting response failure"
+				"description": "Get variants setting response failure."
 			}
 		},
 		"security": [
@@ -1831,7 +1831,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1932,7 +1932,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1952,23 +1952,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -2062,7 +2062,7 @@
 						}
 					}
 				},
-				"description": "Change Cache Reserve setting response"
+				"description": "Change Cache Reserve setting response."
 			},
 			"4XX": {
 				"content": {
@@ -2158,7 +2158,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -2176,7 +2176,7 @@
 						}
 					}
 				},
-				"description": "Change Cache Reserve setting response failure"
+				"description": "Change Cache Reserve setting response failure."
 			}
 		},
 		"security": [
@@ -2217,7 +2217,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2304,7 +2304,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2324,23 +2324,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -2434,7 +2434,7 @@
 						}
 					}
 				},
-				"description": "Change Regional Tiered Cache setting response"
+				"description": "Change Regional Tiered Cache setting response."
 			},
 			"4XX": {
 				"content": {
@@ -2515,7 +2515,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -2533,7 +2533,7 @@
 						}
 					}
 				},
-				"description": "Change Regional Tiered Cache setting response failure"
+				"description": "Change Regional Tiered Cache setting response failure."
 			}
 		},
 		"security": [
@@ -2574,7 +2574,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -2800,7 +2800,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2820,23 +2820,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -3069,7 +3069,7 @@
 						}
 					}
 				},
-				"description": "Change variants setting response"
+				"description": "Change variants setting response."
 			},
 			"4XX": {
 				"content": {
@@ -3150,7 +3150,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -3168,7 +3168,7 @@
 						}
 					}
 				},
-				"description": "Change variants setting response failure"
+				"description": "Change variants setting response failure."
 			}
 		},
 		"security": [
@@ -3209,7 +3209,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3292,7 +3292,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -3398,7 +3398,7 @@
 						}
 					}
 				},
-				"description": "Start Cache Reserve Clear response"
+				"description": "Start Cache Reserve Clear response."
 			},
 			"4XX": {
 				"content": {
@@ -3494,7 +3494,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -3512,7 +3512,7 @@
 						}
 					}
 				},
-				"description": "Start Cache Reserve Clear failure response"
+				"description": "Start Cache Reserve Clear failure response."
 			}
 		},
 		"security": [

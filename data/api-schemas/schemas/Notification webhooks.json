@@ -506,9 +506,14 @@
 													"type": {
 														"description": "Type of webhook endpoint.",
 														"enum": [
-															"slack",
+															"datadog",
+															"discord",
+															"feishu",
+															"gchat",
 															"generic",
-															"gchat"
+															"opsgenie",
+															"slack",
+															"splunk"
 														],
 														"example": "slack",
 														"type": "string",
@@ -684,9 +689,14 @@
 															"type": {
 																"description": "Type of webhook endpoint.",
 																"enum": [
-																	"slack",
+																	"datadog",
+																	"discord",
+																	"feishu",
+																	"gchat",
 																	"generic",
-																	"gchat"
+																	"opsgenie",
+																	"slack",
+																	"splunk"
 																],
 																"example": "slack",
 																"type": "string",
@@ -967,9 +977,14 @@
 												"type": {
 													"description": "Type of webhook endpoint.",
 													"enum": [
-														"slack",
+														"datadog",
+														"discord",
+														"feishu",
+														"gchat",
 														"generic",
-														"gchat"
+														"opsgenie",
+														"slack",
+														"splunk"
 													],
 													"example": "slack",
 													"type": "string",
@@ -1113,9 +1128,14 @@
 														"type": {
 															"description": "Type of webhook endpoint.",
 															"enum": [
-																"slack",
+																"datadog",
+																"discord",
+																"feishu",
+																"gchat",
 																"generic",
-																"gchat"
+																"opsgenie",
+																"slack",
+																"splunk"
 															],
 															"example": "slack",
 															"type": "string",

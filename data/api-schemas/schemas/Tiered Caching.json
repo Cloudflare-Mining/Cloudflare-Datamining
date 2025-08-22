@@ -8,7 +8,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -70,7 +70,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -90,23 +90,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -199,7 +199,7 @@
 						}
 					}
 				},
-				"description": "Get Tiered Caching setting response"
+				"description": "Get Tiered Caching setting response."
 			},
 			"4XX": {
 				"content": {
@@ -280,7 +280,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -298,7 +298,7 @@
 						}
 					}
 				},
-				"description": "Get Tiered Caching setting response failure"
+				"description": "Get Tiered Caching setting response failure."
 			}
 		},
 		"security": [
@@ -330,7 +330,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -343,7 +343,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Update enablement of Tiered Caching",
+						"description": "Update enablement of Tiered Caching.",
 						"properties": {
 							"value": {
 								"description": "Enables Tiered Caching.",
@@ -418,7 +418,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -438,23 +438,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -547,7 +547,7 @@
 						}
 					}
 				},
-				"description": "Patch Tiered Caching setting response"
+				"description": "Patch Tiered Caching setting response."
 			},
 			"4XX": {
 				"content": {
@@ -628,7 +628,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -646,7 +646,7 @@
 						}
 					}
 				},
-				"description": "Patch Tiered Caching setting response failure"
+				"description": "Patch Tiered Caching setting response failure."
 			}
 		},
 		"security": [

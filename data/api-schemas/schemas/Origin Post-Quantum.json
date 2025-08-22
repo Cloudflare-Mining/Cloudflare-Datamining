@@ -1,6 +1,6 @@
 {
 	"GET /zones/{zone_id}/cache/origin_post_quantum_encryption": {
-		"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised",
+		"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised.",
 		"operationId": "zone-cache-settings-get-origin-post-quantum-encryption-setting",
 		"parameters": [
 			{
@@ -8,7 +8,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -70,7 +70,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -90,23 +90,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -167,7 +167,7 @@
 															"type": "object"
 														}
 													],
-													"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised",
+													"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised.",
 													"title": "Origin Post-Quantum Encryption",
 													"type": "object"
 												},
@@ -201,7 +201,7 @@
 						}
 					}
 				},
-				"description": "Get Origin Post-Quantum Encryption setting response"
+				"description": "Get Origin Post-Quantum Encryption setting response."
 			},
 			"4XX": {
 				"content": {
@@ -282,7 +282,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -300,7 +300,7 @@
 						}
 					}
 				},
-				"description": "Get Origin Post-Quantum Encryption setting response failure"
+				"description": "Get Origin Post-Quantum Encryption setting response failure."
 			}
 		},
 		"security": [
@@ -335,7 +335,7 @@
 		}
 	},
 	"PUT /zones/{zone_id}/cache/origin_post_quantum_encryption": {
-		"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised",
+		"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised.",
 		"operationId": "zone-cache-settings-change-origin-post-quantum-encryption-setting",
 		"parameters": [
 			{
@@ -343,7 +343,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -431,7 +431,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -451,23 +451,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -528,7 +528,7 @@
 															"type": "object"
 														}
 													],
-													"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised",
+													"description": "Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised.",
 													"title": "Origin Post-Quantum Encryption",
 													"type": "object"
 												},
@@ -562,7 +562,7 @@
 						}
 					}
 				},
-				"description": "Change Origin Post-Quantum Encryption setting response"
+				"description": "Change Origin Post-Quantum Encryption setting response."
 			},
 			"4XX": {
 				"content": {
@@ -643,7 +643,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -661,7 +661,7 @@
 						}
 					}
 				},
-				"description": "Change Origin Post-Quantum Encryption setting response failure"
+				"description": "Change Origin Post-Quantum Encryption setting response failure."
 			}
 		},
 		"security": [

@@ -437,6 +437,10 @@
 															"oneOf": [
 																{
 																	"properties": {
+																		"description": {
+																			"nullable": true,
+																			"type": "string"
+																		},
 																		"topic_type": {
 																			"enum": [
 																				"Intent",

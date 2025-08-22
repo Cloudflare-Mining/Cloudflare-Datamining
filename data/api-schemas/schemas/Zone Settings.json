@@ -7916,7 +7916,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -7978,7 +7978,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -7998,24 +7998,24 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
-															"type": "object",
+															"description": "The value of the setting.",
+															"type": "string",
 															"x-auditable": true
 														}
 													},
@@ -8102,7 +8102,7 @@
 						}
 					}
 				},
-				"description": "Get aegis setting response"
+				"description": "Get aegis setting response."
 			},
 			"4XX": {
 				"content": {
@@ -8183,7 +8183,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -8201,7 +8201,7 @@
 						}
 					}
 				},
-				"description": "Get aegis setting response failure"
+				"description": "Get aegis setting response failure."
 			}
 		},
 		"security": [
@@ -8524,7 +8524,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -8554,103 +8554,62 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
 										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"editable": {
-															"description": "Whether the setting is editable",
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The identifier of the caching setting",
-															"type": "string",
-															"x-auditable": true
-														},
-														"modified_on": {
-															"description": "The time when the setting was last modified",
-															"format": "date-time",
-															"type": "string",
-															"x-auditable": true
-														},
-														"value": {
-															"description": "The value of the feature",
-															"type": "string",
-															"x-auditable": true
-														}
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"id",
-														"value",
-														"editable"
-													],
-													"type": "object"
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -8710,12 +8669,11 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Get Origin H2 Max Streams Setting Response"
+				"description": "Get Origin H2 Max Streams setting response."
 			},
 			"4XX": {
 				"content": {
@@ -8811,7 +8769,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -8829,7 +8787,7 @@
 						}
 					}
 				},
-				"description": "Get Origin H2 Max Streams Setting Response Failure"
+				"description": "Get Origin H2 Max Streams setting response failure."
 			}
 		},
 		"security": [
@@ -8864,7 +8822,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/settings/origin_max_http_version": {
-		"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+		"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\".",
 		"operationId": "zone-cache-settings-get-origin-max-http-version-setting",
 		"parameters": [
 			{
@@ -8872,7 +8830,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -8948,7 +8906,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -8968,23 +8926,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -9052,7 +9010,7 @@
 													"type": "object"
 												}
 											],
-											"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+											"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\".",
 											"title": "Origin Max HTTP Version",
 											"type": "object"
 										}
@@ -9064,7 +9022,7 @@
 						}
 					}
 				},
-				"description": "Get Origin Max HTTP Version Setting Response"
+				"description": "Get Origin Max HTTP Version setting response."
 			},
 			"4XX": {
 				"content": {
@@ -9160,7 +9118,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -9178,7 +9136,7 @@
 						}
 					}
 				},
-				"description": "Get Origin Max HTTP Version Setting Response Failure"
+				"description": "Get Origin Max HTTP Version setting response failure."
 			}
 		},
 		"security": [
@@ -21693,7 +21651,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -21787,7 +21745,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -21807,24 +21765,24 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
-															"type": "object",
+															"description": "The value of the setting.",
+															"type": "string",
 															"x-auditable": true
 														}
 													},
@@ -21911,7 +21869,7 @@
 						}
 					}
 				},
-				"description": "Change aegis setting response"
+				"description": "Change aegis setting response."
 			},
 			"4XX": {
 				"content": {
@@ -21992,7 +21950,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -22010,7 +21968,7 @@
 						}
 					}
 				},
-				"description": "Change aegis setting response failure"
+				"description": "Change aegis setting response failure."
 			}
 		},
 		"security": [
@@ -22354,7 +22312,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -22407,103 +22365,62 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
 										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"editable": {
-															"description": "Whether the setting is editable",
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The identifier of the caching setting",
-															"type": "string",
-															"x-auditable": true
-														},
-														"modified_on": {
-															"description": "The time when the setting was last modified",
-															"format": "date-time",
-															"type": "string",
-															"x-auditable": true
-														},
-														"value": {
-															"description": "The value of the feature",
-															"type": "string",
-															"x-auditable": true
-														}
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"id",
-														"value",
-														"editable"
-													],
-													"type": "object"
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -22563,12 +22480,11 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Change Origin H2 Max Streams Setting Response"
+				"description": "Change Origin H2 Max Streams setting response."
 			},
 			"4XX": {
 				"content": {
@@ -22664,7 +22580,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -22682,7 +22598,7 @@
 						}
 					}
 				},
-				"description": "Change Origin H2 Max Streams Response Failure"
+				"description": "Change Origin H2 Max Streams response failure."
 			}
 		},
 		"security": [
@@ -22715,7 +22631,7 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/settings/origin_max_http_version": {
-		"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+		"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\".",
 		"operationId": "zone-cache-settings-change-origin-max-http-version-setting",
 		"parameters": [
 			{
@@ -22723,7 +22639,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -22823,7 +22739,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -22843,23 +22759,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -22927,7 +22843,7 @@
 													"type": "object"
 												}
 											],
-											"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+											"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\".",
 											"title": "Origin Max HTTP Version",
 											"type": "object"
 										}
@@ -22939,7 +22855,7 @@
 						}
 					}
 				},
-				"description": "Change Origin Max HTTP Version Setting Response"
+				"description": "Change Origin Max HTTP Version setting response."
 			},
 			"4XX": {
 				"content": {
@@ -23035,7 +22951,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -23053,7 +22969,7 @@
 						}
 					}
 				},
-				"description": "Change Origin Max HTTP Version Response Failure"
+				"description": "Change Origin Max HTTP Version response failure."
 			}
 		},
 		"security": [

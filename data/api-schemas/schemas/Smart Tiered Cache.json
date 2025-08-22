@@ -8,7 +8,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -70,7 +70,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -90,17 +90,17 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
@@ -170,7 +170,7 @@
 						}
 					}
 				},
-				"description": "Delete Smart Tiered Cache setting response"
+				"description": "Delete Smart Tiered Cache setting response."
 			},
 			"4XX": {
 				"content": {
@@ -251,7 +251,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -269,7 +269,7 @@
 						}
 					}
 				},
-				"description": "Delete Smart Tiered Cache setting response failure"
+				"description": "Delete Smart Tiered Cache setting response failure."
 			}
 		},
 		"security": [
@@ -310,7 +310,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -372,7 +372,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -392,23 +392,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -501,7 +501,7 @@
 						}
 					}
 				},
-				"description": "Get Smart Tiered Cache setting response"
+				"description": "Get Smart Tiered Cache setting response."
 			},
 			"4XX": {
 				"content": {
@@ -582,7 +582,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -600,7 +600,7 @@
 						}
 					}
 				},
-				"description": "Get Smart Tiered Cache setting response failure"
+				"description": "Get Smart Tiered Cache setting response failure."
 			}
 		},
 		"security": [
@@ -643,7 +643,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -656,10 +656,10 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Update enablement of Smart Tiered Cache",
+						"description": "Update enablement of Smart Tiered Cache.",
 						"properties": {
 							"value": {
-								"description": "Enable or disable the Smart Tiered Cache",
+								"description": "Enable or disable the Smart Tiered Cache.",
 								"enum": [
 									"on",
 									"off"
@@ -731,7 +731,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -751,23 +751,23 @@
 												"result": {
 													"properties": {
 														"editable": {
-															"description": "Whether the setting is editable",
+															"description": "Whether the setting is editable.",
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "The identifier of the caching setting",
+															"description": "The identifier of the caching setting.",
 															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"description": "The time when the setting was last modified",
+															"description": "The time when the setting was last modified.",
 															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The value of the feature",
+															"description": "The value of the setting.",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -860,7 +860,7 @@
 						}
 					}
 				},
-				"description": "Patch Smart Tiered Cache setting response"
+				"description": "Patch Smart Tiered Cache setting response."
 			},
 			"4XX": {
 				"content": {
@@ -941,7 +941,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"enum": [
 										false
 									],
@@ -959,7 +959,7 @@
 						}
 					}
 				},
-				"description": "Patch Smart Tiered Cache setting response failure"
+				"description": "Patch Smart Tiered Cache setting response failure."
 			}
 		},
 		"security": [
