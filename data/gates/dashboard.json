@@ -667,7 +667,7 @@
 		"enabled": true
 	},
 	"dev-dash-workers-landing": {
-		"enabled": false
+		"enabled": true
 	},
 	"dns-gql-analytics-for-all": {
 		"enabled": true
@@ -2365,6 +2365,9 @@
 	},
 	"workers-observability": {
 		"enabled": true
+	},
+	"workers-observability-alerts": {
+		"enabled": false
 	},
 	"workers-observability-billing": {
 		"enabled": true
