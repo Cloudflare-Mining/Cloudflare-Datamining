@@ -2,7 +2,7 @@
 	"name": "workerd",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20250821.0"
+		"latest": "1.20250822.0"
 	},
 	"versions": {
 		"0.0.1": {
@@ -6046,15 +6046,38 @@
 				"workerd": "bin/workerd"
 			},
 			"dist": {
-				"integrity": "sha512-FqOklSZ0ogyJoY8+7C2fYzv5JbBbl+N+QAbUojtdfx0+URducn9dMxkeqBSThBI9NvrbIzX1kpPYoke40RBIfA==",
 				"shasum": "d89bd3ca9d7ea4785e7dde1d6830d9695d993152",
 				"tarball": "https://registry.npmjs.org/workerd/-/workerd-1.20250821.0.tgz",
 				"fileCount": 7,
-				"unpackedSize": 4367761,
+				"integrity": "sha512-FqOklSZ0ogyJoY8+7C2fYzv5JbBbl+N+QAbUojtdfx0+URducn9dMxkeqBSThBI9NvrbIzX1kpPYoke40RBIfA==",
+				"signatures": [
+					{
+						"sig": "MEUCIACyUT0R5KNodoe9VGQNRivgh65qYBKR3UDkP0Z6qrX6AiEApSGe69xL3SdjYfDU07yrL33+kwQRuy48hU/mFG+8ofg=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 4367761
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20250822.0": {
+			"name": "workerd",
+			"version": "1.20250822.0",
+			"bin": {
+				"workerd": "bin/workerd"
+			},
+			"dist": {
+				"integrity": "sha512-3C925ROvbFvCiShudhoraef7YbT0vSCa+RVfHWP6XqJFZkmkoqLUPJqg8zdGcAvqqRr9OqSrpVKUGKAisYQtTQ==",
+				"shasum": "70b6a3bdc1afd5bb494fd30d39b35c95fd5d486b",
+				"tarball": "https://registry.npmjs.org/workerd/-/workerd-1.20250822.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 4367821,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIACyUT0R5KNodoe9VGQNRivgh65qYBKR3UDkP0Z6qrX6AiEApSGe69xL3SdjYfDU07yrL33+kwQRuy48hU/mFG+8ofg="
+						"sig": "MEUCIQDy6Zm7wS5geWcvqnSV+iKpzj8vWtHQ5UgciRJDesqa2QIgCcUGQVfzIVNkF+6TiLW7a4TaCG/DJ03EYsubu9lJSgk="
 					}
 				]
 			},
