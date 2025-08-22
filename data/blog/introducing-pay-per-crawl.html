@@ -9,7 +9,7 @@
 		</a>
 	</div>
 	<p>Many publishers, content creators and website owners currently feel like they have a binary choice — either leave the front door wide open for AI to consume everything they create, or create their own walled garden. But what if there was another way?</p>
-	<p>At Cloudflare, we started from a simple principle: we wanted content creators to have control over who accesses their work. If a creator wants to block all AI crawlers from their content, they should be able to do so. If a creator wants to allow some or all AI crawlers full access to their content for free, they should be able to do that, too. Creators should be in the driver’s seat.</p>
+	<p>At Cloudflare, we started from a simple principle: we wanted content creators to have control over who accesses their work. If a creator wants to block all <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler">AI crawlers</a> from their content, they should be able to do so. If a creator wants to allow some or all AI crawlers full access to their content for free, they should be able to do that, too. Creators should be in the driver’s seat.</p>
 	<p>After hundreds of conversations with news organizations, publishers, and large-scale social media platforms, we heard a consistent desire for a third path: They’d like to allow AI crawlers to access their content, but they’d like to get compensated. Currently, that requires knowing the right individual and striking a one-off deal, which is an insurmountable challenge if you don’t have scale and leverage.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="what-if-i-could-charge-a-crawler">What if I could charge a crawler?&nbsp;</h2>
@@ -30,7 +30,7 @@
 		</a>
 	</div>
 	<p><a href="https://www.cloudflare.com/paypercrawl-signup">Pay per crawl</a>, in private beta, is our first experiment in this area.&nbsp;</p>
-	<p>Pay per crawl integrates with existing web infrastructure, leveraging HTTP status codes and established authentication mechanisms to create a framework for paid content access.&nbsp;</p>
+	<p>Pay per crawl integrates with existing web infrastructure, leveraging <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP status codes</a> and established authentication mechanisms to create a framework for paid content access.&nbsp;</p>
 	<p>Each time an AI crawler requests content, they either present payment intent via request headers for successful access (<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/200"><u>HTTP response code 200</u></a>), or receive a <code>402 Payment Required</code> response with pricing. Cloudflare acts as the Merchant of Record for pay per crawl and also provides the underlying technical infrastructure.</p>
 	<div class="flex anchor relative">
 		<h3 id="publisher-controls-and-pricing">Publisher controls and pricing</h3>
@@ -57,7 +57,7 @@
 	</figure>
 	<p>An important mechanism here is that even if a crawler doesn’t have a billing relationship with Cloudflare, and thus couldn’t be charged for access, a publisher can still choose to ‘charge’ them. This is the functional equivalent of a network level block (an HTTP <code>403 Forbidden</code> response where no content is returned) — but with the added benefit of telling the crawler there could be a relationship in the future.&nbsp;</p>
 	<p>While publishers currently can define a flat price across their entire site, they retain the flexibility to bypass charges for specific crawlers as needed. This is particularly helpful if you want to allow a certain crawler through for free, or if you want to negotiate and execute a content partnership outside the pay per crawl feature.&nbsp;</p>
-	<p>To ensure integration with each publisher’s existing security posture, Cloudflare enforces Allow or Charge decisions via a rules engine that operates only after existing WAF policies and bot management or bot blocking features have been applied.</p>
+	<p>To ensure integration with each publisher’s existing security posture, Cloudflare enforces Allow or Charge decisions via a rules engine that operates only after existing WAF policies and <a href="https://www.cloudflare.com/learning/bots/what-is-bot-management">bot management</a> or bot blocking features have been applied.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NI9GUkR8RmmApQyOgb1mI/4f77c199ccdc5ebc166204cdaec72c48/image2.png" alt="" class="kg-image" width="1200" height="417" loading="lazy">
 	</figure>
@@ -154,8 +154,8 @@ server: cloudflare</code></pre>
 	</div>
 	<p>At its core, pay per crawl begins a technical shift in how content is controlled online. By providing creators with a robust, programmatic mechanism for valuing and controlling their digital assets, we empower them to continue creating the rich, diverse content that makes the Internet invaluable.&nbsp;</p>
 	<p>We expect pay per crawl to evolve significantly. It’s very early: we believe many different types of interactions and marketplaces can and should develop simultaneously. We are excited to support these various efforts and open standards.</p>
-	<p>For example, a publisher or new organization might want to charge different rates for different paths or content types. How do you introduce dynamic pricing based not only upon demand, but also how many users your AI application has? How do you introduce granular licenses at internet scale, whether for training, inference, search, or something entirely new?</p>
-	<p>The true potential of pay per crawl may emerge in an agentic world. What if an agentic paywall could operate entirely programmatically? Imagine asking your favorite deep research program to help you synthesize the latest cancer research or a legal brief, or just help you find the best restaurant in Soho — and then giving that agent a budget to spend to acquire the best and most relevant content. By anchoring our first solution on <b>HTTP response code 402</b>, we enable a future where intelligent agents can programmatically negotiate access to digital resources.&nbsp;</p>
+	<p>For example, a publisher or new organization might want to charge different rates for different paths or content types. How do you introduce dynamic pricing based not only upon demand, but also how many users your AI application has? How do you introduce granular licenses at internet scale, whether for training, <a href="https://www.cloudflare.com/learning/ai/inference-vs-training">inference</a>, search, or something entirely new?</p>
+	<p>The true potential of pay per crawl may emerge in an <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai">agentic</a> world. What if an agentic paywall could operate entirely programmatically? Imagine asking your favorite deep research program to help you synthesize the latest cancer research or a legal brief, or just help you find the best restaurant in Soho — and then giving that agent a budget to spend to acquire the best and most relevant content. By anchoring our first solution on <b>HTTP response code 402</b>, we enable a future where intelligent agents can programmatically negotiate access to digital resources.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="getting-started">Getting started</h2>
 		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
