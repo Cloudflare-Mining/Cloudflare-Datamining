@@ -1,0 +1,198 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FksJdXAQKSbcnvp3LfCIJ/62eeb39aab26b0adc456f3f34100aa3a/BLOG-2938_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>On August 21, 2025, an influx of traffic directed toward clients hosted in the Amazon Web Services (AWS) us-east-1 facility caused severe congestion on links between Cloudflare and AWS us-east-1. This impacted many users who were connecting to or receiving connections from Cloudflare via servers in AWS us-east-1 in the form of high latency, packet loss, and failures to origins.</p>
+	<p>Customers with origins in AWS us-east-1 began experiencing impact at 16:27 UTC. The impact was substantially reduced by 19:38 UTC, with intermittent latency increases continuing until 20:18 UTC.</p>
+	<p>This was a regional problem between Cloudflare and AWS us-east-1, and global Cloudflare services were not affected. The degradation in performance was limited to traffic between Cloudflare and AWS us-east-1. The incident was a result of a surge of traffic from a single customer that overloaded Cloudflare's links with AWS us-east-1. It was a network congestion event, not an attack or a BGP hijack.</p>
+	<p>We’re very sorry for this incident. In this post, we explain what the failure was, why it occurred, and what we’re doing to make sure this doesn’t happen again.</p>
+	<div class="flex anchor relative">
+		<h2 id="background">Background</h2>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare helps anyone to build, connect, protect, and accelerate their websites on the Internet. Most customers host their websites on origin servers that Cloudflare does not operate. To make their sites fast and secure, they put Cloudflare in front as a <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy"><u>reverse proxy</u></a>.&nbsp;</p>
+	<p>When a visitor requests a page, Cloudflare will first inspect the request. If the content is already cached on Cloudflare’s global network, or if the customer has configured Cloudflare to serve the content directly, Cloudflare will respond immediately, delivering the content without contacting the origin. If the content cannot be served from cache, we fetch it from the origin, serve it to the visitor, and cache it along the way (if it is eligible). The next time someone requests that same content, we can serve it directly from cache instead of making another round trip to the origin server.&nbsp;</p>
+	<p>When Cloudflare responds to a request with the cached content, it will send the response traffic over internal Data Center Interconnect (DCI) links through a series of network equipment and eventually reach the routers that represent our network edge (our “edge routers”) as shown below:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/23A3EjLWZ9Z9EW6jRejDi2/3febaedc062c61031d38de91b215b363/BLOG-2938_2.png" alt="BLOG-2938 2" class="kg-image" width="1798" height="1404" loading="lazy">
+	</figure>
+	<p>Our internal network capacity is designed to be larger than the available traffic demand in a location to account for failures of redundant links, failover from other locations, traffic engineering within or between networks, or even traffic surges from users. The majority of Cloudflare’s network links were operating normally, but some edge router links to an AWS peering switch had insufficient capacity to handle this particular surge.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="what-happened">What happened</h2>
+		<a href="https://blog.cloudflare.com/#what-happened" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>At approximately 16:27 UTC on August, 21, 2025, a customer started sending many requests from AWS us-east-1 to Cloudflare for objects in Cloudflare’s cache. These requests generated a volume of response traffic that saturated all available direct peering connections between Cloudflare and AWS. This initial saturation became worse when AWS, in an effort to alleviate the congestion, withdrew some BGP advertisements to Cloudflare over some of the congested links. This action rerouted traffic to an additional set of peering links connected to Cloudflare via an offsite network interconnection switch, which subsequently also became saturated, leading to significant performance degradation. The impact became worse for two reasons: One of the direct peering links was operating at half-capacity due to a pre-existing failure, and the Data Center Interconnect (DCI) that connected Cloudflare’s edge routers to the offsite switch was due for a capacity upgrade. The diagram below illustrates this using approximate capacity estimates:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lQgbq0PNeaeC3R9i8J5fV/d4a6df7b17d30ec33b6c4ea69bae61eb/BLOG-2938_3.png" alt="BLOG-2938 3" class="kg-image" width="1798" height="976" loading="lazy">
+	</figure>
+	<p>In response, our incident team immediately engaged with our partners at AWS to address the issue. Through close collaboration, we successfully alleviated the congestion and fully restored services for all affected customers.</p>
+	<div class="flex anchor relative">
+		<h2 id="timeline">Timeline</h2>
+		<a href="https://blog.cloudflare.com/#timeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Time</b></p>
+				</th>
+				<th>
+					<p><b>Description</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-21 16:27 UTC</p>
+				</td>
+				<td>
+					<p>Traffic surge for single customer begins, doubling total traffic from Cloudflare to AWS</p>
+					<p><b>IMPACT START</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-21 16:37 UTC</p>
+				</td>
+				<td>
+					<p>AWS begins withdrawing prefixes from Cloudflare on congested PNI (Private Network Interconnect) BGP sessions</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-21 16:44 UTC</p>
+				</td>
+				<td>
+					<p>Network team is alerted to internal congestion in Ashburn (IAD)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-21 16:45 UTC</p>
+				</td>
+				<td>
+					<p>Network team is evaluating options for response, but AWS prefixes are unavailable on paths that are not congested due to their withdrawals</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-21 17:22 UTC</p>
+				</td>
+				<td>
+					<p>AWS BGP prefixes withdrawals result in a higher amount of dropped traffic</p>
+					<p><b>IMPACT INCREASE</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-21 17:45 UTC</p>
+				</td>
+				<td>
+					<p>Incident is raised for customer impact in Ashburn (IAD)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-21 19:05 UTC</p>
+				</td>
+				<td>
+					<p>Rate limiting of single customer causing traffic surge decreases congestion</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-21 19:27 UTC</p>
+				</td>
+				<td>
+					<p>Network team additional traffic engineering actions fully resolve congestion</p>
+					<p><b>IMPACT DECREASE</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-21 19:45 UTC</p>
+				</td>
+				<td>
+					<p>AWS begins reverting BGP withdrawals as requested by Cloudflare</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-21 20:07 UTC</p>
+				</td>
+				<td>
+					<p>AWS finishes normalizing BGP prefix announcements to Cloudflare over IAD PNIs</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-21 20:18 UTC</p>
+				</td>
+				<td>
+					<p><b>IMPACT END</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>When impact started, we saw a significant amount of traffic related to one customer, resulting in congestion:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pfUKAP3TfVgUseokIKnvf/114c19e3b12c59da980a2d89a719b7db/BLOG-2938_4.png" alt="BLOG-2938 4" class="kg-image" width="1999" height="385" loading="lazy">
+	</figure>
+	<p>This was handled by manual traffic actions both from Cloudflare and AWS. You can see some of the attempts by AWS to alleviate the congestion by looking at the number of IP prefixes AWS is advertising to Cloudflare during the duration of the outage. The lines in different colors correspond to the number of prefixes advertised per BGP session with us. The dips indicate AWS attempting to mitigate by withdrawing prefixes from the BGP sessions in an attempt to steer traffic elsewhere:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WRQYJDJMUeh1ghWCLFvsa/df1e27124fc975e287c6504f0945a2ca/BLOG-2938_5.png" alt="BLOG-2938 5" class="kg-image" width="1999" height="726" loading="lazy">
+	</figure>
+	<p>The congestion in the network caused network queues on the routers to grow significantly and begin dropping packets. Our edge routers were dropping high priority packets consistently during the outage, as seen in the chart below, which shows the queue drops for our Ashburn routers during the impact period:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zTkZJ5ZwDSIPHD5Wj19Vi/fc7e144ea7cb90b9f4705342989c3669/BLOG-2938_6.png" alt="BLOG-2938 6" class="kg-image" width="1968" height="1256" loading="lazy">
+	</figure>
+	<p>
+		The primary impact to customers as a result of this congestion would have been latency, loss (timeouts), or low throughput. We have a set of latency Service Level Objectives defined which imitate customer requests back to their origins measuring availability and latency. We can see that during the impact period, the percentage of requests whose latency fails to meet the target SLO threshold dips below an acceptable level in lock step with the packet drops during the outage:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rt0mrwBOfNPfIczonc20W/2a1b9f20cd625737cffe309ee0aae608/BLOG-2938_7.png" alt="BLOG-2938 7" class="kg-image" width="1999" height="1070" loading="lazy">
+	</figure>
+	<p>After the congestion was alleviated, there was a brief period where both AWS and Cloudflare were attempting to normalize the prefix advertisements that had been adjusted to attempt to mitigate the congestion. That caused a long tail of latency that may have impacted some customers, which is why you see the packet drops resolve before the customer latencies are restored.</p>
+	<div class="flex anchor relative">
+		<h2 id="remediations-and-follow-up-steps">Remediations and follow-up steps</h2>
+		<a href="https://blog.cloudflare.com/#remediations-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This event has underscored the need for enhanced safeguards to ensure that one customer's usage patterns cannot negatively affect the broader ecosystem. Our key takeaways are the necessity of architecting for better customer isolation to prevent any single entity from monopolizing shared resources and impacting the stability of the platform for others, and augmenting our network infrastructure to have sufficient capacity to meet demand.&nbsp;</p>
+	<p>To prevent a recurrence of this issue, we are implementing a multi-phased mitigation strategy. In the short and medium term:&nbsp;</p>
+	<ul>
+		<li>
+			<p>We are developing a mechanism to selectively deprioritize a customer’s traffic if it begins to congest the network to a degree that impacts others.</p>
+		</li>
+		<li>
+			<p>We are expediting the Data Center Interconnect (DCI) upgrades which will provide network capacity significantly above what it is today.</p>
+		</li>
+		<li>
+			<p>We are working with AWS to make sure their and our BGP traffic engineering actions do not conflict with one another in the future.</p>
+		</li>
+	</ul>
+	<p>Looking further ahead, our long-term solution involves building a new, enhanced traffic management system. This system will allot network resources on a per-customer basis, creating a budget that, once exceeded, will prevent a customer's traffic from degrading the service for anyone else on the platform. This system will also allow us to automate many of the manual actions that were taken to attempt to remediate the congestion seen during this incident.</p>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Customers accessing AWS us-east-1 through Cloudflare experienced an outage due to insufficient network congestion management during an unusual high-traffic event.</p>
+	<p>We are sorry for the disruption this incident caused for our customers. We are actively making these improvements to ensure improved stability moving forward and to prevent this problem from happening again.</p>
+	<p>
+	</p>
+</div>
