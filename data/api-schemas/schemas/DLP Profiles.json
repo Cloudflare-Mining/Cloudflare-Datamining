@@ -1128,7 +1128,6 @@
 																"required": [
 																	"id",
 																	"name",
-																	"entries",
 																	"created_at",
 																	"updated_at",
 																	"allowed_match_count",
@@ -1618,6 +1617,7 @@
 																		"type": "boolean"
 																	},
 																	"open_access": {
+																		"default": false,
 																		"description": "Whether this profile can be accessed by anyone.",
 																		"type": "boolean"
 																	}
@@ -2849,7 +2849,6 @@
 															"required": [
 																"id",
 																"name",
-																"entries",
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
@@ -3339,6 +3338,7 @@
 																	"type": "boolean"
 																},
 																"open_access": {
+																	"default": false,
 																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
@@ -4568,7 +4568,6 @@
 															"required": [
 																"id",
 																"name",
-																"entries",
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
@@ -5058,6 +5057,7 @@
 																	"type": "boolean"
 																},
 																"open_access": {
+																	"default": false,
 																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
@@ -6287,7 +6287,6 @@
 															"required": [
 																"id",
 																"name",
-																"entries",
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
@@ -6777,6 +6776,7 @@
 																	"type": "boolean"
 																},
 																"open_access": {
+																	"default": false,
 																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
@@ -8264,7 +8264,6 @@
 															"required": [
 																"id",
 																"name",
-																"entries",
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
@@ -8754,6 +8753,7 @@
 																	"type": "boolean"
 																},
 																"open_access": {
+																	"default": false,
 																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
@@ -10072,7 +10072,6 @@
 															"required": [
 																"id",
 																"name",
-																"entries",
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
@@ -10562,6 +10561,7 @@
 																	"type": "boolean"
 																},
 																"open_access": {
+																	"default": false,
 																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
@@ -12062,7 +12062,6 @@
 															"required": [
 																"id",
 																"name",
-																"entries",
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
@@ -12552,6 +12551,7 @@
 																	"type": "boolean"
 																},
 																"open_access": {
+																	"default": false,
 																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
@@ -13863,7 +13863,6 @@
 															"required": [
 																"id",
 																"name",
-																"entries",
 																"created_at",
 																"updated_at",
 																"allowed_match_count",
@@ -14353,6 +14352,7 @@
 																	"type": "boolean"
 																},
 																"open_access": {
+																	"default": false,
 																	"description": "Whether this profile can be accessed by anyone.",
 																	"type": "boolean"
 																}
