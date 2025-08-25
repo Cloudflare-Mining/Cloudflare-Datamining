@@ -2766,8 +2766,9 @@
 				{
 					"name": "pythonWorkers20250116",
 					"annotations": {
+						"compatDisableFlag": "no_python_workers_20250116",
 						"compatEnableFlag": "python_workers_20250116",
-						"experimental": "true",
+						"impliedByAfterDate": "unhandled type",
 						"pythonSnapshotRelease": "true"
 					}
 				},
@@ -3064,8 +3065,7 @@
 					"name": "pythonDedicatedSnapshot",
 					"annotations": {
 						"compatEnableFlag": "python_dedicated_snapshot",
-						"experimental": "true",
-						"impliedByAfterDate": "unhandled type"
+						"experimental": "true"
 					}
 				},
 				{
