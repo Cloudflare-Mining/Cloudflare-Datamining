@@ -2203,6 +2203,27 @@
 													},
 													"script": {
 														"properties": {
+															"compatibility_date": {
+																"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
+																"example": "2021-01-01",
+																"type": "string",
+																"x-auditable": true
+															},
+															"compatibility_flags": {
+																"default": [],
+																"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+																"example": [
+																	"nodejs_compat"
+																],
+																"items": {
+																	"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+																	"example": "nodejs_compat",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array",
+																"x-stainless-collection-type": "set"
+															},
 															"created_on": {
 																"description": "When the script was created.",
 																"example": "2017-01-01T00:00:00Z",
@@ -2216,6 +2237,17 @@
 																"example": "ea95132c15732412d22c1476fa83f27a",
 																"readOnly": true,
 																"type": "string"
+															},
+															"handlers": {
+																"description": "The names of handlers exported as part of the default export.",
+																"example": [
+																	"fetch",
+																	"scheduled"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
 															},
 															"has_assets": {
 																"description": "Whether a Worker contains assets.",
@@ -2236,12 +2268,22 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"last_deployed_from": {
+																"description": "The client most recently used to deploy this Worker.",
+																"example": "wrangler",
+																"type": "string"
+															},
 															"logpush": {
 																"default": false,
 																"description": "Whether Logpush is turned on for the Worker.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true
+															},
+															"migration_tag": {
+																"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
+																"example": "v1",
+																"type": "string"
 															},
 															"modified_on": {
 																"description": "When the script was last modified.",
@@ -2250,6 +2292,30 @@
 																"readOnly": true,
 																"type": "string",
 																"x-auditable": true
+															},
+															"named_handlers": {
+																"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
+																"items": {
+																	"properties": {
+																		"handlers": {
+																			"description": "The names of handlers exported as part of the named export.",
+																			"example": [
+																				"class"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"name": {
+																			"description": "The name of the export.",
+																			"example": "MyDurableObject",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
 															},
 															"placement": {
 																"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
@@ -2673,6 +2739,27 @@
 												},
 												"script": {
 													"properties": {
+														"compatibility_date": {
+															"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
+															"example": "2021-01-01",
+															"type": "string",
+															"x-auditable": true
+														},
+														"compatibility_flags": {
+															"default": [],
+															"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+															"example": [
+																"nodejs_compat"
+															],
+															"items": {
+																"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+																"example": "nodejs_compat",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array",
+															"x-stainless-collection-type": "set"
+														},
 														"created_on": {
 															"description": "When the script was created.",
 															"example": "2017-01-01T00:00:00Z",
@@ -2686,6 +2773,17 @@
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"readOnly": true,
 															"type": "string"
+														},
+														"handlers": {
+															"description": "The names of handlers exported as part of the default export.",
+															"example": [
+																"fetch",
+																"scheduled"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
 														},
 														"has_assets": {
 															"description": "Whether a Worker contains assets.",
@@ -2706,12 +2804,22 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"last_deployed_from": {
+															"description": "The client most recently used to deploy this Worker.",
+															"example": "wrangler",
+															"type": "string"
+														},
 														"logpush": {
 															"default": false,
 															"description": "Whether Logpush is turned on for the Worker.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
+														},
+														"migration_tag": {
+															"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
+															"example": "v1",
+															"type": "string"
 														},
 														"modified_on": {
 															"description": "When the script was last modified.",
@@ -2720,6 +2828,30 @@
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
+														},
+														"named_handlers": {
+															"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
+															"items": {
+																"properties": {
+																	"handlers": {
+																		"description": "The names of handlers exported as part of the named export.",
+																		"example": [
+																			"class"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"name": {
+																		"description": "The name of the export.",
+																		"example": "MyDurableObject",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
 														},
 														"placement": {
 															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
@@ -13768,32 +13900,6 @@
 							},
 							"metadata": {
 								"description": "JSON-encoded metadata about the uploaded parts and Worker configuration.",
-								"oneOf": [
-									{
-										"properties": {
-											"main_module": {
-												"description": "Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
-												"example": "worker.js",
-												"type": "string"
-											}
-										},
-										"required": [
-											"main_module"
-										]
-									},
-									{
-										"properties": {
-											"body_part": {
-												"description": "Name of the uploaded file that contains the Worker script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
-												"example": "worker.js",
-												"type": "string"
-											}
-										},
-										"required": [
-											"body_part"
-										]
-									}
-								],
 								"properties": {
 									"assets": {
 										"description": "Configuration for assets within a Worker.",
@@ -14704,6 +14810,11 @@
 										},
 										"type": "array"
 									},
+									"body_part": {
+										"description": "Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
+										"example": "worker.js",
+										"type": "string"
+									},
 									"compatibility_date": {
 										"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 										"example": "2021-01-01",
@@ -14738,12 +14849,29 @@
 										"type": "array",
 										"x-stainless-collection-type": "set"
 									},
+									"limits": {
+										"description": "Limits to apply for this Worker.",
+										"properties": {
+											"cpu_ms": {
+												"description": "The amount of CPU time this Worker can use in milliseconds.",
+												"example": 50,
+												"type": "integer",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
 									"logpush": {
 										"default": false,
 										"description": "Whether Logpush is turned on for the Worker.",
 										"example": false,
 										"type": "boolean",
 										"x-auditable": true
+									},
+									"main_module": {
+										"description": "Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
+										"example": "worker.js",
+										"type": "string"
 									},
 									"migrations": {
 										"description": "Migrations to apply for Durable Objects associated with this Worker.",
@@ -15214,6 +15342,27 @@
 													"allOf": [
 														{
 															"properties": {
+																"compatibility_date": {
+																	"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
+																	"example": "2021-01-01",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"compatibility_flags": {
+																	"default": [],
+																	"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+																	"example": [
+																		"nodejs_compat"
+																	],
+																	"items": {
+																		"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+																		"example": "nodejs_compat",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": "array",
+																	"x-stainless-collection-type": "set"
+																},
 																"created_on": {
 																	"description": "When the script was created.",
 																	"example": "2017-01-01T00:00:00Z",
@@ -15227,6 +15376,17 @@
 																	"example": "ea95132c15732412d22c1476fa83f27a",
 																	"readOnly": true,
 																	"type": "string"
+																},
+																"handlers": {
+																	"description": "The names of handlers exported as part of the default export.",
+																	"example": [
+																		"fetch",
+																		"scheduled"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
 																},
 																"has_assets": {
 																	"description": "Whether a Worker contains assets.",
@@ -15247,12 +15407,22 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"last_deployed_from": {
+																	"description": "The client most recently used to deploy this Worker.",
+																	"example": "wrangler",
+																	"type": "string"
+																},
 																"logpush": {
 																	"default": false,
 																	"description": "Whether Logpush is turned on for the Worker.",
 																	"example": false,
 																	"type": "boolean",
 																	"x-auditable": true
+																},
+																"migration_tag": {
+																	"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
+																	"example": "v1",
+																	"type": "string"
 																},
 																"modified_on": {
 																	"description": "When the script was last modified.",
@@ -15261,6 +15431,30 @@
 																	"readOnly": true,
 																	"type": "string",
 																	"x-auditable": true
+																},
+																"named_handlers": {
+																	"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
+																	"items": {
+																		"properties": {
+																			"handlers": {
+																				"description": "The names of handlers exported as part of the named export.",
+																				"example": [
+																					"class"
+																				],
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"name": {
+																				"description": "The name of the export.",
+																				"example": "MyDurableObject",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
 																},
 																"placement": {
 																	"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
@@ -15658,32 +15852,18 @@
 							},
 							"metadata": {
 								"description": "JSON-encoded metadata about the uploaded parts and Worker configuration.",
-								"oneOf": [
-									{
-										"properties": {
-											"main_module": {
-												"description": "Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
-												"example": "worker.js",
-												"type": "string"
-											}
-										},
-										"required": [
-											"main_module"
-										]
+								"properties": {
+									"body_part": {
+										"description": "Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
+										"example": "worker.js",
+										"type": "string"
 									},
-									{
-										"properties": {
-											"body_part": {
-												"description": "Name of the uploaded file that contains the Worker script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
-												"example": "worker.js",
-												"type": "string"
-											}
-										},
-										"required": [
-											"body_part"
-										]
+									"main_module": {
+										"description": "Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
+										"example": "worker.js",
+										"type": "string"
 									}
-								],
+								},
 								"type": "object"
 							}
 						},
@@ -15793,6 +15973,27 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"compatibility_date": {
+													"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
+													"example": "2021-01-01",
+													"type": "string",
+													"x-auditable": true
+												},
+												"compatibility_flags": {
+													"default": [],
+													"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+													"example": [
+														"nodejs_compat"
+													],
+													"items": {
+														"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+														"example": "nodejs_compat",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
 												"created_on": {
 													"description": "When the script was created.",
 													"example": "2017-01-01T00:00:00Z",
@@ -15806,6 +16007,17 @@
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"readOnly": true,
 													"type": "string"
+												},
+												"handlers": {
+													"description": "The names of handlers exported as part of the default export.",
+													"example": [
+														"fetch",
+														"scheduled"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
 												},
 												"has_assets": {
 													"description": "Whether a Worker contains assets.",
@@ -15826,12 +16038,22 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"last_deployed_from": {
+													"description": "The client most recently used to deploy this Worker.",
+													"example": "wrangler",
+													"type": "string"
+												},
 												"logpush": {
 													"default": false,
 													"description": "Whether Logpush is turned on for the Worker.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
+												},
+												"migration_tag": {
+													"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
+													"example": "v1",
+													"type": "string"
 												},
 												"modified_on": {
 													"description": "When the script was last modified.",
@@ -15840,6 +16062,30 @@
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
+												},
+												"named_handlers": {
+													"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
+													"items": {
+														"properties": {
+															"handlers": {
+																"description": "The names of handlers exported as part of the named export.",
+																"example": [
+																	"class"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"name": {
+																"description": "The name of the export.",
+																"example": "MyDurableObject",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
 												},
 												"placement": {
 													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
