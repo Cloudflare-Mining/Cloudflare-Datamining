@@ -776,8 +776,8 @@
 				"schema": {
 					"default": 20,
 					"description": "Maximum number of results per page.",
-					"maximum": 100,
-					"minimum": 5,
+					"maximum": 1000,
+					"minimum": 1,
 					"type": "number"
 				}
 			},
