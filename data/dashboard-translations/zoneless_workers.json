@@ -1837,6 +1837,8 @@
 	"zoneless_workers.actions.git.connected": "View your workers code",
 	"zoneless_workers.metrics.no_versions": "No Versions deployed",
 	"zoneless_workers.internal_worker.toast": "This is an internal Worker; modifications of this Worker in Dash could result in unexpected behavior. <0>Read more about how to safely deploy your Worker here.</0>",
+	"zoneless_workers.versionless_worker.toast": "This worker has no versions or deployments associated with it. You can upload a new version or deployment with Wrangler, the API, SDKs, or Terraform. Version settings are disabled and this Worker is not connected to the internet.",
+	"zoneless_workers.deploymentless_worker.toast": "This worker has no deployments associated with it. You can upload a new deployment with Wrangler, the API, SDKs, or Terraform. This Worker is not connected to the internet.",
 	"zoneless_workers.cpu-time": "CPU Time",
 	"zoneless_workers.wall-time": "Wall Time",
 	"zoneless_workers.request-id": "Request Id",
@@ -1872,5 +1874,15 @@
 	"zoneless_workers.observability.issues.empty.resolved": "There are no resolved issues in the selected timeframe",
 	"zoneless_workers.observability.issues.empty.ignored": "There are no ignored issues in the selected timeframe",
 	"zoneless_workers.observability.issues.details": "Details",
-	"zoneless_workers.observability.issues.mergedErrors": "Merged Errors"
+	"zoneless_workers.observability.issues.mergedErrors": "Merged Errors",
+	"zoneless_workers.code_editor.loading.title": "Workers Editor",
+	"zoneless_workers.code_editor.loading.starting_container": "Starting container...",
+	"zoneless_workers.code_editor.loading.initializing_container": "Initializing container...",
+	"zoneless_workers.code_editor.loading.loading_editor": "Loading editor...",
+	"zoneless_workers.code_editor.error.no_repo_url": "No repository URL found",
+	"zoneless_workers.code_editor.error.failed_to_start": "Failed to start container",
+	"zoneless_workers.code_editor.error.failed_to_get_state": "Failed to get the container state",
+	"zoneless_workers.code_editor.git_setup.title": "Connect to GitHub",
+	"zoneless_workers.code_editor.git_setup.description": "Connect your GitHub account to access your repositories and enable source control for this Worker.",
+	"zoneless_workers.code_editor.git_setup.connect_github": "Connect GitHub"
 }

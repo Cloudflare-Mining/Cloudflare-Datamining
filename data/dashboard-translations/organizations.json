@@ -108,10 +108,12 @@
 	"organizations.meta.actions.invite_org_admin": "Invite organization administrator",
 	"organizations.meta.actions.move_account": "Move account",
 	"organizations.meta.actions.migrate_account": "Assign an account",
-	"organizations.meta.actions.migrate_account_forbidden": "You don't have the right privileges to migrate this account",
+	"organizations.meta.actions.migrate_account_forbidden": "You dont have the right privileges to migrate this account",
 	"organizations.meta.actions.migrate_account_bad_request_already_migrated": "The account %{account_name} is already assigned to %{organization_name}",
+	"organizations.meta.actions.loading_default": "The Cloudflare dashboard is loading.",
 	"organizations.meta.actions.rename_org": "Rename organization",
 	"organizations.meta.actions.create_rootorg": "Create root organization",
+	"organizations.meta.actions.create_rootorg_inprogress": "Please wait while we create your organization",
 	"organizations.meta.actions.disable_rootorg": "Please make sure the name field is not empty.",
 	"organizations.meta.actions.disable_delete_roottorg": "Deleting root organizations  is not supported.",
 	"organizations.meta.actions.rootorg_limit": "You have reached the maximum number of root organizations.",
@@ -187,5 +189,11 @@
 	"organizations.account_migrate.assign_button": "Assign to organization",
 	"organizations.account_migrate.search_label": "Search for an account",
 	"organizations.account_migrate.search_placeholder": "Search by account name...",
-	"organizations.account_migrate.no_results": "No matching criteria"
+	"organizations.account_migrate.no_results": "No matching criteria",
+	"organizations.errors.notfound.title": "Not found",
+	"organizations.errors.notfound.description": "The page you are trying to access does not exist",
+	"organizations.errors.forbidden.title": "Forbidden",
+	"organizations.errors.forbidden.description": "You do not have access to this page",
+	"organizations.errors.something_went_wrong.title": "Something went wrong",
+	"organizations.errors.something_went_wrong.description": "Something went wrong, please refresh the page to try again, or contact customer support to report the issue."
 }
