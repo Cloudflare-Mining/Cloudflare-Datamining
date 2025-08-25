@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-09-19T21:08:07.422Z",
-					"updatedAt": "2025-08-06T09:16:05.267Z"
+					"updatedAt": "2025-08-25T20:33:48.563Z"
 				},
 				"contentfulId": "7cgyYFfMqkSTHyCQqZ8g8Z",
 				"contentTypeId": "page",
@@ -2649,6 +2649,12 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "5w4pWDyHZARKW2D4lNHnSb",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    /* Only underline the Read Blog link */\n    .link-helper {\n        color: #ffffff !important;\n        text-decoration: none; /* remove underline for all by default */\n        margin-left: 5px;\n    }\n    .link-helper.read-blog {\n        text-decoration: underline;\n        text-underline-offset: 4px;\n    }\n    .link-helper.read-blog:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n    }\n    .link-helper.first-element {\n        display: inline-block;\n        font-weight: bold; /* keep bold if needed */\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <a class=\"link-helper first-element\" href=\"/rsa-conference-2024/\">\n            New AI prompt protection capabilities in DLP\n        </a>\n        <a class=\"link-helper read-blog\" href=\"https://blog.cloudflare.com/ai-prompt-protection/\">\n            Read blog >\n        </a>\n    </div>\n</section>\n",
+						"htmlId": null
+					},
+					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
 						"menuTitle": "SSE & SASE",
@@ -3871,6 +3877,251 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "cKChVMfYTk11kxSq0icry",
+						"bladeName": "Cloudflare Data Loss Prevention FAQs",
+						"title": "Cloudflare Data Loss Prevention FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2SnANcmIBqfOMRyIumsSsL",
+								"title": "How does Cloudflare's Data Loss Prevention (DLP) solution safeguard sensitive information?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare DLP protects sensitive data by inspecting HTTP/S traffic, files, and email content, using AI-driven context analysis to identify sensitive data. It then blocks the copying and sharing of any sensitive data it detects.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1KRfWWBWnnLg1GRtAaGwFW",
+								"title": "What are the key benefits of Cloudflare Data Loss Prevention?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Key benefits include stronger protections for data in SaaS applications, easy deployment of consistent security policies for regulated data, accurate and flexible data detection, and easy integration with platforms like Microsoft MIP. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5e3rJALdLe9OdGviTzD0Qn",
+								"title": "How does Cloudflare DLP integrate with a Zero Trust security model?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare DLP provides a crucial piece for a Zero Trust architecture, enhancing visibility and ensuring comprehensive data protection across all channels. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6KHymCwkRcWkc2cwWNTdtj",
+								"title": "How does Cloudflare DLP help organizations with regulatory compliance?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare DLP assists organizations in maintaining compliance with evolving regulations such as GDPR, CCPA, and HIPAA by automating the tracking, control, and auditing of sensitive data. It also provides detailed audit trails and integrates with SIEM systems to reduce regulatory risk. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6iL6QbnsSe8qDEk5JP7y5z",
+								"title": "How does Cloudflare DLP address the security of intellectual property?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare DLP helps protect valuable intellectual property and proprietary code by identifying this data in emails, user interactions, HTTP traffic, and application usage, then blocking any outgoing messages or requests that contain it. This reduces data exposure and prevents users from oversharing sensitive data through cloud services, shadow IT applications, AI tools, or email. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2RBPfsndd1MLx1NTWt21Pt",
+								"title": "How does Cloudflare DLP prevent data breaches related to emerging AI tools?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare DLP prevents sensitive data from being uploaded or exposed in generative AI tools by detecting and blocking user attempts to share this sensitive data. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "73V0xD4ihJoXR9y1zTMqoh",
+								"title": "What types of data can Cloudflare DLP monitor and protect?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare DLP is designed to monitor and block any data that an organization needs to protect. This includes regulated data, including Personally Identifiable Information (PII), Protected Health Information (PHI), and financial information. It also includes intellectual property, proprietary code, and other confidential data.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
