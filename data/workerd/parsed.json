@@ -3097,6 +3097,14 @@
 						"compatEnableDate": "2025-09-01",
 						"compatEnableFlag": "strip_authorization_on_cross_origin_redirect"
 					}
+				},
+				{
+					"name": "enhancedErrorSerialization",
+					"annotations": {
+						"compatDisableFlag": "legacy_error_serialization",
+						"compatEnableFlag": "enhanced_error_serialization",
+						"experimental": "true"
+					}
 				}
 			]
 		},
