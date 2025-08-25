@@ -145,18 +145,10 @@
 						"schema": {
 							"items": {
 								"properties": {
-									"accountId": {
-										"example": 123456,
-										"type": "number"
-									},
 									"createdAt": {
 										"example": "2022-04-01T00:00:00Z",
 										"format": "date-time",
 										"type": "string"
-									},
-									"id": {
-										"example": 1,
-										"type": "number"
 									},
 									"indicatorType": {
 										"example": "domain",
@@ -197,9 +189,7 @@
 									}
 								},
 								"required": [
-									"id",
 									"uuid",
-									"accountId",
 									"indicatorType",
 									"value",
 									"createdAt",
@@ -259,18 +249,10 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"accountId": {
-									"example": 123456,
-									"type": "number"
-								},
 								"createdAt": {
 									"example": "2022-04-01T00:00:00Z",
 									"format": "date-time",
 									"type": "string"
-								},
-								"id": {
-									"example": 1,
-									"type": "number"
 								},
 								"indicatorType": {
 									"example": "domain",
@@ -311,9 +293,7 @@
 								}
 							},
 							"required": [
-								"id",
 								"uuid",
-								"accountId",
 								"indicatorType",
 								"value",
 								"createdAt",
@@ -448,18 +428,10 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"accountId": {
-									"example": 123456,
-									"type": "number"
-								},
 								"createdAt": {
 									"example": "2022-04-01T00:00:00Z",
 									"format": "date-time",
 									"type": "string"
-								},
-								"id": {
-									"example": 1,
-									"type": "number"
 								},
 								"indicatorType": {
 									"example": "domain",
@@ -500,9 +472,7 @@
 								}
 							},
 							"required": [
-								"id",
 								"uuid",
-								"accountId",
 								"indicatorType",
 								"value",
 								"createdAt",
@@ -814,18 +784,10 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"accountId": {
-									"example": 123456,
-									"type": "number"
-								},
 								"createdAt": {
 									"example": "2022-04-01T00:00:00Z",
 									"format": "date-time",
 									"type": "string"
-								},
-								"id": {
-									"example": 1,
-									"type": "number"
 								},
 								"indicatorType": {
 									"example": "domain",
@@ -866,9 +828,7 @@
 								}
 							},
 							"required": [
-								"id",
 								"uuid",
-								"accountId",
 								"indicatorType",
 								"value",
 								"createdAt",

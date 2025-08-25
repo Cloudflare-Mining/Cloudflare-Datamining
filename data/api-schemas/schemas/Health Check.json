@@ -30,32 +30,282 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"items": {
+								"properties": {
 									"properties": {
-										"type": {
-											"example": "string",
-											"type": "string"
+										"durationMs": {
+											"properties": {
+												"type": {
+													"example": "number",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"ok": {
+											"properties": {
+												"type": {
+													"example": "boolean",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"shards": {
+											"properties": {
+												"items": {
+													"properties": {
+														"properties": {
+															"properties": {
+																"datasetId": {
+																	"properties": {
+																		"type": {
+																			"example": "string",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"date": {
+																	"properties": {
+																		"type": {
+																			"example": "string",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"healthCheckMs": {
+																	"properties": {
+																		"type": {
+																			"example": "number",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"pageCount": {
+																	"properties": {
+																		"type": {
+																			"example": "number",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"pageSize": {
+																	"properties": {
+																		"type": {
+																			"example": "number",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"sizeBytes": {
+																	"properties": {
+																		"type": {
+																			"example": "number",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"sizeMB": {
+																	"properties": {
+																		"type": {
+																			"example": "number",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"startupMs": {
+																	"properties": {
+																		"type": {
+																			"example": "number",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"tableStats": {
+																	"properties": {
+																		"additionalProperties": {
+																			"properties": {
+																				"type": {
+																					"example": "number",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		},
+																		"type": {
+																			"example": "object",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"additionalProperties"
+																	],
+																	"type": "object"
+																},
+																"timedOut": {
+																	"properties": {
+																		"type": {
+																			"example": "boolean",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"totalMs": {
+																	"properties": {
+																		"type": {
+																			"example": "number",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"date",
+																"datasetId",
+																"sizeBytes",
+																"sizeMB",
+																"pageCount",
+																"pageSize",
+																"tableStats",
+																"startupMs",
+																"healthCheckMs",
+																"totalMs",
+																"timedOut"
+															],
+															"type": "object"
+														},
+														"type": {
+															"example": "object",
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"properties"
+													],
+													"type": "object"
+												},
+												"type": {
+													"example": "array",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"items"
+											],
+											"type": "object"
+										},
+										"totalShards": {
+											"properties": {
+												"type": {
+													"example": "number",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"totalSizeBytes": {
+											"properties": {
+												"type": {
+													"example": "number",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"totalSizeMB": {
+											"properties": {
+												"type": {
+													"example": "number",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
 										}
 									},
 									"required": [
-										"type"
+										"ok",
+										"durationMs",
+										"totalShards",
+										"totalSizeBytes",
+										"totalSizeMB",
+										"shards"
 									],
 									"type": "object"
 								},
 								"type": {
-									"example": "array",
+									"example": "object",
 									"type": "string"
 								}
 							},
 							"required": [
 								"type",
-								"items"
+								"properties"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Benchmark Durable Object warmup"
+				"description": "Benchmark Durable Object warmup with database size information for all shards"
 			},
 			"400": {
 				"content": {
