@@ -1,6 +1,6 @@
 {
-	"DELETE /accounts/{account_id}/stream/{identifier}/downloads": {
-		"description": "Delete the downloads for a video.",
+	"DELETE /accounts/{account_id}/stream/{identifier}/downloads/{download_type}": {
+		"description": "Delete specific type of download. For backwards-compatibility, DELETE requests to /downloads will delete the default download.",
 		"operationId": "stream-m-p-4-downloads-delete-downloads",
 		"parameters": [
 			{
@@ -25,6 +25,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "download_type",
+				"required": true,
+				"schema": {
+					"default": "default",
+					"description": "The type of downloads available are: `default`, `audio`",
+					"example": "audio",
+					"type": "string"
 				}
 			}
 		],
@@ -257,7 +268,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete downloads",
+		"summary": "Delete download",
 		"tags": [
 			"Stream MP4 Downloads"
 		],
@@ -531,8 +542,8 @@
 			"Stream Read"
 		]
 	},
-	"POST /accounts/{account_id}/stream/{identifier}/downloads": {
-		"description": "Creates a download for a video when a video is ready to view.",
+	"POST /accounts/{account_id}/stream/{identifier}/downloads/{download_type}": {
+		"description": "Creates a download for a video of specified type. For backwards-compatibility, POST requests to /downloads will enable the default download.",
 		"operationId": "stream-m-p-4-downloads-create-downloads",
 		"parameters": [
 			{
@@ -557,6 +568,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "download_type",
+				"required": true,
+				"schema": {
+					"default": "default",
+					"description": "The type of downloads available are: `default`, `audio`",
+					"example": "audio",
+					"type": "string"
 				}
 			}
 		],
@@ -671,7 +693,7 @@
 						}
 					}
 				},
-				"description": "Create downloads response."
+				"description": "Create download of specified type response."
 			},
 			"4XX": {
 				"content": {
@@ -784,7 +806,7 @@
 						}
 					}
 				},
-				"description": "Create downloads response failure."
+				"description": "Create downloads of specified type response failure."
 			}
 		},
 		"security": [
@@ -794,7 +816,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create downloads",
+		"summary": "Create download",
 		"tags": [
 			"Stream MP4 Downloads"
 		]
