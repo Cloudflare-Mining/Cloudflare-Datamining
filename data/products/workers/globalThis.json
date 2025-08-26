@@ -4220,6 +4220,13 @@
 				"length": "number",
 				"name": "string"
 			},
+			"pseudoRandomBytes": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
 			"randomBytes": {
 				"__proto": "function",
 				"__type": "function",
@@ -7130,69 +7137,6 @@
 							"listenerCount": "function",
 							"eventNames": "function"
 						}
-					},
-					"drop": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {
-							"_readableState": "object",
-							"_events": "object",
-							"_eventsCount": "number",
-							"_maxListeners": "undefined",
-							"_read": "function",
-							"_destroy": "function",
-							"length": "undefined",
-							"name": "undefined",
-							"prototype": "undefined",
-							"ReadableState": "undefined",
-							"_fromList": "undefined",
-							"toWeb": "undefined",
-							"fromWeb": "undefined",
-							"wrap": "function",
-							"from": "undefined",
-							"destroy": "function",
-							"_undestroy": "function",
-							"push": "function",
-							"unshift": "function",
-							"isPaused": "function",
-							"setEncoding": "function",
-							"read": "function",
-							"pipe": "function",
-							"unpipe": "function",
-							"on": "function",
-							"addListener": "function",
-							"removeListener": "function",
-							"off": "function",
-							"removeAllListeners": "function",
-							"resume": "function",
-							"pause": "function",
-							"iterator": "function",
-							"map": "function",
-							"asIndexedPairs": "function",
-							"drop": "function",
-							"filter": "function",
-							"flatMap": "function",
-							"take": "function",
-							"every": "function",
-							"forEach": "function",
-							"reduce": "function",
-							"toArray": "function",
-							"some": "function",
-							"find": "function",
-							"compose": "function",
-							"setMaxListeners": "function",
-							"getMaxListeners": "function",
-							"emit": "function",
-							"prependListener": "function",
-							"once": "function",
-							"prependOnceListener": "function",
-							"listeners": "function",
-							"rawListeners": "function",
-							"listenerCount": "function",
-							"eventNames": "function"
-						}
 					}
 				},
 				"fromWeb": "function",
@@ -7543,13 +7487,6 @@
 						"length": "number",
 						"name": "string",
 						"_prototype": {}
-					},
-					"map": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
 					}
 				},
 				"fromWeb": "function",
@@ -7684,6 +7621,37 @@
 				"length": "number",
 				"name": "string",
 				"_prototype": {}
+			},
+			"CryptoKey": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createCipher": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"createDecipher": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"Cipher": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"Decipher": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
 			}
 		},
 		"diagnostics_channel": {
@@ -15995,6 +15963,20 @@
 					"name": "undefined",
 					"prototype": "undefined"
 				}
+			},
+			"_errnoException": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"_exceptionWithHostPort": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
 			},
 			"isArray": {
 				"__proto": "function",
