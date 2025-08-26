@@ -528,11 +528,18 @@
 																					}
 																				},
 																				"type": "object"
+																			},
+																			"type": {
+																				"enum": [
+																					"standard",
+																					"enterprise"
+																				]
 																			}
 																		},
 																		"required": [
 																			"id",
-																			"name"
+																			"name",
+																			"type"
 																		],
 																		"type": "object"
 																	}
@@ -1002,11 +1009,18 @@
 																					}
 																				},
 																				"type": "object"
+																			},
+																			"type": {
+																				"enum": [
+																					"standard",
+																					"enterprise"
+																				]
 																			}
 																		},
 																		"required": [
 																			"id",
-																			"name"
+																			"name",
+																			"type"
 																		],
 																		"type": "object"
 																	}
@@ -1774,11 +1788,18 @@
 																		}
 																	},
 																	"type": "object"
+																},
+																"type": {
+																	"enum": [
+																		"standard",
+																		"enterprise"
+																	]
 																}
 															},
 															"required": [
 																"id",
-																"name"
+																"name",
+																"type"
 															],
 															"type": "object"
 														}
@@ -2564,11 +2585,18 @@
 																		}
 																	},
 																	"type": "object"
+																},
+																"type": {
+																	"enum": [
+																		"standard",
+																		"enterprise"
+																	]
 																}
 															},
 															"required": [
 																"id",
-																"name"
+																"name",
+																"type"
 															],
 															"type": "object"
 														}
