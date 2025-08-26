@@ -560,7 +560,7 @@
 																	},
 																	"value": {
 																		"default": 14400,
-																		"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+																		"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 1 second\n- Pro: 1 second\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
 																		"maximum": 31536000,
 																		"minimum": 0,
 																		"type": "integer"
@@ -1784,18 +1784,22 @@
 																	},
 																	"value": {
 																		"default": "off",
+																		"deprecated": true,
 																		"description": "Value of the zone setting.",
 																		"enum": [
 																			"on",
 																			"off"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-deprecation-message": "Mirage is being deprecated. More information at https://developers.cloudflare.com/speed/optimization/images/mirage/"
 																	}
 																}
 															}
 														],
+														"deprecated": true,
 														"description": "Automatically optimize image loading for website visitors on mobile\ndevices. Refer to [our blog post](http://blog.cloudflare.com/mirage2-solving-mobile-speed)\nfor more information.\n",
-														"title": "Mirage Image Optimization"
+														"title": "Mirage Image Optimization",
+														"x-stainless-deprecation-message": "Mirage is being deprecated. More information at https://developers.cloudflare.com/speed/optimization/images/mirage/"
 													},
 													{
 														"allOf": [
@@ -2208,7 +2212,7 @@
 																"type": "object"
 															}
 														],
-														"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+														"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\".",
 														"title": "Origin Max HTTP Version",
 														"type": "object"
 													},
@@ -2710,7 +2714,6 @@
 															{
 																"properties": {
 																	"editable": {
-																		"default": true,
 																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 																		"enum": [
 																			true,
@@ -4488,7 +4491,7 @@
 																},
 																"value": {
 																	"default": 14400,
-																	"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+																	"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 1 second\n- Pro: 1 second\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
 																	"maximum": 31536000,
 																	"minimum": 0,
 																	"type": "integer"
@@ -5774,18 +5777,22 @@
 																},
 																"value": {
 																	"default": "off",
+																	"deprecated": true,
 																	"description": "Value of the zone setting.",
 																	"enum": [
 																		"on",
 																		"off"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-deprecation-message": "Mirage is being deprecated. More information at https://developers.cloudflare.com/speed/optimization/images/mirage/"
 																}
 															}
 														}
 													],
+													"deprecated": true,
 													"description": "Automatically optimize image loading for website visitors on mobile\ndevices. Refer to [our blog post](http://blog.cloudflare.com/mirage2-solving-mobile-speed)\nfor more information.\n",
-													"title": "Mirage Image Optimization"
+													"title": "Mirage Image Optimization",
+													"x-stainless-deprecation-message": "Mirage is being deprecated. More information at https://developers.cloudflare.com/speed/optimization/images/mirage/"
 												},
 												{
 													"allOf": [
@@ -6198,7 +6205,7 @@
 															"type": "object"
 														}
 													],
-													"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+													"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\".",
 													"title": "Origin Max HTTP Version",
 													"type": "object"
 												},
@@ -6700,7 +6707,6 @@
 														{
 															"properties": {
 																"editable": {
-																	"default": true,
 																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 																	"enum": [
 																		true,
@@ -9931,7 +9937,7 @@
 												},
 												"value": {
 													"default": 14400,
-													"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+													"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 1 second\n- Pro: 1 second\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
 													"maximum": 31536000,
 													"minimum": 0,
 													"type": "integer"
@@ -11155,18 +11161,22 @@
 												},
 												"value": {
 													"default": "off",
+													"deprecated": true,
 													"description": "Value of the zone setting.",
 													"enum": [
 														"on",
 														"off"
 													],
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "Mirage is being deprecated. More information at https://developers.cloudflare.com/speed/optimization/images/mirage/"
 												}
 											}
 										}
 									],
+									"deprecated": true,
 									"description": "Automatically optimize image loading for website visitors on mobile\ndevices. Refer to [our blog post](http://blog.cloudflare.com/mirage2-solving-mobile-speed)\nfor more information.\n",
-									"title": "Mirage Image Optimization"
+									"title": "Mirage Image Optimization",
+									"x-stainless-deprecation-message": "Mirage is being deprecated. More information at https://developers.cloudflare.com/speed/optimization/images/mirage/"
 								},
 								{
 									"allOf": [
@@ -11579,7 +11589,7 @@
 											"type": "object"
 										}
 									],
-									"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+									"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\".",
 									"title": "Origin Max HTTP Version",
 									"type": "object"
 								},
@@ -12081,7 +12091,6 @@
 										{
 											"properties": {
 												"editable": {
-													"default": true,
 													"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 													"enum": [
 														true,
@@ -13596,7 +13605,7 @@
 																	},
 																	"value": {
 																		"default": 14400,
-																		"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+																		"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 1 second\n- Pro: 1 second\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
 																		"maximum": 31536000,
 																		"minimum": 0,
 																		"type": "integer"
@@ -14820,18 +14829,22 @@
 																	},
 																	"value": {
 																		"default": "off",
+																		"deprecated": true,
 																		"description": "Value of the zone setting.",
 																		"enum": [
 																			"on",
 																			"off"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-deprecation-message": "Mirage is being deprecated. More information at https://developers.cloudflare.com/speed/optimization/images/mirage/"
 																	}
 																}
 															}
 														],
+														"deprecated": true,
 														"description": "Automatically optimize image loading for website visitors on mobile\ndevices. Refer to [our blog post](http://blog.cloudflare.com/mirage2-solving-mobile-speed)\nfor more information.\n",
-														"title": "Mirage Image Optimization"
+														"title": "Mirage Image Optimization",
+														"x-stainless-deprecation-message": "Mirage is being deprecated. More information at https://developers.cloudflare.com/speed/optimization/images/mirage/"
 													},
 													{
 														"allOf": [
@@ -15244,7 +15257,7 @@
 																"type": "object"
 															}
 														],
-														"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+														"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\".",
 														"title": "Origin Max HTTP Version",
 														"type": "object"
 													},
@@ -15746,7 +15759,6 @@
 															{
 																"properties": {
 																	"editable": {
-																		"default": true,
 																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 																		"enum": [
 																			true,
@@ -17072,7 +17084,7 @@
 											},
 											{
 												"default": 14400,
-												"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+												"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 1 second\n- Pro: 1 second\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
 												"maximum": 31536000,
 												"minimum": 0,
 												"type": "integer"
@@ -17309,12 +17321,14 @@
 											},
 											{
 												"default": "off",
+												"deprecated": true,
 												"description": "Value of the zone setting.",
 												"enum": [
 													"on",
 													"off"
 												],
-												"type": "string"
+												"type": "string",
+												"x-stainless-deprecation-message": "Mirage is being deprecated. More information at https://developers.cloudflare.com/speed/optimization/images/mirage/"
 											},
 											{
 												"default": {
@@ -18224,7 +18238,7 @@
 																},
 																"value": {
 																	"default": 14400,
-																	"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
+																	"description": "Value of the zone setting in seconds.\nMinimum values by plan:\n- Free: 1 second\n- Pro: 1 second\n- Business: 1 second\n- Enterprise: 1 second\nSetting a TTL of 0 is equivalent to selecting `Respect Existing Headers` and is allowed for all plans.",
 																	"maximum": 31536000,
 																	"minimum": 0,
 																	"type": "integer"
@@ -19510,18 +19524,22 @@
 																},
 																"value": {
 																	"default": "off",
+																	"deprecated": true,
 																	"description": "Value of the zone setting.",
 																	"enum": [
 																		"on",
 																		"off"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-deprecation-message": "Mirage is being deprecated. More information at https://developers.cloudflare.com/speed/optimization/images/mirage/"
 																}
 															}
 														}
 													],
+													"deprecated": true,
 													"description": "Automatically optimize image loading for website visitors on mobile\ndevices. Refer to [our blog post](http://blog.cloudflare.com/mirage2-solving-mobile-speed)\nfor more information.\n",
-													"title": "Mirage Image Optimization"
+													"title": "Mirage Image Optimization",
+													"x-stainless-deprecation-message": "Mirage is being deprecated. More information at https://developers.cloudflare.com/speed/optimization/images/mirage/"
 												},
 												{
 													"allOf": [
@@ -19934,7 +19952,7 @@
 															"type": "object"
 														}
 													],
-													"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\"",
+													"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except Enterprise where it is \"1\".",
 													"title": "Origin Max HTTP Version",
 													"type": "object"
 												},
@@ -20436,7 +20454,6 @@
 														{
 															"properties": {
 																"editable": {
-																	"default": true,
 																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 																	"enum": [
 																		true,

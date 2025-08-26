@@ -641,7 +641,7 @@
 															"type": "string"
 														},
 														"type": "array",
-														"x-stainless-message": "This has been replaced by Account memberships."
+														"x-stainless-deprecation-message": "This has been replaced by Account memberships."
 													},
 													"plan": {
 														"deprecated": true,
@@ -699,7 +699,7 @@
 																"type": "number"
 															}
 														},
-														"x-stainless-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
+														"x-stainless-deprecation-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
 													},
 													"status": {
 														"description": "The zone status on Cloudflare.",
@@ -1163,7 +1163,7 @@
 														"type": "string"
 													},
 													"type": "array",
-													"x-stainless-message": "This has been replaced by Account memberships."
+													"x-stainless-deprecation-message": "This has been replaced by Account memberships."
 												},
 												"plan": {
 													"deprecated": true,
@@ -1221,7 +1221,7 @@
 															"type": "number"
 														}
 													},
-													"x-stainless-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
+													"x-stainless-deprecation-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
 												},
 												"status": {
 													"description": "The zone status on Cloudflare.",
@@ -1794,7 +1794,7 @@
 														"type": "string"
 													},
 													"type": "array",
-													"x-stainless-message": "This has been replaced by Account memberships."
+													"x-stainless-deprecation-message": "This has been replaced by Account memberships."
 												},
 												"plan": {
 													"deprecated": true,
@@ -1852,7 +1852,7 @@
 															"type": "number"
 														}
 													},
-													"x-stainless-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
+													"x-stainless-deprecation-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
 												},
 												"status": {
 													"description": "The zone status on Cloudflare.",
@@ -2357,7 +2357,7 @@
 														"type": "string"
 													},
 													"type": "array",
-													"x-stainless-message": "This has been replaced by Account memberships."
+													"x-stainless-deprecation-message": "This has been replaced by Account memberships."
 												},
 												"plan": {
 													"deprecated": true,
@@ -2415,7 +2415,7 @@
 															"type": "number"
 														}
 													},
-													"x-stainless-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
+													"x-stainless-deprecation-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
 												},
 												"status": {
 													"description": "The zone status on Cloudflare.",
