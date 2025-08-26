@@ -5,42 +5,98 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas and Washington D.C.</strong></p>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
-<h4><strong>Technical Program Manager - Infrastructure Engineering</strong></h4>
-<h4>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Infrastructure Engineering. Your main responsibility will be to work cross functionally across product, engineering, security, technical operations, and more to build and execute on the overall strategy.&nbsp;</h4>
-<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
-<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
-<p><strong>This position will be based in the US. You will be reporting into the Infrastructure Engineering organization.</strong></p>
-<p><strong>&nbsp;</strong></p>
-<p><strong>Major areas of responsibilities</strong></p>
+<h1><strong>Head of Delivery Operations, Customer Support</strong></h1>
+<p><strong>Reports to:</strong> VP, Customer Support<br><strong>Location:</strong> Remote or hybrid in North America. Travel required for regional operations and customer escalations.</p>
+<h2><strong>Role Intent</strong></h2>
+<p>Own the end-to-end operational system that matches customer demand to organizational capacity at global scale. You are the process czar who ensures we have the right work going to the right people at the right time, with the data and systems to prove it's working.</p>
+<p><strong>This is not</strong> a people manager running day-to-day queues. <strong>This is</strong> a strategic operations leader who designs and executes the global framework that enables Regional Directors to deliver predictable outcomes.</p>
+<h2><strong>What You Will Own</strong></h2>
+<h3><strong>Demand &amp; Capacity Planning</strong></h3>
 <ul>
-	<li>Possess a working knowledge of data center infrastructure components like servers, storage, networking, connectivities, and their interdependencies to identify technical risks and potential roadblocks for programs.</li>
-	<li>Work with stakeholders to align on inputs for Infrastructure programs which includes alignment of deliverables.</li>
-	<li>Develop reports and dashboards for tracking and delivery of KPIs</li>
-	<li>Ability to communicate effectively to all members of teams, programs and senior leadership. Ability to collaborate<strong> </strong>and work effectively with cross-functional teams.&nbsp;</li>
-	<li>Provide clear documentation for infrastructure deliverables (including status reports), processes, and project plans, and provide regular status updates to stakeholders and executives.</li>
+	<li>Design and maintain the global work prioritization framework (P1/P2 front-door, escalations, backlog, chat)</li>
+	<li>Create capacity models that account for headcount, skills, experience, and regional coverage</li>
+	<li>Partner with workforce management consultants to optimize staffing and scheduling models</li>
+	<li>Provide VP with quarterly capacity planning recommendations including headcount and org structure changes</li>
 </ul>
-<p><strong>Desirable skills and knowledge&nbsp;</strong></p>
+<h3><strong>Global Operational Framework</strong></h3>
 <ul>
-	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
-	<li>5-10+ years experience in technical program management and a desire for continuous improvement</li>
-	<li>Proven track record of creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
-	<li>Experience working with multiple time zones and multiple cross functional teams</li>
-	<li>Strong competency with Excel/Google Sheet, Smartsheet, Confluence, JIRA, and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)&nbsp;&nbsp;</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
+	<li>Define Standard Operating Procedures (SOPs) for all work types across regions</li>
+	<li>Design and deploy queue management systems, routing rules, and assignment logic</li>
+	<li>Create the metrics and reporting infrastructure that drives daily, weekly, monthly operational decisions</li>
+	<li>Establish escalation triggers and protocols for capacity shortfalls or quality issues</li>
 </ul>
-<p>&nbsp;</p>
+<h3><strong>Regional Director Support &amp; Accountability</strong></h3>
+<ul>
+	<li>Enable Regional Directors with tools, data, and processes to execute within the global framework</li>
+	<li>Design review systems (weekly metrics, monthly business reviews, QBRs) for VP evaluation of regional performance</li>
+	<li>Partner with Regional Directors to adapt global SOPs to local needs while maintaining standards</li>
+	<li>Provide capacity planning input on regional director performance and organizational needs</li>
+</ul>
+<h3><strong>Crisis Management &amp; Continuous Improvement</strong></h3>
+<ul>
+	<li>Lead daily operational war room during crisis periods</li>
+	<li>Analyze operational bottlenecks and design process improvements</li>
+	<li>Coordinate with Delivery Excellence team on operational aspects of quality initiatives</li>
+	<li>Manage relationships with external vendors (workforce management, tooling, contractors)</li>
+</ul>
+<h2><strong>How You Will Partner with Head of Delivery Excellence</strong></h2>
+<p><strong>You</strong> own work prioritization, capacity planning, SOPs, and operational metrics.<br><strong>Delivery Excellence</strong> owns quality standards, agent assessment, and training frameworks.</p>
+<p>When priorities conflict: <strong>Getting work done takes precedence</strong> over qualifications for who does it, while maintaining minimum quality thresholds.</p>
+<h2><strong>What Success Looks Like</strong></h2>
+<h3><strong>30 Days</strong></h3>
+<ul>
+	<li>Global SOP framework deployed across all regions</li>
+	<li>Daily war room operational with Regional Directors</li>
+	<li>Workforce management consultant partnership activated</li>
+	<li>Baseline capacity model with skills/experience mapping complete</li>
+</ul>
+<h3><strong>60 Days</strong></h3>
+<ul>
+	<li>95%+ P1/P2 SLA compliance across all regions</li>
+	<li>Regional Directors successfully executing within global framework</li>
+	<li>Automated reporting and escalation systems operational</li>
+	<li>Clear capacity recommendations for Q4 planning</li>
+</ul>
+<h3><strong>90 Days</strong></h3>
+<ul>
+	<li>Predictable operational outcomes across all metrics</li>
+	<li>Regional autonomy balanced with global consistency</li>
+	<li>Data-driven capacity optimization delivering cost savings</li>
+	<li>Operational excellence reputation restored with customers</li>
+</ul>
+<h2><strong>Required Qualifications</strong></h2>
+<ul>
+	<li>10+ years leading contact center operations or support operations at scale (10,000+ cases/month)</li>
+	<li>Proven experience with workforce management systems, queue optimization, and capacity planning</li>
+	<li>Strong analytical skills with experience in operational metrics design and reporting</li>
+	<li>Track record of designing and implementing global operational frameworks across multiple regions/time zones</li>
+	<li>Experience partnering with senior leadership on strategic capacity and organizational planning</li>
+	<li>Demonstrated ability to work through Regional/Country managers while maintaining global consistency</li>
+</ul>
+<h2><strong>Preferred Qualifications</strong></h2>
+<ul>
+	<li>Experience with technical product support (cloud, networking, security preferred)</li>
+	<li>Background with Salesforce Service Cloud, workforce management tools, and business intelligence platforms</li>
+	<li>Experience managing vendor relationships and external consulting teams</li>
+	<li>Track record of crisis management and operational transformation</li>
+	<li>Experience with global support organizations serving enterprise customers</li>
+</ul>
+<h2><strong>Budget Authority</strong></h2>
+<ul>
+	<li>Workforce management consulting and contractor resources</li>
+	<li>Operational tooling and system improvements</li>
+	<li>Process optimization initiatives and vendor management</li>
+</ul>
+<h2><strong>Success Metrics</strong></h2>
+<ul>
+	<li><strong>SLA Performance</strong>: P1/P2 &gt;95%, P3/P4 &gt;90%</li>
+	<li><strong>Capacity Utilization</strong>: &gt;85% agent productive time on priority work</li>
+	<li><strong>Operational Predictability</strong>: &lt;10% variance from capacity forecasts</li>
+	<li><strong>Cost Efficiency</strong>: Cost per case reduction year-over-year</li>
+	<li><strong>Regional Consistency</strong>: &lt;15% variance in key metrics across regions</li>
+</ul>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and level.<em> (Hiring at multiple levels: Mid P3, Senior P4, &amp; Principal P5)</em></p>
-<ul>
-	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $161,000 - $197,000. (Senior Level)</span></li>
-</ul>
+<p>For San Francisco/Bay Area hires Salary range is $270,000 - $300,000.&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7185140?gh_jid=7185140",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7190684?gh_jid=7190684",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3225264,
+	"internal_job_id": 3227081,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -26,7 +26,8 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
-				"Washington DC, US"
+				"San Francisco, US",
+				"Seattle, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -34,17 +35,18 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
+				"Engineering",
 				"Infrastructure"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7185140,
-	"updated_at": "2025-08-26T11:36:42-04:00",
-	"requisition_id": "655",
-	"title": "Technical Program Manager ",
+	"id": 7190684,
+	"updated_at": "2025-08-26T11:40:23-04:00",
+	"requisition_id": "658",
+	"title": "Hardware Systems Engineer",
 	"company_name": "Cloudflare",
-	"first_published": "2025-08-25T13:45:44-04:00",
+	"first_published": "2025-08-26T11:12:08-04:00",
 	"departments": [
 		{
 			"id": 30604,
@@ -62,9 +64,16 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 19994,
-			"name": "Washington, DC",
-			"location": "Washington, DC, United States",
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}
