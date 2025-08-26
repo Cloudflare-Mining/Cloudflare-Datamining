@@ -5,70 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Senior Manager, Performance Engineering</strong></h3>
-<p><strong>Available Locations:&nbsp;</strong>Hybrid - Austin and London</p>
-<h4><strong>Role Summary</strong></h4>
-<p>We're looking for a <strong>Senior Manager, Engineering</strong> to lead our <strong>Performance Engineering (PERF) team</strong>. The PERF team is crucial for ensuring Cloudflare's production systems are fast, responsive, and scalable. This includes system software, services, products, and solutions running on our infrastructure.</p>
-<p>Our core mission is to empower everyone at Cloudflare to prioritize performance. The PERF team achieves this by:</p>
+<h3 id="MachineLearningEngineer-AbouttheTeam"><strong>Available Locations: </strong><strong>London, UK</strong></h3>
+<p><strong>About the Team</strong></p>
+<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.&nbsp;The team's core disciplines are data engineering, data science, devops, and security. We use data science and machine learning to process large volumes of data and build threat intelligence for Cloudflare's customers</p>
+<p><strong>About the Role</strong></p>
+<p>We're looking for a Machine Learning Engineer to join our team and lead the charge in applying cutting-edge machine learning to cyber threat intelligence. In this highly impactful, hands-on role, you'll design, develop, and deploy scalable machine learning models that leverage massive datasets from our global network to identify and neutralize sophisticated cyber threats. Your expertise will directly enhance our Cloudforce One offering, providing critical, real-time insights and unparalleled protection to our customers. If you're driven to solve complex cybersecurity challenges at an unprecedented scale, we want you on our team.</p>
+<p><span style="text-decoration: underline;">The candidate should have strong foundational machine learning knowledge. Day to day responsibilities include:</span></p>
 <ul>
-	<li>Developing and maintaining tools to pinpoint performance issues in products and services.</li>
-	<li>Proactively driving cross-functional initiatives for system software tuning and architectural performance improvements.</li>
-	<li>Assisting and providing training in debugging and analysis of performance.</li>
+	<li>Collaborate with other Data Scientists and Machine Learning Engineers to integrate and deploy scalable Machine Learning models</li>
+	<li>Collaborate with analysts to understand new email attack techniques then design and deploy models to detect these techniques</li>
+	<li>Implement Machine Learning models in production systems and monitor their performance in real-time.</li>
+	<li>Continuously improve the performance and scalability of existing Machine Learning models.</li>
+	<li>Identify, diagnose and resolve issues in production environments</li>
 </ul>
-<p>Ultimately, the team's primary goal is to deliver a best-in-class experience on Cloudflare's infrastructure for both internal products and external customers, directly supporting our business scaling to $5B.</p>
-<h4><strong>What You'll Do</strong></h4>
-<p>As a Senior Manager, you will:</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><strong>Lead and grow a high-performing team</strong> by hiring, mentoring, and coaching highly capable Software Engineers.</li>
-	<li><strong>Drive significant performance improvements</strong> at both the system and datacenter levels.</li>
-	<li><strong>Collaborate closely with Product and Engineering stakeholders</strong> to prioritize, plan, and execute projects effectively.</li>
-	<li><strong>Ensure clear communication</strong> of status and impact through various tools, discussions, and meetings.</li>
-	<li><strong>Leverage your technical expertise</strong> to scope projects, facilitate cross-team collaboration, and unblock initiatives.</li>
+	<li>Thorough understanding of machine learning concepts such as what types of models perform best again what types of data</li>
+	<li>Desire to see a project through all the way from model creation, training, productionalized deployment, through automated retraining from feedback</li>
+	<li>Demonstrated ability to deliver and listen to feedback.</li>
+	<li>Proven ability to deliver performance (what) with the right behaviors (how)</li>
 </ul>
-<h4><strong>What You Bring</strong></h4>
-<p>We're looking for someone with:</p>
+<p><strong>Bonus Points</strong></p>
+<p>These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</p>
 <ul>
-	<li><strong>4+ years of experience</strong> as an Engineering Manager leading Software Engineers.</li>
-	<li><strong>Deep understanding of performance measurement and evaluation</strong>, including compute platform internals like CPU, memory, Operating System (Linux), and networking and their impact on performance.</li>
-	<li><strong>Proven ability to plan, build, and oversee execution</strong> to meet commitments and deliver predictably.</li>
-	<li><strong>A strong track record of managing high-performing teams</strong>, including successful hiring, onboarding, and professional development. You inspire your team to achieve more and are adept at explaining both the "why" and the "how."</li>
-	<li><strong>Experience implementing tools, processes, and internal instrumentation</strong> to resolve blockages.</li>
-	<li><strong>Comfort managing distributed teams and projects</strong> across multiple locations and time zones, often with tight deadlines and short release cycles.</li>
-	<li><strong>Exceptional clarity in both written and verbal communication.</strong></li>
-	<li><strong>Hands-on experience with Jira, Grafana, and Prometheus.</strong></li>
-	<li>Nice to have</li>
-	<ul>
-		<li><strong>Proficiency in systems programming languages</strong> such as C (kernel), Go, Rust, and scripting languages like Bash and Python, as well as experience with Salt/SaltStack.</li>
-	</ul>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Experience with deploying Deep Learning models in production systems</li>
+	<li>Experience with development and deployment of Natural Language Processing (NLP) applications</li>
+	<li>Wide machine learning knowledge from linear regression through LLMs</li>
+	<li>A basic understanding of the cyber threat landscape&nbsp;and&nbsp;technical Indicators of Compromise (IOCs)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
