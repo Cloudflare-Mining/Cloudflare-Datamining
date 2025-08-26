@@ -1882,7 +1882,8 @@
 	"zoneless_workers.code_editor.error.no_repo_url": "No repository URL found",
 	"zoneless_workers.code_editor.error.failed_to_start": "Failed to start container",
 	"zoneless_workers.code_editor.error.failed_to_get_state": "Failed to get the container state",
-	"zoneless_workers.code_editor.git_setup.title": "Connect to GitHub",
-	"zoneless_workers.code_editor.git_setup.description": "Connect your GitHub account to access your repositories and enable source control for this Worker.",
-	"zoneless_workers.code_editor.git_setup.connect_github": "Connect GitHub"
+	"zoneless_workers.code_editor.error.failed_to_get_installation": "You must install the [Cloudflare Editor GitHub application](%{installationUrl}) to use the editor. Please install it and then try again.",
+	"zoneless_workers.code_editor.git_setup.title": "Connect to %{provider}",
+	"zoneless_workers.code_editor.git_setup.description": "Connect your %{provider} account to access your repositories and enable source control for this Worker.",
+	"zoneless_workers.code_editor.git_setup.connect_provider": "Connect %{provider}"
 }

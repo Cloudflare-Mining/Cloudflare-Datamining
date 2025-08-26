@@ -178,5 +178,21 @@
 	"workers.api.error.duplicate_route": "There is already a Worker assigned to this route.",
 	"workers.api.error.exceeded_allowed_number_of_scripts": "You have reached the maximum number of Workers on your account. Remove an existing Worker before creating a new one.",
 	"workers.api.error.subdomain_unavailable": "This subdomain is no longer available. Please choose a new subdomain.",
-	"workers.api.error.concurrent_changes": "The subdomain for this account is already in the process of being updated. Please try again later."
+	"workers.api.error.concurrent_changes": "The subdomain for this account is already in the process of being updated. Please try again later.",
+	"workers.pagination": "Showing %{currentRange} of %{totalCount}",
+	"workers.summary.connect_git": "Connect a Git provider",
+	"workers.summary.no_routes": "No production routes",
+	"workers.summary.manually_deployed": "Manually deployed",
+	"workers.summary.empty_commit": "Empty commit message",
+	"workers.summary.no_git": "No Git connection",
+	"workers.summary_actions.visit": "Visit",
+	"workers.summary_actions.view_metrics": "View Metrics",
+	"workers.summary_actions.view_bindings": "View Bindings",
+	"workers.summary_actions.view_builds": "View Builds",
+	"workers.summary_actions.view_deployments": "View Deployments",
+	"workers.summary_actions.view_settings": "View Settings",
+	"workers.summary.one_extra_domain": "+ 1 other domain",
+	"workers.summary.extra_domains": "+ %{count} other domains",
+	"workers.summary.one_extra_route": "+ 1 other route",
+	"workers.summary.extra_routes": "+ %{count} other routes"
 }
