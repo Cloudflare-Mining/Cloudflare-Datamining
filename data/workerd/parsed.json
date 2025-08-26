@@ -2766,9 +2766,8 @@
 				{
 					"name": "pythonWorkers20250116",
 					"annotations": {
-						"compatDisableFlag": "no_python_workers_20250116",
 						"compatEnableFlag": "python_workers_20250116",
-						"impliedByAfterDate": "unhandled type",
+						"experimental": "true",
 						"pythonSnapshotRelease": "true"
 					}
 				},
@@ -3027,7 +3026,7 @@
 					"annotations": {
 						"compatDisableFlag": "disable_nodejs_fs_module",
 						"compatEnableFlag": "enable_nodejs_fs_module",
-						"experimental": "true"
+						"impliedByAfterDate": "unhandled type"
 					}
 				},
 				{
@@ -3035,7 +3034,7 @@
 					"annotations": {
 						"compatDisableFlag": "disable_nodejs_os_module",
 						"compatEnableFlag": "enable_nodejs_os_module",
-						"experimental": "true"
+						"impliedByAfterDate": "unhandled type"
 					}
 				},
 				{
@@ -3065,7 +3064,8 @@
 					"name": "pythonDedicatedSnapshot",
 					"annotations": {
 						"compatEnableFlag": "python_dedicated_snapshot",
-						"experimental": "true"
+						"experimental": "true",
+						"impliedByAfterDate": "unhandled type"
 					}
 				},
 				{
