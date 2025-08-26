@@ -1,6 +1,104 @@
 {
 	"models": [
 		{
+			"id": "f9f2250b-1048-4a52-9910-d0bf976616a1",
+			"source": 1,
+			"name": "@cf/openai/gpt-oss-120b",
+			"description": "OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.",
+			"task": {
+				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+				"name": "Text Generation",
+				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+			},
+			"created_at": "2025-08-05 10:27:29.131",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "async_queue",
+					"value": "true"
+				},
+				{
+					"property_id": "context_window",
+					"value": "128000"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.35,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 0.75,
+							"currency": "USD"
+						}
+					]
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"title": "GPT_OSS_Responses",
+					"properties": {
+						"input": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"items": {},
+									"type": "array"
+								}
+							],
+							"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
+							"title": "Input"
+						},
+						"reasoning": {
+							"type": "object",
+							"properties": {
+								"effort": {
+									"type": "string",
+									"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
+									"enum": [
+										"low",
+										"medium",
+										"high"
+									]
+								},
+								"summary": {
+									"type": "string",
+									"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
+									"enum": [
+										"auto",
+										"concise",
+										"detailed"
+									]
+								}
+							}
+						}
+					},
+					"required": [
+						"input"
+					]
+				},
+				"output": {
+					"oneOf": [
+						{
+							"type": "object",
+							"contentType": "application/json"
+						},
+						{
+							"type": "string",
+							"contentType": "text/event-stream",
+							"format": "binary"
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "f8703a00-ed54-4f98-bdc3-cd9a813286f3",
 			"source": 1,
 			"name": "@cf/qwen/qwen1.5-0.5b-chat",
@@ -11915,10 +12013,6 @@
 			"tags": [],
 			"properties": [
 				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
 					"property_id": "info",
 					"value": "https://huggingface.co/Lykon/DreamShaper"
 				}
@@ -20302,6 +20396,100 @@
 			}
 		},
 		{
+			"id": "188a4e1e-253e-46d0-9616-0bf8c149763f",
+			"source": 1,
+			"name": "@cf/openai/gpt-oss-20b",
+			"description": "OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases.",
+			"task": {
+				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+				"name": "Text Generation",
+				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+			},
+			"created_at": "2025-08-05 10:49:53.265",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "128000"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.2,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 0.3,
+							"currency": "USD"
+						}
+					]
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"title": "GPT_OSS_Responses",
+					"properties": {
+						"input": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"items": {},
+									"type": "array"
+								}
+							],
+							"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
+							"title": "Input"
+						},
+						"reasoning": {
+							"type": "object",
+							"properties": {
+								"effort": {
+									"type": "string",
+									"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
+									"enum": [
+										"low",
+										"medium",
+										"high"
+									]
+								},
+								"summary": {
+									"type": "string",
+									"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
+									"enum": [
+										"auto",
+										"concise",
+										"detailed"
+									]
+								}
+							}
+						}
+					},
+					"required": [
+						"input"
+					]
+				},
+				"output": {
+					"oneOf": [
+						{
+							"type": "object",
+							"contentType": "application/json"
+						},
+						{
+							"type": "string",
+							"contentType": "text/event-stream",
+							"format": "binary"
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "145337e7-cec3-4ebb-8e78-16ddfc75e580",
 			"source": 1,
 			"name": "@cf/baai/bge-reranker-base",
@@ -20827,6 +21015,171 @@
 						{
 							"type": "string",
 							"format": "binary"
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "09e0e83d-b055-49c9-81a5-c13250a176a7",
+			"source": 1,
+			"name": "@cf/baai/omni-bge-base-en-v1.5",
+			"description": "BAAI general embedding (Base) model that transforms any given text into a 768-dimensional vector",
+			"task": {
+				"id": "0137cdcf-162a-4108-94f2-1ca59e8c65ee",
+				"name": "Text Embeddings",
+				"description": "Feature extraction models transform raw data into numerical features that can be processed while preserving the information in the original dataset. These models are ideal as part of building vector search applications or Retrieval Augmented Generation workflows with Large Language Models (LLM)."
+			},
+			"created_at": "2025-08-24 11:06:58.799",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "async_queue",
+					"value": "true"
+				},
+				{
+					"property_id": "info",
+					"value": "https://huggingface.co/BAAI/bge-base-en-v1.5"
+				},
+				{
+					"property_id": "max_input_tokens",
+					"value": "512"
+				},
+				{
+					"property_id": "output_dimensions",
+					"value": "768"
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"oneOf": [
+						{
+							"properties": {
+								"text": {
+									"oneOf": [
+										{
+											"type": "string",
+											"description": "The text to embed",
+											"minLength": 1
+										},
+										{
+											"type": "array",
+											"description": "Batch of text values to embed",
+											"items": {
+												"type": "string",
+												"description": "The text to embed",
+												"minLength": 1
+											},
+											"maxItems": 100
+										}
+									]
+								},
+								"pooling": {
+									"type": "string",
+									"enum": [
+										"mean",
+										"cls"
+									],
+									"default": "mean",
+									"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy."
+								}
+							},
+							"required": [
+								"text"
+							]
+						},
+						{
+							"properties": {
+								"requests": {
+									"type": "array",
+									"description": "Batch of the embeddings requests to run using async-queue",
+									"items": {
+										"properties": {
+											"text": {
+												"oneOf": [
+													{
+														"type": "string",
+														"description": "The text to embed",
+														"minLength": 1
+													},
+													{
+														"type": "array",
+														"description": "Batch of text values to embed",
+														"items": {
+															"type": "string",
+															"description": "The text to embed",
+															"minLength": 1
+														},
+														"maxItems": 100
+													}
+												]
+											},
+											"pooling": {
+												"type": "string",
+												"enum": [
+													"mean",
+													"cls"
+												],
+												"default": "mean",
+												"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy."
+											}
+										},
+										"required": [
+											"text"
+										]
+									}
+								}
+							},
+							"required": [
+								"requests"
+							]
+						}
+					]
+				},
+				"output": {
+					"oneOf": [
+						{
+							"type": "object",
+							"contentType": "application/json",
+							"properties": {
+								"shape": {
+									"type": "array",
+									"items": {
+										"type": "number"
+									}
+								},
+								"data": {
+									"type": "array",
+									"description": "Embeddings of the requested text values",
+									"items": {
+										"type": "array",
+										"description": "Floating point embedding representation shaped by the embedding model",
+										"items": {
+											"type": "number"
+										}
+									}
+								},
+								"pooling": {
+									"type": "string",
+									"enum": [
+										"mean",
+										"cls"
+									],
+									"description": "The pooling method used in the embedding process."
+								}
+							}
+						},
+						{
+							"type": "object",
+							"contentType": "application/json",
+							"title": "Async response",
+							"properties": {
+								"request_id": {
+									"type": "string",
+									"description": "The async request id that can be used to obtain the results."
+								}
+							}
 						}
 					]
 				}
