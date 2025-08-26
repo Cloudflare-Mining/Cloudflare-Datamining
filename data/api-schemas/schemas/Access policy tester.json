@@ -1316,7 +1316,8 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														"include": {
 															"default": [],
@@ -1931,7 +1932,8 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														"name": {
 															"description": "The name of the Access policy.",
@@ -2551,7 +2553,8 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													},
 													"required": [
@@ -2608,7 +2611,8 @@
 														],
 														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												},
 												"approval_required": {
 													"description": "Requires the user to request access from an administrator at the start of each session.",
