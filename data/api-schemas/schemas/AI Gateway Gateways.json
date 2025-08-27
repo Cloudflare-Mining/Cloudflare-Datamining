@@ -62,6 +62,32 @@
 											"format": "date-time",
 											"type": "string"
 										},
+										"dlp": {
+											"properties": {
+												"action": {
+													"enum": [
+														"BLOCK",
+														"FLAG"
+													],
+													"type": "string"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"profiles": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"profiles",
+												"enabled",
+												"action"
+											],
+											"type": "object"
+										},
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
@@ -305,6 +331,32 @@
 											"created_at": {
 												"format": "date-time",
 												"type": "string"
+											},
+											"dlp": {
+												"properties": {
+													"action": {
+														"enum": [
+															"BLOCK",
+															"FLAG"
+														],
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"profiles": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"profiles",
+													"enabled",
+													"action"
+												],
+												"type": "object"
 											},
 											"id": {
 												"description": "gateway id",
@@ -665,6 +717,32 @@
 											"format": "date-time",
 											"type": "string"
 										},
+										"dlp": {
+											"properties": {
+												"action": {
+													"enum": [
+														"BLOCK",
+														"FLAG"
+													],
+													"type": "string"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"profiles": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"profiles",
+												"enabled",
+												"action"
+											],
+											"type": "object"
+										},
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
@@ -976,6 +1054,32 @@
 											"format": "date-time",
 											"type": "string"
 										},
+										"dlp": {
+											"properties": {
+												"action": {
+													"enum": [
+														"BLOCK",
+														"FLAG"
+													],
+													"type": "string"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"profiles": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"profiles",
+												"enabled",
+												"action"
+											],
+											"type": "object"
+										},
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
@@ -1201,6 +1305,32 @@
 								"type": "boolean",
 								"x-auditable": true
 							},
+							"dlp": {
+								"properties": {
+									"action": {
+										"enum": [
+											"BLOCK",
+											"FLAG"
+										],
+										"type": "string"
+									},
+									"enabled": {
+										"type": "boolean"
+									},
+									"profiles": {
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"profiles",
+									"enabled",
+									"action"
+								],
+								"type": "object"
+							},
 							"log_management": {
 								"maximum": 10000000,
 								"minimum": 10000,
@@ -1301,6 +1431,32 @@
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
+										},
+										"dlp": {
+											"properties": {
+												"action": {
+													"enum": [
+														"BLOCK",
+														"FLAG"
+													],
+													"type": "string"
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"profiles": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"profiles",
+												"enabled",
+												"action"
+											],
+											"type": "object"
 										},
 										"id": {
 											"description": "gateway id",
