@@ -1,0 +1,175 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RpretWriqNKCyLuiMZeLp/37bb67184039c2958f3f56e97b06fe12/0.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>As the demand for AI products grows, developers are creating and tuning a wider variety of models. While adding new models to our <a href="https://developers.cloudflare.com/workers-ai/models"><u>growing catalog</u></a> on Workers AI, we noticed that not all of them are used equally – leaving infrequently used models occupying valuable GPU space. Efficiency is a core value at Cloudflare, and with GPUs being the scarce commodity they are, we realized that we needed to build something to fully maximize our GPU usage.</p>
+	<p>Omni is an internal platform we’ve built for running and managing AI models on Cloudflare’s edge nodes. It does so by spawning and managing multiple models on a single machine and GPU using lightweight isolation. Omni makes it easy and efficient to run many small and/or low-volume models, combining multiple capabilities by:&nbsp;&nbsp;</p>
+	<ul>
+		<li>
+			<p>Spawning multiple models from a single control plane,</p>
+		</li>
+		<li>
+			<p>Implementing lightweight process isolation, allowing models to spin up and down quickly,</p>
+		</li>
+		<li>
+			<p>Isolating the file system between models to easily manage per-model dependencies, and</p>
+		</li>
+		<li>
+			<p>Over-committing GPU memory to run more models on a single GPU.</p>
+		</li>
+	</ul>
+	<p>Cloudflare aims to place GPUs as close as we possibly can to people and applications that are using them. With Omni in place, we’re now able to run more models on every node in our network, improving model availability, minimizing latency, and reducing power consumed by idle GPUs.</p>
+	<p>Here’s how.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="omnis-architecture-at-a-glance">Omni’s architecture – at a glance</h2>
+		<a href="https://blog.cloudflare.com/#omnis-architecture-at-a-glance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>At a high level, Omni is a platform to run AI models. When an <a href="https://www.cloudflare.com/learning/ai/inference-vs-training"><u>inference</u></a> request is made on Workers AI, we load the model’s configuration from <a href="https://developers.cloudflare.com/kv"><u>Workers KV</u></a> and our routing layer forwards it to the closest Omni instance that has available capacity. For inferences using the <a href="https://developers.cloudflare.com/workers-ai/features/batch-api"><u>Asynchronous Batch API</u></a>, we route to an Omni instance that is idle, which is typically in a location where it’s night.</p>
+	<p>Omni runs a few checks on the inference request, runs model specific pre and post processing, then hands the request over to the model.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zlObplZsGgpxPyUoD5NXe/ddd1cb8af444460d54fa5e0ab6e58c87/1.png" alt="" class="kg-image" width="1999" height="1938" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="elastic-scaling-by-spawning-multiple-models-from-a-single-control-plane">Elastic scaling by spawning multiple models from a single control plane</h2>
+		<a href="https://blog.cloudflare.com/#elastic-scaling-by-spawning-multiple-models-from-a-single-control-plane" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you’re developing an AI application, a typical setup is having a container or a VM dedicated to running a single model with a GPU attached to it. This is simple. But it’s also heavy-handed — because it requires managing the entire stack from provisioning the VM, installing GPU drivers, downloading model weights, and managing the Python environment. At scale, managing infrastructure this way is incredibly time consuming and often requires an entire team.&nbsp;</p>
+	<p>If you’re using Workers AI, we handle all of this for you. Omni uses a single control plane for running multiple models, called the scheduler, which automatically provisions models and spawns new instances as your traffic scales. When starting a new model instance, it downloads model weights, Python code, and any other dependencies. Omni’s scheduler provides fine-grained control and visibility over the model’s lifecycle: it receives incoming inference requests and routes them to the corresponding model processes, being sure to distribute the load between multiple GPUs. It then makes sure the model processes are running, rolls out new versions as they are released, and restarts itself when detecting errors or failure states. It also collects metrics for billing and emits logs.</p>
+	<p>The inference itself is done by a per-model process, supervised by the scheduler. It receives the inference request and some metadata, then sends back a response. Depending on the model, the response can be various types; for instance, a JSON object or a SSE stream for text generation, or binary for image generation.</p>
+	<p>The scheduler and the child processes communicate by passing messages over Inter-Process Communication (IPC). Usually the inference request is buffered in the scheduler for applying features, like prompt templating or tool calling, before the request is passed to the child process. For potentially large binary requests, the scheduler hands over the underlying TCP connection to the child process for consuming the request body directly.</p>
+	<div class="flex anchor relative">
+		<h2 id="implementing-lightweight-process-and-python-isolation">Implementing lightweight process and Python isolation</h2>
+		<a href="https://blog.cloudflare.com/#implementing-lightweight-process-and-python-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Typically, deploying a model requires its own dedicated container, but we want to colocate more models on a single container to conserve memory and GPU capacity. In order to do so, we needed finer-grained controls over CPU memory and the ability to isolate a model from its dependencies and environment. We deploy Omni in two configurations; a container running multiple models or bare metal running a single model. In both cases, process isolation and Python virtual environments allow us to isolate models with different dependencies by creating namespaces and are limited by <a href="https://en.wikipedia.org/wiki/Cgroups"><u>cgroups</u></a>.&nbsp;</p>
+	<p>Python doesn’t take into account cgroups memory limits for memory allocations, which can lead to OOM errors. Many AI Python libraries rely on <a href="https://pypi.org/project/psutil"><u>psutil</u></a> for pre-allocating CPU memory. psutil reads /proc/meminfo to determine how much memory is available. Since in Omni each model has its own configurable memory limits, we need psutil to reflect the current usage and limits for a given model, not for the entire system.</p>
+	<p>The solution for us was to create a virtual file system, using <a href="https://en.wikipedia.org/wiki/Filesystem_in_Userspace"><u>fuse</u></a>, to mount our own version of /proc/meminfo which reflects the model’s current usage and limits.</p>
+	<p>To illustrate this, here’s an Omni instance running a model (running as pid 8). If we enter the mount namespace and look at /proc/meminfo it will reflect the model’s configuration:</p>
+	<pre class="language-Rust"><code class="language-Rust"># Enter the mount (file system) namespace of a child process
+$ nsenter -t 8 -m
+
+$ mount
+...
+none /proc/meminfo fuse ...
+
+$ cat /proc/meminfo
+MemTotal:     7340032 kB
+MemFree:     7316388 kB
+MemAvailable:     7316388 kB</code></pre>
+	<p>In this case the model has 7Gib of memory available and the entire container 15Gib. If the model tries to allocate more than 7Gib of memory, it will be OOM killed and restarted by the scheduler’s process manager, without causing any problems to the other models.</p>
+	<p>For isolating Python and some system dependencies, each model runs in a Python virtual environment, managed by <a href="https://docs.astral.sh/uv"><u>uv</u></a>. Dependencies are cached on the machine and, if possible, shared between models (uv uses symbolic links between its cache and virtual environments).</p>
+	<p>Also separated processes for models allows to have different CUDA contexts and isolation for error recovery.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="over-committing-memory-to-run-more-models-on-a-single-gpu">Over-committing memory to run more models on a single GPU</h2>
+		<a href="https://blog.cloudflare.com/#over-committing-memory-to-run-more-models-on-a-single-gpu" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Some models don’t receive enough traffic to fully utilize a GPU, and with Omni we can pack more models on a single GPU, freeing up capacity for other workloads. When it comes to GPU memory management, Omni has two main jobs: safely over-commit GPU memory, so that more models than normal can share a single GPU, and enforce memory limits, to prevent any single model from running out of memory while running.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	<p>Over-committing memory means allocating more memory than is physically available to the device.&nbsp;</p>
+	<p>For example, if a GPU has 10 Gib of memory, Omni would allow 2 models of 10Gib each on that GPU.</p>
+	<p>Right now, Omni is configured to run 13 models and is allocating about 400% GPU memory on a single GPU, saving up 4 GPUs. Omni does this by injecting a CUDA stub library that intercepts CUDA memory allocations (cuMalloc* or cudaMalloc*) calls and forces memory allocations to be performed in <a href="https://developer.nvidia.com/blog/unified-memory-in-cuda-6"><u>unified memory mode</u></a>.</p>
+	<p>In Unified memory mode CUDA shares the same memory address space for both the GPU and the CPU:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2G5zd0TDi15ZeFAmcJy812/1b292429140ec2c4bd0a81bee4954150/2.png" alt="" class="kg-image" width="1999" height="588" loading="lazy">
+	</figure>
+	<p><sup><i>CUDA’s </i></sup><a href="https://developer.nvidia.com/blog/maximizing-unified-memory-performance-cuda"><sup><i><u>unified memory mode</u></i></sup></a><sup><i>&nbsp;</i></sup></p>
+	<p>In practice this is what memory over-commitment looks like: imagine 3 models (A, B and C). Models A+B fit in the GPU’s memory but C takes up the entire memory.</p>
+	<ol>
+		<li>
+			<p>Models A+B are loaded first and are in GPU memory, while model C is in CPU memory</p>
+			<figure class="kg-card kg-image-card">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xU141x0PaZRp83XlF6hWz/527915ee03309f619a64e6b43c62cd92/3.png" alt="" class="kg-image" width="1220" height="450" loading="lazy">
+			</figure>
+		</li>
+		<li>
+			<p>Omni receives a request for model C so models A+B are swapped out and C is swapped in.
+			</p>
+			<figure class="kg-card kg-image-card">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4fD3Y2xyyawGmo1gpdLsQz/1cd36ebaed6b7f9e95b3d31ead1c1098/4.png" alt="" class="kg-image" width="1220" height="468" loading="lazy">
+			</figure>
+		</li>
+		<li>
+			<p>Omni receives a request for model B, so model C is partly swapped out and model B is swapped back in.
+			</p>
+			<figure class="kg-card kg-image-card">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2v5JjDW0NCkVUfEBXwIgpL/62009bc970b0967a850cb31ef87be44b/5.png" alt="" class="kg-image" width="1220" height="450" loading="lazy">
+			</figure>
+		</li>
+		<li>
+			<p>Omni receives a request for model A, so model A is swapped back in and model C is completely swapped out.</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cWGbEGgv3QckT7jgUIs9d/2c500a432be451a83dce0c71ccdcb89f/6.png" alt="" class="kg-image" width="1220" height="450" loading="lazy">
+	</figure>
+	<p>The trade-off is added latency: if performing an inference requires memory that is currently on the host system, it must be transferred to the GPU. For smaller models, this latency is minimal, because with PCIe 4.0, the physical bus between your GPU and system, provides 32 GB/sec of bandwidth. On the other hand, if a model need to be “cold started” i.e. it’s been swapped out because it hasn’t been used in a while, the system may need to swap back the entire model –&nbsp;a larger sized model, for example, might use 5Gib of GPU memory for weights and caches, and would take ~156ms to be swapped back into the GPU. Naturally, over time, inactive models are put into CPU memory, while active models stay hot in the GPU.</p>
+	<p>Rather than allowing the model to choose how much GPU memory it uses, AI frameworks tend to pre-allocate as much GPU memory as possible for performance reasons, making co-locating models more complicated. Omni allows us to control how much memory is actually exposed to any given model to prevent a greedy model from over-using the GPU allocated to it. We do this by overriding the CUDA runtime and driver APIs (<a href="https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__MEMORY.html#group__CUDART__MEMORY_1g376b97f5ab20321ca46f7cfa9511b978"><u>cudaMemGetInfo</u></a> and <a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MEM.html#group__CUDA__MEM_1g808f555540d0143a331cc42aa98835c0"><u>cuMemGetInfo</u></a>). Instead of exposing the entire GPU memory, we only expose a subset of memory to each model.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-omni-runs-multiple-models-for-workers-ai">How Omni runs multiple models for Workers AI&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#how-omni-runs-multiple-models-for-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI models can run in a variety of inference engines or backends: <a href="https://github.com/vllm-project/vllm"><u>vLLM</u></a>, Python, and now our very own inference engine, <a href="https://blog.cloudflare.com/cloudflares-most-efficient-ai-inference-engine"><u>Infire</u></a>. While models have different capabilities, each model needs to support <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI features</u></a>, like batching and function calling. Omni acts as a unified layer for integrating these systems. It integrates into our internal routing and scheduling systems, and provides a Python API for our engineering team to add new models more easily. Let’s take a closer look at how Omni does this in practice:</p>
+	<pre class="language-Python"><code class="language-Python">from omni import Response
+import cowsay
+
+
+def handle_request(request, context):
+    try:
+        json = request.body.json
+        text = json["text"]
+    except Exception as err:
+        return Response.error(...)
+
+    return cowsay.get_output_string('cow', text)</code></pre>
+	<p>Similar to how a JavaScript Worker works, Omni calls a request handler, running the model’s logic and returning a response.&nbsp;</p>
+	<p>Omni installs Python dependencies at model startup. We run an internal Python registry and mirror the public registry. In either case we declare dependencies in requirements.txt:</p>
+	<pre class="language-Rust"><code class="language-Rust">cowsay==6.1</code></pre>
+	<p>The handle_request function can be async and return different Python types, including <a href="https://docs.pydantic.dev/latest"><u>pydantic</u></a> objects. Omni will convert the return value into a Workers AI response for the eyeball.</p>
+	<p>A Python package is injected, named omni, containing all the Python APIs to interact with the request, the Workers AI systems, building Responses, error handling, etc. Internally we publish it as regular Python package to be used in standalone, for unit testing for instance:</p>
+	<pre class="language-Rust"><code class="language-Rust">from omni import Context, Request
+from model import handle_request
+
+
+def test_basic():
+    ctx = Context.inactive()
+    req = Request(json={"text": "my dog is cooler than you!"})
+    out = handle_request(req, ctx)
+    assert out == """  __________________________
+| my dog is cooler than you! |
+  ==========================
+                          \\
+                           \\
+                             ^__^
+                             (oo)\\_______
+                             (__)\\       )\\/\\
+                                 ||----w |
+                                 ||     ||"""</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Omni allows us to run models more efficiently by spawning them from a single control plane and implementing lightweight process isolation. This enables quick starting and stopping of models, isolated file systems for managing Python and system dependencies, and over-committing GPU memory to run more models on a single GPU. This improves the performance for our entire Workers AI stack, reduces the cost of running GPUs, and allows us to ship new models and features quickly and safely.</p>
+	<p>Right now, Omni is running in production on a handful of models in the Workers AI catalog, and we’re adding more every week. Check out <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI</u></a> today to experience Omni’s performance benefits on your AI application.&nbsp;</p>
+</div>

@@ -1,0 +1,149 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/N8T4grj8IDVGwRVlhkKAt/5020ae08a3632df461525c056771bb91/image3.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Getting the observability you need is challenging enough when the code is deterministic, but AI presents a new challenge —&nbsp;a core part of your user’s experience now relies on a non-deterministic engine that provides unpredictable outputs. On top of that, there are many factors that can influence the results: the model, the system prompt. And on top of that, you still have to worry about performance, reliability, and costs.&nbsp;</p>
+	<p>Solving performance, reliability and observability challenges is exactly what Cloudflare was built for, and two years ago, with the introduction of AI Gateway, we wanted to extend to our users the same levels of control in the age of AI.&nbsp;</p>
+	<p>Today, we’re excited to announce several features to make building AI applications easier and more manageable: unified billing, secure key storage, dynamic routing, security controls with Data Loss Prevention (DLP). This means that AI Gateway becomes your go-to place to control costs and API keys, route between different models and providers, and manage your AI traffic. Check out our new <a href="https://ai.cloudflare.com/gateway"><u>AI Gateway landing page</u></a> for more information at a glance.</p>
+	<div class="flex anchor relative">
+		<h2 id="connect-to-all-your-favorite-ai-providers">Connect to all your favorite AI providers</h2>
+		<a href="https://blog.cloudflare.com/#connect-to-all-your-favorite-ai-providers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When using an AI provider, you typically have to sign up for an account, get an API key, manage rate limits, top up credits — all within an individual provider’s dashboard. Multiply that for each of the different providers you might use, and you’ll soon be left with an administrative headache of bills and keys to manage.</p>
+	<p>With <a href="https://www.cloudflare.com/developer-platform/products/ai-gateway"><u>AI Gateway</u></a>, you can now connect to major AI providers directly through Cloudflare and manage everything through one single plane. We’re excited to partner with Anthropic, Google, Groq, OpenAI, and xAI to provide Cloudflare users with access to their models directly through Cloudflare. With this, you’ll have access to over 350+ models across 6 different providers.</p>
+	<p>You can now get billed for usage across different providers directly through your Cloudflare account. This feature is available for Workers Paid users, where you’ll be able to add credits to your Cloudflare account and use them for <a href="https://www.cloudflare.com/learning/ai/inference-vs-training"><u>AI inference</u></a> to all the supported providers. You’ll be able to see real-time usage statistics and manage your credits through the AI Gateway dashboard. Your AI Gateway inference usage will also be documented in your monthly Cloudflare invoice. No more signing up and paying for each individual model provider account.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4t2j5frheaYOLznprTL58p/f0fb4c6de2aad70c82a23bc35873ea50/image1.png" alt="" class="kg-image" width="1999" height="1586" loading="lazy">
+	</figure>
+	<p>Usage rates are based on then-current list prices from model providers — all you will need to cover is the transaction fee as you load credits into your account. Since this is one of the first times we’re launching a credits based billing system at Cloudflare, we’re releasing this feature in Closed Beta — sign up for access <a href="https://forms.gle/3LGAzN2NDXqtbjKR9"><u>here</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="byo-provider-keys-now-with-cloudflare-secrets-store">BYO Provider Keys, now with Cloudflare Secrets Store</h3>
+		<a href="https://blog.cloudflare.com/#byo-provider-keys-now-with-cloudflare-secrets-store" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Although we’ve introduced unified billing, some users might still want to manage their own accounts and keys with providers. We’re happy to say that AI Gateway will continue supporting our <a href="https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys"><u>BYO Key feature, </u></a>improving the experience of BYO Provider Keys by integrating with Cloudflare’s secrets management product <a href="https://developers.cloudflare.com/secrets-store"><u>Secrets Store</u></a>. Now, you can seamlessly and securely store your keys in one centralized location and distribute them without relying on plain text. Secrets Store uses a two level key hierarchy with AES encryption to ensure that your secret stays safe, while maintaining low latency through our global configuration system, <a href="https://blog.cloudflare.com/quicksilver-v2-evolution-of-a-globally-distributed-key-value-store-part-1"><u>Quicksilver</u></a>.</p>
+	<p>You can now save and manage keys directly through your AI Gateway dashboard or through the Secrets Store <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fsecrets-store"><u>dashboard</u></a>, <a href="https://developers.cloudflare.com/api/resources/secrets_store/subresources/stores/subresources/secrets/methods/create"><u>API</u></a>, or <a href="https://developers.cloudflare.com/workers/wrangler/commands/#secrets-store-secret"><u>Wrangler</u></a> by using the new <b>AI Gateway</b> <b>scope</b>. Scoping your secrets to AI Gateway ensures that only this specific service will be able to access your keys, meaning that secret could not be used in a Workers binding or anywhere else on Cloudflare’s platform.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hiSSQi2lQGWQnGYe4e9p1/dadc4fde865010d9e263badb75847992/2.png" alt="" class="kg-image" width="1999" height="1605" loading="lazy">
+	</figure>
+	<p>You can pass your AI provider keys without including them directly in the request header. Instead of including the actual value, you can deploy the secret only using the Secrets Store reference:&nbsp;</p>
+	<pre class="language-Shell"><code class="language-Shell">curl -X POST https://gateway.ai.cloudflare.com/v1/&lt;ACCOUNT_ID&gt;/my-gateway/anthropic/v1/messages \
+ --header 'cf-aig-authorization: CLOUDFLARE_AI_GATEWAY_TOKEN \
+ --header 'anthropic-version: 2023-06-01' \
+ --header 'Content-Type: application/json' \
+ --data  '{"model": "claude-3-opus-20240229", "messages": [{"role": "user", "content": "What is Cloudflare?"}]}'</code></pre>
+	<p>Or, using Javascript:&nbsp;</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import Anthropic from '@anthropic-ai/sdk';
+
+
+const anthropic = new Anthropic({
+  apiKey: "CLOUDFLARE_AI_GATEWAY_TOKEN",
+  baseURL: "https://gateway.ai.cloudflare.com/v1/&lt;ACCOUNT_ID&gt;/my-gateway/anthropic",
+});
+
+
+const message = await anthropic.messages.create({
+  model: 'claude-3-opus-20240229',
+  messages: [{role: "user", content: "What is Cloudflare?"}],
+  max_tokens: 1024
+});</code></pre>
+	<p>By using Secrets Store to deploy your secrets, you no longer need to give every developer access to every key — instead, you can rely on Secrets Store’s <a href="https://developers.cloudflare.com/secrets-store/access-control"><u>role-based access control</u></a> to further lock down these sensitive values. For example, you might want your security administrators to have Secrets Store admin permissions so that they can create, update, and delete the keys when necessary. With Cloudflare <a href="https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit_logs/?cf_target_id=1C767B900C4419A313C249A5D99921FB"><u>audit logging</u></a>, all such actions will be logged so you know exactly who did what and when. Your developers, on the other hand, might only need Deploy permissions, so they can reference the values in code, whether that is a Worker or AI Gateway or both. This way, you reduce the risk of the secret getting leaked accidentally or intentionally by a malicious actor. This also allows you to update your provider keys in one place and automatically propagate that value to any AI Gateway using those values, simplifying the management.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="unified-request-response">Unified Request/Response</h3>
+		<a href="https://blog.cloudflare.com/#unified-request-response" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We made it super easy for people to try out different AI models – but the developer experience should match that as well. We found that each provider can have slight differences in how they expect people to send their requests, so we’re excited to launch an automatic translation layer between providers. When you send a request through AI Gateway, it just works – no matter what provider or model you use.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import OpenAI from "openai";
+const client = new OpenAI({
+  apiKey: "YOUR_PROVIDER_API_KEY", // Provider API key
+  // NOTE: the OpenAI client automatically adds /chat/completions to the end of the URL, you should not add it yourself.
+  baseURL:
+    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+});
+
+const response = await client.chat.completions.create({
+  model: "google-ai-studio/gemini-2.0-flash",
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
+});
+
+console.log(response.choices[0].message.content);</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="dynamic-routes">Dynamic Routes</h2>
+		<a href="https://blog.cloudflare.com/#dynamic-routes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When we first launched <a href="https://www.cloudflare.com/developer-platform/products/workers"><u>Cloudflare Workers</u></a>, it was an easy way for people to intercept HTTP requests and customize actions based on different attributes. We think the same customization is necessary for AI traffic, so we’re launching <a href="https://developers.cloudflare.com/ai-gateway/features/dynamic-routing"><u>Dynamic Routes</u></a> in AI Gateway.</p>
+	<p>Dynamic Routes allows you to define certain actions based on different request attributes. If you have free users, maybe you want to ratelimit them to a certain request per second (RPS) or a certain dollar spend. Or maybe you want to conduct an A/B test and split 50% of traffic to Model A and 50% of traffic to Model B. You could also want to chain several models in a row, like adding custom guardrails or enhancing a prompt before it goes to another model. All of this is possible with Dynamic Routes!</p>
+	<p>We’ve built a slick UI in the AI Gateway dashboard where you can define simple if/else interactions based on request attributes or a percentage split. Once you define a route, you’ll use the route as the “model” name in your input JSON and we will manage the traffic as you defined.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qLp4KT8ASCLRv2pyM2kxR/3151e32afa4d8447ae07a5a8fb09a9b6/3.png" alt="" class="kg-image" width="1999" height="1426" loading="lazy">
+	</figure>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import OpenAI from "openai";
+
+const cloudflareToken = "CF_AIG_TOKEN";
+const accountId = "{account_id}";
+const gatewayId = "{gateway_id}";
+const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}`;
+
+const openai = new OpenAI({
+  apiKey: cloudflareToken,
+  baseURL,
+});
+
+try {
+  const model = "dynamic/&lt;your-dynamic-route-name&gt;";
+  const messages = [{ role: "user", content: "What is a neuron?" }];
+  const chatCompletion = await openai.chat.completions.create({
+    model,
+    messages,
+  });
+  const response = chatCompletion.choices[0].message;
+  console.log(response);
+} catch (e) {
+  console.error(e);
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="built-in-security-with-firewall-in-ai-gateway">Built-in security with Firewall in AI Gateway</h2>
+		<a href="https://blog.cloudflare.com/#built-in-security-with-firewall-in-ai-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Earlier this year we announced <a href="https://developers.cloudflare.com/changelog/2025-02-26-guardrails"><u>Guardrails</u></a> in AI Gateway and now we’re expanding our security capabilities and include Data Loss Prevention (DLP) scanning in AI Gateway’s Firewall. With this, you can select the DLP profiles you are interested in blocking or flagging, and we will scan requests for the matching content. DLP profiles include general categories like “Financial Information”, “Social Security, Insurance, Tax and Identifier Numbers” that everyone has access to with a free Zero Trust account. If you would like to create a custom DLP profile to safeguard specific text, the upgraded Zero Trust plan allows you to create custom DLP profiles to catch sensitive data that is unique to your business.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5yti8oy4TF01EdZMtYN1If/d2f3bd804873644862fbd61b07d3574a/4.png" alt="" class="kg-image" width="1256" height="1070" loading="lazy">
+	</figure>
+	<p>False positives and grey area situations happen, we give admins controls on whether to fully block or just alert on DLP matches. This allows administrators to monitor for potential issues without creating roadblocks for their users.. Each log on AI gateway now includes details about the DLP profiles matched on your request, and the action that was taken:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pDdqy8bVmsiyjm4sg2pkG/ff97d9069e200fb859c1dc2daed8e4fa/5.png" alt="" class="kg-image" width="1264" height="657" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="more-coming-soon">More coming soon…</h2>
+		<a href="https://blog.cloudflare.com/#more-coming-soon" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you think about the history of Cloudflare, you’ll notice similar patterns that we’re following for the new vision for AI Gateway. We want developers of AI applications to be able to have simple interconnectivity, observability, security, customizable actions, and more — something that Cloudflare has a proven track record of accomplishing for global Internet traffic. We see AI Gateway as a natural extension of Cloudflare’s mission, and we’re excited to make it come to life.</p>
+	<p>We’ve got more launches up our sleeves, but we couldn’t wait to get these first handful of features into your hands. Read up about it in our <a href="https://developers.cloudflare.com/ai-gateway"><u>developer docs</u></a>, <a href="https://developers.cloudflare.com/ai-gateway/get-started"><u>give it a try</u></a>, and let us know what you think. If you want to explore larger deployments, <a href="https://www.cloudflare.com/plans/enterprise/contact/?utm_medium=referral&amp;utm_source=blog&amp;utm_campaign=2025-q3-acq-gbl-connectivity-ge-ge-general-ai_week_blog"><u>reach out for a consultation </u></a>with Cloudflare experts.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LTpdSaZMBbdOzASW8ggoS/6610f437d955174d7f7f1212617a4365/6.png" alt="" class="kg-image" width="1199" height="325" loading="lazy">
+	</figure>
+	<p></p>
+</div>

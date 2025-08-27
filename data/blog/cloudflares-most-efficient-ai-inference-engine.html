@@ -1,0 +1,186 @@
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ktpxBoVmznE2J8B8F3Osq/2ebd55545ecaafd3ed66257234e0520e/image3.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Inference powers some of today’s most powerful AI products: chat bot replies, <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai"><u>AI agents</u></a>, autonomous vehicle decisions, and fraud detection. The problem is, if you’re building one of these products on top of a hyperscaler, you’ll likely need to rent expensive GPUs from large centralized data centers to run your inference tasks. That model doesn’t work for Cloudflare —&nbsp;there’s a mismatch between Cloudflare’s globally-distributed network and a typical centralized AI deployment using large multi-GPU nodes. As a company that operates our own compute on a lean, fast, and widely distributed network within 50ms of 95% of the world’s Internet-connected population, we need to be running inference tasks more efficiently than anywhere else.</p>
+	<p>This is further compounded by the fact that AI models are getting larger and more complex. As we started to support these models, like the Llama 4 herd and gpt-oss, we realized that we couldn’t just throw money at the scaling problems by buying more GPUs. We needed to utilize every bit of idle capacity and be agile with where each model is deployed.&nbsp;</p>
+	<p>After running most of our models on the widely used open source inference and serving engine <a href="https://github.com/vllm-project/vllm"><u>vLLM</u></a>, we figured out it didn’t allow us to fully utilize the GPUs at the edge. Although it can run on a very wide range of hardware, from personal devices to data centers, it is best optimized for large data centers. When run as a dedicated inference server on powerful hardware serving a specific model, vLLM truly shines. However, it is much less optimized for dynamic workloads, distributed networks, and for the unique security constraints of running inference at the edge alongside other services.</p>
+	<p>That’s why we decided to build something that will be able to meet the needs of Cloudflare inference workloads for years to come. Infire is an LLM inference engine, written in Rust, that employs a range of techniques to maximize memory, network I/O, and GPU utilization. It can serve more requests with fewer GPUs and significantly lower CPU overhead, saving time, resources, and energy across our network.&nbsp;</p>
+	<p>Our initial benchmarking has shown that Infire completes inference tasks up to 7% faster than vLLM 0.10.0 on unloaded machines equipped with an H100 NVL GPU. On infrastructure under real load, it performs significantly better.&nbsp;</p>
+	<p>Currently, Infire is powering the Llama 3.1 8B model for <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI</u></a>, and you can test it out today at <a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast"><u>@cf/meta/llama-3.1-8b-instruct</u></a>!</p>
+	<div class="flex anchor relative">
+		<h2 id="the-architectural-challenge-of-llm-inference-at-cloudflare">The Architectural Challenge of LLM Inference at Cloudflare&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#the-architectural-challenge-of-llm-inference-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Thanks to industry efforts, inference has improved a lot over the past few years. vLLM has led the way here with the recent release of the vLLM V1 engine with features like an optimized KV cache, improved batching, and the implementation of Flash Attention 3. vLLM is great for most inference workloads — we’re currently using it for several of the models in our <a href="https://developers.cloudflare.com/workers-ai/models"><u>Workers AI catalog</u></a> —&nbsp;but as our AI workloads and catalog has grown, so has our need to optimize inference for the exact hardware and performance requirements we have.&nbsp;</p>
+	<p>Cloudflare is writing much of our <a href="https://blog.cloudflare.com/rust-nginx-module"><u>new infrastructure in Rust</u></a>, and vLLM is written in Python. Although Python has proven to be a great language for prototyping ML workloads, to maximize efficiency we need to control the low-level implementation details. Implementing low-level optimizations through multiple abstraction layers and Python libraries adds unnecessary complexity and leaves a lot of CPU performance on the table, simply due to the inefficiencies of Python as an interpreted language.</p>
+	<p>We love to contribute to open-source projects that we use, but in this case our priorities may not fit the goals of the vLLM project, so we chose to write a server for our needs. For example, vLLM does not support co-hosting multiple models on the same GPU without using Multi-Instance GPU (MIG), and we need to be able to dynamically schedule multiple models on the same GPU to minimize downtime. We also have an in-house AI Research team exploring unique features that are difficult, if not impossible, to upstream to vLLM.&nbsp;</p>
+	<p>Finally, running code securely is our top priority across our platform and <a href="https://www.cloudflare.com/developer-platform/products/workers-ai"><u>Workers AI</u></a> is no exception.&nbsp;We simply can’t trust a 3rd party Python process to run on our edge nodes alongside the rest of our services without strong sandboxing. We are therefore forced to run vLLM via <a href="https://gvisor.dev"><u>gvisor</u></a>. Having an extra virtualization layer adds an additional performance overhead to vLLM. More importantly, it also increases the startup and tear down time for vLLM instances — which are already pretty long. Under full load on our edge nodes, vLLM running via gvisor consumes as much as 2.5 CPU cores, and is forced to compete for CPU time with other crucial services, that in turn slows vLLM down and lowers GPU utilization as a result.</p>
+	<p>While developing Infire, we’ve been incorporating the latest research in inference efficiency — let’s take a deeper look at what we actually built.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-infire-works-under-the-hood">How Infire works under the hood&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#how-infire-works-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Infire is composed of three major components: an OpenAI compatible HTTP server, a batcher, and the Infire engine itself.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BypYSG9QFsPjPFhjlOEsa/6ef5d4ccaabcd96da03116b7a14e8439/image2.png" alt="" class="kg-image" width="1999" height="676" loading="lazy">
+	</figure>
+	<p><i><sup>An overview of Infire’s architecture&nbsp;</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="platform-startup">Platform startup</h2>
+		<a href="https://blog.cloudflare.com/#platform-startup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When a model is first scheduled to run on a specific node in one of our data centers by our auto-scaling service, the first thing that has to happen is for the model weights to be fetched from our <a href="https://www.cloudflare.com/developer-platform/products/r2"><u>R2 object storage</u></a>. Once the weights are downloaded, they are cached on the edge node for future reuse.</p>
+	<p>As the weights become available either from cache or from R2, Infire can begin loading the model onto the GPU.&nbsp;</p>
+	<p>Model sizes vary greatly, but most of them are <b>large, </b>so transferring them into GPU memory can be a time-consuming part of Infire’s startup process. For example, most non-quantized models store their weights in the BF16 floating point format. This format has the same dynamic range as the 32-bit floating format, but with reduced accuracy. It is perfectly suited for inference providing the sweet spot of size, performance and accuracy. As the name suggests, the BF16 format requires 16 bits, or 2 bytes per weight. The approximate in-memory size of a given model is therefore double the size of its parameters. For example, LLama3.1 8B has approximately 8B parameters, and its memory footprint is about 16GB. A larger model, like LLama4 Scout, has 109B parameters, and requires around 218GB of memory. Infire utilizes a combination of <a href="https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/#pinned_host_memory"><u>Page Locked</u></a> memory with CUDA asynchronous copy mechanism over multiple streams to speed up model transfer into GPU memory.</p>
+	<p>While loading the model weights, Infire begins just-in-time compiling the required kernels based on the model's parameters, and loads them onto the device. Parallelizing the compilation with model loading amortizes the latency of both processes. The startup time of Infire when loading the Llama-3-8B-Instruct model from disk is just under 4 seconds.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="the-http-server">The HTTP server</h3>
+		<a href="https://blog.cloudflare.com/#the-http-server" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The Infire server is built on top of <a href="https://docs.rs/hyper/latest/hyper"><u>hyper</u></a>, a high performance HTTP crate, which makes it possible to handle hundreds of connections in parallel – while consuming a modest amount of CPU time. Because of ChatGPT’s ubiquity, vLLM and many other services offer OpenAI compatible endpoints out of the box. Infire is no different in that regard. The server is responsible for handling communication with the client: accepting connections, handling prompts and returning responses. A prompt will usually consist of some text, or a "transcript" of a chat session along with extra parameters that affect how the response is generated. Some parameters that come with a prompt include the temperature, which affects the randomness of the response, as well as other parameters that affect the randomness and length of a possible response.</p>
+	<p>After a request is deemed valid, Infire will pass it to the tokenizer, which transforms the raw text into a series of tokens, or numbers that the model can consume. Different models use different kinds of tokenizers, but the most popular ones use byte-pair encoding. For tokenization, we use HuggingFace's tokenizers crate. The tokenized prompts and params are then sent to the batcher, and scheduled for processing on the GPU, where they will be processed as vectors of numbers, called <a href="https://www.cloudflare.com/learning/ai/what-are-embeddings"><u>embeddings</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-batcher">The batcher</h2>
+		<a href="https://blog.cloudflare.com/#the-batcher" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The most important part of Infire is in how it does batching: by executing multiple requests in parallel. This makes it possible to better utilize memory bandwidth and caches.&nbsp;</p>
+	<p>In order to understand why batching is so important, we need to understand how the inference algorithm works. The weights of a model are essentially a bunch of two-dimensional matrices (also called tensors). The prompt represented as vectors is passed through a series of transformations that are largely dominated by one operation: vector-by-matrix multiplication. The model weights are so large, that the cost of the multiplication is dominated by the time it takes to fetch it from memory. In addition, modern GPUs have hardware units dedicated to matrix-by-matrix multiplications (called Tensor Cores on Nvidia GPUs). In order to amortize the cost of memory access and take advantage of the Tensor Cores, it is necessary to aggregate multiple operations into a larger matrix multiplication.</p>
+	<p>Infire utilizes two techniques to increase the size of those matrix operations. The first one is called prefill: this technique is applied to the prompt tokens. Because all of the prompt tokens are available in advance and do not require decoding, they can all be processed in parallel. This is one reason why input tokens are often cheaper (and faster) than output tokens.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pqyNSzgWLcgrV3urpCvA0/e204ac477992d591a7368632c36e97eb/image1.png" alt="" class="kg-image" width="1718" height="1220" loading="lazy">
+	</figure>
+	<p><sup><i>How Infire enables larger matrix multiplications via batching</i></sup></p>
+	<p>The other technique is called batching: this technique aggregates multiple prompts into a single decode operation.</p>
+	<p>Infire mixes both techniques. It attempts to process as many prompts as possible in parallel, and fills the remaining slots in a batch with prefill tokens from incoming prompts. This is also known as continuous batching with chunked prefill.</p>
+	<p>As tokens get decoded by the Infire engine, the batcher is also responsible for retiring prompts that reach an End of Stream token, and sending tokens back to the decoder to be converted into text.&nbsp;</p>
+	<p>Another job the batcher has is handling the KV cache. One demanding operation in the inference process is called <i>attention</i>. Attention requires going over the KV values computed for all of the tokens up to the current one. If we had to recompute those previously encountered KV values for every new token we decode, the runtime of the process would explode for longer context sizes. However, using a cache, we can store all of the previous values and re-read them for each consecutive token. Potentially the KV cache for a prompt can store KV values for as many tokens as the context window allows. In LLama 3, the maximal context window is 128K tokens. If we pre-allocated the KV cache for each prompt in advance, we would only have enough memory available to execute 4 prompts in parallel on H100 GPUs! The solution for this is paged KV cache. With paged KV caching, the cache is split into smaller chunks called pages. When the batcher detects that a prompt would exceed its KV cache, it simply assigns another page to that prompt. Since most prompts rarely hit the maximum context window, this technique allows for essentially unlimited parallelism under typical load.</p>
+	<p>Finally, the batcher drives the Infire forward pass by scheduling the needed kernels to run on the GPU.</p>
+	<div class="flex anchor relative">
+		<h2 id="cuda-kernels">CUDA kernels</h2>
+		<a href="https://blog.cloudflare.com/#cuda-kernels" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Developing Infire gives us the luxury of focusing on the exact hardware we use, which is currently Nvidia Hopper GPUs. This allowed us to improve performance of specific compute kernels using low-level PTX instructions for this specific architecture.</p>
+	<p>Infire just-in-time compiles its kernel for the specific model it is running, optimizing for the model’s parameters, such as the hidden state size, dictionary size and the GPU it is running on. For some operations, such as large matrix multiplications, Infire will utilize the high performance cuBLASlt library, if it would deem it faster.</p>
+	<p>Infire also makes use of very fine-grained CUDA graphs, essentially creating a dedicated CUDA graph for every possible batch size on demand. It then stores it for future launch. Conceptually, a CUDA graph is another form of just-in-time compilation: the CUDA driver replaces a series of kernel launches with a single construct (the graph) that has a significantly lower amortized kernel launch cost, thus kernels executed back to back will execute faster when launched as a single graph as opposed to individual launches.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-infire-performs-in-the-wild">How Infire performs in the wild&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#how-infire-performs-in-the-wild" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We ran synthetic benchmarks on one of our edge nodes with an H100 NVL GPU.</p>
+	<p>The benchmark we ran was on the widely used ShareGPT v3 dataset. We ran the benchmark on a set of 4,000 prompts with a concurrency of 200. We then compared Infire and vLLM running on bare metal as well as vLLM running under gvisor, which is the way we currently run in production. In a production traffic scenario, an edge node would be competing for resources with other traffic. To simulate this, we benchmarked vLLM running in gvisor with only one CPU available.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>requests/s</p>
+				</td>
+				<td>
+					<p>tokens/s</p>
+				</td>
+				<td>
+					<p>CPU load</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Infire</p>
+				</td>
+				<td>
+					<p>40.91</p>
+				</td>
+				<td>
+					<p>17224.21</p>
+				</td>
+				<td>
+					<p>25%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>vLLM 0.10.0</p>
+				</td>
+				<td>
+					<p>38.38</p>
+				</td>
+				<td>
+					<p>16164.41</p>
+				</td>
+				<td>
+					<p>140%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>vLLM under gvisor</p>
+				</td>
+				<td>
+					<p>37.13</p>
+				</td>
+				<td>
+					<p>15637.32</p>
+				</td>
+				<td>
+					<p>250%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>vLLM under gvisor with CPU constraints</p>
+				</td>
+				<td>
+					<p>22.04</p>
+				</td>
+				<td>
+					<p>9279.25</p>
+				</td>
+				<td>
+					<p>100%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>As evident from the benchmarks we achieved our initial goal of matching and even slightly surpassing vLLM performance, but more importantly, we’ve done so at a significantly lower CPU usage, in large part because we can run Infire as a trusted bare-metal process. Inference no longer takes away precious resources from our other services and we see GPU utilization upward of 80%, reducing our operational costs.</p>
+	<p>This is just the beginning. There are still multiple proven performance optimizations yet to be implemented in Infire – for example, we’re integrating Flash Attention 3, and most of our kernels don’t utilize kernel fusion. Those and other optimizations will allow us to unlock even faster inference in the near future.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Running AI inference presents novel challenges and demands to our infrastructure. Infire is how we’re running AI efficiently — close to users around the world. By building upon techniques like continuous batching, a paged KV-cache, and low-level optimizations tailored to our hardware, Infire maximizes GPU utilization while minimizing overhead. Infire completes inference tasks faster and with a fraction of the CPU load of our previous vLLM-based setup, especially under the strict security constraints we require. This allows us to serve more requests with fewer resources, making requests served via Workers AI faster and more efficient.</p>
+	<p>However, this is just our first iteration — we’re excited to build in multi-GPU support for larger models, quantization, and true multi-tenancy into the next version of Infire. This is part of our goal to make Cloudflare the best possible platform for developers to build AI applications.</p>
+	<p>Want to see if your AI workloads are faster on Cloudflare? <a href="https://developers.cloudflare.com/workers-ai"><u>Get started</u></a> with Workers AI today.&nbsp;</p>
+</div>
