@@ -23,22 +23,9 @@
 
 ## Table of Contents
 
-- [About the Project](#about-the-project)
-  - [Built With](#built-with)
 - [Installation](#installation)
 - [Usage](#usage)
 - [About](#about)
-
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
-
-A real-time video and audio SDK for building custom, collaborative communication experiences.
-
-### Built With
-
-- [Cloudflare](https://cloudflare.com)
-- [Typescript](https://typescriptlang.org)
 
 <!-- INSTALLATION -->
 
