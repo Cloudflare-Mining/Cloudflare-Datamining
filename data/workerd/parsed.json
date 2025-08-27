@@ -3105,6 +3105,14 @@
 						"compatEnableFlag": "enhanced_error_serialization",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "emailSendingQueuing",
+					"annotations": {
+						"compatDisableFlag": "disable_email_sending_queuing",
+						"compatEnableFlag": "enable_email_sending_queuing",
+						"experimental": "true"
+					}
 				}
 			]
 		},
