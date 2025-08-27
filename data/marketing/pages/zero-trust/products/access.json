@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-12-12T23:17:20.205Z",
-					"updatedAt": "2025-08-01T16:48:01.078Z"
+					"updatedAt": "2025-08-27T16:12:24.814Z"
 				},
 				"contentfulId": "6i25SFoslu816yV8btesox",
 				"contentTypeId": "page",
@@ -248,128 +248,6 @@
 												"specialLinkType": null,
 												"openInNewWindow": false,
 												"isExternalUrl": false
-											}
-										],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": []
-									},
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "2yuoT1zHUwZyydch6QbTSB",
-										"locale": "en-US",
-										"name": "By industry",
-										"description": null,
-										"mainLink": null,
-										"navigationLinks": [
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "6G1ftzS5AunbDNl8mf8mNu",
-												"locale": "en-US",
-												"title": "Ecommerce",
-												"description": "For online stores or services",
-												"url": "https://www.cloudflare.com/ecommerce/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "1qAsmkjsmiBZKfbsgHG618",
-												"locale": "en-US",
-												"title": "Education",
-												"description": "For academic institutions",
-												"url": "https://www.cloudflare.com/education/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "3P5hryW8teFIhTBtVHyZ05",
-												"locale": "en-US",
-												"title": "Banking",
-												"description": "For banking and financial services",
-												"url": "https://www.cloudflare.com/banking-and-financial-services/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "6IummeX4qCZp9zdiF0LDx6",
-												"locale": "en-US",
-												"title": "Gaming",
-												"description": "For gaming services or platforms",
-												"url": "https://www.cloudflare.com/gaming/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "5kAm4NAMmuSU9u8BqBe6ge",
-												"locale": "en-US",
-												"title": "Healthcare",
-												"description": "For medical institutions or services",
-												"url": "https://www.cloudflare.com/healthcare/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "6snfvwL7515BIvzSgTgCRk",
-												"locale": "en-US",
-												"title": "Media & entertainment",
-												"description": "For media services",
-												"url": "https://www.cloudflare.com/media-and-entertainment/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "5m2hwZbpy3ZLnMs8RCC5T9",
-												"locale": "en-US",
-												"title": "Non-profit",
-												"description": "For philanthropic organizations",
-												"url": "https://www.cloudflare.com/galileo/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": true,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "4qrmL7uD3goDSRyNwNKdky",
-												"locale": "en-US",
-												"title": "Public sector",
-												"description": "For government organizations",
-												"url": "https://www.cloudflare.com/public-sector/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "22EyQRZFBFVZUl5fFpZB55",
-												"locale": "en-US",
-												"title": "SaaS",
-												"description": "For software services",
-												"url": "https://www.cloudflare.com/saas/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
 											}
 										],
 										"navIcon": null,
@@ -2648,6 +2526,12 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "vLf0656jovgf4zIiketra",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span> Centralize, secure, and observe all MCP traffic in your organization </span>\n\n        <a class=\"link-helper\" href=\"https://blog.cloudflare.com/zero-trust-mcp-server-portals/\">\n           <strong>Read blog ></strong>\n        </a>\n    </div>\n</section>",
+						"htmlId": null
+					},
 					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
