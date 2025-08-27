@@ -159,6 +159,78 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"bgp": {
+															"properties": {
+																"customer_asn": {
+																	"description": "ASN used on the customer end of the BGP session",
+																	"format": "int32",
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"extra_prefixes": {
+																	"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																	"items": {
+																		"format": "cidr",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"md5_key": {
+																	"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"customer_asn"
+															],
+															"type": "object"
+														},
+														"bgp_status": {
+															"properties": {
+																"bgp_state": {
+																	"type": "string"
+																},
+																"cf_speaker_ip": {
+																	"format": "ipv4",
+																	"type": "string"
+																},
+																"cf_speaker_port": {
+																	"maximum": 65535,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"customer_speaker_ip": {
+																	"format": "ipv4",
+																	"type": "string"
+																},
+																"customer_speaker_port": {
+																	"maximum": 65535,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"state": {
+																	"enum": [
+																		"BGP_DOWN",
+																		"BGP_UP",
+																		"BGP_ESTABLISHING"
+																	],
+																	"type": "string"
+																},
+																"tcp_established": {
+																	"type": "boolean"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"state",
+																"tcp_established",
+																"updated_at"
+															],
+															"type": "object"
+														},
 														"cloudflare_endpoint": {
 															"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
 															"example": "203.0.113.1",
@@ -452,6 +524,78 @@
 																	"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
 																	"example": true,
 																	"type": "boolean"
+																},
+																"bgp": {
+																	"properties": {
+																		"customer_asn": {
+																			"description": "ASN used on the customer end of the BGP session",
+																			"format": "int32",
+																			"minimum": 0,
+																			"type": "integer"
+																		},
+																		"extra_prefixes": {
+																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"items": {
+																				"format": "cidr",
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"md5_key": {
+																			"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"customer_asn"
+																	],
+																	"type": "object"
+																},
+																"bgp_status": {
+																	"properties": {
+																		"bgp_state": {
+																			"type": "string"
+																		},
+																		"cf_speaker_ip": {
+																			"format": "ipv4",
+																			"type": "string"
+																		},
+																		"cf_speaker_port": {
+																			"maximum": 65535,
+																			"minimum": 1,
+																			"type": "integer"
+																		},
+																		"customer_speaker_ip": {
+																			"format": "ipv4",
+																			"type": "string"
+																		},
+																		"customer_speaker_port": {
+																			"maximum": 65535,
+																			"minimum": 1,
+																			"type": "integer"
+																		},
+																		"state": {
+																			"enum": [
+																				"BGP_DOWN",
+																				"BGP_UP",
+																				"BGP_ESTABLISHING"
+																			],
+																			"type": "string"
+																		},
+																		"tcp_established": {
+																			"type": "boolean"
+																		},
+																		"updated_at": {
+																			"format": "date-time",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"state",
+																		"tcp_established",
+																		"updated_at"
+																	],
+																	"type": "object"
 																},
 																"cloudflare_endpoint": {
 																	"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
@@ -877,6 +1021,78 @@
 																"example": true,
 																"type": "boolean"
 															},
+															"bgp": {
+																"properties": {
+																	"customer_asn": {
+																		"description": "ASN used on the customer end of the BGP session",
+																		"format": "int32",
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"extra_prefixes": {
+																		"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																		"items": {
+																			"format": "cidr",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"md5_key": {
+																		"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"customer_asn"
+																],
+																"type": "object"
+															},
+															"bgp_status": {
+																"properties": {
+																	"bgp_state": {
+																		"type": "string"
+																	},
+																	"cf_speaker_ip": {
+																		"format": "ipv4",
+																		"type": "string"
+																	},
+																	"cf_speaker_port": {
+																		"maximum": 65535,
+																		"minimum": 1,
+																		"type": "integer"
+																	},
+																	"customer_speaker_ip": {
+																		"format": "ipv4",
+																		"type": "string"
+																	},
+																	"customer_speaker_port": {
+																		"maximum": 65535,
+																		"minimum": 1,
+																		"type": "integer"
+																	},
+																	"state": {
+																		"enum": [
+																			"BGP_DOWN",
+																			"BGP_UP",
+																			"BGP_ESTABLISHING"
+																		],
+																		"type": "string"
+																	},
+																	"tcp_established": {
+																		"type": "boolean"
+																	},
+																	"updated_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"state",
+																	"tcp_established",
+																	"updated_at"
+																],
+																"type": "object"
+															},
 															"cloudflare_endpoint": {
 																"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
 																"example": "203.0.113.1",
@@ -1168,6 +1384,78 @@
 																		"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
 																		"example": true,
 																		"type": "boolean"
+																	},
+																	"bgp": {
+																		"properties": {
+																			"customer_asn": {
+																				"description": "ASN used on the customer end of the BGP session",
+																				"format": "int32",
+																				"minimum": 0,
+																				"type": "integer"
+																			},
+																			"extra_prefixes": {
+																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																				"items": {
+																					"format": "cidr",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"md5_key": {
+																				"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"customer_asn"
+																		],
+																		"type": "object"
+																	},
+																	"bgp_status": {
+																		"properties": {
+																			"bgp_state": {
+																				"type": "string"
+																			},
+																			"cf_speaker_ip": {
+																				"format": "ipv4",
+																				"type": "string"
+																			},
+																			"cf_speaker_port": {
+																				"maximum": 65535,
+																				"minimum": 1,
+																				"type": "integer"
+																			},
+																			"customer_speaker_ip": {
+																				"format": "ipv4",
+																				"type": "string"
+																			},
+																			"customer_speaker_port": {
+																				"maximum": 65535,
+																				"minimum": 1,
+																				"type": "integer"
+																			},
+																			"state": {
+																				"enum": [
+																					"BGP_DOWN",
+																					"BGP_UP",
+																					"BGP_ESTABLISHING"
+																				],
+																				"type": "string"
+																			},
+																			"tcp_established": {
+																				"type": "boolean"
+																			},
+																			"updated_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"state",
+																			"tcp_established",
+																			"updated_at"
+																		],
+																		"type": "object"
 																	},
 																	"cloudflare_endpoint": {
 																		"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
@@ -1607,6 +1895,78 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"bgp": {
+															"properties": {
+																"customer_asn": {
+																	"description": "ASN used on the customer end of the BGP session",
+																	"format": "int32",
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"extra_prefixes": {
+																	"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																	"items": {
+																		"format": "cidr",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"md5_key": {
+																	"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"customer_asn"
+															],
+															"type": "object"
+														},
+														"bgp_status": {
+															"properties": {
+																"bgp_state": {
+																	"type": "string"
+																},
+																"cf_speaker_ip": {
+																	"format": "ipv4",
+																	"type": "string"
+																},
+																"cf_speaker_port": {
+																	"maximum": 65535,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"customer_speaker_ip": {
+																	"format": "ipv4",
+																	"type": "string"
+																},
+																"customer_speaker_port": {
+																	"maximum": 65535,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"state": {
+																	"enum": [
+																		"BGP_DOWN",
+																		"BGP_UP",
+																		"BGP_ESTABLISHING"
+																	],
+																	"type": "string"
+																},
+																"tcp_established": {
+																	"type": "boolean"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"state",
+																"tcp_established",
+																"updated_at"
+															],
+															"type": "object"
+														},
 														"cloudflare_endpoint": {
 															"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
 															"example": "203.0.113.1",
@@ -1896,6 +2256,78 @@
 																	"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
 																	"example": true,
 																	"type": "boolean"
+																},
+																"bgp": {
+																	"properties": {
+																		"customer_asn": {
+																			"description": "ASN used on the customer end of the BGP session",
+																			"format": "int32",
+																			"minimum": 0,
+																			"type": "integer"
+																		},
+																		"extra_prefixes": {
+																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"items": {
+																				"format": "cidr",
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"md5_key": {
+																			"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"customer_asn"
+																	],
+																	"type": "object"
+																},
+																"bgp_status": {
+																	"properties": {
+																		"bgp_state": {
+																			"type": "string"
+																		},
+																		"cf_speaker_ip": {
+																			"format": "ipv4",
+																			"type": "string"
+																		},
+																		"cf_speaker_port": {
+																			"maximum": 65535,
+																			"minimum": 1,
+																			"type": "integer"
+																		},
+																		"customer_speaker_ip": {
+																			"format": "ipv4",
+																			"type": "string"
+																		},
+																		"customer_speaker_port": {
+																			"maximum": 65535,
+																			"minimum": 1,
+																			"type": "integer"
+																		},
+																		"state": {
+																			"enum": [
+																				"BGP_DOWN",
+																				"BGP_UP",
+																				"BGP_ESTABLISHING"
+																			],
+																			"type": "string"
+																		},
+																		"tcp_established": {
+																			"type": "boolean"
+																		},
+																		"updated_at": {
+																			"format": "date-time",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"state",
+																		"tcp_established",
+																		"updated_at"
+																	],
+																	"type": "object"
 																},
 																"cloudflare_endpoint": {
 																	"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
@@ -2216,6 +2648,32 @@
 						"allOf": [
 							{
 								"properties": {
+									"bgp": {
+										"properties": {
+											"customer_asn": {
+												"description": "ASN used on the customer end of the BGP session",
+												"format": "int32",
+												"minimum": 0,
+												"type": "integer"
+											},
+											"extra_prefixes": {
+												"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+												"items": {
+													"format": "cidr",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"md5_key": {
+												"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"customer_asn"
+										],
+										"type": "object"
+									},
 									"cloudflare_endpoint": {
 										"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
 										"example": "203.0.113.1",
@@ -2463,6 +2921,78 @@
 													"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
 													"example": true,
 													"type": "boolean"
+												},
+												"bgp": {
+													"properties": {
+														"customer_asn": {
+															"description": "ASN used on the customer end of the BGP session",
+															"format": "int32",
+															"minimum": 0,
+															"type": "integer"
+														},
+														"extra_prefixes": {
+															"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+															"items": {
+																"format": "cidr",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"md5_key": {
+															"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+															"type": "string"
+														}
+													},
+													"required": [
+														"customer_asn"
+													],
+													"type": "object"
+												},
+												"bgp_status": {
+													"properties": {
+														"bgp_state": {
+															"type": "string"
+														},
+														"cf_speaker_ip": {
+															"format": "ipv4",
+															"type": "string"
+														},
+														"cf_speaker_port": {
+															"maximum": 65535,
+															"minimum": 1,
+															"type": "integer"
+														},
+														"customer_speaker_ip": {
+															"format": "ipv4",
+															"type": "string"
+														},
+														"customer_speaker_port": {
+															"maximum": 65535,
+															"minimum": 1,
+															"type": "integer"
+														},
+														"state": {
+															"enum": [
+																"BGP_DOWN",
+																"BGP_UP",
+																"BGP_ESTABLISHING"
+															],
+															"type": "string"
+														},
+														"tcp_established": {
+															"type": "boolean"
+														},
+														"updated_at": {
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"required": [
+														"state",
+														"tcp_established",
+														"updated_at"
+													],
+													"type": "object"
 												},
 												"cloudflare_endpoint": {
 													"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
@@ -2748,6 +3278,78 @@
 															"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
 															"example": true,
 															"type": "boolean"
+														},
+														"bgp": {
+															"properties": {
+																"customer_asn": {
+																	"description": "ASN used on the customer end of the BGP session",
+																	"format": "int32",
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"extra_prefixes": {
+																	"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																	"items": {
+																		"format": "cidr",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"md5_key": {
+																	"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"customer_asn"
+															],
+															"type": "object"
+														},
+														"bgp_status": {
+															"properties": {
+																"bgp_state": {
+																	"type": "string"
+																},
+																"cf_speaker_ip": {
+																	"format": "ipv4",
+																	"type": "string"
+																},
+																"cf_speaker_port": {
+																	"maximum": 65535,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"customer_speaker_ip": {
+																	"format": "ipv4",
+																	"type": "string"
+																},
+																"customer_speaker_port": {
+																	"maximum": 65535,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"state": {
+																	"enum": [
+																		"BGP_DOWN",
+																		"BGP_UP",
+																		"BGP_ESTABLISHING"
+																	],
+																	"type": "string"
+																},
+																"tcp_established": {
+																	"type": "boolean"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"state",
+																"tcp_established",
+																"updated_at"
+															],
+															"type": "object"
 														},
 														"cloudflare_endpoint": {
 															"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
@@ -3615,6 +4217,78 @@
 																"example": true,
 																"type": "boolean"
 															},
+															"bgp": {
+																"properties": {
+																	"customer_asn": {
+																		"description": "ASN used on the customer end of the BGP session",
+																		"format": "int32",
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"extra_prefixes": {
+																		"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																		"items": {
+																			"format": "cidr",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"md5_key": {
+																		"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"customer_asn"
+																],
+																"type": "object"
+															},
+															"bgp_status": {
+																"properties": {
+																	"bgp_state": {
+																		"type": "string"
+																	},
+																	"cf_speaker_ip": {
+																		"format": "ipv4",
+																		"type": "string"
+																	},
+																	"cf_speaker_port": {
+																		"maximum": 65535,
+																		"minimum": 1,
+																		"type": "integer"
+																	},
+																	"customer_speaker_ip": {
+																		"format": "ipv4",
+																		"type": "string"
+																	},
+																	"customer_speaker_port": {
+																		"maximum": 65535,
+																		"minimum": 1,
+																		"type": "integer"
+																	},
+																	"state": {
+																		"enum": [
+																			"BGP_DOWN",
+																			"BGP_UP",
+																			"BGP_ESTABLISHING"
+																		],
+																		"type": "string"
+																	},
+																	"tcp_established": {
+																		"type": "boolean"
+																	},
+																	"updated_at": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"state",
+																	"tcp_established",
+																	"updated_at"
+																],
+																"type": "object"
+															},
 															"cloudflare_endpoint": {
 																"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
 																"example": "203.0.113.1",
@@ -3910,6 +4584,78 @@
 																		"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
 																		"example": true,
 																		"type": "boolean"
+																	},
+																	"bgp": {
+																		"properties": {
+																			"customer_asn": {
+																				"description": "ASN used on the customer end of the BGP session",
+																				"format": "int32",
+																				"minimum": 0,
+																				"type": "integer"
+																			},
+																			"extra_prefixes": {
+																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																				"items": {
+																					"format": "cidr",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"md5_key": {
+																				"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"customer_asn"
+																		],
+																		"type": "object"
+																	},
+																	"bgp_status": {
+																		"properties": {
+																			"bgp_state": {
+																				"type": "string"
+																			},
+																			"cf_speaker_ip": {
+																				"format": "ipv4",
+																				"type": "string"
+																			},
+																			"cf_speaker_port": {
+																				"maximum": 65535,
+																				"minimum": 1,
+																				"type": "integer"
+																			},
+																			"customer_speaker_ip": {
+																				"format": "ipv4",
+																				"type": "string"
+																			},
+																			"customer_speaker_port": {
+																				"maximum": 65535,
+																				"minimum": 1,
+																				"type": "integer"
+																			},
+																			"state": {
+																				"enum": [
+																					"BGP_DOWN",
+																					"BGP_UP",
+																					"BGP_ESTABLISHING"
+																				],
+																				"type": "string"
+																			},
+																			"tcp_established": {
+																				"type": "boolean"
+																			},
+																			"updated_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"state",
+																			"tcp_established",
+																			"updated_at"
+																		],
+																		"type": "object"
 																	},
 																	"cloudflare_endpoint": {
 																		"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
@@ -4239,6 +4985,32 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"bgp": {
+								"properties": {
+									"customer_asn": {
+										"description": "ASN used on the customer end of the BGP session",
+										"format": "int32",
+										"minimum": 0,
+										"type": "integer"
+									},
+									"extra_prefixes": {
+										"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+										"items": {
+											"format": "cidr",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"md5_key": {
+										"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+										"type": "string"
+									}
+								},
+								"required": [
+									"customer_asn"
+								],
+								"type": "object"
+							},
 							"cloudflare_endpoint": {
 								"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
 								"example": "203.0.113.1",
@@ -4490,6 +5262,78 @@
 															"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
 															"example": true,
 															"type": "boolean"
+														},
+														"bgp": {
+															"properties": {
+																"customer_asn": {
+																	"description": "ASN used on the customer end of the BGP session",
+																	"format": "int32",
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"extra_prefixes": {
+																	"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																	"items": {
+																		"format": "cidr",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"md5_key": {
+																	"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"customer_asn"
+															],
+															"type": "object"
+														},
+														"bgp_status": {
+															"properties": {
+																"bgp_state": {
+																	"type": "string"
+																},
+																"cf_speaker_ip": {
+																	"format": "ipv4",
+																	"type": "string"
+																},
+																"cf_speaker_port": {
+																	"maximum": 65535,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"customer_speaker_ip": {
+																	"format": "ipv4",
+																	"type": "string"
+																},
+																"customer_speaker_port": {
+																	"maximum": 65535,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"state": {
+																	"enum": [
+																		"BGP_DOWN",
+																		"BGP_UP",
+																		"BGP_ESTABLISHING"
+																	],
+																	"type": "string"
+																},
+																"tcp_established": {
+																	"type": "boolean"
+																},
+																"updated_at": {
+																	"format": "date-time",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"state",
+																"tcp_established",
+																"updated_at"
+															],
+															"type": "object"
 														},
 														"cloudflare_endpoint": {
 															"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
@@ -4784,6 +5628,78 @@
 																	"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
 																	"example": true,
 																	"type": "boolean"
+																},
+																"bgp": {
+																	"properties": {
+																		"customer_asn": {
+																			"description": "ASN used on the customer end of the BGP session",
+																			"format": "int32",
+																			"minimum": 0,
+																			"type": "integer"
+																		},
+																		"extra_prefixes": {
+																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"items": {
+																				"format": "cidr",
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"md5_key": {
+																			"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"customer_asn"
+																	],
+																	"type": "object"
+																},
+																"bgp_status": {
+																	"properties": {
+																		"bgp_state": {
+																			"type": "string"
+																		},
+																		"cf_speaker_ip": {
+																			"format": "ipv4",
+																			"type": "string"
+																		},
+																		"cf_speaker_port": {
+																			"maximum": 65535,
+																			"minimum": 1,
+																			"type": "integer"
+																		},
+																		"customer_speaker_ip": {
+																			"format": "ipv4",
+																			"type": "string"
+																		},
+																		"customer_speaker_port": {
+																			"maximum": 65535,
+																			"minimum": 1,
+																			"type": "integer"
+																		},
+																		"state": {
+																			"enum": [
+																				"BGP_DOWN",
+																				"BGP_UP",
+																				"BGP_ESTABLISHING"
+																			],
+																			"type": "string"
+																		},
+																		"tcp_established": {
+																			"type": "boolean"
+																		},
+																		"updated_at": {
+																			"format": "date-time",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"state",
+																		"tcp_established",
+																		"updated_at"
+																	],
+																	"type": "object"
 																},
 																"cloudflare_endpoint": {
 																	"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
