@@ -19,49 +19,45 @@
   </p>
 </p>
 
-
-
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
 
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Installation](#installation)
-* [Usage](#usage)
-* [About](#about)
-
-
+- [About the Project](#about-the-project)
+  - [Built With](#built-with)
+- [Installation](#installation)
+- [Usage](#usage)
+- [About](#about)
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 A real-time video and audio SDK for building custom, collaborative communication experiences.
 
 ### Built With
 
-* [Cloudflare](https://cloudflare.com)
-* [Typescript](https://typescriptlang.org)
-
+- [Cloudflare](https://cloudflare.com)
+- [Typescript](https://typescriptlang.org)
 
 <!-- INSTALLATION -->
+
 ## Installation
 
 ```sh
 npm install @cloudflare/realtimekit-agents
 ```
 
-
-
 <!-- USAGE EXAMPLES -->
+
 ## Usage
 
 ### Pre-requisite
+
 - env.ACCOUNT_ID - Your Cloudflare accountID
 - env.CF_TOKEN - A Cloudflare token with Realtime Admin scope
 
 ```ts
-
 import { DeepgramSTT, TextComponent, RealtimeKitTransport, ElevenLabsTTS, RealtimeAgent } from '@cloudflare/realtime-agents';
 
 class MyTextProcessor extends TextComponent {
@@ -90,7 +86,6 @@ export class MyAgent extends RealtimeAgent<Env> {
 		const textProcessor = new MyTextProcessor(this.env);
 		// Construct a Meeting object to join the RTK meeting
 		const rtkTransport = new RealtimeKitTransport(meetingId, authToken);
-		const { meeting } = rtkTransport;
 
 		// Construct a pipeline to take in meeting audio, transcribe it using
 		// Deepgram, and pass our generated responses through ElevenLabs to
@@ -108,6 +103,8 @@ export class MyAgent extends RealtimeAgent<Env> {
 			accountId,
 			apiToken,
 		);
+
+		const { meeting } = rtkTransport;
 
 		// The RTK meeting object is accessible to us, so we can register handlers
 		// on various events like participant joins/leaves, chat, etc.
@@ -167,6 +164,4 @@ export default {
 		return new Response(null, { status: 404 });
 	},
 } satisfies ExportedHandler<Env>;
-
-
 ```
