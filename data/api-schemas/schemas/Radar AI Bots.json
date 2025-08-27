@@ -134,8 +134,7 @@
 				"schema": {
 					"description": "Filters results by vertical.",
 					"items": {
-						"maxLength": 100,
-						"pattern": "^[ -~]*$",
+						"maxLength": 2000,
 						"type": "string"
 					},
 					"type": "array"
@@ -148,8 +147,7 @@
 				"schema": {
 					"description": "Filters results by industry.",
 					"items": {
-						"maxLength": 100,
-						"pattern": "^[ -~]*$",
+						"maxLength": 2000,
 						"type": "string"
 					},
 					"type": "array"
@@ -935,8 +933,7 @@
 				"schema": {
 					"description": "Filters results by industry.",
 					"items": {
-						"maxLength": 100,
-						"pattern": "^[ -~]*$",
+						"maxLength": 2000,
 						"type": "string"
 					},
 					"type": "array"
@@ -949,8 +946,7 @@
 				"schema": {
 					"description": "Filters results by vertical.",
 					"items": {
-						"maxLength": 100,
-						"pattern": "^[ -~]*$",
+						"maxLength": 2000,
 						"type": "string"
 					},
 					"type": "array"
@@ -1395,8 +1391,7 @@
 				"schema": {
 					"description": "Filters results by industry.",
 					"items": {
-						"maxLength": 100,
-						"pattern": "^[ -~]*$",
+						"maxLength": 2000,
 						"type": "string"
 					},
 					"type": "array"
@@ -1409,8 +1404,7 @@
 				"schema": {
 					"description": "Filters results by vertical.",
 					"items": {
-						"maxLength": 100,
-						"pattern": "^[ -~]*$",
+						"maxLength": 2000,
 						"type": "string"
 					},
 					"type": "array"

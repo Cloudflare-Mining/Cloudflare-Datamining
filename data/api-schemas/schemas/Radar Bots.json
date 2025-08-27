@@ -60,6 +60,19 @@
 				}
 			},
 			{
+				"description": "Filters results by bot kind.",
+				"in": "query",
+				"name": "kind",
+				"schema": {
+					"description": "Filters results by bot kind.",
+					"enum": [
+						"AGENT",
+						"BOT"
+					],
+					"type": "string"
+				}
+			},
+			{
 				"description": "Filters results by bot verification status.",
 				"in": "query",
 				"name": "botVerificationStatus",
@@ -107,6 +120,11 @@
 														"example": "OpenAI/ChatGPT's web crawler",
 														"type": "string"
 													},
+													"kind": {
+														"description": "The kind of the bot.",
+														"example": "AGENT",
+														"type": "string"
+													},
 													"name": {
 														"description": "The name of the bot.",
 														"example": "GPTBot",
@@ -135,6 +153,7 @@
 													"slug",
 													"name",
 													"description",
+													"kind",
 													"operator",
 													"category",
 													"userAgentPatterns"
@@ -275,6 +294,11 @@
 													"example": "OpenAI/ChatGPT's web crawler",
 													"type": "string"
 												},
+												"kind": {
+													"description": "The kind of the bot.",
+													"example": "AGENT",
+													"type": "string"
+												},
 												"name": {
 													"description": "The name of the bot.",
 													"example": "GPTBot",
@@ -316,6 +340,7 @@
 												"slug",
 												"name",
 												"description",
+												"kind",
 												"operator",
 												"operatorUrl",
 												"category",
@@ -400,6 +425,7 @@
 					"description": "Specifies the attribute by which to group the results.",
 					"enum": [
 						"BOT",
+						"BOT_KIND",
 						"BOT_OPERATOR",
 						"BOT_CATEGORY"
 					],
@@ -561,6 +587,22 @@
 							"AI_ASSISTANT",
 							"AI_SEARCH",
 							"ARCHIVER"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by bot kind.",
+				"in": "query",
+				"name": "botKind",
+				"schema": {
+					"description": "Filters results by bot kind.",
+					"items": {
+						"enum": [
+							"AGENT",
+							"BOT"
 						],
 						"type": "string"
 					},
@@ -1011,6 +1053,22 @@
 				}
 			},
 			{
+				"description": "Filters results by bot kind.",
+				"in": "query",
+				"name": "botKind",
+				"schema": {
+					"description": "Filters results by bot kind.",
+					"items": {
+						"enum": [
+							"AGENT",
+							"BOT"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Filters results by bot verification status (Verified vs. Unverified).",
 				"in": "query",
 				"name": "botVerificationStatus",
@@ -1317,6 +1375,7 @@
 					"description": "Specifies the attribute by which to group the results.",
 					"enum": [
 						"BOT",
+						"BOT_KIND",
 						"BOT_OPERATOR",
 						"BOT_CATEGORY"
 					],
@@ -1494,6 +1553,22 @@
 							"AI_ASSISTANT",
 							"AI_SEARCH",
 							"ARCHIVER"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by bot kind.",
+				"in": "query",
+				"name": "botKind",
+				"schema": {
+					"description": "Filters results by bot kind.",
+					"items": {
+						"enum": [
+							"AGENT",
+							"BOT"
 						],
 						"type": "string"
 					},
