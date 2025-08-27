@@ -17,7 +17,7 @@
 	</blockquote>
 	<p>The Phoenix model is trained from the ground up by Leonardo, excelling at things like text rendering and prompt coherence. The full image generation request took 4.89s end-to-end for a 25 step, 1024x1024 image.</p>
 	<pre class="language-shell"><code class="language-shell">curl --request POST \
-  --url https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/leonardo/draco-1.0 \
+  --url https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/leonardo/phoenix-1.0 \
   --header 'Authorization: Bearer {TOKEN}' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -83,17 +83,9 @@ const res = await env.AI.run("@cf/deepgram/nova-3", {
   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/deepgram/nova-3?detect_language=true' \
   --header 'Authorization: Bearer {TOKEN}' \
   --header 'Content-Type: audio/mpeg' \
-  --data-binary @/path/to/audio.mp3
-</code></pre>
-	<p>As well, we’ve added WebSocket support to the Deepgram models, which you can use to keep a connection to the inference server live and use it for bi-directional input and output. To use the Nova model with WebSocket support, it would look like this:</p>
-	<pre class="language-Shell"><code class="language-Shell">curl --request POST \
-  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/deepgram/nova-3?detect_language=true' \
-  --header 'Authorization: Bearer {TOKEN}' \
-  --header 'Content-Type: audio/mpeg' \
   --data-binary @/path/to/audio.mp3</code></pre>
-	<p>As well, we’ve added WebSocket support to the Deepgram models, which you can use to keep a connection to the inference server live and use it for bi-directional input and output. To use the Nova model with WebSocket support, check out our <a href="https://developers.cloudflare.com/workers-ai/models/nova-3"><u>Developer Docs</u></a>.
-
-		All the pieces work together so that you can:</p>
+	<p>As well, we’ve added WebSocket support to the Deepgram models, which you can use to keep a connection to the inference server live and use it for bi-directional input and output. To use the Nova model with WebSocket support, check out our <a href="https://developers.cloudflare.com/workers-ai/models/nova-3"><u>Developer Docs</u></a>.</p>
+	<p>All the pieces work together so that you can:</p>
 	<ol>
 		<li>
 			<p><b>Capture audio</b> with Cloudflare Realtime from any WebRTC source</p>
