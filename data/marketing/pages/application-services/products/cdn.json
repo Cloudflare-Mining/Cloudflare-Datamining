@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-12-18T00:21:21.097Z",
-					"updatedAt": "2025-08-06T00:16:15.029Z"
+					"updatedAt": "2025-08-26T22:20:16.609Z"
 				},
 				"contentfulId": "7sWlrqu5Uc4AOaoaWyAy2C",
 				"contentTypeId": "page",
@@ -63,6 +63,12 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "5ad85dPiHgxhhkv35vQ5iw",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Webinar: Join our expert-led webinar on connectivity cloud and AI scaling.</span>\n\n        <a class=\"link-helper\" href=\"https://cloudflare.registration.goldcast.io/webinar/707772ec-3f24-4bd6-92ea-8475f7dba37f\">\n           <strong>Sign up now ></strong>\n        </a>\n    </div>",
+						"htmlId": null
+					},
 					{
 						"contentfulId": "5bQZhLHjp9twZfmitmiEFQ",
 						"contentTypeId": "bladeHeroAnimation",
@@ -4737,6 +4743,251 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "24mKOPtQ7RQNN29wR3JDI6",
+						"bladeName": "CDN FAQs",
+						"title": "CDN FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6DVLQMbRqXZJYHBH7XC0Br",
+								"title": "What is the Cloudflare CDN?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Cloudflare CDN is a global, enterprise-grade content delivery network that optimizes static and dynamic content for various devices, browsers, and bandwidth needs. The Cloudflare CDN makes web applications faster, no matter where its users are located.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6BelT34EhmND5M3hewI01X",
+								"title": "How does the Cloudflare CDN improve application performance?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Cloudflare CDN enhances performance and user experience by serving content to end users from the closest possible location. The Cloudflare network has locations within approximately 50 milliseconds of about 95% of the Internet-connected population, which means content can reach end users in less than the blink of an eye. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2JpvLEc7G0QRqYsdm0mIE6",
+								"title": "How does Cloudflare CDN help reduce bandwidth and egress costs?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's CDN helps lower hosting fees by reducing the number of requests to origin servers, minimizing bandwidth usage. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6YdlGTOQYgVjSSt1Mwk0x7",
+								"title": "What is the scale of Cloudflare's global network?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's global network spans over %{DataCenterCount} cities worldwide, supporting massive-scale content delivery. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5r9KJiPn6RqytJZIvFyeOs",
+								"title": "What are some key use cases for the Cloudflare CDN?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Cloudflare CDN improves reliability and performance even during traffic surges, enhances the user experience through simplified deployments, and lowers operational costs by eliminating unnecessary fees and backend costs. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4E4XRFiAvsMMDsBXbY5X8x",
+								"title": "What do analysts think of the Cloudflare CDN?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare was named a \"Leader\" in the 2024 IDC MarketScape for Worldwide Edge Delivery Services. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4sOKO4mwezxzRaS6kEZYNs",
+								"title": "How does Cloudflare ensure content availability and redundancy?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare runs every service on every server in all its data centers, ensuring that content is delivered to end users from the closest available location. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,

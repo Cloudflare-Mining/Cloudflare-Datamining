@@ -62,7 +62,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-09-25T18:33:38.335Z",
-					"updatedAt": "2025-06-11T19:34:55.414Z"
+					"updatedAt": "2025-08-26T22:24:45.914Z"
 				},
 				"contentfulId": "6uaQczf0ul5MHIZFti7zy1",
 				"contentTypeId": "page",
@@ -73,6 +73,12 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "5ad85dPiHgxhhkv35vQ5iw",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Webinar: Join our expert-led webinar on connectivity cloud and AI scaling.</span>\n\n        <a class=\"link-helper\" href=\"https://cloudflare.registration.goldcast.io/webinar/707772ec-3f24-4bd6-92ea-8475f7dba37f\">\n           <strong>Sign up now ></strong>\n        </a>\n    </div>",
+						"htmlId": null
+					},
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "4YU6sa1PUPNZla9pIqx1GD",
