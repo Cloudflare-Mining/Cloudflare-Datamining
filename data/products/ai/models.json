@@ -1,5 +1,34 @@
 [
 	{
+		"id": "fe8904cf-e20e-4884-b829-ed7cec0a01cb",
+		"source": 1,
+		"name": "@cf/pipecat-ai/smart-turn-v2",
+		"description": "An open source, community-driven, native audio turn detection model in 2nd version",
+		"task": {
+			"id": "ccb1ca5a-043d-41a7-8a3b-61017b2796fd",
+			"name": "Dumb Pipe",
+			"description": "Internal - Dumb Pipe models don't use tensors"
+		},
+		"created_at": "2025-08-04 10:08:04.219",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "async_queue",
+				"value": "true"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per audio minute",
+						"price": 0.00034,
+						"currency": "USD"
+					}
+				]
+			}
+		]
+	},
+	{
 		"id": "f9f2250b-1048-4a52-9910-d0bf976616a1",
 		"source": 1,
 		"name": "@cf/openai/gpt-oss-120b",
@@ -701,6 +730,35 @@
 		]
 	},
 	{
+		"id": "a226909f-eef8-4265-a3a0-90db0422762e",
+		"source": 1,
+		"name": "@cf/deepgram/nova-3",
+		"description": "Transcribe audio using Deepgram’s speech-to-text model",
+		"task": {
+			"id": "dfce1c48-2a81-462e-a7fd-de97ce985207",
+			"name": "Automatic Speech Recognition",
+			"description": "Automatic speech recognition (ASR) models convert a speech signal, typically an audio input, to text."
+		},
+		"created_at": "2025-06-05 16:05:15.199",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "async_queue",
+				"value": "true"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per audio minute",
+						"price": 0.0052,
+						"currency": "USD"
+					}
+				]
+			}
+		]
+	},
+	{
 		"id": "9e087485-23dc-47fa-997d-f5bfafc0c7cc",
 		"source": 1,
 		"name": "@cf/black-forest-labs/flux-1-schnell",
@@ -1111,6 +1169,36 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/Lykon/DreamShaper"
+			}
+		]
+	},
+	{
+		"id": "724608fa-983e-495d-b95c-340d6b7e78be",
+		"source": 1,
+		"name": "@cf/leonardo/phoenix-1.0",
+		"description": "Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional prompt adherence and coherent text.",
+		"task": {
+			"id": "3d6e1f35-341b-4915-a6c8-9a7142a9033a",
+			"name": "Text-to-Image",
+			"description": "Generates images from input text. These models can be used to generate and modify images based on text prompts."
+		},
+		"created_at": "2025-08-25 18:12:18.073",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per 512 by 512 tile",
+						"price": 0.0058,
+						"currency": "USD"
+					},
+					{
+						"unit": "per step",
+						"price": 0.00011,
+						"currency": "USD"
+					}
+				]
 			}
 		]
 	},
@@ -1765,6 +1853,35 @@
 		]
 	},
 	{
+		"id": "1f55679f-009e-4456-aa4f-049a62b4b6a0",
+		"source": 1,
+		"name": "@cf/deepgram/aura-1",
+		"description": "Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.",
+		"task": {
+			"id": "b52660a1-9a95-4ab2-8b1d-f232be34604a",
+			"name": "Text-to-Speech",
+			"description": "Text-to-Speech (TTS) is the task of generating natural sounding speech given text input. TTS models can be extended to have a single model that generates speech for multiple speakers and multiple languages."
+		},
+		"created_at": "2025-08-27 01:18:18.880",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "async_queue",
+				"value": "true"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per audio minute",
+						"price": 0,
+						"currency": "USD"
+					}
+				]
+			}
+		]
+	},
+	{
 		"id": "1dc9e589-df6b-4e66-ac9f-ceff42d64983",
 		"source": 1,
 		"name": "@cf/defog/sqlcoder-7b-2",
@@ -1998,6 +2115,36 @@
 			{
 				"property_id": "terms",
 				"value": "https://ai.google.dev/gemma/terms"
+			}
+		]
+	},
+	{
+		"id": "0e372c11-8720-46c9-a02d-666188a22dae",
+		"source": 1,
+		"name": "@cf/leonardo/lucid-origin",
+		"description": "Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive model to date. Whether you're generating images with sharp graphic design, stunning full-HD renders, or highly specific creative direction, it adheres closely to your prompts, renders text with accuracy, and supports a wide array of visual styles and aesthetics – from stylized concept art to crisp product mockups.\n",
+		"task": {
+			"id": "3d6e1f35-341b-4915-a6c8-9a7142a9033a",
+			"name": "Text-to-Image",
+			"description": "Generates images from input text. These models can be used to generate and modify images based on text prompts."
+		},
+		"created_at": "2025-08-25 19:21:28.770",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per 512 by 512 tile",
+						"price": 0.007,
+						"currency": "USD"
+					},
+					{
+						"unit": "per step",
+						"price": 0.00013,
+						"currency": "USD"
+					}
+				]
 			}
 		]
 	},
