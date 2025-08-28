@@ -37,7 +37,19 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "API Anomaly Detection",
+					"metaDescription": "Cloudflare",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null,
+					"author": []
+				},
 				"sys": {
 					"createdAt": "2024-03-04T16:57:09.966Z",
 					"updatedAt": "2024-04-27T00:11:30.710Z"
@@ -60,7 +72,32 @@
 						"buttonText": null,
 						"buttonColor": "orange",
 						"htmlId": null,
-						"marketoEmbeddedForm": null,
+						"marketoEmbeddedForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "58H7GCwYbmaF4N5Jxxz6E5",
+							"bladeName": "[BETA] Q1'24 WEB - GBL - API Anomaly Detection - Marketo Form",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Product Interest/Beta",
+							"marketoFormLeadSourceDetail": "[BETA] Q1'24 WEB - GBL - API Anomaly Detection",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": false,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": "Sign Up",
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
 						"title": "API Anomaly Detection",
 						"subtitle": "Protect your APIs with defensive AI",
 						"copy": "APIs power the modern web, comprising 57% of dynamic traffic across the Cloudflare network. Because APIs offer easy programmatic access by design and are growing in popularity, threat actors increasingly target APIs to damage applications and exfiltrate data. \n\nTo further protect your APIs, Cloudflare is announcing the development of API Anomaly Detection for API Gateway. API Anomaly Detection is an ML-powered feature that analyzes client API requests, then creates a model of what expected sequences of requests look like. Future requests are then benchmarked against the model to enforce expected API request behavior and identify attacks. \n\nSign up today to be included in the beta group for API Anomaly Detection!",
