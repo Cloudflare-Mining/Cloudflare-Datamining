@@ -7912,6 +7912,7 @@ export declare namespace TailStream {
   }
   interface Onset {
     readonly type: "onset";
+    readonly attributes: Attribute[];
     readonly dispatchNamespace?: string;
     readonly entrypoint?: string;
     readonly executionModel: string;
