@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ai-audit-enforcing-robots-txt">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/ai-audit-enforcing-robots-txt">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AlV0bx8DC3F63qr5P9tPV/98c5cb89c5595c75c96150204537ee6a/BLOG-2619_1.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Cloudflare’s <a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers"><u>AI Audit</u></a> dashboard allows you to easily understand how AI companies and services access your content. AI Audit gives a summary of request counts broken out by bot, detailed path summaries for more granular insights, and the ability to filter by categories like <b>AI Search</b> or <b>AI Crawler</b>.</p>
+	<p>Cloudflare’s <a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers"><u>AI Crawl Control </u><i><u>(formerly AI Audit)</u></i></a><i> </i>dashboard allows you to easily understand how AI companies and services access your content. AI Crawl Control gives a summary of request counts broken out by bot, detailed path summaries for more granular insights, and the ability to filter by categories like <b>AI Search</b> or <b>AI Crawler</b>.</p>
 	<p>Today, we're going one step further. You can now quickly see which AI services are honoring your robots.txt policies, which aren’t, and then programmatically enforce these policies.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-robots-txt">What is robots.txt?</h3>
@@ -40,7 +40,7 @@ Disallow: /
 		</a>
 	</div>
 	<p>Compliance with the Robots Exclusion Protocol has historically been voluntary.&nbsp;</p>
-	<p>That’s where our new feature comes in. We’ve extended <a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers"><u>AI Audit</u></a> to give our customers both the visibility into how AI services providers honor their robots.txt policies <i>and</i> the ability to enforce those policies at the network level in your <a href="https://developers.cloudflare.com/waf"><u>WAF</u></a>.&nbsp;</p>
+	<p>That’s where our new feature comes in. We’ve extended <a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers"><u>AI Crawl Control</u></a> to give our customers both the visibility into how AI services providers honor their robots.txt policies <i>and</i> the ability to enforce those policies at the network level in your <a href="https://developers.cloudflare.com/waf"><u>WAF</u></a>.&nbsp;</p>
 	<p>Your robots.txt file declares your policy, but now we can help you enforce it. You might even call it … your Robotcop.&nbsp;&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="how-it-works">How it works</h3>
@@ -50,7 +50,7 @@ Disallow: /
 			</svg>
 		</a>
 	</div>
-	<p>AI Audit takes the robots.txt files from your web properties, parses them, and then matches their rules against the AI bot traffic we see for the selected property. The summary table gives you an aggregated view of the number of requests and violations we see for every Bot across all paths. If you hover your mouse over the Robots.txt column, we will show you the defined policies for each Bot in the tooltip. You can also filter by violations from the top of the page.&nbsp;</p>
+	<p>AI Crawl Control takes the robots.txt files from your web properties, parses them, and then matches their rules against the AI bot traffic we see for the selected property. The summary table gives you an aggregated view of the number of requests and violations we see for every Bot across all paths. If you hover your mouse over the Robots.txt column, we will show you the defined policies for each Bot in the tooltip. You can also filter by violations from the top of the page.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/o2hHH0Nm68muUzaxmbx7E/0b9c2acfb33f2ca2d59e00625b4d0fc7/BLOG-2619_2.png" alt="BLOG-2619 2" class="kg-image" width="1999" height="589" loading="lazy">
 	</figure>
@@ -58,7 +58,7 @@ Disallow: /
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1o5sChT2d6QK8JNPejImVk/79590e1721644a2fd067784bb9ce862e/BLOG-2619_3.png" alt="BLOG-2619 3" class="kg-image" width="1999" height="506" loading="lazy">
 	</figure>
-	<p>But that's not all… More importantly, AI Audit allows you to enforce your robots.txt policy at the network level. By pressing the "Enforce robots.txt rules" button on the top of the summary table, we automatically translate the rules defined for AI Bots in your robots.txt into an advanced firewall rule, redirect you to the WAF configuration screen, and allow you to deploy the rule in our network.</p>
+	<p>But that's not all… More importantly, AI Crawl Control allows you to enforce your robots.txt policy at the network level. By pressing the "Enforce robots.txt rules" button on the top of the summary table, we automatically translate the rules defined for AI Bots in your robots.txt into an advanced firewall rule, redirect you to the WAF configuration screen, and allow you to deploy the rule in our network.</p>
 	<p>This is how the robots.txt policy mentioned above looks after translation:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qYJG3RcvrDxzVDtb28Q2J/d73d7dcea94acb261e9fc525427c2e77/BLOG-2619_4.png" alt="BLOG-2619 4" class="kg-image" width="1999" height="1142" loading="lazy">
@@ -72,6 +72,6 @@ Disallow: /
 			</svg>
 		</a>
 	</div>
-	<p>With AI Audit, we are giving our customers even more visibility into how AI services access their content, helping them define their policies and then enforcing them at the network level.</p>
+	<p>With AI Crawl Control, we are giving our customers even more visibility into how AI services access their content, helping them define their policies and then enforcing them at the network level.</p>
 	<p>This feature is live today for all Cloudflare customers. Simply log into the dashboard and navigate to your domain to begin auditing the bot traffic from AI services and enforcing your robots.txt directives.</p>
 </div>

@@ -1,0 +1,94 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ymXU3Ub2reFnHjtEddext/c64f8f46cb0f1eaeb0fa597c1a273c6b/BLOG-2930_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>On the surface, the goal of handling bot traffic is clear: keep malicious bots away, while letting through the helpful ones. Some bots are evidently malicious — such as mass price scrapers or those testing stolen credit cards. Others are helpful, like the bots that index your website. Cloudflare has segmented this second category of helpful bot traffic through our <a href="https://developers.cloudflare.com/bots/concepts/bot/#verified-bots"><u>verified bots</u></a> program, <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/policy"><u>vetting</u></a> and validating bots that are transparent about who they are and what they do.</p>
+	<p>Today, the rise of <a href="https://agents.cloudflare.com"><u>agents</u></a> has transformed how we interact with the Internet, often blurring the distinctions between benign and malicious bot actors. Bots are no longer directed only by the bot owners, but also by individual end users to act on their behalf. These bots directed by end users are often working in ways that website owners want to allow, such as planning a trip, ordering food, or making a purchase.</p>
+	<p>Our customers have asked us for easier, more granular ways to ensure specific <a href="https://www.cloudflare.com/learning/bots/what-is-a-bot"><u>bots</u></a>, <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler"><u>crawlers</u></a>, and <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai"><u>agents</u></a> can reach their websites, while continuing to block bad actors. That’s why we’re excited to introduce <b>signed agents</b>, an extension of our verified bots program that gives a new bot classification in our security rules and in Radar. Cloudflare has long recognized agents — but we’re now endowing them with their own classification to make it even easier for our customers to set the traffic lanes they want for their website.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="the-age-of-agents">The age of agents</h2>
+		<a href="https://blog.cloudflare.com/#the-age-of-agents" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare has continuously expanded our verified bot categorization to include different functions as the market has evolved. For instance, we first announced our grouping of <a href="https://blog.cloudflare.com/ai-bots"><u>AI crawler traffic as an official bot category</u></a> in 2023. And in 2024, when OpenAI announced a <a href="https://openai.com/index/searchgpt-prototype"><u>new AI search prototype</u></a> and introduced <a href="https://platform.openai.com/docs/bots"><u>three different bots</u></a> with distinct purposes, we <a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers"><u>added three new categories</u></a> to account for this innovation: AI Search, AI Assistant, and Archiver.</p>
+	<p>But the bot landscape is constantly evolving. Let's unpack a common type of verified AI bot — an AI crawler such as <a href="https://radar.cloudflare.com/bots/directory/gptbot"><u>GPTBot</u></a>. Even though the bot performs an array of tasks, the bot’s ultimate purpose is a singular, repetitive task on behalf of the operator of that bot: fetch and index information. Its intelligence is applied to performing that singular job on behalf of that bot owner.&nbsp;</p>
+	<p>Agents, though, are different. Think about an AI agent tasked by a user to "Book the best deal for a round-trip flight to New York City next month." These agents sometimes use remote browsing products like Cloudflare's <a href="https://developers.cloudflare.com/browser-rendering"><u>Browser Rendering</u></a> and similar products from companies like Browserbase and Anchor Browser. And here is the key distinction: this particular type of bot isn’t operating on behalf of a single company, like OpenAI in the prior example, but rather the end users themselves.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="introducing-signed-agents">Introducing signed agents</h2>
+		<a href="https://blog.cloudflare.com/#introducing-signed-agents" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In May, we announced Web Bot Auth, a new method of <a href="https://blog.cloudflare.com/web-bot-auth"><u>using cryptography to verify bot and agent traffic</u></a>. HTTP message signatures allow bots to authenticate themselves and allow customer origins to identify them. This is one of the authentication methods we use today for our verified bots program.&nbsp;</p>
+	<p>What, exactly, is a <a href="https://developers.cloudflare.com/bots/concepts/bot/signed-agents"><u>signed agent</u></a>? First, they are agents that are generally directed by an end user instead of a single company or entity. Second, the infrastructure or remote browsing platform the agents use is signing their HTTP requests via Web Both Auth, with Cloudflare validating these message signatures. And last, they comply with our <a href="https://developers.cloudflare.com/bots/concepts/bot/signed-agents/policy"><u>signed agent policy</u></a>.</p>
+	<p>The signed agents classification improves on our existing frameworks in a couple of ways:</p>
+	<ol>
+		<li>
+			<p><b>Increased precision and visibility:</b> we’ve updated the <i>Cloudflare bots and agents directory to include signed agents</i> in addition to verified bots. This allows us to verify the cryptographic signatures of a much wider set of automated traffic, and our customers to granularly apply their security preferences more easily. Bot operators can now <i>submit signed agent applications from the Cloudflare dashboard</i>, allowing bot owners to specify to us how they think we should segment their automated traffic.&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Easier controls from security rules</b>: similar to how they can take action on verified bots as a group, our Enterprise customers will be able to take action on <i>signed agents as a group when configuring their security rules</i>. This new field will be available in the Cloudflare dashboard under security rules soon.</p>
+		</li>
+	</ol>
+	<p>To apply to have an agent added to Cloudflare’s directory of bots and agents, customers should complete the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fconfigurations%2Fbot-submission-form"><u>Bot Submission Form</u></a> in the Cloudflare dashboard. Here, they can specify whether the submission should be considered for the signed agents list or the verified bots list. All signed agents will be recognized by their cryptographic signatures through <a href="https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture"><u>Web Bot Auth validation</u></a>.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5caeGdhlmI3dO3GNZKeEUg/0dac239a94732404861b3876f6bdb8b6/BLOG-2930_2.png" alt="BLOG-2930 2" class="kg-image" width="1884" height="1520" loading="lazy">
+	</figure>
+	<p><sub>The Bot Submission Form, available in the Cloudflare dashboard for bot owners to submit both verified bot and signed agent applications.</sub></p>
+	<p>We want to be clear: our verified bots program isn’t going anywhere. In fact, well-behaved and transparent applications that make use of signed agents can further qualify to be a verified bot, if their specific service adheres to our <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/policy"><u>policy</u></a>. For instance,<a href="https://radar.cloudflare.com/scan"> <u>Cloudflare Radar's URL Scanner</u></a>, which relies on Browser Rendering as a service to scan URLs, is a <a href="https://radar.cloudflare.com/bots/directory/cloudflare-radar-url-scanner"><u>verified bot</u></a>. While Browser Rendering itself does not qualify to be a verified bot, URL Scanner does, since the bot owner (in this case, Cloudflare Radar) directs the traffic sent by the bot and always identifies itself with a unique Web Bot Auth signature — distinct from <a href="https://developers.cloudflare.com/browser-rendering/reference/automatic-request-headers"><u>Browser Rendering’s signature</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="from-an-agents-perspective">From an agent’s perspective…&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#from-an-agents-perspective" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Since the launch of Web Bot Auth, our own Browser Rendering product has been sending signed Web Bot Auth HTTP headers, and is always given a bot score of 1 for our Bot Management customers. As of today, Browser Rendering will now show up in this new signed agent category.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1F8Z0E6WqJTxLf9G3PLB3a/84e80539be402066fe02ab60c431100a/BLOG-2930_3.png" alt="BLOG-2930 3" class="kg-image" width="1199" height="303" loading="lazy">
+	</figure>
+	<p>We’re also excited to announce the first cohort of agents that we’re partnering with and will be classifying as signed agents: <a href="https://openai.com/index/introducing-chatgpt-agent"><u>ChatGPT agent</u></a>, <a href="https://block.xyz/inside/block-open-source-introduces-codename-goose"><u>Goose</u></a> from Block, <a href="https://docs.browserbase.com/introduction/what-is-browserbase"><u>Browserbase</u></a>, and <a href="https://anchorbrowser.io"><u>Anchor Browser</u></a>. They are perfect examples of this new classification because their remote browsers are used by their end customers, not necessarily the companies themselves. We’re thrilled to partner with these teams to take this critical step for the AI ecosystem:</p>
+	<blockquote>
+		<p>“<i>When we built Goose as an open source tool, we designed it to run locally with an extensible architecture that lets developers automate complex workflows. As Goose has evolved to interact with external services and third-party sites on users' behalf, Web Bot Auth enables those sites to trust Goose while preserving what makes it unique. </i><b><i>This authentication breakthrough unlocks entirely new possibilities for autonomous agents</i></b>." – <b>Douwe Osinga</b>, Staff Software Engineer, Block</p>
+	</blockquote>
+	<blockquote>
+		<p><i>"At Browserbase, we provide web browsing capabilities for some of the largest AI applications. We're excited to partner with Cloudflare to support the adoption of Web Bot Auth, a critical layer of identity for agents. </i><b><i>For AI to thrive, agents need reliable, responsible web access.</i></b><i>"</i> – <b>Paul Klein</b>, CEO, Browserbase</p>
+	</blockquote>
+	<blockquote>
+		<p><i>“Anchor Browser has partnered with Cloudflare to let developers ship verified browser agents. This way </i><b><i>trustworthy bots get reliable access while sites stay protected</i></b><i>.”</i> – <b>Idan Raman</b>, CEO, Anchor Browser</p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h2 id="updated-visibility-on-radar">Updated visibility on Radar</h2>
+		<a href="https://blog.cloudflare.com/#updated-visibility-on-radar" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We want everyone to be in the know about our bot classifications. Cloudflare began publishing verified bots on our Radar page <a href="https://radar.cloudflare.com/bots#verified-bots"><u>back in 2022</u></a>, meaning anyone on the Internet — Cloudflare customer or not — can see all of our <a href="https://radar.cloudflare.com/bots#verified-bots"><u>verified bots on Radar</u></a>. We dynamically update the list of bots, but show more than just a list: we announced on <a href="https://www.cloudflare.com/en-gb/press-releases/2025/cloudflare-just-changed-how-ai-crawlers-scrape-the-internet-at-large"><u>Content Independence Day</u></a> that <a href="https://blog.cloudflare.com/ai-search-crawl-refer-ratio-on-radar/#one-more-thing"><u>every verified bot would get its own page</u></a> in our public-facing directory on Radar, which includes the traffic patterns that we see for each bot.</p>
+	<p>Our directory has been updated to include <a href="https://radar.cloudflare.com/bots/directory"><b><u>both signed agents and verified bots</u></b></a> — we share exactly how Cloudflare classifies the bots that it recognizes, plus we surface all of the traffic that Cloudflare observes from these many recognized agents and bots. Through this updated directory, we’re not only giving better visibility to our customers, but also striving to set a higher standard for transparency of bot traffic on the Internet.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65QPFjmbBde3EzHTOwElSL/cccc8f23c37716c251e0c21850855265/BLOG-2930_4.png" alt="BLOG-2930 4" class="kg-image" width="1999" height="741" loading="lazy">
+	</figure>
+	<p><sub>Cloudflare Radar’s Bots Directory, which lists verified bots and signed agents. This view is filtered to view only agent entries.</sub></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wBz7UwrQQzT7rJJnXiF8C/16eed3f1afd95cac32c4bcb647c6e5e6/BLOG-2930_5.png" alt="BLOG-2930 5" class="kg-image" width="1999" height="639" loading="lazy">
+	</figure>
+	<p><sub>Cloudflare Radar’s signed agent page for ChatGPT agent, which includes its traffic patterns for the last 7 days, from August 21, 2025 to August 27, 2025.&nbsp;</sub></p>
+	<div class="flex anchor relative">
+		<h2 id="whats-now-whats-next">What’s now, what’s next</h2>
+		<a href="https://blog.cloudflare.com/#whats-now-whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As of today, the Cloudflare bot directory supports both bots and agents in a more clear-cut way, and customers or agent creators can submit agents to be signed and recognized <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fconfigurations%2Fbot-submission-form"><u>through their account dashboard</u></a>. In addition, anyone can see our signed agents and their traffic patterns on Radar. Soon, customers will be able to take action on signed agents as a group within their firewall rules, the same way you can take action on our verified bots.&nbsp;</p>
+	<p>Agents are changing the way that humans interact with the Internet. Websites need to know what tools are interacting with them, and for the builders of those tools to be able to easily scale. Message signatures help achieve both of these goals, but this is only step one. Cloudflare will continue to make it easier for agents and websites to interact (or not!) at scale, in a seamless way. </p>
+	<p>
+	</p>
+</div>
