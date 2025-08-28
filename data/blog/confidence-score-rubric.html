@@ -102,147 +102,135 @@
 		</a>
 	</div>
 	<p>This half evaluates the app's overall maturity as a SaaS service, drawing from enterprise best practices.</p>
+	<p><b>Regulatory Compliance:</b> Checks for key certifications that signal operational maturity. We selected these because they represent proven frameworks that demonstrate a commitment to widely-adopted security and data protection best practices.</p>
 	<ul>
 		<li>
-			<p><b>Regulatory Compliance:</b> Checks for key certifications that signal operational maturity. We selected these because they represent proven frameworks that demonstrate a commitment to widely-adopted security and data protection best practices.</p>
+			<p><a href="https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2"><u>SOC 2</u></a>: .4 points&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"><u>GDPR</u></a>: .4 points&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://www.iso.org/standard/27001"><u>ISO 27001</u></a>: .4 points&nbsp;</p>
+		</li>
+	</ul>
+	<p><b>Data Management Practices: </b>Focuses on how data is retained and shared to minimize exposure. These criteria were chosen as they directly impact the risk of data leaks or misuse, based on common vulnerabilities we've observed in SaaS environments and our own legal/GRC team’s experience assessing third-party SaaS applications at Cloudflare.</p>
+	<ul>
+		<li>
+			<p><b>Documented data retention window:</b>&nbsp; Shorter retention limits risk.</p>
 			<ul>
 				<li>
-					<p><a href="https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2"><u>SOC 2</u></a>: .4 points&nbsp;</p>
+					<p>0 day retention: .5 points</p>
 				</li>
 				<li>
-					<p><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"><u>GDPR</u></a>: .4 points&nbsp;</p>
+					<p>30 day retention: .4 points</p>
 				</li>
 				<li>
-					<p><a href="https://www.iso.org/standard/27001"><u>ISO 27001</u></a>: .4 points&nbsp;</p>
+					<p>60 day retention: .3 points</p>
+				</li>
+				<li>
+					<p>90 day retention: .1 point</p>
+				</li>
+				<li>
+					<p>No documented retention window: 0 points</p>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<p><b>Data Management Practices: </b>Focuses on how data is retained and shared to minimize exposure. These criteria were chosen as they directly impact the risk of data leaks or misuse, based on common vulnerabilities we've observed in SaaS environments and our own legal/GRC team’s experience assessing third-party SaaS applications at Cloudflare.</p>
+			<p><b>Third-party sharing:</b> No sharing means less external exposure of enterprise data. Sharing for advertising purposes means high risk of third parties mining and using the data.</p>
 			<ul>
 				<li>
-					<p><b>Documented data retention window:</b>&nbsp; Shorter retention limits risk.</p>
-					<ul>
-						<li>
-							<p>0 day retention: .5 points</p>
-						</li>
-						<li>
-							<p>30 day retention: .4 points</p>
-						</li>
-						<li>
-							<p>60 day retention: .3 points</p>
-						</li>
-						<li>
-							<p>90 day retention: .1 point</p>
-						</li>
-						<li>
-							<p>No documented retention window: 0 points</p>
-						</li>
-					</ul>
+					<p>No third-party sharing: .5 points.</p>
 				</li>
 				<li>
-					<p><b>Third-party sharing:</b> No sharing means less external exposure of enterprise data. Sharing for advertising purposes means high risk of third parties mining and using the data.</p>
-					<ul>
-						<li>
-							<p>No third-party sharing: .5 points.</p>
-						</li>
-						<li>
-							<p>Sharing only for troubleshooting/support: .25 points</p>
-						</li>
-						<li>
-							<p>Sharing for other reasons like advertising or end user targeting: 0 points</p>
-						</li>
-					</ul>
+					<p>Sharing only for troubleshooting/support: .25 points</p>
+				</li>
+				<li>
+					<p>Sharing for other reasons like advertising or end user targeting: 0 points</p>
 				</li>
 			</ul>
 		</li>
+	</ul>
+	<p><b>Security Controls:</b> We prioritized these because they form the foundational defenses against unauthorized access, drawing from best practices that have prevented incidents in cloud services.</p>
+	<ul>
 		<li>
-			<p><b>Security Controls:</b> We prioritized these because they form the foundational defenses against unauthorized access, drawing from best practices that have prevented incidents in cloud services.</p>
-			<ul>
-				<li>
-					<p>MFA support: .2 points.</p>
-				</li>
-				<li>
-					<p>Role-based access: .2 points.</p>
-				</li>
-				<li>
-					<p>Session monitoring: .2 points.</p>
-				</li>
-				<li>
-					<p>TLS 1.3: .2 points.</p>
-				</li>
-				<li>
-					<p>SSO support: .2 points.</p>
-				</li>
-			</ul>
+			<p>MFA support: .2 points.</p>
 		</li>
 		<li>
-			<p><b>Security reports and incident history:</b> Rewards transparency and deducts for recent issues. This was included to emphasize accountability, as a history of breaches or proactive transparency often indicates how seriously a provider takes security.</p>
+			<p>Role-based access: .2 points.</p>
+		</li>
+		<li>
+			<p>Session monitoring: .2 points.</p>
+		</li>
+		<li>
+			<p>TLS 1.3: .2 points.</p>
+		</li>
+		<li>
+			<p>SSO support: .2 points.</p>
+		</li>
+	</ul>
+	<p><b>Security reports and incident history:</b> Rewards transparency and deducts for recent issues. This was included to emphasize accountability, as a history of breaches or proactive transparency often indicates how seriously a provider takes security.</p>
+	<ul>
+		<li>
+			<p>Published safety framework and bug bounty: 1 point.</p>
 			<ul>
 				<li>
-					<p>Published safety framework and bug bounty: 1 point.</p>
+					<p>To get full points the company needs to have <b>both</b> of the following:&nbsp;</p>
 					<ul>
 						<li>
-							<p>To get full points the company needs to have <b>both</b> of the following:&nbsp;</p>
+							<p>A publicly accessible page (e.g., security, trust, or safety) that includes a comprehensive whitepaper, framework overview, OR detailed security documentation that covers:</p>
 							<ul>
 								<li>
-									<p>A publicly accessible page (e.g., security, trust, or safety) that includes a comprehensive whitepaper, framework overview, OR detailed security documentation that covers:</p>
-									<ul>
-										<li>
-											<p>Encryption in transit and at rest</p>
-										</li>
-										<li>
-											<p>Authentication and authorization mechanisms</p>
-										</li>
-										<li>
-											<p>Network or infrastructure security design</p>
-										</li>
-									</ul>
+									<p>Encryption in transit and at rest</p>
 								</li>
 								<li>
-									<p>Incident Response Transparency - Published vulnerability disclosure or bug bounty policy OR a documented incident response process and security advisory archive.</p>
+									<p>Authentication and authorization mechanisms</p>
+								</li>
+								<li>
+									<p>Network or infrastructure security design</p>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<p>Example: Google has a <a href="https://bughunters.google.com"><u>bug bounty program</u></a>, a whitepaper providing an overview of their <a href="https://cloud.google.com/docs/security/overview/whitepaper"><u>security posture</u></a>, as well as a <a href="https://transparencyreport.google.com"><u>transparency report</u></a>.&nbsp;</p>
+							<p>Incident Response Transparency - Published vulnerability disclosure or bug bounty policy OR a documented incident response process and security advisory archive.</p>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<p>No commitments or weak security framework with the lack of any of the above criteria. If the company only has one of the criteria above but lacks the other they will also receive no credit: 0 points.</p>
-					<ul>
-						<li>
-							<p>Example: Lovable who has a security page but seems to lack many other parts of the criteria: https://lovable.dev/security</p>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<p>If there has been a material breach in the last two years. If the company has experienced a material cybersecurity incident that resulted in the unauthorized disclosure of customer data to external parties (e.g., data posted, sold, or otherwise made accessible outside the organization). Incident must be publicly acknowledged by the company through a trust center update, press release, incident notification page, or an official regulatory filing: Full deduction to 0.</p>
-					<ul>
-						<li>
-							<p>Example: <a href="https://blog.23andme.com/articles/addressing-data-security-concerns"><u>23andMe </u></a>suffered credential stuffing attack in 2023 that resulted in the exposure of user data.</p>
-						</li>
-					</ul>
+					<p>Example: Google has a <a href="https://bughunters.google.com"><u>bug bounty program</u></a>, a whitepaper providing an overview of their <a href="https://cloud.google.com/docs/security/overview/whitepaper"><u>security posture</u></a>, as well as a <a href="https://transparencyreport.google.com"><u>transparency report</u></a>.&nbsp;</p>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<p><b>Financial Stability:</b> Gauges long-term viability of the company behind the application. We added this because a company’s financial health affects its ability to invest in ongoing security and support, and reduces the risk of sudden disruptions, corner-cutting, bankruptcy or sudden sale of user data to unknown third parties.</p>
+			<p>No commitments or weak security framework with the lack of any of the above criteria. If the company only has one of the criteria above but lacks the other they will also receive no credit: 0 points.</p>
 			<ul>
 				<li>
-					<p>Public company or private with &gt;$300M raised: .8 points.</p>
-				</li>
-				<li>
-					<p>Private with &gt;$100M raised: .5 points.</p>
-				</li>
-				<li>
-					<p>Private with &lt;$100M raised: .2 point.</p>
-				</li>
-				<li>
-					<p>Recent bankruptcy/distress (e.g. recent bankruptcy filings, major layoffs tied to funding shortfalls, failure to meet debt obligations): 0 points.</p>
+					<p>Example: Lovable who has a security page but seems to lack many other parts of the criteria: https://lovable.dev/security</p>
 				</li>
 			</ul>
+		</li>
+		<li>
+			<p>If there has been a material breach in the last two years. If the company has experienced a material cybersecurity incident that resulted in the unauthorized disclosure of customer data to external parties (e.g., data posted, sold, or otherwise made accessible outside the organization). Incident must be publicly acknowledged by the company through a trust center update, press release, incident notification page, or an official regulatory filing: Full deduction to 0.</p>
+			<ul>
+				<li>
+					<p>Example: <a href="https://blog.23andme.com/articles/addressing-data-security-concerns"><u>23andMe </u></a>suffered credential stuffing attack in 2023 that resulted in the exposure of user data.</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p><b>Financial Stability:</b> Gauges long-term viability of the company behind the application. We added this because a company’s financial health affects its ability to invest in ongoing security and support, and reduces the risk of sudden disruptions, corner-cutting, bankruptcy or sudden sale of user data to unknown third parties.</p>
+	<ul>
+		<li>
+			<p>Public company or private with &gt;$300M raised: .8 points.</p>
+		</li>
+		<li>
+			<p>Private with &gt;$100M raised: .5 points.</p>
+		</li>
+		<li>
+			<p>Private with &lt;$100M raised: .2 point.</p>
+		</li>
+		<li>
+			<p>Recent bankruptcy/distress (e.g. recent bankruptcy filings, major layoffs tied to funding shortfalls, failure to meet debt obligations): 0 points.</p>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
@@ -254,56 +242,46 @@
 		</a>
 	</div>
 	<p>This Score zooms in on AI-specific risks, like data usage in training and input vulnerabilities.</p>
+	<p><b>Regulatory Compliance,&nbsp; </b><a href="https://www.iso.org/standard/42001"><b><u>ISO 42001</u></b></a><b>:</b> ISO 42001 is a new certification for AI management systems. We chose this emerging standard because it specifically addresses <a href="https://www.cloudflare.com/the-net/building-cyber-resilience/ai-data-governance"><u>AI governance</u></a>, filling a gap in traditional certifications and signaling forward-thinking risk management.</p>
 	<ul>
 		<li>
-			<p><b>Regulatory Compliance, </b><a href="https://www.iso.org/standard/42001"><b><u>ISO 42001</u></b></a><b>:</b> ISO 42001 is a new certification for AI management systems. We chose this emerging standard because it specifically addresses <a href="https://www.cloudflare.com/the-net/building-cyber-resilience/ai-data-governance"><u>AI governance</u></a>, filling a gap in traditional certifications and signaling forward-thinking risk management.</p>
-			<ul>
-				<li>
-					<p>ISO 42001 Compliant: 1 point.</p>
-				</li>
-				<li>
-					<p>Not ISO 42001 Compliant: 0 points.</p>
-				</li>
-			</ul>
+			<p>ISO 42001 Compliant: 1 point.</p>
 		</li>
 		<li>
-			<p><b>Deployment Security Model:</b> Stronger access controls get higher points. Authentication not only controls access but also enables monitoring and logging. This makes it easier to detect misuse and investigate incidents. Public, unauthenticated access is a red flag for shadow IT risk.</p>
-			<ul>
-				<li>
-					<p>Authenticated web portal or key-protected API with rate limiting: 1 point.</p>
-				</li>
-				<li>
-					<p>Unprotected public access: 0 points.</p>
-				</li>
-			</ul>
+			<p>Not ISO 42001 Compliant: 0 points.</p>
+		</li>
+	</ul>
+	<p><b>Deployment Security Model:</b> Stronger access controls get higher points. Authentication not only controls access but also enables monitoring and logging. This makes it easier to detect misuse and investigate incidents. Public, unauthenticated access is a red flag for shadow IT risk.</p>
+	<ul>
+		<li>
+			<p>Authenticated web portal or key-protected API with rate limiting: 1 point.</p>
 		</li>
 		<li>
-			<p><b>Model Card:</b>&nbsp; A model card is a concise document that provides essential information about an AI model, similar to a nutrition label for a food product. It is crucial for AI safety and security because it offers transparency into a model's design, training data, limitations, and potential biases, enabling developers and users to understand its risks and use it responsibly. Some leading AI providers have committed to providing model cards as public documentation of safety evaluations. We included this in our rubric to encourage the industry to broadly adopt model cards as a best practice. As the practice of model cards is further developed and standardized across the industry, we hope to incorporate more fine-grained details from model cards into our own risk scores. But for now, we only include the existence (or lack thereof) of a model card in our score.</p>
-			<ul>
-				<li>
-					<p>Has its own model card: 1 point.</p>
-				</li>
-				<li>
-					<p>Uses a model with a model card: .5 points.</p>
-				</li>
-				<li>
-					<p>None: 0 points.</p>
-				</li>
-			</ul>
+			<p>Unprotected public access: 0 points.</p>
+		</li>
+	</ul>
+	<p><b>Model Card:</b>&nbsp; A model card is a concise document that provides essential information about an AI model, similar to a nutrition label for a food product. It is crucial for AI safety and security because it offers transparency into a model's design, training data, limitations, and potential biases, enabling developers and users to understand its risks and use it responsibly. Some leading AI providers have committed to providing model cards as public documentation of safety evaluations. We included this in our rubric to encourage the industry to broadly adopt model cards as a best practice. As the practice of model cards is further developed and standardized across the industry, we hope to incorporate more fine-grained details from model cards into our own risk scores. But for now, we only include the existence (or lack thereof) of a model card in our score.</p>
+	<ul>
+		<li>
+			<p>Has its own model card: 1 point.</p>
 		</li>
 		<li>
-			<p><b>Training on user prompts:</b> This is one of the most important components of our score.&nbsp; Models that train on user prompts are very risky because users might share sensitive corporate information in user prompts. We weighted this heavily because control over training data is central to preventing unintended data exposure, a core <a href="https://www.cloudflare.com/the-net/generative-ai-zero-trust"><u>risk in generative AI</u></a> that can lead to major incidents.</p>
-			<ul>
-				<li>
-					<p>Explicit opt-in is required for training on user prompts: 2 points.</p>
-				</li>
-				<li>
-					<p>Opt-out of training on user prompts is explicitly available to users: 1 point.</p>
-				</li>
-				<li>
-					<p>No way to opt out of training on user prompts: 0 points.</p>
-				</li>
-			</ul>
+			<p>Uses a model with a model card: .5 points.</p>
+		</li>
+		<li>
+			<p>None: 0 points.</p>
+		</li>
+	</ul>
+	<p><b>Training on user prompts:</b> This is one of the most important components of our score.&nbsp; Models that train on user prompts are very risky because users might share sensitive corporate information in user prompts. We weighted this heavily because control over training data is central to preventing unintended data exposure, a core <a href="https://www.cloudflare.com/the-net/generative-ai-zero-trust"><u>risk in generative AI</u></a> that can lead to major incidents.</p>
+	<ul>
+		<li>
+			<p>Explicit opt-in is required for training on user prompts: 2 points.</p>
+		</li>
+		<li>
+			<p>Opt-out of training on user prompts is explicitly available to users: 1 point.</p>
+		</li>
+		<li>
+			<p>No way to opt out of training on user prompts: 0 points.</p>
 		</li>
 	</ul>
 	<p>Here's an example of these Scores applied to a few popular AI providers.&nbsp; As expected, enterprise tiers typically earn higher Confidence Scores than consumer tiers of the same AI provider.</p>
