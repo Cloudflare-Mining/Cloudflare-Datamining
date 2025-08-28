@@ -505,6 +505,61 @@
 	"AccountAiInferenceAdaptiveOrderBy": {
 		"__description": ""
 	},
+	"AccountAutoRAGConfigAPIAdaptiveGroups": {
+		"__description": "AutoRAG Config API Search Analytics",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountAutoRAGConfigAPIAdaptiveGroupsDimensions": {
+		"__description": "",
+		"aiPromptIncluded": "Whether the prompt for AI Search is included (0 = false, 1 = true)",
+		"aiSearchDurationMs": "The time in milliseconds it took to do generate a response with AI Search",
+		"aiSearchInputSizeTokens": "The size in tokens of the input for response generation with AI Search",
+		"aiSearchModel": "The model used for AI Search, if it was used",
+		"aiSearchResultSizeTokens": "The size in tokens of the AI Search generated response",
+		"chuckSizeTokensArray": "An array of file sizes of the files returned in this search",
+		"chunkOverlap": "How much overlap exists between contiguous chunks",
+		"chunkSize": "The size of text chunks",
+		"date": "The date when trigger was triggered",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"doRewrite": "Whether to do query rewriting when performing searches with this RAG (0 = false, 1 = true)",
+		"embeddingModel": "The model used to generate embeddings",
+		"enableChunking": "Whether chunking is enabled for this AutoRAG (0 = false, 1 = true)",
+		"fileIdArray": "An array of IDs of the files returned in this search",
+		"filenameArray": "An array of names of the files returned in this search",
+		"getFilesDurationMs": "The time in milliseconds it took to retrieve files for this search",
+		"getQueryVectorsAvgDurationMs": "The time in milliseconds it took to generate embeddings for this search's query",
+		"getResultVectorsAvgDurationMs": "The time in milliseconds it took to retrieve stored file embeddings",
+		"isStream": "Whether the search response was streamed or not (0 = false, 1 = true)",
+		"maxResults": "THe max number of results that can be returned",
+		"numResults": "The number of returned results",
+		"querySizeTokens": "The size of the given query in tokens",
+		"rag": "AutoRAG Id",
+		"regenerateMarkdown": "Whether to this search implied regenerating markdown for returned results (0 = false, 1 = true)",
+		"rewriteDurationMs": "The time in milliseconds that it took to rewrite the query",
+		"rewriteInputSizeTokens": "The size in tokens of the rewritten input",
+		"rewriteModel": "The model used for rewriting queries",
+		"rewritePromptIncluded": "Whether the rewrite prompt is included (0 = false, 1 = true)",
+		"rewriteResultSizeTokens": "The size in tokens of the rewritten query",
+		"scoreArray": "An array of matching scores of the files returned in this search",
+		"scoreThreshold": "The score threshold over which matches are included in the result",
+		"searchType": "AutoRAG Search Type",
+		"totalDurationMs": "The total time in milliseconds that performing this search took"
+	},
+	"AccountAutoRAGConfigAPIAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAutoRAGConfigAPIAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAutoRAGConfigAPIAdaptiveGroupsSum": {
+		"__description": "",
+		"aiSearchCount": "The number of AI Searches for this RAG",
+		"searchCount": "The number of Searches for this RAG"
+	},
 	"AccountAutoRAGEngineAdaptiveGroups": {
 		"__description": "AutoRAG Engine Ingestion Analytics",
 		"dimensions": "List of dimensions to group by",
@@ -512,7 +567,7 @@
 	},
 	"AccountAutoRAGEngineAdaptiveGroupsDimensions": {
 		"__description": "",
-		"date": "The date when trigger was triggerd",
+		"date": "The date when trigger was triggered",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -591,6 +646,42 @@
 	},
 	"AccountBrowserRenderingApiAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountBrowserRenderingBindingSessionsAdaptiveGroups": {
+		"__description": "Aggregated Browser Rendering worker binding sessions with adaptive sampling",
+		"avg": "The average value for a metric per dimension",
+		"count": "Total number of sessions for an account",
+		"dimensions": "List of dimensions to group by",
+		"max": "The maximum value for a metric per dimension",
+		"uniq": ""
+	},
+	"AccountBrowserRenderingBindingSessionsAdaptiveGroupsAvg": {
+		"__description": "",
+		"avgConcurrentSessions": "Average concurrent browser sessions"
+	},
+	"AccountBrowserRenderingBindingSessionsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"concurrentSessions": "Number of browser sessions used concurrently at the time of the event",
+		"date": "The date of the event",
+		"datetimeFifteenMinutes": "The date and time of the event truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
+		"datetimeHour": "The date and time of the event truncated to the hour",
+		"datetimeMinute": "The date and time of the event truncated to the minute",
+		"sessionId": "Browser session ID"
+	},
+	"AccountBrowserRenderingBindingSessionsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountBrowserRenderingBindingSessionsAdaptiveGroupsMax": {
+		"__description": "",
+		"maxConcurrentSessions": "Maximum concurrent browser sessions"
+	},
+	"AccountBrowserRenderingBindingSessionsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountBrowserRenderingBindingSessionsAdaptiveGroupsUniq": {
+		"__description": "",
+		"sessionIdCount": "Unique browser sessions"
 	},
 	"AccountBrowserRenderingBrowserTimeUsageAdaptiveGroups": {
 		"__description": "Aggregated Browser Rendering and Browser Rendering REST API browser sessions with adaptive sampling",
@@ -929,6 +1020,7 @@
 		"datetimeFiveMinutes": "The date and time the metric was received, truncated to five minutes",
 		"datetimeHour": "The date and time the metric was received, truncated to one hour",
 		"datetimeMinute": "The date and time the metric was received, truncated to one minute",
+		"datetimeSixHours": "The date and time the metric was received, truncated to six hours",
 		"deploymentId": "The deployment ID",
 		"durableObjectId": "If set, this metric was emitted while assigned to a durable object",
 		"location": "Location",
@@ -1076,6 +1168,7 @@
 		"datetimeFiveMinutes": "The date and time the metric was received, truncated to five minutes",
 		"datetimeHour": "The date and time the metric was received, truncated to one hour",
 		"datetimeMinute": "The date and time the metric was received, truncated to one minute",
+		"datetimeSixHours": "The date and time the metric was received, truncated to six hours",
 		"deploymentId": "The deployment ID",
 		"durableObjectId": "If set, this metric was emitted while assigned to a durable object",
 		"location": "Location",
@@ -3321,7 +3414,8 @@
 		"datetimeHalfOfHour": "Healthcheck event timestamp, truncated to multiple of 30 minutes",
 		"datetimeHour": "Healthcheck event timestamp, truncated to the hour",
 		"datetimeMinute": "Healthcheck event timestamp, truncated to the minute",
-		"endpoint": "The endpoint of the check associated with the healthcheck"
+		"endpoint": "The endpoint of the check associated with the healthcheck",
+		"name": "The name associated with the healthcheck"
 	},
 	"AccountMagicEndpointHealthCheckAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -5500,10 +5594,12 @@
 		"aiGatewaySizeAdaptiveGroups": "",
 		"aiInferenceAdaptive": "",
 		"aiInferenceAdaptiveGroups": "",
+		"autoRAGConfigAPIAdaptiveGroups": "",
 		"autoRAGEngineAdaptiveGroups": "",
 		"browserIsolationSessionsAdaptiveGroups": "",
 		"browserIsolationUserActionsAdaptiveGroups": "",
 		"browserRenderingApiAdaptiveGroups": "",
+		"browserRenderingBindingSessionsAdaptiveGroups": "",
 		"browserRenderingBrowserTimeUsageAdaptiveGroups": "",
 		"browserRenderingEventsAdaptive": "",
 		"browserRenderingEventsAdaptiveGroups": "",
@@ -9223,10 +9319,12 @@
 		"aiGatewaySizeAdaptiveGroups": "AI Gateway Stored Rows",
 		"aiInferenceAdaptive": "AI Inference logs with adaptive sampling",
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
+		"autoRAGConfigAPIAdaptiveGroups": "AutoRAG Config API Search Analytics",
 		"autoRAGEngineAdaptiveGroups": "AutoRAG Engine Ingestion Analytics",
 		"browserIsolationSessionsAdaptiveGroups": "Aggregated count of Browser Isolation sessions",
 		"browserIsolationUserActionsAdaptiveGroups": "Aggregated count of Browser Isolation User Actions matches",
 		"browserRenderingApiAdaptiveGroups": "Aggregated Browser Rendering API events with adaptive sampling",
+		"browserRenderingBindingSessionsAdaptiveGroups": "Aggregated Browser Rendering worker binding sessions with adaptive sampling",
 		"browserRenderingBrowserTimeUsageAdaptiveGroups": "Aggregated Browser Rendering and Browser Rendering REST API browser sessions with adaptive sampling",
 		"browserRenderingEventsAdaptive": "Browser Rendering events with adaptive sampling",
 		"browserRenderingEventsAdaptiveGroups": "Aggregated Browser Rendering events with adaptive sampling",
