@@ -3113,6 +3113,30 @@
 						"compatEnableFlag": "enable_email_sending_queuing",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "removeNodejsCompatEOLv22",
+					"annotations": {
+						"compatDisableFlag": "add_nodejs_compat_eol_v22",
+						"compatEnableFlag": "remove_nodejs_compat_eol_v22",
+						"impliedByAfterDate": "unhandled type"
+					}
+				},
+				{
+					"name": "removeNodejsCompatEOLv23",
+					"annotations": {
+						"compatDisableFlag": "add_nodejs_compat_eol_v23",
+						"compatEnableFlag": "remove_nodejs_compat_eol_v23",
+						"impliedByAfterDate": "unhandled type"
+					}
+				},
+				{
+					"name": "removeNodejsCompatEOLv24",
+					"annotations": {
+						"compatDisableFlag": "add_nodejs_compat_eol_v24",
+						"compatEnableFlag": "remove_nodejs_compat_eol_v24",
+						"impliedByAfterDate": "unhandled type"
+					}
 				}
 			]
 		},
