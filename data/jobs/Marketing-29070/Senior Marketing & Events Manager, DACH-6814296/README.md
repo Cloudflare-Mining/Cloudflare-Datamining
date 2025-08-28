@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: </strong>Munich, Germany</p>
+<p><strong>Location: </strong>Munich, Germany or Lisbon, Portugal</p>
 <h3><strong>About the Role</strong></h3>
 <p>Cloudflare is transforming the way enterprise IT operates—redefining an entire category and growing a billion-pound business with over 40% annual growth. At the heart of this expansion is our dynamic regional marketing team.</p>
 <p>We’re looking for a <strong>Senior Marketing &amp; Events Manager, EMEA</strong> to join our Events Center of Excellence. This role is perfect for someone who thrives on bringing exceptional events to life, loves fast-paced collaboration, and is driven by data, creativity, and results.</p>
