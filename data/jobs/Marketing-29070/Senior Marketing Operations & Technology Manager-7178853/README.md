@@ -5,52 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas</strong></p>
-<p><strong>About The Role</strong></p>
-<p>Cloudflare is seeking an Enterprise Architect to drive impactful transformation for the IT Organization. This role is an exciting opportunity to shape the future of our systems and processes as we scale to operating at $5 billion in revenue. We are looking for a seasoned professional with deep expertise in building and designing systems at scale that serve the enterprise’s needs.&nbsp;</p>
-<p>In this position, you will be responsible for leading multiple complex workstreams and overseeing the technical delivery of solutions. You will be instrumental in transforming systems and processes to align with Cloudflare’s evolving business and operational needs. You will be responsible for driving strategic initiatives and identifying key gaps in our system capabilities while evangelizing possible solutions compatible with our systems landscape.</p>
-<p>This role is ideal for a strategic leader who is self-motivated, thrives in environments requiring a high degree of autonomy, and is driven by the opportunity to shape high-growth initiatives within a fast-paced organization.</p>
-<p><strong>Key Responsibilities:</strong></p>
+<p><strong>Available Locations: Austin</strong></p>
+<p><strong>Position Overview</strong></p>
+<p><em>The Senior Marketing Operations &amp; Technology Manager will play a pivotal role in driving efficiency, scalability, and performance within the marketing organization at Cloudflare. This role focuses on ensuring operational excellence, optimizing processes, and delivering actionable insights to support marketing campaigns and strategies. You’ll partner closely with cross-functional teams, including demand generation/marketing, sales operations, and Enterprise IT, to ensure alignment and effectiveness.</em></p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Work with stakeholders and other members of the IT organization to analyze the existing architectural landscape.</li>
-	<li>Identify key areas of inefficiency and friction, building consensus on the root or critical problems to solve.</li>
-	<li>Design, and drive cross functional support for strategic initiatives purpose-built to transform those inefficiencies to strengths and foundationally change our operational system design.<strong>&nbsp;</strong></li>
+	<li><em>Process Optimization&nbsp;</em><em>Develop and manage scalable workflows, systems, and processes to support marketing initiatives.</em></li>
+	<li><em>&nbsp;</em><em>Oversee campaign execution frameworks (ABM, MQA, etc.) and ensure consistency across global teams. </em></li>
+	<li><em>Evaluate and improve lead management processes, including lead scoring, routing, and nurturing.&nbsp;</em><em>Data &amp; Analytics </em><em>Deliver actionable insights and recommendations to enhance campaign effectiveness and drive business outcomes. </em></li>
+	<li><em>Collaborate with the business intelligence team to integrate marketing data into enterprise reporting.&nbsp;</em></li>
+	<li><em>Technology Management&nbsp;</em><em>Ensure tools are effectively integrated and utilized. </em></li>
+	<li><em>Evaluate and implement new technologies to enhance marketing capabilities and efficiency.&nbsp;</em></li>
+	<li><em>Collaboration &amp; Communication&nbsp;</em><em>Partner with revenue operations and enablement teams to ensure seamless alignment between marketing and sales. </em></li>
+	<li><em>Work closely with demand generation, field, and product marketing teams to support campaign execution.&nbsp;</em><em>Communicate operational performance and insights to leadership and stakeholders.<br><br></em></li>
 </ul>
-<p><strong>Required Qualifications:</strong></p>
+<p><strong>Qualifications</strong></p>
+<p><strong>Required:</strong></p>
 <ul>
-	<li>Proven experience as an architect, with a clear track record of successfully building systems at scale.</li>
-	<li>Deep understanding of common business application architecture as well as engineering systems.</li>
-	<li>Excellent problem-solving skills, with the ability to design scalable, high-performance solutions.</li>
-	<li>Strong communication skills and the ability to work with both technical and non-technical stakeholders.</li>
+	<li><em>Bachelor's degree in marketing, business, or a related field; MBA preferred.</em></li>
+	<li><em>10+ years of experience in marketing operations at a high growth Enterprise SaaS organization. </em></li>
+	<li><em>Deep domain expertise with integrated B2B marketing, lead &amp; pipeline management, multi-touch attribution, email marketing, data strategy &amp; governance, and system integration.</em></li>
+	<li><em>&nbsp;</em><em>Expertise in marketing automation platforms (e.g., Marketo, Salesforce, Demand base) and CRM systems.&nbsp;</em></li>
+	<li><em>Strong background in data analysis, performance measurement, and marketing attribution.</em></li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and level.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Preferred:</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li><em>Knowledge of cloud technology or cybersecurity industries.&nbsp;</em></li>
+	<li><em>Strong project management skills with the ability to manage multiple priorities simultaneously.&nbsp;</em></li>
+	<li><em>Exceptional communication and presentation skills.</em></li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">

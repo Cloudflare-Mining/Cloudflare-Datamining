@@ -5,54 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas</strong></p>
-<p><strong>About The Role</strong></p>
-<p>Cloudflare is seeking an Enterprise Architect to drive impactful transformation for the IT Organization. This role is an exciting opportunity to shape the future of our systems and processes as we scale to operating at $5 billion in revenue. We are looking for a seasoned professional with deep expertise in building and designing systems at scale that serve the enterprise’s needs.&nbsp;</p>
-<p>In this position, you will be responsible for leading multiple complex workstreams and overseeing the technical delivery of solutions. You will be instrumental in transforming systems and processes to align with Cloudflare’s evolving business and operational needs. You will be responsible for driving strategic initiatives and identifying key gaps in our system capabilities while evangelizing possible solutions compatible with our systems landscape.</p>
-<p>This role is ideal for a strategic leader who is self-motivated, thrives in environments requiring a high degree of autonomy, and is driven by the opportunity to shape high-growth initiatives within a fast-paced organization.</p>
+<p><strong>Available Locations: Lisbon, Portugal; Bangalore, India</strong></p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+<p><strong>About the Role:</strong></p>
+<p>Cloudflare’s Product Platform team is looking for a dynamic and strategic leader to establish and grow our new Platform Connect team, which will be a part of the Enterprise Readiness pillar of the Platform team, in either Lisbon or Bangalore. The Platform Connect team's mission is to accelerate the adoption of our core platform features across various product teams by proactively integrating them into high-impact, high-usage products. The ideal candidate will be a hands-on leader with a strong technical background and a passion for building scalable, collaborative engineering teams.</p>
+<p>The Platform Connect team will work closely with Product Platform teams, which are responsible for building Cloudflare products' control plane platform features, including Organization Management, Account Management, Config Management, Identity Access Management (IAM), API, and SDK.</p>
 <p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Work with stakeholders and other members of the IT organization to analyze the existing architectural landscape.</li>
-	<li>Identify key areas of inefficiency and friction, building consensus on the root or critical problems to solve.</li>
-	<li>Design, and drive cross functional support for strategic initiatives purpose-built to transform those inefficiencies to strengths and foundationally change our operational system design.<strong>&nbsp;</strong></li>
+	<li><strong>Team Leadership &amp; Management:</strong></li>
+	<ul>
+		<li>Lead the recruitment and onboarding of the Platform Connect team.</li>
+		<li>Foster a culture of collaboration, excellence, and continuous learning.</li>
+		<li>Establish clear communication protocols and work with teams across different time zones (US/London) to ensure alignment and knowledge transfer.</li>
+	</ul>
+	<li><strong>Strategy &amp; Execution:</strong></li>
+	<ul>
+		<li>Establish and lead a dedicated team to perform proactive integrations of platform features such as Fine Grained Access Control (RBAC), Resource Tagging, Config Sharing etc into designated products.</li>
+		<li>Partner with Platform leadership and Product leadership to prioritize which products and features the team will focus on each quarter, using a data-driven approach.</li>
+		<li>Develop and share best practices, reusable code snippets, and comprehensive documentation to facilitate future integrations for other product teams.</li>
+	</ul>
+	<li><strong>Collaboration &amp; Communication:</strong></li>
+	<ul>
+		<li>Act as the primary interface between the Platform Connect team and the core Platform teams in the US/London, providing crucial feedback on the ease of integration and identifying feature gaps.</li>
+		<li>Work closely with key product teams to ensure successful integrations.</li>
+		<li>Collaborate with the Enterprise Readiness team and other core Platform teams on shared goals around feature adoption rates.</li>
+	</ul>
+	<li><strong>Technical Enablement:</strong></li>
+	<ul>
+		<li>Oversee the creation of training materials and workshops to enable product teams to self-serve integrations in the long run.</li>
+		<li>Define the team's role in providing Tier 2 support for integrated features, escalating to the core platform team when necessary.</li>
+	</ul>
 </ul>
-<p><strong>Required Qualifications:</strong></p>
+<p><strong>Qualifications:</strong></p>
 <ul>
-	<li>Proven experience as an architect, with a clear track record of successfully building systems at scale.</li>
-	<li>Deep understanding of common business application architecture as well as engineering systems.</li>
-	<li>Excellent problem-solving skills, with the ability to design scalable, high-performance solutions.</li>
-	<li>Strong communication skills and the ability to work with both technical and non-technical stakeholders.</li>
+	<li>Proven experience in a leadership role (Senior Engineering Manager or Director) managing software development teams.</li>
+	<li>Strong technical background in platform engineering, software development, or a related field.</li>
+	<li>Experience with relevant technologies like Terraform, RBAC and specific product domains mentioned in the strategy.</li>
+	<li>Excellent communication, collaboration, and problem-solving skills, with experience working with distributed teams across different time zones.</li>
+	<li>A track record of driving technical initiatives and accelerating the adoption of new technologies or features within an organization.</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and level.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

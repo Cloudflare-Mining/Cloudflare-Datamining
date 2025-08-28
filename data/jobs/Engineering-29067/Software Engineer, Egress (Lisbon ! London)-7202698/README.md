@@ -5,34 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<p><strong>Position Overview</strong></p>
-<p><em>The Sr. Marketing Operations &amp; Technology Manager will play a pivotal role in driving efficiency, scalability, and performance within the marketing organization at Cloudflare. This role focuses on ensuring operational excellence, optimizing processes, and delivering actionable insights to support marketing campaigns and strategies. You’ll partner closely with cross-functional teams, including demand generation/marketing, sales operations, and Enterprise IT, to ensure alignment and effectiveness.</em></p>
-<p><strong>Key Responsibilities</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Egress team was formed to own a very important aspect of Cloudflare's network-as-a-service: Egress connectivity for our vast portfolio of products.</p>
+<p>As a member of the Egress team, you will be a key technical contributor to a cutting edge network software infrastructure used by a growing number of Cloudflare products to connect to any destination from Cloudflare's network. Among the products powered by this technology is WARP, our Zero Trust platform, and Cloudflare's egress proxy for the <a href="https://blog.cloudflare.com/icloud-private-relay/">iCloud Private Relay</a> product.</p>
+<p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
+<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more.</p>
+<p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
+<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li><em>Process Optimization&nbsp;</em><em>Develop and manage scalable workflows, systems, and processes to support marketing initiatives.</em></li>
-	<li><em>&nbsp;</em><em>Oversee campaign execution frameworks (ABM, MQA, etc.) and ensure consistency across global teams. </em></li>
-	<li><em>Evaluate and improve lead management processes, including lead scoring, routing, and nurturing.&nbsp;</em><em>Data &amp; Analytics </em><em>Deliver actionable insights and recommendations to enhance campaign effectiveness and drive business outcomes. </em></li>
-	<li><em>Collaborate with the business intelligence team to integrate marketing data into enterprise reporting.&nbsp;</em></li>
-	<li><em>Technology Management&nbsp;</em><em>Ensure tools are effectively integrated and utilized. </em></li>
-	<li><em>Evaluate and implement new technologies to enhance marketing capabilities and efficiency.&nbsp;</em></li>
-	<li><em>Collaboration &amp; Communication&nbsp;</em><em>Partner with revenue operations and enablement teams to ensure seamless alignment between marketing and sales. </em></li>
-	<li><em>Work closely with demand generation, field, and product marketing teams to support campaign execution.&nbsp;</em><em>Communicate operational performance and insights to leadership and stakeholders.<br><br></em></li>
+	<li>Make daily progress on assigned engineering tasks, such as designing systems, writing specs, writing and pushing code via git, writing release plans for complex changes, rolling out production releases and working with other teams to coordinate system actions</li>
+	<li>Participate in daily and ad-hoc team meetings to share progress and collaborate</li>
+	<li>Participate in the team’s on-call schedule to ensure uptime of our production systems</li>
+	<li>Investigating customer issues that are escalated to the Egress team for triage and resolution</li>
+	<li>Responding to questions from other teams in the Egress team’s internal, public chat room</li>
 </ul>
-<p><strong>Qualifications</strong></p>
-<p><strong>Required:</strong></p>
+<p><strong>Role Requirements</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li><em>Bachelor's degree in marketing, business, or a related field; MBA preferred.</em></li>
-	<li><em>10+ years of experience in marketing operations at a high growth Enterprise SaaS organization. </em></li>
-	<li><em>Deep domain expertise with integrated B2B marketing, lead &amp; pipeline management, multi-touch attribution, email marketing, data strategy &amp; governance, and system integration.</em></li>
-	<li><em>&nbsp;</em><em>Expertise in marketing automation platforms (e.g., Marketo, Salesforce, Demand base) and CRM systems.&nbsp;</em></li>
-	<li><em>Strong background in data analysis, performance measurement, and marketing attribution.</em></li>
+	<li>Systems-level programming experience in Go, Rust, C, or C++. We use Rust extensively, and while experience with the language isn't required a willingness to learn it is.</li>
+	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
+	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
+	<li>Experience in implementing secure and highly-available distributed systems.</li>
+	<li>Strong ability to debug issues in complex systems.</li>
+	<li>Strong collaboration and communication skills.</li>
+	<li>Experience/interest in HTTP networking and VPN technologies.</li>
+	<li>Experience/interest in network performance monitoring and tuning</li>
 </ul>
-<p><strong>Preferred:</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li><em>Knowledge of cloud technology or cybersecurity industries.&nbsp;</em></li>
-	<li><em>Strong project management skills with the ability to manage multiple priorities simultaneously.&nbsp;</em></li>
-	<li><em>Exceptional communication and presentation skills.</em></li>
+	<li>Knowledge of TCP/IP and Internet routing.</li>
+	<li>Professional systems-level programming experience in Rust.</li>
+	<li>Experience building tools and APIs.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">

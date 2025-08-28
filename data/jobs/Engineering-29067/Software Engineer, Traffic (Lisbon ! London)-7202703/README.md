@@ -5,52 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas</strong></p>
-<p><strong>About The Role</strong></p>
-<p>Cloudflare is seeking an Enterprise Architect to drive impactful transformation for the IT Organization. This role is an exciting opportunity to shape the future of our systems and processes as we scale to operating at $5 billion in revenue. We are looking for a seasoned professional with deep expertise in building and designing systems at scale that serve the enterprise’s needs.&nbsp;</p>
-<p>In this position, you will be responsible for leading multiple complex workstreams and overseeing the technical delivery of solutions. You will be instrumental in transforming systems and processes to align with Cloudflare’s evolving business and operational needs. You will be responsible for driving strategic initiatives and identifying key gaps in our system capabilities while evangelizing possible solutions compatible with our systems landscape.</p>
-<p>This role is ideal for a strategic leader who is self-motivated, thrives in environments requiring a high degree of autonomy, and is driven by the opportunity to shape high-growth initiatives within a fast-paced organization.</p>
-<p><strong>Key Responsibilities:</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The mission of the Traffic team is to build software systems that improve the performance and reliability of Cloudflare's network. The scope of our work is significant and has a broad impact across our portfolio of products.</p>
+<p>&nbsp;</p>
+<p>One such system is a control plane service that ingests a diverse set of data in order to <a href="https://blog.cloudflare.com/meet-traffic-manager/">load-balance customer traffic</a> through directly instructing our network infrastructure.</p>
+<p><strong>Role Responsibilities</strong></p>
+<p>As a member of the Traffic team you will build and extend various traffic management and supporting systems. You will work closely with Network Engineering, Product Engineering, Network Strategy, and other teams to translate their requirements into new capabilities on our platform.&nbsp;</p>
+<p>&nbsp;</p>
+<p>You will participate in all stages of the software development lifecycle: from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Go, Python, Rust, ClickHouse, Salt, PostgreSQL, Grafana, Kubernetes, NETCONF, and more.</p>
+<p>Our team at Cloudflare operates under a "Run What You Build" model. This means we are responsible for the health of our systems and actively participate in our team's on-call rotation as part of our operational duties.</p>
+<p>Because you’ll be solving problems of massive scale and significance, and shaping the future of reliability and performance on the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<p><strong>Role Requirements</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Work with stakeholders and other members of the IT organization to analyze the existing architectural landscape.</li>
-	<li>Identify key areas of inefficiency and friction, building consensus on the root or critical problems to solve.</li>
-	<li>Design, and drive cross functional support for strategic initiatives purpose-built to transform those inefficiencies to strengths and foundationally change our operational system design.<strong>&nbsp;</strong></li>
+	<li>Systems-level programming experience in Go, Python, Rust, C, or C++</li>
+	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
+	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
+	<li>Experience in implementing, deploying, and debugging secure and highly-available distributed systems.</li>
+	<li>Strong collaboration and communication skills.</li>
+	<li>Experience/interest in network performance monitoring and tuning</li>
 </ul>
-<p><strong>Required Qualifications:</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Proven experience as an architect, with a clear track record of successfully building systems at scale.</li>
-	<li>Deep understanding of common business application architecture as well as engineering systems.</li>
-	<li>Excellent problem-solving skills, with the ability to design scalable, high-performance solutions.</li>
-	<li>Strong communication skills and the ability to work with both technical and non-technical stakeholders.</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and level.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Knowledge of TCP/IP and Internet routing.</li>
+	<li>Knowledge of statistical-analysis techniques and control theory.</li>
+	<li>Experience building tools and APIs.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
