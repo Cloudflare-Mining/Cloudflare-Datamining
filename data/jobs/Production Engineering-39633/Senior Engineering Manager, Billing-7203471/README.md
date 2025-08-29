@@ -5,36 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Texas: Austin (preferred), Houston, San Antonio, Dallas</p>
-<p><strong>About the Department</strong></p>
-<p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective, and independent assurance over the Company’s key business and financial risks to the Audit Committee and Management in a cost-effective manner and in alignment with professional standards. In addition to managing the Company’s SOX compliance program, the function is expanding its focus to include broader operational and strategic risks. Reflecting the Company’s core value of continuous improvement, Internal Audit is also exploring more efficient audit approaches and adopting industry best practices where appropriate.</p>
-<p><strong>About the Role</strong></p>
-<p>We’re looking for a curious, collaborative, and detail-oriented Internal Auditor to join our Internal Audit team. In this role, you’ll perform risk-based audits across business functions, helping evaluate the efficiency and effectiveness of processes, controls, and operations. You’ll work closely with stakeholders to identify improvement opportunities that drive value—not just compliance.</p>
-<p>This is a great opportunity for someone who thrives in fast-paced environments, enjoys learning how businesses operate end-to-end, and wants to make a visible impact.</p>
-<p><strong>What&nbsp; you’ll do</strong></p>
-<ul>
-	<li>Support the planning and execution of operational audits across various departments (e.g., Finance, Procurement, Sales, Customer Support, HR, etc.) under the guidance of senior audit team members.</li>
-	<li>Participate in process walkthroughs and assist in performing risk assessments and control testing to evaluate design and operating effectiveness.</li>
-	<li>Help document audit observations, identify potential control gaps, and contribute to the development of practical recommendations.</li>
-	<li>Assist in drafting clear and concise audit deliverables, including working papers and sections of audit reports.</li>
-	<li>Work with business stakeholders to clarify findings and support the tracking of remediation actions.</li>
-	<li>Leverage data analysis tools, automation, or AI where appropriate to support audit procedures and enhance insights.</li>
-	<li>Stay informed about company operations and emerging risks relevant to internal audit work.</li>
-	<li>Contribute to special projects, advisory reviews, investigations, and the ongoing improvement of audit processes.</li>
-	<li>Report to the Internal Audit Senior Director.</li>
-</ul>
+<p><strong>Available Locations: Austin, US, Lisbon, Portugal, London, UK&nbsp;</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>Cloudflare’s Billing Engineering Team is at the heart of every product launch, campaign, and initiative that Cloudflare undertakes. We build and maintain critical systems for billing, payments, usage metering, aggregation, invoicing and revenue recognition — powering billions in revenue and serving millions of customers.</p>
+<p>Currently we're rebuilding our entire billing platform, designing a metering and aggregation layer that scales effortlessly while ensuring financial accuracy. This is high-impact, high-stakes work that touches all Cloudflare’s cutting-edge products like AI, Zero Trust, Edge Compute, Bot Management, DDoS Protection, etc.</p>
+<p>As a Senior Engineering Manager, you’ll lead a team of talented, collaborative engineers working across Cloudflare’s ecosystem. You’ll navigate multiple high-profile projects, foster a culture of proactive communication and continuous learning, and drive technical excellence.</p>
+<p>If you thrive on solving hard challenges at the intersection of financial infrastructure and distributed systems, this is your opportunity to make a massive impact while growing with us.</p>
+<p><strong>What you'll do </strong><br><br>You will lead a team of talented engineers responsible for building and maintaining Cloudflare’s billing and payments infrastructure. You will oversee the development of scalable, high-reliability financial infrastructure that handles everything related to Cloudflare’s revenue. Your work will directly support billions in revenue and millions of customers while enabling new product launches across Cloudflare.</p>
+<p>You will play a key role in rebuilding our entire billing platform, designing a next-generation financial infrastructure that ensures financial accuracy and seamless performance. Leading a team of skilled engineers, you will drive the execution of complex technical initiatives, ensuring our architecture is resilient, scalable, and future-proof.&nbsp;</p>
+<p>Beyond technical execution, you will focus on growing and mentoring a high-performing engineering team. You will set clear expectations, provide thoughtful feedback, and create an environment where engineers can thrive. You will collaborate closely with product, engineering, finance, data science, operations and support departments to align technical decisions with business objectives. Your ability to communicate effectively, manage priorities, and navigate a fast-paced environment will be critical in driving success.</p>
+<p>This role is an opportunity to make a lasting impact at the intersection of financial infrastructure and distributed systems. You will help shape the future of Cloudflare, ensuring it can support the company’s rapid growth and evolving product ecosystem.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>2+ years of auditing, accounting, or finance experience</li>
-	<li>Foundational knowledge of internal controls, risk assessment, and audit techniques.</li>
-	<li>Strong analytical and problem-solving skills, with an ability to quickly understand complex processes.</li>
-	<li>Excellent written and verbal communication skills.</li>
-	<li>Comfort working both independently and as part of a team.</li>
-	<li>Curiosity, integrity, and a drive to deliver high-impact results.</li>
-	<li>Bachelor's degree in accounting, finance, business, or related field.</li>
-	<li>CPA, CIA, or CISA certification (or progress toward) is a plus.</li>
+	<li>Experience leading a team or multiple teams of senior and staff engineers.</li>
+	<li>Experience working with cross-functional teams, driving alignment, and clearly creating and communicating technical direction for large cross-company efforts.</li>
+	<li>Comfortable leading and hiring a team that builds the backend systems and frontend parts of the product.</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability.</li>
+	<li>Comfortable building developer-loved APIs that scale.</li>
+	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development.</li>
+	<li>You inspire your team to reach higher.</li>
+	<li>You’re as good as explaining “why” as you are “how”.</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages.</li>
+	<li>Comfortable managing teams/projections with tight deadlines and short release cycles.</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Experience building massive distributed systems.</li>
+	<li>Experience leading teams working on areas of financial infrastructure, payments, billing, and data infrastructure.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location and level.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -62,7 +62,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
