@@ -192,11 +192,32 @@
 			<p><a href="https://developers.cloudflare.com/images/transform-images/transform-via-url/#background"><u>Fill the transparent pixels</u></a> with a solid white color (<code>#FFFFFF</code>).</p>
 		</li>
 	</ul>
-	<p>You can also use background removal when overlaying images through the draw() command, like in the image below. Here, we isolate the subjects of multiple images, then overlay them on a background image.</p>
+	<p>You can also <a href="https://developers.cloudflare.com/images/transform-images/bindings"><u>bind the Images API</u></a> to your worker to build programmatic workflows that give more fine-grained control over how images will be optimized. To demonstrate how this works, I made a <a href="https://studio.yaydeanna.workers.dev"><u>simple image editing app</u></a> for creating cutouts and overlays, built entirely on Images and <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a>. This can be used to create images <a href="https://studio.yaydeanna.workers.dev/?order=0%2C1%2C2&amp;i0=icecream&amp;vertEdge0=bottom&amp;vertVal0=0&amp;horEdge0=left&amp;h0=400&amp;bg0=1&amp;i1=pete&amp;vertEdge1=top&amp;horEdge1=left&amp;h1=700&amp;bg1=1&amp;i2=iceland&amp;vertEdge2=top&amp;horEdge2=left"><u>like the one below</u></a>. Here, we apply background removal to isolate the dog and ice cream cone, then overlay them on a landscape image.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Z6t9ov1t3fbbQojbYbGDh/961cef0f06780bfd8c088772a7add796/image11.png" alt="BLOG-2928 16" class="kg-image" width="1600" height="959" loading="lazy">
 	</figure>
 	<p><sub>Photographs by </sub><a href="https://www.pexels.com/@guyjoben"><sub><u>Guy Hurst</u></sub></a><sub> (landscape), </sub><a href="https://www.pexels.com/@oskar-gackowski-2150870625"><sub><u>Oskar Gackowski</u></sub></a><sub> (ice cream), and me (dog)</sub></p>
+	<p>Here is a snippet that you can use to overlay images in a worker:</p>
+	<pre class="language-Javascript"><code class="language-Javascript">export default {
+  async fetch(request,env) {
+    const baseURL = "{image-url}";
+    const overlayURL = "{image-url}";
+    
+    // Fetch responses from image URLs
+    const [base, overlay] = await Promise.all([fetch(baseURL),fetch(overlayURL)]);
+
+    return (
+      await env.IMAGES
+        .input(base.body)
+        .draw(
+          env.IMAGES.input(overlay.body)
+            .transform({segment: "foreground"}), // Optimize the overlay image
+            {top: 0} // Position the overlay
+        )
+        .output({format:"image/webp"})
+    ).response();
+  }
+};</code></pre>
 	<p>Background removal is another step in our ongoing effort to enable developers to build interactive and imaginative products. These features are an iterative process, and we’ll continue to refine our approach even further. We’re looking forward to sharing our progress with you.</p>
 	<p>Read more about applying background removal in our <a href="https://developers.cloudflare.com/images/transform-images/transform-via-url/#segment"><u>documentation</u></a>.</p>
 	<div class="flex anchor relative">
