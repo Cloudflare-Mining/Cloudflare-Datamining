@@ -1047,7 +1047,27 @@
 		"length": "number",
 		"name": "string"
 	},
+	"MessageChannel": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"length": "undefined",
+			"name": "undefined",
+			"port1": "object",
+			"port2": "object",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
 	"MessageEvent": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": "object",
+		"length": "number",
+		"name": "string"
+	},
+	"MessagePort": {
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": "object",
@@ -2272,42 +2292,6 @@
 				"name": "string"
 			}
 		},
-		"D1_BINDING": {
-			"alwaysPrimarySession": {
-				"bookmarkOrConstraint": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"fetcher": {
-					"connect": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"fetch": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					}
-				}
-			},
-			"fetcher": {
-				"connect": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string"
-				},
-				"fetch": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string"
-				}
-			}
-		},
 		"D1_BINDING_EXPERIMENTAL": {
 			"alwaysPrimarySession": {
 				"bookmarkOrConstraint": {
@@ -2520,6 +2504,20 @@
 				"name": "string"
 			}
 		},
+		"SECRETS_STORE_BINDING": {
+			"connect": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"fetch": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			}
+		},
 		"SEND_EMAIL_BINDING": {
 			"send": {
 				"__proto": "function",
@@ -2664,7 +2662,9 @@
 		"JSON",
 		"Map",
 		"Math",
+		"MessageChannel",
 		"MessageEvent",
+		"MessagePort",
 		"NaN",
 		"Navigator",
 		"Number",
@@ -10921,6 +10921,73 @@
 				"tls": "boolean"
 			}
 		},
+		"querystring": {
+			"decode": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"encode": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"escape": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"parse": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"stringify": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"unescape": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"unescapeBuffer": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			}
+		},
 		"stream": {
 			"Stream": {
 				"__proto": "function",
@@ -16058,6 +16125,107 @@
 				"__type": "function",
 				"length": "number",
 				"name": "string"
+			}
+		},
+		"timers": {
+			"promises": {
+				"scheduler": {},
+				"setImmediate": {
+					"__proto": "object",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"setInterval": {
+					"__proto": "object",
+					"__type": "function",
+					"length": "number",
+					"name": "string",
+					"_prototype": {}
+				},
+				"setTimeout": {
+					"__proto": "object",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				}
+			},
+			"setTimeout": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"clearTimeout": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"setImmediate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"clearImmediate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"setInterval": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"clearInterval": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"active": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"unenroll": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"enroll": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
 			}
 		},
 		"tls": {
