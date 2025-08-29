@@ -6,43 +6,32 @@
 	</div>
 </div>
 <p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>About The Department</strong></p>
-<p>Cloudflare’s Application Security department builds and runs the software that detects and mitigates malicious, abusive, and fraudulent HTTP requests going through Cloudflare network before they reach our customer sites. We achieve this by harnessing the vast amount of internet traffic data available to us to create and manage products including WAF, Bot Management, Fraud Detection and more. We use state of art Artificial Intelligence and Machine Learning techniques in security attack detection and mitigation. The team is a multidisciplinary team where system and software engineers, security researchers and analysts, and data scientists work together to identify active adversaries or attackers, and design and implement machine learning models and engineering solutions to protect customers from these security attacks.&nbsp;</p>
+<p><strong>About The Role&nbsp;</strong></p>
+<p>As an Identity and Access Management (IAM) Security Analyst you will play a key role in efficiently managing user identities and access across the enterprise. You will be responsible for implementing technologies and designing processes to ensure users have authorized access to resources and systems.&nbsp;&nbsp;&nbsp;</p>
 <p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Hands-on experience working with threat detection and prevention product engineering teams, recognizing vulnerabilities and configuring mitigations or managing risks in existing and new products.</li>
-	<li>Apply a deep understanding of security vulnerabilities in web application and application security.&nbsp;</li>
-	<li>Reverse and research n-day exploits, proactively detect patterns of bot and fraud attacks, review false positive and false negative reports, and recommend security configurations.</li>
-	<li>Excellent at communicating the details about security forensics to technical and non-technical audiences. Including writing public facing research blogs.</li>
-	<li>Authoring periodic report on trends on Internet traffic and security attack insights</li>
-	<li>Experience with modern cloud-based technologies used to deliver rapidly-changing products at scale.</li>
-	<li>Conduct penetration testing to identify security gaps and potential exploits across applications and services.</li>
-	<li>Develop, maintain, and enhance security dashboards to monitor and analyze attack trends, bot activity, and fraud detection metrics.</li>
-	<li>Leverage strong coding skills to build and automate security tools, improve system engineering workflows, and develop new security rules and heuristics.</li>
+	<li>Establish and execute access governance programs and policies</li>
+	<li>Define and enforce access control policies, including role-based access control (RBAC), attribute based access control (ABAC), and policy based access controls (PBAC)</li>
+	<li>Ensure access adhere to the principle of least privilege and segregation of duties (SoD).</li>
+	<li>Develop and execute an access certification program and scale to all systems&nbsp;</li>
+	<li>Design, implement, and manage Identity Access &amp; Governance policies and procedures.</li>
+	<li>Define and enforce privileged access management (PAM) policies to secure sensitive systems and data.</li>
+	<li>Manage user onboarding, offboarding, and role changes, ensuring adherence to security policies and compliance requirements.</li>
+	<li>Collaborate with cross-functional teams, including IT, security, and compliance, to ensure IAM aligns with business goals.</li>
+	<li>Communicate IAM-related updates and recommendations to stakeholders.</li>
+	<li>Maintain comprehensive documentation of IAM policies, processes, and configurations.</li>
+	<li>Generate reports and metrics related to IAM activities and security posture.</li>
+	<li>Stay current with industry best practices, regulations, and compliance standards related to IAM, such as FedRamp, SOX, GDPR, PCI, and NIST.</li>
+	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li>A degree in computer science, IT, systems engineering, or related qualification.</li>
-	<li>4 years of work experience with incident detection, incident response, forensics, reverse engineering, security research or similar.</li>
-	<li>Ability to work under pressure in a fast-paced environment.</li>
-	<li>Strong attention to detail with an analytical mind and outstanding problem-solving skills. Excellent organizational skills.</li>
-	<li>Great awareness of cybersecurity trends and hacking techniques.</li>
-	<li>Demonstrated results in identifying, tracking and resolving issues to resolution in the areas of cybersecurity.</li>
-	<li>Strong written and verbal communication skills.</li>
-	<li>Experience in OWASP, security standards and best practice</li>
-	<li>Strong SQL experience.</li>
-	<li>Proficiency in penetration testing methodologies, tools, and vulnerability assessment techniques.</li>
-	<li>Experience in building security dashboards using tools like Grafana or similar visualization platforms.</li>
-	<li>Strong programming experience with expertise in Python, Go, Rust, or JavaScript to develop security tools and automation.</li>
-	<li>Prior experience or interest in Web Security, HTTP protocols, Python, Jupyter Notebook, and JavaScript is a huge plus!</li>
-	<li>Knowledge and experience with machine learning, statistical inference, and AI in general is a huge plus</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Knowledge and experience with columnar database like Clickhouse</li>
-	<li>Familiarity writing and optimizing advanced SQL queries</li>
-	<li>Good Linux/UNIX systems knowledge</li>
-	<li>Presented in security conferences such as Blackhat, Defcon, Bsides etc.</li>
+	<li>In-depth understanding of access governance&nbsp;</li>
+	<li>Experience in Identity Governance &amp; Administration (IGA) solutions</li>
+	<li>Performing policy enforcement, role management, and access certifications</li>
+	<li>Experience implementing privileged access management (PAM)</li>
+	<li>Experience developing IAM security standards and policies</li>
+	<li>Preferred background in scripting and/or application development to automate identity and access management processes.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
