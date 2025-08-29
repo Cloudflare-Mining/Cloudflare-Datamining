@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: Lisbon, London</strong></p>
 <p><strong>About the Team</strong></p>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
+<p>The Data Analytics &amp; Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
 <p><strong>&nbsp;</strong></p>
 <p><strong>Role Summary</strong></p>
 <p>We are looking for an experienced Data Analyst to join our London or Lisbon teams to scale our product analytics initiatives. You will partner closely with our product organization, analyzing a wide array of datasets to inform product team data requests ranging from routine reporting and ad hoc analysis, to long-term and strategic product roadmap-influencing projects.</p>

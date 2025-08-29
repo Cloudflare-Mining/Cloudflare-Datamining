@@ -7,7 +7,7 @@
 </div>
 <p><strong>Role Location: Lisbon, Portugal</strong></p>
 <p><strong>About the team&nbsp;&nbsp;</strong></p>
-<p>The BI team at Cloudflare is responsible for building and managing the cloud data analytics platform. Our focus is on developing a centralized cloud data analytics platform using open source technologies for internal Business Partners and Machine Learning teams. The team aims to make data more accessible, meet Cloudflare's critical business needs, and provide self-service reporting and analytics tools to support current and new business initiatives.</p>
+<p>The Data Analytics &amp; Intelligence&nbsp;team at Cloudflare is responsible for building and managing the cloud data analytics platform. Our focus is on developing a centralized cloud data analytics platform using open source technologies for internal Business Partners and Machine Learning teams. The team aims to make data more accessible, meet Cloudflare's critical business needs, and provide self-service reporting and analytics tools to support current and new business initiatives.</p>
 <p><strong>About the role</strong></p>
 <p>In the role of Data Engineer, the primary responsibility is to contribute to building and improving a scalable petabyte-scale data lake and Cloud Enterprise Data Warehouse. This involves utilizing a modern tech stack from scratch with open source technologies. Success in this position requires a strong background in data engineering, combined with product and business acumen, to deliver scalable data pipelines and analytics solutions that empower advanced analytics through a user-friendly self-service interface.</p>
 <p><strong>What you will do</strong></p>

@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: Lisbon</strong></p>
 <h4><strong>About the team</strong></h4>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
+<p>The Data Analytics &amp; Intelligence&nbsp;team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
 <h4><strong>About the role</strong></h4>
 <p>We are looking for an experienced Data Engineer to join our team to scale our data platform and product insights initiatives. You will work with a wide array of data sources to build integrated data pipelines that process billions of records each day and influence our critical business initiatives.&nbsp;</p>
 <p>Success in this role comes from marrying a strong data engineering background with product and business acumen to deliver scalable data pipelines and analytics solutions that can enable advanced analytics via a self-service user interface.</p>
