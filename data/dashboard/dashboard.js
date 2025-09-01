@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "7f61d4e5-a791-50a2-935a-72e57e2ea381")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "e522cd07-5799-588c-bcdd-7c14878c45e8")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -965,7 +965,7 @@
 			};
 			var jt = e("../react/utils/useDomainConnectRedirect.ts"),
 				Bt = e("../react/utils/fragments.ts");
-			const St = tt().lazy(() => Promise.all([e.e(51436), e.e(34744), e.e(54844), e.e(80778), e.e(67019), e.e(55114), e.e(96451), e.e(75758), e.e(47144), e.e(42864)]).then(e.bind(e, "../react/AuthenticatedApp.jsx"))),
+			const St = tt().lazy(() => Promise.all([e.e(51436), e.e(34744), e.e(93844), e.e(80778), e.e(8450), e.e(55114), e.e(96451), e.e(75758), e.e(47144), e.e(42864)]).then(e.bind(e, "../react/AuthenticatedApp.jsx"))),
 				xt = tt().lazy(() => Promise.all([e.e(83741), e.e(65447), e.e(80778), e.e(55114), e.e(4054), e.e(76472)]).then(e.bind(e, "../react/UnauthenticatedApp.tsx")));
 			var Tt = ({
 					userIsAuthed: Me
@@ -1156,10 +1156,10 @@
 					e.g.build = dn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "4a81fbe6d0643672b8d23be695b935040262be72",
-						dashVersion: "35641899",
+						commit: "0cfb223bdae3c42f5e9a893559fffd1b5362234a",
+						dashVersion: "35681292",
 						env: "production",
-						builtAt: 1756475461119,
+						builtAt: 1756746589805,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -8272,6 +8272,53 @@
 			function E(b, y) {
 				const A = (0, n.Z)(b) ? b : b.key;
 				return A === y ? r : A === "*" || b === "*" ? O : i(A, y) ? D : a
+			}
+		},
+		"../react/common/components/AccessCheck/useAccountParentOrgs.ts": function(oe, L, e) {
+			"use strict";
+			e.d(L, {
+				I: function() {
+					return o
+				}
+			});
+			var n = e("../../../../node_modules/lodash/lodash.js"),
+				s = e.n(n),
+				u = e("../../../../node_modules/swr/core/dist/index.mjs");
+			const g = async d => {
+				var a;
+				const O = await fetch(`/api/v4/accounts/${d}/organizations`);
+				if (!O.ok) throw new Error(`Failed to fetch account parent Orgs: ${O.status}`);
+				const D = (a = await O.json()) === null || a === void 0 ? void 0 : a.result;
+				if (D === void 0 || !(0, n.isArray)(D)) throw new Error(`Unexpected parent Orgs API response shape: ${JSON.stringify(D)}`);
+				const r = D.map(f => {
+						var c;
+						return {
+							tag: f.id,
+							parentTag: (c = f.parent) === null || c === void 0 ? void 0 : c.id
+						}
+					}),
+					p = [];
+				return r.forEach(f => {
+					f.parentTag || p.push(`com.cloudflare.api.tenant.${f.tag}`), p.push(`com.cloudflare.api.tenant.unit.${f.tag}`)
+				}), p
+			};
+
+			function o(d, a) {
+				const {
+					data: O,
+					error: D,
+					isLoading: r
+				} = (0, u.ZP)(a ? `account-organizations-${a}` : null, () => g(a), {
+					dedupingInterval: 5 * 60 * 1e3,
+					revalidateOnFocus: !0,
+					focusThrottleInterval: 5 * 60 * 1e3,
+					revalidateOnReconnect: !1
+				});
+				return {
+					orgScopes: O || null,
+					isLoading: r,
+					error: (D == null ? void 0 : D.message) || null
+				}
 			}
 		},
 		"../react/common/components/AccessCheck/useAccountPermissionGroups.ts": function(oe, L, e) {
@@ -32321,9 +32368,9 @@
 				d = {
 					documentation: {
 						aiBots: "https://developers.cloudflare.com/bots/concepts/bot/#ai-bots",
-						aiAudit: "https://developers.cloudflare.com/ai-audit/",
-						payPerCrawl: "https://developers.cloudflare.com/ai-audit/features/pay-per-crawl/what-is-pay-per-crawl/",
-						customRule: "https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#configure-a-custom-response-for-blocked-requests"
+						aiCrawlControl: "https://developers.cloudflare.com/ai-crawl-control/",
+						payPerCrawl: "https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/",
+						customBlockResponse: "https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/#configure-block-response"
 					},
 					stripe: "https://dashboard.stripe.com"
 				}
@@ -65235,6 +65282,91 @@ SOFTWARE.`,
 					optimizationEnhanced: (0, n.BC)`/${"accountId"}/${"zoneName"}/speed/optimization/${"tabName"}`
 				}
 		},
+		"../react/pages/speed/smart-shield/resources/constants.ts": function(oe, L, e) {
+			"use strict";
+			e.d(L, {
+				Hp: function() {
+					return u
+				},
+				LO: function() {
+					return a
+				},
+				PLAN_FEATURE_KEYS: function() {
+					return d
+				},
+				SMART_SHIELD_PLANS: function() {
+					return g
+				},
+				Uj: function() {
+					return s
+				},
+				Xu: function() {
+					return D
+				},
+				hq: function() {
+					return o
+				},
+				kT: function() {
+					return O
+				},
+				pE: function() {
+					return n
+				}
+			});
+			const n = {
+					PRODUCT_DOCUMENTATION: "https://developers.cloudflare.com/",
+					SMART_TIERED_CACHE: "https://developers.cloudflare.com/cache/how-to/tiered-cache/#smart-tiered-cache",
+					REGIONAL_TIERED_CACHE: "https://developers.cloudflare.com/cache/how-to/tiered-cache/#regional-tiered-cache",
+					CACHE_RESERVE: "https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/",
+					HEALTH_CHECKS: "https://developers.cloudflare.com/health-checks/",
+					ARGO_SMART_ROUTING: "https://developers.cloudflare.com/argo-smart-routing/"
+				},
+				s = "smart-shield",
+				u = "selectedPlan";
+			let g = function(r) {
+					return r.BASIC = "basic", r.ARGO = "argo", r.ADVANCED = "advanced", r
+				}({}),
+				o = function(r) {
+					return r.CACHE_HITS = "cacheHits", r.REDUCE_COSTS = "reduceCosts", r.ENHANCE_SECURITY = "enhanceSecurity", r
+				}({}),
+				d = function(r) {
+					return r.SMART_TIERED_CACHE = "smartTieredCache", r.CONNECTION_REUSE = "connectionReuse", r.ARGO_SMART_ROUTING = "argoSmartRouting", r.HEALTH_CHECKS = "healthChecks", r.REGIONAL_TIERED_CACHE = "regionalTieredCache", r.CACHE_RESERVE = "cacheReserve", r
+				}({}),
+				a = function(r) {
+					return r.ENABLE_SMART_SHIELD = "enable-smart-shield", r.ADDITIONAL_CACHING_PREFERENCES = "additional-caching-preferences", r.CONNECTION_REUSE = "connection-reuse", r.TRAFFIC_ROUTING = "traffic-routing", r.REVIEW_AND_FINISH = "review-and-finish", r
+				}({});
+			const O = {
+					[g.BASIC]: "0",
+					[g.ARGO]: "XXX",
+					[g.ADVANCED]: "XXX"
+				},
+				D = {
+					basic: {
+						smartTieredCache: !0,
+						connectionReuse: !0,
+						healthChecks: !0,
+						argoSmartRouting: !1,
+						regionalTieredCache: !1,
+						cacheReserve: !1
+					},
+					argo: {
+						smartTieredCache: !0,
+						connectionReuse: !0,
+						healthChecks: !0,
+						argoSmartRouting: !0,
+						regionalTieredCache: !1,
+						cacheReserve: !1
+					},
+					advanced: {
+						smartTieredCache: !0,
+						connectionReuse: !0,
+						healthChecks: !0,
+						argoSmartRouting: !0,
+						regionalTieredCache: !0,
+						cacheReserve: !0
+					}
+				}
+		},
 		"../react/pages/ssl-tls/custom-hostnames/constants.ts": function(oe, L, e) {
 			"use strict";
 			e.d(L, {
@@ -79368,9 +79500,7 @@ SOFTWARE.`,
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --animate-spin: spin 1s linear infinite;
-    --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    --animate-bounce: bounce 1s infinite;
     --blur-md: 12px;
     --default-transition-duration: 100ms /* snappier than default 150ms */;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -79476,9 +79606,6 @@ SOFTWARE.`,
   .sticky {
     position: sticky;
   }
-  .-inset-0 {
-    inset: calc(var(--spacing) * -0);
-  }
   .-inset-0\\.5 {
     inset: calc(var(--spacing) * -0.5);
   }
@@ -79490,9 +79617,6 @@ SOFTWARE.`,
   }
   .top-0 {
     top: calc(var(--spacing) * 0);
-  }
-  .top-1 {
-    top: calc(var(--spacing) * 1);
   }
   .top-1\\/2 {
     top: calc(1/2 * 100%);
@@ -79553,9 +79677,6 @@ SOFTWARE.`,
   }
   .left-0 {
     left: calc(var(--spacing) * 0);
-  }
-  .left-1 {
-    left: calc(var(--spacing) * 1);
   }
   .left-1\\/2 {
     left: calc(1/2 * 100%);
@@ -79620,9 +79741,6 @@ SOFTWARE.`,
   .-m-px {
     margin: -1px;
   }
-  .m-0 {
-    margin: calc(var(--spacing) * 0);
-  }
   .m-0\\! {
     margin: calc(var(--spacing) * 0) !important;
   }
@@ -79634,9 +79752,6 @@ SOFTWARE.`,
   }
   .m-auto {
     margin: auto;
-  }
-  .-mx-0 {
-    margin-inline: calc(var(--spacing) * -0);
   }
   .-mx-0\\.5 {
     margin-inline: calc(var(--spacing) * -0.5);
@@ -79682,6 +79797,9 @@ SOFTWARE.`,
   }
   .my-5 {
     margin-block: calc(var(--spacing) * 5);
+  }
+  .my-px {
+    margin-block: 1px;
   }
   .\\!-mt-0\\.5 {
     margin-top: calc(var(--spacing) * -0.5) !important;
@@ -79743,11 +79861,17 @@ SOFTWARE.`,
   .mt-\\[1px\\] {
     margin-top: 1px;
   }
+  .mt-px {
+    margin-top: 1px;
+  }
   .\\!mr-1 {
     margin-right: calc(var(--spacing) * 1) !important;
   }
   .\\!mr-\\[1px\\] {
     margin-right: 1px !important;
+  }
+  .\\!mr-auto {
+    margin-right: auto !important;
   }
   .-mr-2 {
     margin-right: calc(var(--spacing) * -2);
@@ -79794,9 +79918,6 @@ SOFTWARE.`,
   .-mb-5 {
     margin-bottom: calc(var(--spacing) * -5);
   }
-  .-mb-6 {
-    margin-bottom: calc(var(--spacing) * -6);
-  }
   .-mb-\\[68px\\] {
     margin-bottom: calc(68px * -1);
   }
@@ -79832,9 +79953,6 @@ SOFTWARE.`,
   }
   .\\!ml-0\\.5 {
     margin-left: calc(var(--spacing) * 0.5) !important;
-  }
-  .-ml-0 {
-    margin-left: calc(var(--spacing) * -0);
   }
   .-ml-0\\.5 {
     margin-left: calc(var(--spacing) * -0.5);
@@ -79948,10 +80066,6 @@ SOFTWARE.`,
     width: calc(var(--spacing) * 5);
     height: calc(var(--spacing) * 5);
   }
-  .size-6 {
-    width: calc(var(--spacing) * 6);
-    height: calc(var(--spacing) * 6);
-  }
   .size-6\\.5 {
     width: calc(var(--spacing) * 6.5);
     height: calc(var(--spacing) * 6.5);
@@ -80004,23 +80118,20 @@ SOFTWARE.`,
   .h-6\\.5 {
     height: calc(var(--spacing) * 6.5);
   }
-  .h-7 {
-    height: calc(var(--spacing) * 7);
-  }
   .h-7\\.5 {
     height: calc(var(--spacing) * 7.5);
   }
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
+  .h-8\\.5 {
+    height: calc(var(--spacing) * 8.5);
+  }
   .h-8\\/10 {
     height: calc(8/10 * 100%);
   }
   .h-9 {
     height: calc(var(--spacing) * 9);
-  }
-  .h-9\\.5 {
-    height: calc(var(--spacing) * 9.5);
   }
   .h-10 {
     height: calc(var(--spacing) * 10);
@@ -80049,6 +80160,9 @@ SOFTWARE.`,
   .h-\\[35px\\] {
     height: 35px;
   }
+  .h-\\[57px\\] {
+    height: 57px;
+  }
   .h-\\[60px\\] {
     height: 60px;
   }
@@ -80067,8 +80181,11 @@ SOFTWARE.`,
   .h-\\[300px\\] {
     height: 300px;
   }
-  .h-\\[450px\\] {
-    height: 450px;
+  .h-\\[350px\\] {
+    height: 350px;
+  }
+  .h-\\[529px\\] {
+    height: 529px;
   }
   .h-\\[calc\\(75dvh\\)\\] {
     height: calc(75dvh);
@@ -80087,9 +80204,6 @@ SOFTWARE.`,
   }
   .h-screen {
     height: 100vh;
-  }
-  .max-h-8 {
-    max-height: calc(var(--spacing) * 8);
   }
   .max-h-8\\/10 {
     max-height: calc(8/10 * 100%);
@@ -80199,9 +80313,6 @@ SOFTWARE.`,
   .w-8\\.5 {
     width: calc(var(--spacing) * 8.5);
   }
-  .w-9 {
-    width: calc(var(--spacing) * 9);
-  }
   .w-10 {
     width: calc(var(--spacing) * 10);
   }
@@ -80249,9 +80360,6 @@ SOFTWARE.`,
   }
   .w-70 {
     width: calc(var(--spacing) * 70);
-  }
-  .w-72 {
-    width: calc(var(--spacing) * 72);
   }
   .w-80 {
     width: calc(var(--spacing) * 80);
@@ -80310,14 +80418,8 @@ SOFTWARE.`,
   .max-w-3xl {
     max-width: var(--container-3xl);
   }
-  .max-w-8 {
-    max-width: calc(var(--spacing) * 8);
-  }
   .max-w-8\\/10 {
     max-width: calc(8/10 * 100%);
-  }
-  .max-w-9 {
-    max-width: calc(var(--spacing) * 9);
   }
   .max-w-9\\/10 {
     max-width: calc(9/10 * 100%);
@@ -80352,6 +80454,9 @@ SOFTWARE.`,
   .max-w-\\[200ch\\] {
     max-width: 200ch;
   }
+  .max-w-\\[350px\\] {
+    max-width: 350px;
+  }
   .max-w-\\[400px\\] {
     max-width: 400px;
   }
@@ -80366,9 +80471,6 @@ SOFTWARE.`,
   }
   .max-w-\\[1200px\\] {
     max-width: 1200px;
-  }
-  .max-w-\\[1248px\\] {
-    max-width: 1248px;
   }
   .max-w-\\[1300px\\] {
     max-width: 1300px;
@@ -80502,10 +80604,6 @@ SOFTWARE.`,
   .origin-left {
     transform-origin: left;
   }
-  .-translate-x-1 {
-    --tw-translate-x: calc(var(--spacing) * -1);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .-translate-x-1\\/2 {
     --tw-translate-x: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -80546,16 +80644,8 @@ SOFTWARE.`,
     --tw-translate-y: -1px;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
-  .translate-y-0 {
-    --tw-translate-y: calc(var(--spacing) * 0);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .translate-y-0\\.5 {
     --tw-translate-y: calc(var(--spacing) * 0.5);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .translate-y-1 {
-    --tw-translate-y: calc(var(--spacing) * 1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .translate-y-1\\.5 {
@@ -80596,12 +80686,6 @@ SOFTWARE.`,
   }
   .transform-gpu {
     transform: translateZ(0) var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
-  }
-  .animate-bounce {
-    animation: var(--animate-bounce);
-  }
-  .animate-ping {
-    animation: var(--animate-ping);
   }
   .animate-pulse {
     animation: var(--animate-pulse);
@@ -80662,6 +80746,9 @@ SOFTWARE.`,
   }
   .grid-cols-\\[3fr_1fr\\] {
     grid-template-columns: 3fr 1fr;
+  }
+  .grid-cols-\\[3fr_1fr_1fr\\] {
+    grid-template-columns: 3fr 1fr 1fr;
   }
   .grid-cols-\\[200px_1fr\\] {
     grid-template-columns: 200px 1fr;
@@ -80792,9 +80879,6 @@ SOFTWARE.`,
       margin-block-end: calc(var(--gap) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
-  .gap-x-1 {
-    column-gap: calc(var(--spacing) * 1);
-  }
   .gap-x-1\\.5 {
     column-gap: calc(var(--spacing) * 1.5);
   }
@@ -80862,6 +80946,14 @@ SOFTWARE.`,
     :where(& > :not(:last-child)) {
       border-color: var(--color-neutral-200);
     }
+  }
+  .divide-neutral-250 {
+    :where(& > :not(:last-child)) {
+      border-color: var(--color-neutral-250);
+    }
+  }
+  .place-self-end {
+    place-self: end;
   }
   .self-center {
     align-self: center;
@@ -81154,9 +81246,6 @@ SOFTWARE.`,
   .border-green-300 {
     border-color: var(--color-green-300);
   }
-  .border-neutral-100 {
-    border-color: var(--color-neutral-100);
-  }
   .border-neutral-100\\! {
     border-color: var(--color-neutral-100) !important;
   }
@@ -81223,9 +81312,6 @@ SOFTWARE.`,
   .border-b-neutral-900 {
     border-bottom-color: var(--color-neutral-900);
   }
-  .border-b-transparent {
-    border-bottom-color: transparent;
-  }
   .border-b-transparent\\! {
     border-bottom-color: transparent !important;
   }
@@ -81270,9 +81356,6 @@ SOFTWARE.`,
   }
   .bg-bg-secondary {
     background-color: var(--color-bg-secondary);
-  }
-  .bg-black {
-    background-color: var(--color-black);
   }
   .bg-black\\/5 {
     background-color: color-mix(in srgb, #000 5%, transparent);
@@ -81354,9 +81437,6 @@ SOFTWARE.`,
   }
   .bg-gray-200 {
     background-color: var(--color-gray-200);
-  }
-  .bg-gray-300 {
-    background-color: var(--color-gray-300);
   }
   .bg-gray-300\\/60 {
     background-color: color-mix(in srgb, oklch(87.2% 0.01 258.338) 60%, transparent);
@@ -81763,9 +81843,6 @@ SOFTWARE.`,
   .\\!pb-3 {
     padding-bottom: calc(var(--spacing) * 3) !important;
   }
-  .pb-0 {
-    padding-bottom: calc(var(--spacing) * 0);
-  }
   .pb-0\\.5 {
     padding-bottom: calc(var(--spacing) * 0.5);
   }
@@ -82094,9 +82171,6 @@ SOFTWARE.`,
   .text-blue-900 {
     color: var(--color-blue-900);
   }
-  .text-border {
-    color: var(--color-border);
-  }
   .text-cl1-blue-9 {
     color: var(--color-cl1-blue-9);
   }
@@ -82388,12 +82462,6 @@ SOFTWARE.`,
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .shadow-black {
-    --tw-shadow-color: #000;
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-shadow-color: color-mix(in oklab, var(--color-black) var(--tw-shadow-alpha), transparent);
-    }
-  }
   .shadow-black\\/5 {
     --tw-shadow-color: color-mix(in srgb, #000 5%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -82414,9 +82482,6 @@ SOFTWARE.`,
   }
   .ring-neutral-300 {
     --tw-ring-color: var(--color-neutral-300);
-  }
-  .ring-neutral-950 {
-    --tw-ring-color: var(--color-neutral-950);
   }
   .ring-neutral-950\\/10 {
     --tw-ring-color: color-mix(in srgb, oklch(0.145 0 0) 10%, transparent);
@@ -82493,10 +82558,6 @@ SOFTWARE.`,
   }
   .backdrop-blur-md {
     --tw-backdrop-blur: blur(var(--blur-md));
-    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-  }
-  .backdrop-filter {
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
@@ -84964,25 +85025,9 @@ button.border {
     transform: rotate(360deg);
   }
 }
-@keyframes ping {
-  75%, 100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
 @keyframes pulse {
   50% {
     opacity: 0.5;
-  }
-}
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(-25%);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-  }
-  50% {
-    transform: none;
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 @layer properties {
@@ -85091,4 +85136,4 @@ button.border {
 	}
 ]);
 
-//# debugId=7f61d4e5-a791-50a2-935a-72e57e2ea381
+//# debugId=e522cd07-5799-588c-bcdd-7c14878c45e8
