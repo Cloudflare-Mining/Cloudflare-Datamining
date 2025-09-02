@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "e522cd07-5799-588c-bcdd-7c14878c45e8")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "63d7d0da-5b40-52ac-8bdc-f0281e265d03")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1156,10 +1156,10 @@
 					e.g.build = dn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "0cfb223bdae3c42f5e9a893559fffd1b5362234a",
-						dashVersion: "35681292",
+						commit: "71630c1bc4d142782525ff0b639bafd63062ad21",
+						dashVersion: "35691497",
 						env: "production",
-						builtAt: 1756746589805,
+						builtAt: 1756819829787,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -7783,7 +7783,10 @@
 				const B = h(x),
 					K = (0, n.useMemo)(() => {
 						var V;
-						return (V = B.policies) === null || V === void 0 ? void 0 : V.filter(F => F.roles.some($ => $.type !== "internal"))
+						return (V = B.policies) === null || V === void 0 ? void 0 : V.filter(F => {
+							var $;
+							return ($ = F.roles) === null || $ === void 0 ? void 0 : $.some(W => W.type !== "internal")
+						})
 					}, [B.policies]),
 					j = (0, g.useHistory)(),
 					z = (0, o.uW)(j.location.pathname),
@@ -85136,4 +85139,4 @@ button.border {
 	}
 ]);
 
-//# debugId=e522cd07-5799-588c-bcdd-7c14878c45e8
+//# debugId=63d7d0da-5b40-52ac-8bdc-f0281e265d03
