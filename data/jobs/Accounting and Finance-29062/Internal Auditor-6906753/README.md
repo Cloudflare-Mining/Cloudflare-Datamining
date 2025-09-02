@@ -5,53 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location - Austin, TX&nbsp;</strong></p>
-<p><strong>About the team</strong></p>
-<p>The Cloudflare Pricing Team plays a key role in how we bring our solutions to market by ensuring our offers are competitive, scalable and aligned with business goals. Within this team, the Pricing Operations function is responsible for turning pricing strategy into execution, ensuring the processes, systems and data are in a place to support accurate, timely, and effective go-to-market delivery.&nbsp;</p>
-<p>As a Pricing Operations Analyst, you will support the operational side of pricing by helping maintain pricing accuracy, support cross-functional workflows, and ensuring new and existing offers are reflected carefully across systems.&nbsp;</p>
-<p>You’ll collaborate closely with stakeholders in Revenue Operations, Product, Finance and the Pricing Strategy team to ensure pricing decisions are executed smoothly and consistently. This role is ideal for someone detail-oriented, process-minded, and interested in how pricing fuels growth in a high velocity business.&nbsp;</p>
-<p><strong>Job Responsibilities</strong></p>
+<p><strong>Available Locations:</strong> Texas: Austin (preferred), Houston, San Antonio, Dallas</p>
+<p><strong>About the Department</strong></p>
+<p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective, and independent assurance over the Company’s key business and financial risks to the Audit Committee and Management in a cost-effective manner and in alignment with professional standards. In addition to managing the Company’s SOX compliance program, the function is expanding its focus to include broader operational and strategic risks. Reflecting the Company’s core value of continuous improvement, Internal Audit is also exploring more efficient audit approaches and adopting industry best practices where appropriate.</p>
+<p><strong>About the Role</strong></p>
+<p>We’re looking for a curious, collaborative, and detail-oriented Internal Auditor to join our Internal Audit team. In this role, you’ll perform risk-based audits across business functions, helping evaluate the efficiency and effectiveness of processes, controls, and operations. You’ll work closely with stakeholders to identify improvement opportunities that drive value—not just compliance.</p>
+<p>This is a great opportunity for someone who thrives in fast-paced environments, enjoys learning how businesses operate end-to-end, and wants to make a visible impact.</p>
+<p><strong>What&nbsp; you’ll do</strong></p>
 <ul>
-	<li>Pricing Execution</li>
-	<ul>
-		<li>Maintain and update pricing configurations in CPQ and related systems based on approved pricing strategies</li>
-		<li>Support the rollout of new SKUs, bundles, discounts and promotions by ensuring pricing data is accurate and complete</li>
-		<li>Assist in coordinating the operational launch of pricing changes across systems and teams</li>
-	</ul>
-	<li>Cross-Functional Support</li>
-	<ul>
-		<li>Collaborate with teams such as Revenue Operations, Deal Desk, Product and IT to ensure pricing changes are well understood and implemented correctly</li>
-		<li>Assist in documenting pricing processes, workflows and operational best practices</li>
-	</ul>
-	<li>Pricing Data Governance</li>
-	<ul>
-		<li>Monitor and maintain pricing data accuracy across tools and systems</li>
-		<li>Help track pricing exceptions, approvals and anomalies to support compliance and reporting</li>
-		<li>Document pricing implementation requirements, process flow diagrams, and use cases across CPQ and Pricing workflows</li>
-		<li>Assist in preparing reports and summaries to support pricing governance and decision-making</li>
-	</ul>
-	<li>Process Improvement</li>
-	<ul>
-		<li>Identify opportunities to streamline pricing workflows and reduce manual effort</li>
-		<li>Support projects aimed at improving the scalability and reliability of pricing operations</li>
-		<li>Help test and validate changes to pricing logic, system configurations or new sku launches</li>
-	</ul>
+	<li>Support the planning and execution of operational audits across various departments (e.g., Finance, Procurement, Sales, Customer Support, HR, etc.) under the guidance of senior audit team members.</li>
+	<li>Participate in process walkthroughs and assist in performing risk assessments and control testing to evaluate design and operating effectiveness.</li>
+	<li>Help document audit observations, identify potential control gaps, and contribute to the development of practical recommendations.</li>
+	<li>Assist in drafting clear and concise audit deliverables, including working papers and sections of audit reports.</li>
+	<li>Work with business stakeholders to clarify findings and support the tracking of remediation actions.</li>
+	<li>Leverage data analysis tools, automation, or AI where appropriate to support audit procedures and enhance insights.</li>
+	<li>Stay informed about company operations and emerging risks relevant to internal audit work.</li>
+	<li>Contribute to special projects, advisory reviews, investigations, and the ongoing improvement of audit processes.</li>
+	<li>Report to the Internal Audit Senior Director.</li>
 </ul>
-<p><strong>Qualifications</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>1-3 years in Pricing Operations, Revenue Operations, Deal Desk or related field</li>
-	<li>Experience with SaaS pricing models, product catalogs or SKU management&nbsp;</li>
-	<li>Prefer familiarity with Enterprise B2B Selling model, Pricing / Quote to Cash processes for different routes to markets, Direct, and Partner/Reseller/Distributors as well as how they can be supported in systems (end to end) conceptually</li>
-	<li>Understanding of best practices with off the shelf enterprise CPQ/Quoting system and how they can help scale business with speed</li>
-	<li>Experience with Salesforce.com, SFDC CPQ (including object data structure) and Jira preferred</li>
-	<li>Strong organizational and interpersonal skills as well as written and verbal communication skills</li>
-	<li>Excellent attention to detail and a high degree of professionalism</li>
-	<li>Ability to manage and prioritize multiple responsibilities</li>
-	<li>Willingness to work towards solutions; internally motivated</li>
-	<li>Learn fast and adapt to process/system changes quickly</li>
-	<li>Must be able to work both independently and as a team</li>
-	<li>Proficient in Google Suite including Docs and Slides</li>
+	<li>2+ years of auditing, accounting, or finance experience</li>
+	<li>Foundational knowledge of internal controls, risk assessment, and audit techniques.</li>
+	<li>Strong analytical and problem-solving skills, with an ability to quickly understand complex processes.</li>
+	<li>Excellent written and verbal communication skills.</li>
+	<li>Comfort working both independently and as part of a team.</li>
+	<li>Curiosity, integrity, and a drive to deliver high-impact results.</li>
+	<li>Bachelor's degree in accounting, finance, business, or related field.</li>
+	<li>CPA, CIA, or CISA certification (or progress toward) is a plus.</li>
 </ul>
+<p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
