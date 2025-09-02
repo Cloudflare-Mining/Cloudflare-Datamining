@@ -7,15 +7,15 @@
 				"pageName": "theNET - How to avoid outages in financial services - Page ",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
@@ -28,7 +28,7 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "English for Locale",
+					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
 					"arAR": "No Page for Locale"
 				},
@@ -43,7 +43,7 @@
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AIP6skTU6CLwgSiJy7r4w/c62e1aa9975428afa4cf71f8fe8ce18d/Three_paths_to_operational_resilience_for_financial_services.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AIP6skTU6CLwgSiJy7r4w/765083726a3dd2ca9867ef14bbd05891/BDES-7646_theNET_Create-Figma-template-for-executive-banners_5_1200x680__2_.webp"
 						},
 						"description": ""
 					},
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-08-21T20:53:03.879Z",
-					"updatedAt": "2025-08-21T20:53:03.879Z"
+					"updatedAt": "2025-09-02T16:58:53.385Z"
 				},
 				"contentfulId": "ajIHtziFnMjl2UjQzbFt7",
 				"contentTypeId": "page",
@@ -453,10 +453,10 @@
 															"locale": "en-US",
 															"title": "theNET - Three paths to operational resilience for financial services - Image",
 															"file": {
-																"name": "Three paths to operational resilience for financial services.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AIP6skTU6CLwgSiJy7r4w/c62e1aa9975428afa4cf71f8fe8ce18d/Three_paths_to_operational_resilience_for_financial_services.png",
+																"name": "BDES-7646_theNET_Create-Figma-template-for-executive-banners_5_1200x680__2_.webp",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AIP6skTU6CLwgSiJy7r4w/765083726a3dd2ca9867ef14bbd05891/BDES-7646_theNET_Create-Figma-template-for-executive-banners_5_1200x680__2_.webp",
 																"internal": {
-																	"mediaType": "image/png"
+																	"mediaType": "image/webp"
 																}
 															}
 														}
@@ -953,7 +953,7 @@
 																	"contentfulId": "P9WUyXlhLp3xfwKb5mKcv",
 																	"locale": "en-US",
 																	"entryTitle": "theNET - Three paths to operational resilience for financial services - First Table",
-																	"markdown": "\n| *__Pros__*     | *__Cons__*     |\n| ---------- | ---------- |\n| __Reduced downtime:__ A massive improvement over traditional on-premises or single-AZ setups, this model helps avoid potential downtime related to server rack failures or local power outages.       | __Single point of failure:__ Though significant outages are rare for cloud providers, a systemic event could still take your services offline.       |\n| __Simplified management:__ Your team needs to be proficient with only one cloud provider's tools.       | __Complex management:__ With most cloud providers, setting up failovers between AZs still requires substantial manual effort.       |\n| __Fewer upfront costs:__ You can trade large CapEx costs for more manageable OpEx costs.       | __Provider lock-in:__ Relying on a single provider makes it difficult to migrate to another if needs change, prices rise, or performance degrades. You also might miss out on innovative services offered by another provider.       |\n"
+																	"markdown": "\n| __Pros__     | __Cons__     |\n| ---------- | ---------- |\n|__Reduced downtime:__ A massive improvement over traditional on-premises or single-AZ setups, this model helps avoid potential downtime related to server rack failures or local power outages.|__Single point of failure:__ Though significant outages are rare for cloud providers, a systemic event could still take your services offline.|\n| __Simplified management:__ Your team needs to be proficient with only one cloud provider's tools.       | __Complex management:__ With most cloud providers, setting up failovers between AZs still requires substantial manual effort.|\n|__Fewer upfront costs:__ You can trade large CapEx costs for more manageable OpEx costs.| __Provider lock-in:__ Relying on a single provider makes it difficult to migrate to another if needs change, prices rise, or performance degrades. You also might miss out on innovative services offered by another provider.       |\n"
 																}
 															],
 															"entry_assetFile": [],
@@ -2568,6 +2568,12 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "1Xnx7J7m1NlkmBN5hGiEke",
+						"htmlContent": "<style>\n  .rich-text-renderer table {\n    text-align: left;\n  }\n  .rich-text-renderer table td {\n    width: 50%;\n    vertical-align: baseline;\n  }\n</style>",
+						"htmlId": null
 					}
 				],
 				"noindex": false,
@@ -2586,7 +2592,16 @@
 			"pathname": "/the-net/financial-services-resilience/operational-resilience/",
 			"contentfulId": "ajIHtziFnMjl2UjQzbFt7",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"

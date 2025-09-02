@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-03-31T21:33:16.262Z",
-					"updatedAt": "2025-06-26T17:59:16.549Z"
+					"updatedAt": "2025-08-29T13:31:26.618Z"
 				},
 				"contentfulId": "5hyN2aw1rolDqzt1XZAiDg",
 				"contentTypeId": "page",
@@ -2650,8 +2650,8 @@
 				"relatedBlades": [
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "129DJEi1XtXXySpTzL6aBg",
-						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Cloudflare named a Strong Performer in The Forrester Wave™: for Email, Messaging, And Collaboration Security Solutions, Q2, 2025 |</span>\n\n        <a class=\"link-helper\" href=\"https://www.cloudflare.com/lp/forrester-wave-email-security-2025/\">\n           <strong>Access ></strong>\n        </a>\n    </div>\n</section>\n</section>",
+						"contentfulId": "xcMCaLoIhD6Ur0OGlxAnT",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Cloudy LLM summarizations of email detections |</span>\n\n        <a class=\"link-helper\" href=\"https://blog.cloudflare.com/cloudy-driven-email-security-summaries/\">\n           <strong>Read blog ></strong>\n        </a>\n    </div>\n</section>\n</section>",
 						"htmlId": null
 					},
 					{
@@ -3773,6 +3773,218 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "1NgVP2aWCVAt4mBi2yFKPl",
+						"bladeName": "Email Security FAQs",
+						"title": "Email Security FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "42iJWkQpfM42h3d4y2MalF",
+								"title": "What is Cloudflare Email Security designed to do?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Email Security provides advanced, AI-driven protection against phishing, malware, business email compromise, and ransomware, preventing these threats from reaching user inboxes. It uses advanced methods, including machine learning-based behavioral analysis, to block targeted campaigns against your organization.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3gRZAstkA6QB8wlfRA1Gyv",
+								"title": "How accurate is Cloudflare's phishing detection?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare boasts a 99.99% accuracy rate in detecting sophisticated phishing threats, including business email compromise (BEC) and evasive link-based attacks. This high accuracy is achieved through the use of AI, global threat intelligence, and expert analysis. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3ss8d9HnfqZ4OiQf9M9nbh",
+								"title": "Does Cloudflare Email Security protect against more than just email-based threats?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Email Security extends its protection beyond traditional email to cover targeted phishing attacks via various collaboration tools and messaging applications, such as social media, Slack, Microsoft Teams, QR codes, and SMS text messages. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4MZoG6lVr0aPJMAviXIM7f",
+								"title": "What deployment options are available for Cloudflare Email Security?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Email Security offers flexible deployment options, allowing for inline deployment, API-based integration, or a combination of both. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7voDxHghAsJOfW9udtE4rW",
+								"title": "How does Cloudflare detect business email compromise (BEC) and other phishing attacks?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare identifies even the most advanced BEC and phishing attacks through a combination of artificial intelligence, threat intelligence, and expert-defined rules. The system analyzes emails based on numerous attributes, including sender reputation, message sentiment, behavioral attributes, and conversation context. It also uses a patented email detection fingerprint (EDF) to uncover patterns in phishing campaigns. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "25uNzmwBQE9vjUHaaafsxH",
+								"title": "Has Cloudflare Email Security received any industry recognition?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare was recognized as a Strong Performer in The Forrester Wave™: Email, Messaging, And Collaboration Security Solutions, Q2 2025 report. They achieved the highest possible scores in nine criteria, including antimalware, sandboxing, malicious URL detection, web security, threat intelligence, and content analysis and processing. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
