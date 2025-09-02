@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-12-04T18:24:21.207Z",
-					"updatedAt": "2025-08-30T10:58:50.321Z"
+					"updatedAt": "2025-09-02T21:08:56.451Z"
 				},
 				"contentfulId": "4rFhEbg2Zq18lpchzjHXrz",
 				"contentTypeId": "page",
@@ -63,6 +63,12 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4GWvULhQQQBQxIW4gVaeN4",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper application-security-performance-psa-banner\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Cloudflare releases Firewall for AI </span>\n\n        <a class=\"link-helper\" href=\"https://www.cloudflare.com/application-services/products/firewall-for-ai/\">\n           <strong>Learn more></strong>\n        </a>\n    </div>\n</section>",
+						"htmlId": null
+					},
 					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "1TazouqZha57TJE1SxePhT",
@@ -152,12 +158,6 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "6Zl80fEq8FKDcpOfvPVYV6",
-						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper application-security-performance-psa-banner\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Cloudflare named a Leader in Forrester Wave for WAF for 2025 </span>\n\n        <a class=\"link-helper\" href=\"https://cloudflare.com/lp/forrester-wave-waf-2025/\">\n           <strong>Get report></strong>\n        </a>\n    </div>\n</section>",
-						"htmlId": null
-					},
-					{
 						"contentfulId": "V3uiwLEbtCaN0UqFOsw6L",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare application services",
@@ -236,6 +236,42 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2nQK7qxx3faEoaZN4eAa8n",
+								"title": "Firewall for AI",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Protect your public-facing, AI-powered applications.",
+								"learnMoreUrl": "/application-services/products/firewall-for-ai/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "13ac5744-8e6d-5c9a-8ae4-fcf5ccc23e80",
+									"altText": "AI - Data modernization",
+									"title": "AI - Data modernization",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kWmmUAXPlx9nGTmREKpS8/64651af938891546da873642c9e90049/AI_-_Data_modernization.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "5bZwUsffk2bxlXmo2RgYZP",
