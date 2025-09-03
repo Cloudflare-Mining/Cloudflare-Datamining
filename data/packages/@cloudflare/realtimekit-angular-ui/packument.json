@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-angular-ui",
 	"dist-tags": {
-		"staging": "1.0.6-staging.1",
-		"latest": "1.0.5"
+		"latest": "1.0.5",
+		"staging": "1.0.6-staging.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -980,19 +980,44 @@
 				"@cloudflare/realtimekit-ui": "1.0.6-staging.1"
 			},
 			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "c237aaacc1a86b8a9b90257c477ab64af807369f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.6-staging.1.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-Rr25iJPWzfZUndagypQBG6q3ZUy0yIBSBpgn5UrjgmNqvkCaXBcKo74sGh/sjhcJ6Mu+hWmF0fEuPrbP4aDAZA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCPc4li1ExAg9VWDdnvK5BMZAnBSF4BtxpF+9lDb9ojsgIhAJ5D7ab0rYmSFyU5h6/foEy3fa1WVjtZbvDSrWGy7G/7",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1733280
+			}
+		},
+		"1.0.6-staging.2": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "1.0.6-staging.2",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "1.0.6-staging.2"
+			},
+			"peerDependencies": {
 				"@angular/common": ">=12",
 				"@angular/core": ">=12"
 			},
 			"dist": {
-				"integrity": "sha512-Rr25iJPWzfZUndagypQBG6q3ZUy0yIBSBpgn5UrjgmNqvkCaXBcKo74sGh/sjhcJ6Mu+hWmF0fEuPrbP4aDAZA==",
-				"shasum": "c237aaacc1a86b8a9b90257c477ab64af807369f",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.6-staging.1.tgz",
+				"integrity": "sha512-/+4toywGHwREC1dDBg3h8K/atntAi4hUdMFeTRLK5bqN6re4sP2H6cTDXrqcpjYzNVh6z6diFcG4n0XI9J8feA==",
+				"shasum": "7dabb368306ee4484d3f090e9738387a658009bc",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.6-staging.2.tgz",
 				"fileCount": 18,
-				"unpackedSize": 1733280,
+				"unpackedSize": 1733506,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCPc4li1ExAg9VWDdnvK5BMZAnBSF4BtxpF+9lDb9ojsgIhAJ5D7ab0rYmSFyU5h6/foEy3fa1WVjtZbvDSrWGy7G/7"
+						"sig": "MEQCIHJ9N2VTWsw5hHbbSicL8JNFysWRQcrlhmUup86JAit+AiAzrpOykzy2Qd5csZqPj94MTmNxgft08J9J1DwxdZlt2g=="
 					}
 				]
 			}
