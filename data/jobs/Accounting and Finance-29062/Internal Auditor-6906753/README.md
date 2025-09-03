@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Texas: Austin (preferred), Houston, San Antonio, Dallas</p>
+<p><strong>Available Locations:</strong> Austin</p>
 <p><strong>About the Department</strong></p>
 <p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective, and independent assurance over the Company’s key business and financial risks to the Audit Committee and Management in a cost-effective manner and in alignment with professional standards. In addition to managing the Company’s SOX compliance program, the function is expanding its focus to include broader operational and strategic risks. Reflecting the Company’s core value of continuous improvement, Internal Audit is also exploring more efficient audit approaches and adopting industry best practices where appropriate.</p>
 <p><strong>About the Role</strong></p>
