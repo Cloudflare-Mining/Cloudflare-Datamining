@@ -2385,8 +2385,7 @@
 					"name": "nodeJsCompat",
 					"annotations": {
 						"compatDisableFlag": "no_nodejs_compat",
-						"compatEnableFlag": "nodejs_compat",
-						"impliedByAfterDate": "unhandled type"
+						"compatEnableFlag": "nodejs_compat"
 					}
 				},
 				{
@@ -2962,8 +2961,9 @@
 				{
 					"name": "enableNodeJsProcessV2",
 					"annotations": {
+						"compatDisableFlag": "disable_nodejs_process_v2",
 						"compatEnableFlag": "enable_nodejs_process_v2",
-						"experimental": "true"
+						"impliedByAfterDate": "unhandled type"
 					}
 				},
 				{
@@ -6544,8 +6544,8 @@
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.neededByFl",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableAllDates",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.experimental",
-		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.impliedByAfterDate",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.pythonSnapshotRelease",
+		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.impliedByAfterDate",
 		"workerd/src/workerd/io/features.capnp",
 		"workerd/src/workerd/io/frankenvalue.capnp",
 		"workerd/src/workerd/io/outcome.capnp",
