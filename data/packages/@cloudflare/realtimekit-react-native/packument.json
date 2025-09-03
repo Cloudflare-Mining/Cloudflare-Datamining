@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-react-native",
 	"dist-tags": {
 		"latest": "0.1.3",
-		"staging": "0.1.4-staging.7"
+		"staging": "0.1.4-staging.9"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1018,6 +1018,68 @@
 			"name": "@cloudflare/realtimekit-react-native",
 			"version": "0.1.4-staging.7",
 			"dependencies": {
+				"events": "^3.3.0",
+				"fast-base64-decode": "1.0.0",
+				"node-libs-react-native": "^1.2.1",
+				"text-encoding-polyfill": "^0.6.7",
+				"@cloudflare/realtimekit": "1.1.7",
+				"react-native-url-polyfill": "1.3.0"
+			},
+			"peerDependencies": {
+				"react": "*",
+				"react-native": "*",
+				"@expo/config-plugins": "*",
+				"@cloudflare/react-native-webrtc": "~125.0.1"
+			},
+			"dist": {
+				"shasum": "6adc9061868c844bad2ca51da6bba9dfa92d95a3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-native/-/realtimekit-react-native-0.1.4-staging.7.tgz",
+				"fileCount": 135,
+				"integrity": "sha512-7yslPYVT3T3c2E+TNFm7346tDLWEhB28MCD34Y+1CJ36Px+UMQI8AGLB/2ryfG5x7/4mcCGKtl1X05fArp18Gg==",
+				"signatures": [
+					{
+						"sig": "MEUCIFpTdcoTQKhOVaUmSgDcvnNV4nRGdXtNep+n5roipumfAiEA8OHkeaSU1/yN7FHAAR6qca4fpj8fh3llm1StwQDRVbo=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 818068
+			}
+		},
+		"0.1.4-staging.8": {
+			"name": "@cloudflare/realtimekit-react-native",
+			"version": "0.1.4-staging.8",
+			"dependencies": {
+				"events": "^3.3.0",
+				"fast-base64-decode": "1.0.0",
+				"node-libs-react-native": "^1.2.1",
+				"text-encoding-polyfill": "^0.6.7",
+				"@cloudflare/realtimekit": "1.1.7",
+				"react-native-url-polyfill": "1.3.0"
+			},
+			"peerDependencies": {
+				"react": "*",
+				"react-native": "*",
+				"@expo/config-plugins": "*",
+				"@cloudflare/react-native-webrtc": "~125.0.1"
+			},
+			"dist": {
+				"shasum": "d999404b01e59c2fac94344f1486f4c61eb40f47",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-native/-/realtimekit-react-native-0.1.4-staging.8.tgz",
+				"fileCount": 135,
+				"integrity": "sha512-ehn19JAaKQ1w7mBv44P21I0ijTsVCFX7BNGmmkyaa2KIdF4rEzJBKuAoaDA4jE9IWC/gBa7b+yNrwBauGOcG7A==",
+				"signatures": [
+					{
+						"sig": "MEUCIHh7KYH2vp4yxz97Zn1IrJS6ZacSFEJD9xX4WXglafX+AiEAvNSYl76oufibZ5LEi1LcoR2ZAhn0YmeR78NXRWdmzI0=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 818316
+			}
+		},
+		"0.1.4-staging.9": {
+			"name": "@cloudflare/realtimekit-react-native",
+			"version": "0.1.4-staging.9",
+			"dependencies": {
 				"@cloudflare/realtimekit": "1.1.7",
 				"events": "^3.3.0",
 				"fast-base64-decode": "1.0.0",
@@ -1032,15 +1094,15 @@
 				"react-native": "*"
 			},
 			"dist": {
-				"integrity": "sha512-7yslPYVT3T3c2E+TNFm7346tDLWEhB28MCD34Y+1CJ36Px+UMQI8AGLB/2ryfG5x7/4mcCGKtl1X05fArp18Gg==",
-				"shasum": "6adc9061868c844bad2ca51da6bba9dfa92d95a3",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-native/-/realtimekit-react-native-0.1.4-staging.7.tgz",
+				"integrity": "sha512-52uUfXW7zTKC66h7Evo5shVSV9T10tdFMq4ZRGn+73h0ZtOL7gsVwARpCzFn46ODm4P312bf0v1avbYvG+92ug==",
+				"shasum": "1ca55e9d737e4bfc39089c5cdfc3794f7e0086b3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-native/-/realtimekit-react-native-0.1.4-staging.9.tgz",
 				"fileCount": 135,
-				"unpackedSize": 818068,
+				"unpackedSize": 819653,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIFpTdcoTQKhOVaUmSgDcvnNV4nRGdXtNep+n5roipumfAiEA8OHkeaSU1/yN7FHAAR6qca4fpj8fh3llm1StwQDRVbo="
+						"sig": "MEYCIQDgU/zp471cgTfbwsIFi464l5HfBTcNCuxZSvt5nb+HGAIhAIrHn5Jx4WmNP9wlljLMocAUz558M53T+YwGQf8TOV/v"
 					}
 				]
 			}
