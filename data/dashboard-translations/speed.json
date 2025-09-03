@@ -485,6 +485,7 @@
 	"speed.aria.percentile_values": "%{metricLabel} percentiles value",
 	"speed.aria.value": "Value: %{value}",
 	"speed.aria.content_container": "Network metrics for %{metric}",
+	"speed.table.network.repeats": "Repeats",
 	"speed.overview.section.core_web_vitals": "Core Web Vitals",
 	"speed.overview.section.network_performance": "Network Performance",
 	"speed.overview.section.http_traffic": "HTTP Traffic",
@@ -688,5 +689,7 @@
 	"speed.smart_shield.onboarding.step_additional_caching_preferences.action.regional_tiered_cache.title": "Regional Tiered Cache",
 	"speed.smart_shield.onboarding.step_additional_caching_preferences.action.regional_tiered_cache.description": "Improve origin performance by instructing Cloudflare to check a regional data center near the lower tier before going to the upper tier that may be outside the region.",
 	"speed.smart_shield.onboarding.step_additional_caching_preferences.action.cache_reserve.title": "Cache Reserve",
-	"speed.smart_shield.onboarding.step_additional_caching_preferences.action.cache_reserve.description": "Improve origin performance by automatically storing all cacheable files into Cloudflareu2019s persistent object storage buckets that we check before going to your origin. Cached files are stored with a 30 day time-to-live (TTL) refreshed on cache hits."
+	"speed.smart_shield.onboarding.step_additional_caching_preferences.action.cache_reserve.description": "Improve origin performance by automatically storing all cacheable files into Cloudflareu2019s persistent object storage buckets that we check before going to your origin. Cached files are stored with a 30 day time-to-live (TTL) refreshed on cache hits.",
+	"speed.overview.no_recurring_tests.title": "No recurring tests found",
+	"speed.overview.no_recurring_tests.description": "You haven't set up any recurring synthetic tests yet.<br /><0>Create a recurring test</0> to monitor your site's performance over time."
 }
