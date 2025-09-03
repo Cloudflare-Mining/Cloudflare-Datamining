@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-09-26T03:26:13.739Z",
-					"updatedAt": "2024-09-27T17:49:25.766Z"
+					"updatedAt": "2025-09-03T18:38:18.511Z"
 				},
 				"contentfulId": "hrfkqKsrjCS9TVlKNmm9T",
 				"contentTypeId": "page",
@@ -769,127 +769,143 @@
 						"eyebrow": null
 					},
 					{
-						"contentfulId": "2z0sa7itHe1uX52glECtLQ",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "4IUB5D4qLfkTr2KkdWHjjX",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "3v0C2BoicaIvBdgc4dzlgT",
-								"title": "Workers AI Overview",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5fOow5z33CEcuvYoV7SfrZ",
+								"heading": "Video",
 								"description": "Come take a stroll through our developer solutions that will help you build, deploy, and securely scale global AI applications.",
-								"learnMoreUrl": "https://www.youtube.com/watch?v=l7EwEpZyTpw",
-								"learnMoreText": "Watch Video",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "4uQsMFzaNIPyWV3ShTUgyU",
+									"elementName": "Resource - Workers AI Overview - Link",
+									"standardText": null,
+									"text": "Watch video",
+									"url": "https://www.youtube.com/watch?v=l7EwEpZyTpw",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "7fe09ffb-2a5f-5334-93ed-275d4c6af144",
+									"altText": "2024 API Security Trends & Predictions webinar image",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CiOmliYt5Ia50ePLjLAk8/bb956433c650a4dec22a4fc39d17dc6a/Webinar_99x180.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "2024 API Security Trends & Predictions"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "2VhLBqkfrXs69AZU7p26N8",
-								"title": "Build your first RAG Chatbot",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3xcvPUZh2XtcIDYU38qTF1",
+								"heading": "Documentation",
 								"description": "Create a RAG powered chatbot with Workers AI.",
-								"learnMoreUrl": "https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai",
-								"learnMoreText": "Get Started",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "63iwy8Y94KdgrNuoyQrvwx",
+									"elementName": "Resource - Build your first RAG Chatbot - Link",
+									"standardText": null,
+									"text": "Get started",
+									"url": "https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "4a1979f7-613d-5fb4-af4a-ac4fcb3c6e0e",
+									"altText": "Insight documentation illustration",
+									"title": "Insight documentation illustration",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Di6utb8PafW6HQim4yQH2/16d2c83d1220f12af1fb3db701d678dd/Insight_106x182__4_.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "7A85sERIMHeelti9FqIBgF",
-								"title": "How to build an AI Agent?",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5ExJ4K8yfjbQ0pRXYEaN5V",
+								"heading": "Video",
 								"description": "Build a basic AI agent that can perform actions, using function calling with Workers AI.",
-								"learnMoreUrl": "https://www.youtube.com/watch?v=Id5oKCa__IA",
-								"learnMoreText": "Watch video here",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "Dk24Vldz79cX90o0jNjt0",
+									"elementName": "Resource - How to build an AI Agent? - Link",
+									"standardText": null,
+									"text": "Watch video",
+									"url": "https://www.youtube.com/watch?v=Id5oKCa__IA",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "7fe09ffb-2a5f-5334-93ed-275d4c6af144",
+									"altText": "2024 API Security Trends & Predictions webinar image",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CiOmliYt5Ia50ePLjLAk8/bb956433c650a4dec22a4fc39d17dc6a/Webinar_99x180.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "2024 API Security Trends & Predictions"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "42ApARqalk9rPwGIdSEjn5",
+								"heading": "Blog",
+								"description": "Address generative AI security concerns by viewing our best practices for securing GenAI tools with SASE.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "4kerVbSMLj8XjglMP07Fmx",
+									"elementName": "Resource - Best practices for securing generative AI with SASE - Link",
+									"standardText": null,
+									"text": "Read blog",
+									"url": "https://blog.cloudflare.com/best-practices-sase-for-ai/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
+									"altText": "Blog  thumbnail",
+									"title": "Blog  thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},

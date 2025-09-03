@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-09-10T05:27:25.071Z",
-					"updatedAt": "2025-08-19T02:16:46.110Z"
+					"updatedAt": "2025-09-03T18:38:03.304Z"
 				},
 				"contentfulId": "3pGNm2rdVbCUlh6HY33k8S",
 				"contentTypeId": "page",
@@ -621,127 +621,143 @@
 						"eyebrow": null
 					},
 					{
-						"contentfulId": "6WVl2pvKSa7331I7vxHUJU",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "14o10qp8Nyi1P9mF0p5wkp",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "7ER7HBTM5nKodAo0JEvRTg",
-								"title": "Build your first AI Gateway",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Create an AI Gateway to monitor, control & optimize into your AI applications",
-								"learnMoreUrl": "https://developers.cloudflare.com/ai-gateway/get-started/",
-								"learnMoreText": "Get Started",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "2zR8ewGqe120ip6m7ALDL2",
+								"heading": "Documentation",
+								"description": "Create an AI Gateway to monitor, control & optimize into your AI applications.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "1P6YedgqQbLGnVmEj2Nx68",
+									"elementName": "Resource - Build your first AI Gateway - Link",
+									"standardText": null,
+									"text": "Get started",
+									"url": "https://developers.cloudflare.com/ai-gateway/get-started/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "4a1979f7-613d-5fb4-af4a-ac4fcb3c6e0e",
+									"altText": "Insight documentation illustration",
+									"title": "Insight documentation illustration",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Di6utb8PafW6HQim4yQH2/16d2c83d1220f12af1fb3db701d678dd/Insight_106x182__4_.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "6JmqHKJUGNQN8EQyyO7FVS",
-								"title": "Optimize your AI App & fine tune",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Learn how to optimize your existing AI applications with Cloudflare AI Gateway & how to finetune OpenAI models using R2",
-								"learnMoreUrl": "https://www.youtube.com/watch?v=idKdjA8t0jw",
-								"learnMoreText": "Watch Video",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "7dLKfMhyzLpN0iufg7yUw2",
+								"heading": "Video",
+								"description": "Learn how to optimize your existing AI applications with Cloudflare AI Gateway & how to finetune OpenAI models using R2.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "No2GbMdgHsJcFBPBC0KT4",
+									"elementName": "Resource - Optimize your AI App & fine tune - Link",
+									"standardText": null,
+									"text": "Watch video",
+									"url": "https://www.youtube.com/watch?v=idKdjA8t0jw",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "7fe09ffb-2a5f-5334-93ed-275d4c6af144",
+									"altText": "2024 API Security Trends & Predictions webinar image",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CiOmliYt5Ia50ePLjLAk8/bb956433c650a4dec22a4fc39d17dc6a/Webinar_99x180.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "2024 API Security Trends & Predictions"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "WOJ1GpXidAhvgZzGiXVkE",
-								"title": "AI Gateway overview",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Gain an overview of AI Gateway and its benefits",
-								"learnMoreUrl": "https://developers.cloudflare.com/ai-gateway/",
-								"learnMoreText": "Read Documentation",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3pNSVzvsGQe1ITctkbqaVy",
+								"heading": "Documentation",
+								"description": "Gain an overview of AI Gateway and its benefits.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "10mBXQxhXqRgouHZvZXcJt",
+									"elementName": "Resource - AI Gateway overview - Link",
+									"standardText": null,
+									"text": "Read documentation",
+									"url": "https://developers.cloudflare.com/ai-gateway/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "1c0de5f1-abee-55b8-9653-945bf9480f62",
+									"altText": "Cloudflare insights",
+									"title": "Cloudflare insights",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eD4EXWL2DPwSe5Y8ASppZ/3cf93c08e638e5f6057d6a1a7eccd9ab/Insight_106x182.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "42ApARqalk9rPwGIdSEjn5",
+								"heading": "Blog",
+								"description": "Address generative AI security concerns by viewing our best practices for securing GenAI tools with SASE.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "4kerVbSMLj8XjglMP07Fmx",
+									"elementName": "Resource - Best practices for securing generative AI with SASE - Link",
+									"standardText": null,
+									"text": "Read blog",
+									"url": "https://blog.cloudflare.com/best-practices-sase-for-ai/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
+									"altText": "Blog  thumbnail",
+									"title": "Blog  thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},
