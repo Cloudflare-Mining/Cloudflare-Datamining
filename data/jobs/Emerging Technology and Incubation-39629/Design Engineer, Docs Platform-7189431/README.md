@@ -5,14 +5,14 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon or Austin (Hybrid)<br><br></strong></p>
+<h3><strong>Available Locations: Austin, TX | Lisbon, Portugal | Bengaluru, India</strong></h3>
 <h3><strong>About the Department</strong></h3>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>About the Role</strong></p>
+<h3><strong>About the Role</strong></h3>
 <p>As a Design Engineer on the Product Content Experience (PCX) team, you’ll play an important role at Cloudflare.&nbsp;</p>
 <p>You’ll be part of a growing engineering team tasked with making our <a href="https://developers.cloudflare.com/">docs site</a> shine, as well as other, interactive (and future) responsibilities. You’ll partner with technical writers, content strategists, developer educators, product managers, and engineers who are committed to developing and improving the customer experience (seriously, check out our <a href="https://github.com/cloudflare/cloudflare-docs/pulse/monthly">contributor graph</a>, we have some passionate folks!).&nbsp;</p>
 <p>If you are excited to work with an audience ranging from Wordpress bloggers to development teams at Fortune 100 companies, come help us make the Internet better!</p>
-<p><strong>What you’ll do</strong></p>
+<h3><strong>What you’ll do</strong></h3>
 <p>We are looking for an experienced and empathetic Design Engineer who will help build and scale the platform that empowers millions of developers to be successful with Cloudflare. In this role, you’ll use your skills to ensure we have a world-class documentation platform that gives customers relevant and up-to-date content whenever they need it. This is a cross-functional role where you’ll work collaboratively across the product and developer relations teams.</p>
 <ul>
 	<li>Build and maintain our documentation platform (and soon other platforms)</li>
@@ -20,7 +20,7 @@
 	<li>Collaborate with Product teams to be customer zero for Cloudflare’s own products within our documentation platform</li>
 	<li>Cultivate and establish relationships both internally and externally with users of our documentation, being a thoughtful point of contact to help collect and implement improvements based on feedback&nbsp;</li>
 </ul>
-<p><strong>Qualifications</strong></p>
+<h3><strong>Qualifications</strong></h3>
 <ul>
 	<li>2-7 years of experience working with distributed systems.</li>
 	<li>Experience designing and building frontend applications.</li>
