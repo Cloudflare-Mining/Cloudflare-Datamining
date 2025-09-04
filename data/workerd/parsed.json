@@ -3137,6 +3137,14 @@
 						"compatEnableFlag": "remove_nodejs_compat_eol_v24",
 						"impliedByAfterDate": "unhandled type"
 					}
+				},
+				{
+					"name": "enableNodeJsConsoleModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_console_module",
+						"compatEnableFlag": "enable_nodejs_console_module",
+						"impliedByAfterDate": "unhandled type"
+					}
 				}
 			]
 		},
