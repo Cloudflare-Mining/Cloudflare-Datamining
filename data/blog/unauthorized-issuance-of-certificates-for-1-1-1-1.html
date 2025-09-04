@@ -1,0 +1,413 @@
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YsdSCqlvSi2qNnqb6s9hu/eac69a1a17c414b5d1e129ed5d64e9d4/image3.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>Over the past few days Cloudflare has been notified through our vulnerability disclosure program and the <a href="https://groups.google.com/g/certificate-transparency/c/we_8SNGqA3w/m/ILXqa0hzAgAJ?utm_medium=email&amp;utm_source=footer"><u>certificate transparency mailing list</u></a> that unauthorized certificates were issued by <a href="https://www.fina.hr"><u>Fina CA</u></a> for 1.1.1.1, one of the IP addresses used by our <a href="https://one.one.one.one"><u>public DNS resolver service</u></a>. From February 2024 to August 2025, Fina CA <a href="https://crt.sh/?iPAddress=1.1.1.1&amp;match=%3D"><u>issued</u></a> twelve certificates for 1.1.1.1 without our permission. We did not observe unauthorized issuance for any properties managed by Cloudflare other than 1.1.1.1.</p>
+	<p>We have no evidence that bad actors took advantage of this error. To impersonate Cloudflare's public DNS resolver 1.1.1.1, an attacker would not only require an unauthorized certificate and its corresponding private key, but attacked users would also need to trust the Fina CA. Furthermore, traffic between the client and 1.1.1.1 would have to be intercepted.</p>
+	<p>While this unauthorized issuance is an unacceptable lapse in security by Fina CA, we should have caught and responded to it earlier. After speaking with Fina CA, it appears that they issued these certificates for the purposes of internal testing. However, no CA should be issuing certificates for domains and IP addresses without checking control. At present all certificates have been <a href="http://rdc.fina.hr/RDC2020/FinaRDCCA2020partc1.crl"><u>revoked</u></a>. We are awaiting a full post-mortem from Fina.</p>
+	<p>While we regret this situation, we believe it is a useful opportunity to walk through how trust works on the Internet between networks like ourselves, destinations like 1.1.1.1, CAs like Fina, and devices like the one you are using to read this. To learn more about the mechanics, please keep reading.</p>
+	<div class="flex anchor relative">
+		<h3 id="background">Background</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare operates a <a href="https://one.one.one.one"><u>public DNS resolver 1.1.1.1 service</u></a> that millions of devices use to resolve domain names from a human-readable format such as example.com to an IP address like 192.0.2.42 or 2001:db8::2a.</p>
+	<p>The 1.1.1.1 service is accessible using various methods, across multiple domain names, such as <a href="https://cloudflare-dns.com"><u>cloudflare-dns.com</u></a> and <a href="https://one.one.one.one"><u>one.one.one.one</u></a>, and also using various IP addresses, such as 1.1.1.1, 1.0.0.1, 2606:4700:4700::1111, and 2606:4700:4700::1001. <a href="https://one.one.one.one/family"><u>1.1.1.1 for Families</u></a> also provides public DNS resolver services and is hosted on different IP addresses — 1.1.1.2, 1.1.1.3, 1.0.0.2, 1.0.0.3, 2606:4700:4700::1112, 2606:4700:4700::1113, 2606:4700:4700::1002, 2606:4700:4700::1003.</p>
+	<p>As originally specified in <a href="https://datatracker.ietf.org/doc/html/rfc1034"><u>RFC 1034</u></a> and <a href="https://datatracker.ietf.org/doc/html/rfc1035"><u>RFC 1035</u></a>, the DNS protocol includes no privacy or authenticity protections. DNS queries and responses are exchanged between client and server in plain text over UDP or TCP. These represent around 60% of queries received by the Cloudflare 1.1.1.1 service. The lack of privacy or authenticity protection means that any intermediary can potentially read the DNS query and response and modify them without the client or the server being aware.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zbEvgOCwZomZTbgSGFuEo/d638f36eebdbf2577ea0b8172dff843e/image1.png" alt="DNS over UDP Query for example.com" class="kg-image" width="1324" height="778" loading="lazy">
+	</figure>
+	<p>To address these shortcomings, we have helped develop and deploy multiple solutions at the IETF. The two of interest to this post are DNS over TLS (DoT, <a href="https://datatracker.ietf.org/doc/html/rfc7858"><u>RFC 7878</u></a>) and DNS over HTTPS (DoH, <a href="https://datatracker.ietf.org/doc/html/rfc8484"><u>RFC 8484</u></a>). In both cases the DNS protocol itself is mainly unchanged, and the desirable security properties are implemented in a lower layer, replacing the simple use of plain-text in UDP and TCP in the original specification. Both DoH and DoT use TLS to establish an authenticated, private, and encrypted channel over which DNS messages can be exchanged. To learn more you can read <a href="https://blog.cloudflare.com/dns-encryption-explained"><u>DNS Encryption Explained</u></a>.</p>
+	<p>During the <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls"><u>TLS handshake</u></a>, the server proves its identity to the client by presenting a certificate. The client validates this certificate by verifying that it is signed by a Certification Authority that it already trusts. Only then does it establish a connection with the server. Once connected, TLS provides encryption and integrity for the DNS messages exchanged between client and server. This protects DoH and DoT against eavesdropping and tampering between the client and server.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21YeKS2nYIFDI9uC3uClXE/6115e00945458d42627d973aef75076c/image2.png" alt="DNS over HTTPS Query for example.com" class="kg-image" width="1630" height="1182" loading="lazy">
+	</figure>
+	<p>The TLS certificates used in DoT and DoH are the same kinds of certificates HTTPS websites serve. Most website certificates are issued for domain names like <a href="http://example.com"><u>example.com</u></a>. When a client connects to that website, they resolve the name <a href="http://example.com"><u>example.com</u></a> to an IP like 192.0.2.42, then connect to the domain on that IP address. The server responds with a TLS certificate containing <a href="http://example.com"><u>example.com</u></a>, which the device validates.</p>
+	<p>However, DNS server certificates tend to be used slightly differently. Certificates used for DoT and DoH have to contain the service IP addresses, not just domain names. This is due to clients being unable to resolve a domain name in order to contact their resolver, like <a href="https://cloudflare-dns.com"><u>cloudflare-dns.com</u></a>. Instead, devices are first set up by connecting to their resolver via a known IP address, such as 1.1.1.1 in the case of Cloudflare public DNS resolver. When this connection uses DoT or DoH, the resolver responds with a TLS certificate issued for that IP address, which the client validates. If the certificate is valid, the client believes that it is talking to the owner of 1.1.1.1 and starts sending DNS queries.</p>
+	<p>You can see that the IP addresses are included in the certificate Cloudflare’s public resolver uses for DoT/DoH:</p>
+	<pre class="language-Rust"><code class="language-Rust">Certificate:
+  Data:
+      Version: 3 (0x2)
+      Serial Number:
+          02:7d:c8:c5:e1:72:94:ae:c9:ed:3f:67:72:8e:8a:08
+      Signature Algorithm: sha256WithRSAEncryption
+      Issuer: C=US, O=DigiCert Inc, CN=DigiCert Global G2 TLS RSA SHA256 2020 CA1
+      Validity
+          Not Before: Jan  2 00:00:00 2025 GMT
+          Not After : Jan 21 23:59:59 2026 GMT
+      Subject: C=US, ST=California, L=San Francisco, O=Cloudflare, Inc., CN=cloudflare-dns.com
+      X509v3 extensions:
+          X509v3 Subject Alternative Name:
+              DNS:cloudflare-dns.com, DNS:*.cloudflare-dns.com, DNS:one.one.one.one, IP Address:1.0.0.1, IP Address:1.1.1.1, IP Address:162.159.36.1, IP Address:162.159.46.1, IP Address:2606:4700:4700:0:0:0:0:1001, IP Address:2606:4700:4700:0:0:0:0:1111, IP Address:2606:4700:4700:0:0:0:0:64, IP Address:2606:4700:4700:0:0:0:0:6400</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="rogue-certificate-issuance">Rogue certificate issuance</h3>
+		<a href="https://blog.cloudflare.com/#rogue-certificate-issuance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The section above describes normal, expected use of Cloudflare public DNS resolver 1.1.1.1 service, using certificates managed by Cloudflare. However, Cloudflare has been made aware of other, unauthorized certificates being issued for 1.1.1.1. Since certificate validation is the mechanism by which DoH and DoT clients establish the authenticity of a DNS resolver, this is a concern. Let’s now dive a little further in the security model provided by DoH and DoT.</p>
+	<p>Consider a client that is preconfigured to use the 1.1.1.1 resolver service using DoT. The client must establish a TLS session with the configured server before it can send any DNS queries. To be trusted, the server needs to present a certificate issued by a CA that the client trusts. The collection of certificates trusted by the client is also called the root store.</p>
+	<pre class="language-Rust"><code class="language-Rust">Certificate:
+  Data:
+      Version: 3 (0x2)
+      Serial Number:
+          02:7d:c8:c5:e1:72:94:ae:c9:ed:3f:67:72:8e:8a:08
+      Signature Algorithm: sha256WithRSAEncryption
+      Issuer: C=US, O=DigiCert Inc, CN=DigiCert Global G2 TLS RSA SHA256 2020 CA1</code></pre>
+	<p>A Certification Authority (CA) is an organisation, such as DigiCert in the section above, whose role is to receive requests to sign certificates and verify that the requester has control of the domain. In this incident, Fina CA issued certificates for 1.1.1.1 without Cloudflare's involvement. This means that Fina CA did not properly check whether the requestor had legitimate control over 1.1.1.1. According to Fina CA:</p>
+	<blockquote>
+		<p>“They were issued for the purpose of internal testing of certificate issuance in the production environment. An error occurred during the issuance of the test certificates when entering the IP addresses and as such they were published on Certificate Transparency log servers.”</p>
+	</blockquote>
+	<p>Although it’s not clear whether Fina CA sees it as an error, we emphasize that it is not an error to publish test certificates on Certificate Transparency (more about what that is later on). Instead, the error at hand is Fina CA using their production keys to sign a certificate for an IP address without permission of the controller. We have <a href="https://ripe84.ripe.net/archives/video/747"><u>talked about</u></a> misuse of 1.1.1.1 in documentation, lab, and testing environments at length. Instead of the Cloudflare public DNS resolver 1.1.1.1 IP address, Fina should have used an IP address it controls itself.</p>
+	<p>Unauthorized certificates are unfortunately not uncommon, whether due to negligence — such as <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1930029"><u>IdenTrust</u></a> in November 2024 — or compromise. Famously in 2011, the Dutch CA DigiNotar was <a href="https://threatpost.com/final-report-diginotar-hack-shows-total-compromise-ca-servers-103112/77170"><u>hacked</u></a>, and its keys were used to issue hundreds of certificates. This hack was a wake-up call and motivated the introduction of Certificate Transparency (CT), later formalised in <a href="https://datatracker.ietf.org/doc/html/rfc6962"><u>RFC 6962</u></a>. The goal of Certificate Transparency is not to directly prevent misissuance, but to be able to detect any misissuance once it has happened, by making sure every certificate issued by a CA is publicly available for inspection.</p>
+	<p>In certificate transparency several independent parties, including <a href="https://blog.cloudflare.com/introducing-certificate-transparency-monitoring"><u>Cloudflare</u></a>, operate public logs of issued certificates. Many modern browsers do not accept certificates unless they provide proof in the form of signed certificate timestamps (<a href="https://certificate.transparency.dev/howctworks"><u>SCT</u></a>s) that the certificate has been logged in at least two logs. Domain owners can therefore monitor all public CT logs for any certificate containing domains they care about. If they see a certificate for their domains that they did not authorize, they can raise the alarm. CT is also the data source for public services such as <a href="https://crt.sh"><u>crt.sh</u></a> and Cloudflare Radar’s <a href="https://radar.cloudflare.com/certificate-transparency"><u>certificate transparency page</u></a>.</p>
+	<p>Not all clients require proof of inclusion in certificate transparency. Browsers do, but most DNS clients don’t. We were fortunate that Fina CA did submit the unauthorized certificates to the CT logs, which allowed them to be discovered.</p>
+	<div class="flex anchor relative">
+		<h3 id="investigation-into-potential-malicious-use">Investigation into potential malicious use</h3>
+		<a href="https://blog.cloudflare.com/#investigation-into-potential-malicious-use" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Our immediate concern was that someone had maliciously used the certificates to impersonate the 1.1.1.1 service. Such an attack would require all the following:</p>
+	<ol>
+		<li>
+			<p>An attacker would require a rogue certificate and its corresponding private key.</p>
+		</li>
+		<li>
+			<p>Attacked clients would need to trust the Fina CA.</p>
+		</li>
+		<li>
+			<p>Traffic between the client and 1.1.1.1 would have to be intercepted.</p>
+		</li>
+	</ol>
+	<p>In light of this incident, we have reviewed these requirements one by one:</p>
+	<p>1. We know that a certificate was issued without Cloudflare's involvement. We must assume that a corresponding private key exists, which is not under Cloudflare's control. This could be used by an attacker. Fina CA wrote to us that the private keys were exclusively in Fina’s controlled environment and were immediately destroyed even before the certificates were revoked. As we have no way to verify this, we have and continue to take steps to detect malicious use as described in point 3.</p>
+	<p>2. Furthermore, some clients trust Fina CA. It is included by default in <a href="https://learn.microsoft.com/en-us/security/trusted-root/participants-list"><u>Microsoft’s root store</u></a> and in an <a href="https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls"><u>EU Trust Service provider</u></a>. We can exclude some clients, as the CA certificate is not included by default in the root stores of <a href="https://android.googlesource.com/platform/system/ca-certificates/+/master/files"><u>Android</u></a>, <a href="https://support.apple.com/en-us/HT209143"><u>Apple</u></a>, <a href="https://wiki.mozilla.org/CA/Included_Certificates"><u>Mozilla</u></a>, or <a href="https://g.co/chrome/root-policy"><u>Chrome</u></a>. These users cannot have been affected with these default settings. For these certificates to be used nefariously, the client’s root store must include the Certification Authority (CA) that issued them. Upon discovering the problem, we immediately reached out to Fina CA, Microsoft, and the <a href="https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/HR"><u>EU Trust Service provider</u></a>. Microsoft responded quickly, and started rolling out an update to their <i>disallowed list</i>, which should cause clients that use it to stop trusting the certificate.</p>
+	<p>3. Finally, we have launched an investigation into possible interception between users and 1.1.1.1. The first way this could happen is when the attacker is on-path of the client request. Such man-in-the-middle attacks are likely to be invisible to us. Clients will get responses from their on-path middlebox and we have no reliable way of telling that is happening. On-path interference has been a persistent problem for 1.1.1.1, which we’ve been <a href="https://blog.cloudflare.com/fixing-reachability-to-1-1-1-1-globally"><u>working on</u></a> ever since we announced 1.1.1.1.</p>
+	<p>A second scenario can occur when a malicious actor is off-path, but is able to hijack 1.1.1.1 routing via BGP. These are scenarios we have discussed in a<a href="https://blog.cloudflare.com/bgp-hijack-detection"> <u>previous blog post</u></a>, and <a href="https://manrs.org/2024/05/rpki-rov-deployment-reaches-major-milestone"><u>increasing adoption of RPKI route origin validation (ROV)</u></a> makes BGP hijacks with high penetration harder. We looked at the historical BGP announcements involving 1.1.1.1, and have found no evidence that such routing hijacks took place.</p>
+	<p>Although we cannot be certain, so far we have seen no evidence that these certificates have been used to impersonate Cloudflare public DNS resolver 1.1.1.1 traffic. In later sections we discuss the steps we have taken to prevent such impersonation in the future, as well as concrete actions you can take to protect your own systems and users.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-closer-look-at-the-unauthorized-certificates-attributes">A closer look at the unauthorized certificates attributes</h3>
+		<a href="https://blog.cloudflare.com/#a-closer-look-at-the-unauthorized-certificates-attributes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>All unauthorized certificates for 1.1.1.1 were valid for exactly one year and included other domain names. Most of these domain names are not registered, which indicates that the certificates were issued without proper domain control validation. This violates sections 3.2.2.4 and 3.2.2.5 of the CA/Browser Forum’s <a href="https://cabforum.org/working-groups/server/baseline-requirements/requirements/#3224-validation-of-domain-authorization-or-control"><u>Baseline Requirements</u></a>, and sections 3.2.2.3 and 3.2.2.4 of the <a href="https://rdc.fina.hr/RDC2015/CPWSA1-12-en.pdf"><u>Fina CA Certificate Policy</u></a>.</p>
+	<p>The full list of domain names we identified on the unauthorized certificates are as follows:</p>
+	<pre class="language-Rust"><code class="language-Rust">fina.hr
+ssltest5
+test.fina.hr
+test.hr
+test1.hr
+test11.hr
+test12.hr
+test5.hr
+test6
+test6.hr
+testssl.fina.hr
+testssl.finatest.hr
+testssl.hr
+testssl1.finatest.hr
+testssl2.finatest.hr</code></pre>
+	<p>It’s also worth noting that the Subject attribute points to a fictional organisation <b>TEST D.D.</b>, as can be seen on this unauthorized certificate:</p>
+	<pre class="language-Rust"><code class="language-Rust">        Serial Number:
+            a5:30:a2:9c:c1:a5:da:40:00:00:00:00:56:71:f2:4c
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=HR, O=Financijska agencija, CN=Fina RDC 2015
+        Validity
+            Not Before: Nov  2 23:45:15 2024 GMT
+            Not After : Nov  2 23:45:15 2025 GMT
+        Subject: C=HR, O=TEST D.D., L=ZAGREB, CN=testssl.finatest.hr, serialNumber=VATHR-32343828408.306
+        X509v3 extensions:
+            X509v3 Subject Alternative Name:
+                DNS:testssl.finatest.hr, DNS:testssl2.finatest.hr, IP Address:1.1.1.1</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="incident-timeline-and-impact">Incident timeline and impact</h3>
+		<a href="https://blog.cloudflare.com/#incident-timeline-and-impact" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><i>All timestamps are UTC. All certificates are identified by their date of validity.</i></p>
+	<p>The <a href="https://crt.sh/?id=12116084225"><u>first certificate</u></a> was issued to be valid starting February 2024, and revoked 33 min later. 11 certificate issuances with common name 1.1.1.1 followed from February 2024 to August 2025. Public reports have been made on <a href="https://news.ycombinator.com/item?id=45089708"><u>Hacker News</u></a> and on the <a href="https://groups.google.com/g/certificate-transparency/c/we_8SNGqA3w/m/ILXqa0hzAgAJ"><u>certificate-transparency mailing list</u></a> early in September 2025, which Cloudflare responded to.</p>
+	<p>While responding to the incident, we identified the full list of misissued certificates, their revocation status, and which clients trust them.</p>
+	<p>The full timeline for the incident is as follows.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Date &amp; Time (UTC)</b></p>
+				</td>
+				<td>
+					<p><b>Event Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2024-02-18 11:07:33</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=12116084225"><u>First certificate issuance</u></a> revoked on 2024-02-18 11:40:00</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2024-09-25 08:04:03</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=14681939427"><u>Issuance</u></a> revoked on 2024-11-06 07:36:05</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2024-10-04 07:55:38</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=14793030836"><u>Issuance</u></a> revoked on 2024-10-04 07:56:56</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2024-10-04 08:05:48</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=14793121895"><u>Issuance</u></a> revoked on 2024-11-06 07:39:55</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2024-10-15 06:28:48</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=14939369380"><u>Issuance</u></a> revoked on 2024-11-06 07:35:36</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2024-11-02 23:45:15</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=15190039061"><u>Issuance</u></a> revoked on 2024-11-02 23:48:42</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-03-05 09:12:23</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=16939550348"><u>Issuance</u></a> revoked on 2025-03-05 09:13:22</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-05-24 22:56:21</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=18603461241"><u>Issuance</u></a> revoked on 2025-09-04 06:13:27</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-06-28 23:05:32</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=19318694206"><u>Issuance</u></a> revoked on 2025-07-18 07:01:27</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-07-18 07:05:23</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=19749594221"><u>Issuance</u></a> revoked on 2025-07-18 07:09:45</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-07-18 07:13:14</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=19749721864"><u>Issuance</u></a> revoked on 2025-09-04 06:30:36</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-08-26 07:49:00</p>
+				</td>
+				<td>
+					<p><a href="https://crt.sh/?id=20582951233"><u>Last certificate issuance</u></a> revoked on 2025-09-04 06:33:20</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-01 05:23:00</p>
+				</td>
+				<td>
+					<p><a href="https://news.ycombinator.com/item?id=45089708"><u>HackerNews submission</u></a> about a possible unauthorized issuance</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-02 04:50:00</p>
+				</td>
+				<td>
+					<p>Report shared with us on HackerOne, but was mistriaged</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-03 02:35:00</p>
+				</td>
+				<td>
+					<p>Second report shared with us on HackerOne, but also mistriaged.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-03 10:59:00</p>
+				</td>
+				<td>
+					<p><a href="https://groups.google.com/g/certificate-transparency/c/we_8SNGqA3w/m/ILXqa0hzAgAJ?utm_medium=email&amp;utm_source=footer"><u>Report sent</u></a> on the public <a href="mailto:certificate-transparency@googlegroups.com"><u>certificate-transparency@googlegroups.com</u></a> mailing picked up by the team.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-03 11:33:00</p>
+				</td>
+				<td>
+					<p>First response by Cloudflare on the mailing list about starting the investigation</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-03 12:08:00</p>
+				</td>
+				<td>
+					<p>Incident declared</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-03 12:16:00</p>
+				</td>
+				<td>
+					<p>Notification of an unauthorised issuance sent to Fina CA, Microsoft Root Store, and EU Trust service provider</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-03 12:23:00</p>
+				</td>
+				<td>
+					<p>Cloudflare identifies an initial list of nine rogue certificates</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-03 12:24:00</p>
+				</td>
+				<td>
+					<p>Outreach to Fina CA to inform them about the unauthorized issuance, requesting revocation</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-03 12:26:00</p>
+				</td>
+				<td>
+					<p>Identify the number of requests served on 1.1.1.1 IP address, and associated names/services</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-03 12:42:00</p>
+				</td>
+				<td>
+					<p>As a precautionary measure, began investigation to rule out the possibility of a BGP hijack for 1.1.1.1</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-03 18:48:00</p>
+				</td>
+				<td>
+					<p>Second notification of the incident to Fina CA</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-03 21:27:00</p>
+				</td>
+				<td>
+					<p>Microsoft Root Store notifies us that they are preventing further use of the identified unauthorized certificates by using their quick-revocation mechanism.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-04 06:13:27</p>
+				</td>
+				<td>
+					<p>Fina revoked all certificates.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-04 12:44:00</p>
+				</td>
+				<td>
+					<p>Cloudflare receives a response from Fina indicating “an error occurred during the issuance of the test certificates when entering the IP addresses and as such they were published on Certificate Transparency log servers. [...] Fina will eliminate the possibility of such an error recurring.”</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="remediation-and-follow-up-steps">Remediation and follow-up steps</h3>
+		<a href="https://blog.cloudflare.com/#remediation-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare has invested from the very start in the Certificate Transparency ecosystem. Not only do we operate CT logs ourselves, we also run a CT monitor that we use to <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring"><u>alert customers when certificates are mis-issued for their domains</u></a>.</p>
+	<p>It is therefore disappointing that we failed to properly monitor certificates for our own domain. We failed three times. The first time because 1.1.1.1 is an IP certificate and our system failed to alert on these. The second time because even if we were to receive certificate issuance alerts, as any of our customers can, we did not implement sufficient filtering. With the sheer number of names and issuances we manage it has not been possible for us to keep up with manual reviews. Finally, because of this noisy monitoring, we did not enable alerting for all of our domains. We are addressing all three shortcomings.</p>
+	<p>We double-checked all certificates issued for our names, including but not limited to 1.1.1.1, using certificate transparency, and confirmed that as of 3 September, the Fina CA issued certificates are the only unauthorized issuances. We contacted Fina, and the root programs we know that trust them, to ask for revocation and investigation. The certificates have been revoked.</p>
+	<p>Despite no indication of usage of these certificates so far, we take this incident extremely seriously. We have identified several steps we can take to address the risk of these sorts of problems occurring in the future, and we plan to start working on them immediately:</p>
+	<p><b>Alerting</b>: Cloudflare will improve alerts and escalation for issuance of certificates for missing Cloudflare owned domains including 1.1.1.1 certificates.</p>
+	<p><b>Transparency</b>: The issuance of these unauthorised 1.1.1.1 certificates were detected because Fina CA used Certificate Transparency. Transparency inclusion is not enforced by most DNS clients, which implies that this detection was a lucky one. We are working on bringing transparency to non-browser clients, in particular DNS clients that rely on TLS.</p>
+	<p><b>Bug Bounty</b>: Our procedure for triaging reports made through our vulnerability disclosure program was the cause for a delayed response. We are working to revise our triaging process to ensure such reports get the right visibility.</p>
+	<p><b>Monitoring</b>: During this incident, our team relied on <a href="https://crt.sh"><u>crt.sh</u></a> to provide us a convenient UI to explore CA issued certificates. We’d like to give a shout to the <a href="https://www.sectigo.com"><u>Sectigo team</u></a> for maintaining this tool. Given Cloudflare is an active CT Monitor, we have started to build a dedicated UI to explore our data <a href="https://radar.cloudflare.com/certificate-transparency"><u>in Radar</u></a>. We are looking to enable exploration of certs with IP addresses as common names to Radar as well.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-steps-should-you-take">What steps should you take?</h3>
+		<a href="https://blog.cloudflare.com/#what-steps-should-you-take" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This incident demonstrates the disproportionate impact that the current root store model can have. It is enough for a single certification authority going rogue for everyone to be at risk.</p>
+	<p>If you are an IT manager with a fleet of managed devices, you should consider whether you need to take direct action to revoke these unauthorized certificates. We provide the list in the timeline section above. As the certificates have since been revoked, it is possible that no direct intervention should be required; however, system-wide revocation is not instantaneous and automatic and hence we recommend checking.</p>
+	<p>If you are tasked to review the policy of a root store that includes Fina CA, you should take immediate actions to review their inclusion in your program. The issue that has been identified through the course of this investigation raises concerns, and requires a clear report and follow-up from the CA. In addition, to make it possible to detect future such incidents, you should consider having a requirement for all CAs in your root store to participate in Certificate Transparency. Without CT logs, problems such as the one we describe here are impossible to address before they result in impact to end users.</p>
+	<p>We are not suggesting that you should stop using DoH or DoT. DNS over UDP and TCP are unencrypted, which puts every single query and response at risk of tampering and unauthorised surveillance. However, we believe that DoH and DoT client security could be improved if clients required that server certificates be included in a certificate transparency log.</p>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This event is the first time we have observed a rogue issuance of a certificate used by our public DNS resolver 1.1.1.1 service. While we have no evidence this was malicious, we know that there might be future attempts that are.</p>
+	<p>We plan to accelerate how quickly we discover and alert on these types of issues ourselves. We know that we can catch these earlier, and we plan to do so.</p>
+	<p>The identification of these kinds of issues rely on an ecosystem of partners working together to support Certificate Transparency. We are grateful for the monitors who noticed and reported this issue.</p>
+</div>
