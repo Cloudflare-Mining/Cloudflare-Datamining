@@ -514,7 +514,7 @@ interface DurableObjectId {
   equals(other: DurableObjectId): boolean;
   readonly name?: string;
 }
-interface DurableObjectNamespace<
+declare abstract class DurableObjectNamespace<
   T extends Rpc.DurableObjectBranded | undefined = undefined,
 > {
   newUniqueId(
@@ -553,6 +553,7 @@ interface DurableObjectNamespaceGetDurableObjectOptions {
 }
 interface DurableObjectState {
   waitUntil(promise: Promise<any>): void;
+  props: any;
   readonly id: DurableObjectId;
   readonly storage: DurableObjectStorage;
   container?: Container;
@@ -633,6 +634,7 @@ interface DurableObjectStorage {
   deleteAlarm(options?: DurableObjectSetAlarmOptions): Promise<void>;
   sync(): Promise<void>;
   sql: SqlStorage;
+  kv: SyncKvStorage;
   transactionSync<T>(closure: () => T): T;
   getCurrentBookmark(): Promise<string>;
   getBookmarkForTime(timestamp: number | Date): Promise<string>;
@@ -3088,6 +3090,20 @@ interface MessagePort extends EventTarget {
 }
 interface MessagePortPostMessageOptions {
   transfer?: any[];
+}
+interface SyncKvStorage {
+  get<T = unknown>(key: string): T | undefined;
+  list<T = unknown>(options?: SyncKvListOptions): Iterable<[string, T]>;
+  put<T>(key: string, value: T): void;
+  delete(key: string): boolean;
+}
+interface SyncKvListOptions {
+  start?: string;
+  startAfter?: string;
+  end?: string;
+  prefix?: string;
+  reverse?: boolean;
+  limit?: number;
 }
 type AiImageClassificationInput = {
   image: number[];
