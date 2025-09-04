@@ -7,8 +7,8 @@
 </div>
 <p><strong>Available Locations: Lisbon - Hybrid</strong></p>
 <p><strong>About Product Experience (PX) team</strong></p>
-<p>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Product Designer to join our team.</p>
-<p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Product Designers to lead by example and coach the team into doing their best work.</p>
+<p>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Senior Product Designer to join our team.</p>
+<p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Sr Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Product Designers to lead by example and coach the team into doing their best work.</p>
 <p>If you're a systems-thinking Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
 <p><strong>What you'll do</strong></p>
 <ul>
@@ -25,7 +25,7 @@
 <p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
 	<li>Deep understanding of human-centered design.</li>
-	<li>5+ years working in professional UX or product design roles.</li>
+	<li>8+ years working in professional UX or product design roles.</li>
 	<li>Effective visual, written, and verbal communication skills.</li>
 	<li>Technical expertise and an understanding of network services/developer tools are a plus.</li>
 	<li>If possible, please submit a 1-2 case studies or portfolio with your application</li>
