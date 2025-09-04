@@ -185,27 +185,27 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"docker-buildx-plugin": {
-		"version": "0.26.1-1~ubuntu.24.04~noble",
+		"version": "0.27.0-1~ubuntu.24.04~noble",
 		"short_description": "Docker Buildx cli plugin.",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce": {
-		"version": "5:28.3.3-1~ubuntu.24.04~noble",
+		"version": "5:28.4.0-1~ubuntu.24.04~noble",
 		"short_description": "Docker: the open-source application container engine",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce-cli": {
-		"version": "5:28.3.3-1~ubuntu.24.04~noble",
+		"version": "5:28.4.0-1~ubuntu.24.04~noble",
 		"short_description": "Docker CLI: the open-source application container engine",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce-rootless-extras": {
-		"version": "5:28.3.3-1~ubuntu.24.04~noble",
+		"version": "5:28.4.0-1~ubuntu.24.04~noble",
 		"short_description": "Rootless support for Docker.",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-compose-plugin": {
-		"version": "2.39.1-1~ubuntu.24.04~noble",
+		"version": "2.39.2-1~ubuntu.24.04~noble",
 		"short_description": "Docker Compose (V2) plugin for the Docker CLI.",
 		"author": "Docker <support@docker.com>"
 	},
@@ -395,7 +395,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"gir1.2-poppler-0.18:amd64": {
-		"version": "24.02.0-1ubuntu9.5",
+		"version": "24.02.0-1ubuntu9.6",
 		"short_description": "GObject introspection data for poppler-glib",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1115,7 +1115,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgbm1:amd64": {
-		"version": "25.0.7-0ubuntu0.24.04.1",
+		"version": "25.0.7-0ubuntu0.24.04.2",
 		"short_description": "generic buffer management API -- runtime",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1584,8 +1584,8 @@
 		"short_description": "Limited Error Raster Compression library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
-	"libllvm19:amd64": {
-		"version": "1:19.1.1-1ubuntu1~24.04.2",
+	"libllvm20:amd64": {
+		"version": "1:20.1.2-0ubuntu1~24.04.2",
 		"short_description": "Modular compiler and toolchain technologies, runtime library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1960,17 +1960,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpoppler-dev:amd64": {
-		"version": "24.02.0-1ubuntu9.5",
+		"version": "24.02.0-1ubuntu9.6",
 		"short_description": "PDF rendering library -- development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpoppler-glib8t64:amd64": {
-		"version": "24.02.0-1ubuntu9.5",
+		"version": "24.02.0-1ubuntu9.6",
 		"short_description": "PDF rendering library (GLib-based shared library)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpoppler134:amd64": {
-		"version": "24.02.0-1ubuntu9.5",
+		"version": "24.02.0-1ubuntu9.6",
 		"short_description": "PDF rendering library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1995,12 +1995,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpython3.12-minimal:amd64": {
-		"version": "3.12.3-1ubuntu0.7",
+		"version": "3.12.3-1ubuntu0.8",
 		"short_description": "Minimal subset of the Python language (version 3.12)",
 		"author": "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpython3.12-stdlib:amd64": {
-		"version": "3.12.3-1ubuntu0.7",
+		"version": "3.12.3-1ubuntu0.8",
 		"short_description": "Interactive high-level object-oriented language (standard library, version 3.12)",
 		"author": "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2225,17 +2225,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libtiff-dev:amd64": {
-		"version": "4.5.1+git230720-4ubuntu2.2",
+		"version": "4.5.1+git230720-4ubuntu2.3",
 		"short_description": "Tag Image File Format library (TIFF), development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libtiff6:amd64": {
-		"version": "4.5.1+git230720-4ubuntu2.2",
+		"version": "4.5.1+git230720-4ubuntu2.3",
 		"short_description": "Tag Image File Format (TIFF) library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libtiffxx6:amd64": {
-		"version": "4.5.1+git230720-4ubuntu2.2",
+		"version": "4.5.1+git230720-4ubuntu2.3",
 		"short_description": "Tag Image File Format (TIFF) library -- C++ interface",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2460,12 +2460,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libxml2-dev:amd64": {
-		"version": "2.9.14+dfsg-1.3ubuntu3.3",
+		"version": "2.9.14+dfsg-1.3ubuntu3.4",
 		"short_description": "GNOME XML library - development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libxml2:amd64": {
-		"version": "2.9.14+dfsg-1.3ubuntu3.3",
+		"version": "2.9.14+dfsg-1.3ubuntu3.4",
 		"short_description": "GNOME XML library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2535,7 +2535,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"linux-libc-dev:amd64": {
-		"version": "6.8.0-71.71",
+		"version": "6.8.0-79.79",
 		"short_description": "Linux Kernel Headers for development",
 		"author": "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
 	},
@@ -2585,7 +2585,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"mesa-libgallium:amd64": {
-		"version": "25.0.7-0ubuntu0.24.04.1",
+		"version": "25.0.7-0ubuntu0.24.04.2",
 		"short_description": "shared infrastructure for Mesa drivers",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2710,12 +2710,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"python3.12": {
-		"version": "3.12.3-1ubuntu0.7",
+		"version": "3.12.3-1ubuntu0.8",
 		"short_description": "Interactive high-level object-oriented language (version 3.12)",
 		"author": "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"python3.12-minimal": {
-		"version": "3.12.3-1ubuntu0.7",
+		"version": "3.12.3-1ubuntu0.8",
 		"short_description": "Minimal subset of the Python language (version 3.12)",
 		"author": "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
