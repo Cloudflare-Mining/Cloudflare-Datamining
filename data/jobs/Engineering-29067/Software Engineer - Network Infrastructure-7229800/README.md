@@ -7,18 +7,18 @@
 </div>
 <p><strong>Available Locations: Austin, New York, Champaign</strong></p>
 <h4><strong>About the Team</strong></h4>
-<p>Cloudflare is redefining the way networks are run at scale. Our Network Services product suite puts the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure and private networks.</p>
-<p>The Cloudflare Network Interconnect team works with Rust, Linux, and cloud technologies to build, deploy, and control custom linux servers and high speed networking switches at Cloudflare locations. We are looking for engineers who are equally as interested in building their own Linux-based OS as they are in building user-friendly HTTP APIs, and equally as interested in high speed networking as they are in debugging Rust applications.</p>
+<p>Cloudflare is redefining the way networks are run at scale. Our Network Services product suite puts the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure and private networks. We’re looking for curious, empathetic engineers who are excited to join us in changing the way networking is done!</p>
+<p>The Cloudflare Network Interconnect (CNI) team works with Rust, Linux, and cloud technologies to manage servers and high speed networking switches at Cloudflare locations, supporting our public CNI product. We are looking for engineers who are equally as interested in building their own Linux-based operating systems as they are in building user-friendly HTTP APIs, and equally as interested in high speed networking as they are in writing good Rust code.</p>
 <h4><strong>About the Role</strong></h4>
-<p>As a software engineer on the Cloudflare Network Interconnect team, you will be a key technical contributor to the control and data planes of custom network infrastructure, operating systems, and APIs supporting the Cloudflare Network Interconnect product. You will enable customers of Magic Transit, Magic WAN, and other Cloudflare products to connect to Cloudflare over private and high speed data center interconnects.</p>
-<p>You will build software on top of one of the largest edge networks in the world, and partner with some of the best engineers and product managers to build a robust and automated control plane for managing the fleet of servers driving hundreds of gigs of customer traffic. We’re looking for curious, empathetic engineers who are excited to join us in changing the way networking is done!</p>
+<p>As a software engineer on the CNI team, you will be a key technical contributor to the control and data planes of custom network infrastructure, operating systems, and APIs supporting our product. You will enable customers of Magic Transit, Magic WAN, and other Cloudflare products to connect with Cloudflare over private and high speed data center interconnects.</p>
+<p>You will build software on top of one of the largest edge networks in the world, and partner with some of the best engineers and product managers to build robust and automated systems driving hundreds of gigs of customer traffic.</p>
 <p><strong>Desired skills, knowledge, and experience</strong></p>
 <ul>
 	<li>3 years of relevant Software Engineering or SRE experience</li>
 	<li>BS/MS in Computer Science or equivalent experience</li>
 	<li><strong>Rust</strong> programming</li>
 	<li>Experience building on top of <strong>Linux networking</strong> primitives - e.g. ip, tc, network namespaces, etc</li>
-	<li>Familiarity with network engineering and protocols used in data center switching and routing - e.g. BGP, BFD, VXLAN, etc</li>
+	<li>Familiarity with network engineering tools and protocols used in data center switching and routing - e.g. BGP, BFD, VXLAN, etc</li>
 	<li>Experience designing and integrating <strong>RESTful APIs</strong> and backend systems, especially asynchronous architectures and those deployed onto serverless platforms like Cloudflare Workers</li>
 	<li>Experience with running virtual machines on Linux</li>
 	<li>Able to <strong>work across teams</strong> and level common, sustainable solutions</li>
