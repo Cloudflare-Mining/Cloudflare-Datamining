@@ -24381,6 +24381,32 @@
 		"state": {
 			"container": "undefined",
 			"storage": {
+				"kv": {
+					"get": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"list": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"put": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"delete": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					}
+				},
 				"sql": {
 					"exec": {
 						"__proto": "function",
@@ -24504,6 +24530,7 @@
 					"name": "string"
 				}
 			},
+			"props": {},
 			"waitUntil": {
 				"__proto": "function",
 				"__type": "function",
