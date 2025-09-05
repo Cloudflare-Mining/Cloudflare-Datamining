@@ -5,59 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Job Locations: Hybrid - Austin (must be able to work Sunday-Thursday)</strong></h4>
-<p><strong>About the Department</strong><br>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<p><strong>What You’ll do</strong><br>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work directly with our customers and cross-functionally to solve a variety of technical issues. This is a position where you will learn the inner workings of Cloudflare's products and gain a deeper understanding of internet technologies.</p>
-<p><strong>Skills, Knowledge, And Experience</strong></p>
+<p><strong>Job Description: US Enterprise Field Marketing Manager–Northeast</strong></p>
+<p>New York, NY or Northeast US</p>
+<p><strong>About the Role</strong></p>
+<p>We are looking for an experienced, enthusiastic and highly-motivated Senior Field Marketing Manager, Enterprise, Central Region who will be responsible for building the growth marketing strategy and managing field initiatives from end-to-end marketing to the Enterprise segment in the US.&nbsp;You will build the marketing plan for the region, integrating field campaigns and events, ABM initiatives, and partner marketing activities in order to grow Cloudflare’s customer base. You have a natural inclination to measure the effectiveness of marketing activities, show strong project management skills and are able to think strategically while orchestrating many moving parts. The programs you oversee will ultimately amplify campaign and event initiatives to drive demand and pipeline in the Americas Central Enterprise region.</p>
+<p><strong>Responsibilities</strong></p>
+<p>Build the marketing plan for the region, integrating hosted and 3rd party field events, ABM programs, and partner marketing activities in order to grow our customer base and drive demand for Cloudflare.</p>
 <ul>
-	<li>Experience: 2+ years of experience in a Technical Support role, Web Developer Support, or a similar position, with a proven track record of resolving diverse technical issues.</li>
-	<li>Community Engagement: Active participation in web development communities, with a demonstrated commitment to staying current with industry trends and sharing knowledge with peers.</li>
-	<li>Internet Fundamentals: Fundamental understanding of how the Internet works (OSI Model), with knowledge of Cloudflare's products that impact Layers 3, 4, and 7.</li>
-	<li>Technical Proficiency: Skilled in analyzing and troubleshooting DNS, SSL/TLS, HTTP, and optimizing website performance.</li>
-	<li>Tooling Expertise: Proficient in command line interfaces and experienced with tools such as browser developer tools, cURL, Git/Wrangler/npm, Postman, TCPDump/Wireshark, SSH, OpenSSL, and similar utilities.</li>
-	<li>Video Technology: Experienced with video encoding and streaming solutions, understanding the associated technical challenges.</li>
-	<li>Scripting Skills: Competent in writing scripts in Bash, Python, JavaScript, or other scripting languages.</li>
-	<li>Customer-Centric Communication: Comfortable communicating through various support channels, with a strong commitment to putting the customer first in every interaction.</li>
+	<li>Identify opportunities to drive various hosted event formats such as: CxO events, customer-led panels, fireside chats, roundtables, webinars, Executive Briefings, and other bespoke experiences.</li>
+	<li>Work with cross-functional team members (Sales, BDRs, MarkOps, MarTech, SalesOps, ABM Marketing, Product Marketing, Partner Marketing, etc.) to support the orchestration of high-impact marketing campaigns and programs.</li>
+	<li>Ensure that your accounts get the right share of corporate and regional resources that provide marketing aircover (Branding, PR, ABM, Pay Per Click, Social, Advertising, Outbound Campaigns, etc).</li>
+	<li>Help evaluate and manage external vendors and third-party event sponsorship opportunities based on market reach and audience relevance.</li>
+	<li>Track spend within the allocated budget, and build effective reports to determine performance and ROI (efficiency) of marketing initiatives.</li>
+	<li>Own the lead lifecycle and constantly drive to accelerate funnel velocity to maximize conversions and help drive the revenue goal in your region.</li>
+	<li>Be responsible for communications to regional stakeholders on results, issue management, and feedback loops.</li>
 </ul>
-<p><strong>Bonus:<br></strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>You have a site actively using our platform</li>
-	<li>You are familiar with any of the following Cloudflare products: Cloudflare Workers, Stream, Pages, R2</li>
+	<li>Must have 8+ years of proven experience in B2B marketing (enterprise software, SaaS, Security, etc.).</li>
+	<li>Must be comfortable with reporting and communicating marketing impact across the organization.</li>
+	<li>Analytically inclined, exceptional organizational skills, with rigorous attention to detail.</li>
+	<li>Ability to work effectively in a fast-paced and ever-changing environment with tight deadlines.</li>
+	<li>Prior marketing experience in a high growth company in the SaaS, security, or network space, combined with knowledge of how the Internet works is a plus.</li>
+	<li>Experience delivering, accelerating, and expanding sales pipeline through regional field marketing initiatives executed under an integrated ABM strategy</li>
+	<li>Understanding of the customer journey and the best marketing approaches by stage</li>
+	<li>Hands-on experience with Salesforce, Marketo, Tableau (or other marketing automation and analytics tools).</li>
+	<li>Analytically inclined and metrics-driven with rigorous attention to detail; great at solving complex problems with curious and creative mindset</li>
+	<li>Team player with exceptional organizational skills, and the ability to work strategically and tactically.</li>
+	<li>Ability to execute multiple projects simultaneously in a fast-paced and changing environment with tight deadlines</li>
+	<li>Excellent writing and presentation skills</li>
+	<li>Ability to travel when needed (20-30%)</li>
 </ul>
-<p><strong>Availability And Schedule Requirements<br></strong></p>
-<ul>
-	<li>Flexibility to work varying work schedules including; <strong>Pacific time</strong>, holidays, weekends, more than 5 days in a row, or additional hours</li>
-	<li>Ability to work on-site as needed out of one of our US based offices</li>
-</ul>
-<h4><strong>Compensation</strong></h4>
-<p>Compensation may be adjusted depending on work location.</p>
-<h4><strong>Equity</strong></h4>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h4><strong>Benefits</strong></h4>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h4><strong>Health &amp; Welfare Benefits</strong></h4>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h4><strong>Financial Benefits</strong></h4>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h4><strong>Time Off</strong></h4>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p><strong>Compensation -&nbsp;</strong>Compensation may be adjusted depending on work location.</p>
+<p>New York Compensation Range 142,000 - 174,000</p>
+<p>Equity Eligible</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
