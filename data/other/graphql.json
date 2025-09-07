@@ -2,18 +2,12 @@
 	"AccountAccessLoginRequestsAdaptiveGroups": {
 		"__description": "Access login requests",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of access login API events processed",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountAccessLoginRequestsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountAccessLoginRequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of access login API events processed, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountAccessLoginRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -46,7 +40,6 @@
 	"AccountAdvancedDnsProtectionNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Advanced DNS Protection",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -66,29 +59,6 @@
 		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
-	},
-	"AccountAdvancedDnsProtectionNetworkAnalyticsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountAdvancedDnsProtectionNetworkAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountAdvancedDnsProtectionNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -188,15 +158,9 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
-	"AccountAdvancedDnsProtectionNetworkAnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountAdvancedTcpProtectionNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Advanced TCP Protection",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -216,29 +180,6 @@
 		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
-	},
-	"AccountAdvancedTcpProtectionNetworkAnalyticsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountAdvancedTcpProtectionNetworkAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountAdvancedTcpProtectionNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -337,11 +278,6 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
-	"AccountAdvancedTcpProtectionNetworkAnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountAegisIpUtilizationAdaptiveGroups": {
 		"__description": "Beta. Aegis IP utilization metrics",
 		"avg": "The avg of values for a metric per dimension",
@@ -369,14 +305,8 @@
 	},
 	"AccountAiGatewayCacheAdaptiveGroups": {
 		"__description": "AI Gateway Cache",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of requests for an account with caching enabled: including hits and misses",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountAiGatewayCacheAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of requests for an account with caching enabled: including hits and misses, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountAiGatewayCacheAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -400,14 +330,8 @@
 	},
 	"AccountAiGatewayErrorsAdaptiveGroups": {
 		"__description": "AI Gateway Errors",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of errors",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountAiGatewayErrorsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of errors, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountAiGatewayErrorsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -428,16 +352,9 @@
 	},
 	"AccountAiGatewayRequestsAdaptiveGroups": {
 		"__description": "AI Gateway Requests",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed requests",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountAiGatewayRequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed requests, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountAiGatewayRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -479,16 +396,6 @@
 		"erroredRequests": "Sum of errored requests",
 		"uncachedTokensIn": "Sum of uncached tokens in",
 		"uncachedTokensOut": "Sum of uncached tokens out"
-	},
-	"AccountAiGatewayRequestsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"cachedRequests": "Confidence interval for the corresponding point estimate",
-		"cachedTokensIn": "Confidence interval for the corresponding point estimate",
-		"cachedTokensOut": "Confidence interval for the corresponding point estimate",
-		"cost": "Confidence interval for the corresponding point estimate",
-		"erroredRequests": "Confidence interval for the corresponding point estimate",
-		"uncachedTokensIn": "Confidence interval for the corresponding point estimate",
-		"uncachedTokensOut": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountAiGatewaySizeAdaptiveGroups": {
 		"__description": "AI Gateway Stored Rows",
@@ -546,15 +453,8 @@
 	},
 	"AccountAiInferenceAdaptiveGroups": {
 		"__description": "Aggregated AI Inference logs with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of inferences for an account",
 		"dimensions": "List of dimensions to group by",
-		"sum": ""
-	},
-	"AccountAiInferenceAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of inferences for an account, with confidence intervals",
-		"level": "Confidence level that was requested",
 		"sum": ""
 	},
 	"AccountAiInferenceAdaptiveGroupsDimensions": {
@@ -602,36 +502,13 @@
 		"totalRequestBytesOut": "Total bytes out per request",
 		"totalTiles": "Total tiles"
 	},
-	"AccountAiInferenceAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"totalAudioSeconds": "Confidence interval for the corresponding point estimate",
-		"totalCostMetricValue1": "Confidence interval for the corresponding point estimate",
-		"totalCostMetricValue2": "Confidence interval for the corresponding point estimate",
-		"totalInferenceSteps": "Confidence interval for the corresponding point estimate",
-		"totalInferenceTimeMs": "Confidence interval for the corresponding point estimate",
-		"totalInputLength": "Confidence interval for the corresponding point estimate",
-		"totalInputTokens": "Confidence interval for the corresponding point estimate",
-		"totalNeurons": "Confidence interval for the corresponding point estimate",
-		"totalOutputTokens": "Confidence interval for the corresponding point estimate",
-		"totalProcessedPixels": "Confidence interval for the corresponding point estimate",
-		"totalProcessedTiles": "Confidence interval for the corresponding point estimate",
-		"totalRequestBytesIn": "Confidence interval for the corresponding point estimate",
-		"totalRequestBytesOut": "Confidence interval for the corresponding point estimate",
-		"totalTiles": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountAiInferenceAdaptiveOrderBy": {
 		"__description": ""
 	},
 	"AccountAutoRAGConfigAPIAdaptiveGroups": {
 		"__description": "AutoRAG Config API Search Analytics",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountAutoRAGConfigAPIAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountAutoRAGConfigAPIAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -683,11 +560,6 @@
 		"aiSearchCount": "The number of AI Searches for this RAG",
 		"searchCount": "The number of Searches for this RAG"
 	},
-	"AccountAutoRAGConfigAPIAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"aiSearchCount": "Confidence interval for the corresponding point estimate",
-		"searchCount": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountAutoRAGEngineAdaptiveGroups": {
 		"__description": "AutoRAG Engine Ingestion Analytics",
 		"dimensions": "List of dimensions to group by",
@@ -695,16 +567,12 @@
 	},
 	"AccountAutoRAGEngineAdaptiveGroupsDimensions": {
 		"__description": "",
-		"completed": "Number of completed items",
 		"date": "The date when trigger was triggered",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
-		"errored": "Number of errored items",
-		"queued": "Number of queued items",
 		"rag": "AutoRAG Id",
-		"running": "Number of running items",
 		"sourceType": "AutoRAG Source Type"
 	},
 	"AccountAutoRAGEngineAdaptiveGroupsFilter_InputObject": {
@@ -722,14 +590,8 @@
 	},
 	"AccountBrowserIsolationSessionsAdaptiveGroups": {
 		"__description": "Aggregated count of Browser Isolation sessions",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of browser sessions",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountBrowserIsolationSessionsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of browser sessions, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountBrowserIsolationSessionsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -743,14 +605,8 @@
 	},
 	"AccountBrowserIsolationUserActionsAdaptiveGroups": {
 		"__description": "Aggregated count of Browser Isolation User Actions matches",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of user actions",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountBrowserIsolationUserActionsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of user actions, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountBrowserIsolationUserActionsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -766,14 +622,8 @@
 	},
 	"AccountBrowserRenderingApiAdaptiveGroups": {
 		"__description": "Aggregated Browser Rendering API events with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of Browser Rendering REST API requests for an account",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountBrowserRenderingApiAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of Browser Rendering REST API requests for an account, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountBrowserRenderingApiAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -800,7 +650,6 @@
 	"AccountBrowserRenderingBindingSessionsAdaptiveGroups": {
 		"__description": "Aggregated Browser Rendering worker binding sessions with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of sessions for an account",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
@@ -809,11 +658,6 @@
 	"AccountBrowserRenderingBindingSessionsAdaptiveGroupsAvg": {
 		"__description": "",
 		"avgConcurrentSessions": "Average concurrent browser sessions"
-	},
-	"AccountBrowserRenderingBindingSessionsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of sessions for an account, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountBrowserRenderingBindingSessionsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -842,7 +686,6 @@
 	"AccountBrowserRenderingBrowserTimeUsageAdaptiveGroups": {
 		"__description": "Aggregated Browser Rendering and Browser Rendering REST API browser sessions with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of Browser Rendering and Browser Rendering REST API browser sessions for an account",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
@@ -852,12 +695,6 @@
 	"AccountBrowserRenderingBrowserTimeUsageAdaptiveGroupsAvg": {
 		"__description": "",
 		"avgSessionDurationMs": "Average browser session duration in ms"
-	},
-	"AccountBrowserRenderingBrowserTimeUsageAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of Browser Rendering and Browser Rendering REST API browser sessions for an account, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The total value for a metric per dimension, with confidence intervals"
 	},
 	"AccountBrowserRenderingBrowserTimeUsageAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -889,10 +726,6 @@
 		"__description": "",
 		"totalSessionDurationMs": "Total browser sessions duration in ms"
 	},
-	"AccountBrowserRenderingBrowserTimeUsageAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"totalSessionDurationMs": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountBrowserRenderingEventsAdaptive": {
 		"__description": "Browser Rendering events with adaptive sampling",
 		"browserCloseReason": "Browser session close code. Enum (-1, N/A) (0, Unknown) (1, NormalClosure) (2, BrowserIdle) (3, ClientClosedEarly) (4, ChromiumChrashed) (5, ClientAbnormalClosure) (6, ServerAbnormalClosure) (7, ClientError) (8, ServerError) (9, WorkerError) (10, ClientNeverConnected) (11, BrowserSessionEvicted)\n",
@@ -913,7 +746,6 @@
 	"AccountBrowserRenderingEventsAdaptiveGroups": {
 		"__description": "Aggregated Browser Rendering events with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of events for an account",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
@@ -923,11 +755,6 @@
 	"AccountBrowserRenderingEventsAdaptiveGroupsAvg": {
 		"__description": "",
 		"avgConcurrentSessions": "Average concurrent browser sessions"
-	},
-	"AccountBrowserRenderingEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of events for an account, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountBrowserRenderingEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -982,7 +809,6 @@
 	"AccountCallsTurnUsageAdaptiveGroups": {
 		"__description": "Aggregated Calls TURN bandwidth usage with adaptive sampling\"",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -992,19 +818,6 @@
 		"concurrentConnectionsFiveMinutes": "Average concurrent connections when grouped by datetimeFiveMinutes",
 		"concurrentConnectionsHour": "Average concurrent connections when grouped by datetimeHour",
 		"concurrentConnectionsMinute": "Average concurrent connections when grouped by datetimeMinute"
-	},
-	"AccountCallsTurnUsageAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"concurrentConnectionsFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"concurrentConnectionsFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"concurrentConnectionsHour": "Confidence interval for the corresponding point estimate",
-		"concurrentConnectionsMinute": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountCallsTurnUsageAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountCallsTurnUsageAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -1032,21 +845,10 @@
 		"egressBytes": "The total bytes sent by Calls TURN, observed over the queried time period",
 		"ingressBytes": "The total bytes received by Calls TURN, observed over the queried time period"
 	},
-	"AccountCallsTurnUsageAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"egressBytes": "Confidence interval for the corresponding point estimate",
-		"ingressBytes": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountCallsUsageAdaptiveGroups": {
 		"__description": "Beta. Aggregated Calls SFU bandwidth usage with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountCallsUsageAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountCallsUsageAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -1071,15 +873,9 @@
 		"egressBytes": "The total bytes sent by Calls, observed over the queried time period",
 		"ingressBytes": "The total bytes received by Calls, observed over the queried time period"
 	},
-	"AccountCallsUsageAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"egressBytes": "Confidence interval for the corresponding point estimate",
-		"ingressBytes": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountCdnNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Cloudflare CDN traffic",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -1099,29 +895,6 @@
 		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
-	},
-	"AccountCdnNetworkAnalyticsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountCdnNetworkAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountCdnNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -1220,15 +993,9 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
-	"AccountCdnNetworkAnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountCloudchamberMetricsAdaptiveGroups": {
 		"__description": "Metrics for Cloudchamber applications and deployments",
 		"avg": "The average value of a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of metrics received",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum value of a metric per dimension",
@@ -1244,12 +1011,6 @@
 		"rxBandwidthBps": "Average RX bandwidth in bps",
 		"txBandwidth": "<small>DEPRECATED (Replaced by txBandwidthBps):</small> Average TX bandwidth",
 		"txBandwidthBps": "Average TX bandwidth in bps"
-	},
-	"AccountCloudchamberMetricsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of metrics received, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -1323,15 +1084,9 @@
 		"rxBytes": "Sum of bytes received",
 		"txBytes": "Sum of bytes transmitted"
 	},
-	"AccountCloudchamberMetricsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"rxBytes": "Confidence interval for the corresponding point estimate",
-		"txBytes": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountCloudflareTunnelsAnalyticsAdaptiveGroups": {
 		"__description": "Cloudflare tunnel Device Analytics",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -1352,29 +1107,6 @@
 		"egressBitRateMinute": "Sum of egress bits received, divided by 60 seconds, providing a per-second egress bit rate when grouped by datetimeMinute",
 		"egressBitRateTenSeconds": "Sum of egress bits received, divided by 10 seconds, providing a per-second egress bit rate when grouped by datetimeTenSeconds",
 		"sampleInterval": "Average sample interval applied to the data"
-	},
-	"AccountCloudflareTunnelsAnalyticsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"egressBitRate": "Confidence interval for the corresponding point estimate",
-		"egressBitRateDay": "Confidence interval for the corresponding point estimate",
-		"egressBitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"egressBitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"egressBitRateHour": "Confidence interval for the corresponding point estimate",
-		"egressBitRateMinute": "Confidence interval for the corresponding point estimate",
-		"egressBitRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountCloudflareTunnelsAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountCloudflareTunnelsAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -1409,15 +1141,9 @@
 		"bits": "Sum of bits",
 		"egressBits": "Sum of egress bits"
 	},
-	"AccountCloudflareTunnelsAnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"egressBits": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountContainersMetricsAdaptiveGroups": {
 		"__description": "Metrics for Cloudchamber applications and deployments",
 		"avg": "The average value of a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of metrics received",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum value of a metric per dimension",
@@ -1433,12 +1159,6 @@
 		"rxBandwidthBps": "Average RX bandwidth in bps",
 		"txBandwidth": "<small>DEPRECATED (Replaced by txBandwidthBps):</small> Average TX bandwidth",
 		"txBandwidthBps": "Average TX bandwidth in bps"
-	},
-	"AccountContainersMetricsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of metrics received, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountContainersMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -1512,15 +1232,9 @@
 		"rxBytes": "Sum of bytes received",
 		"txBytes": "Sum of bytes transmitted"
 	},
-	"AccountContainersMetricsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"rxBytes": "Confidence interval for the corresponding point estimate",
-		"txBytes": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountD1AnalyticsAdaptiveGroups": {
 		"__description": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of requests to D1 processed",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -1531,12 +1245,6 @@
 		"queryBatchResponseBytes": "The total number of bytes in the response, including all returned rows and metadata (average/mean).",
 		"queryBatchTimeMs": "Query batch response time in milliseconds (average/mean).",
 		"sampleInterval": "The average value used for sample interval"
-	},
-	"AccountD1AnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of requests to D1 processed, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountD1AnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -1572,18 +1280,9 @@
 		"rowsWritten": "The number of rows your queries wrote.",
 		"writeQueries": "The number of write queries."
 	},
-	"AccountD1AnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"queryBatchResponseBytes": "Confidence interval for the corresponding point estimate",
-		"readQueries": "Confidence interval for the corresponding point estimate",
-		"rowsRead": "Confidence interval for the corresponding point estimate",
-		"rowsWritten": "Confidence interval for the corresponding point estimate",
-		"writeQueries": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountD1QueriesAdaptiveGroups": {
 		"__description": "Beta. D1 query metrics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of D1 queries processed",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -1596,12 +1295,6 @@
 		"rowsReturned": "The average number of rows returned, observed over the queried time period.",
 		"rowsWritten": "The average number of rows written, observed over the queried time period.",
 		"sampleInterval": "The average value used for sample interval"
-	},
-	"AccountD1QueriesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of D1 queries processed, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountD1QueriesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -1636,13 +1329,6 @@
 		"rowsRead": "The total number of rows scanned, observed over the queried time period.",
 		"rowsReturned": "The total number of rows returned, observed over the queried time period.",
 		"rowsWritten": "The total number of rows written, observed over the queried time period."
-	},
-	"AccountD1QueriesAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"queryDurationMs": "Confidence interval for the corresponding point estimate",
-		"rowsRead": "Confidence interval for the corresponding point estimate",
-		"rowsReturned": "Confidence interval for the corresponding point estimate",
-		"rowsWritten": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountD1StorageAdaptiveGroups": {
 		"__description": "Beta. D1 storage with adaptive sampling",
@@ -1695,7 +1381,6 @@
 	"AccountDnsAnalyticsAdaptiveGroups": {
 		"__description": "Analytics data for DNS queries",
 		"avg": "Average of a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of queries per dimension",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension"
@@ -1704,11 +1389,6 @@
 		"__description": "",
 		"processingTimeUs": "Average processing time in microseconds",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountDnsAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of queries per dimension, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountDnsAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -1777,7 +1457,6 @@
 	"AccountDnsFirewallAnalyticsAdaptiveGroups": {
 		"__description": "Analytics data for DNS Firewall queries",
 		"avg": "Average of a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of queries per dimension",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension"
@@ -1786,11 +1465,6 @@
 		"__description": "",
 		"processingTimeUs": "Average processing time in microseconds",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountDnsFirewallAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of queries per dimension, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountDnsFirewallAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -1871,7 +1545,6 @@
 	"AccountDosdNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for dosd",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -1891,29 +1564,6 @@
 		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
-	},
-	"AccountDosdNetworkAnalyticsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountDosdNetworkAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountDosdNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -2018,15 +1668,9 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
-	"AccountDosdNetworkAnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountDurableObjectsInvocationsAdaptiveGroups": {
 		"__description": "Durable Objects invocations with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
 		"min": "The min value for a metric",
@@ -2036,11 +1680,6 @@
 	"AccountDurableObjectsInvocationsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": ""
-	},
-	"AccountDurableObjectsInvocationsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountDurableObjectsInvocationsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -2093,24 +1732,11 @@
 		"responseBodySize": "Sum of response body sizes",
 		"wallTime": "Sum of wall time"
 	},
-	"AccountDurableObjectsInvocationsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"errors": "Confidence interval for the corresponding point estimate",
-		"requests": "Confidence interval for the corresponding point estimate",
-		"responseBodySize": "Confidence interval for the corresponding point estimate",
-		"wallTime": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountDurableObjectsPeriodicGroups": {
 		"__description": "Durable Objects periodic metrics",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountDurableObjectsPeriodicGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountDurableObjectsPeriodicGroupsDimensions": {
 		"__description": "",
@@ -2147,22 +1773,6 @@
 		"storageReadUnits": "Sum of storage reads - in 4KB units (by non-sqlite backed DOs)",
 		"storageWriteUnits": "Sum of storage writes - in 4KB units (by non-sqlite backed DOs)",
 		"subrequests": "Sum of subrequests"
-	},
-	"AccountDurableObjectsPeriodicGroupsSumConfidence": {
-		"__description": "",
-		"activeTime": "Confidence interval for the corresponding point estimate",
-		"cpuTime": "Confidence interval for the corresponding point estimate",
-		"duration": "Confidence interval for the corresponding point estimate",
-		"exceededCpuErrors": "Confidence interval for the corresponding point estimate",
-		"exceededMemoryErrors": "Confidence interval for the corresponding point estimate",
-		"fatalInternalErrors": "Confidence interval for the corresponding point estimate",
-		"inboundWebsocketMsgCount": "Confidence interval for the corresponding point estimate",
-		"outboundWebsocketMsgCount": "Confidence interval for the corresponding point estimate",
-		"rowsRead": "Confidence interval for the corresponding point estimate",
-		"rowsWritten": "Confidence interval for the corresponding point estimate",
-		"storageDeletes": "Confidence interval for the corresponding point estimate",
-		"storageWriteUnits": "Confidence interval for the corresponding point estimate",
-		"subrequests": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountDurableObjectsSqlStorageGroups": {
 		"__description": "Storage metrics for SQL-backed Durable Objects.",
@@ -2208,14 +1818,8 @@
 	},
 	"AccountDurableObjectsSubrequestsAdaptiveGroups": {
 		"__description": "Durable Objects subrequests with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountDurableObjectsSubrequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountDurableObjectsSubrequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -2238,10 +1842,6 @@
 	"AccountDurableObjectsSubrequestsAdaptiveGroupsSum": {
 		"__description": "",
 		"requestBodySizeUncached": "Outgoing Durable Objects fetch request body size in bytes where the request was not cached"
-	},
-	"AccountDurableObjectsSubrequestsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"requestBodySizeUncached": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountFbmAttackAnalyticsGroups": {
 		"__description": "FBM analytics metadata for attacks detected by dosd",
@@ -2360,7 +1960,6 @@
 	"AccountFirewallEventsAdaptiveGroups": {
 		"__description": "Aggregated Firewall events with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The sum of sample interval values",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -2368,11 +1967,6 @@
 	"AccountFirewallEventsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": ""
-	},
-	"AccountFirewallEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The sum of sample interval values, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountFirewallEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -2473,7 +2067,6 @@
 	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for flowtrackd",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -2493,29 +2086,6 @@
 		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
-	},
-	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -2614,23 +2184,11 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
-	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountGatewayL4DownstreamSessionsAdaptiveGroups": {
 		"__description": "Aggregated metrics about downstream (client to edge) L4 Gateway Sessions. Metrics are reported on TCP or UDP session close",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of downstream sessions",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
-		"sum": ""
-	},
-	"AccountGatewayL4DownstreamSessionsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of downstream sessions, with confidence intervals",
-		"level": "Confidence level that was requested",
 		"sum": ""
 	},
 	"AccountGatewayL4DownstreamSessionsAdaptiveGroupsDimensions": {
@@ -2672,25 +2230,10 @@
 		"packetsSent": "Total number of packets sent in this session",
 		"tokenAuthDurationUs": "Time taken for client token authentication in microseconds"
 	},
-	"AccountGatewayL4DownstreamSessionsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bytesRecvd": "Confidence interval for the corresponding point estimate",
-		"bytesSent": "Confidence interval for the corresponding point estimate",
-		"clientBytesRetransmitted": "Confidence interval for the corresponding point estimate",
-		"packetsRecvd": "Confidence interval for the corresponding point estimate",
-		"packetsSent": "Confidence interval for the corresponding point estimate",
-		"tokenAuthDurationUs": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountGatewayL4SessionsAdaptiveGroups": {
 		"__description": "BETA - Aggregate counts of Gateway L4 sessions with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of Gateway L4 sessions",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountGatewayL4SessionsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of Gateway L4 sessions, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountGatewayL4SessionsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -2732,16 +2275,9 @@
 	},
 	"AccountGatewayL4UpstreamSessionsAdaptiveGroups": {
 		"__description": "Aggregated metrics about upstream (edge to client) L4 Gateway Sessions. Metrics are reported on TCP, QUIC or UDP session close",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of upstream sessions",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
-		"sum": ""
-	},
-	"AccountGatewayL4UpstreamSessionsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of upstream sessions, with confidence intervals",
-		"level": "Confidence level that was requested",
 		"sum": ""
 	},
 	"AccountGatewayL4UpstreamSessionsAdaptiveGroupsDimensions": {
@@ -2787,27 +2323,10 @@
 		"totalTunnelSetupDurationUs": "Total time taken for tunnel setup in microseconds",
 		"tunnelSetupDurationUs": "Time taken for tunnel setup in microseconds"
 	},
-	"AccountGatewayL4UpstreamSessionsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bytesRecvd": "Confidence interval for the corresponding point estimate",
-		"bytesSent": "Confidence interval for the corresponding point estimate",
-		"connectReqHandlingDurationUs": "Confidence interval for the corresponding point estimate",
-		"originBytesRetransmitted": "Confidence interval for the corresponding point estimate",
-		"packetsRecvd": "Confidence interval for the corresponding point estimate",
-		"packetsSent": "Confidence interval for the corresponding point estimate",
-		"totalTunnelSetupDurationUs": "Confidence interval for the corresponding point estimate",
-		"tunnelSetupDurationUs": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountGatewayL7RequestsAdaptiveGroups": {
 		"__description": "BETA - Aggregate counts of Gateway L7 requests with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of Gateway L7 requests",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountGatewayL7RequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of Gateway L7 requests, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountGatewayL7RequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -2849,14 +2368,8 @@
 	},
 	"AccountGatewayResolverByCategoryAdaptiveGroups": {
 		"__description": "BETA - Aggregate counts of Gateway Resolver queries by category with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of Gateway Resolver queries",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountGatewayResolverByCategoryAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of Gateway Resolver queries, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountGatewayResolverByCategoryAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -2904,7 +2417,6 @@
 	"AccountGatewayResolverByCustomResolverGroups": {
 		"__description": "Stats on dns custom resolvers",
 		"avg": "The average value for a metric",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of Gateway Resolver queries",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum response time"
@@ -2913,11 +2425,6 @@
 		"__description": "",
 		"customResolverTimeInMs": "Average latency",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountGatewayResolverByCustomResolverGroupsConfidence": {
-		"__description": "",
-		"count": "The number of Gateway Resolver queries, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountGatewayResolverByCustomResolverGroupsDimensions": {
 		"__description": "",
@@ -2943,7 +2450,6 @@
 	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroups": {
 		"__description": "Total time spent on executing firewall rules at the edge",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of Gateway Resolver queries",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum execution time",
@@ -2952,11 +2458,6 @@
 	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of Gateway Resolver queries, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -2985,14 +2486,8 @@
 	},
 	"AccountGatewayResolverQueriesAdaptiveGroups": {
 		"__description": "BETA - Aggregate counts of Gateway Resolver queries with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of Gateway Resolver queries",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountGatewayResolverQueriesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of Gateway Resolver queries, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountGatewayResolverQueriesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -3546,13 +3041,8 @@
 	},
 	"AccountHttpRequestsAdaptiveGroupsSumConfidence": {
 		"__description": "",
-		"crossZoneSubrequests": "Confidence interval for the corresponding point estimate",
-		"edgeDnsResponseTimeMs": "Confidence interval for the corresponding point estimate",
 		"edgeRequestBytes": "Confidence interval for the corresponding point estimate",
-		"edgeResponseBytes": "Confidence interval for the corresponding point estimate",
-		"edgeTimeToFirstByteMs": "Confidence interval for the corresponding point estimate",
-		"originResponseDurationMs": "Confidence interval for the corresponding point estimate",
-		"visits": "Confidence interval for the corresponding point estimate"
+		"edgeResponseBytes": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountHttpRequestsAdaptiveJa4SignalsElem": {
 		"__description": "",
@@ -3565,7 +3055,6 @@
 	"AccountHttpRequestsOverviewAdaptiveGroups": {
 		"__description": "A high-level summary of HTTP requests made by end users.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"ratio": "The ratio of a metric in comparison to the rest of the traffic, between 0 and 1",
 		"sum": "The sum of values for a metric per dimension"
@@ -3574,11 +3063,6 @@
 		"__description": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountHttpRequestsOverviewAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountHttpRequestsOverviewAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -3621,19 +3105,9 @@
 		"requests": "",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
-	"AccountHttpRequestsOverviewAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bytes": "Confidence interval for the corresponding point estimate",
-		"cachedBytes": "Confidence interval for the corresponding point estimate",
-		"cachedRequests": "Confidence interval for the corresponding point estimate",
-		"pageViews": "Confidence interval for the corresponding point estimate",
-		"requests": "Confidence interval for the corresponding point estimate",
-		"visits": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountHyperdriveQueriesAdaptiveGroups": {
 		"__description": "Hyperdrive query events with adaptive sampling.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of Hyperdrive queries",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -3645,12 +3119,6 @@
 		"queryLatency": "Average latency (in milliseconds) of serving a query using Hyperdrive",
 		"resultBytes": "Average size (in bytes) of query results served by Hyperdrive",
 		"sampleInterval": "The average value used for sample interval"
-	},
-	"AccountHyperdriveQueriesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of Hyperdrive queries, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountHyperdriveQueriesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -3680,31 +3148,15 @@
 		"queryLatency": "Total latency (in milliseconds) of serving a query using Hyperdrive",
 		"resultBytes": "Total size (in bytes) of query results served by Hyperdrive"
 	},
-	"AccountHyperdriveQueriesAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"clientWriteLatency": "Confidence interval for the corresponding point estimate",
-		"connectionLatency": "Confidence interval for the corresponding point estimate",
-		"originReadLatency": "Confidence interval for the corresponding point estimate",
-		"originWriteLatency": "Confidence interval for the corresponding point estimate",
-		"queryBytes": "Confidence interval for the corresponding point estimate",
-		"queryLatency": "Confidence interval for the corresponding point estimate",
-		"resultBytes": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountImagesRequestsAdaptiveGroups": {
 		"__description": "A high-level summary of Cloudflare Images served to end users.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountImagesRequestsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": ""
-	},
-	"AccountImagesRequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountImagesRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -3725,10 +3177,6 @@
 		"__description": "",
 		"requests": ""
 	},
-	"AccountImagesRequestsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"requests": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountImagesUniqueTransformations": {
 		"__description": "Image unique transfromations per day",
 		"date": "The date uniques are calculated for",
@@ -3743,7 +3191,6 @@
 	"AccountKvOperationsAdaptiveGroups": {
 		"__description": "KV operations data with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of requests",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max of values for a metric per dimension",
@@ -3754,12 +3201,6 @@
 	"AccountKvOperationsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "The average value used for sample interval"
-	},
-	"AccountKvOperationsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of requests, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountKvOperationsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -3802,11 +3243,6 @@
 		"objectBytes": "Total bytes of all objects",
 		"requests": "Total number of requests"
 	},
-	"AccountKvOperationsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"objectBytes": "Confidence interval for the corresponding point estimate",
-		"requests": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountKvStorageAdaptiveGroups": {
 		"__description": "KV stored data with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
@@ -3845,7 +3281,6 @@
 	"AccountLiveInputEventsAdaptiveGroups": {
 		"__description": "Aggregated live input events with adaptive sampling",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of segments stored",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
@@ -3862,20 +3297,6 @@
 		"gopDuration": "Average GOP duration in ms",
 		"gopUploadTime": "Average GOP upload time in ms",
 		"uploadDurationRatio": "Average upload to duration ratio"
-	},
-	"AccountLiveInputEventsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountLiveInputEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"count": "Number of segments stored, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountLiveInputEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -3912,13 +3333,7 @@
 	},
 	"AccountLogExplorerIngestionAdaptiveGroups": {
 		"__description": "Ingestion metrics for Log Explorer",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
-		"sum": ""
-	},
-	"AccountLogExplorerIngestionAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
 		"sum": ""
 	},
 	"AccountLogExplorerIngestionAdaptiveGroupsDimensions": {
@@ -3940,15 +3355,9 @@
 		"billableBytes": "Total billable bytes ingested to Log Explorer",
 		"totalBytes": "Total bytes ingested to Log Explorer"
 	},
-	"AccountLogExplorerIngestionAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"billableBytes": "Confidence interval for the corresponding point estimate",
-		"totalBytes": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountLogpushHealthAdaptiveGroups": {
 		"__description": "Beta. Logpush job health metrics",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -3956,12 +3365,6 @@
 	"AccountLogpushHealthAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountLogpushHealthAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountLogpushHealthAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -3988,16 +3391,9 @@
 		"bytesCompressed": "Bytes of compressed log data pushed",
 		"records": "A count of the total number of records pushed."
 	},
-	"AccountLogpushHealthAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bytes": "Confidence interval for the corresponding point estimate",
-		"bytesCompressed": "Confidence interval for the corresponding point estimate",
-		"records": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountMagicEndpointHealthCheckAdaptiveGroups": {
 		"__description": "Magic Endpoint Healthcheck events with adaptive sampling.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of health checks",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of value for a metric per dimension"
@@ -4006,11 +3402,6 @@
 		"__description": "",
 		"lossPercentage": "Average calculated percentage (0-100) for endpoint healthchecks",
 		"sampleInterval": "The average value used for sample interval"
-	},
-	"AccountMagicEndpointHealthCheckAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of health checks, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMagicEndpointHealthCheckAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4040,7 +3431,6 @@
 	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Magic Firewall",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -4060,29 +3450,6 @@
 		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
-	},
-	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4182,15 +3549,9 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
-	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Magic Firewall Ratelimiting",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -4210,29 +3571,6 @@
 		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
-	},
-	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4332,21 +3670,10 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
-	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountMagicFirewallSamplesAdaptiveGroups": {
 		"__description": "Data to visualize traffic allowed and blocked by Magic Firewall rules",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountMagicFirewallSamplesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountMagicFirewallSamplesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4366,15 +3693,9 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
-	"AccountMagicFirewallSamplesAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountMagicIDPSNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Magic IDS",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -4394,29 +3715,6 @@
 		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
-	},
-	"AccountMagicIDPSNetworkAnalyticsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountMagicIDPSNetworkAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountMagicIDPSNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4511,15 +3809,9 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
-	"AccountMagicIDPSNetworkAnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountMagicTransitNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Magic Transit traffic",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -4539,29 +3831,6 @@
 		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
-	},
-	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4664,15 +3933,9 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
-	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountMagicTransitTunnelHealthCheckSLOsAdaptiveGroups": {
 		"__description": "Magic Transit Tunnel Health Check SLO events with adaptive sampling.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of SLO calculations",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension"
@@ -4682,11 +3945,6 @@
 		"effectiveSlo": "Average calculated SLI for tunnel health checks",
 		"sampleInterval": "The average value used for sample interval",
 		"slo": "Average target SLO"
-	},
-	"AccountMagicTransitTunnelHealthCheckSLOsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of SLO calculations, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMagicTransitTunnelHealthCheckSLOsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4717,7 +3975,6 @@
 	"AccountMagicTransitTunnelHealthChecksAdaptiveGroups": {
 		"__description": "Beta. Magic Transit Health check results for customer GRE Tunnels with adaptive sampling (ABR).",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of healthcheck results",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -4725,11 +3982,6 @@
 		"__description": "",
 		"sampleInterval": "Average sample interval per dimension",
 		"tunnelState": "Combined Tunnel State aggregated from multiple results. 0 is down, 0.5 is degraded and 1 is healthy"
-	},
-	"AccountMagicTransitTunnelHealthChecksAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of healthcheck results, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMagicTransitTunnelHealthChecksAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4760,7 +4012,6 @@
 	"AccountMagicTransitTunnelTrafficAdaptiveGroups": {
 		"__description": "Bandwidth usage metric of a Magic Transit tunnel.",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -4780,29 +4031,6 @@
 		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
-	},
-	"AccountMagicTransitTunnelTrafficAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountMagicTransitTunnelTrafficAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountMagicTransitTunnelTrafficAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4837,11 +4065,6 @@
 		"__description": "",
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
-	},
-	"AccountMagicTransitTunnelTrafficAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountMagicWANConnectorMetricsAdaptiveGroups": {
 		"__description": "Magic WAN Connector Metrics (deprecated)",
@@ -4887,14 +4110,8 @@
 	},
 	"AccountMconnTelemetryEventsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector events with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Recorded Event count",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountMconnTelemetryEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Recorded Event count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetryEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4914,14 +4131,8 @@
 	},
 	"AccountMconnTelemetryEventsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector events with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Recorded Event count",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountMconnTelemetryEventsStagingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Recorded Event count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetryEventsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4941,15 +4152,9 @@
 	},
 	"AccountMconnTelemetrySnapshotDhcpLeasesAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector snapshots of DHCP leases with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot DHCP lease count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotDhcpLeasesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot DHCP lease count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotDhcpLeasesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4977,15 +4182,9 @@
 	},
 	"AccountMconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector snapshots of DHCP leases with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot DHCP lease count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot DHCP lease count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5013,16 +4212,10 @@
 	},
 	"AccountMconnTelemetrySnapshotDisksAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Disk count",
 		"dimensions": "List of dimensions to group by",
 		"max": "",
 		"sum": ""
-	},
-	"AccountMconnTelemetrySnapshotDisksAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Disk count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotDisksAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5061,16 +4254,10 @@
 	},
 	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Disk count",
 		"dimensions": "List of dimensions to group by",
 		"max": "",
 		"sum": ""
-	},
-	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Disk count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5109,14 +4296,8 @@
 	},
 	"AccountMconnTelemetrySnapshotInterfaceAddressesAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector interface address snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Interface Address count",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountMconnTelemetrySnapshotInterfaceAddressesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Interface Address count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotInterfaceAddressesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5137,14 +4318,8 @@
 	},
 	"AccountMconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector interface address snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Interface Address count",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountMconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Interface Address count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5165,15 +4340,9 @@
 	},
 	"AccountMconnTelemetrySnapshotInterfacesAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector interface snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Interface count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotInterfacesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Interface count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotInterfacesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5198,15 +4367,9 @@
 	},
 	"AccountMconnTelemetrySnapshotInterfacesStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector interface snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Interface count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotInterfacesStagingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Interface count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotInterfacesStagingAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5231,15 +4394,9 @@
 	},
 	"AccountMconnTelemetrySnapshotMountsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Mount count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotMountsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Mount count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotMountsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5269,15 +4426,9 @@
 	},
 	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Mount count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Mount count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5307,15 +4458,9 @@
 	},
 	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Netdev count",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
-	},
-	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Netdev count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5354,15 +4499,9 @@
 	},
 	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Netdev count",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
-	},
-	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Netdev count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5401,15 +4540,9 @@
 	},
 	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Thermal count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Thermal count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5435,15 +4568,9 @@
 	},
 	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Thermal count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Thermal count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5469,15 +4596,9 @@
 	},
 	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector tunnel snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Tunnels count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Tunnels count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5502,15 +4623,9 @@
 	},
 	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector tunnel snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot Tunnels count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot Tunnels count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5535,15 +4650,9 @@
 	},
 	"AccountMconnTelemetrySnapshotsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5580,15 +4689,9 @@
 	},
 	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Snapshot count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
-	},
-	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Snapshot count, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5637,7 +4740,6 @@
 	"AccountMnmAWSVPCFlowDataAdaptiveGroups": {
 		"__description": "AWS VPC Flow data collected through Magic Network Monitoring",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -5672,43 +4774,6 @@
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds",
 		"sampleInterval": "Average sample interval applied to the data"
-	},
-	"AccountMnmAWSVPCFlowDataAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"egressBitRate": "Confidence interval for the corresponding point estimate",
-		"egressBitRateDay": "Confidence interval for the corresponding point estimate",
-		"egressBitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"egressBitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"egressBitRateHour": "Confidence interval for the corresponding point estimate",
-		"egressBitRateMinute": "Confidence interval for the corresponding point estimate",
-		"egressBitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"egressPacketRate": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateDay": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateHour": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateMinute": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountMnmAWSVPCFlowDataAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountMnmAWSVPCFlowDataAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5776,17 +4841,9 @@
 		"egressPackets": "Sum of egress packets",
 		"packets": "Sum of packets"
 	},
-	"AccountMnmAWSVPCFlowDataAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"egressBits": "Confidence interval for the corresponding point estimate",
-		"egressPackets": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountMnmFlowDataAdaptiveGroups": {
 		"__description": "Flow data collected through Magic Network Monitoring",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -5821,43 +4878,6 @@
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds",
 		"sampleInterval": "Average sample interval applied to the data"
-	},
-	"AccountMnmFlowDataAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"egressBitRate": "Confidence interval for the corresponding point estimate",
-		"egressBitRateDay": "Confidence interval for the corresponding point estimate",
-		"egressBitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"egressBitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"egressBitRateHour": "Confidence interval for the corresponding point estimate",
-		"egressBitRateMinute": "Confidence interval for the corresponding point estimate",
-		"egressBitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"egressPacketRate": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateDay": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateHour": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateMinute": "Confidence interval for the corresponding point estimate",
-		"egressPacketRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountMnmFlowDataAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountMnmFlowDataAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5899,28 +4919,15 @@
 		"egressPackets": "Sum of egress packets",
 		"packets": "Sum of packets"
 	},
-	"AccountMnmFlowDataAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"egressBits": "Confidence interval for the corresponding point estimate",
-		"egressPackets": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountNelReportsAdaptiveGroups": {
 		"__description": "Data to visualize network error logs",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of NEL Reports",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountNelReportsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountNelReportsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of NEL Reports, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountNelReportsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5961,16 +4968,9 @@
 	},
 	"AccountOhttpMetricsAdaptiveGroups": {
 		"__description": "Aggregated oHTTP request metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
-		"count": "Number of HTTP requests",
+		"count": "",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountOhttpMetricsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of HTTP requests, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountOhttpMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -5997,20 +4997,12 @@
 		"clientRequestErrors": "The total number of client request errors, observed over the queried time period",
 		"gatewayResponseErrors": "The total number of gateway response errors, observed over the queried time period"
 	},
-	"AccountOhttpMetricsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bytesToClient": "Confidence interval for the corresponding point estimate",
-		"bytesToGateway": "Confidence interval for the corresponding point estimate",
-		"clientRequestErrors": "Confidence interval for the corresponding point estimate",
-		"gatewayResponseErrors": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountOhttpMetricsAdaptiveOrderBy": {
 		"__description": ""
 	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroups": {
 		"__description": "Pages Functions invocations with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
@@ -6018,11 +5010,6 @@
 	"AccountPagesFunctionsInvocationsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountPagesFunctionsInvocationsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -6062,28 +5049,11 @@
 		"subrequests": "Sum of Subrequests",
 		"wallTime": "Sum of Wall Time"
 	},
-	"AccountPagesFunctionsInvocationsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"clientDisconnects": "Confidence interval for the corresponding point estimate",
-		"duration": "Confidence interval for the corresponding point estimate",
-		"errors": "Confidence interval for the corresponding point estimate",
-		"requests": "Confidence interval for the corresponding point estimate",
-		"responseBodySize": "Confidence interval for the corresponding point estimate",
-		"subrequests": "Confidence interval for the corresponding point estimate",
-		"wallTime": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountPipelinesDeliveryAdaptiveGroups": {
 		"__description": "Beta. Data delivered via Workers Pipelines",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of delivery events",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountPipelinesDeliveryAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of delivery events, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountPipelinesDeliveryAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -6103,22 +5073,11 @@
 		"__description": "",
 		"deliveredBytes": "Total amount of bytes delivered"
 	},
-	"AccountPipelinesDeliveryAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"deliveredBytes": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountPipelinesIngestionAdaptiveGroups": {
 		"__description": "Beta. Data ingested via Workers Pipelines",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of ingestion events",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountPipelinesIngestionAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of ingestion events, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountPipelinesIngestionAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -6138,11 +5097,6 @@
 		"__description": "",
 		"ingestedBytes": "Total amount of bytes ingested",
 		"ingestedRecords": "Total number of records ingested"
-	},
-	"AccountPipelinesIngestionAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"ingestedBytes": "Confidence interval for the corresponding point estimate",
-		"ingestedRecords": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountQueueBacklogAdaptiveGroups": {
 		"__description": "Beta. Queue backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
@@ -6229,7 +5183,6 @@
 	"AccountQueueMessageOperationsAdaptiveGroups": {
 		"__description": "Beta. Queue message operation data with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of Message Operations",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max of values for a metric per dimension",
@@ -6240,12 +5193,6 @@
 		"lagTime": "The average time in milliseconds between when the message was written to the queue and the current operation over the sample interval. Will always be 0 for WriteMessage operations.",
 		"retryCount": "The average number of retries per message operation. A retry occurs after an unsucessful delivery, if the queue is configured to retry failed attempts. Only applicable to ReadMessage and DeleteMessage operations. Will always be 0 for WriteMessage operations.",
 		"sampleInterval": "The average value used for sample interval"
-	},
-	"AccountQueueMessageOperationsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of Message Operations, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountQueueMessageOperationsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -6276,21 +5223,10 @@
 		"billableOperations": "Number of Billable Operations (some message operations count as multiple billable operations)",
 		"bytes": "Total size (in bytes) of message operations"
 	},
-	"AccountQueueMessageOperationsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"billableOperations": "Confidence interval for the corresponding point estimate",
-		"bytes": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountR2OperationsAdaptiveGroups": {
 		"__description": "Beta. R2 operations with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountR2OperationsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountR2OperationsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -6316,12 +5252,6 @@
 		"requests": "Sum of Requests",
 		"responseBytes": "Sum of retrieved bytes",
 		"responseObjectSize": "Sum of Response Object Sizes"
-	},
-	"AccountR2OperationsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"requests": "Confidence interval for the corresponding point estimate",
-		"responseBytes": "Confidence interval for the corresponding point estimate",
-		"responseObjectSize": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountR2StorageAdaptiveGroups": {
 		"__description": "Beta. R2 storage with adaptive sampling",
@@ -6353,7 +5283,6 @@
 	"AccountRumPageloadEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated RUM pageload event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of pages viewed by end-users",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -6361,12 +5290,6 @@
 	"AccountRumPageloadEventsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountRumPageloadEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of pages viewed by end-users, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": ""
 	},
 	"AccountRumPageloadEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -6400,14 +5323,9 @@
 		"__description": "",
 		"visits": "The number of pages viewed by end-users that were initiated from a different website (i.e. where the Document.referrer does not match the hostname)"
 	},
-	"AccountRumPageloadEventsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"visits": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountRumPerformanceEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated RUM performance event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of pages viewed by end-users",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
@@ -6425,12 +5343,6 @@
 		"requestTime": "The time between initiating the request and receiving the first byte of the response",
 		"responseTime": "The time between receiving the first byte and the last byte of the response",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountRumPerformanceEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of pages viewed by end-users, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": ""
 	},
 	"AccountRumPerformanceEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -6503,10 +5415,6 @@
 		"__description": "",
 		"visits": "The number of pages viewed by end-users that were initiated from a different website (i.e. where the Document.referrer does not match the hostname)"
 	},
-	"AccountRumPerformanceEventsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"visits": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountRumWebVitalsEventsAdaptive": {
 		"__description": "Beta. RUM Web Vitals event metrics with adaptive sampling",
 		"bot": "Indicates if the request is likely from a bot (non-human traffic). Returns 1 if from a bot, 0 otherwise.",
@@ -6542,7 +5450,6 @@
 	"AccountRumWebVitalsEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated RUM Web Vitals event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of pages viewed by end-users",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
@@ -6560,12 +5467,6 @@
 		"lcpResourceLoadTime": "Largest Contentful Paint Attributions Resource Load Time in microseconds (negative value indicates N/A)",
 		"sampleInterval": "Average sample interval",
 		"timeToFirstByte": "Time to First Byte in microseconds (negative value indicates N/A)"
-	},
-	"AccountRumWebVitalsEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of pages viewed by end-users, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": ""
 	},
 	"AccountRumWebVitalsEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -6676,30 +5577,6 @@
 		"ttfbPoor": "Time to First Byte, count of Poor occurrences (over 500 ms)",
 		"ttfbTotal": "Time to First Byte, total count",
 		"visits": "The number of pages viewed by end-users that were initiated from a different website (i.e. where the Document.referrer does not match the hostname)"
-	},
-	"AccountRumWebVitalsEventsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"clsGood": "Confidence interval for the corresponding point estimate",
-		"clsNeedsImprovement": "Confidence interval for the corresponding point estimate",
-		"clsPoor": "Confidence interval for the corresponding point estimate",
-		"clsTotal": "Confidence interval for the corresponding point estimate",
-		"fcpGood": "Confidence interval for the corresponding point estimate",
-		"fcpNeedsImprovement": "Confidence interval for the corresponding point estimate",
-		"fcpPoor": "Confidence interval for the corresponding point estimate",
-		"fcpTotal": "Confidence interval for the corresponding point estimate",
-		"inpGood": "Confidence interval for the corresponding point estimate",
-		"inpNeedsImprovement": "Confidence interval for the corresponding point estimate",
-		"inpPoor": "Confidence interval for the corresponding point estimate",
-		"inpTotal": "Confidence interval for the corresponding point estimate",
-		"lcpGood": "Confidence interval for the corresponding point estimate",
-		"lcpNeedsImprovement": "Confidence interval for the corresponding point estimate",
-		"lcpPoor": "Confidence interval for the corresponding point estimate",
-		"lcpTotal": "Confidence interval for the corresponding point estimate",
-		"ttfbGood": "Confidence interval for the corresponding point estimate",
-		"ttfbNeedsImprovement": "Confidence interval for the corresponding point estimate",
-		"ttfbPoor": "Confidence interval for the corresponding point estimate",
-		"ttfbTotal": "Confidence interval for the corresponding point estimate",
-		"visits": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountRumWebVitalsEventsAdaptiveOrderBy": {
 		"__description": ""
@@ -6876,14 +5753,8 @@
 	},
 	"AccountSinkholeRequestLogsAdaptiveGroups": {
 		"__description": "Sinkhole Request Logs",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of requests logged",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountSinkholeRequestLogsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of requests logged, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountSinkholeRequestLogsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -6912,16 +5783,9 @@
 	},
 	"AccountSippyOperationsAdaptiveGroups": {
 		"__description": "Sippy operations with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of Sippy operations",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountSippyOperationsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of Sippy operations, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountSippyOperationsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -6947,14 +5811,9 @@
 		"__description": "",
 		"size": "Total bytes transferred"
 	},
-	"AccountSippyOperationsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"size": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountSpectrumNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Spectrum traffic",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -6974,29 +5833,6 @@
 		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
 		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
-	},
-	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsAvgConfidence": {
-		"__description": "",
-		"bitRate": "Confidence interval for the corresponding point estimate",
-		"bitRateDay": "Confidence interval for the corresponding point estimate",
-		"bitRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"bitRateHour": "Confidence interval for the corresponding point estimate",
-		"bitRateMinute": "Confidence interval for the corresponding point estimate",
-		"bitRateTenSeconds": "Confidence interval for the corresponding point estimate",
-		"packetRate": "Confidence interval for the corresponding point estimate",
-		"packetRateDay": "Confidence interval for the corresponding point estimate",
-		"packetRateFifteenMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateFiveMinutes": "Confidence interval for the corresponding point estimate",
-		"packetRateHour": "Confidence interval for the corresponding point estimate",
-		"packetRateMinute": "Confidence interval for the corresponding point estimate",
-		"packetRateTenSeconds": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"avg": "The average of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7092,11 +5928,6 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
-	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bits": "Confidence interval for the corresponding point estimate",
-		"packets": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountStorageTraces": {
 		"__description": "Storage Tracing Information",
 		"containerId": "The container that this resource is stored under.",
@@ -7115,7 +5946,6 @@
 	"AccountStreamCMCDAdaptiveGroups": {
 		"__description": "Stream CMCD data",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
@@ -7130,12 +5960,6 @@
 		"encodedBitrate": "Average encoded bitrate",
 		"initialBufferStarvationDuration": "Average buffer starvation duration at the start of viewing in milliseconds",
 		"measuredThroughput": "Average throughput"
-	},
-	"AccountStreamCMCDAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountStreamCMCDAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7191,25 +6015,15 @@
 		"__description": "",
 		"millisecondsViewed": "Estimated time viewed in milliseconds"
 	},
-	"AccountStreamCMCDAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"millisecondsViewed": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountStreamCMCDAdaptiveGroupsUniq": {
 		"__description": "",
 		"viewers": "The number of unique viewers"
 	},
 	"AccountStreamMinutesViewedAdaptiveGroups": {
 		"__description": "A high-level summary of Cloudflare Stream minutes viewed.",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountStreamMinutesViewedAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountStreamMinutesViewedAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7237,18 +6051,12 @@
 	"AccountTurnstileAdaptiveGroups": {
 		"__description": "Beta. Cloudflare Turnstile aggregated events with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of Cloudflare Turnstile events processed",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountTurnstileAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountTurnstileAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of Cloudflare Turnstile events processed, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountTurnstileAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7324,14 +6132,8 @@
 	},
 	"AccountVectorizeV2OperationsAdaptiveGroups": {
 		"__description": "Vectorize operations with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of Vectorize operations",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountVectorizeV2OperationsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of Vectorize operations, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountVectorizeV2OperationsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7352,7 +6154,6 @@
 	"AccountVectorizeV2QueriesAdaptiveGroups": {
 		"__description": "Vectorize queries with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of Vectorize queries",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -7361,12 +6162,6 @@
 	"AccountVectorizeV2QueriesAdaptiveGroupsAvg": {
 		"__description": "",
 		"requestDurationMs": "Average latency (in milliseconds) of serving a Vectorize query"
-	},
-	"AccountVectorizeV2QueriesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of Vectorize queries, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountVectorizeV2QueriesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7398,11 +6193,6 @@
 		"requestDurationMs": "Total latency (in milliseconds) of serving Vectorize queries over the queried time period",
 		"servedVectorCount": "The number of vectors served in Vectorize queries over the queried time period."
 	},
-	"AccountVectorizeV2QueriesAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"requestDurationMs": "Confidence interval for the corresponding point estimate",
-		"servedVectorCount": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountVectorizeV2StorageAdaptiveGroups": {
 		"__description": "Vectorize storage with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
@@ -7430,7 +6220,6 @@
 	"AccountVectorizeV2WritesAdaptiveGroups": {
 		"__description": "Vectorize writes with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of Vectorize writes",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -7439,12 +6228,6 @@
 	"AccountVectorizeV2WritesAdaptiveGroupsAvg": {
 		"__description": "",
 		"requestDurationMs": "Average latency (in milliseconds) of serving a Vectorize write"
-	},
-	"AccountVectorizeV2WritesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of Vectorize writes, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountVectorizeV2WritesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7476,27 +6259,15 @@
 		"deletedVectorCount": "The number of vectors deleted in Vectorize writes over the queried time period.",
 		"requestDurationMs": "Total latency (in milliseconds) of serving Vectorize writes over the queried time period"
 	},
-	"AccountVectorizeV2WritesAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"addedVectorCount": "Confidence interval for the corresponding point estimate",
-		"deletedVectorCount": "Confidence interval for the corresponding point estimate",
-		"requestDurationMs": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountVideoBufferEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated video streaming buffer event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of buffer events",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountVideoBufferEventsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountVideoBufferEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of buffer events, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountVideoBufferEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7522,7 +6293,6 @@
 	"AccountVideoPlaybackEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated video streaming playback event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of playback starts",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -7530,12 +6300,6 @@
 	"AccountVideoPlaybackEventsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountVideoPlaybackEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of playback starts, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": ""
 	},
 	"AccountVideoPlaybackEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7562,25 +6326,15 @@
 		"__description": "",
 		"timeViewedMinutes": "Total time viewed in minutes"
 	},
-	"AccountVideoPlaybackEventsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"timeViewedMinutes": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountVideoQualityEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated video streaming quality change event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of quality change events",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountVideoQualityEventsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"AccountVideoQualityEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Total number of quality change events, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountVideoQualityEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7606,15 +6360,9 @@
 	},
 	"AccountWarpDeviceAdaptiveGroups": {
 		"__description": "Beta. Warp device health events with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of device health events, which usually occur at 2m intervals per device",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
-	},
-	"AccountWarpDeviceAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of device health events, which usually occur at 2m intervals per device, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountWarpDeviceAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7642,15 +6390,9 @@
 	},
 	"AccountWorkerPlacementAdaptiveGroups": {
 		"__description": "Worker placement metrics",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountWorkerPlacementAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountWorkerPlacementAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7693,21 +6435,10 @@
 		"requestDuration": "Sum of duration ms of requests measured at the data centers that receive the requests",
 		"requests": "Total number of requests"
 	},
-	"AccountWorkerPlacementAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"requestDuration": "Confidence interval for the corresponding point estimate",
-		"requests": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountWorkersAnalyticsEngineAdaptiveGroups": {
 		"__description": "Beta. Custom Events with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountWorkersAnalyticsEngineAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountWorkersAnalyticsEngineAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7727,14 +6458,8 @@
 	},
 	"AccountWorkersBuildsBuildMinutesAdaptiveGroups": {
 		"__description": "Workers Builds build minute overview data with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountWorkersBuildsBuildMinutesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountWorkersBuildsBuildMinutesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7750,14 +6475,9 @@
 		"__description": "",
 		"buildMinutes": "The sum of build minutes"
 	},
-	"AccountWorkersBuildsBuildMinutesAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"buildMinutes": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountWorkersInvocationsAdaptive": {
 		"__description": "Beta. Workers invocations with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
 		"min": "The min value for a metric",
@@ -7767,11 +6487,6 @@
 	"AccountWorkersInvocationsAdaptiveAvg": {
 		"__description": "",
 		"sampleInterval": ""
-	},
-	"AccountWorkersInvocationsAdaptiveConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountWorkersInvocationsAdaptiveDimensions": {
 		"__description": "",
@@ -7864,18 +6579,6 @@
 		"subrequests": "Sum of Subrequests",
 		"wallTime": "Sum of Wall Time"
 	},
-	"AccountWorkersInvocationsAdaptiveSumConfidence": {
-		"__description": "",
-		"clientDisconnects": "Confidence interval for the corresponding point estimate",
-		"cpuTimeUs": "Confidence interval for the corresponding point estimate",
-		"duration": "Confidence interval for the corresponding point estimate",
-		"errors": "Confidence interval for the corresponding point estimate",
-		"requestDuration": "Confidence interval for the corresponding point estimate",
-		"requests": "Confidence interval for the corresponding point estimate",
-		"responseBodySize": "Confidence interval for the corresponding point estimate",
-		"subrequests": "Confidence interval for the corresponding point estimate",
-		"wallTime": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountWorkersInvocationsScheduled": {
 		"__description": "Workers scheduled invocations",
 		"cpuTimeUs": "CPU time - microseconds",
@@ -7894,14 +6597,8 @@
 	},
 	"AccountWorkersOverviewDataAdaptiveGroups": {
 		"__description": "Beta. Workers account overview invocation data with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountWorkersOverviewDataAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountWorkersOverviewDataAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7919,23 +6616,11 @@
 		"standardCpuTimeUs": "Standard usage model cpu time in us",
 		"unboundDurationUs": "Unbound usage model duration in us"
 	},
-	"AccountWorkersOverviewDataAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"standardCpuTimeUs": "Confidence interval for the corresponding point estimate",
-		"unboundDurationUs": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountWorkersOverviewRequestsAdaptiveGroups": {
 		"__description": "Beta. Workers account overview invocation count with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountWorkersOverviewRequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountWorkersOverviewRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7953,21 +6638,10 @@
 		"__description": "",
 		"cpuTimeUs": "Cpu time in us"
 	},
-	"AccountWorkersOverviewRequestsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"cpuTimeUs": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountWorkersSubrequestsAdaptiveGroups": {
 		"__description": "Beta. Workers subrequests with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
-		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountWorkersSubrequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountWorkersSubrequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7982,7 +6656,6 @@
 		"environmentName": "The name of the script environment",
 		"hostname": "The hostname of the subrequest",
 		"httpResponseStatus": "Origin HTTP response code",
-		"requestOutcome": "The outcome of the subrequest",
 		"scriptName": "The name of the script",
 		"scriptVersion": "The version of the Worker",
 		"usageModel": "Usage model of the worker invocation"
@@ -7993,40 +6666,12 @@
 	"AccountWorkersSubrequestsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
-	"AccountWorkersSubrequestsAdaptiveGroupsQuantiles": {
-		"__description": "",
-		"timeToResponseDrainedUsP25": "Response drained time 25th percentile - microseconds",
-		"timeToResponseDrainedUsP50": "Response drained time 50th percentile - microseconds",
-		"timeToResponseDrainedUsP75": "Response drained time 75th percentile - microseconds",
-		"timeToResponseDrainedUsP90": "Response drained time 90th percentile - microseconds",
-		"timeToResponseDrainedUsP95": "Response drained time 95th percentile - microseconds",
-		"timeToResponseDrainedUsP99": "Response drained time 99th percentile - microseconds",
-		"timeToResponseDrainedUsP999": "Response drained time 999th percentile - microseconds",
-		"timeToResponseUsP25": "Response time 25th percentile - microseconds",
-		"timeToResponseUsP50": "Response time 50th percentile - microseconds",
-		"timeToResponseUsP75": "Response time 75th percentile - microseconds",
-		"timeToResponseUsP90": "Response time 90th percentile - microseconds",
-		"timeToResponseUsP95": "Response time 95th percentile - microseconds",
-		"timeToResponseUsP99": "Response time 99th percentile - microseconds",
-		"timeToResponseUsP999": "Response time 999th percentile - microseconds"
-	},
 	"AccountWorkersSubrequestsAdaptiveGroupsSum": {
 		"__description": "",
 		"requestBodySize": "Workers fetch request body size in bytes",
 		"requestBodySizeUncached": "Workers fetch request body size in bytes where the request was not cached",
 		"responseBodySize": "Workers fetch response body size in bytes",
-		"subrequests": "Number of subrequests",
-		"timeToResponseDrainedUs": "Sum of time to response in us",
-		"timeToResponseUs": "Sum of time to response in us"
-	},
-	"AccountWorkersSubrequestsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"requestBodySize": "Confidence interval for the corresponding point estimate",
-		"requestBodySizeUncached": "Confidence interval for the corresponding point estimate",
-		"responseBodySize": "Confidence interval for the corresponding point estimate",
-		"subrequests": "Confidence interval for the corresponding point estimate",
-		"timeToResponseDrainedUs": "Confidence interval for the corresponding point estimate",
-		"timeToResponseUs": "Confidence interval for the corresponding point estimate"
+		"subrequests": "Number of subrequests"
 	},
 	"AccountWorkflowsAdaptive": {
 		"__description": "Workflows analytics",
@@ -8050,7 +6695,6 @@
 	"AccountWorkflowsAdaptiveGroups": {
 		"__description": "Workflows analytics",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of events(workflow invocations) per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -8059,12 +6703,6 @@
 		"__description": "",
 		"cpuTime": "Average CPU time per dimension",
 		"wallTime": "Average wall time per dimension"
-	},
-	"AccountWorkflowsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of events(workflow invocations) per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": ""
 	},
 	"AccountWorkflowsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -8092,28 +6730,13 @@
 		"storageRate": "Total instance storage growth rate per dimension",
 		"wallTime": "Total wall time per dimension"
 	},
-	"AccountWorkflowsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"cpuTime": "Confidence interval for the corresponding point estimate",
-		"executionDuration": "Confidence interval for the corresponding point estimate",
-		"retryCount": "Confidence interval for the corresponding point estimate",
-		"stepCount": "Confidence interval for the corresponding point estimate",
-		"storageRate": "Confidence interval for the corresponding point estimate",
-		"wallTime": "Confidence interval for the corresponding point estimate"
-	},
 	"AccountWorkflowsAdaptiveOrderBy": {
 		"__description": ""
 	},
 	"AccountZarazTrackAdaptiveGroups": {
 		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed Zaraz Track requests",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountZarazTrackAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed Zaraz Track requests, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountZarazTrackAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -8133,14 +6756,8 @@
 	},
 	"AccountZarazTriggersAdaptiveGroups": {
 		"__description": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed Zaraz Triggers",
 		"dimensions": "List of dimensions to group by"
-	},
-	"AccountZarazTriggersAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed Zaraz Triggers, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"AccountZarazTriggersAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -8214,7 +6831,6 @@
 	"OrganizationHttpRequestsAdaptiveGroups": {
 		"__description": "Aggregated HTTP requests data with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -8228,12 +6844,6 @@
 		"edgeTimeToFirstByteMs": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
 		"sampleInterval": ""
-	},
-	"OrganizationHttpRequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"OrganizationHttpRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -8343,15 +6953,6 @@
 		"originResponseDurationMs": "",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
-	"OrganizationHttpRequestsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"crossZoneSubrequests": "Confidence interval for the corresponding point estimate",
-		"edgeDnsResponseTimeMs": "Confidence interval for the corresponding point estimate",
-		"edgeResponseBytes": "Confidence interval for the corresponding point estimate",
-		"edgeTimeToFirstByteMs": "Confidence interval for the corresponding point estimate",
-		"originResponseDurationMs": "Confidence interval for the corresponding point estimate",
-		"visits": "Confidence interval for the corresponding point estimate"
-	},
 	"OrganizationSettings": {
 		"__description": "Access and limitations for an organization",
 		"httpRequestsAdaptiveGroups": ""
@@ -8376,18 +6977,12 @@
 	"ZoneApiGatewayGraphqlQueryAnalyticsGroups": {
 		"__description": "GraphQL query attributes and trends",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of events with GraphQL query attributes computed",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneApiGatewayGraphqlQueryAnalyticsGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"ZoneApiGatewayGraphqlQueryAnalyticsGroupsConfidence": {
-		"__description": "",
-		"count": "Number of events with GraphQL query attributes computed, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneApiGatewayGraphqlQueryAnalyticsGroupsDimensions": {
 		"__description": "",
@@ -8411,18 +7006,12 @@
 	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroups": {
 		"__description": "Beta. Aggregated count of Session Identifier matches",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of events with Session Identifiers",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of events with Session Identifiers, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -8446,18 +7035,12 @@
 	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroups": {
 		"__description": "Beta. Aggregated count of Session Identifier matches per endpoint",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of events per dimension",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of events per dimension, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -8482,18 +7065,12 @@
 	"ZoneApiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroups": {
 		"__description": "Beta. Aggregated count of Session Identifier matches",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of events with Session Identifiers",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneApiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"ZoneApiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of events with Session Identifiers, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneApiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -8568,18 +7145,12 @@
 	"ZoneCacheReserveOperationsAdaptiveGroups": {
 		"__description": "Beta. Cache Reserve operations with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneCacheReserveOperationsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": ""
-	},
-	"ZoneCacheReserveOperationsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"ZoneCacheReserveOperationsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -8604,14 +7175,9 @@
 		"__description": "",
 		"requests": "Sum of Requests"
 	},
-	"ZoneCacheReserveOperationsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"requests": "Confidence interval for the corresponding point estimate"
-	},
 	"ZoneCacheReserveRequestsAdaptiveGroups": {
 		"__description": "Cache Reserve HTTP requests data with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "",
 		"dimensions": "List of dimensions to group by",
 		"sum": "Sum of bytes returned to client"
@@ -8619,12 +7185,6 @@
 	"ZoneCacheReserveRequestsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": ""
-	},
-	"ZoneCacheReserveRequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "",
-		"level": "Confidence level that was requested",
-		"sum": "Sum of bytes returned to client, with confidence intervals"
 	},
 	"ZoneCacheReserveRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -8647,10 +7207,6 @@
 	"ZoneCacheReserveRequestsAdaptiveGroupsSum": {
 		"__description": "",
 		"edgeResponseBytes": ""
-	},
-	"ZoneCacheReserveRequestsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"edgeResponseBytes": "Confidence interval for the corresponding point estimate"
 	},
 	"ZoneCacheReserveStorageAdaptiveGroups": {
 		"__description": "Beta. Cache Reserve storage with adaptive sampling",
@@ -8726,7 +7282,6 @@
 	"ZoneDmarcReportsSourcesAdaptiveGroups": {
 		"__description": "Aggregated dmarc reports by sources logs with adaptive sampling",
 		"avg": "Beta. The avg of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "",
 		"uniq": ""
@@ -8736,11 +7291,6 @@
 		"dkimPass": "Percentage of dkim messages pass",
 		"dmarc": "Percentage of dmarc messages pass",
 		"spfPass": "Percentage of spf messages pass"
-	},
-	"ZoneDmarcReportsSourcesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": ""
 	},
 	"ZoneDmarcReportsSourcesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -8780,13 +7330,6 @@
 		"spfPass": "Total of spf messages pass",
 		"totalMatchingMessages": "Total matching messages"
 	},
-	"ZoneDmarcReportsSourcesAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"dkimPass": "Confidence interval for the corresponding point estimate",
-		"dmarc": "Confidence interval for the corresponding point estimate",
-		"spfPass": "Confidence interval for the corresponding point estimate",
-		"totalMatchingMessages": "Confidence interval for the corresponding point estimate"
-	},
 	"ZoneDmarcReportsSourcesAdaptiveGroupsUniq": {
 		"__description": "",
 		"ipCount": "Number of distinct IPs"
@@ -8816,7 +7359,6 @@
 	"ZoneDnsAnalyticsAdaptiveGroups": {
 		"__description": "Analytics data for DNS queries",
 		"avg": "Average of a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of queries per dimension",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension"
@@ -8825,11 +7367,6 @@
 		"__description": "",
 		"processingTimeUs": "Average processing time in microseconds",
 		"sampleInterval": "Average sample interval"
-	},
-	"ZoneDnsAnalyticsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of queries per dimension, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneDnsAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -8897,14 +7434,8 @@
 	},
 	"ZoneEmailRoutingAdaptiveGroups": {
 		"__description": "Beta. Aggregated email routing logs with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of emails processed",
 		"dimensions": "List of dimensions to group by"
-	},
-	"ZoneEmailRoutingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of emails processed, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneEmailRoutingAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -9014,7 +7545,6 @@
 	"ZoneFirewallEventsAdaptiveByTimeGroups": {
 		"__description": "Aggregated Firewall events with adaptive sampling grouped by time",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The sum of sample interval values",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -9022,11 +7552,6 @@
 	"ZoneFirewallEventsAdaptiveByTimeGroupsAvg": {
 		"__description": "",
 		"sampleInterval": ""
-	},
-	"ZoneFirewallEventsAdaptiveByTimeGroupsConfidence": {
-		"__description": "",
-		"count": "The sum of sample interval values, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneFirewallEventsAdaptiveByTimeGroupsDimensions": {
 		"__description": "",
@@ -9081,7 +7606,6 @@
 	"ZoneFirewallEventsAdaptiveGroups": {
 		"__description": "Aggregated Firewall events with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The sum of sample interval values",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -9089,11 +7613,6 @@
 	"ZoneFirewallEventsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": ""
-	},
-	"ZoneFirewallEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The sum of sample interval values, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneFirewallEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -9218,7 +7737,6 @@
 	"ZoneHealthCheckEventsAdaptiveGroups": {
 		"__description": "Aggregated Health Check events with adaptive sampling",
 		"avg": "The average value for a metric",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -9230,12 +7748,6 @@
 		"tcpConnMs": "Average TCP Connection time (milliseconds)",
 		"timeToFirstByteMs": "Average Time To First Byte (milliseconds)",
 		"tlsHandshakeMs": "Average TLS Handshake time (milliseconds)"
-	},
-	"ZoneHealthCheckEventsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"ZoneHealthCheckEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -9270,10 +7782,6 @@
 	"ZoneHealthCheckEventsAdaptiveGroupsSum": {
 		"__description": "",
 		"healthStatus": ""
-	},
-	"ZoneHealthCheckEventsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"healthStatus": "Confidence interval for the corresponding point estimate"
 	},
 	"ZoneHealthCheckEventsAdaptiveOrderBy": {
 		"__description": ""
@@ -9866,13 +8374,8 @@
 	},
 	"ZoneHttpRequestsAdaptiveGroupsSumConfidence": {
 		"__description": "",
-		"crossZoneSubrequests": "Confidence interval for the corresponding point estimate",
-		"edgeDnsResponseTimeMs": "Confidence interval for the corresponding point estimate",
 		"edgeRequestBytes": "Confidence interval for the corresponding point estimate",
-		"edgeResponseBytes": "Confidence interval for the corresponding point estimate",
-		"edgeTimeToFirstByteMs": "Confidence interval for the corresponding point estimate",
-		"originResponseDurationMs": "Confidence interval for the corresponding point estimate",
-		"visits": "Confidence interval for the corresponding point estimate"
+		"edgeResponseBytes": "Confidence interval for the corresponding point estimate"
 	},
 	"ZoneHttpRequestsAdaptiveJa4SignalsElem": {
 		"__description": "",
@@ -9885,7 +8388,6 @@
 	"ZoneHttpRequestsOverviewAdaptiveGroups": {
 		"__description": "A high-level summary of HTTP requests made by end users.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"ratio": "The ratio of a metric in comparison to the rest of the traffic, between 0 and 1",
 		"sum": "The sum of values for a metric per dimension"
@@ -9894,11 +8396,6 @@
 		"__description": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
 		"sampleInterval": "Average sample interval"
-	},
-	"ZoneHttpRequestsOverviewAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"ZoneHttpRequestsOverviewAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -9940,15 +8437,6 @@
 		"pageViews": "Successful requests for HTML content",
 		"requests": "",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
-	},
-	"ZoneHttpRequestsOverviewAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bytes": "Confidence interval for the corresponding point estimate",
-		"cachedBytes": "Confidence interval for the corresponding point estimate",
-		"cachedRequests": "Confidence interval for the corresponding point estimate",
-		"pageViews": "Confidence interval for the corresponding point estimate",
-		"requests": "Confidence interval for the corresponding point estimate",
-		"visits": "Confidence interval for the corresponding point estimate"
 	},
 	"ZoneImageResizingRequests1mGroups": {
 		"__description": "Minutely rollups of Image Resizing requests",
@@ -10010,18 +8498,12 @@
 	"ZoneLoadBalancingRequestsAdaptiveGroups": {
 		"__description": "Aggregated Load Balancing origin requests with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneLoadBalancingRequestsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"ZoneLoadBalancingRequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneLoadBalancingRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10083,7 +8565,6 @@
 	"ZoneLogpushHealthAdaptiveGroups": {
 		"__description": "Beta. Logpush job health metrics",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -10091,12 +8572,6 @@
 	"ZoneLogpushHealthAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"ZoneLogpushHealthAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"ZoneLogpushHealthAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10123,27 +8598,15 @@
 		"bytesCompressed": "Bytes of compressed log data pushed",
 		"records": "A count of the total number of records pushed."
 	},
-	"ZoneLogpushHealthAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"bytes": "Confidence interval for the corresponding point estimate",
-		"bytesCompressed": "Confidence interval for the corresponding point estimate",
-		"records": "Confidence interval for the corresponding point estimate"
-	},
 	"ZoneNelReportsAdaptiveGroups": {
 		"__description": "Data to visualize network error logs",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of NEL Reports",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneNelReportsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"ZoneNelReportsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "The number of NEL Reports, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneNelReportsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10173,18 +8636,12 @@
 	"ZonePageShieldReportsAdaptiveGroups": {
 		"__description": "Page Shield CSP reports",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of Page Shield CSP reports",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZonePageShieldReportsAdaptiveGroupsAvg": {
 		"__description": "",
 		"sampleInterval": "Average sample interval"
-	},
-	"ZonePageShieldReportsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of Page Shield CSP reports, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZonePageShieldReportsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10410,18 +8867,12 @@
 	"ZoneWorkersZoneInvocationsAdaptiveGroups": {
 		"__description": "Workers invocations with adaptive sampling",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneWorkersZoneInvocationsAdaptiveGroupsAvg": {
 		"__description": "",
 		"avgCpuTime": "Average CPU time used per request (in microseconds)"
-	},
-	"ZoneWorkersZoneInvocationsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"ZoneWorkersZoneInvocationsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10447,23 +8898,10 @@
 		"subrequests": "Number of sub-requests issued by the edge worker",
 		"totalCpuTime": "Total CPU time used (in microseconds)"
 	},
-	"ZoneWorkersZoneInvocationsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"requests": "Confidence interval for the corresponding point estimate",
-		"responseBodySize": "Confidence interval for the corresponding point estimate",
-		"subrequests": "Confidence interval for the corresponding point estimate",
-		"totalCpuTime": "Confidence interval for the corresponding point estimate"
-	},
 	"ZoneWorkersZoneSubrequestsAdaptiveGroups": {
 		"__description": "Workers subrequests with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
-	},
-	"ZoneWorkersZoneSubrequestsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"ZoneWorkersZoneSubrequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10489,23 +8927,10 @@
 		"responseBodySize": "Workers fetch response body size in bytes",
 		"subrequests": "Number of sub-requests issued by the edge worker"
 	},
-	"ZoneWorkersZoneSubrequestsAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"requestBodySize": "Confidence interval for the corresponding point estimate",
-		"requestBodySizeUncached": "Confidence interval for the corresponding point estimate",
-		"responseBodySize": "Confidence interval for the corresponding point estimate",
-		"subrequests": "Confidence interval for the corresponding point estimate"
-	},
 	"ZoneZarazActionsAdaptiveGroups": {
 		"__description": "Zaraz Actions Analytics",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed Zaraz Actions",
 		"dimensions": "List of dimensions to group by"
-	},
-	"ZoneZarazActionsAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed Zaraz Actions, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneZarazActionsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10525,14 +8950,8 @@
 	},
 	"ZoneZarazAnalyticsIdentitiesAdaptiveGroups": {
 		"__description": "Zaraz Analytics Identities - zaraz.identify calls",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed Zaraz identify requests",
 		"dimensions": "List of dimensions to group by"
-	},
-	"ZoneZarazAnalyticsIdentitiesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed Zaraz identify requests, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneZarazAnalyticsIdentitiesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10593,15 +9012,9 @@
 	},
 	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroups": {
 		"__description": "Zaraz Analytics Tracks ordered per session",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed Zaraz Track requests",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
-	},
-	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed Zaraz Track requests, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10655,15 +9068,9 @@
 	},
 	"ZoneZarazAnalyticsTrackAdaptiveGroups": {
 		"__description": "Zaraz Analytics Track - counts zaraz.track calls",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed Zaraz Track requests",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
-	},
-	"ZoneZarazAnalyticsTrackAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed Zaraz Track requests, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneZarazAnalyticsTrackAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10711,7 +9118,6 @@
 	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroups": {
 		"__description": "Zaraz Analytics Track Traffic Sources",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of unique sessions",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
@@ -10719,11 +9125,6 @@
 	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroupsAvg": {
 		"__description": "",
 		"sessionDuration": "Average session duration"
-	},
-	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of unique sessions, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10760,15 +9161,9 @@
 	},
 	"ZoneZarazAnalyticsTriggersAdaptiveGroups": {
 		"__description": "Zaraz Analytics Triggers (a trigger is a set of rules that can trigger a zaraz action)",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed Zaraz Triggers",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
-	},
-	"ZoneZarazAnalyticsTriggersAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed Zaraz Triggers, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneZarazAnalyticsTriggersAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10814,15 +9209,9 @@
 	},
 	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroups": {
 		"__description": "Zaraz Analytics Triggers Traffic Sources",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of unique sessions",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
-	},
-	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of unique sessions, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10856,14 +9245,8 @@
 	},
 	"ZoneZarazFetchAdaptiveGroups": {
 		"__description": "Aggregated Zaraz External Fetch Logs",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed external fetch requests",
 		"dimensions": "List of dimensions to group by"
-	},
-	"ZoneZarazFetchAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed external fetch requests, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneZarazFetchAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10883,14 +9266,8 @@
 	},
 	"ZoneZarazTrackAdaptiveGroups": {
 		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed Zaraz Track requests",
 		"dimensions": "List of dimensions to group by"
-	},
-	"ZoneZarazTrackAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed Zaraz Track requests, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneZarazTrackAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -10910,14 +9287,8 @@
 	},
 	"ZoneZarazTriggersAdaptiveGroups": {
 		"__description": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
-		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed Zaraz Triggers",
 		"dimensions": "List of dimensions to group by"
-	},
-	"ZoneZarazTriggersAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed Zaraz Triggers, with confidence intervals",
-		"level": "Confidence level that was requested"
 	},
 	"ZoneZarazTriggersAdaptiveGroupsDimensions": {
 		"__description": "",
