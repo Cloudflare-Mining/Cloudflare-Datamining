@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, New York, Champaign</strong></p>
+<p><strong>Available Locations: Austin TX; Champaign IL</strong></p>
 <h4><strong>About the Team</strong></h4>
 <p>Cloudflare is redefining the way networks are run at scale. Our Network Services product suite puts the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure and private networks. We’re looking for curious, empathetic engineers who are excited to join us in changing the way networking is done!</p>
 <p>The Cloudflare Network Interconnect (CNI) team works with Rust, Linux, and cloud technologies to build and manage servers and high speed networking switches at Cloudflare locations, supporting our public CNI product. We are looking for engineers who are equally as interested in building their own Linux-based operating systems as they are in building user-friendly HTTP APIs, and equally as interested in high speed networking as they are in writing good Rust code.</p>
