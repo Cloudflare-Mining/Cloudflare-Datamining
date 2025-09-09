@@ -2104,17 +2104,17 @@
 		]
 	},
 	{
-		"id": "f45430d92e2b4a6cb9f94f2594c141b8",
-		"name": "Workers R2 Data Catalog SQL Read",
-		"description": "Grants access to read-only SQL queries for R2 Data Catalog",
+		"id": "d229766a2f7f4d299f20eaa8c9b1fde9",
+		"name": "Workers R2 Data Catalog Write",
+		"description": "Grants write access to R2 Data Catalog",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
 	},
 	{
-		"id": "d229766a2f7f4d299f20eaa8c9b1fde9",
-		"name": "Workers R2 Data Catalog Write",
-		"description": "Grants write access to R2 Data Catalog",
+		"id": "f45430d92e2b4a6cb9f94f2594c141b8",
+		"name": "Workers R2 SQL Read",
+		"description": "Grants access to read-only SQL queries against R2 Data Catalog",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
