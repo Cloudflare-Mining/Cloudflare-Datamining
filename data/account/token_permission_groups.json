@@ -872,6 +872,30 @@
 		]
 	},
 	{
+		"id": "77efc2c0724d4c4eb94bfd9656247130",
+		"name": "Connectivity Directory Admin",
+		"description": "Can view, edit, create, and delete Connectivity Directory Services, including the ability to create Services that bind to Cloudflare Tunnel",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "95fa65ba51fd49c4a6ac4c8c78ebac93",
+		"name": "Connectivity Directory Bind",
+		"description": "Can read, list, and bind to Connectivity Directory services, as well as read and list Cloudflare Tunnels",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "8764961c1edb4274be129d630b0b2671",
+		"name": "Connectivity Directory Read",
+		"description": "Can view Connectivity Directory services and Cloudflare Tunnels",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "eeffa4d16812430cb4a0ae9e7f46fc24",
 		"name": "Constellation Read",
 		"description": "Grants read access to Constellation configuration and models",
