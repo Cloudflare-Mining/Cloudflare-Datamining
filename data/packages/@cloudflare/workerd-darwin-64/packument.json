@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-darwin-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20250906.0"
+		"latest": "1.20250909.0"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -5494,15 +5494,35 @@
 			"name": "@cloudflare/workerd-darwin-64",
 			"version": "1.20250906.0",
 			"dist": {
-				"integrity": "sha512-E+X/YYH9BmX0ew2j/mAWFif2z05NMNuhCTlNYEGLkqMe99K15UewBqajL9pMcMUKxylnlrEoK3VNxl33DkbnPA==",
 				"shasum": "3b41669b7b93eaa94306977d16ad99135539afa9",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-64/-/workerd-darwin-64-1.20250906.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 98622479,
+				"integrity": "sha512-E+X/YYH9BmX0ew2j/mAWFif2z05NMNuhCTlNYEGLkqMe99K15UewBqajL9pMcMUKxylnlrEoK3VNxl33DkbnPA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDVA2YJTZYmIgm9y5SzoFdq5AkZA6RdkZ0QTYn9uGmUmQIhAKtEjetnvMSI83AE4nELT73+jWNyMZtYsEVwaFsS2MV3",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 98622479
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20250909.0": {
+			"name": "@cloudflare/workerd-darwin-64",
+			"version": "1.20250909.0",
+			"dist": {
+				"integrity": "sha512-lqoGzkzgTBEEJUCsVezCcaXU4DKKSJq45YdP/iUGjmTOlzfUJoxuFHFz6xDNoBCdRmZrmE1f5DcfNVbgU17NNQ==",
+				"shasum": "5f9511ecd942b5dcfe512d8c0ce0bbece2aeabea",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-64/-/workerd-darwin-64-1.20250909.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 98597871,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDVA2YJTZYmIgm9y5SzoFdq5AkZA6RdkZ0QTYn9uGmUmQIhAKtEjetnvMSI83AE4nELT73+jWNyMZtYsEVwaFsS2MV3"
+						"sig": "MEYCIQDUr1O6I1VJGd4Op3HuNjjWTz1MWNd++wk6jhHYW0p2ZwIhAJzh0bS/kj1gd4Zf5iZ85Bj2xWKZJL/odYDIpClqOUQ8"
 					}
 				]
 			},
