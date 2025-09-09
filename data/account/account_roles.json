@@ -2,15 +2,11 @@
 	{
 		"id": "8e117fdd57cd531947dbdcfd82f7a1a1",
 		"name": "Email Security Policy Admin",
-		"description": "Write access to Email Security Policies",
+		"description": "Write access to Email Security policies",
 		"permissions": {
 			"ces_policies": {
 				"read": true,
 				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": false
 			},
 			"ces_integration": {
 				"read": true,
@@ -284,7 +280,7 @@
 	{
 		"id": "dfed41846ee1b4952dbeec65c7195e31",
 		"name": "Email Security Reporting",
-		"description": "Read access to CES Home, PhishGuard, and Submission Transparency",
+		"description": "Read access to Email Security Home, PhishGuard, and Submission Transparency",
 		"permissions": {
 			"ces_submissions": {
 				"read": true,
@@ -311,13 +307,9 @@
 	{
 		"id": "3390240245b5d4d8be9f8c5789dca2d7",
 		"name": "Email Security Readonly",
-		"description": "Read access to all of CES, cannot see Raw Email, take action on emails, or make Submissions (Requires Cloudflare Zero Trust PII)",
+		"description": "Read access to all of Email Security, cannot see raw email, take action on emails, or make submissions (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
 			"ces_policies": {
-				"read": true,
-				"edit": false
-			},
-			"teams": {
 				"read": true,
 				"edit": false
 			},
@@ -347,6 +339,10 @@
 				"read": true,
 				"edit": false
 			},
+			"teams": {
+				"read": true,
+				"edit": false
+			},
 			"access": {
 				"read": true,
 				"edit": false
@@ -364,7 +360,7 @@
 	{
 		"id": "d9290f651ced29c9524b79aa5ac4fcaf",
 		"name": "Email Security Analyst",
-		"description": "Write access to all of Email Security, except Settings which is read only (Requires Cloudflare Zero Trust PII)",
+		"description": "Read access to all of Email Security including Settings, and can also action emails (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
 			"ces_policies": {
 				"read": true,
@@ -395,6 +391,10 @@
 				"edit": false
 			},
 			"ces_analytics": {
+				"read": true,
+				"edit": false
+			},
+			"teams": {
 				"read": true,
 				"edit": false
 			},
@@ -442,6 +442,10 @@
 				"read": true,
 				"edit": false
 			},
+			"teams": {
+				"read": true,
+				"edit": true
+			},
 			"access": {
 				"read": true,
 				"edit": true
@@ -470,6 +474,10 @@
 				"edit": true
 			},
 			"ces_settings": {
+				"read": true,
+				"edit": true
+			},
+			"teams": {
 				"read": true,
 				"edit": true
 			},
