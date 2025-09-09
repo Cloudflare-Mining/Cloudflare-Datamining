@@ -574,5 +574,29 @@
 			"description": "Receive regular Web Analytics metrics updates by email",
 			"filter_options": []
 		}
+	],
+	"Workers Observability": [
+		{
+			"display_name": "Alert Policy",
+			"type": "workers_observability_alert",
+			"description": "Configure how you want to be notified when your Workers Observability alerts fire",
+			"filter_options": [
+				{
+					"Key": "status",
+					"ComparisonOperator": "==",
+					"Range": "1-n",
+					"AvailableValues": [
+						{
+							"ID": "FIRING_FAILED",
+							"Description": "Alert is actively firing due to a failure"
+						},
+						{
+							"ID": "NORMAL",
+							"Description": "Alert has resolved and returned to normal state"
+						}
+					]
+				}
+			]
+		}
 	]
 }
