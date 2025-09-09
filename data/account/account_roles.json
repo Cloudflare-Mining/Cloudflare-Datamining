@@ -1414,6 +1414,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"dash_sso": {
+				"read": true,
+				"edit": true
+			},
 			"r2_bucket_warehouse_sql": {
 				"read": true,
 				"edit": false
@@ -1599,10 +1603,6 @@
 				"edit": true
 			},
 			"image": {
-				"read": true,
-				"edit": true
-			},
-			"dash_sso": {
 				"read": true,
 				"edit": true
 			},

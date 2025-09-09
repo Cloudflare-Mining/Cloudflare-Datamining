@@ -1888,6 +1888,22 @@
 		]
 	},
 	{
+		"id": "1d80f6f165ea47f2b55d4a393fd697de",
+		"name": "SSO Connector Read",
+		"description": "Grants read access to Cloudflare SSO connectors\n",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "901ca5e292584c6aa1b4cdb39248bb07",
+		"name": "SSO Connector Write",
+		"description": "Grants write access to Cloudflare SSO connectors\n",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "de21485a24744b76a004aa153898f7fe",
 		"name": "Stream Read",
 		"description": "Grants read access to Cloudflare Stream",
