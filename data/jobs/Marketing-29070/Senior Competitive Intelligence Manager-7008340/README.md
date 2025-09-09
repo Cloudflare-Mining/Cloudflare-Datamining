@@ -6,34 +6,34 @@
 	</div>
 </div>
 <p><strong>Available Locations: Austin, TX or San Francisco</strong></p>
+<p>We are seeking a highly motivated and technically proficient Senior Competitive Intelligence Manager to join our Competitive Intelligence team and support our&nbsp;<a href="https://www.cloudflare.com/application-services/products/#Application">Application Services</a>. This is a hands-on technical role within the leading connectivity cloud company recognized as a leader in App Security and Performance. You will be responsible for in-depth analysis of competitor solutions, encompassing both Application Security (DDoS protection, WAF, API security, Bot management, … ) and App Performance (CDN, DNS, load balancing, ..).</p>
+<h1><strong>Responsibilities</strong></h1>
+<ul>
+	<li>Conduct deep-dive technical analysis of competitor offerings, track relevant announcements, identify impacts, and communicate with relevant stakeholders.</li>
+	<li>Develop and maintain competitive intelligence collateral, including technical whitepapers, battlecards, presentations, and product comparisons.</li>
+	<li>Provide actionable insights to product management, engineering, sales, and marketing teams, highlighting competitive advantages and disadvantages.</li>
+	<li>Monitor market trends, industry developments, and competitor announcements to identify emerging threats and opportunities.</li>
+	<li>Collaborate with sales and technical marketing teams to develop competitive positioning and messaging.</li>
+	<li>Present competitive findings to internal stakeholders, ranging from technical teams to executive leadership.</li>
+	<li>Install, configure, and maintain a realistic lab environment to help in achieving above goals.</li>
+</ul>
+<h1><strong>Qualifications</strong></h1>
+<ul>
+	<li>5+ years of experience in a highly technical role, such as Competitive Intelligence (CI), Technical Marketing (TM), Sales Engineering, or a similar customer-facing/competitive engineering role.</li>
+	<li>Possessing a robust technical grasp of Application Security concepts, including DDoS protection, Web Application Firewalls (WAF), API security, and Bot management, as well as App Performance technologies like Content Delivery Networks (CDN), Domain Name System (DNS), and load balancing. Alternatively, demonstrating a proven aptitude for rapidly acquiring proficiency in these technologies.</li>
+	<li>Proven ability to independently install, configure, and troubleshoot complex networking and application security solutions.</li>
+	<li>Experience with cloud platforms and SaaS offerings.</li>
+	<li>Excellent written and verbal communication skills, with the ability to translate complex technical information into clear and concise insights.</li>
+	<li>Strong analytical and problem-solving skills.</li>
+	<li>Ability to work independently and collaboratively in a fast-paced environment.</li>
+</ul>
+<h1><strong>Preferred Qualifications</strong></h1>
 <ul>
 	<li>
-		<p>We are seeking a highly motivated and technically proficient Senior Competitive Intelligence Manager to join our Competitive Intelligence team and support our&nbsp;<a href="https://www.cloudflare.com/application-services/products/#Application">Application Services</a>. This is a hands-on technical role within the leading connectivity cloud company recognized as a leader in App Security and Performance. You will be responsible for in-depth analysis of competitor solutions, encompassing both Application Security (DDoS protection, WAF, API security, Bot management, … ) and App Performance (CDN, DNS, load balancing, ..).</p>
-		<h1><strong>Responsibilities</strong></h1>
-		<ul>
-			<li>Conduct deep-dive technical analysis of competitor offerings, track relevant announcements, identify impacts, and communicate with relevant stakeholders.</li>
-			<li>Develop and maintain competitive intelligence collateral, including technical whitepapers, battlecards, presentations, and product comparisons.</li>
-			<li>Provide actionable insights to product management, engineering, sales, and marketing teams, highlighting competitive advantages and disadvantages.</li>
-			<li>Monitor market trends, industry developments, and competitor announcements to identify emerging threats and opportunities.</li>
-			<li>Collaborate with sales and technical marketing teams to develop competitive positioning and messaging.</li>
-			<li>Present competitive findings to internal stakeholders, ranging from technical teams to executive leadership.</li>
-			<li>Install, configure, and maintain a realistic lab environment to help in achieving above goals.</li>
-		</ul>
-		<h1><strong>Qualifications</strong></h1>
-		<ul>
-			<li>Bachelor's degree in Computer Science, Electrical Engineering, or a related technical field.</li>
-			<li>5+ years of experience in a highly technical role, such as Competitive Intelligence (CI), Technical Marketing (TM), Sales Engineering, or a similar customer-facing/competitive engineering role.</li>
-			<li>Possessing a robust technical grasp of Application Security concepts, including DDoS protection, Web Application Firewalls (WAF), API security, and Bot management, as well as App Performance technologies like Content Delivery Networks (CDN), Domain Name System (DNS), and load balancing. Alternatively, demonstrating a proven aptitude for rapidly acquiring proficiency in these technologies.</li>
-			<li>Proven ability to independently install, configure, and troubleshoot complex networking and application security solutions.</li>
-			<li>Experience with cloud platforms and SaaS offerings.</li>
-			<li>Excellent written and verbal communication skills, with the ability to translate complex technical information into clear and concise insights.</li>
-			<li>Strong analytical and problem-solving skills.</li>
-			<li>Ability to work independently and collaboratively in a fast-paced environment.</li>
-		</ul>
-		<h1><strong>Preferred Qualifications</strong></h1>
 		<ul>
 			<li>Direct experience working with vendors such as Akamai, F5, Fastly, AWS, Google Cloud, or Azure in a technical capacity.</li>
 			<li>Familiarity with various network protocols and security standards.</li>
+			<li>Bachelor's degree in Computer Science, Electrical Engineering, or a related technical field.</li>
 			<li>Experience with scripting languages (e.g., Python, SQL) for automation and data analysis.</li>
 		</ul>
 	</li>
