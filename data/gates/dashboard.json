@@ -1580,6 +1580,13 @@
 	"prg-minimal-header-banners": {
 		"enabled": true
 	},
+	"prg-no-dns-redirect": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"prg-notification-banner-personalization": {
 		"enabled": true
 	},
@@ -2436,6 +2443,9 @@
 		"enabled": true
 	},
 	"workers-versions": {
+		"enabled": true
+	},
+	"workers-vpc-dash-v1": {
 		"enabled": true
 	},
 	"workflows-ui": {
