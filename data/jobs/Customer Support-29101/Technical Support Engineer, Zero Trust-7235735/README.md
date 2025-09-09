@@ -5,40 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Job Description: US Enterprise Field Marketing Manager–Northeast</strong></p>
-<p>New York, NY, or Northeast US <strong>(Within 2 hours travel from New York)&nbsp;</strong></p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for an experienced, enthusiastic and highly-motivated Senior Field Marketing Manager, Enterprise, Northeast Region who will be responsible for building the growth marketing strategy and managing field initiatives from end-to-end marketing to the Enterprise segment in the US.&nbsp;You will build the marketing plan for the region, integrating field campaigns and events, ABM initiatives, and partner marketing activities in order to grow Cloudflare’s customer base. You have a natural inclination to measure the effectiveness of marketing activities, show strong project management skills and are able to think strategically while orchestrating many moving parts. The programs you oversee will ultimately amplify campaign and event initiatives to drive demand and pipeline in the Americas Northeast Enterprise region.</p>
-<p><strong>Responsibilities</strong></p>
-<p>Build the marketing plan for the region, integrating hosted and 3rd party field events, ABM programs, and partner marketing activities in order to grow our customer base and drive demand for Cloudflare.</p>
+<p><strong>Available Location: </strong>Hybrid - Mexico City</p>
+<h4><strong>To the attention of candidates (Mexico City, Mexico):&nbsp;</strong></h4>
+<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in the Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>What You’ll Do</strong></h4>
+<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for the Cloudflare One platform, including the complete Zero Trust product suite, networking solutions like Magic WAN, and associated monitoring and analytics tools.</p>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
-	<li>Identify opportunities to drive various hosted event formats such as: CxO events, customer-led panels, fireside chats, roundtables, webinars, Executive Briefings, and other bespoke experiences.</li>
-	<li>Work with cross-functional team members (Sales, BDRs, MarkOps, MarTech, SalesOps, ABM Marketing, Product Marketing, Partner Marketing, etc.) to support the orchestration of high-impact marketing campaigns and programs.</li>
-	<li>Ensure that your accounts get the right share of corporate and regional resources that provide marketing aircover (Branding, PR, ABM, Pay Per Click, Social, Advertising, Outbound Campaigns, etc).</li>
-	<li>Help evaluate and manage external vendors and third-party event sponsorship opportunities based on market reach and audience relevance.</li>
-	<li>Track spend within the allocated budget, and build effective reports to determine performance and ROI (efficiency) of marketing initiatives.</li>
-	<li>Own the lead lifecycle and constantly drive to accelerate funnel velocity to maximize conversions and help drive the revenue goal in your region.</li>
-	<li>Be responsible for communications to regional stakeholders on results, issue management, and feedback loops.</li>
+	<li>You have previous experience working as part of a team in a customer-facing role</li>
+	<li>You have experience solving troubleshooting and resolving Layer 3/4 networking issues, including routing, firewall, and transport-level connectivity problems</li>
+	<li>You understand how the Internet works</li>
+	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
+	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
+	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
+	<li>You are comfortable communicating through various support channels and always put the customer first</li>
+	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
+	<li>Flexibility to work holidays and rotational weekend shifts</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h4><strong>Bonus Points</strong></h4>
 <ul>
-	<li>Must have 8+ years of proven experience in B2B marketing (enterprise software, SaaS, Security, etc.).</li>
-	<li>Must be comfortable with reporting and communicating marketing impact across the organization.</li>
-	<li>Analytically inclined, exceptional organizational skills, with rigorous attention to detail.</li>
-	<li>Ability to work effectively in a fast-paced and ever-changing environment with tight deadlines.</li>
-	<li>Prior marketing experience in a high growth company in the SaaS, security, or network space, combined with knowledge of how the Internet works is a plus.</li>
-	<li>Experience delivering, accelerating, and expanding sales pipeline through regional field marketing initiatives executed under an integrated ABM strategy</li>
-	<li>Understanding of the customer journey and the best marketing approaches by stage</li>
-	<li>Hands-on experience with Salesforce, Marketo, Tableau (or other marketing automation and analytics tools).</li>
-	<li>Analytically inclined and metrics-driven with rigorous attention to detail; great at solving complex problems with curious and creative mindset</li>
-	<li>Team player with exceptional organizational skills, and the ability to work strategically and tactically.</li>
-	<li>Ability to execute multiple projects simultaneously in a fast-paced and changing environment with tight deadlines</li>
-	<li>Excellent writing and presentation skills</li>
-	<li>Ability to travel when needed (20-30%)</li>
+	<li>You are fluent in English, Spanish, Portuguese, German, Japanese, French or Mandarin</li>
+	<li>You are familiar with Cloudflare Zero Trust products (Zero Trust / Access / Gateway / Tunnel, WARP client) and have a site actively using our platform</li>
+	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
+	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
+	<li>You are committed to gaining a deeper understanding of the following technologies: Zero Trust / Secure Web Gateway policies / Endpoint protections / security best practices (Certificates, Zero Trust, least privileged access etc)</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
 </ul>
-<p><strong>Compensation -&nbsp;</strong>Compensation may be adjusted depending on work location.</p>
-<p>New York Compensation Range 142,000 - 174,000</p>
-<p>Equity Eligible</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

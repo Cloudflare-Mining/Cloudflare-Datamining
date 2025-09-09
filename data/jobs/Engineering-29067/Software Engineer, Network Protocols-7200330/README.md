@@ -5,40 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Job Description: US Enterprise Field Marketing Manager–Northeast</strong></p>
-<p>New York, NY, or Northeast US <strong>(Within 2 hours travel from New York)&nbsp;</strong></p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for an experienced, enthusiastic and highly-motivated Senior Field Marketing Manager, Enterprise, Northeast Region who will be responsible for building the growth marketing strategy and managing field initiatives from end-to-end marketing to the Enterprise segment in the US.&nbsp;You will build the marketing plan for the region, integrating field campaigns and events, ABM initiatives, and partner marketing activities in order to grow Cloudflare’s customer base. You have a natural inclination to measure the effectiveness of marketing activities, show strong project management skills and are able to think strategically while orchestrating many moving parts. The programs you oversee will ultimately amplify campaign and event initiatives to drive demand and pipeline in the Americas Northeast Enterprise region.</p>
-<p><strong>Responsibilities</strong></p>
-<p>Build the marketing plan for the region, integrating hosted and 3rd party field events, ABM programs, and partner marketing activities in order to grow our customer base and drive demand for Cloudflare.</p>
+<p><strong>Hiring will be focused on those residing within the greater Austin, TX metro area. It will be a hybrid role, with the expectation of 2 days per week in the office.</strong></p>
+<p><strong>Systems Engineer, Network Protocols &amp; Distributed Systems</strong><strong><br></strong> <strong>Location:</strong> Austin (Hybrid)</p>
+<p>Join the team helping shape the future of the Internet. We’re building high-performance systems that handle a <em>quarter of the Internet’s traffic</em>. Our work influences open standards (like QUIC, MASQUE, and ECH), involves close collaboration with the IETF, and pushes the boundaries of what's possible in networking and security.</p>
+<p>You don’t need to be an HTTP or cryptography expert to join — we’re looking for excellent engineers who love tough problems, want to learn deeply, and are excited to contribute to one of the most technically demanding areas of infrastructure.</p>
+<p><strong>What you’ll do</strong></p>
 <ul>
-	<li>Identify opportunities to drive various hosted event formats such as: CxO events, customer-led panels, fireside chats, roundtables, webinars, Executive Briefings, and other bespoke experiences.</li>
-	<li>Work with cross-functional team members (Sales, BDRs, MarkOps, MarTech, SalesOps, ABM Marketing, Product Marketing, Partner Marketing, etc.) to support the orchestration of high-impact marketing campaigns and programs.</li>
-	<li>Ensure that your accounts get the right share of corporate and regional resources that provide marketing aircover (Branding, PR, ABM, Pay Per Click, Social, Advertising, Outbound Campaigns, etc).</li>
-	<li>Help evaluate and manage external vendors and third-party event sponsorship opportunities based on market reach and audience relevance.</li>
-	<li>Track spend within the allocated budget, and build effective reports to determine performance and ROI (efficiency) of marketing initiatives.</li>
-	<li>Own the lead lifecycle and constantly drive to accelerate funnel velocity to maximize conversions and help drive the revenue goal in your region.</li>
-	<li>Be responsible for communications to regional stakeholders on results, issue management, and feedback loops.</li>
+	<li>Build and operate systems that terminate HTTP and TLS at Internet scale</li>
+	<li>Migrate core infrastructure from NGINX to a next-gen Rust-based proxy</li>
+	<li>Measure and improve protocol performance across real-world traffic</li>
+	<li>Contribute to open source and industry standards</li>
+	<li>Learn from and work alongside some of the leading engineers in this space<br><br></li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>You might be a good fit if you:</strong></p>
 <ul>
-	<li>Must have 8+ years of proven experience in B2B marketing (enterprise software, SaaS, Security, etc.).</li>
-	<li>Must be comfortable with reporting and communicating marketing impact across the organization.</li>
-	<li>Analytically inclined, exceptional organizational skills, with rigorous attention to detail.</li>
-	<li>Ability to work effectively in a fast-paced and ever-changing environment with tight deadlines.</li>
-	<li>Prior marketing experience in a high growth company in the SaaS, security, or network space, combined with knowledge of how the Internet works is a plus.</li>
-	<li>Experience delivering, accelerating, and expanding sales pipeline through regional field marketing initiatives executed under an integrated ABM strategy</li>
-	<li>Understanding of the customer journey and the best marketing approaches by stage</li>
-	<li>Hands-on experience with Salesforce, Marketo, Tableau (or other marketing automation and analytics tools).</li>
-	<li>Analytically inclined and metrics-driven with rigorous attention to detail; great at solving complex problems with curious and creative mindset</li>
-	<li>Team player with exceptional organizational skills, and the ability to work strategically and tactically.</li>
-	<li>Ability to execute multiple projects simultaneously in a fast-paced and changing environment with tight deadlines</li>
-	<li>Excellent writing and presentation skills</li>
-	<li>Ability to travel when needed (20-30%)</li>
+	<li>Have solid systems programming experience (Rust, C, or similar)</li>
+	<li>Experience/understanding of HTTP/2, HTTP/3, QUIC, congestion control, or transport-layer protocols</li>
+	<li>Thrive in complex technical domains and enjoy learning new things</li>
+	<li>Care about building reliable, secure, and performant software</li>
+	<li>Are motivated by impact — technical, operational, and on the Internet itself</li>
+	<li>Come from a background that’s underrepresented in tech — we value diverse perspectives</li>
 </ul>
-<p><strong>Compensation -&nbsp;</strong>Compensation may be adjusted depending on work location.</p>
-<p>New York Compensation Range 142,000 - 174,000</p>
-<p>Equity Eligible</p>
+<p><strong>Bonus</strong></p>
+<ul>
+	<li>Proven ability to scale systems under high throughput and low latency demands</li>
+	<li>Experience driving architecture or protocol-level change in production systems</li>
+	<li>Contributions to open standards or open source projects</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

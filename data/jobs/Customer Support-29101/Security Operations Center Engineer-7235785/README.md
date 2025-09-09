@@ -5,40 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Job Description: US Enterprise Field Marketing Manager–Northeast</strong></p>
-<p>New York, NY, or Northeast US <strong>(Within 2 hours travel from New York)&nbsp;</strong></p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for an experienced, enthusiastic and highly-motivated Senior Field Marketing Manager, Enterprise, Northeast Region who will be responsible for building the growth marketing strategy and managing field initiatives from end-to-end marketing to the Enterprise segment in the US.&nbsp;You will build the marketing plan for the region, integrating field campaigns and events, ABM initiatives, and partner marketing activities in order to grow Cloudflare’s customer base. You have a natural inclination to measure the effectiveness of marketing activities, show strong project management skills and are able to think strategically while orchestrating many moving parts. The programs you oversee will ultimately amplify campaign and event initiatives to drive demand and pipeline in the Americas Northeast Enterprise region.</p>
-<p><strong>Responsibilities</strong></p>
-<p>Build the marketing plan for the region, integrating hosted and 3rd party field events, ABM programs, and partner marketing activities in order to grow our customer base and drive demand for Cloudflare.</p>
+<p><strong>Job Locations: </strong>Hybrid - Austin</p>
+<p><strong>To the attention of candidates: </strong></p>
+<p><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a Tuesday - Saturday or Sunday - Thursday 5-day working week schedule.&nbsp;</strong></p>
+<h4><strong>About the Department</strong></h4>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h4><strong>Description</strong></h4>
+<p>Security Operations Center Analysts provide premium-level support for Cloudflare’s security products and features. Our largest and most technically sophisticated customers will contact the SOC as a Service team for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum, Bot Management and Rate Limiting to help customers.</p>
+<p>Security Operations Center Analysts analyze threats, make detailed and informed suggestions for mitigation and may need to implement mitigation strategies directly on behalf of the customer. The team also provides attack reporting beyond Cloudflare’s self-service reports.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Identify opportunities to drive various hosted event formats such as: CxO events, customer-led panels, fireside chats, roundtables, webinars, Executive Briefings, and other bespoke experiences.</li>
-	<li>Work with cross-functional team members (Sales, BDRs, MarkOps, MarTech, SalesOps, ABM Marketing, Product Marketing, Partner Marketing, etc.) to support the orchestration of high-impact marketing campaigns and programs.</li>
-	<li>Ensure that your accounts get the right share of corporate and regional resources that provide marketing aircover (Branding, PR, ABM, Pay Per Click, Social, Advertising, Outbound Campaigns, etc).</li>
-	<li>Help evaluate and manage external vendors and third-party event sponsorship opportunities based on market reach and audience relevance.</li>
-	<li>Track spend within the allocated budget, and build effective reports to determine performance and ROI (efficiency) of marketing initiatives.</li>
-	<li>Own the lead lifecycle and constantly drive to accelerate funnel velocity to maximize conversions and help drive the revenue goal in your region.</li>
-	<li>Be responsible for communications to regional stakeholders on results, issue management, and feedback loops.</li>
+	<li>Monitor and investigate the alerts to identify attacks</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
+	<li>Work with Engineering and Product teams to improve the products and tools</li>
+	<li>Extensive communications with customers via chat, email, and phone&nbsp;</li>
+	<li>Review the latest alerts to determine relevancy and urgency. Create new tracking tickets for alerts that signal an incident and require review or escalation</li>
+	<li>Configure / Manage security monitoring rules and contribute to tool improvements</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>Participation in a weekend and holiday rotation required with main working hours 9 to 5 Pacific time&nbsp;</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h4><strong>Key skill sets</strong></h4>
 <ul>
-	<li>Must have 8+ years of proven experience in B2B marketing (enterprise software, SaaS, Security, etc.).</li>
-	<li>Must be comfortable with reporting and communicating marketing impact across the organization.</li>
-	<li>Analytically inclined, exceptional organizational skills, with rigorous attention to detail.</li>
-	<li>Ability to work effectively in a fast-paced and ever-changing environment with tight deadlines.</li>
-	<li>Prior marketing experience in a high growth company in the SaaS, security, or network space, combined with knowledge of how the Internet works is a plus.</li>
-	<li>Experience delivering, accelerating, and expanding sales pipeline through regional field marketing initiatives executed under an integrated ABM strategy</li>
-	<li>Understanding of the customer journey and the best marketing approaches by stage</li>
-	<li>Hands-on experience with Salesforce, Marketo, Tableau (or other marketing automation and analytics tools).</li>
-	<li>Analytically inclined and metrics-driven with rigorous attention to detail; great at solving complex problems with curious and creative mindset</li>
-	<li>Team player with exceptional organizational skills, and the ability to work strategically and tactically.</li>
-	<li>Ability to execute multiple projects simultaneously in a fast-paced and changing environment with tight deadlines</li>
-	<li>Excellent writing and presentation skills</li>
-	<li>Ability to travel when needed (20-30%)</li>
+	<li>Strong understanding of the OSI model, TCP, UDP, BGP, QUIC</li>
+	<li>Advanced understanding of iptables</li>
+	<li>Analysis of traffic for attack anomaly detection and creation of mitigation rules</li>
+	<li>Experience in handling attack mitigation and thorough knowledge of various attacks (L3/4 and L7)</li>
+	<li>At least 2 years of technical support experience and customer support experience is a must</li>
+	<li>Strong communication skills with high-value customers&nbsp;</li>
+	<li>Command line / Bash shell</li>
+	<li>Sysadmin skills (Linux/Mac/Windows) &amp; Programming skills (Python, Ruby, PHP, C, C#, Java, Perl, Git etc.)</li>
+	<li>Security skills and certifications preferred: CISSP, GCIA GCIH, GCFA, GCFE, etc.</li>
 </ul>
-<p><strong>Compensation -&nbsp;</strong>Compensation may be adjusted depending on work location.</p>
-<p>New York Compensation Range 142,000 - 174,000</p>
-<p>Equity Eligible</p>
+<h4>Bonus Points:</h4>
+<ul>
+	<li>Previous DDoS mitigation for OSI layers 3,4, &amp; 7, filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blacklisting, whitelisting, and/or rate limiting is a plus</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

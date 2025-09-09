@@ -5,40 +5,50 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Job Description: US Enterprise Field Marketing Manager–Northeast</strong></p>
-<p>New York, NY, or Northeast US <strong>(Within 2 hours travel from New York)&nbsp;</strong></p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for an experienced, enthusiastic and highly-motivated Senior Field Marketing Manager, Enterprise, Northeast Region who will be responsible for building the growth marketing strategy and managing field initiatives from end-to-end marketing to the Enterprise segment in the US.&nbsp;You will build the marketing plan for the region, integrating field campaigns and events, ABM initiatives, and partner marketing activities in order to grow Cloudflare’s customer base. You have a natural inclination to measure the effectiveness of marketing activities, show strong project management skills and are able to think strategically while orchestrating many moving parts. The programs you oversee will ultimately amplify campaign and event initiatives to drive demand and pipeline in the Americas Northeast Enterprise region.</p>
-<p><strong>Responsibilities</strong></p>
-<p>Build the marketing plan for the region, integrating hosted and 3rd party field events, ABM programs, and partner marketing activities in order to grow our customer base and drive demand for Cloudflare.</p>
+<p><strong>Available Locations: Houston Texas</strong></p>
+<hr>
+<p><strong>About the Department</strong></p>
+<p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
+<p><strong>About this Role</strong></p>
+<p>This role within the mid-market segment focuses on both the acquisition of new Commercial accounts, as well as the expansion of existing customer accounts.&nbsp; Within the mid-market segment, you will work a set of accounts in the commercial sub-segments. The ideal candidate will have both a sales and technical background that enables them to drive customer engagement from technical professionals through to senior executive levels, and across Security, Network, Development and Infrastructure teams.&nbsp;&nbsp;</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Identify opportunities to drive various hosted event formats such as: CxO events, customer-led panels, fireside chats, roundtables, webinars, Executive Briefings, and other bespoke experiences.</li>
-	<li>Work with cross-functional team members (Sales, BDRs, MarkOps, MarTech, SalesOps, ABM Marketing, Product Marketing, Partner Marketing, etc.) to support the orchestration of high-impact marketing campaigns and programs.</li>
-	<li>Ensure that your accounts get the right share of corporate and regional resources that provide marketing aircover (Branding, PR, ABM, Pay Per Click, Social, Advertising, Outbound Campaigns, etc).</li>
-	<li>Help evaluate and manage external vendors and third-party event sponsorship opportunities based on market reach and audience relevance.</li>
-	<li>Track spend within the allocated budget, and build effective reports to determine performance and ROI (efficiency) of marketing initiatives.</li>
-	<li>Own the lead lifecycle and constantly drive to accelerate funnel velocity to maximize conversions and help drive the revenue goal in your region.</li>
-	<li>Be responsible for communications to regional stakeholders on results, issue management, and feedback loops.</li>
+	<li>Develop and execute a comprehensive account/territory plan to achieve quarterly sales and annual revenue targets in a defined territory and/or account list.</li>
+	<li>Drive new business acquisition (new customer logos), customer expansion (upsell and cross sell Cloudflare solutions), and renewal within your territory.</li>
+	<li>Engage in account mapping sessions with partners, including training new partners on our technology and GTM strategies.</li>
+	<li>Developing scalable relationships with target partners, to expand partner ecosystem in a specific region.</li>
+	<li>Build a robust sales pipeline through continual engagement and nurturing of key prospect accounts.</li>
+	<li>Understand customer use-cases and how they pair with Cloudflare’s portfolio solutions in order to identify new sales opportunities.</li>
+	<li>Craft and communicate compelling value propositions for Cloudflare services. Drive awareness through regular outbound campaigns on product and feature roadmap updates.&nbsp;</li>
+	<li>Accurately forecast commercial outcomes by running a consistent sales process, including driving next step expectations and contract negotiations.</li>
+	<li>As a trusted advisor, build long-term strategic relationships with key accounts, to ensure customer adoption, retention and expansion. Regularly evaluate usage trends and articulate value to show Cloudflare impact and provide strategic recommendations during business reviews.&nbsp;</li>
+	<li>Network across different business units with each of your accounts, and multi-thread to identify and engage new divisional buyers.</li>
+	<li>Position Cloudflare's platform in each of your target customers, including Cloudflare One and the Connectivity Cloud to realize our full potential in every customer.</li>
+	<li>Operate internally as a liaison with cross-functional teams to share key customer feedback and insights to improve customer experience and further investments with Cloudflare.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Requirements:</strong></p>
 <ul>
-	<li>Must have 8+ years of proven experience in B2B marketing (enterprise software, SaaS, Security, etc.).</li>
-	<li>Must be comfortable with reporting and communicating marketing impact across the organization.</li>
-	<li>Analytically inclined, exceptional organizational skills, with rigorous attention to detail.</li>
-	<li>Ability to work effectively in a fast-paced and ever-changing environment with tight deadlines.</li>
-	<li>Prior marketing experience in a high growth company in the SaaS, security, or network space, combined with knowledge of how the Internet works is a plus.</li>
-	<li>Experience delivering, accelerating, and expanding sales pipeline through regional field marketing initiatives executed under an integrated ABM strategy</li>
-	<li>Understanding of the customer journey and the best marketing approaches by stage</li>
-	<li>Hands-on experience with Salesforce, Marketo, Tableau (or other marketing automation and analytics tools).</li>
-	<li>Analytically inclined and metrics-driven with rigorous attention to detail; great at solving complex problems with curious and creative mindset</li>
-	<li>Team player with exceptional organizational skills, and the ability to work strategically and tactically.</li>
-	<li>Ability to execute multiple projects simultaneously in a fast-paced and changing environment with tight deadlines</li>
-	<li>Excellent writing and presentation skills</li>
-	<li>Ability to travel when needed (20-30%)</li>
+	<li>5+ years of direct B2B selling experience</li>
+	<li>Strong interpersonal communication (verbal and written) and organizational skills</li>
+	<li>Self-motivated; entrepreneurial spirit</li>
+	<li>Comfortable working in a fast paced dynamic environment</li>
+	<li>Bachelor's degree required</li>
+	<li>Demonstrated analytical and quantitative abilities</li>
+	<li>Software and system skills are a must (SFDC, Tableau, G-suite, MSFT suite)</li>
 </ul>
-<p><strong>Compensation -&nbsp;</strong>Compensation may be adjusted depending on work location.</p>
-<p>New York Compensation Range 142,000 - 174,000</p>
-<p>Equity Eligible</p>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<ul>
+	<li>5+ years in Software/SaaS/Security Sales &amp; Channel management.</li>
+	<li>Existing relationships and/or strong familiarity of the partner ecosystem in the region that they cover.</li>
+	<li>Understanding of cloud infrastructure ecosystem and cloud security is highly preferred.</li>
+	<li>Experience working in a start-up environment.</li>
+	<li>Ability to travel up to 25% of the time.</li>
+	<li>Technical competence strongly preferred.</li>
+</ul>
+<p><strong>Hiring Timeline:&nbsp;</strong>While we don’t have an immediate opening for this role, we are actively interviewing in anticipation of future team growth. If you're interested, we encourage you to apply so we can connect early and stay in touch as opportunities arise.</p>
+<p>&nbsp;</p>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
