@@ -3194,6 +3194,14 @@
 						"compatEnableFlag": "enable_nodejs_tty_module",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableNodeJsPunycodeModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_punycode_module",
+						"compatEnableFlag": "enable_nodejs_punycode_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
