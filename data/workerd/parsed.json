@@ -3154,6 +3154,30 @@
 						"compatEnableFlag": "enable_nodejs_vm_module",
 						"impliedByAfterDate": "unhandled type"
 					}
+				},
+				{
+					"name": "enableNodeJsPerfHooksModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_perf_hooks_module",
+						"compatEnableFlag": "enable_nodejs_perf_hooks_module",
+						"impliedByAfterDate": "unhandled type"
+					}
+				},
+				{
+					"name": "enableGlobalPerformanceClasses",
+					"annotations": {
+						"compatDisableFlag": "disable_global_performance_classes",
+						"compatEnableDate": "2025-09-21",
+						"compatEnableFlag": "enable_global_performance_classes"
+					}
+				},
+				{
+					"name": "enableNodeJsDomainModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_domain_module",
+						"compatEnableFlag": "enable_nodejs_domain_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
