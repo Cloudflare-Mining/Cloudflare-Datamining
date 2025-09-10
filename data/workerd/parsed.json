@@ -3178,6 +3178,14 @@
 						"compatEnableFlag": "enable_nodejs_domain_module",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableNodeJsV8Module",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_v8_module",
+						"compatEnableFlag": "enable_nodejs_v8_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
