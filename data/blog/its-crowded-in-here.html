@@ -13,7 +13,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MHwv0fusFTiEylSaWQeg3/dbbaa25e7093b0be4fa8ec6dbcd88bca/edge_data_center-1.png" alt="edge data center-1" class="kg-image" width="2000" height="965" loading="lazy">
 	</figure>
 	<p>Granted not all services work on all the addresses but rather on a subset of them, covering one or several network prefixes.</p>
-	<p>So how do you set up your network services to listen on hundreds of IP addresses without driving the network stack over the edge?Cloudflare engineers have had to ask themselves this question more than once over the years, and the answer has changed as our edge evolved. This evolution forced us to look for creative ways to work with the <a href="https://en.wikipedia.org/wiki/Berkeley_sockets">Berkeley sockets API</a>, a POSIX standard for assigning a network address and a port number to your application. It has been quite a journey, and we are not done yet.</p>
+	<p>So how do you set up your network services to listen on hundreds of IP addresses without driving the network stack over the edge? Cloudflare engineers have had to ask themselves this question more than once over the years, and the answer has changed as our edge evolved. This evolution forced us to look for creative ways to work with the <a href="https://en.wikipedia.org/wiki/Berkeley_sockets">Berkeley sockets API</a>, a POSIX standard for assigning a network address and a port number to your application. It has been quite a journey, and we are not done yet.</p>
 	<div class="flex anchor relative">
 		<h2 id="when-life-is-simple-one-address-one-socket">When life is simple - one address, one socket</h2>
 		<a href="https://blog.cloudflare.com/#when-life-is-simple-one-address-one-socket" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -207,7 +207,8 @@ s2.listen(1)
 	</div>
 	<p>This is not just a concept. We have already published a first working <a href="https://lore.kernel.org/bpf/20190828072250.29828-1-jakub@cloudflare.com">set of patches for the kernel</a> together with ancillary <a href="https://github.com/majek/inet-tool">user-space tooling</a> to configure the socket lookup to your needs.</p>
 	<p>If you would like to see it in action, you are in luck. We’ve put together a demo that shows just how easily you can bind a network service to (i) a single port, (ii) all ports, or (iii) a network prefix. On-the-fly, without having to restart the service! There is a port scan running to prove it.</p>
-	<p>You can also bind to all-addresses-all-ports (<code>0.0.0.0/0</code>) because why not? Take that <code>INADDR_ANY</code>. All thanks to BPF superpowers.</p>[![asciicast](https://asciinema.org/a/266328.svg)](https://asciinema.org/a/266328)
+	<p>You can also bind to all-addresses-all-ports (<code>0.0.0.0/0</code>) because why not? Take that <code>INADDR_ANY</code>. All thanks to BPF superpowers.</p>
+	<script id="asciicast-266328" src="https://asciinema.org/a/266328.js" async=""></script>
 	<div class="flex anchor relative">
 		<h2 id="summary">Summary</h2>
 		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
