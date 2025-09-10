@@ -25,7 +25,8 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"London, UK"
+				"London, UK",
+				"Mexico City, Mexico"
 			],
 			"value_type": "multi_select"
 		},
@@ -40,7 +41,7 @@
 		}
 	],
 	"id": 7016431,
-	"updated_at": "2025-09-09T13:47:01-04:00",
+	"updated_at": "2025-09-10T03:44:52-04:00",
 	"requisition_id": null,
 	"title": "Security Researcher & Analyst - Application Security",
 	"company_name": "Cloudflare",
@@ -60,6 +61,16 @@
 			"location": "London, United Kingdom",
 			"child_ids": [],
 			"parent_id": 74843
+		},
+		{
+			"id": 87170,
+			"name": "Mexico",
+			"location": null,
+			"child_ids": [
+				112096,
+				84342
+			],
+			"parent_id": 48752
 		}
 	]
 }
