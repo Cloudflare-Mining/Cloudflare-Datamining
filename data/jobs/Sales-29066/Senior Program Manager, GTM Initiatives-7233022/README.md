@@ -5,37 +5,80 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations - </strong>Austin, Texas or major Texas cities who are willing to travel to Austin once a month for team meetings. If not in Texas, you must be willing to relocate.&nbsp;</p>
-<hr>
-<p><strong>About the Team</strong></p>
-<p>The Data Analytics &amp; Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
-<p><strong>Data Scientist Responsibilities</strong></p>
+<p><strong>Available Location: Austin, San Francisco</strong></p>
+<h1>Program Manager, GTM Initiatives</h1>
+<h2>Role Overview</h2>
+<p>The Program Manager, GTM Initiatives will be a key driver of high-impact go-to-market programs. Reporting to the Chief of Staff to the President of Revenue, this role is responsible for helping design, track, and deliver critical initiatives with discipline and impact. The individual will collaborate across Sales, RevOps, Product, Marketing, and Customer Success to bridge strategy and execution, shaping GTM programs that translate leadership priorities into measurable business outcomes. Examples of initiatives include the Field Advisory Board, executive engagement programs, and other cross-functional efforts tied to revenue growth, efficiency, and customer success.</p>
+<h2>Key Responsibilities</h2>
 <ul>
-	<li>Partner and align with business leaders, stakeholders, product managers and internal teams to understand the business and product challenges and goals and address them using predictive analytics in a globally distributed environment.</li>
-	<li>Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team to improve the data collection and quality.</li>
-	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.</li>
-	<li>Strong audience focused presentation and storytelling skills focused on key takeaways in a crisp and concise manner.</li>
-	<li>Define, implement, and train statistical, machine learning, deep learning and generative AI models.</li>
-	<li>Use software engineering best practices to publish model scores/insights/learnings at scale within the company.</li>
-	<li>Ability to define and spot macro and micro levels trends with statistical significance on a regular basis and understand key drivers driving those trends.</li>
-	<li>Active role in hiring, growing, and mentoring the data scientist team in Austin.</li>
+	<li>Partner closely with the Chief of Staff to design and operationalize GTM initiatives, ensuring programs are structured for impact and scalability.</li>
+	<li>Drive follow-through by tracking actions, holding owners accountable, and ensuring commitments are delivered on time.</li>
+	<li>Manage execution of flagship programs such as the Field Advisory Board and executive engagement, ensuring feedback and touchpoints translate into measurable outcomes.</li>
+	<li>Prioritize and coordinate executive involvement in opportunities and customer engagements to accelerate outcomes.</li>
+	<li>Collaborate with cross-functional teams (RevOps, Product, Sales, Marketing, Customer Success) to resolve dependencies and ensure smooth execution.</li>
+	<li>Build and maintain dashboards, trackers, and reporting mechanisms that provide visibility into GTM programs and outcomes, with periodic updates to senior leadership.</li>
+	<li>Lead process improvement and scaling efforts for initiatives that increase revenue performance, organizational efficiency, or customer satisfaction.<br><br></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h2>Qualifications</h2>
 <ul>
-	<li>M.S or Ph.D in Computer Science, Statistics, Mathematics, or other quantitative fields.</li>
-	<li>3+ years of data scientist experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams)&nbsp;</li>
-	<li>Strong experience working with business functions such as Finance, Sales, and Marketing to build models and drive impactful business outcomes (eg: customer and revenue growth)</li>
-	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
-	<li>Strong experience in scientific computing using Python.</li>
-	<li>Experience with Spark, SQL, Tableau, Google Analytics, BigQuery (or any other Big data/Cloud equivalent) etc.</li>
-	<li>Experience working with and processing structured, unstructured, and semi-structured data.&nbsp;&nbsp;</li>
-	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.</li>
-	<li>Proven track record of applying data insights and machine learning in order to address business needs and drive revenue.</li>
-	<li>Proficiency in large language models and the frameworks necessary for implementing GenAI applications, such as chatbots and related use cases.</li>
-	<li>Strong communication and presentation skills catered to different audiences within the company.</li>
-	<li>Capable of working closely with business, engineering, and product teams to ensure data initiatives are aligned with business needs.</li>
-	<li>Experience in hiring data scientists and establishing team best practices is preferred.</li>
+	<li>5+ years of experience in sales operations, GTM program management, or revenue operations.</li>
+	<li>Demonstrated ability to design and structure cross-functional programs, not just execute them.</li>
+	<li>Strong organizational skills with proven ability to manage multiple initiatives simultaneously.</li>
+	<li>Skilled in stakeholder management with the ability to influence without direct authority.</li>
+	<li>Comfortable working with sales data and using it to prioritize and track execution.</li>
+	<li>Excellent communicator with the ability to translate strategic goals into actionable, well-structured plans.<br><br></li>
 </ul>
+<h2>Impact of the Role</h2>
+<p>This role ensures that:</p>
+<ul>
+	<li>Strategic GTM initiatives are designed thoughtfully and executed rigorously.</li>
+	<li>Executive engagement is deployed purposefully in ways that accelerate revenue and strengthen customer relationships.</li>
+	<li>Cross-functional priorities are aligned, tracked, and delivered efficiently.</li>
+	<li>The Chief of Staff and GTM senior leadership team can focus on strategic direction while program execution and follow-through happen with consistency and discipline.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p>&nbsp;</p>
+<ul>
+	<li>For San Francisco based hires: Estimated annual salary of $$156,000-$190,000</li>
+</ul>
+<p><br><br></p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p>&nbsp;</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>&nbsp;</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p>&nbsp;</p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Financial Benefits</strong></p>
+<p>&nbsp;</p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Time Off</strong></p>
+<p>&nbsp;</p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p><br><br></p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
