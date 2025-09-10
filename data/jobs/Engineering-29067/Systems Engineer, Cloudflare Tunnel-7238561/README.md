@@ -5,29 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: Bangalore, India<br><br>About The Role</strong></p>
-<p>Cloudflare is seeking a <strong>Partner Ops &amp; Strategy Specialist</strong> to support the global partner organization. We are looking for a driven, detailed, and organized professional that can help us improve operational excellence with our partner sales process, tools and increase productivity. In this role you will work closely with IT, Finance, Revenue Operations, Sales, and the Partner Executive Team to support the crucial partner automation initiatives that will lead to the evolution of our partner platforms and infrastructure.&nbsp;&nbsp;</p>
-<p>The ideal candidate will have experience working within a partner sales, partner operations, or partner analyst function, ideally within a SaaS company. If you are interested in building your career with a company that is experiencing explosive growth, while being given the responsibility and challenge to have a real impact on our company’s success, then this is the opportunity for you.</p>
-<p>This role is a great fit for you if you are a self-starter, able to thrive in an environment that requires operating with a high degree of autonomy, and are driven by the opportunity to make a significant impact in a high growth, fast paced environment.&nbsp;</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Location:</strong> Lisbon, London</p>
+<p><strong>Job Title: </strong>Systems Engineer, Cloudflare Tunnel</p>
+<p><strong>Role Summary:</strong></p>
+<p>As a <strong>Systems Engineer</strong> on the Cloudflare Tunnel team, you will be a key contributor to building and maintaining a product that securely connects any machine to the Cloudflare network. You will be responsible for building systems across our high-performance global edge network and in our centralized microservice cluster. In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our Tunnel and Zero Trust products, such as Cloudflared, WARP Connector and Zero Trust Network.</p>
+<p>You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Directly support internal and external partner teams by resolving tickets related to partner sales process and systems</li>
-	<li>Independently review requests and troubleshoot to understand technical challenges, define root causes, and resolve problems.</li>
-	<li>Develop a deep knowledge of partner tools and processes to help document and improve effectiveness.</li>
-	<li>Assist with partner data management in Salesforce.com and Google Sheets: extract data, clean and upload data, pull reports, and perform mass data updates</li>
-	<li>Effectively liaise between Partner, Sales, Contracts, Pricing and Finance to resolve issues</li>
-	<li>Create and revise documentation for partner business processes</li>
-	<li>Assist the other members of the partner operations team to drive quarterly and annual planning process</li>
-	<li>Drive continuous improvement and operational excellence around managing partner deal registrations, pipeline and opportunities</li>
+	<li>Design, implement, and maintain the software systems that comprise Cloudflare Tunnel, including the cross-platform, open-source client and a high-performance service on Cloudflare's edge network.</li>
+	<li>Participate in all stages of the software development lifecycle, from designing and documenting systems to writing code, automated tests, and monitoring production deployments.</li>
+	<li>Collaborate with internal teams, including security, network engineering, SRE, and product management, to design scalable solutions to difficult technical problems.</li>
+	<li>Review work from your peers throughout all stages of the development lifecycle to ensure high-quality, maintainable code.</li>
+	<li>Mentor team members and work with support teams to ensure customer delight and bring out the best in everyone.</li>
+	<li>Debug issues in complex systems and contribute to the maintenance and improvement of operational health.</li>
+	<li>Work with a wide range of technologies and programming languages, including Go, Rust, and Typescript, as well as various databases (SQL and No-SQL), Docker, and Kubernetes.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Role Requirements</strong></p>
 <ul>
-	<li>1-2 years experience in partner operations, sales operations, partners sales, partner management, partner marketing or programs is a plus, but not required</li>
-	<li>Creative problem solver with strong attention to detail and a drive to build something better</li>
-	<li>Good verbal and written communication skills</li>
-	<li>Self-starter with a strong ability to operate in a dynamic environment&nbsp;</li>
-	<li>Proficient with Excel/Google Sheets for basic to intermediate data analysis and data manipulation (VLOOKUP, pivot tables, SUMIFS, COUNTIFS, CONCATENATE, etc)</li>
-	<li>Comfortable working with Salesforce and Google suite</li>
+	<li>3+ years of experience in backend software development with a focus on building&nbsp; secure and highly available distributed systems.</li>
+	<li>Strong programming skills in Go, Rust, C++, or a similar systems-level language.</li>
+	<li>Knowledge of modern Unix/Linux development and runtime environments.</li>
+	<li>Grasp of networking protocols in Layers 3-7 of the OSI Model and experience with network programming.</li>
+	<li>Familiarity with microservices and APIs, including RESTful design.</li>
+	<li>Basic understanding of software security and encryption principles.</li>
+	<li>Ability to debug and troubleshoot issues in complex distributed systems.</li>
+	<li>Experience with monitoring and logging tools like Prometheus and Grafana.</li>
+	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes.</li>
+	<li>Strong interpersonal and communication skills, demonstrating empathy, teamwork and a sense of ownership.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
