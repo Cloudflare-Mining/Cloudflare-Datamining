@@ -3146,6 +3146,14 @@
 						"compatEnableFlag": "enable_nodejs_console_module",
 						"impliedByAfterDate": "unhandled type"
 					}
+				},
+				{
+					"name": "enableNodeJsVmModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_vm_module",
+						"compatEnableFlag": "enable_nodejs_vm_module",
+						"impliedByAfterDate": "unhandled type"
+					}
 				}
 			]
 		},
