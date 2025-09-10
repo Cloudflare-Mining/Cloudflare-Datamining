@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "7f436e39-0d90-572e-9eee-d29c4c406755")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "a54c4960-e16b-5a69-9332-335144714e58")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1156,10 +1156,10 @@
 					e.g.build = dn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "e7253d342231c6ede2506d546915e060e9248ab5",
-						dashVersion: "35845797",
+						commit: "091b27fd41f57a84406c69f85c3c27088eaf0cce",
+						dashVersion: "35862092",
 						env: "production",
-						builtAt: 1757430134499,
+						builtAt: 1757462848375,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -8038,7 +8038,7 @@
 
 			function I(h, T) {
 				const f = useAuthz().contextZone,
-					l = `com.cldouflare.api.account.${f==null?void 0:f.id}`,
+					l = `com.cloudflare.api.account.zone.${f==null?void 0:f.id}`,
 					m = h.map(g => ({
 						permission: g,
 						resource: l
@@ -8072,7 +8072,7 @@
 
 			function _(h, T, c) {
 				const f = c.contextZone,
-					l = f ? `com.cldouflare.api.account.${f.id}` : void 0;
+					l = f ? `com.cloudflare.api.account.zone.${f.id}` : void 0;
 				if (!l) return {
 					isAuthzd: void 0,
 					isLoading: !0
@@ -85414,4 +85414,4 @@ button.border {
 	}
 ]);
 
-//# debugId=7f436e39-0d90-572e-9eee-d29c4c406755
+//# debugId=a54c4960-e16b-5a69-9332-335144714e58
