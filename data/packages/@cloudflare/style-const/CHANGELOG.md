@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.1.1
+
+### Patch Changes
+
+- c8ebd34738: Updated Banner colors using new hex alpha opacities
+
 ## 6.1.0
 
 ### Minor Changes

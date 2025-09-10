@@ -1,5 +1,7 @@
 # Change Log
 
+## 13.5.2
+
 ## 13.5.1
 
 ### Patch Changes
