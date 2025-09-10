@@ -25,7 +25,10 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Atlanta, US",
+				"Austin, US",
+				"Denver, US",
+				"Toronto, Canada"
 			],
 			"value_type": "multi_select"
 		},
@@ -39,7 +42,7 @@
 		}
 	],
 	"id": 6467350,
-	"updated_at": "2025-08-12T13:17:30-04:00",
+	"updated_at": "2025-09-10T16:33:45-04:00",
 	"requisition_id": null,
 	"title": "Software Engineer, Enterprise Readiness",
 	"company_name": "Cloudflare",
@@ -59,6 +62,27 @@
 			"location": "Austin, TX, United States",
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 73335,
+			"name": "Toronto, ON",
+			"location": "Toronto, Ontario, Canada",
+			"child_ids": [],
+			"parent_id": 75883
 		}
 	]
 }

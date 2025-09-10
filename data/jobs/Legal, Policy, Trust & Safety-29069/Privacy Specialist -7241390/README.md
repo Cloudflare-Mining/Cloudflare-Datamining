@@ -5,42 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>About Us</strong></h3>
-<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world's largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine's Top Company Cultures list and ranked among the World's Most Innovative Companies by Fast Company.</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!</p>
-<p><strong>Available Location</strong>: Austin, TX</p>
-<h3><br><br></h3>
-<p><strong>What you'll do</strong></p>
+<p><strong>Location: Mexico City, Mexico</strong></p>
+<p><strong>Privacy Specialist&nbsp;</strong><strong><br><br></strong></p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers more than 10 trillion requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>What You’ll Do</strong> &nbsp;</p>
+<p>Ensuring the privacy of personal information is core to Cloudflare’s mission to help build a better Internet, and we’re looking for a privacy specialist to help Cloudflare navigate the complicated challenges of processing personal data amid an ever-changing regulatory landscape. Our legal team helps the company deal with complex matters by anticipating complications and distractions, and guiding the company around those obstacles. Our new privacy specialist team member will help foster our unique corporate philosophy and approach, in which the security and privacy of our customers’ data are paramount. We are looking for an exceptionally talented, energetic and friendly specialist to join our legal team in Mexico City, Mexico. This is a junior-level role ideal for someone who is a proactive self-starter with exceptional organizational abilities and who has experience working cross functionally with a variety of business teams and roles.&nbsp;</p>
+<p>As part of the job, you will:&nbsp;</p>
 <ul>
-	<li>Lead and evolve the global FinOps strategy, serving as the primary thought leader for cloud financial management and optimization across the organization</li>
-	<li>Establish governance processes and best practices for cloud resource deployment</li>
-	<li>Partner with engineering teams to implement cost allocation methodologies, tagging strategies, and drive adoption of cloud financial management best practices</li>
-	<li>Design and execute cloud cost optimization initiatives, including reserved instance strategies and resource right-sizing</li>
-	<li>Create executive-level dashboards and lead quarterly business reviews with senior leadership on cloud spend and optimization initiatives</li>
-	<li>Develop and maintain automated solutions for cost management, including ETL pipelines, APIs, and machine learning models for spend prediction</li>
-	<li>Architect and implement multi-cloud cost allocation systems and monitoring solutions&nbsp;</li>
-	<li>Drive strategic partnerships with finance and engineering teams and serve as the key stakeholder in vendor negotiations</li>
-	<li>Help in managing relationships with external Cloud Service Providers&nbsp;</li>
-	<li>Spearhead organizational change management to build a cost-conscious engineering culture</li>
+	<li>Conduct thorough privacy and AI reviews of new and existing third-party vendors to assess their data handling practices and ensure they meet our privacy and AI standards.&nbsp;</li>
+	<li>Oversee keeping accurate, privacy law-compliant documentation, including supporting privacy counsel and product teams in ongoing documentation of Records of Processing Activities and Data Protection Impact Assessments as systems, products and services evolve and new ones are introduced.&nbsp;</li>
+	<li>Work cross functionally with other teams across the company to inventory data and document and assess risk of data processing activities.</li>
+	<li>Assist in processing and responding to requests from data subjects in a timely and compliant manner.&nbsp;</li>
+	<li>Assist the Privacy and Data Operations Team in responding to questions from customers, partners, and employees regarding practices, policies, and procedures related to privacy and data governance.&nbsp;</li>
+	<li>Regularly review, update, and draft internal privacy, AI, and data governance policies and procedures to ensure they align with current and emerging laws.&nbsp;</li>
+	<li>Develop sales enablement materials, including responses to FAQs from customers and sales team members.</li>
 </ul>
-<h3>&nbsp;</h3>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>8+ years of experience in cloud infrastructure, with at least 5 years focused on FinOps or cloud cost optimization</li>
-	<li>Proven track record of leading FinOps initiatives in large enterprise environments</li>
-	<li>Expert-level experience with at least two major public cloud platforms (AWS, GCP, Azure)</li>
-	<li>Demonstrated experience building and scaling FinOps practices in complex, multi-cloud environments</li>
-	<li>Deep understanding of cloud pricing models, discount options, and optimization strategies across different cloud providers</li>
-	<li>Advanced experience with enterprise cloud cost management and optimization tools</li>
-	<li>Strong analytical and data science skills with expertise in advanced data analysis and visualization tools</li>
-	<li>Master's degree in Computer Science, Finance, Business, or related field (or equivalent experience)</li>
-	<li>FinOps Foundation Certification preferred</li>
-	<li>Senior-level experience in stakeholder management and driving organizational change</li>
-	<li>Proven track record of leading large-scale, cross-functional initiatives</li>
-	<li>Proficiency in automation and scripting languages (eg Python)</li>
-	<li>Expert understanding of modern cloud architecture patterns and their cost implications</li>
-	<li>Experience managing and mentoring teams in cloud cost optimization practices</li>
-	<li>History of successful collaboration with C-level executives on cloud strategy and cost management</li>
+	<li>Bachelor’s degree and 3+ years of program or project management and vendor assessment experience, preferably in technology privacy and data protection.&nbsp;</li>
+	<li>Strong interpersonal skills and experience in working cross-functionally with a variety of teams, including procurement, engineering, sales, and product teams.</li>
+	<li>Exceptional verbal and written communication, organization, and project management skills, including a strong desire and ability to make complex topics understandable for various audiences.</li>
+	<li>Self-starter with the ability to learn in a fast-paced environment with minimal supervision.</li>
+</ul>
+<ul>
+	<li>Familiarity with privacy, data protection, and AI governance principles, laws and regulations, including, for example, the EU General Data Protection Regulation and U.S. state privacy laws.&nbsp;</li>
+	<li>Ability and willingness to learn about the privacy, AI governance, and data protection laws and regulations of global jurisdictions.</li>
+	<li>CIPP/US/E/CIPM or CIPT or other privacy or risk and compliance related certifications a plus (i.e. CISA or CISSP).</li>
+	<li>Technical expertise and an understanding of the way that the Internet, and companies like Cloudflare, operate is a plus.</li>
+	<li>Experience with Zip and OneTrust is a plus.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
