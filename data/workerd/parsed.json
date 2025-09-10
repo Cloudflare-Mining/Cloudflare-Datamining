@@ -3186,6 +3186,14 @@
 						"compatEnableFlag": "enable_nodejs_v8_module",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableNodeJsTtyModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_tty_module",
+						"compatEnableFlag": "enable_nodejs_tty_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
