@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "fe9997cf-a2d6-55be-aa9e-4ce7f6caeb8e")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "5c2b960a-6603-5c4f-8225-55691d78cc13")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1156,10 +1156,10 @@
 					e.g.build = mn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "b8b4a9a5a18aa085530866d13b27c9b6de3156a7",
-						dashVersion: "35900348",
+						commit: "ae673f7a9c2b598dc7c4b26e9b4e6edb80a5f151",
+						dashVersion: "35915918",
 						env: "production",
-						builtAt: 1757605228941,
+						builtAt: 1757629697658,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -3972,15 +3972,15 @@
 										isStarring: Y,
 										totalStarredZones: ie.filter(te => te.accountId === F && te.type === "zone").length,
 										totalZones: B == null || (Q = B.paginationData) === null || Q === void 0 ? void 0 : Q.info.total_count
-									}), S(C({}, I, {
+									}), S(te => C({}, te, {
 										favorites: ie
 									}))
 								},
 								toggleSidebarNavGroupings: async W => {
 									w(!0), await (0, b.Sp)({
 										hasEnabledSidebarNavGroupings: W
-									}), S(C({}, I, {
-										flags: C({}, I.flags, {
+									}), S(F => C({}, F, {
+										flags: C({}, F.flags, {
 											hasEnabledSidebarNavGroupings: W
 										})
 									})), w(!1)
@@ -3993,29 +3993,33 @@
 									} : {
 										hasEnabledSecurityNavigation: W
 									};
-									await (0, b.Sp)(Q), z(W), S(C({}, I, {
-										flags: C({}, I.flags, Q)
+									await (0, b.Sp)(Q), z(W), S(Y => C({}, Y, {
+										flags: C({}, Y.flags, Q)
 									})), o().identify(C({}, Q)), w(!1)
 								},
 								setDarkMode: async W => {
-									M(W), I.darkMode = W, S(I);
+									M(W), S(Y => C({}, Y, {
+										darkMode: W
+									}));
 									const F = await (0, b.C8)(W);
 									S(F);
 									const Q = F.darkMode;
 									Q !== W && M(Q)
 								},
 								logRouteVisited: async W => {
-									var F;
-									const Q = await (0, b.n)(W);
-									S((F = Q) !== null && F !== void 0 ? F : C({}, I))
+									const F = await (0, b.n)(W);
+									S(Q => {
+										var Y;
+										return (Y = F) !== null && Y !== void 0 ? Y : C({}, Q)
+									})
 								},
 								pinRecentRoute: async W => {
 									var F, Q;
 									const Y = W.accountId,
 										J = (F = I == null || (Q = I.pinnedItems) === null || Q === void 0 ? void 0 : Q[Y]) !== null && F !== void 0 ? F : [],
 										te = J.some(le => le.url === W.url) ? J.filter(le => le.url !== W.url) : [...J, W];
-									S(C({}, I, {
-										pinnedItems: C({}, I.pinnedItems, {
+									S(le => C({}, le, {
+										pinnedItems: C({}, le.pinnedItems, {
 											[Y]: te
 										})
 									})), (0, b.LC)(W)
@@ -4026,8 +4030,8 @@
 											var F, Q;
 											const J = W.accountId,
 												te = ((F = I == null || (Q = I.recents) === null || Q === void 0 ? void 0 : Q[J]) !== null && F !== void 0 ? F : []).filter(le => le.url !== W.url || le.titleId !== W.titleId);
-											S(C({}, I, {
-												recents: C({}, I.recents, {
+											S(le => C({}, le, {
+												recents: C({}, le.recents, {
 													[J]: te
 												})
 											}))
@@ -4039,13 +4043,13 @@
 								viewChange: async W => {
 									w(!0);
 									const F = await (0, b.m6)(W);
-									S(C({}, I, {
+									S(Q => C({}, Q, {
 										viewedChanges: F
 									})), w(!1)
 								},
 								dismissTask: async (W, F) => {
 									const Q = await (0, b.Mn)(W, F);
-									S(C({}, I, {
+									S(Y => C({}, Y, {
 										dismissedTasks: Q
 									}))
 								},
@@ -84841,4 +84845,4 @@ button.border {
 	}
 ]);
 
-//# debugId=fe9997cf-a2d6-55be-aa9e-4ce7f6caeb8e
+//# debugId=5c2b960a-6603-5c4f-8225-55691d78cc13
