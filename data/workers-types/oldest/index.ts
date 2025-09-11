@@ -287,6 +287,7 @@ export interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   FixedLengthStream: typeof FixedLengthStream;
   IdentityTransformStream: typeof IdentityTransformStream;
   HTMLRewriter: typeof HTMLRewriter;
+  Performance: typeof Performance;
 }
 export declare function addEventListener<
   Type extends keyof WorkerGlobalScopeEventMap,
@@ -447,18 +448,6 @@ export declare abstract class PromiseRejectionEvent extends Event {
   readonly promise: Promise<any>;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/reason) */
   readonly reason: any;
-}
-/**
- * The Workers runtime supports a subset of the Performance API, used to measure timing and performance,
- * as well as timing of subrequests and other operations.
- *
- * [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/)
- */
-export interface Performance {
-  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancetimeorigin) */
-  readonly timeOrigin: number;
-  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancenow) */
-  now(): number;
 }
 export interface AlarmInvocationInfo {
   readonly isRetry: boolean;
@@ -3059,6 +3048,99 @@ export interface SyncKvListOptions {
   prefix?: string;
   reverse?: boolean;
   limit?: number;
+}
+/**
+ * The Workers runtime supports a subset of the Performance API, used to measure timing and performance,
+ * as well as timing of subrequests and other operations.
+ *
+ * [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/)
+ */
+export declare abstract class Performance extends EventTarget {
+  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancetimeorigin) */
+  get timeOrigin(): number;
+  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancenow) */
+  now(): number;
+  get eventCounts(): EventCounts;
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/clearMarks) */
+  clearMarks(name?: string): void;
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/clearMeasures) */
+  clearMeasures(name?: string): void;
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/clearResourceTimings) */
+  clearResourceTimings(): void;
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/getEntries) */
+  getEntries(): PerformanceEntry[];
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/getEntriesByName) */
+  getEntriesByName(name: string, type: string): PerformanceEntry[];
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/getEntriesByType) */
+  getEntriesByType(type: string): PerformanceEntry[];
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/mark) */
+  mark(name: string, options?: PerformanceMarkOptions): PerformanceMark;
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/measure) */
+  measure(
+    measureName: string,
+    measureOptionsOrStartMark: PerformanceMeasureOptions | string,
+    maybeEndMark?: string,
+  ): PerformanceMeasure;
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/setResourceTimingBufferSize) */
+  setResourceTimingBufferSize(size: number): void;
+}
+/**
+ * PerformanceMark is an abstract interface for PerformanceEntry objects with an entryType of "mark". Entries of this type are created by calling performance.mark() to add a named DOMHighResTimeStamp (the mark) to the browser's performance timeline.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMark)
+ */
+export interface PerformanceMark extends PerformanceEntry {
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMark/detail) */
+  get detail(): any;
+}
+/**
+ * PerformanceMeasure is an abstract interface for PerformanceEntry objects with an entryType of "measure". Entries of this type are created by calling performance.measure() to add a named DOMHighResTimeStamp (the measure) between two marks to the browser's performance timeline.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMeasure)
+ */
+export interface PerformanceMeasure extends PerformanceEntry {
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMeasure/detail) */
+  get detail(): any;
+}
+export interface PerformanceMarkOptions {
+  detail?: any;
+  startTime?: number;
+}
+export interface PerformanceMeasureOptions {
+  detail?: any;
+  start?: number;
+  duration?: number;
+  end?: number;
+}
+/**
+ * Encapsulates a single performance metric that is part of the performance timeline. A performance entry can be directly created by making a performance mark or measure (for example by calling the mark() method) at an explicit point in an application. Performance entries are also created in indirect ways such as loading a resource (such as an image).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry)
+ */
+export declare abstract class PerformanceEntry {
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry/name) */
+  get name(): string;
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry/entryType) */
+  get entryType(): string;
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry/startTime) */
+  get startTime(): number;
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry/duration) */
+  get duration(): number;
+  /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry/toJSON) */
+  toJSON(): any;
+}
+export interface EventCounts {
+  get size(): number;
+  get(eventType: string): number | undefined;
+  has(eventType: string): boolean;
+  entries(): IterableIterator<string[]>;
+  keys(): IterableIterator<string>;
+  values(): IterableIterator<number>;
+  forEach(
+    param1: (param0: number, param1: string, param2: EventCounts) => void,
+    param2?: any,
+  ): void;
+  [Symbol.iterator](): IterableIterator<string[]>;
 }
 export type AiImageClassificationInput = {
   image: number[];
