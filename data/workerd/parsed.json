@@ -5118,6 +5118,23 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/server/workerd.capnp:LoggingOptions",
+			"fields": [
+				{
+					"name": "structuredLogging",
+					"annotations": {}
+				},
+				{
+					"name": "stdoutPrefix",
+					"annotations": {}
+				},
+				{
+					"name": "stderrPrefix",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/server/workerd.capnp:Config",
 			"fields": [
 				{
@@ -5142,6 +5159,10 @@
 				},
 				{
 					"name": "structuredLogging",
+					"annotations": {}
+				},
+				{
+					"name": "logging",
 					"annotations": {}
 				}
 			]
