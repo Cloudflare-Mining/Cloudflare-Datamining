@@ -3226,6 +3226,14 @@
 						"compatEnableFlag": "enable_nodejs_worker_threads_module",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableNodeJsWorkerStreamWrapModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_worker_stream_wrap_module",
+						"compatEnableFlag": "enable_nodejs_worker_stream_wrap_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
