@@ -3,6 +3,7 @@
 	"Action": "string; Action performed by gateway on the HTTP request.",
 	"ApplicationIDs": "array[int]; IDs of the applications that matched the HTTP request parameters.",
 	"ApplicationNames": "array[string]; Names of the applications that matched the HTTP request parameters.",
+	"ApplicationStatuses": "array[string]; Statuses of the applications that matched the HTTP request parameters.",
 	"BlockedFileHash": "string; Hash of the file blocked in the response, if any.",
 	"BlockedFileName": "string; File name blocked in the request, if any.",
 	"BlockedFileReason": "string; Reason file was blocked in the response, if any.",
