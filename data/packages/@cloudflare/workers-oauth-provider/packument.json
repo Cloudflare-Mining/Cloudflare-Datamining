@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"next": "0.0.4-1",
 		"latest": "0.0.6",
-		"beta": "0.0.0-239e753"
+		"beta": "0.0.0-a204c64"
 	},
 	"versions": {
 		"0.0.1": {
@@ -326,6 +326,33 @@
 			"name": "@cloudflare/workers-oauth-provider",
 			"version": "0.0.0-239e753",
 			"devDependencies": {
+				"tsx": "^4.20.3",
+				"tsup": "^8.5.0",
+				"vitest": "^3.2.4",
+				"prettier": "^3.6.2",
+				"typescript": "^5.9.2",
+				"@changesets/cli": "^2.29.5",
+				"@cloudflare/workers-types": "^4.20250807.0",
+				"@changesets/changelog-github": "^0.5.1"
+			},
+			"dist": {
+				"shasum": "41188253fdf65bcea68651727695f3d137e39b73",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-oauth-provider/-/workers-oauth-provider-0.0.0-239e753.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-XGAg1vWX6sU5pRZxDSdT5oI58pkyqKr6kAKwlI0iZNNSmBEDYHynlSi4SiOw2/D6r3b8GofEv4oHOEgP8u43vw==",
+				"signatures": [
+					{
+						"sig": "MEQCIFZubhDuVHatY52+xVoIn30sCLTKdThbH+DX56Hl4IFsAiABLEhz4Lx5qGvBoMRtHJqb17rQLI/Z4Imm9ZQxLibn2A==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 97371
+			}
+		},
+		"0.0.0-a204c64": {
+			"name": "@cloudflare/workers-oauth-provider",
+			"version": "0.0.0-a204c64",
+			"devDependencies": {
 				"@changesets/changelog-github": "^0.5.1",
 				"@changesets/cli": "^2.29.5",
 				"@cloudflare/workers-types": "^4.20250807.0",
@@ -336,15 +363,15 @@
 				"vitest": "^3.2.4"
 			},
 			"dist": {
-				"integrity": "sha512-XGAg1vWX6sU5pRZxDSdT5oI58pkyqKr6kAKwlI0iZNNSmBEDYHynlSi4SiOw2/D6r3b8GofEv4oHOEgP8u43vw==",
-				"shasum": "41188253fdf65bcea68651727695f3d137e39b73",
-				"tarball": "https://registry.npmjs.org/@cloudflare/workers-oauth-provider/-/workers-oauth-provider-0.0.0-239e753.tgz",
+				"integrity": "sha512-97UgQPJKmpBhkYV8LYWriycF8WkY8KSzc1u6L41QZsRi8Wb9RpM7jTT+El43xGSDXGSbhXCLLUpx3ZgTaEFPMg==",
+				"shasum": "e3c0d3325ad5f71a0714274f05e81351fd5c7566",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-oauth-provider/-/workers-oauth-provider-0.0.0-a204c64.tgz",
 				"fileCount": 5,
-				"unpackedSize": 97371,
+				"unpackedSize": 97351,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIFZubhDuVHatY52+xVoIn30sCLTKdThbH+DX56Hl4IFsAiABLEhz4Lx5qGvBoMRtHJqb17rQLI/Z4Imm9ZQxLibn2A=="
+						"sig": "MEUCIQD0ruuYeLBXwfretlcl0EaiooHVSQZEOU3cTpcLXB5yWwIgUzyNOW1/7OqHQuQ3xWUF106/vVW2Un/cxPrUh3VvT34="
 					}
 				]
 			}
