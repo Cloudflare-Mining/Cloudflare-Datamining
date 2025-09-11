@@ -3202,6 +3202,30 @@
 						"compatEnableFlag": "enable_nodejs_punycode_module",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableNodeJsClusterModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_cluster_module",
+						"compatEnableFlag": "enable_nodejs_cluster_module",
+						"experimental": "true"
+					}
+				},
+				{
+					"name": "enableNodeJsChildProcessModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_child_process_module",
+						"compatEnableFlag": "enable_nodejs_child_process_module",
+						"experimental": "true"
+					}
+				},
+				{
+					"name": "enableNodeJsWorkerThreadsModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_worker_threads_module",
+						"compatEnableFlag": "enable_nodejs_worker_threads_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
