@@ -3250,6 +3250,22 @@
 						"compatEnableFlag": "enable_nodejs_dgram_module",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableNodeJsInspectorModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_inspector_module",
+						"compatEnableFlag": "enable_nodejs_inspector_module",
+						"experimental": "true"
+					}
+				},
+				{
+					"name": "enableNodeJsTraceEventsModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_trace_events_module",
+						"compatEnableFlag": "enable_nodejs_trace_events_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
