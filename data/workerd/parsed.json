@@ -3242,6 +3242,14 @@
 						"compatEnableFlag": "enable_nodejs_wasi_module",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableNodeJsDgramModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_dgram_module",
+						"compatEnableFlag": "enable_nodejs_dgram_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
