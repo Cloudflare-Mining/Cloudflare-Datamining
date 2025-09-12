@@ -142,6 +142,7 @@ import Overflow2Solid from './Overflow2Solid';
 import PagesLogo from './PagesLogo';
 import Pause from './Pause';
 import PerformanceArrowUp from './PerformanceArrowUp';
+import PerformanceCloud from './PerformanceCloud';
 import PinOutline from './PinOutline';
 import PinSolid from './PinSolid';
 import PlatformApps from './PlatformApps';
@@ -203,6 +204,7 @@ import TwoWay from './TwoWay';
 import UnlockOutline from './UnlockOutline';
 import Upload from './Upload';
 import UserMulti from './UserMulti';
+import UserMultiSolid from './UserMultiSolid';
 import UserOutline from './UserOutline';
 import User from './User';
 import Vectorize from './Vectorize';
@@ -270,6 +272,7 @@ export default {
   'cloud-internet-solid': CloudInternetSolid,
   'cloud-internet': CloudInternet,
   'cloud-multi': CloudMulti,
+  'cloud-performance': PerformanceCloud,
   'cloud-security': CloudSecurity,
   'cloudflare-access': CloudflareAccess,
   'cloudflare-browser-outline': CloudflareBrowserOutline,
@@ -433,6 +436,7 @@ export default {
   'unlock-outline': UnlockOutline,
   upload: Upload,
   'user-multi': UserMulti,
+  'user-multi-solid': UserMultiSolid,
   'user-outline': UserOutline,
   user: User,
   vectorize: Vectorize,

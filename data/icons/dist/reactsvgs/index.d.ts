@@ -42,6 +42,7 @@ declare const _default: {
     'cloud-internet-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloud-internet': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloud-multi': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'cloud-performance': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloud-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-access': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-browser-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -205,6 +206,7 @@ declare const _default: {
     'unlock-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     upload: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'user-multi': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'user-multi-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'user-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     user: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     vectorize: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
