@@ -401,11 +401,11 @@ declare const Cloudflare: Cloudflare;
 declare const origin: string;
 declare const navigator: Navigator;
 interface TestController {}
-interface ExecutionContext {
+interface ExecutionContext<Props = unknown> {
   waitUntil(promise: Promise<any>): void;
   passThroughOnException(): void;
-  exports: any;
-  props: any;
+  readonly exports: Cloudflare.Exports;
+  readonly props: Props;
   abort(reason?: any): void;
 }
 type ExportedHandlerFetchHandler<Env = unknown, CfHostMetadata = unknown> = (
@@ -566,11 +566,13 @@ type DurableObjectLocationHint =
 interface DurableObjectNamespaceGetDurableObjectOptions {
   locationHint?: DurableObjectLocationHint;
 }
-declare abstract class DurableObjectClass {}
-interface DurableObjectState {
+interface DurableObjectClass<
+  T extends Rpc.DurableObjectBranded | undefined = undefined,
+> {}
+interface DurableObjectState<Props = unknown> {
   waitUntil(promise: Promise<any>): void;
-  exports: any;
-  props: any;
+  readonly exports: Cloudflare.Exports;
+  readonly props: Props;
   readonly id: DurableObjectId;
   readonly storage: DurableObjectStorage;
   container?: Container;
@@ -694,21 +696,20 @@ declare class WebSocketRequestResponsePair {
   get response(): string;
 }
 interface DurableObjectFacets {
-  get(
+  get<T extends Rpc.DurableObjectBranded | undefined = undefined>(
     name: string,
     getStartupOptions: () =>
-      | DurableObjectFacetsStartupOptions
-      | Promise<DurableObjectFacetsStartupOptions>,
-  ): Fetcher;
+      | FacetStartupOptions<T>
+      | Promise<FacetStartupOptions<T>>,
+  ): Fetcher<T>;
   abort(name: string, reason: any): void;
   delete(name: string): void;
 }
-interface DurableObjectFacetsStartupOptions {
-  $class:
-    | DurableObjectClass
-    | LoopbackDurableObjectNamespace
-    | LoopbackColoLocalActorNamespace;
+interface FacetStartupOptions<
+  T extends Rpc.DurableObjectBranded | undefined = undefined,
+> {
   id?: DurableObjectId | string;
+  class: DurableObjectClass<T>;
 }
 interface AnalyticsEngineDataset {
   writeDataPoint(event?: AnalyticsEngineDataPoint): void;
@@ -3342,6 +3343,30 @@ declare class MessageChannel {
 interface MessagePortPostMessageOptions {
   transfer?: any[];
 }
+type LoopbackForExport<
+  T extends
+    | (new (...args: any[]) => Rpc.EntrypointBranded)
+    | ExportedHandler<any, any, any>
+    | undefined = undefined,
+> = T extends new (...args: any[]) => Rpc.WorkerEntrypointBranded
+  ? LoopbackServiceStub<InstanceType<T>>
+  : T extends new (...args: any[]) => Rpc.DurableObjectBranded
+    ? LoopbackDurableObjectClass<InstanceType<T>>
+    : T extends ExportedHandler<any, any, any>
+      ? LoopbackServiceStub<undefined>
+      : undefined;
+type LoopbackServiceStub<
+  T extends Rpc.WorkerEntrypointBranded | undefined = undefined,
+> = Fetcher<T> &
+  (T extends CloudflareWorkersModule.WorkerEntrypoint<any, infer Props>
+    ? (opts: { props?: Props }) => Fetcher<T>
+    : (opts: { props?: any }) => Fetcher<T>);
+type LoopbackDurableObjectClass<
+  T extends Rpc.DurableObjectBranded | undefined = undefined,
+> = DurableObjectClass<T> &
+  (T extends CloudflareWorkersModule.DurableObject<any, infer Props>
+    ? (opts: { props?: Props }) => DurableObjectClass<T>
+    : (opts: { props?: any }) => DurableObjectClass<T>);
 interface LoopbackDurableObjectNamespace extends DurableObjectNamespace {}
 interface LoopbackColoLocalActorNamespace extends ColoLocalActorNamespace {}
 interface SyncKvStorage {
@@ -3357,6 +3382,44 @@ interface SyncKvListOptions {
   prefix?: string;
   reverse?: boolean;
   limit?: number;
+}
+interface WorkerStub {
+  getEntrypoint<T extends Rpc.WorkerEntrypointBranded | undefined>(
+    name?: string,
+    options?: WorkerStubEntrypointOptions,
+  ): Fetcher<T>;
+  getDurableObjectClass<T extends Rpc.DurableObjectBranded | undefined>(
+    name?: string,
+    options?: WorkerStubEntrypointOptions,
+  ): DurableObjectClass<T>;
+}
+interface WorkerStubEntrypointOptions {
+  props?: any;
+}
+interface WorkerLoader {
+  get(
+    name: string,
+    getCode: () => WorkerLoaderWorkerCode | Promise<WorkerLoaderWorkerCode>,
+  ): WorkerStub;
+}
+interface WorkerLoaderModule {
+  js?: string;
+  cjs?: string;
+  text?: string;
+  data?: ArrayBuffer;
+  json?: any;
+  py?: string;
+}
+interface WorkerLoaderWorkerCode {
+  compatibilityDate: string;
+  compatibilityFlags?: string[];
+  allowExperimental?: boolean;
+  mainModule: string;
+  modules: Record<string, WorkerLoaderModule | string>;
+  env?: any;
+  globalOutbound?: Fetcher | null;
+  tails?: Fetcher[];
+  streamingTails?: Fetcher[];
 }
 /**
  * The Workers runtime supports a subset of the Performance API, used to measure timing and performance,
@@ -3379,7 +3442,7 @@ declare abstract class Performance extends EventTarget {
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/getEntries) */
   getEntries(): PerformanceEntry[];
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/getEntriesByName) */
-  getEntriesByName(name: string, type: string): PerformanceEntry[];
+  getEntriesByName(name: string, type?: string): PerformanceEntry[];
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/getEntriesByType) */
   getEntriesByType(type: string): PerformanceEntry[];
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/mark) */
@@ -3392,15 +3455,20 @@ declare abstract class Performance extends EventTarget {
   ): PerformanceMeasure;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/setResourceTimingBufferSize) */
   setResourceTimingBufferSize(size: number): void;
+  eventLoopUtilization(): void;
+  markResourceTiming(): void;
+  timerify(fn: () => void): () => void;
 }
 /**
  * PerformanceMark is an abstract interface for PerformanceEntry objects with an entryType of "mark". Entries of this type are created by calling performance.mark() to add a named DOMHighResTimeStamp (the mark) to the browser's performance timeline.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMark)
  */
-declare abstract class PerformanceMark extends PerformanceEntry {
+declare class PerformanceMark extends PerformanceEntry {
+  constructor(name: string, maybeOptions?: PerformanceMarkOptions);
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMark/detail) */
-  get detail(): any;
+  get detail(): any | undefined;
+  toJSON(): any;
 }
 /**
  * PerformanceMeasure is an abstract interface for PerformanceEntry objects with an entryType of "measure". Entries of this type are created by calling performance.measure() to add a named DOMHighResTimeStamp (the measure) between two marks to the browser's performance timeline.
@@ -3409,7 +3477,8 @@ declare abstract class PerformanceMark extends PerformanceEntry {
  */
 declare abstract class PerformanceMeasure extends PerformanceEntry {
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMeasure/detail) */
-  get detail(): any;
+  get detail(): any | undefined;
+  toJSON(): any;
 }
 interface PerformanceMarkOptions {
   detail?: any;
@@ -3502,11 +3571,10 @@ declare class PerformanceObserver {
   readonly supportedEntryTypes: string[];
 }
 interface PerformanceObserverObserveOptions {
-  buffered: boolean;
-  durationThreshold: number;
-  entryTypes: string[];
+  buffered?: boolean;
+  durationThreshold?: number;
+  entryTypes?: string[];
   type?: string;
-  name?: string;
 }
 interface EventCounts {
   get size(): number;
@@ -8431,7 +8499,53 @@ declare namespace Rpc {
   };
 }
 declare namespace Cloudflare {
+  // Type of `env`.
+  //
+  // The specific project can extend `Env` by redeclaring it in project-specific files. Typescript
+  // will merge all declarations.
+  //
+  // You can use `wrangler types` to generate the `Env` type automatically.
   interface Env {}
+  // Project-specific parameters used to inform types.
+  //
+  // This interface is, again, intended to be declared in project-specific files, and then that
+  // declaration will be merged with this one.
+  //
+  // A project should have a declaration like this:
+  //
+  //     interface GlobalProps {
+  //       // Declares the main module's exports. Used to populate Cloudflare.Exports aka the type
+  //       // of `ctx.exports`.
+  //       mainModule: typeof import("my-main-module");
+  //
+  //       // Declares which of the main module's exports are configured with durable storage, and
+  //       // thus should behave as Durable Object namsepace bindings.
+  //       durableNamespaces: "MyDurableObject" | "AnotherDurableObject";
+  //     }
+  //
+  // You can use `wrangler types` to generate `GlobalProps` automatically.
+  interface GlobalProps {}
+  // Evaluates to the type of a property in GlobalProps, defaulting to `Default` if it is not
+  // present.
+  type GlobalProp<K extends string, Default> = K extends keyof GlobalProps
+    ? GlobalProps[K]
+    : Default;
+  // The type of the program's main module exports, if known. Requires `GlobalProps` to declare the
+  // `mainModule` property.
+  type MainModule = GlobalProp<"mainModule", {}>;
+  // The type of ctx.exports, which contains loopback bindings for all top-level exports.
+  type Exports = {
+    [K in keyof MainModule]: LoopbackForExport<MainModule[K]> &
+      // If the export is listed in `durableNamespaces`, then it is also a
+      // DurableObjectNamespace.
+      (K extends GlobalProp<"durableNamespaces", never>
+        ? MainModule[K] extends new (...args: any[]) => infer DoInstance
+          ? DoInstance extends Rpc.DurableObjectBranded
+            ? DurableObjectNamespace<DoInstance>
+            : DurableObjectNamespace<undefined>
+          : DurableObjectNamespace<undefined>
+        : {});
+  };
 }
 declare module "cloudflare:node" {
   export interface DefaultHandler {
@@ -8449,7 +8563,7 @@ declare module "cloudflare:node" {
     handlers?: Omit<DefaultHandler, "fetch">,
   ): DefaultHandler;
 }
-declare module "cloudflare:workers" {
+declare namespace CloudflareWorkersModule {
   export type RpcStub<T extends Rpc.Stubable> = Rpc.Stub<T>;
   export const RpcStub: {
     new <T extends Rpc.Stubable>(value: T): Rpc.Stub<T>;
@@ -8458,11 +8572,11 @@ declare module "cloudflare:workers" {
     [Rpc.__RPC_TARGET_BRAND]: never;
   }
   // `protected` fields don't appear in `keyof`s, so can't be accessed over RPC
-  export abstract class WorkerEntrypoint<Env = unknown>
+  export abstract class WorkerEntrypoint<Env = Cloudflare.Env, Props = {}>
     implements Rpc.WorkerEntrypointBranded
   {
     [Rpc.__WORKER_ENTRYPOINT_BRAND]: never;
-    protected ctx: ExecutionContext;
+    protected ctx: ExecutionContext<Props>;
     protected env: Env;
     constructor(ctx: ExecutionContext, env: Env);
     fetch?(request: Request): Response | Promise<Response>;
@@ -8472,11 +8586,11 @@ declare module "cloudflare:workers" {
     queue?(batch: MessageBatch<unknown>): void | Promise<void>;
     test?(controller: TestController): void | Promise<void>;
   }
-  export abstract class DurableObject<Env = unknown>
+  export abstract class DurableObject<Env = Cloudflare.Env, Props = {}>
     implements Rpc.DurableObjectBranded
   {
     [Rpc.__DURABLE_OBJECT_BRAND]: never;
-    protected ctx: DurableObjectState;
+    protected ctx: DurableObjectState<Props>;
     protected env: Env;
     constructor(ctx: DurableObjectState, env: Env);
     fetch?(request: Request): Response | Promise<Response>;
@@ -8562,6 +8676,9 @@ declare module "cloudflare:workers" {
   }
   export function waitUntil(promise: Promise<unknown>): void;
   export const env: Cloudflare.Env;
+}
+declare module "cloudflare:workers" {
+  export = CloudflareWorkersModule;
 }
 interface SecretsStoreSecret {
   /**
