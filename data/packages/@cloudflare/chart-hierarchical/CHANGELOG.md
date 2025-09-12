@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.0.13
+
+### Patch Changes
+
+- @cloudflare/util-responsive@4.0.13
+
 ## 7.0.12
 
 ### Patch Changes

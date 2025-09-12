@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.6.0
+
+### Minor Changes
+
+- eda94734f5: Add cloud-performance and user-multi-solid icons to icon library
+
 ## 13.5.2
 
 ## 13.5.1
