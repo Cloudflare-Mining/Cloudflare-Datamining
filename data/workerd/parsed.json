@@ -3228,10 +3228,18 @@
 					}
 				},
 				{
-					"name": "enableNodeJsWorkerStreamWrapModule",
+					"name": "enableNodeJsStreamWrapModule",
 					"annotations": {
-						"compatDisableFlag": "disable_nodejs_worker_stream_wrap_module",
-						"compatEnableFlag": "enable_nodejs_worker_stream_wrap_module",
+						"compatDisableFlag": "disable_nodejs_stream_wrap_module",
+						"compatEnableFlag": "enable_nodejs_stream_wrap_module",
+						"experimental": "true"
+					}
+				},
+				{
+					"name": "enableNodeJsWasiModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_wasi_module",
+						"compatEnableFlag": "enable_nodejs_wasi_module",
 						"experimental": "true"
 					}
 				}
