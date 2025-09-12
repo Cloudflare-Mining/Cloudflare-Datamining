@@ -5,34 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location - Austin, TX or Atlanta, GA&nbsp;</strong></p>
-<p>Role Summary</p>
-<p>As a Pricing Analyst, you will join the Pricing Strategy team, a group central to Cloudflare's growth. In this role, you will be a key business partner whose insights directly influence how we package, price, and commercialize our products. You will work cross-functionally with leaders in Product, Sales, Marketing, and Finance, using data to solve complex business problems. We are looking for a quantitative and strategic thinker who is passionate about making a direct and measurable impact on the company's top-line revenue.</p>
-<p>Role Responsibilities</p>
+<p><strong>Available Locations: Austin TX, Denver CO</strong></p>
+<p><strong>About the role</strong></p>
+<p>We’re looking for a Senior Software Engineer to join our <a href="https://www.cloudflare.com/zero-trust/">Cloudflare One Client</a> team. You will be working on the cross-platform app and lower-level implementation of our <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/">Cloudflare One Client Desktop and Mobile Apps</a>, which protects devices by securely and privately sending traffic from those devices to Cloudflare’s global network, which can apply advanced web filtering and advanced Cloudflare One policies.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>In your role, you will use <strong>cross-platform frameworks</strong> along with platform-native languages &amp; APIs to implement responsive and user-friendly apps that run on desktop and mobile platforms. You will also use <strong>Rust</strong> alongside platform-native languages and APIs to implement <strong>high-performance networking</strong> code for both our mobile and desktop apps.</p>
+<p>&nbsp;</p>
+<p>You’ll be expected to improve the code quality and to build solid, <strong>testable</strong>, and<strong> well-documented</strong> foundations. You will be most successful in this role if you have a good understanding of the <strong>intricacies of different platforms</strong> (mobile and desktop), experience working on <strong>multi-platform code</strong>, a decent understanding of <strong>lower-level operating system concepts</strong> (virtual memory, multi-threading, process lifecycle, etc.) and <strong>networking concepts &amp; protocols</strong> (VPNs, firewalls, TCP/IP, UDP, DNS, QUIC, H/3, proxying, etc.). You will also have to interact with other languages, such as Flutter, Swift, Java, Kotlin, C#, Rust, C++, C, and Python.</p>
+<p>&nbsp;</p>
+<p>As a Senior Software Engineer, you will be expected to lead the design and implementation of major development projects, working closely with our product managers and other teams to implement customer-impacting features. You will work on stimulating problems born out of the scale of our deployment, and the stringent quality, performance, and security requirements of our product.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Perform deep analysis on pricing performance, customer usage patterns, and revenue trends to identify risks and opportunities.</li>
-	<li>Develop and maintain sophisticated pricing and revenue models to forecast the impact of pricing changes, promotions, and new product introductions.</li>
-	<li>Write and optimize complex queries in SQL and BigQuery to extract, transform, and analyze large datasets.</li>
-	<li>Build and automate dashboards and visualizations in Tableau and Google Sheets/Excel to track key performance indicators and communicate findings.</li>
-	<li>Partner with Product, Sales, Marketing, and Finance teams to contribute to pricing strategy and present your recommendations to stakeholders.</li>
-	<li>Conduct competitive analysis and market research to ensure Cloudflare's offerings are positioned effectively.</li>
+	<li>Excellent programming skills, with experience writing very <strong>high-quality and low-complexity</strong> code with thorough documentation.</li>
+	<li>Strong experience writing <strong>easily-testable</strong> and<strong> thoroughly-tested code</strong> (e.g. using dependency injection with the right abstractions)</li>
+	<li>Experience with<strong> cross-platform programming</strong> and good familiarity and understanding of <strong>user-interface and core OS concepts</strong> of one or more platform (macOS, Windows, Linux, iOS, Android)</li>
+	<li>Great experience successfully using&nbsp;<strong>different typed programming languages</strong>, such as Swift, Java, Kotlin, C#, as well as<strong> lower-level languages</strong>, such as Rust, C, C++.</li>
+	<li>Very comfortable writing&nbsp;<strong>multithreaded, asynchronous</strong> code</li>
+	<li>Strong experience with&nbsp;<strong>debugging</strong>, both at the <strong>application level</strong> and <strong>network-related problems</strong></li>
+	<li>An understanding of&nbsp;<strong>security concepts</strong>, such as VPNs, PKI, etc.</li>
+	<li>Empathetic, proactive, and constructive&nbsp;<strong>communication skills</strong>, verbal and written</li>
 </ul>
-<p>Role Requirements (Must-Have Skills)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>2-4+ years of experience in a quantitative role such as pricing analytics, revenue or business operations, management consulting, or finance.</li>
-	<li>Strong proficiency in SQL (or a dialect like BigQuery) for data extraction and manipulation, and advanced skills in Excel or Google Sheets for financial modeling.</li>
-	<li>A structured, analytical mindset with the ability to tell a clear story with data and deliver thorough, actionable recommendations.</li>
-	<li>Demonstrated ownership and initiative, with the ability to work independently in a fast-paced, ambiguous environment.</li>
-	<li>Strong communication skills, with the ability to distill complex analyses into clear insights for a diverse range of stakeholders.</li>
-	<li>A growth mindset with a coachable, curious, and positive attitude toward learning and new challenges.</li>
-	<li>Bachelor’s degree in a quantitative field such as Economics, Mathematics, Finance, Statistics, or Engineering.</li>
-	<li>To be considered for this role, please submit a resume.</li>
-</ul>
-<p>Nice-to-Have Skills</p>
-<ul>
-	<li>Experience with SaaS, subscription models, or usage-based pricing.</li>
-	<li>Familiarity with pricing strategy concepts (e.g., value-based pricing, discount ladders, price elasticity).</li>
-	<li>Experience working in a high-growth, cross-functional technology environment.</li>
+	<li><span data-sheets-root="1">For Colorado based hires: Estimated annual salary of $168,000 - $206,000</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
@@ -61,7 +59,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
