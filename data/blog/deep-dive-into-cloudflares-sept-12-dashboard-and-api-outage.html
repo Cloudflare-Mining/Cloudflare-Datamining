@@ -1,0 +1,160 @@
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FksJdXAQKSbcnvp3LfCIJ/62eeb39aab26b0adc456f3f34100aa3a/BLOG-2938_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="what-happened">What Happened</h2>
+		<a href="https://blog.cloudflare.com/#what-happened" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We had an outage in our Tenant Service API which led to a broad outage of many of our APIs and the Cloudflare Dashboard.&nbsp;</p>
+	<p>The incident’s impact stemmed from several issues, but the immediate trigger was a bug in the dashboard. This bug caused repeated, unnecessary calls to the Tenant Service API. The API calls were managed by a React useEffect hook, but we mistakenly included a problematic object in its dependency array. Because this object was recreated on every state or prop change, React treated it as “always new,” causing the useEffect to re-run each time. As a result, the API call executed many times during a single dashboard render instead of just once. This behavior coincided with a service update to the Tenant Service API, compounding instability and ultimately overwhelming the service, which then failed to recover.</p>
+	<p>When the Tenant Service became overloaded, it had an impact on other APIs and the dashboard because Tenant Service is part of our API request authorization logic.&nbsp; Without Tenant Service, API request authorization can not be evaluated.&nbsp; When authorization evaluation fails, API requests return 5xx status codes.</p>
+	<p>We’re very sorry about the disruption.&nbsp; The rest of this blog goes into depth on what happened, and what steps we are taking to prevent it from happening again.</p>
+	<div class="flex anchor relative">
+		<h2 id="timeline">Timeline</h2>
+		<a href="https://blog.cloudflare.com/#timeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>Time</p>
+				</th>
+				<th>
+					<p>Description</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-12 16:32</p>
+				</td>
+				<td>
+					<p>A new version of the Cloudflare Dashboard is released which contains a bug that will trigger many more calls to the /organizations endpoint, including retries in the event of failure.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-12 17:50</p>
+				</td>
+				<td>
+					<p>A new version of the Tenant API Service is deployed.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-12 17:57</p>
+				</td>
+				<td>
+					<p>The Tenant API Service becomes overwhelmed as new versions are deploying. Dashboard Availability begins to drop <b>IMPACT START</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-12 18:17</p>
+				</td>
+				<td>
+					<p>After providing more resources to the Tenant API Service, the Cloudflare API climbs to 98% availability, but the dashboard does not recover. <b>IMPACT DECREASE</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-12 18:58</p>
+				</td>
+				<td>
+					<p>In an attempt to restore dashboard availability, some erroring codepaths were removed and a new version of the Tenant Service is released. This was ultimately a bad change and causes API Impact again. <b>IMPACT INCREASE</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-12 19:01</p>
+				</td>
+				<td>
+					<p>In an effort to relieve traffic against the Tenant API Service, a temporary ratelimiting rule is published.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2025-09-12 19:12</p>
+				</td>
+				<td>
+					<p>The problematic changes to the Tenant API Service are reverted, and Dashboard Availability returns to 100%. <b>IMPACT END</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="dashboard-availability">Dashboard availability</h3>
+		<a href="https://blog.cloudflare.com/#dashboard-availability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The Cloudflare dashboard was severely impacted throughout the full duration of the incident.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OI52n6YrKdSBxQIShw5al/3ecb621d4e6a56d43699d16e0e984055/BLOG-3011_1.png" alt="BLOG-3011 1" class="kg-image" width="1999" height="386" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="api-availability">API availability</h3>
+		<a href="https://blog.cloudflare.com/#api-availability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The Cloudflare API was severely impacted for two periods during the incident when the Tenant API Service was down.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19udRtEzYji4dSRwljaYxP/44f42a9cbc92cba22fdead28c177da21/BLOG-3011_2.png" alt="BLOG-3011 2" class="kg-image" width="1999" height="378" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="how-we-responded">How we responded</h2>
+		<a href="https://blog.cloudflare.com/#how-we-responded" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Our first goal in an incident is to restore service.&nbsp; Often that involves fixing the underlying issue directly, but not always.&nbsp; In this case we noticed increased usage across our Tenant Service, so we focused on reducing the load and increasing the available resources.&nbsp; We installed a global rate limit on the Tenant Service to help regulate the load.&nbsp; The Tenant Service is a GoLang process that runs on Kubernetes in a subset of our datacenters.&nbsp; We increased the number of pods available as well to help improve throughput.&nbsp; While we did this, we had others on the team continue to investigate why we were seeing the unusually high usage.&nbsp; Ultimately, increasing the resources available to the tenant service helped with availability but was insufficient to restore normal service.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/UOY1fEUaSzxRE6tNrsBPu/fd02638a5d2e37e47f5c9a9888b5eac3/BLOG-3011_3.png" alt="BLOG-3011 3" class="kg-image" width="1161" height="342" loading="lazy">
+	</figure>
+	<p>After the Tenant Service began reporting healthy again and the API largely recovered, we still observed a considerable number of errors being reported from the service. We theorized that these were responsible for the ongoing Dashboard availability issues and made a patch to the service with the expectation that it would improve the API health and restore the dashboard to a healthy state. Ultimately this change degraded service further and was quickly reverted. The second outage can be seen in the graph above.</p>
+	<p>It’s painful to have an outage like this.&nbsp; That said, there were a few things that helped lessen the impact.&nbsp; Our automatic alerting service quickly identified the correct people to join the call and start working on remediation.&nbsp; Additionally, this was a failure in the control plane which has strict separation of concerns from the data plane.&nbsp; Thus, the outage did not affect services on Cloudflare’s network.&nbsp; The majority of users at Cloudflare were unaffected unless they were making configuration changes or using our dashboard.</p>
+	<div class="flex anchor relative">
+		<h2 id="going-forward">Going forward</h2>
+		<a href="https://blog.cloudflare.com/#going-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We believe it’s important to learn from our mistakes and this incident is an opportunity to make some improvements.&nbsp; Those improvements can be categorized as either ways to reduce / eliminate the impact of a similar change or as improvements to our observability tooling to better inform the team during future events.</p>
+	<div class="flex anchor relative">
+		<h3 id="reducing-impact">Reducing impact</h3>
+		<a href="https://blog.cloudflare.com/#reducing-impact" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We use Argo Rollouts for releasing, which monitors deployments for errors and automatically rolls back that service on a detected error.&nbsp; We’ve been migrating our services over to Argo Rollouts but have not yet updated the Tenant Service to use it.&nbsp; Had it been in place, we would have automatically rolled back the second Tenant Service update limiting the second outage.&nbsp; This work had already been scheduled by the team and we’ve increased the priority of the migration.</p>
+	<p>When we restarted the Tenant Service, everyone’s dashboard began to re-authenticate with the API.&nbsp; This caused the API to become unstable again causing issues with everyone’s dashboard.&nbsp; This pattern is a common one often referred to as a Thundering Herd.&nbsp; Once a resource or service is made available, everyone tries to use it all at once. This is common, but was amplified by the bug in our dashboard logic. The fix for this behavior has already been released via a hotfix shortly after the impact was over.&nbsp; We’ll be introducing changes to the dashboard that include random delays to spread out retries and reduce contention as well.&nbsp;</p>
+	<p>Finally, the Tenant Service was not allocated sufficient capacity to handle spikes in load like this. We’ve allocated substantially more resources to this service, and are improving the monitoring so that we will be proactively alerted before this service hits capacity limits.</p>
+	<div class="flex anchor relative">
+		<h3 id="improving-visibility">Improving visibility</h3>
+		<a href="https://blog.cloudflare.com/#improving-visibility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We immediately saw an increase in our API usage but found it difficult to identify which requests were retries vs new requests.&nbsp; Had we known that we were seeing a sustained large volume of new requests, it would have made it easier to identify the issue as a loop in the dashboard.&nbsp; We are adding changes to how we call our APIs from our dashboard to include additional information, including if the request is a retry or new request.</p>
+	<p>We’re very sorry about the disruption.&nbsp; We will continue to investigate this issue and make improvements to our systems and processes.</p>
+</div>
