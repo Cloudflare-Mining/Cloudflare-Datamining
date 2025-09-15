@@ -12,7 +12,7 @@
 	<p>We had an outage in our Tenant Service API which led to a broad outage of many of our APIs and the Cloudflare Dashboard.&nbsp;</p>
 	<p>The incident’s impact stemmed from several issues, but the immediate trigger was a bug in the dashboard. This bug caused repeated, unnecessary calls to the Tenant Service API. The API calls were managed by a React useEffect hook, but we mistakenly included a problematic object in its dependency array. Because this object was recreated on every state or prop change, React treated it as “always new,” causing the useEffect to re-run each time. As a result, the API call executed many times during a single dashboard render instead of just once. This behavior coincided with a service update to the Tenant Service API, compounding instability and ultimately overwhelming the service, which then failed to recover.</p>
 	<p>When the Tenant Service became overloaded, it had an impact on other APIs and the dashboard because Tenant Service is part of our API request authorization logic.&nbsp; Without Tenant Service, API request authorization can not be evaluated.&nbsp; When authorization evaluation fails, API requests return 5xx status codes.</p>
-	<p>We’re very sorry about the disruption.&nbsp; The rest of this blog goes into depth on what happened, and what steps we are taking to prevent it from happening again.</p>
+	<p>We’re very sorry about the disruption.&nbsp; The rest of this blog goes into depth on what happened, and what steps we are taking to prevent it from happening again. </p>
 	<div class="flex anchor relative">
 		<h2 id="timeline">Timeline</h2>
 		<a href="https://blog.cloudflare.com/#timeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
