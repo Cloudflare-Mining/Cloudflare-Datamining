@@ -112,7 +112,7 @@
 		"enabled": true
 	},
 	"ai-support-dashboard": {
-		"enabled": false
+		"enabled": true
 	},
 	"allow-google-acm": {
 		"enabled": true
@@ -1464,7 +1464,7 @@
 		]
 	},
 	"prg-banner-cta-test": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"grey-button",
@@ -2470,6 +2470,9 @@
 		"enabled": true
 	},
 	"wr-turnstile-widget-allowed": {
+		"enabled": true
+	},
+	"wrangler-envs-in-dash": {
 		"enabled": true
 	},
 	"yubico-promo": {
