@@ -19,6 +19,7 @@
 	"proxyanything.application.domain_help": "Your application will be associated with a DNS name on your Cloudflare zone.",
 	"proxyanything.application.domain_placeholder": "(optional) subdomain",
 	"proxyanything.application.edge_port": "Edge Port",
+	"proxyanything.application.type_column": "Type",
 	"proxyanything.application.edge_port_help": "Enter the Cloudflare edge port. One or more anycast addresses at Cloudflare's edge will represent your service. We'll listen for incoming connections to these addresses on this port. Connections to these addresses are proxied to your origin. For TCP and UDP applications, you can also specify a range, e.g. 22-23. In that case, the origin port should also be a range with the same difference.",
 	"proxyanything.application.edge_port_transport_help": "Choose the transport protocol and port number. One or more anycast addresses at Cloudflare's edge will represent your service. We'll listen for incoming connections to these addresses on this port. Connections to these addresses are proxied to your origin.",
 	"proxyanything.application.edit": "Edit Application",
