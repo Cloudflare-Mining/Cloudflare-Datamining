@@ -35,6 +35,7 @@
 		"mtlsCommonName": "MTLS common name",
 		"mtlsStatus": "MTLS status (may show error message if status is not successful)",
 		"serviceTokenId": "Service token ID",
+		"serviceTokenVersion": "Service token version",
 		"userUuid": "User UUID"
 	},
 	"AccountAccessLoginRequestsAdaptiveGroupsFilter_InputObject": {
@@ -895,7 +896,7 @@
 	},
 	"AccountBrowserRenderingEventsAdaptive": {
 		"__description": "Browser Rendering events with adaptive sampling",
-		"browserCloseReason": "Browser session close code. Enum (-1, N/A) (0, Unknown) (1, NormalClosure) (2, BrowserIdle) (3, ClientClosedEarly) (4, ChromiumChrashed) (5, ClientAbnormalClosure) (6, ServerAbnormalClosure) (7, ClientError) (8, ServerError) (9, WorkerError) (10, ClientNeverConnected) (11, BrowserSessionEvicted)\n",
+		"browserCloseReason": "Browser session close code. Enum (-1, N/A) (0, Unknown) (1, NormalClosure) (2, BrowserIdle) (3, ClientClosedEarly) (4, ChromiumChrashed) (5, ClientAbnormalClosure) (6, ServerAbnormalClosure) (7, ClientError) (8, ServerError) (9, WorkerError) (10, ClientNeverConnected) (11, BrowserSessionEvicted) (12, UsedBrowserTimeLimitExceeded)\n",
 		"browserEndTime": "Browser session end time",
 		"browserStartTime": "Browser session start time",
 		"concurrentSessions": "Number of browser sessions used concurrently at the time of the event",
@@ -931,7 +932,7 @@
 	},
 	"AccountBrowserRenderingEventsAdaptiveGroupsDimensions": {
 		"__description": "",
-		"browserCloseReason": "Browser session close code. Enum (-1, N/A) (0, Unknown) (1, NormalClosure) (2, BrowserIdle) (3, ClientClosedEarly) (4, ChromiumChrashed) (5, ClientAbnormalClosure) (6, ServerAbnormalClosure) (7, ClientError) (8, ServerError) (9, WorkerError) (10, ClientNeverConnected) (11, BrowserSessionEvicted)\n",
+		"browserCloseReason": "Browser session close code. Enum (-1, N/A) (0, Unknown) (1, NormalClosure) (2, BrowserIdle) (3, ClientClosedEarly) (4, ChromiumChrashed) (5, ClientAbnormalClosure) (6, ServerAbnormalClosure) (7, ClientError) (8, ServerError) (9, WorkerError) (10, ClientNeverConnected) (11, BrowserSessionEvicted) (12, UsedBrowserTimeLimitExceeded)\n",
 		"concurrentSessions": "Number of browser sessions used concurrently at the time of the event",
 		"connectionId": "Worker connection ID, when available",
 		"date": "The date of the event",
@@ -6153,6 +6154,166 @@
 		"ingestedBytes": "Confidence interval for the corresponding point estimate",
 		"ingestedRecords": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountPipelinesOperatorAdaptiveGroups": {
+		"__description": "Aggregated Pipelines source metrics with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountPipelinesOperatorAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountPipelinesOperatorAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Delivery operation timestamp, truncated to start of a day",
+		"datetime": "Delivery operation timestamp",
+		"datetimeHour": "Delivery operation timestamp, truncated to start of an hour",
+		"datetimeMinute": "Delivery operation timestamp, truncated to start of a minute",
+		"pipelineId": "The pipeline ID",
+		"streamId": "The Stream ID"
+	},
+	"AccountPipelinesOperatorAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPipelinesOperatorAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPipelinesOperatorAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesIn": "Total number of bytes ingested",
+		"decodeErrors": "Number of messages that could not be deserialized in the stream schema",
+		"recordsIn": "Total number of records ingestesd"
+	},
+	"AccountPipelinesOperatorAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesIn": "Confidence interval for the corresponding point estimate",
+		"decodeErrors": "Confidence interval for the corresponding point estimate",
+		"recordsIn": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountPipelinesOperatorStagingAdaptiveGroups": {
+		"__description": "Aggregated Pipelines source metrics with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountPipelinesOperatorStagingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountPipelinesOperatorStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Delivery operation timestamp, truncated to start of a day",
+		"datetime": "Delivery operation timestamp",
+		"datetimeHour": "Delivery operation timestamp, truncated to start of an hour",
+		"datetimeMinute": "Delivery operation timestamp, truncated to start of a minute",
+		"pipelineId": "The pipeline ID",
+		"streamId": "The Stream ID"
+	},
+	"AccountPipelinesOperatorStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPipelinesOperatorStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPipelinesOperatorStagingAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesIn": "Total number of bytes ingested",
+		"decodeErrors": "Number of messages that could not be deserialized in the stream schema",
+		"messagesIn": "Total number of messages ingested"
+	},
+	"AccountPipelinesOperatorStagingAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesIn": "Confidence interval for the corresponding point estimate",
+		"decodeErrors": "Confidence interval for the corresponding point estimate",
+		"messagesIn": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountPipelinesSinkAdaptiveGroups": {
+		"__description": "Aggregated Pipelines sink metrics with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountPipelinesSinkAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountPipelinesSinkAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Delivery operation timestamp, truncated to start of a day",
+		"datetime": "Delivery operation timestamp",
+		"datetimeHour": "Delivery operation timestamp, truncated to start of an hour",
+		"datetimeMinute": "Delivery operation timestamp, truncated to start of a minute",
+		"pipelineId": "The pipeline ID",
+		"sinkId": "The Sink ID"
+	},
+	"AccountPipelinesSinkAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPipelinesSinkAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPipelinesSinkAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesWritten": "Total number of bytes written to the sink, after compression",
+		"filesWritten": "Number of files written",
+		"recordsWritten": "Total number of records written to the sink",
+		"rowGroupsWritten": "Number of Parquet Row Groups written",
+		"uncompressedBytesWritten": "Total number of bytes written before compression"
+	},
+	"AccountPipelinesSinkAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesWritten": "Confidence interval for the corresponding point estimate",
+		"filesWritten": "Confidence interval for the corresponding point estimate",
+		"recordsWritten": "Confidence interval for the corresponding point estimate",
+		"rowGroupsWritten": "Confidence interval for the corresponding point estimate",
+		"uncompressedBytesWritten": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountPipelinesSinkStagingAdaptiveGroups": {
+		"__description": "Aggregated Pipelines sink metrics with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountPipelinesSinkStagingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountPipelinesSinkStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Delivery operation timestamp, truncated to start of a day",
+		"datetime": "Delivery operation timestamp",
+		"datetimeHour": "Delivery operation timestamp, truncated to start of an hour",
+		"datetimeMinute": "Delivery operation timestamp, truncated to start of a minute",
+		"pipelineId": "The pipeline ID",
+		"streamId": "The Stream ID"
+	},
+	"AccountPipelinesSinkStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPipelinesSinkStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPipelinesSinkStagingAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesWritten": "Total number of bytes written to the sink, after compression",
+		"filesWritten": "Number of files written",
+		"recordsWritten": "Total number of records written to the sink",
+		"rowGroupsWritten": "Number of Parquet Row Groups written",
+		"uncompressedBytesWritten": "Total number of bytes written before compression"
+	},
+	"AccountPipelinesSinkStagingAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesWritten": "Confidence interval for the corresponding point estimate",
+		"filesWritten": "Confidence interval for the corresponding point estimate",
+		"recordsWritten": "Confidence interval for the corresponding point estimate",
+		"rowGroupsWritten": "Confidence interval for the corresponding point estimate",
+		"uncompressedBytesWritten": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountQueueBacklogAdaptiveGroups": {
 		"__description": "Beta. Queue backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
 		"avg": "The average value for a metric per dimension",
@@ -6821,6 +6982,10 @@
 		"pagesFunctionsInvocationsAdaptiveGroups": "",
 		"pipelinesDeliveryAdaptiveGroups": "",
 		"pipelinesIngestionAdaptiveGroups": "",
+		"pipelinesOperatorAdaptiveGroups": "",
+		"pipelinesOperatorStagingAdaptiveGroups": "",
+		"pipelinesSinkAdaptiveGroups": "",
+		"pipelinesSinkStagingAdaptiveGroups": "",
 		"queueBacklogAdaptiveGroups": "",
 		"queueConsumerMetricsAdaptiveGroups": "",
 		"queueDelayedBacklogAdaptiveGroups": "",
@@ -11061,6 +11226,10 @@
 		"pagesFunctionsInvocationsAdaptiveGroups": "Pages Functions invocations with adaptive sampling",
 		"pipelinesDeliveryAdaptiveGroups": "Beta. Data delivered via Workers Pipelines",
 		"pipelinesIngestionAdaptiveGroups": "Beta. Data ingested via Workers Pipelines",
+		"pipelinesOperatorAdaptiveGroups": "Aggregated Pipelines source metrics with adaptive sampling",
+		"pipelinesOperatorStagingAdaptiveGroups": "Aggregated Pipelines source metrics with adaptive sampling",
+		"pipelinesSinkAdaptiveGroups": "Aggregated Pipelines sink metrics with adaptive sampling",
+		"pipelinesSinkStagingAdaptiveGroups": "Aggregated Pipelines sink metrics with adaptive sampling",
 		"queueBacklogAdaptiveGroups": "Beta. Queue backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
 		"queueConsumerMetricsAdaptiveGroups": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
 		"queueDelayedBacklogAdaptiveGroups": "Beta. Queue delayed backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
