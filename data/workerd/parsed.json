@@ -3266,6 +3266,22 @@
 						"compatEnableFlag": "enable_nodejs_trace_events_module",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableNodeJsReadlineModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_readline_module",
+						"compatEnableFlag": "enable_nodejs_readline_module",
+						"experimental": "true"
+					}
+				},
+				{
+					"name": "enableNodeJsReplModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_repl_module",
+						"compatEnableFlag": "enable_nodejs_repl_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
