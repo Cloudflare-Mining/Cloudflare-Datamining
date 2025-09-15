@@ -14,6 +14,7 @@ We are building a full-featured framework that makes developing Cloudflare Durab
 - [Location Placement](./examples/location-placement/) allow you to control the location of your Actor
 - **SQL Migrations** to apply migrations to the SQLite storage
 - **Multiple Alarms** set any number of alarms by timestamp, delay, or cron
+- **Retry utilities** to retry operations using exponential backoff with jitter strategy, and to detect if Durable Object errors are retryable.
 
 And many more features, check out the [Examples](./examples) for more information.
 
@@ -73,6 +74,27 @@ export default handler(MyActor);
 - [How to use without Actor class](./examples/durable-objects/)
 
 ## FAQ
+
+### Alarms
+
+<details>
+  <summary>What is the lifecycle of an Alarm trigger?</summary>
+  When an Actor is awoken by an Alarm trigger, it currently behaves in a slightly different order than if the Actor was already in memory. Below is the sequence of events.
+
+Cold Start:
+
+- [Callback]
+- onInit
+- onAlarm
+
+Warm Start:
+
+- onAlarm
+- [Callback]
+
+For the warm start instance, `onInit` would have already been called earlier before the alarm trigger.
+
+</details>
 
 ### General
 
