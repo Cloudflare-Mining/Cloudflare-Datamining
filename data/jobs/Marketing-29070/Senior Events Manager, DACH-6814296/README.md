@@ -9,7 +9,7 @@
 <h3><strong>About the Role</strong></h3>
 <p>Cloudflare is transforming the way enterprise IT operates—redefining an entire category and growing a billion-pound business with over 40% annual growth. At the heart of this expansion is our dynamic regional marketing team.</p>
 <p>We’re looking for a <strong>Senior Marketing &amp; Events Manager, EMEA</strong> to join our Events Center of Excellence. This role is perfect for someone who thrives on bringing exceptional events to life, loves fast-paced collaboration, and is driven by data, creativity, and results.</p>
-<p>In this pivotal position, you'll lead event strategy and execution across the <strong>DACH region (Germany, Austria, Switzerland)</strong> and support <strong>EMEA-wide channel events</strong>. You’ll collaborate across Marketing, Sales, and Partner teams to deliver experiences that drive engagement, build pipeline, and fuel Cloudflare’s channel growth.</p>
+<p>In this pivotal position, you'll lead event strategy and execution across the <strong>DACH region (Germany, Austria, Switzerland)</strong> and support <strong>EMEA-wide events</strong>. You’ll collaborate across Marketing, Sales, and Partner teams to deliver experiences that drive engagement, build pipeline, and fuel Cloudflare’s channel growth.</p>
 <p>This role reports to the <strong>Head of Field Marketing &amp; Events, EMEA</strong>, and works closely with the broader regional marketing and sales organisation. Who you are: A proactive, positive, and high-energy team player. Curious, adaptable, and eager to grow in a <strong>tech-driven, high-growth environment</strong>.<br><br></p>
 <h3><strong>What You'll Do</strong></h3>
 <ul>
@@ -17,7 +17,7 @@
 		<p>Lead Event Execution in DACH<br>Plan and execute impactful events—trade shows, executive dinners, Cloudflare conferences, partner gatherings, and more—to drive pipeline and customer engagement across the region.<br><br></p>
 	</li>
 	<li>
-		<p>Drive EMEA Channel Event Strategy<br>Collaborate with the Head of EMEA Events, Director of Partner Marketing, and DACH Field Marketing leads to shape and deliver strategic channel events aligned with Cloudflare’s partner ecosystem growth.<br><br></p>
+		<p>Support EMEA Event Channel Strategy<br>Collaborate with the Head of EMEA Events, Director of Partner Marketing, and DACH Field Marketing leads to shape and deliver strategic channel events aligned with Cloudflare’s partner ecosystem growth.<br><br></p>
 	</li>
 	<li>
 		<p>Cross-Functional Collaboration<br>Work closely with Sales, Product, Localization, and Marketing teams to align event strategy with business goals and deliver meaningful experiences.<br><br></p>
