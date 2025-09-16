@@ -282,6 +282,10 @@
 		"name": "Email Security Reporting",
 		"description": "Read access to Email Security Home, PhishGuard, and Submission Transparency",
 		"permissions": {
+			"ces_pra_report": {
+				"read": true,
+				"edit": true
+			},
 			"ces_submissions": {
 				"read": true,
 				"edit": false
@@ -309,6 +313,10 @@
 		"name": "Email Security Readonly",
 		"description": "Read access to all of Email Security, cannot see raw email, take action on emails, or make submissions (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"ces_pra_report": {
+				"read": true,
+				"edit": false
+			},
 			"ces_policies": {
 				"read": true,
 				"edit": false
@@ -465,6 +473,10 @@
 		"name": "Email Integration Admin",
 		"description": "Write access to Email Security account integration only",
 		"permissions": {
+			"ces_pra_report": {
+				"read": true,
+				"edit": true
+			},
 			"ces_policies": {
 				"read": true,
 				"edit": true
@@ -1414,6 +1426,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"ces_pra_report": {
+				"read": true,
+				"edit": true
+			},
 			"dash_sso": {
 				"read": true,
 				"edit": true
@@ -2058,6 +2074,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"ces_pra_report": {
+				"read": true,
+				"edit": false
+			},
 			"r2_bucket_warehouse_sql": {
 				"read": true,
 				"edit": false
@@ -2261,6 +2281,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"ces_pra_report": {
+				"read": true,
+				"edit": true
+			},
 			"r2_bucket_warehouse_sql": {
 				"read": true,
 				"edit": false
