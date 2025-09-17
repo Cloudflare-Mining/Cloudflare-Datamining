@@ -3282,6 +3282,14 @@
 						"compatEnableFlag": "enable_nodejs_repl_module",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableNodeJsSqliteModule",
+					"annotations": {
+						"compatDisableFlag": "disable_nodejs_sqlite_module",
+						"compatEnableFlag": "enable_nodejs_sqlite_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
