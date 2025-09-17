@@ -21,7 +21,7 @@
 <ul>
 	<li>Proven strong ability and experience in systems or network programming (Rust, C, etc.)</li>
 	<li>Knowledge of web server implementations (such as NGINX)</li>
-	<li>Deep understanding of HTTP/2, HTTP/3, QUIC, congestion control, or transport-layer protocols</li>
+	<li>Deep understanding of HTTP/2, HTTP/3, QUIC, congestion control and transport-layer protocols</li>
 	<li>Proven ability to scale systems under high throughput and low latency demands</li>
 	<li>Experience driving architecture or protocol-level change in production systems</li>
 	<li>Bonus: contributions to open standards or open source projects</li>
