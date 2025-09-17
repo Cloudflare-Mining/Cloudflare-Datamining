@@ -287,7 +287,6 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   FixedLengthStream: typeof FixedLengthStream;
   IdentityTransformStream: typeof IdentityTransformStream;
   HTMLRewriter: typeof HTMLRewriter;
-  Performance: typeof Performance;
 }
 declare function addEventListener<Type extends keyof WorkerGlobalScopeEventMap>(
   type: Type,
@@ -443,6 +442,18 @@ declare abstract class PromiseRejectionEvent extends Event {
   readonly promise: Promise<any>;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/reason) */
   readonly reason: any;
+}
+/**
+ * The Workers runtime supports a subset of the Performance API, used to measure timing and performance,
+ * as well as timing of subrequests and other operations.
+ *
+ * [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/)
+ */
+interface Performance {
+  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancetimeorigin) */
+  readonly timeOrigin: number;
+  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancenow) */
+  now(): number;
 }
 interface AlarmInvocationInfo {
   readonly isRetry: boolean;
@@ -3098,18 +3109,6 @@ interface WorkerLoaderWorkerCode {
   globalOutbound?: Fetcher | null;
   tails?: Fetcher[];
   streamingTails?: Fetcher[];
-}
-/**
- * The Workers runtime supports a subset of the Performance API, used to measure timing and performance,
- * as well as timing of subrequests and other operations.
- *
- * [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/)
- */
-declare abstract class Performance {
-  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancetimeorigin) */
-  get timeOrigin(): number;
-  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancenow) */
-  now(): number;
 }
 type AiImageClassificationInput = {
   image: number[];
