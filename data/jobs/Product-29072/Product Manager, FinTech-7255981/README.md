@@ -5,48 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: NYC, SF, Austin TX</strong></p>
-<p><strong>About Product Management at Cloudflare&nbsp;</strong></p>
-<p>As a Product Manager at Cloudflare, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
-<p><strong>About the role</strong></p>
-<p>As Product Manager for <strong>SSL/TLS</strong>, you’ll help shape a key part of our core product experience. Our customers depend on our SSL/TLS products to configure secure connections of many different types through our products - SSL/TLS is one of the product suites inside the portfolio that enables everything we do. Every request to every site we manage flows through this, along with our Zero Trust and Developer products. (nearly 20% of the global internet every day).&nbsp;&nbsp;</p>
-<p>In this role, you’ll support the development and evolution of this product, helping define and communicate the product vision, gathering user feedback, and contributing to the roadmap. You’ll collaborate closely with engineers, designers, and security experts to deliver features that support customers of all different types, processing every request we see. Additionally, you will:</p>
+<p><strong>Available Locations: Austin TX, New York, NY</strong></p>
+<p><strong>About the Role</strong></p>
 <ul>
-	<li>Own your space. You will own the priorities and scope for a high performing engineering team focused on Cloudflare’s SSL/TLS Product.&nbsp;</li>
-	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
-	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
-	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
-	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.</li>
-</ul>
-<h4><strong>What you'll do</strong></h4>
-<p>In this role, you’ll contribute to shaping one of our core products - <strong>SSL/TLS</strong> - a collection of products that enable customers to manage the lifecycle of security certificates, secrets storage, our Cloudflare for SaaS platform products, and much more, across all inbound and outbound requests at global scale.</p>
-<p>You’ll work closely with engineering, design, and cross-functional teams to deeply understand user needs, uncover friction points, and design intuitive, logical and powerful experiences that enable our users to manage the flow of information for the sites they manage with us. You’ll help define and track key performance indicators (KPIs) that measure user engagement, product adoption, and the long-term effectiveness of behavior-driven workflows.</p>
-<h4>&nbsp;</h4>
-<h4>Examples of desirable skills, knowledge and experience</h4>
-<p>At Cloudflare, Product Managers are measured both on outcomes (“the what”) and how they accomplish results.&nbsp;</p>
-<ul>
-	<li>5+ years of experience in product management, solutions engineering, or related roles</li>
-	<li>Familiarity with designing or contributing to habit-forming product experiences</li>
-	<li>Experience defining and tracking KPIs to measure product or user behavior impact</li>
-	<li>Strong collaboration skills and experience working with engineering and design teams</li>
-	<li>Comfort operating in fast-paced, evolving environments</li>
-	<li>A passion for user empathy and delivering customer-centric solutions</li>
-	<li>Excellent communication skills and attention to detail</li>
-	<li>Curiosity and a strong desire to learn technical topics, especially in security or observability</li>
-	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen is a key part of the role.</li>
-</ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>Prior experience as a product manager for a team focused on building security and certificate related products.</li>
-	<li>Prior experience delivering cloud infrastructure products at global scale.</li>
-	<li>Data fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>
+		<p>Cloudflare has embarked on a transformation of our entire quote to cash process. We’re looking for a seasoned product manager who will take charge of these processes, providing leadership, communication and accountability for successful delivery. You will:&nbsp;</p>
+		<ul>
+			<li>Own your space. You will manage a set of key products in the Quote to Cash lifecycle, directly impacting both internal and external customers around the world.&nbsp;</li>
+			<li>Work horizontally. Disparate groups like Engineering, Program Management, Finance, Revenue Operations, Business Intelligence and external vendors like Stripe and Salesforce all need to keep plans aligned and work together to deliver commitments.</li>
+			<li>Span timescales. Short term deliverables like supporting product launches, medium term ones like migrating billing progresses and longer term ones like a full ERP implementation all need to be serviced. The urgent cannot starve the important.&nbsp;</li>
+			<li>Span domains. You need to simultaneously let other teams rely on the roadmaps you publish while being responsive to the interrupt-driven nature of the business. When shifts do occur, you need to proactively communicate with other teams to maintain trust.&nbsp;</li>
+			<li>Commit to quality. Our #1 priority is to have an accurate picture of revenue and service of our customers but we also have numerous other concerns like speed of innovation and advancing the roadmap.</li>
+			<li>Communicate and collaborate. Essential to the success of this program is the ability to listen, learn, synthesize and communicate outwards as well as influence through persuasion.</li>
+			<li>Represent Cloudflare. Many of our largest customers want to speak to us about their concerns and our plans in the billing domain. You will spend time learning from them.&nbsp;</li>
+			<li>Provide and demand accountability. You are responsible for the delivery of your commitments and you will hold your peers and subordinates accountable for theirs.&nbsp;</li>
+		</ul>
+		<br>
+		<p><strong>Some of the domains you will touch include</strong>: Billing, Invoicing, Sales &amp; Opportunity management, Credit &amp; Collections, Pricing &amp; Quoting, Contract &amp; Entitlement Management, Partners &amp; Resellers, Taxation, Bad debt, BI Reporting, ERP Implementation.&nbsp;</p>
+		<p>&nbsp;</p>
+		<p><strong>Desirable Skills</strong></p>
+		<ul>
+			<li>Demonstrated success delivering technology solutions in the Billing space</li>
+			<li>Knowledge of best practices for in fintech, financial reporting, compliance or other similar domain at a Saas company</li>
+			<li>Experience managing customer facing products focused on global payments, tax, checkout, invoicing, and other quote to cash activities&nbsp;</li>
+		</ul>
+		<br>
+		<p><strong>Bonus Points</strong></p>
+		<ul>
+			<li>Internet native companies tend to think a little differently than the Fortune 500. We’d love to meet folks with a history of delivering with the cadence and timescales of those born on the Internet.&nbsp;</li>
+			<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
+			<li>Finance fluency - You’re dealing with data that represents money and that implies a certain level of care. You’ll also be working with a lot of finance types. Fluency in this world might be helpful</li>
+			<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
+		</ul>
+	</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $166,000 - $224,000</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $192,000 - $213,000</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $140,000 - $210,000</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

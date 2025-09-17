@@ -5,50 +5,57 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: NYC, SF, Austin TX</strong></p>
-<p><strong>About Product Management at Cloudflare&nbsp;</strong></p>
-<p>As a Product Manager at Cloudflare, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
+<p><strong>Available Locations: Washington DC or New York</strong></p>
 <p><strong>About the role</strong></p>
-<p>As Product Manager for <strong>SSL/TLS</strong>, you’ll help shape a key part of our core product experience. Our customers depend on our SSL/TLS products to configure secure connections of many different types through our products - SSL/TLS is one of the product suites inside the portfolio that enables everything we do. Every request to every site we manage flows through this, along with our Zero Trust and Developer products. (nearly 20% of the global internet every day).&nbsp;&nbsp;</p>
-<p>In this role, you’ll support the development and evolution of this product, helping define and communicate the product vision, gathering user feedback, and contributing to the roadmap. You’ll collaborate closely with engineers, designers, and security experts to deliver features that support customers of all different types, processing every request we see. Additionally, you will:</p>
+<p>We are looking for an experienced child safety specialist to join Cloudflare’s Trust and Safety Team. If you’re passionate about making the web safer, have extensive experience in child safety, are driven to execute at warp-speed, like solving problems yourself and enabling technical teams to be productive and move quickly, we’d love to talk.&nbsp;</p>
+<p>In this role, you’ll plan process improvement requirements, propose internal policy enhancements while identifying risks, and communicate clearly with internal&nbsp; stakeholders. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies. Y You’ll learn and grow alongside talented teammates who share your attention to detail and appetite for problem-solving. You will also help address sensitive and escalated abuse, compliance tasks, and Trust and Safety issues that affect our customers. You can expect to also carefully review law enforcement and third party reports related to Child Sexual Abuse Material (CSAM) as well as r contribute to Cloudflare’s initiatives to combat its spread.&nbsp; .</p>
+<h2><strong>Responsibilities</strong><strong>:&nbsp;</strong></h2>
 <ul>
-	<li>Own your space. You will own the priorities and scope for a high performing engineering team focused on Cloudflare’s SSL/TLS Product.&nbsp;</li>
-	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
-	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
-	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
-	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.</li>
+	<li>Develop and update the T&amp;S policies, procedures, documentation, and training material for all applicable products.</li>
+	<li>Flesh out process, system and tooling needs that are as yet unmet and write the business case to justify investing in new technical solutions.</li>
+	<li>Anticipate management and transparency reporting data needs and work with policy managers and stakeholders to include these in requirements specifications.</li>
+	<li>Make use of opportunities to boost team efficiencies, standardize workflows through well written documentation, and improve the structure and quality of reporting data.</li>
+	<li>Coordinate with Trust &amp; Safety Engineering team to advise on business and environmental changes, whether these be internal (e.g., new or improved Cloudflare features and products) or external (e.g., new regulatory requirements).</li>
+	<li>Ensure that our systems comply with the company's security and access policies, such as the use of access restrictions and audit trails.</li>
+	<li>Shepherd the user acceptance testing of systems and tools prior to deployment.</li>
+	<li>Manage expectations and communicate the priorities, status, and progress of projects to stakeholders.</li>
+	<li>Facilitate external engagement and discussions with stakeholders, including customers, NCMEC, and other third-party agencies.</li>
+	<li>Be aware of, and willing to operate in a work environment that includes the review of highly sensitive, emotionally charged, and disturbing content such as child sexual abuse material.</li>
+	<li>Be responsible for performing operations seamlessly and timely Service-Level Agreement (SLA) delivery along with maintaining high levels of stakeholder satisfaction.</li>
+	<li>You may be part of the rotating weekend and off-hour coverage responsibilities.&nbsp;</li>
 </ul>
-<h4><strong>What you'll do</strong></h4>
-<p>In this role, you’ll contribute to shaping one of our core products - <strong>SSL/TLS</strong> - a collection of products that enable customers to manage the lifecycle of security certificates, secrets storage, our Cloudflare for SaaS platform products, and much more, across all inbound and outbound requests at global scale.</p>
-<p>You’ll work closely with engineering, design, and cross-functional teams to deeply understand user needs, uncover friction points, and design intuitive, logical and powerful experiences that enable our users to manage the flow of information for the sites they manage with us. You’ll help define and track key performance indicators (KPIs) that measure user engagement, product adoption, and the long-term effectiveness of behavior-driven workflows.</p>
-<h4>&nbsp;</h4>
-<h4>Examples of desirable skills, knowledge and experience</h4>
-<p>At Cloudflare, Product Managers are measured both on outcomes (“the what”) and how they accomplish results.&nbsp;</p>
+<h2><strong>Requirements:</strong></h2>
 <ul>
-	<li>5+ years of experience in product management, solutions engineering, or related roles</li>
-	<li>Familiarity with designing or contributing to habit-forming product experiences</li>
-	<li>Experience defining and tracking KPIs to measure product or user behavior impact</li>
-	<li>Strong collaboration skills and experience working with engineering and design teams</li>
-	<li>Comfort operating in fast-paced, evolving environments</li>
-	<li>A passion for user empathy and delivering customer-centric solutions</li>
-	<li>Excellent communication skills and attention to detail</li>
-	<li>Curiosity and a strong desire to learn technical topics, especially in security or observability</li>
-	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen is a key part of the role.</li>
+	<li>6+ years of experience in a related industry, where you focused on child safety matters.</li>
+	<li>You’ve directly been responsible for building, or have been involved with the creation of internal child safety programs.</li>
+	<li>We are looking for a critical thinker who thrives on solving challenges in partnership with teams across Cloudflare.</li>
+	<li>You are comfortable with a degree of ambiguity and display high levels of bias for action and ownership.</li>
+	<li>The right candidate will possess a strong program management background, will have demonstrated experience leading medium to large projects, and will have a well-rounded technical background in a number of infrastructure technologies, web services architecture and security.</li>
+	<li>You should be able to thrive and succeed in an entrepreneurial environment, and not be hindered by ambiguity or competing priorities.</li>
+	<li>This means you are not only able to develop and drive high-level strategic initiatives, but can also roll up your sleeves, dig in and get the job done.</li>
+	<li>Maturity, high judgment, negotiation skills, ability to influence, analytical talent and leadership are essential to success in this role.</li>
+	<li>Strong communication skills across technical and non-technical audiences.</li>
+	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
+<h2><strong>Bonus Points</strong><strong>:</strong></h2>
 <ul>
-	<li>Prior experience as a product manager for a team focused on building security and certificate related products.</li>
-	<li>Prior experience delivering cloud infrastructure products at global scale.</li>
-	<li>Data fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>You’ve worked for or closely with an organization such as the National Center for Missing &amp; Exploited Children (NCMEC) or similar international organizations in this space.</li>
+	<li>You understand DNS and how the Internet works.</li>
+	<li>Have public speaking experience.</li>
+	<li>Have experience with notice &amp; takedown.</li>
+	<li>Have experience working closely with Public Policy and Legal teams.</li>
+	<li>Have experience working on Transparency Reports.</li>
+	<li>Experience with the legal considerations related to Child Sexual Abuse Material (CSAM) material.</li>
+	<li>Familiarity with fuzzy hashing technologies or similar techniques as they apply to images.</li>
+	<li>Familiarity with video hashing technologies.</li>
 </ul>
-<p>&nbsp;</p>
+<p>Please note: This job description is intended to provide a general overview of the role and may be modified as necessary to align with the company's evolving needs.</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $166,000 - $224,000</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $192,000 - $213,000</span></li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $156,000 - $190,000.</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h4><strong>Equity</strong></h4>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
