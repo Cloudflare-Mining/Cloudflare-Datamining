@@ -628,6 +628,11 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"monitor_group": {
+														"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+														"type": "string",
+														"x-auditable": true
+													},
 													"name": {
 														"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
 														"example": "primary-dc-1",
@@ -1052,6 +1057,11 @@
 															},
 															"monitor": {
 																"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"monitor_group": {
+																"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
 																"type": "string",
 																"x-auditable": true
 															},
@@ -1590,6 +1600,11 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"monitor_group": {
+													"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+													"type": "string",
+													"x-auditable": true
+												},
 												"name": {
 													"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
 													"example": "primary-dc-1",
@@ -1990,6 +2005,11 @@
 														},
 														"monitor": {
 															"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+															"type": "string",
+															"x-auditable": true
+														},
+														"monitor_group": {
+															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
 															"type": "string",
 															"x-auditable": true
 														},
@@ -3424,6 +3444,11 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"monitor_group": {
+														"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+														"type": "string",
+														"x-auditable": true
+													},
 													"name": {
 														"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
 														"example": "primary-dc-1",
@@ -3848,6 +3873,11 @@
 															},
 															"monitor": {
 																"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"monitor_group": {
+																"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
 																"type": "string",
 																"x-auditable": true
 															},
@@ -4278,6 +4308,11 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"monitor_group": {
+								"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+								"type": "string",
+								"x-auditable": true
+							},
 							"name": {
 								"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
 								"example": "primary-dc-1",
@@ -4659,6 +4694,11 @@
 												},
 												"monitor": {
 													"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"monitor_group": {
+													"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -5065,6 +5105,11 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"monitor_group": {
+															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+															"type": "string",
+															"x-auditable": true
+														},
 														"name": {
 															"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
 															"example": "primary-dc-1",
@@ -5440,6 +5485,11 @@
 							},
 							"monitor": {
 								"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+								"type": "string",
+								"x-auditable": true
+							},
+							"monitor_group": {
+								"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
 								"type": "string",
 								"x-auditable": true
 							},
@@ -5828,6 +5878,11 @@
 												},
 												"monitor": {
 													"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"monitor_group": {
+													"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -6231,6 +6286,11 @@
 														},
 														"monitor": {
 															"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+															"type": "string",
+															"x-auditable": true
+														},
+														"monitor_group": {
+															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
 															"type": "string",
 															"x-auditable": true
 														},
@@ -7172,6 +7232,11 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"monitor_group": {
+								"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
+								"type": "string",
+								"x-auditable": true
+							},
 							"name": {
 								"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
 								"example": "primary-dc-1",
@@ -7557,6 +7622,11 @@
 												},
 												"monitor": {
 													"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"monitor_group": {
+													"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -7960,6 +8030,11 @@
 														},
 														"monitor": {
 															"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+															"type": "string",
+															"x-auditable": true
+														},
+														"monitor_group": {
+															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
 															"type": "string",
 															"x-auditable": true
 														},

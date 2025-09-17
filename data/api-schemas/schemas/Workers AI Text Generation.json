@@ -13477,8 +13477,7 @@
 												"type": "array"
 											}
 										],
-										"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
-										"title": "Input"
+										"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
 									},
 									"reasoning": {
 										"properties": {
@@ -13507,7 +13506,7 @@
 								"required": [
 									"input"
 								],
-								"title": "GPT_OSS_Responses",
+								"title": "GPT_OSS_120B_Responses",
 								"type": "object"
 							},
 							{
@@ -13525,8 +13524,7 @@
 															"type": "array"
 														}
 													],
-													"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
-													"title": "Input"
+													"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
 												},
 												"reasoning": {
 													"properties": {
@@ -13563,7 +13561,7 @@
 								"required": [
 									"requests"
 								],
-								"title": "GPT_OSS_Responses_Async",
+								"title": "GPT_OSS_120B_Responses_Async",
 								"type": "object"
 							}
 						]
@@ -13693,8 +13691,7 @@
 												"type": "array"
 											}
 										],
-										"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
-										"title": "Input"
+										"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
 									},
 									"reasoning": {
 										"properties": {
@@ -13723,7 +13720,7 @@
 								"required": [
 									"input"
 								],
-								"title": "GPT_OSS_Responses",
+								"title": "GPT_OSS_20B_Responses",
 								"type": "object"
 							},
 							{
@@ -13741,8 +13738,7 @@
 															"type": "array"
 														}
 													],
-													"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
-													"title": "Input"
+													"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
 												},
 												"reasoning": {
 													"properties": {
@@ -13779,7 +13775,7 @@
 								"required": [
 									"requests"
 								],
-								"title": "GPT_OSS_Responses_Async",
+								"title": "GPT_OSS_20B_Responses_Async",
 								"type": "object"
 							}
 						]
