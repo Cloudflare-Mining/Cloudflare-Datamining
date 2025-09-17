@@ -5,52 +5,51 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Austin, San Francisco</strong></p>
-<h1>Program Manager, GTM Initiatives</h1>
-<h2>Role Overview</h2>
-<p>The Program Manager, GTM Initiatives will be a key driver of high-impact go-to-market programs. Reporting to the Chief of Staff to the President of Revenue, this role is responsible for helping design, track, and deliver critical initiatives with discipline and impact. The individual will collaborate across Sales, RevOps, Product, Marketing, and Customer Success to bridge strategy and execution, shaping GTM programs that translate leadership priorities into measurable business outcomes. Examples of initiatives include the Field Advisory Board, executive engagement programs, and other cross-functional efforts tied to revenue growth, efficiency, and customer success.</p>
-<h2>Key Responsibilities</h2>
+<p><strong>Available Locations: Austin TX, Washington DC</strong></p>
+<p><strong>About the department<br></strong><br>The Database Platform Team, a vital part of Cloudflare's Infrastructure Engineering organization, is dedicated to building and operating databases at scale. Our mission is to empower internal engineering teams, enabling them to deliver products quickly and reliably through a robust, automated, and scalable data infrastructure.<br><br>We achieve this by automating database infrastructure, strengthening resiliency, and allowing applications to scale effortlessly. This effectively removes the operational complexities of database management, letting product teams concentrate on innovation.<br><br>As the Database Platform Team enters an exciting period of growth and expansion, this role offers a key opportunity to develop new features, integrate with database tooling, and advance automation across our platform. Your contributions will be instrumental in shaping the future of our database platform</p>
+<h4><strong>What you'll do</strong></h4>
+<p>The ideal candidate will work alongside database engineers, software developers, and Infrastructure teams, contributing to the evolution of database platform architecture, access control, and automation strategies. They will play a critical role in enhancing PostgreSQL infrastructure and improving database reliability, automation, and tooling.</p>
+<p>If you are passionate about <strong>PostgreSQL, automation, and database tooling</strong>, we’d love to hear from you!</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Partner closely with the Chief of Staff to design and operationalize GTM initiatives, ensuring programs are structured for impact and scalability.</li>
-	<li>Drive follow-through by tracking actions, holding owners accountable, and ensuring commitments are delivered on time.</li>
-	<li>Manage execution of flagship programs such as the Field Advisory Board and executive engagement, ensuring feedback and touchpoints translate into measurable outcomes.</li>
-	<li>Prioritize and coordinate executive involvement in opportunities and customer engagements to accelerate outcomes.</li>
-	<li>Collaborate with cross-functional teams (RevOps, Product, Sales, Marketing, Customer Success) to resolve dependencies and ensure smooth execution.</li>
-	<li>Build and maintain dashboards, trackers, and reporting mechanisms that provide visibility into GTM programs and outcomes, with periodic updates to senior leadership.</li>
-	<li>Lead process improvement and scaling efforts for initiatives that increase revenue performance, organizational efficiency, or customer satisfaction.<br><br></li>
+	<li>Build, deploy, and manage PostgreSQL databases in production environments.&nbsp;</li>
+	<li>Develop and optimize database schemas, queries, and procedures for performance and scalability.&nbsp;</li>
+	<li>Develop and maintain database tooling for automation, monitoring and performance tuning.</li>
+	<li>Optimize database performance, indexing strategies, and query tuning.&nbsp;</li>
+	<li>Implement high availability, backup and disaster recovery solutions.&nbsp;</li>
+	<li>Work closely with Infrastructure and Applications teams to integrate database tools.&nbsp;</li>
+	<li>Implement proactive solutions using observability tools to monitor database health.</li>
 </ul>
-<h2>Qualifications</h2>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>5+ years of experience in sales operations, GTM program management, or revenue operations.</li>
-	<li>Demonstrated ability to design and structure cross-functional programs, not just execute them.</li>
-	<li>Strong organizational skills with proven ability to manage multiple initiatives simultaneously.</li>
-	<li>Skilled in stakeholder management with the ability to influence without direct authority.</li>
-	<li>Comfortable working with sales data and using it to prioritize and track execution.</li>
-	<li>Excellent communicator with the ability to translate strategic goals into actionable, well-structured plans.<br><br></li>
+	<li>Experience building large multi-tenant databases, operating, capacity planning, and designing for failover, fault tolerance, and disaster recovery.</li>
+	<li>Experience building and maintaining database tooling for automation and monitoring.</li>
+	<li>Experience optimizing database performance and query tuning.</li>
+	<li>Experience with alerting and monitoring tools such as Prometheus, Grafana, and Kibana.</li>
+	<li>Experience in scripting languages (Python, Bash) for automation.&nbsp;</li>
+	<li>Experience with infrastructure-as-code (Terraform, Ansible or Salt) .</li>
 </ul>
-<h2>Impact of the Role</h2>
-<p>This role ensures that:</p>
+<p>&nbsp;</p>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>Strategic GTM initiatives are designed thoughtfully and executed rigorously.</li>
-	<li>Executive engagement is deployed purposefully in ways that accelerate revenue and strengthen customer relationships.</li>
-	<li>Cross-functional priorities are aligned, tracked, and delivered efficiently.</li>
-	<li>The Chief of Staff and GTM senior leadership team can focus on strategic direction while program execution and follow-through happen with consistency and discipline.</li>
+	<li>Expertise in database schema migrations and automation using tools like Flyway, Liquibase or goose.&nbsp;</li>
+	<li>Experience with containerization technologies like Docker and Kubernetes.</li>
+	<li>Contributions to PostgreSQL or relevant open-source projects.</li>
+	<li>Experience with connection pooling solutions such as PgBouncer, HAProxy.</li>
+	<li>Experience with non-relational data stores such as Distributed &amp; time-series databases (ex. Cassandra, Timescale) and key-value stores (eg., Redis)&nbsp;</li>
+	<li>Experience developing software in Go, Python or C/C++</li>
 </ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<p>&nbsp;</p>
 <ul>
-	<li>For San Francisco based hires: Estimated annual salary of $$156,000-$190,000</li>
+	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $154,000 - $188,000.</span></li>
 </ul>
-<p><br><br></p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p>&nbsp;</p>
 <p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>&nbsp;</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
-<p>&nbsp;</p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -61,25 +60,18 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Financial Benefits</strong></p>
-<p>&nbsp;</p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Time Off</strong></p>
-<p>&nbsp;</p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p><br><br></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
