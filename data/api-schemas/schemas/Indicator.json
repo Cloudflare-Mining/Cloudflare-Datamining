@@ -176,6 +176,12 @@
 												},
 												"type": "array"
 											},
+											"tags": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
 											"updatedAt": {
 												"example": "2022-04-01T00:00:00Z",
 												"format": "date-time",
@@ -307,6 +313,12 @@
 											"eventId"
 										],
 										"type": "object"
+									},
+									"type": "array"
+								},
+								"tags": {
+									"items": {
+										"type": "string"
 									},
 									"type": "array"
 								},
@@ -613,6 +625,12 @@
 								},
 								"type": "array"
 							},
+							"tags": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
 							"value": {
 								"example": "updated-domain.com",
 								"type": "string"
@@ -655,6 +673,12 @@
 											"eventId"
 										],
 										"type": "object"
+									},
+									"type": "array"
+								},
+								"tags": {
+									"items": {
+										"type": "string"
 									},
 									"type": "array"
 								},
@@ -830,6 +854,12 @@
 											},
 											"type": "array"
 										},
+										"tags": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
 										"value": {
 											"example": "malicious-domain.com",
 											"type": "string"
@@ -965,6 +995,12 @@
 								},
 								"type": "array"
 							},
+							"tags": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
 							"value": {
 								"example": "malicious-domain.com",
 								"type": "string"
@@ -1011,6 +1047,12 @@
 											"eventId"
 										],
 										"type": "object"
+									},
+									"type": "array"
+								},
+								"tags": {
+									"items": {
+										"type": "string"
 									},
 									"type": "array"
 								},

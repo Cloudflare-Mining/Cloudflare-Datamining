@@ -134,7 +134,7 @@
 			"Cloudforce One Write"
 		]
 	},
-	"GET /accounts/{account_id}/cloudforce-one/events/tags/list": {
+	"GET /accounts/{account_id}/cloudforce-one/events/tags": {
 		"description": "Returns all Source-of-Truth tags for an account.",
 		"operationId": "get_TagList",
 		"parameters": [
@@ -171,9 +171,9 @@
 			},
 			{
 				"in": "query",
-				"name": "categoryId",
+				"name": "categoryUuid",
 				"schema": {
-					"type": "number"
+					"type": "string"
 				}
 			}
 		],
@@ -236,9 +236,9 @@
 											"attributionOrganization": {
 												"type": "string"
 											},
-											"categoryId": {
-												"example": 1,
-												"type": "number"
+											"categoryUuid": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
 											},
 											"externalReferenceLinks": {
 												"items": {
@@ -345,6 +345,277 @@
 			"Cloudforce One Read"
 		]
 	},
+	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/indicators": {
+		"description": "Returns indicators associated with the provided tag UUID across all indicator datasets, with pagination.",
+		"operationId": "get_TagIndicatorsList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Tag UUID.",
+				"in": "path",
+				"name": "tag_uuid",
+				"required": true,
+				"schema": {
+					"description": "Tag UUID.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pageSize",
+				"schema": {
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"indicators": {
+									"items": {
+										"properties": {
+											"createdAt": {
+												"example": "2022-04-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"indicatorType": {
+												"example": "domain",
+												"type": "string"
+											},
+											"relatedEvents": {
+												"items": {
+													"properties": {
+														"datasetId": {
+															"example": "dataset-uuid-123",
+															"type": "string"
+														},
+														"eventId": {
+															"example": "event-uuid-456",
+															"type": "string"
+														}
+													},
+													"required": [
+														"datasetId",
+														"eventId"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"tags": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"updatedAt": {
+												"example": "2022-04-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"uuid": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
+											},
+											"value": {
+												"example": "malicious-domain.com",
+												"type": "string"
+											}
+										},
+										"required": [
+											"uuid",
+											"indicatorType",
+											"value",
+											"createdAt",
+											"updatedAt"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"pagination": {
+									"properties": {
+										"page": {
+											"type": "number"
+										},
+										"pageSize": {
+											"type": "number"
+										},
+										"totalCount": {
+											"type": "number"
+										},
+										"totalPages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"pageSize",
+										"totalCount",
+										"totalPages"
+									],
+									"type": "object"
+								}
+							},
+							"required": [
+								"indicators",
+								"pagination"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a paginated list of indicators."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List indicators related to a tag",
+		"tags": [
+			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
 		"description": "Updates a Source-of-Truth tag by UUID.",
 		"operationId": "patch_TagUpdate",
@@ -402,9 +673,9 @@
 							"attributionOrganization": {
 								"type": "string"
 							},
-							"categoryId": {
-								"example": 1,
-								"type": "number"
+							"categoryUuid": {
+								"example": "12345678-1234-1234-1234-1234567890ab",
+								"type": "string"
 							},
 							"externalReferenceLinks": {
 								"items": {
@@ -473,9 +744,9 @@
 								"attributionOrganization": {
 									"type": "string"
 								},
-								"categoryId": {
-									"example": 1,
-									"type": "number"
+								"categoryUuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
 								},
 								"externalReferenceLinks": {
 									"items": {
@@ -657,9 +928,9 @@
 							"attributionOrganization": {
 								"type": "string"
 							},
-							"categoryId": {
-								"example": 1,
-								"type": "number"
+							"categoryUuid": {
+								"example": "12345678-1234-1234-1234-1234567890ab",
+								"type": "string"
 							},
 							"externalReferenceLinks": {
 								"items": {
@@ -731,9 +1002,9 @@
 								"attributionOrganization": {
 									"type": "string"
 								},
-								"categoryId": {
-									"example": 1,
-									"type": "number"
+								"categoryUuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
 								},
 								"externalReferenceLinks": {
 									"items": {
@@ -779,6 +1050,44 @@
 				"description": "Returns the created tag."
 			},
 			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
