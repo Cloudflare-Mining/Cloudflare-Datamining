@@ -435,10 +435,17 @@
 														"x-auditable": true
 													},
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													},
 													"domain": {
 														"description": "The domain of the Bookmark application.",
@@ -463,10 +470,17 @@
 														"x-auditable": true
 													},
 													"updated_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													}
 												},
 												"type": "object"
@@ -751,10 +765,17 @@
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"domain": {
 													"description": "The domain of the Bookmark application.",
@@ -779,10 +800,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -1070,10 +1098,17 @@
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"domain": {
 													"description": "The domain of the Bookmark application.",
@@ -1098,10 +1133,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -1385,10 +1427,17 @@
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"domain": {
 													"description": "The domain of the Bookmark application.",
@@ -1413,10 +1462,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"

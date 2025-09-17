@@ -1,0 +1,1287 @@
+{
+	"DELETE /accounts/{account_id}/realtimekit/webhooks/{webhook_id}": {
+		"description": "Removes a webhook for the given webhook ID.",
+		"operationId": "deleteWebhook",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the webhook",
+				"in": "path",
+				"name": "webhook_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "Timestamp when this webhook was created",
+											"example": "2022-05-28T07:01:53.075Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"enabled": {
+											"description": "Set to true if the webhook is active",
+											"type": "boolean"
+										},
+										"events": {
+											"description": "Events this webhook will send updates for",
+											"example": [
+												"meeting.started",
+												"meeting.ended",
+												"meeting.participantJoined",
+												"meeting.participantLeft",
+												"meeting.chatSynced",
+												"recording.statusUpdate",
+												"livestreaming.statusUpdate",
+												"meeting.transcript",
+												"meeting.summary"
+											],
+											"items": {
+												"enum": [
+													"meeting.started",
+													"meeting.ended",
+													"meeting.participantJoined",
+													"meeting.participantLeft",
+													"meeting.chatSynced",
+													"recording.statusUpdate",
+													"livestreaming.statusUpdate",
+													"meeting.transcript",
+													"meeting.summary"
+												],
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"id": {
+											"description": "ID of the webhook",
+											"example": "0d1f069d-43bb-489a-ad8c-7eb95592ba8e",
+											"format": "uuid",
+											"readOnly": true,
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the webhook",
+											"example": "All events webhook",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "Timestamp when this webhook was updated",
+											"example": "2022-05-28T07:01:53.075Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"url": {
+											"description": "URL the webhook will send events to",
+											"example": "https://webhook.site/b23a5bbd-c7b0-4ced-a9e2-78ae7889897e",
+											"format": "uri",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"url",
+										"events",
+										"created_at",
+										"updated_at",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"data"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Operation successful"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  \"success\": false,\n  \"error\": { \"code\": 400, \"message\": \"BAD_REQUEST \\\"id\\\" must be a valid GUID\" }\n}\n"
+							}
+						},
+						"schema": {
+							"properties": {
+								"error": {
+									"description": "Object containing details of the error that occurred",
+									"properties": {
+										"code": {
+											"description": "Error code",
+											"example": 404,
+											"type": "number"
+										},
+										"message": {
+											"description": "Error message",
+											"example": "Error: resource not found",
+											"type": "string"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the operation succeeded or not",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error - malformed request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  \"message\": \"Unauthorized\"\n}\n"
+							}
+						}
+					}
+				},
+				"description": "Invalid credentials"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete a webhook",
+		"tags": [
+			"Webhooks"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/webhooks": {
+		"description": "Returns details of all webhooks for an organization.",
+		"operationId": "getAllWebhooks",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"description": "Timestamp when this webhook was created",
+												"example": "2022-05-28T07:01:53.075Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"enabled": {
+												"description": "Set to true if the webhook is active",
+												"type": "boolean"
+											},
+											"events": {
+												"description": "Events this webhook will send updates for",
+												"example": [
+													"meeting.started",
+													"meeting.ended",
+													"meeting.participantJoined",
+													"meeting.participantLeft",
+													"meeting.chatSynced",
+													"recording.statusUpdate",
+													"livestreaming.statusUpdate",
+													"meeting.transcript",
+													"meeting.summary"
+												],
+												"items": {
+													"enum": [
+														"meeting.started",
+														"meeting.ended",
+														"meeting.participantJoined",
+														"meeting.participantLeft",
+														"meeting.chatSynced",
+														"recording.statusUpdate",
+														"livestreaming.statusUpdate",
+														"meeting.transcript",
+														"meeting.summary"
+													],
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"id": {
+												"description": "ID of the webhook",
+												"example": "0d1f069d-43bb-489a-ad8c-7eb95592ba8e",
+												"format": "uuid",
+												"readOnly": true,
+												"type": "string"
+											},
+											"name": {
+												"description": "Name of the webhook",
+												"example": "All events webhook",
+												"type": "string"
+											},
+											"updated_at": {
+												"description": "Timestamp when this webhook was updated",
+												"example": "2022-05-28T07:01:53.075Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"url": {
+												"description": "URL the webhook will send events to",
+												"example": "https://webhook.site/b23a5bbd-c7b0-4ced-a9e2-78ae7889897e",
+												"format": "uri",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"url",
+											"events",
+											"created_at",
+											"updated_at",
+											"enabled"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"data"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Operation successful"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  message: \"Unauthorized\"\n}\n"
+							}
+						}
+					}
+				},
+				"description": "Invalid credentials"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch all webhooks details",
+		"tags": [
+			"Webhooks"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/webhooks/{webhook_id}": {
+		"description": "Returns webhook details for the given webhook ID.",
+		"operationId": "getWebhook",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the webhook",
+				"in": "path",
+				"name": "webhook_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "Timestamp when this webhook was created",
+											"example": "2022-05-28T07:01:53.075Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"enabled": {
+											"description": "Set to true if the webhook is active",
+											"type": "boolean"
+										},
+										"events": {
+											"description": "Events this webhook will send updates for",
+											"example": [
+												"meeting.started",
+												"meeting.ended",
+												"meeting.participantJoined",
+												"meeting.participantLeft",
+												"meeting.chatSynced",
+												"recording.statusUpdate",
+												"livestreaming.statusUpdate",
+												"meeting.transcript",
+												"meeting.summary"
+											],
+											"items": {
+												"enum": [
+													"meeting.started",
+													"meeting.ended",
+													"meeting.participantJoined",
+													"meeting.participantLeft",
+													"meeting.chatSynced",
+													"recording.statusUpdate",
+													"livestreaming.statusUpdate",
+													"meeting.transcript",
+													"meeting.summary"
+												],
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"id": {
+											"description": "ID of the webhook",
+											"example": "0d1f069d-43bb-489a-ad8c-7eb95592ba8e",
+											"format": "uuid",
+											"readOnly": true,
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the webhook",
+											"example": "All events webhook",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "Timestamp when this webhook was updated",
+											"example": "2022-05-28T07:01:53.075Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"url": {
+											"description": "URL the webhook will send events to",
+											"example": "https://webhook.site/b23a5bbd-c7b0-4ced-a9e2-78ae7889897e",
+											"format": "uri",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"url",
+										"events",
+										"created_at",
+										"updated_at",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"data"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Operation successful"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  success: false,\n  error: { code: 400, message: 'BAD_REQUEST: \"id\" must be a valid GUID' }\n}\n"
+							}
+						},
+						"schema": {
+							"properties": {
+								"error": {
+									"description": "Object containing details of the error that occurred",
+									"properties": {
+										"code": {
+											"description": "Error code",
+											"example": 404,
+											"type": "number"
+										},
+										"message": {
+											"description": "Error message",
+											"example": "Error: resource not found",
+											"type": "string"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the operation succeeded or not",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error - malformed request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  message: \"Unauthorized\"\n}\n"
+							}
+						}
+					}
+				},
+				"description": "Invalid credentials"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch details of a webhook",
+		"tags": [
+			"Webhooks"
+		]
+	},
+	"PATCH /accounts/{account_id}/realtimekit/webhooks/{webhook_id}": {
+		"description": "Edits the webhook details for the given webhook ID.",
+		"operationId": "editWebhook",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the webhook",
+				"in": "path",
+				"name": "webhook_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"default": {
+							"value": "{\n  \"name\": \"test\",\n  \"events\": [ \"meeting.started\" ],\n  \"url\": \"https://new-test-url.com\"\n}\n"
+						}
+					},
+					"schema": {
+						"properties": {
+							"enabled": {
+								"default": true,
+								"type": "boolean"
+							},
+							"events": {
+								"description": "Events that the webhook will get triggered by",
+								"items": {
+									"enum": [
+										"meeting.started",
+										"meeting.ended",
+										"meeting.participantJoined",
+										"meeting.participantLeft",
+										"recording.statusUpdate",
+										"livestreaming.statusUpdate",
+										"meeting.chatSynced",
+										"meeting.transcript",
+										"meeting.summary"
+									],
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"name": {
+								"description": "Name of the webhook",
+								"type": "string"
+							},
+							"url": {
+								"description": "URL the webhook will send events to",
+								"example": "https://webhook.site/b23a5bbd-c7b0-4ced-a9e2-78ae7889897e",
+								"format": "uri",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  \"success\": true,\n  \"data\": {\n    id: \"901e9adf-ebd9-41f0-9098-28171bc04ddd\",\n    \"name\": \"test\",\n    \"events\": [ \"meeting.started\" ],\n    \"url\": \"https://new-test-url.com\",\n    \"created_at\": \"2021-09-09T10:25:12.330Z\",\n    \"updated_at\": \"2021-09-09T10:25:12.376Z\"\n  }\n}\n"
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "Timestamp when this webhook was created",
+											"example": "2022-05-28T07:01:53.075Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"enabled": {
+											"description": "Set to true if the webhook is active",
+											"type": "boolean"
+										},
+										"events": {
+											"description": "Events this webhook will send updates for",
+											"example": [
+												"meeting.started",
+												"meeting.ended",
+												"meeting.participantJoined",
+												"meeting.participantLeft",
+												"meeting.chatSynced",
+												"recording.statusUpdate",
+												"livestreaming.statusUpdate",
+												"meeting.transcript",
+												"meeting.summary"
+											],
+											"items": {
+												"enum": [
+													"meeting.started",
+													"meeting.ended",
+													"meeting.participantJoined",
+													"meeting.participantLeft",
+													"meeting.chatSynced",
+													"recording.statusUpdate",
+													"livestreaming.statusUpdate",
+													"meeting.transcript",
+													"meeting.summary"
+												],
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"id": {
+											"description": "ID of the webhook",
+											"example": "0d1f069d-43bb-489a-ad8c-7eb95592ba8e",
+											"format": "uuid",
+											"readOnly": true,
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the webhook",
+											"example": "All events webhook",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "Timestamp when this webhook was updated",
+											"example": "2022-05-28T07:01:53.075Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"url": {
+											"description": "URL the webhook will send events to",
+											"example": "https://webhook.site/b23a5bbd-c7b0-4ced-a9e2-78ae7889897e",
+											"format": "uri",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"url",
+										"events",
+										"created_at",
+										"updated_at",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"data"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Operation successful"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  \"success\": false,\n  \"error\": { \"code\": 400, \"message\": \"BAD_REQUEST \\\"id\\\" must be a valid GUID\" }\n}\n"
+							}
+						},
+						"schema": {
+							"properties": {
+								"error": {
+									"description": "Object containing details of the error that occurred",
+									"properties": {
+										"code": {
+											"description": "Error code",
+											"example": 404,
+											"type": "number"
+										},
+										"message": {
+											"description": "Error message",
+											"example": "Error: resource not found",
+											"type": "string"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the operation succeeded or not",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error - malformed request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  \"message\": \"Unauthorized\"\n}\n"
+							}
+						}
+					}
+				},
+				"description": "Invalid credentials"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Edit a webhook",
+		"tags": [
+			"Webhooks"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/webhooks": {
+		"description": "Adds a new webhook to an organization.",
+		"operationId": "addWebhook",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enabled": {
+								"default": true,
+								"description": "Set whether or not the webhook should be active when created",
+								"type": "boolean"
+							},
+							"events": {
+								"description": "Events that this webhook will get triggered by",
+								"example": [
+									"meeting.started",
+									"meeting.ended",
+									"meeting.participantJoined",
+									"meeting.participantLeft",
+									"meeting.chatSynced",
+									"recording.statusUpdate",
+									"livestreaming.statusUpdate",
+									"meeting.transcript",
+									"meeting.summary"
+								],
+								"items": {
+									"enum": [
+										"meeting.started",
+										"meeting.ended",
+										"meeting.participantJoined",
+										"meeting.participantLeft",
+										"meeting.chatSynced",
+										"recording.statusUpdate",
+										"livestreaming.statusUpdate",
+										"meeting.transcript",
+										"meeting.summary"
+									],
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"name": {
+								"description": "Name of the webhook",
+								"example": "All events webhook",
+								"type": "string"
+							},
+							"url": {
+								"description": "URL this webhook will send events to",
+								"example": "https://webhook.site/b23a5bbd-c7b0-4ced-a9e2-78ae7889897e",
+								"format": "uri",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"url",
+							"events"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "Timestamp when this webhook was created",
+											"example": "2022-05-28T07:01:53.075Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"enabled": {
+											"description": "Set to true if the webhook is active",
+											"type": "boolean"
+										},
+										"events": {
+											"description": "Events this webhook will send updates for",
+											"example": [
+												"meeting.started",
+												"meeting.ended",
+												"meeting.participantJoined",
+												"meeting.participantLeft",
+												"meeting.chatSynced",
+												"recording.statusUpdate",
+												"livestreaming.statusUpdate",
+												"meeting.transcript",
+												"meeting.summary"
+											],
+											"items": {
+												"enum": [
+													"meeting.started",
+													"meeting.ended",
+													"meeting.participantJoined",
+													"meeting.participantLeft",
+													"meeting.chatSynced",
+													"recording.statusUpdate",
+													"livestreaming.statusUpdate",
+													"meeting.transcript",
+													"meeting.summary"
+												],
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"id": {
+											"description": "ID of the webhook",
+											"example": "0d1f069d-43bb-489a-ad8c-7eb95592ba8e",
+											"format": "uuid",
+											"readOnly": true,
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the webhook",
+											"example": "All events webhook",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "Timestamp when this webhook was updated",
+											"example": "2022-05-28T07:01:53.075Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"url": {
+											"description": "URL the webhook will send events to",
+											"example": "https://webhook.site/b23a5bbd-c7b0-4ced-a9e2-78ae7889897e",
+											"format": "uri",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"url",
+										"events",
+										"created_at",
+										"updated_at",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"data"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Webhook registered successfully"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  success: false,\n  error: { code: 400, message: 'BAD_REQUEST: \"name\" is required' }\n}\n"
+							}
+						},
+						"schema": {
+							"properties": {
+								"error": {
+									"description": "Object containing details of the error that occurred",
+									"properties": {
+										"code": {
+											"description": "Error code",
+											"example": 404,
+											"type": "number"
+										},
+										"message": {
+											"description": "Error message",
+											"example": "Error: resource not found",
+											"type": "string"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the operation succeeded or not",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error - malformed request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  message: \"Unauthorized\"\n}\n"
+							}
+						}
+					}
+				},
+				"description": "Invalid credentials"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Add a webhook",
+		"tags": [
+			"Webhooks"
+		]
+	},
+	"PUT /accounts/{account_id}/realtimekit/webhooks/{webhook_id}": {
+		"description": "Replace all details for the given webhook ID.",
+		"operationId": "replaceWebhook",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the webhook",
+				"in": "path",
+				"name": "webhook_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"default": {
+							"value": "{\n  \"name\": \"test\",\n  \"events\": [ \"meeting.started\" ],\n  \"url\": \"https://new-test-url.com\"\n}\n"
+						}
+					},
+					"schema": {
+						"properties": {
+							"enabled": {
+								"default": true,
+								"description": "Set whether or not the webhook should be active when created",
+								"type": "boolean"
+							},
+							"events": {
+								"description": "Events that this webhook will get triggered by",
+								"example": [
+									"meeting.started",
+									"meeting.ended",
+									"meeting.participantJoined",
+									"meeting.participantLeft",
+									"meeting.chatSynced",
+									"recording.statusUpdate",
+									"livestreaming.statusUpdate",
+									"meeting.transcript",
+									"meeting.summary"
+								],
+								"items": {
+									"enum": [
+										"meeting.started",
+										"meeting.ended",
+										"meeting.participantJoined",
+										"meeting.participantLeft",
+										"meeting.chatSynced",
+										"recording.statusUpdate",
+										"livestreaming.statusUpdate",
+										"meeting.transcript",
+										"meeting.summary"
+									],
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"name": {
+								"description": "Name of the webhook",
+								"example": "All events webhook",
+								"type": "string"
+							},
+							"url": {
+								"description": "URL this webhook will send events to",
+								"example": "https://webhook.site/b23a5bbd-c7b0-4ced-a9e2-78ae7889897e",
+								"format": "uri",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"url",
+							"events"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  \"success\": true,\n  \"data\": {\n    id: \"901e9adf-ebd9-41f0-9098-28171bc04ddd\",\n    \"name\": \"test\",\n    \"events\": [ \"meeting.started\" ],\n    \"url\": \"https://new-test-url.com\",\n    \"created_at\": \"2021-09-09T10:25:12.330Z\",\n    \"updated_at\": \"2021-09-09T10:25:12.376Z\"\n  }\n}\n"
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "Timestamp when this webhook was created",
+											"example": "2022-05-28T07:01:53.075Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"enabled": {
+											"description": "Set to true if the webhook is active",
+											"type": "boolean"
+										},
+										"events": {
+											"description": "Events this webhook will send updates for",
+											"example": [
+												"meeting.started",
+												"meeting.ended",
+												"meeting.participantJoined",
+												"meeting.participantLeft",
+												"meeting.chatSynced",
+												"recording.statusUpdate",
+												"livestreaming.statusUpdate",
+												"meeting.transcript",
+												"meeting.summary"
+											],
+											"items": {
+												"enum": [
+													"meeting.started",
+													"meeting.ended",
+													"meeting.participantJoined",
+													"meeting.participantLeft",
+													"meeting.chatSynced",
+													"recording.statusUpdate",
+													"livestreaming.statusUpdate",
+													"meeting.transcript",
+													"meeting.summary"
+												],
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"id": {
+											"description": "ID of the webhook",
+											"example": "0d1f069d-43bb-489a-ad8c-7eb95592ba8e",
+											"format": "uuid",
+											"readOnly": true,
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the webhook",
+											"example": "All events webhook",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "Timestamp when this webhook was updated",
+											"example": "2022-05-28T07:01:53.075Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"url": {
+											"description": "URL the webhook will send events to",
+											"example": "https://webhook.site/b23a5bbd-c7b0-4ced-a9e2-78ae7889897e",
+											"format": "uri",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"url",
+										"events",
+										"created_at",
+										"updated_at",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"data"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Operation successful"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  \"success\": false,\n  \"error\": { \"code\": 400, \"message\": \"BAD_REQUEST \\\"id\\\" must be a valid GUID\" }\n}\n"
+							}
+						},
+						"schema": {
+							"properties": {
+								"error": {
+									"description": "Object containing details of the error that occurred",
+									"properties": {
+										"code": {
+											"description": "Error code",
+											"example": 404,
+											"type": "number"
+										},
+										"message": {
+											"description": "Error message",
+											"example": "Error: resource not found",
+											"type": "string"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the operation succeeded or not",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error - malformed request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"default": {
+								"value": "{\n  message: \"Unauthorized\"\n}\n"
+							}
+						}
+					}
+				},
+				"description": "Invalid credentials"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Replace a webhook",
+		"tags": [
+			"Webhooks"
+		]
+	}
+}

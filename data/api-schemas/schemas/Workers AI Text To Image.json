@@ -310,6 +310,330 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/leonardo/lucid-origin": {
+		"operationId": "workers-ai-post-run-cf-leonardo-lucid-origin",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"guidance": {
+								"default": 4.5,
+								"description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt",
+								"maximum": 10,
+								"minimum": 0,
+								"type": "number"
+							},
+							"height": {
+								"default": 1120,
+								"description": "The height of the generated image in pixels",
+								"maximum": 2500,
+								"minimum": 0,
+								"type": "integer"
+							},
+							"num_steps": {
+								"description": "The number of diffusion steps; higher values can improve quality but take longer",
+								"maximum": 40,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"prompt": {
+								"description": "A text description of the image you want to generate.",
+								"minLength": 1,
+								"type": "string"
+							},
+							"seed": {
+								"description": "Random seed for reproducibility of the image generation",
+								"minimum": 0,
+								"type": "integer"
+							},
+							"steps": {
+								"description": "The number of diffusion steps; higher values can improve quality but take longer",
+								"maximum": 40,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"width": {
+								"default": 1120,
+								"description": "The width of the generated image in pixels",
+								"maximum": 2500,
+								"minimum": 0,
+								"type": "integer"
+							}
+						},
+						"required": [
+							"prompt"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/leonardo/lucid-origin model.",
+		"tags": [
+			"Workers AI Text To Image"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/leonardo/phoenix-1.0": {
+		"operationId": "workers-ai-post-run-cf-leonardo-phoenix-1-0",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"guidance": {
+								"default": 2,
+								"description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt",
+								"maximum": 10,
+								"minimum": 2,
+								"type": "number"
+							},
+							"height": {
+								"default": 1024,
+								"description": "The height of the generated image in pixels",
+								"maximum": 2048,
+								"minimum": 0,
+								"type": "integer"
+							},
+							"negative_prompt": {
+								"description": "Specify what to exclude from the generated images",
+								"minLength": 1,
+								"type": "string"
+							},
+							"num_steps": {
+								"default": 25,
+								"description": "The number of diffusion steps; higher values can improve quality but take longer",
+								"maximum": 50,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"prompt": {
+								"description": "A text description of the image you want to generate.",
+								"minLength": 1,
+								"type": "string"
+							},
+							"seed": {
+								"description": "Random seed for reproducibility of the image generation",
+								"minimum": 0,
+								"type": "integer"
+							},
+							"width": {
+								"default": 1024,
+								"description": "The width of the generated image in pixels",
+								"maximum": 2048,
+								"minimum": 0,
+								"type": "integer"
+							}
+						},
+						"required": [
+							"prompt"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/leonardo/phoenix-1.0 model.",
+		"tags": [
+			"Workers AI Text To Image"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/lykon/dreamshaper-8-lcm": {
 		"operationId": "workers-ai-post-run-cf-lykon-dreamshaper-8-lcm",
 		"parameters": [

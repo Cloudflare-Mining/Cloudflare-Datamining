@@ -121,13 +121,14 @@
 											"example": "",
 											"type": "string"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete DNSSEC records response"
+				"description": "Delete DNSSEC records response."
 			},
 			"4XX": {
 				"content": {
@@ -229,7 +230,8 @@
 													"example": "",
 													"type": "string"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -343,10 +345,13 @@
 						}
 					}
 				},
-				"description": "Delete DNSSEC records response failure"
+				"description": "Delete DNSSEC records response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -599,13 +604,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "DNSSEC Details response"
+				"description": "DNSSEC Details response."
 			},
 			"4XX": {
 				"content": {
@@ -819,7 +825,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -933,10 +940,13 @@
 						}
 					}
 				},
-				"description": "DNSSEC Details response failure"
+				"description": "DNSSEC Details response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1008,9 +1018,11 @@
 									"active",
 									"disabled"
 								],
-								"example": "active"
+								"example": "active",
+								"type": "string"
 							}
-						}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -1227,13 +1239,14 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Edit DNSSEC Status response"
+				"description": "Edit DNSSEC Status response."
 			},
 			"4XX": {
 				"content": {
@@ -1447,7 +1460,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1561,10 +1575,13 @@
 						}
 					}
 				},
-				"description": "Edit DNSSEC Status response failure"
+				"description": "Edit DNSSEC Status response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

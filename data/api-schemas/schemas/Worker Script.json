@@ -679,14 +679,16 @@
 										"result": {
 											"properties": {
 												"enabled": {
+													"default": false,
 													"description": "Whether the Worker is available on the workers.dev subdomain.",
-													"example": true,
+													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												},
 												"previews_enabled": {
+													"default": false,
 													"description": "Whether the Worker's Preview URLs are available on the workers.dev subdomain.",
-													"example": true,
+													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												}
@@ -1334,6 +1336,406 @@
 			"Workers Scripts Read"
 		]
 	},
+	"GET /accounts/{account_id}/workers/scripts-search": {
+		"description": "Search for Workers in an account.",
+		"operationId": "worker-script-search-workers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Worker name to search for. Both exact and partial matches are returned.",
+					"example": "my-worker",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"description": "Worker ID (also called tag) to search for. Only exact matches are returned.",
+					"example": "bdf3567828824b74aadd550004cf4913",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"default": "name",
+					"description": "Property to sort results by. Results are sorted in ascending order.",
+					"enum": [
+						"created_on",
+						"modified_on",
+						"name"
+					],
+					"example": "created_on",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Current page.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Items per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 10,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created_on": {
+														"description": "When the script was created.",
+														"example": "2017-01-01T00:00:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"environment_is_default": {
+														"description": "Whether the environment is the default environment.",
+														"example": true,
+														"type": "boolean"
+													},
+													"environment_name": {
+														"description": "Name of the environment.",
+														"example": "production",
+														"type": "string"
+													},
+													"modified_on": {
+														"description": "When the script was last modified.",
+														"example": "2017-01-01T00:00:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"script_name": {
+														"description": "Name of the script, used in URLs and route configuration.",
+														"example": "this-is_my_script-01",
+														"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+														"type": "string",
+														"x-auditable": true
+													},
+													"script_tag": {
+														"description": "Identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string",
+														"x-auditable": true
+													},
+													"service_name": {
+														"description": "Name of the service.",
+														"example": "my-service",
+														"type": "string"
+													}
+												},
+												"required": [
+													"script_tag",
+													"script_name",
+													"created_on",
+													"modified_on"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Search Workers success."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Search Workers failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Search Workers",
+		"tags": [
+			"Worker Script"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		]
+	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}": {
 		"description": "Fetch raw script content for your worker. Note this is the original script content, not JSON encoded.",
 		"operationId": "worker-script-download-worker",
@@ -1842,6 +2244,17 @@
 																	"description": "Log settings for the Worker.",
 																	"nullable": true,
 																	"properties": {
+																		"destinations": {
+																			"description": "A list of destinations where logs will be exported to.",
+																			"example": [
+																				"cloudflare"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
+																			"x-auditable": true
+																		},
 																		"enabled": {
 																			"description": "Whether logs are enabled for the Worker.",
 																			"example": true,
@@ -1857,6 +2270,13 @@
 																		},
 																		"invocation_logs": {
 																			"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"persist": {
+																			"default": true,
+																			"description": "Whether log persistence is enabled for the Worker.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true
@@ -1877,6 +2297,38 @@
 														{
 															"nullable": true,
 															"type": "object",
+															"x-auditable": true
+														}
+													]
+												},
+												"tags": {
+													"allOf": [
+														{
+															"description": "Tags associated with the Worker.",
+															"example": [
+																"my-team",
+																"my-public-api"
+															],
+															"items": {
+																"example": "my-tag",
+																"maxLength": 1024,
+																"pattern": "^[^,&]*$",
+																"type": "string"
+															},
+															"maxItems": 10,
+															"type": "array",
+															"x-auditable": true,
+															"x-stainless-collection-type": "set"
+														},
+														{
+															"items": {
+																"example": "my-tag",
+																"maxLength": 1024,
+																"pattern": "^[^,&]*$",
+																"type": "string"
+															},
+															"nullable": true,
+															"type": "array",
 															"x-auditable": true
 														}
 													]
@@ -2979,9 +3431,12 @@
 																		"assets": "#/components/schemas/workers_binding_kind_assets",
 																		"browser": "#/components/schemas/workers_binding_kind_browser",
 																		"d1": "#/components/schemas/workers_binding_kind_d1",
+																		"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 																		"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 																		"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
 																		"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
+																		"images": "#/components/schemas/workers_binding_kind_images",
+																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																		"json": "#/components/schemas/workers_binding_kind_json",
 																		"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																		"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
@@ -2992,10 +3447,13 @@
 																		"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 																		"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
+																		"send_email": "#/components/schemas/workers_binding_kind_send_email",
 																		"service": "#/components/schemas/workers_binding_kind_service",
 																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
+																		"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																		"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
@@ -3127,6 +3585,37 @@
 																			"name",
 																			"type",
 																			"id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the data content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.bin",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"data_blob"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	},
@@ -3277,6 +3766,65 @@
 																			"name",
 																			"type",
 																			"id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "The name of the inherited binding.",
+																				"example": "MY_BINDING",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"old_name": {
+																				"description": "The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.",
+																				"example": "MY_OLD_BINDING",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"inherit"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"version_id": {
+																				"default": "latest",
+																				"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																				"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"images"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
 																		],
 																		"type": "object"
 																	},
@@ -3522,7 +4070,64 @@
 																	},
 																	{
 																		"properties": {
+																			"allowed_destination_addresses": {
+																				"description": "List of allowed destination addresses.",
+																				"example": [
+																					"user1@example.com",
+																					"user2@example.com"
+																				],
+																				"items": {
+																					"format": "email",
+																					"type": "string"
+																				},
+																				"type": "array",
+																				"x-auditable": true
+																			},
+																			"allowed_sender_addresses": {
+																				"description": "List of allowed sender addresses.",
+																				"example": [
+																					"user1@example.com",
+																					"user2@example.com"
+																				],
+																				"items": {
+																					"format": "email",
+																					"type": "string"
+																				},
+																				"type": "array",
+																				"x-auditable": true
+																			},
+																			"destination_address": {
+																				"description": "Destination address for the email.",
+																				"example": "user@example.com",
+																				"format": "email",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"send_email"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
 																			"environment": {
+																				"default": "production",
 																				"description": "Optional environment if the Worker utilizes one.",
 																				"example": "production",
 																				"type": "string",
@@ -3552,8 +4157,7 @@
 																		"required": [
 																			"name",
 																			"type",
-																			"service",
-																			"environment"
+																			"service"
 																		],
 																		"type": "object"
 																	},
@@ -3584,6 +4188,37 @@
 																			"name",
 																			"type",
 																			"service"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the text content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.txt",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"text_blob"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	},
@@ -3791,6 +4426,37 @@
 																			"name",
 																			"type",
 																			"workflow_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.wasm",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"wasm_module"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	}
@@ -3810,9 +4476,12 @@
 																		"assets": "#/components/schemas/workers_binding_kind_assets",
 																		"browser": "#/components/schemas/workers_binding_kind_browser",
 																		"d1": "#/components/schemas/workers_binding_kind_d1",
+																		"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 																		"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 																		"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
 																		"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
+																		"images": "#/components/schemas/workers_binding_kind_images",
+																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																		"json": "#/components/schemas/workers_binding_kind_json",
 																		"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																		"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
@@ -3823,10 +4492,13 @@
 																		"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 																		"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
+																		"send_email": "#/components/schemas/workers_binding_kind_send_email",
 																		"service": "#/components/schemas/workers_binding_kind_service",
 																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
+																		"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																		"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
@@ -3958,6 +4630,37 @@
 																			"name",
 																			"type",
 																			"id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the data content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.bin",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"data_blob"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	},
@@ -4108,6 +4811,65 @@
 																			"name",
 																			"type",
 																			"id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "The name of the inherited binding.",
+																				"example": "MY_BINDING",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"old_name": {
+																				"description": "The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.",
+																				"example": "MY_OLD_BINDING",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"inherit"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"version_id": {
+																				"default": "latest",
+																				"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																				"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"images"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
 																		],
 																		"type": "object"
 																	},
@@ -4353,7 +5115,64 @@
 																	},
 																	{
 																		"properties": {
+																			"allowed_destination_addresses": {
+																				"description": "List of allowed destination addresses.",
+																				"example": [
+																					"user1@example.com",
+																					"user2@example.com"
+																				],
+																				"items": {
+																					"format": "email",
+																					"type": "string"
+																				},
+																				"type": "array",
+																				"x-auditable": true
+																			},
+																			"allowed_sender_addresses": {
+																				"description": "List of allowed sender addresses.",
+																				"example": [
+																					"user1@example.com",
+																					"user2@example.com"
+																				],
+																				"items": {
+																					"format": "email",
+																					"type": "string"
+																				},
+																				"type": "array",
+																				"x-auditable": true
+																			},
+																			"destination_address": {
+																				"description": "Destination address for the email.",
+																				"example": "user@example.com",
+																				"format": "email",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"send_email"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
 																			"environment": {
+																				"default": "production",
 																				"description": "Optional environment if the Worker utilizes one.",
 																				"example": "production",
 																				"type": "string",
@@ -4383,8 +5202,7 @@
 																		"required": [
 																			"name",
 																			"type",
-																			"service",
-																			"environment"
+																			"service"
 																		],
 																		"type": "object"
 																	},
@@ -4415,6 +5233,37 @@
 																			"name",
 																			"type",
 																			"service"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the text content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.txt",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"text_blob"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	},
@@ -4622,6 +5471,37 @@
 																			"name",
 																			"type",
 																			"workflow_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.wasm",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"wasm_module"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	}
@@ -4931,6 +5811,17 @@
 															"description": "Log settings for the Worker.",
 															"nullable": true,
 															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where logs will be exported to.",
+																	"example": [
+																		"cloudflare"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
 																"enabled": {
 																	"description": "Whether logs are enabled for the Worker.",
 																	"example": true,
@@ -4946,6 +5837,13 @@
 																},
 																"invocation_logs": {
 																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether log persistence is enabled for the Worker.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true
@@ -4988,14 +5886,20 @@
 												"tags": {
 													"allOf": [
 														{
-															"description": "Tags to help you manage your Workers.",
+															"description": "Tags associated with the Worker.",
+															"example": [
+																"my-team",
+																"my-public-api"
+															],
 															"items": {
-																"description": "Tag to help you manage your Worker.",
 																"example": "my-tag",
-																"type": "string",
-																"x-auditable": true
+																"maxLength": 1024,
+																"pattern": "^[^,&]*$",
+																"type": "string"
 															},
+															"maxItems": 10,
 															"type": "array",
+															"x-auditable": true,
 															"x-stainless-collection-type": "set"
 														},
 														{
@@ -5359,14 +6263,16 @@
 										"result": {
 											"properties": {
 												"enabled": {
+													"default": false,
 													"description": "Whether the Worker is available on the workers.dev subdomain.",
-													"example": true,
+													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												},
 												"previews_enabled": {
+													"default": false,
 													"description": "Whether the Worker's Preview URLs are available on the workers.dev subdomain.",
-													"example": true,
+													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												}
@@ -5867,6 +6773,17 @@
 												"description": "Log settings for the Worker.",
 												"nullable": true,
 												"properties": {
+													"destinations": {
+														"description": "A list of destinations where logs will be exported to.",
+														"example": [
+															"cloudflare"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
 													"enabled": {
 														"description": "Whether logs are enabled for the Worker.",
 														"example": true,
@@ -5882,6 +6799,13 @@
 													},
 													"invocation_logs": {
 														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether log persistence is enabled for the Worker.",
 														"example": true,
 														"type": "boolean",
 														"x-auditable": true
@@ -5902,6 +6826,38 @@
 									{
 										"nullable": true,
 										"type": "object",
+										"x-auditable": true
+									}
+								]
+							},
+							"tags": {
+								"allOf": [
+									{
+										"description": "Tags associated with the Worker.",
+										"example": [
+											"my-team",
+											"my-public-api"
+										],
+										"items": {
+											"example": "my-tag",
+											"maxLength": 1024,
+											"pattern": "^[^,&]*$",
+											"type": "string"
+										},
+										"maxItems": 10,
+										"type": "array",
+										"x-auditable": true,
+										"x-stainless-collection-type": "set"
+									},
+									{
+										"items": {
+											"example": "my-tag",
+											"maxLength": 1024,
+											"pattern": "^[^,&]*$",
+											"type": "string"
+										},
+										"nullable": true,
+										"type": "array",
 										"x-auditable": true
 									}
 								]
@@ -6067,6 +7023,17 @@
 																	"description": "Log settings for the Worker.",
 																	"nullable": true,
 																	"properties": {
+																		"destinations": {
+																			"description": "A list of destinations where logs will be exported to.",
+																			"example": [
+																				"cloudflare"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
+																			"x-auditable": true
+																		},
 																		"enabled": {
 																			"description": "Whether logs are enabled for the Worker.",
 																			"example": true,
@@ -6082,6 +7049,13 @@
 																		},
 																		"invocation_logs": {
 																			"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"persist": {
+																			"default": true,
+																			"description": "Whether log persistence is enabled for the Worker.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true
@@ -6102,6 +7076,38 @@
 														{
 															"nullable": true,
 															"type": "object",
+															"x-auditable": true
+														}
+													]
+												},
+												"tags": {
+													"allOf": [
+														{
+															"description": "Tags associated with the Worker.",
+															"example": [
+																"my-team",
+																"my-public-api"
+															],
+															"items": {
+																"example": "my-tag",
+																"maxLength": 1024,
+																"pattern": "^[^,&]*$",
+																"type": "string"
+															},
+															"maxItems": 10,
+															"type": "array",
+															"x-auditable": true,
+															"x-stainless-collection-type": "set"
+														},
+														{
+															"items": {
+																"example": "my-tag",
+																"maxLength": 1024,
+																"pattern": "^[^,&]*$",
+																"type": "string"
+															},
+															"nullable": true,
+															"type": "array",
 															"x-auditable": true
 														}
 													]
@@ -6317,6 +7323,11 @@
 		"requestBody": {
 			"content": {
 				"multipart/form-data": {
+					"encoding": {
+						"settings": {
+							"contentType": "application/json"
+						}
+					},
 					"schema": {
 						"properties": {
 							"settings": {
@@ -6341,9 +7352,12 @@
 															"assets": "#/components/schemas/workers_binding_kind_assets",
 															"browser": "#/components/schemas/workers_binding_kind_browser",
 															"d1": "#/components/schemas/workers_binding_kind_d1",
+															"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 															"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 															"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
 															"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
+															"images": "#/components/schemas/workers_binding_kind_images",
+															"inherit": "#/components/schemas/workers_binding_kind_inherit",
 															"json": "#/components/schemas/workers_binding_kind_json",
 															"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 															"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
@@ -6354,10 +7368,13 @@
 															"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 															"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 															"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
+															"send_email": "#/components/schemas/workers_binding_kind_send_email",
 															"service": "#/components/schemas/workers_binding_kind_service",
 															"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
+															"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 															"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 															"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+															"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 															"workflow": "#/components/schemas/workers_binding_kind_workflow"
 														},
 														"propertyName": "type"
@@ -6489,6 +7506,37 @@
 																"name",
 																"type",
 																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"part": {
+																	"description": "The name of the file containing the data content. Only accepted for `service worker syntax` Workers.",
+																	"example": "my-module.bin",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"deprecated": true,
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"data_blob"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"part"
 															],
 															"type": "object"
 														},
@@ -6639,6 +7687,65 @@
 																"name",
 																"type",
 																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "The name of the inherited binding.",
+																	"example": "MY_BINDING",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"old_name": {
+																	"description": "The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.",
+																	"example": "MY_OLD_BINDING",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"inherit"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"version_id": {
+																	"default": "latest",
+																	"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																	"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"images"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
 															],
 															"type": "object"
 														},
@@ -6884,7 +7991,64 @@
 														},
 														{
 															"properties": {
+																"allowed_destination_addresses": {
+																	"description": "List of allowed destination addresses.",
+																	"example": [
+																		"user1@example.com",
+																		"user2@example.com"
+																	],
+																	"items": {
+																		"format": "email",
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"allowed_sender_addresses": {
+																	"description": "List of allowed sender addresses.",
+																	"example": [
+																		"user1@example.com",
+																		"user2@example.com"
+																	],
+																	"items": {
+																		"format": "email",
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"destination_address": {
+																	"description": "Destination address for the email.",
+																	"example": "user@example.com",
+																	"format": "email",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"send_email"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
 																"environment": {
+																	"default": "production",
 																	"description": "Optional environment if the Worker utilizes one.",
 																	"example": "production",
 																	"type": "string",
@@ -6914,8 +8078,7 @@
 															"required": [
 																"name",
 																"type",
-																"service",
-																"environment"
+																"service"
 															],
 															"type": "object"
 														},
@@ -6946,6 +8109,37 @@
 																"name",
 																"type",
 																"service"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"part": {
+																	"description": "The name of the file containing the text content. Only accepted for `service worker syntax` Workers.",
+																	"example": "my-module.txt",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"deprecated": true,
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"text_blob"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"part"
 															],
 															"type": "object"
 														},
@@ -7153,6 +8347,37 @@
 																"name",
 																"type",
 																"workflow_name"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"part": {
+																	"description": "The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.",
+																	"example": "my-module.wasm",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"deprecated": true,
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"wasm_module"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"part"
 															],
 															"type": "object"
 														}
@@ -7172,9 +8397,12 @@
 															"assets": "#/components/schemas/workers_binding_kind_assets",
 															"browser": "#/components/schemas/workers_binding_kind_browser",
 															"d1": "#/components/schemas/workers_binding_kind_d1",
+															"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 															"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 															"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
 															"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
+															"images": "#/components/schemas/workers_binding_kind_images",
+															"inherit": "#/components/schemas/workers_binding_kind_inherit",
 															"json": "#/components/schemas/workers_binding_kind_json",
 															"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 															"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
@@ -7185,10 +8413,13 @@
 															"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 															"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 															"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
+															"send_email": "#/components/schemas/workers_binding_kind_send_email",
 															"service": "#/components/schemas/workers_binding_kind_service",
 															"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
+															"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 															"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 															"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+															"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 															"workflow": "#/components/schemas/workers_binding_kind_workflow"
 														},
 														"propertyName": "type"
@@ -7320,6 +8551,37 @@
 																"name",
 																"type",
 																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"part": {
+																	"description": "The name of the file containing the data content. Only accepted for `service worker syntax` Workers.",
+																	"example": "my-module.bin",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"deprecated": true,
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"data_blob"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"part"
 															],
 															"type": "object"
 														},
@@ -7470,6 +8732,65 @@
 																"name",
 																"type",
 																"id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "The name of the inherited binding.",
+																	"example": "MY_BINDING",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"old_name": {
+																	"description": "The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.",
+																	"example": "MY_OLD_BINDING",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"inherit"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"version_id": {
+																	"default": "latest",
+																	"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																	"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"images"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
 															],
 															"type": "object"
 														},
@@ -7715,7 +9036,64 @@
 														},
 														{
 															"properties": {
+																"allowed_destination_addresses": {
+																	"description": "List of allowed destination addresses.",
+																	"example": [
+																		"user1@example.com",
+																		"user2@example.com"
+																	],
+																	"items": {
+																		"format": "email",
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"allowed_sender_addresses": {
+																	"description": "List of allowed sender addresses.",
+																	"example": [
+																		"user1@example.com",
+																		"user2@example.com"
+																	],
+																	"items": {
+																		"format": "email",
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"destination_address": {
+																	"description": "Destination address for the email.",
+																	"example": "user@example.com",
+																	"format": "email",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"send_email"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
 																"environment": {
+																	"default": "production",
 																	"description": "Optional environment if the Worker utilizes one.",
 																	"example": "production",
 																	"type": "string",
@@ -7745,8 +9123,7 @@
 															"required": [
 																"name",
 																"type",
-																"service",
-																"environment"
+																"service"
 															],
 															"type": "object"
 														},
@@ -7777,6 +9154,37 @@
 																"name",
 																"type",
 																"service"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"part": {
+																	"description": "The name of the file containing the text content. Only accepted for `service worker syntax` Workers.",
+																	"example": "my-module.txt",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"deprecated": true,
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"text_blob"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"part"
 															],
 															"type": "object"
 														},
@@ -7984,6 +9392,37 @@
 																"name",
 																"type",
 																"workflow_name"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"part": {
+																	"description": "The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.",
+																	"example": "my-module.wasm",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"deprecated": true,
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"wasm_module"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"part"
 															],
 															"type": "object"
 														}
@@ -8293,6 +9732,17 @@
 												"description": "Log settings for the Worker.",
 												"nullable": true,
 												"properties": {
+													"destinations": {
+														"description": "A list of destinations where logs will be exported to.",
+														"example": [
+															"cloudflare"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
 													"enabled": {
 														"description": "Whether logs are enabled for the Worker.",
 														"example": true,
@@ -8308,6 +9758,13 @@
 													},
 													"invocation_logs": {
 														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether log persistence is enabled for the Worker.",
 														"example": true,
 														"type": "boolean",
 														"x-auditable": true
@@ -8350,14 +9807,20 @@
 									"tags": {
 										"allOf": [
 											{
-												"description": "Tags to help you manage your Workers.",
+												"description": "Tags associated with the Worker.",
+												"example": [
+													"my-team",
+													"my-public-api"
+												],
 												"items": {
-													"description": "Tag to help you manage your Worker.",
 													"example": "my-tag",
-													"type": "string",
-													"x-auditable": true
+													"maxLength": 1024,
+													"pattern": "^[^,&]*$",
+													"type": "string"
 												},
+												"maxItems": 10,
 												"type": "array",
+												"x-auditable": true,
 												"x-stainless-collection-type": "set"
 											},
 											{
@@ -8573,9 +10036,12 @@
 																		"assets": "#/components/schemas/workers_binding_kind_assets",
 																		"browser": "#/components/schemas/workers_binding_kind_browser",
 																		"d1": "#/components/schemas/workers_binding_kind_d1",
+																		"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 																		"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 																		"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
 																		"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
+																		"images": "#/components/schemas/workers_binding_kind_images",
+																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																		"json": "#/components/schemas/workers_binding_kind_json",
 																		"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																		"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
@@ -8586,10 +10052,13 @@
 																		"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 																		"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
+																		"send_email": "#/components/schemas/workers_binding_kind_send_email",
 																		"service": "#/components/schemas/workers_binding_kind_service",
 																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
+																		"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																		"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
@@ -8721,6 +10190,37 @@
 																			"name",
 																			"type",
 																			"id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the data content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.bin",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"data_blob"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	},
@@ -8871,6 +10371,65 @@
 																			"name",
 																			"type",
 																			"id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "The name of the inherited binding.",
+																				"example": "MY_BINDING",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"old_name": {
+																				"description": "The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.",
+																				"example": "MY_OLD_BINDING",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"inherit"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"version_id": {
+																				"default": "latest",
+																				"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																				"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"images"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
 																		],
 																		"type": "object"
 																	},
@@ -9116,7 +10675,64 @@
 																	},
 																	{
 																		"properties": {
+																			"allowed_destination_addresses": {
+																				"description": "List of allowed destination addresses.",
+																				"example": [
+																					"user1@example.com",
+																					"user2@example.com"
+																				],
+																				"items": {
+																					"format": "email",
+																					"type": "string"
+																				},
+																				"type": "array",
+																				"x-auditable": true
+																			},
+																			"allowed_sender_addresses": {
+																				"description": "List of allowed sender addresses.",
+																				"example": [
+																					"user1@example.com",
+																					"user2@example.com"
+																				],
+																				"items": {
+																					"format": "email",
+																					"type": "string"
+																				},
+																				"type": "array",
+																				"x-auditable": true
+																			},
+																			"destination_address": {
+																				"description": "Destination address for the email.",
+																				"example": "user@example.com",
+																				"format": "email",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"send_email"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
 																			"environment": {
+																				"default": "production",
 																				"description": "Optional environment if the Worker utilizes one.",
 																				"example": "production",
 																				"type": "string",
@@ -9146,8 +10762,7 @@
 																		"required": [
 																			"name",
 																			"type",
-																			"service",
-																			"environment"
+																			"service"
 																		],
 																		"type": "object"
 																	},
@@ -9178,6 +10793,37 @@
 																			"name",
 																			"type",
 																			"service"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the text content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.txt",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"text_blob"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	},
@@ -9385,6 +11031,37 @@
 																			"name",
 																			"type",
 																			"workflow_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.wasm",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"wasm_module"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	}
@@ -9404,9 +11081,12 @@
 																		"assets": "#/components/schemas/workers_binding_kind_assets",
 																		"browser": "#/components/schemas/workers_binding_kind_browser",
 																		"d1": "#/components/schemas/workers_binding_kind_d1",
+																		"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 																		"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 																		"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
 																		"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
+																		"images": "#/components/schemas/workers_binding_kind_images",
+																		"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																		"json": "#/components/schemas/workers_binding_kind_json",
 																		"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																		"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
@@ -9417,10 +11097,13 @@
 																		"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 																		"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
+																		"send_email": "#/components/schemas/workers_binding_kind_send_email",
 																		"service": "#/components/schemas/workers_binding_kind_service",
 																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
+																		"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																		"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
@@ -9552,6 +11235,37 @@
 																			"name",
 																			"type",
 																			"id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the data content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.bin",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"data_blob"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	},
@@ -9702,6 +11416,65 @@
 																			"name",
 																			"type",
 																			"id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "The name of the inherited binding.",
+																				"example": "MY_BINDING",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"old_name": {
+																				"description": "The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.",
+																				"example": "MY_OLD_BINDING",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"inherit"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"version_id": {
+																				"default": "latest",
+																				"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																				"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"images"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
 																		],
 																		"type": "object"
 																	},
@@ -9947,7 +11720,64 @@
 																	},
 																	{
 																		"properties": {
+																			"allowed_destination_addresses": {
+																				"description": "List of allowed destination addresses.",
+																				"example": [
+																					"user1@example.com",
+																					"user2@example.com"
+																				],
+																				"items": {
+																					"format": "email",
+																					"type": "string"
+																				},
+																				"type": "array",
+																				"x-auditable": true
+																			},
+																			"allowed_sender_addresses": {
+																				"description": "List of allowed sender addresses.",
+																				"example": [
+																					"user1@example.com",
+																					"user2@example.com"
+																				],
+																				"items": {
+																					"format": "email",
+																					"type": "string"
+																				},
+																				"type": "array",
+																				"x-auditable": true
+																			},
+																			"destination_address": {
+																				"description": "Destination address for the email.",
+																				"example": "user@example.com",
+																				"format": "email",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"send_email"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
 																			"environment": {
+																				"default": "production",
 																				"description": "Optional environment if the Worker utilizes one.",
 																				"example": "production",
 																				"type": "string",
@@ -9977,8 +11807,7 @@
 																		"required": [
 																			"name",
 																			"type",
-																			"service",
-																			"environment"
+																			"service"
 																		],
 																		"type": "object"
 																	},
@@ -10009,6 +11838,37 @@
 																			"name",
 																			"type",
 																			"service"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the text content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.txt",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"text_blob"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	},
@@ -10216,6 +12076,37 @@
 																			"name",
 																			"type",
 																			"workflow_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"part": {
+																				"description": "The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.",
+																				"example": "my-module.wasm",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"deprecated": true,
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"wasm_module"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"part"
 																		],
 																		"type": "object"
 																	}
@@ -10525,6 +12416,17 @@
 															"description": "Log settings for the Worker.",
 															"nullable": true,
 															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where logs will be exported to.",
+																	"example": [
+																		"cloudflare"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
 																"enabled": {
 																	"description": "Whether logs are enabled for the Worker.",
 																	"example": true,
@@ -10540,6 +12442,13 @@
 																},
 																"invocation_logs": {
 																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether log persistence is enabled for the Worker.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true
@@ -10582,14 +12491,20 @@
 												"tags": {
 													"allOf": [
 														{
-															"description": "Tags to help you manage your Workers.",
+															"description": "Tags associated with the Worker.",
+															"example": [
+																"my-team",
+																"my-public-api"
+															],
 															"items": {
-																"description": "Tag to help you manage your Worker.",
 																"example": "my-tag",
-																"type": "string",
-																"x-auditable": true
+																"maxLength": 1024,
+																"pattern": "^[^,&]*$",
+																"type": "string"
 															},
+															"maxItems": 10,
 															"type": "array",
+															"x-auditable": true,
 															"x-stainless-collection-type": "set"
 														},
 														{
@@ -11692,8 +13607,9 @@
 								"x-auditable": true
 							},
 							"previews_enabled": {
+								"default": false,
 								"description": "Whether the Worker's Preview URLs should be available on the workers.dev subdomain.",
-								"example": true,
+								"example": false,
 								"type": "boolean",
 								"x-auditable": true
 							}
@@ -11800,14 +13716,16 @@
 										"result": {
 											"properties": {
 												"enabled": {
+													"default": false,
 													"description": "Whether the Worker is available on the workers.dev subdomain.",
-													"example": true,
+													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												},
 												"previews_enabled": {
+													"default": false,
 													"description": "Whether the Worker's Preview URLs are available on the workers.dev subdomain.",
-													"example": true,
+													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												}
@@ -12124,9 +14042,12 @@
 													"assets": "#/components/schemas/workers_binding_kind_assets",
 													"browser": "#/components/schemas/workers_binding_kind_browser",
 													"d1": "#/components/schemas/workers_binding_kind_d1",
+													"data_blob": "#/components/schemas/workers_binding_kind_data_blob",
 													"dispatch_namespace": "#/components/schemas/workers_binding_kind_dispatch_namespace",
 													"durable_object_namespace": "#/components/schemas/workers_binding_kind_durable_object_namespace",
 													"hyperdrive": "#/components/schemas/workers_binding_kind_hyperdrive",
+													"images": "#/components/schemas/workers_binding_kind_images",
+													"inherit": "#/components/schemas/workers_binding_kind_inherit",
 													"json": "#/components/schemas/workers_binding_kind_json",
 													"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 													"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
@@ -12137,10 +14058,13 @@
 													"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 													"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 													"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
+													"send_email": "#/components/schemas/workers_binding_kind_send_email",
 													"service": "#/components/schemas/workers_binding_kind_service",
 													"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
+													"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 													"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 													"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+													"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 													"workflow": "#/components/schemas/workers_binding_kind_workflow"
 												},
 												"propertyName": "type"
@@ -12272,6 +14196,37 @@
 														"name",
 														"type",
 														"id"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"part": {
+															"description": "The name of the file containing the data content. Only accepted for `service worker syntax` Workers.",
+															"example": "my-module.bin",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"deprecated": true,
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"data_blob"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"part"
 													],
 													"type": "object"
 												},
@@ -12422,6 +14377,65 @@
 														"name",
 														"type",
 														"id"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "The name of the inherited binding.",
+															"example": "MY_BINDING",
+															"type": "string",
+															"x-auditable": true
+														},
+														"old_name": {
+															"description": "The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.",
+															"example": "MY_OLD_BINDING",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"inherit"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"version_id": {
+															"default": "latest",
+															"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+															"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"images"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type"
 													],
 													"type": "object"
 												},
@@ -12667,7 +14681,64 @@
 												},
 												{
 													"properties": {
+														"allowed_destination_addresses": {
+															"description": "List of allowed destination addresses.",
+															"example": [
+																"user1@example.com",
+																"user2@example.com"
+															],
+															"items": {
+																"format": "email",
+																"type": "string"
+															},
+															"type": "array",
+															"x-auditable": true
+														},
+														"allowed_sender_addresses": {
+															"description": "List of allowed sender addresses.",
+															"example": [
+																"user1@example.com",
+																"user2@example.com"
+															],
+															"items": {
+																"format": "email",
+																"type": "string"
+															},
+															"type": "array",
+															"x-auditable": true
+														},
+														"destination_address": {
+															"description": "Destination address for the email.",
+															"example": "user@example.com",
+															"format": "email",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"send_email"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
 														"environment": {
+															"default": "production",
 															"description": "Optional environment if the Worker utilizes one.",
 															"example": "production",
 															"type": "string",
@@ -12697,8 +14768,7 @@
 													"required": [
 														"name",
 														"type",
-														"service",
-														"environment"
+														"service"
 													],
 													"type": "object"
 												},
@@ -12729,6 +14799,37 @@
 														"name",
 														"type",
 														"service"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"part": {
+															"description": "The name of the file containing the text content. Only accepted for `service worker syntax` Workers.",
+															"example": "my-module.txt",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"deprecated": true,
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"text_blob"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"part"
 													],
 													"type": "object"
 												},
@@ -12938,6 +15039,37 @@
 														"workflow_name"
 													],
 													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"part": {
+															"description": "The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.",
+															"example": "my-module.wasm",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"deprecated": true,
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"wasm_module"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"part"
+													],
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -12945,7 +15077,7 @@
 										"type": "array"
 									},
 									"body_part": {
-										"description": "Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
+										"description": "Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
 										"example": "worker.js",
 										"type": "string"
 									},
@@ -13003,7 +15135,7 @@
 										"x-auditable": true
 									},
 									"main_module": {
-										"description": "Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
+										"description": "Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
 										"example": "worker.js",
 										"type": "string"
 									},
@@ -13244,6 +15376,17 @@
 												"description": "Log settings for the Worker.",
 												"nullable": true,
 												"properties": {
+													"destinations": {
+														"description": "A list of destinations where logs will be exported to.",
+														"example": [
+															"cloudflare"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
 													"enabled": {
 														"description": "Whether logs are enabled for the Worker.",
 														"example": true,
@@ -13259,6 +15402,13 @@
 													},
 													"invocation_logs": {
 														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"persist": {
+														"default": true,
+														"description": "Whether log persistence is enabled for the Worker.",
 														"example": true,
 														"type": "boolean",
 														"x-auditable": true

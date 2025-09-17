@@ -12,7 +12,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -24,7 +25,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -101,7 +103,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -129,7 +131,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -143,18 +146,20 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete Health Check response"
+				"description": "Delete Health Check response."
 			},
 			"4XX": {
 				"content": {
@@ -224,7 +229,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -252,7 +257,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -266,12 +272,14 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -343,7 +351,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -363,7 +371,7 @@
 						}
 					}
 				},
-				"description": "Delete Health Check response failure"
+				"description": "Delete Health Check response failure."
 			}
 		},
 		"security": [
@@ -402,7 +410,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -414,7 +423,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -491,7 +501,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -519,7 +529,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -533,18 +544,20 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete Preview Health Check response"
+				"description": "Delete Preview Health Check response."
 			},
 			"4XX": {
 				"content": {
@@ -614,7 +627,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -642,7 +655,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -656,12 +670,14 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -733,7 +749,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -753,7 +769,7 @@
 						}
 					}
 				},
-				"description": "Delete Preview Health Check response failure"
+				"description": "Delete Preview Health Check response failure."
 			}
 		},
 		"security": [
@@ -792,7 +808,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -884,7 +901,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -945,7 +962,8 @@
 													"address": {
 														"description": "The hostname or IP address of the origin server to run health checks on.",
 														"example": "www.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"check_regions": {
 														"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -974,34 +992,40 @@
 															"type": "string"
 														},
 														"nullable": true,
-														"type": "array"
+														"type": "array",
+														"x-auditable": true
 													},
 													"consecutive_fails": {
 														"default": 1,
 														"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"consecutive_successes": {
 														"default": 1,
 														"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"created_on": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"description": {
 														"description": "A human-readable description of the health check.",
 														"example": "Health check for www.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"failure_reason": {
 														"description": "The current failure reason if status is unhealthy.",
 														"example": "",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"http_config": {
 														"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -1010,12 +1034,14 @@
 															"allow_insecure": {
 																"default": false,
 																"description": "Do not validate the certificate when the health check uses HTTPS.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"expected_body": {
 																"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 																"example": "success",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"expected_codes": {
 																"default": "200",
@@ -1028,17 +1054,20 @@
 																	"type": "string"
 																},
 																"nullable": true,
-																"type": "array"
+																"type": "array",
+																"x-auditable": true
 															},
 															"follow_redirects": {
 																"default": false,
 																"description": "Follow redirects if the origin returns a 3xx status code.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"header": {
 																"additionalProperties": {
 																	"items": {
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"type": "array"
 																},
@@ -1061,18 +1090,21 @@
 																	"GET",
 																	"HEAD"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"path": {
 																"default": "/",
 																"description": "The endpoint path to health check against.",
 																"example": "/health",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"port": {
 																"default": 80,
 																"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1082,28 +1114,33 @@
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"interval": {
 														"default": 60,
 														"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"modified_on": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 														"example": "server-1",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"retries": {
 														"default": 2,
 														"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"status": {
 														"description": "The current status of the origin server according to the health check.",
@@ -1115,12 +1152,14 @@
 														],
 														"example": "healthy",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"suspended": {
 														"default": false,
 														"description": "If suspended, no health checks are sent to the origin.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"tcp_config": {
 														"description": "Parameters specific to TCP health check.",
@@ -1132,12 +1171,14 @@
 																"enum": [
 																	"connection_established"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"port": {
 																"default": 80,
 																"description": "Port number to connect to for the health check. Defaults to 80.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1145,13 +1186,15 @@
 													"timeout": {
 														"default": 5,
 														"description": "The timeout (in seconds) before marking the health check as failed.",
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"type": {
 														"default": "HTTP",
 														"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 														"example": "HTTPS",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -1234,7 +1277,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1295,7 +1338,8 @@
 															"address": {
 																"description": "The hostname or IP address of the origin server to run health checks on.",
 																"example": "www.example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"check_regions": {
 																"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -1324,34 +1368,40 @@
 																	"type": "string"
 																},
 																"nullable": true,
-																"type": "array"
+																"type": "array",
+																"x-auditable": true
 															},
 															"consecutive_fails": {
 																"default": 1,
 																"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"consecutive_successes": {
 																"default": 1,
 																"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"created_on": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "A human-readable description of the health check.",
 																"example": "Health check for www.example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"failure_reason": {
 																"description": "The current failure reason if status is unhealthy.",
 																"example": "",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"http_config": {
 																"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -1360,12 +1410,14 @@
 																	"allow_insecure": {
 																		"default": false,
 																		"description": "Do not validate the certificate when the health check uses HTTPS.",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"expected_body": {
 																		"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 																		"example": "success",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"expected_codes": {
 																		"default": "200",
@@ -1378,17 +1430,20 @@
 																			"type": "string"
 																		},
 																		"nullable": true,
-																		"type": "array"
+																		"type": "array",
+																		"x-auditable": true
 																	},
 																	"follow_redirects": {
 																		"default": false,
 																		"description": "Follow redirects if the origin returns a 3xx status code.",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"header": {
 																		"additionalProperties": {
 																			"items": {
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"type": "array"
 																		},
@@ -1411,18 +1466,21 @@
 																			"GET",
 																			"HEAD"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"path": {
 																		"default": "/",
 																		"description": "The endpoint path to health check against.",
 																		"example": "/health",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"port": {
 																		"default": 80,
 																		"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1432,28 +1490,33 @@
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"interval": {
 																"default": 60,
 																"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"modified_on": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 																"example": "server-1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"retries": {
 																"default": 2,
 																"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "The current status of the origin server according to the health check.",
@@ -1465,12 +1528,14 @@
 																],
 																"example": "healthy",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"suspended": {
 																"default": false,
 																"description": "If suspended, no health checks are sent to the origin.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"tcp_config": {
 																"description": "Parameters specific to TCP health check.",
@@ -1482,12 +1547,14 @@
 																		"enum": [
 																			"connection_established"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"port": {
 																		"default": 80,
 																		"description": "Port number to connect to for the health check. Defaults to 80.",
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1495,13 +1562,15 @@
 															"timeout": {
 																"default": 5,
 																"description": "The timeout (in seconds) before marking the health check as failed.",
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"type": {
 																"default": "HTTP",
 																"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 																"example": "HTTPS",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -1580,7 +1649,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1600,7 +1669,7 @@
 						}
 					}
 				},
-				"description": "List Health Checks response failure"
+				"description": "List Health Checks response failure."
 			}
 		},
 		"security": [
@@ -1640,7 +1709,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1652,7 +1722,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1723,7 +1794,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1751,7 +1822,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1763,7 +1835,8 @@
 												"address": {
 													"description": "The hostname or IP address of the origin server to run health checks on.",
 													"example": "www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"check_regions": {
 													"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -1792,34 +1865,40 @@
 														"type": "string"
 													},
 													"nullable": true,
-													"type": "array"
+													"type": "array",
+													"x-auditable": true
 												},
 												"consecutive_fails": {
 													"default": 1,
 													"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"consecutive_successes": {
 													"default": 1,
 													"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "A human-readable description of the health check.",
 													"example": "Health check for www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"failure_reason": {
 													"description": "The current failure reason if status is unhealthy.",
 													"example": "",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"http_config": {
 													"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -1828,12 +1907,14 @@
 														"allow_insecure": {
 															"default": false,
 															"description": "Do not validate the certificate when the health check uses HTTPS.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"expected_body": {
 															"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 															"example": "success",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expected_codes": {
 															"default": "200",
@@ -1846,17 +1927,20 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"follow_redirects": {
 															"default": false,
 															"description": "Follow redirects if the origin returns a 3xx status code.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"header": {
 															"additionalProperties": {
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
@@ -1879,18 +1963,21 @@
 																"GET",
 																"HEAD"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"path": {
 															"default": "/",
 															"description": "The endpoint path to health check against.",
 															"example": "/health",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1900,28 +1987,33 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interval": {
 													"default": 60,
 													"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 													"example": "server-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"retries": {
 													"default": 2,
 													"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "The current status of the origin server according to the health check.",
@@ -1933,12 +2025,14 @@
 													],
 													"example": "healthy",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"suspended": {
 													"default": false,
 													"description": "If suspended, no health checks are sent to the origin.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"tcp_config": {
 													"description": "Parameters specific to TCP health check.",
@@ -1950,12 +2044,14 @@
 															"enum": [
 																"connection_established"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1963,24 +2059,27 @@
 												"timeout": {
 													"default": 5,
 													"description": "The timeout (in seconds) before marking the health check as failed.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"type": {
 													"default": "HTTP",
 													"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 													"example": "HTTPS",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Health Check Details response"
+				"description": "Health Check Details response."
 			},
 			"4XX": {
 				"content": {
@@ -2050,7 +2149,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2078,7 +2177,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2090,7 +2190,8 @@
 														"address": {
 															"description": "The hostname or IP address of the origin server to run health checks on.",
 															"example": "www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"check_regions": {
 															"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -2119,34 +2220,40 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"consecutive_fails": {
 															"default": 1,
 															"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"consecutive_successes": {
 															"default": 1,
 															"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"created_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "A human-readable description of the health check.",
 															"example": "Health check for www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"failure_reason": {
 															"description": "The current failure reason if status is unhealthy.",
 															"example": "",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"http_config": {
 															"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -2155,12 +2262,14 @@
 																"allow_insecure": {
 																	"default": false,
 																	"description": "Do not validate the certificate when the health check uses HTTPS.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"expected_body": {
 																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 																	"example": "success",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"expected_codes": {
 																	"default": "200",
@@ -2173,17 +2282,20 @@
 																		"type": "string"
 																	},
 																	"nullable": true,
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"follow_redirects": {
 																	"default": false,
 																	"description": "Follow redirects if the origin returns a 3xx status code.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"header": {
 																	"additionalProperties": {
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -2206,18 +2318,21 @@
 																		"GET",
 																		"HEAD"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"default": "/",
 																	"description": "The endpoint path to health check against.",
 																	"example": "/health",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2227,28 +2342,33 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"interval": {
 															"default": 60,
 															"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 															"example": "server-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"retries": {
 															"default": 2,
 															"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The current status of the origin server according to the health check.",
@@ -2260,12 +2380,14 @@
 															],
 															"example": "healthy",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"suspended": {
 															"default": false,
 															"description": "If suspended, no health checks are sent to the origin.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"tcp_config": {
 															"description": "Parameters specific to TCP health check.",
@@ -2277,12 +2399,14 @@
 																	"enum": [
 																		"connection_established"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2290,18 +2414,21 @@
 														"timeout": {
 															"default": 5,
 															"description": "The timeout (in seconds) before marking the health check as failed.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"type": {
 															"default": "HTTP",
 															"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 															"example": "HTTPS",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2373,7 +2500,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2393,7 +2520,7 @@
 						}
 					}
 				},
-				"description": "Health Check Details response failure"
+				"description": "Health Check Details response failure."
 			}
 		},
 		"security": [
@@ -2433,7 +2560,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2445,7 +2573,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2516,7 +2645,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2544,7 +2673,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2556,7 +2686,8 @@
 												"address": {
 													"description": "The hostname or IP address of the origin server to run health checks on.",
 													"example": "www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"check_regions": {
 													"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -2585,34 +2716,40 @@
 														"type": "string"
 													},
 													"nullable": true,
-													"type": "array"
+													"type": "array",
+													"x-auditable": true
 												},
 												"consecutive_fails": {
 													"default": 1,
 													"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"consecutive_successes": {
 													"default": 1,
 													"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "A human-readable description of the health check.",
 													"example": "Health check for www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"failure_reason": {
 													"description": "The current failure reason if status is unhealthy.",
 													"example": "",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"http_config": {
 													"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -2621,12 +2758,14 @@
 														"allow_insecure": {
 															"default": false,
 															"description": "Do not validate the certificate when the health check uses HTTPS.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"expected_body": {
 															"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 															"example": "success",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expected_codes": {
 															"default": "200",
@@ -2639,17 +2778,20 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"follow_redirects": {
 															"default": false,
 															"description": "Follow redirects if the origin returns a 3xx status code.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"header": {
 															"additionalProperties": {
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
@@ -2672,18 +2814,21 @@
 																"GET",
 																"HEAD"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"path": {
 															"default": "/",
 															"description": "The endpoint path to health check against.",
 															"example": "/health",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2693,28 +2838,33 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interval": {
 													"default": 60,
 													"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 													"example": "server-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"retries": {
 													"default": 2,
 													"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "The current status of the origin server according to the health check.",
@@ -2726,12 +2876,14 @@
 													],
 													"example": "healthy",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"suspended": {
 													"default": false,
 													"description": "If suspended, no health checks are sent to the origin.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"tcp_config": {
 													"description": "Parameters specific to TCP health check.",
@@ -2743,12 +2895,14 @@
 															"enum": [
 																"connection_established"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2756,24 +2910,27 @@
 												"timeout": {
 													"default": 5,
 													"description": "The timeout (in seconds) before marking the health check as failed.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"type": {
 													"default": "HTTP",
 													"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 													"example": "HTTPS",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Health Check Preview Details response"
+				"description": "Health Check Preview Details response."
 			},
 			"4XX": {
 				"content": {
@@ -2843,7 +3000,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2871,7 +3028,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -2883,7 +3041,8 @@
 														"address": {
 															"description": "The hostname or IP address of the origin server to run health checks on.",
 															"example": "www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"check_regions": {
 															"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -2912,34 +3071,40 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"consecutive_fails": {
 															"default": 1,
 															"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"consecutive_successes": {
 															"default": 1,
 															"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"created_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "A human-readable description of the health check.",
 															"example": "Health check for www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"failure_reason": {
 															"description": "The current failure reason if status is unhealthy.",
 															"example": "",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"http_config": {
 															"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -2948,12 +3113,14 @@
 																"allow_insecure": {
 																	"default": false,
 																	"description": "Do not validate the certificate when the health check uses HTTPS.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"expected_body": {
 																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 																	"example": "success",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"expected_codes": {
 																	"default": "200",
@@ -2966,17 +3133,20 @@
 																		"type": "string"
 																	},
 																	"nullable": true,
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"follow_redirects": {
 																	"default": false,
 																	"description": "Follow redirects if the origin returns a 3xx status code.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"header": {
 																	"additionalProperties": {
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -2999,18 +3169,21 @@
 																		"GET",
 																		"HEAD"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"default": "/",
 																	"description": "The endpoint path to health check against.",
 																	"example": "/health",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3020,28 +3193,33 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"interval": {
 															"default": 60,
 															"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 															"example": "server-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"retries": {
 															"default": 2,
 															"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The current status of the origin server according to the health check.",
@@ -3053,12 +3231,14 @@
 															],
 															"example": "healthy",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"suspended": {
 															"default": false,
 															"description": "If suspended, no health checks are sent to the origin.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"tcp_config": {
 															"description": "Parameters specific to TCP health check.",
@@ -3070,12 +3250,14 @@
 																	"enum": [
 																		"connection_established"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3083,18 +3265,21 @@
 														"timeout": {
 															"default": 5,
 															"description": "The timeout (in seconds) before marking the health check as failed.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"type": {
 															"default": "HTTP",
 															"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 															"example": "HTTPS",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3166,7 +3351,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3186,7 +3371,7 @@
 						}
 					}
 				},
-				"description": "Health Check Preview Details response failure"
+				"description": "Health Check Preview Details response failure."
 			}
 		},
 		"security": [
@@ -3226,7 +3411,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -3238,7 +3424,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3250,7 +3437,8 @@
 							"address": {
 								"description": "The hostname or IP address of the origin server to run health checks on.",
 								"example": "www.example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"check_regions": {
 								"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -3279,22 +3467,26 @@
 									"type": "string"
 								},
 								"nullable": true,
-								"type": "array"
+								"type": "array",
+								"x-auditable": true
 							},
 							"consecutive_fails": {
 								"default": 1,
 								"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"consecutive_successes": {
 								"default": 1,
 								"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"description": {
 								"description": "A human-readable description of the health check.",
 								"example": "Health check for www.example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"http_config": {
 								"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -3303,12 +3495,14 @@
 									"allow_insecure": {
 										"default": false,
 										"description": "Do not validate the certificate when the health check uses HTTPS.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"expected_body": {
 										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 										"example": "success",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"expected_codes": {
 										"default": "200",
@@ -3321,17 +3515,20 @@
 											"type": "string"
 										},
 										"nullable": true,
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"follow_redirects": {
 										"default": false,
 										"description": "Follow redirects if the origin returns a 3xx status code.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"header": {
 										"additionalProperties": {
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -3354,18 +3551,21 @@
 											"GET",
 											"HEAD"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"path": {
 										"default": "/",
 										"description": "The endpoint path to health check against.",
 										"example": "/health",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"port": {
 										"default": 80,
 										"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -3373,22 +3573,26 @@
 							"interval": {
 								"default": 60,
 								"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 								"example": "server-1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"retries": {
 								"default": 2,
 								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"suspended": {
 								"default": false,
 								"description": "If suspended, no health checks are sent to the origin.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"tcp_config": {
 								"description": "Parameters specific to TCP health check.",
@@ -3400,12 +3604,14 @@
 										"enum": [
 											"connection_established"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"port": {
 										"default": 80,
 										"description": "Port number to connect to for the health check. Defaults to 80.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -3413,13 +3619,15 @@
 							"timeout": {
 								"default": 5,
 								"description": "The timeout (in seconds) before marking the health check as failed.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"type": {
 								"default": "HTTP",
 								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 								"example": "HTTPS",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -3499,7 +3707,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3527,7 +3735,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -3539,7 +3748,8 @@
 												"address": {
 													"description": "The hostname or IP address of the origin server to run health checks on.",
 													"example": "www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"check_regions": {
 													"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -3568,34 +3778,40 @@
 														"type": "string"
 													},
 													"nullable": true,
-													"type": "array"
+													"type": "array",
+													"x-auditable": true
 												},
 												"consecutive_fails": {
 													"default": 1,
 													"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"consecutive_successes": {
 													"default": 1,
 													"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "A human-readable description of the health check.",
 													"example": "Health check for www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"failure_reason": {
 													"description": "The current failure reason if status is unhealthy.",
 													"example": "",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"http_config": {
 													"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -3604,12 +3820,14 @@
 														"allow_insecure": {
 															"default": false,
 															"description": "Do not validate the certificate when the health check uses HTTPS.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"expected_body": {
 															"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 															"example": "success",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expected_codes": {
 															"default": "200",
@@ -3622,17 +3840,20 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"follow_redirects": {
 															"default": false,
 															"description": "Follow redirects if the origin returns a 3xx status code.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"header": {
 															"additionalProperties": {
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
@@ -3655,18 +3876,21 @@
 																"GET",
 																"HEAD"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"path": {
 															"default": "/",
 															"description": "The endpoint path to health check against.",
 															"example": "/health",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3676,28 +3900,33 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interval": {
 													"default": 60,
 													"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 													"example": "server-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"retries": {
 													"default": 2,
 													"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "The current status of the origin server according to the health check.",
@@ -3709,12 +3938,14 @@
 													],
 													"example": "healthy",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"suspended": {
 													"default": false,
 													"description": "If suspended, no health checks are sent to the origin.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"tcp_config": {
 													"description": "Parameters specific to TCP health check.",
@@ -3726,12 +3957,14 @@
 															"enum": [
 																"connection_established"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3739,24 +3972,27 @@
 												"timeout": {
 													"default": 5,
 													"description": "The timeout (in seconds) before marking the health check as failed.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"type": {
 													"default": "HTTP",
 													"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 													"example": "HTTPS",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Patch Health Check response"
+				"description": "Patch Health Check response."
 			},
 			"4XX": {
 				"content": {
@@ -3826,7 +4062,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3854,7 +4090,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -3866,7 +4103,8 @@
 														"address": {
 															"description": "The hostname or IP address of the origin server to run health checks on.",
 															"example": "www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"check_regions": {
 															"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -3895,34 +4133,40 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"consecutive_fails": {
 															"default": 1,
 															"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"consecutive_successes": {
 															"default": 1,
 															"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"created_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "A human-readable description of the health check.",
 															"example": "Health check for www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"failure_reason": {
 															"description": "The current failure reason if status is unhealthy.",
 															"example": "",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"http_config": {
 															"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -3931,12 +4175,14 @@
 																"allow_insecure": {
 																	"default": false,
 																	"description": "Do not validate the certificate when the health check uses HTTPS.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"expected_body": {
 																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 																	"example": "success",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"expected_codes": {
 																	"default": "200",
@@ -3949,17 +4195,20 @@
 																		"type": "string"
 																	},
 																	"nullable": true,
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"follow_redirects": {
 																	"default": false,
 																	"description": "Follow redirects if the origin returns a 3xx status code.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"header": {
 																	"additionalProperties": {
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -3982,18 +4231,21 @@
 																		"GET",
 																		"HEAD"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"default": "/",
 																	"description": "The endpoint path to health check against.",
 																	"example": "/health",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -4003,28 +4255,33 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"interval": {
 															"default": 60,
 															"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 															"example": "server-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"retries": {
 															"default": 2,
 															"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The current status of the origin server according to the health check.",
@@ -4036,12 +4293,14 @@
 															],
 															"example": "healthy",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"suspended": {
 															"default": false,
 															"description": "If suspended, no health checks are sent to the origin.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"tcp_config": {
 															"description": "Parameters specific to TCP health check.",
@@ -4053,12 +4312,14 @@
 																	"enum": [
 																		"connection_established"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -4066,18 +4327,21 @@
 														"timeout": {
 															"default": 5,
 															"description": "The timeout (in seconds) before marking the health check as failed.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"type": {
 															"default": "HTTP",
 															"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 															"example": "HTTPS",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4149,7 +4413,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -4169,7 +4433,7 @@
 						}
 					}
 				},
-				"description": "Patch Health Check response failure"
+				"description": "Patch Health Check response failure."
 			}
 		},
 		"security": [
@@ -4208,7 +4472,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -4220,7 +4485,8 @@
 							"address": {
 								"description": "The hostname or IP address of the origin server to run health checks on.",
 								"example": "www.example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"check_regions": {
 								"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -4249,22 +4515,26 @@
 									"type": "string"
 								},
 								"nullable": true,
-								"type": "array"
+								"type": "array",
+								"x-auditable": true
 							},
 							"consecutive_fails": {
 								"default": 1,
 								"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"consecutive_successes": {
 								"default": 1,
 								"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"description": {
 								"description": "A human-readable description of the health check.",
 								"example": "Health check for www.example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"http_config": {
 								"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -4273,12 +4543,14 @@
 									"allow_insecure": {
 										"default": false,
 										"description": "Do not validate the certificate when the health check uses HTTPS.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"expected_body": {
 										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 										"example": "success",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"expected_codes": {
 										"default": "200",
@@ -4291,17 +4563,20 @@
 											"type": "string"
 										},
 										"nullable": true,
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"follow_redirects": {
 										"default": false,
 										"description": "Follow redirects if the origin returns a 3xx status code.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"header": {
 										"additionalProperties": {
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -4324,18 +4599,21 @@
 											"GET",
 											"HEAD"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"path": {
 										"default": "/",
 										"description": "The endpoint path to health check against.",
 										"example": "/health",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"port": {
 										"default": 80,
 										"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -4343,22 +4621,26 @@
 							"interval": {
 								"default": 60,
 								"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 								"example": "server-1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"retries": {
 								"default": 2,
 								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"suspended": {
 								"default": false,
 								"description": "If suspended, no health checks are sent to the origin.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"tcp_config": {
 								"description": "Parameters specific to TCP health check.",
@@ -4370,12 +4652,14 @@
 										"enum": [
 											"connection_established"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"port": {
 										"default": 80,
 										"description": "Port number to connect to for the health check. Defaults to 80.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -4383,13 +4667,15 @@
 							"timeout": {
 								"default": 5,
 								"description": "The timeout (in seconds) before marking the health check as failed.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"type": {
 								"default": "HTTP",
 								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 								"example": "HTTPS",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -4469,7 +4755,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4497,7 +4783,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -4509,7 +4796,8 @@
 												"address": {
 													"description": "The hostname or IP address of the origin server to run health checks on.",
 													"example": "www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"check_regions": {
 													"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -4538,34 +4826,40 @@
 														"type": "string"
 													},
 													"nullable": true,
-													"type": "array"
+													"type": "array",
+													"x-auditable": true
 												},
 												"consecutive_fails": {
 													"default": 1,
 													"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"consecutive_successes": {
 													"default": 1,
 													"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "A human-readable description of the health check.",
 													"example": "Health check for www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"failure_reason": {
 													"description": "The current failure reason if status is unhealthy.",
 													"example": "",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"http_config": {
 													"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -4574,12 +4868,14 @@
 														"allow_insecure": {
 															"default": false,
 															"description": "Do not validate the certificate when the health check uses HTTPS.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"expected_body": {
 															"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 															"example": "success",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expected_codes": {
 															"default": "200",
@@ -4592,17 +4888,20 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"follow_redirects": {
 															"default": false,
 															"description": "Follow redirects if the origin returns a 3xx status code.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"header": {
 															"additionalProperties": {
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
@@ -4625,18 +4924,21 @@
 																"GET",
 																"HEAD"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"path": {
 															"default": "/",
 															"description": "The endpoint path to health check against.",
 															"example": "/health",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -4646,28 +4948,33 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interval": {
 													"default": 60,
 													"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 													"example": "server-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"retries": {
 													"default": 2,
 													"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "The current status of the origin server according to the health check.",
@@ -4679,12 +4986,14 @@
 													],
 													"example": "healthy",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"suspended": {
 													"default": false,
 													"description": "If suspended, no health checks are sent to the origin.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"tcp_config": {
 													"description": "Parameters specific to TCP health check.",
@@ -4696,12 +5005,14 @@
 															"enum": [
 																"connection_established"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -4709,24 +5020,27 @@
 												"timeout": {
 													"default": 5,
 													"description": "The timeout (in seconds) before marking the health check as failed.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"type": {
 													"default": "HTTP",
 													"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 													"example": "HTTPS",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create Health Check response"
+				"description": "Create Health Check response."
 			},
 			"4XX": {
 				"content": {
@@ -4796,7 +5110,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -4824,7 +5138,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -4836,7 +5151,8 @@
 														"address": {
 															"description": "The hostname or IP address of the origin server to run health checks on.",
 															"example": "www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"check_regions": {
 															"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -4865,34 +5181,40 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"consecutive_fails": {
 															"default": 1,
 															"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"consecutive_successes": {
 															"default": 1,
 															"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"created_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "A human-readable description of the health check.",
 															"example": "Health check for www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"failure_reason": {
 															"description": "The current failure reason if status is unhealthy.",
 															"example": "",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"http_config": {
 															"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -4901,12 +5223,14 @@
 																"allow_insecure": {
 																	"default": false,
 																	"description": "Do not validate the certificate when the health check uses HTTPS.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"expected_body": {
 																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 																	"example": "success",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"expected_codes": {
 																	"default": "200",
@@ -4919,17 +5243,20 @@
 																		"type": "string"
 																	},
 																	"nullable": true,
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"follow_redirects": {
 																	"default": false,
 																	"description": "Follow redirects if the origin returns a 3xx status code.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"header": {
 																	"additionalProperties": {
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -4952,18 +5279,21 @@
 																		"GET",
 																		"HEAD"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"default": "/",
 																	"description": "The endpoint path to health check against.",
 																	"example": "/health",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -4973,28 +5303,33 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"interval": {
 															"default": 60,
 															"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 															"example": "server-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"retries": {
 															"default": 2,
 															"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The current status of the origin server according to the health check.",
@@ -5006,12 +5341,14 @@
 															],
 															"example": "healthy",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"suspended": {
 															"default": false,
 															"description": "If suspended, no health checks are sent to the origin.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"tcp_config": {
 															"description": "Parameters specific to TCP health check.",
@@ -5023,12 +5360,14 @@
 																	"enum": [
 																		"connection_established"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -5036,18 +5375,21 @@
 														"timeout": {
 															"default": 5,
 															"description": "The timeout (in seconds) before marking the health check as failed.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"type": {
 															"default": "HTTP",
 															"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 															"example": "HTTPS",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -5119,7 +5461,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -5139,7 +5481,7 @@
 						}
 					}
 				},
-				"description": "Create Health Check response failure"
+				"description": "Create Health Check response failure."
 			}
 		},
 		"security": [
@@ -5178,7 +5520,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -5190,7 +5533,8 @@
 							"address": {
 								"description": "The hostname or IP address of the origin server to run health checks on.",
 								"example": "www.example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"check_regions": {
 								"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -5219,22 +5563,26 @@
 									"type": "string"
 								},
 								"nullable": true,
-								"type": "array"
+								"type": "array",
+								"x-auditable": true
 							},
 							"consecutive_fails": {
 								"default": 1,
 								"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"consecutive_successes": {
 								"default": 1,
 								"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"description": {
 								"description": "A human-readable description of the health check.",
 								"example": "Health check for www.example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"http_config": {
 								"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -5243,12 +5591,14 @@
 									"allow_insecure": {
 										"default": false,
 										"description": "Do not validate the certificate when the health check uses HTTPS.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"expected_body": {
 										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 										"example": "success",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"expected_codes": {
 										"default": "200",
@@ -5261,17 +5611,20 @@
 											"type": "string"
 										},
 										"nullable": true,
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"follow_redirects": {
 										"default": false,
 										"description": "Follow redirects if the origin returns a 3xx status code.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"header": {
 										"additionalProperties": {
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -5294,18 +5647,21 @@
 											"GET",
 											"HEAD"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"path": {
 										"default": "/",
 										"description": "The endpoint path to health check against.",
 										"example": "/health",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"port": {
 										"default": 80,
 										"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -5313,22 +5669,26 @@
 							"interval": {
 								"default": 60,
 								"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 								"example": "server-1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"retries": {
 								"default": 2,
 								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"suspended": {
 								"default": false,
 								"description": "If suspended, no health checks are sent to the origin.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"tcp_config": {
 								"description": "Parameters specific to TCP health check.",
@@ -5340,12 +5700,14 @@
 										"enum": [
 											"connection_established"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"port": {
 										"default": 80,
 										"description": "Port number to connect to for the health check. Defaults to 80.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -5353,13 +5715,15 @@
 							"timeout": {
 								"default": 5,
 								"description": "The timeout (in seconds) before marking the health check as failed.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"type": {
 								"default": "HTTP",
 								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 								"example": "HTTPS",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -5439,7 +5803,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -5467,7 +5831,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -5479,7 +5844,8 @@
 												"address": {
 													"description": "The hostname or IP address of the origin server to run health checks on.",
 													"example": "www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"check_regions": {
 													"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -5508,34 +5874,40 @@
 														"type": "string"
 													},
 													"nullable": true,
-													"type": "array"
+													"type": "array",
+													"x-auditable": true
 												},
 												"consecutive_fails": {
 													"default": 1,
 													"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"consecutive_successes": {
 													"default": 1,
 													"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "A human-readable description of the health check.",
 													"example": "Health check for www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"failure_reason": {
 													"description": "The current failure reason if status is unhealthy.",
 													"example": "",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"http_config": {
 													"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -5544,12 +5916,14 @@
 														"allow_insecure": {
 															"default": false,
 															"description": "Do not validate the certificate when the health check uses HTTPS.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"expected_body": {
 															"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 															"example": "success",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expected_codes": {
 															"default": "200",
@@ -5562,17 +5936,20 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"follow_redirects": {
 															"default": false,
 															"description": "Follow redirects if the origin returns a 3xx status code.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"header": {
 															"additionalProperties": {
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
@@ -5595,18 +5972,21 @@
 																"GET",
 																"HEAD"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"path": {
 															"default": "/",
 															"description": "The endpoint path to health check against.",
 															"example": "/health",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -5616,28 +5996,33 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interval": {
 													"default": 60,
 													"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 													"example": "server-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"retries": {
 													"default": 2,
 													"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "The current status of the origin server according to the health check.",
@@ -5649,12 +6034,14 @@
 													],
 													"example": "healthy",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"suspended": {
 													"default": false,
 													"description": "If suspended, no health checks are sent to the origin.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"tcp_config": {
 													"description": "Parameters specific to TCP health check.",
@@ -5666,12 +6053,14 @@
 															"enum": [
 																"connection_established"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -5679,24 +6068,27 @@
 												"timeout": {
 													"default": 5,
 													"description": "The timeout (in seconds) before marking the health check as failed.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"type": {
 													"default": "HTTP",
 													"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 													"example": "HTTPS",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Create Preview Health Check response"
+				"description": "Create Preview Health Check response."
 			},
 			"4XX": {
 				"content": {
@@ -5766,7 +6158,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -5794,7 +6186,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -5806,7 +6199,8 @@
 														"address": {
 															"description": "The hostname or IP address of the origin server to run health checks on.",
 															"example": "www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"check_regions": {
 															"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -5835,34 +6229,40 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"consecutive_fails": {
 															"default": 1,
 															"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"consecutive_successes": {
 															"default": 1,
 															"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"created_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "A human-readable description of the health check.",
 															"example": "Health check for www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"failure_reason": {
 															"description": "The current failure reason if status is unhealthy.",
 															"example": "",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"http_config": {
 															"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -5871,12 +6271,14 @@
 																"allow_insecure": {
 																	"default": false,
 																	"description": "Do not validate the certificate when the health check uses HTTPS.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"expected_body": {
 																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 																	"example": "success",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"expected_codes": {
 																	"default": "200",
@@ -5889,17 +6291,20 @@
 																		"type": "string"
 																	},
 																	"nullable": true,
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"follow_redirects": {
 																	"default": false,
 																	"description": "Follow redirects if the origin returns a 3xx status code.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"header": {
 																	"additionalProperties": {
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -5922,18 +6327,21 @@
 																		"GET",
 																		"HEAD"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"default": "/",
 																	"description": "The endpoint path to health check against.",
 																	"example": "/health",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -5943,28 +6351,33 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"interval": {
 															"default": 60,
 															"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 															"example": "server-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"retries": {
 															"default": 2,
 															"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The current status of the origin server according to the health check.",
@@ -5976,12 +6389,14 @@
 															],
 															"example": "healthy",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"suspended": {
 															"default": false,
 															"description": "If suspended, no health checks are sent to the origin.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"tcp_config": {
 															"description": "Parameters specific to TCP health check.",
@@ -5993,12 +6408,14 @@
 																	"enum": [
 																		"connection_established"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -6006,18 +6423,21 @@
 														"timeout": {
 															"default": 5,
 															"description": "The timeout (in seconds) before marking the health check as failed.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"type": {
 															"default": "HTTP",
 															"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 															"example": "HTTPS",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -6089,7 +6509,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -6109,7 +6529,7 @@
 						}
 					}
 				},
-				"description": "Create Preview Health Check response failure"
+				"description": "Create Preview Health Check response failure."
 			}
 		},
 		"security": [
@@ -6148,7 +6568,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -6160,7 +6581,8 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -6172,7 +6594,8 @@
 							"address": {
 								"description": "The hostname or IP address of the origin server to run health checks on.",
 								"example": "www.example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"check_regions": {
 								"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -6201,22 +6624,26 @@
 									"type": "string"
 								},
 								"nullable": true,
-								"type": "array"
+								"type": "array",
+								"x-auditable": true
 							},
 							"consecutive_fails": {
 								"default": 1,
 								"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"consecutive_successes": {
 								"default": 1,
 								"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"description": {
 								"description": "A human-readable description of the health check.",
 								"example": "Health check for www.example.com",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"http_config": {
 								"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -6225,12 +6652,14 @@
 									"allow_insecure": {
 										"default": false,
 										"description": "Do not validate the certificate when the health check uses HTTPS.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"expected_body": {
 										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 										"example": "success",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"expected_codes": {
 										"default": "200",
@@ -6243,17 +6672,20 @@
 											"type": "string"
 										},
 										"nullable": true,
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"follow_redirects": {
 										"default": false,
 										"description": "Follow redirects if the origin returns a 3xx status code.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"header": {
 										"additionalProperties": {
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": "array"
 										},
@@ -6276,18 +6708,21 @@
 											"GET",
 											"HEAD"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"path": {
 										"default": "/",
 										"description": "The endpoint path to health check against.",
 										"example": "/health",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"port": {
 										"default": 80,
 										"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -6295,22 +6730,26 @@
 							"interval": {
 								"default": 60,
 								"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"name": {
 								"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 								"example": "server-1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"retries": {
 								"default": 2,
 								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"suspended": {
 								"default": false,
 								"description": "If suspended, no health checks are sent to the origin.",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"tcp_config": {
 								"description": "Parameters specific to TCP health check.",
@@ -6322,12 +6761,14 @@
 										"enum": [
 											"connection_established"
 										],
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"port": {
 										"default": 80,
 										"description": "Port number to connect to for the health check. Defaults to 80.",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -6335,13 +6776,15 @@
 							"timeout": {
 								"default": 5,
 								"description": "The timeout (in seconds) before marking the health check as failed.",
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"type": {
 								"default": "HTTP",
 								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 								"example": "HTTPS",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -6421,7 +6864,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -6449,7 +6892,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -6461,7 +6905,8 @@
 												"address": {
 													"description": "The hostname or IP address of the origin server to run health checks on.",
 													"example": "www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"check_regions": {
 													"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -6490,34 +6935,40 @@
 														"type": "string"
 													},
 													"nullable": true,
-													"type": "array"
+													"type": "array",
+													"x-auditable": true
 												},
 												"consecutive_fails": {
 													"default": 1,
 													"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"consecutive_successes": {
 													"default": 1,
 													"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"created_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"description": {
 													"description": "A human-readable description of the health check.",
 													"example": "Health check for www.example.com",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"failure_reason": {
 													"description": "The current failure reason if status is unhealthy.",
 													"example": "",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"http_config": {
 													"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -6526,12 +6977,14 @@
 														"allow_insecure": {
 															"default": false,
 															"description": "Do not validate the certificate when the health check uses HTTPS.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"expected_body": {
 															"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 															"example": "success",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"expected_codes": {
 															"default": "200",
@@ -6544,17 +6997,20 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"follow_redirects": {
 															"default": false,
 															"description": "Follow redirects if the origin returns a 3xx status code.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"header": {
 															"additionalProperties": {
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"type": "array"
 															},
@@ -6577,18 +7033,21 @@
 																"GET",
 																"HEAD"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"path": {
 															"default": "/",
 															"description": "The endpoint path to health check against.",
 															"example": "/health",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -6598,28 +7057,33 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"interval": {
 													"default": 60,
 													"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"modified_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 													"example": "server-1",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"retries": {
 													"default": 2,
 													"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "The current status of the origin server according to the health check.",
@@ -6631,12 +7095,14 @@
 													],
 													"example": "healthy",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"suspended": {
 													"default": false,
 													"description": "If suspended, no health checks are sent to the origin.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"tcp_config": {
 													"description": "Parameters specific to TCP health check.",
@@ -6648,12 +7114,14 @@
 															"enum": [
 																"connection_established"
 															],
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"port": {
 															"default": 80,
 															"description": "Port number to connect to for the health check. Defaults to 80.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -6661,24 +7129,27 @@
 												"timeout": {
 													"default": 5,
 													"description": "The timeout (in seconds) before marking the health check as failed.",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"type": {
 													"default": "HTTP",
 													"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 													"example": "HTTPS",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Update Health Check response"
+				"description": "Update Health Check response."
 			},
 			"4XX": {
 				"content": {
@@ -6748,7 +7219,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -6776,7 +7247,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -6788,7 +7260,8 @@
 														"address": {
 															"description": "The hostname or IP address of the origin server to run health checks on.",
 															"example": "www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"check_regions": {
 															"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -6817,34 +7290,40 @@
 																"type": "string"
 															},
 															"nullable": true,
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"consecutive_fails": {
 															"default": 1,
 															"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"consecutive_successes": {
 															"default": 1,
 															"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"created_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"description": {
 															"description": "A human-readable description of the health check.",
 															"example": "Health check for www.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"failure_reason": {
 															"description": "The current failure reason if status is unhealthy.",
 															"example": "",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"http_config": {
 															"description": "Parameters specific to an HTTP or HTTPS health check.",
@@ -6853,12 +7332,14 @@
 																"allow_insecure": {
 																	"default": false,
 																	"description": "Do not validate the certificate when the health check uses HTTPS.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"expected_body": {
 																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
 																	"example": "success",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"expected_codes": {
 																	"default": "200",
@@ -6871,17 +7352,20 @@
 																		"type": "string"
 																	},
 																	"nullable": true,
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"follow_redirects": {
 																	"default": false,
 																	"description": "Follow redirects if the origin returns a 3xx status code.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"header": {
 																	"additionalProperties": {
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"type": "array"
 																	},
@@ -6904,18 +7388,21 @@
 																		"GET",
 																		"HEAD"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"path": {
 																	"default": "/",
 																	"description": "The endpoint path to health check against.",
 																	"example": "/health",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -6925,28 +7412,33 @@
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"interval": {
 															"default": 60,
 															"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"modified_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
 															"example": "server-1",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"retries": {
 															"default": 2,
 															"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"status": {
 															"description": "The current status of the origin server according to the health check.",
@@ -6958,12 +7450,14 @@
 															],
 															"example": "healthy",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"suspended": {
 															"default": false,
 															"description": "If suspended, no health checks are sent to the origin.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"tcp_config": {
 															"description": "Parameters specific to TCP health check.",
@@ -6975,12 +7469,14 @@
 																	"enum": [
 																		"connection_established"
 																	],
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"port": {
 																	"default": 80,
 																	"description": "Port number to connect to for the health check. Defaults to 80.",
-																	"type": "integer"
+																	"type": "integer",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -6988,18 +7484,21 @@
 														"timeout": {
 															"default": 5,
 															"description": "The timeout (in seconds) before marking the health check as failed.",
-															"type": "integer"
+															"type": "integer",
+															"x-auditable": true
 														},
 														"type": {
 															"default": "HTTP",
 															"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
 															"example": "HTTPS",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -7071,7 +7570,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -7091,7 +7590,7 @@
 						}
 					}
 				},
-				"description": "Update Health Check response failure"
+				"description": "Update Health Check response failure."
 			}
 		},
 		"security": [

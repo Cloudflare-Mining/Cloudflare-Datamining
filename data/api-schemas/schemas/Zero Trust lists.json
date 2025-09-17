@@ -8,7 +8,7 @@
 				"name": "list_id",
 				"required": true,
 				"schema": {
-					"description": "API Resource UUID tag.",
+					"description": "Identify the API resource with a UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string",
@@ -85,7 +85,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -108,7 +108,8 @@
 										"result": {
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
@@ -171,7 +172,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -194,7 +195,8 @@
 												"result": {
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -269,7 +271,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -309,7 +311,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/gateway/lists": {
-		"description": "Fetches all Zero Trust lists for an account.",
+		"description": "Fetch all Zero Trust lists for an account.",
 		"operationId": "zero-trust-lists-list-zero-trust-lists",
 		"parameters": [
 			{
@@ -326,7 +328,7 @@
 				"in": "query",
 				"name": "type",
 				"schema": {
-					"description": "The type of list.",
+					"description": "Specify the list type.",
 					"enum": [
 						"SERIAL",
 						"URL",
@@ -393,7 +395,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -413,29 +415,30 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service.",
+															"description": "Indicate the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results.",
+															"description": "Indicate the current page within a paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results.",
+															"description": "Indicate the number of results per page.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
+															"description": "Indicate the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -446,7 +449,7 @@
 											"items": {
 												"properties": {
 													"count": {
-														"description": "The number of items in the list.",
+														"description": "Indicate the number of items in the list.",
 														"example": 20,
 														"readOnly": true,
 														"type": "number"
@@ -458,21 +461,21 @@
 														"type": "string"
 													},
 													"description": {
-														"description": "The description of the list.",
+														"description": "Provide the list description.",
 														"example": "The serial numbers for administrators",
 														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"id": {
-														"description": "API Resource UUID tag.",
+														"description": "Identify the API resource with a UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"type": "string",
 														"x-auditable": true
 													},
 													"items": {
-														"description": "The items in the list.",
+														"description": "Provide the list items.",
 														"items": {
 															"properties": {
 																"created_at": {
@@ -482,13 +485,13 @@
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the list item, if present.",
+																	"description": "Provide the list item description (optional).",
 																	"example": "Austin office IP",
 																	"minimum": 0,
 																	"type": "string"
 																},
 																"value": {
-																	"description": "The value of the item in a list.",
+																	"description": "Specify the item value.",
 																	"example": "8GE8721REF",
 																	"type": "string",
 																	"x-auditable": true
@@ -500,13 +503,13 @@
 														"x-stainless-collection-type": "set"
 													},
 													"name": {
-														"description": "The name of the list.",
+														"description": "Specify the list name.",
 														"example": "Admin Serial Numbers",
 														"type": "string",
 														"x-auditable": true
 													},
 													"type": {
-														"description": "The type of list.",
+														"description": "Specify the list type.",
 														"enum": [
 															"SERIAL",
 															"URL",
@@ -529,7 +532,8 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
@@ -592,7 +596,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -612,29 +616,30 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service.",
+																	"description": "Indicate the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results.",
+																	"description": "Indicate the current page within a paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results.",
+																	"description": "Indicate the number of results per page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters.",
+																	"description": "Indicate the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -645,7 +650,7 @@
 													"items": {
 														"properties": {
 															"count": {
-																"description": "The number of items in the list.",
+																"description": "Indicate the number of items in the list.",
 																"example": 20,
 																"readOnly": true,
 																"type": "number"
@@ -657,21 +662,21 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "The description of the list.",
+																"description": "Provide the list description.",
 																"example": "The serial numbers for administrators",
 																"type": "string",
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"id": {
-																"description": "API Resource UUID tag.",
+																"description": "Identify the API resource with a UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"type": "string",
 																"x-auditable": true
 															},
 															"items": {
-																"description": "The items in the list.",
+																"description": "Provide the list items.",
 																"items": {
 																	"properties": {
 																		"created_at": {
@@ -681,13 +686,13 @@
 																			"type": "string"
 																		},
 																		"description": {
-																			"description": "The description of the list item, if present.",
+																			"description": "Provide the list item description (optional).",
 																			"example": "Austin office IP",
 																			"minimum": 0,
 																			"type": "string"
 																		},
 																		"value": {
-																			"description": "The value of the item in a list.",
+																			"description": "Specify the item value.",
 																			"example": "8GE8721REF",
 																			"type": "string",
 																			"x-auditable": true
@@ -699,13 +704,13 @@
 																"x-stainless-collection-type": "set"
 															},
 															"name": {
-																"description": "The name of the list.",
+																"description": "Specify the list name.",
 																"example": "Admin Serial Numbers",
 																"type": "string",
 																"x-auditable": true
 															},
 															"type": {
-																"description": "The type of list.",
+																"description": "Specify the list type.",
 																"enum": [
 																	"SERIAL",
 																	"URL",
@@ -728,7 +733,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -803,7 +809,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -844,7 +850,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/gateway/lists/{list_id}": {
-		"description": "Fetches a single Zero Trust list.",
+		"description": "Fetch a single Zero Trust list.",
 		"operationId": "zero-trust-lists-zero-trust-list-details",
 		"parameters": [
 			{
@@ -852,7 +858,7 @@
 				"name": "list_id",
 				"required": true,
 				"schema": {
-					"description": "API Resource UUID tag.",
+					"description": "Identify the API resource with a UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string",
@@ -923,7 +929,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -946,7 +952,7 @@
 										"result": {
 											"properties": {
 												"count": {
-													"description": "The number of items in the list.",
+													"description": "Indicate the number of items in the list.",
 													"example": 20,
 													"readOnly": true,
 													"type": "number"
@@ -958,21 +964,21 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "The description of the list.",
+													"description": "Provide the list description.",
 													"example": "The serial numbers for administrators",
 													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
-													"description": "API Resource UUID tag.",
+													"description": "Identify the API resource with a UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
 													"x-auditable": true
 												},
 												"items": {
-													"description": "The items in the list.",
+													"description": "Provide the list items.",
 													"items": {
 														"properties": {
 															"created_at": {
@@ -982,13 +988,13 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "The description of the list item, if present.",
+																"description": "Provide the list item description (optional).",
 																"example": "Austin office IP",
 																"minimum": 0,
 																"type": "string"
 															},
 															"value": {
-																"description": "The value of the item in a list.",
+																"description": "Specify the item value.",
 																"example": "8GE8721REF",
 																"type": "string",
 																"x-auditable": true
@@ -1000,13 +1006,13 @@
 													"x-stainless-collection-type": "set"
 												},
 												"name": {
-													"description": "The name of the list.",
+													"description": "Specify the list name.",
 													"example": "Admin Serial Numbers",
 													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
-													"description": "The type of list.",
+													"description": "Specify the list type.",
 													"enum": [
 														"SERIAL",
 														"URL",
@@ -1027,7 +1033,8 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object",
@@ -1091,7 +1098,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1114,7 +1121,7 @@
 												"result": {
 													"properties": {
 														"count": {
-															"description": "The number of items in the list.",
+															"description": "Indicate the number of items in the list.",
 															"example": 20,
 															"readOnly": true,
 															"type": "number"
@@ -1126,21 +1133,21 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "The description of the list.",
+															"description": "Provide the list description.",
 															"example": "The serial numbers for administrators",
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
-															"description": "API Resource UUID tag.",
+															"description": "Identify the API resource with a UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
 															"x-auditable": true
 														},
 														"items": {
-															"description": "The items in the list.",
+															"description": "Provide the list items.",
 															"items": {
 																"properties": {
 																	"created_at": {
@@ -1150,13 +1157,13 @@
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "The description of the list item, if present.",
+																		"description": "Provide the list item description (optional).",
 																		"example": "Austin office IP",
 																		"minimum": 0,
 																		"type": "string"
 																	},
 																	"value": {
-																		"description": "The value of the item in a list.",
+																		"description": "Specify the item value.",
 																		"example": "8GE8721REF",
 																		"type": "string",
 																		"x-auditable": true
@@ -1168,13 +1175,13 @@
 															"x-stainless-collection-type": "set"
 														},
 														"name": {
-															"description": "The name of the list.",
+															"description": "Specify the list name.",
 															"example": "Admin Serial Numbers",
 															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
-															"description": "The type of list.",
+															"description": "Specify the list type.",
 															"enum": [
 																"SERIAL",
 																"URL",
@@ -1195,7 +1202,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object",
@@ -1271,7 +1279,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1312,7 +1320,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/gateway/lists/{list_id}/items": {
-		"description": "Fetches all items in a single Zero Trust list.",
+		"description": "Fetch all items in a single Zero Trust list.",
 		"operationId": "zero-trust-lists-zero-trust-list-items",
 		"parameters": [
 			{
@@ -1320,7 +1328,7 @@
 				"name": "list_id",
 				"required": true,
 				"schema": {
-					"description": "API Resource UUID tag.",
+					"description": "Identify the API resource with a UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string",
@@ -1391,7 +1399,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1411,29 +1419,30 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service.",
+															"description": "Indicate the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results.",
+															"description": "Indicate the current page within a paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results.",
+															"description": "Indicate the number of results per page.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
+															"description": "Indicate the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1442,7 +1451,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"description": "The items in the list.",
+												"description": "Provide the list items.",
 												"items": {
 													"properties": {
 														"created_at": {
@@ -1452,13 +1461,13 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "The description of the list item, if present.",
+															"description": "Provide the list item description (optional).",
 															"example": "Austin office IP",
 															"minimum": 0,
 															"type": "string"
 														},
 														"value": {
-															"description": "The value of the item in a list.",
+															"description": "Specify the item value.",
 															"example": "8GE8721REF",
 															"type": "string",
 															"x-auditable": true
@@ -1471,36 +1480,38 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result_info": {
 											"properties": {
 												"count": {
-													"description": "Total results returned based on your search parameters.",
+													"description": "Shows the total results returned based on your search parameters.",
 													"example": 1,
 													"type": "number"
 												},
 												"page": {
-													"description": "Current page within paginated list of results.",
+													"description": "Show the current page within paginated list of results.",
 													"example": 1,
 													"type": "number"
 												},
 												"per_page": {
-													"description": "Number of results per page of results.",
+													"description": "Show the number of results per page of results.",
 													"example": 20,
 													"type": "number"
 												},
 												"total_count": {
-													"description": "Total results available without any search parameters.",
+													"description": "Show the total results available without any search parameters.",
 													"example": 2000,
 													"type": "number"
 												}
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
@@ -1563,7 +1574,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1583,29 +1594,30 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service.",
+																	"description": "Indicate the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results.",
+																	"description": "Indicate the current page within a paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results.",
+																	"description": "Indicate the number of results per page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters.",
+																	"description": "Indicate the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1614,7 +1626,7 @@
 											"properties": {
 												"result": {
 													"items": {
-														"description": "The items in the list.",
+														"description": "Provide the list items.",
 														"items": {
 															"properties": {
 																"created_at": {
@@ -1624,13 +1636,13 @@
 																	"type": "string"
 																},
 																"description": {
-																	"description": "The description of the list item, if present.",
+																	"description": "Provide the list item description (optional).",
 																	"example": "Austin office IP",
 																	"minimum": 0,
 																	"type": "string"
 																},
 																"value": {
-																	"description": "The value of the item in a list.",
+																	"description": "Specify the item value.",
 																	"example": "8GE8721REF",
 																	"type": "string",
 																	"x-auditable": true
@@ -1643,36 +1655,38 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total results returned based on your search parameters.",
+															"description": "Shows the total results returned based on your search parameters.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results.",
+															"description": "Show the current page within paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results.",
+															"description": "Show the number of results per page of results.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
+															"description": "Show the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1747,7 +1761,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1796,7 +1810,7 @@
 				"name": "list_id",
 				"required": true,
 				"schema": {
-					"description": "API Resource UUID tag.",
+					"description": "Identify the API resource with a UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string",
@@ -1820,17 +1834,17 @@
 					"schema": {
 						"properties": {
 							"append": {
-								"description": "items to add to the list.",
+								"description": "Add items to the list.",
 								"items": {
 									"properties": {
 										"description": {
-											"description": "The description of the list item, if present.",
+											"description": "Provide the list item description (optional).",
 											"example": "Austin office IP",
 											"minimum": 0,
 											"type": "string"
 										},
 										"value": {
-											"description": "The value of the item in a list.",
+											"description": "Specify the item value.",
 											"example": "8GE8721REF",
 											"type": "string",
 											"x-auditable": true
@@ -1842,9 +1856,9 @@
 								"x-stainless-collection-type": "set"
 							},
 							"remove": {
-								"description": "A list of the item values you want to remove.",
+								"description": "Lists of item values you want to remove.",
 								"items": {
-									"description": "The value of the item in a list.",
+									"description": "Specify the item value.",
 									"example": "8GE8721REF",
 									"type": "string",
 									"x-auditable": true
@@ -1911,7 +1925,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1934,7 +1948,7 @@
 										"result": {
 											"properties": {
 												"count": {
-													"description": "The number of items in the list.",
+													"description": "Indicate the number of items in the list.",
 													"example": 20,
 													"readOnly": true,
 													"type": "number"
@@ -1946,21 +1960,21 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "The description of the list.",
+													"description": "Provide the list description.",
 													"example": "The serial numbers for administrators",
 													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
-													"description": "API Resource UUID tag.",
+													"description": "Identify the API resource with a UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
 													"x-auditable": true
 												},
 												"items": {
-													"description": "The items in the list.",
+													"description": "Provide the list items.",
 													"items": {
 														"properties": {
 															"created_at": {
@@ -1970,13 +1984,13 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "The description of the list item, if present.",
+																"description": "Provide the list item description (optional).",
 																"example": "Austin office IP",
 																"minimum": 0,
 																"type": "string"
 															},
 															"value": {
-																"description": "The value of the item in a list.",
+																"description": "Specify the item value.",
 																"example": "8GE8721REF",
 																"type": "string",
 																"x-auditable": true
@@ -1988,13 +2002,13 @@
 													"x-stainless-collection-type": "set"
 												},
 												"name": {
-													"description": "The name of the list.",
+													"description": "Specify the list name.",
 													"example": "Admin Serial Numbers",
 													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
-													"description": "The type of list.",
+													"description": "Specify the list type.",
 													"enum": [
 														"SERIAL",
 														"URL",
@@ -2015,7 +2029,8 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object",
@@ -2079,7 +2094,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2102,7 +2117,7 @@
 												"result": {
 													"properties": {
 														"count": {
-															"description": "The number of items in the list.",
+															"description": "Indicate the number of items in the list.",
 															"example": 20,
 															"readOnly": true,
 															"type": "number"
@@ -2114,21 +2129,21 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "The description of the list.",
+															"description": "Provide the list description.",
 															"example": "The serial numbers for administrators",
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
-															"description": "API Resource UUID tag.",
+															"description": "Identify the API resource with a UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
 															"x-auditable": true
 														},
 														"items": {
-															"description": "The items in the list.",
+															"description": "Provide the list items.",
 															"items": {
 																"properties": {
 																	"created_at": {
@@ -2138,13 +2153,13 @@
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "The description of the list item, if present.",
+																		"description": "Provide the list item description (optional).",
 																		"example": "Austin office IP",
 																		"minimum": 0,
 																		"type": "string"
 																	},
 																	"value": {
-																		"description": "The value of the item in a list.",
+																		"description": "Specify the item value.",
 																		"example": "8GE8721REF",
 																		"type": "string",
 																		"x-auditable": true
@@ -2156,13 +2171,13 @@
 															"x-stainless-collection-type": "set"
 														},
 														"name": {
-															"description": "The name of the list.",
+															"description": "Specify the list name.",
 															"example": "Admin Serial Numbers",
 															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
-															"description": "The type of list.",
+															"description": "Specify the list type.",
 															"enum": [
 																"SERIAL",
 																"URL",
@@ -2183,7 +2198,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object",
@@ -2259,7 +2275,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2319,24 +2335,24 @@
 					"schema": {
 						"properties": {
 							"description": {
-								"description": "The description of the list.",
+								"description": "Provide the list description.",
 								"example": "The serial numbers for administrators",
 								"type": "string",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"items": {
-								"description": "items to add to the list.",
+								"description": "Add items to the list.",
 								"items": {
 									"properties": {
 										"description": {
-											"description": "The description of the list item, if present.",
+											"description": "Provide the list item description (optional).",
 											"example": "Austin office IP",
 											"minimum": 0,
 											"type": "string"
 										},
 										"value": {
-											"description": "The value of the item in a list.",
+											"description": "Specify the item value.",
 											"example": "8GE8721REF",
 											"type": "string",
 											"x-auditable": true
@@ -2348,13 +2364,13 @@
 								"x-stainless-collection-type": "set"
 							},
 							"name": {
-								"description": "The name of the list.",
+								"description": "Specify the list name.",
 								"example": "Admin Serial Numbers",
 								"type": "string",
 								"x-auditable": true
 							},
 							"type": {
-								"description": "The type of list.",
+								"description": "Specify the list type.",
 								"enum": [
 									"SERIAL",
 									"URL",
@@ -2370,7 +2386,8 @@
 						"required": [
 							"name",
 							"type"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -2429,7 +2446,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2458,21 +2475,21 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "The description of the list.",
+													"description": "Provide the list description.",
 													"example": "The serial numbers for administrators",
 													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
-													"description": "API Resource UUID tag.",
+													"description": "Identify the API resource with a UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
 													"x-auditable": true
 												},
 												"items": {
-													"description": "The items in the list.",
+													"description": "Provide the list items.",
 													"items": {
 														"properties": {
 															"created_at": {
@@ -2482,13 +2499,13 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "The description of the list item, if present.",
+																"description": "Provide the list item description (optional).",
 																"example": "Austin office IP",
 																"minimum": 0,
 																"type": "string"
 															},
 															"value": {
-																"description": "The value of the item in a list.",
+																"description": "Specify the item value.",
 																"example": "8GE8721REF",
 																"type": "string",
 																"x-auditable": true
@@ -2500,13 +2517,13 @@
 													"x-stainless-collection-type": "set"
 												},
 												"name": {
-													"description": "The name of the list.",
+													"description": "Specify the list name.",
 													"example": "Admin Serial Numbers",
 													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
-													"description": "The type of list.",
+													"description": "Specify the list type.",
 													"enum": [
 														"SERIAL",
 														"URL",
@@ -2524,9 +2541,11 @@
 													"readOnly": true,
 													"type": "string"
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
@@ -2589,7 +2608,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2618,21 +2637,21 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "The description of the list.",
+															"description": "Provide the list description.",
 															"example": "The serial numbers for administrators",
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
-															"description": "API Resource UUID tag.",
+															"description": "Identify the API resource with a UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
 															"x-auditable": true
 														},
 														"items": {
-															"description": "The items in the list.",
+															"description": "Provide the list items.",
 															"items": {
 																"properties": {
 																	"created_at": {
@@ -2642,13 +2661,13 @@
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "The description of the list item, if present.",
+																		"description": "Provide the list item description (optional).",
 																		"example": "Austin office IP",
 																		"minimum": 0,
 																		"type": "string"
 																	},
 																	"value": {
-																		"description": "The value of the item in a list.",
+																		"description": "Specify the item value.",
 																		"example": "8GE8721REF",
 																		"type": "string",
 																		"x-auditable": true
@@ -2660,13 +2679,13 @@
 															"x-stainless-collection-type": "set"
 														},
 														"name": {
-															"description": "The name of the list.",
+															"description": "Specify the list name.",
 															"example": "Admin Serial Numbers",
 															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
-															"description": "The type of list.",
+															"description": "Specify the list type.",
 															"enum": [
 																"SERIAL",
 																"URL",
@@ -2684,9 +2703,11 @@
 															"readOnly": true,
 															"type": "string"
 														}
-													}
+													},
+													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2761,7 +2782,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2801,7 +2822,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/lists/{list_id}": {
-		"description": "Updates a configured Zero Trust list. Skips updating list items if not included in the payload.",
+		"description": "Updates a configured Zero Trust list. Skips updating list items if not included in the payload. A non empty list items will overwrite the existing list.",
 		"operationId": "zero-trust-lists-update-zero-trust-list",
 		"parameters": [
 			{
@@ -2809,7 +2830,7 @@
 				"name": "list_id",
 				"required": true,
 				"schema": {
-					"description": "API Resource UUID tag.",
+					"description": "Identify the API resource with a UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string",
@@ -2833,24 +2854,24 @@
 					"schema": {
 						"properties": {
 							"description": {
-								"description": "The description of the list.",
+								"description": "Provide the list description.",
 								"example": "The serial numbers for administrators",
 								"type": "string",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"items": {
-								"description": "items to add to the list.",
+								"description": "Add items to the list.",
 								"items": {
 									"properties": {
 										"description": {
-											"description": "The description of the list item, if present.",
+											"description": "Provide the list item description (optional).",
 											"example": "Austin office IP",
 											"minimum": 0,
 											"type": "string"
 										},
 										"value": {
-											"description": "The value of the item in a list.",
+											"description": "Specify the item value.",
 											"example": "8GE8721REF",
 											"type": "string",
 											"x-auditable": true
@@ -2862,7 +2883,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"name": {
-								"description": "The name of the list.",
+								"description": "Specify the list name.",
 								"example": "Admin Serial Numbers",
 								"type": "string",
 								"x-auditable": true
@@ -2870,7 +2891,8 @@
 						},
 						"required": [
 							"name"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -2929,7 +2951,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2952,7 +2974,7 @@
 										"result": {
 											"properties": {
 												"count": {
-													"description": "The number of items in the list.",
+													"description": "Indicate the number of items in the list.",
 													"example": 20,
 													"readOnly": true,
 													"type": "number"
@@ -2964,21 +2986,21 @@
 													"type": "string"
 												},
 												"description": {
-													"description": "The description of the list.",
+													"description": "Provide the list description.",
 													"example": "The serial numbers for administrators",
 													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
-													"description": "API Resource UUID tag.",
+													"description": "Identify the API resource with a UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
 													"x-auditable": true
 												},
 												"items": {
-													"description": "The items in the list.",
+													"description": "Provide the list items.",
 													"items": {
 														"properties": {
 															"created_at": {
@@ -2988,13 +3010,13 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "The description of the list item, if present.",
+																"description": "Provide the list item description (optional).",
 																"example": "Austin office IP",
 																"minimum": 0,
 																"type": "string"
 															},
 															"value": {
-																"description": "The value of the item in a list.",
+																"description": "Specify the item value.",
 																"example": "8GE8721REF",
 																"type": "string",
 																"x-auditable": true
@@ -3006,13 +3028,13 @@
 													"x-stainless-collection-type": "set"
 												},
 												"name": {
-													"description": "The name of the list.",
+													"description": "Specify the list name.",
 													"example": "Admin Serial Numbers",
 													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
-													"description": "The type of list.",
+													"description": "Specify the list type.",
 													"enum": [
 														"SERIAL",
 														"URL",
@@ -3033,7 +3055,8 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object",
@@ -3097,7 +3120,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3120,7 +3143,7 @@
 												"result": {
 													"properties": {
 														"count": {
-															"description": "The number of items in the list.",
+															"description": "Indicate the number of items in the list.",
 															"example": 20,
 															"readOnly": true,
 															"type": "number"
@@ -3132,21 +3155,21 @@
 															"type": "string"
 														},
 														"description": {
-															"description": "The description of the list.",
+															"description": "Provide the list description.",
 															"example": "The serial numbers for administrators",
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
-															"description": "API Resource UUID tag.",
+															"description": "Identify the API resource with a UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
 															"x-auditable": true
 														},
 														"items": {
-															"description": "The items in the list.",
+															"description": "Provide the list items.",
 															"items": {
 																"properties": {
 																	"created_at": {
@@ -3156,13 +3179,13 @@
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "The description of the list item, if present.",
+																		"description": "Provide the list item description (optional).",
 																		"example": "Austin office IP",
 																		"minimum": 0,
 																		"type": "string"
 																	},
 																	"value": {
-																		"description": "The value of the item in a list.",
+																		"description": "Specify the item value.",
 																		"example": "8GE8721REF",
 																		"type": "string",
 																		"x-auditable": true
@@ -3174,13 +3197,13 @@
 															"x-stainless-collection-type": "set"
 														},
 														"name": {
-															"description": "The name of the list.",
+															"description": "Specify the list name.",
 															"example": "Admin Serial Numbers",
 															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
-															"description": "The type of list.",
+															"description": "Specify the list type.",
 															"enum": [
 																"SERIAL",
 																"URL",
@@ -3201,7 +3224,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object",
@@ -3277,7 +3301,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],

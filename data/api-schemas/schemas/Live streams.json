@@ -1,0 +1,2152 @@
+{
+	"GET /accounts/{account_id}/realtimekit/analytics/livestreams/daywise": {
+		"description": "Returns day-wise livestream analytics data for the specified time range.",
+		"operationId": "get-livestream-analytics-daywise",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Specify the start time range in ISO format to access the livestream analytics.",
+				"in": "query",
+				"name": "start_time",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specify the end time range in ISO format to access the livestream analytics.",
+				"in": "query",
+				"name": "end_time",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Example 1": {
+								"value": {
+									"data": [
+										{
+											"count": 4,
+											"date": "2023-07-15T00:00:00.000Z",
+											"total_ingest_seconds": 531,
+											"total_viewer_seconds": 116
+										}
+									],
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"count": {
+											"description": "Count of total livestreams.",
+											"type": "string"
+										},
+										"date": {
+											"description": "The livestream timestamp, provided in ISO format.",
+											"type": "string"
+										},
+										"total_ingest_seconds": {
+											"description": "Total time duration for which the input was given or the meeting was streamed.",
+											"type": "string"
+										},
+										"total_viewer_seconds": {
+											"description": "Total view time for which the viewers watched the stream.",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch day-wise analytics data for your livestreams",
+		"tags": [
+			"Live streams",
+			"LivestreamAnalytics"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/analytics/livestreams/overall": {
+		"description": "Returns livestream analytics for the specified time range.",
+		"operationId": "get-livestream-analytics-complete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Specify the start time range in ISO format to access the livestream analytics.",
+				"in": "query",
+				"name": "start_time",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specify the end time range in ISO format to access the livestream analytics.",
+				"in": "query",
+				"name": "end_time",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Example 1": {
+								"value": {
+									"data": [
+										{
+											"count": 4,
+											"date": "2023-07-15T00:00:00.000Z",
+											"total_ingest_seconds": 531,
+											"total_viewer_seconds": 116
+										}
+									],
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"count": {
+											"description": "Count of total livestreams.",
+											"type": "integer"
+										},
+										"total_ingest_seconds": {
+											"description": "Total time duration for which the input was given or the meeting was streamed.",
+											"type": "integer"
+										},
+										"total_viewer_seconds": {
+											"description": "Total view time for which the viewers watched the stream.",
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch complete analytics data for your livestreams",
+		"tags": [
+			"Live streams",
+			"LivestreamAnalytics"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/livestreams": {
+		"description": "Returns details of livestreams associated with the given organization ID. It includes livestreams created by your organization and RealtimeKit meetings that are livestreamed by your organization. If you only want details of livestreams created by your organization and not RealtimeKit meetings, you can use the `exclude_meetings` query parameter.",
+		"operationId": "fetch_all_livestreams",
+		"parameters": [
+			{
+				"description": "Exclude the RealtimeKit meetings that are livestreamed.",
+				"in": "query",
+				"name": "exclude_meetings",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
+			},
+			{
+				"description": "Number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The page number from which you want your page search results to be displayed.",
+				"in": "query",
+				"name": "page_no",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Specifies the status of the operation.",
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"enum": [
+						"LIVE",
+						"IDLE",
+						"ERRORED",
+						"INVOKED"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specify the start time range in ISO format to access the live stream.",
+				"in": "query",
+				"name": "start_time",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specify the end time range in ISO format to access the live stream.",
+				"in": "query",
+				"name": "end_time",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specifies the sorting order for the results.",
+				"in": "query",
+				"name": "sort_order",
+				"schema": {
+					"enum": [
+						"ASC",
+						"DSC"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"example-0": {
+								"summary": "Get All Live streams Of An Org Staging Success",
+								"value": {
+									"data": [
+										{
+											"created_at": "2023-07-15T11:48:34.753Z",
+											"disabled": false,
+											"id": "3fd739f4-3c41-456e-bfba-6ebd51e16d2c",
+											"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+											"meeting_id": null,
+											"name": null,
+											"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
+											"status": "IDLE",
+											"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
+											"updated_at": "2023-07-15T11:48:34.753Z"
+										}
+									],
+									"paging": {
+										"end_offset": 1,
+										"start_offset": 1,
+										"total_count": 1
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "Timestamp the object was created at. The time is returned in ISO format.",
+											"example": "2023-07-15T11:48:34.753Z",
+											"format": "date-time",
+											"type": "string"
+										},
+										"disabled": {
+											"description": "Specifies if the livestream was disabled.",
+											"type": "string"
+										},
+										"id": {
+											"description": "The ID of the livestream.",
+											"example": "3fd739f4-3c41-456e-bfba-6ebd51e16d2d",
+											"format": "uuid",
+											"type": "string"
+										},
+										"ingest_server": {
+											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+											"example": "rtmps://live.cloudflare.com:443/live/",
+											"type": "string"
+										},
+										"meeting_id": {
+											"description": "ID of the meeting.",
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the livestream.",
+											"example": "test",
+											"type": "string"
+										},
+										"paging": {
+											"properties": {
+												"end_offset": {
+													"example": 1,
+													"type": "integer"
+												},
+												"start_offset": {
+													"example": 1,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 1,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"playback_url": {
+											"description": "The web address that viewers can use to watch the livestream.",
+											"example": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
+											"type": "string"
+										},
+										"status": {
+											"enum": [
+												"LIVE",
+												"IDLE",
+												"ERRORED",
+												"INVOKED"
+											],
+											"type": "string"
+										},
+										"stream_key": {
+											"description": "Unique key for accessing each livestream.",
+											"example": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+											"example": "2023-07-15T11:48:34.753Z",
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch all livestreams",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/livestreams/{livestream_id}": {
+		"description": "Returns details of a livestream with sessions for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API.",
+		"operationId": "get-v2-livestream-session-livestream-id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The page number from which you want your page search results to be displayed.",
+				"in": "query",
+				"name": "page_no",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"in": "path",
+				"name": "livestream_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"example-1": {
+								"value": {
+									"data": {
+										"livestream": {
+											"created_at": "2023-07-15T07:08:26.634Z",
+											"disabled": false,
+											"id": "b60ef3da-fbbb-441b-9168-8235b0035248",
+											"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+											"meeting_id": "bbb87945-df1c-49d9-8159-262a7ae6cfde",
+											"name": null,
+											"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
+											"status": "LIVE",
+											"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
+											"updated_at": "2023-07-15T07:08:40.726Z"
+										},
+										"sessions": [
+											{
+												"created_at": "2023-07-15T07:08:40.742Z",
+												"err_message": null,
+												"id": "cf55a850-c3fd-46b5-b5d2-25b3b9aa1686",
+												"ingest_seconds": 60,
+												"invoked_time": null,
+												"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
+												"started_time": "2023-07-15T07:08:39.000Z",
+												"stopped_time": null,
+												"updated_at": "2023-07-15T07:08:40.742Z",
+												"viewer_seconds": 60
+											}
+										]
+									},
+									"paging": {
+										"end_offset": 1,
+										"start_offset": 1,
+										"total_count": 1
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"livestream": {
+											"properties": {
+												"created_at": {
+													"description": "Timestamp the object was created at. The time is returned in ISO format.",
+													"type": "string"
+												},
+												"disabled": {
+													"description": "Specifies if the livestream was disabled.",
+													"type": "string"
+												},
+												"id": {
+													"description": "ID of the livestream.",
+													"type": "string"
+												},
+												"ingest_server": {
+													"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+													"type": "string"
+												},
+												"meeting_id": {
+													"description": "The ID of the meeting.",
+													"type": "string"
+												},
+												"name": {
+													"description": "Name of the livestream.",
+													"type": "string"
+												},
+												"playback_url": {
+													"description": "The web address that viewers can use to watch the livestream.",
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"LIVE",
+														"IDLE",
+														"ERRORED",
+														"INVOKED"
+													],
+													"type": "string"
+												},
+												"stream_key": {
+													"description": "Unique key for accessing each livestream.",
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"paging": {
+											"properties": {
+												"end_offset": {
+													"example": 1,
+													"type": "integer"
+												},
+												"start_offset": {
+													"example": 1,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 1,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"session": {
+											"properties": {
+												"created_at": {
+													"description": "Timestamp the object was created at. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"err_message": {
+													"type": "string"
+												},
+												"id": {
+													"description": "ID of the session.",
+													"type": "string"
+												},
+												"ingest_seconds": {
+													"description": "The time duration for which the input was given or the meeting was streamed.",
+													"type": "number"
+												},
+												"invoked_time": {
+													"description": "Timestamp the object was invoked. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"livestream_id": {
+													"type": "string"
+												},
+												"started_time": {
+													"description": "Timestamp the object was started. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"stopped_time": {
+													"description": "Timestamp the object was stopped. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"viewer_seconds": {
+													"description": "The total view time for which the viewers watched the stream.",
+													"type": "number"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch livestream details using livestream ID",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/livestreams/{livestream_id}/active-livestream-session": {
+		"description": "Returns details of all active livestreams for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API.",
+		"operationId": "get-v2-active-livestream-session-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "livestream_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"example-1": {
+								"value": {
+									"data": {
+										"livestream": {
+											"created_at": "2023-07-15T07:08:26.634Z",
+											"disabled": false,
+											"id": "b60ef3da-fbbb-441b-9168-8235b0035248",
+											"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+											"meeting_id": "bbb87945-df1c-49d9-8159-262a7ae6cfde",
+											"name": null,
+											"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
+											"status": "LIVE",
+											"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
+											"updated_at": "2023-07-15T07:08:40.726Z"
+										},
+										"session": {
+											"created_at": "2023-07-15T07:08:40.742Z",
+											"err_message": null,
+											"id": "cf55a850-c3fd-46b5-b5d2-25b3b9aa1686",
+											"ingest_seconds": 60,
+											"invoked_time": null,
+											"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
+											"started_time": "2023-07-15T07:08:39.000Z",
+											"stopped_time": null,
+											"updated_at": "2023-07-15T07:08:40.742Z",
+											"viewer_seconds": 60
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"livestream": {
+											"properties": {
+												"created_at": {
+													"description": "Timestamp the object was created at. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"disabled": {
+													"description": "Specifies if the livestream was disabled.",
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												},
+												"ingest_server": {
+													"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+													"type": "string"
+												},
+												"meeting_id": {
+													"description": "ID of the meeting.",
+													"type": "string"
+												},
+												"name": {
+													"description": "Name of the livestream.",
+													"type": "string"
+												},
+												"playback_url": {
+													"description": "The web address that viewers can use to watch the livestream.",
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"LIVE",
+														"IDLE",
+														"ERRORED",
+														"INVOKED"
+													],
+													"type": "string"
+												},
+												"stream_key": {
+													"description": "Unique key for accessing each livestream.",
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"session": {
+											"properties": {
+												"created_at": {
+													"description": "Timestamp the object was created at. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"err_message": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												},
+												"ingest_seconds": {
+													"description": "The time duration for which the input was given or the meeting was streamed.",
+													"type": "string"
+												},
+												"invoked_time": {
+													"description": "Timestamp the object was invoked. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"livestream_id": {
+													"type": "string"
+												},
+												"started_time": {
+													"description": "Timestamp the object was started. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"stopped_time": {
+													"description": "Timestamp the object was stopped. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"viewer_seconds": {
+													"description": "The total view time for which the viewers watched the stream.",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch active livestream session details",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/livestreams/sessions/{livestream-session-id}": {
+		"description": "Returns livestream session details for the given livestream session ID. Retrieve the `livestream_session_id`using the `Fetch livestream session details using a session ID` API.",
+		"operationId": "get-v2-livestreams-livestream-session-id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "livestream-session-id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"example-1": {
+								"value": {
+									"data": {
+										"created_at": "2023-07-15T07:08:40.742Z",
+										"err_message": null,
+										"id": "cf55a850-c3fd-46b5-b5d2-25b3b9aa1686",
+										"ingest_seconds": 60,
+										"invoked_time": null,
+										"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
+										"started_time": "2023-07-15T07:08:39.000Z",
+										"stopped_time": null,
+										"updated_at": "2023-07-15T07:08:40.742Z",
+										"viewer_seconds": 60
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "Timestamp the object was created at. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										},
+										"err_message": {
+											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+											"type": "string"
+										},
+										"id": {
+											"description": "The livestream ID.",
+											"type": "string"
+										},
+										"ingest_seconds": {
+											"description": "Name of the livestream.",
+											"type": "integer"
+										},
+										"livestream_id": {
+											"type": "string"
+										},
+										"started_time": {
+											"description": "Unique key for accessing each livestream.",
+											"type": "string"
+										},
+										"stopped_time": {
+											"description": "The web address that viewers can use to watch the livestream.",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+											"type": "string"
+										},
+										"viewer_seconds": {
+											"description": "Specifies if the livestream was disabled.",
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch livestream session details using livestream session ID",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-livestream": {
+		"description": "Returns details of all active livestreams for the given meeting ID.",
+		"operationId": "get-v2-meetings-meetingId-active-livestream",
+		"parameters": [
+			{
+				"description": "ID of the meeting",
+				"in": "path",
+				"name": "meeting_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"example-1": {
+								"value": {
+									"data": {
+										"created_at": "2023-07-15T11:58:08.404Z",
+										"disabled": false,
+										"id": "61e03cb4-d4da-42ad-9169-f53360f4f4b4",
+										"meeting_id": "bbb03399-24e3-4b0c-90ec-172e97e636be",
+										"name": null,
+										"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
+										"status": "LIVE",
+										"updated_at": "2023-07-15T11:58:24.278Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "Timestamp the object was created at. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										},
+										"disabled": {
+											"description": "Specifies if the livestream was disabled.",
+											"type": "string"
+										},
+										"id": {
+											"description": "The livestream ID.",
+											"type": "string"
+										},
+										"ingest_server": {
+											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+											"type": "string"
+										},
+										"meeting_id": {
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the livestream.",
+											"nullable": true,
+											"type": "string"
+										},
+										"playback_url": {
+											"description": "The web address that viewers can use to watch the livestream.",
+											"type": "string"
+										},
+										"status": {
+											"enum": [
+												"LIVE",
+												"IDLE",
+												"ERRORED",
+												"INVOKED"
+											],
+											"type": "string"
+										},
+										"stream_key": {
+											"description": "Unique key for accessing each livestream.",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch active livestreams for a meeting",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/meetings/{meeting_id}/livestream": {
+		"description": "Returns livestream session details for the given meeting ID. Retreive the meeting ID using the `Create a meeting` API.",
+		"operationId": "livestream-session-details",
+		"parameters": [
+			{
+				"description": "The page number from which you want your page search results to be displayed.",
+				"in": "query",
+				"name": "page_no",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "ID of the meeting",
+				"in": "path",
+				"name": "meeting_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"example-0": {
+								"summary": "Get LiveStream From StreamId Success",
+								"value": {
+									"data": {
+										"livestream": {
+											"created_at": "2023-07-15T07:08:26.634Z",
+											"disabled": false,
+											"id": "b60ef3da-fbbb-441b-9168-8235b0035248",
+											"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+											"meeting_id": "aaa87945-df1c-49d9-8159-262a7ae6cfde",
+											"name": null,
+											"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
+											"status": "LIVE",
+											"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
+											"updated_at": "2023-07-15T07:08:40.726Z"
+										},
+										"sessions": [
+											{
+												"created_at": "2023-07-15T07:08:40.742Z",
+												"err_message": null,
+												"id": "cf55a850-c3fd-46b5-b5d2-25b3b9aa1686",
+												"ingest_seconds": 60,
+												"invoked_time": null,
+												"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
+												"started_time": "2023-07-15T07:08:39.000Z",
+												"stopped_time": null,
+												"updated_at": "2023-07-15T07:08:40.742Z",
+												"viewer_seconds": 60
+											}
+										]
+									},
+									"paging": {
+										"end_offset": 1,
+										"start_offset": 1,
+										"total_count": 1
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"livestreams": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"description": "The timestamp at which the livestream was created. The time is returned in ISO format.",
+														"format": "date-time",
+														"type": "string"
+													},
+													"disabled": {
+														"description": "Specifies if the livestream was disabled.",
+														"type": "boolean"
+													},
+													"id": {
+														"description": "The livestream ID.",
+														"type": "string"
+													},
+													"ingest_server": {
+														"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+														"type": "string"
+													},
+													"meeting_id": {
+														"description": "The ID of the meeting that was livestreamed.",
+														"type": "string"
+													},
+													"name": {
+														"description": "Name of the livestream.",
+														"nullable": true,
+														"type": "string"
+													},
+													"playback_url": {
+														"description": "The web address that viewers can use to watch the livestream.",
+														"type": "string"
+													},
+													"status": {
+														"enum": [
+															"LIVE",
+															"INVOKED",
+															"ERRORED",
+															"IDLE"
+														],
+														"type": "string"
+													},
+													"stream_key": {
+														"description": "Unique key for accessing each livestream.",
+														"type": "string"
+													},
+													"updated_at": {
+														"description": "The timestamp at which the livestream was updated. The time is returned in ISO format.",
+														"format": "date-time",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"paging": {
+											"properties": {
+												"end_offset": {
+													"example": 1,
+													"type": "integer"
+												},
+												"start_offset": {
+													"example": 1,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 1,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"sessions": {
+											"properties": {
+												"created_at": {
+													"description": "The timestamp at which the livestream was created. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"err_message": {
+													"type": "string"
+												},
+												"id": {
+													"description": "The ID of the livestream session.",
+													"type": "string"
+												},
+												"ingest_seconds": {
+													"description": "The time duration for which the input was given or the meeting was streamed.",
+													"type": "string"
+												},
+												"invoked_time": {
+													"description": "The time at which the livestream was invoked.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"livestream_id": {
+													"description": "The ID of the livestream.",
+													"type": "string"
+												},
+												"started_time": {
+													"description": "The time at which the livestream was started.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"stopped_time": {
+													"description": "The time at which the livestream was stopped.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "The timestamp at which the livestream was updated. The time is returned in ISO format.",
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch livestream session details for a meeting",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/livestream-sessions": {
+		"description": "Returns livestream session details for the given session ID. Retreive the session ID using the `Fetch all sessions of an organization` API.",
+		"operationId": "get-v2-livestreamsession-session-meetingId-active-livestream",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"description": "The page number from which you want your page search results to be displayed.",
+				"in": "query",
+				"name": "page_no",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"example-1": {
+								"value": {
+									"data": {
+										"data": [
+											{
+												"created_at": "2023-07-15T07:08:40.742Z",
+												"err_message": null,
+												"id": "cf55a850-c3fd-46b5-b5d2-25b3b9aa1686",
+												"ingest_seconds": 118,
+												"invoked_time": null,
+												"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035123",
+												"started_time": "2023-07-15T07:08:39.000Z",
+												"stopped_time": "2023-07-15T07:10:45.000Z",
+												"updated_at": "2023-07-15T07:11:47.274Z",
+												"viewer_seconds": 116.11599994199997
+											}
+										],
+										"paging": {
+											"end_offset": 1,
+											"start_offset": 1,
+											"total_count": 1
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "Timestamp the object was created at. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										},
+										"err_message": {
+											"enum": [
+												"LIVE",
+												"IDLE",
+												"ERRORED",
+												"INVOKED"
+											],
+											"type": "string"
+										},
+										"id": {
+											"description": "The livestream session ID.",
+											"type": "string"
+										},
+										"ingest_seconds": {
+											"description": "The time duration for which the input was given or the meeting was streamed.",
+											"type": "number"
+										},
+										"invoked_time": {
+											"description": "Name of the livestream.",
+											"nullable": true,
+											"type": "string"
+										},
+										"livestream_id": {
+											"description": "The ID of the livestream.",
+											"type": "string"
+										},
+										"paging": {
+											"properties": {
+												"end_offset": {
+													"type": "number"
+												},
+												"start_offset": {
+													"type": "number"
+												},
+												"total_count": {
+													"type": "number"
+												}
+											},
+											"type": "object"
+										},
+										"stopped_time": {
+											"description": "Specifies if the livestream was disabled.",
+											"format": "date-time",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										},
+										"viewer_seconds": {
+											"description": "The total view time for which the viewers watched the stream.",
+											"type": "number"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch livestream session details using a session ID",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/livestreams": {
+		"description": "Creates a livestream for the given organization ID and returns ingest server, stream key, and playback URL. You can pass custom input to the ingest server and stream key, and freely distribute the content using the playback URL on any player that supports HLS/LHLS.",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"example-1": {
+							"value": {
+								"name": "prdmmp-xhycsl"
+							}
+						}
+					},
+					"schema": {
+						"properties": {
+							"name": {
+								"description": "Name of the livestream",
+								"nullable": true,
+								"pattern": "^[a-zA-Z0-9-_]*$",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"example-1": {
+								"value": {
+									"data": {
+										"disabled": false,
+										"id": "78dd0b50-4147-4bb8-88d3-2ccc2e98bff0",
+										"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+										"meeting_id": null,
+										"name": "Livestreaming-Demo",
+										"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
+										"status": "INVOKED",
+										"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"disabled": {
+											"description": "Specifies if the livestream was disabled.",
+											"type": "boolean"
+										},
+										"id": {
+											"description": "The livestream ID.",
+											"type": "string"
+										},
+										"ingest_server": {
+											"description": "The server URL to which the RTMP encoder should send the video and audio data.",
+											"type": "string"
+										},
+										"meeting_id": {
+											"nullable": true,
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"playback_url": {
+											"description": "The web address that viewers can use to watch the livestream.",
+											"type": "string"
+										},
+										"status": {
+											"enum": [
+												"LIVE",
+												"IDLE",
+												"ERRORED",
+												"INVOKED"
+											],
+											"type": "string"
+										},
+										"stream_key": {
+											"description": "Unique key for accessing each livestream.",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create an independent livestream",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/livestreams/{livestream_id}/reset-stream-key": {
+		"description": "Resets the stream key for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API.",
+		"operationId": "reset-stream-key",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "livestream_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Example 1": {
+								"value": {
+									"data": {
+										"created_at": "2023-07-15T11:58:08.404Z",
+										"disabled": true,
+										"id": "61e03cb4-d4da-42ad-9169-f53360f4f4b4",
+										"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+										"meeting_id": "bbb03399-24e3-4b0c-90ec-172e97e636be",
+										"name": null,
+										"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
+										"status": "LIVE",
+										"stream_key": "",
+										"updated_at": "2023-07-15T12:02:48.242Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "Timestamp the object was created at. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										},
+										"disabled": {
+											"description": "Specifies if the livestream was disabled.",
+											"type": "string"
+										},
+										"id": {
+											"description": "The ID of the livestream.",
+											"type": "string"
+										},
+										"ingest_server": {
+											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+											"type": "string"
+										},
+										"meeting_id": {
+											"description": "The ID of the meeting.",
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the livestream.",
+											"type": "string"
+										},
+										"playback_url": {
+											"description": "The web address that viewers can use to watch the livestream.",
+											"type": "string"
+										},
+										"status": {
+											"enum": [
+												"LIVE",
+												"IDLE",
+												"ERRORED",
+												"INVOKED"
+											],
+											"type": "string"
+										},
+										"stream_key": {
+											"description": "Unique key for accessing each livestream.",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"application/xml": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "The timestamp at which the livestream was created. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										},
+										"disabled": {
+											"description": "Specifies if the livestream was disabled.",
+											"type": "boolean"
+										},
+										"id": {
+											"description": "The livestream ID.",
+											"type": "string"
+										},
+										"ingest_server": {
+											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+											"type": "string"
+										},
+										"meeting_id": {
+											"description": "ID of the meeting.",
+											"nullable": true,
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the livestream.",
+											"nullable": true,
+											"type": "string"
+										},
+										"org_id": {
+											"type": "string"
+										},
+										"playback_url": {
+											"description": "The web address that viewers can use to watch the livestream.",
+											"type": "string"
+										},
+										"status": {
+											"description": "The status of the livestream.",
+											"enum": [
+												"LIVE",
+												"IDLE",
+												"ERRORED",
+												"INVOKED"
+											],
+											"type": "string"
+										},
+										"stream_key": {
+											"description": "Unique key for accessing each livestream.",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "The timestamp at which the livestream was updated. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Reset a livestream's stream key",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-livestream/stop": {
+		"description": "Stops the active livestream of a meeting associated with the given meeting ID. Retreive the meeting ID using the `Create a meeting` API.",
+		"operationId": "stop_livestreaming",
+		"parameters": [
+			{
+				"description": "ID of the meeting",
+				"in": "path",
+				"name": "meeting_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"example-1": {
+								"value": {
+									"data": {
+										"message": "Stopped live stream successfully"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"message": {
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Stop livestreaming a meeting",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/livestreams": {
+		"description": "Starts livestream of a meeting associated with the given meeting ID. Retreive the meeting ID using the `Create a meeting` API.",
+		"operationId": "start-livestreaming",
+		"parameters": [
+			{
+				"description": "ID of the meeting",
+				"in": "path",
+				"name": "meeting_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"example-1": {
+							"value": {
+								"name": "prdmmp-xhycsl"
+							}
+						}
+					},
+					"schema": {
+						"properties": {
+							"name": {
+								"nullable": true,
+								"pattern": "^[a-zA-Z0-9-_]*$",
+								"type": "string"
+							},
+							"video_config": {
+								"properties": {
+									"height": {
+										"description": "Height of the livestreaming video in pixels",
+										"type": "integer"
+									},
+									"width": {
+										"description": "Width of the livestreaming video in pixels",
+										"type": "integer"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"example-1": {
+								"value": {
+									"data": {
+										"id": "7088bba8-f522-49a8-b59b-3cd0e946bbb0",
+										"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+										"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
+										"status": "INVOKED",
+										"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"id": {
+											"description": "The livestream ID.",
+											"type": "string"
+										},
+										"ingest_server": {
+											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+											"type": "string"
+										},
+										"playback_url": {
+											"description": "The web address that viewers can use to watch the livestream.",
+											"type": "string"
+										},
+										"status": {
+											"enum": [
+												"LIVE",
+												"IDLE",
+												"ERRORED",
+												"INVOKED"
+											],
+											"type": "string"
+										},
+										"stream_key": {
+											"description": "Unique key for accessing each livestream.",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Created"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Start livestreaming a meeting",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"PUT /accounts/{account_id}/realtimekit/livestreams/{livestream_id}/disable": {
+		"description": "Disables a livestream for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API.",
+		"operationId": "disable-livestream",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "livestream_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Example 1": {
+								"value": {
+									"data": {
+										"created_at": "2019-08-24T14:15:22Z",
+										"disabled": false,
+										"id": "string",
+										"ingest_server": "string",
+										"meeting_id": "string",
+										"name": "string",
+										"org_id": "string",
+										"playback_url": "string",
+										"status": "LIVE",
+										"stream_key": "string",
+										"updated_at": "2019-08-24T14:15:22Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"LivestreamBase": {
+									"properties": {
+										"created_at": {
+											"description": "The timestamp at which the livestream was created. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										},
+										"disabled": {
+											"description": "Specifies if the livestream was disabled.",
+											"type": "boolean"
+										},
+										"id": {
+											"description": "The livestream ID.",
+											"type": "string"
+										},
+										"ingest_server": {
+											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+											"type": "string"
+										},
+										"meeting_id": {
+											"description": "ID of the meeting.",
+											"nullable": true,
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the livestream.",
+											"nullable": true,
+											"type": "string"
+										},
+										"org_id": {
+											"type": "string"
+										},
+										"playback_url": {
+											"description": "The web address that viewers can use to watch the livestream.",
+											"type": "string"
+										},
+										"status": {
+											"description": "The status of the livestream.",
+											"enum": [
+												"LIVE",
+												"IDLE",
+												"ERRORED",
+												"INVOKED"
+											],
+											"type": "string"
+										},
+										"stream_key": {
+											"description": "Unique key for accessing each livestream.",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "The timestamp at which the livestream was updated. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Disable a livestream",
+		"tags": [
+			"Live streams"
+		]
+	},
+	"PUT /accounts/{account_id}/realtimekit/livestreams/{livestream_id}/enable": {
+		"description": "Enables a livestream for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API.",
+		"operationId": "enable-livestream",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "livestream_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"created_at": {
+											"description": "The timestamp at which the livestream was created. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										},
+										"disabled": {
+											"description": "Specifies if the livestream was disabled.",
+											"type": "boolean"
+										},
+										"id": {
+											"description": "The livestream ID.",
+											"type": "string"
+										},
+										"ingest_server": {
+											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+											"type": "string"
+										},
+										"meeting_id": {
+											"description": "ID of the meeting.",
+											"nullable": true,
+											"type": "string"
+										},
+										"name": {
+											"description": "Name of the livestream.",
+											"nullable": true,
+											"type": "string"
+										},
+										"org_id": {
+											"type": "string"
+										},
+										"playback_url": {
+											"description": "The web address that viewers can use to watch the livestream.",
+											"type": "string"
+										},
+										"status": {
+											"description": "The status of the livestream.",
+											"enum": [
+												"LIVE",
+												"IDLE",
+												"ERRORED",
+												"INVOKED"
+											],
+											"type": "string"
+										},
+										"stream_key": {
+											"description": "Unique key for accessing each livestream.",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "The timestamp at which the livestream was updated. The time is returned in ISO format.",
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Enable a livestream",
+		"tags": [
+			"Live streams"
+		]
+	}
+}

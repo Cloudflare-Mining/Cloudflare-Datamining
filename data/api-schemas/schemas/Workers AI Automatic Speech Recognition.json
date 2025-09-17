@@ -163,6 +163,303 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/deepgram/nova-3": {
+		"operationId": "workers-ai-post-run-cf-deepgram-nova-3",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"audio": {
+								"properties": {
+									"body": {
+										"type": "object"
+									},
+									"contentType": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"body",
+									"contentType"
+								],
+								"type": "object"
+							},
+							"channels": {
+								"description": "The number of channels in the submitted audio",
+								"type": "number"
+							},
+							"custom_intent": {
+								"description": "Custom intents you want the model to detect within your input audio if present",
+								"type": "string"
+							},
+							"custom_intent_mode": {
+								"description": "Sets how the model will interpret intents submitted to the custom_intent param. When strict, the model will only return intents submitted using the custom_intent param. When extended, the model will return its own detected intents in addition those submitted using the custom_intents param",
+								"enum": [
+									"extended",
+									"strict"
+								],
+								"type": "string"
+							},
+							"custom_topic": {
+								"description": "Custom topics you want the model to detect within your input audio or text if present Submit up to 100",
+								"type": "string"
+							},
+							"custom_topic_mode": {
+								"description": "Sets how the model will interpret strings submitted to the custom_topic param. When strict, the model will only return topics submitted using the custom_topic param. When extended, the model will return its own detected topics in addition to those submitted using the custom_topic param.",
+								"enum": [
+									"extended",
+									"strict"
+								],
+								"type": "string"
+							},
+							"detect_entities": {
+								"description": "Identifies and extracts key entities from content in submitted audio",
+								"type": "boolean"
+							},
+							"detect_language": {
+								"description": "Identifies the dominant language spoken in submitted audio",
+								"type": "boolean"
+							},
+							"diarize": {
+								"description": "Recognize speaker changes. Each word in the transcript will be assigned a speaker number starting at 0",
+								"type": "boolean"
+							},
+							"dictation": {
+								"description": "Identify and extract key entities from content in submitted audio",
+								"type": "boolean"
+							},
+							"encoding": {
+								"description": "Specify the expected encoding of your submitted audio",
+								"enum": [
+									"linear16",
+									"flac",
+									"mulaw",
+									"amr-nb",
+									"amr-wb",
+									"opus",
+									"speex",
+									"g729"
+								],
+								"type": "string"
+							},
+							"endpointing": {
+								"description": "Indicates how long model will wait to detect whether a speaker has finished speaking or pauses for a significant period of time. When set to a value, the streaming endpoint immediately finalizes the transcription for the processed time range and returns the transcript with a speech_final parameter set to true. Can also be set to false to disable endpointing",
+								"type": "string"
+							},
+							"extra": {
+								"description": "Arbitrary key-value pairs that are attached to the API response for usage in downstream processing",
+								"type": "string"
+							},
+							"filler_words": {
+								"description": "Filler Words can help transcribe interruptions in your audio, like 'uh' and 'um'",
+								"type": "boolean"
+							},
+							"interim_results": {
+								"description": "Specifies whether the streaming endpoint should provide ongoing transcription updates as more audio is received. When set to true, the endpoint sends continuous updates, meaning transcription results may evolve over time. Note: Supported only for webosockets.",
+								"type": "boolean"
+							},
+							"keyterm": {
+								"description": "Key term prompting can boost or suppress specialized terminology and brands.",
+								"type": "string"
+							},
+							"keywords": {
+								"description": "Keywords can boost or suppress specialized terminology and brands.",
+								"type": "string"
+							},
+							"language": {
+								"description": "The BCP-47 language tag that hints at the primary spoken language. Depending on the Model and API endpoint you choose only certain languages are available.",
+								"type": "string"
+							},
+							"measurements": {
+								"description": "Spoken measurements will be converted to their corresponding abbreviations.",
+								"type": "boolean"
+							},
+							"mip_opt_out": {
+								"description": "Opts out requests from the Deepgram Model Improvement Program. Refer to our Docs for pricing impacts before setting this to true. https://dpgr.am/deepgram-mip.",
+								"type": "boolean"
+							},
+							"mode": {
+								"description": "Mode of operation for the model representing broad area of topic that will be talked about in the supplied audio",
+								"enum": [
+									"general",
+									"medical",
+									"finance"
+								],
+								"type": "string"
+							},
+							"multichannel": {
+								"description": "Transcribe each audio channel independently.",
+								"type": "boolean"
+							},
+							"numerals": {
+								"description": "Numerals converts numbers from written format to numerical format.",
+								"type": "boolean"
+							},
+							"paragraphs": {
+								"description": "Splits audio into paragraphs to improve transcript readability.",
+								"type": "boolean"
+							},
+							"profanity_filter": {
+								"description": "Profanity Filter looks for recognized profanity and converts it to the nearest recognized non-profane word or removes it from the transcript completely.",
+								"type": "boolean"
+							},
+							"punctuate": {
+								"description": "Add punctuation and capitalization to the transcript.",
+								"type": "boolean"
+							},
+							"redact": {
+								"description": "Redaction removes sensitive information from your transcripts.",
+								"type": "string"
+							},
+							"replace": {
+								"description": "Search for terms or phrases in submitted audio and replaces them.",
+								"type": "string"
+							},
+							"search": {
+								"description": "Search for terms or phrases in submitted audio.",
+								"type": "string"
+							},
+							"sentiment": {
+								"description": "Recognizes the sentiment throughout a transcript or text.",
+								"type": "boolean"
+							},
+							"smart_format": {
+								"description": "Apply formatting to transcript output. When set to true, additional formatting will be applied to transcripts to improve readability.",
+								"type": "boolean"
+							},
+							"topics": {
+								"description": "Detect topics throughout a transcript or text.",
+								"type": "boolean"
+							},
+							"utt_split": {
+								"description": "Seconds to wait before detecting a pause between words in submitted audio.",
+								"type": "number"
+							},
+							"utterance_end_ms": {
+								"description": "Indicates how long model will wait to send an UtteranceEnd message after a word has been transcribed. Use with interim_results. Note: Supported only for webosockets.",
+								"type": "boolean"
+							},
+							"utterances": {
+								"description": "Segments speech into meaningful semantic units.",
+								"type": "boolean"
+							},
+							"vad_events": {
+								"description": "Indicates that speech has started. You'll begin receiving Speech Started messages upon speech starting. Note: Supported only for webosockets.",
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"audio"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/deepgram/nova-3 model.",
+		"tags": [
+			"Workers AI Automatic Speech Recognition"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/openai/whisper": {
 		"operationId": "workers-ai-post-run-cf-openai-whisper",
 		"parameters": [

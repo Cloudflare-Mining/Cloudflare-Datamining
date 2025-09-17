@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/gateway/certificates/{certificate_id}": {
-		"description": "Deletes a gateway-managed Zero Trust certificate. A certificate must be deactivated from the edge (inactive) before it is deleted.",
+		"description": "Delete a gateway-managed Zero Trust certificate. You must deactivate the certificate from the edge (inactive) before deleting it.",
 		"operationId": "zero-trust-certificates-delete-zero-trust-certificate",
 		"parameters": [
 			{
@@ -8,7 +8,7 @@
 				"name": "certificate_id",
 				"required": true,
 				"schema": {
-					"description": "Certificate UUID tag.",
+					"description": "Identify the certificate with a UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string",
@@ -85,7 +85,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -108,7 +108,7 @@
 										"result": {
 											"properties": {
 												"binding_status": {
-													"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+													"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 													"enum": [
 														"pending_deployment",
 														"available",
@@ -120,7 +120,7 @@
 													"x-auditable": true
 												},
 												"certificate": {
-													"description": "The CA certificate(read only).",
+													"description": "Provide the CA certificate (read-only).",
 													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 													"readOnly": true,
 													"type": "string"
@@ -138,41 +138,41 @@
 													"type": "string"
 												},
 												"fingerprint": {
-													"description": "The SHA256 fingerprint of the certificate(read only).",
+													"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 													"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
-													"description": "Certificate UUID tag.",
+													"description": "Identify the certificate with a UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
 													"x-auditable": true
 												},
 												"in_use": {
-													"default": false,
-													"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+													"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"issuer_org": {
-													"description": "The organization that issued the certificate(read only).",
+													"description": "Indicate the organization that issued the certificate (read-only).",
 													"example": "Example Inc.",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"issuer_raw": {
-													"description": "The entire issuer field of the certificate(read only).",
+													"description": "Provide the entire issuer field of the certificate (read-only).",
 													"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
-													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+													"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 													"enum": [
 														"custom",
 														"gateway_managed"
@@ -197,14 +197,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Delete Zero Trust certificate response."
+				"description": "Deletes Zero Trust certificate response."
 			},
 			"4XX": {
 				"content": {
@@ -260,7 +261,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -283,7 +284,7 @@
 												"result": {
 													"properties": {
 														"binding_status": {
-															"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+															"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 															"enum": [
 																"pending_deployment",
 																"available",
@@ -295,7 +296,7 @@
 															"x-auditable": true
 														},
 														"certificate": {
-															"description": "The CA certificate(read only).",
+															"description": "Provide the CA certificate (read-only).",
 															"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 															"readOnly": true,
 															"type": "string"
@@ -313,41 +314,41 @@
 															"type": "string"
 														},
 														"fingerprint": {
-															"description": "The SHA256 fingerprint of the certificate(read only).",
+															"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 															"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Certificate UUID tag.",
+															"description": "Identify the certificate with a UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
 															"x-auditable": true
 														},
 														"in_use": {
-															"default": false,
-															"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+															"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"issuer_org": {
-															"description": "The organization that issued the certificate(read only).",
+															"description": "Indicate the organization that issued the certificate (read-only).",
 															"example": "Example Inc.",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"issuer_raw": {
-															"description": "The entire issuer field of the certificate(read only).",
+															"description": "Provide the entire issuer field of the certificate (read-only).",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
-															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+															"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 															"enum": [
 																"custom",
 																"gateway_managed"
@@ -372,7 +373,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -447,7 +449,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -467,7 +469,7 @@
 						}
 					}
 				},
-				"description": "Delete Zero Trust certificate response failure."
+				"description": "Deletes Zero Trust certificate response failure."
 			}
 		},
 		"security": [
@@ -486,7 +488,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/gateway/certificates": {
-		"description": "Fetches all Zero Trust certificates for an account.",
+		"description": "List all Zero Trust certificates for an account.",
 		"operationId": "zero-trust-certificates-list-zero-trust-certificates",
 		"parameters": [
 			{
@@ -553,7 +555,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -573,29 +575,30 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service.",
+															"description": "Indicate the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results.",
+															"description": "Indicate the current page within a paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results.",
+															"description": "Indicate the number of results per page.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
+															"description": "Indicate the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -606,7 +609,7 @@
 											"items": {
 												"properties": {
 													"binding_status": {
-														"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+														"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 														"enum": [
 															"pending_deployment",
 															"available",
@@ -618,7 +621,7 @@
 														"x-auditable": true
 													},
 													"certificate": {
-														"description": "The CA certificate(read only).",
+														"description": "Provide the CA certificate (read-only).",
 														"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 														"readOnly": true,
 														"type": "string"
@@ -636,41 +639,41 @@
 														"type": "string"
 													},
 													"fingerprint": {
-														"description": "The SHA256 fingerprint of the certificate(read only).",
+														"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 														"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
-														"description": "Certificate UUID tag.",
+														"description": "Identify the certificate with a UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"type": "string",
 														"x-auditable": true
 													},
 													"in_use": {
-														"default": false,
-														"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+														"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 														"readOnly": true,
-														"type": "boolean"
+														"type": "boolean",
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"issuer_org": {
-														"description": "The organization that issued the certificate(read only).",
+														"description": "Indicate the organization that issued the certificate (read-only).",
 														"example": "Example Inc.",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
 													},
 													"issuer_raw": {
-														"description": "The entire issuer field of the certificate(read only).",
+														"description": "Provide the entire issuer field of the certificate (read-only).",
 														"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
 													},
 													"type": {
-														"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+														"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 														"enum": [
 															"custom",
 															"gateway_managed"
@@ -697,14 +700,15 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "List Zero Trust certificates response."
+				"description": "Lists Zero Trust certificates response."
 			},
 			"4XX": {
 				"content": {
@@ -760,7 +764,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -780,29 +784,30 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service.",
+																	"description": "Indicate the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results.",
+																	"description": "Indicate the current page within a paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results.",
+																	"description": "Indicate the number of results per page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters.",
+																	"description": "Indicate the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -813,7 +818,7 @@
 													"items": {
 														"properties": {
 															"binding_status": {
-																"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+																"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 																"enum": [
 																	"pending_deployment",
 																	"available",
@@ -825,7 +830,7 @@
 																"x-auditable": true
 															},
 															"certificate": {
-																"description": "The CA certificate(read only).",
+																"description": "Provide the CA certificate (read-only).",
 																"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 																"readOnly": true,
 																"type": "string"
@@ -843,41 +848,41 @@
 																"type": "string"
 															},
 															"fingerprint": {
-																"description": "The SHA256 fingerprint of the certificate(read only).",
+																"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 																"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 																"readOnly": true,
 																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
-																"description": "Certificate UUID tag.",
+																"description": "Identify the certificate with a UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"type": "string",
 																"x-auditable": true
 															},
 															"in_use": {
-																"default": false,
-																"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+																"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 																"readOnly": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"issuer_org": {
-																"description": "The organization that issued the certificate(read only).",
+																"description": "Indicate the organization that issued the certificate (read-only).",
 																"example": "Example Inc.",
 																"readOnly": true,
 																"type": "string",
 																"x-auditable": true
 															},
 															"issuer_raw": {
-																"description": "The entire issuer field of the certificate(read only).",
+																"description": "Provide the entire issuer field of the certificate (read-only).",
 																"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 																"readOnly": true,
 																"type": "string",
 																"x-auditable": true
 															},
 															"type": {
-																"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+																"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 																"enum": [
 																	"custom",
 																	"gateway_managed"
@@ -904,7 +909,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -979,7 +985,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1000,7 +1006,7 @@
 						}
 					}
 				},
-				"description": "List Zero Trust certificates response failure."
+				"description": "Lists Zero Trust certificates response failure."
 			}
 		},
 		"security": [
@@ -1020,7 +1026,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/gateway/certificates/{certificate_id}": {
-		"description": "Fetches a single Zero Trust certificate.",
+		"description": "Get a single Zero Trust certificate.",
 		"operationId": "zero-trust-certificates-zero-trust-certificate-details",
 		"parameters": [
 			{
@@ -1028,7 +1034,7 @@
 				"name": "certificate_id",
 				"required": true,
 				"schema": {
-					"description": "Certificate UUID tag.",
+					"description": "Identify the certificate with a UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string",
@@ -1099,7 +1105,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1122,7 +1128,7 @@
 										"result": {
 											"properties": {
 												"binding_status": {
-													"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+													"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 													"enum": [
 														"pending_deployment",
 														"available",
@@ -1134,7 +1140,7 @@
 													"x-auditable": true
 												},
 												"certificate": {
-													"description": "The CA certificate(read only).",
+													"description": "Provide the CA certificate (read-only).",
 													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 													"readOnly": true,
 													"type": "string"
@@ -1152,41 +1158,41 @@
 													"type": "string"
 												},
 												"fingerprint": {
-													"description": "The SHA256 fingerprint of the certificate(read only).",
+													"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 													"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
-													"description": "Certificate UUID tag.",
+													"description": "Identify the certificate with a UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
 													"x-auditable": true
 												},
 												"in_use": {
-													"default": false,
-													"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+													"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"issuer_org": {
-													"description": "The organization that issued the certificate(read only).",
+													"description": "Indicate the organization that issued the certificate (read-only).",
 													"example": "Example Inc.",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"issuer_raw": {
-													"description": "The entire issuer field of the certificate(read only).",
+													"description": "Provide the entire issuer field of the certificate (read-only).",
 													"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
-													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+													"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 													"enum": [
 														"custom",
 														"gateway_managed"
@@ -1211,14 +1217,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Get Zero Trust certificate details response."
+				"description": "Gets Zero Trust certificate details response."
 			},
 			"4XX": {
 				"content": {
@@ -1274,7 +1281,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1297,7 +1304,7 @@
 												"result": {
 													"properties": {
 														"binding_status": {
-															"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+															"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 															"enum": [
 																"pending_deployment",
 																"available",
@@ -1309,7 +1316,7 @@
 															"x-auditable": true
 														},
 														"certificate": {
-															"description": "The CA certificate(read only).",
+															"description": "Provide the CA certificate (read-only).",
 															"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 															"readOnly": true,
 															"type": "string"
@@ -1327,41 +1334,41 @@
 															"type": "string"
 														},
 														"fingerprint": {
-															"description": "The SHA256 fingerprint of the certificate(read only).",
+															"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 															"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Certificate UUID tag.",
+															"description": "Identify the certificate with a UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
 															"x-auditable": true
 														},
 														"in_use": {
-															"default": false,
-															"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+															"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"issuer_org": {
-															"description": "The organization that issued the certificate(read only).",
+															"description": "Indicate the organization that issued the certificate (read-only).",
 															"example": "Example Inc.",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"issuer_raw": {
-															"description": "The entire issuer field of the certificate(read only).",
+															"description": "Provide the entire issuer field of the certificate (read-only).",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
-															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+															"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 															"enum": [
 																"custom",
 																"gateway_managed"
@@ -1386,7 +1393,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1461,7 +1469,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1482,7 +1490,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust certificate details response failure."
+				"description": "Gets Zero Trust certificate details response failure."
 			}
 		},
 		"security": [
@@ -1502,7 +1510,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates": {
-		"description": "Creates a new Zero Trust certificate.",
+		"description": "Create a new Zero Trust certificate.",
 		"operationId": "zero-trust-certificates-create-zero-trust-certificate",
 		"parameters": [
 			{
@@ -1522,7 +1530,7 @@
 					"schema": {
 						"properties": {
 							"validity_period_days": {
-								"description": "Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. In terraform, validity_period_days can only be used while creating a certificate, and this CAN NOT be used to extend the validity of an already generated certificate.",
+								"description": "Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.",
 								"example": 1826,
 								"type": "integer",
 								"x-auditable": true
@@ -1586,7 +1594,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1609,7 +1617,7 @@
 										"result": {
 											"properties": {
 												"binding_status": {
-													"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+													"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 													"enum": [
 														"pending_deployment",
 														"available",
@@ -1621,7 +1629,7 @@
 													"x-auditable": true
 												},
 												"certificate": {
-													"description": "The CA certificate(read only).",
+													"description": "Provide the CA certificate (read-only).",
 													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 													"readOnly": true,
 													"type": "string"
@@ -1639,41 +1647,41 @@
 													"type": "string"
 												},
 												"fingerprint": {
-													"description": "The SHA256 fingerprint of the certificate(read only).",
+													"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 													"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
-													"description": "Certificate UUID tag.",
+													"description": "Identify the certificate with a UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
 													"x-auditable": true
 												},
 												"in_use": {
-													"default": false,
-													"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+													"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"issuer_org": {
-													"description": "The organization that issued the certificate(read only).",
+													"description": "Indicate the organization that issued the certificate (read-only).",
 													"example": "Example Inc.",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"issuer_raw": {
-													"description": "The entire issuer field of the certificate(read only).",
+													"description": "Provide the entire issuer field of the certificate (read-only).",
 													"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
-													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+													"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 													"enum": [
 														"custom",
 														"gateway_managed"
@@ -1698,14 +1706,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Create Zero Trust certificate response."
+				"description": "Creates Zero Trust certificate response."
 			},
 			"4XX": {
 				"content": {
@@ -1761,7 +1770,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1784,7 +1793,7 @@
 												"result": {
 													"properties": {
 														"binding_status": {
-															"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+															"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 															"enum": [
 																"pending_deployment",
 																"available",
@@ -1796,7 +1805,7 @@
 															"x-auditable": true
 														},
 														"certificate": {
-															"description": "The CA certificate(read only).",
+															"description": "Provide the CA certificate (read-only).",
 															"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 															"readOnly": true,
 															"type": "string"
@@ -1814,41 +1823,41 @@
 															"type": "string"
 														},
 														"fingerprint": {
-															"description": "The SHA256 fingerprint of the certificate(read only).",
+															"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 															"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Certificate UUID tag.",
+															"description": "Identify the certificate with a UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
 															"x-auditable": true
 														},
 														"in_use": {
-															"default": false,
-															"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+															"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"issuer_org": {
-															"description": "The organization that issued the certificate(read only).",
+															"description": "Indicate the organization that issued the certificate (read-only).",
 															"example": "Example Inc.",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"issuer_raw": {
-															"description": "The entire issuer field of the certificate(read only).",
+															"description": "Provide the entire issuer field of the certificate (read-only).",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
-															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+															"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 															"enum": [
 																"custom",
 																"gateway_managed"
@@ -1873,7 +1882,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1948,7 +1958,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1969,7 +1979,7 @@
 						}
 					}
 				},
-				"description": "Create Zero Trust certificate response failure."
+				"description": "Creates Zero Trust certificate response failure."
 			}
 		},
 		"security": [
@@ -1988,7 +1998,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates/{certificate_id}/activate": {
-		"description": "Binds a single Zero Trust certificate to the edge.",
+		"description": "Bind a single Zero Trust certificate to the edge.",
 		"operationId": "zero-trust-certificates-activate-zero-trust-certificate",
 		"parameters": [
 			{
@@ -1996,7 +2006,7 @@
 				"name": "certificate_id",
 				"required": true,
 				"schema": {
-					"description": "Certificate UUID tag.",
+					"description": "Identify the certificate with a UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string",
@@ -2073,7 +2083,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2096,7 +2106,7 @@
 										"result": {
 											"properties": {
 												"binding_status": {
-													"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+													"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 													"enum": [
 														"pending_deployment",
 														"available",
@@ -2108,7 +2118,7 @@
 													"x-auditable": true
 												},
 												"certificate": {
-													"description": "The CA certificate(read only).",
+													"description": "Provide the CA certificate (read-only).",
 													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 													"readOnly": true,
 													"type": "string"
@@ -2126,41 +2136,41 @@
 													"type": "string"
 												},
 												"fingerprint": {
-													"description": "The SHA256 fingerprint of the certificate(read only).",
+													"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 													"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
-													"description": "Certificate UUID tag.",
+													"description": "Identify the certificate with a UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
 													"x-auditable": true
 												},
 												"in_use": {
-													"default": false,
-													"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+													"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"issuer_org": {
-													"description": "The organization that issued the certificate(read only).",
+													"description": "Indicate the organization that issued the certificate (read-only).",
 													"example": "Example Inc.",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"issuer_raw": {
-													"description": "The entire issuer field of the certificate(read only).",
+													"description": "Provide the entire issuer field of the certificate (read-only).",
 													"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
-													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+													"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 													"enum": [
 														"custom",
 														"gateway_managed"
@@ -2185,14 +2195,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Activate Zero Trust certificate details response."
+				"description": "Activates Zero Trust certificate details response."
 			},
 			"4XX": {
 				"content": {
@@ -2248,7 +2259,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2271,7 +2282,7 @@
 												"result": {
 													"properties": {
 														"binding_status": {
-															"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+															"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 															"enum": [
 																"pending_deployment",
 																"available",
@@ -2283,7 +2294,7 @@
 															"x-auditable": true
 														},
 														"certificate": {
-															"description": "The CA certificate(read only).",
+															"description": "Provide the CA certificate (read-only).",
 															"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 															"readOnly": true,
 															"type": "string"
@@ -2301,41 +2312,41 @@
 															"type": "string"
 														},
 														"fingerprint": {
-															"description": "The SHA256 fingerprint of the certificate(read only).",
+															"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 															"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Certificate UUID tag.",
+															"description": "Identify the certificate with a UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
 															"x-auditable": true
 														},
 														"in_use": {
-															"default": false,
-															"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+															"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"issuer_org": {
-															"description": "The organization that issued the certificate(read only).",
+															"description": "Indicate the organization that issued the certificate (read-only).",
 															"example": "Example Inc.",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"issuer_raw": {
-															"description": "The entire issuer field of the certificate(read only).",
+															"description": "Provide the entire issuer field of the certificate (read-only).",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
-															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+															"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 															"enum": [
 																"custom",
 																"gateway_managed"
@@ -2360,7 +2371,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2435,7 +2447,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2455,7 +2467,7 @@
 						}
 					}
 				},
-				"description": "Activate Zero Trust certificate details response failure."
+				"description": "Activates Zero Trust certificate details response failure."
 			}
 		},
 		"security": [
@@ -2474,7 +2486,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates/{certificate_id}/deactivate": {
-		"description": "Unbinds a single Zero Trust certificate from the edge.",
+		"description": "Unbind a single Zero Trust certificate from the edge.",
 		"operationId": "zero-trust-certificates-deactivate-zero-trust-certificate",
 		"parameters": [
 			{
@@ -2482,7 +2494,7 @@
 				"name": "certificate_id",
 				"required": true,
 				"schema": {
-					"description": "Certificate UUID tag.",
+					"description": "Identify the certificate with a UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string",
@@ -2559,7 +2571,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2582,7 +2594,7 @@
 										"result": {
 											"properties": {
 												"binding_status": {
-													"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+													"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 													"enum": [
 														"pending_deployment",
 														"available",
@@ -2594,7 +2606,7 @@
 													"x-auditable": true
 												},
 												"certificate": {
-													"description": "The CA certificate(read only).",
+													"description": "Provide the CA certificate (read-only).",
 													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 													"readOnly": true,
 													"type": "string"
@@ -2612,41 +2624,41 @@
 													"type": "string"
 												},
 												"fingerprint": {
-													"description": "The SHA256 fingerprint of the certificate(read only).",
+													"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 													"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
-													"description": "Certificate UUID tag.",
+													"description": "Identify the certificate with a UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
 													"x-auditable": true
 												},
 												"in_use": {
-													"default": false,
-													"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+													"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"issuer_org": {
-													"description": "The organization that issued the certificate(read only).",
+													"description": "Indicate the organization that issued the certificate (read-only).",
 													"example": "Example Inc.",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"issuer_raw": {
-													"description": "The entire issuer field of the certificate(read only).",
+													"description": "Provide the entire issuer field of the certificate (read-only).",
 													"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
-													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+													"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 													"enum": [
 														"custom",
 														"gateway_managed"
@@ -2671,7 +2683,8 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
@@ -2734,7 +2747,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2757,7 +2770,7 @@
 												"result": {
 													"properties": {
 														"binding_status": {
-															"description": "The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.",
+															"description": "Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.",
 															"enum": [
 																"pending_deployment",
 																"available",
@@ -2769,7 +2782,7 @@
 															"x-auditable": true
 														},
 														"certificate": {
-															"description": "The CA certificate(read only).",
+															"description": "Provide the CA certificate (read-only).",
 															"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n",
 															"readOnly": true,
 															"type": "string"
@@ -2787,41 +2800,41 @@
 															"type": "string"
 														},
 														"fingerprint": {
-															"description": "The SHA256 fingerprint of the certificate(read only).",
+															"description": "Provide the SHA256 fingerprint of the certificate (read-only).",
 															"example": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Certificate UUID tag.",
+															"description": "Identify the certificate with a UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
 															"x-auditable": true
 														},
 														"in_use": {
-															"default": false,
-															"description": "Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.",
+															"description": "Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).",
 															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"issuer_org": {
-															"description": "The organization that issued the certificate(read only).",
+															"description": "Indicate the organization that issued the certificate (read-only).",
 															"example": "Example Inc.",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"issuer_raw": {
-															"description": "The entire issuer field of the certificate(read only).",
+															"description": "Provide the entire issuer field of the certificate (read-only).",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
-															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).",
+															"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 															"enum": [
 																"custom",
 																"gateway_managed"
@@ -2846,7 +2859,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2921,7 +2935,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],

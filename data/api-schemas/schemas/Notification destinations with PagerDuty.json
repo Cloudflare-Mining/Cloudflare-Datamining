@@ -22,96 +22,60 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
 											},
-											"type": "array"
+											"message": {
+												"type": "string"
+											}
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
-										}
+										"required": [
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
+									"type": "array"
 								},
-								{
-									"properties": {
-										"result_info": {
-											"properties": {
-												"count": {
-													"description": "Total number of results for the requested service",
-													"example": 1,
-													"type": "number"
-												},
-												"page": {
-													"description": "Current page within paginated list of results",
-													"example": 1,
-													"type": "number"
-												},
-												"per_page": {
-													"description": "Number of results per page of results",
-													"example": 20,
-													"type": "number"
-												},
-												"total_count": {
-													"description": "Total results available without any search parameters",
-													"example": 2000,
-													"type": "number"
-												}
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
 											},
-											"type": "object"
-										}
-									}
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							],
 							"type": "object"
 						}
@@ -124,100 +88,6 @@
 					"application/json": {
 						"schema": {
 							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
 								{
 									"properties": {
 										"errors": {
@@ -235,7 +105,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",
@@ -267,7 +136,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",
@@ -344,96 +212,60 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
 										},
-										{
-											"properties": {
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "object"
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -474,129 +306,6 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"properties": {
-															"id": {
-																"description": "UUID",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"maxLength": 36,
-																"type": "string",
-																"x-auditable": true
-															},
-															"name": {
-																"description": "The name of the pagerduty service.",
-																"example": "My PagerDuty Service",
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
-												}
-											}
-										}
-									]
-								},
-								{
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -613,7 +322,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",
@@ -645,7 +353,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",
@@ -759,7 +466,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",
@@ -780,7 +486,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",
@@ -853,7 +558,6 @@
 																	}
 																},
 																"required": [
-																	"code",
 																	"message"
 																],
 																"type": "object",
@@ -874,7 +578,6 @@
 																	}
 																},
 																"required": [
-																	"code",
 																	"message"
 																],
 																"type": "object",
@@ -936,7 +639,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",
@@ -968,7 +670,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",
@@ -1061,7 +762,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",
@@ -1082,7 +782,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",
@@ -1155,7 +854,6 @@
 																	}
 																},
 																"required": [
-																	"code",
 																	"message"
 																],
 																"type": "object",
@@ -1176,7 +874,6 @@
 																	}
 																},
 																"required": [
-																	"code",
 																	"message"
 																],
 																"type": "object",
@@ -1238,7 +935,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",
@@ -1270,7 +966,6 @@
 															}
 														},
 														"required": [
-															"code",
 															"message"
 														],
 														"type": "object",

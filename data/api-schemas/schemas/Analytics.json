@@ -1,0 +1,148 @@
+{
+	"GET /accounts/{account_id}/realtimekit/analytics/daywise": {
+		"description": "Returns day-wise session and recording analytics data of an organization for the specified time range start_date to end_date. If start_date and end_date are not provided, the default time range is set from 30 days ago to the current date.",
+		"operationId": "get-org-analytics",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "start date in YYYY-MM-DD format",
+				"examples": {
+					"default": {
+						"value": "2022-09-01"
+					}
+				},
+				"in": "query",
+				"name": "start_date",
+				"schema": {
+					"example": "2022-09-01",
+					"type": "string"
+				}
+			},
+			{
+				"description": "end date in YYYY-MM-DD format",
+				"examples": {
+					"default": {
+						"value": "2022-09-22"
+					}
+				},
+				"in": "query",
+				"name": "end_date",
+				"schema": {
+					"example": "2022-09-22",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"recording_stats": {
+											"description": "Recording statistics of an organization during the range specified",
+											"properties": {
+												"day_stats": {
+													"description": "Day wise recording stats",
+													"items": {
+														"properties": {
+															"day": {
+																"type": "string"
+															},
+															"total_recording_minutes": {
+																"description": "Total recording minutes for a specific day",
+																"type": "integer"
+															},
+															"total_recordings": {
+																"description": "Total number of recordings for a specific day",
+																"type": "integer"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"recording_count": {
+													"description": "Total number of recordings during the range specified",
+													"type": "integer"
+												},
+												"recording_minutes_consumed": {
+													"description": "Total recording minutes during the range specified",
+													"type": "number"
+												}
+											},
+											"type": "object"
+										},
+										"session_stats": {
+											"description": "Session statistics of an organization during the range specified",
+											"properties": {
+												"day_stats": {
+													"description": "Day wise session stats",
+													"items": {
+														"properties": {
+															"day": {
+																"type": "string"
+															},
+															"total_session_minutes": {
+																"description": "Total session minutes for a specific day",
+																"type": "number"
+															},
+															"total_sessions": {
+																"description": "Total number of sessions for a specific day",
+																"type": "integer"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"sessions_count": {
+													"description": "Total number of sessions during the range specified",
+													"type": "integer"
+												},
+												"sessions_minutes_consumed": {
+													"description": "Total session minutes during the range specified",
+													"type": "number"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch day-wise session and recording analytics data for an organization",
+		"tags": [
+			"Analytics",
+			"Organizations"
+		]
+	}
+}

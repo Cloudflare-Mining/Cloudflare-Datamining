@@ -16,27 +16,12 @@
 				}
 			},
 			{
-				"description": "Identifier for the Worker, which can be ID (e.g. e8f70fdbc8b1fb0b8ddb1af166186758) or name (e.g. my-worker).",
 				"in": "path",
 				"name": "worker_id",
 				"required": true,
 				"schema": {
-					"anyOf": [
-						{
-							"description": "Identifier.",
-							"example": "023e105f4ecef8ad9ca31a8372d0c353",
-							"maxLength": 32,
-							"type": "string",
-							"x-auditable": true
-						},
-						{
-							"description": "Name of the script, used in URLs and route configuration.",
-							"example": "this-is_my_script-01",
-							"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-							"type": "string",
-							"x-auditable": true
-						}
-					]
+					"description": "Identifier for the Worker, which can be ID or name.",
+					"type": "string"
 				}
 			}
 		],
@@ -434,16 +419,10 @@
 														"type": "string"
 													},
 													"id": {
-														"allOf": [
-															{
-																"description": "Identifier.",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"type": "string",
-																"x-auditable": true
-															}
-														],
-														"readOnly": true
+														"description": "Immutable ID of the Worker.",
+														"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+														"readOnly": true,
+														"type": "string"
 													},
 													"logpush": {
 														"default": false,
@@ -467,6 +446,7 @@
 															"head_sampling_rate": {
 																"default": 1,
 																"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																"example": 1,
 																"type": "number"
 															},
 															"logs": {
@@ -480,6 +460,7 @@
 																	"head_sampling_rate": {
 																		"default": 1,
 																		"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																		"example": 1,
 																		"type": "number"
 																	},
 																	"invocation_logs": {
@@ -518,6 +499,7 @@
 														],
 														"items": {
 															"maxLength": 1024,
+															"pattern": "^[^,&]*$",
 															"type": "string"
 														},
 														"maxItems": 8,
@@ -553,6 +535,11 @@
 												"required": [
 													"id",
 													"name",
+													"tags",
+													"subdomain",
+													"observability",
+													"logpush",
+													"tail_consumers",
 													"created_on",
 													"updated_on"
 												],
@@ -722,27 +709,12 @@
 				}
 			},
 			{
-				"description": "Identifier for the Worker, which can be ID (e.g. e8f70fdbc8b1fb0b8ddb1af166186758) or name (e.g. my-worker).",
 				"in": "path",
 				"name": "worker_id",
 				"required": true,
 				"schema": {
-					"anyOf": [
-						{
-							"description": "Identifier.",
-							"example": "023e105f4ecef8ad9ca31a8372d0c353",
-							"maxLength": 32,
-							"type": "string",
-							"x-auditable": true
-						},
-						{
-							"description": "Name of the script, used in URLs and route configuration.",
-							"example": "this-is_my_script-01",
-							"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-							"type": "string",
-							"x-auditable": true
-						}
-					]
+					"description": "Identifier for the Worker, which can be ID or name.",
+					"type": "string"
 				}
 			}
 		],
@@ -845,16 +817,10 @@
 													"type": "string"
 												},
 												"id": {
-													"allOf": [
-														{
-															"description": "Identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string",
-															"x-auditable": true
-														}
-													],
-													"readOnly": true
+													"description": "Immutable ID of the Worker.",
+													"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+													"readOnly": true,
+													"type": "string"
 												},
 												"logpush": {
 													"default": false,
@@ -878,6 +844,7 @@
 														"head_sampling_rate": {
 															"default": 1,
 															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+															"example": 1,
 															"type": "number"
 														},
 														"logs": {
@@ -891,6 +858,7 @@
 																"head_sampling_rate": {
 																	"default": 1,
 																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"example": 1,
 																	"type": "number"
 																},
 																"invocation_logs": {
@@ -929,6 +897,7 @@
 													],
 													"items": {
 														"maxLength": 1024,
+														"pattern": "^[^,&]*$",
 														"type": "string"
 													},
 													"maxItems": 8,
@@ -964,6 +933,11 @@
 											"required": [
 												"id",
 												"name",
+												"tags",
+												"subdomain",
+												"observability",
+												"logpush",
+												"tail_consumers",
 												"created_on",
 												"updated_on"
 											],
@@ -1114,6 +1088,547 @@
 			"Workers Scripts Read"
 		]
 	},
+	"PATCH /accounts/{account_id}/workers/workers/{worker_id}": {
+		"description": "Perform a partial update on a Worker, where omitted properties are left unchanged from their current values.",
+		"operationId": "editWorker",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "worker_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier for the Worker, which can be ID or name.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/merge-patch+json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"created_on": {
+										"description": "When the Worker was created.",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string"
+									},
+									"id": {
+										"description": "Immutable ID of the Worker.",
+										"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+										"readOnly": true,
+										"type": "string"
+									},
+									"logpush": {
+										"default": false,
+										"description": "Whether logpush is enabled for the Worker.",
+										"type": "boolean"
+									},
+									"name": {
+										"description": "Name of the Worker.",
+										"example": "my-worker",
+										"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+										"type": "string"
+									},
+									"observability": {
+										"description": "Observability settings for the Worker.",
+										"properties": {
+											"enabled": {
+												"default": false,
+												"description": "Whether observability is enabled for the Worker.",
+												"type": "boolean"
+											},
+											"head_sampling_rate": {
+												"default": 1,
+												"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+												"example": 1,
+												"type": "number"
+											},
+											"logs": {
+												"description": "Log settings for the Worker.",
+												"properties": {
+													"enabled": {
+														"default": false,
+														"description": "Whether logs are enabled for the Worker.",
+														"type": "boolean"
+													},
+													"head_sampling_rate": {
+														"default": 1,
+														"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"example": 1,
+														"type": "number"
+													},
+													"invocation_logs": {
+														"default": true,
+														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"subdomain": {
+										"description": "Subdomain settings for the Worker.",
+										"properties": {
+											"enabled": {
+												"default": false,
+												"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
+												"type": "boolean"
+											},
+											"previews_enabled": {
+												"default": false,
+												"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"tags": {
+										"default": [],
+										"description": "Tags associated with the Worker.",
+										"example": [
+											"my-team",
+											"my-public-api"
+										],
+										"items": {
+											"maxLength": 1024,
+											"pattern": "^[^,&]*$",
+											"type": "string"
+										},
+										"maxItems": 8,
+										"type": "array",
+										"x-stainless-collection-type": "set"
+									},
+									"tail_consumers": {
+										"default": [],
+										"description": "Other Workers that should consume logs from the Worker.",
+										"items": {
+											"properties": {
+												"name": {
+													"description": "Name of the consumer Worker.",
+													"example": "my-tail-consumer",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										},
+										"type": "array",
+										"x-stainless-collection-type": "set"
+									},
+									"updated_on": {
+										"description": "When the Worker was most recently updated.",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"name",
+									"tags",
+									"subdomain",
+									"observability",
+									"logpush",
+									"tail_consumers",
+									"created_on",
+									"updated_on"
+								],
+								"type": "object"
+							},
+							{
+								"type": "object"
+							}
+						]
+					}
+				}
+			},
+			"description": "Worker partial update parameters.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"description": "When the Worker was created.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Immutable ID of the Worker.",
+													"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+													"readOnly": true,
+													"type": "string"
+												},
+												"logpush": {
+													"default": false,
+													"description": "Whether logpush is enabled for the Worker.",
+													"type": "boolean"
+												},
+												"name": {
+													"description": "Name of the Worker.",
+													"example": "my-worker",
+													"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+													"type": "string"
+												},
+												"observability": {
+													"description": "Observability settings for the Worker.",
+													"properties": {
+														"enabled": {
+															"default": false,
+															"description": "Whether observability is enabled for the Worker.",
+															"type": "boolean"
+														},
+														"head_sampling_rate": {
+															"default": 1,
+															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+															"example": 1,
+															"type": "number"
+														},
+														"logs": {
+															"description": "Log settings for the Worker.",
+															"properties": {
+																"enabled": {
+																	"default": false,
+																	"description": "Whether logs are enabled for the Worker.",
+																	"type": "boolean"
+																},
+																"head_sampling_rate": {
+																	"default": 1,
+																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"example": 1,
+																	"type": "number"
+																},
+																"invocation_logs": {
+																	"default": true,
+																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"subdomain": {
+													"description": "Subdomain settings for the Worker.",
+													"properties": {
+														"enabled": {
+															"default": false,
+															"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
+															"type": "boolean"
+														},
+														"previews_enabled": {
+															"default": false,
+															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"tags": {
+													"default": [],
+													"description": "Tags associated with the Worker.",
+													"example": [
+														"my-team",
+														"my-public-api"
+													],
+													"items": {
+														"maxLength": 1024,
+														"pattern": "^[^,&]*$",
+														"type": "string"
+													},
+													"maxItems": 8,
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"tail_consumers": {
+													"default": [],
+													"description": "Other Workers that should consume logs from the Worker.",
+													"items": {
+														"properties": {
+															"name": {
+																"description": "Name of the consumer Worker.",
+																"example": "my-tail-consumer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"updated_on": {
+													"description": "When the Worker was most recently updated.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"tags",
+												"subdomain",
+												"observability",
+												"logpush",
+												"tail_consumers",
+												"created_on",
+												"updated_on"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Partially Update Worker success."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Partially Update Worker failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Edit Worker",
+		"tags": [
+			"Workers"
+		]
+	},
 	"POST /accounts/{account_id}/workers/workers": {
 		"description": "Create a new Worker.",
 		"operationId": "createWorker",
@@ -1135,137 +1650,149 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"created_on": {
-								"description": "When the Worker was created.",
-								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
-							},
-							"id": {
-								"allOf": [
-									{
-										"description": "Identifier.",
-										"example": "023e105f4ecef8ad9ca31a8372d0c353",
-										"maxLength": 32,
-										"type": "string",
-										"x-auditable": true
-									}
-								],
-								"readOnly": true
-							},
-							"logpush": {
-								"default": false,
-								"description": "Whether logpush is enabled for the Worker.",
-								"type": "boolean"
-							},
-							"name": {
-								"description": "Name of the Worker.",
-								"example": "my-worker",
-								"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-								"type": "string"
-							},
-							"observability": {
-								"description": "Observability settings for the Worker.",
+						"allOf": [
+							{
 								"properties": {
-									"enabled": {
+									"created_on": {
+										"description": "When the Worker was created.",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string"
+									},
+									"id": {
+										"description": "Immutable ID of the Worker.",
+										"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+										"readOnly": true,
+										"type": "string"
+									},
+									"logpush": {
 										"default": false,
-										"description": "Whether observability is enabled for the Worker.",
+										"description": "Whether logpush is enabled for the Worker.",
 										"type": "boolean"
 									},
-									"head_sampling_rate": {
-										"default": 1,
-										"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
-										"type": "number"
+									"name": {
+										"description": "Name of the Worker.",
+										"example": "my-worker",
+										"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+										"type": "string"
 									},
-									"logs": {
-										"description": "Log settings for the Worker.",
+									"observability": {
+										"description": "Observability settings for the Worker.",
 										"properties": {
 											"enabled": {
 												"default": false,
-												"description": "Whether logs are enabled for the Worker.",
+												"description": "Whether observability is enabled for the Worker.",
 												"type": "boolean"
 											},
 											"head_sampling_rate": {
 												"default": 1,
-												"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+												"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+												"example": 1,
 												"type": "number"
 											},
-											"invocation_logs": {
-												"default": true,
-												"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+											"logs": {
+												"description": "Log settings for the Worker.",
+												"properties": {
+													"enabled": {
+														"default": false,
+														"description": "Whether logs are enabled for the Worker.",
+														"type": "boolean"
+													},
+													"head_sampling_rate": {
+														"default": 1,
+														"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"example": 1,
+														"type": "number"
+													},
+													"invocation_logs": {
+														"default": true,
+														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"subdomain": {
+										"description": "Subdomain settings for the Worker.",
+										"properties": {
+											"enabled": {
+												"default": false,
+												"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
+												"type": "boolean"
+											},
+											"previews_enabled": {
+												"default": false,
+												"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
 												"type": "boolean"
 											}
 										},
 										"type": "object"
-									}
-								},
-								"type": "object"
-							},
-							"subdomain": {
-								"description": "Subdomain settings for the Worker.",
-								"properties": {
-									"enabled": {
-										"default": false,
-										"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
-										"type": "boolean"
 									},
-									"previews_enabled": {
-										"default": false,
-										"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
-										"type": "boolean"
-									}
-								},
-								"type": "object"
-							},
-							"tags": {
-								"default": [],
-								"description": "Tags associated with the Worker.",
-								"example": [
-									"my-team",
-									"my-public-api"
-								],
-								"items": {
-									"maxLength": 1024,
-									"type": "string"
-								},
-								"maxItems": 8,
-								"type": "array",
-								"x-stainless-collection-type": "set"
-							},
-							"tail_consumers": {
-								"default": [],
-								"description": "Other Workers that should consume logs from the Worker.",
-								"items": {
-									"properties": {
-										"name": {
-											"description": "Name of the consumer Worker.",
-											"example": "my-tail-consumer",
+									"tags": {
+										"default": [],
+										"description": "Tags associated with the Worker.",
+										"example": [
+											"my-team",
+											"my-public-api"
+										],
+										"items": {
+											"maxLength": 1024,
+											"pattern": "^[^,&]*$",
 											"type": "string"
-										}
+										},
+										"maxItems": 8,
+										"type": "array",
+										"x-stainless-collection-type": "set"
 									},
-									"required": [
-										"name"
-									],
-									"type": "object"
+									"tail_consumers": {
+										"default": [],
+										"description": "Other Workers that should consume logs from the Worker.",
+										"items": {
+											"properties": {
+												"name": {
+													"description": "Name of the consumer Worker.",
+													"example": "my-tail-consumer",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										},
+										"type": "array",
+										"x-stainless-collection-type": "set"
+									},
+									"updated_on": {
+										"description": "When the Worker was most recently updated.",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string"
+									}
 								},
-								"type": "array",
-								"x-stainless-collection-type": "set"
+								"required": [
+									"id",
+									"name",
+									"tags",
+									"subdomain",
+									"observability",
+									"logpush",
+									"tail_consumers",
+									"created_on",
+									"updated_on"
+								],
+								"type": "object"
 							},
-							"updated_on": {
-								"description": "When the Worker was most recently updated.",
-								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
+							{
+								"required": [
+									"name"
+								],
+								"type": "object"
 							}
-						},
-						"required": [
-							"id",
-							"name",
-							"created_on",
-							"updated_on"
-						],
-						"type": "object"
+						]
 					}
 				}
 			},
@@ -1371,16 +1898,10 @@
 													"type": "string"
 												},
 												"id": {
-													"allOf": [
-														{
-															"description": "Identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string",
-															"x-auditable": true
-														}
-													],
-													"readOnly": true
+													"description": "Immutable ID of the Worker.",
+													"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+													"readOnly": true,
+													"type": "string"
 												},
 												"logpush": {
 													"default": false,
@@ -1404,6 +1925,7 @@
 														"head_sampling_rate": {
 															"default": 1,
 															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+															"example": 1,
 															"type": "number"
 														},
 														"logs": {
@@ -1417,6 +1939,7 @@
 																"head_sampling_rate": {
 																	"default": 1,
 																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"example": 1,
 																	"type": "number"
 																},
 																"invocation_logs": {
@@ -1455,6 +1978,7 @@
 													],
 													"items": {
 														"maxLength": 1024,
+														"pattern": "^[^,&]*$",
 														"type": "string"
 													},
 													"maxItems": 8,
@@ -1490,6 +2014,11 @@
 											"required": [
 												"id",
 												"name",
+												"tags",
+												"subdomain",
+												"observability",
+												"logpush",
+												"tail_consumers",
 												"created_on",
 												"updated_on"
 											],
@@ -1639,7 +2168,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/workers/workers/{worker_id}": {
-		"description": "Update an existing Worker.",
+		"description": "Perform a complete replacement of a Worker, where omitted properties are set to their default values. This is the exact same as the Create Worker endpoint, but operates on an existing Worker. To perform a partial update instead, use the Edit Worker endpoint.",
 		"operationId": "updateWorker",
 		"parameters": [
 			{
@@ -1655,27 +2184,12 @@
 				}
 			},
 			{
-				"description": "Identifier for the Worker, which can be ID (e.g. e8f70fdbc8b1fb0b8ddb1af166186758) or name (e.g. my-worker).",
 				"in": "path",
 				"name": "worker_id",
 				"required": true,
 				"schema": {
-					"anyOf": [
-						{
-							"description": "Identifier.",
-							"example": "023e105f4ecef8ad9ca31a8372d0c353",
-							"maxLength": 32,
-							"type": "string",
-							"x-auditable": true
-						},
-						{
-							"description": "Name of the script, used in URLs and route configuration.",
-							"example": "this-is_my_script-01",
-							"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-							"type": "string",
-							"x-auditable": true
-						}
-					]
+					"description": "Identifier for the Worker, which can be ID or name.",
+					"type": "string"
 				}
 			}
 		],
@@ -1683,137 +2197,149 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"created_on": {
-								"description": "When the Worker was created.",
-								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
-							},
-							"id": {
-								"allOf": [
-									{
-										"description": "Identifier.",
-										"example": "023e105f4ecef8ad9ca31a8372d0c353",
-										"maxLength": 32,
-										"type": "string",
-										"x-auditable": true
-									}
-								],
-								"readOnly": true
-							},
-							"logpush": {
-								"default": false,
-								"description": "Whether logpush is enabled for the Worker.",
-								"type": "boolean"
-							},
-							"name": {
-								"description": "Name of the Worker.",
-								"example": "my-worker",
-								"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-								"type": "string"
-							},
-							"observability": {
-								"description": "Observability settings for the Worker.",
+						"allOf": [
+							{
 								"properties": {
-									"enabled": {
+									"created_on": {
+										"description": "When the Worker was created.",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string"
+									},
+									"id": {
+										"description": "Immutable ID of the Worker.",
+										"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+										"readOnly": true,
+										"type": "string"
+									},
+									"logpush": {
 										"default": false,
-										"description": "Whether observability is enabled for the Worker.",
+										"description": "Whether logpush is enabled for the Worker.",
 										"type": "boolean"
 									},
-									"head_sampling_rate": {
-										"default": 1,
-										"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
-										"type": "number"
+									"name": {
+										"description": "Name of the Worker.",
+										"example": "my-worker",
+										"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+										"type": "string"
 									},
-									"logs": {
-										"description": "Log settings for the Worker.",
+									"observability": {
+										"description": "Observability settings for the Worker.",
 										"properties": {
 											"enabled": {
 												"default": false,
-												"description": "Whether logs are enabled for the Worker.",
+												"description": "Whether observability is enabled for the Worker.",
 												"type": "boolean"
 											},
 											"head_sampling_rate": {
 												"default": 1,
-												"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+												"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+												"example": 1,
 												"type": "number"
 											},
-											"invocation_logs": {
-												"default": true,
-												"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+											"logs": {
+												"description": "Log settings for the Worker.",
+												"properties": {
+													"enabled": {
+														"default": false,
+														"description": "Whether logs are enabled for the Worker.",
+														"type": "boolean"
+													},
+													"head_sampling_rate": {
+														"default": 1,
+														"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"example": 1,
+														"type": "number"
+													},
+													"invocation_logs": {
+														"default": true,
+														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"subdomain": {
+										"description": "Subdomain settings for the Worker.",
+										"properties": {
+											"enabled": {
+												"default": false,
+												"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
+												"type": "boolean"
+											},
+											"previews_enabled": {
+												"default": false,
+												"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
 												"type": "boolean"
 											}
 										},
 										"type": "object"
-									}
-								},
-								"type": "object"
-							},
-							"subdomain": {
-								"description": "Subdomain settings for the Worker.",
-								"properties": {
-									"enabled": {
-										"default": false,
-										"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
-										"type": "boolean"
 									},
-									"previews_enabled": {
-										"default": false,
-										"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
-										"type": "boolean"
-									}
-								},
-								"type": "object"
-							},
-							"tags": {
-								"default": [],
-								"description": "Tags associated with the Worker.",
-								"example": [
-									"my-team",
-									"my-public-api"
-								],
-								"items": {
-									"maxLength": 1024,
-									"type": "string"
-								},
-								"maxItems": 8,
-								"type": "array",
-								"x-stainless-collection-type": "set"
-							},
-							"tail_consumers": {
-								"default": [],
-								"description": "Other Workers that should consume logs from the Worker.",
-								"items": {
-									"properties": {
-										"name": {
-											"description": "Name of the consumer Worker.",
-											"example": "my-tail-consumer",
+									"tags": {
+										"default": [],
+										"description": "Tags associated with the Worker.",
+										"example": [
+											"my-team",
+											"my-public-api"
+										],
+										"items": {
+											"maxLength": 1024,
+											"pattern": "^[^,&]*$",
 											"type": "string"
-										}
+										},
+										"maxItems": 8,
+										"type": "array",
+										"x-stainless-collection-type": "set"
 									},
-									"required": [
-										"name"
-									],
-									"type": "object"
+									"tail_consumers": {
+										"default": [],
+										"description": "Other Workers that should consume logs from the Worker.",
+										"items": {
+											"properties": {
+												"name": {
+													"description": "Name of the consumer Worker.",
+													"example": "my-tail-consumer",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										},
+										"type": "array",
+										"x-stainless-collection-type": "set"
+									},
+									"updated_on": {
+										"description": "When the Worker was most recently updated.",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string"
+									}
 								},
-								"type": "array",
-								"x-stainless-collection-type": "set"
+								"required": [
+									"id",
+									"name",
+									"tags",
+									"subdomain",
+									"observability",
+									"logpush",
+									"tail_consumers",
+									"created_on",
+									"updated_on"
+								],
+								"type": "object"
 							},
-							"updated_on": {
-								"description": "When the Worker was most recently updated.",
-								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
+							{
+								"required": [
+									"name"
+								],
+								"type": "object"
 							}
-						},
-						"required": [
-							"id",
-							"name",
-							"created_on",
-							"updated_on"
-						],
-						"type": "object"
+						]
 					}
 				}
 			},
@@ -1919,16 +2445,10 @@
 													"type": "string"
 												},
 												"id": {
-													"allOf": [
-														{
-															"description": "Identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string",
-															"x-auditable": true
-														}
-													],
-													"readOnly": true
+													"description": "Immutable ID of the Worker.",
+													"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+													"readOnly": true,
+													"type": "string"
 												},
 												"logpush": {
 													"default": false,
@@ -1952,6 +2472,7 @@
 														"head_sampling_rate": {
 															"default": 1,
 															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+															"example": 1,
 															"type": "number"
 														},
 														"logs": {
@@ -1965,6 +2486,7 @@
 																"head_sampling_rate": {
 																	"default": 1,
 																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"example": 1,
 																	"type": "number"
 																},
 																"invocation_logs": {
@@ -2003,6 +2525,7 @@
 													],
 													"items": {
 														"maxLength": 1024,
+														"pattern": "^[^,&]*$",
 														"type": "string"
 													},
 													"maxItems": 8,
@@ -2038,6 +2561,11 @@
 											"required": [
 												"id",
 												"name",
+												"tags",
+												"subdomain",
+												"observability",
+												"logpush",
+												"tail_consumers",
 												"created_on",
 												"updated_on"
 											],

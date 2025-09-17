@@ -7,11 +7,11 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -47,7 +47,8 @@
 									"base64": {
 										"description": "Base64 encoded request body",
 										"example": "c29tZV9yZXF1ZXN0X2JvZHk=",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"json": {
 										"description": "Arbitrary json as request body",
@@ -55,7 +56,8 @@
 									},
 									"plain_text": {
 										"description": "Request body as plain text",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -65,41 +67,52 @@
 								"properties": {
 									"bot_score": {
 										"description": "Bot score used for evaluating tracing request processing",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									},
 									"geoloc": {
 										"description": "Geodata for tracing request",
 										"properties": {
 											"city": {
 												"example": "London",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"continent": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"is_eu_country": {
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"iso_code": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"latitude": {
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											},
 											"longitude": {
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											},
 											"postal_code": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"region_code": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"subdivision_2_iso_code": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"timezone": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"type": "object"
@@ -107,11 +120,13 @@
 									"skip_challenge": {
 										"description": "Whether to skip any challenges for tracing request (e.g.: captcha)",
 										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"threat_score": {
 										"description": "Threat score used for evaluating tracing request processing",
-										"type": "integer"
+										"type": "integer",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -141,21 +156,25 @@
 							"method": {
 								"description": "HTTP Method of tracing request",
 								"example": "PUT",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"protocol": {
 								"description": "HTTP Protocol of tracing request",
 								"example": "HTTP/1.1",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"skip_response": {
 								"description": "Skip sending the request to the Origin server after all rules evaluation",
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"url": {
 								"description": "URL to which perform tracing request",
 								"example": "https://some.zone/some_path",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -184,8 +203,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -205,8 +235,19 @@
 														"minimum": 1000,
 														"type": "integer"
 													},
+													"documentation_url": {
+														"type": "string"
+													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"required": [
@@ -219,7 +260,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -241,7 +282,8 @@
 											"properties": {
 												"status_code": {
 													"description": "HTTP Status code of zone response",
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"trace": {
 													"items": {
@@ -251,50 +293,59 @@
 																"description": "If step type is rule, then action performed by this rule",
 																"example": "execute",
 																"pattern": "^[a-z_]+$",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"action_parameters": {
 																"description": "If step type is rule, then action parameters of this rule as JSON",
 																"example": {
 																	"id": "4814384a9e5d4991b9815dcfc25d2f1f"
 																},
-																"type": "object"
+																"type": "object",
+																"x-auditable": true
 															},
 															"description": {
 																"description": "If step type is rule or ruleset, the description of this entity",
 																"example": "some rule",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"expression": {
 																"description": "If step type is rule, then expression used to match for this rule",
 																"example": "ip.src ne 1.1.1.1",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"kind": {
 																"description": "If step type is ruleset, then kind of this ruleset",
 																"example": "zone",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"matched": {
 																"description": "Whether tracing step affected tracing request/response",
 																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "If step type is ruleset, then name of this ruleset",
 																"example": "some ruleset name",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"step_name": {
 																"description": "Tracing step identifying name",
 																"example": "rule_id01",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"trace": "[Circular ~.POST /accounts/{account_id}/request-tracer/trace.responses.200.content.application/json.schema.allOf.1.properties.result.properties.trace]",
 															"type": {
 																"description": "Tracing step type",
 																"example": "rule",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -331,8 +382,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -363,8 +425,19 @@
 																"minimum": 1000,
 																"type": "integer"
 															},
+															"documentation_url": {
+																"type": "string"
+															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"required": [
@@ -387,7 +460,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												false
 											],

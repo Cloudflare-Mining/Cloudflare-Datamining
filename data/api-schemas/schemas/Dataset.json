@@ -1,4 +1,144 @@
 {
+	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
+		"description": "Deletes a dataset given a datasetId.",
+		"operationId": "delete_DatasetDelete",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Dataset ID to delete",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset ID to delete",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"name": {
+									"example": "friendly dataset name",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the uuid and name of the deleted dataset."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete a dataset",
+		"tags": [
+			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset": {
 		"operationId": "get_DatasetList",
 		"parameters": [

@@ -1,5 +1,617 @@
 {
+	"DELETE /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
+		"description": "Deletes a Source-of-Truth tag by UUID.",
+		"operationId": "delete_TagDelete",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Tag UUID.",
+				"in": "path",
+				"name": "tag_uuid",
+				"required": true,
+				"schema": {
+					"description": "Tag UUID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the uuid of the deleted tag."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Deletes a tag (SoT)",
+		"tags": [
+			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/tags/list": {
+		"description": "Returns all Source-of-Truth tags for an account.",
+		"operationId": "get_TagList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pageSize",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "categoryId",
+				"schema": {
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"pagination": {
+									"properties": {
+										"page": {
+											"type": "number"
+										},
+										"pageSize": {
+											"type": "number"
+										},
+										"totalCount": {
+											"type": "number"
+										},
+										"totalPages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"pageSize",
+										"totalCount",
+										"totalPages"
+									],
+									"type": "object"
+								},
+								"tags": {
+									"items": {
+										"properties": {
+											"activeDuration": {
+												"type": "string"
+											},
+											"actorCategory": {
+												"type": "string"
+											},
+											"aliasGroupNames": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"aliasGroupNamesInternal": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"analyticPriority": {
+												"type": "number"
+											},
+											"attributionConfidence": {
+												"type": "string"
+											},
+											"attributionOrganization": {
+												"type": "string"
+											},
+											"categoryId": {
+												"example": 1,
+												"type": "number"
+											},
+											"externalReferenceLinks": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"internalDescription": {
+												"type": "string"
+											},
+											"motive": {
+												"type": "string"
+											},
+											"opsecLevel": {
+												"type": "string"
+											},
+											"originCountryISO": {
+												"type": "string"
+											},
+											"priority": {
+												"type": "number"
+											},
+											"sophisticationLevel": {
+												"type": "string"
+											},
+											"uuid": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
+											},
+											"value": {
+												"example": "APT28",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value",
+											"uuid"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"tags",
+								"pagination"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a paginated list of tags."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Lists all tags (SoT)",
+		"tags": [
+			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
+		"description": "Updates a Source-of-Truth tag by UUID.",
+		"operationId": "patch_TagUpdate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Tag UUID.",
+				"in": "path",
+				"name": "tag_uuid",
+				"required": true,
+				"schema": {
+					"description": "Tag UUID.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"activeDuration": {
+								"type": "string"
+							},
+							"actorCategory": {
+								"type": "string"
+							},
+							"aliasGroupNames": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"aliasGroupNamesInternal": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"analyticPriority": {
+								"type": "number"
+							},
+							"attributionConfidence": {
+								"type": "string"
+							},
+							"attributionOrganization": {
+								"type": "string"
+							},
+							"categoryId": {
+								"example": 1,
+								"type": "number"
+							},
+							"externalReferenceLinks": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"internalDescription": {
+								"type": "string"
+							},
+							"motive": {
+								"type": "string"
+							},
+							"opsecLevel": {
+								"type": "string"
+							},
+							"originCountryISO": {
+								"type": "string"
+							},
+							"priority": {
+								"type": "number"
+							},
+							"sophisticationLevel": {
+								"type": "string"
+							},
+							"value": {
+								"example": "APT28",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"activeDuration": {
+									"type": "string"
+								},
+								"actorCategory": {
+									"type": "string"
+								},
+								"aliasGroupNames": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"aliasGroupNamesInternal": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"analyticPriority": {
+									"type": "number"
+								},
+								"attributionConfidence": {
+									"type": "string"
+								},
+								"attributionOrganization": {
+									"type": "string"
+								},
+								"categoryId": {
+									"example": 1,
+									"type": "number"
+								},
+								"externalReferenceLinks": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"internalDescription": {
+									"type": "string"
+								},
+								"motive": {
+									"type": "string"
+								},
+								"opsecLevel": {
+									"type": "string"
+								},
+								"originCountryISO": {
+									"type": "string"
+								},
+								"priority": {
+									"type": "number"
+								},
+								"sophisticationLevel": {
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								},
+								"value": {
+									"example": "APT28",
+									"type": "string"
+								}
+							},
+							"required": [
+								"value",
+								"uuid"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated tag."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Updates a tag (SoT)",
+		"tags": [
+			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/create": {
+		"description": "Creates a new tag to be used accross threat events.",
 		"operationId": "post_TagCreate",
 		"parameters": [
 			{
@@ -18,13 +630,68 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"name": {
-								"example": "name",
+							"activeDuration": {
+								"type": "string"
+							},
+							"actorCategory": {
+								"type": "string"
+							},
+							"aliasGroupNames": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"aliasGroupNamesInternal": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"analyticPriority": {
+								"type": "number"
+							},
+							"attributionConfidence": {
+								"type": "string"
+							},
+							"attributionOrganization": {
+								"type": "string"
+							},
+							"categoryId": {
+								"example": 1,
+								"type": "number"
+							},
+							"externalReferenceLinks": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"internalDescription": {
+								"type": "string"
+							},
+							"motive": {
+								"type": "string"
+							},
+							"opsecLevel": {
+								"type": "string"
+							},
+							"originCountryISO": {
+								"type": "string"
+							},
+							"priority": {
+								"type": "number"
+							},
+							"sophisticationLevel": {
+								"type": "string"
+							},
+							"value": {
+								"example": "APT28",
 								"type": "string"
 							}
 						},
 						"required": [
-							"name"
+							"value"
 						],
 						"type": "object"
 					}
@@ -37,17 +704,72 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"name": {
-									"example": "name",
+								"activeDuration": {
+									"type": "string"
+								},
+								"actorCategory": {
+									"type": "string"
+								},
+								"aliasGroupNames": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"aliasGroupNamesInternal": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"analyticPriority": {
+									"type": "number"
+								},
+								"attributionConfidence": {
+									"type": "string"
+								},
+								"attributionOrganization": {
+									"type": "string"
+								},
+								"categoryId": {
+									"example": 1,
+									"type": "number"
+								},
+								"externalReferenceLinks": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"internalDescription": {
+									"type": "string"
+								},
+								"motive": {
+									"type": "string"
+								},
+								"opsecLevel": {
+									"type": "string"
+								},
+								"originCountryISO": {
+									"type": "string"
+								},
+								"priority": {
+									"type": "number"
+								},
+								"sophisticationLevel": {
 									"type": "string"
 								},
 								"uuid": {
 									"example": "12345678-1234-1234-1234-1234567890ab",
 									"type": "string"
+								},
+								"value": {
+									"example": "APT28",
+									"type": "string"
 								}
 							},
 							"required": [
-								"name",
+								"value",
 								"uuid"
 							],
 							"type": "object"

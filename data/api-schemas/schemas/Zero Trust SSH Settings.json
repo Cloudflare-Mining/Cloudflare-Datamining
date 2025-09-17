@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/gateway/audit_ssh_settings": {
-		"description": "Gets all Zero Trust Audit SSH and SSH with Access for Infrastructure settings for an account.",
+		"description": "Retrieve all Zero Trust Audit SSH and SSH with Access for Infrastructure settings for an account.",
 		"operationId": "zero-trust-get-audit-ssh-settings",
 		"parameters": [
 			{
@@ -67,7 +67,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -96,13 +96,13 @@
 													"type": "string"
 												},
 												"public_key": {
-													"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
+													"description": "Provide the Base64-encoded HPKE public key that encrypts SSH session logs. See https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging.",
 													"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
 													"type": "string",
 													"x-auditable": true
 												},
 												"seed_id": {
-													"description": "Seed ID.",
+													"description": "Identify the seed ID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
@@ -117,7 +117,8 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
@@ -180,7 +181,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -209,13 +210,13 @@
 															"type": "string"
 														},
 														"public_key": {
-															"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
+															"description": "Provide the Base64-encoded HPKE public key that encrypts SSH session logs. See https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging.",
 															"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
 															"type": "string",
 															"x-auditable": true
 														},
 														"seed_id": {
-															"description": "Seed ID.",
+															"description": "Identify the seed ID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
@@ -230,7 +231,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -305,7 +307,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -326,7 +328,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust SSH Settings response failure."
+				"description": "Get Zero Trust SSH settings response failure."
 			}
 		},
 		"security": [
@@ -346,7 +348,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/gateway/audit_ssh_settings/rotate_seed": {
-		"description": "Rotates the SSH account seed that is used for generating the host key identity when connecting through the Cloudflare SSH Proxy.",
+		"description": "Rotate the SSH account seed that generates the host key identity when connecting through the Cloudflare SSH Proxy.",
 		"operationId": "zero-trust-rotate-ssh-account-seed",
 		"parameters": [
 			{
@@ -413,7 +415,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -442,13 +444,13 @@
 													"type": "string"
 												},
 												"public_key": {
-													"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
+													"description": "Provide the Base64-encoded HPKE public key that encrypts SSH session logs. See https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging.",
 													"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
 													"type": "string",
 													"x-auditable": true
 												},
 												"seed_id": {
-													"description": "Seed ID.",
+													"description": "Identify the seed ID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
@@ -463,14 +465,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Rotate Zero Trust SSH Account Seed response."
+				"description": "Rotate Zero Trust SSH account seed response."
 			},
 			"4XX": {
 				"content": {
@@ -526,7 +529,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -555,13 +558,13 @@
 															"type": "string"
 														},
 														"public_key": {
-															"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
+															"description": "Provide the Base64-encoded HPKE public key that encrypts SSH session logs. See https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging.",
 															"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
 															"type": "string",
 															"x-auditable": true
 														},
 														"seed_id": {
-															"description": "Seed ID.",
+															"description": "Identify the seed ID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
@@ -576,7 +579,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -651,7 +655,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -672,7 +676,7 @@
 						}
 					}
 				},
-				"description": "Rotate Zero Trust SSH Account Seed failure."
+				"description": "Rotate Zero Trust SSH account seed response failure."
 			}
 		},
 		"security": [
@@ -682,7 +686,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Rotate Zero Trust SSH Account Seed",
+		"summary": "Rotate Zero Trust SSH account seed",
 		"tags": [
 			"Zero Trust SSH Settings"
 		],
@@ -691,7 +695,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/audit_ssh_settings": {
-		"description": "Updates Zero Trust Audit SSH and SSH with Access for Infrastructure settings for an account.",
+		"description": "Update Zero Trust Audit SSH and SSH with Access for Infrastructure settings for an account.",
 		"operationId": "zero-trust-update-audit-ssh-settings",
 		"parameters": [
 			{
@@ -711,7 +715,7 @@
 					"schema": {
 						"properties": {
 							"public_key": {
-								"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
+								"description": "Provide the Base64-encoded HPKE public key that encrypts SSH session logs. See https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging.",
 								"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
 								"type": "string",
 								"x-auditable": true
@@ -779,7 +783,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -808,13 +812,13 @@
 													"type": "string"
 												},
 												"public_key": {
-													"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
+													"description": "Provide the Base64-encoded HPKE public key that encrypts SSH session logs. See https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging.",
 													"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
 													"type": "string",
 													"x-auditable": true
 												},
 												"seed_id": {
-													"description": "Seed ID.",
+													"description": "Identify the seed ID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string",
@@ -829,14 +833,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Update Zero Trust SSH Setting response."
+				"description": "Update Zero Trust SSH settings response."
 			},
 			"4XX": {
 				"content": {
@@ -892,7 +897,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -921,13 +926,13 @@
 															"type": "string"
 														},
 														"public_key": {
-															"description": "Base64 encoded HPKE public key used to encrypt all your ssh session logs. https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging",
+															"description": "Provide the Base64-encoded HPKE public key that encrypts SSH session logs. See https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging.",
 															"example": "1pyl6I1tL7xfJuFYVzXlUW8uXXlpxegHXBzGCBKaSFA=",
 															"type": "string",
 															"x-auditable": true
 														},
 														"seed_id": {
-															"description": "Seed ID.",
+															"description": "Identify the seed ID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string",
@@ -942,7 +947,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1017,7 +1023,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1038,7 +1044,7 @@
 						}
 					}
 				},
-				"description": "Update Zero Trust SSH Setting response failure."
+				"description": "Update Zero Trust SSH settings response failure."
 			}
 		},
 		"security": [

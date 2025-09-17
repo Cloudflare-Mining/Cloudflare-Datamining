@@ -1,0 +1,2132 @@
+{
+	"GET /accounts/{account_id}/realtimekit/sessions": {
+		"description": "Returns details of all sessions of an organization.",
+		"operationId": "GetSessions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"allowEmptyValue": true,
+				"description": "The page number from which you want your page search results to be displayed.",
+				"in": "query",
+				"name": "page_no",
+				"schema": {
+					"minimum": 0,
+					"type": "number"
+				}
+			},
+			{
+				"allowEmptyValue": true,
+				"description": "Number of results per page",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"minimum": 0,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"enum": [
+						"minutesConsumed",
+						"createdAt"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "sort_order",
+				"schema": {
+					"enum": [
+						"ASC",
+						"DESC"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "The start time range for which you want to retrieve the meetings. The time must be specified in ISO format.",
+				"in": "query",
+				"name": "start_time",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The end time range for which you want to retrieve the meetings. The time must be specified in ISO format.",
+				"in": "query",
+				"name": "end_time",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"examples": {
+					"default": {
+						"value": "1:10"
+					}
+				},
+				"in": "query",
+				"name": "participants",
+				"schema": {
+					"example": "1:10",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"enum": [
+						"LIVE",
+						"ENDED"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Search string that matches sessions based on meeting title, meeting ID, and session ID",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "ID of the meeting that sessions should be associated with",
+				"in": "query",
+				"name": "associated_id",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"sessions": {
+											"items": {
+												"properties": {
+													"associated_id": {
+														"description": "ID of the meeting this session is associated with. In the case of V2 meetings, it is always a UUID. In V1 meetings, it is a room name of the form `abcdef-ghijkl`",
+														"type": "string"
+													},
+													"breakout_rooms": {
+														"items": "[Circular ~.GET /accounts/{account_id}/realtimekit/sessions.responses.200.content.application/json.schema.properties.data.properties.sessions.items]",
+														"readOnly": true,
+														"type": "array"
+													},
+													"created_at": {
+														"description": "timestamp when session created",
+														"type": "string"
+													},
+													"ended_at": {
+														"description": "timestamp when session ended",
+														"type": "string"
+													},
+													"id": {
+														"description": "ID of the session",
+														"readOnly": true,
+														"type": "string"
+													},
+													"live_participants": {
+														"description": "number of participants currently in the session",
+														"type": "number"
+													},
+													"max_concurrent_participants": {
+														"description": "number of maximum participants that were in the session",
+														"type": "number"
+													},
+													"meeting_display_name": {
+														"description": "Title of the meeting this session belongs to",
+														"type": "string"
+													},
+													"meta": {
+														"description": "Any meta data about session.",
+														"type": "object"
+													},
+													"minutes_consumed": {
+														"description": "number of minutes consumed since the session started",
+														"type": "number"
+													},
+													"organization_id": {
+														"description": "Organization id that hosted this session",
+														"type": "string"
+													},
+													"started_at": {
+														"description": "timestamp when session started",
+														"type": "string"
+													},
+													"status": {
+														"description": "current status of session",
+														"enum": [
+															"LIVE",
+															"ENDED"
+														],
+														"type": "string"
+													},
+													"type": {
+														"description": "type of session",
+														"enum": [
+															"meeting",
+															"livestream",
+															"participant"
+														],
+														"type": "string"
+													},
+													"updated_at": {
+														"description": "timestamp when session was last updated",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"associated_id",
+													"meeting_display_name",
+													"type",
+													"status",
+													"live_participants",
+													"max_concurrent_participants",
+													"minutes_consumed",
+													"organization_id",
+													"started_at",
+													"created_at",
+													"updated_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get all sessions success response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch all sessions of an organization",
+		"tags": [
+			"Sessions"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}": {
+		"description": "Returns data of the given session ID including recording details.",
+		"operationId": "GetSessionDetails",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "List all breakout rooms",
+				"in": "query",
+				"name": "include_breakout_rooms",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
+			},
+			{
+				"description": "ID of the session",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"session": {
+											"properties": {
+												"associated_id": {
+													"description": "ID of the meeting this session is associated with. In the case of V2 meetings, it is always a UUID. In V1 meetings, it is a room name of the form `abcdef-ghijkl`",
+													"type": "string"
+												},
+												"breakout_rooms": {
+													"items": "[Circular ~.GET /accounts/{account_id}/realtimekit/sessions/{session_id}.responses.200.content.application/json.schema.properties.data.properties.session]",
+													"readOnly": true,
+													"type": "array"
+												},
+												"created_at": {
+													"description": "timestamp when session created",
+													"type": "string"
+												},
+												"ended_at": {
+													"description": "timestamp when session ended",
+													"type": "string"
+												},
+												"id": {
+													"description": "ID of the session",
+													"readOnly": true,
+													"type": "string"
+												},
+												"live_participants": {
+													"description": "number of participants currently in the session",
+													"type": "number"
+												},
+												"max_concurrent_participants": {
+													"description": "number of maximum participants that were in the session",
+													"type": "number"
+												},
+												"meeting_display_name": {
+													"description": "Title of the meeting this session belongs to",
+													"type": "string"
+												},
+												"meta": {
+													"description": "Any meta data about session.",
+													"type": "object"
+												},
+												"minutes_consumed": {
+													"description": "number of minutes consumed since the session started",
+													"type": "number"
+												},
+												"organization_id": {
+													"description": "Organization id that hosted this session",
+													"type": "string"
+												},
+												"started_at": {
+													"description": "timestamp when session started",
+													"type": "string"
+												},
+												"status": {
+													"description": "current status of session",
+													"enum": [
+														"LIVE",
+														"ENDED"
+													],
+													"type": "string"
+												},
+												"type": {
+													"description": "type of session",
+													"enum": [
+														"meeting",
+														"livestream",
+														"participant"
+													],
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "timestamp when session was last updated",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"associated_id",
+												"meeting_display_name",
+												"type",
+												"status",
+												"live_participants",
+												"max_concurrent_participants",
+												"minutes_consumed",
+												"organization_id",
+												"started_at",
+												"created_at",
+												"updated_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get details about a particular session"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch details of a session",
+		"tags": [
+			"Sessions"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/chat": {
+		"description": "Returns a URL to download all chat messages of the session ID in CSV format.\n",
+		"operationId": "GetSessionChat",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the session",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"chat_download_url": {
+											"description": "URL where the chat logs can be downloaded",
+											"type": "string"
+										},
+										"chat_download_url_expiry": {
+											"description": "Time when the download URL will expire",
+											"type": "string"
+										}
+									},
+									"required": [
+										"chat_download_url",
+										"chat_download_url_expiry"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns all chat messages of a session."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch all chat messages of a session",
+		"tags": [
+			"Sessions"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/participants": {
+		"description": "Returns a list of participants for the given session ID.",
+		"operationId": "GetSessionParticipants",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The search query string. You can search using the meeting ID or title.",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"allowEmptyValue": true,
+				"description": "The page number from which you want your page search results to be displayed.",
+				"in": "query",
+				"name": "page_no",
+				"schema": {
+					"minimum": 0,
+					"type": "number"
+				}
+			},
+			{
+				"allowEmptyValue": true,
+				"description": "Number of results per page",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"minimum": 0,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "sort_order",
+				"schema": {
+					"enum": [
+						"ASC",
+						"DESC"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"enum": [
+						"joinedAt",
+						"duration"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "if true, response includes all the peer events of participants.",
+				"in": "query",
+				"name": "include_peer_events",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
+			},
+			{
+				"description": "In breakout room sessions, the view parameter can be set to `raw` for session specific duration for participants or `consolidated` to accumulate breakout room durations.",
+				"in": "query",
+				"name": "view",
+				"schema": {
+					"default": "raw",
+					"enum": [
+						"raw",
+						"consolidated"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "ID of the session",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"ParticipantListSuccess": {
+								"summary": "success response for session's participants list",
+								"value": {
+									"data": {
+										"paging": {
+											"end_offset": 2,
+											"start_offset": 1,
+											"total_count": 123
+										},
+										"participants": [
+											{
+												"created_at": "2023-02-01T10:51:08.039Z",
+												"custom_participant_id": "83qi0i",
+												"display_name": "Mark",
+												"duration": 5.8097,
+												"id": "005f4e0c-4d08-4d4e-a391-a76be75cd296",
+												"joined_at": "2023-02-01T10:51:08.030Z",
+												"left_at": "2023-02-01T10:56:56.612Z",
+												"preset_name": "webinar_participant",
+												"updated_at": "2023-02-01T10:56:56.618Z",
+												"user_id": "0a08343d-a9dc-45f0-9feb-6a64afcc4f81"
+											},
+											{
+												"created_at": "2023-02-01T10:50:36.853Z",
+												"custom_participant_id": "3uggr",
+												"display_name": "Henry",
+												"duration": 6.9263,
+												"id": "51fdf95f-d893-471a-922b-7db7adb14453",
+												"joined_at": "2023-02-01T10:50:36.846Z\"",
+												"left_at": "2023-02-01T10:57:32.424Z",
+												"preset_name": "webinar_participant",
+												"updated_at": "2023-02-01T10:57:32.431Z",
+												"user_id": "85e7f0fd-7c16-45e9-9d68-f17ef007c4eb"
+											}
+										]
+									},
+									"success": true
+								}
+							},
+							"ParticipantListWithPeerStatsSuccess": {
+								"summary": "success response for sessions participants list with peer events",
+								"value": {
+									"data": {
+										"paging": {
+											"end_offset": 2,
+											"start_offset": 1,
+											"total_count": 123
+										},
+										"participants": [
+											{
+												"created_at": "2023-02-01T10:51:08.039Z",
+												"custom_participant_id": "83qi0i",
+												"display_name": "Mark",
+												"duration": 5.8097,
+												"id": "005f4e0c-4d08-4d4e-a391-a76be75cd296",
+												"joined_at": "2023-02-01T10:51:08.030Z",
+												"left_at": "2023-02-01T10:56:56.612Z",
+												"peer_events": [
+													{
+														"created_at": "2023-02-01T10:51:50.786Z",
+														"event_name": "PEER_JOINING",
+														"id": "94af3bac-f30b-40b9-ab45-4b9e6eff191a",
+														"peer_id": "79d87ca5-7e47-452a-b3c1-b6842ad84bf5",
+														"updated_at": "2023-02-01T10:51:50.792Z"
+													},
+													{
+														"created_at": "2023-02-01T10:56:50.786Z",
+														"event_name": "PEER_LEAVING",
+														"id": "94af3bac-f30b-40b9-ab45-4b9e6eff191b",
+														"peer_id": "79d87ca5-7e47-452a-b3c1-b6842ad84bf5",
+														"updated_at": "2023-02-01T10:56:50.792Z"
+													}
+												],
+												"preset_name": "webinar_participant",
+												"updated_at": "2023-02-01T10:56:56.618Z",
+												"user_id": "0a08343d-a9dc-45f0-9feb-6a64afcc4f81"
+											},
+											{
+												"created_at": "2023-02-01T10:50:36.853Z",
+												"custom_participant_id": "3uggr",
+												"display_name": "Henry",
+												"duration": 6.9263,
+												"id": "51fdf95f-d893-471a-922b-7db7adb14453",
+												"joined_at": "2023-02-01T10:50:36.846Z\"",
+												"left_at": "2023-02-01T10:57:32.424Z",
+												"peer_events": [
+													{
+														"created_at": "2023-02-01T10:51:50.786Z",
+														"event_name": "PEER_JOINING",
+														"id": "94af3bac-f30b-40b9-ab45-4b9e6eff191a",
+														"peer_id": "51fdf95f-d893-471a-922b-7db7adb14453",
+														"updated_at": "2023-02-01T10:51:50.792Z"
+													},
+													{
+														"created_at": "2023-02-01T10:56:50.786Z",
+														"event_name": "PEER_LEAVING",
+														"id": "94af3bac-f30b-40b9-ab45-4b9e6eff191b",
+														"peer_id": "51fdf95f-d893-471a-922b-7db7adb14453",
+														"updated_at": "2023-02-01T10:56:50.792Z"
+													}
+												],
+												"preset_name": "webinar_participant",
+												"updated_at": "2023-02-01T10:57:32.431Z",
+												"user_id": "85e7f0fd-7c16-45e9-9d68-f17ef007c4eb"
+											}
+										]
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"participants": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"description": "timestamp when this participant was created.",
+														"type": "string"
+													},
+													"custom_participant_id": {
+														"description": "ID passed by client to create this participant.",
+														"type": "string"
+													},
+													"display_name": {
+														"description": "Display name of participant when joining the session.",
+														"type": "string"
+													},
+													"duration": {
+														"description": "number of minutes for which the participant was in the session.",
+														"type": "number"
+													},
+													"id": {
+														"description": "Participant ID. This maps to the corresponding peerId.",
+														"type": "string"
+													},
+													"joined_at": {
+														"description": "timestamp at which participant joined the session.",
+														"type": "string"
+													},
+													"left_at": {
+														"description": "timestamp at which participant left the session.",
+														"type": "string"
+													},
+													"preset_name": {
+														"description": "Name of the preset associated with the participant.",
+														"type": "string"
+													},
+													"updated_at": {
+														"description": "timestamp when this participant's data was last updated.",
+														"type": "string"
+													},
+													"user_id": {
+														"description": "User id for this participant.",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get participants list of a particular session"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch participants list of a session",
+		"tags": [
+			"Sessions"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/participants/{participant_id}": {
+		"description": "Returns details of the given participant ID along with call statistics for the given session ID.",
+		"operationId": "GetParticipantDetails",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"allowEmptyValue": true,
+				"description": "Comma separated list of filters to apply. Note that there must be no spaces between the filters.",
+				"in": "query",
+				"name": "filters",
+				"schema": {
+					"enum": [
+						"device_info",
+						"ip_information",
+						"precall_network_information",
+						"events",
+						"quality_stats"
+					],
+					"example": "device_info,ip_information,events",
+					"type": "string"
+				}
+			},
+			{
+				"description": "if true, response includes all the peer events of participant.",
+				"in": "query",
+				"name": "include_peer_events",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
+			},
+			{
+				"description": "ID of the participant",
+				"in": "path",
+				"name": "participant_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "ID of the session",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"participant": {
+											"allOf": [
+												{
+													"properties": {
+														"created_at": {
+															"description": "timestamp when this participant was created.",
+															"type": "string"
+														},
+														"custom_participant_id": {
+															"description": "ID passed by client to create this participant.",
+															"type": "string"
+														},
+														"display_name": {
+															"description": "Display name of participant when joining the session.",
+															"type": "string"
+														},
+														"duration": {
+															"description": "number of minutes for which the participant was in the session.",
+															"type": "number"
+														},
+														"id": {
+															"description": "Participant ID. This maps to the corresponding peerId.",
+															"type": "string"
+														},
+														"joined_at": {
+															"description": "timestamp at which participant joined the session.",
+															"type": "string"
+														},
+														"left_at": {
+															"description": "timestamp at which participant left the session.",
+															"type": "string"
+														},
+														"preset_name": {
+															"description": "Name of the preset associated with the participant.",
+															"type": "string"
+														},
+														"updated_at": {
+															"description": "timestamp when this participant's data was last updated.",
+															"type": "string"
+														},
+														"user_id": {
+															"description": "User id for this participant.",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"peer_stats": {
+															"properties": {
+																"config": {
+																	"type": "string"
+																},
+																"device_info": {
+																	"properties": {
+																		"browser": {
+																			"type": "string"
+																		},
+																		"browser_version": {
+																			"type": "string"
+																		},
+																		"cpus": {
+																			"type": "number"
+																		},
+																		"engine": {
+																			"type": "string"
+																		},
+																		"is_mobile": {
+																			"type": "boolean"
+																		},
+																		"memory": {
+																			"type": "number"
+																		},
+																		"os": {
+																			"type": "string"
+																		},
+																		"os_version": {
+																			"type": "string"
+																		},
+																		"sdk_name": {
+																			"type": "string"
+																		},
+																		"sdk_version": {
+																			"type": "string"
+																		},
+																		"user_agent": {
+																			"type": "string"
+																		},
+																		"webgl_support": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"events": {
+																	"items": {
+																		"properties": {
+																			"timestamp": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"ip_information": {
+																	"properties": {
+																		"city": {
+																			"type": "string"
+																		},
+																		"country": {
+																			"type": "string"
+																		},
+																		"ip_location": {
+																			"type": "string"
+																		},
+																		"ipv4": {
+																			"type": "string"
+																		},
+																		"org": {
+																			"type": "string"
+																		},
+																		"portal": {
+																			"type": "string"
+																		},
+																		"region": {
+																			"type": "string"
+																		},
+																		"timezone": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"precall_network_information": {
+																	"properties": {
+																		"backend_rtt": {
+																			"type": "number"
+																		},
+																		"effective_networktype": {
+																			"type": "string"
+																		},
+																		"fractional_loss": {
+																			"type": "number"
+																		},
+																		"jitter": {
+																			"type": "number"
+																		},
+																		"reflexive_connectivity": {
+																			"type": "boolean"
+																		},
+																		"relay_connectivity": {
+																			"type": "boolean"
+																		},
+																		"rtt": {
+																			"type": "number"
+																		},
+																		"throughtput": {
+																			"type": "number"
+																		},
+																		"turn_connectivity": {
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"status": {
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"quality_stats": {
+															"items": {
+																"properties": {
+																	"audio_bandwidth": {
+																		"type": "number"
+																	},
+																	"audio_packet_loss": {
+																		"type": "number"
+																	},
+																	"audio_stats": {
+																		"items": {
+																			"properties": {
+																				"concealment_events": {
+																					"type": "number"
+																				},
+																				"jitter": {
+																					"type": "number"
+																				},
+																				"packets_lost": {
+																					"type": "number"
+																				},
+																				"quality": {
+																					"type": "number"
+																				},
+																				"timestamp": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"average_quality": {
+																		"type": "number"
+																	},
+																	"end": {
+																		"type": "string"
+																	},
+																	"peer_id": {
+																		"type": "string"
+																	},
+																	"start": {
+																		"type": "string"
+																	},
+																	"video_bandwidth": {
+																		"type": "number"
+																	},
+																	"video_packet_loss": {
+																		"type": "number"
+																	},
+																	"video_stats": {
+																		"items": {
+																			"properties": {
+																				"frame_height": {
+																					"type": "number"
+																				},
+																				"frame_width": {
+																					"type": "number"
+																				},
+																				"frames_dropped": {
+																					"type": "number"
+																				},
+																				"frames_per_second": {
+																					"type": "number"
+																				},
+																				"jitter": {
+																					"type": "number"
+																				},
+																				"packets_lost": {
+																					"type": "number"
+																				},
+																				"quality": {
+																					"type": "number"
+																				},
+																				"timestamp": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											]
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns details of a participant along with callstats data."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch details of a participant",
+		"tags": [
+			"Sessions"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/summary": {
+		"description": "Returns a Summary URL to download the Summary of Transcripts for the session ID as plain text.",
+		"operationId": "GetSessionSummary",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"sessionId": {
+											"type": "string"
+										},
+										"summaryDownloadUrl": {
+											"description": "URL where the summary of transcripts can be downloaded",
+											"type": "string"
+										},
+										"summaryDownloadUrlExpiry": {
+											"description": "Time of Expiry before when you need to download the csv file.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"sessionId",
+										"summaryDownloadUrl",
+										"summaryDownloadUrlExpiry"
+									],
+									"title": "TranscriptSummary",
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a complete summary of transcripts of a session."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch summary of transcripts for a session",
+		"tags": [
+			"Sessions"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/transcript": {
+		"description": "Returns a URL to download the transcript for the session ID in CSV format.",
+		"operationId": "GetSessionTranscript",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the session",
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"sessionId": {
+											"type": "string"
+										},
+										"transcript_download_url": {
+											"description": "URL where the transcript can be downloaded",
+											"type": "string"
+										},
+										"transcript_download_url_expiry": {
+											"description": "Time when the download URL will expire",
+											"type": "string"
+										}
+									},
+									"required": [
+										"sessionId",
+										"transcript_download_url",
+										"transcript_download_url_expiry"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the complete transcript of a session."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch the complete transcript for a session",
+		"tags": [
+			"Sessions"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/sessions/peer-report/{peer_id}": {
+		"description": "Returns details of the given peer ID along with call statistics for the given session ID.",
+		"operationId": "GetParticipantDataFromPeerId",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Comma separated list of filters to apply. Note that there must be no spaces between the filters.",
+				"in": "query",
+				"name": "filters",
+				"schema": {
+					"enum": [
+						"device_info",
+						"ip_information",
+						"precall_network_information",
+						"events",
+						"quality_stats"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "ID of the peer",
+				"in": "path",
+				"name": "peer_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"participant": {
+											"properties": {
+												"created_at": {
+													"type": "string"
+												},
+												"custom_participant_id": {
+													"type": "string"
+												},
+												"display_name": {
+													"type": "string"
+												},
+												"duration": {
+													"type": "number"
+												},
+												"id": {
+													"type": "string"
+												},
+												"joined_at": {
+													"type": "string"
+												},
+												"left_at": {
+													"type": "string"
+												},
+												"peer_report": {
+													"properties": {
+														"metadata": {
+															"properties": {
+																"audio_devices_updates": {
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"browser_metadata": {
+																	"properties": {
+																		"browser": {
+																			"type": "string"
+																		},
+																		"browser_version": {
+																			"type": "string"
+																		},
+																		"engine": {
+																			"type": "string"
+																		},
+																		"user_agent": {
+																			"type": "string"
+																		},
+																		"webgl_support": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"candidate_pairs": {
+																	"properties": {
+																		"consuming_transport": {
+																			"items": {
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"producing_transport": {
+																			"items": {
+																				"properties": {
+																					"available_outgoing_bitrate": {
+																						"type": "integer"
+																					},
+																					"bytes_discarded_on_send": {
+																						"type": "integer"
+																					},
+																					"bytes_received": {
+																						"type": "integer"
+																					},
+																					"bytes_sent": {
+																						"type": "integer"
+																					},
+																					"current_round_trip_time": {
+																						"type": "number"
+																					},
+																					"last_packet_received_timestamp": {
+																						"type": "integer"
+																					},
+																					"last_packet_sent_timestamp": {
+																						"type": "integer"
+																					},
+																					"local_candidate_address": {
+																						"type": "string"
+																					},
+																					"local_candidate_id": {
+																						"type": "string"
+																					},
+																					"local_candidate_network_type": {
+																						"type": "string"
+																					},
+																					"local_candidate_port": {
+																						"type": "integer"
+																					},
+																					"local_candidate_protocol": {
+																						"type": "string"
+																					},
+																					"local_candidate_related_address": {
+																						"type": "string"
+																					},
+																					"local_candidate_related_port": {
+																						"type": "integer"
+																					},
+																					"local_candidate_type": {
+																						"type": "string"
+																					},
+																					"nominated": {
+																						"type": "boolean"
+																					},
+																					"packets_discarded_on_send": {
+																						"type": "integer"
+																					},
+																					"packets_received": {
+																						"type": "integer"
+																					},
+																					"packets_sent": {
+																						"type": "integer"
+																					},
+																					"remote_candidate_address": {
+																						"type": "string"
+																					},
+																					"remote_candidate_id": {
+																						"type": "string"
+																					},
+																					"remote_candidate_port": {
+																						"type": "integer"
+																					},
+																					"remote_candidate_protocol": {
+																						"type": "string"
+																					},
+																					"remote_candidate_type": {
+																						"type": "string"
+																					},
+																					"total_round_trip_time": {
+																						"type": "number"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"device_info": {
+																	"properties": {
+																		"cpus": {
+																			"type": "integer"
+																		},
+																		"is_mobile": {
+																			"type": "boolean"
+																		},
+																		"os": {
+																			"type": "string"
+																		},
+																		"os_version": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"events": {
+																	"items": {
+																		"properties": {
+																			"name": {
+																				"type": "string"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"ip_information": {
+																	"properties": {
+																		"asn": {
+																			"properties": {
+																				"asn": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"city": {
+																			"type": "string"
+																		},
+																		"country": {
+																			"type": "string"
+																		},
+																		"ipv4": {
+																			"type": "string"
+																		},
+																		"region": {
+																			"type": "string"
+																		},
+																		"timezone": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"pc_metadata": {
+																	"items": {
+																		"properties": {
+																			"effective_network_type": {
+																				"type": "string"
+																			},
+																			"reflexive_connectivity": {
+																				"type": "boolean"
+																			},
+																			"relay_connectivity": {
+																				"type": "boolean"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			},
+																			"turn_connectivity": {
+																				"type": "boolean"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"room_view_type": {
+																	"type": "string"
+																},
+																"sdk_name": {
+																	"type": "string"
+																},
+																"sdk_version": {
+																	"type": "string"
+																},
+																"selected_device_updates": {
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"speaker_devices_updates": {
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"video_devices_updates": {
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														"quality": {
+															"properties": {
+																"audio_consumer": {
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"audio_consumer_cumulative": {
+																	"type": "object"
+																},
+																"audio_producer": {
+																	"items": {
+																		"properties": {
+																			"bytes_sent": {
+																				"type": "integer"
+																			},
+																			"jitter": {
+																				"type": "integer"
+																			},
+																			"mid": {
+																				"type": "string"
+																			},
+																			"mos_quality": {
+																				"type": "integer"
+																			},
+																			"packets_lost": {
+																				"type": "integer"
+																			},
+																			"packets_sent": {
+																				"type": "integer"
+																			},
+																			"producer_id": {
+																				"type": "string"
+																			},
+																			"rtt": {
+																				"type": "number"
+																			},
+																			"ssrc": {
+																				"type": "integer"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"audio_producer_cumulative": {
+																	"properties": {
+																		"packet_loss": {
+																			"properties": {
+																				"10_or_greater_event_fraction": {
+																					"type": "integer"
+																				},
+																				"25_or_greater_event_fraction": {
+																					"type": "integer"
+																				},
+																				"50_or_greater_event_fraction": {
+																					"type": "integer"
+																				},
+																				"5_or_greater_event_fraction": {
+																					"type": "integer"
+																				},
+																				"avg": {
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"quality_mos": {
+																			"properties": {
+																				"avg": {
+																					"type": "integer"
+																				},
+																				"p50": {
+																					"type": "integer"
+																				},
+																				"p75": {
+																					"type": "integer"
+																				},
+																				"p90": {
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"rtt": {
+																			"properties": {
+																				"100ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"250ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"500ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"screenshare_audio_consumer": {
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"screenshare_audio_consumer_cumulative": {
+																	"type": "object"
+																},
+																"screenshare_audio_producer": {
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"screenshare_audio_producer_cumulative": {
+																	"type": "object"
+																},
+																"screenshare_video_consumer": {
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"screenshare_video_consumer_cumulative": {
+																	"type": "object"
+																},
+																"screenshare_video_producer": {
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"screenshare_video_producer_cumulative": {
+																	"type": "object"
+																},
+																"video_consumer": {
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"video_consumer_cumulative": {
+																	"type": "object"
+																},
+																"video_producer": {
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"video_producer_cumulative": {
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"peer_stats": {
+													"properties": {
+														"device_info": {
+															"properties": {
+																"browser": {
+																	"type": "string"
+																},
+																"browser_version": {
+																	"type": "string"
+																},
+																"cpus": {
+																	"type": "integer"
+																},
+																"engine": {
+																	"type": "string"
+																},
+																"is_mobile": {
+																	"type": "boolean"
+																},
+																"os": {
+																	"type": "string"
+																},
+																"os_version": {
+																	"type": "string"
+																},
+																"sdk_name": {
+																	"type": "string"
+																},
+																"sdk_version": {
+																	"type": "string"
+																},
+																"user_agent": {
+																	"type": "string"
+																},
+																"webgl_support": {
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"events": {
+															"items": {
+																"properties": {
+																	"metadata": {
+																		"properties": {
+																			"connection_info": {
+																				"properties": {
+																					"backend_r_t_t": {
+																						"type": "number"
+																					},
+																					"connectivity": {
+																						"properties": {
+																							"host": {
+																								"type": "boolean"
+																							},
+																							"reflexive": {
+																								"type": "boolean"
+																							},
+																							"relay": {
+																								"type": "boolean"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"effective_network_type": {
+																						"type": "string"
+																					},
+																					"fractional_loss": {
+																						"type": "integer"
+																					},
+																					"ip_details": {
+																						"properties": {
+																							"asn": {
+																								"properties": {
+																									"asn": {
+																										"type": "string"
+																									}
+																								},
+																								"type": "object"
+																							},
+																							"city": {
+																								"type": "string"
+																							},
+																							"country": {
+																								"type": "string"
+																							},
+																							"ip": {
+																								"type": "string"
+																							},
+																							"loc": {
+																								"type": "string"
+																							},
+																							"postal": {
+																								"type": "string"
+																							},
+																							"region": {
+																								"type": "string"
+																							},
+																							"timezone": {
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"jitter": {
+																						"type": "integer"
+																					},
+																					"location": {
+																						"properties": {
+																							"coords": {
+																								"properties": {
+																									"latitude": {
+																										"type": "number"
+																									},
+																									"longitude": {
+																										"type": "number"
+																									}
+																								},
+																								"type": "object"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"r_t_t": {
+																						"type": "number"
+																					},
+																					"throughput": {
+																						"type": "integer"
+																					},
+																					"turn_connectivity": {
+																						"type": "boolean"
+																					}
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"timestamp": {
+																		"type": "string"
+																	},
+																	"type": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"ip_information": {
+															"properties": {
+																"asn": {
+																	"properties": {
+																		"asn": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"city": {
+																	"type": "string"
+																},
+																"country": {
+																	"type": "string"
+																},
+																"ip_location": {
+																	"type": "string"
+																},
+																"ipv4": {
+																	"type": "string"
+																},
+																"org": {
+																	"type": "string"
+																},
+																"region": {
+																	"type": "string"
+																},
+																"timezone": {
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"precall_network_information": {
+															"properties": {
+																"backend_rtt": {
+																	"type": "number"
+																},
+																"effective_networktype": {
+																	"type": "string"
+																},
+																"fractional_loss": {
+																	"type": "integer"
+																},
+																"jitter": {
+																	"type": "integer"
+																},
+																"reflexive_connectivity": {
+																	"type": "boolean"
+																},
+																"relay_connectivity": {
+																	"type": "boolean"
+																},
+																"rtt": {
+																	"type": "number"
+																},
+																"throughput": {
+																	"type": "integer"
+																},
+																"turn_connectivity": {
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"quality_stats": {
+													"properties": {
+														"audio_bandwidth": {
+															"type": "integer"
+														},
+														"audio_stats": {
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"average_quality": {
+															"type": "integer"
+														},
+														"end": {
+															"nullable": true,
+															"type": "string"
+														},
+														"first_audio_packet_received": {
+															"type": "string"
+														},
+														"first_video_packet_received": {
+															"type": "string"
+														},
+														"last_audio_packet_received": {
+															"type": "string"
+														},
+														"last_video_packet_received": {
+															"type": "string"
+														},
+														"peer_ids": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"start": {
+															"nullable": true,
+															"type": "string"
+														},
+														"total_audio_packets": {
+															"type": "integer"
+														},
+														"total_audio_packets_lost": {
+															"type": "integer"
+														},
+														"total_video_packets": {
+															"type": "integer"
+														},
+														"total_video_packets_lost": {
+															"type": "integer"
+														},
+														"video_bandwidth": {
+															"type": "integer"
+														},
+														"video_stats": {
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"role": {
+													"type": "string"
+												},
+												"updated_at": {
+													"type": "string"
+												},
+												"user_id": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns details of a participant (using peer id) along with callstats data."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch details of peer",
+		"tags": [
+			"Sessions"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/sessions/{session_id}/summary": {
+		"description": "Trigger Summary generation of Transcripts for the session ID.",
+		"operationId": "post-sessions-session_id-summary",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "session_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"2XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"message": {
+											"type": "string"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Success"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Generate summary of Transcripts for the session",
+		"tags": [
+			"Sessions"
+		]
+	}
+}

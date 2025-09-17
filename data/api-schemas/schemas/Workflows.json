@@ -89,7 +89,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -432,7 +432,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -699,7 +699,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -922,6 +922,19 @@
 				}
 			},
 			{
+				"description": "should only be used when `cursor` is used, defines a new direction for the cursor",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"description": "should only be used when `cursor` is used, defines a new direction for the cursor",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
 				"in": "query",
 				"name": "status",
 				"schema": {
@@ -1077,7 +1090,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -1713,7 +1726,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -1977,7 +1990,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -2279,7 +2292,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -2513,7 +2526,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -2823,7 +2836,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -3186,7 +3199,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -3467,7 +3480,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -3782,7 +3795,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -4065,7 +4078,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {
@@ -4394,7 +4407,7 @@
 										"count": {
 											"type": "number"
 										},
-										"next_cursor": {
+										"cursor": {
 											"type": "string"
 										},
 										"page": {

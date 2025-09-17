@@ -438,13 +438,21 @@
 														"description": "The number of applications that have this tag",
 														"example": 1,
 														"type": "integer",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-skip": true
 													},
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													},
 													"name": {
 														"description": "The name of the tag",
@@ -452,10 +460,17 @@
 														"type": "string"
 													},
 													"updated_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													}
 												},
 												"required": [
@@ -735,13 +750,21 @@
 													"description": "The number of applications that have this tag",
 													"example": 1,
 													"type": "integer",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-skip": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"name": {
 													"description": "The name of the tag",
@@ -749,10 +772,17 @@
 													"type": "string"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"required": [
@@ -1034,13 +1064,21 @@
 													"description": "The number of applications that have this tag",
 													"example": 1,
 													"type": "integer",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-skip": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"name": {
 													"description": "The name of the tag",
@@ -1048,10 +1086,17 @@
 													"type": "string"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"required": [
@@ -1232,10 +1277,17 @@
 						"description": "A tag",
 						"properties": {
 							"created_at": {
-								"example": "2014-01-01T05:20:00.12345Z",
-								"format": "date-time",
-								"type": "string",
-								"x-auditable": true
+								"allOf": [
+									{
+										"x-stainless-skip": true
+									},
+									{
+										"example": "2014-01-01T05:20:00.12345Z",
+										"format": "date-time",
+										"type": "string",
+										"x-auditable": true
+									}
+								]
 							},
 							"name": {
 								"description": "The name of the tag",
@@ -1243,10 +1295,17 @@
 								"type": "string"
 							},
 							"updated_at": {
-								"example": "2014-01-01T05:20:00.12345Z",
-								"format": "date-time",
-								"type": "string",
-								"x-auditable": true
+								"allOf": [
+									{
+										"x-stainless-skip": true
+									},
+									{
+										"example": "2014-01-01T05:20:00.12345Z",
+										"format": "date-time",
+										"type": "string",
+										"x-auditable": true
+									}
+								]
 							}
 						},
 						"required": [
@@ -1359,13 +1418,21 @@
 													"description": "The number of applications that have this tag",
 													"example": 1,
 													"type": "integer",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-skip": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"name": {
 													"description": "The name of the tag",
@@ -1373,10 +1440,17 @@
 													"type": "string"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"required": [

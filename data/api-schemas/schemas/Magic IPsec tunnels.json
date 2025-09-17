@@ -159,6 +159,13 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"automatic_return_routing": {
+															"default": false,
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"bgp": {
 															"properties": {
 																"customer_asn": {
@@ -243,6 +250,15 @@
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
+														},
+														"custom_remote_identities": {
+															"properties": {
+																"fqdn_id": {
+																	"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														},
 														"customer_endpoint": {
 															"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
@@ -525,6 +541,13 @@
 																	"example": true,
 																	"type": "boolean"
 																},
+																"automatic_return_routing": {
+																	"default": false,
+																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
 																"bgp": {
 																	"properties": {
 																		"customer_asn": {
@@ -609,6 +632,15 @@
 																	"readOnly": true,
 																	"type": "string",
 																	"x-auditable": true
+																},
+																"custom_remote_identities": {
+																	"properties": {
+																		"fqdn_id": {
+																			"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
 																},
 																"customer_endpoint": {
 																	"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
@@ -1021,6 +1053,13 @@
 																"example": true,
 																"type": "boolean"
 															},
+															"automatic_return_routing": {
+																"default": false,
+																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
 															"bgp": {
 																"properties": {
 																	"customer_asn": {
@@ -1105,6 +1144,15 @@
 																"readOnly": true,
 																"type": "string",
 																"x-auditable": true
+															},
+															"custom_remote_identities": {
+																"properties": {
+																	"fqdn_id": {
+																		"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															},
 															"customer_endpoint": {
 																"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
@@ -1385,6 +1433,13 @@
 																		"example": true,
 																		"type": "boolean"
 																	},
+																	"automatic_return_routing": {
+																		"default": false,
+																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
 																	"bgp": {
 																		"properties": {
 																			"customer_asn": {
@@ -1469,6 +1524,15 @@
 																		"readOnly": true,
 																		"type": "string",
 																		"x-auditable": true
+																	},
+																	"custom_remote_identities": {
+																		"properties": {
+																			"fqdn_id": {
+																				"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	},
 																	"customer_endpoint": {
 																		"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
@@ -1895,6 +1959,13 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"automatic_return_routing": {
+															"default": false,
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"bgp": {
 															"properties": {
 																"customer_asn": {
@@ -1979,6 +2050,15 @@
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
+														},
+														"custom_remote_identities": {
+															"properties": {
+																"fqdn_id": {
+																	"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														},
 														"customer_endpoint": {
 															"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
@@ -2257,6 +2337,13 @@
 																	"example": true,
 																	"type": "boolean"
 																},
+																"automatic_return_routing": {
+																	"default": false,
+																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
 																"bgp": {
 																	"properties": {
 																		"customer_asn": {
@@ -2341,6 +2428,15 @@
 																	"readOnly": true,
 																	"type": "string",
 																	"x-auditable": true
+																},
+																"custom_remote_identities": {
+																	"properties": {
+																		"fqdn_id": {
+																			"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
 																},
 																"customer_endpoint": {
 																	"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
@@ -2648,6 +2744,13 @@
 						"allOf": [
 							{
 								"properties": {
+									"automatic_return_routing": {
+										"default": false,
+										"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
 									"bgp": {
 										"properties": {
 											"customer_asn": {
@@ -2922,6 +3025,13 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"automatic_return_routing": {
+													"default": false,
+													"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"bgp": {
 													"properties": {
 														"customer_asn": {
@@ -3006,6 +3116,15 @@
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
+												},
+												"custom_remote_identities": {
+													"properties": {
+														"fqdn_id": {
+															"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
 												"customer_endpoint": {
 													"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
@@ -3279,6 +3398,13 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"automatic_return_routing": {
+															"default": false,
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"bgp": {
 															"properties": {
 																"customer_asn": {
@@ -3363,6 +3489,15 @@
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
+														},
+														"custom_remote_identities": {
+															"properties": {
+																"fqdn_id": {
+																	"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														},
 														"customer_endpoint": {
 															"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
@@ -4217,6 +4352,13 @@
 																"example": true,
 																"type": "boolean"
 															},
+															"automatic_return_routing": {
+																"default": false,
+																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
 															"bgp": {
 																"properties": {
 																	"customer_asn": {
@@ -4301,6 +4443,15 @@
 																"readOnly": true,
 																"type": "string",
 																"x-auditable": true
+															},
+															"custom_remote_identities": {
+																"properties": {
+																	"fqdn_id": {
+																		"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															},
 															"customer_endpoint": {
 																"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
@@ -4585,6 +4736,13 @@
 																		"example": true,
 																		"type": "boolean"
 																	},
+																	"automatic_return_routing": {
+																		"default": false,
+																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
 																	"bgp": {
 																		"properties": {
 																			"customer_asn": {
@@ -4669,6 +4827,15 @@
 																		"readOnly": true,
 																		"type": "string",
 																		"x-auditable": true
+																	},
+																	"custom_remote_identities": {
+																		"properties": {
+																			"fqdn_id": {
+																				"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	},
 																	"customer_endpoint": {
 																		"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
@@ -4985,6 +5152,13 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"automatic_return_routing": {
+								"default": false,
+								"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"bgp": {
 								"properties": {
 									"customer_asn": {
@@ -5263,6 +5437,13 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"automatic_return_routing": {
+															"default": false,
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"bgp": {
 															"properties": {
 																"customer_asn": {
@@ -5347,6 +5528,15 @@
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
+														},
+														"custom_remote_identities": {
+															"properties": {
+																"fqdn_id": {
+																	"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														},
 														"customer_endpoint": {
 															"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
@@ -5629,6 +5819,13 @@
 																	"example": true,
 																	"type": "boolean"
 																},
+																"automatic_return_routing": {
+																	"default": false,
+																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
 																"bgp": {
 																	"properties": {
 																		"customer_asn": {
@@ -5713,6 +5910,15 @@
 																	"readOnly": true,
 																	"type": "string",
 																	"x-auditable": true
+																},
+																"custom_remote_identities": {
+																	"properties": {
+																		"fqdn_id": {
+																			"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom \nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels \ncannot have the same cloudflare_endpoint.",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
 																},
 																"customer_endpoint": {
 																	"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",

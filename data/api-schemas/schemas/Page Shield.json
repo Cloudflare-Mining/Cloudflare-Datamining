@@ -498,7 +498,7 @@
 				"in": "query",
 				"name": "export",
 				"schema": {
-					"description": "Export the list of connections as a file.",
+					"description": "Export the list of connections as a file, limited to 50000 entries.",
 					"enum": [
 						"csv"
 					],
@@ -1214,7 +1214,7 @@
 				"in": "query",
 				"name": "export",
 				"schema": {
-					"description": "Export the list of cookies as a file.",
+					"description": "Export the list of cookies as a file, limited to 50000 entries.",
 					"enum": [
 						"csv"
 					],
@@ -2679,7 +2679,7 @@
 				"in": "query",
 				"name": "export",
 				"schema": {
-					"description": "Export the list of scripts as a file.",
+					"description": "Export the list of scripts as a file, limited to 50000 entries.",
 					"enum": [
 						"csv"
 					],

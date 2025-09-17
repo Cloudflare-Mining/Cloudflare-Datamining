@@ -610,9 +610,17 @@
 										"example": "An attacker registered the domain domain.com",
 										"type": "string"
 									},
+									"indicator": {
+										"example": "domain.com",
+										"type": "string"
+									},
 									"indicatorType": {
 										"example": "domain",
 										"type": "string"
+									},
+									"indicatorTypeId": {
+										"example": 5,
+										"type": "number"
 									},
 									"insight": {
 										"type": "string"
@@ -632,6 +640,10 @@
 									},
 									"numReferences": {
 										"type": "number"
+									},
+									"rawId": {
+										"example": "453gw34w3",
+										"type": "string"
 									},
 									"referenced": {
 										"items": {
@@ -658,6 +670,9 @@
 											"type": "number"
 										},
 										"type": "array"
+									},
+									"releasabilityId": {
+										"type": "string"
 									},
 									"tags": {
 										"items": {
@@ -690,6 +705,9 @@
 									"attacker",
 									"attackerCountry",
 									"targetIndustry",
+									"rawId",
+									"indicatorTypeId",
+									"indicator",
 									"event",
 									"numReferenced",
 									"numReferences",
@@ -815,9 +833,17 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
+								"indicator": {
+									"example": "domain.com",
+									"type": "string"
+								},
 								"indicatorType": {
 									"example": "domain",
 									"type": "string"
+								},
+								"indicatorTypeId": {
+									"example": 5,
+									"type": "number"
 								},
 								"insight": {
 									"type": "string"
@@ -837,6 +863,10 @@
 								},
 								"numReferences": {
 									"type": "number"
+								},
+								"rawId": {
+									"example": "453gw34w3",
+									"type": "string"
 								},
 								"referenced": {
 									"items": {
@@ -863,6 +893,9 @@
 										"type": "number"
 									},
 									"type": "array"
+								},
+								"releasabilityId": {
+									"type": "string"
 								},
 								"tags": {
 									"items": {
@@ -895,6 +928,9 @@
 								"attacker",
 								"attackerCountry",
 								"targetIndustry",
+								"rawId",
+								"indicatorTypeId",
+								"indicator",
 								"event",
 								"numReferenced",
 								"numReferences",
@@ -1167,11 +1203,11 @@
 				}
 			},
 			{
-				"description": "An optional array of indicator type strings to filter the results by (e.g., ['DOMAIN', 'IP']).",
+				"description": "An optional array of indicator type IDs to filter the results by.",
 				"in": "query",
-				"name": "indicatorTypes",
+				"name": "indicatorTypeIds",
 				"schema": {
-					"description": "An optional array of indicator type strings to filter the results by (e.g., ['DOMAIN', 'IP']).",
+					"description": "An optional array of indicator type IDs to filter the results by.",
 					"items": {
 						"type": "string"
 					},
@@ -1216,9 +1252,17 @@
 										"example": "An attacker registered the domain domain.com",
 										"type": "string"
 									},
+									"indicator": {
+										"example": "domain.com",
+										"type": "string"
+									},
 									"indicatorType": {
 										"example": "domain",
 										"type": "string"
+									},
+									"indicatorTypeId": {
+										"example": 5,
+										"type": "number"
 									},
 									"insight": {
 										"type": "string"
@@ -1238,6 +1282,10 @@
 									},
 									"numReferences": {
 										"type": "number"
+									},
+									"rawId": {
+										"example": "453gw34w3",
+										"type": "string"
 									},
 									"referenced": {
 										"items": {
@@ -1264,6 +1312,9 @@
 											"type": "number"
 										},
 										"type": "array"
+									},
+									"releasabilityId": {
+										"type": "string"
 									},
 									"tags": {
 										"items": {
@@ -1296,6 +1347,9 @@
 									"attacker",
 									"attackerCountry",
 									"targetIndustry",
+									"rawId",
+									"indicatorTypeId",
+									"indicator",
 									"event",
 									"numReferenced",
 									"numReferences",
@@ -1363,6 +1417,209 @@
 			}
 		],
 		"summary": "Filter and list events related to specific event",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/aggregate": {
+		"description": "Aggregate threat events by one or more columns (e.g., attacker, targetIndustry) with optional date filtering and daily grouping. Supports multi-dimensional aggregation for cross-analysis.",
+		"operationId": "get_EventAggregate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry')",
+				"in": "query",
+				"name": "aggregateBy",
+				"required": true,
+				"schema": {
+					"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry')",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset ID(s) to filter by. Can be a single dataset ID or array of dataset IDs. If not provided, uses default dataset",
+				"in": "query",
+				"name": "datasetId",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
+						}
+					],
+					"description": "Dataset ID(s) to filter by. Can be a single dataset ID or array of dataset IDs. If not provided, uses default dataset"
+				}
+			},
+			{
+				"description": "Start date for filtering (ISO 8601 format, e.g., '2024-01-01')",
+				"in": "query",
+				"name": "startDate",
+				"schema": {
+					"description": "Start date for filtering (ISO 8601 format, e.g., '2024-01-01')",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End date for filtering (ISO 8601 format, e.g., '2024-12-31')",
+				"in": "query",
+				"name": "endDate",
+				"schema": {
+					"description": "End date for filtering (ISO 8601 format, e.g., '2024-12-31')",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Whether to group results by date (daily aggregation)",
+				"in": "query",
+				"name": "groupByDate",
+				"schema": {
+					"description": "Whether to group results by date (daily aggregation)",
+					"type": "boolean"
+				}
+			},
+			{
+				"description": "Maximum number of results to return",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 100,
+					"description": "Maximum number of results to return",
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"aggregateBy": {
+									"description": "Column(s) that were aggregated by",
+									"type": "string"
+								},
+								"aggregations": {
+									"description": "Array of aggregation results with dynamic fields based on aggregateBy columns",
+									"items": {
+										"allOf": [
+											{
+												"additionalProperties": {
+													"nullable": true,
+													"type": "string"
+												},
+												"type": "object"
+											},
+											{
+												"properties": {
+													"count": {
+														"description": "Number of events for this aggregation",
+														"type": "number"
+													},
+													"date": {
+														"description": "Date (if groupByDate is true)",
+														"type": "string"
+													}
+												},
+												"required": [
+													"count"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"type": "array"
+								},
+								"dateRange": {
+									"description": "Date range used for filtering",
+									"properties": {
+										"endDate": {
+											"type": "string"
+										},
+										"startDate": {
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"total": {
+									"description": "Total number of events in the aggregation",
+									"type": "number"
+								}
+							},
+							"required": [
+								"aggregations",
+								"total",
+								"aggregateBy"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns aggregated event data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Aggregate events by single or multiple columns with optional date filtering",
 		"tags": [
 			"Event"
 		],
@@ -1627,9 +1884,17 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
+								"indicator": {
+									"example": "domain.com",
+									"type": "string"
+								},
 								"indicatorType": {
 									"example": "domain",
 									"type": "string"
+								},
+								"indicatorTypeId": {
+									"example": 5,
+									"type": "number"
 								},
 								"insight": {
 									"type": "string"
@@ -1649,6 +1914,10 @@
 								},
 								"numReferences": {
 									"type": "number"
+								},
+								"rawId": {
+									"example": "453gw34w3",
+									"type": "string"
 								},
 								"referenced": {
 									"items": {
@@ -1675,6 +1944,9 @@
 										"type": "number"
 									},
 									"type": "array"
+								},
+								"releasabilityId": {
+									"type": "string"
 								},
 								"tags": {
 									"items": {
@@ -1707,6 +1979,9 @@
 								"attacker",
 								"attackerCountry",
 								"targetIndustry",
+								"rawId",
+								"indicatorTypeId",
+								"indicator",
 								"event",
 								"numReferenced",
 								"numReferences",
@@ -1911,305 +2186,6 @@
 			"Cloudforce One Write"
 		]
 	},
-	"POST /accounts/{account_id}/cloudforce-one/events": {
-		"description": "The `datasetId` parameter must be defined. To list existing datasets (and their IDs) in your account, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
-		"operationId": "post_EventList",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "number"
-				}
-			},
-			{
-				"in": "query",
-				"name": "forceRefresh",
-				"schema": {
-					"type": "boolean"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"datasetId": {
-								"items": {
-									"example": "7632a037-fdef-4899-9b12-148470aae772",
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"order": {
-								"enum": [
-									"asc",
-									"desc"
-								],
-								"type": "string"
-							},
-							"orderBy": {
-								"example": "created",
-								"type": "string"
-							},
-							"page": {
-								"example": 1,
-								"type": "number"
-							},
-							"pageSize": {
-								"example": 100,
-								"type": "number"
-							},
-							"search": {
-								"items": {
-									"properties": {
-										"field": {
-											"example": "attackerCountry",
-											"type": "string"
-										},
-										"op": {
-											"enum": [
-												"equals",
-												"not",
-												"gt",
-												"gte",
-												"lt",
-												"lte",
-												"like",
-												"contains",
-												"startsWith",
-												"endsWith",
-												"in",
-												"find"
-											],
-											"example": "equals",
-											"type": "string"
-										},
-										"value": {
-											"anyOf": [
-												{
-													"example": "usa",
-													"type": "string"
-												},
-												{
-													"example": 1,
-													"type": "number"
-												},
-												{
-													"items": {
-														"anyOf": [
-															{
-																"type": "string"
-															},
-															{
-																"type": "number"
-															}
-														]
-													},
-													"type": "array"
-												}
-											]
-										}
-									},
-									"type": "object"
-								},
-								"type": "array"
-							}
-						},
-						"required": [
-							"search"
-						],
-						"type": "object"
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"items": {
-								"properties": {
-									"attacker": {
-										"example": "Flying Yeti",
-										"type": "string"
-									},
-									"attackerCountry": {
-										"example": "CN",
-										"type": "string"
-									},
-									"category": {
-										"example": "Domain Resolution",
-										"type": "string"
-									},
-									"date": {
-										"example": "2022-04-01T00:00:00Z",
-										"type": "string"
-									},
-									"event": {
-										"example": "An attacker registered the domain domain.com",
-										"type": "string"
-									},
-									"indicatorType": {
-										"example": "domain",
-										"type": "string"
-									},
-									"insight": {
-										"type": "string"
-									},
-									"killChain": {
-										"type": "number"
-									},
-									"mitreAttack": {
-										"items": {
-											"example": " ",
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"numReferenced": {
-										"type": "number"
-									},
-									"numReferences": {
-										"type": "number"
-									},
-									"referenced": {
-										"items": {
-											"example": " ",
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"referencedIds": {
-										"items": {
-											"type": "number"
-										},
-										"type": "array"
-									},
-									"references": {
-										"items": {
-											"example": " ",
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"referencesIds": {
-										"items": {
-											"type": "number"
-										},
-										"type": "array"
-									},
-									"tags": {
-										"items": {
-											"example": "malware",
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"targetCountry": {
-										"example": "US",
-										"type": "string"
-									},
-									"targetIndustry": {
-										"example": "Agriculture",
-										"type": "string"
-									},
-									"tlp": {
-										"example": "amber",
-										"type": "string"
-									},
-									"uuid": {
-										"example": "12345678-1234-1234-1234-1234567890ab",
-										"type": "string"
-									}
-								},
-								"required": [
-									"uuid",
-									"date",
-									"targetCountry",
-									"attacker",
-									"attackerCountry",
-									"targetIndustry",
-									"event",
-									"numReferenced",
-									"numReferences",
-									"tlp",
-									"category",
-									"indicatorType",
-									"referenced",
-									"references",
-									"tags",
-									"killChain",
-									"mitreAttack",
-									"referencedIds",
-									"referencesIds"
-								],
-								"type": "object"
-							},
-							"type": "array"
-						}
-					}
-				},
-				"description": "Returns a list of events."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Filter and list events",
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		]
-	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "post_EventUpdate",
 		"parameters": [
@@ -2263,6 +2239,10 @@
 							},
 							"indicator": {
 								"example": "domain2.com",
+								"type": "string"
+							},
+							"indicatorType": {
+								"example": "domain",
 								"type": "string"
 							},
 							"insight": {
@@ -2331,9 +2311,17 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
+								"indicator": {
+									"example": "domain.com",
+									"type": "string"
+								},
 								"indicatorType": {
 									"example": "domain",
 									"type": "string"
+								},
+								"indicatorTypeId": {
+									"example": 5,
+									"type": "number"
 								},
 								"insight": {
 									"type": "string"
@@ -2353,6 +2341,10 @@
 								},
 								"numReferences": {
 									"type": "number"
+								},
+								"rawId": {
+									"example": "453gw34w3",
+									"type": "string"
 								},
 								"referenced": {
 									"items": {
@@ -2379,6 +2371,9 @@
 										"type": "number"
 									},
 									"type": "array"
+								},
+								"releasabilityId": {
+									"type": "string"
 								},
 								"tags": {
 									"items": {
@@ -2411,6 +2406,9 @@
 								"attacker",
 								"attackerCountry",
 								"targetIndustry",
+								"rawId",
+								"indicatorTypeId",
+								"indicator",
 								"event",
 								"numReferenced",
 								"numReferences",
@@ -2675,6 +2673,10 @@
 								"example": "domain",
 								"type": "string"
 							},
+							"insight": {
+								"example": "This domain was likely registered for phishing purposes",
+								"type": "string"
+							},
 							"raw": {
 								"properties": {
 									"data": {
@@ -2719,6 +2721,7 @@
 						"required": [
 							"date",
 							"category",
+							"indicatorType",
 							"event",
 							"tlp",
 							"raw"
@@ -2754,9 +2757,17 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
+								"indicator": {
+									"example": "domain.com",
+									"type": "string"
+								},
 								"indicatorType": {
 									"example": "domain",
 									"type": "string"
+								},
+								"indicatorTypeId": {
+									"example": 5,
+									"type": "number"
 								},
 								"insight": {
 									"type": "string"
@@ -2776,6 +2787,10 @@
 								},
 								"numReferences": {
 									"type": "number"
+								},
+								"rawId": {
+									"example": "453gw34w3",
+									"type": "string"
 								},
 								"referenced": {
 									"items": {
@@ -2802,6 +2817,9 @@
 										"type": "number"
 									},
 									"type": "array"
+								},
+								"releasabilityId": {
+									"type": "string"
 								},
 								"tags": {
 									"items": {
@@ -2834,6 +2852,9 @@
 								"attacker",
 								"attackerCountry",
 								"targetIndustry",
+								"rawId",
+								"indicatorTypeId",
+								"indicator",
 								"event",
 								"numReferenced",
 								"numReferences",
@@ -2968,6 +2989,10 @@
 											"example": "domain",
 											"type": "string"
 										},
+										"insight": {
+											"example": "This domain was likely registered for phishing purposes",
+											"type": "string"
+										},
 										"raw": {
 											"properties": {
 												"data": {
@@ -3012,6 +3037,7 @@
 									"required": [
 										"date",
 										"category",
+										"indicatorType",
 										"event",
 										"tlp",
 										"raw"
@@ -3160,6 +3186,10 @@
 											"example": "domain",
 											"type": "string"
 										},
+										"insight": {
+											"example": "This domain was likely registered for phishing purposes",
+											"type": "string"
+										},
 										"raw": {
 											"properties": {
 												"data": {
@@ -3204,6 +3234,7 @@
 									"required": [
 										"date",
 										"category",
+										"indicatorType",
 										"event",
 										"tlp",
 										"raw"

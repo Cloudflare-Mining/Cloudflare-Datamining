@@ -1,0 +1,808 @@
+{
+	"GET /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session": {
+		"description": "Returns details of an ongoing active session for the given meeting ID.",
+		"operationId": "GetActiveSession",
+		"parameters": [
+			{
+				"description": "ID of the meeting",
+				"in": "path",
+				"name": "meeting_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"activeSessionSuccess": {
+								"summary": "Success response for fetching active session",
+								"value": {
+									"data": {
+										"associated_id": "6bf2b8be-04dd-4191-b602-1128921a306b",
+										"created_at": "2022-01-12T14:21:34.398Z",
+										"ended_at": "null",
+										"id": "813432c7-3c5a-45e2-9acf-eef7061c7584",
+										"live_participants": 1,
+										"max_concurrent_participants": 2,
+										"minutes_consumed": 2.3434,
+										"started_at": "2022-01-12T14:21:34.388Z",
+										"status": "LIVE",
+										"type": "meeting",
+										"updated_at": "2022-01-12T14:26:00.784Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"associated_id": {
+											"description": "ID of the meeting this session is associated with. In the case of V2 meetings, it is always a UUID. In V1 meetings, it is a room name of the form `abcdef-ghijkl`",
+											"type": "string"
+										},
+										"breakout_rooms": {
+											"items": "[Circular ~.GET /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session.responses.200.content.application/json.schema.properties.data]",
+											"readOnly": true,
+											"type": "array"
+										},
+										"created_at": {
+											"description": "timestamp when session created",
+											"type": "string"
+										},
+										"ended_at": {
+											"description": "timestamp when session ended",
+											"type": "string"
+										},
+										"id": {
+											"description": "ID of the session",
+											"readOnly": true,
+											"type": "string"
+										},
+										"live_participants": {
+											"description": "number of participants currently in the session",
+											"type": "number"
+										},
+										"max_concurrent_participants": {
+											"description": "number of maximum participants that were in the session",
+											"type": "number"
+										},
+										"meeting_display_name": {
+											"description": "Title of the meeting this session belongs to",
+											"type": "string"
+										},
+										"meta": {
+											"description": "Any meta data about session.",
+											"type": "object"
+										},
+										"minutes_consumed": {
+											"description": "number of minutes consumed since the session started",
+											"type": "number"
+										},
+										"organization_id": {
+											"description": "Organization id that hosted this session",
+											"type": "string"
+										},
+										"started_at": {
+											"description": "timestamp when session started",
+											"type": "string"
+										},
+										"status": {
+											"description": "current status of session",
+											"enum": [
+												"LIVE",
+												"ENDED"
+											],
+											"type": "string"
+										},
+										"type": {
+											"description": "type of session",
+											"enum": [
+												"meeting",
+												"livestream",
+												"participant"
+											],
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "timestamp when session was last updated",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"associated_id",
+										"meeting_display_name",
+										"type",
+										"status",
+										"live_participants",
+										"max_concurrent_participants",
+										"minutes_consumed",
+										"organization_id",
+										"started_at",
+										"created_at",
+										"updated_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Active Session Success response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"activeSessionNotFound": {
+								"summary": "Active Session not found",
+								"value": {
+									"error": {
+										"code": 404,
+										"message": "No active session found for meeting_id 6bf2b8be-04dd-4191-b602-1128921a306b"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"error": {
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									],
+									"type": "object"
+								},
+								"success": {
+									"default": false,
+									"description": "Success status of the request.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Active Session is not found for the given meetingId"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch details of an active session",
+		"tags": [
+			"Active session"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session/kick": {
+		"description": "Kicks one or more participants from an active session using user ID or custom participant ID.",
+		"operationId": "KickPartcipants",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the meeting",
+				"in": "path",
+				"name": "meeting_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"custom_participant_ids": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"participant_ids": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"description": "Request body for kicking participants from an active session. Only one of `participant_id` or `custom_participant_id` is required."
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"action": {
+											"type": "string"
+										},
+										"participants": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"type": "string"
+													},
+													"email": {
+														"description": "Email of the session participant.",
+														"type": "string"
+													},
+													"id": {
+														"description": "ID of the session participant",
+														"type": "string"
+													},
+													"name": {
+														"description": "Name of the session participant.",
+														"type": "string"
+													},
+													"picture": {
+														"description": "A URL pointing to a picture of the participant.",
+														"type": "string"
+													},
+													"updated_at": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"created_at",
+													"updated_at"
+												],
+												"title": "SessionParticipant",
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Kick participants success response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"participantNotFound": {
+								"summary": "Participant Not Found",
+								"value": {
+									"error": {
+										"code": 404,
+										"message": "No user found with id 813432c7-3c5a-45e2-9acf-eef7061c7584"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"error": {
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									],
+									"type": "object"
+								},
+								"success": {
+									"default": false,
+									"description": "Success status of the request.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "No participant found for the given `participant_id` or `custom_participant_id`"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Kick participants from an active session",
+		"tags": [
+			"Active session"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session/kick-all": {
+		"description": "Kicks all participants from an active session for the given meeting ID.",
+		"operationId": "KickAllParticipants",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the meeting",
+				"in": "path",
+				"name": "meeting_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"action": {
+											"type": "string"
+										},
+										"kicked_participants_count": {
+											"type": "number"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Kick all participants from a meeting"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Kick all participants",
+		"tags": [
+			"Active session"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session/mute": {
+		"description": "Mutes one or more participants from an active session using user ID or custom participant ID.",
+		"operationId": "MuteParticipants",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the meeting",
+				"in": "path",
+				"name": "meeting_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"custom_participant_ids": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"participant_ids": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"description": "Request body for kicking participants from an active session. Only one of `participant_id` or `custom_participant_id` is required."
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"action": {
+											"type": "string"
+										},
+										"participants": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"type": "string"
+													},
+													"email": {
+														"description": "Email of the session participant.",
+														"type": "string"
+													},
+													"id": {
+														"description": "ID of the session participant",
+														"type": "string"
+													},
+													"name": {
+														"description": "Name of the session participant.",
+														"type": "string"
+													},
+													"picture": {
+														"description": "A URL pointing to a picture of the participant.",
+														"type": "string"
+													},
+													"updated_at": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"created_at",
+													"updated_at"
+												],
+												"title": "SessionParticipant",
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Mute one or more participants of a meeting"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Mute participants of an active session",
+		"tags": [
+			"Active session"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session/mute-all": {
+		"description": "Mutes all participants of an active session for the given meeting ID.",
+		"operationId": "MuteAllParticipants",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the meeting",
+				"in": "path",
+				"name": "meeting_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"allow_unmute": {
+								"description": "if false, participants won't be able to unmute themselves after they are muted",
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"description": "Request body for muting all participants in an active session."
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"action": {
+											"type": "string"
+										},
+										"muted_participants_count": {
+											"type": "number"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Mute all participants of a meeting"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Mute all participants",
+		"tags": [
+			"Active session"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session/poll": {
+		"description": "Creates a new poll in an active session for the given meeting ID.",
+		"operationId": "CreatePoll",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the meeting",
+				"in": "path",
+				"name": "meeting_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"anonymous": {
+								"description": "if voters on a poll are anonymous",
+								"type": "boolean"
+							},
+							"hide_votes": {
+								"description": "if votes on an option are visible before a person votes",
+								"type": "boolean"
+							},
+							"options": {
+								"description": "Different options for the question",
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"question": {
+								"description": "Question of the poll",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"description": "Request body for creating a new poll"
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"action": {
+											"type": "string"
+										},
+										"poll": {
+											"properties": {
+												"anonymous": {
+													"type": "boolean"
+												},
+												"created_by": {
+													"type": "string"
+												},
+												"hide_votes": {
+													"type": "boolean"
+												},
+												"id": {
+													"description": "ID of the poll",
+													"readOnly": true,
+													"type": "string"
+												},
+												"options": {
+													"description": "Answer options",
+													"items": {
+														"properties": {
+															"count": {
+																"type": "number"
+															},
+															"text": {
+																"description": "Text of the answer option",
+																"type": "string"
+															},
+															"votes": {
+																"items": {
+																	"properties": {
+																		"id": {
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"required": [
+															"text",
+															"count",
+															"votes"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"question": {
+													"description": "Question asked by the poll",
+													"type": "string"
+												},
+												"voted": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"question",
+												"options"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "response for creating a poll"
+			},
+			"400": {
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create a poll",
+		"tags": [
+			"Active session"
+		]
+	}
+}

@@ -1404,12 +1404,31 @@
 									},
 									"response_format": {
 										"properties": {
-											"schema": {
+											"json_schema": {
 												"additionalProperties": {
-													"nullable": true,
-													"type": "object"
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														},
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
+												"nullable": true,
 												"type": "object"
 											},
 											"type": {
@@ -2040,6 +2059,10 @@
 									"emulateMediaType": {
 										"type": "string"
 									},
+									"excludeExternalLinks": {
+										"default": false,
+										"type": "boolean"
+									},
 									"gotoOptions": {
 										"default": {},
 										"description": "Check [options](https://pptr.dev/api/puppeteer.gotooptions).",
@@ -2297,6 +2320,7 @@
 										"type": "object"
 									},
 									"visibleLinksOnly": {
+										"default": false,
 										"type": "boolean"
 									},
 									"waitForSelector": {

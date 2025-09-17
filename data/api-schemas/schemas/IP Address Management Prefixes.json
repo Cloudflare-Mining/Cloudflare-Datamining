@@ -737,19 +737,23 @@
 														"x-auditable": true
 													},
 													"advertised": {
+														"deprecated": true,
 														"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 														"example": true,
 														"nullable": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 													},
 													"advertised_modified_at": {
+														"deprecated": true,
 														"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
 														"nullable": true,
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 													},
 													"approved": {
 														"description": "Approval state of the prefix (P = pending, V = active).",
@@ -805,16 +809,20 @@
 														"x-auditable": true
 													},
 													"on_demand_enabled": {
+														"deprecated": true,
 														"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 														"example": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 													},
 													"on_demand_locked": {
+														"deprecated": true,
 														"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 														"example": false,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 													}
 												},
 												"type": "object"
@@ -966,19 +974,23 @@
 																"x-auditable": true
 															},
 															"advertised": {
+																"deprecated": true,
 																"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 																"example": true,
 																"nullable": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 															},
 															"advertised_modified_at": {
+																"deprecated": true,
 																"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"nullable": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 															},
 															"approved": {
 																"description": "Approval state of the prefix (P = pending, V = active).",
@@ -1034,16 +1046,20 @@
 																"x-auditable": true
 															},
 															"on_demand_enabled": {
+																"deprecated": true,
 																"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 															},
 															"on_demand_locked": {
+																"deprecated": true,
 																"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 																"example": false,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 															}
 														},
 														"type": "object"
@@ -1320,19 +1336,23 @@
 													"x-auditable": true
 												},
 												"advertised": {
+													"deprecated": true,
 													"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 													"example": true,
 													"nullable": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"advertised_modified_at": {
+													"deprecated": true,
 													"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"nullable": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"approved": {
 													"description": "Approval state of the prefix (P = pending, V = active).",
@@ -1388,16 +1408,20 @@
 													"x-auditable": true
 												},
 												"on_demand_enabled": {
+													"deprecated": true,
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"on_demand_locked": {
+													"deprecated": true,
 													"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												}
 											},
 											"type": "object"
@@ -1516,19 +1540,23 @@
 															"x-auditable": true
 														},
 														"advertised": {
+															"deprecated": true,
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 															"example": true,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"advertised_modified_at": {
+															"deprecated": true,
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"nullable": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"approved": {
 															"description": "Approval state of the prefix (P = pending, V = active).",
@@ -1584,16 +1612,20 @@
 															"x-auditable": true
 														},
 														"on_demand_enabled": {
+															"deprecated": true,
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"on_demand_locked": {
+															"deprecated": true,
 															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 															"example": false,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														}
 													},
 													"type": "object"
@@ -1889,19 +1921,23 @@
 													"x-auditable": true
 												},
 												"advertised": {
+													"deprecated": true,
 													"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 													"example": true,
 													"nullable": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"advertised_modified_at": {
+													"deprecated": true,
 													"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"nullable": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"approved": {
 													"description": "Approval state of the prefix (P = pending, V = active).",
@@ -1957,16 +1993,20 @@
 													"x-auditable": true
 												},
 												"on_demand_enabled": {
+													"deprecated": true,
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"on_demand_locked": {
+													"deprecated": true,
 													"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												}
 											},
 											"type": "object"
@@ -2085,19 +2125,23 @@
 															"x-auditable": true
 														},
 														"advertised": {
+															"deprecated": true,
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 															"example": true,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"advertised_modified_at": {
+															"deprecated": true,
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"nullable": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"approved": {
 															"description": "Approval state of the prefix (P = pending, V = active).",
@@ -2153,16 +2197,20 @@
 															"x-auditable": true
 														},
 														"on_demand_enabled": {
+															"deprecated": true,
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"on_demand_locked": {
+															"deprecated": true,
 															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 															"example": false,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														}
 													},
 													"type": "object"
@@ -2927,19 +2975,23 @@
 													"x-auditable": true
 												},
 												"advertised": {
+													"deprecated": true,
 													"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 													"example": true,
 													"nullable": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"advertised_modified_at": {
+													"deprecated": true,
 													"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"nullable": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"approved": {
 													"description": "Approval state of the prefix (P = pending, V = active).",
@@ -2995,16 +3047,20 @@
 													"x-auditable": true
 												},
 												"on_demand_enabled": {
+													"deprecated": true,
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"on_demand_locked": {
+													"deprecated": true,
 													"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												}
 											},
 											"type": "object"
@@ -3123,19 +3179,23 @@
 															"x-auditable": true
 														},
 														"advertised": {
+															"deprecated": true,
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
 															"example": true,
 															"nullable": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"advertised_modified_at": {
+															"deprecated": true,
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"nullable": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"approved": {
 															"description": "Approval state of the prefix (P = pending, V = active).",
@@ -3191,16 +3251,20 @@
 															"x-auditable": true
 														},
 														"on_demand_enabled": {
+															"deprecated": true,
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"on_demand_locked": {
+															"deprecated": true,
 															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
 															"example": false,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														}
 													},
 													"type": "object"

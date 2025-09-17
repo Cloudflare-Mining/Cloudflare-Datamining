@@ -343,6 +343,17 @@
 																	"description": "Log settings for the Worker.",
 																	"nullable": true,
 																	"properties": {
+																		"destinations": {
+																			"description": "A list of destinations where logs will be exported to.",
+																			"example": [
+																				"cloudflare"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
+																			"x-auditable": true
+																		},
 																		"enabled": {
 																			"description": "Whether logs are enabled for the Worker.",
 																			"example": true,
@@ -358,6 +369,13 @@
 																		},
 																		"invocation_logs": {
 																			"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"persist": {
+																			"default": true,
+																			"description": "Whether log persistence is enabled for the Worker.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true
@@ -378,6 +396,38 @@
 														{
 															"nullable": true,
 															"type": "object",
+															"x-auditable": true
+														}
+													]
+												},
+												"tags": {
+													"allOf": [
+														{
+															"description": "Tags associated with the Worker.",
+															"example": [
+																"my-team",
+																"my-public-api"
+															],
+															"items": {
+																"example": "my-tag",
+																"maxLength": 1024,
+																"pattern": "^[^,&]*$",
+																"type": "string"
+															},
+															"maxItems": 10,
+															"type": "array",
+															"x-auditable": true,
+															"x-stainless-collection-type": "set"
+														},
+														{
+															"items": {
+																"example": "my-tag",
+																"maxLength": 1024,
+																"pattern": "^[^,&]*$",
+																"type": "string"
+															},
+															"nullable": true,
+															"type": "array",
 															"x-auditable": true
 														}
 													]
@@ -722,6 +772,17 @@
 																"description": "Log settings for the Worker.",
 																"nullable": true,
 																"properties": {
+																	"destinations": {
+																		"description": "A list of destinations where logs will be exported to.",
+																		"example": [
+																			"cloudflare"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
 																	"enabled": {
 																		"description": "Whether logs are enabled for the Worker.",
 																		"example": true,
@@ -737,6 +798,13 @@
 																	},
 																	"invocation_logs": {
 																		"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"persist": {
+																		"default": true,
+																		"description": "Whether log persistence is enabled for the Worker.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true
@@ -757,6 +825,38 @@
 													{
 														"nullable": true,
 														"type": "object",
+														"x-auditable": true
+													}
+												]
+											},
+											"tags": {
+												"allOf": [
+													{
+														"description": "Tags associated with the Worker.",
+														"example": [
+															"my-team",
+															"my-public-api"
+														],
+														"items": {
+															"example": "my-tag",
+															"maxLength": 1024,
+															"pattern": "^[^,&]*$",
+															"type": "string"
+														},
+														"maxItems": 10,
+														"type": "array",
+														"x-auditable": true,
+														"x-stainless-collection-type": "set"
+													},
+													{
+														"items": {
+															"example": "my-tag",
+															"maxLength": 1024,
+															"pattern": "^[^,&]*$",
+															"type": "string"
+														},
+														"nullable": true,
+														"type": "array",
 														"x-auditable": true
 													}
 												]
@@ -930,6 +1030,17 @@
 																	"description": "Log settings for the Worker.",
 																	"nullable": true,
 																	"properties": {
+																		"destinations": {
+																			"description": "A list of destinations where logs will be exported to.",
+																			"example": [
+																				"cloudflare"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
+																			"x-auditable": true
+																		},
 																		"enabled": {
 																			"description": "Whether logs are enabled for the Worker.",
 																			"example": true,
@@ -945,6 +1056,13 @@
 																		},
 																		"invocation_logs": {
 																			"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"persist": {
+																			"default": true,
+																			"description": "Whether log persistence is enabled for the Worker.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true
@@ -965,6 +1083,38 @@
 														{
 															"nullable": true,
 															"type": "object",
+															"x-auditable": true
+														}
+													]
+												},
+												"tags": {
+													"allOf": [
+														{
+															"description": "Tags associated with the Worker.",
+															"example": [
+																"my-team",
+																"my-public-api"
+															],
+															"items": {
+																"example": "my-tag",
+																"maxLength": 1024,
+																"pattern": "^[^,&]*$",
+																"type": "string"
+															},
+															"maxItems": 10,
+															"type": "array",
+															"x-auditable": true,
+															"x-stainless-collection-type": "set"
+														},
+														{
+															"items": {
+																"example": "my-tag",
+																"maxLength": 1024,
+																"pattern": "^[^,&]*$",
+																"type": "string"
+															},
+															"nullable": true,
+															"type": "array",
 															"x-auditable": true
 														}
 													]

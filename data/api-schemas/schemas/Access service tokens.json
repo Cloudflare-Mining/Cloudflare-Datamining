@@ -131,10 +131,17 @@
 													"type": "string"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"duration": {
 													"default": "8760h",
@@ -164,10 +171,17 @@
 													]
 												},
 												"last_seen_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"name": {
 													"description": "The name of the service token.",
@@ -176,10 +190,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -507,10 +528,17 @@
 														"type": "string"
 													},
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													},
 													"duration": {
 														"default": "8760h",
@@ -540,10 +568,17 @@
 														]
 													},
 													"last_seen_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													},
 													"name": {
 														"description": "The name of the service token.",
@@ -552,10 +587,17 @@
 														"x-auditable": true
 													},
 													"updated_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													}
 												},
 												"type": "object"
@@ -833,10 +875,17 @@
 													"type": "string"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"duration": {
 													"default": "8760h",
@@ -866,10 +915,17 @@
 													]
 												},
 												"last_seen_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"name": {
 													"description": "The name of the service token.",
@@ -878,10 +934,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -1047,6 +1110,12 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"client_secret_version": {
+								"default": 1,
+								"description": "A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.",
+								"type": "number",
+								"x-auditable": true
+							},
 							"duration": {
 								"default": "8760h",
 								"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
@@ -1057,6 +1126,13 @@
 							"name": {
 								"description": "The name of the service token.",
 								"example": "CI/CD token",
+								"type": "string",
+								"x-auditable": true
+							},
+							"previous_client_secret_expires_at": {
+								"description": "The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.",
+								"example": "2014-01-01T05:20:00.12345Z",
+								"format": "date-time",
 								"type": "string",
 								"x-auditable": true
 							}
@@ -1178,10 +1254,17 @@
 													"x-sensitive": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"duration": {
 													"default": "8760h",
@@ -1201,10 +1284,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -1479,10 +1569,17 @@
 													"type": "string"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"duration": {
 													"default": "8760h",
@@ -1512,10 +1609,17 @@
 													]
 												},
 												"last_seen_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"name": {
 													"description": "The name of the service token.",
@@ -1524,10 +1628,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -1699,6 +1810,23 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"previous_client_secret_expires_at": {
+								"description": "The expiration of the previous `client_secret`. If not provided, it defaults to the current timestamp in order to immediately expire the previous secret.",
+								"example": "2014-01-01T05:20:00.12345Z",
+								"format": "date-time",
+								"type": "string",
+								"x-auditable": true
+							}
+						}
+					}
+				}
+			}
+		},
 		"responses": {
 			"200": {
 				"content": {
@@ -1808,10 +1936,17 @@
 													"x-sensitive": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"duration": {
 													"default": "8760h",
@@ -1831,10 +1966,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -2008,6 +2150,12 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"client_secret_version": {
+								"default": 1,
+								"description": "A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.",
+								"type": "number",
+								"x-auditable": true
+							},
 							"duration": {
 								"default": "8760h",
 								"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
@@ -2018,6 +2166,13 @@
 							"name": {
 								"description": "The name of the service token.",
 								"example": "CI/CD token",
+								"type": "string",
+								"x-auditable": true
+							},
+							"previous_client_secret_expires_at": {
+								"description": "The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.",
+								"example": "2014-01-01T05:20:00.12345Z",
+								"format": "date-time",
 								"type": "string",
 								"x-auditable": true
 							}
@@ -2130,10 +2285,17 @@
 													"type": "string"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"duration": {
 													"default": "8760h",
@@ -2163,10 +2325,17 @@
 													]
 												},
 												"last_seen_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"name": {
 													"description": "The name of the service token.",
@@ -2175,10 +2344,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"

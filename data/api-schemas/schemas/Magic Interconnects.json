@@ -133,6 +133,13 @@
 												"interconnects": {
 													"items": {
 														"properties": {
+															"automatic_return_routing": {
+																"default": false,
+																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
 															"colo_name": {
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																"example": "pni_ord",
@@ -387,6 +394,13 @@
 														"interconnects": {
 															"items": {
 																"properties": {
+																	"automatic_return_routing": {
+																		"default": false,
+																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
 																	"colo_name": {
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																		"example": "pni_ord",
@@ -787,6 +801,13 @@
 											"properties": {
 												"interconnect": {
 													"properties": {
+														"automatic_return_routing": {
+															"default": false,
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"colo_name": {
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 															"example": "pni_ord",
@@ -1039,6 +1060,13 @@
 													"properties": {
 														"interconnect": {
 															"properties": {
+																"automatic_return_routing": {
+																	"default": false,
+																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
 																"colo_name": {
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																	"example": "pni_ord",
@@ -1443,6 +1471,13 @@
 												"modified_interconnects": {
 													"items": {
 														"properties": {
+															"automatic_return_routing": {
+																"default": false,
+																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
 															"colo_name": {
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																"example": "pni_ord",
@@ -1701,6 +1736,13 @@
 														"modified_interconnects": {
 															"items": {
 																"properties": {
+																	"automatic_return_routing": {
+																		"default": false,
+																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
 																	"colo_name": {
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																		"example": "pni_ord",
@@ -1996,6 +2038,13 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"automatic_return_routing": {
+								"default": false,
+								"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"description": {
 								"description": "An optional description of the interconnect.",
 								"example": "Tunnel for Interconnect to ORD",
@@ -2210,6 +2259,13 @@
 												},
 												"modified_interconnect": {
 													"properties": {
+														"automatic_return_routing": {
+															"default": false,
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"colo_name": {
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 															"example": "pni_ord",
@@ -2466,6 +2522,13 @@
 														},
 														"modified_interconnect": {
 															"properties": {
+																"automatic_return_routing": {
+																	"default": false,
+																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
 																"colo_name": {
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																	"example": "pni_ord",

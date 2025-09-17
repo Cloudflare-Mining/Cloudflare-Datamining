@@ -424,6 +424,195 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/realtimekit/livestreams": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "The unique identifier for the meeting.",
+			"example": "550e8400-e29b-41d4-a716-446655440000",
+			"in": "path",
+			"name": "meeting_id",
+			"required": true,
+			"schema": {
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-livestream": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "The unique identifier for the meeting.",
+			"example": "550e8400-e29b-41d4-a716-446655440000",
+			"in": "path",
+			"name": "meeting_id",
+			"required": true,
+			"schema": {
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-livestream/stop": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "The unique identifier for the meeting.",
+			"example": "550e8400-e29b-41d4-a716-446655440000",
+			"in": "path",
+			"name": "meeting_id",
+			"required": true,
+			"schema": {
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "The unique identifier for the meeting.",
+			"example": "550e8400-e29b-41d4-a716-446655440000",
+			"in": "path",
+			"name": "meeting_id",
+			"required": true,
+			"schema": {
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/livestream": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "The unique identifier for the meeting.",
+			"example": "550e8400-e29b-41d4-a716-446655440000",
+			"in": "path",
+			"name": "meeting_id",
+			"required": true,
+			"schema": {
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/livestreams": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "The unique identifier for the meeting.",
+			"example": "550e8400-e29b-41d4-a716-446655440000",
+			"in": "path",
+			"name": "meeting_id",
+			"required": true,
+			"schema": {
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/participants/{participant_id}": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"description": "The unique identifier for the meeting.",
+			"example": "550e8400-e29b-41d4-a716-446655440000",
+			"in": "path",
+			"name": "meeting_id",
+			"required": true,
+			"schema": {
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /zones/{zone_id}/api_gateway/configuration": [
 		{
 			"in": "path",

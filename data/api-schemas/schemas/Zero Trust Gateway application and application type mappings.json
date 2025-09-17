@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/gateway/app_types": {
-		"description": "Fetches all application and application type mappings.",
+		"description": "List all application and application type mappings.",
 		"operationId": "zero-trust-gateway-application-and-application-type-mappings-list-application-and-application-type-mappings",
 		"parameters": [
 			{
@@ -8,7 +8,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Provide the identifier string.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string",
@@ -69,7 +69,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -89,29 +89,30 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service.",
+															"description": "Indicate the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results.",
+															"description": "Indicate the current page within a paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results.",
+															"description": "Indicate the number of results per page.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
+															"description": "Indicate the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -124,7 +125,7 @@
 													{
 														"properties": {
 															"application_type_id": {
-																"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of a returned application type.",
+																"description": "Identify the type of this application. Multiple applications can share the same type. Refers to the `id` of a returned application type.",
 																"type": "integer",
 																"x-auditable": true
 															},
@@ -134,12 +135,12 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "The identifier for this application. There is only one application per ID.",
+																"description": "Identify this application. Only one application per ID.",
 																"type": "integer",
 																"x-auditable": true
 															},
 															"name": {
-																"description": "The name of the application or application type.",
+																"description": "Specify the name of the application or application type.",
 																"example": "Facebook",
 																"type": "string",
 																"x-auditable": true
@@ -155,17 +156,17 @@
 																"type": "string"
 															},
 															"description": {
-																"description": "A short summary of applications with this type.",
+																"description": "Provide a short summary of applications with this type.",
 																"example": "Applications used to communicate or collaborate in a business setting.",
 																"type": "string"
 															},
 															"id": {
-																"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of a returned application type.",
+																"description": "Identify the type of this application. Multiple applications can share the same type. Refers to the `id` of a returned application type.",
 																"type": "integer",
 																"x-auditable": true
 															},
 															"name": {
-																"description": "The name of the application or application type.",
+																"description": "Specify the name of the application or application type.",
 																"example": "Facebook",
 																"type": "string",
 																"x-auditable": true
@@ -179,7 +180,8 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
@@ -242,7 +244,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -262,29 +264,30 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service.",
+																	"description": "Indicate the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results.",
+																	"description": "Indicate the current page within a paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results.",
+																	"description": "Indicate the number of results per page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters.",
+																	"description": "Indicate the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -297,7 +300,7 @@
 															{
 																"properties": {
 																	"application_type_id": {
-																		"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of a returned application type.",
+																		"description": "Identify the type of this application. Multiple applications can share the same type. Refers to the `id` of a returned application type.",
 																		"type": "integer",
 																		"x-auditable": true
 																	},
@@ -307,12 +310,12 @@
 																		"type": "string"
 																	},
 																	"id": {
-																		"description": "The identifier for this application. There is only one application per ID.",
+																		"description": "Identify this application. Only one application per ID.",
 																		"type": "integer",
 																		"x-auditable": true
 																	},
 																	"name": {
-																		"description": "The name of the application or application type.",
+																		"description": "Specify the name of the application or application type.",
 																		"example": "Facebook",
 																		"type": "string",
 																		"x-auditable": true
@@ -328,17 +331,17 @@
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "A short summary of applications with this type.",
+																		"description": "Provide a short summary of applications with this type.",
 																		"example": "Applications used to communicate or collaborate in a business setting.",
 																		"type": "string"
 																	},
 																	"id": {
-																		"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of a returned application type.",
+																		"description": "Identify the type of this application. Multiple applications can share the same type. Refers to the `id` of a returned application type.",
 																		"type": "integer",
 																		"x-auditable": true
 																	},
 																	"name": {
-																		"description": "The name of the application or application type.",
+																		"description": "Specify the name of the application or application type.",
 																		"example": "Facebook",
 																		"type": "string",
 																		"x-auditable": true
@@ -352,7 +355,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -427,7 +431,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],

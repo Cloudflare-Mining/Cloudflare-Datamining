@@ -143,61 +143,93 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"items": {
-								"properties": {
-									"createdAt": {
-										"example": "2022-04-01T00:00:00Z",
-										"format": "date-time",
-										"type": "string"
-									},
-									"indicatorType": {
-										"example": "domain",
-										"type": "string"
-									},
-									"relatedEvents": {
-										"items": {
-											"properties": {
-												"datasetId": {
-													"example": "dataset-uuid-123",
-													"type": "string"
-												},
-												"eventId": {
-													"example": "event-uuid-456",
-													"type": "string"
-												}
+							"properties": {
+								"indicators": {
+									"items": {
+										"properties": {
+											"createdAt": {
+												"example": "2022-04-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
 											},
-											"required": [
-												"datasetId",
-												"eventId"
-											],
-											"type": "object"
+											"indicatorType": {
+												"example": "domain",
+												"type": "string"
+											},
+											"relatedEvents": {
+												"items": {
+													"properties": {
+														"datasetId": {
+															"example": "dataset-uuid-123",
+															"type": "string"
+														},
+														"eventId": {
+															"example": "event-uuid-456",
+															"type": "string"
+														}
+													},
+													"required": [
+														"datasetId",
+														"eventId"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"updatedAt": {
+												"example": "2022-04-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"uuid": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
+											},
+											"value": {
+												"example": "malicious-domain.com",
+												"type": "string"
+											}
 										},
-										"type": "array"
+										"required": [
+											"uuid",
+											"indicatorType",
+											"value",
+											"createdAt",
+											"updatedAt"
+										],
+										"type": "object"
 									},
-									"updatedAt": {
-										"example": "2022-04-01T00:00:00Z",
-										"format": "date-time",
-										"type": "string"
-									},
-									"uuid": {
-										"example": "12345678-1234-1234-1234-1234567890ab",
-										"type": "string"
-									},
-									"value": {
-										"example": "malicious-domain.com",
-										"type": "string"
-									}
+									"type": "array"
 								},
-								"required": [
-									"uuid",
-									"indicatorType",
-									"value",
-									"createdAt",
-									"updatedAt"
-								],
-								"type": "object"
+								"pagination": {
+									"properties": {
+										"page": {
+											"type": "number"
+										},
+										"pageSize": {
+											"type": "number"
+										},
+										"totalCount": {
+											"type": "number"
+										},
+										"totalPages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"pageSize",
+										"totalCount",
+										"totalPages"
+									],
+									"type": "object"
+								}
 							},
-							"type": "array"
+							"required": [
+								"indicators",
+								"pagination"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -350,6 +382,175 @@
 			}
 		],
 		"summary": "Reads an indicator",
+		"tags": [
+			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/indicators/{indicator_type}/tags": {
+		"description": "Returns all mirrored tags from the indicator dataset (DO mirror table). No pagination.",
+		"operationId": "get_IndicatorTagsList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Indicator type (e.g., domain, hash)",
+				"in": "path",
+				"name": "indicator_type",
+				"required": true,
+				"schema": {
+					"description": "Indicator type (e.g., domain, hash)",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Array of mirror tag rows",
+							"items": {
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns an array of mirrored tags."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List mirrored tags for an indicator dataset",
 		"tags": [
 			"Indicator"
 		],

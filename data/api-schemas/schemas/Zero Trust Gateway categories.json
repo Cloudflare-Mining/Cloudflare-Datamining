@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/gateway/categories": {
-		"description": "Fetches a list of all categories.",
+		"description": "List all categories.",
 		"operationId": "zero-trust-gateway-categories-list-categories",
 		"parameters": [
 			{
@@ -8,7 +8,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Provide the identifier string.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string",
@@ -69,7 +69,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -89,29 +89,30 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service.",
+															"description": "Indicate the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results.",
+															"description": "Indicate the current page within a paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results.",
+															"description": "Indicate the number of results per page.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
+															"description": "Indicate the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -122,13 +123,13 @@
 											"items": {
 												"properties": {
 													"beta": {
-														"description": "True if the category is in beta and subject to change.",
+														"description": "Indicate whether the category is in beta and subject to change.",
 														"example": false,
 														"type": "boolean",
 														"x-auditable": true
 													},
 													"class": {
-														"description": "Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.",
+														"description": "Specify which account types can create policies for this category. `blocked` Blocks unconditionally for all accounts. `removalPending` Allows removal from policies but disables addition. `noBlock` Prevents blocking.",
 														"enum": [
 															"free",
 															"premium",
@@ -141,33 +142,33 @@
 														"x-auditable": true
 													},
 													"description": {
-														"description": "A short summary of domains in the category.",
+														"description": "Provide a short summary of domains in the category.",
 														"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
-														"description": "The identifier for this category. There is only one category per ID.",
+														"description": "Identify this category. Only one category per ID.",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"name": {
-														"description": "The name of the category.",
+														"description": "Specify the category name.",
 														"example": "Education",
 														"type": "string"
 													},
 													"subcategories": {
-														"description": "All subcategories for this category.",
+														"description": "Provide all subcategories for this category.",
 														"items": {
 															"properties": {
 																"beta": {
-																	"description": "True if the category is in beta and subject to change.",
+																	"description": "Indicate whether the category is in beta and subject to change.",
 																	"example": false,
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"class": {
-																	"description": "Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.",
+																	"description": "Specify which account types can create policies for this category. `blocked` Blocks unconditionally for all accounts. `removalPending` Allows removal from policies but disables addition. `noBlock` Prevents blocking.",
 																	"enum": [
 																		"free",
 																		"premium",
@@ -180,18 +181,18 @@
 																	"x-auditable": true
 																},
 																"description": {
-																	"description": "A short summary of domains in the category.",
+																	"description": "Provide a short summary of domains in the category.",
 																	"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"id": {
-																	"description": "The identifier for this category. There is only one category per ID.",
+																	"description": "Identify this category. Only one category per ID.",
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"name": {
-																	"description": "The name of the category.",
+																	"description": "Specify the category name.",
 																	"example": "Education",
 																	"type": "string"
 																}
@@ -206,7 +207,8 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
@@ -269,7 +271,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -289,29 +291,30 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service.",
+																	"description": "Indicate the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results.",
+																	"description": "Indicate the current page within a paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results.",
+																	"description": "Indicate the number of results per page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters.",
+																	"description": "Indicate the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -322,13 +325,13 @@
 													"items": {
 														"properties": {
 															"beta": {
-																"description": "True if the category is in beta and subject to change.",
+																"description": "Indicate whether the category is in beta and subject to change.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true
 															},
 															"class": {
-																"description": "Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.",
+																"description": "Specify which account types can create policies for this category. `blocked` Blocks unconditionally for all accounts. `removalPending` Allows removal from policies but disables addition. `noBlock` Prevents blocking.",
 																"enum": [
 																	"free",
 																	"premium",
@@ -341,33 +344,33 @@
 																"x-auditable": true
 															},
 															"description": {
-																"description": "A short summary of domains in the category.",
+																"description": "Provide a short summary of domains in the category.",
 																"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
-																"description": "The identifier for this category. There is only one category per ID.",
+																"description": "Identify this category. Only one category per ID.",
 																"type": "integer",
 																"x-auditable": true
 															},
 															"name": {
-																"description": "The name of the category.",
+																"description": "Specify the category name.",
 																"example": "Education",
 																"type": "string"
 															},
 															"subcategories": {
-																"description": "All subcategories for this category.",
+																"description": "Provide all subcategories for this category.",
 																"items": {
 																	"properties": {
 																		"beta": {
-																			"description": "True if the category is in beta and subject to change.",
+																			"description": "Indicate whether the category is in beta and subject to change.",
 																			"example": false,
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"class": {
-																			"description": "Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.",
+																			"description": "Specify which account types can create policies for this category. `blocked` Blocks unconditionally for all accounts. `removalPending` Allows removal from policies but disables addition. `noBlock` Prevents blocking.",
 																			"enum": [
 																				"free",
 																				"premium",
@@ -380,18 +383,18 @@
 																			"x-auditable": true
 																		},
 																		"description": {
-																			"description": "A short summary of domains in the category.",
+																			"description": "Provide a short summary of domains in the category.",
 																			"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"id": {
-																			"description": "The identifier for this category. There is only one category per ID.",
+																			"description": "Identify this category. Only one category per ID.",
 																			"type": "integer",
 																			"x-auditable": true
 																		},
 																		"name": {
-																			"description": "The name of the category.",
+																			"description": "Specify the category name.",
 																			"example": "Education",
 																			"type": "string"
 																		}
@@ -406,7 +409,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -481,7 +485,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],

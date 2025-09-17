@@ -1,0 +1,2120 @@
+{
+	"GET /accounts/{account_id}/realtimekit/recordings": {
+		"description": "Returns all recordings for an organization. If the `meeting_id` parameter is passed, returns all recordings for the given meeting ID.",
+		"operationId": "get_all_recordings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of a meeting. Optional. Will limit results to only this meeting if passed.",
+				"in": "query",
+				"name": "meeting_id",
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"allowEmptyValue": true,
+				"description": "The page number from which you want your page search results to be displayed.",
+				"in": "query",
+				"name": "page_no",
+				"schema": {
+					"minimum": 0,
+					"type": "number"
+				}
+			},
+			{
+				"allowEmptyValue": true,
+				"description": "Number of results per page",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"minimum": 0,
+					"type": "number"
+				}
+			},
+			{
+				"description": "If passed, only shows expired/non-expired recordings on RealtimeKit's bucket",
+				"in": "query",
+				"name": "expired",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
+				"description": "The search query string. You can search using the meeting ID or title.",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"enum": [
+						"invokedTime"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "sort_order",
+				"schema": {
+					"enum": [
+						"ASC",
+						"DESC"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "The start time range for which you want to retrieve the meetings. The time must be specified in ISO format.",
+				"in": "query",
+				"name": "start_time",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The end time range for which you want to retrieve the meetings. The time must be specified in ISO format.",
+				"in": "query",
+				"name": "end_time",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by one or more recording status",
+				"explode": false,
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"items": {
+						"enum": [
+							"INVOKED",
+							"RECORDING",
+							"UPLOADING",
+							"UPLOADED"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"data": {
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"paging": {
+											"properties": {
+												"end_offset": {
+													"example": 30,
+													"type": "number"
+												},
+												"start_offset": {
+													"example": 1,
+													"type": "number"
+												},
+												"total_count": {
+													"example": 30,
+													"minimum": 0,
+													"type": "number"
+												}
+											},
+											"required": [
+												"total_count",
+												"start_offset",
+												"end_offset"
+											],
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"data",
+										"paging"
+									],
+									"title": "PagingResponse",
+									"type": "object"
+								},
+								{
+									"properties": {
+										"data": {
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"audio_download_url": {
+																"description": "If the audio_config is passed, the URL for downloading the audio recording is returned.",
+																"format": "uri",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"download_url": {
+																"description": "URL where the recording can be downloaded.",
+																"format": "uri",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"download_url_expiry": {
+																"description": "Timestamp when the download URL expires.",
+																"format": "date-time",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"file_size": {
+																"description": "File size of the recording, in bytes.",
+																"nullable": true,
+																"readOnly": true,
+																"type": "number"
+															},
+															"id": {
+																"description": "ID of the recording",
+																"format": "uuid",
+																"readOnly": true,
+																"type": "string"
+															},
+															"invoked_time": {
+																"description": "Timestamp when this recording was invoked.",
+																"format": "date-time",
+																"type": "string"
+															},
+															"output_file_name": {
+																"description": "File name of the recording.",
+																"type": "string"
+															},
+															"recording_duration": {
+																"description": "Total recording time in seconds.",
+																"type": "integer"
+															},
+															"session_id": {
+																"description": "ID of the meeting session this recording is for.",
+																"format": "uuid",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"started_time": {
+																"description": "Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`.",
+																"format": "date-time",
+																"nullable": true,
+																"type": "string"
+															},
+															"status": {
+																"description": "Current status of the recording.",
+																"enum": [
+																	"INVOKED",
+																	"RECORDING",
+																	"UPLOADING",
+																	"UPLOADED",
+																	"ERRORED",
+																	"PAUSED"
+																],
+																"type": "string"
+															},
+															"stopped_time": {
+																"description": "Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped.",
+																"format": "date-time",
+																"nullable": true,
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"download_url",
+															"download_url_expiry",
+															"audio_download_url",
+															"file_size",
+															"session_id",
+															"output_file_name",
+															"status",
+															"invoked_time",
+															"started_time",
+															"stopped_time"
+														],
+														"title": "Recording",
+														"type": "object"
+													},
+													{
+														"properties": {
+															"storage_config": {
+																"nullable": true,
+																"properties": {
+																	"access_key": {
+																		"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
+																		"type": "string",
+																		"writeOnly": true
+																	},
+																	"auth_method": {
+																		"description": "Authentication method used for \"sftp\" type storage medium\n",
+																		"enum": [
+																			"KEY",
+																			"PASSWORD"
+																		],
+																		"type": "string"
+																	},
+																	"bucket": {
+																		"description": "Name of the storage medium's bucket.",
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "SSH destination server host for SFTP type storage medium",
+																		"type": "string"
+																	},
+																	"password": {
+																		"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
+																		"type": "string"
+																	},
+																	"path": {
+																		"description": "Path relative to the bucket root at which the recording will be placed.",
+																		"type": "string"
+																	},
+																	"port": {
+																		"description": "SSH destination server port for SFTP type storage medium",
+																		"type": "number"
+																	},
+																	"private_key": {
+																		"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
+																		"type": "string"
+																	},
+																	"region": {
+																		"description": "Region of the storage medium.",
+																		"example": "us-east-1",
+																		"type": "string"
+																	},
+																	"secret": {
+																		"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of storage media.",
+																		"enum": [
+																			"aws",
+																			"azure",
+																			"digitalocean",
+																			"gcs",
+																			"sftp"
+																		],
+																		"type": "string"
+																	},
+																	"username": {
+																		"description": "SSH destination server username for SFTP type storage medium",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"title": "StorageConfig",
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"meeting": {
+																"properties": {
+																	"created_at": {
+																		"description": "Timestamp the object was created at. The time is returned in ISO format.",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "ID of the meeting.",
+																		"format": "uuid",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"live_stream_on_start": {
+																		"description": "Specifies if the meeting should start getting livestreamed on start.",
+																		"type": "boolean"
+																	},
+																	"persist_chat": {
+																		"description": "Specifies if Chat within a meeting should persist for a week.",
+																		"type": "boolean"
+																	},
+																	"preferred_region": {
+																		"description": "The region in which this meeting should be created.",
+																		"enum": [
+																			"ap-south-1",
+																			"ap-southeast-1",
+																			"us-east-1",
+																			"eu-central-1",
+																			null
+																		],
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"record_on_start": {
+																		"description": "Specifies if the meeting should start getting recorded as soon as someone joins the meeting.",
+																		"type": "boolean"
+																	},
+																	"session_keep_alive_time_in_secs": {
+																		"default": 60,
+																		"description": "Time in seconds, for which a session remains active, after the last participant has left the meeting.",
+																		"maximum": 600,
+																		"minimum": 60,
+																		"type": "number"
+																	},
+																	"status": {
+																		"description": "Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting.",
+																		"enum": [
+																			"ACTIVE",
+																			"INACTIVE"
+																		],
+																		"type": "string"
+																	},
+																	"summarize_on_end": {
+																		"description": "Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API.",
+																		"type": "boolean"
+																	},
+																	"title": {
+																		"description": "Title of the meeting.",
+																		"type": "string"
+																	},
+																	"updated_at": {
+																		"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"created_at",
+																	"updated_at"
+																],
+																"type": "object"
+															}
+														},
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success response"
+			},
+			"201": {
+				"description": "Created"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch all recordings for an organization",
+		"tags": [
+			"Recordings"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/recordings/{recording_id}": {
+		"description": "Returns details of a recording for the given recording ID.",
+		"operationId": "get_one_recording",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the recording",
+				"in": "path",
+				"name": "recording_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"data": {
+											"description": "Data returned by the operation",
+											"type": "object"
+										},
+										"success": {
+											"default": true,
+											"description": "Success status of the operation",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"title": "GenericSuccessResponse",
+									"type": "object"
+								},
+								{
+									"properties": {
+										"data": {
+											"allOf": [
+												{
+													"properties": {
+														"audio_download_url": {
+															"description": "If the audio_config is passed, the URL for downloading the audio recording is returned.",
+															"format": "uri",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"download_url": {
+															"description": "URL where the recording can be downloaded.",
+															"format": "uri",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"download_url_expiry": {
+															"description": "Timestamp when the download URL expires.",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"file_size": {
+															"description": "File size of the recording, in bytes.",
+															"nullable": true,
+															"readOnly": true,
+															"type": "number"
+														},
+														"id": {
+															"description": "ID of the recording",
+															"format": "uuid",
+															"readOnly": true,
+															"type": "string"
+														},
+														"invoked_time": {
+															"description": "Timestamp when this recording was invoked.",
+															"format": "date-time",
+															"type": "string"
+														},
+														"output_file_name": {
+															"description": "File name of the recording.",
+															"type": "string"
+														},
+														"recording_duration": {
+															"description": "Total recording time in seconds.",
+															"type": "integer"
+														},
+														"session_id": {
+															"description": "ID of the meeting session this recording is for.",
+															"format": "uuid",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"started_time": {
+															"description": "Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`.",
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														},
+														"status": {
+															"description": "Current status of the recording.",
+															"enum": [
+																"INVOKED",
+																"RECORDING",
+																"UPLOADING",
+																"UPLOADED",
+																"ERRORED",
+																"PAUSED"
+															],
+															"type": "string"
+														},
+														"stopped_time": {
+															"description": "Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped.",
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"download_url",
+														"download_url_expiry",
+														"audio_download_url",
+														"file_size",
+														"session_id",
+														"output_file_name",
+														"status",
+														"invoked_time",
+														"started_time",
+														"stopped_time"
+													],
+													"title": "Recording",
+													"type": "object"
+												},
+												{
+													"properties": {
+														"start_reason": {
+															"properties": {
+																"caller": {
+																	"properties": {
+																		"name": {
+																			"description": "Name of the user who started the recording.",
+																			"example": "RealtimeKit_test",
+																			"type": "string"
+																		},
+																		"type": {
+																			"description": "The type can be an organization or a user. If the type is `user`, then only the `user_Id` and `name` are returned.",
+																			"enum": [
+																				"ORGANIZATION",
+																				"USER"
+																			],
+																			"type": "string"
+																		},
+																		"user_Id": {
+																			"description": "The user ID of the person who started the recording.",
+																			"example": "d61f6956-e68f-4375-bf10-c38a704d1bec",
+																			"format": "uuid",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"reason": {
+																	"description": "Specifies if the recording was started using the \"Start a Recording\"API or using the parameter RECORD_ON_START in the \"Create a meeting\" API. \n\nIf the recording is initiated using the \"RECORD_ON_START\" parameter, the user details will not be populated.",
+																	"enum": [
+																		"API_CALL",
+																		"RECORD_ON_START"
+																	],
+																	"type": "string"
+																}
+															},
+															"title": "startReason",
+															"type": "object"
+														},
+														"stop_reason": {
+															"properties": {
+																"caller": {
+																	"properties": {
+																		"name": {
+																			"description": "Name of the user who stopped the recording.",
+																			"example": "RealtimeKit_test",
+																			"type": "string"
+																		},
+																		"type": {
+																			"description": "The type can be an organization or a user. If the type is `user`, then only the `user_Id` and `name` are returned.",
+																			"enum": [
+																				"ORGANIZATION",
+																				"USER"
+																			],
+																			"type": "string"
+																		},
+																		"user_Id": {
+																			"description": "The user ID of the person who stopped the recording.",
+																			"example": "d61f6956-e68f-4375-bf10-c38a704d1bec",
+																			"format": "uuid",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"reason": {
+																	"description": "Specifies the reason why the recording stopped.",
+																	"enum": [
+																		"API_CALL",
+																		"INTERNAL_ERROR",
+																		"ALL_PEERS_LEFT"
+																	],
+																	"type": "string"
+																}
+															},
+															"title": "stopReason",
+															"type": "object"
+														},
+														"storage_config": {
+															"nullable": true,
+															"properties": {
+																"access_key": {
+																	"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
+																	"type": "string",
+																	"writeOnly": true
+																},
+																"auth_method": {
+																	"description": "Authentication method used for \"sftp\" type storage medium\n",
+																	"enum": [
+																		"KEY",
+																		"PASSWORD"
+																	],
+																	"type": "string"
+																},
+																"bucket": {
+																	"description": "Name of the storage medium's bucket.",
+																	"type": "string"
+																},
+																"host": {
+																	"description": "SSH destination server host for SFTP type storage medium",
+																	"type": "string"
+																},
+																"password": {
+																	"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
+																	"type": "string"
+																},
+																"path": {
+																	"description": "Path relative to the bucket root at which the recording will be placed.",
+																	"type": "string"
+																},
+																"port": {
+																	"description": "SSH destination server port for SFTP type storage medium",
+																	"type": "number"
+																},
+																"private_key": {
+																	"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
+																	"type": "string"
+																},
+																"region": {
+																	"description": "Region of the storage medium.",
+																	"example": "us-east-1",
+																	"type": "string"
+																},
+																"secret": {
+																	"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "Type of storage media.",
+																	"enum": [
+																		"aws",
+																		"azure",
+																		"digitalocean",
+																		"gcs",
+																		"sftp"
+																	],
+																	"type": "string"
+																},
+																"username": {
+																	"description": "SSH destination server username for SFTP type storage medium",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "StorageConfig",
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch details of a recording",
+		"tags": [
+			"Recordings"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/recordings/active-recording/{meeting_id}": {
+		"description": "Returns the active recording details for the given meeting ID.",
+		"operationId": "get_active_recording",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the meeting",
+				"in": "path",
+				"name": "meeting_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"data": {
+											"description": "Data returned by the operation",
+											"type": "object"
+										},
+										"success": {
+											"default": true,
+											"description": "Success status of the operation",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"title": "GenericSuccessResponse",
+									"type": "object"
+								},
+								{
+									"properties": {
+										"data": {
+											"properties": {
+												"audio_download_url": {
+													"description": "If the audio_config is passed, the URL for downloading the audio recording is returned.",
+													"format": "uri",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"download_url": {
+													"description": "URL where the recording can be downloaded.",
+													"format": "uri",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"download_url_expiry": {
+													"description": "Timestamp when the download URL expires.",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"file_size": {
+													"description": "File size of the recording, in bytes.",
+													"nullable": true,
+													"readOnly": true,
+													"type": "number"
+												},
+												"id": {
+													"description": "ID of the recording",
+													"format": "uuid",
+													"readOnly": true,
+													"type": "string"
+												},
+												"invoked_time": {
+													"description": "Timestamp when this recording was invoked.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"output_file_name": {
+													"description": "File name of the recording.",
+													"type": "string"
+												},
+												"recording_duration": {
+													"description": "Total recording time in seconds.",
+													"type": "integer"
+												},
+												"session_id": {
+													"description": "ID of the meeting session this recording is for.",
+													"format": "uuid",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"started_time": {
+													"description": "Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"status": {
+													"description": "Current status of the recording.",
+													"enum": [
+														"INVOKED",
+														"RECORDING",
+														"UPLOADING",
+														"UPLOADED",
+														"ERRORED",
+														"PAUSED"
+													],
+													"type": "string"
+												},
+												"stopped_time": {
+													"description": "Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"download_url",
+												"download_url_expiry",
+												"audio_download_url",
+												"file_size",
+												"session_id",
+												"output_file_name",
+												"status",
+												"invoked_time",
+												"started_time",
+												"stopped_time"
+											],
+											"title": "Recording",
+											"type": "object"
+										}
+									},
+									"required": [
+										"data"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									],
+									"type": "object"
+								},
+								"success": {
+									"default": false,
+									"description": "Success status of the request.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch active recording",
+		"tags": [
+			"Recordings"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/recordings": {
+		"description": "Starts recording a meeting. The meeting can be started by an organization admin directly, or a participant with permissions to start a recording, based on the type of authorization used.",
+		"operationId": "start_recording",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"Example 1": {
+							"value": {
+								"allow_multiple_recordings": false,
+								"audio_config": {
+									"channel": "stereo",
+									"codec": "AAC",
+									"export_file": true
+								},
+								"file_name_prefix": "string",
+								"interactive_config": {
+									"type": "ID3"
+								},
+								"max_seconds": 60,
+								"meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
+								"realtimekit_bucket_config": {
+									"enabled": true
+								},
+								"video_config": {
+									"codec": "H264",
+									"export_file": true,
+									"height": 720,
+									"watermark": {
+										"position": "left top",
+										"size": {
+											"height": 1,
+											"width": 1
+										},
+										"url": "http://example.com"
+									},
+									"width": 1280
+								}
+							}
+						}
+					},
+					"schema": {
+						"properties": {
+							"allow_multiple_recordings": {
+								"default": false,
+								"description": "By default, a meeting allows only one recording to run at a time. Enabling the `allow_multiple_recordings` parameter to true allows you to initiate multiple recordings concurrently in the same meeting. This allows you to record separate videos of the same meeting with different configurations, such as portrait mode or landscape mode.",
+								"type": "boolean"
+							},
+							"audio_config": {
+								"description": "Object containing configuration regarding the audio that is being recorded.",
+								"properties": {
+									"channel": {
+										"default": "stereo",
+										"description": "Audio signal pathway within an audio file that carries a specific sound source.",
+										"enum": [
+											"mono",
+											"stereo"
+										],
+										"type": "string"
+									},
+									"codec": {
+										"default": "AAC",
+										"description": "Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis.",
+										"enum": [
+											"MP3",
+											"AAC"
+										],
+										"type": "string"
+									},
+									"export_file": {
+										"default": true,
+										"description": "Controls whether to export audio file seperately",
+										"type": "boolean"
+									}
+								},
+								"title": "AudioConfig",
+								"type": "object"
+							},
+							"file_name_prefix": {
+								"description": "Update the recording file name.",
+								"type": "string"
+							},
+							"interactive_config": {
+								"description": "Allows you to add timed metadata to your recordings, which are digital markers inserted into a video file to provide contextual information at specific points in the content range. The ID3 tags containing this information are available to clients on the playback timeline in HLS format. The output files are generated in a compressed .tar format.",
+								"properties": {
+									"type": {
+										"description": "The metadata is presented in the form of ID3 tags.",
+										"enum": [
+											"ID3"
+										],
+										"type": "string"
+									}
+								},
+								"title": "InteractiveConfig",
+								"type": "object"
+							},
+							"max_seconds": {
+								"description": "Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours.",
+								"maximum": 86400,
+								"minimum": 60,
+								"type": "integer"
+							},
+							"meeting_id": {
+								"description": "ID of the meeting to record.",
+								"format": "uuid",
+								"type": "string"
+							},
+							"realtimekit_bucket_config": {
+								"properties": {
+									"enabled": {
+										"description": "Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording.",
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"enabled"
+								],
+								"title": "realtimekitBucketConfig",
+								"type": "object"
+							},
+							"rtmp_out_config": {
+								"properties": {
+									"rtmp_url": {
+										"description": "RTMP URL to stream to",
+										"example": "rtmp://a.rtmp.youtube.com/live2",
+										"format": "uri",
+										"type": "string"
+									}
+								},
+								"title": "LivestreamingConfig",
+								"type": "object"
+							},
+							"storage_config": {
+								"nullable": true,
+								"properties": {
+									"access_key": {
+										"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
+										"type": "string",
+										"writeOnly": true
+									},
+									"auth_method": {
+										"description": "Authentication method used for \"sftp\" type storage medium\n",
+										"enum": [
+											"KEY",
+											"PASSWORD"
+										],
+										"type": "string"
+									},
+									"bucket": {
+										"description": "Name of the storage medium's bucket.",
+										"type": "string"
+									},
+									"host": {
+										"description": "SSH destination server host for SFTP type storage medium",
+										"type": "string"
+									},
+									"password": {
+										"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
+										"type": "string"
+									},
+									"path": {
+										"description": "Path relative to the bucket root at which the recording will be placed.",
+										"type": "string"
+									},
+									"port": {
+										"description": "SSH destination server port for SFTP type storage medium",
+										"type": "number"
+									},
+									"private_key": {
+										"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
+										"type": "string"
+									},
+									"region": {
+										"description": "Region of the storage medium.",
+										"example": "us-east-1",
+										"type": "string"
+									},
+									"secret": {
+										"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+										"type": "string"
+									},
+									"type": {
+										"description": "Type of storage media.",
+										"enum": [
+											"aws",
+											"azure",
+											"digitalocean",
+											"gcs",
+											"sftp"
+										],
+										"type": "string"
+									},
+									"username": {
+										"description": "SSH destination server username for SFTP type storage medium",
+										"type": "string"
+									}
+								},
+								"required": [
+									"type"
+								],
+								"title": "StorageConfig",
+								"type": "object"
+							},
+							"url": {
+								"description": "Pass a custom url to record arbitary screen",
+								"format": "uri",
+								"type": "string"
+							},
+							"video_config": {
+								"properties": {
+									"codec": {
+										"default": "H264",
+										"description": "Codec using which the recording will be encoded.",
+										"enum": [
+											"H264",
+											"VP8"
+										],
+										"type": "string"
+									},
+									"export_file": {
+										"default": true,
+										"description": "Controls whether to export video file seperately",
+										"type": "boolean"
+									},
+									"height": {
+										"default": 720,
+										"description": "Height of the recording video in pixels",
+										"example": 720,
+										"maximum": 1920,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"watermark": {
+										"description": "Watermark to be added to the recording",
+										"properties": {
+											"position": {
+												"default": "left top",
+												"description": "Position of the watermark",
+												"enum": [
+													"left top",
+													"right top",
+													"left bottom",
+													"right bottom"
+												],
+												"type": "string"
+											},
+											"size": {
+												"description": "Size of the watermark",
+												"properties": {
+													"height": {
+														"description": "Height of the watermark in px",
+														"minimum": 1,
+														"type": "integer"
+													},
+													"width": {
+														"description": "Width of the watermark in px",
+														"minimum": 1,
+														"type": "integer"
+													}
+												},
+												"type": "object"
+											},
+											"url": {
+												"description": "URL of the watermark image",
+												"format": "uri",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"width": {
+										"default": 1280,
+										"description": "Width of the recording video in pixels",
+										"example": 1280,
+										"maximum": 1920,
+										"minimum": 1,
+										"type": "integer"
+									}
+								},
+								"title": "VideoConfig",
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"data": {
+											"description": "Data returned by the operation",
+											"type": "object"
+										},
+										"success": {
+											"default": true,
+											"description": "Success status of the operation",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"title": "GenericSuccessResponse",
+									"type": "object"
+								},
+								{
+									"properties": {
+										"data": {
+											"allOf": [
+												{
+													"properties": {
+														"audio_download_url": {
+															"description": "If the audio_config is passed, the URL for downloading the audio recording is returned.",
+															"format": "uri",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"download_url": {
+															"description": "URL where the recording can be downloaded.",
+															"format": "uri",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"download_url_expiry": {
+															"description": "Timestamp when the download URL expires.",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"file_size": {
+															"description": "File size of the recording, in bytes.",
+															"nullable": true,
+															"readOnly": true,
+															"type": "number"
+														},
+														"id": {
+															"description": "ID of the recording",
+															"format": "uuid",
+															"readOnly": true,
+															"type": "string"
+														},
+														"invoked_time": {
+															"description": "Timestamp when this recording was invoked.",
+															"format": "date-time",
+															"type": "string"
+														},
+														"output_file_name": {
+															"description": "File name of the recording.",
+															"type": "string"
+														},
+														"recording_duration": {
+															"description": "Total recording time in seconds.",
+															"type": "integer"
+														},
+														"session_id": {
+															"description": "ID of the meeting session this recording is for.",
+															"format": "uuid",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"started_time": {
+															"description": "Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`.",
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														},
+														"status": {
+															"description": "Current status of the recording.",
+															"enum": [
+																"INVOKED",
+																"RECORDING",
+																"UPLOADING",
+																"UPLOADED",
+																"ERRORED",
+																"PAUSED"
+															],
+															"type": "string"
+														},
+														"stopped_time": {
+															"description": "Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped.",
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"download_url",
+														"download_url_expiry",
+														"audio_download_url",
+														"file_size",
+														"session_id",
+														"output_file_name",
+														"status",
+														"invoked_time",
+														"started_time",
+														"stopped_time"
+													],
+													"title": "Recording",
+													"type": "object"
+												},
+												{
+													"properties": {
+														"start_reason": {
+															"properties": {
+																"caller": {
+																	"properties": {
+																		"name": {
+																			"description": "Name of the user who started the recording.",
+																			"example": "RealtimeKit_test",
+																			"type": "string"
+																		},
+																		"type": {
+																			"description": "The type can be an organization or a user. If the type is `user`, then only the `user_Id` and `name` are returned.",
+																			"enum": [
+																				"ORGANIZATION",
+																				"USER"
+																			],
+																			"type": "string"
+																		},
+																		"user_Id": {
+																			"description": "The user ID of the person who started the recording.",
+																			"example": "d61f6956-e68f-4375-bf10-c38a704d1bec",
+																			"format": "uuid",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"reason": {
+																	"description": "Specifies if the recording was started using the \"Start a Recording\"API or using the parameter RECORD_ON_START in the \"Create a meeting\" API. \n\nIf the recording is initiated using the \"RECORD_ON_START\" parameter, the user details will not be populated.",
+																	"enum": [
+																		"API_CALL",
+																		"RECORD_ON_START"
+																	],
+																	"type": "string"
+																}
+															},
+															"title": "startReason",
+															"type": "object"
+														},
+														"stop_reason": {
+															"properties": {
+																"caller": {
+																	"properties": {
+																		"name": {
+																			"description": "Name of the user who stopped the recording.",
+																			"example": "RealtimeKit_test",
+																			"type": "string"
+																		},
+																		"type": {
+																			"description": "The type can be an organization or a user. If the type is `user`, then only the `user_Id` and `name` are returned.",
+																			"enum": [
+																				"ORGANIZATION",
+																				"USER"
+																			],
+																			"type": "string"
+																		},
+																		"user_Id": {
+																			"description": "The user ID of the person who stopped the recording.",
+																			"example": "d61f6956-e68f-4375-bf10-c38a704d1bec",
+																			"format": "uuid",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"reason": {
+																	"description": "Specifies the reason why the recording stopped.",
+																	"enum": [
+																		"API_CALL",
+																		"INTERNAL_ERROR",
+																		"ALL_PEERS_LEFT"
+																	],
+																	"type": "string"
+																}
+															},
+															"title": "stopReason",
+															"type": "object"
+														},
+														"storage_config": {
+															"nullable": true,
+															"properties": {
+																"access_key": {
+																	"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
+																	"type": "string",
+																	"writeOnly": true
+																},
+																"auth_method": {
+																	"description": "Authentication method used for \"sftp\" type storage medium\n",
+																	"enum": [
+																		"KEY",
+																		"PASSWORD"
+																	],
+																	"type": "string"
+																},
+																"bucket": {
+																	"description": "Name of the storage medium's bucket.",
+																	"type": "string"
+																},
+																"host": {
+																	"description": "SSH destination server host for SFTP type storage medium",
+																	"type": "string"
+																},
+																"password": {
+																	"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
+																	"type": "string"
+																},
+																"path": {
+																	"description": "Path relative to the bucket root at which the recording will be placed.",
+																	"type": "string"
+																},
+																"port": {
+																	"description": "SSH destination server port for SFTP type storage medium",
+																	"type": "number"
+																},
+																"private_key": {
+																	"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
+																	"type": "string"
+																},
+																"region": {
+																	"description": "Region of the storage medium.",
+																	"example": "us-east-1",
+																	"type": "string"
+																},
+																"secret": {
+																	"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "Type of storage media.",
+																	"enum": [
+																		"aws",
+																		"azure",
+																		"digitalocean",
+																		"gcs",
+																		"sftp"
+																	],
+																	"type": "string"
+																},
+																"username": {
+																	"description": "SSH destination server username for SFTP type storage medium",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "StorageConfig",
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Start recording a meeting",
+		"tags": [
+			"Recordings"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/recordings/track": {
+		"description": "Starts a track recording in a meeting. Track recordings consist of \"layers\". Layers are used to map audio/video tracks in a meeting to output destinations. More information about track recordings is available in the [Track Recordings Guide Page](https://docs.realtime.cloudflare.com/guides/capabilities/recording/recording-overview).",
+		"operationId": "startTrackRecordingForAMeeting",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"Example 1": {
+							"value": {
+								"layers": {
+									"default": {
+										"file_name_prefix": "string",
+										"outputs": [
+											{
+												"type": "REALTIMEKIT_BUCKET"
+											}
+										]
+									},
+									"default-video": {
+										"file_name_prefix": "string",
+										"outputs": [
+											{
+												"type": "REALTIMEKIT_BUCKET"
+											}
+										]
+									}
+								},
+								"max_seconds": 60,
+								"meeting_id": "string"
+							}
+						}
+					},
+					"schema": {
+						"properties": {
+							"layers": {
+								"additionalProperties": {
+									"properties": {
+										"file_name_prefix": {
+											"description": "A file name prefix to apply for files generated from this layer",
+											"type": "string"
+										},
+										"outputs": {
+											"items": {
+												"properties": {
+													"storage_config": {
+														"nullable": true,
+														"properties": {
+															"access_key": {
+																"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
+																"type": "string",
+																"writeOnly": true
+															},
+															"auth_method": {
+																"description": "Authentication method used for \"sftp\" type storage medium\n",
+																"enum": [
+																	"KEY",
+																	"PASSWORD"
+																],
+																"type": "string"
+															},
+															"bucket": {
+																"description": "Name of the storage medium's bucket.",
+																"type": "string"
+															},
+															"host": {
+																"description": "SSH destination server host for SFTP type storage medium",
+																"type": "string"
+															},
+															"password": {
+																"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
+																"type": "string"
+															},
+															"path": {
+																"description": "Path relative to the bucket root at which the recording will be placed.",
+																"type": "string"
+															},
+															"port": {
+																"description": "SSH destination server port for SFTP type storage medium",
+																"type": "number"
+															},
+															"private_key": {
+																"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
+																"type": "string"
+															},
+															"region": {
+																"description": "Region of the storage medium.",
+																"example": "us-east-1",
+																"type": "string"
+															},
+															"secret": {
+																"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+																"type": "string"
+															},
+															"type": {
+																"description": "Type of storage media.",
+																"enum": [
+																	"aws",
+																	"azure",
+																	"digitalocean",
+																	"gcs",
+																	"sftp"
+																],
+																"type": "string"
+															},
+															"username": {
+																"description": "SSH destination server username for SFTP type storage medium",
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"title": "StorageConfig",
+														"type": "object"
+													},
+													"type": {
+														"default": "REALTIMEKIT_BUCKET",
+														"description": "The type of output destination this layer is being exported to.",
+														"enum": [
+															"REALTIMEKIT_BUCKET",
+															"STORAGE_CONFIG"
+														],
+														"type": "string"
+													}
+												},
+												"title": "TrackLayerOutput",
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"title": "TrackLayerConfig",
+									"type": "object"
+								},
+								"type": "object"
+							},
+							"max_seconds": {
+								"description": "Maximum seconds this recording should be active for (beta)",
+								"type": "number"
+							},
+							"meeting_id": {
+								"description": "ID of the meeting to record.",
+								"type": "string"
+							}
+						},
+						"required": [
+							"layers"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "For now only \"default\" layer key is supported."
+		},
+		"responses": {
+			"200": {
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Start recording audio and video tracks",
+		"tags": [
+			"Recordings"
+		]
+	},
+	"PUT /accounts/{account_id}/realtimekit/recordings/{recording_id}": {
+		"description": "Pause/Resume/Stop a given recording ID.",
+		"operationId": "pause_resume_stop_recording",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the recording",
+				"in": "path",
+				"name": "recording_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"action": {
+								"enum": [
+									"stop",
+									"pause",
+									"resume"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"action"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"data": {
+											"description": "Data returned by the operation",
+											"type": "object"
+										},
+										"success": {
+											"default": true,
+											"description": "Success status of the operation",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"title": "GenericSuccessResponse",
+									"type": "object"
+								},
+								{
+									"properties": {
+										"data": {
+											"allOf": [
+												{
+													"properties": {
+														"audio_download_url": {
+															"description": "If the audio_config is passed, the URL for downloading the audio recording is returned.",
+															"format": "uri",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"download_url": {
+															"description": "URL where the recording can be downloaded.",
+															"format": "uri",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"download_url_expiry": {
+															"description": "Timestamp when the download URL expires.",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"file_size": {
+															"description": "File size of the recording, in bytes.",
+															"nullable": true,
+															"readOnly": true,
+															"type": "number"
+														},
+														"id": {
+															"description": "ID of the recording",
+															"format": "uuid",
+															"readOnly": true,
+															"type": "string"
+														},
+														"invoked_time": {
+															"description": "Timestamp when this recording was invoked.",
+															"format": "date-time",
+															"type": "string"
+														},
+														"output_file_name": {
+															"description": "File name of the recording.",
+															"type": "string"
+														},
+														"recording_duration": {
+															"description": "Total recording time in seconds.",
+															"type": "integer"
+														},
+														"session_id": {
+															"description": "ID of the meeting session this recording is for.",
+															"format": "uuid",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"started_time": {
+															"description": "Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`.",
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														},
+														"status": {
+															"description": "Current status of the recording.",
+															"enum": [
+																"INVOKED",
+																"RECORDING",
+																"UPLOADING",
+																"UPLOADED",
+																"ERRORED",
+																"PAUSED"
+															],
+															"type": "string"
+														},
+														"stopped_time": {
+															"description": "Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped.",
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"download_url",
+														"download_url_expiry",
+														"audio_download_url",
+														"file_size",
+														"session_id",
+														"output_file_name",
+														"status",
+														"invoked_time",
+														"started_time",
+														"stopped_time"
+													],
+													"title": "Recording",
+													"type": "object"
+												},
+												{
+													"properties": {
+														"start_reason": {
+															"properties": {
+																"caller": {
+																	"properties": {
+																		"name": {
+																			"description": "Name of the user who started the recording.",
+																			"example": "RealtimeKit_test",
+																			"type": "string"
+																		},
+																		"type": {
+																			"description": "The type can be an organization or a user. If the type is `user`, then only the `user_Id` and `name` are returned.",
+																			"enum": [
+																				"ORGANIZATION",
+																				"USER"
+																			],
+																			"type": "string"
+																		},
+																		"user_Id": {
+																			"description": "The user ID of the person who started the recording.",
+																			"example": "d61f6956-e68f-4375-bf10-c38a704d1bec",
+																			"format": "uuid",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"reason": {
+																	"description": "Specifies if the recording was started using the \"Start a Recording\"API or using the parameter RECORD_ON_START in the \"Create a meeting\" API. \n\nIf the recording is initiated using the \"RECORD_ON_START\" parameter, the user details will not be populated.",
+																	"enum": [
+																		"API_CALL",
+																		"RECORD_ON_START"
+																	],
+																	"type": "string"
+																}
+															},
+															"title": "startReason",
+															"type": "object"
+														},
+														"stop_reason": {
+															"properties": {
+																"caller": {
+																	"properties": {
+																		"name": {
+																			"description": "Name of the user who stopped the recording.",
+																			"example": "RealtimeKit_test",
+																			"type": "string"
+																		},
+																		"type": {
+																			"description": "The type can be an organization or a user. If the type is `user`, then only the `user_Id` and `name` are returned.",
+																			"enum": [
+																				"ORGANIZATION",
+																				"USER"
+																			],
+																			"type": "string"
+																		},
+																		"user_Id": {
+																			"description": "The user ID of the person who stopped the recording.",
+																			"example": "d61f6956-e68f-4375-bf10-c38a704d1bec",
+																			"format": "uuid",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"reason": {
+																	"description": "Specifies the reason why the recording stopped.",
+																	"enum": [
+																		"API_CALL",
+																		"INTERNAL_ERROR",
+																		"ALL_PEERS_LEFT"
+																	],
+																	"type": "string"
+																}
+															},
+															"title": "stopReason",
+															"type": "object"
+														},
+														"storage_config": {
+															"nullable": true,
+															"properties": {
+																"access_key": {
+																	"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
+																	"type": "string",
+																	"writeOnly": true
+																},
+																"auth_method": {
+																	"description": "Authentication method used for \"sftp\" type storage medium\n",
+																	"enum": [
+																		"KEY",
+																		"PASSWORD"
+																	],
+																	"type": "string"
+																},
+																"bucket": {
+																	"description": "Name of the storage medium's bucket.",
+																	"type": "string"
+																},
+																"host": {
+																	"description": "SSH destination server host for SFTP type storage medium",
+																	"type": "string"
+																},
+																"password": {
+																	"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
+																	"type": "string"
+																},
+																"path": {
+																	"description": "Path relative to the bucket root at which the recording will be placed.",
+																	"type": "string"
+																},
+																"port": {
+																	"description": "SSH destination server port for SFTP type storage medium",
+																	"type": "number"
+																},
+																"private_key": {
+																	"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
+																	"type": "string"
+																},
+																"region": {
+																	"description": "Region of the storage medium.",
+																	"example": "us-east-1",
+																	"type": "string"
+																},
+																"secret": {
+																	"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "Type of storage media.",
+																	"enum": [
+																		"aws",
+																		"azure",
+																		"digitalocean",
+																		"gcs",
+																		"sftp"
+																	],
+																	"type": "string"
+																},
+																"username": {
+																	"description": "SSH destination server username for SFTP type storage medium",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "StorageConfig",
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Pause/Resume/Stop recording",
+		"tags": [
+			"Recordings"
+		]
+	}
+}

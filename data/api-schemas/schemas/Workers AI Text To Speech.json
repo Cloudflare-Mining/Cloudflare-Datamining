@@ -81,6 +81,170 @@
 			"pro": true
 		}
 	},
+	"GET /accounts/{account_id}/ai/run/@cf/deepgram/aura-1": {
+		"operationId": "workers-ai-post-websocket-run-cf-deepgram-aura-1",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"101": {
+				"description": "Returns a websocket connection"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Open Websocket connection with @cf/deepgram/aura-1 model.",
+		"tags": [
+			"Workers AI Text To Speech"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai/run/@cf/deepgram/aura-1-internal": {
+		"operationId": "workers-ai-post-websocket-run-cf-deepgram-aura-1-internal",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"101": {
+				"description": "Returns a websocket connection"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Open Websocket connection with @cf/deepgram/aura-1-internal model.",
+		"tags": [
+			"Workers AI Text To Speech"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /accounts/{account_id}/ai/run/@cf/deepgram/aura-2": {
 		"operationId": "workers-ai-post-websocket-run-cf-deepgram-aura-2",
 		"parameters": [
@@ -163,8 +327,8 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_id}/ai/run/@cf/deepgram/aura-2-internal": {
-		"operationId": "workers-ai-post-websocket-run-cf-deepgram-aura-2-internal",
+	"POST /accounts/{account_id}/ai/run/@cf/deepgram/aura-1": {
+		"operationId": "workers-ai-post-run-cf-deepgram-aura-1",
 		"parameters": [
 			{
 				"in": "path",
@@ -175,11 +339,94 @@
 					"type": "string",
 					"x-auditable": true
 				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"bit_rate": {
+								"description": "The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type.",
+								"type": "number"
+							},
+							"container": {
+								"description": "Container specifies the file format wrapper for the output audio. The available options depend on the encoding type..",
+								"enum": [
+									"none",
+									"wav",
+									"ogg"
+								],
+								"type": "string"
+							},
+							"encoding": {
+								"description": "Encoding of the output audio.",
+								"enum": [
+									"linear16",
+									"flac",
+									"mulaw",
+									"alaw",
+									"mp3",
+									"opus",
+									"aac"
+								],
+								"type": "string"
+							},
+							"sample_rate": {
+								"description": "Sample Rate specifies the sample rate for the output audio. Based on the encoding, different sample rates are supported. For some encodings, the sample rate is not configurable",
+								"type": "number"
+							},
+							"speaker": {
+								"default": "angus",
+								"description": "Speaker used to produce the audio.",
+								"enum": [
+									"angus",
+									"asteria",
+									"arcas",
+									"orion",
+									"orpheus",
+									"athena",
+									"luna",
+									"zeus",
+									"perseus",
+									"helios",
+									"hera",
+									"stella"
+								],
+								"type": "string"
+							},
+							"text": {
+								"description": "The text content to be converted to speech",
+								"type": "string"
+							}
+						},
+						"required": [
+							"text"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
 		"responses": {
-			"101": {
-				"description": "Returns a websocket connection"
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
 			},
 			"400": {
 				"content": {
@@ -189,11 +436,15 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "string"
+											},
 											"message": {
 												"type": "string"
 											}
 										},
 										"required": [
+											"code",
 											"message"
 										],
 										"type": "object"
@@ -204,20 +455,19 @@
 									"type": "object"
 								},
 								"success": {
-									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
+								"errors",
 								"success",
-								"errors"
+								"result"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Bad request"
 			}
 		},
 		"security": [
@@ -229,9 +479,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Open Websocket connection with @cf/deepgram/aura-2-internal model.",
+		"summary": "Execute @cf/deepgram/aura-1 model.",
 		"tags": [
 			"Workers AI Text To Speech"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

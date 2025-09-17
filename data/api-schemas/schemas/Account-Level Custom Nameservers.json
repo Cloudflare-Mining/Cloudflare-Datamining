@@ -623,7 +623,8 @@
 															},
 															"type": "object"
 														},
-														"type": "array"
+														"type": "array",
+														"x-stainless-collection-type": "set"
 													},
 													"ns_name": {
 														"description": "The FQDN of the name server.",
@@ -835,7 +836,8 @@
 																	},
 																	"type": "object"
 																},
-																"type": "array"
+																"type": "array",
+																"x-stainless-collection-type": "set"
 															},
 															"ns_name": {
 																"description": "The FQDN of the name server.",
@@ -1203,7 +1205,8 @@
 														},
 														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												},
 												"ns_name": {
 													"description": "The FQDN of the name server.",
@@ -1382,7 +1385,8 @@
 																},
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
 														"ns_name": {
 															"description": "The FQDN of the name server.",

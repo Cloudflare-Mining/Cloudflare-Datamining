@@ -136,10 +136,17 @@
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"custom_pages": {
 													"properties": {
@@ -210,10 +217,17 @@
 													"type": "string"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
@@ -492,10 +506,17 @@
 															"type": "string"
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"x-stainless-skip": true
+																},
+																{
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															]
 														},
 														"duration": {
 															"default": "8760h",
@@ -525,10 +546,17 @@
 															]
 														},
 														"last_seen_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"x-stainless-skip": true
+																},
+																{
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															]
 														},
 														"name": {
 															"description": "The name of the service token.",
@@ -537,10 +565,17 @@
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"x-stainless-skip": true
+																},
+																{
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															]
 														}
 													},
 													"type": "object"
@@ -937,10 +972,17 @@
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"custom_pages": {
 													"properties": {
@@ -1011,10 +1053,17 @@
 													"type": "string"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
@@ -1638,10 +1687,17 @@
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"custom_pages": {
 													"properties": {
@@ -1712,10 +1768,17 @@
 													"type": "string"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
@@ -2013,10 +2076,17 @@
 															"type": "string"
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"x-stainless-skip": true
+																},
+																{
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															]
 														},
 														"duration": {
 															"default": "8760h",
@@ -2046,10 +2116,17 @@
 															]
 														},
 														"last_seen_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"x-stainless-skip": true
+																},
+																{
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															]
 														},
 														"name": {
 															"description": "The name of the service token.",
@@ -2058,10 +2135,17 @@
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"type": "string",
-															"x-auditable": true
+															"allOf": [
+																{
+																	"x-stainless-skip": true
+																},
+																{
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															]
 														}
 													},
 													"type": "object"

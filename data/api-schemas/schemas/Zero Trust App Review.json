@@ -1,0 +1,822 @@
+{
+	"GET /accounts/{account_id}/gateway/apps/review_status": {
+		"description": "Shows the current apps review status",
+		"operationId": "zero-trust-app-review-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Provide the identifier string.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicate whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"result": {
+														"properties": {
+															"approved_apps": {
+																"description": "Defines the list of \"approved\" app ids",
+																"items": {
+																	"type": "integer"
+																},
+																"type": "array",
+																"x-stainless-collection-type": "set"
+															},
+															"created_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"in_review_apps": {
+																"description": "Defines the list of \"in review\" app ids",
+																"items": {
+																	"type": "integer"
+																},
+																"type": "array",
+																"x-stainless-collection-type": "set"
+															},
+															"unapproved_apps": {
+																"description": "Defines the list of \"unapproved\" app ids",
+																"items": {
+																	"type": "integer"
+																},
+																"type": "array",
+																"x-stainless-collection-type": "set"
+															},
+															"updated_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object",
+							"x-auditable": true
+						}
+					}
+				},
+				"description": "Show Gateway App Review Status response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Indicate whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"result": {
+																"properties": {
+																	"approved_apps": {
+																		"description": "Defines the list of \"approved\" app ids",
+																		"items": {
+																			"type": "integer"
+																		},
+																		"type": "array",
+																		"x-stainless-collection-type": "set"
+																	},
+																	"created_at": {
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"in_review_apps": {
+																		"description": "Defines the list of \"in review\" app ids",
+																		"items": {
+																			"type": "integer"
+																		},
+																		"type": "array",
+																		"x-stainless-collection-type": "set"
+																	},
+																	"unapproved_apps": {
+																		"description": "Defines the list of \"unapproved\" app ids",
+																		"items": {
+																			"type": "integer"
+																		},
+																		"type": "array",
+																		"x-stainless-collection-type": "set"
+																	},
+																	"updated_at": {
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object",
+									"x-auditable": true
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1,
+											"type": "object"
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [],
+											"type": "object"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicate whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Show Gateway App Review Status failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Shows the current apps review status",
+		"tags": [
+			"Zero Trust App Review"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"PUT /accounts/{account_id}/gateway/apps/review_status": {
+		"description": "Updates a configured Zero Trust apps review list.",
+		"operationId": "zero-trust-app-review-update",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Provide the identifier string.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"approved_apps": {
+								"description": "Defines the list of \"approved\" app ids",
+								"items": {
+									"type": "integer"
+								},
+								"type": "array",
+								"x-stainless-collection-type": "set"
+							},
+							"in_review_apps": {
+								"description": "Defines the list of \"in review\" app ids",
+								"items": {
+									"type": "integer"
+								},
+								"type": "array",
+								"x-stainless-collection-type": "set"
+							},
+							"unapproved_apps": {
+								"description": "Defines the list of \"unapproved\" app ids",
+								"items": {
+									"type": "integer"
+								},
+								"type": "array",
+								"x-stainless-collection-type": "set"
+							}
+						},
+						"required": [
+							"approved_apps",
+							"unapproved_apps",
+							"in_review_apps"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicate whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"result": {
+														"properties": {
+															"approved_apps": {
+																"description": "Defines the list of \"approved\" app ids",
+																"items": {
+																	"type": "integer"
+																},
+																"type": "array",
+																"x-stainless-collection-type": "set"
+															},
+															"created_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"in_review_apps": {
+																"description": "Defines the list of \"in review\" app ids",
+																"items": {
+																	"type": "integer"
+																},
+																"type": "array",
+																"x-stainless-collection-type": "set"
+															},
+															"unapproved_apps": {
+																"description": "Defines the list of \"unapproved\" app ids",
+																"items": {
+																	"type": "integer"
+																},
+																"type": "array",
+																"x-stainless-collection-type": "set"
+															},
+															"updated_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object",
+							"x-auditable": true
+						}
+					}
+				},
+				"description": "Update Zero Trust app review response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Indicate whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"result": {
+																"properties": {
+																	"approved_apps": {
+																		"description": "Defines the list of \"approved\" app ids",
+																		"items": {
+																			"type": "integer"
+																		},
+																		"type": "array",
+																		"x-stainless-collection-type": "set"
+																	},
+																	"created_at": {
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"in_review_apps": {
+																		"description": "Defines the list of \"in review\" app ids",
+																		"items": {
+																			"type": "integer"
+																		},
+																		"type": "array",
+																		"x-stainless-collection-type": "set"
+																	},
+																	"unapproved_apps": {
+																		"description": "Defines the list of \"unapproved\" app ids",
+																		"items": {
+																			"type": "integer"
+																		},
+																		"type": "array",
+																		"x-stainless-collection-type": "set"
+																	},
+																	"updated_at": {
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object",
+									"x-auditable": true
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1,
+											"type": "object"
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [],
+											"type": "object"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicate whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update Zero Trust app review response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update Zero Trust Application Review",
+		"tags": [
+			"Zero Trust App Review"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	}
+}

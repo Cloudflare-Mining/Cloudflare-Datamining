@@ -453,10 +453,17 @@
 											"items": {
 												"properties": {
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													},
 													"exclude": {
 														"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
@@ -2928,10 +2935,17 @@
 														"type": "array"
 													},
 													"updated_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													}
 												},
 												"type": "object"
@@ -3204,10 +3218,17 @@
 										"result": {
 											"properties": {
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"exclude": {
 													"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
@@ -5679,10 +5700,17 @@
 													"type": "array"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -7809,10 +7837,17 @@
 										"result": {
 											"properties": {
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"exclude": {
 													"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
@@ -10284,10 +10319,17 @@
 													"type": "array"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -12425,10 +12467,17 @@
 										"result": {
 											"properties": {
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"exclude": {
 													"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
@@ -14900,10 +14949,17 @@
 													"type": "array"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"

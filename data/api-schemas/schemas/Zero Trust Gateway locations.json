@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/gateway/locations/{location_id}": {
-		"description": "Deletes a configured Zero Trust Gateway location.",
+		"description": "Delete a configured Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-delete-zero-trust-gateway-location",
 		"parameters": [
 			{
@@ -83,7 +83,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -106,14 +106,15 @@
 										"result": {
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Delete a Zero Trust Gateway location response."
+				"description": "Deletes a Zero Trust Gateway location response."
 			},
 			"4XX": {
 				"content": {
@@ -169,7 +170,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -192,7 +193,8 @@
 												"result": {
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -267,7 +269,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -288,7 +290,7 @@
 						}
 					}
 				},
-				"description": "Delete a Zero Trust Gateway location response failure."
+				"description": "Deletes a Zero Trust Gateway location response failure."
 			}
 		},
 		"security": [
@@ -308,7 +310,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/gateway/locations": {
-		"description": "Fetches Zero Trust Gateway locations for an account.",
+		"description": "List Zero Trust Gateway locations for an account.",
 		"operationId": "zero-trust-gateway-locations-list-zero-trust-gateway-locations",
 		"parameters": [
 			{
@@ -375,7 +377,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -395,29 +397,30 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service.",
+															"description": "Indicate the total number of results for the requested service.",
 															"example": 1,
 															"type": "number"
 														},
 														"page": {
-															"description": "Current page within paginated list of results.",
+															"description": "Indicate the current page within a paginated list of results.",
 															"example": 1,
 															"type": "number"
 														},
 														"per_page": {
-															"description": "Number of results per page of results.",
+															"description": "Indicate the number of results per page.",
 															"example": 20,
 															"type": "number"
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
+															"description": "Indicate the total results available without any search parameters.",
 															"example": 2000,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -429,7 +432,7 @@
 												"properties": {
 													"client_default": {
 														"default": false,
-														"description": "True if the location is the default location.",
+														"description": "Indicate whether this location is the default location.",
 														"example": false,
 														"type": "boolean",
 														"x-auditable": true
@@ -442,14 +445,14 @@
 													},
 													"dns_destination_ips_id": {
 														"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
-														"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
+														"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
 														"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"dns_destination_ipv6_block_id": {
-														"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.",
+														"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
 														"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 														"nullable": true,
 														"type": "string",
@@ -457,7 +460,7 @@
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"doh_subdomain": {
-														"description": "The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.",
+														"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
 														"example": "oli3n9zkz5",
 														"readOnly": true,
 														"type": "string",
@@ -465,30 +468,30 @@
 													},
 													"ecs_support": {
 														"default": false,
-														"description": "True if the location needs to resolve EDNS queries.",
+														"description": "Indicate whether the location must resolve EDNS queries.",
 														"example": false,
 														"type": "boolean",
 														"x-auditable": true
 													},
 													"endpoints": {
-														"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+														"description": "Configure the destination endpoints for this location.",
 														"nullable": true,
 														"properties": {
 															"doh": {
 																"properties": {
 																	"enabled": {
-																		"description": "True if the endpoint is enabled for this location.",
+																		"description": "Indicate whether the DOH endpoint is enabled for this location.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"networks": {
-																		"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																		"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																		"items": {
 																			"properties": {
 																				"network": {
-																					"description": "The IP address or IP CIDR.",
+																					"description": "Specify the IP address or IP CIDR.",
 																					"example": "2001:85a3::/64",
 																					"type": "string",
 																					"x-auditable": true
@@ -504,7 +507,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"require_token": {
-																		"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+																		"description": "Specify whether the DOH endpoint requires user identity authentication.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
@@ -516,18 +519,18 @@
 															"dot": {
 																"properties": {
 																	"enabled": {
-																		"description": "True if the endpoint is enabled for this location.",
+																		"description": "Indicate whether the DOT endpoint is enabled for this location.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"networks": {
-																		"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																		"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																		"items": {
 																			"properties": {
 																				"network": {
-																					"description": "The IP address or IP CIDR.",
+																					"description": "Specify the IP address or IP CIDR.",
 																					"example": "2001:85a3::/64",
 																					"type": "string",
 																					"x-auditable": true
@@ -548,7 +551,7 @@
 															"ipv4": {
 																"properties": {
 																	"enabled": {
-																		"description": "True if the endpoint is enabled for this location.",
+																		"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
@@ -560,18 +563,18 @@
 															"ipv6": {
 																"properties": {
 																	"enabled": {
-																		"description": "True if the endpoint is enabled for this location.",
+																		"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
 																		"example": true,
 																		"type": "boolean",
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"networks": {
-																		"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																		"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																		"items": {
 																			"properties": {
 																				"network": {
-																					"description": "The IPv6 address or IPv6 CIDR.",
+																					"description": "Specify the IPv6 address or IPv6 CIDR.",
 																					"example": "2001:85a3::/64",
 																					"type": "string",
 																					"x-auditable": true
@@ -605,36 +608,36 @@
 														"x-auditable": true
 													},
 													"ip": {
-														"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.",
+														"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
 														"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
 													},
 													"ipv4_destination": {
-														"description": "The primary destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+														"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 														"example": "172.64.36.1",
 														"readOnly": true,
 														"type": "string"
 													},
 													"ipv4_destination_backup": {
-														"description": "The backup destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+														"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 														"example": "172.64.36.2",
 														"readOnly": true,
 														"type": "string"
 													},
 													"name": {
-														"description": "The name of the location.",
+														"description": "Specify the location name.",
 														"example": "Austin Office Location",
 														"type": "string",
 														"x-auditable": true
 													},
 													"networks": {
-														"description": "A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.",
+														"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
 														"items": {
 															"properties": {
 																"network": {
-																	"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																	"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
 																	"example": "192.0.2.1/32",
 																	"type": "string",
 																	"x-auditable": true
@@ -660,14 +663,15 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "List Zero Trust Gateway locations response."
+				"description": "Lists Zero Trust Gateway locations response."
 			},
 			"4XX": {
 				"content": {
@@ -723,7 +727,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -743,29 +747,30 @@
 														"result_info": {
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service.",
+																	"description": "Indicate the total number of results for the requested service.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"page": {
-																	"description": "Current page within paginated list of results.",
+																	"description": "Indicate the current page within a paginated list of results.",
 																	"example": 1,
 																	"type": "number"
 																},
 																"per_page": {
-																	"description": "Number of results per page of results.",
+																	"description": "Indicate the number of results per page.",
 																	"example": 20,
 																	"type": "number"
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters.",
+																	"description": "Indicate the total results available without any search parameters.",
 																	"example": 2000,
 																	"type": "number"
 																}
 															},
 															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -777,7 +782,7 @@
 														"properties": {
 															"client_default": {
 																"default": false,
-																"description": "True if the location is the default location.",
+																"description": "Indicate whether this location is the default location.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true
@@ -790,14 +795,14 @@
 															},
 															"dns_destination_ips_id": {
 																"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
-																"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
+																"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
 																"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 																"type": "string",
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"dns_destination_ipv6_block_id": {
-																"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.",
+																"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
 																"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 																"nullable": true,
 																"type": "string",
@@ -805,7 +810,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"doh_subdomain": {
-																"description": "The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.",
+																"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
 																"example": "oli3n9zkz5",
 																"readOnly": true,
 																"type": "string",
@@ -813,30 +818,30 @@
 															},
 															"ecs_support": {
 																"default": false,
-																"description": "True if the location needs to resolve EDNS queries.",
+																"description": "Indicate whether the location must resolve EDNS queries.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true
 															},
 															"endpoints": {
-																"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+																"description": "Configure the destination endpoints for this location.",
 																"nullable": true,
 																"properties": {
 																	"doh": {
 																		"properties": {
 																			"enabled": {
-																				"description": "True if the endpoint is enabled for this location.",
+																				"description": "Indicate whether the DOH endpoint is enabled for this location.",
 																				"example": true,
 																				"type": "boolean",
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"networks": {
-																				"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																				"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																				"items": {
 																					"properties": {
 																						"network": {
-																							"description": "The IP address or IP CIDR.",
+																							"description": "Specify the IP address or IP CIDR.",
 																							"example": "2001:85a3::/64",
 																							"type": "string",
 																							"x-auditable": true
@@ -852,7 +857,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"require_token": {
-																				"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+																				"description": "Specify whether the DOH endpoint requires user identity authentication.",
 																				"example": true,
 																				"type": "boolean",
 																				"x-auditable": true,
@@ -864,18 +869,18 @@
 																	"dot": {
 																		"properties": {
 																			"enabled": {
-																				"description": "True if the endpoint is enabled for this location.",
+																				"description": "Indicate whether the DOT endpoint is enabled for this location.",
 																				"example": true,
 																				"type": "boolean",
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"networks": {
-																				"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																				"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																				"items": {
 																					"properties": {
 																						"network": {
-																							"description": "The IP address or IP CIDR.",
+																							"description": "Specify the IP address or IP CIDR.",
 																							"example": "2001:85a3::/64",
 																							"type": "string",
 																							"x-auditable": true
@@ -896,7 +901,7 @@
 																	"ipv4": {
 																		"properties": {
 																			"enabled": {
-																				"description": "True if the endpoint is enabled for this location.",
+																				"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
 																				"example": true,
 																				"type": "boolean",
 																				"x-auditable": true,
@@ -908,18 +913,18 @@
 																	"ipv6": {
 																		"properties": {
 																			"enabled": {
-																				"description": "True if the endpoint is enabled for this location.",
+																				"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
 																				"example": true,
 																				"type": "boolean",
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"networks": {
-																				"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																				"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																				"items": {
 																					"properties": {
 																						"network": {
-																							"description": "The IPv6 address or IPv6 CIDR.",
+																							"description": "Specify the IPv6 address or IPv6 CIDR.",
 																							"example": "2001:85a3::/64",
 																							"type": "string",
 																							"x-auditable": true
@@ -953,36 +958,36 @@
 																"x-auditable": true
 															},
 															"ip": {
-																"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.",
+																"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
 																"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 																"readOnly": true,
 																"type": "string",
 																"x-auditable": true
 															},
 															"ipv4_destination": {
-																"description": "The primary destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+																"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 																"example": "172.64.36.1",
 																"readOnly": true,
 																"type": "string"
 															},
 															"ipv4_destination_backup": {
-																"description": "The backup destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+																"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 																"example": "172.64.36.2",
 																"readOnly": true,
 																"type": "string"
 															},
 															"name": {
-																"description": "The name of the location.",
+																"description": "Specify the location name.",
 																"example": "Austin Office Location",
 																"type": "string",
 																"x-auditable": true
 															},
 															"networks": {
-																"description": "A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.",
+																"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
 																"items": {
 																	"properties": {
 																		"network": {
-																			"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																			"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
 																			"example": "192.0.2.1/32",
 																			"type": "string",
 																			"x-auditable": true
@@ -1008,7 +1013,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1083,7 +1089,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1104,7 +1110,7 @@
 						}
 					}
 				},
-				"description": "List Zero Trust Gateway locations response failure."
+				"description": "Lists Zero Trust Gateway locations response failure."
 			}
 		},
 		"security": [
@@ -1125,7 +1131,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/gateway/locations/{location_id}": {
-		"description": "Fetches a single Zero Trust Gateway location.",
+		"description": "Get a single Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-zero-trust-gateway-location-details",
 		"parameters": [
 			{
@@ -1202,7 +1208,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1226,7 +1232,7 @@
 											"properties": {
 												"client_default": {
 													"default": false,
-													"description": "True if the location is the default location.",
+													"description": "Indicate whether this location is the default location.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
@@ -1239,14 +1245,14 @@
 												},
 												"dns_destination_ips_id": {
 													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
-													"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
+													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
 													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"dns_destination_ipv6_block_id": {
-													"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.",
+													"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
 													"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 													"nullable": true,
 													"type": "string",
@@ -1254,7 +1260,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"doh_subdomain": {
-													"description": "The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.",
+													"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
 													"example": "oli3n9zkz5",
 													"readOnly": true,
 													"type": "string",
@@ -1262,30 +1268,30 @@
 												},
 												"ecs_support": {
 													"default": false,
-													"description": "True if the location needs to resolve EDNS queries.",
+													"description": "Indicate whether the location must resolve EDNS queries.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												},
 												"endpoints": {
-													"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+													"description": "Configure the destination endpoints for this location.",
 													"nullable": true,
 													"properties": {
 														"doh": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the DOH endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
-																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																	"items": {
 																		"properties": {
 																			"network": {
-																				"description": "The IP address or IP CIDR.",
+																				"description": "Specify the IP address or IP CIDR.",
 																				"example": "2001:85a3::/64",
 																				"type": "string",
 																				"x-auditable": true
@@ -1301,7 +1307,7 @@
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"require_token": {
-																	"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+																	"description": "Specify whether the DOH endpoint requires user identity authentication.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
@@ -1313,18 +1319,18 @@
 														"dot": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the DOT endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
-																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																	"items": {
 																		"properties": {
 																			"network": {
-																				"description": "The IP address or IP CIDR.",
+																				"description": "Specify the IP address or IP CIDR.",
 																				"example": "2001:85a3::/64",
 																				"type": "string",
 																				"x-auditable": true
@@ -1345,7 +1351,7 @@
 														"ipv4": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
@@ -1357,18 +1363,18 @@
 														"ipv6": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
-																	"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																	"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																	"items": {
 																		"properties": {
 																			"network": {
-																				"description": "The IPv6 address or IPv6 CIDR.",
+																				"description": "Specify the IPv6 address or IPv6 CIDR.",
 																				"example": "2001:85a3::/64",
 																				"type": "string",
 																				"x-auditable": true
@@ -1402,36 +1408,36 @@
 													"x-auditable": true
 												},
 												"ip": {
-													"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.",
+													"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
 													"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"ipv4_destination": {
-													"description": "The primary destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+													"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.1",
 													"readOnly": true,
 													"type": "string"
 												},
 												"ipv4_destination_backup": {
-													"description": "The backup destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+													"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.2",
 													"readOnly": true,
 													"type": "string"
 												},
 												"name": {
-													"description": "The name of the location.",
+													"description": "Specify the location name.",
 													"example": "Austin Office Location",
 													"type": "string",
 													"x-auditable": true
 												},
 												"networks": {
-													"description": "A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.",
+													"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
 													"items": {
 														"properties": {
 															"network": {
-																"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
 																"example": "192.0.2.1/32",
 																"type": "string",
 																"x-auditable": true
@@ -1455,14 +1461,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Get Zero Trust Gateway location details response."
+				"description": "Gets Zero Trust Gateway location details response."
 			},
 			"4XX": {
 				"content": {
@@ -1518,7 +1525,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1542,7 +1549,7 @@
 													"properties": {
 														"client_default": {
 															"default": false,
-															"description": "True if the location is the default location.",
+															"description": "Indicate whether this location is the default location.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
@@ -1555,14 +1562,14 @@
 														},
 														"dns_destination_ips_id": {
 															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
-															"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
+															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
 															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"dns_destination_ipv6_block_id": {
-															"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.",
+															"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
 															"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 															"nullable": true,
 															"type": "string",
@@ -1570,7 +1577,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"doh_subdomain": {
-															"description": "The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.",
+															"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
 															"example": "oli3n9zkz5",
 															"readOnly": true,
 															"type": "string",
@@ -1578,30 +1585,30 @@
 														},
 														"ecs_support": {
 															"default": false,
-															"description": "True if the location needs to resolve EDNS queries.",
+															"description": "Indicate whether the location must resolve EDNS queries.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"endpoints": {
-															"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+															"description": "Configure the destination endpoints for this location.",
 															"nullable": true,
 															"properties": {
 																"doh": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the DOH endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
-																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																			"items": {
 																				"properties": {
 																					"network": {
-																						"description": "The IP address or IP CIDR.",
+																						"description": "Specify the IP address or IP CIDR.",
 																						"example": "2001:85a3::/64",
 																						"type": "string",
 																						"x-auditable": true
@@ -1617,7 +1624,7 @@
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"require_token": {
-																			"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+																			"description": "Specify whether the DOH endpoint requires user identity authentication.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
@@ -1629,18 +1636,18 @@
 																"dot": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the DOT endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
-																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																			"items": {
 																				"properties": {
 																					"network": {
-																						"description": "The IP address or IP CIDR.",
+																						"description": "Specify the IP address or IP CIDR.",
 																						"example": "2001:85a3::/64",
 																						"type": "string",
 																						"x-auditable": true
@@ -1661,7 +1668,7 @@
 																"ipv4": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
@@ -1673,18 +1680,18 @@
 																"ipv6": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
-																			"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																			"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																			"items": {
 																				"properties": {
 																					"network": {
-																						"description": "The IPv6 address or IPv6 CIDR.",
+																						"description": "Specify the IPv6 address or IPv6 CIDR.",
 																						"example": "2001:85a3::/64",
 																						"type": "string",
 																						"x-auditable": true
@@ -1718,36 +1725,36 @@
 															"x-auditable": true
 														},
 														"ip": {
-															"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.",
+															"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
 															"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"ipv4_destination": {
-															"description": "The primary destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+															"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.1",
 															"readOnly": true,
 															"type": "string"
 														},
 														"ipv4_destination_backup": {
-															"description": "The backup destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+															"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.2",
 															"readOnly": true,
 															"type": "string"
 														},
 														"name": {
-															"description": "The name of the location.",
+															"description": "Specify the location name.",
 															"example": "Austin Office Location",
 															"type": "string",
 															"x-auditable": true
 														},
 														"networks": {
-															"description": "A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.",
+															"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
 															"items": {
 																"properties": {
 																	"network": {
-																		"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																		"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
 																		"example": "192.0.2.1/32",
 																		"type": "string",
 																		"x-auditable": true
@@ -1771,7 +1778,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -1846,7 +1854,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -1867,7 +1875,7 @@
 						}
 					}
 				},
-				"description": "Get Zero Trust Gateway location details response failure."
+				"description": "Gets Zero Trust Gateway location details response failure."
 			}
 		},
 		"security": [
@@ -1888,7 +1896,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/gateway/locations": {
-		"description": "Creates a new Zero Trust Gateway location.",
+		"description": "Create a new Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-create-zero-trust-gateway-location",
 		"parameters": [
 			{
@@ -1909,13 +1917,13 @@
 						"properties": {
 							"client_default": {
 								"default": false,
-								"description": "True if the location is the default location.",
+								"description": "Indicate whether this location is the default location.",
 								"example": false,
 								"type": "boolean",
 								"x-auditable": true
 							},
 							"dns_destination_ips_id": {
-								"description": "The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.",
+								"description": "Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.",
 								"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 								"type": "string",
 								"x-auditable": true,
@@ -1923,30 +1931,30 @@
 							},
 							"ecs_support": {
 								"default": false,
-								"description": "True if the location needs to resolve EDNS queries.",
+								"description": "Indicate whether the location must resolve EDNS queries.",
 								"example": false,
 								"type": "boolean",
 								"x-auditable": true
 							},
 							"endpoints": {
-								"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+								"description": "Configure the destination endpoints for this location.",
 								"nullable": true,
 								"properties": {
 									"doh": {
 										"properties": {
 											"enabled": {
-												"description": "True if the endpoint is enabled for this location.",
+												"description": "Indicate whether the DOH endpoint is enabled for this location.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
-												"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 												"items": {
 													"properties": {
 														"network": {
-															"description": "The IP address or IP CIDR.",
+															"description": "Specify the IP address or IP CIDR.",
 															"example": "2001:85a3::/64",
 															"type": "string",
 															"x-auditable": true
@@ -1962,7 +1970,7 @@
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"require_token": {
-												"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+												"description": "Specify whether the DOH endpoint requires user identity authentication.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true,
@@ -1974,18 +1982,18 @@
 									"dot": {
 										"properties": {
 											"enabled": {
-												"description": "True if the endpoint is enabled for this location.",
+												"description": "Indicate whether the DOT endpoint is enabled for this location.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
-												"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 												"items": {
 													"properties": {
 														"network": {
-															"description": "The IP address or IP CIDR.",
+															"description": "Specify the IP address or IP CIDR.",
 															"example": "2001:85a3::/64",
 															"type": "string",
 															"x-auditable": true
@@ -2006,7 +2014,7 @@
 									"ipv4": {
 										"properties": {
 											"enabled": {
-												"description": "True if the endpoint is enabled for this location.",
+												"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true,
@@ -2018,18 +2026,18 @@
 									"ipv6": {
 										"properties": {
 											"enabled": {
-												"description": "True if the endpoint is enabled for this location.",
+												"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
-												"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 												"items": {
 													"properties": {
 														"network": {
-															"description": "The IPv6 address or IPv6 CIDR.",
+															"description": "Specify the IPv6 address or IPv6 CIDR.",
 															"example": "2001:85a3::/64",
 															"type": "string",
 															"x-auditable": true
@@ -2058,17 +2066,17 @@
 								"x-stainless-terraform-configurability": "optional"
 							},
 							"name": {
-								"description": "The name of the location.",
+								"description": "Specify the location name.",
 								"example": "Austin Office Location",
 								"type": "string",
 								"x-auditable": true
 							},
 							"networks": {
-								"description": "A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.",
+								"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
 								"items": {
 									"properties": {
 										"network": {
-											"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+											"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
 											"example": "192.0.2.1/32",
 											"type": "string",
 											"x-auditable": true
@@ -2086,7 +2094,8 @@
 						},
 						"required": [
 							"name"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -2145,7 +2154,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2169,7 +2178,7 @@
 											"properties": {
 												"client_default": {
 													"default": false,
-													"description": "True if the location is the default location.",
+													"description": "Indicate whether this location is the default location.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
@@ -2182,14 +2191,14 @@
 												},
 												"dns_destination_ips_id": {
 													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
-													"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
+													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
 													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"dns_destination_ipv6_block_id": {
-													"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.",
+													"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
 													"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 													"nullable": true,
 													"type": "string",
@@ -2197,7 +2206,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"doh_subdomain": {
-													"description": "The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.",
+													"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
 													"example": "oli3n9zkz5",
 													"readOnly": true,
 													"type": "string",
@@ -2205,30 +2214,30 @@
 												},
 												"ecs_support": {
 													"default": false,
-													"description": "True if the location needs to resolve EDNS queries.",
+													"description": "Indicate whether the location must resolve EDNS queries.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												},
 												"endpoints": {
-													"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+													"description": "Configure the destination endpoints for this location.",
 													"nullable": true,
 													"properties": {
 														"doh": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the DOH endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
-																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																	"items": {
 																		"properties": {
 																			"network": {
-																				"description": "The IP address or IP CIDR.",
+																				"description": "Specify the IP address or IP CIDR.",
 																				"example": "2001:85a3::/64",
 																				"type": "string",
 																				"x-auditable": true
@@ -2244,7 +2253,7 @@
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"require_token": {
-																	"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+																	"description": "Specify whether the DOH endpoint requires user identity authentication.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
@@ -2256,18 +2265,18 @@
 														"dot": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the DOT endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
-																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																	"items": {
 																		"properties": {
 																			"network": {
-																				"description": "The IP address or IP CIDR.",
+																				"description": "Specify the IP address or IP CIDR.",
 																				"example": "2001:85a3::/64",
 																				"type": "string",
 																				"x-auditable": true
@@ -2288,7 +2297,7 @@
 														"ipv4": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
@@ -2300,18 +2309,18 @@
 														"ipv6": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
-																	"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																	"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																	"items": {
 																		"properties": {
 																			"network": {
-																				"description": "The IPv6 address or IPv6 CIDR.",
+																				"description": "Specify the IPv6 address or IPv6 CIDR.",
 																				"example": "2001:85a3::/64",
 																				"type": "string",
 																				"x-auditable": true
@@ -2345,36 +2354,36 @@
 													"x-auditable": true
 												},
 												"ip": {
-													"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.",
+													"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
 													"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"ipv4_destination": {
-													"description": "The primary destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+													"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.1",
 													"readOnly": true,
 													"type": "string"
 												},
 												"ipv4_destination_backup": {
-													"description": "The backup destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+													"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.2",
 													"readOnly": true,
 													"type": "string"
 												},
 												"name": {
-													"description": "The name of the location.",
+													"description": "Specify the location name.",
 													"example": "Austin Office Location",
 													"type": "string",
 													"x-auditable": true
 												},
 												"networks": {
-													"description": "A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.",
+													"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
 													"items": {
 														"properties": {
 															"network": {
-																"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
 																"example": "192.0.2.1/32",
 																"type": "string",
 																"x-auditable": true
@@ -2398,14 +2407,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Create a Zero Trust Gateway location response."
+				"description": "Creates a Zero Trust Gateway location response."
 			},
 			"4XX": {
 				"content": {
@@ -2461,7 +2471,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2485,7 +2495,7 @@
 													"properties": {
 														"client_default": {
 															"default": false,
-															"description": "True if the location is the default location.",
+															"description": "Indicate whether this location is the default location.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
@@ -2498,14 +2508,14 @@
 														},
 														"dns_destination_ips_id": {
 															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
-															"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
+															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
 															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"dns_destination_ipv6_block_id": {
-															"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.",
+															"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
 															"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 															"nullable": true,
 															"type": "string",
@@ -2513,7 +2523,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"doh_subdomain": {
-															"description": "The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.",
+															"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
 															"example": "oli3n9zkz5",
 															"readOnly": true,
 															"type": "string",
@@ -2521,30 +2531,30 @@
 														},
 														"ecs_support": {
 															"default": false,
-															"description": "True if the location needs to resolve EDNS queries.",
+															"description": "Indicate whether the location must resolve EDNS queries.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"endpoints": {
-															"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+															"description": "Configure the destination endpoints for this location.",
 															"nullable": true,
 															"properties": {
 																"doh": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the DOH endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
-																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																			"items": {
 																				"properties": {
 																					"network": {
-																						"description": "The IP address or IP CIDR.",
+																						"description": "Specify the IP address or IP CIDR.",
 																						"example": "2001:85a3::/64",
 																						"type": "string",
 																						"x-auditable": true
@@ -2560,7 +2570,7 @@
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"require_token": {
-																			"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+																			"description": "Specify whether the DOH endpoint requires user identity authentication.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
@@ -2572,18 +2582,18 @@
 																"dot": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the DOT endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
-																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																			"items": {
 																				"properties": {
 																					"network": {
-																						"description": "The IP address or IP CIDR.",
+																						"description": "Specify the IP address or IP CIDR.",
 																						"example": "2001:85a3::/64",
 																						"type": "string",
 																						"x-auditable": true
@@ -2604,7 +2614,7 @@
 																"ipv4": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
@@ -2616,18 +2626,18 @@
 																"ipv6": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
-																			"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																			"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																			"items": {
 																				"properties": {
 																					"network": {
-																						"description": "The IPv6 address or IPv6 CIDR.",
+																						"description": "Specify the IPv6 address or IPv6 CIDR.",
 																						"example": "2001:85a3::/64",
 																						"type": "string",
 																						"x-auditable": true
@@ -2661,36 +2671,36 @@
 															"x-auditable": true
 														},
 														"ip": {
-															"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.",
+															"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
 															"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"ipv4_destination": {
-															"description": "The primary destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+															"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.1",
 															"readOnly": true,
 															"type": "string"
 														},
 														"ipv4_destination_backup": {
-															"description": "The backup destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+															"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.2",
 															"readOnly": true,
 															"type": "string"
 														},
 														"name": {
-															"description": "The name of the location.",
+															"description": "Specify the location name.",
 															"example": "Austin Office Location",
 															"type": "string",
 															"x-auditable": true
 														},
 														"networks": {
-															"description": "A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.",
+															"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
 															"items": {
 																"properties": {
 																	"network": {
-																		"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																		"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
 																		"example": "192.0.2.1/32",
 																		"type": "string",
 																		"x-auditable": true
@@ -2714,7 +2724,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2789,7 +2800,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -2810,7 +2821,7 @@
 						}
 					}
 				},
-				"description": "Create a Zero Trust Gateway location response failure."
+				"description": "Creates a Zero Trust Gateway location response failure."
 			}
 		},
 		"security": [
@@ -2830,7 +2841,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/locations/{location_id}": {
-		"description": "Updates a configured Zero Trust Gateway location.",
+		"description": "Update a configured Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-update-zero-trust-gateway-location",
 		"parameters": [
 			{
@@ -2861,13 +2872,13 @@
 						"properties": {
 							"client_default": {
 								"default": false,
-								"description": "True if the location is the default location.",
+								"description": "Indicate whether this location is the default location.",
 								"example": false,
 								"type": "boolean",
 								"x-auditable": true
 							},
 							"dns_destination_ips_id": {
-								"description": "The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.",
+								"description": "Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.",
 								"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 								"type": "string",
 								"x-auditable": true,
@@ -2875,30 +2886,30 @@
 							},
 							"ecs_support": {
 								"default": false,
-								"description": "True if the location needs to resolve EDNS queries.",
+								"description": "Indicate whether the location must resolve EDNS queries.",
 								"example": false,
 								"type": "boolean",
 								"x-auditable": true
 							},
 							"endpoints": {
-								"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+								"description": "Configure the destination endpoints for this location.",
 								"nullable": true,
 								"properties": {
 									"doh": {
 										"properties": {
 											"enabled": {
-												"description": "True if the endpoint is enabled for this location.",
+												"description": "Indicate whether the DOH endpoint is enabled for this location.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
-												"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 												"items": {
 													"properties": {
 														"network": {
-															"description": "The IP address or IP CIDR.",
+															"description": "Specify the IP address or IP CIDR.",
 															"example": "2001:85a3::/64",
 															"type": "string",
 															"x-auditable": true
@@ -2914,7 +2925,7 @@
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"require_token": {
-												"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+												"description": "Specify whether the DOH endpoint requires user identity authentication.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true,
@@ -2926,18 +2937,18 @@
 									"dot": {
 										"properties": {
 											"enabled": {
-												"description": "True if the endpoint is enabled for this location.",
+												"description": "Indicate whether the DOT endpoint is enabled for this location.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
-												"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 												"items": {
 													"properties": {
 														"network": {
-															"description": "The IP address or IP CIDR.",
+															"description": "Specify the IP address or IP CIDR.",
 															"example": "2001:85a3::/64",
 															"type": "string",
 															"x-auditable": true
@@ -2958,7 +2969,7 @@
 									"ipv4": {
 										"properties": {
 											"enabled": {
-												"description": "True if the endpoint is enabled for this location.",
+												"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true,
@@ -2970,18 +2981,18 @@
 									"ipv6": {
 										"properties": {
 											"enabled": {
-												"description": "True if the endpoint is enabled for this location.",
+												"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
 												"example": true,
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
-												"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 												"items": {
 													"properties": {
 														"network": {
-															"description": "The IPv6 address or IPv6 CIDR.",
+															"description": "Specify the IPv6 address or IPv6 CIDR.",
 															"example": "2001:85a3::/64",
 															"type": "string",
 															"x-auditable": true
@@ -3010,17 +3021,17 @@
 								"x-stainless-terraform-configurability": "optional"
 							},
 							"name": {
-								"description": "The name of the location.",
+								"description": "Specify the location name.",
 								"example": "Austin Office Location",
 								"type": "string",
 								"x-auditable": true
 							},
 							"networks": {
-								"description": "A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.",
+								"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
 								"items": {
 									"properties": {
 										"network": {
-											"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+											"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
 											"example": "192.0.2.1/32",
 											"type": "string",
 											"x-auditable": true
@@ -3038,7 +3049,8 @@
 						},
 						"required": [
 							"name"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -3097,7 +3109,7 @@
 													"type": "array"
 												},
 												"success": {
-													"description": "Whether the API call was successful.",
+													"description": "Indicate whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3121,7 +3133,7 @@
 											"properties": {
 												"client_default": {
 													"default": false,
-													"description": "True if the location is the default location.",
+													"description": "Indicate whether this location is the default location.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
@@ -3134,14 +3146,14 @@
 												},
 												"dns_destination_ips_id": {
 													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
-													"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
+													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
 													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"dns_destination_ipv6_block_id": {
-													"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.",
+													"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
 													"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 													"nullable": true,
 													"type": "string",
@@ -3149,7 +3161,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"doh_subdomain": {
-													"description": "The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.",
+													"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
 													"example": "oli3n9zkz5",
 													"readOnly": true,
 													"type": "string",
@@ -3157,30 +3169,30 @@
 												},
 												"ecs_support": {
 													"default": false,
-													"description": "True if the location needs to resolve EDNS queries.",
+													"description": "Indicate whether the location must resolve EDNS queries.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												},
 												"endpoints": {
-													"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+													"description": "Configure the destination endpoints for this location.",
 													"nullable": true,
 													"properties": {
 														"doh": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the DOH endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
-																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																	"items": {
 																		"properties": {
 																			"network": {
-																				"description": "The IP address or IP CIDR.",
+																				"description": "Specify the IP address or IP CIDR.",
 																				"example": "2001:85a3::/64",
 																				"type": "string",
 																				"x-auditable": true
@@ -3196,7 +3208,7 @@
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"require_token": {
-																	"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+																	"description": "Specify whether the DOH endpoint requires user identity authentication.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
@@ -3208,18 +3220,18 @@
 														"dot": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the DOT endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
-																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																	"items": {
 																		"properties": {
 																			"network": {
-																				"description": "The IP address or IP CIDR.",
+																				"description": "Specify the IP address or IP CIDR.",
 																				"example": "2001:85a3::/64",
 																				"type": "string",
 																				"x-auditable": true
@@ -3240,7 +3252,7 @@
 														"ipv4": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
@@ -3252,18 +3264,18 @@
 														"ipv6": {
 															"properties": {
 																"enabled": {
-																	"description": "True if the endpoint is enabled for this location.",
+																	"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
-																	"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																	"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																	"items": {
 																		"properties": {
 																			"network": {
-																				"description": "The IPv6 address or IPv6 CIDR.",
+																				"description": "Specify the IPv6 address or IPv6 CIDR.",
 																				"example": "2001:85a3::/64",
 																				"type": "string",
 																				"x-auditable": true
@@ -3297,36 +3309,36 @@
 													"x-auditable": true
 												},
 												"ip": {
-													"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.",
+													"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
 													"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"ipv4_destination": {
-													"description": "The primary destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+													"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.1",
 													"readOnly": true,
 													"type": "string"
 												},
 												"ipv4_destination_backup": {
-													"description": "The backup destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+													"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 													"example": "172.64.36.2",
 													"readOnly": true,
 													"type": "string"
 												},
 												"name": {
-													"description": "The name of the location.",
+													"description": "Specify the location name.",
 													"example": "Austin Office Location",
 													"type": "string",
 													"x-auditable": true
 												},
 												"networks": {
-													"description": "A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.",
+													"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
 													"items": {
 														"properties": {
 															"network": {
-																"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
 																"example": "192.0.2.1/32",
 																"type": "string",
 																"x-auditable": true
@@ -3350,14 +3362,15 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Update a Zero Trust Gateway location response."
+				"description": "Updates a Zero Trust Gateway location response."
 			},
 			"4XX": {
 				"content": {
@@ -3413,7 +3426,7 @@
 															"type": "array"
 														},
 														"success": {
-															"description": "Whether the API call was successful.",
+															"description": "Indicate whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3437,7 +3450,7 @@
 													"properties": {
 														"client_default": {
 															"default": false,
-															"description": "True if the location is the default location.",
+															"description": "Indicate whether this location is the default location.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
@@ -3450,14 +3463,14 @@
 														},
 														"dns_destination_ips_id": {
 															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
-															"description": "The identifier of the pair of IPv4 addresses assigned to this location.",
+															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
 															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"dns_destination_ipv6_block_id": {
-															"description": "The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.",
+															"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
 															"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 															"nullable": true,
 															"type": "string",
@@ -3465,7 +3478,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"doh_subdomain": {
-															"description": "The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.",
+															"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
 															"example": "oli3n9zkz5",
 															"readOnly": true,
 															"type": "string",
@@ -3473,30 +3486,30 @@
 														},
 														"ecs_support": {
 															"default": false,
-															"description": "True if the location needs to resolve EDNS queries.",
+															"description": "Indicate whether the location must resolve EDNS queries.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"endpoints": {
-															"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+															"description": "Configure the destination endpoints for this location.",
 															"nullable": true,
 															"properties": {
 																"doh": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the DOH endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
-																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																			"items": {
 																				"properties": {
 																					"network": {
-																						"description": "The IP address or IP CIDR.",
+																						"description": "Specify the IP address or IP CIDR.",
 																						"example": "2001:85a3::/64",
 																						"type": "string",
 																						"x-auditable": true
@@ -3512,7 +3525,7 @@
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"require_token": {
-																			"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+																			"description": "Specify whether the DOH endpoint requires user identity authentication.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
@@ -3524,18 +3537,18 @@
 																"dot": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the DOT endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
-																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																			"items": {
 																				"properties": {
 																					"network": {
-																						"description": "The IP address or IP CIDR.",
+																						"description": "Specify the IP address or IP CIDR.",
 																						"example": "2001:85a3::/64",
 																						"type": "string",
 																						"x-auditable": true
@@ -3556,7 +3569,7 @@
 																"ipv4": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
@@ -3568,18 +3581,18 @@
 																"ipv6": {
 																	"properties": {
 																		"enabled": {
-																			"description": "True if the endpoint is enabled for this location.",
+																			"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
 																			"example": true,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
-																			"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+																			"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
 																			"items": {
 																				"properties": {
 																					"network": {
-																						"description": "The IPv6 address or IPv6 CIDR.",
+																						"description": "Specify the IPv6 address or IPv6 CIDR.",
 																						"example": "2001:85a3::/64",
 																						"type": "string",
 																						"x-auditable": true
@@ -3613,36 +3626,36 @@
 															"x-auditable": true
 														},
 														"ip": {
-															"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.",
+															"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
 															"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"ipv4_destination": {
-															"description": "The primary destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+															"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.1",
 															"readOnly": true,
 															"type": "string"
 														},
 														"ipv4_destination_backup": {
-															"description": "The backup destination IPv4 address from the pair identified by the dns_destination_ips_id. This field is read-only.",
+															"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
 															"example": "172.64.36.2",
 															"readOnly": true,
 															"type": "string"
 														},
 														"name": {
-															"description": "The name of the location.",
+															"description": "Specify the location name.",
 															"example": "Austin Office Location",
 															"type": "string",
 															"x-auditable": true
 														},
 														"networks": {
-															"description": "A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.",
+															"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
 															"items": {
 																"properties": {
 																	"network": {
-																		"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																		"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
 																		"example": "192.0.2.1/32",
 																		"type": "string",
 																		"x-auditable": true
@@ -3666,7 +3679,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -3741,7 +3755,7 @@
 											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"enum": [
 												false
 											],
@@ -3762,7 +3776,7 @@
 						}
 					}
 				},
-				"description": "Update a Zero Trust Gateway location response failure."
+				"description": "Updates a Zero Trust Gateway location response failure."
 			}
 		},
 		"security": [

@@ -154,6 +154,13 @@
 												},
 												"deleted_gre_tunnel": {
 													"properties": {
+														"automatic_return_routing": {
+															"default": false,
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"bgp": {
 															"properties": {
 																"customer_asn": {
@@ -512,6 +519,13 @@
 														},
 														"deleted_gre_tunnel": {
 															"properties": {
+																"automatic_return_routing": {
+																	"default": false,
+																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
 																"bgp": {
 																	"properties": {
 																		"customer_asn": {
@@ -1000,6 +1014,13 @@
 												"gre_tunnels": {
 													"items": {
 														"properties": {
+															"automatic_return_routing": {
+																"default": false,
+																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
 															"bgp": {
 																"properties": {
 																	"customer_asn": {
@@ -1356,6 +1377,13 @@
 														"gre_tunnels": {
 															"items": {
 																"properties": {
+																	"automatic_return_routing": {
+																		"default": false,
+																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
 																	"bgp": {
 																		"properties": {
 																			"customer_asn": {
@@ -1858,6 +1886,13 @@
 											"properties": {
 												"gre_tunnel": {
 													"properties": {
+														"automatic_return_routing": {
+															"default": false,
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"bgp": {
 															"properties": {
 																"customer_asn": {
@@ -2212,6 +2247,13 @@
 													"properties": {
 														"gre_tunnel": {
 															"properties": {
+																"automatic_return_routing": {
+																	"default": false,
+																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
 																"bgp": {
 																	"properties": {
 																		"customer_asn": {
@@ -2598,6 +2640,13 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"automatic_return_routing": {
+								"default": false,
+								"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"bgp": {
 								"properties": {
 									"customer_asn": {
@@ -2871,6 +2920,13 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"automatic_return_routing": {
+													"default": false,
+													"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"bgp": {
 													"properties": {
 														"customer_asn": {
@@ -3223,6 +3279,13 @@
 														"gre_tunnels": {
 															"items": {
 																"properties": {
+																	"automatic_return_routing": {
+																		"default": false,
+																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
 																	"bgp": {
 																		"properties": {
 																			"customer_asn": {
@@ -3728,6 +3791,13 @@
 												"modified_gre_tunnels": {
 													"items": {
 														"properties": {
+															"automatic_return_routing": {
+																"default": false,
+																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
 															"bgp": {
 																"properties": {
 																	"customer_asn": {
@@ -4088,6 +4158,13 @@
 														"modified_gre_tunnels": {
 															"items": {
 																"properties": {
+																	"automatic_return_routing": {
+																		"default": false,
+																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
 																	"bgp": {
 																		"properties": {
 																			"customer_asn": {
@@ -4487,6 +4564,13 @@
 						"allOf": [
 							{
 								"properties": {
+									"automatic_return_routing": {
+										"default": false,
+										"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
 									"cloudflare_gre_endpoint": {
 										"description": "The IP address assigned to the Cloudflare side of the GRE tunnel.",
 										"example": "203.0.113.1",
@@ -4742,6 +4826,13 @@
 												},
 												"modified_gre_tunnel": {
 													"properties": {
+														"automatic_return_routing": {
+															"default": false,
+															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"bgp": {
 															"properties": {
 																"customer_asn": {
@@ -5100,6 +5191,13 @@
 														},
 														"modified_gre_tunnel": {
 															"properties": {
+																"automatic_return_routing": {
+																	"default": false,
+																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
 																"bgp": {
 																	"properties": {
 																		"customer_asn": {

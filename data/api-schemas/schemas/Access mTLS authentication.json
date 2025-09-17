@@ -442,10 +442,17 @@
 														"type": "array"
 													},
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													},
 													"expires_on": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -470,10 +477,17 @@
 														"x-auditable": true
 													},
 													"updated_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"type": "string",
-														"x-auditable": true
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													}
 												},
 												"type": "object"
@@ -756,10 +770,17 @@
 													"type": "array"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"expires_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -784,10 +805,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -1406,10 +1434,17 @@
 													"type": "array"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"expires_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1434,10 +1469,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -1747,10 +1789,17 @@
 													"type": "array"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"expires_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1775,10 +1824,17 @@
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"type": "string",
-													"x-auditable": true
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												}
 											},
 											"type": "object"

@@ -1,0 +1,3901 @@
+{
+	"DELETE /accounts/{account_id}/realtimekit/presets/{preset_id}": {
+		"description": "Deletes a preset using the provided preset ID",
+		"operationId": "delete-presets-preset_id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the preset to fetch",
+				"in": "path",
+				"name": "preset_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"data": {
+											"description": "Data returned by the operation",
+											"type": "object"
+										},
+										"success": {
+											"default": true,
+											"description": "Success status of the operation",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"title": "GenericSuccessResponse",
+									"type": "object"
+								},
+								{
+									"properties": {
+										"data": {
+											"allOf": [
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the preset",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"config": {
+															"properties": {
+																"max_screenshare_count": {
+																	"description": "Maximum number of screen shares that can be active at a given time",
+																	"type": "integer"
+																},
+																"max_video_streams": {
+																	"description": "Maximum number of streams that are visible on a device",
+																	"properties": {
+																		"desktop": {
+																			"description": "Maximum number of video streams visible on desktop devices",
+																			"type": "integer"
+																		},
+																		"mobile": {
+																			"description": "Maximum number of streams visible on mobile devices",
+																			"type": "integer"
+																		}
+																	},
+																	"required": [
+																		"mobile",
+																		"desktop"
+																	],
+																	"type": "object"
+																},
+																"media": {
+																	"description": "Media configuration options. eg: Video quality",
+																	"properties": {
+																		"audio": {
+																			"description": "Control options for Audio quality.",
+																			"properties": {
+																				"enable_high_bitrate": {
+																					"default": false,
+																					"description": "Enable High Quality Audio for your meetings",
+																					"type": "boolean"
+																				},
+																				"enable_stereo": {
+																					"default": false,
+																					"description": "Enable Stereo for your meetings",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"screenshare": {
+																			"description": "Configuration options for participant screen shares",
+																			"properties": {
+																				"frame_rate": {
+																					"description": "Frame rate of screen share",
+																					"type": "integer"
+																				},
+																				"quality": {
+																					"description": "Quality of screen share ",
+																					"enum": [
+																						"hd",
+																						"vga",
+																						"qvga"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"quality",
+																				"frame_rate"
+																			],
+																			"type": "object"
+																		},
+																		"video": {
+																			"description": "Configuration options for participant videos",
+																			"properties": {
+																				"frame_rate": {
+																					"description": "Frame rate of participants' video",
+																					"maximum": 30,
+																					"type": "integer"
+																				},
+																				"quality": {
+																					"description": "Video quality of participants",
+																					"enum": [
+																						"hd",
+																						"vga",
+																						"qvga"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"quality",
+																				"frame_rate"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"video",
+																		"screenshare"
+																	],
+																	"type": "object"
+																},
+																"view_type": {
+																	"description": "Type of the meeting",
+																	"enum": [
+																		"GROUP_CALL",
+																		"WEBINAR",
+																		"AUDIO_ROOM"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"view_type",
+																"max_video_streams",
+																"max_screenshare_count",
+																"media"
+															],
+															"type": "object"
+														},
+														"name": {
+															"description": "Name of the preset",
+															"type": "string"
+														},
+														"permissions": {
+															"properties": {
+																"accept_waiting_requests": {
+																	"description": "Whether this participant can accept waiting requests",
+																	"type": "boolean"
+																},
+																"can_accept_production_requests": {
+																	"type": "boolean"
+																},
+																"can_change_participant_permissions": {
+																	"type": "boolean"
+																},
+																"can_edit_display_name": {
+																	"type": "boolean"
+																},
+																"can_livestream": {
+																	"type": "boolean"
+																},
+																"can_record": {
+																	"type": "boolean"
+																},
+																"can_spotlight": {
+																	"type": "boolean"
+																},
+																"chat": {
+																	"description": "Chat permissions",
+																	"properties": {
+																		"private": {
+																			"properties": {
+																				"can_receive": {
+																					"type": "boolean"
+																				},
+																				"can_send": {
+																					"type": "boolean"
+																				},
+																				"files": {
+																					"type": "boolean"
+																				},
+																				"text": {
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"can_send",
+																				"can_receive",
+																				"text",
+																				"files"
+																			],
+																			"type": "object"
+																		},
+																		"public": {
+																			"properties": {
+																				"can_send": {
+																					"description": "Can send messages in general",
+																					"type": "boolean"
+																				},
+																				"files": {
+																					"description": "Can send file messages",
+																					"type": "boolean"
+																				},
+																				"text": {
+																					"description": "Can send text messages",
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"can_send",
+																				"text",
+																				"files"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"public",
+																		"private"
+																	],
+																	"type": "object"
+																},
+																"connected_meetings": {
+																	"properties": {
+																		"can_alter_connected_meetings": {
+																			"type": "boolean"
+																		},
+																		"can_switch_connected_meetings": {
+																			"type": "boolean"
+																		},
+																		"can_switch_to_parent_meeting": {
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"can_alter_connected_meetings",
+																		"can_switch_connected_meetings",
+																		"can_switch_to_parent_meeting"
+																	],
+																	"type": "object"
+																},
+																"disable_participant_audio": {
+																	"type": "boolean"
+																},
+																"disable_participant_screensharing": {
+																	"type": "boolean"
+																},
+																"disable_participant_video": {
+																	"type": "boolean"
+																},
+																"hidden_participant": {
+																	"description": "Whether this participant is visible to others or not",
+																	"type": "boolean"
+																},
+																"is_recorder": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"kick_participant": {
+																	"type": "boolean"
+																},
+																"media": {
+																	"description": "Media permissions",
+																	"properties": {
+																		"audio": {
+																			"description": "Audio permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce audio",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		},
+																		"screenshare": {
+																			"description": "Screenshare permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce screen share video",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		},
+																		"video": {
+																			"description": "Video permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce video",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"video",
+																		"audio",
+																		"screenshare"
+																	],
+																	"type": "object"
+																},
+																"pin_participant": {
+																	"type": "boolean"
+																},
+																"plugins": {
+																	"description": "Plugin permissions",
+																	"properties": {
+																		"can_close": {
+																			"description": "Can close plugins that are already open",
+																			"type": "boolean"
+																		},
+																		"can_edit_config": {
+																			"description": "Can edit plugin config",
+																			"type": "boolean"
+																		},
+																		"can_start": {
+																			"description": "Can start plugins",
+																			"type": "boolean"
+																		},
+																		"config": {
+																			"oneOf": [
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				{
+																					"properties": {
+																						"access_control": {
+																							"enum": [
+																								"FULL_ACCESS",
+																								"VIEW_ONLY"
+																							],
+																							"type": "string"
+																						},
+																						"handles_view_only": {
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"access_control",
+																						"handles_view_only"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		}
+																	},
+																	"required": [
+																		"can_close",
+																		"can_start",
+																		"can_edit_config",
+																		"config"
+																	],
+																	"type": "object"
+																},
+																"polls": {
+																	"description": "Poll permissions",
+																	"properties": {
+																		"can_create": {
+																			"description": "Can create polls",
+																			"type": "boolean"
+																		},
+																		"can_view": {
+																			"description": "Can view polls",
+																			"type": "boolean"
+																		},
+																		"can_vote": {
+																			"description": "Can vote on polls",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"can_create",
+																		"can_vote",
+																		"can_view"
+																	],
+																	"type": "object"
+																},
+																"recorder_type": {
+																	"default": "NONE",
+																	"description": "Type of the recording peer",
+																	"enum": [
+																		"RECORDER",
+																		"LIVESTREAMER",
+																		"NONE"
+																	],
+																	"type": "string"
+																},
+																"show_participant_list": {
+																	"type": "boolean"
+																},
+																"waiting_room_type": {
+																	"description": "Waiting room type",
+																	"enum": [
+																		"SKIP",
+																		"ON_PRIVILEGED_USER_ENTRY",
+																		"SKIP_ON_ACCEPT"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"accept_waiting_requests",
+																"can_accept_production_requests",
+																"can_edit_display_name",
+																"can_spotlight",
+																"recorder_type",
+																"disable_participant_audio",
+																"disable_participant_screensharing",
+																"disable_participant_video",
+																"kick_participant",
+																"pin_participant",
+																"can_record",
+																"can_livestream",
+																"waiting_room_type",
+																"plugins",
+																"connected_meetings",
+																"polls",
+																"media",
+																"chat",
+																"hidden_participant",
+																"show_participant_list",
+																"can_change_participant_permissions"
+															],
+															"type": "object"
+														},
+														"ui": {
+															"properties": {
+																"config_diff": {
+																	"type": "object"
+																},
+																"design_tokens": {
+																	"properties": {
+																		"border_radius": {
+																			"enum": [
+																				"rounded"
+																			],
+																			"type": "string"
+																		},
+																		"border_width": {
+																			"enum": [
+																				"thin"
+																			],
+																			"type": "string"
+																		},
+																		"colors": {
+																			"properties": {
+																				"background": {
+																					"properties": {
+																						"600": {
+																							"default": "#222222",
+																							"type": "string"
+																						},
+																						"700": {
+																							"default": "#1f1f1f",
+																							"type": "string"
+																						},
+																						"800": {
+																							"default": "#1b1b1b",
+																							"type": "string"
+																						},
+																						"900": {
+																							"default": "#181818",
+																							"type": "string"
+																						},
+																						"1000": {
+																							"default": "#141414",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"600",
+																						"700",
+																						"800",
+																						"900",
+																						"1000"
+																					],
+																					"type": "object"
+																				},
+																				"brand": {
+																					"properties": {
+																						"300": {
+																							"default": "#844d1c",
+																							"type": "string"
+																						},
+																						"400": {
+																							"default": "#9d5b22",
+																							"type": "string"
+																						},
+																						"500": {
+																							"default": "#b56927",
+																							"type": "string"
+																						},
+																						"600": {
+																							"default": "#d37c30",
+																							"type": "string"
+																						},
+																						"700": {
+																							"default": "#d9904f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"300",
+																						"400",
+																						"500",
+																						"600",
+																						"700"
+																					],
+																					"type": "object"
+																				},
+																				"danger": {
+																					"default": "#FF2D2D",
+																					"type": "string"
+																				},
+																				"success": {
+																					"default": "#62A504",
+																					"type": "string"
+																				},
+																				"text": {
+																					"default": "#EEEEEE",
+																					"type": "string"
+																				},
+																				"text_on_brand": {
+																					"default": "#EEEEEE",
+																					"type": "string"
+																				},
+																				"video_bg": {
+																					"default": "#191919",
+																					"type": "string"
+																				},
+																				"warning": {
+																					"default": "#FFCD07",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"brand",
+																				"background",
+																				"danger",
+																				"text",
+																				"text_on_brand",
+																				"success",
+																				"video_bg",
+																				"warning"
+																			],
+																			"type": "object"
+																		},
+																		"logo": {
+																			"type": "string"
+																		},
+																		"spacing_base": {
+																			"default": 4,
+																			"type": "number"
+																		},
+																		"theme": {
+																			"enum": [
+																				"dark"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"border_radius",
+																		"border_width",
+																		"spacing_base",
+																		"theme",
+																		"colors",
+																		"logo"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"design_tokens"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"config",
+														"ui"
+													],
+													"title": "Preset",
+													"type": "object"
+												}
+											]
+										}
+									},
+									"required": [
+										"data"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete a preset",
+		"tags": [
+			"Presets"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/presets": {
+		"description": "Fetches all the presets belonging to an organization.",
+		"operationId": "get-presets",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"allowEmptyValue": true,
+				"description": "Number of results per page",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"minimum": 0,
+					"type": "number"
+				}
+			},
+			{
+				"allowEmptyValue": true,
+				"description": "The page number from which you want your page search results to be displayed.",
+				"in": "query",
+				"name": "page_no",
+				"schema": {
+					"minimum": 0,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"data": {
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"paging": {
+											"properties": {
+												"end_offset": {
+													"example": 30,
+													"type": "number"
+												},
+												"start_offset": {
+													"example": 1,
+													"type": "number"
+												},
+												"total_count": {
+													"example": 30,
+													"minimum": 0,
+													"type": "number"
+												}
+											},
+											"required": [
+												"total_count",
+												"start_offset",
+												"end_offset"
+											],
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"data",
+										"paging"
+									],
+									"title": "PagingResponse",
+									"type": "object"
+								},
+								{
+									"properties": {
+										"data": {
+											"items": {
+												"description": "Returned by Get All Presets route",
+												"properties": {
+													"created_at": {
+														"description": "Timestamp this preset was created at",
+														"format": "date-time",
+														"type": "string"
+													},
+													"id": {
+														"description": "ID of the preset",
+														"format": "uuid",
+														"type": "string"
+													},
+													"name": {
+														"description": "Name of the preset",
+														"type": "string"
+													},
+													"updated_at": {
+														"description": "Timestamp this preset was last updated",
+														"format": "date-time",
+														"type": "string"
+													}
+												},
+												"title": "PresetListItem",
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Example response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch all presets",
+		"tags": [
+			"Presets"
+		]
+	},
+	"GET /accounts/{account_id}/realtimekit/presets/{preset_id}": {
+		"description": "Fetches details of a preset using the provided preset ID",
+		"operationId": "get-presets-preset_id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the preset to fetch",
+				"in": "path",
+				"name": "preset_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"data": {
+											"description": "Data returned by the operation",
+											"type": "object"
+										},
+										"success": {
+											"default": true,
+											"description": "Success status of the operation",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"title": "GenericSuccessResponse",
+									"type": "object"
+								},
+								{
+									"properties": {
+										"data": {
+											"allOf": [
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the preset",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"config": {
+															"properties": {
+																"max_screenshare_count": {
+																	"description": "Maximum number of screen shares that can be active at a given time",
+																	"type": "integer"
+																},
+																"max_video_streams": {
+																	"description": "Maximum number of streams that are visible on a device",
+																	"properties": {
+																		"desktop": {
+																			"description": "Maximum number of video streams visible on desktop devices",
+																			"type": "integer"
+																		},
+																		"mobile": {
+																			"description": "Maximum number of streams visible on mobile devices",
+																			"type": "integer"
+																		}
+																	},
+																	"required": [
+																		"mobile",
+																		"desktop"
+																	],
+																	"type": "object"
+																},
+																"media": {
+																	"description": "Media configuration options. eg: Video quality",
+																	"properties": {
+																		"audio": {
+																			"description": "Control options for Audio quality.",
+																			"properties": {
+																				"enable_high_bitrate": {
+																					"default": false,
+																					"description": "Enable High Quality Audio for your meetings",
+																					"type": "boolean"
+																				},
+																				"enable_stereo": {
+																					"default": false,
+																					"description": "Enable Stereo for your meetings",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"screenshare": {
+																			"description": "Configuration options for participant screen shares",
+																			"properties": {
+																				"frame_rate": {
+																					"description": "Frame rate of screen share",
+																					"type": "integer"
+																				},
+																				"quality": {
+																					"description": "Quality of screen share ",
+																					"enum": [
+																						"hd",
+																						"vga",
+																						"qvga"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"quality",
+																				"frame_rate"
+																			],
+																			"type": "object"
+																		},
+																		"video": {
+																			"description": "Configuration options for participant videos",
+																			"properties": {
+																				"frame_rate": {
+																					"description": "Frame rate of participants' video",
+																					"maximum": 30,
+																					"type": "integer"
+																				},
+																				"quality": {
+																					"description": "Video quality of participants",
+																					"enum": [
+																						"hd",
+																						"vga",
+																						"qvga"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"quality",
+																				"frame_rate"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"video",
+																		"screenshare"
+																	],
+																	"type": "object"
+																},
+																"view_type": {
+																	"description": "Type of the meeting",
+																	"enum": [
+																		"GROUP_CALL",
+																		"WEBINAR",
+																		"AUDIO_ROOM"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"view_type",
+																"max_video_streams",
+																"max_screenshare_count",
+																"media"
+															],
+															"type": "object"
+														},
+														"name": {
+															"description": "Name of the preset",
+															"type": "string"
+														},
+														"permissions": {
+															"properties": {
+																"accept_waiting_requests": {
+																	"description": "Whether this participant can accept waiting requests",
+																	"type": "boolean"
+																},
+																"can_accept_production_requests": {
+																	"type": "boolean"
+																},
+																"can_change_participant_permissions": {
+																	"type": "boolean"
+																},
+																"can_edit_display_name": {
+																	"type": "boolean"
+																},
+																"can_livestream": {
+																	"type": "boolean"
+																},
+																"can_record": {
+																	"type": "boolean"
+																},
+																"can_spotlight": {
+																	"type": "boolean"
+																},
+																"chat": {
+																	"description": "Chat permissions",
+																	"properties": {
+																		"private": {
+																			"properties": {
+																				"can_receive": {
+																					"type": "boolean"
+																				},
+																				"can_send": {
+																					"type": "boolean"
+																				},
+																				"files": {
+																					"type": "boolean"
+																				},
+																				"text": {
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"can_send",
+																				"can_receive",
+																				"text",
+																				"files"
+																			],
+																			"type": "object"
+																		},
+																		"public": {
+																			"properties": {
+																				"can_send": {
+																					"description": "Can send messages in general",
+																					"type": "boolean"
+																				},
+																				"files": {
+																					"description": "Can send file messages",
+																					"type": "boolean"
+																				},
+																				"text": {
+																					"description": "Can send text messages",
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"can_send",
+																				"text",
+																				"files"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"public",
+																		"private"
+																	],
+																	"type": "object"
+																},
+																"connected_meetings": {
+																	"properties": {
+																		"can_alter_connected_meetings": {
+																			"type": "boolean"
+																		},
+																		"can_switch_connected_meetings": {
+																			"type": "boolean"
+																		},
+																		"can_switch_to_parent_meeting": {
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"can_alter_connected_meetings",
+																		"can_switch_connected_meetings",
+																		"can_switch_to_parent_meeting"
+																	],
+																	"type": "object"
+																},
+																"disable_participant_audio": {
+																	"type": "boolean"
+																},
+																"disable_participant_screensharing": {
+																	"type": "boolean"
+																},
+																"disable_participant_video": {
+																	"type": "boolean"
+																},
+																"hidden_participant": {
+																	"description": "Whether this participant is visible to others or not",
+																	"type": "boolean"
+																},
+																"is_recorder": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"kick_participant": {
+																	"type": "boolean"
+																},
+																"media": {
+																	"description": "Media permissions",
+																	"properties": {
+																		"audio": {
+																			"description": "Audio permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce audio",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		},
+																		"screenshare": {
+																			"description": "Screenshare permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce screen share video",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		},
+																		"video": {
+																			"description": "Video permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce video",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"video",
+																		"audio",
+																		"screenshare"
+																	],
+																	"type": "object"
+																},
+																"pin_participant": {
+																	"type": "boolean"
+																},
+																"plugins": {
+																	"description": "Plugin permissions",
+																	"properties": {
+																		"can_close": {
+																			"description": "Can close plugins that are already open",
+																			"type": "boolean"
+																		},
+																		"can_edit_config": {
+																			"description": "Can edit plugin config",
+																			"type": "boolean"
+																		},
+																		"can_start": {
+																			"description": "Can start plugins",
+																			"type": "boolean"
+																		},
+																		"config": {
+																			"oneOf": [
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				{
+																					"properties": {
+																						"access_control": {
+																							"enum": [
+																								"FULL_ACCESS",
+																								"VIEW_ONLY"
+																							],
+																							"type": "string"
+																						},
+																						"handles_view_only": {
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"access_control",
+																						"handles_view_only"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		}
+																	},
+																	"required": [
+																		"can_close",
+																		"can_start",
+																		"can_edit_config",
+																		"config"
+																	],
+																	"type": "object"
+																},
+																"polls": {
+																	"description": "Poll permissions",
+																	"properties": {
+																		"can_create": {
+																			"description": "Can create polls",
+																			"type": "boolean"
+																		},
+																		"can_view": {
+																			"description": "Can view polls",
+																			"type": "boolean"
+																		},
+																		"can_vote": {
+																			"description": "Can vote on polls",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"can_create",
+																		"can_vote",
+																		"can_view"
+																	],
+																	"type": "object"
+																},
+																"recorder_type": {
+																	"default": "NONE",
+																	"description": "Type of the recording peer",
+																	"enum": [
+																		"RECORDER",
+																		"LIVESTREAMER",
+																		"NONE"
+																	],
+																	"type": "string"
+																},
+																"show_participant_list": {
+																	"type": "boolean"
+																},
+																"waiting_room_type": {
+																	"description": "Waiting room type",
+																	"enum": [
+																		"SKIP",
+																		"ON_PRIVILEGED_USER_ENTRY",
+																		"SKIP_ON_ACCEPT"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"accept_waiting_requests",
+																"can_accept_production_requests",
+																"can_edit_display_name",
+																"can_spotlight",
+																"recorder_type",
+																"disable_participant_audio",
+																"disable_participant_screensharing",
+																"disable_participant_video",
+																"kick_participant",
+																"pin_participant",
+																"can_record",
+																"can_livestream",
+																"waiting_room_type",
+																"plugins",
+																"connected_meetings",
+																"polls",
+																"media",
+																"chat",
+																"hidden_participant",
+																"show_participant_list",
+																"can_change_participant_permissions"
+															],
+															"type": "object"
+														},
+														"ui": {
+															"properties": {
+																"config_diff": {
+																	"type": "object"
+																},
+																"design_tokens": {
+																	"properties": {
+																		"border_radius": {
+																			"enum": [
+																				"rounded"
+																			],
+																			"type": "string"
+																		},
+																		"border_width": {
+																			"enum": [
+																				"thin"
+																			],
+																			"type": "string"
+																		},
+																		"colors": {
+																			"properties": {
+																				"background": {
+																					"properties": {
+																						"600": {
+																							"default": "#222222",
+																							"type": "string"
+																						},
+																						"700": {
+																							"default": "#1f1f1f",
+																							"type": "string"
+																						},
+																						"800": {
+																							"default": "#1b1b1b",
+																							"type": "string"
+																						},
+																						"900": {
+																							"default": "#181818",
+																							"type": "string"
+																						},
+																						"1000": {
+																							"default": "#141414",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"600",
+																						"700",
+																						"800",
+																						"900",
+																						"1000"
+																					],
+																					"type": "object"
+																				},
+																				"brand": {
+																					"properties": {
+																						"300": {
+																							"default": "#844d1c",
+																							"type": "string"
+																						},
+																						"400": {
+																							"default": "#9d5b22",
+																							"type": "string"
+																						},
+																						"500": {
+																							"default": "#b56927",
+																							"type": "string"
+																						},
+																						"600": {
+																							"default": "#d37c30",
+																							"type": "string"
+																						},
+																						"700": {
+																							"default": "#d9904f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"300",
+																						"400",
+																						"500",
+																						"600",
+																						"700"
+																					],
+																					"type": "object"
+																				},
+																				"danger": {
+																					"default": "#FF2D2D",
+																					"type": "string"
+																				},
+																				"success": {
+																					"default": "#62A504",
+																					"type": "string"
+																				},
+																				"text": {
+																					"default": "#EEEEEE",
+																					"type": "string"
+																				},
+																				"text_on_brand": {
+																					"default": "#EEEEEE",
+																					"type": "string"
+																				},
+																				"video_bg": {
+																					"default": "#191919",
+																					"type": "string"
+																				},
+																				"warning": {
+																					"default": "#FFCD07",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"brand",
+																				"background",
+																				"danger",
+																				"text",
+																				"text_on_brand",
+																				"success",
+																				"video_bg",
+																				"warning"
+																			],
+																			"type": "object"
+																		},
+																		"logo": {
+																			"type": "string"
+																		},
+																		"spacing_base": {
+																			"default": 4,
+																			"type": "number"
+																		},
+																		"theme": {
+																			"enum": [
+																				"dark"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"border_radius",
+																		"border_width",
+																		"spacing_base",
+																		"theme",
+																		"colors",
+																		"logo"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"design_tokens"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"config",
+														"ui"
+													],
+													"title": "Preset",
+													"type": "object"
+												}
+											]
+										}
+									},
+									"required": [
+										"data"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch details of a preset",
+		"tags": [
+			"Presets"
+		]
+	},
+	"PATCH /accounts/{account_id}/realtimekit/presets/{preset_id}": {
+		"description": "Update a preset by the provided preset ID",
+		"operationId": "patch-presets-preset_id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "ID of the preset to fetch",
+				"in": "path",
+				"name": "preset_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"config": {
+								"properties": {
+									"max_screenshare_count": {
+										"description": "Maximum number of screen shares that can be active at a given time",
+										"type": "integer"
+									},
+									"max_video_streams": {
+										"description": "Maximum number of streams that are visible on a device",
+										"properties": {
+											"desktop": {
+												"description": "Maximum number of video streams visible on desktop devices",
+												"type": "integer"
+											},
+											"mobile": {
+												"description": "Maximum number of streams visible on mobile devices",
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									},
+									"media": {
+										"description": "Media configuration options. eg: Video quality",
+										"properties": {
+											"screenshare": {
+												"description": "Configuration options for participant screen shares",
+												"properties": {
+													"frame_rate": {
+														"description": "Frame rate of screen share",
+														"type": "integer"
+													},
+													"quality": {
+														"description": "Quality of screen share ",
+														"enum": [
+															"hd",
+															"vga",
+															"qvga"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"video": {
+												"description": "Configuration options for participant videos",
+												"properties": {
+													"frame_rate": {
+														"description": "Frame rate of participants' video",
+														"maximum": 30,
+														"type": "integer"
+													},
+													"quality": {
+														"description": "Video quality of participants",
+														"enum": [
+															"hd",
+															"vga",
+															"qvga"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"view_type": {
+										"description": "Type of the meeting",
+										"enum": [
+											"GROUP_CALL",
+											"WEBINAR",
+											"AUDIO_ROOM"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"name": {
+								"description": "Name of the preset",
+								"type": "string"
+							},
+							"permissions": {
+								"properties": {
+									"accept_waiting_requests": {
+										"description": "Whether this participant can accept waiting requests",
+										"type": "boolean"
+									},
+									"can_accept_production_requests": {
+										"type": "boolean"
+									},
+									"can_change_participant_permissions": {
+										"type": "boolean"
+									},
+									"can_edit_display_name": {
+										"type": "boolean"
+									},
+									"can_livestream": {
+										"type": "boolean"
+									},
+									"can_record": {
+										"type": "boolean"
+									},
+									"can_spotlight": {
+										"type": "boolean"
+									},
+									"chat": {
+										"description": "Chat permissions",
+										"properties": {
+											"private": {
+												"properties": {
+													"can_receive": {
+														"type": "boolean"
+													},
+													"can_send": {
+														"type": "boolean"
+													},
+													"files": {
+														"type": "boolean"
+													},
+													"text": {
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"public": {
+												"properties": {
+													"can_send": {
+														"description": "Can send messages in general",
+														"type": "boolean"
+													},
+													"files": {
+														"description": "Can send file messages",
+														"type": "boolean"
+													},
+													"text": {
+														"description": "Can send text messages",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"connected_meetings": {
+										"properties": {
+											"can_alter_connected_meetings": {
+												"type": "boolean"
+											},
+											"can_switch_connected_meetings": {
+												"type": "boolean"
+											},
+											"can_switch_to_parent_meeting": {
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"disable_participant_audio": {
+										"type": "boolean"
+									},
+									"disable_participant_screensharing": {
+										"type": "boolean"
+									},
+									"disable_participant_video": {
+										"type": "boolean"
+									},
+									"hidden_participant": {
+										"description": "Whether this participant is visible to others or not",
+										"type": "boolean"
+									},
+									"is_recorder": {
+										"default": false,
+										"type": "boolean"
+									},
+									"kick_participant": {
+										"type": "boolean"
+									},
+									"media": {
+										"description": "Media permissions",
+										"properties": {
+											"audio": {
+												"description": "Audio permissions",
+												"properties": {
+													"can_produce": {
+														"description": "Can produce audio",
+														"enum": [
+															"ALLOWED",
+															"NOT_ALLOWED",
+															"CAN_REQUEST"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"screenshare": {
+												"description": "Screenshare permissions",
+												"properties": {
+													"can_produce": {
+														"description": "Can produce screen share video",
+														"enum": [
+															"ALLOWED",
+															"NOT_ALLOWED",
+															"CAN_REQUEST"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"video": {
+												"description": "Video permissions",
+												"properties": {
+													"can_produce": {
+														"description": "Can produce video",
+														"enum": [
+															"ALLOWED",
+															"NOT_ALLOWED",
+															"CAN_REQUEST"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"pin_participant": {
+										"type": "boolean"
+									},
+									"plugins": {
+										"description": "Plugin permissions",
+										"properties": {
+											"can_close": {
+												"description": "Can close plugins that are already open",
+												"type": "boolean"
+											},
+											"can_edit_config": {
+												"description": "Can edit plugin config",
+												"type": "boolean"
+											},
+											"can_start": {
+												"description": "Can start plugins",
+												"type": "boolean"
+											},
+											"config": {
+												"oneOf": [
+													{
+														"format": "uuid",
+														"type": "string"
+													},
+													{
+														"properties": {
+															"access_control": {
+																"enum": [
+																	"FULL_ACCESS",
+																	"VIEW_ONLY"
+																],
+																"type": "string"
+															},
+															"handles_view_only": {
+																"type": "boolean"
+															}
+														},
+														"type": "object"
+													}
+												]
+											}
+										},
+										"type": "object"
+									},
+									"polls": {
+										"description": "Poll permissions",
+										"properties": {
+											"can_create": {
+												"description": "Can create polls",
+												"type": "boolean"
+											},
+											"can_view": {
+												"description": "Can view polls",
+												"type": "boolean"
+											},
+											"can_vote": {
+												"description": "Can vote on polls",
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"recorder_type": {
+										"default": "NONE",
+										"description": "Type of the recording peer",
+										"enum": [
+											"RECORDER",
+											"LIVESTREAMER",
+											"NONE"
+										],
+										"type": "string"
+									},
+									"show_participant_list": {
+										"type": "boolean"
+									},
+									"waiting_room_type": {
+										"description": "Waiting room type",
+										"enum": [
+											"SKIP",
+											"ON_PRIVILEGED_USER_ENTRY",
+											"SKIP_ON_ACCEPT"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"ui": {
+								"properties": {
+									"config_diff": {
+										"type": "object"
+									},
+									"design_tokens": {
+										"properties": {
+											"border_radius": {
+												"enum": [
+													"rounded"
+												],
+												"type": "string"
+											},
+											"border_width": {
+												"enum": [
+													"thin"
+												],
+												"type": "string"
+											},
+											"colors": {
+												"properties": {
+													"background": {
+														"properties": {
+															"600": {
+																"default": "#222222",
+																"type": "string"
+															},
+															"700": {
+																"default": "#1f1f1f",
+																"type": "string"
+															},
+															"800": {
+																"default": "#1b1b1b",
+																"type": "string"
+															},
+															"900": {
+																"default": "#181818",
+																"type": "string"
+															},
+															"1000": {
+																"default": "#141414",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"brand": {
+														"properties": {
+															"300": {
+																"default": "#844d1c",
+																"type": "string"
+															},
+															"400": {
+																"default": "#9d5b22",
+																"type": "string"
+															},
+															"500": {
+																"default": "#b56927",
+																"type": "string"
+															},
+															"600": {
+																"default": "#d37c30",
+																"type": "string"
+															},
+															"700": {
+																"default": "#d9904f",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"danger": {
+														"default": "#FF2D2D",
+														"type": "string"
+													},
+													"success": {
+														"default": "#62A504",
+														"type": "string"
+													},
+													"text": {
+														"default": "#EEEEEE",
+														"type": "string"
+													},
+													"text_on_brand": {
+														"default": "#EEEEEE",
+														"type": "string"
+													},
+													"video_bg": {
+														"default": "#191919",
+														"type": "string"
+													},
+													"warning": {
+														"default": "#FFCD07",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"logo": {
+												"type": "string"
+											},
+											"spacing_base": {
+												"default": 4,
+												"type": "number"
+											},
+											"theme": {
+												"enum": [
+													"dark"
+												],
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"title": "UpdatePreset",
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"data": {
+											"description": "Data returned by the operation",
+											"type": "object"
+										},
+										"success": {
+											"default": true,
+											"description": "Success status of the operation",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"title": "GenericSuccessResponse",
+									"type": "object"
+								},
+								{
+									"properties": {
+										"data": {
+											"allOf": [
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the preset",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"config": {
+															"properties": {
+																"max_screenshare_count": {
+																	"description": "Maximum number of screen shares that can be active at a given time",
+																	"type": "integer"
+																},
+																"max_video_streams": {
+																	"description": "Maximum number of streams that are visible on a device",
+																	"properties": {
+																		"desktop": {
+																			"description": "Maximum number of video streams visible on desktop devices",
+																			"type": "integer"
+																		},
+																		"mobile": {
+																			"description": "Maximum number of streams visible on mobile devices",
+																			"type": "integer"
+																		}
+																	},
+																	"required": [
+																		"mobile",
+																		"desktop"
+																	],
+																	"type": "object"
+																},
+																"media": {
+																	"description": "Media configuration options. eg: Video quality",
+																	"properties": {
+																		"audio": {
+																			"description": "Control options for Audio quality.",
+																			"properties": {
+																				"enable_high_bitrate": {
+																					"default": false,
+																					"description": "Enable High Quality Audio for your meetings",
+																					"type": "boolean"
+																				},
+																				"enable_stereo": {
+																					"default": false,
+																					"description": "Enable Stereo for your meetings",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"screenshare": {
+																			"description": "Configuration options for participant screen shares",
+																			"properties": {
+																				"frame_rate": {
+																					"description": "Frame rate of screen share",
+																					"type": "integer"
+																				},
+																				"quality": {
+																					"description": "Quality of screen share ",
+																					"enum": [
+																						"hd",
+																						"vga",
+																						"qvga"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"quality",
+																				"frame_rate"
+																			],
+																			"type": "object"
+																		},
+																		"video": {
+																			"description": "Configuration options for participant videos",
+																			"properties": {
+																				"frame_rate": {
+																					"description": "Frame rate of participants' video",
+																					"maximum": 30,
+																					"type": "integer"
+																				},
+																				"quality": {
+																					"description": "Video quality of participants",
+																					"enum": [
+																						"hd",
+																						"vga",
+																						"qvga"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"quality",
+																				"frame_rate"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"video",
+																		"screenshare"
+																	],
+																	"type": "object"
+																},
+																"view_type": {
+																	"description": "Type of the meeting",
+																	"enum": [
+																		"GROUP_CALL",
+																		"WEBINAR",
+																		"AUDIO_ROOM"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"view_type",
+																"max_video_streams",
+																"max_screenshare_count",
+																"media"
+															],
+															"type": "object"
+														},
+														"name": {
+															"description": "Name of the preset",
+															"type": "string"
+														},
+														"permissions": {
+															"properties": {
+																"accept_waiting_requests": {
+																	"description": "Whether this participant can accept waiting requests",
+																	"type": "boolean"
+																},
+																"can_accept_production_requests": {
+																	"type": "boolean"
+																},
+																"can_change_participant_permissions": {
+																	"type": "boolean"
+																},
+																"can_edit_display_name": {
+																	"type": "boolean"
+																},
+																"can_livestream": {
+																	"type": "boolean"
+																},
+																"can_record": {
+																	"type": "boolean"
+																},
+																"can_spotlight": {
+																	"type": "boolean"
+																},
+																"chat": {
+																	"description": "Chat permissions",
+																	"properties": {
+																		"private": {
+																			"properties": {
+																				"can_receive": {
+																					"type": "boolean"
+																				},
+																				"can_send": {
+																					"type": "boolean"
+																				},
+																				"files": {
+																					"type": "boolean"
+																				},
+																				"text": {
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"can_send",
+																				"can_receive",
+																				"text",
+																				"files"
+																			],
+																			"type": "object"
+																		},
+																		"public": {
+																			"properties": {
+																				"can_send": {
+																					"description": "Can send messages in general",
+																					"type": "boolean"
+																				},
+																				"files": {
+																					"description": "Can send file messages",
+																					"type": "boolean"
+																				},
+																				"text": {
+																					"description": "Can send text messages",
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"can_send",
+																				"text",
+																				"files"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"public",
+																		"private"
+																	],
+																	"type": "object"
+																},
+																"connected_meetings": {
+																	"properties": {
+																		"can_alter_connected_meetings": {
+																			"type": "boolean"
+																		},
+																		"can_switch_connected_meetings": {
+																			"type": "boolean"
+																		},
+																		"can_switch_to_parent_meeting": {
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"can_alter_connected_meetings",
+																		"can_switch_connected_meetings",
+																		"can_switch_to_parent_meeting"
+																	],
+																	"type": "object"
+																},
+																"disable_participant_audio": {
+																	"type": "boolean"
+																},
+																"disable_participant_screensharing": {
+																	"type": "boolean"
+																},
+																"disable_participant_video": {
+																	"type": "boolean"
+																},
+																"hidden_participant": {
+																	"description": "Whether this participant is visible to others or not",
+																	"type": "boolean"
+																},
+																"is_recorder": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"kick_participant": {
+																	"type": "boolean"
+																},
+																"media": {
+																	"description": "Media permissions",
+																	"properties": {
+																		"audio": {
+																			"description": "Audio permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce audio",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		},
+																		"screenshare": {
+																			"description": "Screenshare permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce screen share video",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		},
+																		"video": {
+																			"description": "Video permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce video",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"video",
+																		"audio",
+																		"screenshare"
+																	],
+																	"type": "object"
+																},
+																"pin_participant": {
+																	"type": "boolean"
+																},
+																"plugins": {
+																	"description": "Plugin permissions",
+																	"properties": {
+																		"can_close": {
+																			"description": "Can close plugins that are already open",
+																			"type": "boolean"
+																		},
+																		"can_edit_config": {
+																			"description": "Can edit plugin config",
+																			"type": "boolean"
+																		},
+																		"can_start": {
+																			"description": "Can start plugins",
+																			"type": "boolean"
+																		},
+																		"config": {
+																			"oneOf": [
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				{
+																					"properties": {
+																						"access_control": {
+																							"enum": [
+																								"FULL_ACCESS",
+																								"VIEW_ONLY"
+																							],
+																							"type": "string"
+																						},
+																						"handles_view_only": {
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"access_control",
+																						"handles_view_only"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		}
+																	},
+																	"required": [
+																		"can_close",
+																		"can_start",
+																		"can_edit_config",
+																		"config"
+																	],
+																	"type": "object"
+																},
+																"polls": {
+																	"description": "Poll permissions",
+																	"properties": {
+																		"can_create": {
+																			"description": "Can create polls",
+																			"type": "boolean"
+																		},
+																		"can_view": {
+																			"description": "Can view polls",
+																			"type": "boolean"
+																		},
+																		"can_vote": {
+																			"description": "Can vote on polls",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"can_create",
+																		"can_vote",
+																		"can_view"
+																	],
+																	"type": "object"
+																},
+																"recorder_type": {
+																	"default": "NONE",
+																	"description": "Type of the recording peer",
+																	"enum": [
+																		"RECORDER",
+																		"LIVESTREAMER",
+																		"NONE"
+																	],
+																	"type": "string"
+																},
+																"show_participant_list": {
+																	"type": "boolean"
+																},
+																"waiting_room_type": {
+																	"description": "Waiting room type",
+																	"enum": [
+																		"SKIP",
+																		"ON_PRIVILEGED_USER_ENTRY",
+																		"SKIP_ON_ACCEPT"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"accept_waiting_requests",
+																"can_accept_production_requests",
+																"can_edit_display_name",
+																"can_spotlight",
+																"recorder_type",
+																"disable_participant_audio",
+																"disable_participant_screensharing",
+																"disable_participant_video",
+																"kick_participant",
+																"pin_participant",
+																"can_record",
+																"can_livestream",
+																"waiting_room_type",
+																"plugins",
+																"connected_meetings",
+																"polls",
+																"media",
+																"chat",
+																"hidden_participant",
+																"show_participant_list",
+																"can_change_participant_permissions"
+															],
+															"type": "object"
+														},
+														"ui": {
+															"properties": {
+																"config_diff": {
+																	"type": "object"
+																},
+																"design_tokens": {
+																	"properties": {
+																		"border_radius": {
+																			"enum": [
+																				"rounded"
+																			],
+																			"type": "string"
+																		},
+																		"border_width": {
+																			"enum": [
+																				"thin"
+																			],
+																			"type": "string"
+																		},
+																		"colors": {
+																			"properties": {
+																				"background": {
+																					"properties": {
+																						"600": {
+																							"default": "#222222",
+																							"type": "string"
+																						},
+																						"700": {
+																							"default": "#1f1f1f",
+																							"type": "string"
+																						},
+																						"800": {
+																							"default": "#1b1b1b",
+																							"type": "string"
+																						},
+																						"900": {
+																							"default": "#181818",
+																							"type": "string"
+																						},
+																						"1000": {
+																							"default": "#141414",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"600",
+																						"700",
+																						"800",
+																						"900",
+																						"1000"
+																					],
+																					"type": "object"
+																				},
+																				"brand": {
+																					"properties": {
+																						"300": {
+																							"default": "#844d1c",
+																							"type": "string"
+																						},
+																						"400": {
+																							"default": "#9d5b22",
+																							"type": "string"
+																						},
+																						"500": {
+																							"default": "#b56927",
+																							"type": "string"
+																						},
+																						"600": {
+																							"default": "#d37c30",
+																							"type": "string"
+																						},
+																						"700": {
+																							"default": "#d9904f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"300",
+																						"400",
+																						"500",
+																						"600",
+																						"700"
+																					],
+																					"type": "object"
+																				},
+																				"danger": {
+																					"default": "#FF2D2D",
+																					"type": "string"
+																				},
+																				"success": {
+																					"default": "#62A504",
+																					"type": "string"
+																				},
+																				"text": {
+																					"default": "#EEEEEE",
+																					"type": "string"
+																				},
+																				"text_on_brand": {
+																					"default": "#EEEEEE",
+																					"type": "string"
+																				},
+																				"video_bg": {
+																					"default": "#191919",
+																					"type": "string"
+																				},
+																				"warning": {
+																					"default": "#FFCD07",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"brand",
+																				"background",
+																				"danger",
+																				"text",
+																				"text_on_brand",
+																				"success",
+																				"video_bg",
+																				"warning"
+																			],
+																			"type": "object"
+																		},
+																		"logo": {
+																			"type": "string"
+																		},
+																		"spacing_base": {
+																			"default": 4,
+																			"type": "number"
+																		},
+																		"theme": {
+																			"enum": [
+																				"dark"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"border_radius",
+																		"border_width",
+																		"spacing_base",
+																		"theme",
+																		"colors",
+																		"logo"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"design_tokens"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"config",
+														"ui"
+													],
+													"title": "Preset",
+													"type": "object"
+												}
+											]
+										}
+									},
+									"required": [
+										"data"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update a preset",
+		"tags": [
+			"Presets"
+		]
+	},
+	"POST /accounts/{account_id}/realtimekit/presets": {
+		"description": "Creates a preset belonging to the current organization",
+		"operationId": "post-presets",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"config": {
+								"properties": {
+									"max_screenshare_count": {
+										"description": "Maximum number of screen shares that can be active at a given time",
+										"type": "integer"
+									},
+									"max_video_streams": {
+										"description": "Maximum number of streams that are visible on a device",
+										"properties": {
+											"desktop": {
+												"description": "Maximum number of video streams visible on desktop devices",
+												"type": "integer"
+											},
+											"mobile": {
+												"description": "Maximum number of streams visible on mobile devices",
+												"type": "integer"
+											}
+										},
+										"required": [
+											"mobile",
+											"desktop"
+										],
+										"type": "object"
+									},
+									"media": {
+										"description": "Media configuration options. eg: Video quality",
+										"properties": {
+											"audio": {
+												"description": "Control options for Audio quality.",
+												"properties": {
+													"enable_high_bitrate": {
+														"default": false,
+														"description": "Enable High Quality Audio for your meetings",
+														"type": "boolean"
+													},
+													"enable_stereo": {
+														"default": false,
+														"description": "Enable Stereo for your meetings",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"screenshare": {
+												"description": "Configuration options for participant screen shares",
+												"properties": {
+													"frame_rate": {
+														"description": "Frame rate of screen share",
+														"type": "integer"
+													},
+													"quality": {
+														"description": "Quality of screen share ",
+														"enum": [
+															"hd",
+															"vga",
+															"qvga"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"quality",
+													"frame_rate"
+												],
+												"type": "object"
+											},
+											"video": {
+												"description": "Configuration options for participant videos",
+												"properties": {
+													"frame_rate": {
+														"description": "Frame rate of participants' video",
+														"maximum": 30,
+														"type": "integer"
+													},
+													"quality": {
+														"description": "Video quality of participants",
+														"enum": [
+															"hd",
+															"vga",
+															"qvga"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"quality",
+													"frame_rate"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"video",
+											"screenshare"
+										],
+										"type": "object"
+									},
+									"view_type": {
+										"description": "Type of the meeting",
+										"enum": [
+											"GROUP_CALL",
+											"WEBINAR",
+											"AUDIO_ROOM"
+										],
+										"type": "string"
+									}
+								},
+								"required": [
+									"view_type",
+									"max_video_streams",
+									"max_screenshare_count",
+									"media"
+								],
+								"type": "object"
+							},
+							"name": {
+								"description": "Name of the preset",
+								"type": "string"
+							},
+							"permissions": {
+								"properties": {
+									"accept_waiting_requests": {
+										"description": "Whether this participant can accept waiting requests",
+										"type": "boolean"
+									},
+									"can_accept_production_requests": {
+										"type": "boolean"
+									},
+									"can_change_participant_permissions": {
+										"type": "boolean"
+									},
+									"can_edit_display_name": {
+										"type": "boolean"
+									},
+									"can_livestream": {
+										"type": "boolean"
+									},
+									"can_record": {
+										"type": "boolean"
+									},
+									"can_spotlight": {
+										"type": "boolean"
+									},
+									"chat": {
+										"description": "Chat permissions",
+										"properties": {
+											"private": {
+												"properties": {
+													"can_receive": {
+														"type": "boolean"
+													},
+													"can_send": {
+														"type": "boolean"
+													},
+													"files": {
+														"type": "boolean"
+													},
+													"text": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"can_send",
+													"can_receive",
+													"text",
+													"files"
+												],
+												"type": "object"
+											},
+											"public": {
+												"properties": {
+													"can_send": {
+														"description": "Can send messages in general",
+														"type": "boolean"
+													},
+													"files": {
+														"description": "Can send file messages",
+														"type": "boolean"
+													},
+													"text": {
+														"description": "Can send text messages",
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"can_send",
+													"text",
+													"files"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"public",
+											"private"
+										],
+										"type": "object"
+									},
+									"connected_meetings": {
+										"properties": {
+											"can_alter_connected_meetings": {
+												"type": "boolean"
+											},
+											"can_switch_connected_meetings": {
+												"type": "boolean"
+											},
+											"can_switch_to_parent_meeting": {
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"can_alter_connected_meetings",
+											"can_switch_connected_meetings",
+											"can_switch_to_parent_meeting"
+										],
+										"type": "object"
+									},
+									"disable_participant_audio": {
+										"type": "boolean"
+									},
+									"disable_participant_screensharing": {
+										"type": "boolean"
+									},
+									"disable_participant_video": {
+										"type": "boolean"
+									},
+									"hidden_participant": {
+										"description": "Whether this participant is visible to others or not",
+										"type": "boolean"
+									},
+									"is_recorder": {
+										"default": false,
+										"type": "boolean"
+									},
+									"kick_participant": {
+										"type": "boolean"
+									},
+									"media": {
+										"description": "Media permissions",
+										"properties": {
+											"audio": {
+												"description": "Audio permissions",
+												"properties": {
+													"can_produce": {
+														"description": "Can produce audio",
+														"enum": [
+															"ALLOWED",
+															"NOT_ALLOWED",
+															"CAN_REQUEST"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"can_produce"
+												],
+												"type": "object"
+											},
+											"screenshare": {
+												"description": "Screenshare permissions",
+												"properties": {
+													"can_produce": {
+														"description": "Can produce screen share video",
+														"enum": [
+															"ALLOWED",
+															"NOT_ALLOWED",
+															"CAN_REQUEST"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"can_produce"
+												],
+												"type": "object"
+											},
+											"video": {
+												"description": "Video permissions",
+												"properties": {
+													"can_produce": {
+														"description": "Can produce video",
+														"enum": [
+															"ALLOWED",
+															"NOT_ALLOWED",
+															"CAN_REQUEST"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"can_produce"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"video",
+											"audio",
+											"screenshare"
+										],
+										"type": "object"
+									},
+									"pin_participant": {
+										"type": "boolean"
+									},
+									"plugins": {
+										"description": "Plugin permissions",
+										"properties": {
+											"can_close": {
+												"description": "Can close plugins that are already open",
+												"type": "boolean"
+											},
+											"can_edit_config": {
+												"description": "Can edit plugin config",
+												"type": "boolean"
+											},
+											"can_start": {
+												"description": "Can start plugins",
+												"type": "boolean"
+											},
+											"config": {
+												"oneOf": [
+													{
+														"format": "uuid",
+														"type": "string"
+													},
+													{
+														"properties": {
+															"access_control": {
+																"enum": [
+																	"FULL_ACCESS",
+																	"VIEW_ONLY"
+																],
+																"type": "string"
+															},
+															"handles_view_only": {
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"access_control",
+															"handles_view_only"
+														],
+														"type": "object"
+													}
+												]
+											}
+										},
+										"required": [
+											"can_close",
+											"can_start",
+											"can_edit_config",
+											"config"
+										],
+										"type": "object"
+									},
+									"polls": {
+										"description": "Poll permissions",
+										"properties": {
+											"can_create": {
+												"description": "Can create polls",
+												"type": "boolean"
+											},
+											"can_view": {
+												"description": "Can view polls",
+												"type": "boolean"
+											},
+											"can_vote": {
+												"description": "Can vote on polls",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"can_create",
+											"can_vote",
+											"can_view"
+										],
+										"type": "object"
+									},
+									"recorder_type": {
+										"default": "NONE",
+										"description": "Type of the recording peer",
+										"enum": [
+											"RECORDER",
+											"LIVESTREAMER",
+											"NONE"
+										],
+										"type": "string"
+									},
+									"show_participant_list": {
+										"type": "boolean"
+									},
+									"waiting_room_type": {
+										"description": "Waiting room type",
+										"enum": [
+											"SKIP",
+											"ON_PRIVILEGED_USER_ENTRY",
+											"SKIP_ON_ACCEPT"
+										],
+										"type": "string"
+									}
+								},
+								"required": [
+									"accept_waiting_requests",
+									"can_accept_production_requests",
+									"can_edit_display_name",
+									"can_spotlight",
+									"recorder_type",
+									"disable_participant_audio",
+									"disable_participant_screensharing",
+									"disable_participant_video",
+									"kick_participant",
+									"pin_participant",
+									"can_record",
+									"can_livestream",
+									"waiting_room_type",
+									"plugins",
+									"connected_meetings",
+									"polls",
+									"media",
+									"chat",
+									"hidden_participant",
+									"show_participant_list",
+									"can_change_participant_permissions"
+								],
+								"type": "object"
+							},
+							"ui": {
+								"properties": {
+									"config_diff": {
+										"type": "object"
+									},
+									"design_tokens": {
+										"properties": {
+											"border_radius": {
+												"enum": [
+													"rounded"
+												],
+												"type": "string"
+											},
+											"border_width": {
+												"enum": [
+													"thin"
+												],
+												"type": "string"
+											},
+											"colors": {
+												"properties": {
+													"background": {
+														"properties": {
+															"600": {
+																"default": "#222222",
+																"type": "string"
+															},
+															"700": {
+																"default": "#1f1f1f",
+																"type": "string"
+															},
+															"800": {
+																"default": "#1b1b1b",
+																"type": "string"
+															},
+															"900": {
+																"default": "#181818",
+																"type": "string"
+															},
+															"1000": {
+																"default": "#141414",
+																"type": "string"
+															}
+														},
+														"required": [
+															"600",
+															"700",
+															"800",
+															"900",
+															"1000"
+														],
+														"type": "object"
+													},
+													"brand": {
+														"properties": {
+															"300": {
+																"default": "#844d1c",
+																"type": "string"
+															},
+															"400": {
+																"default": "#9d5b22",
+																"type": "string"
+															},
+															"500": {
+																"default": "#b56927",
+																"type": "string"
+															},
+															"600": {
+																"default": "#d37c30",
+																"type": "string"
+															},
+															"700": {
+																"default": "#d9904f",
+																"type": "string"
+															}
+														},
+														"required": [
+															"300",
+															"400",
+															"500",
+															"600",
+															"700"
+														],
+														"type": "object"
+													},
+													"danger": {
+														"default": "#FF2D2D",
+														"type": "string"
+													},
+													"success": {
+														"default": "#62A504",
+														"type": "string"
+													},
+													"text": {
+														"default": "#EEEEEE",
+														"type": "string"
+													},
+													"text_on_brand": {
+														"default": "#EEEEEE",
+														"type": "string"
+													},
+													"video_bg": {
+														"default": "#191919",
+														"type": "string"
+													},
+													"warning": {
+														"default": "#FFCD07",
+														"type": "string"
+													}
+												},
+												"required": [
+													"brand",
+													"background",
+													"danger",
+													"text",
+													"text_on_brand",
+													"success",
+													"video_bg",
+													"warning"
+												],
+												"type": "object"
+											},
+											"logo": {
+												"type": "string"
+											},
+											"spacing_base": {
+												"default": 4,
+												"type": "number"
+											},
+											"theme": {
+												"enum": [
+													"dark"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"border_radius",
+											"border_width",
+											"spacing_base",
+											"theme",
+											"colors",
+											"logo"
+										],
+										"type": "object"
+									}
+								},
+								"required": [
+									"design_tokens"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"name",
+							"config",
+							"ui"
+						],
+						"title": "Preset",
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"data": {
+											"description": "Data returned by the operation",
+											"type": "object"
+										},
+										"success": {
+											"default": true,
+											"description": "Success status of the operation",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"title": "GenericSuccessResponse",
+									"type": "object"
+								},
+								{
+									"properties": {
+										"data": {
+											"allOf": [
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the preset",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"config": {
+															"properties": {
+																"max_screenshare_count": {
+																	"description": "Maximum number of screen shares that can be active at a given time",
+																	"type": "integer"
+																},
+																"max_video_streams": {
+																	"description": "Maximum number of streams that are visible on a device",
+																	"properties": {
+																		"desktop": {
+																			"description": "Maximum number of video streams visible on desktop devices",
+																			"type": "integer"
+																		},
+																		"mobile": {
+																			"description": "Maximum number of streams visible on mobile devices",
+																			"type": "integer"
+																		}
+																	},
+																	"required": [
+																		"mobile",
+																		"desktop"
+																	],
+																	"type": "object"
+																},
+																"media": {
+																	"description": "Media configuration options. eg: Video quality",
+																	"properties": {
+																		"audio": {
+																			"description": "Control options for Audio quality.",
+																			"properties": {
+																				"enable_high_bitrate": {
+																					"default": false,
+																					"description": "Enable High Quality Audio for your meetings",
+																					"type": "boolean"
+																				},
+																				"enable_stereo": {
+																					"default": false,
+																					"description": "Enable Stereo for your meetings",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"screenshare": {
+																			"description": "Configuration options for participant screen shares",
+																			"properties": {
+																				"frame_rate": {
+																					"description": "Frame rate of screen share",
+																					"type": "integer"
+																				},
+																				"quality": {
+																					"description": "Quality of screen share ",
+																					"enum": [
+																						"hd",
+																						"vga",
+																						"qvga"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"quality",
+																				"frame_rate"
+																			],
+																			"type": "object"
+																		},
+																		"video": {
+																			"description": "Configuration options for participant videos",
+																			"properties": {
+																				"frame_rate": {
+																					"description": "Frame rate of participants' video",
+																					"maximum": 30,
+																					"type": "integer"
+																				},
+																				"quality": {
+																					"description": "Video quality of participants",
+																					"enum": [
+																						"hd",
+																						"vga",
+																						"qvga"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"quality",
+																				"frame_rate"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"video",
+																		"screenshare"
+																	],
+																	"type": "object"
+																},
+																"view_type": {
+																	"description": "Type of the meeting",
+																	"enum": [
+																		"GROUP_CALL",
+																		"WEBINAR",
+																		"AUDIO_ROOM"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"view_type",
+																"max_video_streams",
+																"max_screenshare_count",
+																"media"
+															],
+															"type": "object"
+														},
+														"name": {
+															"description": "Name of the preset",
+															"type": "string"
+														},
+														"permissions": {
+															"properties": {
+																"accept_waiting_requests": {
+																	"description": "Whether this participant can accept waiting requests",
+																	"type": "boolean"
+																},
+																"can_accept_production_requests": {
+																	"type": "boolean"
+																},
+																"can_change_participant_permissions": {
+																	"type": "boolean"
+																},
+																"can_edit_display_name": {
+																	"type": "boolean"
+																},
+																"can_livestream": {
+																	"type": "boolean"
+																},
+																"can_record": {
+																	"type": "boolean"
+																},
+																"can_spotlight": {
+																	"type": "boolean"
+																},
+																"chat": {
+																	"description": "Chat permissions",
+																	"properties": {
+																		"private": {
+																			"properties": {
+																				"can_receive": {
+																					"type": "boolean"
+																				},
+																				"can_send": {
+																					"type": "boolean"
+																				},
+																				"files": {
+																					"type": "boolean"
+																				},
+																				"text": {
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"can_send",
+																				"can_receive",
+																				"text",
+																				"files"
+																			],
+																			"type": "object"
+																		},
+																		"public": {
+																			"properties": {
+																				"can_send": {
+																					"description": "Can send messages in general",
+																					"type": "boolean"
+																				},
+																				"files": {
+																					"description": "Can send file messages",
+																					"type": "boolean"
+																				},
+																				"text": {
+																					"description": "Can send text messages",
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"can_send",
+																				"text",
+																				"files"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"public",
+																		"private"
+																	],
+																	"type": "object"
+																},
+																"connected_meetings": {
+																	"properties": {
+																		"can_alter_connected_meetings": {
+																			"type": "boolean"
+																		},
+																		"can_switch_connected_meetings": {
+																			"type": "boolean"
+																		},
+																		"can_switch_to_parent_meeting": {
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"can_alter_connected_meetings",
+																		"can_switch_connected_meetings",
+																		"can_switch_to_parent_meeting"
+																	],
+																	"type": "object"
+																},
+																"disable_participant_audio": {
+																	"type": "boolean"
+																},
+																"disable_participant_screensharing": {
+																	"type": "boolean"
+																},
+																"disable_participant_video": {
+																	"type": "boolean"
+																},
+																"hidden_participant": {
+																	"description": "Whether this participant is visible to others or not",
+																	"type": "boolean"
+																},
+																"is_recorder": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"kick_participant": {
+																	"type": "boolean"
+																},
+																"media": {
+																	"description": "Media permissions",
+																	"properties": {
+																		"audio": {
+																			"description": "Audio permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce audio",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		},
+																		"screenshare": {
+																			"description": "Screenshare permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce screen share video",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		},
+																		"video": {
+																			"description": "Video permissions",
+																			"properties": {
+																				"can_produce": {
+																					"description": "Can produce video",
+																					"enum": [
+																						"ALLOWED",
+																						"NOT_ALLOWED",
+																						"CAN_REQUEST"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"can_produce"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"video",
+																		"audio",
+																		"screenshare"
+																	],
+																	"type": "object"
+																},
+																"pin_participant": {
+																	"type": "boolean"
+																},
+																"plugins": {
+																	"description": "Plugin permissions",
+																	"properties": {
+																		"can_close": {
+																			"description": "Can close plugins that are already open",
+																			"type": "boolean"
+																		},
+																		"can_edit_config": {
+																			"description": "Can edit plugin config",
+																			"type": "boolean"
+																		},
+																		"can_start": {
+																			"description": "Can start plugins",
+																			"type": "boolean"
+																		},
+																		"config": {
+																			"oneOf": [
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				{
+																					"properties": {
+																						"access_control": {
+																							"enum": [
+																								"FULL_ACCESS",
+																								"VIEW_ONLY"
+																							],
+																							"type": "string"
+																						},
+																						"handles_view_only": {
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"access_control",
+																						"handles_view_only"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		}
+																	},
+																	"required": [
+																		"can_close",
+																		"can_start",
+																		"can_edit_config",
+																		"config"
+																	],
+																	"type": "object"
+																},
+																"polls": {
+																	"description": "Poll permissions",
+																	"properties": {
+																		"can_create": {
+																			"description": "Can create polls",
+																			"type": "boolean"
+																		},
+																		"can_view": {
+																			"description": "Can view polls",
+																			"type": "boolean"
+																		},
+																		"can_vote": {
+																			"description": "Can vote on polls",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"can_create",
+																		"can_vote",
+																		"can_view"
+																	],
+																	"type": "object"
+																},
+																"recorder_type": {
+																	"default": "NONE",
+																	"description": "Type of the recording peer",
+																	"enum": [
+																		"RECORDER",
+																		"LIVESTREAMER",
+																		"NONE"
+																	],
+																	"type": "string"
+																},
+																"show_participant_list": {
+																	"type": "boolean"
+																},
+																"waiting_room_type": {
+																	"description": "Waiting room type",
+																	"enum": [
+																		"SKIP",
+																		"ON_PRIVILEGED_USER_ENTRY",
+																		"SKIP_ON_ACCEPT"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"accept_waiting_requests",
+																"can_accept_production_requests",
+																"can_edit_display_name",
+																"can_spotlight",
+																"recorder_type",
+																"disable_participant_audio",
+																"disable_participant_screensharing",
+																"disable_participant_video",
+																"kick_participant",
+																"pin_participant",
+																"can_record",
+																"can_livestream",
+																"waiting_room_type",
+																"plugins",
+																"connected_meetings",
+																"polls",
+																"media",
+																"chat",
+																"hidden_participant",
+																"show_participant_list",
+																"can_change_participant_permissions"
+															],
+															"type": "object"
+														},
+														"ui": {
+															"properties": {
+																"config_diff": {
+																	"type": "object"
+																},
+																"design_tokens": {
+																	"properties": {
+																		"border_radius": {
+																			"enum": [
+																				"rounded"
+																			],
+																			"type": "string"
+																		},
+																		"border_width": {
+																			"enum": [
+																				"thin"
+																			],
+																			"type": "string"
+																		},
+																		"colors": {
+																			"properties": {
+																				"background": {
+																					"properties": {
+																						"600": {
+																							"default": "#222222",
+																							"type": "string"
+																						},
+																						"700": {
+																							"default": "#1f1f1f",
+																							"type": "string"
+																						},
+																						"800": {
+																							"default": "#1b1b1b",
+																							"type": "string"
+																						},
+																						"900": {
+																							"default": "#181818",
+																							"type": "string"
+																						},
+																						"1000": {
+																							"default": "#141414",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"600",
+																						"700",
+																						"800",
+																						"900",
+																						"1000"
+																					],
+																					"type": "object"
+																				},
+																				"brand": {
+																					"properties": {
+																						"300": {
+																							"default": "#844d1c",
+																							"type": "string"
+																						},
+																						"400": {
+																							"default": "#9d5b22",
+																							"type": "string"
+																						},
+																						"500": {
+																							"default": "#b56927",
+																							"type": "string"
+																						},
+																						"600": {
+																							"default": "#d37c30",
+																							"type": "string"
+																						},
+																						"700": {
+																							"default": "#d9904f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"300",
+																						"400",
+																						"500",
+																						"600",
+																						"700"
+																					],
+																					"type": "object"
+																				},
+																				"danger": {
+																					"default": "#FF2D2D",
+																					"type": "string"
+																				},
+																				"success": {
+																					"default": "#62A504",
+																					"type": "string"
+																				},
+																				"text": {
+																					"default": "#EEEEEE",
+																					"type": "string"
+																				},
+																				"text_on_brand": {
+																					"default": "#EEEEEE",
+																					"type": "string"
+																				},
+																				"video_bg": {
+																					"default": "#191919",
+																					"type": "string"
+																				},
+																				"warning": {
+																					"default": "#FFCD07",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"brand",
+																				"background",
+																				"danger",
+																				"text",
+																				"text_on_brand",
+																				"success",
+																				"video_bg",
+																				"warning"
+																			],
+																			"type": "object"
+																		},
+																		"logo": {
+																			"type": "string"
+																		},
+																		"spacing_base": {
+																			"default": 4,
+																			"type": "number"
+																		},
+																		"theme": {
+																			"enum": [
+																				"dark"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"border_radius",
+																		"border_width",
+																		"spacing_base",
+																		"theme",
+																		"colors",
+																		"logo"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"design_tokens"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"config",
+														"ui"
+													],
+													"title": "Preset",
+													"type": "object"
+												}
+											]
+										}
+									},
+									"required": [
+										"data"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create a preset",
+		"tags": [
+			"Presets"
+		]
+	}
+}

@@ -63,30 +63,90 @@
 											"type": "string"
 										},
 										"dlp": {
-											"properties": {
-												"action": {
-													"enum": [
-														"BLOCK",
-														"FLAG"
-													],
-													"type": "string"
-												},
-												"enabled": {
-													"type": "boolean"
-												},
-												"profiles": {
-													"items": {
-														"type": "string"
+											"anyOf": [
+												{
+													"properties": {
+														"action": {
+															"enum": [
+																"BLOCK",
+																"FLAG"
+															],
+															"type": "string"
+														},
+														"enabled": {
+															"type": "boolean"
+														},
+														"profiles": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
-													"type": "array"
+													"required": [
+														"profiles",
+														"enabled",
+														"action"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"enabled": {
+															"type": "boolean"
+														},
+														"policies": {
+															"items": {
+																"properties": {
+																	"action": {
+																		"enum": [
+																			"FLAG",
+																			"BLOCK"
+																		],
+																		"type": "string"
+																	},
+																	"check": {
+																		"items": {
+																			"enum": [
+																				"REQUEST",
+																				"RESPONSE"
+																			],
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"type": "string"
+																	},
+																	"profiles": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"id",
+																	"enabled",
+																	"action",
+																	"profiles",
+																	"check"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"enabled",
+														"policies"
+													],
+													"type": "object"
 												}
-											},
-											"required": [
-												"profiles",
-												"enabled",
-												"action"
-											],
-											"type": "object"
+											]
 										},
 										"id": {
 											"description": "gateway id",
@@ -333,30 +393,90 @@
 												"type": "string"
 											},
 											"dlp": {
-												"properties": {
-													"action": {
-														"enum": [
-															"BLOCK",
-															"FLAG"
-														],
-														"type": "string"
-													},
-													"enabled": {
-														"type": "boolean"
-													},
-													"profiles": {
-														"items": {
-															"type": "string"
+												"anyOf": [
+													{
+														"properties": {
+															"action": {
+																"enum": [
+																	"BLOCK",
+																	"FLAG"
+																],
+																"type": "string"
+															},
+															"enabled": {
+																"type": "boolean"
+															},
+															"profiles": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															}
 														},
-														"type": "array"
+														"required": [
+															"profiles",
+															"enabled",
+															"action"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"enabled": {
+																"type": "boolean"
+															},
+															"policies": {
+																"items": {
+																	"properties": {
+																		"action": {
+																			"enum": [
+																				"FLAG",
+																				"BLOCK"
+																			],
+																			"type": "string"
+																		},
+																		"check": {
+																			"items": {
+																				"enum": [
+																					"REQUEST",
+																					"RESPONSE"
+																				],
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"enabled": {
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"type": "string"
+																		},
+																		"profiles": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"enabled",
+																		"action",
+																		"profiles",
+																		"check"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"required": [
+															"enabled",
+															"policies"
+														],
+														"type": "object"
 													}
-												},
-												"required": [
-													"profiles",
-													"enabled",
-													"action"
-												],
-												"type": "object"
+												]
 											},
 											"id": {
 												"description": "gateway id",
@@ -718,30 +838,90 @@
 											"type": "string"
 										},
 										"dlp": {
-											"properties": {
-												"action": {
-													"enum": [
-														"BLOCK",
-														"FLAG"
-													],
-													"type": "string"
-												},
-												"enabled": {
-													"type": "boolean"
-												},
-												"profiles": {
-													"items": {
-														"type": "string"
+											"anyOf": [
+												{
+													"properties": {
+														"action": {
+															"enum": [
+																"BLOCK",
+																"FLAG"
+															],
+															"type": "string"
+														},
+														"enabled": {
+															"type": "boolean"
+														},
+														"profiles": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
-													"type": "array"
+													"required": [
+														"profiles",
+														"enabled",
+														"action"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"enabled": {
+															"type": "boolean"
+														},
+														"policies": {
+															"items": {
+																"properties": {
+																	"action": {
+																		"enum": [
+																			"FLAG",
+																			"BLOCK"
+																		],
+																		"type": "string"
+																	},
+																	"check": {
+																		"items": {
+																			"enum": [
+																				"REQUEST",
+																				"RESPONSE"
+																			],
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"type": "string"
+																	},
+																	"profiles": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"id",
+																	"enabled",
+																	"action",
+																	"profiles",
+																	"check"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"enabled",
+														"policies"
+													],
+													"type": "object"
 												}
-											},
-											"required": [
-												"profiles",
-												"enabled",
-												"action"
-											],
-											"type": "object"
+											]
 										},
 										"id": {
 											"description": "gateway id",
@@ -1055,30 +1235,90 @@
 											"type": "string"
 										},
 										"dlp": {
-											"properties": {
-												"action": {
-													"enum": [
-														"BLOCK",
-														"FLAG"
-													],
-													"type": "string"
-												},
-												"enabled": {
-													"type": "boolean"
-												},
-												"profiles": {
-													"items": {
-														"type": "string"
+											"anyOf": [
+												{
+													"properties": {
+														"action": {
+															"enum": [
+																"BLOCK",
+																"FLAG"
+															],
+															"type": "string"
+														},
+														"enabled": {
+															"type": "boolean"
+														},
+														"profiles": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
-													"type": "array"
+													"required": [
+														"profiles",
+														"enabled",
+														"action"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"enabled": {
+															"type": "boolean"
+														},
+														"policies": {
+															"items": {
+																"properties": {
+																	"action": {
+																		"enum": [
+																			"FLAG",
+																			"BLOCK"
+																		],
+																		"type": "string"
+																	},
+																	"check": {
+																		"items": {
+																			"enum": [
+																				"REQUEST",
+																				"RESPONSE"
+																			],
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"type": "string"
+																	},
+																	"profiles": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"id",
+																	"enabled",
+																	"action",
+																	"profiles",
+																	"check"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"enabled",
+														"policies"
+													],
+													"type": "object"
 												}
-											},
-											"required": [
-												"profiles",
-												"enabled",
-												"action"
-											],
-											"type": "object"
+											]
 										},
 										"id": {
 											"description": "gateway id",
@@ -1306,30 +1546,90 @@
 								"x-auditable": true
 							},
 							"dlp": {
-								"properties": {
-									"action": {
-										"enum": [
-											"BLOCK",
-											"FLAG"
-										],
-										"type": "string"
-									},
-									"enabled": {
-										"type": "boolean"
-									},
-									"profiles": {
-										"items": {
-											"type": "string"
+								"anyOf": [
+									{
+										"properties": {
+											"action": {
+												"enum": [
+													"BLOCK",
+													"FLAG"
+												],
+												"type": "string"
+											},
+											"enabled": {
+												"type": "boolean"
+											},
+											"profiles": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
 										},
-										"type": "array"
+										"required": [
+											"profiles",
+											"enabled",
+											"action"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"enabled": {
+												"type": "boolean"
+											},
+											"policies": {
+												"items": {
+													"properties": {
+														"action": {
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															],
+															"type": "string"
+														},
+														"check": {
+															"items": {
+																"enum": [
+																	"REQUEST",
+																	"RESPONSE"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"enabled": {
+															"type": "boolean"
+														},
+														"id": {
+															"type": "string"
+														},
+														"profiles": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"id",
+														"enabled",
+														"action",
+														"profiles",
+														"check"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"enabled",
+											"policies"
+										],
+										"type": "object"
 									}
-								},
-								"required": [
-									"profiles",
-									"enabled",
-									"action"
-								],
-								"type": "object"
+								]
 							},
 							"log_management": {
 								"maximum": 10000000,
@@ -1433,30 +1733,90 @@
 											"type": "string"
 										},
 										"dlp": {
-											"properties": {
-												"action": {
-													"enum": [
-														"BLOCK",
-														"FLAG"
-													],
-													"type": "string"
-												},
-												"enabled": {
-													"type": "boolean"
-												},
-												"profiles": {
-													"items": {
-														"type": "string"
+											"anyOf": [
+												{
+													"properties": {
+														"action": {
+															"enum": [
+																"BLOCK",
+																"FLAG"
+															],
+															"type": "string"
+														},
+														"enabled": {
+															"type": "boolean"
+														},
+														"profiles": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
-													"type": "array"
+													"required": [
+														"profiles",
+														"enabled",
+														"action"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"enabled": {
+															"type": "boolean"
+														},
+														"policies": {
+															"items": {
+																"properties": {
+																	"action": {
+																		"enum": [
+																			"FLAG",
+																			"BLOCK"
+																		],
+																		"type": "string"
+																	},
+																	"check": {
+																		"items": {
+																			"enum": [
+																				"REQUEST",
+																				"RESPONSE"
+																			],
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"type": "string"
+																	},
+																	"profiles": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"id",
+																	"enabled",
+																	"action",
+																	"profiles",
+																	"check"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"enabled",
+														"policies"
+													],
+													"type": "object"
 												}
-											},
-											"required": [
-												"profiles",
-												"enabled",
-												"action"
-											],
-											"type": "object"
+											]
 										},
 										"id": {
 											"description": "gateway id",

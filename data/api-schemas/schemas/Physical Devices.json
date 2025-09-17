@@ -362,6 +362,7 @@
 				}
 			},
 			{
+				"description": "Comma-separated list of additional information that should be included in the device response. Supported values are: \"last_seen_registration.policy\".\n",
 				"in": "query",
 				"name": "include",
 				"schema": {
@@ -470,6 +471,61 @@
 												"nullable": true,
 												"type": "string",
 												"x-auditable": true
+											},
+											"last_seen_registration": {
+												"allOf": [
+													{
+														"description": "The summary of a registration.",
+														"properties": {
+															"policy": {
+																"allOf": [
+																	{
+																		"description": "The device settings profile assigned to this registration.",
+																		"properties": {
+																			"default": {
+																				"description": "Whether the device settings profile is the default profile for the account.",
+																				"type": "boolean"
+																			},
+																			"deleted": {
+																				"description": "Whether the device settings profile was deleted.",
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"description": "The ID of the device settings profile.",
+																				"example": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
+																				"type": "string"
+																			},
+																			"name": {
+																				"description": "The name of the device settings profile.",
+																				"type": "string"
+																			},
+																			"updated_at": {
+																				"description": "The RFC3339 timestamp of when the device settings profile last changed for the registration.",
+																				"example": "2025-02-14T13:17:00Z",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"updated_at",
+																			"default",
+																			"deleted"
+																		],
+																		"type": "object"
+																	}
+																],
+																"description": "A summary of the device profile evaluated for the registration.",
+																"nullable": true,
+																"type": "object"
+															}
+														},
+														"type": "object"
+													}
+												],
+												"description": "The last seen registration for the device.",
+												"nullable": true,
+												"type": "object"
 											},
 											"last_seen_user": {
 												"allOf": [
@@ -661,6 +717,14 @@
 				"schema": {
 					"type": "string"
 				}
+			},
+			{
+				"description": "Comma-separated list of additional information that should be included in the device response. Supported values are: \"last_seen_registration.policy\".\n",
+				"in": "query",
+				"name": "include",
+				"schema": {
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -761,6 +825,61 @@
 											"nullable": true,
 											"type": "string",
 											"x-auditable": true
+										},
+										"last_seen_registration": {
+											"allOf": [
+												{
+													"description": "The summary of a registration.",
+													"properties": {
+														"policy": {
+															"allOf": [
+																{
+																	"description": "The device settings profile assigned to this registration.",
+																	"properties": {
+																		"default": {
+																			"description": "Whether the device settings profile is the default profile for the account.",
+																			"type": "boolean"
+																		},
+																		"deleted": {
+																			"description": "Whether the device settings profile was deleted.",
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"description": "The ID of the device settings profile.",
+																			"example": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "The name of the device settings profile.",
+																			"type": "string"
+																		},
+																		"updated_at": {
+																			"description": "The RFC3339 timestamp of when the device settings profile last changed for the registration.",
+																			"example": "2025-02-14T13:17:00Z",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name",
+																		"updated_at",
+																		"default",
+																		"deleted"
+																	],
+																	"type": "object"
+																}
+															],
+															"description": "A summary of the device profile evaluated for the registration.",
+															"nullable": true,
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"description": "The last seen registration for the device.",
+											"nullable": true,
+											"type": "object"
 										},
 										"last_seen_user": {
 											"allOf": [

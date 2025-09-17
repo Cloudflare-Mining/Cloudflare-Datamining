@@ -1788,25 +1788,20 @@
 				"content": {
 					"multipart/form-data": {
 						"schema": {
-							"description": "A snippet content response object.",
-							"properties": {
-								"files": {
-									"description": "The list of files belonging to the snippet.",
-									"items": {
-										"description": "A file belonging to the snippet.",
-										"format": "binary",
-										"title": "File",
-										"type": "string",
-										"x-auditable": true
-									},
-									"minItems": 1,
-									"title": "Files",
-									"type": "array"
-								}
+							"additionalProperties": {
+								"description": "The list of files belonging to the snippet.",
+								"items": {
+									"description": "A file belonging to the snippet.",
+									"format": "binary",
+									"title": "File",
+									"type": "string",
+									"x-auditable": true
+								},
+								"minItems": 1,
+								"title": "Files",
+								"type": "array"
 							},
-							"required": [
-								"files"
-							],
+							"description": "A snippet content response object.",
 							"title": "Snippet Content Response",
 							"type": "object"
 						}
@@ -2550,21 +2545,21 @@
 			"content": {
 				"multipart/form-data": {
 					"schema": {
+						"additionalProperties": {
+							"description": "The list of files belonging to the snippet.",
+							"items": {
+								"description": "A file belonging to the snippet.",
+								"format": "binary",
+								"title": "File",
+								"type": "string",
+								"x-auditable": true
+							},
+							"minItems": 1,
+							"title": "Files",
+							"type": "array"
+						},
 						"description": "A snippet object.",
 						"properties": {
-							"files": {
-								"description": "The list of files belonging to the snippet.",
-								"items": {
-									"description": "A file belonging to the snippet.",
-									"format": "binary",
-									"title": "File",
-									"type": "string",
-									"x-auditable": true
-								},
-								"minItems": 1,
-								"title": "Files",
-								"type": "array"
-							},
 							"metadata": {
 								"description": "Metadata about the snippet.",
 								"properties": {
