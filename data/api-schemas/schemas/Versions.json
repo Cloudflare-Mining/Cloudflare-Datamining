@@ -1111,6 +1111,16 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"jurisdiction": {
+																			"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+																			"enum": [
+																				"eu",
+																				"fedramp"
+																			],
+																			"example": "eu",
+																			"type": "string",
+																			"x-auditable": true
+																		},
 																		"name": {
 																			"description": "A JavaScript variable name for the binding.",
 																			"example": "myBinding",
@@ -2875,6 +2885,16 @@
 																		"type": "string",
 																		"x-auditable": true
 																	},
+																	"jurisdiction": {
+																		"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+																		"enum": [
+																			"eu",
+																			"fedramp"
+																		],
+																		"example": "eu",
+																		"type": "string",
+																		"x-auditable": true
+																	},
 																	"name": {
 																		"description": "A JavaScript variable name for the binding.",
 																		"example": "myBinding",
@@ -4538,6 +4558,16 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"jurisdiction": {
+													"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+													"enum": [
+														"eu",
+														"fedramp"
+													],
+													"example": "eu",
+													"type": "string",
+													"x-auditable": true
+												},
 												"name": {
 													"description": "A JavaScript variable name for the binding.",
 													"example": "myBinding",
@@ -6111,6 +6141,16 @@
 																	"bucket_name": {
 																		"description": "R2 bucket to bind to.",
 																		"example": "my-r2-bucket",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"jurisdiction": {
+																		"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+																		"enum": [
+																			"eu",
+																			"fedramp"
+																		],
+																		"example": "eu",
 																		"type": "string",
 																		"x-auditable": true
 																	},

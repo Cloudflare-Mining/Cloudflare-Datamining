@@ -301,6 +301,15 @@
 					"example": "production:yes,staging:no",
 					"type": "string"
 				}
+			},
+			{
+				"description": "Limit the number of scripts to delete.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"example": 1000,
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {
@@ -308,102 +317,33 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+							"description": "Detail about bulk deletion of scripts in a namespace.",
+							"properties": {
+								"deleted": {
+									"items": {
+										"properties": {
+											"id": {
+												"description": "API Resource UUID tag.",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"type": "string",
+												"x-auditable": true
+											}
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
-										}
+										"type": "object"
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
+									"type": "array"
 								},
-								{
-									"properties": {
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										}
-									},
-									"type": "object"
+								"deleted_count": {
+									"example": 100,
+									"type": "integer"
+								},
+								"has_more": {
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"type": "object"
 						}
 					}
 				},
@@ -881,6 +821,17 @@
 					"example": "mySecret",
 					"readOnly": true,
 					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "url_encoded",
+				"schema": {
+					"description": "Flag that indicates whether the secret name is URL encoded.",
+					"example": true,
+					"readOnly": true,
+					"type": "boolean",
 					"x-auditable": true
 				}
 			}
@@ -3847,6 +3798,16 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"jurisdiction": {
+																"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+																"enum": [
+																	"eu",
+																	"fedramp"
+																],
+																"example": "eu",
+																"type": "string",
+																"x-auditable": true
+															},
 															"name": {
 																"description": "A JavaScript variable name for the binding.",
 																"example": "myBinding",
@@ -5080,6 +5041,17 @@
 					"type": "string",
 					"x-auditable": true
 				}
+			},
+			{
+				"in": "query",
+				"name": "url_encoded",
+				"schema": {
+					"description": "Flag that indicates whether the secret name is URL encoded.",
+					"example": true,
+					"readOnly": true,
+					"type": "boolean",
+					"x-auditable": true
+				}
 			}
 		],
 		"responses": {
@@ -6176,6 +6148,16 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
+																			"jurisdiction": {
+																				"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+																				"enum": [
+																					"eu",
+																					"fedramp"
+																				],
+																				"example": "eu",
+																				"type": "string",
+																				"x-auditable": true
+																			},
 																			"name": {
 																				"description": "A JavaScript variable name for the binding.",
 																				"example": "myBinding",
@@ -7218,6 +7200,16 @@
 																			"bucket_name": {
 																				"description": "R2 bucket to bind to.",
 																				"example": "my-r2-bucket",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"jurisdiction": {
+																				"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+																				"enum": [
+																					"eu",
+																					"fedramp"
+																				],
+																				"example": "eu",
 																				"type": "string",
 																				"x-auditable": true
 																			},
@@ -9587,6 +9579,16 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"jurisdiction": {
+																	"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+																	"enum": [
+																		"eu",
+																		"fedramp"
+																	],
+																	"example": "eu",
+																	"type": "string",
+																	"x-auditable": true
+																},
 																"name": {
 																	"description": "A JavaScript variable name for the binding.",
 																	"example": "myBinding",
@@ -10629,6 +10631,16 @@
 																"bucket_name": {
 																	"description": "R2 bucket to bind to.",
 																	"example": "my-r2-bucket",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"jurisdiction": {
+																	"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+																	"enum": [
+																		"eu",
+																		"fedramp"
+																	],
+																	"example": "eu",
 																	"type": "string",
 																	"x-auditable": true
 																},
@@ -12271,6 +12283,16 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
+																			"jurisdiction": {
+																				"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+																				"enum": [
+																					"eu",
+																					"fedramp"
+																				],
+																				"example": "eu",
+																				"type": "string",
+																				"x-auditable": true
+																			},
 																			"name": {
 																				"description": "A JavaScript variable name for the binding.",
 																				"example": "myBinding",
@@ -13313,6 +13335,16 @@
 																			"bucket_name": {
 																				"description": "R2 bucket to bind to.",
 																				"example": "my-r2-bucket",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"jurisdiction": {
+																				"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+																				"enum": [
+																					"eu",
+																					"fedramp"
+																				],
+																				"example": "eu",
 																				"type": "string",
 																				"x-auditable": true
 																			},
@@ -16146,6 +16178,16 @@
 														"bucket_name": {
 															"description": "R2 bucket to bind to.",
 															"example": "my-r2-bucket",
+															"type": "string",
+															"x-auditable": true
+														},
+														"jurisdiction": {
+															"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
+															"enum": [
+																"eu",
+																"fedramp"
+															],
+															"example": "eu",
 															"type": "string",
 															"x-auditable": true
 														},
