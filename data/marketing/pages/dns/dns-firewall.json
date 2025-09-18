@@ -128,6 +128,59 @@
 						}
 					},
 					{
+						"contentfulId": "1j3blQgJNVBqASd3Yqj9bL",
+						"title": "What is a DNS firewall?",
+						"copy": "A DNS firewall offers security and performance improvements for DNS servers by acting as a protective tool sitting between a user's resolver and the authoritative nameserver. \n\nDNS firewalls are equipped with rate-limiting capabilities to deter potential cyber attacks and ensure continuous service operation, even in cases of server downtime, by delivering DNS responses from cache. \n\nAdditionally, DNS firewalls bolster efficiency with faster DNS lookups and cost-effective bandwidth usage.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": "/learning/dns/dns-security/",
+						"learnMoreText": "Learn more about DNS security",
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "1ad07f3f-dc52-5691-a37a-7f06f0c3bac4",
+							"altText": "Advanced DNS Protection",
+							"title": "Advanced DNS Protection",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4d5FOMGmOZuI85eO3xFMcX/4a35297e8ed24b8996a62c941e11c8d8/Advanced_DNS_protection.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-gray",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
 						"contentfulId": "4QsHHZM9WIaoa0oArnl6AJ",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": "Benefits of DNS firewalls",
@@ -136,6 +189,42 @@
 						"textLayout": "center",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6vx2rBGK8s2gPXtgV9z4Vu",
+								"title": "Integrated security",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "DNS firewalls natively integrate with DDoS Mitigation and Rate Limiting for best-in-class protection — enabling you to automatically mitigate DDoS attacks and limit the number of queries-per-second that hits your DNS servers.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7eeb6aea-18f5-5736-9b17-69295f2df58c",
+									"altText": "Security shield protection orange",
+									"title": "Security shield protection orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "5uD4jmNGjtqZFJwMqeLPIl",
@@ -235,7 +324,20 @@
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"primaryCtaButton": null,
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2bSmucANb5tkOIor5ByDq",
+							"elementName": "DNS firewall - Download whitepaper button",
+							"standardText": null,
+							"text": "Read whitepaper",
+							"url": "lp/protect-your-business-against-security-and-performance-pitfalls/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
 						"secondaryCtaButton": null
 					},
 					{
@@ -245,6 +347,42 @@
 						"htmlId": "use-cases",
 						"backgroundImage": null,
 						"cards": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5xm1WVzMUwW2E7XEhpzkPl",
+								"title": "Control what hits your network",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "With robust rate limiting capabilities, DNS firewalls shield your infrastructure from malicious and unwanted traffic. Rate limits are configurable over API, so you can easily configure them based on the health of your origin servers.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
+									"altText": "Traffic attack blue",
+									"title": "Traffic attack blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d80f24569dfb7d418d6913b32940bf5b/traffic-attack-browser_1_.svg"
+										},
+										"description": "Prevent financial and identity theft icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "1XgJHh8KqUrK7RErfCviJw",
@@ -268,6 +406,42 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ekrF3dQ9wlkBCY0Km9Rsw/2c6f76a6e909a6bec5d42ef5e83366e9/security-waf.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "62pMlc4cXNiDAzxkhfN5f0",
+								"title": "Hide your origin IP from attackers",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "DNS firewalls mask the origin IP addresses of providers' nameservers, keeping them safe from being targeted by attackers.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "a3b97712-b4fd-5088-8fff-fdff36375933",
+									"altText": "Security safe blue",
+									"title": "Security safe blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tsvD1lfk2QywwFeas2lBG/0d96f08db7f24f962662761eb3a5686a/cloudflare-security-center.png"
 										},
 										"description": ""
 									},
@@ -429,6 +603,39 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
+								"contentfulId": "16SgRqaV8mPSKNcmnTkP0t",
+								"heading": "Blog",
+								"description": "Learn how to mitigate sophisticated DNS DDoS attacks.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "7AudyL0foeieglTmAn1Egf",
+									"elementName": "DNS firewall - Advanced DNS protection blog - Link",
+									"standardText": null,
+									"text": "Read blog post",
+									"url": "https://blog.cloudflare.com/advanced-dns-protection",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "0104722a-de3b-5ad6-becf-5a515ca6eaa6",
+									"altText": "DNS",
+									"title": "DNS image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2e2LaLNgVB9wuoU0kAXVn8/f734ae9c1509007db6ad2d239b589c4f/dns-unmetered-ddos-spot-illustration.svg"
+										},
+										"description": "Illustration of secure devices"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
 								"contentfulId": "1HpvFCRIsSNXzWATLMrM8c",
 								"heading": "Insight",
 								"description": "The evolving DNS threat landscape",
@@ -455,6 +662,39 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LPJR23bITiL9hJwBOJBgs/4cfba5836ad54c15037826a24d090d98/image-2024-1-25_9-40-48.png"
 										},
 										"description": "theNET - generic - Article"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "4kfYNrsyIJPBVuwmtcq2nA",
+								"heading": "Article",
+								"description": "What is DNS security?",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "WaXQnFKTcxga4NcvKl5gm",
+									"elementName": "DNS firewall - Advanced DNS Protection blog - Link",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "/learning/dns/dns-security/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "f377f3a4-44a3-567a-87c5-ea32f5f04ec1",
+									"altText": null,
+									"title": "Foundation DNS",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2eUT1NEPuD72AZvtRPNRLZ/f022299aa7fbffca0e2cc3f31b8e15f2/image-2024-02-26-16-58-14-701.png"
+										},
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -496,6 +736,81 @@
 														"uri": null
 													},
 													"value": "A DNS firewall offers security and performance improvements for DNS servers by acting as a protective tool sitting between a user's resolver and the authoritative nameserver. It is equipped with rate-limiting capabilities to deter potential cyber attacks such as DoS and DDoS attacks. Some DNS firewalls offer the added benefit of improving performance.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5npjxnyl6GpmtGY3h4Rj65",
+								"title": "What is the difference between a DNS firewall and a network firewall?",
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "A DNS (Domain Name System) firewall is a security tool that sits between the recursive resolver of the user and the nameserver of the website or service they want to reach. The firewall can be integrated with rate limiting and DDoS mitigation services to limit the number of queries hitting a DNS server. If the server should experience downtime for any reason, some DNS firewalls can serve DNS responses from cache, keeping the operator's site or service online. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "While DNS firewalls protect DNS servers only, network firewalls guard the boundaries of the network itself. By monitoring and controlling incoming and outgoing traffic based on set security rules, they filter data packets and prevent unauthorized access. Advanced features of network firewalls also block sophisticated cyber-attacks and ensure compliance with security policies.",
 													"marks": [],
 													"content": null
 												}
