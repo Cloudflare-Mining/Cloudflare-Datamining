@@ -1,4 +1,97 @@
 {
+	"DELETE /organizations/{organization_id}": {
+		"description": "Delete an organization. The organization MUST be empty before deleting.\nIt must not contain any sub-organizations, accounts, members or users.",
+		"operationId": "Organizations_delete",
+		"parameters": [
+			{
+				"description": "The ID of the organization to delete.",
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "There is no content to send for this request, but the headers may be useful."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete organization",
+		"tags": [
+			"Organizations"
+		]
+	},
 	"GET /accounts/{account_id}/realtimekit/analytics/daywise": {
 		"description": "Returns day-wise session and recording analytics data of an organization for the specified time range start_date to end_date. If start_date and end_date are not provided, the default time range is set from 30 days ago to the current date.",
 		"operationId": "get-org-analytics",
@@ -588,6 +681,752 @@
 			"Organizations"
 		]
 	},
+	"GET /organizations/{organization_id}": {
+		"description": "Retrieve the details of a certain organization.",
+		"operationId": "Organizations_retrieve",
+		"parameters": [
+			{
+				"description": "The ID of the organization to retrieve.",
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"description": "Represents an Organization in the Cloudflare data model",
+									"properties": {
+										"create_time": {
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"id": {
+											"allOf": [
+												{
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string"
+												}
+											],
+											"readOnly": true
+										},
+										"meta": {
+											"additionalProperties": {
+												"type": "object"
+											},
+											"properties": {
+												"flags": {
+													"allOf": [
+														{
+															"description": "Organization flags for feature enablement",
+															"properties": {
+																"account_creation": {
+																	"type": "string"
+																},
+																"account_deletion": {
+																	"type": "string"
+																},
+																"account_migration": {
+																	"type": "string"
+																},
+																"account_mobility": {
+																	"type": "string"
+																},
+																"sub_org_creation": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"account_creation",
+																"account_deletion",
+																"account_migration",
+																"account_mobility",
+																"sub_org_creation"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"managed_by": {
+													"type": "string"
+												}
+											},
+											"readOnly": true,
+											"type": "object"
+										},
+										"name": {
+											"type": "string"
+										},
+										"parent": {
+											"properties": {
+												"id": {
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string"
+												},
+												"name": {
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name"
+											],
+											"type": "object"
+										},
+										"profile": {
+											"properties": {
+												"business_address": {
+													"type": "string"
+												},
+												"business_email": {
+													"type": "string"
+												},
+												"business_name": {
+													"type": "string"
+												},
+												"business_phone": {
+													"type": "string"
+												},
+												"external_metadata": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"business_name",
+												"business_email",
+												"business_phone",
+												"business_address",
+												"external_metadata"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"create_time",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get organization",
+		"tags": [
+			"Organizations"
+		]
+	},
+	"GET /organizations/{organization_id}/accounts": {
+		"description": "Retrieve a list of accounts that belong to a specific organization.",
+		"operationId": "Organizations_getAccounts",
+		"parameters": [
+			{
+				"description": "The ID of the organization to retrieve a list of accounts for.",
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"deprecated": true,
+				"description": "(case-insensitive) Filter the list of accounts to where the account_pubname is equal to\na particular string.",
+				"explode": false,
+				"in": "query",
+				"name": "account_pubname",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"deprecated": true,
+				"description": "(case-insensitive) Filter the list of accounts to where the account_pubname starts with\na particular string.",
+				"explode": false,
+				"in": "query",
+				"name": "account_pubname.startsWith",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"deprecated": true,
+				"description": "(case-insensitive) Filter the list of accounts to where the account_pubname ends with\na particular string.",
+				"explode": false,
+				"in": "query",
+				"name": "account_pubname.endsWith",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"deprecated": true,
+				"description": "(case-insensitive) Filter the list of accounts to where the account_pubname contains\na particular string.",
+				"explode": false,
+				"in": "query",
+				"name": "account_pubname.contains",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "(case-insensitive) Filter the list of accounts to where the name is equal to a\nparticular string.",
+				"explode": false,
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "(case-insensitive) Filter the list of accounts to where the name starts with a\nparticular string.",
+				"explode": false,
+				"in": "query",
+				"name": "name.startsWith",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "(case-insensitive) Filter the list of accounts to where the name ends with a particular\nstring.",
+				"explode": false,
+				"in": "query",
+				"name": "name.endsWith",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "(case-insensitive) Filter the list of accounts to where the name contains a particular\nstring.",
+				"explode": false,
+				"in": "query",
+				"name": "name.contains",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "An opaque token returned from the last list response that when\nprovided will retrieve the next page.\n\nParameters used to filter the retrieved list must remain in subsequent\nrequests with a page token.",
+				"explode": false,
+				"in": "query",
+				"name": "page_token",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "The amount of items to return. Defaults to 10.",
+				"explode": false,
+				"in": "query",
+				"name": "page_size",
+				"schema": {
+					"maximum": 1000,
+					"minimum": 0,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"created_on": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"id": {
+												"type": "string"
+											},
+											"name": {
+												"nullable": true,
+												"type": "string"
+											},
+											"settings": {
+												"properties": {
+													"abuse_contact_email": {
+														"nullable": true,
+														"type": "string"
+													},
+													"access_approval_expiry": {
+														"format": "date-time",
+														"nullable": true,
+														"type": "string"
+													},
+													"api_access_enabled": {
+														"nullable": true,
+														"type": "boolean"
+													},
+													"default_nameservers": {
+														"deprecated": true,
+														"description": "Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated.",
+														"nullable": true,
+														"type": "string"
+													},
+													"enforce_twofactor": {
+														"nullable": true,
+														"type": "boolean"
+													},
+													"use_account_custom_ns_by_default": {
+														"deprecated": true,
+														"description": "Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated.",
+														"nullable": true,
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"enforce_twofactor",
+													"api_access_enabled",
+													"access_approval_expiry",
+													"abuse_contact_email",
+													"use_account_custom_ns_by_default",
+													"default_nameservers"
+												],
+												"type": "object"
+											},
+											"type": {
+												"enum": [
+													"standard",
+													"enterprise"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"type",
+											"settings",
+											"created_on"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"next_page_token": {
+											"description": "Use this opaque token in the next request to retrieve the\nnext page.\n\nParameters used to filter the retrieved list must remain in subsequent\nrequests with a page token.",
+											"type": "string"
+										},
+										"total_size": {
+											"description": "Counts the total amount of items in a list with the applied filters. The API omits next_page_token to indicate no more items in a particular list.",
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result",
+								"result_info"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get organization accounts",
+		"tags": [
+			"Organizations"
+		]
+	},
+	"GET /organizations/{organization_id}/profile": {
+		"description": "Get an organizations profile if it exists.",
+		"operationId": "Organizations_getProfile",
+		"parameters": [
+			{
+				"description": "The ID of the organization to retrieve a profile for.",
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"business_address": {
+											"type": "string"
+										},
+										"business_email": {
+											"type": "string"
+										},
+										"business_name": {
+											"type": "string"
+										},
+										"business_phone": {
+											"type": "string"
+										},
+										"external_metadata": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"business_name",
+										"business_email",
+										"business_phone",
+										"business_address",
+										"external_metadata"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get organization profile",
+		"tags": [
+			"Organizations"
+		]
+	},
 	"PATCH /accounts/{account_id}/realtimekit/orgs/{org_id}": {
 		"description": "Edits organization details for the given organization ID. The user must be the organization's owner.",
 		"operationId": "editOrg",
@@ -1111,6 +1950,882 @@
 			}
 		],
 		"summary": "Create an organization",
+		"tags": [
+			"Organizations"
+		]
+	},
+	"POST /organizations": {
+		"description": "Create a new organization for a user.",
+		"operationId": "Organizations_createUserOrganization",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Represents an Organization in the Cloudflare data model",
+						"properties": {
+							"create_time": {
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"id": {
+								"allOf": [
+									{
+										"pattern": "^[a-f0-9]{32}$",
+										"type": "string"
+									}
+								],
+								"readOnly": true
+							},
+							"meta": {
+								"additionalProperties": {
+									"type": "object"
+								},
+								"properties": {
+									"flags": {
+										"allOf": [
+											{
+												"description": "Organization flags for feature enablement",
+												"properties": {
+													"account_creation": {
+														"type": "string"
+													},
+													"account_deletion": {
+														"type": "string"
+													},
+													"account_migration": {
+														"type": "string"
+													},
+													"account_mobility": {
+														"type": "string"
+													},
+													"sub_org_creation": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"account_creation",
+													"account_deletion",
+													"account_migration",
+													"account_mobility",
+													"sub_org_creation"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"managed_by": {
+										"type": "string"
+									}
+								},
+								"readOnly": true,
+								"type": "object"
+							},
+							"name": {
+								"type": "string"
+							},
+							"parent": {
+								"properties": {
+									"id": {
+										"pattern": "^[a-f0-9]{32}$",
+										"type": "string"
+									},
+									"name": {
+										"readOnly": true,
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"name"
+								],
+								"type": "object"
+							},
+							"profile": {
+								"properties": {
+									"business_address": {
+										"type": "string"
+									},
+									"business_email": {
+										"type": "string"
+									},
+									"business_name": {
+										"type": "string"
+									},
+									"business_phone": {
+										"type": "string"
+									},
+									"external_metadata": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"business_name",
+									"business_email",
+									"business_phone",
+									"business_address",
+									"external_metadata"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"create_time",
+							"meta"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"description": "Represents an Organization in the Cloudflare data model",
+									"properties": {
+										"create_time": {
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"id": {
+											"allOf": [
+												{
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string"
+												}
+											],
+											"readOnly": true
+										},
+										"meta": {
+											"additionalProperties": {
+												"type": "object"
+											},
+											"properties": {
+												"flags": {
+													"allOf": [
+														{
+															"description": "Organization flags for feature enablement",
+															"properties": {
+																"account_creation": {
+																	"type": "string"
+																},
+																"account_deletion": {
+																	"type": "string"
+																},
+																"account_migration": {
+																	"type": "string"
+																},
+																"account_mobility": {
+																	"type": "string"
+																},
+																"sub_org_creation": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"account_creation",
+																"account_deletion",
+																"account_migration",
+																"account_mobility",
+																"sub_org_creation"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"managed_by": {
+													"type": "string"
+												}
+											},
+											"readOnly": true,
+											"type": "object"
+										},
+										"name": {
+											"type": "string"
+										},
+										"parent": {
+											"properties": {
+												"id": {
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string"
+												},
+												"name": {
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name"
+											],
+											"type": "object"
+										},
+										"profile": {
+											"properties": {
+												"business_address": {
+													"type": "string"
+												},
+												"business_email": {
+													"type": "string"
+												},
+												"business_name": {
+													"type": "string"
+												},
+												"business_phone": {
+													"type": "string"
+												},
+												"external_metadata": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"business_name",
+												"business_email",
+												"business_phone",
+												"business_address",
+												"external_metadata"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"create_time",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create organization",
+		"tags": [
+			"Organizations"
+		],
+		"x-api-token-group": [
+			"User Details Write"
+		]
+	},
+	"PUT /organizations/{organization_id}": {
+		"operationId": "Organizations_modify",
+		"parameters": [
+			{
+				"description": "The ID of the organization to modify.",
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Represents an Organization in the Cloudflare data model",
+						"properties": {
+							"create_time": {
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"id": {
+								"allOf": [
+									{
+										"pattern": "^[a-f0-9]{32}$",
+										"type": "string"
+									}
+								],
+								"readOnly": true
+							},
+							"meta": {
+								"additionalProperties": {
+									"type": "object"
+								},
+								"properties": {
+									"flags": {
+										"allOf": [
+											{
+												"description": "Organization flags for feature enablement",
+												"properties": {
+													"account_creation": {
+														"type": "string"
+													},
+													"account_deletion": {
+														"type": "string"
+													},
+													"account_migration": {
+														"type": "string"
+													},
+													"account_mobility": {
+														"type": "string"
+													},
+													"sub_org_creation": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"account_creation",
+													"account_deletion",
+													"account_migration",
+													"account_mobility",
+													"sub_org_creation"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"managed_by": {
+										"type": "string"
+									}
+								},
+								"readOnly": true,
+								"type": "object"
+							},
+							"name": {
+								"type": "string"
+							},
+							"parent": {
+								"properties": {
+									"id": {
+										"pattern": "^[a-f0-9]{32}$",
+										"type": "string"
+									},
+									"name": {
+										"readOnly": true,
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"name"
+								],
+								"type": "object"
+							},
+							"profile": {
+								"properties": {
+									"business_address": {
+										"type": "string"
+									},
+									"business_email": {
+										"type": "string"
+									},
+									"business_name": {
+										"type": "string"
+									},
+									"business_phone": {
+										"type": "string"
+									},
+									"external_metadata": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"business_name",
+									"business_email",
+									"business_phone",
+									"business_address",
+									"external_metadata"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"create_time",
+							"meta"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "The new details of the organization. Only accepts updates\nto \"name\" currently.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"description": "Represents an Organization in the Cloudflare data model",
+									"properties": {
+										"create_time": {
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"id": {
+											"allOf": [
+												{
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string"
+												}
+											],
+											"readOnly": true
+										},
+										"meta": {
+											"additionalProperties": {
+												"type": "object"
+											},
+											"properties": {
+												"flags": {
+													"allOf": [
+														{
+															"description": "Organization flags for feature enablement",
+															"properties": {
+																"account_creation": {
+																	"type": "string"
+																},
+																"account_deletion": {
+																	"type": "string"
+																},
+																"account_migration": {
+																	"type": "string"
+																},
+																"account_mobility": {
+																	"type": "string"
+																},
+																"sub_org_creation": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"account_creation",
+																"account_deletion",
+																"account_migration",
+																"account_mobility",
+																"sub_org_creation"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"managed_by": {
+													"type": "string"
+												}
+											},
+											"readOnly": true,
+											"type": "object"
+										},
+										"name": {
+											"type": "string"
+										},
+										"parent": {
+											"properties": {
+												"id": {
+													"pattern": "^[a-f0-9]{32}$",
+													"type": "string"
+												},
+												"name": {
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name"
+											],
+											"type": "object"
+										},
+										"profile": {
+											"properties": {
+												"business_address": {
+													"type": "string"
+												},
+												"business_email": {
+													"type": "string"
+												},
+												"business_name": {
+													"type": "string"
+												},
+												"business_phone": {
+													"type": "string"
+												},
+												"external_metadata": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"business_name",
+												"business_email",
+												"business_phone",
+												"business_address",
+												"external_metadata"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"create_time",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Modify organization",
+		"tags": [
+			"Organizations"
+		]
+	},
+	"PUT /organizations/{organization_id}/profile": {
+		"operationId": "Organizations_modifyProfile",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"business_address": {
+								"type": "string"
+							},
+							"business_email": {
+								"type": "string"
+							},
+							"business_name": {
+								"type": "string"
+							},
+							"business_phone": {
+								"type": "string"
+							},
+							"external_metadata": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"business_name",
+							"business_email",
+							"business_phone",
+							"business_address",
+							"external_metadata"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"204": {
+				"description": "There is no content to send for this request, but the headers may be useful."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Modify organization profile",
 		"tags": [
 			"Organizations"
 		]

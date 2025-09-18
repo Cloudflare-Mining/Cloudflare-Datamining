@@ -1,0 +1,1094 @@
+{
+	"DELETE /organizations/{organization_id}/members": {
+		"description": "Delete a membership to a particular Organization.",
+		"operationId": "Members_delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"member_id": {
+								"pattern": "^[a-f0-9]{32}$",
+								"type": "string"
+							}
+						},
+						"required": [
+							"member_id"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"204": {
+				"description": "There is no content to send for this request, but the headers may be useful."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete organization member",
+		"tags": [
+			"OrganizationMembers"
+		]
+	},
+	"GET /organizations/{organization_id}/members": {
+		"description": "List memberships for an Organization.",
+		"operationId": "Members_list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter the list of memberships by membership status.",
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"items": {
+						"enum": [
+							"active",
+							"canceled"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter the list of memberships for a specific email.",
+				"explode": false,
+				"in": "query",
+				"name": "user.email",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter the list of memberships for a specific email that contains a substring.",
+				"explode": false,
+				"in": "query",
+				"name": "user.email.contains",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter the list of memberships for a specific email that starts with a substring.",
+				"explode": false,
+				"in": "query",
+				"name": "user.email.startsWith",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter the list of memberships for a specific email that ends with a substring.",
+				"explode": false,
+				"in": "query",
+				"name": "user.email.endsWith",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "An opaque token returned from the last list response that when\nprovided will retrieve the next page.\n\nParameters used to filter the retrieved list must remain in subsequent\nrequests with a page token.",
+				"explode": false,
+				"in": "query",
+				"name": "page_token",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "The amount of items to return. Defaults to 10.",
+				"explode": false,
+				"in": "query",
+				"name": "page_size",
+				"schema": {
+					"maximum": 1000,
+					"minimum": 0,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"create_time": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"id": {
+												"pattern": "^[a-f0-9]{32}$",
+												"type": "string"
+											},
+											"meta": {
+												"additionalProperties": {
+													"type": "object"
+												},
+												"type": "object"
+											},
+											"status": {
+												"enum": [
+													"active",
+													"canceled"
+												],
+												"type": "string"
+											},
+											"update_time": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"user": {
+												"properties": {
+													"email": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"two_factor_authentication_enabled": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"id",
+													"email",
+													"name",
+													"two_factor_authentication_enabled"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"id",
+											"status",
+											"user",
+											"meta",
+											"create_time",
+											"update_time"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"next_page_token": {
+											"description": "Use this opaque token in the next request to retrieve the\nnext page.\n\nParameters used to filter the retrieved list must remain in subsequent\nrequests with a page token.",
+											"type": "string"
+										},
+										"total_size": {
+											"description": "Counts the total amount of items in a list with the applied filters. The API omits next_page_token to indicate no more items in a particular list.",
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result",
+								"result_info"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List organization members",
+		"tags": [
+			"OrganizationMembers"
+		]
+	},
+	"GET /organizations/{organization_id}/members/{member_id}": {
+		"description": "Retrieve a single membership from an Organization.",
+		"operationId": "Members_retrieve",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "member_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"create_time": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"id": {
+											"pattern": "^[a-f0-9]{32}$",
+											"type": "string"
+										},
+										"meta": {
+											"additionalProperties": {
+												"type": "object"
+											},
+											"type": "object"
+										},
+										"status": {
+											"enum": [
+												"active",
+												"canceled"
+											],
+											"type": "string"
+										},
+										"update_time": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"user": {
+											"properties": {
+												"email": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"two_factor_authentication_enabled": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"id",
+												"email",
+												"name",
+												"two_factor_authentication_enabled"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"id",
+										"status",
+										"user",
+										"meta",
+										"create_time",
+										"update_time"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get organization member",
+		"tags": [
+			"OrganizationMembers"
+		]
+	},
+	"POST /organizations/{organization_id}/members": {
+		"description": "Create a membership that grants access to a specific Organization.",
+		"operationId": "Members_create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"member": {
+								"properties": {
+									"status": {
+										"enum": [
+											"active",
+											"canceled"
+										],
+										"type": "string"
+									},
+									"user": {
+										"properties": {
+											"email": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"email"
+										],
+										"type": "object"
+									}
+								},
+								"required": [
+									"user"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"member"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"create_time": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"id": {
+											"pattern": "^[a-f0-9]{32}$",
+											"type": "string"
+										},
+										"meta": {
+											"additionalProperties": {
+												"type": "object"
+											},
+											"type": "object"
+										},
+										"status": {
+											"enum": [
+												"active",
+												"canceled"
+											],
+											"type": "string"
+										},
+										"update_time": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"user": {
+											"properties": {
+												"email": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"two_factor_authentication_enabled": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"id",
+												"email",
+												"name",
+												"two_factor_authentication_enabled"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"id",
+										"status",
+										"user",
+										"meta",
+										"create_time",
+										"update_time"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create organization member",
+		"tags": [
+			"OrganizationMembers"
+		]
+	},
+	"POST /organizations/{organization_id}/members:batchCreate": {
+		"description": "Batch create multiple memberships that grant access to a specific Organization.",
+		"operationId": "Members_batchCreate",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "organization_id",
+				"required": true,
+				"schema": {
+					"pattern": "^[a-f0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"members": {
+								"items": {
+									"properties": {
+										"status": {
+											"enum": [
+												"active",
+												"canceled"
+											],
+											"type": "string"
+										},
+										"user": {
+											"properties": {
+												"email": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"email"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"user"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"members"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"create_time": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"id": {
+												"pattern": "^[a-f0-9]{32}$",
+												"type": "string"
+											},
+											"meta": {
+												"additionalProperties": {
+													"type": "object"
+												},
+												"type": "object"
+											},
+											"status": {
+												"enum": [
+													"active",
+													"canceled"
+												],
+												"type": "string"
+											},
+											"update_time": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"user": {
+												"properties": {
+													"email": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"two_factor_authentication_enabled": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"id",
+													"email",
+													"name",
+													"two_factor_authentication_enabled"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"id",
+											"status",
+											"user",
+											"meta",
+											"create_time",
+											"update_time"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Batch create organization members",
+		"tags": [
+			"OrganizationMembers"
+		]
+	}
+}

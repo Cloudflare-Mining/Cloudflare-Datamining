@@ -993,6 +993,488 @@
 			"pro": true
 		}
 	},
+	"GET /accounts/{account_id}/organizations": {
+		"description": "Retrieve a list of the organizations that \"contain\" this account or are\nmanaging it.\n\nThe returned list will be in order from \"root\" to \"leaf\", where the \"leaf\"\nwill be the organization that _immediately_ contains the specified\naccount.",
+		"operationId": "Accounts_listAccountOrganizations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"description": "Represents an Organization in the Cloudflare data model",
+										"properties": {
+											"create_time": {
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
+											"id": {
+												"allOf": [
+													{
+														"pattern": "^[a-f0-9]{32}$",
+														"type": "string"
+													}
+												],
+												"readOnly": true
+											},
+											"meta": {
+												"additionalProperties": {
+													"type": "object"
+												},
+												"properties": {
+													"flags": {
+														"allOf": [
+															{
+																"description": "Organization flags for feature enablement",
+																"properties": {
+																	"account_creation": {
+																		"type": "string"
+																	},
+																	"account_deletion": {
+																		"type": "string"
+																	},
+																	"account_migration": {
+																		"type": "string"
+																	},
+																	"account_mobility": {
+																		"type": "string"
+																	},
+																	"sub_org_creation": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"account_creation",
+																	"account_deletion",
+																	"account_migration",
+																	"account_mobility",
+																	"sub_org_creation"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"managed_by": {
+														"type": "string"
+													}
+												},
+												"readOnly": true,
+												"type": "object"
+											},
+											"name": {
+												"type": "string"
+											},
+											"parent": {
+												"properties": {
+													"id": {
+														"pattern": "^[a-f0-9]{32}$",
+														"type": "string"
+													},
+													"name": {
+														"readOnly": true,
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name"
+												],
+												"type": "object"
+											},
+											"profile": {
+												"properties": {
+													"business_address": {
+														"type": "string"
+													},
+													"business_email": {
+														"type": "string"
+													},
+													"business_name": {
+														"type": "string"
+													},
+													"business_phone": {
+														"type": "string"
+													},
+													"external_metadata": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"business_name",
+													"business_email",
+													"business_phone",
+													"business_address",
+													"external_metadata"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"create_time",
+											"meta"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List account organizations",
+		"tags": [
+			"Accounts"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"DNS View Write",
+			"DNS View Read",
+			"SCIM Provisioning",
+			"Load Balancers Account Write",
+			"Load Balancers Account Read",
+			"Zero Trust: PII Read",
+			"DDoS Botnet Feed Write",
+			"DDoS Botnet Feed Read",
+			"Workers R2 Storage Write",
+			"Workers R2 Storage Read",
+			"DDoS Protection Write",
+			"DDoS Protection Read",
+			"Workers Tail Read",
+			"Workers KV Storage Write",
+			"Workers KV Storage Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read",
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read",
+			"Account Firewall Access Rules Write",
+			"Account Firewall Access Rules Read",
+			"DNS Firewall Write",
+			"DNS Firewall Read",
+			"Billing Write",
+			"Billing Read",
+			"Account Settings Write",
+			"Account Settings Read"
+		]
+	},
+	"GET /accounts/{account_id}/profile": {
+		"operationId": "Accounts_getAccountProfile",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"business_address": {
+											"type": "string"
+										},
+										"business_email": {
+											"type": "string"
+										},
+										"business_name": {
+											"type": "string"
+										},
+										"business_phone": {
+											"type": "string"
+										},
+										"external_metadata": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"business_name",
+										"business_email",
+										"business_phone",
+										"business_address",
+										"external_metadata"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get account profile",
+		"tags": [
+			"Accounts"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"DNS View Write",
+			"DNS View Read",
+			"SCIM Provisioning",
+			"Load Balancers Account Write",
+			"Load Balancers Account Read",
+			"Zero Trust: PII Read",
+			"DDoS Botnet Feed Write",
+			"DDoS Botnet Feed Read",
+			"Workers R2 Storage Write",
+			"Workers R2 Storage Read",
+			"DDoS Protection Write",
+			"DDoS Protection Read",
+			"Workers Tail Read",
+			"Workers KV Storage Write",
+			"Workers KV Storage Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read",
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read",
+			"Account Firewall Access Rules Write",
+			"Account Firewall Access Rules Read",
+			"DNS Firewall Write",
+			"DNS Firewall Read",
+			"Billing Write",
+			"Billing Read",
+			"Account Settings Write",
+			"Account Settings Read"
+		]
+	},
 	"POST /accounts": {
 		"description": "Create an account (only available for tenant admins at this time)",
 		"operationId": "account-creation",
@@ -1326,6 +1808,297 @@
 			"free": false,
 			"pro": false
 		}
+	},
+	"POST /accounts/{account_id}/move": {
+		"description": "Move an account within an organization hierarchy or an account outside an\norganization.",
+		"operationId": "Accounts_moveAccounts",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destination_organization_id": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"destination_organization_id"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "The destination organization ID is where the account is to be moved.",
+			"required": true
+		},
+		"responses": {
+			"204": {
+				"description": "There is no content to send for this request, but the headers may be useful."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Move account",
+		"tags": [
+			"Accounts"
+		],
+		"x-api-token-group": null
+	},
+	"POST /accounts/move": {
+		"description": "Batch move a collection of accounts to a specific organization. ⚠️ Not implemented.",
+		"operationId": "Accounts_batchMoveAccounts",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"account_ids": {
+								"description": "Move these accounts to the destination organization.",
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"destination_organization_id": {
+								"description": "Move accounts to this organization ID.",
+								"type": "string"
+							}
+						},
+						"required": [
+							"account_ids",
+							"destination_organization_id"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"statuses": {
+											"properties": {
+												"message": {
+													"type": "string"
+												},
+												"moved": {
+													"type": "boolean"
+												},
+												"tag": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"tag",
+												"moved"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"statuses"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Batch move accounts",
+		"tags": [
+			"Accounts"
+		]
 	},
 	"PUT /accounts/{account_id}": {
 		"description": "Update an existing account.",
@@ -1717,5 +2490,132 @@
 			"free": true,
 			"pro": true
 		}
+	},
+	"PUT /accounts/{account_id}/profile": {
+		"operationId": "Accounts_modifyAccountProfile",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"business_address": {
+								"type": "string"
+							},
+							"business_email": {
+								"type": "string"
+							},
+							"business_name": {
+								"type": "string"
+							},
+							"business_phone": {
+								"type": "string"
+							},
+							"external_metadata": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"business_name",
+							"business_email",
+							"business_phone",
+							"business_address",
+							"external_metadata"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"204": {
+				"description": "There is no content to send for this request, but the headers may be useful."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error response."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Modify account profile",
+		"tags": [
+			"Accounts"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
+		]
 	}
 }
