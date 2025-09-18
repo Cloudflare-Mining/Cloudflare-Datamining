@@ -5,46 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>About The Role&nbsp;</strong></p>
-<p>As an Security Architect you will play a key role in effectively designing secure network architectures, defensible builds &amp; configurations, security platforms and automation, assisting in secure tool and product development, and will help establish security standards and guidelines across the enterprise. This role will focus on designing robust public key infrastructure and secrets management solutions to support Cloudflare’s secure authentication processes and encryption solutions for both our internal and client facing systems, users and applications. This role will also include collaborating with cross-functional teams including software engineering, cybersecurity, product management, etc. to integrate key management solutions into the Cloudflare environments. We are looking for a candidate that is passionate about cryptography and security. We are seeking Security Architects or Engineers proficient in strategy, design, and implementation of public key infrastructure and secrets management solutions to help make a better internet.</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Available Locations: </strong>Lisbon, Portugal&nbsp;</p>
+<p><strong>About the role</strong></p>
+<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's technology and gain a deeper understanding of internet technologies.&nbsp;</p>
+<h3>Examples of desirable skills, knowledge and experience</h3>
 <ul>
-	<li>Define security requirements for and design efficient public key infrastructure and secrets management solutions in complex environments.</li>
-	<li>Take the lead security role in developing or enhancing existing enterprise-wide architectures, including Hardware Security Modules (HSMs), Certificate Authorities (CAs), Certificate Lifecycle Management (CLM), Key Vaults (KV), and similar technologies.</li>
-	<li>Create and drive the secrets management capability roadmap with enterprise stakeholders.</li>
-	<li>Lead projects to implement secure enterprise systems and identify issues that could compromise data integrity or security.</li>
-	<li>Serve as the subject matter expert (SME) for PKI and secrets management across the enterprise.</li>
-	<li>Develop security policies, procedures, and guidelines and recommend necessary changes to a given project team to ensure the company’s systems are fully compliant with all applicable regulatory requirements and privacy laws.</li>
-	<li>Identify access management gaps and partners with application development teams for remediation.</li>
-	<li>Design processes and workflows for rotation and revocation of secrets.</li>
-	<li>Identify automation opportunities for lifecycle management of secrets.</li>
-	<li>Utilize open communication and managerial courage to ensure the standards, expectations and goals of the organization are respected and upheld.</li>
-	<li>Lead security-related public key infrastructure and secrets management projects from inception to successful completion.&nbsp;</li>
-	<li>Effectively coach technology staff on appropriate security protocols and requirements as they implement new technology into the organization.</li>
-	<li>Work on complex issues where analysis of situations or data requires an in-depth evaluation of variable factors.&nbsp;</li>
-	<li>In conjunction with engineering and operations, improve and develop sustainable processes.</li>
-	<li>Leverage wide-ranging experiences, professional concepts, and company objectives to resolve complex issues in creative and effective ways.</li>
-	<li>Exercise judgment in selecting methods, techniques and evaluation criteria for obtaining results.</li>
-	<li>Ensure security technology strategies are aligned with companies' business goals.</li>
+	<li>You have previous experience working as part of a team in a customer-facing role</li>
+	<li>You have experience solving DNS and other networking-related problems</li>
+	<li>You understand how the Internet works</li>
+	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
+	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
+	<li>You have experience configuring and troubleshooting VPNs</li>
+	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
+	<li>You are comfortable communicating through various support channels and always put the customer first</li>
+	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<h3>Bonus Points</h3>
 <ul>
-	<li>Extensive years of experience in an IT or Security related field heavily focused on secrets management and PKI.</li>
-	<li>In-depth understanding of security concepts.</li>
-	<li>Demonstrable expertise in cryptography, certificate management, and networking protocols.</li>
-	<li>Hands-on experience with PKI technologies and standards such as X.509, OCSP, and CRL.</li>
-	<li>Scripting / coding skills, in various languages, for automation.</li>
-	<li>Knowledge of IT and Cybersecurity frameworks, such as NIST, FIPS, CSF, CIS, ISO 27001/2.</li>
-	<li>Working knowledge of Cloud provider security architecture design patterns, and key control methods - Bring your own key, Hold your own key, partitioned HSMs.</li>
-	<li>Experience with OWASP Web/API vulnerabilities and compensating controls (CSRF, XSS, SQLI, etc.)</li>
-	<li>Understand how business, engineering, IT, and security processes align, and how to research, test, and implement solutions to complex objectives.</li>
-	<li>Hands on experience in Information Security, specifically in PKI/Cryptography (on-premise and cloud) and secrets management.</li>
-	<li>Experience in building Certificate Policy (CP) and Certificate Practice Statements (CPS)</li>
-	<li>Experience with vendors such as Venafi, Hashicorp, Microsoft, Thales, etc.</li>
-	<li>In-depth knowledge of Certificate Lifecycle Management, PKI Strategy and Design, and PKI Implementation.</li>
-	<li>Experience producing and reviewing Technical Documentation</li>
+	<li>You are fluent in German, Japanese, French, Spanish, Portuguese, or Mandarin</li>
+	<li>You are familiar with Cloudflare Zero Trust products (Zero Trust / Access / Gateway / Tunnel, WARP client) and have a site actively using our platform</li>
+	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
+	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
+	<li>You are committed to gaining a deeper understanding of the following technologies: Zero Trust / Secure Web Gateway policies / Endpoint protections / security best practices (Certificates, Zero Trust, least privileged access etc)</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
