@@ -1654,7 +1654,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/stats": {
-		"description": "Fetch usage statistics details for Cloudflare Images.",
+		"description": "Fetch image statistics details for Cloudflare Images. The returned statistics detail storage usage, including the current image count vs this account's allowance.",
 		"operationId": "cloudflare-images-images-usage-statistics",
 		"parameters": [
 			{

@@ -2949,6 +2949,7 @@
 													],
 													"authorization": null,
 													"created_at": "2023-11-14T22:13:20Z",
+													"dmarc_status": "good",
 													"domain": "example.com",
 													"drop_dispositions": [
 														"MALICIOUS",
@@ -2968,6 +2969,7 @@
 													],
 													"require_tls_inbound": false,
 													"require_tls_outbound": true,
+													"spf_status": "good",
 													"transport": "example.com"
 												},
 												"properties": {
@@ -3015,6 +3017,22 @@
 													"created_at": {
 														"format": "date-time",
 														"type": "string"
+													},
+													"dmarc_status": {
+														"allOf": [
+															{
+																"enum": [
+																	"none",
+																	"good",
+																	"invalid"
+																],
+																"type": "string"
+															},
+															{
+																"nullable": true,
+																"type": "string"
+															}
+														]
 													},
 													"domain": {
 														"type": "string"
@@ -3152,6 +3170,24 @@
 													"require_tls_outbound": {
 														"nullable": true,
 														"type": "boolean"
+													},
+													"spf_status": {
+														"allOf": [
+															{
+																"enum": [
+																	"none",
+																	"good",
+																	"neutral",
+																	"open",
+																	"invalid"
+																],
+																"type": "string"
+															},
+															{
+																"nullable": true,
+																"type": "string"
+															}
+														]
 													},
 													"transport": {
 														"type": "string"
@@ -3410,6 +3446,7 @@
 												],
 												"authorization": null,
 												"created_at": "2023-11-14T22:13:20Z",
+												"dmarc_status": "good",
 												"domain": "example.com",
 												"drop_dispositions": [
 													"MALICIOUS",
@@ -3429,6 +3466,7 @@
 												],
 												"require_tls_inbound": false,
 												"require_tls_outbound": true,
+												"spf_status": "good",
 												"transport": "example.com"
 											},
 											"properties": {
@@ -3476,6 +3514,22 @@
 												"created_at": {
 													"format": "date-time",
 													"type": "string"
+												},
+												"dmarc_status": {
+													"allOf": [
+														{
+															"enum": [
+																"none",
+																"good",
+																"invalid"
+															],
+															"type": "string"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
 												},
 												"domain": {
 													"type": "string"
@@ -3613,6 +3667,24 @@
 												"require_tls_outbound": {
 													"nullable": true,
 													"type": "boolean"
+												},
+												"spf_status": {
+													"allOf": [
+														{
+															"enum": [
+																"none",
+																"good",
+																"neutral",
+																"open",
+																"invalid"
+															],
+															"type": "string"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
 												},
 												"transport": {
 													"type": "string"
@@ -6004,6 +6076,7 @@
 												],
 												"authorization": null,
 												"created_at": "2023-11-14T22:13:20Z",
+												"dmarc_status": "good",
 												"domain": "example.com",
 												"drop_dispositions": [
 													"MALICIOUS",
@@ -6023,6 +6096,7 @@
 												],
 												"require_tls_inbound": false,
 												"require_tls_outbound": true,
+												"spf_status": "good",
 												"transport": "example.com"
 											},
 											"properties": {
@@ -6070,6 +6144,22 @@
 												"created_at": {
 													"format": "date-time",
 													"type": "string"
+												},
+												"dmarc_status": {
+													"allOf": [
+														{
+															"enum": [
+																"none",
+																"good",
+																"invalid"
+															],
+															"type": "string"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
 												},
 												"domain": {
 													"type": "string"
@@ -6207,6 +6297,24 @@
 												"require_tls_outbound": {
 													"nullable": true,
 													"type": "boolean"
+												},
+												"spf_status": {
+													"allOf": [
+														{
+															"enum": [
+																"none",
+																"good",
+																"neutral",
+																"open",
+																"invalid"
+															],
+															"type": "string"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
 												},
 												"transport": {
 													"type": "string"
