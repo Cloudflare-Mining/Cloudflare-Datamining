@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "efb783a2-5cbf-51bc-8fbd-8c31c6b946d5")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "61cb21a6-8b6f-5279-a7ba-456163d82de0")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1156,10 +1156,10 @@
 					e.g.build = mn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "ff2cf87279caf6a587f9b63b9654520cb9547352",
-						dashVersion: "36022910",
+						commit: "6b4bea44616399cb7d54a30fc3029c07bd76d406",
+						dashVersion: "36051751",
 						env: "production",
-						builtAt: 1758114035327,
+						builtAt: 1758197100568,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -62762,6 +62762,13 @@ SOFTWARE.`,
 						},
 						groupLabel: "security.rules.capability.fraud",
 						label: "filter_editor.fields.cf.fraud.detection_tags"
+					}),
+					"cf.fraud.email_risk": _({}, l.ce.string, {
+						component: d.Z,
+						options: i.rl,
+						operators: [r.Gn.eq, r.Gn.ne, r.Gn.in, r.Gn["!in"]],
+						groupLabel: "security.rules.capability.fraud",
+						label: "filter_editor.fields.cf.fraud.email_risk"
 					})
 				},
 				J = {
@@ -85727,4 +85734,4 @@ button.border {
 	}
 ]);
 
-//# debugId=efb783a2-5cbf-51bc-8fbd-8c31c6b946d5
+//# debugId=61cb21a6-8b6f-5279-a7ba-456163d82de0
