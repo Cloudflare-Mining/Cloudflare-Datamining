@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/gateway/apps/review_status": {
-		"description": "Shows the current apps review status",
+		"description": "Shows the current apps review status.",
 		"operationId": "zero-trust-app-review-list",
 		"parameters": [
 			{
@@ -95,7 +95,7 @@
 													"result": {
 														"properties": {
 															"approved_apps": {
-																"description": "Defines the list of \"approved\" app ids",
+																"description": "Defines the list of \"approved\" app ids.",
 																"items": {
 																	"type": "integer"
 																},
@@ -109,7 +109,7 @@
 																"type": "string"
 															},
 															"in_review_apps": {
-																"description": "Defines the list of \"in review\" app ids",
+																"description": "Defines the list of \"in review\" app ids.",
 																"items": {
 																	"type": "integer"
 																},
@@ -117,7 +117,7 @@
 																"x-stainless-collection-type": "set"
 															},
 															"unapproved_apps": {
-																"description": "Defines the list of \"unapproved\" app ids",
+																"description": "Defines the list of \"unapproved\" app ids.",
 																"items": {
 																	"type": "integer"
 																},
@@ -229,7 +229,7 @@
 															"result": {
 																"properties": {
 																	"approved_apps": {
-																		"description": "Defines the list of \"approved\" app ids",
+																		"description": "Defines the list of \"approved\" app ids.",
 																		"items": {
 																			"type": "integer"
 																		},
@@ -243,7 +243,7 @@
 																		"type": "string"
 																	},
 																	"in_review_apps": {
-																		"description": "Defines the list of \"in review\" app ids",
+																		"description": "Defines the list of \"in review\" app ids.",
 																		"items": {
 																			"type": "integer"
 																		},
@@ -251,7 +251,7 @@
 																		"x-stainless-collection-type": "set"
 																	},
 																	"unapproved_apps": {
-																		"description": "Defines the list of \"unapproved\" app ids",
+																		"description": "Defines the list of \"unapproved\" app ids.",
 																		"items": {
 																			"type": "integer"
 																		},
@@ -380,7 +380,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Shows the current apps review status",
+		"summary": "Shows the current apps review status.",
 		"tags": [
 			"Zero Trust App Review"
 		],
@@ -412,7 +412,7 @@
 					"schema": {
 						"properties": {
 							"approved_apps": {
-								"description": "Defines the list of \"approved\" app ids",
+								"description": "Defines the list of \"approved\" app ids.",
 								"items": {
 									"type": "integer"
 								},
@@ -420,7 +420,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"in_review_apps": {
-								"description": "Defines the list of \"in review\" app ids",
+								"description": "Defines the list of \"in review\" app ids.",
 								"items": {
 									"type": "integer"
 								},
@@ -428,7 +428,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"unapproved_apps": {
-								"description": "Defines the list of \"unapproved\" app ids",
+								"description": "Defines the list of \"unapproved\" app ids.",
 								"items": {
 									"type": "integer"
 								},
@@ -526,7 +526,7 @@
 													"result": {
 														"properties": {
 															"approved_apps": {
-																"description": "Defines the list of \"approved\" app ids",
+																"description": "Defines the list of \"approved\" app ids.",
 																"items": {
 																	"type": "integer"
 																},
@@ -540,7 +540,7 @@
 																"type": "string"
 															},
 															"in_review_apps": {
-																"description": "Defines the list of \"in review\" app ids",
+																"description": "Defines the list of \"in review\" app ids.",
 																"items": {
 																	"type": "integer"
 																},
@@ -548,7 +548,7 @@
 																"x-stainless-collection-type": "set"
 															},
 															"unapproved_apps": {
-																"description": "Defines the list of \"unapproved\" app ids",
+																"description": "Defines the list of \"unapproved\" app ids.",
 																"items": {
 																	"type": "integer"
 																},
@@ -660,7 +660,7 @@
 															"result": {
 																"properties": {
 																	"approved_apps": {
-																		"description": "Defines the list of \"approved\" app ids",
+																		"description": "Defines the list of \"approved\" app ids.",
 																		"items": {
 																			"type": "integer"
 																		},
@@ -674,7 +674,7 @@
 																		"type": "string"
 																	},
 																	"in_review_apps": {
-																		"description": "Defines the list of \"in review\" app ids",
+																		"description": "Defines the list of \"in review\" app ids.",
 																		"items": {
 																			"type": "integer"
 																		},
@@ -682,7 +682,7 @@
 																		"x-stainless-collection-type": "set"
 																	},
 																	"unapproved_apps": {
-																		"description": "Defines the list of \"unapproved\" app ids",
+																		"description": "Defines the list of \"unapproved\" app ids.",
 																		"items": {
 																			"type": "integer"
 																		},
