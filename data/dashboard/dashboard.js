@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "61cb21a6-8b6f-5279-a7ba-456163d82de0")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "6b15a63c-bb19-5449-8b4a-69f48ddf56d1")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1156,10 +1156,10 @@
 					e.g.build = mn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "6b4bea44616399cb7d54a30fc3029c07bd76d406",
-						dashVersion: "36051751",
+						commit: "e95f3181410075ac5692b62296a08b4bdc501271",
+						dashVersion: "36053988",
 						env: "production",
-						builtAt: 1758197100568,
+						builtAt: 1758202737261,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -31412,7 +31412,8 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "Amazonbot",
-					detectionIds: [118601807, 33563839],
+					detectionIds: [118601807],
+					heuristicsIds: [33563839],
 					verified: !0,
 					managed: !0
 				}, {
@@ -31424,6 +31425,7 @@
 					categoryId: 13,
 					userAgent: "Anchor Browser",
 					detectionIds: [124259203],
+					heuristicsIds: [],
 					verified: !0,
 					managed: !0
 				}, {
@@ -31434,7 +31436,8 @@
 					category: "AI Search",
 					categoryId: 51,
 					userAgent: "Applebot",
-					detectionIds: [120424214, 33563845],
+					detectionIds: [120424214],
+					heuristicsIds: [33563845],
 					verified: !0,
 					managed: !1
 				}, {
@@ -31445,7 +31448,8 @@
 					category: "Archiver",
 					categoryId: 52,
 					userAgent: "archive.org_bot",
-					detectionIds: [131190766, 33564033],
+					detectionIds: [131190766],
+					heuristicsIds: [33564033],
 					verified: !0,
 					managed: !1
 				}, {
@@ -31456,7 +31460,8 @@
 					category: "Search Engine Crawler",
 					categoryId: 1,
 					userAgent: "bingbot",
-					detectionIds: [117479730, 33554461],
+					detectionIds: [117479730],
+					heuristicsIds: [33554461],
 					verified: !0,
 					managed: !1
 				}, {
@@ -31466,7 +31471,8 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "Bytespider",
-					detectionIds: [33563853],
+					detectionIds: [],
+					heuristicsIds: [33563853],
 					verified: !1,
 					managed: !0
 				}, {
@@ -31477,7 +31483,8 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "CCBot",
-					detectionIds: [133621792, 33563855],
+					detectionIds: [133621792],
+					heuristicsIds: [33563855],
 					verified: !0,
 					managed: !0
 				}, {
@@ -31488,7 +31495,8 @@
 					category: "AI Assistant",
 					categoryId: 47,
 					userAgent: "ChatGPT-User",
-					detectionIds: [132995013, 33563857],
+					detectionIds: [132995013],
+					heuristicsIds: [33563857],
 					verified: !0,
 					managed: !1
 				}, {
@@ -31498,7 +31506,8 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "ClaudeBot",
-					detectionIds: [33563859],
+					detectionIds: [],
+					heuristicsIds: [33563859],
 					verified: !1,
 					managed: !0
 				}, {
@@ -31508,7 +31517,8 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "Claude-SearchBot",
-					detectionIds: [33564301],
+					detectionIds: [],
+					heuristicsIds: [33564301],
 					verified: !1,
 					managed: !0
 				}, {
@@ -31518,7 +31528,8 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "Claude-User",
-					detectionIds: [33564303],
+					detectionIds: [],
+					heuristicsIds: [33564303],
 					verified: !1,
 					managed: !0
 				}, {
@@ -31529,7 +31540,8 @@
 					category: "AI Assistant",
 					categoryId: 47,
 					userAgent: "DuckAssistBot",
-					detectionIds: [126666910, 33564037],
+					detectionIds: [126666910],
+					heuristicsIds: [33564037],
 					verified: !0,
 					managed: !1
 				}, {
@@ -31539,7 +31551,8 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "FacebookBot",
-					detectionIds: [33563972],
+					detectionIds: [],
+					heuristicsIds: [33563972],
 					verified: !1,
 					managed: !0
 				}, {
@@ -31550,7 +31563,8 @@
 					category: "Search Engine Crawler",
 					categoryId: 1,
 					userAgent: "Googlebot",
-					detectionIds: [120623194, 33554459],
+					detectionIds: [120623194],
+					heuristicsIds: [33554459],
 					verified: !0,
 					managed: !1
 				}, {
@@ -31561,7 +31575,8 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "Google-CloudVertexBot",
-					detectionIds: [133730073, 33564321],
+					detectionIds: [133730073],
+					heuristicsIds: [33564321],
 					verified: !0,
 					managed: !0
 				}, {
@@ -31572,7 +31587,8 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "GPTBot",
-					detectionIds: [123815556, 33563875],
+					detectionIds: [123815556],
+					heuristicsIds: [33563875],
 					verified: !0,
 					managed: !0
 				}, {
@@ -31583,7 +31599,8 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "meta-externalagent",
-					detectionIds: [124581738, 33563982],
+					detectionIds: [124581738],
+					heuristicsIds: [33563982],
 					verified: !0,
 					managed: !0
 				}, {
@@ -31594,7 +31611,8 @@
 					category: "AI Assistant",
 					categoryId: 47,
 					userAgent: "meta-externalfetcher",
-					detectionIds: [132272919, 33563980],
+					detectionIds: [132272919],
+					heuristicsIds: [33563980],
 					verified: !0,
 					managed: !1
 				}, {
@@ -31605,7 +31623,8 @@
 					category: "AI Assistant",
 					categoryId: 47,
 					userAgent: "MistralAI-User",
-					detectionIds: [128950951, 33564323],
+					detectionIds: [128950951],
+					heuristicsIds: [33564323],
 					verified: !0,
 					managed: !1
 				}, {
@@ -31617,6 +31636,7 @@
 					categoryId: 13,
 					userAgent: "Novellum",
 					detectionIds: [121781688],
+					heuristicsIds: [],
 					verified: !0,
 					managed: !0
 				}, {
@@ -31627,7 +31647,8 @@
 					category: "AI Search",
 					categoryId: 51,
 					userAgent: "OAI-SearchBot",
-					detectionIds: [126255384, 33563986],
+					detectionIds: [126255384],
+					heuristicsIds: [33563986],
 					verified: !0,
 					managed: !1
 				}, {
@@ -31639,6 +31660,7 @@
 					categoryId: 47,
 					userAgent: "Operator",
 					detectionIds: [129220581],
+					heuristicsIds: [],
 					verified: !0,
 					managed: !1,
 					botManagement: !0
@@ -31650,7 +31672,8 @@
 					category: "AI Search",
 					categoryId: 51,
 					userAgent: "PerplexityBot",
-					detectionIds: [120176742, 33563889],
+					detectionIds: [120176742],
+					heuristicsIds: [33563889],
 					verified: !0,
 					managed: !1
 				}, {
@@ -31661,7 +31684,8 @@
 					category: "AI Assistant",
 					categoryId: 47,
 					userAgent: "Perplexity-User",
-					detectionIds: [126871775, 33564371],
+					detectionIds: [126871775],
+					heuristicsIds: [33564371],
 					verified: !0,
 					managed: !1
 				}, {
@@ -31672,7 +31696,8 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "PetalBot",
-					detectionIds: [124150991, 33564369],
+					detectionIds: [124150991],
+					heuristicsIds: [33564369],
 					verified: !0,
 					managed: !0
 				}, {
@@ -31684,6 +31709,7 @@
 					categoryId: 13,
 					userAgent: "ProRataInc",
 					detectionIds: [117766436],
+					heuristicsIds: [],
 					verified: !1,
 					managed: !1
 				}, {
@@ -31692,14 +31718,15 @@
 					category: "AI Crawler",
 					categoryId: 13,
 					userAgent: "Timpibot",
-					detectionIds: [33564051],
+					detectionIds: [],
+					heuristicsIds: [33564051],
 					verified: !1,
 					managed: !0
 				}],
 				s = [...new Set([...n.map(c => c.operator)])].sort((c, _) => c.localeCompare(_)),
 				d = [...new Set([...n.map(c => c.category)])].sort((c, _) => c.localeCompare(_)),
 				v = [...new Set([...n.map(c => c.userAgent)])].sort((c, _) => c.localeCompare(_)),
-				o = [...new Set([...n.flatMap(c => c.detectionIds)])].sort(),
+				o = [...new Set([...n.flatMap(c => c.detectionIds.length ? c.detectionIds : c.heuristicsIds)])].sort(),
 				l = "[CF AI Audit]",
 				a = "AI Crawl Control - Block AI bots by User Agent",
 				b = "AI Crawl Control - Block AI bots by Bot Detection IDs",
@@ -65496,7 +65523,10 @@ SOFTWARE.`,
 		"../react/pages/support/support_portal/components/OpenIssuesToast.tsx": function(oe, x, e) {
 			"use strict";
 			e.d(x, {
-				k: function() {
+				US: function() {
+					return f
+				},
+				kA: function() {
 					return u
 				}
 			});
@@ -65511,24 +65541,29 @@ SOFTWARE.`,
 				I = e("../react/common/selectors/accountSelectors.ts"),
 				r = e("../../../../node_modules/react/jsx-runtime.js");
 			const u = () => {
-					const i = (0, b.p4)(I.D0);
-					return i === void 0 ? "/?to=/:account/my-activities" : `/${i.id}/my-activities`
+					const E = (0, b.p4)(I.D0);
+					return E === void 0 ? "/?to=/:account/my-activities" : `/${E.id}/my-activities`
 				},
-				f = ({}) => {
-					const i = (0, o.Z)("tsf-3-display-open-issues") === !0,
-						E = (0, b.p4)(n.R),
-						y = (0, b.p4)(n.X),
-						C = (E == null ? void 0 : E.displayToast) === !1,
-						c = (E == null ? void 0 : E.openTicketCount) || 0,
-						_ = c > 0,
-						p = u();
-					return !i || C ? null : y.isErrored || !_ ? (0, r.jsx)(s.F, {
+				f = () => {
+					const E = (0, b.p4)(n.R),
+						y = (E == null ? void 0 : E.openTicketCount) || 0;
+					return y > 0 ? y : null
+				},
+				i = ({}) => {
+					const E = (0, o.Z)("tsf-3-display-open-issues") === !0,
+						y = (0, b.p4)(n.R),
+						C = (0, b.p4)(n.X),
+						c = (y == null ? void 0 : y.displayToast) === !1,
+						_ = (y == null ? void 0 : y.openTicketCount) || 0,
+						p = _ > 0,
+						m = u();
+					return !E || c ? null : C.isErrored || !p ? (0, r.jsx)(s.F, {
 						type: "info",
 						"data-testid": "opentickets-offline",
 						children: (0, r.jsx)(l.Trans, {
 							id: "support.portal.right.opentickets.offline",
 							values: {
-								my_activities_link: p
+								my_activities_link: m
 							}
 						})
 					}) : (0, r.jsx)(s.F, {
@@ -65536,14 +65571,14 @@ SOFTWARE.`,
 						"data-testid": "opentickets-online",
 						children: (0, r.jsx)(l.Trans, {
 							id: "support.portal.right.opentickets",
-							smartCount: c,
+							smartCount: _,
 							values: {
-								my_activities_link: p
+								my_activities_link: m
 							}
 						})
 					})
 				};
-			x.Z = f
+			x.ZP = i
 		},
 		"../react/pages/support/tickets/selectors.ts": function(oe, x, e) {
 			"use strict";
@@ -78802,7 +78837,6 @@ SOFTWARE.`,
     --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-gray-900: oklch(21% 0.034 264.665);
-    --color-gray-950: oklch(13% 0.028 261.692);
     --color-neutral-50: oklch(0.985 0 0);
     --color-neutral-100: oklch(0.97 0 0);
     --color-neutral-200: oklch(0.922 0 0);
@@ -78887,7 +78921,6 @@ SOFTWARE.`,
     --color-neutral-25: oklch(0.99 0 0);
     --color-neutral-150: oklch(0.96 0 0) /*new */;
     --color-neutral-250: oklch(0.9 0 0) /* new */;
-    --color-neutral-450: oklch(0.62 0 0) /* new */;
     --color-neutral-750: oklch(0.31 0 0) /* new */;
     --color-neutral-850: oklch(0.23 0 0) /* new */;
     --color-border: var(--cf-gray-8);
@@ -78915,12 +78948,10 @@ SOFTWARE.`,
     --color-cl1-green-6: var(--cf-green-6);
     --color-cl1-blue-5: var(--cf-blue-5);
     --color-cl1-blue-6: var(--cf-blue-6);
-    --color-cl1-blue-7: var(--cf-blue-7);
     --color-cl1-blue-9: var(--cf-blue-9);
     --color-cl1-gray-0: var(--cf-gray-0);
     --color-cl1-gray-1: var(--cf-gray-1);
     --color-cl1-gray-2: var(--cf-gray-2);
-    --color-cl1-gray-3: var(--cf-gray-3);
     --color-cl1-gray-4: var(--cf-gray-4);
     --color-cl1-gray-5: var(--cf-gray-5);
     --color-cl1-gray-6: var(--cf-gray-6);
@@ -79581,9 +79612,6 @@ SOFTWARE.`,
   .h-4 {
     height: calc(var(--spacing) * 4);
   }
-  .h-4\\.5 {
-    height: calc(var(--spacing) * 4.5);
-  }
   .h-5 {
     height: calc(var(--spacing) * 5);
   }
@@ -79808,9 +79836,6 @@ SOFTWARE.`,
   }
   .w-4 {
     width: calc(var(--spacing) * 4);
-  }
-  .w-4\\.5 {
-    width: calc(var(--spacing) * 4.5);
   }
   .w-5 {
     width: calc(var(--spacing) * 5);
@@ -80748,10 +80773,6 @@ SOFTWARE.`,
     border-style: var(--tw-border-style);
     border-width: 2px;
   }
-  .border-3 {
-    border-style: var(--tw-border-style);
-    border-width: 3px;
-  }
   .border-y {
     border-block-style: var(--tw-border-style);
     border-block-width: 1px;
@@ -80787,10 +80808,6 @@ SOFTWARE.`,
   .border-b-1 {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
-  }
-  .border-b-2 {
-    border-bottom-style: var(--tw-border-style);
-    border-bottom-width: 2px;
   }
   .\\!border-l {
     border-left-style: var(--tw-border-style) !important;
@@ -80880,15 +80897,6 @@ SOFTWARE.`,
   .border-cl1-gold-7 {
     border-color: var(--color-cl1-gold-7);
   }
-  .border-cl1-gray-1 {
-    border-color: var(--color-cl1-gray-1);
-  }
-  .border-cl1-gray-2 {
-    border-color: var(--color-cl1-gray-2);
-  }
-  .border-cl1-gray-3 {
-    border-color: var(--color-cl1-gray-3);
-  }
   .border-cl1-gray-4 {
     border-color: var(--color-cl1-gray-4);
   }
@@ -80898,17 +80906,8 @@ SOFTWARE.`,
   .border-cl1-gray-8 {
     border-color: var(--color-cl1-gray-8);
   }
-  .border-cl1-gray-9 {
-    border-color: var(--color-cl1-gray-9);
-  }
   .border-cl1-green-4 {
     border-color: var(--color-cl1-green-4);
-  }
-  .border-cl1-red-2 {
-    border-color: var(--color-cl1-red-2);
-  }
-  .border-cl1-red-3 {
-    border-color: var(--color-cl1-red-3);
   }
   .border-cl1-red-4 {
     border-color: var(--color-cl1-red-4);
@@ -80922,17 +80921,11 @@ SOFTWARE.`,
   .border-destructive {
     border-color: var(--color-destructive);
   }
-  .border-gray-100 {
-    border-color: var(--color-gray-100);
-  }
   .border-gray-200 {
     border-color: var(--color-gray-200);
   }
   .border-gray-300 {
     border-color: var(--color-gray-300);
-  }
-  .border-gray-600 {
-    border-color: var(--color-gray-600);
   }
   .border-green-200 {
     border-color: var(--color-green-200);
@@ -81020,12 +81013,6 @@ SOFTWARE.`,
   }
   .border-b-transparent\\! {
     border-bottom-color: transparent !important;
-  }
-  .border-l-cl1-gray-3 {
-    border-left-color: var(--color-cl1-gray-3);
-  }
-  .border-l-cl1-gray-4 {
-    border-left-color: var(--color-cl1-gray-4);
   }
   .border-l-neutral-200 {
     border-left-color: var(--color-neutral-200);
@@ -81120,12 +81107,6 @@ SOFTWARE.`,
   .bg-cl1-blue-6 {
     background-color: var(--color-cl1-blue-6);
   }
-  .bg-cl1-blue-7\\/20 {
-    background-color: var(--color-cl1-blue-7);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-cl1-blue-7) 20%, transparent);
-    }
-  }
   .bg-cl1-gold-5 {
     background-color: var(--color-cl1-gold-5);
   }
@@ -81155,9 +81136,6 @@ SOFTWARE.`,
   }
   .bg-cl1-red-6 {
     background-color: var(--color-cl1-red-6);
-  }
-  .bg-cl1-red-7 {
-    background-color: var(--color-cl1-red-7);
   }
   .bg-cl1-red-7\\/40 {
     background-color: var(--color-cl1-red-7);
@@ -82015,9 +81993,6 @@ SOFTWARE.`,
   .text-cl1-red-2 {
     color: var(--color-cl1-red-2);
   }
-  .text-cl1-red-3 {
-    color: var(--color-cl1-red-3);
-  }
   .text-cl1-red-5 {
     color: var(--color-cl1-red-5);
   }
@@ -82297,10 +82272,6 @@ SOFTWARE.`,
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .inset-shadow-sm {
-    --tw-inset-shadow: inset 0 2px 4px var(--tw-inset-shadow-color, rgb(0 0 0 / 0.05));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
   .shadow-black\\/5 {
     --tw-shadow-color: color-mix(in srgb, #000 5%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -82315,9 +82286,6 @@ SOFTWARE.`,
   }
   .ring-blue-500 {
     --tw-ring-color: var(--color-blue-500);
-  }
-  .ring-cl1-blue-5 {
-    --tw-ring-color: var(--color-cl1-blue-5);
   }
   .ring-green-300 {
     --tw-ring-color: var(--color-green-300);
@@ -82794,16 +82762,6 @@ SOFTWARE.`,
       }
     }
   }
-  .hover\\:bg-cl1-gray-6\\/10 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-cl1-gray-6);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-cl1-gray-6) 10%, transparent);
-        }
-      }
-    }
-  }
   .hover\\:bg-cl1-gray-7\\/10 {
     &:hover {
       @media (hover: hover) {
@@ -82814,37 +82772,10 @@ SOFTWARE.`,
       }
     }
   }
-  .hover\\:bg-cl1-gray-7\\/20 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-cl1-gray-7);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-cl1-gray-7) 20%, transparent);
-        }
-      }
-    }
-  }
-  .hover\\:bg-cl1-gray-7\\/30 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-cl1-gray-7);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-cl1-gray-7) 30%, transparent);
-        }
-      }
-    }
-  }
   .hover\\:bg-cl1-gray-9 {
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-cl1-gray-9);
-      }
-    }
-  }
-  .hover\\:bg-cl1-red-6 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-cl1-red-6);
       }
     }
   }
@@ -82868,37 +82799,10 @@ SOFTWARE.`,
       }
     }
   }
-  .hover\\:bg-gray-50 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-50);
-      }
-    }
-  }
-  .hover\\:bg-gray-50\\/10 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, oklch(98.5% 0.002 247.839) 10%, transparent);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-gray-50) 10%, transparent);
-        }
-      }
-    }
-  }
   .hover\\:bg-gray-100 {
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-gray-100);
-      }
-    }
-  }
-  .hover\\:bg-gray-400\\/10 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, oklch(70.7% 0.022 261.325) 10%, transparent);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-gray-400) 10%, transparent);
-        }
       }
     }
   }
@@ -82908,26 +82812,6 @@ SOFTWARE.`,
         background-color: color-mix(in srgb, oklch(37.3% 0.034 259.733) 50%, transparent);
         @supports (color: color-mix(in lab, red, red)) {
           background-color: color-mix(in oklab, var(--color-gray-700) 50%, transparent);
-        }
-      }
-    }
-  }
-  .hover\\:bg-gray-900\\/10 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, oklch(21% 0.034 264.665) 10%, transparent);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-gray-900) 10%, transparent);
-        }
-      }
-    }
-  }
-  .hover\\:bg-gray-950\\/10 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, oklch(13% 0.028 261.692) 10%, transparent);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-gray-950) 10%, transparent);
         }
       }
     }
@@ -82970,10 +82854,13 @@ SOFTWARE.`,
       }
     }
   }
-  .hover\\:bg-neutral-700 {
+  .hover\\:bg-primary\\/60 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-neutral-700);
+        background-color: var(--color-primary);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--color-primary) 60%, transparent);
+        }
       }
     }
   }
@@ -83060,27 +82947,6 @@ SOFTWARE.`,
       }
     }
   }
-  .hover\\:text-cl1-gray-6 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-cl1-gray-6);
-      }
-    }
-  }
-  .hover\\:text-gray-700 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-gray-700);
-      }
-    }
-  }
-  .hover\\:text-gray-900 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-gray-900);
-      }
-    }
-  }
   .hover\\:text-neutral-600 {
     &:hover {
       @media (hover: hover) {
@@ -83144,13 +83010,6 @@ SOFTWARE.`,
       }
     }
   }
-  .hover\\:opacity-10 {
-    &:hover {
-      @media (hover: hover) {
-        opacity: 10%;
-      }
-    }
-  }
   .hover\\:opacity-50 {
     &:hover {
       @media (hover: hover) {
@@ -83206,39 +83065,6 @@ SOFTWARE.`,
     &:hover {
       @media (hover: hover) {
         --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-      }
-    }
-  }
-  .hover\\:inset-shadow-sm\\/10 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-inset-shadow-alpha: 10%;
-        --tw-inset-shadow: inset 0 2px 4px var(--tw-inset-shadow-color, oklab(from rgb(0 0 0 / 0.05) l a b / 10%));
-        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-      }
-    }
-  }
-  .hover\\:inset-shadow-2xs {
-    &:hover {
-      @media (hover: hover) {
-        --tw-inset-shadow: inset 0 1px var(--tw-inset-shadow-color, rgb(0 0 0 / 0.05));
-        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-      }
-    }
-  }
-  .hover\\:inset-shadow-sm {
-    &:hover {
-      @media (hover: hover) {
-        --tw-inset-shadow: inset 0 2px 4px var(--tw-inset-shadow-color, rgb(0 0 0 / 0.05));
-        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-      }
-    }
-  }
-  .hover\\:inset-shadow-xs {
-    &:hover {
-      @media (hover: hover) {
-        --tw-inset-shadow: inset 0 1px 1px var(--tw-inset-shadow-color, rgb(0 0 0 / 0.05));
         box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
       }
     }
@@ -84007,11 +83833,6 @@ SOFTWARE.`,
       border-color: var(--color-gray-600);
     }
   }
-  .dark\\:border-gray-700 {
-    &:where(.dark-mode, .dark-mode *) {
-      border-color: var(--color-gray-700);
-    }
-  }
   .dark\\:border-gray-800 {
     &:where(.dark-mode, .dark-mode *) {
       border-color: var(--color-gray-800);
@@ -84242,11 +84063,6 @@ SOFTWARE.`,
       background-color: var(--color-neutral-400);
     }
   }
-  .dark\\:bg-neutral-500 {
-    &:where(.dark-mode, .dark-mode *) {
-      background-color: var(--color-neutral-500);
-    }
-  }
   .dark\\:bg-neutral-600 {
     &:where(.dark-mode, .dark-mode *) {
       background-color: var(--color-neutral-600);
@@ -84338,6 +84154,11 @@ SOFTWARE.`,
   .dark\\:bg-orange-950 {
     &:where(.dark-mode, .dark-mode *) {
       background-color: var(--color-orange-950);
+    }
+  }
+  .dark\\:bg-primary {
+    &:where(.dark-mode, .dark-mode *) {
+      background-color: var(--color-primary);
     }
   }
   .dark\\:bg-red-500 {
@@ -84748,15 +84569,6 @@ SOFTWARE.`,
       }
     }
   }
-  .dark\\:hover\\:bg-neutral-450 {
-    &:where(.dark-mode, .dark-mode *) {
-      &:hover {
-        @media (hover: hover) {
-          background-color: var(--color-neutral-450);
-        }
-      }
-    }
-  }
   .dark\\:hover\\:bg-neutral-600 {
     &:where(.dark-mode, .dark-mode *) {
       &:hover {
@@ -84817,13 +84629,13 @@ SOFTWARE.`,
       }
     }
   }
-  .hover\\:dark\\:bg-cl1-gray-7\\/20 {
-    &:hover {
-      @media (hover: hover) {
-        &:where(.dark-mode, .dark-mode *) {
-          background-color: var(--color-cl1-gray-7);
+  .dark\\:hover\\:bg-primary\\/60 {
+    &:where(.dark-mode, .dark-mode *) {
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--color-primary);
           @supports (color: color-mix(in lab, red, red)) {
-            background-color: color-mix(in oklab, var(--color-cl1-gray-7) 20%, transparent);
+            background-color: color-mix(in oklab, var(--color-primary) 60%, transparent);
           }
         }
       }
@@ -84841,22 +84653,13 @@ SOFTWARE.`,
       }
     }
   }
-  .hover\\:dark\\:bg-gray-950 {
+  .hover\\:dark\\:bg-cl1-gray-7\\/20 {
     &:hover {
       @media (hover: hover) {
         &:where(.dark-mode, .dark-mode *) {
-          background-color: var(--color-gray-950);
-        }
-      }
-    }
-  }
-  .hover\\:dark\\:bg-gray-950\\/10 {
-    &:hover {
-      @media (hover: hover) {
-        &:where(.dark-mode, .dark-mode *) {
-          background-color: color-mix(in srgb, oklch(13% 0.028 261.692) 10%, transparent);
+          background-color: var(--color-cl1-gray-7);
           @supports (color: color-mix(in lab, red, red)) {
-            background-color: color-mix(in oklab, var(--color-gray-950) 10%, transparent);
+            background-color: color-mix(in oklab, var(--color-cl1-gray-7) 20%, transparent);
           }
         }
       }
@@ -85734,4 +85537,4 @@ button.border {
 	}
 ]);
 
-//# debugId=61cb21a6-8b6f-5279-a7ba-456163d82de0
+//# debugId=6b15a63c-bb19-5449-8b4a-69f48ddf56d1
