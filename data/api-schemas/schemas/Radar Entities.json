@@ -420,6 +420,184 @@
 			"pro": true
 		}
 	},
+	"GET /radar/entities/asns/{asn}/as_set": {
+		"description": "Retrieves Internet Routing Registry AS-SETs that an AS is a member of.",
+		"operationId": "radar-get-asns-as-set",
+		"parameters": [
+			{
+				"description": "Retrieves all AS-SETs that the given AS is a member of.",
+				"in": "path",
+				"name": "asn",
+				"required": true,
+				"schema": {
+					"description": "Retrieves all AS-SETs that the given AS is a member of.",
+					"example": 3,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"as_sets": {
+											"items": {
+												"properties": {
+													"as_members_count": {
+														"description": "The number of AS members in the AS-SET",
+														"type": "integer"
+													},
+													"as_set_members_count": {
+														"description": "The number of AS-SET members in the AS-SET",
+														"type": "integer"
+													},
+													"as_set_upstreams_count": {
+														"description": "The number of recursive upstream AS-SETs",
+														"type": "integer"
+													},
+													"asn": {
+														"description": "The inferred AS number of the AS-SET",
+														"type": "integer"
+													},
+													"asn_cone_size": {
+														"description": "The number of unique ASNs in the AS-SETs recursive downstream",
+														"type": "integer"
+													},
+													"irr_sources": {
+														"description": "The IRR sources of the AS-SET",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"name": {
+														"description": "The name of the AS-SET",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"as_members_count",
+													"as_set_members_count",
+													"irr_sources",
+													"asn_cone_size",
+													"as_set_upstreams_count"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"paths": {
+											"description": "Paths from the AS-SET that include the given AS to its upstreams recursively",
+											"items": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"as_sets",
+										"paths"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get IRR AS-SETs that an AS is a member of",
+		"tags": [
+			"Radar Entities"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/entities/asns/{asn}/rel": {
 		"description": "Retrieves AS-level relationship for given networks.",
 		"operationId": "radar-get-asns-rel",
