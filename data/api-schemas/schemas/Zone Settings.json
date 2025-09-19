@@ -8250,7 +8250,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string",
@@ -8313,7 +8313,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"example": true,
 											"type": "boolean",
 											"x-auditable": true
@@ -8378,6 +8378,7 @@
 																"fonts"
 															],
 															"example": "fonts",
+															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
@@ -8390,19 +8391,21 @@
 															"type": "string",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"description": "Enhance your website's font delivery with Cloudflare Fonts. Deliver Google Hosted fonts from your own domain,\nboost performance, and enhance user privacy. Refer to the Cloudflare Fonts documentation for more information.\n",
 											"title": "Cloudflare Fonts"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get Cloudflare Fonts setting response"
+				"description": "Get Cloudflare Fonts setting response."
 			},
 			"4XX": {
 				"content": {
@@ -8476,7 +8479,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"example": false,
 									"type": "boolean",
 									"x-auditable": true
@@ -8492,10 +8495,13 @@
 						}
 					}
 				},
-				"description": "Get Cloudflare Fonts setting response failure"
+				"description": "Get Cloudflare Fonts setting response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -9185,7 +9191,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string",
@@ -9248,7 +9254,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"example": true,
 											"type": "boolean",
 											"x-auditable": true
@@ -9304,22 +9310,27 @@
 															"x-auditable": true
 														}
 													}
+												},
+												{
+													"properties": {
+														"value": {
+															"description": "Whether the feature is enabled or disabled.\nDefaults to \"on\" for Free plans, otherwise defaults to \"off\".\n",
+															"type": "string"
+														}
+													},
+													"type": "object"
 												}
 											],
-											"properties": {
-												"value": {
-													"description": "Whether the feature is enabled or disabled.\nDefaults to \"on\" for Free plans, otherwise defaults to \"off\".\n"
-												}
-											},
 											"title": "Cloudflare Speed Brain response"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get Cloudflare Speed Brain setting response"
+				"description": "Get Cloudflare Speed Brain setting response."
 			},
 			"4XX": {
 				"content": {
@@ -9393,7 +9404,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"example": false,
 									"type": "boolean",
 									"x-auditable": true
@@ -9409,10 +9420,13 @@
 						}
 					}
 				},
-				"description": "Get Cloudflare Speed Brain setting response failure"
+				"description": "Get Cloudflare Speed Brain setting response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -22026,7 +22040,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string",
@@ -22052,7 +22066,8 @@
 						},
 						"required": [
 							"value"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -22113,7 +22128,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"example": true,
 											"type": "boolean",
 											"x-auditable": true
@@ -22178,6 +22193,7 @@
 																"fonts"
 															],
 															"example": "fonts",
+															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
@@ -22190,19 +22206,21 @@
 															"type": "string",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"description": "Enhance your website's font delivery with Cloudflare Fonts. Deliver Google Hosted fonts from your own domain,\nboost performance, and enhance user privacy. Refer to the Cloudflare Fonts documentation for more information.\n",
 											"title": "Cloudflare Fonts"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Change Cloudflare Fonts setting response"
+				"description": "Change Cloudflare Fonts setting response."
 			},
 			"4XX": {
 				"content": {
@@ -22276,7 +22294,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"example": false,
 									"type": "boolean",
 									"x-auditable": true
@@ -22292,10 +22310,13 @@
 						}
 					}
 				},
-				"description": "Change Cloudflare Fonts setting response failure"
+				"description": "Change Cloudflare Fonts setting response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -23027,7 +23048,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string",
@@ -23051,7 +23072,8 @@
 						},
 						"required": [
 							"value"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -23112,7 +23134,7 @@
 											"type": "array"
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"example": true,
 											"type": "boolean",
 											"x-auditable": true
@@ -23168,22 +23190,27 @@
 															"x-auditable": true
 														}
 													}
+												},
+												{
+													"properties": {
+														"value": {
+															"description": "Whether the feature is enabled or disabled.\nDefaults to \"on\" for Free plans, otherwise defaults to \"off\".\n",
+															"type": "string"
+														}
+													},
+													"type": "object"
 												}
 											],
-											"properties": {
-												"value": {
-													"description": "Whether the feature is enabled or disabled.\nDefaults to \"on\" for Free plans, otherwise defaults to \"off\".\n"
-												}
-											},
 											"title": "Cloudflare Speed Brain response"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Cloudflare Speed Brain setting response"
+				"description": "Cloudflare Speed Brain setting response."
 			},
 			"4XX": {
 				"content": {
@@ -23257,7 +23284,7 @@
 									"type": "object"
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"example": false,
 									"type": "boolean",
 									"x-auditable": true
@@ -23273,10 +23300,13 @@
 						}
 					}
 				},
-				"description": "Change Cloudflare Speed Brain setting response failure"
+				"description": "Change Cloudflare Speed Brain setting response failure."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
