@@ -5,39 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="text-decoration: underline;"><strong>This is a remote role open to candidates based in the Southeast US Region (preferred: Atlanta, GA; Nashville, TN; Miami, FL; Central Florida; North Carolina or South Carolina)</strong></span></p>
+<p><strong>Locations - </strong>Austin, Texas or major Texas cities who are willing to travel to Austin once a month for team meetings. If not in Texas, you must be willing to relocate.&nbsp;</p>
 <hr>
-<p><strong>About Solutions Engineering at Cloudflare:</strong></p>
-<p>The Pre-Sales Solution Engineering organization owns the technical sale of the Cloudflare solution portfolio, ensuring maximal business value, fit-for-purpose solution design and adoption roadmap for our customers. Solutions Engineering is made up of individuals from a wide range of backgrounds - from Financial Consulting to Product Management, Customer Support to Software Engineering, and we are serious about building a diverse, experienced and curious team.&nbsp;</p>
-<p>The Partner Solutions Engineer is an experienced PreSales role within the Solutions Engineering team. Partner Solutions Engineers work closely with our partners to educate, empower, and ensure their success delivering Cloudflare security, reliability and performance solutions.</p>
-<h4><strong>What you'll do as a Partner Solutions Engineer:</strong></h4>
-<p>Your role will be to build passionate champions within the technology ranks at your Partner accounts, aid your Partner organizations to drive sales for identified opportunities, and collaborate with your technical champions to build revenue pipeline. As the technical partner advocate within Cloudflare, you will work closely with every team at Cloudflare, from Sales and Product, through to Engineering and Customer Support.&nbsp;</p>
-<p>You have strong experience in large Pre-Sales partner and account management as well as excellent verbal and written communications skills, suited for both technical and executive-level engagement. You are comfortable speaking about the Cloudflare vision and mission with all technical and non-technical audiences.&nbsp;</p>
-<p>Ultimately, you are passionate about technology and have the ability to explain complex technical concepts in easy-to-understand terms. You are naturally curious, and an avid builder who is not afraid to get your hands dirty. You appreciate the diversity of challenges in working with partners and customers, and look forward to helping them realize the full promise of Cloudflare. On the Solutions Engineering team, you will find a collaborative environment where everyone brings different strengths and jumps in to help each other.</p>
-<p><strong>Specifically, we are looking for you to:</strong></p>
+<p><strong>About the Team</strong></p>
+<p>The Data Analytics &amp; Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
+<p><strong>Data Scientist Responsibilities</strong></p>
 <ul>
-	<li>Build and maintain long term technical relationships with our partners to increase Cloudflare’s reputation and authority within the partner solution portfolio through demonstrating value, enablement, and uncovering new areas of potential revenue</li>
-	<li>Drive technical solution design conversations and guide partners through use case qualification and collaborative technical wins through demonstrations and proofs-of-concepts</li>
-	<li>Evangelize and represent Cloudflare through technical thought leadership and expertise&nbsp;</li>
-	<li>Be the voice of the partner internally at Cloudflare, engaging with and influencing Cloudflare’s Product and Engineering teams to meet your partner and customer needs</li>
-	<li>Travel up to 40% throughout the quarter to support partner engagements, attend conferences and industry events, and to collaborate with your Cloudflare teammates&nbsp;</li>
+	<li>Partner and align with business leaders, stakeholders, product managers and internal teams to understand the business and product challenges and goals and address them using predictive analytics in a globally distributed environment.</li>
+	<li>Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team to improve the data collection and quality.</li>
+	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.</li>
+	<li>Strong audience focused presentation and storytelling skills focused on key takeaways in a crisp and concise manner.</li>
+	<li>Define, implement, and train statistical, machine learning, deep learning and generative AI models.</li>
+	<li>Use software engineering best practices to publish model scores/insights/learnings at scale within the company.</li>
+	<li>Ability to define and spot macro and micro levels trends with statistical significance on a regular basis and understand key drivers driving those trends.</li>
+	<li>Active role in hiring, growing, and mentoring the data scientist team in Austin.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Experience managing technical sales within large partners and accounts:</li>
-	<ul>
-		<li>Developing champion-style relationships</li>
-		<li>Driving technical wins</li>
-		<li>Assisting with technical validation</li>
-	</ul>
-	<li>Experience and expertise in one or more of the core industry components of Cloudflare solutions:</li>
-	<ul>
-		<li>SASE concepts and Zero Trust Networking architectures</li>
-		<li>Networking technologies including TCP, UDP, DNS, IPv4 + IPv6, BGP routing, GRE, SD-WAN, MPLS, Global Traffic Management</li>
-		<li>Internet security technologies including DDoS and DDoS mitigation, Firewalls, TLS, VPN, DLP</li>
-		<li>Detailed understanding of workflow from user to application including hybrid architectures with Azure, AWS, GCP</li>
-		<li>HTTP technologies including reverse proxy (e.g., WAF and CDN), forward proxy (secure web gateway), serverless application development.</li>
-	</ul>
+	<li>M.S or Ph.D in Computer Science, Statistics, Mathematics, or other quantitative fields.</li>
+	<li>3+ years of data scientist experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams)&nbsp;</li>
+	<li>Strong experience working with business functions such as Finance, Sales, and Marketing to build models and drive impactful business outcomes (eg: customer and revenue growth)</li>
+	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
+	<li>Strong experience in scientific computing using Python.</li>
+	<li>Experience with Spark, SQL, Tableau, Google Analytics, BigQuery (or any other Big data/Cloud equivalent) etc.</li>
+	<li>Experience working with and processing structured, unstructured, and semi-structured data.&nbsp;&nbsp;</li>
+	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.</li>
+	<li>Proven track record of applying data insights and machine learning in order to address business needs and drive revenue.</li>
+	<li>Proficiency in large language models and the frameworks necessary for implementing GenAI applications, such as chatbots and related use cases.</li>
+	<li>Strong communication and presentation skills catered to different audiences within the company.</li>
+	<li>Capable of working closely with business, engineering, and product teams to ensure data initiatives are aligned with business needs.</li>
+	<li>Experience in hiring data scientists and establishing team best practices is preferred.</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">

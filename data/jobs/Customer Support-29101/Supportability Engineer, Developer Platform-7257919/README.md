@@ -5,36 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Locations: Austin, TX</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p><strong><span class="selected">Emerging Technologies &amp; Incubation (ETI)</span></strong><span class="selected"> at Cloudflare is where we build and launch bold new products. We leverage Cloudflare's unique global network and edge to deliver innovative tools and solutions, solving problems at a scale impossible for most organizations. Join us to work on the bleeding edge.</span></p>
-<h3><span class="selected">What You'll Do</span></h3>
-<p><span class="selected">As a </span><strong><span class="selected">Senior Manager, Engineering</span></strong><span class="selected">, you will lead, grow, and inspire one or more teams of high-performing engineers who are redefining what is possible for developers on Cloudflare's platform. You will be responsible for the execution and delivery of industry-leading products that form the core of Cloudflare's developer offerings. We don't just replicate existing solutions; we innovate by working backward from developer needs, and you will guide your teams to imagine and build these new solutions by leveraging our unique global network.</span></p>
-<h3><strong><span class="selected">In this role, you will:</span></strong></h3>
+<p><strong>Available Locations: </strong>Hybrid - Austin, London, Lisbon</p>
+<h4>About the Team</h4>
+<p>The Supportability Team is made up of product experts who partner with Product, Engineering, and Support leaders to reduce the friction that customers experience when using our products, and ensure that our Technical Support Engineers are able to support products efficiently. We represent the voice-of-the-customer to help communicate their needs and use cases back to the rest of the company to help us build easy to use products and deliver better service.</p>
+<h4>What you’ll do</h4>
+<p>Supportability Engineers are hands-on, technical subject matter experts who work cross-functionally across the Product, Engineering, and Customer Support teams. In this role, you will work with <a href="https://www.cloudflare.com/developer-platform/products/">Cloudflare’s Developer Platform Products</a>, building internal tools, documentation and processes that help developers and internal teams answer questions and debug problems. This is a high impact role, where you will directly shape our support strategy for developers, as well as how pain points, bugs, and questions from customers big and small are addressed, enabling the support team to best support developers. The goals are to improve product supportability, reduce customer contact rates and escalations, and to improve the customer experience, while also supporting new go-to-market preparedness efforts for any new Developer Platform features.</p>
+<h4>Responsibilities</h4>
 <ul>
-	<li><strong><span class="selected">Lead, Mentor, and Grow Teams:</span></strong><span class="selected"> Foster a culture of innovation, accountability, and inclusivity while leading, mentoring, and developing talented engineers.</span></li>
-	<li><strong><span class="selected">Recruit World-Class Talent:</span></strong><span class="selected"> Build a diverse and high-performing organization by recruiting and developing top-tier engineering talent.</span></li>
-	<li><strong><span class="selected">Strategic Partnership:</span></strong><span class="selected"> Collaborate with engineers, product managers, and other stakeholders to set technical direction, architect innovative solutions, and ensure your teams deliver high-impact results.</span></li>
-	<li><strong><span class="selected">Drive Product Execution:</span></strong><span class="selected"> Oversee the execution and delivery of a critical product portfolio that includes R2, Durable Objects, Vectorize, Hyperdrive, Queues, and our evolving Data Platform.</span></li>
-	<li><strong><span class="selected">Cross-Functional Alignment:</span></strong><span class="selected"> Work across functions and teams to align on strategy, manage dependencies, and deliver on a shared vision for Cloudflare's comprehensive storage and database offerings.</span></li>
+	<li>Enable customers to easily adopt and use our developer platform products by identifying usability issues and working closely with the Product and Engineering teams to unblock them.</li>
+	<li>Regularly meet with the Product &amp; Engineering teams for Developer Platform products, as well as front line technical support engineers to drive improvements to tooling, process, and product&nbsp;</li>
+	<li>Manage key Supportability metrics for specific Developer Platform products including contact rate, escalation rate, support efficiency, and product CSAT.&nbsp;</li>
+	<li>Manage a top issues tracker for Developer Platform products&nbsp;</li>
+	<li>Using a metrics-driven approach, drive UX improvements that would prevent customers from needing to contact support</li>
+	<li>Work with the New Product Introduction (NPI) business function on Go-to-market (GTM) readiness efforts, monitoring Product roadmaps and release schedules, ensuring the team is prepared to support and launches</li>
+	<li>Help to enable team members on Developer Platform products</li>
+	<li>Support the creation and maintenance of internal and external facing Developer Platform support content</li>
+	<li>Review escalated customer inquiries to identify product and content needs, and to help Escalation Engineers, as well as Product and Engineering teams resolve complex customer issues</li>
+	<li>Maintain testing and issue reproduction environments</li>
 </ul>
-<h3><span class="selected">What You Bring</span></h3>
-<p><span class="selected">We are looking for an experienced engineering leader passionate about building foundational infrastructure and empowering developers.</span></p>
-<p><strong><span class="selected">Examples of desirable skills, knowledge, and experience:</span></strong></p>
+<h4>Required&nbsp;</h4>
 <ul>
-	<li><strong><span class="selected">Leadership Experience:</span></strong><span class="selected"> A minimum of 8 years of relevant industry experience, including at least 4 years in an engineering management role leading software engineers.</span></li>
-	<li><strong><span class="selected">Distributed Systems Expertise:</span></strong><span class="selected"> Proven track record of leading teams that have shipped and operated complex, large-scale distributed systems, preferably in the storage, database, or cloud infrastructure space.</span></li>
-	<li><strong><span class="selected">Team Development:</span></strong><span class="selected"> Demonstrated ability to hire, coach, and develop senior engineers, and build high-performing, inclusive teams.</span></li>
-	<li><strong><span class="selected">Execution Excellence:</span></strong><span class="selected"> Exceptional project management and execution skills, with extensive experience planning, building, and overseeing delivery to meet commitments.</span></li>
-	<li><strong><span class="selected">Technical Depth:</span></strong><span class="selected"> Significant technical depth in distributed systems, sufficient to be a credible leader, guide architectural discussions, and effectively unblock your team.</span></li>
-	<li><strong><span class="selected">Collaboration &amp; Influence:</span></strong><span class="selected"> Excellent cross-functional collaboration skills, with the ability to partner effectively with Product Management, other engineering teams, and leadership.</span></li>
+	<li>Demonstrated ability to work with data visualization and analytics platforms to generate insights and determine opportunities to impact key metrics</li>
+	<li>Experience building full-stack web applications in JavaScript</li>
+	<li>Experience working with databases</li>
+	<li>Experience with LLM prompting and a strong understanding of the underlying tech</li>
+	<li>Excellent debugging skills and ability to troubleshoot complex issues to resolution</li>
+	<li>Great cross-functional collaboration skills, ability to work effectively with many different teams</li>
+	<li>Strong verbal and written communication skills, including technical documentation&nbsp;</li>
+	<li>Self-motivated, can positively influence others, team player, problem solver</li>
+	<li>Technical Support or Product Operations experience</li>
 </ul>
-<p><strong><span class="selected">Bonus Points:</span></strong></p>
+<h4>Desired</h4>
 <ul>
-	<li><span class="selected">Experience building and managing a large-scale data storage platform.</span></li>
-	<li><span class="selected">Experience managing globally distributed teams.</span></li>
-	<li><span class="selected">A passion for making the lives of developers easier and more productive.</span></li>
+	<li>Expertise in Cloudflare’s Developer Platform products</li>
+	<li>Strong project and change management skills</li>
+	<li>Professional experience in a software engineering or developer advocacy role</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
