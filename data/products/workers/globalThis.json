@@ -2987,18 +2987,10 @@
 				"notEqual": "function",
 				"notStrictEqual": "function",
 				"ok": "function",
-				"partialDeepStrictEqual": "function",
 				"rejects": "function",
 				"strict": "function",
 				"strictEqual": "function",
 				"throws": "function"
-			},
-			"partialDeepStrictEqual": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
 			},
 			"rejects": {
 				"__proto": "function",
@@ -3040,7 +3032,6 @@
 				"notEqual": "function",
 				"notStrictEqual": "function",
 				"ok": "function",
-				"partialDeepStrictEqual": "function",
 				"rejects": "function",
 				"strict": "function",
 				"strictEqual": "function",
@@ -10992,6 +10983,7 @@
 					"rawHeaders": "object",
 					"joinDuplicateHeaders": "boolean",
 					"cloudflare": "object",
+					"_stream": "object",
 					"_dumped": "boolean",
 					"_consuming": "boolean",
 					"length": "undefined",
@@ -13283,13 +13275,7 @@
 				"__type": "function",
 				"length": "number",
 				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined",
-					"isBlockList": "undefined"
-				},
-				"isBlockList": "function"
+				"_prototype": {}
 			},
 			"SocketAddress": {
 				"__proto": "function",
