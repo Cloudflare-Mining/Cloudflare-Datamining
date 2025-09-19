@@ -5,60 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<p><strong>About the role</strong></p>
-<p>As the <strong>Manager, Web Production</strong> on the Web Strategy team, you will be responsible for managing a globally distributed team of web producers to ensure timely and high-quality delivery of web facing initiatives with full governance.&nbsp;</p>
-<p>You will own the intake, grooming, prioritization, QA and delivery of web publishing tasks in an operationally efficient manner for the website. The scope of the role includes team management, program and project management, website / CMS operations management as well as hands-on web production.</p>
-<p>You will act as a key partner to x-functional stakeholders for their web facing needs and help drive those initiatives with a strategic lens in a standardized, timely and operationally efficient manner. This is a highly visible role, which requires a growth mindset, great attention to detail, strong ability to multi-task, strong communication, and organizational skills.</p>
-<p><strong>Primary responsibilities</strong></p>
-<p><strong>Team leadership and management</strong></p>
+<p><strong>Available Locations: London or Lisbon</strong></p>
+<h3><strong>About Engineering at Cloudflare</strong></h3>
+<p>Cloudflare’s Engineering team is responsible for the software platform that serves 28 million HTTP requests per second on average. We also build and run the tools that empower our colleagues to rapidly deliver products to market, as well as monitor and deploy software updates across the globe to over 200+ data centers. You’ll experience the full breadth of technologies needed to run one of the world’s largest networks serving the world's largest customers such as Shopify and VISA.</p>
+<p><strong>About The Team</strong></p>
+<p>Cloudflare’s Front Line (FL) group is responsible for maintaining and developing the main Cloudflare web server, processing over 120 million HTTP requests per second. In other words, we own the largest web server in the world.</p>
+<p>The Product Team is responsible for creating new customer-facing features, improving efficiency &amp; safety, and building the next iteration of Cloudflare products. The platform is a Rust based application and our API is mostly built on Workers or Golang.</p>
+<p><strong>What you'll do</strong></p>
+<p>You will work with a team of talented engineers to create new features to increase the availability, safety &amp; reliability of the edge ecosystem. You will improve current features, create new systems from scratch, and collaborate with platform teams to help to build the best web server in the world.&nbsp;</p>
+<p>This is a unique opportunity to be at the nexus of Cloudflare edge applications and operations and to collaborate closely with most other product and engineering teams at Cloudflare.&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Lead, coach and develop a high-performing team of global web producers</li>
-	<li>Oversee daily production workflows, ensuring timely, accurate and brand-compliant web publishing</li>
-	<li>Set clear&nbsp; priorities and goals for the team, while managing work load and resource allocation</li>
+	<li>Experience in Rust, Golang, Kubernetes</li>
+	<li>Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</li>
+	<li>Experience in performance engineering</li>
+	<li>Driving communication and consensus across teams</li>
+	<li>A drive for continuous improvement when it comes to both operations and new product development</li>
 </ul>
-<p><strong>Web production governance and QA</strong></p>
+<h4><strong>Bonus Points</strong></h4>
+<p>These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</p>
 <ul>
-	<li>Maintain brand, design and accessibility standards across all web experiences</li>
-	<li>Establish QA process and editorial checks before pages go live</li>
-	<li>Maintain production playbook(s) and publishing best practices to ensure consistency at scale</li>
+	<li>Knowledge of web servers and web protocols</li>
+	<li>Distributed systems</li>
+	<li>Web security issues and industry standards</li>
+	<li>Use of Prometheus</li>
 </ul>
-<p><strong>Cross-functional partnership and collaboration</strong></p>
-<ul>
-	<li>Partner closely with stakeholders across marketing, content, UX, and product teams to ensure tickets are fully groomed, scoped and ready for production</li>
-	<li>Guide stakeholder discussions towards strategically aligned, operationally efficient and scalable web production solutions</li>
-	<li>Lead scheduled merchandising meetings with regional stakeholders</li>
-	<li>Partner with localization and growth teams to execute regional merchandising and personalization initiatives</li>
-	<li>Facilitate meetings to align on upcoming priorities and ensure product readiness</li>
-	<li>Serve as the point of contact for web production timelines, capacity planning and deliverables</li>
-</ul>
-<p><strong>Run the business</strong>&nbsp;</p>
-<ul>
-	<li>Personally execute high priority, time-sensitive or embargoed content updates in the CMS</li>
-	<li>Project manage large website projects with a clear roadmap and&nbsp; path to on-time delivery</li>
-	<li>Provide operational reporting for monthly and quarterly business reviews</li>
-</ul>
-<p><strong>Platform and process optimization</strong></p>
-<ul>
-	<li>Identify opportunities to streamline workflows and improve production velocity</li>
-	<li>Advocate for tooling, automation, and CMS development to improves team productivity, platform capabilities, and operational scale with PM and engineering leaders</li>
-</ul>
-<p><strong>Experience and requirements</strong></p>
-<ul>
-	<li>10+ &nbsp;years of work experience in a large B2B or B2C company with a global presence</li>
-	<li>5+ experience in a web production, content management and/or CMS operations role in a large enterprise website environment</li>
-	<li>4+ years of people / team management experience</li>
-	<li>Proven experience managing global teams and distributed workflows across time zones</li>
-	<li>Deep understanding of CMS systems (e.g. Contentful, AEM, etc), web governance, and publishing operations</li>
-	<li>Strong project management skills and ability to balance multiple priorities with extreme attention to detail</li>
-	<li>Experience scaling web production operations and managing resource allocation for optimal and timely delivery</li>
-	<li>Experience managing large ticket queues and efficiently triaging and expediently processing requests, using good business judgement and a long term vision.</li>
-	<li>Experience with agile workflows and tools like Jira and Asana</li>
-	<li>Excellent interpersonal, communication and organizational skills with experience working in a fast paced environment</li>
-	<li>Comfortable managing competing priorities and multiple communication streams at the same time</li>
-	<li>Understanding of localization flows and content governance at global scale is preferred</li>
-</ul>
-<p>&nbsp;</p>
+<p>Most importantly, we are looking for people who want to learn something new. We maintain the largest web server in the world, and we face unique challenges. You will be collaborating and designing innovative solutions to improve the life of millions of people around the globe, everywhere they are, whatever their needs are.</p>
+<p>Join and help us build a better Internet!</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

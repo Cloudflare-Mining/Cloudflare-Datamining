@@ -45,9 +45,17 @@
 <p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Associate's or Bachelor's degree in Computer Science, Information Systems, Business, or a related field.</li>
-	<li>2-4 years of experience working in data analytics, process improvement, or a related field.</li>
-	<li>1-2 years of hands-on experience with process mining or automation technologies such as Celonis, UiPath, PowerAutomate, or Alteryx.</li>
+	<li>Associate's or Bachelor's degree in Computer Science, Information Systems, Business, or a related field.
+		<ul>
+			<li>
+				<ul>
+					<li>4-6 years of professional experience, in a business analyst or similar role delivering end-to-end analytics and automation projects.</li>
+					<li>2-4 years of experience working in data analytics, process mining, or a related field.</li>
+					<li>Experience working with process mining or automation technologies such as Celonis, UiPath, PowerAutomate, Alteryx, or similar tools.</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
 	<li>Familiarity with relational data modeling and data warehousing concepts.</li>
 	<li>Ability to write basic data queries using SQL and/or Python.</li>
 	<li>Strong attention to detail and problem-solving skills, with the ability to proactively identify and address issues.</li>

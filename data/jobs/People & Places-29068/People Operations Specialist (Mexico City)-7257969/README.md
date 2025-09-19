@@ -5,60 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<p><strong>About the role</strong></p>
-<p>As the <strong>Manager, Web Production</strong> on the Web Strategy team, you will be responsible for managing a globally distributed team of web producers to ensure timely and high-quality delivery of web facing initiatives with full governance.&nbsp;</p>
-<p>You will own the intake, grooming, prioritization, QA and delivery of web publishing tasks in an operationally efficient manner for the website. The scope of the role includes team management, program and project management, website / CMS operations management as well as hands-on web production.</p>
-<p>You will act as a key partner to x-functional stakeholders for their web facing needs and help drive those initiatives with a strategic lens in a standardized, timely and operationally efficient manner. This is a highly visible role, which requires a growth mindset, great attention to detail, strong ability to multi-task, strong communication, and organizational skills.</p>
-<p><strong>Primary responsibilities</strong></p>
-<p><strong>Team leadership and management</strong></p>
+<h4><strong>This is a Hybrid role based in Mexico City</strong></h4>
+<h4><strong>What you'll do</strong></h4>
+<p>Cloudflare is growing our People team. Our focus is getting the best people to work at Cloudflare and then helping them to do their best work. We are looking for an energetic and motivated People Operations Specialist who’s ready to help a rapidly growing organization scale with efficiency and operational excellence.&nbsp; Your immediate focus area is supporting the Americas People team and all of our&nbsp; offices in the US, Canada, and Mexico, while collaborating with other People team members globally.&nbsp; Maintaining our People data with quality, accuracy and confidentiality is foundational to everything we do to support the organization, and this role is at the heart of that.&nbsp;&nbsp;</p>
+<p>Along the way you’ll have the opportunity to help with the implementation of automated solutions that transform how we manage our People data and programs.&nbsp; If this sounds exciting to you and you’re ready to roll up your sleeves in a fast-paced, dynamic environment with a growing, global company, we’d love to hear from you.&nbsp;&nbsp;</p>
+<h3><strong>Responsibilities</strong></h3>
 <ul>
-	<li>Lead, coach and develop a high-performing team of global web producers</li>
-	<li>Oversee daily production workflows, ensuring timely, accurate and brand-compliant web publishing</li>
-	<li>Set clear&nbsp; priorities and goals for the team, while managing work load and resource allocation</li>
+	<li>Administer end-to-end employee lifecycle transactions for the AMER region, including onboarding, transfers, organizational and compensation changes, and offboarding.<br><br></li>
+	<li>Generate, review, and update employment contracts and HR documentation in partnership with HR and legal.<br><br></li>
+	<li>Coordinate and process payroll activities in Mexico, partnering with payroll vendors to ensure accuracy, compliance, and timely execution.<br><br></li>
+	<li>Maintain and audit employee data in Workday and other HR systems, ensuring accuracy, consistency, and compliance with local regulations.<br><br><br></li>
+	<li>Respond to employee and manager inquiries through Zendesk and other channels, providing accurate and timely support.<br><br></li>
+	<li>Conduct regular and ad hoc audits to ensure compliance with labor laws, payroll accuracy, and internal policies.<br><br></li>
+	<li>Prepare and deliver Workday reports and analytics to support HR and business decision-making.<br><br></li>
+	<li>Partner with HR colleagues across the AMER region to align processes, share best practices, and support global initiatives.<br><br></li>
+	<li>Participate in HR projects, system implementations, and process improvement initiatives to enhance efficiency and employee experience.<br><br></li>
 </ul>
-<p><strong>Web production governance and QA</strong></p>
+<p><strong>Qualifications</strong></p>
 <ul>
-	<li>Maintain brand, design and accessibility standards across all web experiences</li>
-	<li>Establish QA process and editorial checks before pages go live</li>
-	<li>Maintain production playbook(s) and publishing best practices to ensure consistency at scale</li>
+	<li><strong>3-5</strong>+ years of HR operations experience, with strong expertise in Mexico payroll processing and employment law.<br><br></li>
+	<li>Hands-on experience with employee lifecycle administration and HR documentation.<br><br></li>
+	<li>Experience working with HRIS systems (Workday strongly preferred).<br><br></li>
+	<li>Strong proficiency in Excel (pivot tables, VLOOKUPs, formulas) and experience analyzing HR and payroll data in collaboration with regional teams to support decision-making.<br><br></li>
+	<li>Strong understanding of compliance requirements for Mexico; familiarity with US and Canadian HR practices a plus.<br><br></li>
+	<li>Excellent organizational, analytical, and problem-solving skills with high attention to detail.<br><br></li>
+	<li>Strong communication and customer service skills, with the ability to support employees and managers.<br><br></li>
+	<li>Bilingual in Spanish and English required.<br><br></li>
+	<li>Ability to work independently while effectively collaborating with global and regional HR teams.</li>
 </ul>
-<p><strong>Cross-functional partnership and collaboration</strong></p>
-<ul>
-	<li>Partner closely with stakeholders across marketing, content, UX, and product teams to ensure tickets are fully groomed, scoped and ready for production</li>
-	<li>Guide stakeholder discussions towards strategically aligned, operationally efficient and scalable web production solutions</li>
-	<li>Lead scheduled merchandising meetings with regional stakeholders</li>
-	<li>Partner with localization and growth teams to execute regional merchandising and personalization initiatives</li>
-	<li>Facilitate meetings to align on upcoming priorities and ensure product readiness</li>
-	<li>Serve as the point of contact for web production timelines, capacity planning and deliverables</li>
-</ul>
-<p><strong>Run the business</strong>&nbsp;</p>
-<ul>
-	<li>Personally execute high priority, time-sensitive or embargoed content updates in the CMS</li>
-	<li>Project manage large website projects with a clear roadmap and&nbsp; path to on-time delivery</li>
-	<li>Provide operational reporting for monthly and quarterly business reviews</li>
-</ul>
-<p><strong>Platform and process optimization</strong></p>
-<ul>
-	<li>Identify opportunities to streamline workflows and improve production velocity</li>
-	<li>Advocate for tooling, automation, and CMS development to improves team productivity, platform capabilities, and operational scale with PM and engineering leaders</li>
-</ul>
-<p><strong>Experience and requirements</strong></p>
-<ul>
-	<li>10+ &nbsp;years of work experience in a large B2B or B2C company with a global presence</li>
-	<li>5+ experience in a web production, content management and/or CMS operations role in a large enterprise website environment</li>
-	<li>4+ years of people / team management experience</li>
-	<li>Proven experience managing global teams and distributed workflows across time zones</li>
-	<li>Deep understanding of CMS systems (e.g. Contentful, AEM, etc), web governance, and publishing operations</li>
-	<li>Strong project management skills and ability to balance multiple priorities with extreme attention to detail</li>
-	<li>Experience scaling web production operations and managing resource allocation for optimal and timely delivery</li>
-	<li>Experience managing large ticket queues and efficiently triaging and expediently processing requests, using good business judgement and a long term vision.</li>
-	<li>Experience with agile workflows and tools like Jira and Asana</li>
-	<li>Excellent interpersonal, communication and organizational skills with experience working in a fast paced environment</li>
-	<li>Comfortable managing competing priorities and multiple communication streams at the same time</li>
-	<li>Understanding of localization flows and content governance at global scale is preferred</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

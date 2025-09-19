@@ -5,58 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<p><strong>About the role</strong></p>
-<p>As the <strong>Manager, Web Production</strong> on the Web Strategy team, you will be responsible for managing a globally distributed team of web producers to ensure timely and high-quality delivery of web facing initiatives with full governance.&nbsp;</p>
-<p>You will own the intake, grooming, prioritization, QA and delivery of web publishing tasks in an operationally efficient manner for the website. The scope of the role includes team management, program and project management, website / CMS operations management as well as hands-on web production.</p>
-<p>You will act as a key partner to x-functional stakeholders for their web facing needs and help drive those initiatives with a strategic lens in a standardized, timely and operationally efficient manner. This is a highly visible role, which requires a growth mindset, great attention to detail, strong ability to multi-task, strong communication, and organizational skills.</p>
-<p><strong>Primary responsibilities</strong></p>
-<p><strong>Team leadership and management</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>About the Team</strong></p>
+<p>The Legal, Policy, and Trust &amp; Safety (“LPT”) department is staffed by a world-class group of professionals who help Cloudflare navigate complex challenges while staying compliant and minimizing risk. Legal Operations plays a central role in scaling the LPT department – from driving contract management excellence, implementing technology solutions, and building processes that make our department more efficient and impactful.&nbsp;</p>
+<p>We are seeking a highly motivated Legal Operations Analyst to join our growing team. In this role, you will be responsible for optimizing and scaling our contract lifecycle management (CLM) processes, and advancing the LPT department’s technology roadmap. You will work with the Head of Legal Operations to optimize our Ironclad CLM system for efficient, scalable, and compliant workflows, while also driving automation, technology, and AI initiatives. You will partner with Legal, IT, and business teams to evaluate tools, lead implementations, and enhance the user experience across the organization.</p>
+<p>The ideal candidate brings hands-on Ironclad experience, a deep understanding of legal operations best practices, and a passion for process improvement and technology. This highly impactful role offers the opportunity to shape contract management, drive adoption of AI and automation, and help scale the LPT department’s operations in a fast-paced, evolving environment.</p>
+<p><strong>What You'll Do</strong></p>
 <ul>
-	<li>Lead, coach and develop a high-performing team of global web producers</li>
-	<li>Oversee daily production workflows, ensuring timely, accurate and brand-compliant web publishing</li>
-	<li>Set clear&nbsp; priorities and goals for the team, while managing work load and resource allocation</li>
+	<li><strong>CLM Administration:</strong> Serve as a co-administrator for Ironclad, managing legal workflows, templates, clause libraries, reporting, and user access. Facilitate end-to-end contract processes, track milestones, and ensure timely approvals.</li>
+	<li><strong>AI &amp; Technology Initiatives:</strong> Help pilot, implement, and optimize AI and automation tools to streamline legal workflows and enhance productivity. Document requirements and help build business cases, evaluate new technologies, and help drive adoption across the department.</li>
+	<li><strong>Process Improvement: </strong>Identify opportunities to streamline in contract and workflow processes, recommend solutions, and help implement best practices to scale the legal function.</li>
+	<li><strong>Project Management:</strong> Support projects end-to-end – from planning and coordination to rollout and adoption. Partner with Legal, IT, Finance, vendors, and other business stakeholders to ensure seamless implementations and integrations.</li>
+	<li><strong>Analytics &amp; Reporting:</strong> Build dashboards and reports on contract metrics, KPIs, and technology adoption metrics to maintain data for leadership review.</li>
+	<li><strong>Training &amp; Enablement:</strong> Develop documentation and training for LPT teams and business partners to maximize adoption of CLM and AI tools.</li>
+	<li><strong>General Legal Ops Support:</strong> Ensure smooth execution of department workflows by supporting day-to-day operations, including maintaining knowledge bases, driving cross-functional initiatives, and supporting strategic ad hoc projects.</li>
 </ul>
-<p><strong>Web production governance and QA</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Maintain brand, design and accessibility standards across all web experiences</li>
-	<li>Establish QA process and editorial checks before pages go live</li>
-	<li>Maintain production playbook(s) and publishing best practices to ensure consistency at scale</li>
+	<li>5+ years of experience in legal operations, preferably at a fast-paced global technology company.</li>
+	<li>Highly organized and proven in defining and executing a project from start to finish, ability to manage multiple concurrent projects, high-volume workloads, and shifting priorities with confidence.</li>
+	<li>Strong technical acumen with hands-on experience designing processes, implementing, managing, and integrating legal systems with enterprise platforms.</li>
+	<li>Proven track record of evaluating technology, driving automation initiatives, and delivering measurable improvements in legal workflows.</li>
+	<li>Skilled in legal data analytics (ROI, cycle times, volumes, trends).</li>
+	<li>Excellent communicator with strong writing skills; able to present complex issues clearly and concisely.</li>
+	<li>Collaborative, adaptable, and cross-functional team player with integrity, curiosity, and strong interpersonal skills – with the ability to work independently or cross-functionally.</li>
 </ul>
-<p><strong>Cross-functional partnership and collaboration</strong></p>
+<p><strong>Bonus</strong></p>
 <ul>
-	<li>Partner closely with stakeholders across marketing, content, UX, and product teams to ensure tickets are fully groomed, scoped and ready for production</li>
-	<li>Guide stakeholder discussions towards strategically aligned, operationally efficient and scalable web production solutions</li>
-	<li>Lead scheduled merchandising meetings with regional stakeholders</li>
-	<li>Partner with localization and growth teams to execute regional merchandising and personalization initiatives</li>
-	<li>Facilitate meetings to align on upcoming priorities and ensure product readiness</li>
-	<li>Serve as the point of contact for web production timelines, capacity planning and deliverables</li>
-</ul>
-<p><strong>Run the business</strong>&nbsp;</p>
-<ul>
-	<li>Personally execute high priority, time-sensitive or embargoed content updates in the CMS</li>
-	<li>Project manage large website projects with a clear roadmap and&nbsp; path to on-time delivery</li>
-	<li>Provide operational reporting for monthly and quarterly business reviews</li>
-</ul>
-<p><strong>Platform and process optimization</strong></p>
-<ul>
-	<li>Identify opportunities to streamline workflows and improve production velocity</li>
-	<li>Advocate for tooling, automation, and CMS development to improves team productivity, platform capabilities, and operational scale with PM and engineering leaders</li>
-</ul>
-<p><strong>Experience and requirements</strong></p>
-<ul>
-	<li>10+ &nbsp;years of work experience in a large B2B or B2C company with a global presence</li>
-	<li>5+ experience in a web production, content management and/or CMS operations role in a large enterprise website environment</li>
-	<li>4+ years of people / team management experience</li>
-	<li>Proven experience managing global teams and distributed workflows across time zones</li>
-	<li>Deep understanding of CMS systems (e.g. Contentful, AEM, etc), web governance, and publishing operations</li>
-	<li>Strong project management skills and ability to balance multiple priorities with extreme attention to detail</li>
-	<li>Experience scaling web production operations and managing resource allocation for optimal and timely delivery</li>
-	<li>Experience managing large ticket queues and efficiently triaging and expediently processing requests, using good business judgement and a long term vision.</li>
-	<li>Experience with agile workflows and tools like Jira and Asana</li>
-	<li>Excellent interpersonal, communication and organizational skills with experience working in a fast paced environment</li>
-	<li>Comfortable managing competing priorities and multiple communication streams at the same time</li>
-	<li>Understanding of localization flows and content governance at global scale is preferred</li>
+	<li>Working knowledge of AI tools and applications, including prompt design, data extraction, document analysis, and model training.&nbsp;</li>
+	<li>A sense of humor!</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
