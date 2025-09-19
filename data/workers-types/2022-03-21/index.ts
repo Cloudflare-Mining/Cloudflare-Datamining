@@ -466,18 +466,6 @@ export declare abstract class Navigator {
   readonly userAgent: string;
   readonly hardwareConcurrency: number;
 }
-/**
- * The Workers runtime supports a subset of the Performance API, used to measure timing and performance,
- * as well as timing of subrequests and other operations.
- *
- * [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/)
- */
-export interface Performance {
-  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancetimeorigin) */
-  readonly timeOrigin: number;
-  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancenow) */
-  now(): number;
-}
 export interface AlarmInvocationInfo {
   readonly isRetry: boolean;
   readonly retryCount: number;
@@ -3164,6 +3152,18 @@ export interface WorkerLoaderWorkerCode {
   globalOutbound?: Fetcher | null;
   tails?: Fetcher[];
   streamingTails?: Fetcher[];
+}
+/**
+ * The Workers runtime supports a subset of the Performance API, used to measure timing and performance,
+ * as well as timing of subrequests and other operations.
+ *
+ * [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/)
+ */
+export declare abstract class Performance {
+  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancetimeorigin) */
+  get timeOrigin(): number;
+  /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancenow) */
+  now(): number;
 }
 export type AiImageClassificationInput = {
   image: number[];
@@ -8952,7 +8952,6 @@ export declare namespace TailStream {
   }
   interface JsRpcEventInfo {
     readonly type: "jsrpc";
-    readonly methodName: string;
   }
   interface ScheduledEventInfo {
     readonly type: "scheduled";
