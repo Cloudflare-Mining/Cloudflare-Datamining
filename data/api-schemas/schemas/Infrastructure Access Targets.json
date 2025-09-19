@@ -24,7 +24,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"title": "target_id",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -189,7 +190,8 @@
 									"format": "uuid",
 									"maxLength": 36,
 									"title": "target_id",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							}
@@ -700,7 +702,8 @@
 														"format": "uuid",
 														"maxLength": 36,
 														"title": "target_id",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ip": {
 														"description": "The IPv4/IPv6 address that identifies where to reach a target",
@@ -711,13 +714,15 @@
 																	"ip_addr": {
 																		"description": "IP address of the target",
 																		"example": "187.26.29.249",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"virtual_network_id": {
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"format": "uuid",
 																		"type": "string",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -729,13 +734,15 @@
 																	"ip_addr": {
 																		"description": "IP address of the target",
 																		"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"virtual_network_id": {
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"format": "uuid",
 																		"type": "string",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -922,7 +929,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"title": "target_id",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1040,7 +1048,8 @@
 													"format": "uuid",
 													"maxLength": 36,
 													"title": "target_id",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ip": {
 													"description": "The IPv4/IPv6 address that identifies where to reach a target",
@@ -1051,13 +1060,15 @@
 																"ip_addr": {
 																	"description": "IP address of the target",
 																	"example": "187.26.29.249",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
@@ -1069,13 +1080,15 @@
 																"ip_addr": {
 																	"description": "IP address of the target",
 																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
@@ -1259,7 +1272,8 @@
 							"hostname": {
 								"description": "A non-unique field that refers to a target. Case insensitive, maximum\nlength of 255 characters, supports the use of special characters dash\nand period, does not support spaces, and must start and end with an\nalphanumeric character.",
 								"example": "infra-access-target",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"ip": {
 								"description": "The IPv4/IPv6 address that identifies where to reach a target",
@@ -1270,13 +1284,15 @@
 											"ip_addr": {
 												"description": "IP address of the target",
 												"example": "187.26.29.249",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"virtual_network_id": {
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
 												"type": "string",
+												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
@@ -1288,13 +1304,15 @@
 											"ip_addr": {
 												"description": "IP address of the target",
 												"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"virtual_network_id": {
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
 												"type": "string",
+												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
@@ -1428,7 +1446,8 @@
 													"format": "uuid",
 													"maxLength": 36,
 													"title": "target_id",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ip": {
 													"description": "The IPv4/IPv6 address that identifies where to reach a target",
@@ -1439,13 +1458,15 @@
 																"ip_addr": {
 																	"description": "IP address of the target",
 																	"example": "187.26.29.249",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
@@ -1457,13 +1478,15 @@
 																"ip_addr": {
 																	"description": "IP address of the target",
 																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
@@ -1653,7 +1676,8 @@
 									"format": "uuid",
 									"maxLength": 36,
 									"title": "target_id",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"type": "array"
 							}
@@ -1822,7 +1846,8 @@
 					"format": "uuid",
 					"maxLength": 36,
 					"title": "target_id",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1834,7 +1859,8 @@
 							"hostname": {
 								"description": "A non-unique field that refers to a target. Case insensitive, maximum\nlength of 255 characters, supports the use of special characters dash\nand period, does not support spaces, and must start and end with an\nalphanumeric character.",
 								"example": "infra-access-target",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"ip": {
 								"description": "The IPv4/IPv6 address that identifies where to reach a target",
@@ -1845,13 +1871,15 @@
 											"ip_addr": {
 												"description": "IP address of the target",
 												"example": "187.26.29.249",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"virtual_network_id": {
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
 												"type": "string",
+												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
@@ -1863,13 +1891,15 @@
 											"ip_addr": {
 												"description": "IP address of the target",
 												"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"virtual_network_id": {
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"format": "uuid",
 												"type": "string",
+												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
@@ -2003,7 +2033,8 @@
 													"format": "uuid",
 													"maxLength": 36,
 													"title": "target_id",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"ip": {
 													"description": "The IPv4/IPv6 address that identifies where to reach a target",
@@ -2014,13 +2045,15 @@
 																"ip_addr": {
 																	"description": "IP address of the target",
 																	"example": "187.26.29.249",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
@@ -2032,13 +2065,15 @@
 																"ip_addr": {
 																	"description": "IP address of the target",
 																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"format": "uuid",
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
@@ -2224,7 +2259,8 @@
 								"hostname": {
 									"description": "A non-unique field that refers to a target. Case insensitive, maximum\nlength of 255 characters, supports the use of special characters dash\nand period, does not support spaces, and must start and end with an\nalphanumeric character.",
 									"example": "infra-access-target",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"ip": {
 									"description": "The IPv4/IPv6 address that identifies where to reach a target",
@@ -2235,13 +2271,15 @@
 												"ip_addr": {
 													"description": "IP address of the target",
 													"example": "187.26.29.249",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"virtual_network_id": {
 													"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 													"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 													"format": "uuid",
 													"type": "string",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -2253,13 +2291,15 @@
 												"ip_addr": {
 													"description": "IP address of the target",
 													"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"virtual_network_id": {
 													"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 													"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 													"format": "uuid",
 													"type": "string",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -2396,7 +2436,8 @@
 														"format": "uuid",
 														"maxLength": 36,
 														"title": "target_id",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"ip": {
 														"description": "The IPv4/IPv6 address that identifies where to reach a target",
@@ -2407,13 +2448,15 @@
 																	"ip_addr": {
 																		"description": "IP address of the target",
 																		"example": "187.26.29.249",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"virtual_network_id": {
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"format": "uuid",
 																		"type": "string",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -2425,13 +2468,15 @@
 																	"ip_addr": {
 																		"description": "IP address of the target",
 																		"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"virtual_network_id": {
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
 																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"format": "uuid",
 																		"type": "string",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
