@@ -835,6 +835,10 @@
 				"read": true,
 				"edit": false
 			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
 			"organization": {
 				"read": true,
 				"edit": false
@@ -1218,6 +1222,10 @@
 		"name": "Cloudflare Gateway",
 		"description": "Can edit Cloudflare Gateway and read Access.",
 		"permissions": {
+			"teams_device": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": true,
@@ -1286,6 +1294,10 @@
 		"name": "Cloudflare Zero Trust Read Only",
 		"description": "Can access Cloudflare for Zero Trust read only mode.",
 		"permissions": {
+			"teams_device": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": false,
@@ -1330,6 +1342,10 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"teams_device": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": true,
@@ -1426,6 +1442,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"teams_device": {
+				"read": true,
+				"edit": false
+			},
 			"ces_pra_report": {
 				"read": true,
 				"edit": true
@@ -1934,6 +1954,10 @@
 		"name": "Cloudflare Access",
 		"description": "Can edit Cloudflare Access.",
 		"permissions": {
+			"teams_device": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": false,
@@ -2074,6 +2098,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"teams_device": {
+				"read": true,
+				"edit": false
+			},
 			"ces_pra_report": {
 				"read": true,
 				"edit": false
@@ -2281,6 +2309,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"teams_device": {
+				"read": true,
+				"edit": false
+			},
 			"ces_pra_report": {
 				"read": true,
 				"edit": true
