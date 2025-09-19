@@ -215,6 +215,34 @@
 										"store_id": {
 											"nullable": true,
 											"type": "string"
+										},
+										"stripe": {
+											"nullable": true,
+											"properties": {
+												"authorization": {
+													"type": "string"
+												},
+												"usage_events": {
+													"items": {
+														"properties": {
+															"payload": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"payload"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"authorization",
+												"usage_events"
+											],
+											"type": "object",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -545,6 +573,34 @@
 											"store_id": {
 												"nullable": true,
 												"type": "string"
+											},
+											"stripe": {
+												"nullable": true,
+												"properties": {
+													"authorization": {
+														"type": "string"
+													},
+													"usage_events": {
+														"items": {
+															"properties": {
+																"payload": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"payload"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"authorization",
+													"usage_events"
+												],
+												"type": "object",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -990,6 +1046,34 @@
 										"store_id": {
 											"nullable": true,
 											"type": "string"
+										},
+										"stripe": {
+											"nullable": true,
+											"properties": {
+												"authorization": {
+													"type": "string"
+												},
+												"usage_events": {
+													"items": {
+														"properties": {
+															"payload": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"payload"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"authorization",
+												"usage_events"
+											],
+											"type": "object",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1387,6 +1471,34 @@
 										"store_id": {
 											"nullable": true,
 											"type": "string"
+										},
+										"stripe": {
+											"nullable": true,
+											"properties": {
+												"authorization": {
+													"type": "string"
+												},
+												"usage_events": {
+													"items": {
+														"properties": {
+															"payload": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"payload"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"authorization",
+												"usage_events"
+											],
+											"type": "object",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1681,6 +1793,34 @@
 							"store_id": {
 								"nullable": true,
 								"type": "string"
+							},
+							"stripe": {
+								"nullable": true,
+								"properties": {
+									"authorization": {
+										"type": "string"
+									},
+									"usage_events": {
+										"items": {
+											"properties": {
+												"payload": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"payload"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"authorization",
+									"usage_events"
+								],
+								"type": "object",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1885,6 +2025,34 @@
 										"store_id": {
 											"nullable": true,
 											"type": "string"
+										},
+										"stripe": {
+											"nullable": true,
+											"properties": {
+												"authorization": {
+													"type": "string"
+												},
+												"usage_events": {
+													"items": {
+														"properties": {
+															"payload": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"payload"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"authorization",
+												"usage_events"
+											],
+											"type": "object",
+											"x-auditable": true
 										}
 									},
 									"required": [
