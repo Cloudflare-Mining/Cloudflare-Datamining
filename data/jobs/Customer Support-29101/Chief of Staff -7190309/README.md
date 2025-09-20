@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Available Locations: Austin, TX or San Francisco, CA&nbsp;</strong></p>
 <p><strong>About the role: </strong></p>
 <p>The Chief of Staff role will be a critical partner to support leadership, responsible for driving strategic planning, operational excellence, and data-driven decision-making to accelerate the growth and success of our support organization. This role requires a leader who can seamlessly blend strategy with execution, build robust processes, and foster strong cross-functional collaboration across product, engineering, sales, marketing, finance, and customer success to drive product adoption and growth.</p>
 <p>Turn strategy into coordinated execution across Support, Product, Engineering, Success, Sales, and Finance. Keep the rhythm of business tight, the story clear, and the priorities stable. Partner closely with the VP of Operations, who owns day‑to‑day delivery, workforce management, and operational outcomes.</p>
