@@ -823,6 +823,10 @@
 		"name": "Cloudflare DEX",
 		"description": "Can edit Cloudflare DEX",
 		"permissions": {
+			"teams_device": {
+				"read": true,
+				"edit": false
+			},
 			"dex": {
 				"read": true,
 				"edit": true
@@ -1258,6 +1262,10 @@
 		"name": "Cloudflare Zero Trust Reporting",
 		"description": "Can access Cloudflare for Zero Trust reporting data.",
 		"permissions": {
+			"teams_device": {
+				"read": true,
+				"edit": false
+			},
 			"dex": {
 				"read": true,
 				"edit": false
