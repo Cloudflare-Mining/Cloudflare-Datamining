@@ -1,0 +1,452 @@
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5i59EQLnkQYe3oZrCzCk1y/43c20e671782e6ec9f878f786535bd15/BLOG-2954_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Allow us to introduce <a href="https://github.com/cloudflare/capnweb"><u>Cap'n Web</u></a>, an RPC protocol and implementation in pure TypeScript.</p>
+	<p>Cap'n Web is a spiritual sibling to <a href="https://capnproto.org"><u>Cap'n Proto</u></a>, an RPC protocol I (Kenton) created a decade ago, but designed to play nice in the web stack. That means:</p>
+	<ul>
+		<li>
+			<p>Like Cap'n Proto, it is an object-capability protocol. ("Cap'n" is short for "capabilities and".) We'll get into this more below, but it's incredibly powerful.</p>
+		</li>
+		<li>
+			<p>Unlike Cap'n Proto, Cap'n Web has <i>no schemas</i>. In fact, it has almost no boilerplate whatsoever. This means it works more like the <a href="https://blog.cloudflare.com/javascript-native-rpc"><u>JavaScript-native RPC system in Cloudflare Workers</u></a>.</p>
+		</li>
+		<li>
+			<p>That said, it integrates nicely with TypeScript.</p>
+		</li>
+		<li>
+			<p>Also unlike Cap'n Proto, Cap'n Web's underlying serialization is human-readable. In fact, it's just JSON, with a little pre-/post-processing.</p>
+		</li>
+		<li>
+			<p>It works over HTTP, WebSocket, and postMessage() out-of-the-box, with the ability to extend it to other transports easily.</p>
+		</li>
+		<li>
+			<p>It works in all major browsers, Cloudflare Workers, Node.js, and other modern JavaScript runtimes.</p>
+		</li>
+		<li>
+			<p>The whole thing compresses (minify+gzip) to under 10&nbsp;kB with no dependencies.</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/capnweb"><u>It's open source</u></a> under the MIT license.</p>
+		</li>
+	</ul>
+	<p>Cap'n Web is more expressive than almost every other RPC system, because it implements an <b>object-capability RPC model</b>. That means it:</p>
+	<ul>
+		<li>
+			<p>Supports bidirectional calling. The client can call the server, and the server can also call the client.</p>
+		</li>
+		<li>
+			<p>Supports passing functions by reference: If you pass a function over RPC, the recipient receives a "stub". When they call the stub, they actually make an RPC back to you, invoking the function where it was created. This is how bidirectional calling happens: the client passes a callback to the server, and then the server can call it later.</p>
+		</li>
+		<li>
+			<p>Similarly, supports passing objects by reference: If a class extends the special marker type <code>RpcTarget</code>, then instances of that class are passed by reference, with method calls calling back to the location where the object was created.</p>
+		</li>
+		<li>
+			<p>Supports promise pipelining. When you start an RPC, you get back a promise. Instead of awaiting it, you can immediately use the promise in dependent RPCs, thus performing a chain of calls in a single network round trip.</p>
+		</li>
+		<li>
+			<p>Supports capability-based security patterns.</p>
+		</li>
+	</ul>
+	<p>In short, Cap'n Web lets you design RPC interfaces the way you'd design regular JavaScript APIs – while still acknowledging and compensating for network latency.</p>
+	<p>The best part is, Cap'n Web is absolutely trivial to set up.</p>
+	<p>A client looks like this:</p>
+	<pre class="language-javascript"><code class="language-javascript">import { newWebSocketRpcSession } from "capnweb";
+
+// One-line setup.
+let api = newWebSocketRpcSession("wss://example.com/api");
+
+// Call a method on the server!
+let result = await api.hello("World");
+
+console.log(result);
+</code></pre>
+	<p>And here's a complete Cloudflare Worker implementing an RPC server:</p>
+	<pre class="language-javascript"><code class="language-javascript">import { RpcTarget, newWorkersRpcResponse } from "capnweb";
+
+// This is the server implementation.
+class MyApiServer extends RpcTarget {
+  hello(name) {
+    return `Hello, ${name}!`
+  }
+}
+
+// Standard Workers HTTP handler.
+export default {
+  fetch(request, env, ctx) {
+    // Parse URL for routing.
+    let url = new URL(request.url);
+
+    // Serve API at `/api`.
+    if (url.pathname === "/api") {
+      return newWorkersRpcResponse(request, new MyApiServer());
+    }
+
+    // You could serve other endpoints here...
+    return new Response("Not found", {status: 404});
+  }
+}
+</code></pre>
+	<p>That's it. That's the app.</p>
+	<ul>
+		<li>
+			<p>You can add more methods to <code>MyApiServer</code>, and call them from the client.</p>
+		</li>
+		<li>
+			<p>You can have the client pass a callback function to the server, and then the server can just call it.</p>
+		</li>
+		<li>
+			<p>You can define a TypeScript interface for your API, and easily apply it to the client and server.</p>
+		</li>
+	</ul>
+	<p>It just works.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-rpc-and-what-is-rpc-anyway">Why RPC? (And what is RPC anyway?)</h3>
+		<a href="https://blog.cloudflare.com/#why-rpc-and-what-is-rpc-anyway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Remote Procedure Calls (RPC) are a way of expressing communications between two programs over a network. Without RPC, you might communicate using a protocol like HTTP. With HTTP, though, you must format and parse your communications as an HTTP request and response, perhaps designed in <a href="https://en.wikipedia.org/wiki/REST"><u>REST</u></a> style. RPC systems try to make communications look like a regular function call instead, as if you were calling a library rather than a remote service. The RPC system provides a "stub" object on the client side which stands in for the real server-side object. When a method is called on the stub, the RPC system figures out how to serialize and transmit the parameters to the server, invoke the method on the server, and then transmit the return value back.</p>
+	<p>The merits of RPC have been subject to a great deal of debate. RPC is often accused of committing many of the <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing"><u>fallacies of distributed computing</u></a>.</p>
+	<p>But this reputation is outdated. When RPC was first invented some 40 years ago, async programming barely existed. We did not have Promises, much less async and await. Early RPC was synchronous: calls would block the calling thread waiting for a reply. At best, latency made the program slow. At worst, network failures would hang or crash the program. No wonder it was deemed "broken".</p>
+	<p>Things are different today. We have Promise and async and await, and we can throw exceptions on network failures. We even understand how RPCs can be pipelined so that a chain of calls takes only one network round trip. Many large distributed systems you likely use every day are built on RPC. It works.</p>
+	<p>The fact is, RPC fits the programming model we're used to. Every programmer is trained to think in terms of APIs composed of function calls, not in terms of byte stream protocols nor even REST. Using RPC frees you from the need to constantly translate between mental models, allowing you to move faster.</p>
+	<div class="flex anchor relative">
+		<h3 id="when-should-you-use-capn-web">When should you use Cap'n Web?</h3>
+		<a href="https://blog.cloudflare.com/#when-should-you-use-capn-web" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cap'n Web is useful anywhere where you have two JavaScript applications speaking to each other over a network, including client-to-server and microservice-to-microservice scenarios. However, it is particularly well-suited to interactive web applications with real-time collaborative features, as well as modeling interactions over complex security boundaries.</p>
+	<p>Cap'n Web is still new and experimental, so for now, a willingness to live on the cutting edge may also be required!</p>
+	<div class="flex anchor relative">
+		<h2 id="features-features-features">Features, features, features…</h2>
+		<a href="https://blog.cloudflare.com/#features-features-features" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Here's some more things you can do with Cap'n Web.</p>
+	<div class="flex anchor relative">
+		<h3 id="http-batch-mode">HTTP batch mode</h3>
+		<a href="https://blog.cloudflare.com/#http-batch-mode" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sometimes a WebSocket connection is a bit too heavyweight. What if you just want to make a quick one-time batch of calls, but don't need an ongoing connection?</p>
+	<p>For that, Cap'n Web supports HTTP batch mode:</p>
+	<pre class="language-javascript"><code class="language-javascript">import { newHttpBatchRpcSession } from "capnweb";
+
+let batch = newHttpBatchRpcSession("https://example.com/api");
+
+let result = await batch.hello("World");
+
+console.log(result);
+</code></pre>
+	<p><i>(The server is exactly the same as before.)</i></p>
+	<p>Note that once you've awaited an RPC in the batch, the batch is done, and all the remote references received through it become broken. To make more calls, you need to start over with a new batch. However, you can make multiple calls in a single batch:</p>
+	<pre class="language-javascript"><code class="language-javascript">let batch = newHttpBatchRpcSession("https://example.com/api");
+
+// We can call make multiple calls, as long as we await them all at once.
+let promise1 = batch.hello("Alice");
+let promise2 = batch.hello("Bob");
+
+let [result1, result2] = await Promise.all([promise1, promise2]);
+
+console.log(result1);
+console.log(result2);
+</code></pre>
+	<p>And that brings us to another feature…</p>
+	<div class="flex anchor relative">
+		<h3 id="chained-calls-promise-pipelining">Chained calls (Promise Pipelining)</h3>
+		<a href="https://blog.cloudflare.com/#chained-calls-promise-pipelining" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Here's where things get magical.</p>
+	<p>In both batch mode and WebSocket mode, you can make a call that depends on the result of another call, without waiting for the first call to finish. In batch mode, that means you can, in a single batch, call a method, then use its result in another call. The entire batch still requires only one network round trip.</p>
+	<p>For example, say your API is:</p>
+	<pre class="language-javascript"><code class="language-javascript">class MyApiServer extends RpcTarget {
+  getMyName() {
+    return "Alice";
+  }
+
+  hello(name) {
+    return `Hello, ${name}!`
+  }
+}
+</code></pre>
+	<p>You can do:</p>
+	<pre class="language-javascript"><code class="language-javascript">let namePromise = batch.getMyName();
+let result = await batch.hello(namePromise);
+
+console.log(result);
+</code></pre>
+	<p>Notice the initial call to <code>getMyName()</code> returned a promise, but we used the promise itself as the input to <code>hello()</code>, without awaiting it first. With Cap'n Web, this just works: The client sends a message to the server saying: "Please insert the result of the first call into the parameters of the second."</p>
+	<p>Or perhaps the first call returns an object with methods. You can call the methods immediately, without awaiting the first promise, like:</p>
+	<pre class="language-javascript"><code class="language-javascript">let batch = newHttpBatchRpcSession("https://example.com/api");
+
+// Authencitate the API key, returning a Session object.
+let sessionPromise = batch.authenticate(apiKey);
+
+// Get the user's name.
+let name = await sessionPromise.whoami();
+
+console.log(name);
+</code></pre>
+	<p>This works because the promise returned by a Cap'n Web call is not a regular promise. Instead, it's a JavaScript Proxy object. Any methods you call on it are interpreted as speculative method calls on the eventual result. These calls are sent to the server immediately, telling the server: "When you finish the call I sent earlier, call this method on what it returns."</p>
+	<div class="flex anchor relative">
+		<h3 id="did-you-spot-the-security">Did you spot the security?</h3>
+		<a href="https://blog.cloudflare.com/#did-you-spot-the-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This last example shows an important security pattern enabled by Cap'n Web's object-capability model.</p>
+	<p>When we call the authenticate() method, after it has verified the provided API key, it returns an authenticated session object. The client can then make further RPCs on the session object to perform operations that require authorization as that user. The server code might look like this:</p>
+	<pre class="language-javascript"><code class="language-javascript">class MyApiServer extends RpcTarget {
+  authenticate(apiKey) {
+    let username = await checkApiKey(apiKey);
+    return new AuthenticatedSession(username);
+  }
+}
+
+class AuthenticatedSession extends RpcTarget {
+  constructor(username) {
+    super();
+    this.username = username;
+  }
+
+  whoami() {
+    return this.username;
+  }
+
+  // ...other methods requiring auth...
+}
+</code></pre>
+	<p>Here's what makes this work: <b>It is impossible for the client to "forge" a session object. The only way to get one is to call authenticate(), and have it return successfully.</b></p>
+	<p>In most RPC systems, it is not possible for one RPC to return a stub pointing at a new RPC object in this way. Instead, all functions are top-level, and can be called by anyone. In such a traditional RPC system, it would be necessary to pass the API key again to every function call, and check it again on the server each time. Or, you'd need to do authorization outside the RPC system entirely.</p>
+	<p>This is a common pain point for WebSockets in particular. Due to the design of the web APIs for WebSocket, you generally cannot use headers nor cookies to authorize them. Instead, authorization must happen in-band, by sending a message over the WebSocket itself. But this can be annoying for RPC protocols, as it means the authentication message is "special" and changes the state of the connection itself, affecting later calls. This breaks the abstraction.</p>
+	<p>The authenticate() pattern shown above neatly makes authentication fit naturally into the RPC abstraction. It's even type-safe: you can't possibly forget to authenticate before calling a method requiring auth, because you wouldn't have an object on which to make the call. Speaking of type-safety…</p>
+	<div class="flex anchor relative">
+		<h3 id="typescript">TypeScript</h3>
+		<a href="https://blog.cloudflare.com/#typescript" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you use TypeScript, Cap'n Web plays nicely with it. You can declare your RPC API once as a TypeScript interface, implement in on the server, and call it on the client:</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">// Shared interface declaration:
+interface MyApi {
+  hello(name: string): Promise&lt;string&gt;;
+}
+
+// On the client:
+let api: RpcStub&lt;MyApi&gt; = newWebSocketRpcSession("wss://example.com/api");
+
+// On the server:
+class MyApiServer extends RpcTarget implements MyApi {
+  hello(name) {
+    return `Hello, ${name}!`
+  }
+}
+</code></pre>
+	<p>Now you get end-to-end type checking, auto-completed method names, and so on.</p>
+	<p>Note that, as always with TypeScript, no type checks occur at runtime. The RPC system itself does not prevent a malicious client from calling an RPC with parameters of the wrong type. This is, of course, not a problem unique to Cap'n Web – JSON-based APIs have always had this problem. You may wish to use a runtime type-checking system like Zod to solve this. (Meanwhile, we hope to add type checking based directly on TypeScript types in the future.)</p>
+	<div class="flex anchor relative">
+		<h2 id="an-alternative-to-graphql">An alternative to GraphQL?</h2>
+		<a href="https://blog.cloudflare.com/#an-alternative-to-graphql" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you’ve used GraphQL before, you might notice some similarities. One benefit of GraphQL was to solve the “waterfall” problem of traditional REST APIs by allowing clients to ask for multiple pieces of data in one query. For example, instead of making three sequential HTTP calls:</p>
+	<pre class="language-Rust"><code class="language-Rust">GET /user
+GET /user/friends
+GET /user/friends/photos</code></pre>
+	<p>…you can write one GraphQL query to fetch it all at once.</p>
+	<p>That’s a big improvement over REST, but GraphQL comes with its own tradeoffs:</p>
+	<ul>
+		<li>
+			<p><b>New language and tooling.</b> You have to adopt GraphQL’s schema language, servers, and client libraries. If your team is all-in on JavaScript, that’s a lot of extra machinery.</p>
+		</li>
+		<li>
+			<p><b>Limited composability.</b> GraphQL queries are declarative, which makes them great for fetching data, but awkward for chaining operations or mutations. For example, you can’t easily say: “create a user, then immediately use that new user object to make a friend request, all-in-one round trip.”</p>
+		</li>
+		<li>
+			<p><b>Different abstraction model.</b> GraphQL doesn’t look or feel like the JavaScript APIs you already know. You’re learning a new mental model rather than extending the one you use every day.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="how-capn-web-goes-further">How Cap'n Web goes further</h3>
+		<a href="https://blog.cloudflare.com/#how-capn-web-goes-further" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cap'n Web solves the waterfall problem <i>without</i> introducing a new language or ecosystem. It’s just JavaScript. Because Cap'n Web supports promise pipelining and object references, you can write code that looks like this:</p>
+	<pre class="language-javascript"><code class="language-javascript">let user = api.createUser({ name: "Alice" });
+let friendRequest = await user.sendFriendRequest("Bob");</code></pre>
+	<p>What happens under the hood? Both calls are pipelined into a single network round trip:</p>
+	<ol>
+		<li>
+			<p>Create the user.</p>
+		</li>
+		<li>
+			<p>Take the result of that call (a new User object).</p>
+		</li>
+		<li>
+			<p>Immediately invoke sendFriendRequest() on that object.</p>
+		</li>
+	</ol>
+	<p>All of this is expressed naturally in JavaScript, with no schemas, query languages, or special tooling required. You just call methods and pass objects around, like you would in any other JavaScript code.</p>
+	<p>In other words, GraphQL gave us a way to flatten REST’s waterfalls. Cap'n Web lets us go even further: it gives you the power to model complex interactions exactly the way you would in a normal program, with no impedance mismatch.</p>
+	<div class="flex anchor relative">
+		<h3 id="but-how-do-we-solve-arrays">But how do we solve arrays?</h3>
+		<a href="https://blog.cloudflare.com/#but-how-do-we-solve-arrays" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>With everything we've presented so far, there's a critical missing piece to seriously consider Cap'n Web as an alternative to GraphQL: handling lists. Often, GraphQL is used to say: "Perform this query, and then, for every result, perform this other query." For example: "List the user's friends, and then for each one, fetch their profile photo."</p>
+	<p>In short, we need an <code>array.map()</code> operation that can be performed without adding a round trip.</p>
+	<p>Cap'n Proto, historically, has never supported such a thing.</p>
+	<p>But with Cap'n Web, we've solved it. You can do:</p>
+	<pre class="language-javascript"><code class="language-javascript">let user = api.authenticate(token);
+
+// Get the user's list of friends (an array).
+let friendsPromise = user.listFriends();
+
+// Do a .map() to annotate each friend record with their photo.
+// This operates on the *promise* for the friends list, so does not
+// add a round trip.
+// (wait WHAT!?!?)
+let friendsWithPhotos = friendsPromise.map(friend =&gt; {
+  return {friend, photo: api.getUserPhoto(friend.id))};
+}
+
+// Await the friends list with attached photos -- one round trip!
+let results = await friendsWithPhotos;
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="wait-how">Wait… How!?</h3>
+		<a href="https://blog.cloudflare.com/#wait-how" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>.map()</code> takes a callback function, which needs to be applied to each element in the array. As we described earlier, <i>normally</i> when you pass a function to an RPC, the function is passed "by reference", meaning that the remote side receives a stub, where calling that stub makes an RPC back to the client where the function was created.</p>
+	<p>But that is NOT what is happening here. That would defeat the purpose: we don't want the server to have to round-trip to the client to process every member of the array. We want the server to just apply the transformation server-side.</p>
+	<p>To that end, <code>.map() </code>is special. It does not send JavaScript code to the server, but it does send something like "code", restricted to a domain-specific, non-Turing-complete language. The "code" is a list of instructions that the server should carry out for each member of the array. In this case, the instructions are:</p>
+	<ol>
+		<li>
+			<p>Invoke <code>api.getUserPhoto(friend.id)</code>.</p>
+		</li>
+		<li>
+			<p>Return an object <code>{friend, photo}</code>, where friend is the original array element and photo is the result of step 1.</p>
+		</li>
+	</ol>
+	<p>But the application code just specified a JavaScript method. How on Earth could we convert this into the narrow DSL?</p>
+	<p>The answer is record-replay: On the client side, we execute the callback once, passing in a special placeholder value. The parameter behaves like an RPC promise. However, the callback is required to be synchronous, so it cannot actually await this promise. The only thing it can do is use promise pipelining to make pipelined calls. These calls are intercepted by the implementation and recorded as instructions, which can then be sent to the server, where they can be replayed as needed.</p>
+	<p>And because the recording is based on promise pipelining, which is what the RPC protocol itself is designed to represent, it turns out that the "DSL" used to represent "instructions" for the map function is <i>just the RPC protocol itself</i>. 🤯</p>
+	<div class="flex anchor relative">
+		<h2 id="implementation-details">Implementation details</h2>
+		<a href="https://blog.cloudflare.com/#implementation-details" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="json-based-serialization">JSON-based serialization</h3>
+		<a href="https://blog.cloudflare.com/#json-based-serialization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cap'n Web's underlying protocol is based on JSON – but with a preprocessing step to handle special types. Arrays are treated as "escape sequences" that let us encode other values. For example, JSON does not have an encoding for <code>Date</code> objects, but Cap'n Web does. You might see a message that looks like this:</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  event: "Birthday Week",
+  timestamp: ["date", 1758499200000]
+}
+</code></pre>
+	<p>To encode a literal array, we simply double-wrap it in <code>[]</code>:</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  names: [["Alice", "Bob", "Carol"]]
+}
+</code></pre>
+	<p>In other words, an array with just one element which is itself an array, evaluates to the inner array literally. An array whose first element is a type name, evaluates to an instance of that type, where the remaining elements are parameters to the type.</p>
+	<p>Note that only a fixed set of types are supported: essentially, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm"><u>"structured clonable" types</u></a>, and RPC stub types.</p>
+	<p>On top of this basic encoding, we define an RPC protocol inspired by Cap'n Proto – but greatly simplified.</p>
+	<div class="flex anchor relative">
+		<h3 id="rpc-protocol">RPC protocol</h3>
+		<a href="https://blog.cloudflare.com/#rpc-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Since Cap'n Web is a symmetric protocol, there is no well-defined "client" or "server" at the protocol level. There are just two parties exchanging messages across a connection. Every kind of interaction can happen in either direction.</p>
+	<p>In order to make it easier to describe these interactions, I will refer to the two parties as "Alice" and "Bob".</p>
+	<p>Alice and Bob start the connection by establishing some sort of bidirectional message stream. This may be a WebSocket, but Cap'n Web also allows applications to define their own transports. Each message in the stream is JSON-encoded, as described earlier.</p>
+	<p>Alice and Bob each maintain some state about the connection. In particular, each maintains an "export table", describing all the pass-by-reference objects they have exposed to the other side, and an "import table", describing the references they have received. Alice's exports correspond to Bob's imports, and vice versa. Each entry in the export table has a signed integer ID, which is used to reference it. You can think of these IDs like file descriptors in a POSIX system. Unlike file descriptors, though, IDs can be negative, and an ID is never reused over the lifetime of a connection.</p>
+	<p>At the start of the connection, Alice and Bob each populate their export tables with a single entry, numbered zero, representing their "main" interfaces. Typically, when one side is acting as the "server", they will export their main public RPC interface as ID zero, whereas the "client" will export an empty interface. However, this is up to the application: either side can export whatever they want.</p>
+	<p>From there, new exports are added in two ways:</p>
+	<ul>
+		<li>
+			<p>When Alice sends a message to Bob that contains within it an object or function reference, Alice adds the target object to her export table. IDs assigned in this case are always negative, starting from -1 and counting downwards.</p>
+		</li>
+		<li>
+			<p>Alice can send a "push" message to Bob to request that Bob add a value to his export table. The "push" message contains an expression which Bob evaluates, exporting the result. Usually, the expression describes a method call on one of Bob's existing exports – this is how an RPC is made. Each "push" is assigned a positive ID on the export table, starting from 1 and counting upwards. Since positive IDs are only assigned as a result of pushes, Alice can predict the ID of each push she makes, and can immediately use that ID in subsequent messages. This is how promise pipelining is achieved.</p>
+		</li>
+	</ul>
+	<p>After sending a push message, Alice can subsequently send a "pull" message, which tells Bob that once he is done evaluating the "push", he should proactively serialize the result and send it back to Alice, as a "resolve" (or "reject") message. However, this is optional: Alice may not actually care to receive the return value of an RPC, if Alice only wants to use it in promise pipelining. In fact, the Cap'n Web implementation will only send a "pull" message if the application has actually awaited the returned promise.</p>
+	<p>Putting it together, a code sequence like this:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">let namePromise = api.getMyName();
+let result = await api.hello(namePromise);
+
+console.log(result);</code></pre>
+	<p>Might produce a message exchange like this:</p>
+	<pre class="language-javascript"><code class="language-javascript">// Call api.getByName(). `api` is the server's main export, so has export ID 0.
+-&gt; ["push", ["pipeline", 0, "getMyName", []]
+// Call api.hello(namePromise). `namePromise` refers to the result of the first push,
+// so has ID 1.
+-&gt; ["push", ["pipeline", 0, "hello", [["pipeline", 1]]]]
+// Ask that the result of the second push be proactively serialized and returned.
+-&gt; ["pull", 2]
+// Server responds.
+&lt;- ["resolve", 2, "Hello, Alice!"]</code></pre>
+	<p>For more details about the protocol, <a href="https://github.com/cloudflare/capnweb/blob/main/protocol.md"><u>check out the docs</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out">Try it out!</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cap'n Web is new and still highly experimental. There may be bugs to shake out. But, we're already using it today. Cap'n Web is the basis of <a href="https://developers.cloudflare.com/changelog/2025-09-16-remote-bindings-ga"><u>the recently-launched "remote bindings" feature in Wrangler</u></a>, allowing a local test instance of workerd to speak RPC to services in production. We've also begun to experiment with it in various frontend applications – expect more blog posts on this in the future.</p>
+	<p>In any case, Cap'n Web is open source, and you can start using it in your own projects now.</p>
+	<p><a href="https://github.com/cloudflare/capnweb"><u>Check it out on GitHub.</u></a></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53YF87AtEsYhHMN3PV23UV/8e9a938099c71e6f274e95292b16b382/BLOG-2954_2.png" alt="BLOG-2954 2" class="kg-image" width="1200" height="446" loading="lazy">
+	</figure>
+	<p>
+	</p>
+</div>
