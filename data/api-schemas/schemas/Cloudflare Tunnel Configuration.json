@@ -350,6 +350,7 @@
 															"type": "object"
 														},
 														"warp-routing": {
+															"deprecated": true,
 															"description": "Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.",
 															"properties": {
 																"enabled": {
@@ -357,7 +358,9 @@
 																}
 															},
 															"readOnly": true,
-															"type": "object"
+															"type": "object",
+															"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
+															"x-stainless-skip": true
 														}
 													},
 													"type": "object"
@@ -791,6 +794,7 @@
 										"type": "object"
 									},
 									"warp-routing": {
+										"deprecated": true,
 										"description": "Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.",
 										"properties": {
 											"enabled": {
@@ -798,7 +802,9 @@
 											}
 										},
 										"readOnly": true,
-										"type": "object"
+										"type": "object",
+										"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
+										"x-stainless-skip": true
 									}
 								},
 								"type": "object"
@@ -1131,6 +1137,7 @@
 															"type": "object"
 														},
 														"warp-routing": {
+															"deprecated": true,
 															"description": "Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.",
 															"properties": {
 																"enabled": {
@@ -1138,7 +1145,9 @@
 																}
 															},
 															"readOnly": true,
-															"type": "object"
+															"type": "object",
+															"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
+															"x-stainless-skip": true
 														}
 													},
 													"type": "object"
