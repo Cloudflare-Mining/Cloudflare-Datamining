@@ -173,7 +173,6 @@
 					"oneOf": [
 						{
 							"enum": [
-								"tcp",
 								"http"
 							],
 							"type": "string"
@@ -516,66 +515,36 @@
 									{
 										"allOf": [
 											{
-												"properties": {
-													"app_protocol": {
-														"nullable": true,
-														"type": "string"
+												"allOf": [
+													{
+														"properties": {
+															"http_port": {
+																"format": "int32",
+																"minimum": 1,
+																"nullable": true,
+																"type": "integer"
+															},
+															"https_port": {
+																"format": "int32",
+																"minimum": 1,
+																"nullable": true,
+																"type": "integer"
+															}
+														},
+														"type": "object"
 													},
-													"name": {
-														"type": "string"
-													},
-													"tcp_port": {
-														"format": "int32",
-														"minimum": 0,
-														"nullable": true,
-														"type": "integer"
-													}
-												},
-												"required": [
-													"name"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"type": {
-														"enum": [
-															"tcp"
+													{
+														"properties": {
+															"name": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"name"
 														],
-														"type": "string"
+														"type": "object"
 													}
-												},
-												"required": [
-													"type"
-												],
-												"type": "object"
-											}
-										]
-									},
-									{
-										"allOf": [
-											{
-												"properties": {
-													"http_port": {
-														"format": "int32",
-														"minimum": 0,
-														"nullable": true,
-														"type": "integer"
-													},
-													"https_port": {
-														"format": "int32",
-														"minimum": 0,
-														"nullable": true,
-														"type": "integer"
-													},
-													"name": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"name"
-												],
-												"type": "object"
+												]
 											},
 											{
 												"properties": {
@@ -794,66 +763,36 @@
 									{
 										"allOf": [
 											{
-												"properties": {
-													"app_protocol": {
-														"nullable": true,
-														"type": "string"
+												"allOf": [
+													{
+														"properties": {
+															"http_port": {
+																"format": "int32",
+																"minimum": 1,
+																"nullable": true,
+																"type": "integer"
+															},
+															"https_port": {
+																"format": "int32",
+																"minimum": 1,
+																"nullable": true,
+																"type": "integer"
+															}
+														},
+														"type": "object"
 													},
-													"name": {
-														"type": "string"
-													},
-													"tcp_port": {
-														"format": "int32",
-														"minimum": 0,
-														"nullable": true,
-														"type": "integer"
-													}
-												},
-												"required": [
-													"name"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"type": {
-														"enum": [
-															"tcp"
+													{
+														"properties": {
+															"name": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"name"
 														],
-														"type": "string"
+														"type": "object"
 													}
-												},
-												"required": [
-													"type"
-												],
-												"type": "object"
-											}
-										]
-									},
-									{
-										"allOf": [
-											{
-												"properties": {
-													"http_port": {
-														"format": "int32",
-														"minimum": 0,
-														"nullable": true,
-														"type": "integer"
-													},
-													"https_port": {
-														"format": "int32",
-														"minimum": 0,
-														"nullable": true,
-														"type": "integer"
-													},
-													"name": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"name"
-												],
-												"type": "object"
+												]
 											},
 											{
 												"properties": {
