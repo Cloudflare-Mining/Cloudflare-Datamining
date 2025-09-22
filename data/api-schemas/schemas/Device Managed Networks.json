@@ -1028,10 +1028,6 @@
 		"summary": "List your device managed networks",
 		"tags": [
 			"Device Managed Networks"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/networks/{network_id}": {
@@ -1503,10 +1499,6 @@
 		"summary": "Get device managed network details",
 		"tags": [
 			"Device Managed Networks"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/networks": {

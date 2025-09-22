@@ -2554,10 +2554,6 @@
 		"summary": "List device posture rules",
 		"tags": [
 			"Device posture rules"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/posture/{rule_id}": {
@@ -4691,10 +4687,6 @@
 		"summary": "Get device posture rule details",
 		"tags": [
 			"Device posture rules"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/posture": {

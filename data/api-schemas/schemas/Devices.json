@@ -1872,10 +1872,6 @@
 		"summary": "List devices (deprecated)",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/{device_id}": {
@@ -2526,10 +2522,6 @@
 		"summary": "Get device (deprecated)",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/{device_id}/override_codes": {
@@ -4171,10 +4163,6 @@
 		"summary": "List device settings profiles",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy": {
@@ -5188,10 +5176,6 @@
 		"summary": "Get the default device settings profile",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}": {
@@ -6326,10 +6310,6 @@
 		"summary": "Get device settings profile by ID",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
@@ -6818,10 +6798,6 @@
 		"summary": "Get the Split Tunnel exclude list for a device settings profile",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -7286,10 +7262,6 @@
 		"summary": "Get the Local Domain Fallback list for a device settings profile",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/include": {
@@ -7778,10 +7750,6 @@
 		"summary": "Get the Split Tunnel include list for a device settings profile",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/exclude": {
@@ -8259,10 +8227,6 @@
 		"summary": "Get the Split Tunnel exclude list",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -8716,10 +8680,6 @@
 		"summary": "Get your Local Domain Fallback list",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/policy/include": {
@@ -9197,10 +9157,6 @@
 		"summary": "Get the Split Tunnel include list",
 		"tags": [
 			"Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /zones/{zone_id}/devices/policy/certificates": {

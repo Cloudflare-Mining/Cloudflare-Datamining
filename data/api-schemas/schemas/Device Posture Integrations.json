@@ -916,10 +916,6 @@
 		"summary": "List your device posture integrations",
 		"tags": [
 			"Device Posture Integrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/posture/integration/{integration_id}": {
@@ -1432,10 +1428,6 @@
 		"summary": "Get device posture integration details",
 		"tags": [
 			"Device Posture Integrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/devices/posture/integration/{integration_id}": {

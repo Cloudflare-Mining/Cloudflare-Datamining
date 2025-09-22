@@ -692,10 +692,6 @@
 		"summary": "List devices",
 		"tags": [
 			"Physical Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/physical-devices/{device_id}": {
@@ -1009,10 +1005,6 @@
 		"summary": "Get device",
 		"tags": [
 			"Physical Devices"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/physical-devices/{device_id}/revoke": {

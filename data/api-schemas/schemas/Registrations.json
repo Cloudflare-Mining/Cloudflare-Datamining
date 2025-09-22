@@ -565,10 +565,6 @@
 		"summary": "List registrations",
 		"tags": [
 			"Registrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/registrations/{registration_id}": {
@@ -830,10 +826,6 @@
 		"summary": "Get registration",
 		"tags": [
 			"Registrations"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/registrations/revoke": {
