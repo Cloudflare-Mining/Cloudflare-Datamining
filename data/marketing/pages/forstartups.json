@@ -62,7 +62,7 @@
 				},
 				"sys": {
 					"createdAt": "2019-04-02T20:13:43.542Z",
-					"updatedAt": "2025-09-17T06:39:53.253Z"
+					"updatedAt": "2025-09-22T13:07:51.584Z"
 				},
 				"contentfulId": "5UX0eoy5IoDwn41KlthDbW",
 				"contentTypeId": "page",
@@ -554,7 +554,7 @@
 									"marketoFormId": 1284,
 									"marketoFormLeadSource": "Inbound - Web Form",
 									"marketoFormLeadSourceDetail": "Interested in Cloudflare for Startups",
-									"marketoFormHeaderText": "Apply for Startup Program",
+									"marketoFormHeaderText": "Apply for startup program",
 									"marketoFormDefaultComment": null,
 									"showCommentBox": true,
 									"marketoFormThankYouText": "Almost there! Two more steps.",
@@ -788,45 +788,6 @@
 						]
 					},
 					{
-						"contentfulId": "7rkKpvTCo1QLR0EmwaX4tH",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Workers Launchpad funding program",
-						"description": "Actively building on Cloudflare Workers? Find the funding, tools, and community to help scale your startup through the Workers Launchpad.",
-						"variant": "full-width",
-						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "4526a0e7-98ff-58c2-a6a8-10324e3c2948",
-							"altText": "Generic Lead Generation background",
-							"title": "Generic Lead Generation background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GXH7p3scfTG26xKndTZ0Z/fb56c78967ff82b1633b9f5386f1605f/Lead-generation-background-generic.png"
-								},
-								"description": "Lead generation background generic"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "4QbUEdkLpE517XeLkA2LP2",
-							"elementName": "LP - Cloudflare for Startups - LeadGen - Button",
-							"standardText": "Learn More",
-							"text": null,
-							"url": "lp/workers-launchpad/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": null
-					},
-					{
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "2QKK5tSi5uTkHnY64p2Znb",
 						"bladeBorder": "none",
@@ -892,140 +853,7 @@
 						"htmlId": null,
 						"sectionTitle": "FAQ:",
 						"longCopy": null,
-						"accordionElements": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "4b1UKMJ40hSlcddtCvBAzy",
-								"title": "What happens if I don't use my credits within 1 year?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "When a customer reaches the one-year mark, a representative will be available to help you transition out of the program and identify what plan makes most sense for our Startup Graduates. ",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "3f53Adgl4Pec4lzVtjYn46",
-								"title": "I've used all my credits and I'm still using variable products. What happens next?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Once you have used all of your credits or reached one year on your Startup Plan, whichever comes first, your credit card on file will be charged for any usage beyond your credit limit. A Cloudflare team member is also available via our startup email alias (startups@cloudflare.com) to help you understand your usage if you need.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "65SbxjNVwVo72p4TTyoRey",
-								"title": "I have multiple startups. Can all of them be on the program?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "The credits can only be allocated to one account per applicant.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "6svVgji82YCDaYHQz0nojt",
-								"title": "I would like to request more credits. How can I do so?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "We may consider requests for additional credits on a case-by-case basis at our discretion. Please indicate what you're building in the \"Comments\" section of the application and why you intend to consume more credits. Higher credit limits are offered on a rare, case-by-case basis.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						],
+						"accordionElements": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"textColor": "black"
@@ -1047,7 +875,7 @@
 							"marketoFormId": 1284,
 							"marketoFormLeadSource": "Inbound - Web Form",
 							"marketoFormLeadSourceDetail": "Interested in Cloudflare for Startups",
-							"marketoFormHeaderText": "Apply for Startup Program",
+							"marketoFormHeaderText": "Apply for startup program",
 							"marketoFormDefaultComment": null,
 							"showCommentBox": true,
 							"marketoFormThankYouText": "Almost there! Two more steps.",
