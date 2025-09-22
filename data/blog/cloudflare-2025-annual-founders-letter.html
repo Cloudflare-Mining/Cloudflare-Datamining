@@ -1,0 +1,119 @@
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YhhjZVSFTK2FlxA3ZcYba/ceb030d8cae80d37fce08c2a2ceafd88/BLOG-2994_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>Cloudflare <a href="https://www.youtube.com/watch?v=XeKWeBw1R5A"><u>launched 15 years ago</u></a> this week. We like to celebrate our birthday by announcing new products and features that give back to the Internet, which we’ll do a lot of this week. But, on this occasion, we've also been thinking about what's changed on the Internet over the last 15 years and what has not.</p>
+	<p>With some things there's been clear progress: when we launched in 2010 less than 10 percent of the Internet was encrypted, today well over 95 percent is encrypted. We're proud of the <a href="https://blog.cloudflare.com/introducing-universal-ssl"><u>role we played in making that happen</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2MLknOh75r4KpCfiXTjQkw/b80baa01b75437f3b1da24be3ca9e209/Timeline_2_part.png" alt="" class="kg-image" width="2070" height="411" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xkR8gdKR1YO1tIr6rLOmv/7e848bbefa83db1078d7ffe35e2bcc51/2.png" alt="" class="kg-image" width="2064" height="411" loading="lazy">
+	</figure>
+	<p>Some other areas have seen limited progress: IPv6 adoption has grown steadily but painfully slowly over the last 15 years, in <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa"><u>spite</u></a> <a href="https://blog.cloudflare.com/cloudflare-expanding-the-ipv6-web"><u>of</u></a> <a href="https://blog.cloudflare.com/eliminating-the-last-reasons-to-not-enable-ipv6"><u>our</u></a> <a href="https://blog.cloudflare.com/amazon-2bn-ipv4-tax-how-avoid-paying"><u>efforts</u></a>. That's a problem because as IPv4 addresses have become scarce and expensive it’s held back new entrants and driven up the costs of things like networking and cloud computing.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-internets-business-model">The Internet’s Business Model</h2>
+		<a href="https://blog.cloudflare.com/#the-internets-business-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Still other things have remained remarkably consistent: the basic business model of the Internet has for the last 15 years been the same — create compelling content, find a way to be discovered, and then generate value from the resulting traffic. Whether that was through ads or subscriptions or selling things or just the ego of knowing that someone is consuming what you created, traffic generation has been the engine that powered the Internet we know today.</p>
+	<p>Make no mistake, the Internet has never been free. There's always been a reward system that transferred value from consumers to creators and, in doing so, filled the Internet with content. Had the Internet not had that reward system it wouldn't be nearly as vibrant as it is today.</p>
+	<p>A bit of a trivia aside: why did Cloudflare never build an ad blocker <a href="https://www.answeroverflow.com/m/1123890164222144542"><u>despite many requests</u></a>? Because, as imperfect as they are, ads have been the only micropayment system that has worked at scale to encourage an open Internet while also compensating content creators for their work. Our mission is to help build a better Internet, and a core value is that we’re principled, so we weren’t going to hamper the Internet’s fundamental business model.</p>
+	<div class="flex anchor relative">
+		<h2 id="traffic-value">Traffic ≠ Value</h2>
+		<a href="https://blog.cloudflare.com/#traffic-value" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>But that same traffic-based reward system has also created many of the problems we lament about the current state of the Internet. Traffic has always been an imperfect proxy for value. Over the last 15 years we've watched more of the Internet driven by annoying clickbait or dangerous ragebait. Entire media organizations have built their businesses with a stated objective of writing headlines to generate the maximum cortisol response because that's what generates the maximum amount of traffic.</p>
+	<p>Over the years, Cloudflare has at times faced calls for us to intervene and control what content can be published online. As an infrastructure provider, we've never felt we were the right place for those editorial decisions to be made. But it wasn't because we didn't worry about the direction the traffic-incentivized Internet seemed to be headed. It always seemed like what fundamentally needed to change was not more content moderation at the infrastructure level but instead a healthier incentive system for content creation.</p>
+	<p>Today the conditions to bring about that change may be happening. In the last year, something core to the Internet we’ve all known has changed. It's being driven by AI and it has an opportunity with some care and nurturing to help bring about what we think may be a much better Internet.</p>
+	<div class="flex anchor relative">
+		<h2 id="from-search-to-answers">From Search to Answers</h2>
+		<a href="https://blog.cloudflare.com/#from-search-to-answers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>What’s the change? The primary discovery system of the Internet for the last 15 years has been Search Engines. They scraped the Internet's content, built an index, and then presented users with a treasure map which they followed generating traffic. Content creators were happy to let Search Engines scrape their content because there were a limited number of them, so the infrastructure costs were relatively low and, more importantly, because the Search Engines gave something to sites in the form of traffic —&nbsp;the Internet’s historic currency —&nbsp;sent back to sites.</p>
+	<p>It’s already clear that the Internet’s discovery system for the next 15 years will be something different: Answer Engines. Unlike Search Engines which gave you a map where you hunted for what you were looking for, driving traffic in the process, Answer Engines just give you the answer without you having to click on anything. For 95 percent of users 95 percent of the time, that is a better user experience.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5d2TQwVHA8GpFUBpAdr8QT/23fd6b7306d55dce3dea9e989784595d/BLOG-2994_3.png" alt="BLOG-2994 3" class="kg-image" width="1801" height="564" loading="lazy">
+	</figure>
+	<p>You don’t have to look far to see this is changing rapidly before our eyes. ChatGPT, Anthropic’s Claude, and other AI startups aren’t Search Engines — they’re Answer Engines. Even Google, the search stalwart, is increasingly serving “AI Overviews” in place of 10 blue links. We can often look to sci-fi movies to have a glimpse into our most likely future. In them, the helpful intelligent robot character didn’t answer questions with: “Here are some links you can click on to maybe find what you’re looking for.” Whether you like it or not, the future will increasingly be answers not searches.</p>
+	<div class="flex anchor relative">
+		<h2 id="short-term-pain">Short Term Pain</h2>
+		<a href="https://blog.cloudflare.com/#short-term-pain" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In the short term, this is going to be extremely painful for some industries that are built based on monetizing traffic. It already is. While ecommerce and social applications haven't yet seen a significant drop in traffic as the world switches to Answer Engines, media companies have. Why the difference? Well, for the former, you still need to buy the thing the Answer Engine recommends and, for now, we still value talking with other humans.</p>
+	<p>But for media companies, if the Answer Engine gives you the summary of what you’re looking for in most cases you don’t need to read the story. And the loss of traffic for media companies has already been dramatic. It’s not just traditional media. Research groups at investment banks, industry analysts, major consulting firms —&nbsp;they’re all seeing major drops in people finding their content because we are increasingly getting answers not search treasure maps.</p>
+	<p>Some say these answer engines or agents are just acting on behalf of humans. Sure but so what? Without a change they will still kill content creators’ businesses. If you ask your agent to summarize twenty different news sources but never actually visit any of them you’re still undermining the business model of those news sources. Agents don’t click on ads. And if those agents are allowed to aggregate information on behalf of multiple users it’s an even bigger problem because then subscription revenue is eliminated as well. Why subscribe to the Wall Street Journal or New York Times or Financial Times or Washington Post if my agent can free ride off some other user who does?</p>
+	<p>Unless you believe that content creators should work for free, or that they are somehow not needed anymore —&nbsp;both of which are naive assumptions —&nbsp;something needs to change. A visit from an agent isn’t the same as a visit from a human and therefore should have different rules of the road. If nothing changes, the drop in human traffic to the media ecosystem writ large will kill the business model that has built the content-rich Internet we enjoy today.</p>
+	<p>We think that’s an existential threat to one of humanity’s most important creations: the Internet.</p>
+	<div class="flex anchor relative">
+		<h2 id="rewarding-better-content">Rewarding Better Content</h2>
+		<a href="https://blog.cloudflare.com/#rewarding-better-content" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>But there’s reason for optimism. Content is the fuel that powers every AI system and the companies that run those AI systems know ultimately they need to financially support the ecosystem. Because of that it seems potentially we're on the cusp of a new, better, and maybe healthier Internet business model. As content creators use tools like the <a href="https://blog.cloudflare.com/introducing-ai-crawl-control"><u>ones provided by Cloudflare to restrict AI robots from taking their content without compensation</u></a>, we're already seeing a market emerge and better deals being struck between AI and content companies.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5J0hmMolAcrPKBZSJzKNMw/d78a04e0ae0afb2c578e7b7c1ca8b1c9/BLOG-2994_4.png" alt="BLOG-2994 4" class="kg-image" width="1200" height="262" loading="lazy">
+	</figure>
+	<p>What's most interesting is what content companies are getting the best deals. It's not the ragebait headline writers. It's not the news organizations writing yet another take on what's going on in politics. It's not the spammy content farms full of drivel. Instead, it's <a href="https://www.bloomberg.com/news/articles/2025-09-17/reddit-seeks-to-strike-next-ai-content-pact-with-google-openai"><u>Reddit</u></a> and other quirky corners that best remind us of the Internet of old. For those of you old enough, think back to the Internet not of the last 15 years but of the last 35. We’ve lost some of what made that early Internet great, but there are indications that we might finally have the incentives to bring more of it back.</p>
+	<p>It seems increasingly likely that in our future, AI-driven Internet —&nbsp;assuming the AI companies are willing to step up, support the ecosystem, and pay for the content that is the most valuable to them — it’s the creative, local, unique, original content that’ll be worth the most. And, if you’re like us, the thing you as an Internet consumer are craving more of is creative, local, unique, original content. And, it turns out, having talked with many of them, that’s the content that content creators are most excited to create.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-new-internet-business-model">A New Internet Business Model</h2>
+		<a href="https://blog.cloudflare.com/#a-new-internet-business-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>So how will the business model work? Well, for the first time in history, we have a pretty good mathematical representation of human knowledge. Sum up all the LLMs and that's what you get. It's not perfect, but it's pretty good. Inherently, the same mathematical model serves as a map for the gaps in human knowledge. Like a block of Swiss Cheese — there's a lot of cheese, but there's also a lot of holes.</p>
+	<p>Imagine a future business model of the Internet that doesn't reward traffic-generating ragebait but instead rewards those content creators that help fill in the holes in our collective metaphorical cheese. That will involve some portion of the subscription fees AI companies collect, and some portion of the revenue from the ads they'll inevitably serve, going back to content creators who most enrich the collective knowledge.</p>
+	<p>As a rough and simplistic sketch, think of it as some number of dollars per AI company’s monthly active users going into a collective pool to be distributed out to content creators based on what most fills in the holes in the cheese.</p>
+	<p>You could imagine an AI company suggesting back to creators that they need more created about topics they may not have enough content about. Say, for example, the carrying capacity of unladened swallows because they know their subscribers of a certain age and proclivity are always looking for answers about that topic. The very pruning algorithms the AI companies use today form a roadmap for what content is worth enough to not be pruned but paid for.</p>
+	<p>While today the budget items that differentiate AI companies are how much they can afford to spend on GPUs and top talent, as those things inevitably become more and more commodities it seems likely what will differentiate the different AIs is their access to creative, local, unique, original content. And the math of their algorithms provides them a map of what’s worth the most. While there are a lot of details to work out, those are the ingredients you need for a healthy market.</p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflares-role">Cloudflare’s Role</h2>
+		<a href="https://blog.cloudflare.com/#cloudflares-role" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As we think about our role at Cloudflare in this developing market, it's not about protecting the status quo but instead helping catalyze a better business model for the future of Internet content creation. That means creating a level playing field. Ideally there should be lots of AI companies, large and small, and lots of content creators, large and small.</p>
+	<p>It can’t be that a new entrant AI company is at a disadvantage to a legacy search engine because one has to pay for content but the other gets it for free. But it’s also critical to realize that the right solution to that current conundrum isn’t that no one pays, it’s that, new or old, everyone who benefits from the ecosystem should contribute back to it based on their relative size.</p>
+	<p>It may seem impossibly idealistic today, but the good news is that based on the conversations we’ve had we’re confident if a few market participants tip —&nbsp;whether because they step up and do the right thing or are compelled — we will see the entire market tipping and becoming robust very quickly.</p>
+	<div class="flex anchor relative">
+		<h2 id="supporting-the-ecosystem">Supporting the Ecosystem</h2>
+		<a href="https://blog.cloudflare.com/#supporting-the-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We can't do this alone and we have no plans to try to. Our mission is not to “build a better Internet” but to “<b><i>help</i></b> build a better Internet.” The solutions developed to facilitate this market need to be open, collaborative, standardized, and shared across many organizations. We’ll take some encouraging steps in that direction with announcements on partnerships and collaborations this week. And we’re proud to be a leader in this space.</p>
+	<p>The Internet is an ecosystem and we, other infrastructure providers, along with most importantly both AI companies and content creators, will be critical in ensuring that ecosystem is healthy. We’re excited to partner with those who are ready to step up and do their part to also help build a better Internet. It is possible.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EHC7vxXoMmle1QFHwGHh9/408b73f7b677701e7242e794efa3cb52/unnamed__29_.png" alt="" class="kg-image" width="512" height="113" loading="lazy">
+	</figure>
+	<p>And we're optimistic that if others can collaborate in supporting the ecosystem we may be at the cusp of a new golden age of the Internet. Our conversations with the leading AI companies nearly all acknowledge that they have a responsibility to give back to the ecosystem and compensate content creators. Confirming this, the largest publishers are reporting they're having much more constructive conversations about licensing their content to those AI companies. And, this week, we'll be announcing new tools to help even the smallest publishers take back control of who can use what they've created.</p>
+	<p>It may seem impossible. We think it’s a no-brainer. We're proud of what Cloudflare has accomplished over the last 15 years, but there’s a lot left to do to live up to our mission. So, more than ever, it's clear: giddy up, because we're just getting started!</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15o6NDQsh19vfz6RC9nD5v/03f8f84dc09366ffc617829f35b2e255/BLOG-2994_5.png" alt="BLOG-2994 5" class="kg-image" width="618" height="124" loading="lazy">
+	</figure>
+	<p></p>
+</div>
