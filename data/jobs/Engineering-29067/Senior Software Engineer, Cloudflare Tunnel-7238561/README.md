@@ -5,10 +5,10 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location:</strong> Lisbon, London</p>
-<p><strong>Job Title: </strong>Systems Engineer, Cloudflare Tunnel</p>
+<p><strong>Available Location:</strong> Lisbon</p>
+<p><strong>Job Title: </strong>Senior Software Engineer, Cloudflare Tunnel</p>
 <p><strong>Role Summary:</strong></p>
-<p>As a <strong>Systems Engineer</strong> on the Cloudflare Tunnel team, you will be a key contributor to building and maintaining a product that securely connects any machine to the Cloudflare network. You will be responsible for building systems across our high-performance global edge network and in our centralized microservice cluster. In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our Tunnel and Zero Trust products, such as Cloudflared, WARP Connector and Zero Trust Network.</p>
+<p>As a <strong>Software Engineer</strong> on the Cloudflare Tunnel team, you will be a key contributor to building and maintaining a product that securely connects any machine to the Cloudflare network. You will be responsible for building systems across our high-performance global edge network and in our centralized microservice cluster. In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our Tunnel and Zero Trust products, such as Cloudflared, WARP Connector and Zero Trust Network.</p>
 <p>You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment.</p>
 <p><strong>Role Responsibilities</strong></p>
 <ul>
