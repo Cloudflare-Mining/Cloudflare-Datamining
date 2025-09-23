@@ -168,6 +168,7 @@ import Reorder from './Reorder';
 import ReplatformOutline from './ReplatformOutline';
 import ResizeHorizontal from './ResizeHorizontal';
 import Retarget from './Retarget';
+import ReusableComponents from './ReusableComponents';
 import Revert from './Revert';
 import Right from './Right';
 import Router from './Router';
@@ -400,6 +401,7 @@ export default {
   'replatform-outline': ReplatformOutline,
   'resize-horizontal': ResizeHorizontal,
   retarget: Retarget,
+  'reusable-components': ReusableComponents,
   revert: Revert,
   right: Right,
   router: Router,

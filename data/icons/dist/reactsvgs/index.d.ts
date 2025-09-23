@@ -170,6 +170,7 @@ declare const _default: {
     'replatform-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'resize-horizontal': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     retarget: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'reusable-components': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     revert: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     right: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     router: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

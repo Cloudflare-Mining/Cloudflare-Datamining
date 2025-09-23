@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.7.0
+
+### Minor Changes
+
+- 44571f3c30: Add reusable components icon
+
 ## 13.6.0
 
 ### Minor Changes
