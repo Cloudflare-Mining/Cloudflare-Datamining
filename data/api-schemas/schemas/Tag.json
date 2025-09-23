@@ -236,8 +236,8 @@
 											"attributionOrganization": {
 												"type": "string"
 											},
-											"categoryUuid": {
-												"example": "12345678-1234-1234-1234-1234567890ab",
+											"categoryName": {
+												"example": "Nation State",
 												"type": "string"
 											},
 											"externalReferenceLinks": {
@@ -274,8 +274,8 @@
 											}
 										},
 										"required": [
-											"value",
-											"uuid"
+											"uuid",
+											"value"
 										],
 										"type": "object"
 									},
@@ -744,8 +744,8 @@
 								"attributionOrganization": {
 									"type": "string"
 								},
-								"categoryUuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
+								"categoryName": {
+									"example": "Nation State",
 									"type": "string"
 								},
 								"externalReferenceLinks": {
@@ -782,8 +782,8 @@
 								}
 							},
 							"required": [
-								"value",
-								"uuid"
+								"uuid",
+								"value"
 							],
 							"type": "object"
 						}
@@ -1002,8 +1002,8 @@
 								"attributionOrganization": {
 									"type": "string"
 								},
-								"categoryUuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
+								"categoryName": {
+									"example": "Nation State",
 									"type": "string"
 								},
 								"externalReferenceLinks": {
@@ -1040,8 +1040,8 @@
 								}
 							},
 							"required": [
-								"value",
-								"uuid"
+								"uuid",
+								"value"
 							],
 							"type": "object"
 						}

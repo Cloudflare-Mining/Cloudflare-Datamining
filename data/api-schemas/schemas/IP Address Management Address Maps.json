@@ -3362,6 +3362,9 @@
 								"x-auditable": true
 							},
 							"ips": {
+								"example": [
+									"192.0.2.1"
+								],
 								"items": {
 									"description": "An IPv4 or IPv6 address.",
 									"example": "192.0.2.1",
@@ -3372,21 +3375,14 @@
 							},
 							"memberships": {
 								"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
+								"example": [
+									{
+										"identifier": "023e105f4ecef8ad9ca31a8372d0c353",
+										"kind": "zone"
+									}
+								],
 								"items": {
 									"properties": {
-										"can_delete": {
-											"description": "Controls whether the membership can be deleted via the API or not.",
-											"example": true,
-											"readOnly": true,
-											"type": "boolean",
-											"x-auditable": true
-										},
-										"created_at": {
-											"example": "2014-01-01T05:20:00.12345Z",
-											"format": "date-time",
-											"type": "string",
-											"x-auditable": true
-										},
 										"identifier": {
 											"description": "The identifier for the membership (eg. a zone or account tag).",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
