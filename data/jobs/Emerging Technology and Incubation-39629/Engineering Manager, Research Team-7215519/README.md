@@ -20,7 +20,7 @@
 	<li>A proven track record of leading teams, including expertise in hiring, onboarding, and professional development. You are able to inspire your team and effectively communicate both the "why" and the "how."</li>
 	<li>Experience in implementing tools, processes, internal instrumentation, and methodologies, as well as resolving blockages.</li>
 	<li>Demonstrated ability to recruit and hire top-tier talent.</li>
-	<li>Comfort managing teams and projects under tight deadlines and short release cycles.</li>
+	<li>Comfortable managing teams and projects under tight deadlines and short release cycles.</li>
 	<li>Experience in fostering the growth and maximizing the potential of both budding and experienced engineers and researchers.</li>
 	<li>A track record of excellence in at least one of the team's key research areas.</li>
 </ul>

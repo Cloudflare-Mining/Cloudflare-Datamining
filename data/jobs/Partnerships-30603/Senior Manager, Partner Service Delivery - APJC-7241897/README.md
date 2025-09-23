@@ -5,39 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>Location: This role can be based out of Austin, TX or Lisbon, Portugal</p>
-<p><strong>About the department</strong></p>
-<p>Cloudflare’s Enterprise Engineering Team builds and runs software and systems that make Cloudflare run more efficiently and enable our customers and partners to do business with us. Enterprise Engineering is part of the Engineering organization.&nbsp; This team seeks talented business systems analyst who takes great pride in both the technical and business contribution of their work. You will be given the chance to have a significant impact on our systems, our business and most importantly, our customers. As a member of our team, you will work closely with the business to design and implement new features. You will contribute to all aspects of an agile software development life cycle including design, architecture, development, documentation, testing and operations. You will push your design and architecture limits by owning all aspects of solutions end-to-end.&nbsp;</p>
-<p><strong>&nbsp;What you'll do</strong></p>
+<p><strong>Available Location: Singapore </strong></p>
+<p><strong>About the Department</strong></p>
+<p>The Partner team works hard to grow the Partner ecosystem around Cloudflare. Channel Account Managers, Partner Development teams, and Partner Solutions Engineers all support partner businesses as they grow and scale with Cloudflare. All working together to help our customers adopt Cloudflare and create great Internet-enabled experiences.</p>
+<p><strong>About the Role</strong></p>
+<p><strong><br></strong>As a <strong>Senior Manager, Partner Services APJC</strong>, you will drive service delivery and operational success for Cloudflare’s Authorized Service Delivery (ASD) partners and MSSPs. You will serve as a trusted advisor, guiding partners through onboarding, enablement, and ongoing post-sales support to ensure scalable, high-quality service delivery. You will lead partner engagements, technical enablement projects, and ongoing services initiatives that enhance partner capabilities and drive customer satisfaction.</p>
+<p>You will work closely with Partner Success Managers, Partner Account Managers, Solutions Engineers, and internal Cloudflare teams to deliver consistent, high-impact partner services across geographies. Your technical expertise, industry knowledge, and ability to manage complex projects will enable partners to confidently deploy and operationalize Cloudflare solutions.</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Maintain quote to cash systems and integrations including internal and SAAS systems that support ordering, subscriptions, entitlements, customer billing, invoices, taxation, payments, revenue recognition and other systems/ integrations supported by enterprise engineering team</li>
-	<li>Participate in systems analysis, writing functional/ technical specs and detailed systems design.</li>
-	<li>Respond promptly to application alerts, production issues and follow through to resolution per established SLAs</li>
-	<li>Effectively communicate issue status to internal stakeholders</li>
-	<li>Maintain in-depth functional knowledge of the supported applications and interdependencies</li>
-	<li>Partner with the business teams to identify gaps, document and re-engineer current processes within business applications.&nbsp;</li>
-	<li>Work on Proof of concepts for new requirements as appropriate</li>
-	<li>Work closely with the finance and other internal teams in bringing efficiencies to their monthly close process and improve upon existing system reporting needs</li>
-	<li>Seek opportunities to streamline and/or automate processes</li>
-	<li>Participate in QA activities for various projects. Work closely with business teams, analysts, engineers and product managers to write test plans, test cases and estimates to support project and product releases ensuring consistency with specified requirements agreed with both external and internal customers</li>
+	<li>Serve as the primary point of contact for ASD and MSSP partners, ensuring successful onboarding, enablement, and ongoing service delivery.</li>
+	<li>Execute enablement programs including Essentials, Advanced, and Advanced Plus tracks, bootcamps, workshops, and certifications.</li>
+	<li>Collaborate with partners to develop reference architectures, solution frameworks, and best practices for scalable service delivery.</li>
+	<li>Advise partners on operational processes, service models, and technical architecture to optimize performance and customer satisfaction.</li>
+	<li>Drive continuous improvement initiatives based on partner feedback and performance metrics.</li>
+	<li>Partner with internal teams — including Sales, Solutions Engineering, Product, and Customer Support — to align resources and ensure successful outcomes.</li>
+	<li>Manage multiple partner engagements and projects, prioritizing effectively to meet deadlines and deliverables.</li>
+	<li>Mentor and coach junior team members where applicable to build organizational capability.</li>
 </ul>
-<p><strong>&nbsp;&nbsp;Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Required Skills and Experience:</strong></p>
 <ul>
-	<li>Minimum 5 years experience implementing a SAAS based/ subscription billing system (eg. Stripe, Zuora, Oracle BRM, GoTransverse etc)</li>
-	<li>Proficient in writing database queries in PostGres/ BigQuery/ Snowflake or other languages</li>
-	<li>Adaptability and Learning Mindset: Demonstrating a willingness to learn new technologies, tools, and methodologies is crucial. Adaptability to changing project requirements and the ability to work in a dynamic environment is highly desirable</li>
-	<li>Possess excellent communication skills – written and oral, interpersonal and organizational.</li>
-	<li>Ability to handle multiple projects and responsibilities with competing priorities</li>
-	<li>Solid understanding of business Financial processes including but not limited to Quote to cash process including OM/ Billing/ AR/ RevRec and understanding of GL</li>
-	<li>Able to deliver a high degree of customer satisfaction at all times</li>
-	<li>Must be results/ Outcome focused</li>
+	<li>Experience engaging with senior leaders at partner organizations.</li>
+	<li>Experienced in partner services, post-sales enablement and partner success&nbsp;</li>
+	<li>Proven ability to lead and scale a team of technical services managers across APJC</li>
+	<li>Strong knowledge of networking concepts, cybersecurity, DNS, CDN, web security, and cloud-native architectures.</li>
+	<li>Ability to troubleshoot and guide resolution of technical issues in a complex partner environment.</li>
 </ul>
-<p><strong>&nbsp;Bonus points if you have</strong>:</p>
 <ul>
-	<li>Track record of delivering successful large-scale, business transformation, and multi-disciplinary change initiatives especially in Subscription/SaaS model</li>
-	<li>5+ years experience in systems analyst roles, implementing and supporting ERP applications such as Oracle, Netsuite, SAP or Workday Financials</li>
-	<li>Business engagement and business analysis experience in implementing ERP systems is preferred</li>
-	<li>Hands-on experience with analytics and monitoring tools like Grafana (configuring, creating queries, dashboards, and alerts), and ability to troubleshoot application/ systems logs using tools like Kibana, Sentry</li>
+	<li>Collaborative mindset with the ability to influence across functions.</li>
+	<li>Passion for building scalable partner programs and enabling long-term partner success.</li>
+	<li>Bachelor’s degree in Computer Science, Engineering, or related field.</li>
+</ul>
+<ul>
+	<li>Ability to manage multiple priorities, work under pressure, and deliver results across complex engagements.</li>
+	<li>Travel up to 25–30% as required.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
