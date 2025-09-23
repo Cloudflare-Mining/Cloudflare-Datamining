@@ -5,54 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location</strong></p>
-<p>Lisbon, Portugal</p>
-<p><strong>Job Title&nbsp;</strong></p>
-<p>Security Systems Reliability Engineer</p>
-<p><strong>About the Department</strong></p>
-<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Security Systems Reliability Engineering team supports tooling and infrastructure across the Security team.</p>
-<p><strong>About the Role</strong></p>
-<p>As a Security Systems Reliability Engineer, you will play a key role in designing, implementing, managing, and supporting infrastructure and security technologies.&nbsp; You will be responsible for ensuring systems are secure, highly available, fault tolerant, and scale to meet business needs.&nbsp;</p>
-<p>Work may include documenting new standard operating procedures, ensuring vendor recommended security baseline configurations are implemented, designing repeatable deployment patterns, performing disaster recovery testing, performing chaos testing, configuring new integrations, implementing new technologies, patching applications and operating systems, performing upgrades and other maintenance tasks, establishing integrations, documenting the as-built architecture, establishing monitoring and logging, and participating in investigations and service restorations.</p>
-<p>As part of our team, you will be expected to:</p>
+<p><strong>Available Locations: London or Lisbon</strong></p>
+<h3><span style="font-size: 10pt;"><strong>About the Department</strong></span></h3>
+<p><span style="font-size: 10pt;">Cloudflare’s engineering teams build and maintain the systems and products that power our global platform. A global platform which is within approximately 50 milliseconds of about 95% of the Internet connected population, serving on average, over 46 million HTTP requests per second.</span></p>
+<h3><span style="font-size: 10pt;"><strong>About the Team</strong></span></h3>
+<p><span style="font-size: 10pt;">Cloudflare engineering delivers code to production at a tremendous pace, and depends on automated testing to do so without incidents. The Testing at Scale team builds and runs tooling for other engineering teams, to allow them to write tests that verify the interactions between systems and products in production at huge scale.</span></p>
+<p><span style="font-size: 10pt;"><strong>What are we looking for?</strong></span></p>
+<p><span style="font-size: 10pt;">We are looking for highly motivated software engineers to join our Testing at Scale team.&nbsp; You’ll have a strong programming background with a deep understanding and experience developing and maintaining&nbsp; distributed systems. You’ll need to be able to communicate effectively with engineers across the company to understand the behaviours of our systems and products in order to deliver tooling to meet their testing needs. You will also work closely with product managers to support our public facing synthetic testing and load testing products for enterprise customers.</span></p>
+<p><span style="font-size: 10pt;"><strong>Desirable skills, knowledge and experience</strong></span></p>
 <ul>
-	<li>Design, implement, and maintain secure infrastructure across various environments (non-production and production).</li>
-	<li>Ensure resilient and secure designs are implemented and maintained.</li>
-	<li>Drive continuous improvement while maintaining multiple environments.&nbsp;</li>
-	<li>Ensure systems meet performance expectations.</li>
-	<li>Engage in proactive risk management and incident response planning.</li>
-	<li>Develop or utilize automation to streamline repeatable tasks.</li>
-	<li>Ensure company data is managed in a secure and scalable manner.</li>
-	<li>Contribute to the creation and dissemination of knowledge about the designs within the company.</li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Proven track record as a software engineer or similar role.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Programming experience with one of the following languages. Go or Rust.&nbsp;</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Experience designing, implementing and maintaining secure and highly-available distributed systems</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Ability to develop, document and execute test plans, test cases and test scripts to verify systems continue to operate as expected</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Create and maintain test documentation, including test cases, and test reports&nbsp;</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Collaborate with cross-functional engineering teams to understand how their systems function and interact with other Cloudflare systems</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Help drive continued improvements in the software development testing processes</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Be a good communicator, provide clear and concise feedback to engineering and product teams</span></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>Security Systems Reliability Engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
+<p><span style="font-size: 10pt;">Nice to have skills</span></p>
 <ul>
-	<li>Bachelor's degree in Computer Science, Information Systems, Cybersecurity, related technical field, or equivalent practical experience</li>
-	<li>Experience performing the functions of a Site Reliability Engineer (SRE).</li>
-	<li>Ability to clearly communicate complex security requirements to stakeholders at all levels</li>
-	<li>Ability to navigate ambiguity, and provide clarity to complex situations</li>
-	<li>Extensive experience with deploying and administering Kubernetes in an enterprise environment.&nbsp;</li>
-	<li>Extensive experience developing and utilizing Terraform to deploy and update environments through infrastructure as code (IaC).&nbsp;</li>
-	<li>Extensive experience with deploying and administering Linux systems in an enterprise environment.&nbsp;</li>
-	<li>Extensive experience deploying and administering enterprise solutions in GCP, AWS or Azure.</li>
-	<li>Experience implementing, integrating, and supporting application security tools within a CI/CD pipeline environment.</li>
-	<li>Solid understanding of reliability engineering principles and a commitment to continuous improvement.</li>
-	<li>Experience writing scripts, leveraging automation, and creating infrastructure as code to streamline processes.</li>
-	<li>Advanced programming experience (Python, Golang, Bash, etc.)</li>
-	<li>Strong analytical skills focused on service availability with curiosity and thoroughness in problem-solving.</li>
-	<li>Ability to navigate ambiguity, bring clarity to complex situations, and collaborate effectively with various stakeholders.</li>
-	<li>Experience working with different security functions as part of a wider team</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Strong Linux system experience from user-space to kernel-space</li>
-	<li>Cross-functional governance experience with programs like PCI-DSS, FedRAMP</li>
-	<li>Proficient in managing Application Security related technologies like Veracode, Checkmarx, SonarQube, Snyk, Semgrep, Fortify, or Coverity integrated into CI/CD pipelines.</li>
-	<li>Experience with deploying and administering Cloudflare products (access, tunnels, waf)&nbsp;</li>
-	<li>Experience working with large data platforms</li>
-	<li>Experience working with data classification schemas at scale</li>
-	<li>Experience working with organization wide business ecosystems (Google, Microsoft)</li>
+	<li style="font-size: 10pt;">
+		<ul>
+			<li style="font-size: 10pt;"><span style="font-size: 10pt;">Experience working with synthetic traffic &amp; load testing tools</span></li>
+			<li style="font-size: 10pt;"><span style="font-size: 10pt;">Experience with measuring uptime metrics like availability &amp; latency SLOs/SLIs&nbsp;</span></li>
+		</ul>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

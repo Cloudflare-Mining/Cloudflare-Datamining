@@ -5,30 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations:</strong>&nbsp;Bangalore, India</h4>
-<p><strong>About the Department</strong></p>
-<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Application and Product Security team at Cloudflare is focused on and committed to securing both Cloudflare and our customers. The Application &amp; Product Security team is responsible for keeping our products, and platforms secure.</p>
-<p><strong>What you’ll do</strong></p>
-<p>We are looking for a Security Engineer to help us in our mission to build a better internet. Part engineer, part hacker, you will work with our engineering and security teams to build solutions for .</p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>About the team</strong></p>
+<p>The Magic Cloud Networking team builds an orchestration framework that empowers customers to take public cloud resources (e.g., AWS / Azure / GCP) and securely connect them to Cloudflare’s global data-center footprint. Working with public cloud networking resources provides unique challenges—each cloud models networking very differently, customers can modify resources out-of-band of our orchestration system (“shadow IT operations”), resources can fail in opaque and varied ways outside of our control, etc.. To solve these issues, our orchestration platform must be resilient and scalable, while also affording flexibility to the unique constraints of each cloud. Powering this orchestration framework are a set of Go and Rust-based microservices running in our core data-centers, leveraging Cloudflare’s infrastructure excellence.</p>
+<p>We are a team of engineers who obsess over building reliable services which leverage Cloudflare’s unique architecture and global network footprint.</p>
+<p>You can read more about what we work on here:</p>
 <ul>
-	<li>Work with engineering teams to help secure Cloudflare products and platforms</li>
-	<li>Assess products and new feature releases through threat modeling, code review and security testing. Also provide guidance on effective countermeasures</li>
-	<li>Contribute to security architecture/design and assist in building and rolling out processes for secure code development and deployment</li>
-	<li>Build secure frameworks &amp; libraries that engineering teams can use at scale</li>
-	<li>Build internal security tools and automate processes that help fix security problems at a massive scale.&nbsp;</li>
-	<li>Managing and prioritizing multiple tasks in accordance with high level objectives</li>
+	<li><a href="https://blog.cloudflare.com/introducing-magic-cloud-networking">https://blog.cloudflare.com/introducing-magic-cloud-networking</a></li>
 </ul>
-<p><strong>Key skill sets and Knowledge</strong></p>
-<p>Security engineers take part in a wide variety of tasks and projects on the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
+<p><strong>About the role</strong></p>
+<p>As a software engineer on the Magic Cloud Networking team, you will contribute to features that shape Cloudflare One’s use of multi-cloud networking. You will build solutions that improve performance, scalability, manageability, and security of customer cloud footprints as well as connect them to our global network. This work requires close collaboration with other teams while leveraging frameworks and libraries that power many Cloudflare products. Our technology stack includes Go, Rust, OpenTofu, Public Clouds (e.g., AWS / Azure / GCP), Kubernetes, Docker, and Prometheus. We're looking for determined, curious, empathetic engineers to join our team!</p>
+<p><strong>Desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Experience in securing large scale distributed systems</li>
-	<li>Experience in designing, building and implementing systems</li>
-	<li>Experience in assessing the security posture of systems/services</li>
-	<li>Experience in penetration testing and providing mitigating controls</li>
-	<li>Strong engineering background and programming experience (Python, Golang, Rust, Bash, etc.)</li>
-	<li>Strong communication skills and ability to work with remote teams</li>
-	<li>Results and goal-oriented</li>
+	<li>Programming experience in Go or Rust</li>
+	<li>Familiarity with Layer 3 and Layer 4 networking; i.e, VPCs, transit gateways, BGP and GRE tunnels</li>
+	<li>Familiarity with network engineering and protocols used in data center switching and routing as well as Internet routing - BGP, BFP, OSPF, MPLS, etc</li>
+	<li>Experience building network orchestration platforms</li>
+	<li>Experience designing and integrating RESTful APIs and backend systems</li>
+	<li>Attention to detail and ability to solve complex customer problems</li>
+	<li>Own solutions end-to-end and driving the design, development, and deployment process</li>
+	<li>Able to work across teams and create common, sustainable solutions</li>
+	<li>Creative, open-minded, collaborative problem solver</li>
+	<li>Focus on clarity in written and verbal communication</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

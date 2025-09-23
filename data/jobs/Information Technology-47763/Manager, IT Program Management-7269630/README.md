@@ -5,55 +5,71 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location</strong></p>
-<p>Lisbon, Portugal</p>
-<p><strong>Job Title&nbsp;</strong></p>
-<p>Security Systems Reliability Engineer</p>
-<p><strong>About the Department</strong></p>
-<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Security Systems Reliability Engineering team supports tooling and infrastructure across the Security team.</p>
-<p><strong>About the Role</strong></p>
-<p>As a Security Systems Reliability Engineer, you will play a key role in designing, implementing, managing, and supporting infrastructure and security technologies.&nbsp; You will be responsible for ensuring systems are secure, highly available, fault tolerant, and scale to meet business needs.&nbsp;</p>
-<p>Work may include documenting new standard operating procedures, ensuring vendor recommended security baseline configurations are implemented, designing repeatable deployment patterns, performing disaster recovery testing, performing chaos testing, configuring new integrations, implementing new technologies, patching applications and operating systems, performing upgrades and other maintenance tasks, establishing integrations, documenting the as-built architecture, establishing monitoring and logging, and participating in investigations and service restorations.</p>
-<p>As part of our team, you will be expected to:</p>
+<p><strong>Available Locations: Austin Texas</strong></p>
+<p><strong>About the Department:</strong></p>
+<p>Cloudflare’s IT Planning and Governance Team is a crucial pillar of the CIO Organization. It manages programs and initiatives across IT Infrastructure, Enterprise Systems, and Enterprise Engineering, enabling Cloudflare internal teams to operate at their most efficient level. The team establishes end-to-end governance principles and frameworks, leads business partnering, and drives program planning, execution, and demand capacity management.&nbsp;</p>
+<p><strong>About the role:</strong></p>
+<p>We are looking for a highly skilled and self-motivated IT PMO Manager that can collaborate with our Product Managers on planning and accelerating our product led efforts. You will join an exceptional group of TPMs to deliver a portfolio that extends to every corner of the organization.&nbsp;</p>
+<p>You bring a passion for matching up business needs with building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You are able to implement and drive processes and persistently make progress.&nbsp; The ideal candidate is flexible and comfortable in playing multiple roles (diplomat, moderator, negotiator, reporter, coach, etc.), leading initiatives, and is able to adapt to changing situations. Combined with technical expertise, you have the ability to build trust and strong partnership with counterparts in Engineering, Development, Operations, and Business teams.</p>
+<p><strong>Re</strong><strong>sponsibilities:</strong></p>
 <ul>
-	<li>Design, implement, and maintain secure infrastructure across various environments (non-production and production).</li>
-	<li>Ensure resilient and secure designs are implemented and maintained.</li>
-	<li>Drive continuous improvement while maintaining multiple environments.&nbsp;</li>
-	<li>Ensure systems meet performance expectations.</li>
-	<li>Engage in proactive risk management and incident response planning.</li>
-	<li>Develop or utilize automation to streamline repeatable tasks.</li>
-	<li>Ensure company data is managed in a secure and scalable manner.</li>
-	<li>Contribute to the creation and dissemination of knowledge about the designs within the company.</li>
+	<li>Strategic &amp; Operational Management:</li>
+	<ul>
+		<li>Determine how to best use resources to meet program schedules and goals.</li>
+		<li>Manage the day-to-day coordination of your team’s activities, taking full responsibility for results, including costs and staffing.</li>
+		<li>Develop and administer program schedules and performance requirements.</li>
+		<li>Assist in annual and quarterly planning.</li>
+		<li>Work with technical program managers to develop repeatable Organizational Change Management (OCM) framework and practices.&nbsp;</li>
+	</ul>
+	<li>Project &amp; Program Oversight:</li>
+	<ul>
+		<li>Oversee multiple large programs and cross-functional initiatives.</li>
+		<li>Proactively manage risks, dependencies, and escalations.</li>
+		<li>Reallocate resources as needed to balance demand and capacity across the portfolio.</li>
+		<li>Make sound decisions to avoid unnecessary costs and meet short-term organizational goals.</li>
+	</ul>
+	<li>Process &amp; Governance:</li>
+	<ul>
+		<li>Develop PMO playbooks and introduce consistency practices to shape how projects are delivered across the business unit.</li>
+		<li>Drive adherence to governance and introduce maturity assessments to ensure teams are following established methodologies.</li>
+		<li>Recommend and establish changes to policies and procedures that affect the immediate organization.</li>
+	</ul>
+	<li>Team Leadership:</li>
+	<ul>
+		<li>Lead and mentor a team of 4-5 program managers.</li>
+		<li>Provide guidance and act as a trusted advisor to help them meet schedules and resolve technical problems.</li>
+		<li>Build a strong succession pipeline and develop future leaders.</li>
+	</ul>
+	<li>Stakeholder Engagement:</li>
+	<ul>
+		<li>Manage and negotiate stakeholder expectations across multiple business units.</li>
+		<li>Bring stakeholders with conflicting priorities into facilitated sessions, using diplomacy to balance their needs.</li>
+		<li>Advise business unit directors on roadmap decisions, delivery capacity, and risks, influencing how investments are made at the business unit level.</li>
+	</ul>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>Security Systems Reliability Engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
 <ul>
-	<li>Bachelor's degree in Computer Science, Information Systems, Cybersecurity, related technical field, or equivalent practical experience</li>
-	<li>Experience performing the functions of a Site Reliability Engineer (SRE).</li>
-	<li>Ability to clearly communicate complex security requirements to stakeholders at all levels</li>
-	<li>Ability to navigate ambiguity, and provide clarity to complex situations</li>
-	<li>Extensive experience with deploying and administering Kubernetes in an enterprise environment.&nbsp;</li>
-	<li>Extensive experience developing and utilizing Terraform to deploy and update environments through infrastructure as code (IaC).&nbsp;</li>
-	<li>Extensive experience with deploying and administering Linux systems in an enterprise environment.&nbsp;</li>
-	<li>Extensive experience deploying and administering enterprise solutions in GCP, AWS or Azure.</li>
-	<li>Experience implementing, integrating, and supporting application security tools within a CI/CD pipeline environment.</li>
-	<li>Solid understanding of reliability engineering principles and a commitment to continuous improvement.</li>
-	<li>Experience writing scripts, leveraging automation, and creating infrastructure as code to streamline processes.</li>
-	<li>Advanced programming experience (Python, Golang, Bash, etc.)</li>
-	<li>Strong analytical skills focused on service availability with curiosity and thoroughness in problem-solving.</li>
-	<li>Ability to navigate ambiguity, bring clarity to complex situations, and collaborate effectively with various stakeholders.</li>
-	<li>Experience working with different security functions as part of a wider team</li>
+	<li>3+ years experience managing small teams, driving career development and increasing engagement.</li>
+	<li>5+ years experience in program and project management.</li>
+	<li>Proficiency in stakeholder management, communications planning and development, and selling the benefits of your work.</li>
+	<li>Experience and knowledge of change management principles, methodologies and tools.</li>
+	<li>Experience defining and measuring success metrics and monitoring change progress.</li>
+	<li>Ability to identify, analyze and prepare risk mitigation plans.</li>
+	<li>Excellent oral and written communication, as well as strong documentation and reporting skills.</li>
+	<li>Flexibility and adaptability, experience trying different approaches and adapting as you go based on the needs of your team / program.</li>
+	<li>Strong competency with program management tools like Confluence, JIRA, Asana, etc.&nbsp;</li>
+	<li>Experience working with multiple time zones and cross functional teams.</li>
+	<li>Excellent scheduling and meeting coordination skills.</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Strong Linux system experience from user-space to kernel-space</li>
-	<li>Cross-functional governance experience with programs like PCI-DSS, FedRAMP</li>
-	<li>Proficient in managing Application Security related technologies like Veracode, Checkmarx, SonarQube, Snyk, Semgrep, Fortify, or Coverity integrated into CI/CD pipelines.</li>
-	<li>Experience with deploying and administering Cloudflare products (access, tunnels, waf)&nbsp;</li>
-	<li>Experience working with large data platforms</li>
-	<li>Experience working with data classification schemas at scale</li>
-	<li>Experience working with organization wide business ecosystems (Google, Microsoft)</li>
+	<li>Proven working experience as a program manager in the technology sector, preferably within an IT or Corporate Technology department</li>
+	<li>Experience with both waterfall and Agile development methodologies</li>
+	<li>Experience major platforms (Salesforce, Oracle EBS, SAP, etc.)</li>
+	<li>PMP/PgMP and Agile certifications</li>
+	<li>Fluency in organizational change management methodologies (Prosci, etc.)</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

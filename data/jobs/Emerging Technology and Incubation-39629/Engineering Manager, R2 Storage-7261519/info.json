@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6621615?gh_jid=6621615",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7261519?gh_jid=7261519",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,8 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3071205,
+	"education": "education_optional",
+	"internal_job_id": 3250627,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,18 +19,16 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4300 - Systems Engineering",
+			"value": "4520 - Build - ETI",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Atlanta, US",
 				"Austin, US",
-				"Beijing, China",
-				"Denver, US",
-				"Washington DC, US"
+				"London, UK",
+				"Seattle, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -37,21 +36,22 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
+				"Emerging Technology & Incubation",
 				"Engineering"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 6621615,
-	"updated_at": "2025-09-18T12:23:14-04:00",
-	"requisition_id": null,
-	"title": "Software Engineer, Identity Access Management",
+	"id": 7261519,
+	"updated_at": "2025-09-23T12:25:37-04:00",
+	"requisition_id": "677",
+	"title": "Engineering Manager, R2 Storage",
 	"company_name": "Cloudflare",
-	"first_published": "2025-02-11T17:51:17-05:00",
+	"first_published": "2025-09-23T12:25:37-04:00",
 	"departments": [
 		{
-			"id": 29067,
-			"name": "Engineering",
+			"id": 39629,
+			"name": "Emerging Technology and Incubation",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -65,32 +65,18 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 19994,
-			"name": "Washington, DC",
-			"location": "Washington, DC, United States",
-			"child_ids": [],
-			"parent_id": 48752
-		},
-		{
-			"id": 65527,
-			"name": "Denver, CO",
-			"location": "Denver, Colorado, United States",
-			"child_ids": [],
-			"parent_id": 48752
-		},
-		{
-			"id": 66815,
-			"name": "Atlanta, GA",
-			"location": null,
-			"child_ids": [],
-			"parent_id": 48752
-		},
-		{
-			"id": 82456,
-			"name": "Remote UK",
-			"location": null,
+			"id": 19988,
+			"name": "London, United Kingdom",
+			"location": "London, United Kingdom",
 			"child_ids": [],
 			"parent_id": 74843
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
 		}
 	]
 }

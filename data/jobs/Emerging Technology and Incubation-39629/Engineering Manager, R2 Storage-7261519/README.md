@@ -5,46 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas</strong></p>
-<p><strong>About the role:</strong></p>
-<p>We are seeking a Sr. IT Product Manager, GTM Systems to lead a variety of strategic systems initiatives within Cloudflare. The Sr. IT Product Manager GTM Systems will serve as a “trusted advisor,” the strategic interface between a variety of GTM business areas such as Sales, Marketing, Partners, and Post-Sales and the IT Enterprise Applications team with the focus on business technology strategy development, requirements discovery, and risk and service management. The Sr. IT Product Manager will be the main technology functional expert for all GTM internal business systems, having a holistic view of the end-to-end process from a systems point of view. This means that while the role will primarily be a partner to the GTM teams, it would also partner with other functions, like People/Payroll, Finance, Security, and Legal to ensure the overall GTM process operates effectively and cohesively.&nbsp; The Sr. Product Manager will proactively share knowledge of technology risks and opportunities to build competitive advantage and improve efficiency and effectiveness of business functions.</p>
-<p><strong>Responsibilities:</strong></p>
+<h3><strong>Available Locations: Austin, TX | Seattle, WA | London, UK</strong></h3>
+<h3><strong>About the team</strong></h3>
+<p>Cloudflare R2 Storage allows developers to store large amounts of unstructured data without the costly egress bandwidth fees associated with typical cloud storage services. Our customers–both internal and external–bring a wide variety of workloads that we enable. We're looking for an Engineering Manager to help us continue achieving those goals.</p>
+<h3 id="SeniorEngineeringManagerR2StorageAustin,TX/RemoteUS-Whatyou'lldo"><strong>What you'll do</strong></h3>
+<p>You will lead a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
+<p>You bring a passion for meeting business needs with building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience delivering scalable distributed systems. Most importantly, you will have a track record of having past teams respect you as both a technical leader and manager.</p>
+<h3 id="SeniorEngineeringManagerR2StorageAustin,TX/RemoteUS-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Operates as the trusted partner to both the business (specifically the Revenue Operations/Sales team) and the IT Enterprise Applications (Product &amp; Engineering teams) in managing product strategy, roadmap prioritization, capacity tradeoffs, and overall ownership of the IT GTM portfolio.</li>
-	<li>Performs using a Product Led Growth model, partnering with stakeholders to ensure business objectives are met through prioritizing the highest, most impactful, work.</li>
-	<li>Partners with the business to understand objectives and goals to drive outcomes connecting people, processes and systems.</li>
-	<li>Leads communication to keep all stakeholders informed and aligned at all times.</li>
-	<li>Develops and monitors usage metrics that indicate customer satisfaction, internal efficiency gains, and overall ROI.&nbsp;</li>
-	<li>Drive cross-team collaboration and heavily influences the overall GTM IT roadmap ensuring the focus is on business performance and scalability while limiting IT risk.&nbsp;</li>
-	<li>Translates business vision and priorities to technical teams ensuring clean and clear scope is understood and delivered and is the driver for unblocking any dependencies or risks that arise in the process.</li>
-	<li>Stay on top of industry trends, bringing learnings and new solutions that align with Cloudflare's goals and techstack.</li>
-	<li>Leads and nurtures platform vendor relationships including influencing and understanding vendors’ product roadmap and shares recommendations to match the overall business vision and goals.</li>
-	<li>Works with IT leadership to strengthen success measures and team performance.</li>
-	<li>Mentors and coaches IT product managers, fostering a culture of collaboration, data-driven decisions, and growth.</li>
-	<li>Partners with the Procurement team to help participate in the vendor selection process for onboarding new GTM SaaS tools including participating in: vendor discovery calls, evaluation, scoring, demos, and presenting tool recommendations to executive leadership.</li>
-	<li>Adheres to and instills the IT Planning and Governance structure including running monthly GTM steering committee meetings, meeting with functional leaders on a routine basis, and having continual alignment with stakeholders (GTM and IT).</li>
-	<li>Leads weekly roadmap meetings with engineering managers to collaborate on business priorities and roadmap placement and works with the appropriate teams to manage risks and capacity related issues.&nbsp;</li>
+	<li>Experience leading a team and working across multiple teams to deliver results</li>
+	<li>Comfortable managing teams with broad responsibility scopes</li>
+	<li>Solid foundation in computer science and software engineering with strong competencies in software design, and building distributed systems</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Demonstrate a track record of managing a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>Comfortable managing teams/projects with tight deadlines and short release cycles</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
+<h3 id="SeniorEngineeringManagerR2StorageAustin,TX/RemoteUS-BonusPoints">Bonus Points</h3>
 <ul>
-	<li>BS/BA in Business Administration or Computer Science, or an equivalent combination of education and experience.</li>
-	<li>Minimum of 7 years experience with GTM systems including complex knowledge and deep understanding of sales operations - specifically within the software sales lifecycle (Opportunity to Quote) including the sales journey from lead to customer.</li>
-	<li>Experience working in a Product Led Growth (PLG) operating model and Agile framework.</li>
-	<li>Experience with GTM platforms such as Salesforce Sales Cloud, Experience Cloud, and other sales technologies are required.&nbsp;</li>
-	<li>Personable and approachable with the ability to navigate, sometimes challenging, conversations and decisions between cross functional teams.</li>
-	<li>Strong sense of urgency, ability to manage priorities and tight deadlines in a fast-paced, high growth, and ambiguous environment.</li>
-	<li>Strong ability to communicate with executive leadership, think on a strategic level, and communicate the strategy across the various product teams.</li>
-	<li>Highly organized and able to juggle many tasks without losing sight of the highest priority items.</li>
-	<li>Demonstrated ability to communicate clearly to technical and non-technical audiences, and project manage multiple concurrent projects with varying internal stakeholders and demands.</li>
-	<li>Excellent written and verbal communication skills with the ability to communicate effectively and efficiently in a global fragmented environment.</li>
+	<li>Experience working with or leading teams around distributed systems</li>
+	<li>Operating knowledge of large scale storage systems and related infrastructure</li>
+	<li>Understanding of server hardware, performance expectations and limitations, and failure domains</li>
+	<li>Managing contributions to large open-source projects</li>
 </ul>
-<p><strong>Compensation</strong></p>
+<h3 id="SeniorEngineeringManagerR2StorageAustin,TX/RemoteUS-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3><strong>Compensation</strong></h3>
 <p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
+<ul>
+	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $213,000 - $261,000</li>
+</ul>
+<h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3><strong>Benefits</strong></h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3><strong>Health &amp; Welfare Benefits</strong></h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -55,14 +50,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3><strong>Financial Benefits</strong></h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3><strong>Time Off</strong></h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

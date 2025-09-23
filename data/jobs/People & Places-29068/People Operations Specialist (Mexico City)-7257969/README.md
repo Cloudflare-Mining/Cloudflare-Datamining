@@ -23,7 +23,7 @@
 </ul>
 <p><strong>Qualifications</strong></p>
 <ul>
-	<li><strong>3-5</strong>+ years of HR operations experience, with strong expertise in Mexico payroll processing and employment law.<br><br></li>
+	<li><strong>5+</strong>&nbsp;years of HR operations experience, with strong expertise in Mexico payroll processing and employment law.<br><br></li>
 	<li>Hands-on experience with employee lifecycle administration and HR documentation.<br><br></li>
 	<li>Experience working with HRIS systems (Workday strongly preferred).<br><br></li>
 	<li>Strong proficiency in Excel (pivot tables, VLOOKUPs, formulas) and experience analyzing HR and payroll data in collaboration with regional teams to support decision-making.<br><br></li>
