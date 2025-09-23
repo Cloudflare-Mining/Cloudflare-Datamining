@@ -6603,6 +6603,19 @@
 													"example": "standard",
 													"type": "string",
 													"x-auditable": true
+												},
+												"user_limits": {
+													"description": "User-defined resource limits for Workers with standard usage model.",
+													"nullable": true,
+													"properties": {
+														"cpu_ms": {
+															"description": "The amount of CPU time this Worker can use in milliseconds.",
+															"example": 50,
+															"nullable": true,
+															"type": "integer"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -17277,6 +17290,19 @@
 								"example": "standard",
 								"type": "string",
 								"x-auditable": true
+							},
+							"user_limits": {
+								"description": "User-defined resource limits for Workers with standard usage model.",
+								"nullable": true,
+								"properties": {
+									"cpu_ms": {
+										"description": "The amount of CPU time this Worker can use in milliseconds.",
+										"example": 50,
+										"nullable": true,
+										"type": "integer"
+									}
+								},
+								"type": "object"
 							}
 						},
 						"type": "object"
@@ -17388,6 +17414,19 @@
 													"example": "standard",
 													"type": "string",
 													"x-auditable": true
+												},
+												"user_limits": {
+													"description": "User-defined resource limits for Workers with standard usage model.",
+													"nullable": true,
+													"properties": {
+														"cpu_ms": {
+															"description": "The amount of CPU time this Worker can use in milliseconds.",
+															"example": 50,
+															"nullable": true,
+															"type": "integer"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
