@@ -252,5 +252,17 @@
 	"pipelines.create.storage_types.parquet.description": "Compressed, optimized for analytics",
 	"pipelines.create.storage_types.catalog.description": "Managed Iceberg tables",
 	"pipelines.create.units.megabytes": "MB",
-	"pipelines.create.units.seconds": "sec"
+	"pipelines.create.units.seconds": "sec",
+	"pipelines.create.success.title": "Pipeline created successfully!",
+	"pipelines.create.success.description": "Send your first event to stream:",
+	"pipelines.create.success.send_via_http": "Send via HTTP",
+	"pipelines.create.success.curl_command": "Run curl command:",
+	"pipelines.create.success.send_via_workers": "Send via Workers",
+	"pipelines.create.success.step1_create_worker": "Step 1: Create a new Worker",
+	"pipelines.create.success.step2_add_wrangler": "Step 2: Add to your wrangler.json",
+	"pipelines.create.success.step3_send_events": "Step 3: Send events in your Worker",
+	"pipelines.create.success.view_pipeline": "View Pipeline",
+	"pipelines.create.success.copy_code": "Copy code",
+	"pipelines.create.success.hide_code": "Hide code",
+	"pipelines.create.success.show_code": "Show code"
 }
