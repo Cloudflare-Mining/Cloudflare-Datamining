@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7090232?gh_jid=7090232",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7243898?gh_jid=7243898",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3198221,
+	"internal_job_id": 3243966,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,15 +18,17 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4300 - Systems Engineering",
+			"value": "5810 - Partner SE",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
 				"Austin, US",
-				"Mexico City, Mexico"
+				"Chicago, US",
+				"Toronto, Canada"
 			],
 			"value_type": "multi_select"
 		},
@@ -34,21 +36,21 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Engineering"
+				"Sales"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7090232,
-	"updated_at": "2025-09-23T09:13:36-04:00",
+	"id": 7243898,
+	"updated_at": "2025-09-23T09:27:51-04:00",
 	"requisition_id": null,
-	"title": "System Test Engineer - Zero Trust Client",
+	"title": "Director, Partner Services, Americas",
 	"company_name": "Cloudflare",
-	"first_published": "2025-07-22T13:12:32-04:00",
+	"first_published": "2025-09-23T09:27:51-04:00",
 	"departments": [
 		{
-			"id": 29067,
-			"name": "Engineering",
+			"id": 30603,
+			"name": "Partnerships",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -62,11 +64,25 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 112096,
-			"name": "Mexico City, MX",
+			"id": 44776,
+			"name": "Chicago, IL",
+			"location": "Chicago, Illinois, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
 			"location": null,
 			"child_ids": [],
-			"parent_id": 87170
+			"parent_id": 48752
+		},
+		{
+			"id": 73335,
+			"name": "Toronto, ON",
+			"location": "Toronto, Ontario, Canada",
+			"child_ids": [],
+			"parent_id": 75883
 		}
 	]
 }
