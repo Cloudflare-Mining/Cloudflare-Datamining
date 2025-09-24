@@ -1,0 +1,1274 @@
+{
+	"DELETE /triggers/{trigger_uuid}": {
+		"description": "Remove a CI/CD trigger",
+		"operationId": "deleteTrigger",
+		"parameters": [
+			{
+				"description": "Trigger UUID",
+				"in": "path",
+				"name": "trigger_uuid",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": null,
+							"success": true
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"example": 25,
+											"type": "integer"
+										},
+										"page": {
+											"example": 1,
+											"type": "integer"
+										},
+										"per_page": {
+											"example": 50,
+											"type": "integer"
+										},
+										"total_count": {
+											"example": 150,
+											"type": "integer"
+										},
+										"total_pages": {
+											"example": 3,
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Operation successful"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12000,
+									"message": "Not found"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Resource not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete trigger",
+		"tags": [
+			"Triggers"
+		]
+	},
+	"PATCH /triggers/{trigger_uuid}": {
+		"description": "Update an existing CI/CD trigger",
+		"operationId": "updateTrigger",
+		"parameters": [
+			{
+				"description": "Trigger UUID",
+				"in": "path",
+				"name": "trigger_uuid",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"branch_excludes": {
+								"example": [],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"branch_includes": {
+								"example": [
+									"main"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"build_caching_enabled": {
+								"default": false,
+								"type": "boolean"
+							},
+							"build_command": {
+								"example": "npm run build",
+								"type": "string"
+							},
+							"build_token_uuid": {
+								"format": "uuid",
+								"type": "string"
+							},
+							"deploy_command": {
+								"example": "npm run deploy",
+								"type": "string"
+							},
+							"path_excludes": {
+								"example": [
+									"*.md"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"path_includes": {
+								"example": [
+									"src/**"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"root_directory": {
+								"example": "/",
+								"type": "string"
+							},
+							"trigger_name": {
+								"example": "Production Deploy",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"example": 12000,
+														"type": "integer"
+													},
+													"message": {
+														"example": "Not found",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 25,
+													"type": "integer"
+												},
+												"page": {
+													"example": 1,
+													"type": "integer"
+												},
+												"per_page": {
+													"example": 50,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 150,
+													"type": "integer"
+												},
+												"total_pages": {
+													"example": 3,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"branch_excludes": {
+													"example": [],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"branch_includes": {
+													"example": [
+														"main"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"build_caching_enabled": {
+													"example": false,
+													"type": "boolean"
+												},
+												"build_command": {
+													"example": "npm run build",
+													"type": "string"
+												},
+												"build_token_name": {
+													"example": "My Build Token",
+													"type": "string"
+												},
+												"build_token_uuid": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"created_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"deleted_on": {
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"deploy_command": {
+													"example": "npm run deploy",
+													"type": "string"
+												},
+												"external_script_id": {
+													"example": "my-worker",
+													"type": "string"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"path_excludes": {
+													"example": [
+														"*.md"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"path_includes": {
+													"example": [
+														"src/**"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"repo_connection": {
+													"properties": {
+														"created_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"deleted_on": {
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														},
+														"modified_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"provider_account_id": {
+															"example": "cloudflare",
+															"type": "string"
+														},
+														"provider_account_name": {
+															"example": "Cloudflare",
+															"type": "string"
+														},
+														"provider_type": {
+															"enum": [
+																"github"
+															],
+															"example": "github",
+															"type": "string"
+														},
+														"repo_connection_uuid": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"repo_id": {
+															"example": "workers-sdk",
+															"type": "string"
+														},
+														"repo_name": {
+															"example": "workers-sdk",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"root_directory": {
+													"example": "/",
+													"type": "string"
+												},
+												"trigger_name": {
+													"example": "Production Deploy",
+													"type": "string"
+												},
+												"trigger_uuid": {
+													"format": "uuid",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Trigger updated successfully"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12000,
+									"message": "Not found"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Resource not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update trigger",
+		"tags": [
+			"Triggers"
+		]
+	},
+	"POST /triggers": {
+		"description": "Create a new CI/CD trigger",
+		"operationId": "createTrigger",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"branch_excludes": {
+								"example": [],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"branch_includes": {
+								"example": [
+									"main"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"build_caching_enabled": {
+								"default": false,
+								"type": "boolean"
+							},
+							"build_command": {
+								"example": "npm run build",
+								"type": "string"
+							},
+							"build_token_uuid": {
+								"format": "uuid",
+								"type": "string"
+							},
+							"deploy_command": {
+								"example": "npx wrangler deploy",
+								"type": "string"
+							},
+							"external_script_id": {
+								"example": "my-worker",
+								"type": "string"
+							},
+							"path_excludes": {
+								"example": [
+									"*.md"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"path_includes": {
+								"default": "*",
+								"example": [
+									"*"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"repo_connection_uuid": {
+								"format": "uuid",
+								"type": "string"
+							},
+							"root_directory": {
+								"example": "/",
+								"type": "string"
+							},
+							"trigger_name": {
+								"example": "Production Deploy",
+								"type": "string"
+							}
+						},
+						"required": [
+							"external_script_id",
+							"build_token_uuid",
+							"trigger_name",
+							"build_command",
+							"deploy_command",
+							"root_directory",
+							"branch_includes",
+							"branch_excludes",
+							"path_includes",
+							"path_excludes",
+							"repo_connection_uuid"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"example": 12000,
+														"type": "integer"
+													},
+													"message": {
+														"example": "Not found",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 25,
+													"type": "integer"
+												},
+												"page": {
+													"example": 1,
+													"type": "integer"
+												},
+												"per_page": {
+													"example": 50,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 150,
+													"type": "integer"
+												},
+												"total_pages": {
+													"example": 3,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"branch_excludes": {
+													"example": [],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"branch_includes": {
+													"example": [
+														"main"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"build_caching_enabled": {
+													"example": false,
+													"type": "boolean"
+												},
+												"build_command": {
+													"example": "npm run build",
+													"type": "string"
+												},
+												"build_token_name": {
+													"example": "My Build Token",
+													"type": "string"
+												},
+												"build_token_uuid": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"created_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"deleted_on": {
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"deploy_command": {
+													"example": "npm run deploy",
+													"type": "string"
+												},
+												"external_script_id": {
+													"example": "my-worker",
+													"type": "string"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"path_excludes": {
+													"example": [
+														"*.md"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"path_includes": {
+													"example": [
+														"src/**"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"repo_connection": {
+													"properties": {
+														"created_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"deleted_on": {
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														},
+														"modified_on": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"provider_account_id": {
+															"example": "cloudflare",
+															"type": "string"
+														},
+														"provider_account_name": {
+															"example": "Cloudflare",
+															"type": "string"
+														},
+														"provider_type": {
+															"enum": [
+																"github"
+															],
+															"example": "github",
+															"type": "string"
+														},
+														"repo_connection_uuid": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"repo_id": {
+															"example": "workers-sdk",
+															"type": "string"
+														},
+														"repo_name": {
+															"example": "workers-sdk",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"root_directory": {
+													"example": "/",
+													"type": "string"
+												},
+												"trigger_name": {
+													"example": "Production Deploy",
+													"type": "string"
+												},
+												"trigger_uuid": {
+													"format": "uuid",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Trigger created successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create trigger",
+		"tags": [
+			"Triggers"
+		]
+	},
+	"POST /triggers/{trigger_uuid}/builds": {
+		"description": "Trigger a manual build for a specific trigger",
+		"operationId": "createManualBuild",
+		"parameters": [
+			{
+				"description": "Trigger UUID",
+				"in": "path",
+				"name": "trigger_uuid",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"anyOf": [
+							{
+								"required": [
+									"commit_hash"
+								]
+							},
+							{
+								"required": [
+									"branch"
+								]
+							}
+						],
+						"properties": {
+							"branch": {
+								"description": "Git branch name (required if commit_hash not provided)",
+								"example": "main",
+								"type": "string"
+							},
+							"commit_hash": {
+								"description": "Git commit hash (required if branch not provided)",
+								"example": "abc123def456",
+								"type": "string"
+							},
+							"seed_repo": {
+								"properties": {
+									"branch": {
+										"example": "main",
+										"type": "string"
+									},
+									"files": {
+										"items": {
+											"properties": {
+												"content": {
+													"example": "name = \"my-worker\"\nmain = \"src/index.js\"\n",
+													"type": "string"
+												},
+												"filename": {
+													"example": "wrangler.toml",
+													"type": "string"
+												},
+												"isBase64": {
+													"default": false,
+													"type": "boolean"
+												},
+												"replace": {
+													"description": "Text to replace in the file",
+													"type": "string"
+												}
+											},
+											"required": [
+												"filename",
+												"content"
+											],
+											"type": "object"
+										},
+										"maxItems": 2,
+										"type": "array"
+									},
+									"owner": {
+										"example": "cloudflare",
+										"type": "string"
+									},
+									"path": {
+										"example": "/",
+										"type": "string"
+									},
+									"provider": {
+										"enum": [
+											"github"
+										],
+										"example": "github",
+										"type": "string"
+									},
+									"repository": {
+										"example": "workers-sdk",
+										"type": "string"
+									}
+								},
+								"required": [
+									"provider",
+									"owner",
+									"repository",
+									"branch",
+									"path"
+								],
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"example": 12000,
+														"type": "integer"
+													},
+													"message": {
+														"example": "Not found",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 25,
+													"type": "integer"
+												},
+												"page": {
+													"example": 1,
+													"type": "integer"
+												},
+												"per_page": {
+													"example": 50,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 150,
+													"type": "integer"
+												},
+												"total_pages": {
+													"example": 3,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"build_uuid": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"created_on": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Build created successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create manual build",
+		"tags": [
+			"Triggers"
+		]
+	},
+	"POST /triggers/{trigger_uuid}/purge_build_cache": {
+		"description": "Clear the build cache for a specific trigger",
+		"operationId": "purgeBuildCache",
+		"parameters": [
+			{
+				"description": "Trigger UUID",
+				"in": "path",
+				"name": "trigger_uuid",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": null,
+							"success": true
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"example": 25,
+											"type": "integer"
+										},
+										"page": {
+											"example": 1,
+											"type": "integer"
+										},
+										"per_page": {
+											"example": 50,
+											"type": "integer"
+										},
+										"total_count": {
+											"example": 150,
+											"type": "integer"
+										},
+										"total_pages": {
+											"example": 3,
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Operation successful"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12000,
+									"message": "Not found"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 12000,
+												"type": "integer"
+											},
+											"message": {
+												"example": "Not found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Resource not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Purge build cache",
+		"tags": [
+			"Triggers"
+		]
+	}
+}
