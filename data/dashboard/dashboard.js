@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "7dcee654-f60e-5278-92b1-a1fe5d4181a9")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "0e691faa-fefc-5146-a926-b47d9b70cc27")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1156,10 +1156,10 @@
 					e.g.build = un({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "d39360879d34df474ce80c1f99bf2590b25cad7a",
-						dashVersion: "36183749",
+						commit: "336598bbccd3f20aa8fd59dae8e7e59def0e6389",
+						dashVersion: "36190279",
 						env: "production",
-						builtAt: 1758728129295,
+						builtAt: 1758739876552,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -79206,9 +79206,6 @@ SOFTWARE.`,
   .\\!z-100 {
     z-index: 100 !important;
   }
-  .-z-10 {
-    z-index: calc(10 * -1);
-  }
   .z-0 {
     z-index: 0;
   }
@@ -80323,6 +80320,9 @@ SOFTWARE.`,
   }
   .flex-none {
     flex: none;
+  }
+  .\\!shrink-0 {
+    flex-shrink: 0 !important;
   }
   .flex-shrink {
     flex-shrink: 1;
@@ -81888,6 +81888,10 @@ SOFTWARE.`,
   }
   .font-sans {
     font-family: var(--font-sans);
+  }
+  .\\!text-3xl {
+    font-size: var(--text-3xl) !important;
+    line-height: var(--tw-leading, var(--text-3xl--line-height)) !important;
   }
   .\\!text-base {
     font-size: var(--text-base) !important;
@@ -85893,4 +85897,4 @@ button.border {
 	}
 ]);
 
-//# debugId=7dcee654-f60e-5278-92b1-a1fe5d4181a9
+//# debugId=0e691faa-fefc-5146-a926-b47d9b70cc27
