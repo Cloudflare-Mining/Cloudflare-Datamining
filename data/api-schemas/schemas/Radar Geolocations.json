@@ -1,0 +1,504 @@
+{
+	"GET /radar/geolocations": {
+		"description": "Retrieves a list of geolocations.",
+		"operationId": "radar-get-geolocations",
+		"parameters": [
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Skips the specified number of objects before fetching the results.",
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"description": "Skips the specified number of objects before fetching the results.",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Filters results by geolocation. Specify a comma-separated list of GeoNames IDs.",
+				"in": "query",
+				"name": "geoId",
+				"schema": {
+					"description": "Filters results by geolocation. Specify a comma-separated list of GeoNames IDs.",
+					"example": "3190509,360689",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
+					"example": "US,CA",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"geolocations": {
+											"items": {
+												"properties": {
+													"geoId": {
+														"example": "2267056",
+														"type": "string"
+													},
+													"latitude": {
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
+														"type": "string"
+													},
+													"longitude": {
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
+														"type": "string"
+													},
+													"name": {
+														"example": "Lisbon",
+														"type": "string"
+													},
+													"parent": {
+														"properties": {
+															"geoId": {
+																"example": "2264397",
+																"type": "string"
+															},
+															"latitude": {
+																"description": "A numeric string.",
+																"example": "10",
+																"pattern": "^\\d+$",
+																"type": "string"
+															},
+															"longitude": {
+																"description": "A numeric string.",
+																"example": "10",
+																"pattern": "^\\d+$",
+																"type": "string"
+															},
+															"name": {
+																"example": "Portugal",
+																"type": "string"
+															},
+															"parent": {
+																"properties": {
+																	"geoId": {
+																		"example": "6255148",
+																		"type": "string"
+																	},
+																	"latitude": {
+																		"description": "A numeric string.",
+																		"example": "10",
+																		"pattern": "^\\d+$",
+																		"type": "string"
+																	},
+																	"longitude": {
+																		"description": "A numeric string.",
+																		"example": "10",
+																		"pattern": "^\\d+$",
+																		"type": "string"
+																	},
+																	"name": {
+																		"example": "Europe",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The type of the geolocation.",
+																		"enum": [
+																			"CONTINENT",
+																			"COUNTRY",
+																			"ADM1"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"geoId",
+																	"name",
+																	"type",
+																	"latitude",
+																	"longitude"
+																],
+																"type": "object"
+															},
+															"type": {
+																"description": "The type of the geolocation.",
+																"enum": [
+																	"CONTINENT",
+																	"COUNTRY",
+																	"ADM1"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"geoId",
+															"name",
+															"type",
+															"latitude",
+															"longitude",
+															"parent"
+														],
+														"type": "object"
+													},
+													"type": {
+														"description": "The type of the geolocation.",
+														"enum": [
+															"CONTINENT",
+															"COUNTRY",
+															"ADM1"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"geoId",
+													"name",
+													"type",
+													"latitude",
+													"longitude",
+													"parent"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"geolocations"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List Geolocations",
+		"tags": [
+			"Radar Geolocations"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/geolocations/{geo_id}": {
+		"description": "Retrieves the requested Geolocation information.",
+		"operationId": "radar-get-geolocation-details",
+		"parameters": [
+			{
+				"description": "Geolocation ID. Refer to [GeoNames](https://download.geonames.org/export/dump/readme.txt)",
+				"in": "path",
+				"name": "geo_id",
+				"required": true,
+				"schema": {
+					"description": "Geolocation ID. Refer to [GeoNames](https://download.geonames.org/export/dump/readme.txt)",
+					"example": "3190509",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"geolocation": {
+											"properties": {
+												"geoId": {
+													"example": "2267056",
+													"type": "string"
+												},
+												"latitude": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
+													"type": "string"
+												},
+												"longitude": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
+													"type": "string"
+												},
+												"name": {
+													"example": "Lisbon",
+													"type": "string"
+												},
+												"parent": {
+													"properties": {
+														"geoId": {
+															"example": "2264397",
+															"type": "string"
+														},
+														"latitude": {
+															"description": "A numeric string.",
+															"example": "10",
+															"pattern": "^\\d+$",
+															"type": "string"
+														},
+														"longitude": {
+															"description": "A numeric string.",
+															"example": "10",
+															"pattern": "^\\d+$",
+															"type": "string"
+														},
+														"name": {
+															"example": "Portugal",
+															"type": "string"
+														},
+														"parent": {
+															"properties": {
+																"geoId": {
+																	"example": "6255148",
+																	"type": "string"
+																},
+																"latitude": {
+																	"description": "A numeric string.",
+																	"example": "10",
+																	"pattern": "^\\d+$",
+																	"type": "string"
+																},
+																"longitude": {
+																	"description": "A numeric string.",
+																	"example": "10",
+																	"pattern": "^\\d+$",
+																	"type": "string"
+																},
+																"name": {
+																	"example": "Europe",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The type of the geolocation.",
+																	"enum": [
+																		"CONTINENT",
+																		"COUNTRY",
+																		"ADM1"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"geoId",
+																"name",
+																"type",
+																"latitude",
+																"longitude"
+															],
+															"type": "object"
+														},
+														"type": {
+															"description": "The type of the geolocation.",
+															"enum": [
+																"CONTINENT",
+																"COUNTRY",
+																"ADM1"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"geoId",
+														"name",
+														"type",
+														"latitude",
+														"longitude",
+														"parent"
+													],
+													"type": "object"
+												},
+												"type": {
+													"description": "The type of the geolocation.",
+													"enum": [
+														"CONTINENT",
+														"COUNTRY",
+														"ADM1"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"geoId",
+												"name",
+												"type",
+												"latitude",
+												"longitude",
+												"parent"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"geolocation"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Geolocation details",
+		"tags": [
+			"Radar Geolocations"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

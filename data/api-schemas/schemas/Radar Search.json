@@ -41,6 +41,7 @@
 					"description": "Search types included in results.",
 					"items": {
 						"enum": [
+							"ADM1S",
 							"ASNS",
 							"BOTS",
 							"CERTIFICATE_AUTHORITIES",
@@ -64,6 +65,7 @@
 					"description": "Search types excluded from results.",
 					"items": {
 						"enum": [
+							"ADM1S",
 							"ASNS",
 							"BOTS",
 							"CERTIFICATE_AUTHORITIES",
