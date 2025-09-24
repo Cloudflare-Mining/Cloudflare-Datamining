@@ -3290,6 +3290,12 @@
 						"compatEnableFlag": "enable_nodejs_sqlite_module",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "enableCtxExports",
+					"annotations": {
+						"compatEnableFlag": "enable_ctx_exports"
+					}
 				}
 			]
 		},
