@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.7.1
+
+### Patch Changes
+
+- 0bdb685ccf: Updates Organization Outline icon
+
 ## 13.7.0
 
 ### Minor Changes
