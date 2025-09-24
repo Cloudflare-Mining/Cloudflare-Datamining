@@ -131,6 +131,17 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"cf_robots_variant": {
+																			"description": "Specifies the Robots Access Control License variant to use.",
+																			"enum": [
+																				"off",
+																				"policy_only"
+																			],
+																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																			"enum": [
@@ -152,6 +163,7 @@
 																		"is_robots_txt_managed": {
 																			"default": false,
 																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																			"example": false,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -248,6 +260,17 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"cf_robots_variant": {
+																			"description": "Specifies the Robots Access Control License variant to use.",
+																			"enum": [
+																				"off",
+																				"policy_only"
+																			],
+																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																			"enum": [
@@ -269,6 +292,7 @@
 																		"is_robots_txt_managed": {
 																			"default": false,
 																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																			"example": false,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -369,6 +393,17 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"cf_robots_variant": {
+																			"description": "Specifies the Robots Access Control License variant to use.",
+																			"enum": [
+																				"off",
+																				"policy_only"
+																			],
+																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																			"enum": [
@@ -390,6 +425,7 @@
 																		"is_robots_txt_managed": {
 																			"default": false,
 																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																			"example": false,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -496,6 +532,17 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"cf_robots_variant": {
+																			"description": "Specifies the Robots Access Control License variant to use.",
+																			"enum": [
+																				"off",
+																				"policy_only"
+																			],
+																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																			"enum": [
@@ -517,6 +564,7 @@
 																		"is_robots_txt_managed": {
 																			"default": false,
 																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																			"example": false,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -737,6 +785,17 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"cf_robots_variant": {
+																					"description": "Specifies the Robots Access Control License variant to use.",
+																					"enum": [
+																						"off",
+																						"policy_only"
+																					],
+																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																					"enum": [
@@ -758,6 +817,7 @@
 																				"is_robots_txt_managed": {
 																					"default": false,
 																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																					"example": false,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -854,6 +914,17 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"cf_robots_variant": {
+																					"description": "Specifies the Robots Access Control License variant to use.",
+																					"enum": [
+																						"off",
+																						"policy_only"
+																					],
+																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																					"enum": [
@@ -875,6 +946,7 @@
 																				"is_robots_txt_managed": {
 																					"default": false,
 																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																					"example": false,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -975,6 +1047,17 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"cf_robots_variant": {
+																					"description": "Specifies the Robots Access Control License variant to use.",
+																					"enum": [
+																						"off",
+																						"policy_only"
+																					],
+																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																					"enum": [
@@ -996,6 +1079,7 @@
 																				"is_robots_txt_managed": {
 																					"default": false,
 																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																					"example": false,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -1102,6 +1186,17 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"cf_robots_variant": {
+																					"description": "Specifies the Robots Access Control License variant to use.",
+																					"enum": [
+																						"off",
+																						"policy_only"
+																					],
+																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																					"enum": [
@@ -1123,6 +1218,7 @@
 																				"is_robots_txt_managed": {
 																					"default": false,
 																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																					"example": false,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -1385,6 +1481,7 @@
 							"summary": "Bot Fight Mode default example",
 							"value": {
 								"ai_bots_protection": "disabled",
+								"cf_robots_variant": "off",
 								"crawler_protection": "disabled",
 								"enable_js": true,
 								"fight_mode": true,
@@ -1395,6 +1492,7 @@
 							"summary": "SBFM Pro plan default example",
 							"value": {
 								"ai_bots_protection": "disabled",
+								"cf_robots_variant": "off",
 								"crawler_protection": "disabled",
 								"enable_js": true,
 								"is_robots_txt_managed": false,
@@ -1407,6 +1505,7 @@
 							"summary": "SBFM Biz plan default example",
 							"value": {
 								"ai_bots_protection": "disabled",
+								"cf_robots_variant": "off",
 								"crawler_protection": "disabled",
 								"enable_js": true,
 								"is_robots_txt_managed": false,
@@ -1422,6 +1521,7 @@
 								"ai_bots_protection": "disabled",
 								"auto_update_model": true,
 								"bm_cookie_enabled": true,
+								"cf_robots_variant": "off",
 								"crawler_protection": "disabled",
 								"enable_js": true,
 								"is_robots_txt_managed": false
@@ -1490,6 +1590,17 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
+													"cf_robots_variant": {
+														"description": "Specifies the Robots Access Control License variant to use.",
+														"enum": [
+															"off",
+															"policy_only"
+														],
+														"example": "policy_only",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 														"enum": [
@@ -1511,6 +1622,7 @@
 													"is_robots_txt_managed": {
 														"default": false,
 														"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+														"example": false,
 														"type": "boolean",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
@@ -1607,6 +1719,17 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
+													"cf_robots_variant": {
+														"description": "Specifies the Robots Access Control License variant to use.",
+														"enum": [
+															"off",
+															"policy_only"
+														],
+														"example": "policy_only",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 														"enum": [
@@ -1628,6 +1751,7 @@
 													"is_robots_txt_managed": {
 														"default": false,
 														"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+														"example": false,
 														"type": "boolean",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
@@ -1728,6 +1852,17 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
+													"cf_robots_variant": {
+														"description": "Specifies the Robots Access Control License variant to use.",
+														"enum": [
+															"off",
+															"policy_only"
+														],
+														"example": "policy_only",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 														"enum": [
@@ -1749,6 +1884,7 @@
 													"is_robots_txt_managed": {
 														"default": false,
 														"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+														"example": false,
 														"type": "boolean",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
@@ -1855,6 +1991,17 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
+													"cf_robots_variant": {
+														"description": "Specifies the Robots Access Control License variant to use.",
+														"enum": [
+															"off",
+															"policy_only"
+														],
+														"example": "policy_only",
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"crawler_protection": {
 														"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 														"enum": [
@@ -1876,6 +2023,7 @@
 													"is_robots_txt_managed": {
 														"default": false,
 														"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+														"example": false,
 														"type": "boolean",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
@@ -2091,6 +2239,17 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"cf_robots_variant": {
+																			"description": "Specifies the Robots Access Control License variant to use.",
+																			"enum": [
+																				"off",
+																				"policy_only"
+																			],
+																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																			"enum": [
@@ -2112,6 +2271,7 @@
 																		"is_robots_txt_managed": {
 																			"default": false,
 																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																			"example": false,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -2208,6 +2368,17 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"cf_robots_variant": {
+																			"description": "Specifies the Robots Access Control License variant to use.",
+																			"enum": [
+																				"off",
+																				"policy_only"
+																			],
+																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																			"enum": [
@@ -2229,6 +2400,7 @@
 																		"is_robots_txt_managed": {
 																			"default": false,
 																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																			"example": false,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -2329,6 +2501,17 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"cf_robots_variant": {
+																			"description": "Specifies the Robots Access Control License variant to use.",
+																			"enum": [
+																				"off",
+																				"policy_only"
+																			],
+																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																			"enum": [
@@ -2350,6 +2533,7 @@
 																		"is_robots_txt_managed": {
 																			"default": false,
 																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																			"example": false,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -2456,6 +2640,17 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
+																		"cf_robots_variant": {
+																			"description": "Specifies the Robots Access Control License variant to use.",
+																			"enum": [
+																				"off",
+																				"policy_only"
+																			],
+																			"example": "policy_only",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"crawler_protection": {
 																			"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																			"enum": [
@@ -2477,6 +2672,7 @@
 																		"is_robots_txt_managed": {
 																			"default": false,
 																			"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																			"example": false,
 																			"type": "boolean",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
@@ -2697,6 +2893,17 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"cf_robots_variant": {
+																					"description": "Specifies the Robots Access Control License variant to use.",
+																					"enum": [
+																						"off",
+																						"policy_only"
+																					],
+																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																					"enum": [
@@ -2718,6 +2925,7 @@
 																				"is_robots_txt_managed": {
 																					"default": false,
 																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																					"example": false,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -2814,6 +3022,17 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"cf_robots_variant": {
+																					"description": "Specifies the Robots Access Control License variant to use.",
+																					"enum": [
+																						"off",
+																						"policy_only"
+																					],
+																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																					"enum": [
@@ -2835,6 +3054,7 @@
 																				"is_robots_txt_managed": {
 																					"default": false,
 																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																					"example": false,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -2935,6 +3155,17 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"cf_robots_variant": {
+																					"description": "Specifies the Robots Access Control License variant to use.",
+																					"enum": [
+																						"off",
+																						"policy_only"
+																					],
+																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																					"enum": [
@@ -2956,6 +3187,7 @@
 																				"is_robots_txt_managed": {
 																					"default": false,
 																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																					"example": false,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
@@ -3062,6 +3294,17 @@
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
+																				"cf_robots_variant": {
+																					"description": "Specifies the Robots Access Control License variant to use.",
+																					"enum": [
+																						"off",
+																						"policy_only"
+																					],
+																					"example": "policy_only",
+																					"type": "string",
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"crawler_protection": {
 																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
 																					"enum": [
@@ -3083,6 +3326,7 @@
 																				"is_robots_txt_managed": {
 																					"default": false,
 																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
+																					"example": false,
 																					"type": "boolean",
 																					"x-auditable": true,
 																					"x-stainless-terraform-configurability": "computed_optional"

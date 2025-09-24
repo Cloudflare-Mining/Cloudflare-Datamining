@@ -192,6 +192,33 @@
 											"format": "date-time",
 											"type": "string"
 										},
+										"otel": {
+											"items": {
+												"properties": {
+													"authorization": {
+														"type": "string"
+													},
+													"headers": {
+														"additionalProperties": {
+															"type": "string"
+														},
+														"type": "object"
+													},
+													"url": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"url",
+													"headers",
+													"authorization"
+												],
+												"type": "object"
+											},
+											"nullable": true,
+											"type": "array",
+											"x-auditable": true
+										},
 										"rate_limiting_interval": {
 											"minimum": 0,
 											"nullable": true,
@@ -549,6 +576,33 @@
 											"modified_at": {
 												"format": "date-time",
 												"type": "string"
+											},
+											"otel": {
+												"items": {
+													"properties": {
+														"authorization": {
+															"type": "string"
+														},
+														"headers": {
+															"additionalProperties": {
+																"type": "string"
+															},
+															"type": "object"
+														},
+														"url": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"url",
+														"headers",
+														"authorization"
+													],
+													"type": "object"
+												},
+												"nullable": true,
+												"type": "array",
+												"x-auditable": true
 											},
 											"rate_limiting_interval": {
 												"minimum": 0,
@@ -1023,6 +1077,33 @@
 											"format": "date-time",
 											"type": "string"
 										},
+										"otel": {
+											"items": {
+												"properties": {
+													"authorization": {
+														"type": "string"
+													},
+													"headers": {
+														"additionalProperties": {
+															"type": "string"
+														},
+														"type": "object"
+													},
+													"url": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"url",
+													"headers",
+													"authorization"
+												],
+												"type": "object"
+											},
+											"nullable": true,
+											"type": "array",
+											"x-auditable": true
+										},
 										"rate_limiting_interval": {
 											"minimum": 0,
 											"nullable": true,
@@ -1448,6 +1529,33 @@
 											"format": "date-time",
 											"type": "string"
 										},
+										"otel": {
+											"items": {
+												"properties": {
+													"authorization": {
+														"type": "string"
+													},
+													"headers": {
+														"additionalProperties": {
+															"type": "string"
+														},
+														"type": "object"
+													},
+													"url": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"url",
+													"headers",
+													"authorization"
+												],
+												"type": "object"
+											},
+											"nullable": true,
+											"type": "array",
+											"x-auditable": true
+										},
 										"rate_limiting_interval": {
 											"minimum": 0,
 											"nullable": true,
@@ -1770,6 +1878,33 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"otel": {
+								"items": {
+									"properties": {
+										"authorization": {
+											"type": "string"
+										},
+										"headers": {
+											"additionalProperties": {
+												"type": "string"
+											},
+											"type": "object"
+										},
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"url",
+										"headers",
+										"authorization"
+									],
+									"type": "object"
+								},
+								"nullable": true,
+								"type": "array",
+								"x-auditable": true
+							},
 							"rate_limiting_interval": {
 								"minimum": 0,
 								"nullable": true,
@@ -2001,6 +2136,33 @@
 										"modified_at": {
 											"format": "date-time",
 											"type": "string"
+										},
+										"otel": {
+											"items": {
+												"properties": {
+													"authorization": {
+														"type": "string"
+													},
+													"headers": {
+														"additionalProperties": {
+															"type": "string"
+														},
+														"type": "object"
+													},
+													"url": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"url",
+													"headers",
+													"authorization"
+												],
+												"type": "object"
+											},
+											"nullable": true,
+											"type": "array",
+											"x-auditable": true
 										},
 										"rate_limiting_interval": {
 											"minimum": 0,
