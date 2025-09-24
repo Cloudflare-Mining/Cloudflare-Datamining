@@ -5,40 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Locations: Austin, TX</strong></h3>
-<h3 id="SystemsEngineer-R2Storage-Austin,TX-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
-<h3><strong>What you'll do</strong></h3>
-<p>As a Principal Engineer focused on Cloudflare's storage and database products, you will shape the future of industry-leading services that redefine what is possible for developers. We don't just copy what other cloud providers do; we work backward from developer needs, reimagining solutions by leveraging our unique global network. This network brings data closer to users for unparalleled performance, allows for granular control to meet data residency requirements, and provides a platform for truly innovative data products.</p>
-<p>You will be at the forefront of this innovation, architecting and building the next generation of serverless and edge data solutions.&nbsp;</p>
-<h3><strong>This includes:</strong></h3>
+<p><strong>Available Location: Lisbon, Portugal</strong></p>
+<p><strong>Job Title&nbsp;</strong></p>
+<p>Make the job title clear, concise and industry-specific.</p>
+<p><strong>Role Summary</strong></p>
+<p>Write a brief three to five sentence summary about what the candidate will do in their role, who they’ll work with and any general qualities your team is looking for in the individual.</p>
+<p><strong>Role Responsibilities</strong></p>
+<p>Include clear responsibilities and duties. Responsibilities and duties are essential in order for a candidate to understand the role. They also set expectations for the hired employee and can be used as a baseline for performance reviews down the line.</p>
+<p>Give 5 to 7 bullet points of what the candidate can expect to do in the role.&nbsp;</p>
+<p>Here are a few tips:</p>
 <ul>
-	<li>R2, our exabyte-scale object storage that revolutionizes the market by eliminating egress fees.</li>
-	<li>Durable Objects, our unique implementation of the Actor model as a service, providing strongly consistent, stateful compute co-located with storage.</li>
-	<li>Workers KV, our high-performance, low-latency global key-value store designed for high-read applications.</li>
-	<li>Hyperdrive, a service that makes existing regional databases feel global by intelligently caching queries and managing connection pools from the edge.</li>
-	<li>Cloudflare Queues, our global message queuing service with guaranteed delivery that enables reliable asynchronous processing.</li>
-	<li>AI services that empower developers to build intelligent applications on the edge. This includes Vectorize, our globally distributed vector database for powering semantic search and Retrieval-Augmented Generation (RAG), and AutoRAG, a fully managed solution that automates the complex pipeline of ingesting data from R2, embedding it, and generating context-aware responses with Workers AI.</li>
-	<li>Our evolving Data Platform, which adds value to every gigabyte stored on our infrastructure through services like Pipelines and Data Catalog.</li>
+	<li>Write in complete sentences.</li>
+	<li>Be thorough. Candidates will be better prepared for the interview and role if they know what is expected of them.</li>
+	<li>Don’t be excessive. You don’t need to include every single possible thing a person&nbsp; might encounter during the work day.</li>
 </ul>
-<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might be architecting a new globally distributed data consistency model, optimizing storage engine performance, or designing a novel API for a new data-centric product. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
-<ul>
-	<li>Minimum 8 years of experience working with distributed systems.</li>
-	<li>Experience building and managing high volume software applications.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use Go, TypeScript, and Rust.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in a large-scale distributed system.</li>
-</ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>Experience building and managing a large scale data storage platform.</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
-	<li>Experience working in a non-garbage collected language such as Rust or C++.</li>
-	<li>Experience writing Javascript and Typescript.</li>
-	<li>Deep Linux / UNIX systems knowledge.</li>
-</ul>
-<p>&nbsp;</p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
+<p>Job descriptions include an average of eight distinct qualifications per job post (including must-have and nice-to-have skills).&nbsp;</p>
+<p>List 5 to 7 bullet points that are absolutely necessary for a candidate to be successful in the role they are applying to.&nbsp;</p>
+<p>Include qualities when applicable, like years of experience.</p>
+<p>Be sure to clarify what the application requires, like portfolio, writing sample, video recording, resume, CV, cover letter, etc.</p>
+<p>Other important information includes education, experience, certifications and knowledge of specific platforms.</p>
+<p><strong>Nice-to-Have Skills</strong></p>
+<p>If there are any other qualities that are nice to have, include those here. Don’t feel like you have to include this section, but it may help candidates know what to include in the application or interview to stand out. This section is lower priority and should have fewer bullet points.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
