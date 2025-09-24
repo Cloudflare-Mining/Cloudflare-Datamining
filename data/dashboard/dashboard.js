@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "283b7488-05f7-5928-b74a-7ba00795f1cd")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "7dcee654-f60e-5278-92b1-a1fe5d4181a9")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1156,10 +1156,10 @@
 					e.g.build = un({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "0cfc5024ab2fe8140ba9f6f524a04c984e9bba75",
-						dashVersion: "36177609",
+						commit: "d39360879d34df474ce80c1f99bf2590b25cad7a",
+						dashVersion: "36183749",
 						env: "production",
-						builtAt: 1758709727516,
+						builtAt: 1758728129295,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -72097,15 +72097,16 @@ SOFTWARE.`,
 					serviceId: De
 				}))).body.result
 			}
-			async function re(we, De, je, ze) {
-				return (await c.put(r.Hv.serviceUsageModel.toUrl({
+			async function re(we, De, je, ze, Ze) {
+				const Te = {
+					usage_model: ze
+				};
+				return Ze !== void 0 && (Te.user_limits = Ze), (await c.put(r.Hv.serviceUsageModel.toUrl({
 					accountId: we,
 					serviceId: De,
 					environmentName: je
 				}), {
-					body: {
-						usage_model: ze
-					}
+					body: Te
 				})).body.success
 			}
 			async function pe(we, De, je, ze) {
@@ -85892,4 +85893,4 @@ button.border {
 	}
 ]);
 
-//# debugId=283b7488-05f7-5928-b74a-7ba00795f1cd
+//# debugId=7dcee654-f60e-5278-92b1-a1fe5d4181a9
