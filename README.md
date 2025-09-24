@@ -1,10 +1,4 @@
-# Cloudflare Datamining
-
-<p align="center">
-  <img src="https://www.cloudflare.com/img/logo-cloudflare-dark.svg" alt="Cloudflare Logo" height="80"/>
-</p>
-
-## Intro
+#  Cloudflare Datamining
 
 This repository mines a lot of publicly available data from [Cloudflare](https://www.cloudflare.com/), including their customer dashboard, NPM/GitHub repos, marketing site, and more. Automated commits will be made frequently and will show how the data changes over time.
 
