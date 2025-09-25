@@ -5,38 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Singapore or Kuala Lumpur (Malaysia)</strong></p>
-<h3><strong>About the Team</strong></h3>
-<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h3><strong>What You'll Do</strong></h3>
-<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Technical </strong><strong>Support Engineer</strong><strong> for CDN </strong>to join our team. You will work with our largest and most technically sophisticated customers on a variety of technical support issues to ensure they can deploy and operate Cloudflare's CDN solutions with confidence.&nbsp;</p>
+<p><strong>Position location - Sydney<br><br>About the Role</strong></p>
+<p>Cloudflare is redefining how enterprise IT operates, establishing its own category, with annual growth exceeding 40%.</p>
+<p>We are seeking a highly motivated and experienced Strategic Account-Based Marketing (ABM) Specialist to design and deliver innovative, full-funnel campaigns targeting our most strategic accounts across Australia and New Zealand. This role will report directly to the Senior Marketing Manager, ANZ and will work closely with the broader APAC Marketing team and the ANZ sales organisation.</p>
+<p>In this high-impact role, you’ll put your creativity and marketing expertise to work to develop, launch, manage, and measure ABM programs tailored to strategic accounts and industry verticals. These programs will help penetrate aligned target accounts with defined stakeholders in meaningful ways to increase engagement, drive pipeline, and contribute directly to revenue generation.</p>
+<p><strong>What the Job Involves</strong></p>
 <ul>
-	<li>Serve as a trusted technical advisor for our Premium customers, responding to and resolving inquiries and incidents related to CDN services, while delivering timely, high-quality and personalized assistance.</li>
-	<li>Work directly with customers to diagnose, troubleshoot and resolve complex technical issues involving DDoS mitigation, firewall rules, SSL/TLS, network confirmation, and other security configurations.</li>
-	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
-	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
-	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
-	<li>Work with Engineering and Product teams to improve products and tools</li>
+	<li><strong>ABM Orchestration</strong>: Drive the orchestration of ABM initiatives by working closely with sales to create and refine target account lists, while coordinating sales and marketing activities to engage high-value accounts. Ensure messaging across channels is timely, personalised, and aligned with account-specific needs.&nbsp;</li>
+	<li><strong>Account-Based Marketing Strategy &amp; Execution:</strong> Partner with internal teams to create and activate a marketing plan targeting strategic ANZ accounts. Collaborating on landing pages, content development, direct mail, digital campaigns, vertical trade shows, and hosted C-level events.</li>
+	<li><strong>Innovation &amp; Personalisation</strong>: Continuously explore innovative ways to personalise the account-based experience, leveraging AI and machine learning to deliver highly relevant, scalable, personalised experiences.</li>
+	<li><strong>Measurement &amp; Reporting</strong>: Analyse, measure, and report the impact of ABM campaigns across key metrics (stakeholder reach, engagement, meetings booked, pipeline, and influenced revenue). Leverage Salesforce/Tableau to track ROI, manage budgets, and prioritise tactics/channels effectively.</li>
+	<li><strong>Internal Champion</strong>: Act as the champion of strategic ABM within Cloudflare, building a strong, data-backed narrative around its impact on penetrating large accounts. Collaborate on launches, manage timelines, and drive cross-functional orchestration with account teams while maintaining account audiences in ABM platforms like DemandBase.Additionally, champion the adoption of DemandBase across strategic AEs and BDRs, ensuring they maximise the platform’s potential. <br><br></li>
 </ul>
-<h3><strong>What We're Looking For</strong></h3>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>You have a minimum of 4 years experience working as a Technical Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
-	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
-	<li>Strong customer service orientation and communication skills, both written and verbal, fluent in English and preferably a second language like Mandarin, Hindi, Tamil, Korean or Japanese.</li>
-	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
-	<li>Strong understanding of network protocols, including TCP/IP, DNS, HTTP/S, and BGP, with a particular focus on anycast routing concepts and implementation, as well as tools such as iptables and looking glass.</li>
-	<li>Proven experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels, and performing packet capture analysis</li>
-	<li>Confident with command line and tools, including curl, dig, traceroute, openssl, git</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
-	<li>You are competent writing scripts in Bash, Python, JavaScript or other scripting language</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
-	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience)</li>
-	<li>Relevant certifications such as CISSP, GCIA GCIH, GCFA, GCFE or equivalent</li>
+	<li>Develop and execute account-focused ABM programs to drive engagement and revenue.</li>
+	<li>Build and run full-funnel campaigns using a mix of online/offline tactics, aligned with pipeline and revenue goals.</li>
+	<li>Partner with sales teams to accelerate deal cycles and influence revenue from enterprise accounts.</li>
+	<li>Create personalised account experiences tailored to technical and executive stakeholders.</li>
+	<li>Lead integrated campaign execution from strategy through to measurement.</li>
+	<li>Apply data-driven insights to refine campaigns and optimise ROI.</li>
+	<li>Stay current with digital marketing trends, ABM innovation, and AI-driven personalisation.<br><br></li>
 </ul>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
+<p><strong>Who You Are</strong></p>
+<ul>
+	<li>10+ years of marketing experience, with 3- 5 years of experience in developing and executing ABM programs and/or vertical campaigns (ideally in enterprise SaaS, networking, or cybersecurity).</li>
+	<li>Proven track record in meeting/exceeding MQA, QBG, and pipeline influence targets.</li>
+	<li>Strong experience with ABM frameworks</li>
+	<li>Deep expertise in personalisation tactics, with campaigns built for both technical and executive stakeholders.</li>
+	<li>Highly creative, with a history of innovative, account-specific campaigns.</li>
+	<li>Proficient in Salesforce, DemandBase analytics/BI tools (Google Analytics, Tableau, etc).</li>
+	<li>Strong project management, communication, and presentation skills, with sharp attention to detail.</li>
+	<li>Analytical and insight driven, with a clear ability to translate data into actionable campaign improvements.</li>
+	<li>Collaborative, but also an independent self-starter comfortable in high-growth environments.</li>
+	<li>Knowledge of the cybersecurity market and technologies is a strong plus.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
