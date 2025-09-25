@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "c2040eda-80a3-5ab2-8f63-e309d2918cba")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "8b2984a8-563d-50f4-8b64-01b789a3bdad")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1156,10 +1156,10 @@
 					e.g.build = un({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "8b0101392837a6d5740a6db844663d6b0cd126fb",
-						dashVersion: "36193999",
+						commit: "c60ad4ef4290bbff5418003ad0247c2913589933",
+						dashVersion: "36202963",
 						env: "production",
-						builtAt: 1758746563736,
+						builtAt: 1758791624078,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -74113,6 +74113,7 @@ SOFTWARE.`,
 					millis: r.eg.any.optional,
 					"mirage-recommendation": r.eg.any.optional,
 					mode: r.eg.any.optional,
+					modal_type: r.eg.any.optional,
 					monitor: r.eg.string.optional,
 					monitorType: r.eg.any.optional,
 					mrktCheckboxDisplayed: r.eg.any.optional,
@@ -85894,4 +85895,4 @@ button.border {
 	}
 ]);
 
-//# debugId=c2040eda-80a3-5ab2-8f63-e309d2918cba
+//# debugId=8b2984a8-563d-50f4-8b64-01b789a3bdad
