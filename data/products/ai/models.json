@@ -594,6 +594,20 @@
 		]
 	},
 	{
+		"id": "bc2b61f6-7eb3-4cdf-94f5-ffc128bd6aa4",
+		"source": 1,
+		"name": "@cf/pfnet/plamo-embedding-1b",
+		"description": "PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Networks, Inc.\n\nIt can convert Japanese text input into numerical vectors and can be used for a wide range of applications, including information retrieval, text classification, and clustering.",
+		"task": {
+			"id": "0137cdcf-162a-4108-94f2-1ca59e8c65ee",
+			"name": "Text Embeddings",
+			"description": "Feature extraction models transform raw data into numerical features that can be processed while preserving the information in the original dataset. These models are ideal as part of building vector search applications or Retrieval Augmented Generation workflows with Large Language Models (LLM)."
+		},
+		"created_at": "2025-09-24 18:42:05.576",
+		"tags": [],
+		"properties": []
+	},
+	{
 		"id": "b97d7069-48d9-461c-80dd-445d20a632eb",
 		"source": 2,
 		"name": "@hf/mistral/mistral-7b-instruct-v0.2",
@@ -1371,6 +1385,20 @@
 				"value": "https://github.com/facebookresearch/fairseq/blob/main/LICENSE"
 			}
 		]
+	},
+	{
+		"id": "60920ed4-cf72-449a-a0f3-a38456b78262",
+		"source": 1,
+		"name": "@cf/ai4bharat/indictrans2-en-indic-1B",
+		"description": "IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages",
+		"task": {
+			"id": "f57d07cb-9087-487a-bbbf-bc3e17fecc4b",
+			"name": "Translation",
+			"description": "Translation models convert a sequence of text from one language to another."
+		},
+		"created_at": "2025-09-23 18:19:17.382",
+		"tags": [],
+		"properties": []
 	},
 	{
 		"id": "60474554-f03b-4ff4-8ecc-c1b7c71d7b29",
