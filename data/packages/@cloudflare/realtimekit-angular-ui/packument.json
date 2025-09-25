@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-angular-ui",
 	"dist-tags": {
 		"latest": "1.0.5",
-		"staging": "1.0.6-staging.2"
+		"staging": "1.0.6-staging.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1005,19 +1005,44 @@
 				"@cloudflare/realtimekit-ui": "1.0.6-staging.2"
 			},
 			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "7dabb368306ee4484d3f090e9738387a658009bc",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.6-staging.2.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-/+4toywGHwREC1dDBg3h8K/atntAi4hUdMFeTRLK5bqN6re4sP2H6cTDXrqcpjYzNVh6z6diFcG4n0XI9J8feA==",
+				"signatures": [
+					{
+						"sig": "MEQCIHJ9N2VTWsw5hHbbSicL8JNFysWRQcrlhmUup86JAit+AiAzrpOykzy2Qd5csZqPj94MTmNxgft08J9J1DwxdZlt2g==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1733506
+			}
+		},
+		"1.0.6-staging.3": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "1.0.6-staging.3",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "1.0.6-staging.3"
+			},
+			"peerDependencies": {
 				"@angular/common": ">=12",
 				"@angular/core": ">=12"
 			},
 			"dist": {
-				"integrity": "sha512-/+4toywGHwREC1dDBg3h8K/atntAi4hUdMFeTRLK5bqN6re4sP2H6cTDXrqcpjYzNVh6z6diFcG4n0XI9J8feA==",
-				"shasum": "7dabb368306ee4484d3f090e9738387a658009bc",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.6-staging.2.tgz",
+				"integrity": "sha512-oXBVqYFzgCJIDi/1ddOwm9Zg35LkmlSNMNaTm66h7OtpYn/KCPADVuIgcUxXLivXz5YB2FvBiJmUYRUnSuWsdg==",
+				"shasum": "213d8ae78ce5ec69c8dd4afcee7792c87222d6b0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.0.6-staging.3.tgz",
 				"fileCount": 18,
 				"unpackedSize": 1733506,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIHJ9N2VTWsw5hHbbSicL8JNFysWRQcrlhmUup86JAit+AiAzrpOykzy2Qd5csZqPj94MTmNxgft08J9J1DwxdZlt2g=="
+						"sig": "MEYCIQDR5XeSM1BqkgggAxanjyDdGvZ8uHs+BLNfwbud7l4BzwIhAKFf3fWW3+N6PooSQo0BfTf3S1KcQY9OkjuKNrYuqlX8"
 					}
 				]
 			}
