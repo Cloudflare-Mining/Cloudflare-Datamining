@@ -5,42 +5,53 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Kuala Lumpur, Malaysia</strong></p>
-<p><strong>About Solutions Engineering at Cloudflare</strong></p>
-<p>The Pre-Sales Solution Engineering organization owns the technical sale of the Cloudflare solution portfolio, ensuring maximal business value, fit-for-purpose solution design and adoption roadmap for our customers. Solutions Engineering is made up of individuals from a wide range of backgrounds - from Financial Consulting to Product Management, Customer Support to Software Engineering, and we are serious about building a diverse, experienced and curious team.&nbsp;</p>
-<p>The Inside Partner Solutions Engineer is a Pre-Sales role within the Solutions Engineering team. Inside Partner Solutions Engineers work with our partners to educate, empower, and ensure their success delivering Cloudflare security, reliability and performance solutions.</p>
-<h4><strong>What you'll do as an Inside Partner Solutions Engineer</strong></h4>
-<p>Your role will be to assist our Partners to be successful building technical practices around Cloudflare solutions, aiding Partners to drive sales for identified opportunities, and to guide Partners to deliver successful Cloudflare journeys. As the technical partner advocate within Cloudflare, you will work closely with every team at Cloudflare, from Sales and Product, through to Engineering and Customer Support.&nbsp;</p>
-<p>You have excellent verbal and written English and Mandarin communications skills suited for both technical and sales engagement. You are comfortable speaking about the Cloudflare vision and mission with all technical and non-technical audiences.&nbsp;</p>
-<p>Ultimately, you are passionate about technology and have the ability to explain complex technical concepts in easy-to-understand terms. You are naturally curious, and an avid builder who is not afraid to get your hands dirty. You appreciate the diversity of challenges in working with partners and customers, and look forward to helping them realize the full promise of Cloudflare. On the Partner Solutions Engineering team, you will find a collaborative environment where everyone brings different strengths and jumps in to help each other.</p>
-<p><strong>Specifically, we are looking for you to:</strong></p>
+<p><strong>Available Locations: Austin</strong></p>
+<p><strong>Position Overview:</strong></p>
+<p>We are seeking a dynamic and experienced Strategic Event Content Manager to join our team. This individual will be responsible for managing and executing content strategies for a variety of high-profile events, including conferences, SKO, and partner events The ideal candidate will excel at project management, content creation, and cross-functional collaboration, ensuring that our events effectively communicate our brand message and drive engagement.</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Be curious and combine your technical, organizational, and communication skills with your desire to help Channel Partners deliver excellent Cloudflare journeys to their customers</li>
-	<li>Guide Partners through their Cloudflare enablement journey, enhancing their product and solution knowledge and technical skills</li>
-	<li>Support partners through the sales cycle by providing technical guidance for demonstrations and proof-of-concept support through written and verbal communication</li>
-	<li>Provide expert advice to help Channel partners understand best practices for Cloudflare solutions and product integrations aligned with Partner’s business requirements</li>
-	<li>Collaborate with partners to design and refine solutions ensuring technical integration success</li>
-	<li>Increase Cloudflare’s reputation and authority within the partner solution portfolio through demonstrating value, enablement, and uncovering new areas of potential revenue</li>
-	<li>Be the voice of the partner internally at Cloudflare, engaging with and influencing Cloudflare’s Product and Engineering teams to meet your partner and customer needs</li>
+	<li>Develop and execute comprehensive content strategies for various events, ensuring alignment with overall marketing and business objectives.</li>
+	<li>Collaborate with cross-functional teams, including marketing, sales, product management, and executive leadership, to create compelling event content.</li>
+	<li>Manage the end-to-end event content lifecycle, from ideation and planning to execution and post-event analysis.</li>
+	<li>Coordinate with external vendors, speakers, and partners to ensure seamless content delivery and event execution.</li>
+	<li>Develop and maintain event project plans, timelines, and budgets, ensuring all milestones are met on time and within scope.</li>
+	<li>Collaborate with content marketing and brand to support and drive the event message and “orange thread” through the program.</li>
+	<li>Craft engaging and high-quality content, including presentations, whitepapers, case studies, blog posts, social media updates, and promotional materials.</li>
+	<li>Analyze content performance metrics and provide insights and recommendations for continuous improvement.</li>
+	<li>Stay current with industry trends, competitor activities, and best practices in event management and content strategy.</li>
+	<li>Work directly with content owners to identify deliverables and deadlines, communicate expectations, and ensure results.</li>
+	<li>Assist with event logistics related to sessions including session room allocation, agenda management, and defining requirements for room set-up and A/V.</li>
+	<li>Supervise speaker management and provide on-site speaker support.</li>
+	<li>Manage the content management system including session scheduling.</li>
+	<li>Distribute regular reports on event deliverables and status updates.</li>
+	<li>Guide subject matter experts through the content development process.</li>
+	<li>Build speaker and content database and streamline the process for managing speaker requests/placements.</li>
+	<li>Serve as final content editor to review and publish final session content and ensure quality control.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><strong>Qualifications:</strong></p>
 <ul>
-	<li>Excellent communications written and verbal. Fluency in English and Mandarin is required.</li>
-	<li>Experience in technical sales:</li>
-	<ul>
-		<li>Delivering product demos</li>
-		<li>Assisting with technical validation</li>
-		<li>Driving technical wins</li>
-	</ul>
-	<li>Experience with or curiosity in any of the core industry components of Cloudflare solutions (and passion to learn more):</li>
-	<ul>
-		<li>Internet security technologies including DDoS and DDoS mitigation, Firewalls, TLS, VPN, DLP</li>
-		<li>Networking technologies including TCP, UDP, DNS, IPv4 + IPv6, BGP routing, GRE, SD-WAN, MPLS, Global Traffic Management</li>
-		<li>HTTP technologies including reverse proxy (e.g., WAF and CDN), forward proxy (secure web gateway), serverless application development</li>
-		<li>SASE concepts and Zero Trust Networking architectures</li>
-		<li>Detailed understanding of workflow from user to application including hybrid architectures with Azure, AWS, GCP</li>
-	</ul>
+	<li>Minimum of 5 years of experience in event content management or a similar role within the technology sector.</li>
+	<li>Proven track record of successfully managing complex event projects from start to finish.</li>
+	<li>Strong project management skills with the ability to multitask and manage multiple events simultaneously.</li>
+	<li>Excellent written and verbal communication skills, with a keen eye for detail and a creative mindset.</li>
+	<li>Proficiency in content creation tools and platforms, including Adobe Creative Suite, Microsoft Office, and various content management systems (CMS).</li>
+	<li>Familiarity with content delivery network services, cloud cybersecurity, DDoS mitigation, DNS, and domain registration services is highly desirable.</li>
+	<li>Strong analytical skills and experience with event performance measurement and reporting.</li>
+	<li>Ability to work independently and collaboratively in a fast-paced, deadline-driven environment.</li>
+	<li>Exceptional organizational and time management skills.</li>
+	<li>Experience managing complex projects with multiple stakeholders across the globe.</li>
+	<li>Comfortable interfacing with senior leadership and developing logistic plans that meet the shared vision and needs of both internal and external customers.</li>
 </ul>
+<p><strong>Additional Attributes:</strong></p>
+<ul>
+	<li><strong>Team Leadership:</strong> Ability to lead and motivate a team to achieve project goals.</li>
+	<li><strong>Strategic Thinking:</strong> Develop and implement strategies that align with company goals and drive business growth.</li>
+	<li><strong>Stakeholder Management:</strong> Build and maintain strong relationships with internal and external stakeholders.</li>
+	<li><strong>Adaptability:</strong> Quickly adapt to changing circumstances and new information to drive effective decision-making.</li>
+	<li><strong>Problem-Solving:</strong> Identify and resolve issues efficiently to keep projects on track.</li>
+	<li><strong>Customer Focus:</strong> Understand and meet the needs of clients and customers through effective event content strategies.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

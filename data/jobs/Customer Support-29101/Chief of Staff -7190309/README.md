@@ -105,7 +105,7 @@
 	<li>PMO certification or equivalent is a strong plus.</li>
 </ul>
 <p><strong>Salary</strong></p>
-<p>Salary will be discussed with the Recruiter during the interview process.&nbsp;&nbsp;</p>
+<p>For San Francisco/Bay Area hires salary range: $196,000 - $230,000</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
