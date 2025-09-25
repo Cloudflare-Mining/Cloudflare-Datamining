@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.8.0
+
+### Minor Changes
+
+- 8b5beed81c: Updating organization-outline.svg, adding overflow-solid.svg and check-yes-solid.svg
+
 ## 13.7.1
 
 ### Patch Changes

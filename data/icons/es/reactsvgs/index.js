@@ -139,6 +139,7 @@ import OpenSidepanelRight from './OpenSidepanelRight';
 import OptimizationScale from './OptimizationScale';
 import OrganizationOutline from './OrganizationOutline';
 import Overflow2Solid from './Overflow2Solid';
+import OverflowSolid from './OverflowSolid';
 import PagesLogo from './PagesLogo';
 import Pause from './Pause';
 import PerformanceArrowUp from './PerformanceArrowUp';
@@ -225,6 +226,7 @@ import WorkersPages from './WorkersPages';
 import WorkersUnbound from './WorkersUnbound';
 import Wrangler from './Wrangler';
 import Wrench from './Wrench';
+import YesCheckSolid from './YesCheckSolid';
 import Youtube from './Youtube';
 import Zaraz from './Zaraz';
 import ZeroTrustRiskScoring from './ZeroTrustRiskScoring';
@@ -373,6 +375,7 @@ export default {
   'optimization-scale': OptimizationScale,
   'organization-outline': OrganizationOutline,
   overflow2solid: Overflow2Solid,
+  'overflow-solid': OverflowSolid,
   'pages-logo': PagesLogo,
   pause: Pause,
   'performance-arrow-up': PerformanceArrowUp,
@@ -458,6 +461,7 @@ export default {
   'workers-unbound': WorkersUnbound,
   wrangler: Wrangler,
   wrench: Wrench,
+  'yes-check-solid': YesCheckSolid,
   youtube: Youtube,
   zaraz: Zaraz,
   'zero-trust-risk-scoring': ZeroTrustRiskScoring,

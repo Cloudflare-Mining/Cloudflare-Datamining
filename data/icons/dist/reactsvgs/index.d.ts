@@ -142,6 +142,7 @@ declare const _default: {
     'optimization-scale': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'organization-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     overflow2solid: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'overflow-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'pages-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     pause: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'performance-arrow-up': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -227,6 +228,7 @@ declare const _default: {
     'workers-unbound': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     wrangler: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     wrench: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'yes-check-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     youtube: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     zaraz: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'zero-trust-risk-scoring': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
