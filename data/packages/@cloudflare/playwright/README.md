@@ -4,7 +4,7 @@
 
 Fork of [Playwright](https://github.com/microsoft/playwright/) that was modified to be compatible with [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Browser Rendering](https://developers.cloudflare.com/browser-rendering/).
 
-🏷️ Upstream Playwright version: [1.54.1](https://github.com/microsoft/playwright/releases/tag/v1.54.1)
+🏷️ Upstream Playwright version: [1.55.0](https://github.com/microsoft/playwright/releases/tag/v1.54.1)
 
 ## Getting Started
 
@@ -74,8 +74,9 @@ export default {
 ### Trace
 
 ```js
+import fs from "fs";
+
 import { launch } from "@cloudflare/playwright";
-import fs from "@cloudflare/playwright/fs";
 
 export default {
   async fetch(request, env): Promise<Response> {
@@ -86,9 +87,10 @@ export default {
 
     // ... do something, screenshot for example
 
-    await page.context().tracing.stop({ path: "trace.zip" });
+    // For now, fs only supports writing into /tmp
+    await page.context().tracing.stop({ path: "/tmp/trace.zip" });
     await browser.close();
-    const file = await fs.promises.readFile("trace.zip");
+    const file = await fs.promises.readFile("/tmp/trace.zip");
 
     return new Response(file, {
       status: 200,
@@ -164,13 +166,11 @@ npx wrangler dev --remote
 
 ## 🚧 Currently Unsupported Features
 
-The following capabilities are not yet fully supported, but we’re actively working on them.
+The following capabilities are not fully supported, but we’re actively working on them.
 
-- [API Testing](https://playwright.dev/docs/api-testing)
 - [Playwright Test](https://playwright.dev/docs/test-configuration) except [Assertions](https://playwright.dev/docs/test-assertions)
 - [Components](https://playwright.dev/docs/test-components)
 - [Firefox](https://playwright.dev/docs/api/class-playwright#playwright-firefox), [Android](https://playwright.dev/docs/api/class-android) and [Electron](https://playwright.dev/docs/api/class-electron), as well as different versions of Chrome
-- [Network](https://playwright.dev/docs/next/network#network)
-- [Videos](https://playwright.dev/docs/next/videos)
+- [Videos](https://playwright.dev/docs/videos)
 
 This is **not an exhaustive list** — expect rapid changes as we work toward broader parity with the original feature set. You can also check [latest test results](https://playwright-full-test-report.pages.dev/) for a granular up to date list of the features that are fully supported
