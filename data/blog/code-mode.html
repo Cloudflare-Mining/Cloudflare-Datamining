@@ -1,0 +1,379 @@
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XsnzCDczGdIKX6ddLVYLT/1cad4424f9b90001286b682c7caad683/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>It turns out we've all been using MCP wrong.</p>
+	<p>Most agents today use MCP by directly exposing the "tools" to the <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model"><u>LLM</u></a>.</p>
+	<p>We tried something different: Convert the MCP tools into a TypeScript API, and then ask an LLM to write code that calls that API.</p>
+	<p>The results are striking:</p>
+	<ol>
+		<li>
+			<p>We found agents are able to handle many more tools, and more complex tools, when those tools are presented as a TypeScript API rather than directly. Perhaps this is because LLMs have an enormous amount of real-world TypeScript in their training set, but only a small set of contrived examples of tool calls.</p>
+		</li>
+		<li>
+			<p>The approach really shines when an agent needs to string together multiple calls. With the traditional approach, the output of each tool call must feed into the LLM's neural network, just to be copied over to the inputs of the next call, wasting time, energy, and tokens. When the LLM can write code, it can skip all that, and only read back the final results it needs.</p>
+		</li>
+	</ol>
+	<p>In short, LLMs are better at writing code to call MCP, than at calling MCP directly.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-mcp">What's MCP?</h2>
+		<a href="https://blog.cloudflare.com/#whats-mcp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>For those that aren't familiar: <a href="https://modelcontextprotocol.io/docs/getting-started/intro"><u>Model Context Protocol</u></a> is a standard protocol for giving AI agents access to external tools, so that they can directly perform work, rather than just chat with you.</p>
+	<p>Seen another way, MCP is a uniform way to:</p>
+	<ul>
+		<li>
+			<p>expose an API for doing something,</p>
+		</li>
+		<li>
+			<p>along with documentation needed for an LLM to understand it,</p>
+		</li>
+		<li>
+			<p>with authorization handled out-of-band.</p>
+		</li>
+	</ul>
+	<p>MCP has been making waves throughout 2025 as it has suddenly greatly expanded the capabilities of AI agents.</p>
+	<p>The "API" exposed by an MCP server is expressed as a set of "tools". Each tool is essentially a remote procedure call (RPC) function – it is called with some parameters and returns a response. Most modern LLMs have <a href="https://developers.cloudflare.com/workers-ai/features/function-calling"><u>the capability to use "tools" (sometimes called "function calling")</u></a>, meaning they are trained to output text in a certain format when they want to invoke a tool. The program invoking the LLM sees this format and invokes the tool as specified, then feeds the results back into the LLM as input.</p>
+	<div class="flex anchor relative">
+		<h3 id="anatomy-of-a-tool-call">Anatomy of a tool call</h3>
+		<a href="https://blog.cloudflare.com/#anatomy-of-a-tool-call" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Under the hood, an LLM generates a stream of "tokens" representing its output. A token might represent a word, a syllable, some sort of punctuation, or some other component of text.</p>
+	<p>A tool call, though, involves a token that does <i>not</i> have any textual equivalent. The LLM is trained (or, more often, fine-tuned) to understand a special token that it can output that means "the following should be interpreted as a tool call," and another special token that means "this is the end of the tool call." Between these two tokens, the LLM will typically write tokens corresponding to some sort of JSON message that describes the call.</p>
+	<p>For instance, imagine you have connected an agent to an MCP server that provides weather info, and you then ask the agent what the weather is like in Austin, TX. Under the hood, the LLM might generate output like the following. Note that here we've used words in <code>&lt;|</code> and <code>|&gt;</code> to represent our special tokens, but in fact, these tokens do not represent text at all; this is just for illustration.</p>
+	<p>I will use the Weather MCP server to find out the weather in Austin, TX.</p>
+	<pre class="language-Rust"><code class="language-Rust">I will use the Weather MCP server to find out the weather in Austin, TX.
+
+&lt;|tool_call|&gt;
+{
+  "name": "get_current_weather",
+  "arguments": {
+    "location": "Austin, TX, USA"
+  }
+}
+&lt;|end_tool_call|&gt;</code></pre>
+	<p>Upon seeing these special tokens in the output, the LLM's harness will interpret the sequence as a tool call. After seeing the end token, the harness pauses execution of the LLM. It parses the JSON message and returns it as a separate component of the structured API result. The agent calling the LLM API sees the tool call, invokes the relevant MCP server, and then sends the results back to the LLM API. The LLM's harness will then use another set of special tokens to feed the result back into the LLM:</p>
+	<pre class="language-Rust"><code class="language-Rust">&lt;|tool_result|&gt;
+{
+  "location": "Austin, TX, USA",
+  "temperature": 93,
+  "unit": "fahrenheit",
+  "conditions": "sunny"
+}
+&lt;|end_tool_result|&gt;</code></pre>
+	<p>The LLM reads these tokens in exactly the same way it would read input from the user – except that the user cannot produce these special tokens, so the LLM knows it is the result of the tool call. The LLM then continues generating output like normal.</p>
+	<p>Different LLMs may use different formats for tool calling, but this is the basic idea.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-wrong-with-this">What's wrong with this?</h3>
+		<a href="https://blog.cloudflare.com/#whats-wrong-with-this" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The special tokens used in tool calls are things LLMs have never seen in the wild. They must be specially trained to use tools, based on synthetic training data. They aren't always that good at it. If you present an LLM with too many tools, or overly complex tools, it may struggle to choose the right one or to use it correctly. As a result, MCP server designers are encouraged to present greatly simplified APIs as compared to the more traditional API they might expose to developers.</p>
+	<p>Meanwhile, LLMs are getting really good at writing code. In fact, LLMs asked to write code against the full, complex APIs normally exposed to developers don't seem to have too much trouble with it. Why, then, do MCP interfaces have to "dumb it down"? Writing code and calling tools are almost the same thing, but it seems like LLMs can do one much better than the other?</p>
+	<p>The answer is simple: LLMs have seen a lot of code. They have not seen a lot of "tool calls". In fact, the tool calls they have seen are probably limited to a contrived training set constructed by the LLM's own developers, in order to try to train it. Whereas they have seen real-world code from millions of open source projects.</p>
+	<p><b><i>Making an LLM perform tasks with tool calling is like putting Shakespeare through a month-long class in Mandarin and then asking him to write a play in it. It's just not going to be his best work.</i></b></p>
+	<div class="flex anchor relative">
+		<h3 id="but-mcp-is-still-useful-because-it-is-uniform">But MCP is still useful, because it is uniform</h3>
+		<a href="https://blog.cloudflare.com/#but-mcp-is-still-useful-because-it-is-uniform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCP is designed for tool-calling, but it doesn't actually <i>have to</i> be used that way.</p>
+	<p>The "tools" that an MCP server exposes are really just an RPC interface with attached documentation. We don't really <i>have to</i> present them as tools. We can take the tools, and turn them into a programming language API instead.</p>
+	<p>But why would we do that, when the programming language APIs already exist independently? Almost every MCP server is just a wrapper around an existing traditional API – why not expose those APIs?</p>
+	<p>Well, it turns out MCP does something else that's really useful: <b>It provides a uniform way to connect to and learn about an API.</b></p>
+	<p>An AI agent can use an MCP server even if the agent's developers never heard of the particular MCP server, and the MCP server's developers never heard of the particular agent. This has rarely been true of traditional APIs in the past. Usually, the client developer always knows exactly what API they are coding for. As a result, every API is able to do things like basic connectivity, authorization, and documentation a little bit differently.</p>
+	<p>This uniformity is useful even when the AI agent is writing code. We'd like the AI agent to run in a sandbox such that it can only access the tools we give it. MCP makes it possible for the agentic framework to implement this, by handling connectivity and authorization in a standard way, independent of the AI code. We also don't want the AI to have to search the Internet for documentation; MCP provides it directly in the protocol.</p>
+	<div class="flex anchor relative">
+		<h2 id="ok-how-does-it-work">OK, how does it work?</h2>
+		<a href="https://blog.cloudflare.com/#ok-how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We have already extended the <a href="https://developers.cloudflare.com/agents"><u>Cloudflare Agents SDK</u></a> to support this new model!</p>
+	<p>For example, say you have an app built with ai-sdk that looks like this:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">const stream = streamText({
+  model: openai("gpt-5"),
+  system: "You are a helpful assistant",
+  messages: [
+    { role: "user", content: "Write a function that adds two numbers" }
+  ],
+  tools: {
+    // tool definitions 
+  }
+})</code></pre>
+	<p>You can wrap the tools and prompt with the codemode helper, and use them in your app:&nbsp;</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { codemode } from "agents/codemode/ai";
+
+const {system, tools} = codemode({
+  system: "You are a helpful assistant",
+  tools: {
+    // tool definitions 
+  },
+  // ...config
+})
+
+const stream = streamText({
+  model: openai("gpt-5"),
+  system,
+  tools,
+  messages: [
+    { role: "user", content: "Write a function that adds two numbers" }
+  ]
+})</code></pre>
+	<p>With this change, your app will now start generating and running code that itself will make calls to the tools you defined, MCP servers included. We will introduce variants for other libraries in the very near future. <a href="https://github.com/cloudflare/agents/blob/main/docs/codemode.md"><u>Read the docs</u></a> for more details and examples.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="converting-mcp-to-typescript">Converting MCP to TypeScript</h3>
+		<a href="https://blog.cloudflare.com/#converting-mcp-to-typescript" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When you connect to an MCP server in "code mode", the Agents SDK will fetch the MCP server's schema, and then convert it into a TypeScript API, complete with doc comments based on the schema.</p>
+	<p>For example, connecting to the MCP server at <a href="https://gitmcp.io/cloudflare/agents"><u>https://gitmcp.io/cloudflare/agents</u></a>, will generate a TypeScript definition like this:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">interface FetchAgentsDocumentationInput {
+  [k: string]: unknown;
+}
+interface FetchAgentsDocumentationOutput {
+  [key: string]: any;
+}
+
+interface SearchAgentsDocumentationInput {
+  /**
+   * The search query to find relevant documentation
+   */
+  query: string;
+}
+interface SearchAgentsDocumentationOutput {
+  [key: string]: any;
+}
+
+interface SearchAgentsCodeInput {
+  /**
+   * The search query to find relevant code files
+   */
+  query: string;
+  /**
+   * Page number to retrieve (starting from 1). Each page contains 30
+   * results.
+   */
+  page?: number;
+}
+interface SearchAgentsCodeOutput {
+  [key: string]: any;
+}
+
+interface FetchGenericUrlContentInput {
+  /**
+   * The URL of the document or page to fetch
+   */
+  url: string;
+}
+interface FetchGenericUrlContentOutput {
+  [key: string]: any;
+}
+
+declare const codemode: {
+  /**
+   * Fetch entire documentation file from GitHub repository:
+   * cloudflare/agents. Useful for general questions. Always call
+   * this tool first if asked about cloudflare/agents.
+   */
+  fetch_agents_documentation: (
+    input: FetchAgentsDocumentationInput
+  ) =&gt; Promise&lt;FetchAgentsDocumentationOutput&gt;;
+
+  /**
+   * Semantically search within the fetched documentation from
+   * GitHub repository: cloudflare/agents. Useful for specific queries.
+   */
+  search_agents_documentation: (
+    input: SearchAgentsDocumentationInput
+  ) =&gt; Promise&lt;SearchAgentsDocumentationOutput&gt;;
+
+  /**
+   * Search for code within the GitHub repository: "cloudflare/agents"
+   * using the GitHub Search API (exact match). Returns matching files
+   * for you to query further if relevant.
+   */
+  search_agents_code: (
+    input: SearchAgentsCodeInput
+  ) =&gt; Promise&lt;SearchAgentsCodeOutput&gt;;
+
+  /**
+   * Generic tool to fetch content from any absolute URL, respecting
+   * robots.txt rules. Use this to retrieve referenced urls (absolute
+   * urls) that were mentioned in previously fetched documentation.
+   */
+  fetch_generic_url_content: (
+    input: FetchGenericUrlContentInput
+  ) =&gt; Promise&lt;FetchGenericUrlContentOutput&gt;;
+};</code></pre>
+	<p>This TypeScript is then loaded into the agent's context. Currently, the entire API is loaded, but future improvements could allow an agent to search and browse the API more dynamically – much like an agentic coding assistant would.</p>
+	<div class="flex anchor relative">
+		<h3 id="running-code-in-a-sandbox">Running code in a sandbox</h3>
+		<a href="https://blog.cloudflare.com/#running-code-in-a-sandbox" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Instead of being presented with all the tools of all the connected MCP servers, our agent is presented with just one tool, which simply executes some TypeScript code.</p>
+	<p>The code is then executed in a secure sandbox. The sandbox is totally isolated from the Internet. Its only access to the outside world is through the TypeScript APIs representing its connected MCP servers.</p>
+	<p>These APIs are backed by RPC invocation which calls back to the agent loop. There, the Agents SDK dispatches the call to the appropriate MCP server.</p>
+	<p>The sandboxed code returns results to the agent in the obvious way: by invoking <code>console.log()</code>. When the script finishes, all the output logs are passed back to the agent.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DRERHP138FSj3GG0QYj3M/99e8c09b352560b7d4547ca299482c27/image2.png" alt="" class="kg-image" width="1999" height="1967" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="dynamic-worker-loading-no-containers-here">Dynamic Worker loading: no containers here</h2>
+		<a href="https://blog.cloudflare.com/#dynamic-worker-loading-no-containers-here" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This new approach requires access to a secure sandbox where arbitrary code can run. So where do we find one? Do we have to run containers? Is that expensive?</p>
+	<p>No. There are no containers. We have something much better: isolates.</p>
+	<p>The Cloudflare Workers platform has always been based on V8 isolates, that is, isolated JavaScript runtimes powered by the <a href="https://v8.dev"><u>V8 JavaScript engine</u></a>.</p>
+	<p><b>Isolates are far more lightweight than containers.</b> An isolate can start in a handful of milliseconds using only a few megabytes of memory.</p>
+	<p>Isolates are so fast that we can just create a new one for every piece of code the agent runs. There's no need to reuse them. There's no need to prewarm them. Just create it, on demand, run the code, and throw it away. It all happens so fast that the overhead is negligible; it's almost as if you were just eval()ing the code directly. But with security.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-worker-loader-api">The Worker Loader API</h3>
+		<a href="https://blog.cloudflare.com/#the-worker-loader-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Until now, though, there was no way for a Worker to directly load an isolate containing arbitrary code. All Worker code instead had to be uploaded via the Cloudflare API, which would then deploy it globally, so that it could run anywhere. That's not what we want for Agents! We want the code to just run right where the agent is.</p>
+	<p>To that end, we've added a new API to the Workers platform: the <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader"><u>Worker Loader API</u></a>. With it, you can load Worker code on-demand. Here's what it looks like:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Gets the Worker with the given ID, creating it if no such Worker exists yet.
+let worker = env.LOADER.get(id, async () =&gt; {
+  // If the Worker does not already exist, this callback is invoked to fetch
+  // its code.
+
+  return {
+    compatibilityDate: "2025-06-01",
+
+    // Specify the worker's code (module files).
+    mainModule: "foo.js",
+    modules: {
+      "foo.js":
+        "export default {\n" +
+        "  fetch(req, env, ctx) { return new Response('Hello'); }\n" +
+        "}\n",
+    },
+
+    // Specify the dynamic Worker's environment (`env`).
+    env: {
+      // It can contain basic serializable data types...
+      SOME_NUMBER: 123,
+
+      // ... and bindings back to the parent worker's exported RPC
+      // interfaces, using the new `ctx.exports` loopback bindings API.
+      SOME_RPC_BINDING: ctx.exports.MyBindingImpl({props})
+    },
+
+    // Redirect the Worker's `fetch()` and `connect()` to proxy through
+    // the parent worker, to monitor or filter all Internet access. You
+    // can also block Internet access completely by passing `null`.
+    globalOutbound: ctx.exports.OutboundProxy({props}),
+  };
+});
+
+// Now you can get the Worker's entrypoint and send requests to it.
+let defaultEntrypoint = worker.getEntrypoint();
+await defaultEntrypoint.fetch("http://example.com");
+
+// You can get non-default entrypoints as well, and specify the
+// `ctx.props` value to be delivered to the entrypoint.
+let someEntrypoint = worker.getEntrypoint("SomeEntrypointClass", {
+  props: {someProp: 123}
+});</code></pre>
+	<p>You can start playing with this API right now when running <code>workerd</code> locally with Wrangler (<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader"><u>check out the docs</u></a>), and you can <a href="https://forms.gle/MoeDxE9wNiqdf8ri9"><u>sign up for beta access</u></a> to use it in production.</p>
+	<div class="flex anchor relative">
+		<h2 id="workers-are-better-sandboxes">Workers are better sandboxes</h2>
+		<a href="https://blog.cloudflare.com/#workers-are-better-sandboxes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The design of Workers makes it unusually good at sandboxing, especially for this use case, for a few reasons:</p>
+	<div class="flex anchor relative">
+		<h3 id="faster-cheaper-disposable-sandboxes">Faster, cheaper, disposable sandboxes</h3>
+		<a href="https://blog.cloudflare.com/#faster-cheaper-disposable-sandboxes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/workers/reference/how-workers-works"><u>The Workers platform uses isolates instead of containers.</u></a> Isolates are much lighter-weight and faster to start up. It takes mere milliseconds to start a fresh isolate, and it's so cheap we can just create a new one for every single code snippet the agent generates. There's no need to worry about pooling isolates for reuse, prewarming, etc.</p>
+	<p>We have not yet finalized pricing for the Worker Loader API, but because it is based on isolates, we will be able to offer it at a significantly lower cost than container-based solutions.</p>
+	<div class="flex anchor relative">
+		<h3 id="isolated-by-default-but-connected-with-bindings">Isolated by default, but connected with bindings</h3>
+		<a href="https://blog.cloudflare.com/#isolated-by-default-but-connected-with-bindings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers are just better at handling isolation.</p>
+	<p>In Code Mode, we prohibit the sandboxed worker from talking to the Internet. The global <code>fetch()</code> and <code>connect()</code> functions throw errors.</p>
+	<p>But on most platforms, this would be a problem. On most platforms, the way you get access to private resources is, you <i>start</i> with general network access. Then, using that network access, you send requests to specific services, passing them some sort of API key to authorize private access.</p>
+	<p>But Workers has always had a better answer. In Workers, the "environment" (<code>env</code> object) doesn't just contain strings, <a href="https://blog.cloudflare.com/workers-environment-live-object-bindings"><u>it contains live objects</u></a>, also known as "bindings". These objects can provide direct access to private resources without involving generic network requests.</p>
+	<p>In Code Mode, we give the sandbox access to bindings representing the MCP servers it is connected to. Thus, the agent can specifically access those MCP servers <i>without</i> having network access in general.</p>
+	<p>Limiting access via bindings is much cleaner than doing it via, say, network-level filtering or HTTP proxies. Filtering is hard on both the LLM and the supervisor, because the boundaries are often unclear: the supervisor may have a hard time identifying exactly what traffic is legitimately necessary to talk to an API. Meanwhile, the LLM may have difficulty guessing what kinds of requests will be blocked. With the bindings approach, it's well-defined: the binding provides a JavaScript interface, and that interface is allowed to be used. It's just better this way.</p>
+	<div class="flex anchor relative">
+		<h3 id="no-api-keys-to-leak">No API keys to leak</h3>
+		<a href="https://blog.cloudflare.com/#no-api-keys-to-leak" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>An additional benefit of bindings is that they hide API keys. The binding itself provides an already-authorized client interface to the MCP server. All calls made on it go to the agent supervisor first, which holds the access tokens and adds them into requests sent on to MCP.</p>
+	<p>This means that the AI cannot possibly write code that leaks any keys, solving a common security problem seen in AI-authored code today.</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-now">Try it now!</h2>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="sign-up-for-the-production-beta">Sign up for the production beta</h3>
+		<a href="https://blog.cloudflare.com/#sign-up-for-the-production-beta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The Dynamic Worker Loader API is in closed beta. To use it in production, <a href="https://forms.gle/MoeDxE9wNiqdf8ri9"><u>sign up today</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="or-try-it-locally">Or try it locally</h3>
+		<a href="https://blog.cloudflare.com/#or-try-it-locally" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you just want to play around, though, Dynamic Worker Loading is fully available today when developing locally with Wrangler and <code>workerd</code> – check out the docs for <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader"><u>Dynamic Worker Loading</u></a> and <a href="https://github.com/cloudflare/agents/blob/main/docs/codemode.md"><u>code mode in the Agents SDK</u></a> to get started.</p>
+</div>
