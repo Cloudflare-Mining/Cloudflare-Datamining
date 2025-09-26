@@ -5,38 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p>Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month. We also build and run the internal tools that build and run our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare is a system spanning the globe, on a mission to make the internet better, safer, and more powerful everyday. As one of the engineers working on the Cloudflare Edge, you’ll work on the code that runs closest to the end user and is deployed into 150+ cities around the world.</p>
-<p>Examples of software systems at our Edge include:</p>
+<p><strong>Available Location: Lisbon, Portugal</strong></p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
+<h4><strong>Technical Program Manager, FinTech - Engineering PMO</strong></h4>
+<p>Cloudflare has embarked on a transformation of our entire quote&nbsp; to cash process. We are seeking a highly skilled and self-motivated Technical Program Manager to work with leads to transform FinTech portfolio of projects.&nbsp;Your main responsibility will be to work cross functionally across Product, Engineering, Design, Revenue Ops, Finance, BI, external vendors, and more to plan and execute on the overall strategy.&nbsp;</p>
+<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
+<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones. Your main responsibilities will be partnering with the engineering and product teams to reliably execute against various objectives. You will be partnered with a lead TPM who will guide you through your journey.&nbsp;&nbsp;</p>
+<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
+<p><strong>You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</strong></p>
+<p><strong>Major areas of responsibilities</strong></p>
 <ul>
-	<li>A TLS/HTTP proxy to make the connection from eyeball to edge as fast and secure as possible</li>
-	<li>Filtering malicious traffic and handling good traffic according to customer configuration</li>
-	<li>Content optimization that takes content served from customer sites and makes it more performant</li>
-	<li>A platform that runs “serverless” Workers and provides a key value store</li>
-	<li>A reverse-proxy system that caches customer website content according to customer configuration</li>
-	<li>Optimization of connections from Cloudflare to our customers' origin servers to reduce their load and increase performance</li>
-	<li>Our Authoritative DNS server and our public resolver 1.1.1.1.</li>
+	<li>Organize &amp; Manage Initiatives driven by FinTech Leadership</li>
+	<ul>
+		<li>Assist lead TPM in aligning strategy to execution&nbsp;</li>
+		<li>Drive the operations of the NPI (New Product Introduction) process</li>
+	</ul>
+	<li>Support Engineering Planning Cycles&nbsp;</li>
+	<ul>
+		<li>Organize roadmap and KPI reviews</li>
+		<li>Provide line of sight on capacity/load&nbsp;</li>
+		<li>Manage dependencies and intake</li>
+	</ul>
+	<li>Understand technical requirements of products in the Opportunity to Cash lifecycle</li>
+	<li>Effectively balance risk and achieve business objectives&nbsp;</li>
+	<li>Obtain clear requirements, plans, and decisions to proactively tackle critical gaps and mitigate risk</li>
+	<li>Identify gaps and work with senior TPM to roll out of scalable processes to meet product and engineering team goals</li>
+	<li>Set up regular feedback cycles and ensure buy-in from contributors on program plan &amp; roadmap</li>
+	<li>Provide regular status updates to stakeholders and senior management</li>
 </ul>
-<p>We operate some of the fastest services on the Internet. Your work will focus on building robust, secure, and high performance distributed systems. We are a small engineering team operating at massive scale, so what you do will have huge influence.<br><br><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Desirable skills and knowledge&nbsp;</strong></p>
 <ul>
-	<li>Understand how the internet works at a protocol level, including the differences between what the specs say, and what actually happens on the internet</li>
-	<li>Confidence to work in multiple programming languages - could include C, Go, Rust, Python, Lua and even PHP</li>
-	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
-	<li>Strong systems level programming skills</li>
-	<li>Excited by the idea of optimizing complex solutions to general problems that all websites face</li>
-	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
-	<li>Good Unix knowledge, patches to Operating Systems a huge plus for some roles</li>
-	<li>Understanding of security issues and responsibilities</li>
-	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
-	<li>Fluent in analyses of data sets such as logs</li>
-	<li>Designing and building APIs</li>
-	<li>Great oral and written communications skills</li>
-	<li>Desire to learn and improve</li>
-	<li>Willing and eager to share knowledge, and mentor</li>
+	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
+	<li>3+ years experience in technical program management and a desire for continuous improvement</li>
+	<li>Can create realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Excellent oral and written communication. Ability to read the room&nbsp;</li>
+	<li>Experience working with multiple time zones and multiple cross functional teams</li>
+	<li>Strong competency with Confluence, JIRA (admin-level experience strongly preferred), and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)&nbsp;&nbsp;</li>
+	<li>A mind open to feedback and filled with curiosity,&nbsp; who has successfully gained experience with peers by demonstrating empathy, and self-starter</li>
+	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
