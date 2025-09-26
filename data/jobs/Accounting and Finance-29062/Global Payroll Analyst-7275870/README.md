@@ -6,26 +6,31 @@
 	</div>
 </div>
 <p><strong>Available Locations: Bengaluru, India&nbsp;</strong></p>
-<p><strong>Overview:</strong>&nbsp;</p>
-<p>At Cloudflare, we’re committed to delivering seamless and accurate payroll experience to our&nbsp;global workforce. As our company grows, we are expanding our international payroll capabilities&nbsp;and are looking for a Global Payroll Analyst to join our team in India.&nbsp;This role will play a critical part in the end-to-end payroll process for employees across multiple&nbsp;international regions. You’ll work closely with HR, Finance, and external vendors to ensure&nbsp;timely, accurate, and compliant payroll processing while continuously seeking opportunities to&nbsp;improve processes and enhance employee experience.</p>
-<p><strong>Key Responsibilities:</strong></p>
+<p>At Cloudflare, we’re committed to delivering a seamless and accurate payroll experience to our global workforce. As our company grows, we are expanding our international payroll capabilities and are looking for a Payroll Analyst for the EMEA region.</p>
+<p><strong>About the Role</strong></p>
+<p>We're looking for a Payroll Analyst to support payroll operations across our EMEA region. In this role, you’ll work closely with payroll vendors and internal teams to ensure employees are paid accurately and on time. You’ll be hands-on with data reviews, reconciliations, and compliance checks, while helping us improve processes and deliver a great payroll experience.</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Own and manage day-to-day international payroll operations across designated countries,&nbsp;including base pay, bonuses, commissions, equity transactions, benefits, and statutory requirements.</li>
-	<li>Partner closely with HR to maintain accurate and up-to-date employee data for payroll processing.</li>
-	<li>Ensure timely and accurate execution of off-cycle payments, including manual payments and electronic bank transfers.</li>
-	<li>Perform regular audits and reconciliations of payroll data and records to ensure accuracy and compliance.</li>
-	<li>Prepare reports and provide formal and ad-hoc analysis related to payroll, headcount, benefits, and compensation.</li>
-	<li>Serve as a key point of contact for employee payroll inquiries and resolve issues with professionalism and confidentiality.</li>
-	<li>Collaborate with external payroll vendors and ensure compliance with local tax laws, labor regulations, and reporting requirements.&nbsp;</li>
+	<li>Assist with end-to-end payroll processing across multiple EMEA countries.</li>
+	<li>Review vendor reports, payroll inputs, and employee data for accuracy.</li>
+	<li>Support monthly reconciliations, audits, and compliance checks.</li>
+	<li>Partner with HR, Accounting, and Benefits teams on payroll-related matters.</li>
+	<li>Respond to employee payroll questions with clear and timely communication.</li>
+	<li>Help identify opportunities to streamline and improve payroll processes.</li>
 </ul>
-<p><strong>Required Skills and Qualifications:</strong></p>
+<p><strong>What We’re Looking For</strong></p>
+<ul>
+	<li><strong>2–4 years of payroll experience</strong>, preferably covering multiple EMEA countries.</li>
+	<li>Good understanding of payroll processes, compliance, and regulations.</li>
+	<li>Strong attention to detail and comfort working with numbers.</li>
+	<li>Ability to manage multiple priorities and meet tight deadlines.</li>
+	<li>Strong communication and teamwork skills.</li>
+	<li>Experience with payroll platforms (e.g., Workday, ADP) is a plus.</li>
+</ul>
+<p><strong>Preferred Qualifications</strong></p>
 <ul>
 	<li>Bachelor's degree in Accounting, Finance, Business, or a related field—or equivalent practical experience.</li>
-	<li>1–3 years of experience in international payroll operations.</li>
-	<li>Strong understanding of payroll fundamentals, tax regulations, and compliance requirements.</li>
-	<li>Prior experience with APAC payroll operations is highly desirable.</li>
-	<li>Familiarity with processing payroll involving equity transactions, benefits, commissions, and multiple statutory withholdings.</li>
-	<li>Experience with Workday and payroll vendor platforms.</li>
+	<li>Prior experience with EMEA payroll operations is highly desirable.</li>
 	<li>Detail-oriented with strong analytical and problem-solving skills.</li>
 	<li>Demonstrated ability to support scalable and compliant payroll operations in a fast-paced environment.</li>
 </ul>
