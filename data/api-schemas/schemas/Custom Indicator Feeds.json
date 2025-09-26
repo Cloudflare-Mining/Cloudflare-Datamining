@@ -1,268 +1,4 @@
 {
-	"GET /accounts/{account_id}/intel/indicator_feeds/{feed_id}/download": {
-		"operationId": "custom-indicator-feeds-download-indicator-feed-data",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string",
-					"x-auditable": true
-				}
-			},
-			{
-				"in": "path",
-				"name": "feed_id",
-				"required": true,
-				"schema": {
-					"description": "Indicator feed ID",
-					"example": 12,
-					"type": "integer",
-					"x-auditable": true
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"file_id": {
-													"description": "Feed id",
-													"example": 1,
-													"type": "integer",
-													"x-auditable": true
-												},
-												"filename": {
-													"description": "Name of the file unified in our system",
-													"example": "snapshot_file.unified",
-													"type": "string",
-													"x-auditable": true
-												},
-												"status": {
-													"description": "Current status of upload, should be unified",
-													"example": "unified",
-													"type": "string",
-													"x-auditable": true
-												}
-											}
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "Get indicator feed metadata"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Get indicator feeds response failure"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Download indicator feed data",
-		"tags": [
-			"Custom Indicator Feeds"
-		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
-		]
-	},
 	"GET /accounts/{account_id}/intel/indicator-feeds": {
 		"operationId": "custom-indicator-feeds-get-indicator-feeds",
 		"parameters": [
@@ -1368,6 +1104,270 @@
 			}
 		],
 		"summary": "Get indicator feed data",
+		"tags": [
+			"Custom Indicator Feeds"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
+	},
+	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}/download": {
+		"operationId": "custom-indicator-feeds-download-indicator-feed-data",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "feed_id",
+				"required": true,
+				"schema": {
+					"description": "Indicator feed ID",
+					"example": 12,
+					"type": "integer",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"file_id": {
+													"description": "Feed id",
+													"example": 1,
+													"type": "integer",
+													"x-auditable": true
+												},
+												"filename": {
+													"description": "Name of the file unified in our system",
+													"example": "snapshot_file.unified",
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Current status of upload, should be unified",
+													"example": "unified",
+													"type": "string",
+													"x-auditable": true
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get indicator feed metadata"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get indicator feeds response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Download indicator feed data",
 		"tags": [
 			"Custom Indicator Feeds"
 		],
