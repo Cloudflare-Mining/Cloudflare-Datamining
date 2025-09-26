@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7088208?gh_jid=7088208",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7277007?gh_jid=7277007",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3197516,
+	"internal_job_id": 3187690,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,7 +18,7 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4100 - Infrastructure Engineering",
+			"value": "4300 - Systems Engineering",
 			"value_type": "single_select"
 		},
 		{
@@ -26,7 +26,9 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
-				"Washington DC, US"
+				"Lisbon, Portugal",
+				"London, UK",
+				"Seattle, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -34,18 +36,17 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Engineering",
-				"Infrastructure"
+				"Engineering"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7088208,
-	"updated_at": "2025-09-18T12:23:14-04:00",
-	"requisition_id": "637",
-	"title": "Software Engineer: Resiliency",
+	"id": 7277007,
+	"updated_at": "2025-09-25T12:54:12-04:00",
+	"requisition_id": null,
+	"title": "Software Engineer, Zero Trust Client",
 	"company_name": "Cloudflare",
-	"first_published": "2025-07-22T12:16:23-04:00",
+	"first_published": "2025-09-25T12:54:12-04:00",
 	"departments": [
 		{
 			"id": 29067,
@@ -63,9 +64,23 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 19994,
-			"name": "Washington, DC",
-			"location": "Washington, DC, United States",
+			"id": 19988,
+			"name": "London, United Kingdom",
+			"location": "London, United Kingdom",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}

@@ -5,30 +5,55 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations:</strong>&nbsp;Bangalore, India</h4>
-<p><strong>About the Department</strong></p>
-<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Application and Product Security team at Cloudflare is focused on and committed to securing both Cloudflare and our customers. The Application &amp; Product Security team is responsible for keeping our products, and platforms secure.</p>
-<p><strong>What you’ll do</strong></p>
-<p>We are looking for a Security Engineer to help us in our mission to build a better internet. Part engineer, part hacker, you will work with our engineering and security teams to build solutions for .</p>
+<p><strong>Locations:</strong></p>
 <ul>
-	<li>Work with engineering teams to help secure Cloudflare products and platforms</li>
-	<li>Assess products and new feature releases through threat modeling, code review and security testing. Also provide guidance on effective countermeasures</li>
-	<li>Contribute to security architecture/design and assist in building and rolling out processes for secure code development and deployment</li>
-	<li>Build secure frameworks &amp; libraries that engineering teams can use at scale</li>
-	<li>Build internal security tools and automate processes that help fix security problems at a massive scale.&nbsp;</li>
-	<li>Managing and prioritizing multiple tasks in accordance with high level objectives</li>
+	<li><strong>Austin, TX</strong></li>
+	<li><strong>Lisbon, Portugal</strong></li>
+	<li><strong>London, United Kingdom</strong></li>
 </ul>
-<p><strong>Key skill sets and Knowledge</strong></p>
-<p>Security engineers take part in a wide variety of tasks and projects on the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
+<h2><strong>What you'll do</strong></h2>
+<p>We’re looking for a Junior Software Engineer to join our<a href="https://www.cloudflare.com/zero-trust/"> Zero Trust</a> team. You will be working on the<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/"> Zero Trust desktop client</a>, which protects corporate devices by securely and privately sending traffic from those devices to Cloudflare’s global network, which can apply advanced web filtering and advanced Zero Trust policies.</p>
+<p>In your role, you will predominantly be using <strong>Rust</strong> alongside platform-native languages &amp; APIs to implement high-performance networking code that runs on multiple desktop platforms. You’ll be expected to <strong>improve the code quality</strong> and to build solid, <strong>testable, </strong>and<strong> well-documented</strong> foundations. You will be most successful in this role if you have a good understanding of <strong>operating system concepts</strong> (multi-threading, process lifecycle, network adapters, sockets, etc.) and <strong>networking concepts &amp; protocols</strong> (VPNs, firewalls, TCP/IP, UDP, DNS, QUIC, H/3, proxying, etc.). You will also have to interact with other languages, such as Dart, Typescript, and Python.</p>
+<p>As a Junior Software Engineer, you will be expected to be a voracious learner and fast-paced contributor to the design and implementation of major development projects. You will work on stimulating problems born out of the scale of our deployment, and the stringent quality, performance, and security requirements of our product.</p>
+<h2><strong>Examples of desirable skills, knowledge, and experience</strong></h2>
 <ul>
-	<li>Experience in securing large scale distributed systems</li>
-	<li>Experience in designing, building and implementing systems</li>
-	<li>Experience in assessing the security posture of systems/services</li>
-	<li>Experience in penetration testing and providing mitigating controls</li>
-	<li>Strong engineering background and programming experience (Python, Golang, Rust, Bash, etc.)</li>
-	<li>Strong communication skills and ability to work with remote teams</li>
-	<li>Results and goal-oriented</li>
+	<li>Excellent programming skills, with experience writing <strong>high-quality</strong> and <strong>low-complexity</strong> code with thorough documentation.</li>
+	<li>Experience writing <strong>easily-testable </strong>and<strong> thoroughly-tested code</strong> (e.g. using dependency injection or mocking with the right abstractions)</li>
+	<li>Experience with <strong>systems programming</strong> and familiarity with <strong>core OS concepts</strong> of one or more desktop OSes (macOS, Windows, and Linux)</li>
+	<li>Experience using <strong>lower-level languages</strong>, such as Rust, C, C++</li>
+	<li>Comfortable writing <strong>multithreaded, asynchronous</strong> code</li>
+	<li>Familiarity with <strong>debugging network-related problems</strong>, especially on desktop devices</li>
+	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

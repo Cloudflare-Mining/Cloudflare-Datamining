@@ -5,29 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Lisbon, Portugal</strong></p>
-<p><strong>Job Title&nbsp;</strong></p>
-<p>Make the job title clear, concise and industry-specific.</p>
-<p><strong>Role Summary</strong></p>
-<p>Write a brief three to five sentence summary about what the candidate will do in their role, who they’ll work with and any general qualities your team is looking for in the individual.</p>
-<p><strong>Role Responsibilities</strong></p>
-<p>Include clear responsibilities and duties. Responsibilities and duties are essential in order for a candidate to understand the role. They also set expectations for the hired employee and can be used as a baseline for performance reviews down the line.</p>
-<p>Give 5 to 7 bullet points of what the candidate can expect to do in the role.&nbsp;</p>
-<p>Here are a few tips:</p>
+<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
+<p><strong>About The Role&nbsp;</strong></p>
+<p>As an Identity and Access Management (IAM) Security Analyst you will play a key role in efficiently managing user identities and access across the enterprise. You will be responsible for implementing technologies and designing processes to ensure users have authorized access to resources and systems.&nbsp;&nbsp;&nbsp;</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Write in complete sentences.</li>
-	<li>Be thorough. Candidates will be better prepared for the interview and role if they know what is expected of them.</li>
-	<li>Don’t be excessive. You don’t need to include every single possible thing a person&nbsp; might encounter during the work day.</li>
+	<li>Establish and execute access governance programs and policies</li>
+	<li>Define and enforce access control policies, including role-based access control (RBAC), attribute based access control (ABAC), and policy based access controls (PBAC)</li>
+	<li>Ensure access adhere to the principle of least privilege and segregation of duties (SoD).</li>
+	<li>Develop and execute an access certification program and scale to all systems&nbsp;</li>
+	<li>Design, implement, and manage Identity Access &amp; Governance policies and procedures.</li>
+	<li>Define and enforce privileged access management (PAM) policies to secure sensitive systems and data.</li>
+	<li>Manage user onboarding, offboarding, and role changes, ensuring adherence to security policies and compliance requirements.</li>
+	<li>Collaborate with cross-functional teams, including IT, security, and compliance, to ensure IAM aligns with business goals.</li>
+	<li>Communicate IAM-related updates and recommendations to stakeholders.</li>
+	<li>Maintain comprehensive documentation of IAM policies, processes, and configurations.</li>
+	<li>Generate reports and metrics related to IAM activities and security posture.</li>
+	<li>Stay current with industry best practices, regulations, and compliance standards related to IAM, such as FedRamp, SOX, GDPR, PCI, and NIST.</li>
+	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<p><strong>Must-Have Skills</strong></p>
-<p>Job descriptions include an average of eight distinct qualifications per job post (including must-have and nice-to-have skills).&nbsp;</p>
-<p>List 5 to 7 bullet points that are absolutely necessary for a candidate to be successful in the role they are applying to.&nbsp;</p>
-<p>Include qualities when applicable, like years of experience.</p>
-<p>Be sure to clarify what the application requires, like portfolio, writing sample, video recording, resume, CV, cover letter, etc.</p>
-<p>Other important information includes education, experience, certifications and knowledge of specific platforms.</p>
-<p><strong>Nice-to-Have Skills</strong></p>
-<p>If there are any other qualities that are nice to have, include those here. Don’t feel like you have to include this section, but it may help candidates know what to include in the application or interview to stand out. This section is lower priority and should have fewer bullet points.</p>
+<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<ul>
+	<li>In-depth understanding of access governance&nbsp;</li>
+	<li>Experience in Identity Governance &amp; Administration (IGA) solutions</li>
+	<li>Performing policy enforcement, role management, and access certifications</li>
+	<li>Experience implementing privileged access management (PAM)</li>
+	<li>Experience developing IAM security standards and policies</li>
+	<li>Preferred background in scripting and/or application development to automate identity and access management processes.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
