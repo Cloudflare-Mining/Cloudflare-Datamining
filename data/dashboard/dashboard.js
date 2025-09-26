@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "f2390b82-bae7-5db5-99ae-8273b87e8e81")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "5571d238-5078-51db-bd67-919b8e962e16")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1156,10 +1156,10 @@
 					e.g.build = un({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "ffed7940b6e7ceabf76b25deae9439dba2a5eb4f",
-						dashVersion: "36212694",
+						commit: "329d9ce9d04558629fa0047903dd99efb346fcaf",
+						dashVersion: "36225540",
 						env: "production",
-						builtAt: 1758817136553,
+						builtAt: 1758876827037,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -64752,7 +64752,7 @@ SOFTWARE.`,
 					scheduleHistoryById: (0, n.BC)`/${"accountId"}/${"zoneName"}/speed/test/schedule/${"scheduleId"}`,
 					optimization: (0, n.BC)`/${"accountId"}/${"zoneName"}/speed/optimization`,
 					optimizationEnhanced: (0, n.BC)`/${"accountId"}/${"zoneName"}/speed/optimization/${"tabName"}`,
-					smartShield: (0, n.BC)`/${"accountId"}/${"zoneName"}/speed/smart-shield`
+					smartShield: (0, n.BC)`/${"accountId"}/${"zoneName"}/speed/smart-shield?highlight=${"highlight"}`
 				},
 				o = [{
 					title: "speed.overview.tab.summary",
@@ -85895,4 +85895,4 @@ button.border {
 	}
 ]);
 
-//# debugId=f2390b82-bae7-5db5-99ae-8273b87e8e81
+//# debugId=5571d238-5078-51db-bd67-919b8e962e16
