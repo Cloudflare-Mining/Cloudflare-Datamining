@@ -122,6 +122,19 @@
 				}
 			},
 			{
+				"description": "Filters results by Geolocation. Specify a comma-separated list of GeoNames IDs. Prefix with `-` to exclude geoIds from results. For example, `-2267056,360689` excludes results from the 2267056 (Lisbon), but includes results from 5128638 (New York).",
+				"in": "query",
+				"name": "geoId",
+				"schema": {
+					"description": "Filters results by Geolocation. Specify a comma-separated list of GeoNames IDs. Prefix with `-` to exclude geoIds from results. For example, `-2267056,360689` excludes results from the 2267056 (Lisbon), but includes results from 5128638 (New York).",
+					"example": "2267056,360689",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
