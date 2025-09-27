@@ -215,6 +215,30 @@
 											},
 											{
 												"contentTypeId": "elementNavLink",
+												"contentfulId": "1DBmgZE4aI6IN4AI70ODLZ",
+												"locale": "en-US",
+												"title": "Protect & accelerate networks",
+												"description": "Network security, performance, & reliability on a global scale",
+												"url": "/network-services",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
+												"contentfulId": "7602RDTpQ1pPSb2uCBE3Jc",
+												"locale": "en-US",
+												"title": "Secure hybrid work",
+												"description": "Secure any user accessing any application, on any device, anywhere",
+												"url": "/zero-trust",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
 												"contentfulId": "1SYTw2ShGXiVfSwxeJUcHg",
 												"locale": "en-US",
 												"title": "Build & deploy cloud applications",
@@ -2575,7 +2599,18 @@
 								"hideOnChinaSite": false,
 								"overrideTheSalesPhoneNumber": null,
 								"navigationItems": [],
-								"mainLink": null,
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "4j4S5ah5FLRHvz61xG93Gk",
+									"locale": "en-US",
+									"title": "Contact sales",
+									"description": null,
+									"url": "https://www.cloudflare.com/products/zero-trust/plans/enterprise/",
+									"badges": null,
+									"specialLinkType": "CTA",
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
 								"navigationLinks": []
 							},
 							{
@@ -2618,6 +2653,112 @@
 						"contentTypeId": "bladePadding",
 						"height": 1,
 						"backgroundColor": "blue5"
+					},
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "70Il4X62A37cPxf97qmEgo",
+						"menuTitle": "SSE & SASE",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "10X0LS8uVJOWBbeZkeI6ah",
+								"linkText": "Overview",
+								"page": null,
+								"url": "/zero-trust",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "7etJU93erWBUQPdDbjYBWX",
+								"linkText": "Solutions",
+								"page": null,
+								"url": "/zero-trust/solutions/",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "1km56yP6vf7r4Nx1pgEs9H",
+								"linkText": "Products",
+								"page": null,
+								"url": "/zero-trust/products/",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "1MPnz4oklmxIn6d5MfI1x0",
+								"linkText": "Resources",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "3Ko7yh630HKRG9uuKTmq59",
+										"linkText": "Case studies",
+										"page": null,
+										"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "559PiQrQNL0cqxI3bsLn4V",
+										"linkText": "Analyst Reports",
+										"page": null,
+										"url": "/analysts/"
+									},
+									{
+										"contentfulId": "7ypbRBFxCGM7pgGyOKj72l",
+										"linkText": "Product tour",
+										"page": null,
+										"url": "https://www.cloudflare.com/zero-trust/interactive-demo/"
+									},
+									{
+										"contentfulId": "KxYYsyoMmFhVrH8ESEj7c",
+										"linkText": "Product guides",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce&resourcetype=Solution+%26+Product+Guides"
+									},
+									{
+										"contentfulId": "43R602VwKwyMypE2ZUecIT",
+										"linkText": "Reference architecture",
+										"page": null,
+										"url": "https://developers.cloudflare.com/reference-architecture/"
+									},
+									{
+										"contentfulId": "49bw6FRI2ooFCtnnbDT8sS",
+										"linkText": "Professional Services",
+										"page": null,
+										"url": "https://cfl.re/zero-trust-quickstart-solution-brief"
+									},
+									{
+										"contentfulId": "2GCh1wGIxttSXkyn0ibU3w",
+										"linkText": "Whitepapers",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce&resourcetype=Whitepaper"
+									},
+									{
+										"contentfulId": "pwITDWH0n5Z1DjX1KLTmg",
+										"linkText": "Webinars",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce&resourcetype=Webinar"
+									},
+									{
+										"contentfulId": "1awgo4XNStilPgkAKZNekC",
+										"linkText": "Developer docs",
+										"page": null,
+										"url": "https://developers.cloudflare.com/cloudflare-one/"
+									},
+									{
+										"contentfulId": "lY4WcI9MB35bYnyiNMtuU",
+										"linkText": "Industry use case",
+										"page": null,
+										"url": "/industry-solutions/"
+									}
+								]
+							},
+							{
+								"contentfulId": "5yQ7qOG5YMtgCKBnS1dEDF",
+								"linkText": "Pricing",
+								"page": null,
+								"url": "/plans/zero-trust-services/",
+								"subMenuItems": []
+							}
+						]
 					},
 					{
 						"contentfulId": "5RD0QAEd7WT7uITwYmYkF7",
