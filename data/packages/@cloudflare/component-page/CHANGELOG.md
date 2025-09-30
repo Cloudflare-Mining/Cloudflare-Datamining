@@ -1,5 +1,11 @@
 # Change Log
 
+## 10.1.0
+
+### Minor Changes
+
+- 82021ffb37: Default Page docs button to use Span for Tooltip, not button which creates invalid HTML
+
 ## 10.0.16
 
 ### Patch Changes
