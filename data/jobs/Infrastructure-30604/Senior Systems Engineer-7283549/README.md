@@ -5,66 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp; Austin, TX; New York, NY; San Francisco, CA</strong></p>
-<p><strong>About the role</strong></p>
-<p>As Vice President and Head of Product Design at Cloudflare, you will be responsible for leading design teams for our entire product portfolio. Whether it is guiding the feel of the debug interface that will help developers deploy Serverless Applications or streamlining a simple rule builder that allows non-technical users to secure their web app, your job is to help make complicated things simple and powerful things achievable for users of all types.&nbsp; At varying times this involves creating a vision, establishing a roadmap, and ensuring a high level of product quality and delivery.&nbsp;</p>
-<p>The Product Design organization at Cloudflare is made up of Product Designers, User Researchers, Design Operations, and Design Systems folks that love to learn, collaborate, and solve large-scale problems. This role reports to the President of Product &amp; Engineering.</p>
-<p>Your work and the work of your department will impact and influence the experience of products used by millions of people and by thousands of companies daily. As Vice President of Product Design, you will work closely with the leadership team of the company as well as product and engineering leaders and other cross-functional stakeholders.&nbsp; Building a talented, diverse and inclusive team will be key to your success and the success of Cloudflare’s products generally.</p>
-<p>If you are an exceptional design leader that wants to help build a better Internet and work in a dynamic environment that respects diversity and inclusion then we’d love to hear from you.&nbsp;</p>
-<p><strong>What you'll do</strong></p>
+<h4><strong>Available Locations: </strong>Austin, London, Lisbon</h4>
+<h4><strong>About the Department</strong></h4>
+<p>Production Engineering is responsible for the world’s most reliable, observable, performant, and safe network ecosystem. Our customers rely on our products and systems to safely modify, troubleshoot, and release products without external impact.</p>
+<p>Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.</p>
+<p>We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behavior is and we are capable of determining and exposing anomalous behavior.</p>
+<p>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p><strong>About the Role</strong></p>
+<p>In this role, you can expect to:</p>
 <ul>
-	<li>Lead, mentor and grow the Product Design organization at Cloudflare including product design, design operations, design engineering, and user research.</li>
-	<li>Build and enhance design principles and practices.</li>
-	<li>Foster a culture of diversity and inclusiveness.</li>
-	<li>Work with engineering and product leaders to establish both near-term and long-term product vision.</li>
-	<li>Refine and enhance the Cloudflare design team culture and export best practices to product teams across the organization.&nbsp;</li>
-	<li>Utilize quantitative and qualitative data and understand how to translate it into accessible service and interface design.&nbsp;</li>
-	<li>Own the design, UX and product experience best practices to refine and enhance the Cloudflare design team culture and export best practices to product teams across the organization.</li>
+	<li>Design, write, and deliver software that improves Cloudflare's Internal and External platforms</li>
+	<li>Scale and evolve systems through software and automation to improve reliability and velocity</li>
+	<li>Work on highly distributed and scalable systems with a globally distributed team</li>
+	<li>Participate in the constant cycle of knowledge sharing and mentoring</li>
+	<li>Research and introduce cutting-edge technologies</li>
+	<li>Contribute to open-source</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>We are well-funded, growing quickly and focused on building an extraordinary company. This is a systems reliability engineering role and is a superb opportunity to be part of a high performing team and help to support Cloudflare’s mission and help build a better internet.</p>
+<p>You will build services and APIs to constantly improve availability, performance, uptime and response times. The ideal candidates will have experience working with large-scale applications and a track record of producing great output. You must care deeply not only about the quality of your and the team's code, but also the user experience.</p>
+<p><strong>Qualifications</strong></p>
 <ul>
-	<li>Previous experience leading world class sizable product design teams at technology companies (B2B a plus).</li>
-	<li>Proven track record building and developing diverse design teams.</li>
-	<li>Experience leading design engineering teams across multiple product lines as well as design systems</li>
-	<li>Deep empathy with, and understanding of users’ needs.</li>
-	<li>Experience leading product research teams.</li>
-	<li>Excellent written, visual and verbal communication skills.</li>
-	<li>15+ years product/UX design experience.</li>
-	<li>Technical expertise, curiosity and a good understanding of network services</li>
+	<li>We want someone who understands and obsesses over front-end systems.</li>
+	<li>Passion for improving developer experience and increasing development velocity.</li>
+	<li>Multiple years of experience in frontend engineering, specializing in JavaScript, TypeScript, and React.</li>
+	<li>Strong knowledge of UI infrastructure, CI/CD, and testing frameworks (e.g., Playwright, Cypress).</li>
+	<li>Proven ability to drive projects independently, from concept to implementation.</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Preferred Skills:</strong></p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $352,000 - $430,000</span></li>
-	<li><span data-sheets-root="1">For New York based hires:&nbsp; Estimated annual salary of $337,000 - $411,000</span></li>
+	<li>Expertise in React, TypeScript, and modern front-end systems</li>
+	<li>Experience with modern JavaScript bundling tools like Webpack or Vite</li>
+	<li>Familiarity with RESTful APIs</li>
+	<li>Experience building and maintaining integration test suites with API mocks</li>
+	<li>Experience building and scaling large-scale web applications.</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Why Join Us?</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Help us shape and improve our customers’ experience with Email Security</li>
+	<li>Shape best practices and drive impactful engineering change.</li>
+	<li>Work with modern technologies and solve large-scale challenges.</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,38 +5,50 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp; Austin, TX; New York, NY; San Francisco, CA</strong></p>
-<p><strong>About the role</strong></p>
-<p>As Vice President and Head of Product Design at Cloudflare, you will be responsible for leading design teams for our entire product portfolio. Whether it is guiding the feel of the debug interface that will help developers deploy Serverless Applications or streamlining a simple rule builder that allows non-technical users to secure their web app, your job is to help make complicated things simple and powerful things achievable for users of all types.&nbsp; At varying times this involves creating a vision, establishing a roadmap, and ensuring a high level of product quality and delivery.&nbsp;</p>
-<p>The Product Design organization at Cloudflare is made up of Product Designers, User Researchers, Design Operations, and Design Systems folks that love to learn, collaborate, and solve large-scale problems. This role reports to the President of Product &amp; Engineering.</p>
-<p>Your work and the work of your department will impact and influence the experience of products used by millions of people and by thousands of companies daily. As Vice President of Product Design, you will work closely with the leadership team of the company as well as product and engineering leaders and other cross-functional stakeholders.&nbsp; Building a talented, diverse and inclusive team will be key to your success and the success of Cloudflare’s products generally.</p>
-<p>If you are an exceptional design leader that wants to help build a better Internet and work in a dynamic environment that respects diversity and inclusion then we’d love to hear from you.&nbsp;</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Locations: <span class="collapsed-field-text">Austin, US, San Francisco, US, or Seattle, US. (Austin preferred)</span> &nbsp;</strong></p>
+<p><strong>About The Department</strong></p>
+<p>Cloudflare’s Infrastructure group is responsible for building our global network. Our Hardware Engineering team helps research, develop, test, and deploy new equipment enabling 20% of the world’s internet traffic to be served smoothly. Deployed across 330 cities in 120+ countries, the hardware we select helps improve the security, reliability, and performance of the Internet.</p>
+<p><strong>About The Role</strong></p>
+<p>We need to make thoughtful infrastructure choices affecting a significant portion of the Internet. Hardware we work with includes servers and components, as well as PDUs and network hardware. As a Hardware Systems Engineer, you will work with colleagues on the Engineering teams, Product and Performance Optimization teams, and Hardware Sourcing teams to design, qualify and maintain Cloudflare’s worldwide fleet of servers</p>
+<p><strong>What You'll Do</strong></p>
 <ul>
-	<li>Lead, mentor and grow the Product Design organization at Cloudflare including product design, design operations, design engineering, and user research.</li>
-	<li>Build and enhance design principles and practices.</li>
-	<li>Foster a culture of diversity and inclusiveness.</li>
-	<li>Work with engineering and product leaders to establish both near-term and long-term product vision.</li>
-	<li>Refine and enhance the Cloudflare design team culture and export best practices to product teams across the organization.&nbsp;</li>
-	<li>Utilize quantitative and qualitative data and understand how to translate it into accessible service and interface design.&nbsp;</li>
-	<li>Own the design, UX and product experience best practices to refine and enhance the Cloudflare design team culture and export best practices to product teams across the organization.</li>
+	<li>Work with product teams at Cloudfare to gather product requirements for next generation of servers, and work with silicon vendors to assess performance and select the components (CPU, memory, disk, NIC, GPUs etc)&nbsp;</li>
+	<li>Work with ODM partners to specify, design and determine the key performance indicators of Cloudflare’s next generation of servers for the fleet</li>
+	<li>Qualify the server hardware across EVT/DVT/PVT phases and deploy in Cloudflare production environment</li>
+	<li>Collaborate with the Site Reliability Engineering team to onboard and integrate the next generation of servers into provisioning tools and fleet management tools.</li>
+	<li>Collaborate with performance team and software teams to optimize software performance on the hardware</li>
+	<li>Work with cross-functional teams to deploy firmware updates, triage hardware problem reports, resolve hardware issues, maintain automation tools.&nbsp;</li>
+	<li>Communicate your results and updates through blog posts and internal talks</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
 <ul>
-	<li>Previous experience leading world class sizable product design teams at technology companies (B2B a plus).</li>
-	<li>Proven track record building and developing diverse design teams.</li>
-	<li>Experience leading design engineering teams across multiple product lines as well as design systems</li>
-	<li>Deep empathy with, and understanding of users’ needs.</li>
-	<li>Experience leading product research teams.</li>
-	<li>Excellent written, visual and verbal communication skills.</li>
-	<li>15+ years product/UX design experience.</li>
-	<li>Technical expertise, curiosity and a good understanding of network services</li>
+	<li>Bachelor’s degree in Computer Engineering, Electrical Engineering, or Computer Science</li>
+	<li>Extensive experience with compute design engineering, validation, performance benchmarking, debugging, and deployment used in the data center</li>
+	<li>Knowledge of CPU architectures, preferably both x86 and ARM</li>
+	<li>Knowledge and experience with server hardware including motherboard designs, CPU architecture, memory &amp; storage technology</li>
+	<li>Knowledge of performance benchmarking ; Previous experience in testing, measuring, and/or simulating hardware performance and an understanding of no-stone-left-unturned experimentation</li>
+	<li>Knowledge of bash, python and basic Linux task automation</li>
+	<li>Knowledge of Redfish, IPMI and server remote management protocols, and experience with firmware updates</li>
+	<li>Curiosity and desire to learn about the Cloudflare hardware and products used by 20% of all web sites</li>
+	<li>Desire to learn how a diverse server fleet is managed at scale with tools such as traffic management, capacity planning and failover mechanisms</li>
+	<li>Desire to learn the tools Cloudflare uses to maintain and monitor our hardware</li>
+</ul>
+<p><strong>&nbsp;</strong><strong>Bonus Points</strong></p>
+<ul>
+	<li>Master’s degree in Computer Engineering, Electrical Engineering, or Compute Science</li>
+	<li>Experience of performance optimization based on hardware / software codesign</li>
+	<li>Experience of kernel development, compiler optimization, or driver development.</li>
+	<li>Experience of working with external vendors on server hardware qualification.</li>
+	<li>Experience of observability and monitoring tools such as Prometheus and Grafana, as well as the ability to observe trends over time</li>
+	<li>Experience with software development tools and processes such as Git, TeamCity and Jira</li>
+	<li>Experience in a hyperscale cloud infrastructure role also valuable</li>
+	<li>Knowledge of debugging server hardware faults and the ability to engage with our sourcing team and vendors to improve quality</li>
+	<li>Knowledge of XPU/accelerator architectures is a plus</li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p>Compensation may be adjusted depending on work location and level.<em> (Hiring at multiple levels: Junior P2, Mid P3, or Senior P4)</em></p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $352,000 - $430,000</span></li>
-	<li><span data-sheets-root="1">For New York based hires:&nbsp; Estimated annual salary of $337,000 - $411,000</span></li>
+	<li><span data-sheets-root="1">For San Francisco based hires: Estimated annual salary of $162,000 - $180,000. (Mid Level)</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
