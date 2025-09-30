@@ -1,0 +1,100 @@
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6oYxqx9fdJU4m2KBQtarzn/34b0445de61c02b85544389abe2349ea/image15.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Just after 11:30 UTC (16:00 local time) on Monday, September 29, 2025, subscribers of wired Internet providers in <a href="https://radar.cloudflare.com/traffic/af"><u>Afghanistan</u></a> experienced a <a href="https://x.com/CloudflareRadar/status/1972649804821057727"><u>brief service interruption</u></a>, lasting until just before 12:00 UTC (16:30 local time). Cloudflare <a href="https://radar.cloudflare.com/explorer?dataSet=netflows&amp;loc=&amp;dt=1d&amp;asn=as131284&amp;compAsn=as38742&amp;timeCompare=2025-09-21"><u>traffic data for AS38472 (Afghan Wireless) and AS131284 (Etisalat)</u></a> shows that traffic from these mobile providers remained available during that period.</p>
+	<p>However, just after 12:30 UTC (17:00 local time), the Internet was <a href="https://x.com/CloudflareRadar/status/1972682041759076637"><u>completely shut down</u></a>, with Afghani news outlet TOLOnews initially <a href="https://x.com/TOLONewsEnglish/status/1972641017745588605"><u>reporting in a post on X</u></a> that “<i>Sources have confirmed to TOLOnews that today (Monday), afternoon, fiber-optic Internet will be shut down across the country.</i>” This shutdown is likely an extension of the regional shutdowns of fiber optic connections that took place earlier in September, and it will <a href="https://www.dw.com/en/afghanistan-taliban-shuts-down-internet-indefinitely/a-74181089"><u>reportedly</u></a> remain in force “until further notice”. (The earlier regional shutdowns are discussed in more detail below.)</p>
+	<p>While Monday’s first shutdown was only partial, with mobile connectivity apparently remaining available, the graphs below show that the second event took the country completely offline, with <a href="https://radar.cloudflare.com/traffic/af?dateStart=2025-09-29&amp;dateEnd=2025-09-29#traffic-trends"><u>web</u></a> and <a href="https://radar.cloudflare.com/dns/af?dateStart=2025-09-29&amp;dateEnd=2025-09-29#dns-query-volume"><u>DNS</u></a> traffic dropping to zero at a national level, as seen in the graphs below.</p>
+	<p>While the shutdown will impact subscribers to fixed and mobile Internet services, it also “<a href="https://www.turkiyetoday.com/world/afghanistan-descends-into-total-communications-blackout-under-taliban-order-3207737"><u>threatens to paralyze critical services including banking, customs operations and emergency communications</u></a>” across the country. The <a href="https://x.com/TOLONewsEnglish/status/1972641017745588605"><u>X post from TOLOnews</u></a> also noted that television and radio networks would face disruptions.</p>
+	<p>HTTP request traffic is traffic coming from web browsers, applications, and automated tools, and is a clear signal of the availability of Internet connectivity. The graph below shows this request volume dropping sharply as the shutdown was implemented.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6x0Wdv7U6SzS7jXrfQuETT/135e0e512741c79e969e4e34800f02d7/image9.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p><sup><i>HTTP request traffic from Afghanistan, September 29, 2025</i></sup></p>
+	<p>Cloudflare sends bytes back in response to those HTTP requests (“HTTP bytes”), as well as sending bytes back in response to traffic associated with other services, such as our <a href="https://1.1.1.1/dns"><u>1.1.1.1 DNS resolver</u></a>, <a href="https://www.cloudflare.com/application-services/products/dns"><u>authoritative DNS</u></a>, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp"><u>WARP</u></a>, etc. (“total bytes”). Cloudflare stopped receiving client traffic from the services when the shutdown began, causing the bytes transferred in response to drop to zero.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qDezs9ngevvCWvDiCAG2C/1c21c568ca730fa0f5fc15964c619c2b/image6.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p><sup><i>Internet traffic from Afghanistan, September 29, 2025</i></sup></p>
+	<p><a href="https://1.1.1.1/dns"><u>1.1.1.1</u></a> is Cloudflare’s privacy-focused DNS resolver, and processes DNS lookup requests from clients. As connectivity was cut, traffic to the service disappeared.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4pSshBSiJVVwJs8Ro8DAv0/eb77f8e08299c58155ffb4dccad8ac01/image10.png" alt="" class="kg-image" width="1600" height="676" loading="lazy">
+	</figure>
+	<p><sup><i>DNS query traffic to Cloudflare’s 1.1.1.1 resolver from Afghanistan, September 29, 2025</i></sup></p>
+	<p>At a <a href="https://radar.cloudflare.com/traffic/af?dateStart=2025-09-29&amp;dateEnd=2025-09-29#traffic-volume-by-region"><u>regional</u></a> level, it appears that traffic from Kabul fell slightly later than traffic from the other regions, trailing them by approximately a half hour.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5l9bImRqxgDdWGOHXCKgYC/b4c6e0eae1b314ce750c4aa6581c3321/image12.png" alt="" class="kg-image" width="1600" height="928" loading="lazy">
+	</figure>
+	<p><sup><i>HTTP request traffic from the top five provinces in Afghanistan, September 29, 2025</i></sup></p>
+	<p>The delay in traffic loss seen in Kabul may be associated with a more gradual loss of traffic seen at <a href="https://radar.cloudflare.com/AS38742"><u>AS38742 (Afghan Wireless)</u></a>, which saw traffic approach zero just after 13:00 UTC (17:30 local time). This conjecture is supported by a <a href="https://kabulnow.com/2025/09/taliban-order-nationwide-shutdown-of-internet-and-mobile-services-in-afghanistan"><u>published report</u></a> that noted “Residents across Kabul and several provincial cities reported on Monday that fiber-optic services were no longer available, with only limited mobile data functioning briefly before signal towers stopped working altogether.”</p>
+	<p>Interestingly, it appears that as of 00:00 UTC (04:30 local time) on September 30, we continue to see a very small amount of traffic from this network. (This is in contrast to other networks, whose lines disappeared from the graph around 12:30 UTC (17:00 local time)).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3MMrOcXD5yg4GSDT9Y1p08/31de2f6c92043241db214e982a89556c/image7.png" alt="" class="kg-image" width="1340" height="500" loading="lazy">
+	</figure>
+	<p><sup><i>HTTP request traffic from the top 10 ASNs in Afghanistan, September 29, 2025</i></sup></p>
+	<p>Network providers announce IP address space that they are responsible for to other networks, enabling the routing of traffic to and from those IP addresses. When these announcements are withdrawn, the resources in that address space, whether clients or servers, can no longer reach, or are no longer reachable from, the rest of the Internet.</p>
+	<p>In Afghanistan, announced IPv4 address space dropped rapidly as the shutdown was implemented, falling by two-thirds from 604 to 197 announced /24s (blocks of 256 IPv4 addresses) in the first 20 minutes, and then dropping further over the next 90 minutes. Through the end of the day, several networks continued to announce a small amount of IPv4 address space: four /24s from <a href="https://radar.cloudflare.com/AS38742"><u>AS38742 (Afghan Wireless)</u></a>, two from <a href="https://radar.cloudflare.com/AS149024"><u>AS149024 (Afghan Bawar ICT Services)</u></a>, and one each from <a href="https://radar.cloudflare.com/AS138322"><u>AS138322 (Afghan Wireless)</u></a> and <a href="https://radar.cloudflare.com/AS136479"><u>AS136479 (Cyber Telecom)</u></a>.</p>
+	<p>Afghan Wireless is a mobile connectivity provider, and <a href="http://afghanbawar.com"><u>Afghan Bawar</u></a> and <a href="https://cts.af/about-us"><u>Cyber Telecom</u></a> appear to offer wireless/mobile services as well. The <a href="https://radar.cloudflare.com/routing/prefix/152.36.203.0/24"><u>prefixes</u></a> still visible from Afghan Wireless appear to be routed through <a href="https://radar.cloudflare.com/as17557"><u>AS17557 (Pakistan Telecom)</u></a>, while the prefixes from the other two providers (<a href="https://radar.cloudflare.com/routing/prefix/163.223.180.0/23"><u>Afghan Bawar</u></a>, <a href="https://radar.cloudflare.com/routing/prefix/103.126.5.0/24"><u>Cyber Telecom</u></a>) appear to be routed through <a href="https://radar.cloudflare.com/as40676"><u>AS40676 (Psychz Networks)</u></a>, a US-based solutions provider.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11yzruult8bJD7p15lEwiG/e19f71e771f8c1162717b75675ecf94e/image5.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p><sup><i>Announced IPv4 address space from Afghanistan, September 29, 2025</i></sup></p>
+	<p>Announced IPv6 address space fell as well, though not quite as catastrophically, dropping by three-fourths almost immediately, from 262,407 /48s (blocks of over 1.2 septillion IPv6 addresses) to 65,542.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1s5p2v84LAyw1igdAKuaNT/4c597dca9a55c4f4a8a9c69c60e8a022/image1.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p><sup><i>Announced IPv6 address space from Afghanistan, September 29, 2025</i></sup></p>
+	<div class="flex anchor relative">
+		<h3 id="regional-shutdowns-by-the-taliban-to-prevent-immoral-activities">Regional shutdowns by the Taliban to prevent “immoral activities”</h3>
+		<a href="https://blog.cloudflare.com/#regional-shutdowns-by-the-taliban-to-prevent-immoral-activities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In mid-September, the Taliban <a href="https://amu.tv/200798"><u>ordered the shutdown of fiber optic Internet connectivity</u></a> in multiple provinces across Afghanistan, as part of a drive to “prevent immorality”. It was the first such ban issued since the Taliban took full control of the country in August 2021.</p>
+	<p>These regional shutdowns <a href="https://www.afghanstudiescenter.org/taliban-internet-shutdown-blocks-thousands-of-afghan-students-from-online-classes"><u>blocked</u></a> Afghani students from attending online classes, <a href="https://theweek.com/world-news/afghanistan-taliban-high-speed-internet-women-education"><u>impacted</u></a> commerce and banking, and <a href="https://www.dw.com/en/afghanistan-whats-at-stake-as-taliban-cut-internet/a-74043564"><u>limited access</u></a> to government agencies and institutions such as passport and registration offices, customs offices. As many as <a href="https://amu.tv/200798"><u>15 provinces</u></a> experienced shutdowns, and we review the observed impacts across several of them below, using the regional traffic data <a href="https://blog.cloudflare.com/new-regional-internet-traffic-and-certificate-transparency-insights-on-radar"><u>recently made available</u></a> on Cloudflare Radar.</p>
+	<p><a href="https://radar.cloudflare.com/traffic/1147288?dateStart=2025-09-01&amp;dateEnd=2025-09-28"><u>Balkh</u></a> appeared to be one of the earliest targeted provinces, with traffic dropping midday (UTC) on September 15. While some nominal recovery occurred on September 23, traffic remained well below pre-shutdown levels.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1t0mFLkPjixHM9m7NWnMha/d855d9dc8301dae33e3ec7abb4f9232c/image2.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p><sup><i>Internet traffic from Balkh, Afghanistan, September 1-28, 2025</i></sup></p>
+	<p>After several days of peak traffic levels double those seen in previous weeks, traffic in <a href="https://radar.cloudflare.com/traffic/1123230?dateStart=2025-09-01&amp;dateEnd=2025-09-28"><u>Takhar</u></a> fell on September 16, remaining near zero until September 21, when a small amount of connectivity was apparently restored.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3l7wfMGBMt8pOVxFb3NvvX/b99ad045b8a2eb0a55f25d3f448fe29e/image8.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p><sup><i>Internet traffic from Takhar, Afghanistan, September 1-28, 2025</i></sup></p>
+	<p>In <a href="https://radar.cloudflare.com/traffic/1138335?dateStart=2025-09-01&amp;dateEnd=2025-09-28"><u>Kandahar</u></a>, lower peak traffic volumes are visible between September 17 and September 21. The partial restoration of traffic is coincident with the restoration of Internet services highlighted in a <a href="https://menafn.com/1110093436/Internet-Services-Restored-in-Some-Areas-of-Afghanistans-Kandahar"><u>published report</u></a>, though it notes that “The restoration of services is limited to point-to-point connections for key government offices, including banks, customs offices, and the Directorate for National ID Cards.”</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lzuyfuIoH76wzw8wpNR7n/e3d2baf026e9ab9d3fa0ecd7926fc127/image11.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p><sup><i>Internet traffic from Kandahar, Afghanistan, September 1-28, 2025</i></sup></p>
+	<p><a href="https://radar.cloudflare.com/traffic/1147537?dateStart=2025-09-01&amp;dateEnd=2025-09-28"><u>Baghlan</u></a> experienced an anomalous spike in traffic on September 16, with total traffic spiking 3x higher than peaks seen during the previous weeks. However, on September 17, traffic dropped to a fraction of pre-shutdown levels. Except for a return to near-normal levels on September 21 &amp; 22, the disruption remained in place through the end of the month.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5OuHHfoiGIbcUP7qWhM6Mb/cc3da98c3127c7d27a416d02adc716fd/image14.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p><sup><i>Internet traffic from Baghlan, Afghanistan, September 1-28, 2025</i></sup></p>
+	<p>Traffic in <a href="https://radar.cloudflare.com/traffic/1132366?dateStart=2025-09-01&amp;dateEnd=2025-09-28"><u>Nangarhar</u></a> was disrupted between September 19-22, but quickly recovered to pre-shutdown levels once restored.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FYwcwHLwlj5VC9HIyB5tX/a6c047b3fe0f1a909b8e38452405a7eb/image13.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p><sup><i>Internet traffic from Nangarhar, Afghanistan, September 1-28, 2025</i></sup></p>
+	<p>After experiencing an apparent issue at the start of the month, Internet traffic in <a href="https://radar.cloudflare.com/traffic/1131461?dateStart=2025-09-01&amp;dateEnd=2025-09-28"><u>Oruzgan</u></a>, again fell on September 19. After an apparent complete shutdown, on September 23, a small amount of traffic was again visible.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QoIbIy0hbaKhWq7Mb8WAD/44cb159f930ed2328ceff1e4197d4d12/image4.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p><sup><i>Internet traffic from Oruzgan, Afghanistan, September 1-28, 2025</i></sup></p>
+	<p>Internet connectivity was also disrupted in the province of <a href="https://radar.cloudflare.com/traffic/1140025?dateStart=2025-09-01&amp;dateEnd=2025-09-28"><u>Herat</u></a>, although differently. From September 22-25, partial Internet outages were implemented between 16:30-03:30 UTC (21:00-08:00 local time), with traffic volumes dropping to approximately half of those seen at the same time the prior weeks. The intent of these “Internet curfew” shutdowns is unclear, but Herat residents <a href="https://tolonews.com/afghanistan-195915"><u>noted</u></a> that they “severely disrupted their business and educational activities”.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1C94mQTOp9CxMJAH0qxp8T/fb2a9456f09d67125e505963254a1080/image3.png" alt="" class="kg-image" width="1600" height="536" loading="lazy">
+	</figure>
+	<p><sup><i>Internet traffic from Herat, Afghanistan, September 16-29, 2025</i></sup></p>
+	<p>While <a href="https://blog.cloudflare.com/tag/internet-shutdown"><u>Internet shutdowns</u></a> remain all too common around the world, most (though not all) are comparatively short-lived, and are generally in response to a local event, such as exams, unrest/riots, elections, etc. Given the broad impact of this shutdown across all facets of daily personal, social, and professional life in Afghanistan, <a href="https://amu.tv/201377"><u>analysts state</u></a> that it "could deepen Afghanistan’s digital isolation, further damage its struggling economy and drive more Afghans out of work at a time when humanitarian needs are already severe."</p>
+	<div class="flex anchor relative">
+		<h3 id="where-can-i-learn-more">Where can I learn more?</h3>
+		<a href="https://blog.cloudflare.com/#where-can-i-learn-more" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>You can follow the latest state of <a href="https://radar.cloudflare.com/traffic/af"><u>Internet connectivity in Afghanistan</u></a> on Cloudflare Radar. The Cloudflare Radar team will continue to monitor traffic from Afghanistan as well, sharing our observations on the <a href="https://radar.cloudflare.com/outage-center"><u>Cloudflare Radar Outage Center</u></a>, via social media, and in posts on <a href="https://blog.cloudflare.com/tag/cloudflare-radar"><u>blog.cloudflare.com</u></a>. Follow us on social media at <a href="https://twitter.com/CloudflareRadar"><u>@CloudflareRadar</u></a> (X), <a href="https://noc.social/@cloudflareradar"><u>noc.social/@cloudflareradar</u></a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com"><u>radar.cloudflare.com</u></a> (Bluesky), or contact us via email.</p>
+</div>
