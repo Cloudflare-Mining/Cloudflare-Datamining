@@ -22,7 +22,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <p>Some team-specific things we think are interesting and want to highlight.</p>
 <ul>
-	<li>Understanding systems at the network protocol level, including the differences between what the specs say, and what actually happens on the Internet</li>
+	<li>5+ years of experience in understanding systems at the network protocol level, including the differences between what the specs say, and what actually happens on the Internet</li>
 	<li>Strong systems level programming skills</li>
 	<li>Optimization of complex solutions</li>
 	<li>Experience with databases (we use PostgreSQL and Clickhouse)</li>
