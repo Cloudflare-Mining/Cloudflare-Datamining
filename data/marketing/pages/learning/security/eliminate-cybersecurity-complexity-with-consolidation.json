@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/security/what-is-data-exfiltration/",
+	"path": "/learning/security/eliminate-cybersecurity-complexity-with-consolidation/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "NFi0TkujLzmIE4Ip6XcFc",
-				"urlSlug": "security/what-is-data-exfiltration",
+				"contentfulId": "1ZCl4j7bNxDIulg8ZAhMHK",
+				"urlSlug": "security/eliminate-cybersecurity-complexity-with-consolidation",
 				"metaTags": {
-					"metaTitle": "What is data exfiltration?",
-					"metaDescription": "Learn what data exfiltration is and how to prevent it. Discover key techniques, detection methods, and best practices to safeguard your data. \n",
+					"metaTitle": "Eliminate cybersecurity complexity through consolidation",
+					"metaDescription": "Eliminate the costs and complexity of point solutions by adopting a unified, consolidated cybersecurity and networking platform with flexible, prescriptive product bundles. ",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -1002,63 +1002,51 @@
 						]
 					}
 				},
-				"header": "What is data exfiltration?",
-				"blurbSubHeader": "Unauthorized data transfer, or data exfiltration, is a significant threat to organizations. Learn how data exfiltration happens and essential strategies to prevent it. \n",
-				"objectivesHeader": "Learning objectives",
+				"header": "How to eliminate cybersecurity complexity through consolidation",
+				"blurbSubHeader": "Avoid the costs and complexity of managing multiple cybersecurity and networking solutions through consolidation: Adopt a unified platform and flexible, prescriptive product bundles. ",
+				"objectivesHeader": "Security",
 				"objectivesList": [
-					"Understand what data exfiltration is",
-					"Learn common data exfiltration techniques ",
-					"Discover detection and prevention methods "
+					"Understand the drawbacks of using multiple vendors for cybersecurity and networking",
+					"Build a strategy for consolidating tools and vendors",
+					"Recognize the advantages of choosing prescriptive bundles"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "1B9kOyuZZEp1rlqwt8EFOG",
-						"displayText": "Castle-and-moat security",
-						"url": "/learning/access-management/castle-and-moat-network-security/"
+						"contentfulId": "6UelPiupNRtVRwgElq40z",
+						"displayText": "Cyber security",
+						"url": "/learning/security/what-is-cyber-security/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "11BjITFi6r2hDV21rZPAFR",
-						"displayText": "Zero Trust security",
-						"url": "/learning/security/glossary/what-is-zero-trust/"
+						"contentfulId": "7esVgOhtx4g1wc9j085HEg",
+						"displayText": "What is web application security?",
+						"url": "/learning/security/what-is-web-application-security/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4kyyAceZojTXyGrrNyQv2E",
-						"displayText": "A new framework for network security",
-						"url": "https://www.cloudflare.com/insights-sase-framework"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "77GMoHfbv1pOadgxJ3XFik",
-						"displayText": "How to implement Zero Trust",
-						"url": "/learning/access-management/how-to-implement-zero-trust/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "1mVhbSh7k2qiuul5gDOmKa",
-						"displayText": "The rise of Zero Trust Network Access",
-						"url": "https://www.cloudflare.com/insights-zero-trust-network-access/"
+						"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+						"displayText": "What is a DDoS attack?",
+						"url": "/learning/ddos/what-is-a-ddos-attack/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is data exfiltration?</h2>\n<p>Data exfiltration is the deliberate and unauthorized transfer of data from computers or networks to an external computer or network controlled by an attacker. Cybercriminals employ diverse tactics to exfiltrate data, from sophisticated malware, to deceptive phishing attacks to outright physical theft. They aim to steal sensitive information such as intellectual property, financial details, or personal data, which can result in financial losses, tarnished reputations, legal consequences, and compromised security.</p>\n<p>An example of data exfiltration is if an attacker gains access to a private corporate network and copies private messages, financial data, and other sensitive details. They could use this information for malicious purposes such as financial fraud or selling your information to third parties.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the difference between data leaks and data exfiltration?</h2>\n<p>Data leaks and data exfiltration are similar in that they both involve the exposure of previously secure data. However, a data leak occurs accidentally, such as when a company accidentally exposes internal data to the Internet due to a security misconfiguration. Data exfiltration, however, involves a deliberate attempt to steal sensitive information, like when a <a href='https://www.cloudflare.com/the-net/malicious-insiders/'>malicious insider</a> takes valuable company data.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are common data exfiltration techniques?</h2>\n<p>Common data exfiltration techniques include:</p>\n<ul class=\"learning-list\"> \n<li><a href='/learning/access-management/phishing-attack/'>Phishing attacks</a> are when attackers impersonate trusted entities to trick victims into revealing sensitive information like usernames, passwords, or bank account data.</li>\n<li><a href='/learning/ddos/glossary/malware/#:~:text=Malware%2C%20a%20portmanteau%20from%20the,other%20types%20of%20harmful%20software.'>Malware</a>  is software designed to disrupt normal operations of a device. Keyloggers are one example: they silently collect data and send it to an external source.</li>\n<li>Insider threats involve malicious insiders within an organization using existing privilege to access and extract information. For example, an employee might intentionally upload data to a public cloud, hard drive, or <a href='/learning/ai/what-is-large-language-model/'>a large language model (LLM)</a> .</li>\n<li>Social engineering attacks manipulate victims into sharing sensitive information.</li>\n</ul>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">How can organizations detect and prevent data exfiltration?</h2>\n  <p>To protect against data exfiltration, it is important to adopt best practices and deploy effective security tools. One key strategy is implementing a <a href='/learning/security/glossary/what-is-zero-trust/'>Zero Trust</a> approach. Zero Trust is a security model that requires strict identity verification for every person and device accessing a private network. Its main principles include continuous monitoring and validation, least privilege access, device access control, microsegmentation, prevention of lateral movement, and multi-factor authentication (MFA).</p>\n  <p>Monitoring network traffic and connected devices allow crucial visibility to authenticate and verify users and machines. Applying the principle of the least privilege – from executives to IT teams – helps minimize the damage if a user account is compromised.</p>\n  <p>Another effective strategy to prevent data exfiltration is <a href='/learning/access-management/what-is-dlp/'>data loss prevention (DLP)</a>. DLP is a set of tools and processes used to detect and block data in outgoing traffic. DLP security solutions track data within the network, analyze network traffic, and monitor endpoint devices to identify potential loss of confidential information.</p>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare help reduce data exfiltration risks?</h2>\n<p>The Cloudflare One platform offers unified security capabilities, including DLP, to protect data in transit, in use, and at rest across web, SaaS, and <a href='https://www.cloudflare.com/application-services/solutions/'>private applications</a>. Cloudflare One inspects files and HTTPS traffic for sensitive data and allows customers to configure policies to allow or block such data. Cloudflare One also integrates <a href='https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/'>remote browser isolation (RBI)</a> to enhance DLP features by restricting downloads and uploads, keyboard input, and printing. <a href='https://www.cloudflare.com/zero-trust/'>Learn more about Cloudflare One.</a></p>\n",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Why do organizations buy point solutions for cybersecurity and networking?</h2>\n\n<p>For too many organizations, buying point solutions for networking and security has become routine. It often seems like the simplest, fastest, most cost-effective approach to focus on one specific networking need or one security threat at a time. And most vendors are happy to encourage that behavior: They sell dozens of discrete solutions to solve narrowly defined problems.</p>\n\n<p>This piecemeal approach is common across the two fundamental domains that organizations need to connect and protect: external, <a href=\"/the-net/securing-network-infrastructure/\">public-facing infrastructure</a> and internal, private systems (which support remote, hybrid, and branch users). Organizations might buy a <a href=\"/learning/ddos/glossary/web-application-firewall-waf/\">web application firewall (WAF)</a> from one vendor, a scrubber for <a href=\"/learning/ddos/what-is-a-ddos-attack/\">distributed denial-of-service (DDoS) attacks</a> from another, and a <a href=\"/learning/access-management/what-is-a-vpn/\">VPN</a> from a third.</p>\n\n<p>But purchasing point solutions from multiple vendors can leave you with a chaotic, costly mess of poorly integrated products. Your teams face complex management, vendor lock-in, and a security posture riddled with gaps.</p>\n\n<p>Moreover, when you acquire tools from distinct vendors, you wind up paying a premium. That spending leaves you less budget for more advanced technologies and strategic projects.</p>\n<p>How can your organization access all the networking and security capabilities you need for internal and external domains, while ending this long-held practice of piecemeal purchasing? Finding ways to consolidate vendors and seeking out prescriptive product bundles are crucial.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the limitations of point solutions for cybersecurity and networking?</h2>\n\n<p>A piecemeal approach to networking and security is not sustainable. As networking and security requirements continue to multiply, few organizations can afford to purchase, integrate, and manage a growing collection of disparate point solutions.</p>\n\n<p>Even if you decide to consolidate vendors and buy individual services from a single cloud provider, for example, you might still encounter four key limitations: high total expenses, unpredictable costs, complex management, and poor integration.</p>\n\n<h4>High total cost of ownership (TCO)</h4>\n\n<p>When you buy numerous point products, total purchase costs add up quickly. And of course, you need to figure in the time and money spent evaluating individual products, negotiating for their purchase, and then deploying and managing multiple tools.</p>\n\n<p>Complicated pricing schemes contribute to higher prices. For example, some networking services charge per-seat costs for remote workers plus bandwidth fees for branch offices. But what happens when your <a href=\"/the-net/securing-future/hybrid-work/\">hybrid employees</a> work from a corporate office? You are billed twice: for both their seat license and the bandwidth they consume while in the office.</p>\n\n<h4>Unpredictable costs</h4>\n\n<p>Many organizations are facing not just higher costs but also unpredictable expenses. Beyond per-seat license fees and fluctuating bandwidth fees, you might incur origin fetch fees, charges for <a href=\"/learning/ddos/glossary/web-application-firewall-waf/\">WAF</a> rules, and other miscellaneous costs.</p>\n\n<p>Some vendors also charge their customers for malicious traffic. If your company's website experiences a large-scale <a href=\"/learning/ddos/what-is-a-ddos-attack/\">DDoS</a> attack or a rise in <a href=\"/the-net/security-signals/ai-powered-threats/\">AI bots</a>, you could see a sudden increase in your bill. All of this unpredictability makes forecasting and budgeting much more difficult.</p>\n\n<h4>Complex management</h4>\n\n<p>Managing licenses and billing with multiple vendors is time-consuming — especially if you need to deal with a variety of licensing models, complex purchasing agreements, and frequently shifting terms.</p>\n\n<p>Meanwhile, IT staff must work with multiple products, each with its own interface. And because they lack visibility across networking and security products, they cannot efficiently analyze traffic trends, solve performance issues, address security vulnerabilities, or quickly respond to attacks.</p>\n\n<h4>Poor product integration</h4>\n\n<p>Bringing disparate solutions together is not easy: Integrating networking and security products from multiple vendors can require significant time and resources. Choosing a platform from a single vendor might be helpful, but it's no guarantee that all included products and capabilities will be well integrated.</p>\n\n<p>For some vendors, a \"platform\" is any collection of products and capabilities. But the products in that platform might have been acquired from multiple sources: Your networking and security teams might still need to switch among multiple interfaces and might still lack sufficient visibility across all products.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does consolidation simplify cybersecurity and networking?</h2>\n\n<p>Eliminating the costs and complexity of point solutions requires consolidation. The best approach will involve consolidating both tools and vendors. Whether you are focusing on public-facing infrastructure or internal, private systems, you can benefit from replacing disparate products with a single platform.</p>\n\n<p>Of course, given the tendency of vendors to market any collection of products as a \"platform,\" <a href=\"/the-net/platform-consolidation-costs/\">finding the right networking and security platform</a> requires careful scrutiny. Above all, look for a vendor and a platform that offers unified services, prescriptive product bundles, and flexibility for change.</p>\n\n<h4>Unified platform</h4>\n<p>A true unified platform should enable your organization to access fully integrated networking and security services from a single interface, eliminating the need to pivot between different consoles.</p>\n\n<p>A <a href=\"/learning/access-management/security-service-edge-sse/\">security service edge (SSE)</a> platform offers a prime example of how a unified platform can reduce complexity. With the right SSE, you gain <a href=\"/learning/access-management/what-is-ztna/\">zero trust network access (ZTNA)</a>, <a href=\"/learning/access-management/what-is-a-secure-web-gateway/\">secure web gateway (SWG)</a>, <a href=\"/learning/access-management/what-is-dlp/\">data loss prevention (DLP)</a>, and <a href=\"/learning/access-management/what-is-a-casb/\">cloud access security broker (CASB)</a> capabilities in a single offering. You can consistently protect users and data everywhere.</p>\n\n<p>To consolidate networking functions alongside security, a <a href=\"/learning/access-management/what-is-sase/\">secure access service edge (SASE)</a> solution is the next step. A SASE solution integrates all the security capabilities of SSE with networking services. The result is a comprehensive, single-stack cloud platform that addresses both security and connectivity challenges. By using this model, your team members can move from one service to the next without ever having to switch tools.</p>\n\n<h4>Prescriptive product bundling</h4>\n\n<p>Buying a product bundle from a platform provider can give you the benefits of multiple, integrated products and services at a lower price. Still, not all vendors deliver the value they promise from bundles. Some vendors bundle the products they want to sell together — but those might not be products you actually need. You might be stuck paying for products that you'll never use.</p>\n\n<p>Look for bundles that are prescriptive. The vendor should include products or services that they know will help their customers reduce complexity while addressing particular challenges.</p>\n\n<p>All the products in those bundles should be designed to work together. Like a good meal, all of the elements in a bundle should complement one another. A burger with fries makes sense — a burger with sushi doesn't.</p>\n\n<p>When choosing a bundle, be sure to choose one that reflects an actual, current use case. For example, choosing a networking and security bundle that divides remote and in-office employees into separate categories will not benefit many organizations.</p>\n\n<p>However, it still might be beneficial to separate internal networking and security from external, public-facing networking and security. You might decide to focus first on improving connectivity for internal users before expanding your efforts to external users. By choosing a bundle that is closely aligned with your desired use case, you can streamline implementation and ongoing management.</p>\n\n<h4>Bundle flexibility</h4>\n\n<p>One size bundle rarely fits all. Work with a platform vendor that offers bundles in different sizes for each use case or solution area. You should be able to give yourself room to grow without paying for seats that you'll never use.</p>\n\n<p>Moreover, those bundles shouldn't lock you into a set of products forever. Just as you want a composable platform, which lets you seamlessly incorporate new services as your needs change, you should choose a bundle that lets you expand when you're ready.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can Cloudflare reduce costs and complexity?</h2>\n<p>Cloudflare's <a href=\"/connectivity-cloud/\">connectivity cloud</a> is a unified platform of cloud-native services for networking, security, and application development. With Cloudflare, you can streamline operations and simplify security management by accessing all capabilities you need to connect, protect, and build from a single interface.</p>\n\n<p>Cloudflare has also created bundled solution packages to offer prescriptive services at a single price. The <a href=\"/plans/enterprise/interna/\">Interna</a> and <a href=\"/plans/enterprise/externa/\">Externa</a> solution packages are designed to address a full range of internal and external security and networking needs. Available in multiple sizes, you can select the size that best fits your requirements now and gain the flexibility to scale in the future. And because Cloudflare does not charge for bandwidth or malicious traffic, you can have predictable bills going forward. You can modernize networking and security while reducing TCO and conquering the complexity that slows innovation.</p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -1070,7 +1058,7 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
@@ -1112,21 +1100,11 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "NFi0TkujLzmIE4Ip6XcFc",
-			"pathname": "/learning/security/what-is-data-exfiltration/",
+			"contentfulId": "1ZCl4j7bNxDIulg8ZAhMHK",
+			"pathname": "/learning/security/eliminate-cybersecurity-complexity-with-consolidation/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
