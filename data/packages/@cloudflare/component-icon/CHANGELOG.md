@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.8.1
+
+### Patch Changes
+
+- 2fe44697ae: Adding phishing-outline & customer-service-outline and performance-cloud-speed-outline
+
 ## 13.8.0
 
 ### Minor Changes
