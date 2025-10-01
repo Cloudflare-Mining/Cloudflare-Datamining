@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.18
+
+### Patch Changes
+
+- @cloudflare/component-listbox@3.0.18
+
 ## 6.0.17
 
 ### Patch Changes
