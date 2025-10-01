@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.9.0
+
+### Minor Changes
+
+- 55af60142e: Removing fill color to newly added icons
+
 ## 13.8.1
 
 ### Patch Changes
