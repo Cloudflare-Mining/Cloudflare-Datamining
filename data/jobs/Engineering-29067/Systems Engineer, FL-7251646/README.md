@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: London or Lisbon</strong></p>
 <h3><strong>About Engineering at Cloudflare</strong></h3>
-<p>Cloudflare’s Engineering team is responsible for the software platform that serves 28 million HTTP requests per second on average. We also build and run the tools that empower our colleagues to rapidly deliver products to market, as well as monitor and deploy software updates across the globe to over 200+ data centers. You’ll experience the full breadth of technologies needed to run one of the world’s largest networks serving the world's largest customers such as Shopify and VISA.</p>
+<p>Cloudflare’s Engineering team is responsible for the software platform that serves 120 million HTTP requests per second on average. We also build and run the tools that empower our colleagues to rapidly deliver products to market, as well as monitor and deploy software updates across the globe to over 200+ data centers. You’ll experience the full breadth of technologies needed to run one of the world’s largest networks serving the world's largest customers such as Shopify and VISA.</p>
 <p><strong>About The Team</strong></p>
 <p>Cloudflare’s Front Line (FL) group is responsible for maintaining and developing the main Cloudflare web server, processing over 120 million HTTP requests per second. In other words, we own the largest web server in the world.</p>
 <p>The Product Team is responsible for creating new customer-facing features, improving efficiency &amp; safety, and building the next iteration of Cloudflare products. The platform is a Rust based application and our API is mostly built on Workers or Golang.</p>
