@@ -58,6 +58,7 @@ import Connector from './Connector';
 import Copy from './Copy';
 import CornerDownRight from './CornerDownRight';
 import CreditCard from './CreditCard';
+import CustomerServiceOutline from './CustomerServiceOutline';
 import D1 from './D1';
 import DdosAttackOutline from './DdosAttackOutline';
 import DdosAttack from './DdosAttack';
@@ -143,7 +144,8 @@ import OverflowSolid from './OverflowSolid';
 import PagesLogo from './PagesLogo';
 import Pause from './Pause';
 import PerformanceArrowUp from './PerformanceArrowUp';
-import PerformanceCloud from './PerformanceCloud';
+import PerformanceCloudSpeedOutline from './PerformanceCloudSpeedOutline';
+import PhishingOutline from './PhishingOutline';
 import PinOutline from './PinOutline';
 import PinSolid from './PinSolid';
 import PlatformApps from './PlatformApps';
@@ -206,7 +208,6 @@ import TwoWay from './TwoWay';
 import UnlockOutline from './UnlockOutline';
 import Upload from './Upload';
 import UserMulti from './UserMulti';
-import UserMultiSolid from './UserMultiSolid';
 import UserOutline from './UserOutline';
 import User from './User';
 import Vectorize from './Vectorize';
@@ -275,7 +276,6 @@ export default {
   'cloud-internet-solid': CloudInternetSolid,
   'cloud-internet': CloudInternet,
   'cloud-multi': CloudMulti,
-  'cloud-performance': PerformanceCloud,
   'cloud-security': CloudSecurity,
   'cloudflare-access': CloudflareAccess,
   'cloudflare-browser-outline': CloudflareBrowserOutline,
@@ -294,6 +294,7 @@ export default {
   copy: Copy,
   'corner-down-right': CornerDownRight,
   'credit-card': CreditCard,
+  'customer-service-outline': CustomerServiceOutline,
   d1: D1,
   'ddos-attack-outline': DdosAttackOutline,
   'ddos-attack': DdosAttack,
@@ -379,6 +380,8 @@ export default {
   'pages-logo': PagesLogo,
   pause: Pause,
   'performance-arrow-up': PerformanceArrowUp,
+  'performance-cloud-speed-outline': PerformanceCloudSpeedOutline,
+  'phishing-outline': PhishingOutline,
   'pin-outline': PinOutline,
   'pin-solid': PinSolid,
   'platform-apps': PlatformApps,
@@ -441,7 +444,6 @@ export default {
   'unlock-outline': UnlockOutline,
   upload: Upload,
   'user-multi': UserMulti,
-  'user-multi-solid': UserMultiSolid,
   'user-outline': UserOutline,
   user: User,
   vectorize: Vectorize,
