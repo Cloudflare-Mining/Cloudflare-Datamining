@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-ui",
 	"dist-tags": {
 		"latest": "1.0.5",
-		"staging": "1.0.6-staging.4"
+		"staging": "1.0.6-staging.5"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1034,6 +1034,30 @@
 			"name": "@cloudflare/realtimekit-ui",
 			"version": "1.0.6-staging.4",
 			"dependencies": {
+				"hark": "^1.2.3",
+				"hls.js": "^1.5.17",
+				"lodash-es": "^4.17.21",
+				"@floating-ui/dom": "^1.7.4",
+				"resize-observer-polyfill": "^1.5.1"
+			},
+			"dist": {
+				"shasum": "b0f44c76059e9a596c95548df566fac8e6e3e01d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.0.6-staging.4.tgz",
+				"fileCount": 1209,
+				"integrity": "sha512-r/5RC9BLThVYfbqvJKB7qesOl05v/yEP5fMHilpw2feTFY9aCzrSBaIi+d9V8UOdQtQb0KcABjwLfSAZgs3BsA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCKRgym2yLWGOdQwYcG3VFlD3oiL9aav+6dkDOaYBX4pAIhALKjW1kPSsTDqwnAx/0IC/2MVcKlGO2oP8Yi4JPsTCuY",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 30336793
+			}
+		},
+		"1.0.6-staging.5": {
+			"name": "@cloudflare/realtimekit-ui",
+			"version": "1.0.6-staging.5",
+			"dependencies": {
 				"@floating-ui/dom": "^1.7.4",
 				"hark": "^1.2.3",
 				"hls.js": "^1.5.17",
@@ -1041,15 +1065,15 @@
 				"resize-observer-polyfill": "^1.5.1"
 			},
 			"dist": {
-				"integrity": "sha512-r/5RC9BLThVYfbqvJKB7qesOl05v/yEP5fMHilpw2feTFY9aCzrSBaIi+d9V8UOdQtQb0KcABjwLfSAZgs3BsA==",
-				"shasum": "b0f44c76059e9a596c95548df566fac8e6e3e01d",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.0.6-staging.4.tgz",
+				"integrity": "sha512-EFdmOAA35PUXgW6PPZDpkO3teffslNuEgGGflJYJYkX1kWei6PkFhn9UhUkJPNw98lKukWfx1mHHgGT7VR6SAg==",
+				"shasum": "bf25aa5eee654e5122d05b3f3381721f1743f96f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.0.6-staging.5.tgz",
 				"fileCount": 1209,
-				"unpackedSize": 30336793,
+				"unpackedSize": 30335923,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCKRgym2yLWGOdQwYcG3VFlD3oiL9aav+6dkDOaYBX4pAIhALKjW1kPSsTDqwnAx/0IC/2MVcKlGO2oP8Yi4JPsTCuY"
+						"sig": "MEYCIQDW+P0ggu954z5DEC3sbbF1ktjgxvh2iw+2PXN4+2Na2gIhAIUT2xeWDld+680GQx75Ns6NhNwb6wBafLW3F0/nNKOQ"
 					}
 				]
 			}
