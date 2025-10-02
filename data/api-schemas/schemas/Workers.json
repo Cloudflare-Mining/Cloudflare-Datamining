@@ -115,118 +115,608 @@
 				},
 				"description": "Delete Worker success."
 			},
-			"4XX": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"enum": [
-										false
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"10003": "#/components/schemas/workers_ErrorMissingParam"
+													},
+													"propertyName": "code"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that a required URL parameter is missing.",
+																"enum": [
+																	10003
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining which required parameter is missing and suggesting to check the URL.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
 									],
-									"example": false,
-									"type": "boolean"
+									"type": "object"
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Delete Worker failure."
+				"description": "Bad Request - Missing or invalid parameters."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that the user is not authorized to perform this action.",
+														"enum": [
+															10023
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that the user lacks access to this feature.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Authentication required or insufficient permissions."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that the Worker does not exist.",
+														"enum": [
+															10007
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that the Worker was not found.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Not Found - Worker does not exist."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that an unknown internal server error has occurred.",
+														"enum": [
+															10002
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that an unknown error occurred and providing guidance for reporting the issue.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Internal Server Error - An unexpected server error occurred."
 			}
 		},
 		"security": [
@@ -1168,6 +1658,182 @@
 														},
 														"type": "object"
 													},
+													"references": {
+														"description": "Other resources that reference the Worker and depend on it existing.",
+														"properties": {
+															"dispatch_namespace_outbounds": {
+																"description": "Other Workers that reference the Worker as an outbound for a dispatch namespace.",
+																"items": {
+																	"properties": {
+																		"namespace_id": {
+																			"description": "ID of the dispatch namespace.",
+																			"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																			"type": "string"
+																		},
+																		"namespace_name": {
+																			"description": "Name of the dispatch namespace.",
+																			"example": "my-dispatch-namespace",
+																			"type": "string"
+																		},
+																		"worker_id": {
+																			"description": "ID of the Worker using the dispatch namespace.",
+																			"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																			"type": "string"
+																		},
+																		"worker_name": {
+																			"description": "Name of the Worker using the dispatch namespace.",
+																			"example": "my-worker",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"worker_id",
+																		"worker_name",
+																		"namespace_id",
+																		"namespace_name"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"domains": {
+																"description": "Custom domains connected to the Worker.",
+																"items": {
+																	"properties": {
+																		"certificate_id": {
+																			"description": "ID of the TLS certificate issued for the custom domain.",
+																			"type": "string"
+																		},
+																		"hostname": {
+																			"description": "Full hostname of the custom domain, including the zone name.",
+																			"example": "my-worker.example.com",
+																			"type": "string"
+																		},
+																		"id": {
+																			"description": "ID of the custom domain.",
+																			"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																			"type": "string"
+																		},
+																		"zone_id": {
+																			"description": "ID of the zone.",
+																			"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																			"type": "string"
+																		},
+																		"zone_name": {
+																			"description": "Name of the zone.",
+																			"example": "example.com",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"hostname",
+																		"zone_id",
+																		"zone_name",
+																		"certificate_id"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"durable_objects": {
+																"description": "Other Workers that reference Durable Object classes implemented by the Worker.",
+																"items": {
+																	"properties": {
+																		"namespace_id": {
+																			"description": "ID of the Durable Object namespace being used.",
+																			"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																			"type": "string"
+																		},
+																		"namespace_name": {
+																			"description": "Name of the Durable Object namespace being used.",
+																			"example": "my-durable-object-namespace",
+																			"type": "string"
+																		},
+																		"worker_id": {
+																			"description": "ID of the Worker using the Durable Object implementation.",
+																			"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																			"type": "string"
+																		},
+																		"worker_name": {
+																			"description": "Name of the Worker using the Durable Object implementation.",
+																			"example": "my-worker",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"worker_id",
+																		"worker_name",
+																		"namespace_id",
+																		"namespace_name"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"queues": {
+																"description": "Queues that send messages to the Worker.",
+																"items": {
+																	"properties": {
+																		"queue_consumer_id": {
+																			"description": "ID of the queue consumer configuration.",
+																			"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																			"type": "string"
+																		},
+																		"queue_id": {
+																			"description": "ID of the queue.",
+																			"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																			"type": "string"
+																		},
+																		"queue_name": {
+																			"description": "Name of the queue.",
+																			"example": "my-queue",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"queue_id",
+																		"queue_name",
+																		"queue_consumer_id"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"workers": {
+																"description": "Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).",
+																"items": {
+																	"properties": {
+																		"id": {
+																			"description": "ID of the referencing Worker.",
+																			"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "Name of the referencing Worker.",
+																			"example": "my-worker",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"readOnly": true,
+														"required": [
+															"workers",
+															"domains",
+															"dispatch_namespace_outbounds",
+															"durable_objects",
+															"queues"
+														],
+														"type": "object"
+													},
 													"subdomain": {
 														"description": "Subdomain settings for the Worker.",
 														"properties": {
@@ -1235,7 +1901,8 @@
 													"logpush",
 													"tail_consumers",
 													"created_on",
-													"updated_on"
+													"updated_on",
+													"references"
 												],
 												"type": "object"
 											},
@@ -1253,118 +1920,301 @@
 				},
 				"description": "List Workers success."
 			},
-			"4XX": {
+			"401": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"enum": [
-										false
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that the user is not authorized to perform this action.",
+														"enum": [
+															10023
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that the user lacks access to this feature.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
 									],
-									"example": false,
-									"type": "boolean"
+									"type": "object"
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "List Workers failure."
+				"description": "Authentication required or insufficient permissions."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that an unknown internal server error has occurred.",
+														"enum": [
+															10002
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that an unknown error occurred and providing guidance for reporting the issue.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Internal Server Error - An unexpected server error occurred."
 			}
 		},
 		"security": [
@@ -1566,6 +2416,182 @@
 													},
 													"type": "object"
 												},
+												"references": {
+													"description": "Other resources that reference the Worker and depend on it existing.",
+													"properties": {
+														"dispatch_namespace_outbounds": {
+															"description": "Other Workers that reference the Worker as an outbound for a dispatch namespace.",
+															"items": {
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the dispatch namespace.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"namespace_name": {
+																		"description": "Name of the dispatch namespace.",
+																		"example": "my-dispatch-namespace",
+																		"type": "string"
+																	},
+																	"worker_id": {
+																		"description": "ID of the Worker using the dispatch namespace.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"worker_name": {
+																		"description": "Name of the Worker using the dispatch namespace.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"worker_id",
+																	"worker_name",
+																	"namespace_id",
+																	"namespace_name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"domains": {
+															"description": "Custom domains connected to the Worker.",
+															"items": {
+																"properties": {
+																	"certificate_id": {
+																		"description": "ID of the TLS certificate issued for the custom domain.",
+																		"type": "string"
+																	},
+																	"hostname": {
+																		"description": "Full hostname of the custom domain, including the zone name.",
+																		"example": "my-worker.example.com",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "ID of the custom domain.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"zone_id": {
+																		"description": "ID of the zone.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"zone_name": {
+																		"description": "Name of the zone.",
+																		"example": "example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"hostname",
+																	"zone_id",
+																	"zone_name",
+																	"certificate_id"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"durable_objects": {
+															"description": "Other Workers that reference Durable Object classes implemented by the Worker.",
+															"items": {
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the Durable Object namespace being used.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"namespace_name": {
+																		"description": "Name of the Durable Object namespace being used.",
+																		"example": "my-durable-object-namespace",
+																		"type": "string"
+																	},
+																	"worker_id": {
+																		"description": "ID of the Worker using the Durable Object implementation.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"worker_name": {
+																		"description": "Name of the Worker using the Durable Object implementation.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"worker_id",
+																	"worker_name",
+																	"namespace_id",
+																	"namespace_name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"queues": {
+															"description": "Queues that send messages to the Worker.",
+															"items": {
+																"properties": {
+																	"queue_consumer_id": {
+																		"description": "ID of the queue consumer configuration.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"queue_id": {
+																		"description": "ID of the queue.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"queue_name": {
+																		"description": "Name of the queue.",
+																		"example": "my-queue",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"queue_id",
+																	"queue_name",
+																	"queue_consumer_id"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"workers": {
+															"description": "Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).",
+															"items": {
+																"properties": {
+																	"id": {
+																		"description": "ID of the referencing Worker.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Name of the referencing Worker.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"workers",
+														"domains",
+														"dispatch_namespace_outbounds",
+														"durable_objects",
+														"queues"
+													],
+													"type": "object"
+												},
 												"subdomain": {
 													"description": "Subdomain settings for the Worker.",
 													"properties": {
@@ -1633,7 +2659,8 @@
 												"logpush",
 												"tail_consumers",
 												"created_on",
-												"updated_on"
+												"updated_on",
+												"references"
 											],
 											"type": "object"
 										}
@@ -1649,118 +2676,460 @@
 				},
 				"description": "Get Worker success."
 			},
-			"4XX": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"enum": [
-										false
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"10003": "#/components/schemas/workers_ErrorMissingParam"
+													},
+													"propertyName": "code"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that a required URL parameter is missing.",
+																"enum": [
+																	10003
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining which required parameter is missing and suggesting to check the URL.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
 									],
-									"example": false,
-									"type": "boolean"
+									"type": "object"
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Get Worker failure."
+				"description": "Bad Request - Missing or invalid parameters."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that the Worker does not exist.",
+														"enum": [
+															10007
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that the Worker was not found.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Not Found - Worker does not exist."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that an unknown internal server error has occurred.",
+														"enum": [
+															10002
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that an unknown error occurred and providing guidance for reporting the issue.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Internal Server Error - An unexpected server error occurred."
 			}
 		},
 		"security": [
@@ -1877,6 +3246,182 @@
 										},
 										"type": "object"
 									},
+									"references": {
+										"description": "Other resources that reference the Worker and depend on it existing.",
+										"properties": {
+											"dispatch_namespace_outbounds": {
+												"description": "Other Workers that reference the Worker as an outbound for a dispatch namespace.",
+												"items": {
+													"properties": {
+														"namespace_id": {
+															"description": "ID of the dispatch namespace.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"namespace_name": {
+															"description": "Name of the dispatch namespace.",
+															"example": "my-dispatch-namespace",
+															"type": "string"
+														},
+														"worker_id": {
+															"description": "ID of the Worker using the dispatch namespace.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"worker_name": {
+															"description": "Name of the Worker using the dispatch namespace.",
+															"example": "my-worker",
+															"type": "string"
+														}
+													},
+													"required": [
+														"worker_id",
+														"worker_name",
+														"namespace_id",
+														"namespace_name"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"domains": {
+												"description": "Custom domains connected to the Worker.",
+												"items": {
+													"properties": {
+														"certificate_id": {
+															"description": "ID of the TLS certificate issued for the custom domain.",
+															"type": "string"
+														},
+														"hostname": {
+															"description": "Full hostname of the custom domain, including the zone name.",
+															"example": "my-worker.example.com",
+															"type": "string"
+														},
+														"id": {
+															"description": "ID of the custom domain.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"zone_id": {
+															"description": "ID of the zone.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"zone_name": {
+															"description": "Name of the zone.",
+															"example": "example.com",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"hostname",
+														"zone_id",
+														"zone_name",
+														"certificate_id"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"durable_objects": {
+												"description": "Other Workers that reference Durable Object classes implemented by the Worker.",
+												"items": {
+													"properties": {
+														"namespace_id": {
+															"description": "ID of the Durable Object namespace being used.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"namespace_name": {
+															"description": "Name of the Durable Object namespace being used.",
+															"example": "my-durable-object-namespace",
+															"type": "string"
+														},
+														"worker_id": {
+															"description": "ID of the Worker using the Durable Object implementation.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"worker_name": {
+															"description": "Name of the Worker using the Durable Object implementation.",
+															"example": "my-worker",
+															"type": "string"
+														}
+													},
+													"required": [
+														"worker_id",
+														"worker_name",
+														"namespace_id",
+														"namespace_name"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"queues": {
+												"description": "Queues that send messages to the Worker.",
+												"items": {
+													"properties": {
+														"queue_consumer_id": {
+															"description": "ID of the queue consumer configuration.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"queue_id": {
+															"description": "ID of the queue.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"queue_name": {
+															"description": "Name of the queue.",
+															"example": "my-queue",
+															"type": "string"
+														}
+													},
+													"required": [
+														"queue_id",
+														"queue_name",
+														"queue_consumer_id"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"workers": {
+												"description": "Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).",
+												"items": {
+													"properties": {
+														"id": {
+															"description": "ID of the referencing Worker.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"name": {
+															"description": "Name of the referencing Worker.",
+															"example": "my-worker",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"name"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"readOnly": true,
+										"required": [
+											"workers",
+											"domains",
+											"dispatch_namespace_outbounds",
+											"durable_objects",
+											"queues"
+										],
+										"type": "object"
+									},
 									"subdomain": {
 										"description": "Subdomain settings for the Worker.",
 										"properties": {
@@ -1944,7 +3489,8 @@
 									"logpush",
 									"tail_consumers",
 									"created_on",
-									"updated_on"
+									"updated_on",
+									"references"
 								],
 								"type": "object"
 							},
@@ -2112,6 +3658,182 @@
 													},
 													"type": "object"
 												},
+												"references": {
+													"description": "Other resources that reference the Worker and depend on it existing.",
+													"properties": {
+														"dispatch_namespace_outbounds": {
+															"description": "Other Workers that reference the Worker as an outbound for a dispatch namespace.",
+															"items": {
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the dispatch namespace.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"namespace_name": {
+																		"description": "Name of the dispatch namespace.",
+																		"example": "my-dispatch-namespace",
+																		"type": "string"
+																	},
+																	"worker_id": {
+																		"description": "ID of the Worker using the dispatch namespace.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"worker_name": {
+																		"description": "Name of the Worker using the dispatch namespace.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"worker_id",
+																	"worker_name",
+																	"namespace_id",
+																	"namespace_name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"domains": {
+															"description": "Custom domains connected to the Worker.",
+															"items": {
+																"properties": {
+																	"certificate_id": {
+																		"description": "ID of the TLS certificate issued for the custom domain.",
+																		"type": "string"
+																	},
+																	"hostname": {
+																		"description": "Full hostname of the custom domain, including the zone name.",
+																		"example": "my-worker.example.com",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "ID of the custom domain.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"zone_id": {
+																		"description": "ID of the zone.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"zone_name": {
+																		"description": "Name of the zone.",
+																		"example": "example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"hostname",
+																	"zone_id",
+																	"zone_name",
+																	"certificate_id"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"durable_objects": {
+															"description": "Other Workers that reference Durable Object classes implemented by the Worker.",
+															"items": {
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the Durable Object namespace being used.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"namespace_name": {
+																		"description": "Name of the Durable Object namespace being used.",
+																		"example": "my-durable-object-namespace",
+																		"type": "string"
+																	},
+																	"worker_id": {
+																		"description": "ID of the Worker using the Durable Object implementation.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"worker_name": {
+																		"description": "Name of the Worker using the Durable Object implementation.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"worker_id",
+																	"worker_name",
+																	"namespace_id",
+																	"namespace_name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"queues": {
+															"description": "Queues that send messages to the Worker.",
+															"items": {
+																"properties": {
+																	"queue_consumer_id": {
+																		"description": "ID of the queue consumer configuration.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"queue_id": {
+																		"description": "ID of the queue.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"queue_name": {
+																		"description": "Name of the queue.",
+																		"example": "my-queue",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"queue_id",
+																	"queue_name",
+																	"queue_consumer_id"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"workers": {
+															"description": "Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).",
+															"items": {
+																"properties": {
+																	"id": {
+																		"description": "ID of the referencing Worker.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Name of the referencing Worker.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"workers",
+														"domains",
+														"dispatch_namespace_outbounds",
+														"durable_objects",
+														"queues"
+													],
+													"type": "object"
+												},
 												"subdomain": {
 													"description": "Subdomain settings for the Worker.",
 													"properties": {
@@ -2179,7 +3901,8 @@
 												"logpush",
 												"tail_consumers",
 												"created_on",
-												"updated_on"
+												"updated_on",
+												"references"
 											],
 											"type": "object"
 										}
@@ -2195,118 +3918,1094 @@
 				},
 				"description": "Partially Update Worker success."
 			},
-			"4XX": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"enum": [
-										false
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"10003": "#/components/schemas/workers_ErrorMissingParam",
+														"10016": "#/components/schemas/workers_ErrorWorkerNameInvalid",
+														"10021": "#/components/schemas/workers_ErrorWorkerInvalid",
+														"100102": "#/components/schemas/workers_ErrorWorkerTagLengthLimit",
+														"100132": "#/components/schemas/workers_ErrorWorkerNameSubdomainLengthLimit",
+														"100134": "#/components/schemas/workers_ErrorWorkerTagInvalid",
+														"100308": "#/components/schemas/workers_ErrorWorkerObservabilitySamplingRateInvalid",
+														"100315": "#/components/schemas/workers_ErrorWorkerNamePreviewLengthLimit"
+													},
+													"propertyName": "code"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that a required URL parameter is missing.",
+																"enum": [
+																	10003
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining which required parameter is missing and suggesting to check the URL.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker name is invalid.",
+																"enum": [
+																	10016
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining why the Worker name is invalid.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker request contains invalid data.",
+																"enum": [
+																	10021
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining why the Worker request is invalid, such as malformed JSON.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker has a tag that exceeds the maximum tag length.",
+																"enum": [
+																	100102
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining why the tag is too long, including the maximum tag length.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker has a tag containing invalid characters.",
+																"enum": [
+																	100134
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that tags cannot contain certain characters like comma or ampersand.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker name is too long to be used as a subdomain.",
+																"enum": [
+																	100132
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the Worker name exceeds the 63 character limit for subdomains.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker name is too long to be used with previews enabled.",
+																"enum": [
+																	100315
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that Worker names with previews enabled cannot exceed 54 characters.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that an observability sampling rate is invalid.",
+																"enum": [
+																	100308
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that sampling rates must be between 0 and 1 inclusive.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
 									],
-									"example": false,
-									"type": "boolean"
+									"type": "object"
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Partially Update Worker failure."
+				"description": "Bad Request - Invalid input data."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that the user is not authorized to perform this action.",
+														"enum": [
+															10023
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that the user lacks access to this feature.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Authentication required or insufficient permissions."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"10037": "#/components/schemas/workers_ErrorWorkerLimit",
+														"100103": "#/components/schemas/workers_ErrorWorkerTagLimit"
+													},
+													"propertyName": "code"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the account has exceeded the maximum number of Workers allowed.",
+																"enum": [
+																	10037
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the Worker limit has been exceeded and providing guidance.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker has exceeded the maximum number of tags allowed.",
+																"enum": [
+																	100103
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the tag limit has been exceeded and suggesting to remove a tag.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Forbidden - Insufficient permissions or quota exceeded."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that the Worker does not exist.",
+														"enum": [
+															10007
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that the Worker was not found.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Not Found - Worker does not exist."
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"10040": "#/components/schemas/workers_ErrorWorkerNameConflict"
+													},
+													"propertyName": "code"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that a Worker with this name already exists.",
+																"enum": [
+																	10040
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the Worker name is already in use and suggesting to choose a different name.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Conflict - Worker name already exists."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that an unknown internal server error has occurred.",
+														"enum": [
+															10002
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that an unknown error occurred and providing guidance for reporting the issue.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Internal Server Error - An unexpected server error occurred."
 			}
 		},
 		"security": [
@@ -2409,6 +5108,182 @@
 										},
 										"type": "object"
 									},
+									"references": {
+										"description": "Other resources that reference the Worker and depend on it existing.",
+										"properties": {
+											"dispatch_namespace_outbounds": {
+												"description": "Other Workers that reference the Worker as an outbound for a dispatch namespace.",
+												"items": {
+													"properties": {
+														"namespace_id": {
+															"description": "ID of the dispatch namespace.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"namespace_name": {
+															"description": "Name of the dispatch namespace.",
+															"example": "my-dispatch-namespace",
+															"type": "string"
+														},
+														"worker_id": {
+															"description": "ID of the Worker using the dispatch namespace.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"worker_name": {
+															"description": "Name of the Worker using the dispatch namespace.",
+															"example": "my-worker",
+															"type": "string"
+														}
+													},
+													"required": [
+														"worker_id",
+														"worker_name",
+														"namespace_id",
+														"namespace_name"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"domains": {
+												"description": "Custom domains connected to the Worker.",
+												"items": {
+													"properties": {
+														"certificate_id": {
+															"description": "ID of the TLS certificate issued for the custom domain.",
+															"type": "string"
+														},
+														"hostname": {
+															"description": "Full hostname of the custom domain, including the zone name.",
+															"example": "my-worker.example.com",
+															"type": "string"
+														},
+														"id": {
+															"description": "ID of the custom domain.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"zone_id": {
+															"description": "ID of the zone.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"zone_name": {
+															"description": "Name of the zone.",
+															"example": "example.com",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"hostname",
+														"zone_id",
+														"zone_name",
+														"certificate_id"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"durable_objects": {
+												"description": "Other Workers that reference Durable Object classes implemented by the Worker.",
+												"items": {
+													"properties": {
+														"namespace_id": {
+															"description": "ID of the Durable Object namespace being used.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"namespace_name": {
+															"description": "Name of the Durable Object namespace being used.",
+															"example": "my-durable-object-namespace",
+															"type": "string"
+														},
+														"worker_id": {
+															"description": "ID of the Worker using the Durable Object implementation.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"worker_name": {
+															"description": "Name of the Worker using the Durable Object implementation.",
+															"example": "my-worker",
+															"type": "string"
+														}
+													},
+													"required": [
+														"worker_id",
+														"worker_name",
+														"namespace_id",
+														"namespace_name"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"queues": {
+												"description": "Queues that send messages to the Worker.",
+												"items": {
+													"properties": {
+														"queue_consumer_id": {
+															"description": "ID of the queue consumer configuration.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"queue_id": {
+															"description": "ID of the queue.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"queue_name": {
+															"description": "Name of the queue.",
+															"example": "my-queue",
+															"type": "string"
+														}
+													},
+													"required": [
+														"queue_id",
+														"queue_name",
+														"queue_consumer_id"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"workers": {
+												"description": "Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).",
+												"items": {
+													"properties": {
+														"id": {
+															"description": "ID of the referencing Worker.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"name": {
+															"description": "Name of the referencing Worker.",
+															"example": "my-worker",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"name"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"readOnly": true,
+										"required": [
+											"workers",
+											"domains",
+											"dispatch_namespace_outbounds",
+											"durable_objects",
+											"queues"
+										],
+										"type": "object"
+									},
 									"subdomain": {
 										"description": "Subdomain settings for the Worker.",
 										"properties": {
@@ -2476,7 +5351,8 @@
 									"logpush",
 									"tail_consumers",
 									"created_on",
-									"updated_on"
+									"updated_on",
+									"references"
 								],
 								"type": "object"
 							},
@@ -2647,6 +5523,182 @@
 													},
 													"type": "object"
 												},
+												"references": {
+													"description": "Other resources that reference the Worker and depend on it existing.",
+													"properties": {
+														"dispatch_namespace_outbounds": {
+															"description": "Other Workers that reference the Worker as an outbound for a dispatch namespace.",
+															"items": {
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the dispatch namespace.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"namespace_name": {
+																		"description": "Name of the dispatch namespace.",
+																		"example": "my-dispatch-namespace",
+																		"type": "string"
+																	},
+																	"worker_id": {
+																		"description": "ID of the Worker using the dispatch namespace.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"worker_name": {
+																		"description": "Name of the Worker using the dispatch namespace.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"worker_id",
+																	"worker_name",
+																	"namespace_id",
+																	"namespace_name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"domains": {
+															"description": "Custom domains connected to the Worker.",
+															"items": {
+																"properties": {
+																	"certificate_id": {
+																		"description": "ID of the TLS certificate issued for the custom domain.",
+																		"type": "string"
+																	},
+																	"hostname": {
+																		"description": "Full hostname of the custom domain, including the zone name.",
+																		"example": "my-worker.example.com",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "ID of the custom domain.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"zone_id": {
+																		"description": "ID of the zone.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"zone_name": {
+																		"description": "Name of the zone.",
+																		"example": "example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"hostname",
+																	"zone_id",
+																	"zone_name",
+																	"certificate_id"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"durable_objects": {
+															"description": "Other Workers that reference Durable Object classes implemented by the Worker.",
+															"items": {
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the Durable Object namespace being used.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"namespace_name": {
+																		"description": "Name of the Durable Object namespace being used.",
+																		"example": "my-durable-object-namespace",
+																		"type": "string"
+																	},
+																	"worker_id": {
+																		"description": "ID of the Worker using the Durable Object implementation.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"worker_name": {
+																		"description": "Name of the Worker using the Durable Object implementation.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"worker_id",
+																	"worker_name",
+																	"namespace_id",
+																	"namespace_name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"queues": {
+															"description": "Queues that send messages to the Worker.",
+															"items": {
+																"properties": {
+																	"queue_consumer_id": {
+																		"description": "ID of the queue consumer configuration.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"queue_id": {
+																		"description": "ID of the queue.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"queue_name": {
+																		"description": "Name of the queue.",
+																		"example": "my-queue",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"queue_id",
+																	"queue_name",
+																	"queue_consumer_id"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"workers": {
+															"description": "Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).",
+															"items": {
+																"properties": {
+																	"id": {
+																		"description": "ID of the referencing Worker.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Name of the referencing Worker.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"workers",
+														"domains",
+														"dispatch_namespace_outbounds",
+														"durable_objects",
+														"queues"
+													],
+													"type": "object"
+												},
 												"subdomain": {
 													"description": "Subdomain settings for the Worker.",
 													"properties": {
@@ -2714,7 +5766,8 @@
 												"logpush",
 												"tail_consumers",
 												"created_on",
-												"updated_on"
+												"updated_on",
+												"references"
 											],
 											"type": "object"
 										}
@@ -2730,118 +5783,925 @@
 				},
 				"description": "Create Worker success."
 			},
-			"4XX": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"enum": [
-										false
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"10016": "#/components/schemas/workers_ErrorWorkerNameInvalid",
+														"10021": "#/components/schemas/workers_ErrorWorkerInvalid",
+														"100102": "#/components/schemas/workers_ErrorWorkerTagLengthLimit",
+														"100132": "#/components/schemas/workers_ErrorWorkerNameSubdomainLengthLimit",
+														"100134": "#/components/schemas/workers_ErrorWorkerTagInvalid",
+														"100308": "#/components/schemas/workers_ErrorWorkerObservabilitySamplingRateInvalid",
+														"100315": "#/components/schemas/workers_ErrorWorkerNamePreviewLengthLimit"
+													},
+													"propertyName": "code"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker name is invalid.",
+																"enum": [
+																	10016
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining why the Worker name is invalid.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker request contains invalid data.",
+																"enum": [
+																	10021
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining why the Worker request is invalid, such as malformed JSON.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker has a tag that exceeds the maximum tag length.",
+																"enum": [
+																	100102
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining why the tag is too long, including the maximum tag length.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker name is too long to be used as a subdomain.",
+																"enum": [
+																	100132
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the Worker name exceeds the 63 character limit for subdomains.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker has a tag containing invalid characters.",
+																"enum": [
+																	100134
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that tags cannot contain certain characters like comma or ampersand.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that an observability sampling rate is invalid.",
+																"enum": [
+																	100308
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that sampling rates must be between 0 and 1 inclusive.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker name is too long to be used with previews enabled.",
+																"enum": [
+																	100315
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that Worker names with previews enabled cannot exceed 54 characters.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
 									],
-									"example": false,
-									"type": "boolean"
+									"type": "object"
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Create Worker failure."
+				"description": "Bad Request - Invalid input data."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that the user is not authorized to perform this action.",
+														"enum": [
+															10023
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that the user lacks access to this feature.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Authentication required or insufficient permissions."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"10037": "#/components/schemas/workers_ErrorWorkerLimit",
+														"100103": "#/components/schemas/workers_ErrorWorkerTagLimit"
+													},
+													"propertyName": "code"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the account has exceeded the maximum number of Workers allowed.",
+																"enum": [
+																	10037
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the Worker limit has been exceeded and providing guidance.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker has exceeded the maximum number of tags allowed.",
+																"enum": [
+																	100103
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the tag limit has been exceeded and suggesting to remove a tag.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Forbidden - Access denied or limit exceeded."
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"10040": "#/components/schemas/workers_ErrorWorkerNameConflict"
+													},
+													"propertyName": "code"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that a Worker with this name already exists.",
+																"enum": [
+																	10040
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the Worker name is already in use and suggesting to choose a different name.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Conflict - Resource already exists."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that an unknown internal server error has occurred.",
+														"enum": [
+															10002
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that an unknown error occurred and providing guidance for reporting the issue.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Internal Server Error - An unexpected server error occurred."
 			}
 		},
 		"security": [
@@ -2956,6 +6816,182 @@
 										},
 										"type": "object"
 									},
+									"references": {
+										"description": "Other resources that reference the Worker and depend on it existing.",
+										"properties": {
+											"dispatch_namespace_outbounds": {
+												"description": "Other Workers that reference the Worker as an outbound for a dispatch namespace.",
+												"items": {
+													"properties": {
+														"namespace_id": {
+															"description": "ID of the dispatch namespace.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"namespace_name": {
+															"description": "Name of the dispatch namespace.",
+															"example": "my-dispatch-namespace",
+															"type": "string"
+														},
+														"worker_id": {
+															"description": "ID of the Worker using the dispatch namespace.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"worker_name": {
+															"description": "Name of the Worker using the dispatch namespace.",
+															"example": "my-worker",
+															"type": "string"
+														}
+													},
+													"required": [
+														"worker_id",
+														"worker_name",
+														"namespace_id",
+														"namespace_name"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"domains": {
+												"description": "Custom domains connected to the Worker.",
+												"items": {
+													"properties": {
+														"certificate_id": {
+															"description": "ID of the TLS certificate issued for the custom domain.",
+															"type": "string"
+														},
+														"hostname": {
+															"description": "Full hostname of the custom domain, including the zone name.",
+															"example": "my-worker.example.com",
+															"type": "string"
+														},
+														"id": {
+															"description": "ID of the custom domain.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"zone_id": {
+															"description": "ID of the zone.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"zone_name": {
+															"description": "Name of the zone.",
+															"example": "example.com",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"hostname",
+														"zone_id",
+														"zone_name",
+														"certificate_id"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"durable_objects": {
+												"description": "Other Workers that reference Durable Object classes implemented by the Worker.",
+												"items": {
+													"properties": {
+														"namespace_id": {
+															"description": "ID of the Durable Object namespace being used.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"namespace_name": {
+															"description": "Name of the Durable Object namespace being used.",
+															"example": "my-durable-object-namespace",
+															"type": "string"
+														},
+														"worker_id": {
+															"description": "ID of the Worker using the Durable Object implementation.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"worker_name": {
+															"description": "Name of the Worker using the Durable Object implementation.",
+															"example": "my-worker",
+															"type": "string"
+														}
+													},
+													"required": [
+														"worker_id",
+														"worker_name",
+														"namespace_id",
+														"namespace_name"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"queues": {
+												"description": "Queues that send messages to the Worker.",
+												"items": {
+													"properties": {
+														"queue_consumer_id": {
+															"description": "ID of the queue consumer configuration.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"queue_id": {
+															"description": "ID of the queue.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"queue_name": {
+															"description": "Name of the queue.",
+															"example": "my-queue",
+															"type": "string"
+														}
+													},
+													"required": [
+														"queue_id",
+														"queue_name",
+														"queue_consumer_id"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"workers": {
+												"description": "Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).",
+												"items": {
+													"properties": {
+														"id": {
+															"description": "ID of the referencing Worker.",
+															"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+															"type": "string"
+														},
+														"name": {
+															"description": "Name of the referencing Worker.",
+															"example": "my-worker",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"name"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"readOnly": true,
+										"required": [
+											"workers",
+											"domains",
+											"dispatch_namespace_outbounds",
+											"durable_objects",
+											"queues"
+										],
+										"type": "object"
+									},
 									"subdomain": {
 										"description": "Subdomain settings for the Worker.",
 										"properties": {
@@ -3023,7 +7059,8 @@
 									"logpush",
 									"tail_consumers",
 									"created_on",
-									"updated_on"
+									"updated_on",
+									"references"
 								],
 								"type": "object"
 							},
@@ -3194,6 +7231,182 @@
 													},
 													"type": "object"
 												},
+												"references": {
+													"description": "Other resources that reference the Worker and depend on it existing.",
+													"properties": {
+														"dispatch_namespace_outbounds": {
+															"description": "Other Workers that reference the Worker as an outbound for a dispatch namespace.",
+															"items": {
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the dispatch namespace.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"namespace_name": {
+																		"description": "Name of the dispatch namespace.",
+																		"example": "my-dispatch-namespace",
+																		"type": "string"
+																	},
+																	"worker_id": {
+																		"description": "ID of the Worker using the dispatch namespace.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"worker_name": {
+																		"description": "Name of the Worker using the dispatch namespace.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"worker_id",
+																	"worker_name",
+																	"namespace_id",
+																	"namespace_name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"domains": {
+															"description": "Custom domains connected to the Worker.",
+															"items": {
+																"properties": {
+																	"certificate_id": {
+																		"description": "ID of the TLS certificate issued for the custom domain.",
+																		"type": "string"
+																	},
+																	"hostname": {
+																		"description": "Full hostname of the custom domain, including the zone name.",
+																		"example": "my-worker.example.com",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "ID of the custom domain.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"zone_id": {
+																		"description": "ID of the zone.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"zone_name": {
+																		"description": "Name of the zone.",
+																		"example": "example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"hostname",
+																	"zone_id",
+																	"zone_name",
+																	"certificate_id"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"durable_objects": {
+															"description": "Other Workers that reference Durable Object classes implemented by the Worker.",
+															"items": {
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the Durable Object namespace being used.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"namespace_name": {
+																		"description": "Name of the Durable Object namespace being used.",
+																		"example": "my-durable-object-namespace",
+																		"type": "string"
+																	},
+																	"worker_id": {
+																		"description": "ID of the Worker using the Durable Object implementation.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"worker_name": {
+																		"description": "Name of the Worker using the Durable Object implementation.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"worker_id",
+																	"worker_name",
+																	"namespace_id",
+																	"namespace_name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"queues": {
+															"description": "Queues that send messages to the Worker.",
+															"items": {
+																"properties": {
+																	"queue_consumer_id": {
+																		"description": "ID of the queue consumer configuration.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"queue_id": {
+																		"description": "ID of the queue.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"queue_name": {
+																		"description": "Name of the queue.",
+																		"example": "my-queue",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"queue_id",
+																	"queue_name",
+																	"queue_consumer_id"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"workers": {
+															"description": "Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).",
+															"items": {
+																"properties": {
+																	"id": {
+																		"description": "ID of the referencing Worker.",
+																		"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Name of the referencing Worker.",
+																		"example": "my-worker",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"workers",
+														"domains",
+														"dispatch_namespace_outbounds",
+														"durable_objects",
+														"queues"
+													],
+													"type": "object"
+												},
 												"subdomain": {
 													"description": "Subdomain settings for the Worker.",
 													"properties": {
@@ -3261,7 +7474,8 @@
 												"logpush",
 												"tail_consumers",
 												"created_on",
-												"updated_on"
+												"updated_on",
+												"references"
 											],
 											"type": "object"
 										}
@@ -3277,118 +7491,1094 @@
 				},
 				"description": "Update Worker success."
 			},
-			"4XX": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"enum": [
-										false
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"10003": "#/components/schemas/workers_ErrorMissingParam",
+														"10016": "#/components/schemas/workers_ErrorWorkerNameInvalid",
+														"10021": "#/components/schemas/workers_ErrorWorkerInvalid",
+														"100102": "#/components/schemas/workers_ErrorWorkerTagLengthLimit",
+														"100132": "#/components/schemas/workers_ErrorWorkerNameSubdomainLengthLimit",
+														"100134": "#/components/schemas/workers_ErrorWorkerTagInvalid",
+														"100308": "#/components/schemas/workers_ErrorWorkerObservabilitySamplingRateInvalid",
+														"100315": "#/components/schemas/workers_ErrorWorkerNamePreviewLengthLimit"
+													},
+													"propertyName": "code"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that a required URL parameter is missing.",
+																"enum": [
+																	10003
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining which required parameter is missing and suggesting to check the URL.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker name is invalid.",
+																"enum": [
+																	10016
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining why the Worker name is invalid.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker request contains invalid data.",
+																"enum": [
+																	10021
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining why the Worker request is invalid, such as malformed JSON.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker has a tag that exceeds the maximum tag length.",
+																"enum": [
+																	100102
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining why the tag is too long, including the maximum tag length.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker has a tag containing invalid characters.",
+																"enum": [
+																	100134
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that tags cannot contain certain characters like comma or ampersand.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker name is too long to be used as a subdomain.",
+																"enum": [
+																	100132
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the Worker name exceeds the 63 character limit for subdomains.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker name is too long to be used with previews enabled.",
+																"enum": [
+																	100315
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that Worker names with previews enabled cannot exceed 54 characters.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that an observability sampling rate is invalid.",
+																"enum": [
+																	100308
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that sampling rates must be between 0 and 1 inclusive.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
 									],
-									"example": false,
-									"type": "boolean"
+									"type": "object"
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Update Worker failure."
+				"description": "Bad Request - Invalid input data."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that the user is not authorized to perform this action.",
+														"enum": [
+															10023
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that the user lacks access to this feature.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Authentication required or insufficient permissions."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"10037": "#/components/schemas/workers_ErrorWorkerLimit",
+														"100103": "#/components/schemas/workers_ErrorWorkerTagLimit"
+													},
+													"propertyName": "code"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the account has exceeded the maximum number of Workers allowed.",
+																"enum": [
+																	10037
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the Worker limit has been exceeded and providing guidance.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that the Worker has exceeded the maximum number of tags allowed.",
+																"enum": [
+																	100103
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the tag limit has been exceeded and suggesting to remove a tag.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Forbidden - Insufficient permissions or quota exceeded."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that the Worker does not exist.",
+														"enum": [
+															10007
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that the Worker was not found.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Not Found - Worker does not exist."
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"10040": "#/components/schemas/workers_ErrorWorkerNameConflict"
+													},
+													"propertyName": "code"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"description": "Code indicating that a Worker with this name already exists.",
+																"enum": [
+																	10040
+																],
+																"type": "integer"
+															},
+															"message": {
+																"description": "Message explaining that the Worker name is already in use and suggesting to choose a different name.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Conflict - Worker name already exists."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Code indicating that an unknown internal server error has occurred.",
+														"enum": [
+															10002
+														],
+														"type": "integer"
+													},
+													"message": {
+														"description": "Message explaining that an unknown error occurred and providing guidance for reporting the issue.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Internal Server Error - An unexpected server error occurred."
 			}
 		},
 		"security": [
