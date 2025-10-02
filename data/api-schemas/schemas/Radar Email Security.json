@@ -1,5 +1,440 @@
 {
+	"GET /radar/email/security/summary/{dimension}": {
+		"description": "Retrieves the distribution of email security metrics by the specified dimension.",
+		"operationId": "radar-get-email-security-summary",
+		"parameters": [
+			{
+				"description": "Specifies the attribute by which to group the results.",
+				"in": "path",
+				"name": "dimension",
+				"required": true,
+				"schema": {
+					"description": "Specifies the attribute by which to group the results.",
+					"enum": [
+						"SPAM",
+						"MALICIOUS",
+						"SPOOF",
+						"THREAT_CATEGORY",
+						"ARC",
+						"DKIM",
+						"DMARC",
+						"SPF",
+						"TLS_VERSION"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
+				"in": "query",
+				"name": "arc",
+				"schema": {
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
+				"in": "query",
+				"name": "dkim",
+				"schema": {
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
+				"in": "query",
+				"name": "dmarc",
+				"schema": {
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
+				"in": "query",
+				"name": "spf",
+				"schema": {
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by TLS version.",
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filters results by TLS version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startDate",
+																	"endDate",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"lastUpdated",
+												"units"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"additionalProperties": {
+												"type": "string"
+											},
+											"example": {
+												"FAIL": "25.084366",
+												"PASS": "50.168733"
+											},
+											"type": "object"
+										}
+									},
+									"required": [
+										"summary_0",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get email security summary by dimension",
+		"tags": [
+			"Radar Email Security"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/email/security/summary/arc": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by ARC (Authenticated Received Chain) validation.",
 		"operationId": "radar-get-email-security-summary-by-arc",
 		"parameters": [
@@ -403,6 +838,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/dkim": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by DKIM (DomainKeys Identified Mail) validation.",
 		"operationId": "radar-get-email-security-summary-by-dkim",
 		"parameters": [
@@ -806,6 +1242,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/dmarc": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation.",
 		"operationId": "radar-get-email-security-summary-by-dmarc",
 		"parameters": [
@@ -1209,6 +1646,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/malicious": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by malicious classification.",
 		"operationId": "radar-get-email-security-summary-by-malicious",
 		"parameters": [
@@ -1623,6 +2061,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/spam": {
+		"deprecated": true,
 		"description": "Retrieves the proportion of emails by spam classification (spam vs. non-spam).",
 		"operationId": "radar-get-email-security-summary-by-spam",
 		"parameters": [
@@ -2037,6 +2476,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/spf": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by SPF (Sender Policy Framework) validation.",
 		"operationId": "radar-get-email-security-summary-by-spf",
 		"parameters": [
@@ -2440,6 +2880,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/spoof": {
+		"deprecated": true,
 		"description": "Retrieves the proportion of emails by spoof classification (spoof vs. non-spoof).",
 		"operationId": "radar-get-email-security-summary-by-spoof",
 		"parameters": [
@@ -2854,6 +3295,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/threat_category": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by threat categories.",
 		"operationId": "radar-get-email-security-summary-by-threat-category",
 		"parameters": [
@@ -3282,6 +3724,7 @@
 		}
 	},
 	"GET /radar/email/security/summary/tls_version": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by TLS version.",
 		"operationId": "radar-get-email-security-summary-by-tls-version",
 		"parameters": [
@@ -3690,7 +4133,492 @@
 			"pro": true
 		}
 	},
+	"GET /radar/email/security/timeseries_groups/{dimension}": {
+		"description": "Retrieves the distribution of email security metrics grouped by dimension over time.",
+		"operationId": "radar-get-email-security-timeseries-group",
+		"parameters": [
+			{
+				"description": "Specifies the attribute by which to group the results.",
+				"in": "path",
+				"name": "dimension",
+				"required": true,
+				"schema": {
+					"description": "Specifies the attribute by which to group the results.",
+					"enum": [
+						"SPAM",
+						"MALICIOUS",
+						"SPOOF",
+						"THREAT_CATEGORY",
+						"ARC",
+						"DKIM",
+						"DMARC",
+						"SPF",
+						"TLS_VERSION"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by ARC (Authenticated Received Chain) validation.",
+				"in": "query",
+				"name": "arc",
+				"schema": {
+					"description": "Filters results by ARC (Authenticated Received Chain) validation.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
+				"in": "query",
+				"name": "dkim",
+				"schema": {
+					"description": "Filters results by DKIM (DomainKeys Identified Mail) validation status.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
+				"in": "query",
+				"name": "dmarc",
+				"schema": {
+					"description": "Filters results by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation status.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by SPF (Sender Policy Framework) validation status.",
+				"in": "query",
+				"name": "spf",
+				"schema": {
+					"description": "Filters results by SPF (Sender Policy Framework) validation status.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by TLS version.",
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filters results by TLS version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startDate",
+																	"endDate",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"lastUpdated",
+												"units",
+												"aggInterval"
+											],
+											"type": "object"
+										},
+										"serie_0": {
+											"additionalProperties": {
+												"items": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"example": {
+												"PASS": [
+													"50.168733"
+												],
+												"timestamps": [
+													"2023-08-08T10:15:00Z"
+												]
+											},
+											"properties": {
+												"timestamps": {
+													"items": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"serie_0",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get email security time series grouped by dimension",
+		"tags": [
+			"Radar Email Security"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/email/security/timeseries_groups/arc": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by ARC (Authenticated Received Chain) validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-arc",
 		"parameters": [
@@ -4131,6 +5059,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/dkim": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by DKIM (DomainKeys Identified Mail) validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-dkim",
 		"parameters": [
@@ -4571,6 +5500,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/dmarc": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by DMARC (Domain-based Message Authentication, Reporting and Conformance) validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-dmarc",
 		"parameters": [
@@ -5011,6 +5941,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/malicious": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by malicious classification over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-malicious",
 		"parameters": [
@@ -5459,6 +6390,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/spam": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by spam classification (spam vs. non-spam) over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-spam",
 		"parameters": [
@@ -5907,6 +6839,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/spf": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by SPF (Sender Policy Framework) validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-spf",
 		"parameters": [
@@ -6347,6 +7280,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/spoof": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by spoof classification (spoof vs. non-spoof) over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-spoof",
 		"parameters": [
@@ -6795,6 +7729,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/threat_category": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by threat category over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-threat-category",
 		"parameters": [
@@ -7263,6 +8198,7 @@
 		}
 	},
 	"GET /radar/email/security/timeseries_groups/tls_version": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of emails by TLS version over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-tls-version",
 		"parameters": [

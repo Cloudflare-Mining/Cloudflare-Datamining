@@ -373,7 +373,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Get Network Traffic Distribution By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/netflows/methods/summary_v2/) instead."
 	},
 	"GET /radar/netflows/summary/{dimension}": {
 		"description": "Retrieves the distribution of network traffic (NetFlows) by the specified dimension.",

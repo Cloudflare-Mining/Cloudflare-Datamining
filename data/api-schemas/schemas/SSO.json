@@ -280,11 +280,9 @@
 		"tags": [
 			"SSO"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.sso-connector.delete"
-			]
-		},
+		"x-api-token-group": [
+			"SSO Connector Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -476,6 +474,12 @@
 														"format": "date-time",
 														"type": "string"
 													},
+													"use_fedramp_language": {
+														"default": false,
+														"description": "Controls the display of FedRAMP language to the user during SSO login",
+														"example": false,
+														"type": "boolean"
+													},
 													"verification": {
 														"properties": {
 															"code": {
@@ -635,7 +639,9 @@
 		"tags": [
 			"SSO"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"SSO Connector Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -816,6 +822,12 @@
 													"format": "date-time",
 													"type": "string"
 												},
+												"use_fedramp_language": {
+													"default": false,
+													"description": "Controls the display of FedRAMP language to the user during SSO login",
+													"example": false,
+													"type": "boolean"
+												},
 												"verification": {
 													"properties": {
 														"code": {
@@ -973,7 +985,9 @@
 		"tags": [
 			"SSO"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"SSO Connector Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1032,11 +1046,14 @@
 								"description": "SSO Connector enabled state",
 								"example": true,
 								"type": "boolean"
+							},
+							"use_fedramp_language": {
+								"default": false,
+								"description": "Controls the display of FedRAMP language to the user during SSO login",
+								"example": false,
+								"type": "boolean"
 							}
 						},
-						"required": [
-							"enabled"
-						],
 						"type": "object"
 					}
 				}
@@ -1172,6 +1189,12 @@
 													"example": "2025-01-01T12:21:02.0000Z",
 													"format": "date-time",
 													"type": "string"
+												},
+												"use_fedramp_language": {
+													"default": false,
+													"description": "Controls the display of FedRAMP language to the user during SSO login",
+													"example": false,
+													"type": "boolean"
 												},
 												"verification": {
 													"properties": {
@@ -1330,7 +1353,9 @@
 		"tags": [
 			"SSO"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"SSO Connector Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1376,6 +1401,12 @@
 								"description": "Email domain of the new SSO connector",
 								"example": "example.com",
 								"type": "string"
+							},
+							"use_fedramp_language": {
+								"default": false,
+								"description": "Controls the display of FedRAMP language to the user during SSO login",
+								"example": false,
+								"type": "boolean"
 							}
 						},
 						"required": [
@@ -1516,6 +1547,12 @@
 													"example": "2025-01-01T12:21:02.0000Z",
 													"format": "date-time",
 													"type": "string"
+												},
+												"use_fedramp_language": {
+													"default": false,
+													"description": "Controls the display of FedRAMP language to the user during SSO login",
+													"example": false,
+													"type": "boolean"
 												},
 												"verification": {
 													"properties": {
@@ -1674,11 +1711,9 @@
 		"tags": [
 			"SSO"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.sso-connector.create"
-			]
-		},
+		"x-api-token-group": [
+			"SSO Connector Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1946,7 +1981,9 @@
 		"tags": [
 			"SSO"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"SSO Connector Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

@@ -252,6 +252,24 @@
 					"type": "string",
 					"x-auditable": true
 				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"description": "Which page of projects to fetch.",
+					"example": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"description": "How many project to return per page.",
+					"example": 10,
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {

@@ -511,7 +511,7 @@
 																			"x-auditable": true
 																		},
 																		"value": {
-																			"description": "The number of seconds to cache resources for.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting this to 0 enables \"Respect Existing Headers\" and is allowed for all plans.\n",
+																			"description": "The number of seconds to cache resources for.\nSetting this to 0 enables \"Respect Existing Headers\".\n",
 																			"example": 3600,
 																			"maximum": 31536000,
 																			"minimum": 0,
@@ -1325,6 +1325,7 @@
 																	]
 																},
 																{
+																	"deprecated": true,
 																	"properties": {
 																		"id": {
 																			"description": "Turn on or off whether Cloudflare should wait for an entire file\nfrom the origin server before forwarding it to the site visitor. By\ndefault, Cloudflare sends packets to the client as they arrive from\nthe origin server.\n",
@@ -1347,6 +1348,7 @@
 																	},
 																	"title": "Response Buffering",
 																	"type": "object",
+																	"x-stainless-deprecation-message": "This page rule is deprecated. This functionality is no longer supported.",
 																	"x-stainless-skip": [
 																		"terraform"
 																	]
@@ -2004,7 +2006,7 @@
 																		"x-auditable": true
 																	},
 																	"value": {
-																		"description": "The number of seconds to cache resources for.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting this to 0 enables \"Respect Existing Headers\" and is allowed for all plans.\n",
+																		"description": "The number of seconds to cache resources for.\nSetting this to 0 enables \"Respect Existing Headers\".\n",
 																		"example": 3600,
 																		"maximum": 31536000,
 																		"minimum": 0,
@@ -2818,6 +2820,7 @@
 																]
 															},
 															{
+																"deprecated": true,
 																"properties": {
 																	"id": {
 																		"description": "Turn on or off whether Cloudflare should wait for an entire file\nfrom the origin server before forwarding it to the site visitor. By\ndefault, Cloudflare sends packets to the client as they arrive from\nthe origin server.\n",
@@ -2840,6 +2843,7 @@
 																},
 																"title": "Response Buffering",
 																"type": "object",
+																"x-stainless-deprecation-message": "This page rule is deprecated. This functionality is no longer supported.",
 																"x-stainless-skip": [
 																	"terraform"
 																]
@@ -3438,7 +3442,7 @@
 													"x-auditable": true
 												},
 												"value": {
-													"description": "The number of seconds to cache resources for.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting this to 0 enables \"Respect Existing Headers\" and is allowed for all plans.\n",
+													"description": "The number of seconds to cache resources for.\nSetting this to 0 enables \"Respect Existing Headers\".\n",
 													"example": 3600,
 													"maximum": 31536000,
 													"minimum": 0,
@@ -4252,6 +4256,7 @@
 											]
 										},
 										{
+											"deprecated": true,
 											"properties": {
 												"id": {
 													"description": "Turn on or off whether Cloudflare should wait for an entire file\nfrom the origin server before forwarding it to the site visitor. By\ndefault, Cloudflare sends packets to the client as they arrive from\nthe origin server.\n",
@@ -4274,6 +4279,7 @@
 											},
 											"title": "Response Buffering",
 											"type": "object",
+											"x-stainless-deprecation-message": "This page rule is deprecated. This functionality is no longer supported.",
 											"x-stainless-skip": [
 												"terraform"
 											]
@@ -4728,7 +4734,7 @@
 																		"x-auditable": true
 																	},
 																	"value": {
-																		"description": "The number of seconds to cache resources for.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting this to 0 enables \"Respect Existing Headers\" and is allowed for all plans.\n",
+																		"description": "The number of seconds to cache resources for.\nSetting this to 0 enables \"Respect Existing Headers\".\n",
 																		"example": 3600,
 																		"maximum": 31536000,
 																		"minimum": 0,
@@ -5542,6 +5548,7 @@
 																]
 															},
 															{
+																"deprecated": true,
 																"properties": {
 																	"id": {
 																		"description": "Turn on or off whether Cloudflare should wait for an entire file\nfrom the origin server before forwarding it to the site visitor. By\ndefault, Cloudflare sends packets to the client as they arrive from\nthe origin server.\n",
@@ -5564,6 +5571,7 @@
 																},
 																"title": "Response Buffering",
 																"type": "object",
+																"x-stainless-deprecation-message": "This page rule is deprecated. This functionality is no longer supported.",
 																"x-stainless-skip": [
 																	"terraform"
 																]
@@ -6112,7 +6120,7 @@
 													"x-auditable": true
 												},
 												"value": {
-													"description": "The number of seconds to cache resources for.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting this to 0 enables \"Respect Existing Headers\" and is allowed for all plans.\n",
+													"description": "The number of seconds to cache resources for.\nSetting this to 0 enables \"Respect Existing Headers\".\n",
 													"example": 3600,
 													"maximum": 31536000,
 													"minimum": 0,
@@ -6926,6 +6934,7 @@
 											]
 										},
 										{
+											"deprecated": true,
 											"properties": {
 												"id": {
 													"description": "Turn on or off whether Cloudflare should wait for an entire file\nfrom the origin server before forwarding it to the site visitor. By\ndefault, Cloudflare sends packets to the client as they arrive from\nthe origin server.\n",
@@ -6948,6 +6957,7 @@
 											},
 											"title": "Response Buffering",
 											"type": "object",
+											"x-stainless-deprecation-message": "This page rule is deprecated. This functionality is no longer supported.",
 											"x-stainless-skip": [
 												"terraform"
 											]
@@ -7406,7 +7416,7 @@
 																		"x-auditable": true
 																	},
 																	"value": {
-																		"description": "The number of seconds to cache resources for.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting this to 0 enables \"Respect Existing Headers\" and is allowed for all plans.\n",
+																		"description": "The number of seconds to cache resources for.\nSetting this to 0 enables \"Respect Existing Headers\".\n",
 																		"example": 3600,
 																		"maximum": 31536000,
 																		"minimum": 0,
@@ -8220,6 +8230,7 @@
 																]
 															},
 															{
+																"deprecated": true,
 																"properties": {
 																	"id": {
 																		"description": "Turn on or off whether Cloudflare should wait for an entire file\nfrom the origin server before forwarding it to the site visitor. By\ndefault, Cloudflare sends packets to the client as they arrive from\nthe origin server.\n",
@@ -8242,6 +8253,7 @@
 																},
 																"title": "Response Buffering",
 																"type": "object",
+																"x-stainless-deprecation-message": "This page rule is deprecated. This functionality is no longer supported.",
 																"x-stainless-skip": [
 																	"terraform"
 																]
@@ -8803,7 +8815,7 @@
 													"x-auditable": true
 												},
 												"value": {
-													"description": "The number of seconds to cache resources for.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting this to 0 enables \"Respect Existing Headers\" and is allowed for all plans.\n",
+													"description": "The number of seconds to cache resources for.\nSetting this to 0 enables \"Respect Existing Headers\".\n",
 													"example": 3600,
 													"maximum": 31536000,
 													"minimum": 0,
@@ -9617,6 +9629,7 @@
 											]
 										},
 										{
+											"deprecated": true,
 											"properties": {
 												"id": {
 													"description": "Turn on or off whether Cloudflare should wait for an entire file\nfrom the origin server before forwarding it to the site visitor. By\ndefault, Cloudflare sends packets to the client as they arrive from\nthe origin server.\n",
@@ -9639,6 +9652,7 @@
 											},
 											"title": "Response Buffering",
 											"type": "object",
+											"x-stainless-deprecation-message": "This page rule is deprecated. This functionality is no longer supported.",
 											"x-stainless-skip": [
 												"terraform"
 											]
@@ -10097,7 +10111,7 @@
 																		"x-auditable": true
 																	},
 																	"value": {
-																		"description": "The number of seconds to cache resources for.\nMinimum values by plan:\n- Free: 7200 seconds (2 hours)\n- Pro: 3600 seconds (1 hour)\n- Business: 1 second\n- Enterprise: 1 second\nSetting this to 0 enables \"Respect Existing Headers\" and is allowed for all plans.\n",
+																		"description": "The number of seconds to cache resources for.\nSetting this to 0 enables \"Respect Existing Headers\".\n",
 																		"example": 3600,
 																		"maximum": 31536000,
 																		"minimum": 0,
@@ -10911,6 +10925,7 @@
 																]
 															},
 															{
+																"deprecated": true,
 																"properties": {
 																	"id": {
 																		"description": "Turn on or off whether Cloudflare should wait for an entire file\nfrom the origin server before forwarding it to the site visitor. By\ndefault, Cloudflare sends packets to the client as they arrive from\nthe origin server.\n",
@@ -10933,6 +10948,7 @@
 																},
 																"title": "Response Buffering",
 																"type": "object",
+																"x-stainless-deprecation-message": "This page rule is deprecated. This functionality is no longer supported.",
 																"x-stainless-skip": [
 																	"terraform"
 																]

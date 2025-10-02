@@ -276,8 +276,8 @@
 												"properties": {
 													"id": {
 														"description": "UUID",
-														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-														"maxLength": 36,
+														"example": "f174e90afafe4643bbbc4a0ed4fc8415",
+														"maxLength": 32,
 														"type": "string",
 														"x-auditable": true
 													},
@@ -518,8 +518,8 @@
 											"properties": {
 												"id": {
 													"description": "UUID",
-													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-													"maxLength": 36,
+													"example": "f174e90afafe4643bbbc4a0ed4fc8415",
+													"maxLength": 32,
 													"type": "string",
 													"x-auditable": true
 												}
@@ -610,8 +610,8 @@
 													"properties": {
 														"id": {
 															"description": "UUID",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"maxLength": 36,
+															"example": "f174e90afafe4643bbbc4a0ed4fc8415",
+															"maxLength": 32,
 															"type": "string",
 															"x-auditable": true
 														}
@@ -814,8 +814,8 @@
 											"properties": {
 												"id": {
 													"description": "token in form of UUID",
-													"example": "a313ba7d-3e46-4c0e-a408-08fafbc3816a",
-													"maxLength": 36,
+													"example": "a313ba7d3e464c0ea40808fafbc3816a",
+													"maxLength": 32,
 													"type": "string",
 													"x-sensitive": true
 												}
@@ -906,8 +906,8 @@
 													"properties": {
 														"id": {
 															"description": "UUID",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"maxLength": 36,
+															"example": "f174e90afafe4643bbbc4a0ed4fc8415",
+															"maxLength": 32,
 															"type": "string",
 															"x-auditable": true
 														}

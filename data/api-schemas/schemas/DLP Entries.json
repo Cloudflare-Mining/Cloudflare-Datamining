@@ -563,7 +563,8 @@
 																	"profile_id": {
 																		"format": "uuid",
 																		"nullable": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"updated_at": {
 																		"format": "date-time",
@@ -1215,7 +1216,8 @@
 																"profile_id": {
 																	"format": "uuid",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"updated_at": {
 																	"format": "date-time",
@@ -2327,7 +2329,8 @@
 																"profile_id": {
 																	"format": "uuid",
 																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"updated_at": {
 																	"format": "date-time",

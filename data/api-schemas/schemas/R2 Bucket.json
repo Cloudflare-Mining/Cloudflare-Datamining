@@ -3499,7 +3499,7 @@
 																						"description": "Condition for lifecycle transitions to apply on a specific date.",
 																						"properties": {
 																							"date": {
-																								"format": "date",
+																								"format": "date-time",
 																								"type": "string",
 																								"x-auditable": true
 																							},
@@ -3566,7 +3566,7 @@
 																									"description": "Condition for lifecycle transitions to apply on a specific date.",
 																									"properties": {
 																										"date": {
-																											"format": "date",
+																											"format": "date-time",
 																											"type": "string",
 																											"x-auditable": true
 																										},
@@ -3834,7 +3834,7 @@
 																				"description": "Condition to apply a lock rule to an object until a specific date.",
 																				"properties": {
 																					"date": {
-																						"format": "date",
+																						"format": "date-time",
 																						"type": "string",
 																						"x-auditable": true
 																					},
@@ -6457,7 +6457,7 @@
 															"description": "Condition for lifecycle transitions to apply on a specific date.",
 															"properties": {
 																"date": {
-																	"format": "date",
+																	"format": "date-time",
 																	"type": "string",
 																	"x-auditable": true
 																},
@@ -6524,7 +6524,7 @@
 																		"description": "Condition for lifecycle transitions to apply on a specific date.",
 																		"properties": {
 																			"date": {
-																				"format": "date",
+																				"format": "date-time",
 																				"type": "string",
 																				"x-auditable": true
 																			},
@@ -6793,7 +6793,7 @@
 													"description": "Condition to apply a lock rule to an object until a specific date.",
 													"properties": {
 														"date": {
-															"format": "date",
+															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},

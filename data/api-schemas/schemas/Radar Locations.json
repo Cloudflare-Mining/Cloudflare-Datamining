@@ -1,0 +1,321 @@
+{
+	"GET /radar/entities/locations": {
+		"description": "Retrieves a list of locations.",
+		"operationId": "radar-get-entities-locations",
+		"parameters": [
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Skips the specified number of objects before fetching the results.",
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"description": "Skips the specified number of objects before fetching the results.",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
+					"example": "US,CA",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"locations": {
+											"items": {
+												"properties": {
+													"alpha2": {
+														"example": "AF",
+														"type": "string"
+													},
+													"latitude": {
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
+														"type": "string"
+													},
+													"longitude": {
+														"description": "A numeric string.",
+														"example": "10",
+														"pattern": "^\\d+$",
+														"type": "string"
+													},
+													"name": {
+														"example": "Afghanistan",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"latitude",
+													"longitude",
+													"alpha2"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"locations"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List locations",
+		"tags": [
+			"Radar Locations"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/entities/locations/{location}": {
+		"description": "Retrieves the requested location information. (A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this location).",
+		"operationId": "radar-get-entities-location-by-alpha2",
+		"parameters": [
+			{
+				"description": "Location alpha-2 code.",
+				"in": "path",
+				"name": "location",
+				"required": true,
+				"schema": {
+					"description": "Location alpha-2 code.",
+					"example": "US",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"location": {
+											"properties": {
+												"alpha2": {
+													"example": "AF",
+													"type": "string"
+												},
+												"confidenceLevel": {
+													"example": 5,
+													"type": "integer"
+												},
+												"latitude": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
+													"type": "string"
+												},
+												"longitude": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
+													"type": "string"
+												},
+												"name": {
+													"example": "Afghanistan",
+													"type": "string"
+												},
+												"region": {
+													"example": "Middle East",
+													"type": "string"
+												},
+												"subregion": {
+													"example": "Southern Asia",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"region",
+												"subregion",
+												"latitude",
+												"longitude",
+												"alpha2",
+												"confidenceLevel"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"location"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get location details",
+		"tags": [
+			"Radar Locations"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

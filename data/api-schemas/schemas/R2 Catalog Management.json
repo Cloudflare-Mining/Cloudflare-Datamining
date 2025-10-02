@@ -1,0 +1,1441 @@
+{
+	"GET /accounts/{account_id}/r2-catalog": {
+		"description": "Returns a list of R2 buckets that have been enabled as Apache Iceberg catalogs\nfor the specified account. Each catalog represents an R2 bucket configured\nto store Iceberg metadata and data files.\n",
+		"operationId": "list-catalogs",
+		"parameters": [
+			{
+				"description": "Identifies the account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"warehouses": [
+									{
+										"bucket": "analytics-bucket",
+										"id": "550e8400-e29b-41d4-a716-446655440000",
+										"maintenance_config": {
+											"compaction": {
+												"state": "enabled",
+												"target_size_mb": "128"
+											}
+										},
+										"name": "account123_analytics-bucket",
+										"status": "active"
+									},
+									{
+										"bucket": "logs-bucket",
+										"id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+										"maintenance_config": {
+											"compaction": {
+												"state": "disabled",
+												"target_size_mb": "128"
+											}
+										},
+										"name": "account123_logs-bucket",
+										"status": "inactive"
+									}
+								]
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"description": "Contains errors if the API call was unsuccessful.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the error code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Contains informational messages.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the message code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Contains the message text.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Contains the list of catalogs.",
+											"properties": {
+												"warehouses": {
+													"description": "Lists catalogs in the account.",
+													"items": {
+														"description": "Contains R2 Data Catalog information.",
+														"properties": {
+															"bucket": {
+																"description": "Specifies the associated R2 bucket name.",
+																"example": "my-data-bucket",
+																"type": "string"
+															},
+															"credential_status": {
+																"allOf": [
+																	{
+																		"description": "Shows the credential configuration status.",
+																		"enum": [
+																			"present",
+																			"absent"
+																		],
+																		"example": "present",
+																		"type": "string"
+																	}
+																],
+																"description": "Shows the credential configuration status.",
+																"nullable": true,
+																"type": "string"
+															},
+															"id": {
+																"description": "Use this to uniquely identify the catalog.",
+																"example": "550e8400-e29b-41d4-a716-446655440000",
+																"format": "uuid",
+																"type": "string"
+															},
+															"maintenance_config": {
+																"allOf": [
+																	{
+																		"description": "Configures maintenance for the catalog.",
+																		"properties": {
+																			"compaction": {
+																				"description": "Configures compaction for catalog maintenance.",
+																				"properties": {
+																					"state": {
+																						"description": "Specifies the state of maintenance operations.",
+																						"enum": [
+																							"enabled",
+																							"disabled"
+																						],
+																						"example": "enabled",
+																						"type": "string"
+																					},
+																					"target_size_mb": {
+																						"default": "128",
+																						"description": "Sets the target file size for compaction in megabytes.",
+																						"enum": [
+																							"64",
+																							"128",
+																							"256",
+																							"512"
+																						],
+																						"example": "128",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"state",
+																					"target_size_mb"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"type": "object"
+																	}
+																],
+																"description": "Configures maintenance for the catalog.",
+																"nullable": true,
+																"type": "object"
+															},
+															"name": {
+																"description": "Specifies the catalog name (generated from account and bucket name).",
+																"example": "account123_my-bucket",
+																"type": "string"
+															},
+															"status": {
+																"description": "Indicates the status of the catalog.",
+																"enum": [
+																	"active",
+																	"inactive"
+																],
+																"example": "active",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"bucket",
+															"status"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"warehouses"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List of R2 catalogs."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Authentication failed."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List R2 catalogs",
+		"tags": [
+			"R2 Catalog Management"
+		],
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write",
+			"Workers R2 Data Catalog Read"
+		]
+	},
+	"GET /accounts/{account_id}/r2-catalog/{bucket_name}": {
+		"description": "Retrieve detailed information about a specific R2 catalog by bucket name.\nReturns catalog status, maintenance configuration, and credential status.\n",
+		"operationId": "get-catalog-details",
+		"parameters": [
+			{
+				"description": "Identifies the account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specifies the R2 bucket name.",
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"bucket": "analytics-bucket",
+								"credential_status": "present",
+								"id": "550e8400-e29b-41d4-a716-446655440000",
+								"maintenance_config": {
+									"compaction": {
+										"state": "enabled",
+										"target_size_mb": "128"
+									}
+								},
+								"name": "account123_analytics-bucket",
+								"status": "active"
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"description": "Contains errors if the API call was unsuccessful.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the error code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Contains informational messages.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the message code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Contains the message text.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Contains R2 Data Catalog information.",
+											"properties": {
+												"bucket": {
+													"description": "Specifies the associated R2 bucket name.",
+													"example": "my-data-bucket",
+													"type": "string"
+												},
+												"credential_status": {
+													"allOf": [
+														{
+															"description": "Shows the credential configuration status.",
+															"enum": [
+																"present",
+																"absent"
+															],
+															"example": "present",
+															"type": "string"
+														}
+													],
+													"description": "Shows the credential configuration status.",
+													"nullable": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Use this to uniquely identify the catalog.",
+													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"format": "uuid",
+													"type": "string"
+												},
+												"maintenance_config": {
+													"allOf": [
+														{
+															"description": "Configures maintenance for the catalog.",
+															"properties": {
+																"compaction": {
+																	"description": "Configures compaction for catalog maintenance.",
+																	"properties": {
+																		"state": {
+																			"description": "Specifies the state of maintenance operations.",
+																			"enum": [
+																				"enabled",
+																				"disabled"
+																			],
+																			"example": "enabled",
+																			"type": "string"
+																		},
+																		"target_size_mb": {
+																			"default": "128",
+																			"description": "Sets the target file size for compaction in megabytes.",
+																			"enum": [
+																				"64",
+																				"128",
+																				"256",
+																				"512"
+																			],
+																			"example": "128",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"state",
+																		"target_size_mb"
+																	],
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "Configures maintenance for the catalog.",
+													"nullable": true,
+													"type": "object"
+												},
+												"name": {
+													"description": "Specifies the catalog name (generated from account and bucket name).",
+													"example": "account123_my-bucket",
+													"type": "string"
+												},
+												"status": {
+													"description": "Indicates the status of the catalog.",
+													"enum": [
+														"active",
+														"inactive"
+													],
+													"example": "active",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"bucket",
+												"status"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "R2 catalog details."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Authentication failed."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Catalog not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get R2 catalog details",
+		"tags": [
+			"R2 Catalog Management"
+		],
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write",
+			"Workers R2 Data Catalog Read"
+		]
+	},
+	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/disable": {
+		"description": "Disable an R2 bucket as a catalog. This operation deactivates the catalog\nbut preserves existing metadata and data files. The catalog can be\nre-enabled later.\n",
+		"operationId": "disable-catalog",
+		"parameters": [
+			{
+				"description": "Identifies the account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specifies the R2 bucket name to disable as catalog.",
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "Catalog disabled successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Authentication failed."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Catalog not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Disable R2 catalog",
+		"tags": [
+			"R2 Catalog Management"
+		],
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write"
+		]
+	},
+	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/enable": {
+		"description": "Enable an R2 bucket as an Apache Iceberg catalog. This operation creates\nthe necessary catalog infrastructure and activates the bucket for storing\nIceberg metadata and data files.\n",
+		"operationId": "enable-catalog",
+		"parameters": [
+			{
+				"description": "Identifies the account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specifies the R2 bucket name to enable as catalog.",
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"id": "550e8400-e29b-41d4-a716-446655440000",
+								"name": "account123_my-bucket"
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"description": "Contains errors if the API call was unsuccessful.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the error code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Contains informational messages.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the message code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Contains the message text.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Contains response from activating an R2 bucket as a catalog.",
+											"properties": {
+												"id": {
+													"description": "Use this to uniquely identify the activated catalog.",
+													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"format": "uuid",
+													"type": "string"
+												},
+												"name": {
+													"description": "Specifies the name of the activated catalog.",
+													"example": "account123_my-bucket",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Catalog enabled successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Authentication failed."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Catalog already enabled."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Enable R2 bucket as a catalog",
+		"tags": [
+			"R2 Catalog Management"
+		],
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write"
+		]
+	}
+}

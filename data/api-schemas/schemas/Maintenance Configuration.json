@@ -1,0 +1,813 @@
+{
+	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs": {
+		"description": "Retrieve the maintenance configuration for a specific catalog,\nincluding compaction settings and credential status.\n",
+		"operationId": "get-maintenance-config",
+		"parameters": [
+			{
+				"description": "Identifies the account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specifies the R2 bucket name.",
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"credential_status": "present",
+								"maintenance_config": {
+									"compaction": {
+										"state": "enabled",
+										"target_size_mb": "128"
+									}
+								}
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"description": "Contains errors if the API call was unsuccessful.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the error code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Contains informational messages.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the message code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Contains the message text.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Contains maintenance configuration and credential status.",
+											"properties": {
+												"credential_status": {
+													"description": "Shows the credential configuration status.",
+													"enum": [
+														"present",
+														"absent"
+													],
+													"example": "present",
+													"type": "string"
+												},
+												"maintenance_config": {
+													"description": "Configures maintenance for the catalog.",
+													"properties": {
+														"compaction": {
+															"description": "Configures compaction for catalog maintenance.",
+															"properties": {
+																"state": {
+																	"description": "Specifies the state of maintenance operations.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																},
+																"target_size_mb": {
+																	"default": "128",
+																	"description": "Sets the target file size for compaction in megabytes.",
+																	"enum": [
+																		"64",
+																		"128",
+																		"256",
+																		"512"
+																	],
+																	"example": "128",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"state",
+																"target_size_mb"
+															],
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"required": [
+												"maintenance_config",
+												"credential_status"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Maintenance configuration retrieved successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Authentication failed."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Catalog not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get catalog maintenance configuration",
+		"tags": [
+			"Maintenance Configuration"
+		],
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write",
+			"Workers R2 Data Catalog Read"
+		]
+	},
+	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs": {
+		"description": "Update the maintenance configuration for a catalog. This allows you to\nenable or disable compaction and adjust target file sizes for optimization.\n",
+		"operationId": "update-maintenance-config",
+		"parameters": [
+			{
+				"description": "Identifies the account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specifies the R2 bucket name.",
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"example": {
+						"compaction": {
+							"state": "enabled",
+							"target_size_mb": "256"
+						}
+					},
+					"schema": {
+						"description": "Contains request to update catalog maintenance configuration.",
+						"properties": {
+							"compaction": {
+								"description": "Updates compaction configuration (all fields optional).",
+								"properties": {
+									"state": {
+										"allOf": [
+											{
+												"description": "Specifies the state of maintenance operations.",
+												"enum": [
+													"enabled",
+													"disabled"
+												],
+												"example": "enabled",
+												"type": "string"
+											}
+										],
+										"description": "Updates the state optionally."
+									},
+									"target_size_mb": {
+										"allOf": [
+											{
+												"default": "128",
+												"description": "Sets the target file size for compaction in megabytes.",
+												"enum": [
+													"64",
+													"128",
+													"256",
+													"512"
+												],
+												"example": "128",
+												"type": "string"
+											}
+										],
+										"description": "Updates the target file size optionally."
+									}
+								},
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"compaction": {
+									"state": "enabled",
+									"target_size_mb": "256"
+								}
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"description": "Contains errors if the API call was unsuccessful.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the error code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Contains informational messages.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the message code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Contains the message text.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Configures maintenance for the catalog.",
+											"properties": {
+												"compaction": {
+													"description": "Configures compaction for catalog maintenance.",
+													"properties": {
+														"state": {
+															"description": "Specifies the state of maintenance operations.",
+															"enum": [
+																"enabled",
+																"disabled"
+															],
+															"example": "enabled",
+															"type": "string"
+														},
+														"target_size_mb": {
+															"default": "128",
+															"description": "Sets the target file size for compaction in megabytes.",
+															"enum": [
+																"64",
+																"128",
+																"256",
+																"512"
+															],
+															"example": "128",
+															"type": "string"
+														}
+													},
+													"required": [
+														"state",
+														"target_size_mb"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Maintenance configuration updated successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Authentication failed."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Catalog not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update catalog maintenance configuration",
+		"tags": [
+			"Maintenance Configuration"
+		],
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write"
+		]
+	}
+}

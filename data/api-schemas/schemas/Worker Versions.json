@@ -3590,6 +3590,12 @@
 								"properties": {
 									"annotations": {
 										"properties": {
+											"workers/alias": {
+												"description": "Associated alias for a version.",
+												"example": "staging",
+												"maxLength": 63,
+												"type": "string"
+											},
 											"workers/message": {
 												"description": "Human-readable message about the version. Truncated to 100 bytes.",
 												"example": "Fixed worker code.",

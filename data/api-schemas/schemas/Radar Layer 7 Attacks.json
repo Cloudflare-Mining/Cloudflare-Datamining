@@ -1,5 +1,503 @@
 {
+	"GET /radar/attacks/layer7/summary/{dimension}": {
+		"description": "Retrieves the distribution of layer 7 attacks by the specified dimension.",
+		"operationId": "radar-get-attacks-layer7-summary",
+		"parameters": [
+			{
+				"description": "Specifies the attribute by which to group the results.",
+				"in": "path",
+				"name": "dimension",
+				"required": true,
+				"schema": {
+					"description": "Specifies the attribute by which to group the results.",
+					"enum": [
+						"HTTP_METHOD",
+						"HTTP_VERSION",
+						"IP_VERSION",
+						"MANAGED_RULES",
+						"MITIGATION_PRODUCT",
+						"VERTICAL",
+						"INDUSTRY"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filters results by HTTP version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP method.",
+				"in": "query",
+				"name": "httpMethod",
+				"schema": {
+					"description": "Filters results by HTTP method.",
+					"example": "GET",
+					"items": {
+						"enum": [
+							"GET",
+							"POST",
+							"DELETE",
+							"PUT",
+							"HEAD",
+							"PURGE",
+							"OPTIONS",
+							"PROPFIND",
+							"MKCOL",
+							"PATCH",
+							"ACL",
+							"BCOPY",
+							"BDELETE",
+							"BMOVE",
+							"BPROPFIND",
+							"BPROPPATCH",
+							"CHECKIN",
+							"CHECKOUT",
+							"CONNECT",
+							"COPY",
+							"LABEL",
+							"LOCK",
+							"MERGE",
+							"MKACTIVITY",
+							"MKWORKSPACE",
+							"MOVE",
+							"NOTIFY",
+							"ORDERPATCH",
+							"POLL",
+							"PROPPATCH",
+							"REPORT",
+							"SEARCH",
+							"SUBSCRIBE",
+							"TRACE",
+							"UNCHECKOUT",
+							"UNLOCK",
+							"UNSUBSCRIBE",
+							"UPDATE",
+							"VERSIONCONTROL",
+							"BASELINECONTROL",
+							"XMSENUMATTS",
+							"RPC_OUT_DATA",
+							"RPC_IN_DATA",
+							"JSON",
+							"COOK",
+							"TRACK"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters the results by layer 7 mitigation product.",
+				"in": "query",
+				"name": "mitigationProduct",
+				"schema": {
+					"description": "Filters the results by layer 7 mitigation product.",
+					"items": {
+						"enum": [
+							"DDOS",
+							"WAF",
+							"BOT_MANAGEMENT",
+							"ACCESS_RULES",
+							"IP_REPUTATION",
+							"API_SHIELD",
+							"DATA_LOSS_PREVENTION"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startDate",
+																	"endDate",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"lastUpdated",
+												"units"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"additionalProperties": {
+												"type": "string"
+											},
+											"example": {
+												"GET": "50.168733",
+												"POST": "25.084366"
+											},
+											"type": "object"
+										}
+									},
+									"required": [
+										"summary_0",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 7 attacks summary by dimension",
+		"tags": [
+			"Radar Layer 7 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/attacks/layer7/summary/http_method": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by HTTP method.",
 		"operationId": "radar-get-attacks-layer7-summary-by-http-method",
 		"parameters": [
@@ -420,6 +918,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/summary/http_version": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by HTTP version.",
 		"operationId": "radar-get-attacks-layer7-summary-by-http-version",
 		"parameters": [
@@ -884,6 +1383,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/summary/industry": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by targeted industry.",
 		"operationId": "radar-get-attacks-layer7-summary-by-industry",
 		"parameters": [
@@ -1364,6 +1864,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/summary/ip_version": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by IP version.",
 		"operationId": "radar-get-attacks-layer7-summary-by-ip-version",
 		"parameters": [
@@ -1824,6 +2325,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/summary/managed_rules": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by managed rules.",
 		"operationId": "radar-get-attacks-layer7-summary-by-managed-rules",
 		"parameters": [
@@ -2305,6 +2807,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/summary/mitigation_product": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by mitigation product.",
 		"operationId": "radar-get-attacks-layer7-summary-by-mitigation-product",
 		"parameters": [
@@ -2765,6 +3268,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/summary/vertical": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by targeted vertical.",
 		"operationId": "radar-get-attacks-layer7-summary-by-vertical",
 		"parameters": [
@@ -3769,7 +4273,570 @@
 			"pro": true
 		}
 	},
+	"GET /radar/attacks/layer7/timeseries_groups/{dimension}": {
+		"description": "Retrieves the distribution of layer 7 attacks grouped by dimension over time.",
+		"operationId": "radar-get-attacks-layer7-timeseries-group",
+		"parameters": [
+			{
+				"description": "Specifies the attribute by which to group the results.",
+				"in": "path",
+				"name": "dimension",
+				"required": true,
+				"schema": {
+					"description": "Specifies the attribute by which to group the results.",
+					"enum": [
+						"HTTP_METHOD",
+						"HTTP_VERSION",
+						"IP_VERSION",
+						"MANAGED_RULES",
+						"MITIGATION_PRODUCT",
+						"VERTICAL",
+						"INDUSTRY"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names used to label the series in the response.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names used to label the series in the response.",
+					"items": {
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start of the date range.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filters results by HTTP version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by HTTP method.",
+				"in": "query",
+				"name": "httpMethod",
+				"schema": {
+					"description": "Filters results by HTTP method.",
+					"example": "GET",
+					"items": {
+						"enum": [
+							"GET",
+							"POST",
+							"DELETE",
+							"PUT",
+							"HEAD",
+							"PURGE",
+							"OPTIONS",
+							"PROPFIND",
+							"MKCOL",
+							"PATCH",
+							"ACL",
+							"BCOPY",
+							"BDELETE",
+							"BMOVE",
+							"BPROPFIND",
+							"BPROPPATCH",
+							"CHECKIN",
+							"CHECKOUT",
+							"CONNECT",
+							"COPY",
+							"LABEL",
+							"LOCK",
+							"MERGE",
+							"MKACTIVITY",
+							"MKWORKSPACE",
+							"MOVE",
+							"NOTIFY",
+							"ORDERPATCH",
+							"POLL",
+							"PROPPATCH",
+							"REPORT",
+							"SEARCH",
+							"SUBSCRIBE",
+							"TRACE",
+							"UNCHECKOUT",
+							"UNLOCK",
+							"UNSUBSCRIBE",
+							"UPDATE",
+							"VERSIONCONTROL",
+							"BASELINECONTROL",
+							"XMSENUMATTS",
+							"RPC_OUT_DATA",
+							"RPC_IN_DATA",
+							"JSON",
+							"COOK",
+							"TRACK"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters the results by layer 7 mitigation product.",
+				"in": "query",
+				"name": "mitigationProduct",
+				"schema": {
+					"description": "Filters the results by layer 7 mitigation product.",
+					"items": {
+						"enum": [
+							"DDOS",
+							"WAF",
+							"BOT_MANAGEMENT",
+							"ACCESS_RULES",
+							"IP_REPUTATION",
+							"API_SHIELD",
+							"DATA_LOSS_PREVENTION"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN0_MAX"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+				"in": "query",
+				"name": "limitPerGroup",
+				"schema": {
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"description": "Metadata for the results.",
+											"properties": {
+												"aggInterval": {
+													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"enum": [
+														"FIFTEEN_MINUTES",
+														"ONE_HOUR",
+														"ONE_DAY",
+														"ONE_WEEK",
+														"ONE_MONTH"
+													],
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"description": "Annotation associated with the result (e.g. outage or other type of event).",
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"description": "Whether event is a single point in time or a time range.",
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"startDate": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startDate",
+																	"endDate",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"description": "Timestamp of the last dataset update.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"normalization": {
+													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"enum": [
+														"PERCENTAGE",
+														"MIN0_MAX",
+														"MIN_MAX",
+														"RAW_VALUES",
+														"PERCENTAGE_CHANGE",
+														"ROLLING_AVERAGE",
+														"OVERLAPPED_PERCENTAGE",
+														"RATIO"
+													],
+													"type": "string"
+												},
+												"units": {
+													"description": "Measurement units for the results.",
+													"items": {
+														"properties": {
+															"name": {
+																"example": "*",
+																"type": "string"
+															},
+															"value": {
+																"example": "requests",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"value"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange",
+												"confidenceInfo",
+												"normalization",
+												"lastUpdated",
+												"units",
+												"aggInterval"
+											],
+											"type": "object"
+										},
+										"serie_0": {
+											"additionalProperties": {
+												"items": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^\\d+$",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"example": {
+												"GET": [
+													"50.168733"
+												],
+												"timestamps": [
+													"2023-08-08T10:15:00Z"
+												]
+											},
+											"properties": {
+												"timestamps": {
+													"items": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"serie_0",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get layer 7 attacks time series grouped by dimension",
+		"tags": [
+			"Radar Layer 7 Attacks"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/attacks/layer7/timeseries_groups/http_method": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by HTTP method over time.",
 		"operationId": "radar-get-attacks-layer7-timeseries-group-by-http-method",
 		"parameters": [
@@ -4252,6 +5319,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/timeseries_groups/http_version": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by HTTP version over time.",
 		"operationId": "radar-get-attacks-layer7-timeseries-group-by-http-version",
 		"parameters": [
@@ -4794,6 +5862,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/timeseries_groups/industry": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by targeted industry over time.",
 		"operationId": "radar-get-attacks-layer7-timeseries-group-by-industry",
 		"parameters": [
@@ -5337,6 +6406,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/timeseries_groups/ip_version": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by IP version used over time.",
 		"operationId": "radar-get-attacks-layer7-timeseries-group-by-ip-version",
 		"parameters": [
@@ -5867,6 +6937,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/timeseries_groups/managed_rules": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by managed rules over time.",
 		"operationId": "radar-get-attacks-layer7-timeseries-group-by-managed-rules",
 		"parameters": [
@@ -6410,6 +7481,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/timeseries_groups/mitigation_product": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by mitigation product over time.",
 		"operationId": "radar-get-attacks-layer7-timeseries-group-by-mitigation-product",
 		"parameters": [
@@ -6932,6 +8004,7 @@
 		}
 	},
 	"GET /radar/attacks/layer7/timeseries_groups/vertical": {
+		"deprecated": true,
 		"description": "Retrieves the distribution of layer 7 attacks by targeted vertical over time.",
 		"operationId": "radar-get-attacks-layer7-timeseries-group-by-vertical",
 		"parameters": [

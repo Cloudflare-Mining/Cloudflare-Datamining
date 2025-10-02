@@ -1,0 +1,151 @@
+{
+	"GET /radar/entities/ip": {
+		"description": "Retrieves IP address information.",
+		"operationId": "radar-get-entities-ip",
+		"parameters": [
+			{
+				"description": "IP address.",
+				"in": "query",
+				"name": "ip",
+				"required": true,
+				"schema": {
+					"description": "IP address.",
+					"example": "8.8.8.8",
+					"format": "ip",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"ip": {
+											"properties": {
+												"asn": {
+													"example": "15169",
+													"type": "string"
+												},
+												"asnLocation": {
+													"example": "US",
+													"type": "string"
+												},
+												"asnName": {
+													"example": "GOOGLE",
+													"type": "string"
+												},
+												"asnOrgName": {
+													"example": "Google LLC",
+													"type": "string"
+												},
+												"ip": {
+													"example": "8.8.8.8",
+													"type": "string"
+												},
+												"ipVersion": {
+													"example": "IPv4",
+													"type": "string"
+												},
+												"location": {
+													"example": "GB",
+													"type": "string"
+												},
+												"locationName": {
+													"example": "United Kingdom",
+													"type": "string"
+												}
+											},
+											"required": [
+												"ip",
+												"ipVersion",
+												"location",
+												"locationName",
+												"asn",
+												"asnName",
+												"asnLocation",
+												"asnOrgName"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"ip"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get IP address details",
+		"tags": [
+			"Radar IP"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
