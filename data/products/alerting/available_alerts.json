@@ -4,7 +4,14 @@
 			"display_name": "Abuse Report Alert",
 			"type": "abuse_report_alert",
 			"description": "Get alerts for abuse reports submitted against the Cloudflare Account",
-			"filter_options": []
+			"filter_options": [
+				{
+					"Key": "type",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
 		}
 	],
 	"Access": [
@@ -145,6 +152,12 @@
 			"display_name": "Cloudflare Open Port Scan Alert",
 			"type": "open_port_scan_alert",
 			"description": "Get notifications when Cloudflare detects newly open ports",
+			"filter_options": []
+		},
+		{
+			"display_name": "Cloudforce One Workers for Platforms Security Alert",
+			"type": "workers_for_platforms_security_alert",
+			"description": "Get notifications when a potential threat has been identified in Workers for Platforms",
 			"filter_options": []
 		}
 	],
