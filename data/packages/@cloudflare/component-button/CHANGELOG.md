@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.2.0
+
+### Minor Changes
+
+- f1d2a634cc: Update component-icon lib
+
 ## 9.1.15
 
 ## 9.1.14
