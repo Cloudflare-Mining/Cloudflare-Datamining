@@ -12,7 +12,7 @@
 <p><strong>Role Responsibilities</strong></p>
 <p>We are currently seeking a highly experienced Data Scientist with prior experience in Natural Language Processing (NLP) to join our Application Security team. In this role, you will work closely with our security experts to develop innovative solutions that leverage NLP to improve our security capabilities. This hands-on position will be responsible for development and deployment of highly scalable Machine Learning models from the ground up. As a key member of our team, you will have the opportunity to work on cutting-edge projects that require advanced NLP techniques, and to collaborate with other highly skilled professionals to deliver outstanding results.&nbsp;</p>
 <p>Our ideal candidate will have a strong background in developing high-performance, enterprise-scale services and a proven track record of delivering exceptional performance while maintaining operational stability. As a high-visibility position, success in this role will depend on your ability to effectively combine your data and modeling skills with your security acumen</p>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Role Requirements&nbsp;</strong></p>
 <p><strong>Must-Have Skills</strong></p>
 <ul>
 	<li><strong>5+ years</strong> of Data Science experience with proven industry experience in a large scale environment (PBs scale, globally distributed teams).&nbsp;</li>
@@ -26,14 +26,10 @@
 </ul>
 <p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>
-		<ul>
-			<li>Previous experience in developing efficient Machine Learning models with low latency (sub-millisecond) in a commercial setting</li>
-			<li>Proven experience in Natural Language Processing (NLP) in a commercial environment</li>
-			<li>Prior experience in Machine Learning for Web Security in a commercial setting</li>
-			<li>Prior publication record in Top Tier conferences like EMNLP, ACL</li>
-		</ul>
-	</li>
+	<li>Previous experience in developing efficient Machine Learning models with low latency (sub-millisecond) in a commercial setting</li>
+	<li>Proven experience in Natural Language Processing (NLP) in a commercial environment</li>
+	<li>Prior experience in Machine Learning for Web Security in a commercial setting</li>
+	<li>Prior publication record in Top Tier conferences like EMNLP, ACL</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

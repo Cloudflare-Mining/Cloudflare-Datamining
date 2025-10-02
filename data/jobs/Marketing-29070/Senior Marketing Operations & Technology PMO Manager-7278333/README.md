@@ -5,41 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Mexico City</strong></p>
-<p>&nbsp;</p>
-<p><strong>About Solutions Engineering at Cloudflare</strong></p>
-<p>The Pre-Sales Solution Engineering organization owns the technical sale of the Cloudflare solution portfolio, ensuring maximal business value, fit-for-purpose solution design and adoption roadmap for our customers. Solutions Engineering is made up of individuals from a wide range of backgrounds - from Financial Consulting to Product Management, Customer Support to Software Engineering, and we are serious about building a diverse, experienced and curious team.&nbsp;</p>
-<p>The Partner Solutions Engineer is an experienced PreSales role within the Solutions Engineering team. Partner Solutions Engineers work closely with our partners to educate, empower, and ensure their success delivering Cloudflare security, reliability and performance solutions.</p>
-<h4><strong>What you'll do as a Partner Solutions Engineer</strong></h4>
-<p>Your role will be to build passionate champions within the technology ranks at your Partner accounts, aid your Partner organizations to drive sales for identified opportunities, and collaborate with your technical champions to build revenue pipeline. As the technical partner advocate within Cloudflare, you will work closely with every team at Cloudflare, from Sales and Product, through to Engineering and Customer Support.&nbsp;</p>
-<p>You have strong experience in large Pre-Sales partner and account management as well as excellent verbal and written communications skills in both Spanish and English, suited for both technical and executive-level engagement. You are comfortable speaking about the Cloudflare vision and mission with all technical and non-technical audiences.&nbsp;</p>
-<p>Ultimately, you are passionate about technology and have the ability to explain complex technical concepts in easy-to-understand terms. You are naturally curious, and an avid builder who is not afraid to get your hands dirty. You appreciate the diversity of challenges in working with partners and customers, and look forward to helping them realize the full promise of Cloudflare. On the Solutions Engineering team, you will find a collaborative environment where everyone brings different strengths and jumps in to help each other.</p>
-<p><strong>Specifically, we are looking for you to:</strong></p>
+<p><strong>Available Locations: Austin</strong></p>
+<p><strong><em>Position Overview</em></strong></p>
+<p><em>The Marketing Operations and Technology team provides the platforms, people, and processes necessary for Global Marketing to plan, execute, and optimize global integrated campaigns at scale and accelerate visitors through stages of the buying cycle. We are looking to hire a Sr. Marketing Operations &amp; Technology PMO Manager who will play a pivotal role in driving efficiency, scalability, and performance at Cloudflare. You’ll partner closely with cross-functional teams within Marketing and in Partner, Legal, IT, Procurement, BI and Operations to ensure alignment and effectiveness.</em></p>
+<p><strong><em>Key Responsibilities</em></strong></p>
+<p><em>Process Optimization&nbsp;</em><em>Develop and manage scalable workflows, systems, and processes to support marketing initiatives. </em><em>Oversee campaign execution frameworks and ensure consistency across global teams. </em><em>Evaluate and improve lead management processes, including lead scoring, routing, and nurturing. </em><em>Data &amp; Analytics </em><em>Deliver actionable insights and recommendations to enhance campaign effectiveness and drive business outcomes. </em><em>Collaborate with the business intelligence team to integrate marketing data into enterprise reporting. </em><em>Technology Management </em><em>Ensure tools are effectively integrated and utilized. </em><em>Evaluate and implement new technologies to enhance marketing capabilities.. </em><em>Project manage high visibility, cross-functional and transformative initiatives like AI. </em><em>Collaboration &amp; Communication </em><em>Partner with revenue operations and enablement teams to ensure seamless alignment between marketing and sales. </em><em>Work closely with demand generation, field, and product marketing teams to support campaign execution. </em><em>Communicate operational performance and insights to leadership and stakeholders. </em><em>Develop annual and quarterly plans and ensure strategic projects are prioritized and executed on time, on budget and meeting intended goals.</em></p>
+<p><strong><em>Qualifications</em></strong></p>
+<p><strong><em>Required:</em></strong></p>
+<p><em>Bachelor's degree in marketing, business, or a related field; MBA preferred.</em><em>10+ years of experience in marketing operations at a high growth Enterprise SaaS organization. </em><em>Deep domain expertise with integrated B2B marketing, lead &amp; pipeline management, multi-touch attribution, email marketing, data strategy &amp; governance, and system integration. </em><em>Expertise in marketing automation platforms (e.g., Marketo, Salesforce, Demandbase) and CRM systems. </em><em>Strong background in data analysis, performance measurement, and marketing attribution.</em></p>
+<p><strong><em>Preferred:</em></strong></p>
+<p><em>Knowledge of cloud technology or cybersecurity industries.&nbsp;</em><em>Strong project management skills with the ability to manage multiple priorities simultaneously. </em><em>Exceptional communication and presentation skills.</em></p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Build and maintain long term technical relationships with our LATAM partners to increase Cloudflare’s reputation and authority within the partner solution portfolio through demonstrating value, enablement, and uncovering new areas of potential revenue</li>
-	<li>Drive technical solution design conversations and guide partners in LATAM through use case qualification and collaborative technical wins through demonstrations and proofs-of-concepts</li>
-	<li>Evangelize and represent Cloudflare through technical thought leadership and expertise&nbsp;</li>
-	<li>Be the voice of the partner internally at Cloudflare, engaging with and influencing Cloudflare’s Product and Engineering teams to meet your partner and customer needs</li>
-	<li>Travel up to 40% throughout the quarter to support partner engagements, attend conferences and industry events.</li>
-	<li>Collaborate with your peers and partners in English and Spanish. Portuguese speaking is also a plus.&nbsp;</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
-	<li>Fluency in Spanish and English (verbal and written); Bonus: Portuguese fluency</li>
-	<li>Experience managing technical sales within large partners and accounts:</li>
-	<ul>
-		<li>Developing champion-style relationships</li>
-		<li>Driving technical wins</li>
-		<li>Assisting with technical validation</li>
-	</ul>
-	<li>Experience with or curiosity in any of the core industry components of Cloudflare solutions (and passion to learn more):</li>
-	<ul>
-		<li>SASE concepts and Zero Trust Networking architectures</li>
-		<li>Internet security technologies including DDoS and DDoS mitigation, Firewalls, TLS, VPN, DLP</li>
-		<li>Networking technologies including TCP, UDP, DNS, IPv4 + IPv6, BGP routing, GRE, SD-WAN, MPLS, Global Traffic Management</li>
-		<li>HTTP technologies including reverse proxy (e.g., WAF and CDN), forward proxy (secure web gateway), serverless application development</li>
-		<li>Detailed understanding of workflow from user to application including hybrid architectures with Azure, AWS, GCP</li>
-	</ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
