@@ -840,8 +840,7 @@
 	"workers_and_pages.Metric": "Metric",
 	"workers_and_pages.access.loading": "Loading...",
 	"workers_and_pages.access.jwt_validation_required_warning.title": "Cloudflare Access Enabled",
-	"workers_and_pages.access.jwt_validation_required_warning.description": "**Important:** Update your Worker script to validate Access JWTs or your application won't be secure.",
-	"workers_and_pages.access.jwt_validation_required_warning.app_details": "Access App Details",
+	"workers_and_pages.access.jwt_validation_required_warning.description": "**Important:** Update your Worker script to validate Access JWTs or your application won't be secure. Only users in your Cloudflare account can access this domain. <0>Manage policies</0>.",
 	"workers_and_pages.routes.manage": "Manage Cloudflare Access",
 	"workers_and_pages.routes.disable_domain": "Disable Domain",
 	"workers_and_pages.routes.enable_domain": "Enable Domain",
@@ -850,9 +849,9 @@
 	"workers_and_pages.routes.disable_route": "Disable Route",
 	"workers_and_pages.routes.enable_route": "Enable Route",
 	"workers_and_pages.access.jwt_validation_required_warning.audience": "Audience (aud)",
-	"workers_and_pages.access.jwt_validation_required_warning.copy_audience": "Copy audience (aud)",
 	"workers_and_pages.access.jwt_validation_required_warning.jwks_url": "JWKs URL",
-	"workers_and_pages.access.jwt_validation_required_warning.copy_jwks_url": "Copy JWKs URL",
-	"workers_and_pages.access.jwt_validation_required_warning.learn_more": "Learn more about <0>JWT validation in our Access documentation</0>.",
-	"workers_and_pages.access.jwt_validation_required_warning.access_enabled_for": "Access enabled for:"
+	"workers_and_pages.access.jwt_validation_required_warning.audience_helper": "Validate the token from the `Cf-Access-Jwt-Assertion` header, ensuring the `aud` claim matches this value.",
+	"workers_and_pages.access.jwt_validation_required_warning.jwks_helper": "Fetch the public keys from this URL and validate the JWT using the key which the JWT claims it was signed with. Do not hardcode the keys u2014 they rotate.",
+	"workers_and_pages.access.jwt_validation_required_warning.access_enabled_for": "Access enabled for:",
+	"workers_and_pages.access.jwt_validation_required_warning.view_documentation": "View Documentation"
 }
