@@ -5,32 +5,56 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Austin, TX</p>
-<p>&nbsp;</p>
-<p><strong>About the team</strong></p>
-<p>The Network Strategy team is the engine that drives Cloudflare's global infrastructure. We are responsible for many aspects of our physical network, from designing and deploying next-generation servers to planning and executing our global data center and network expansion. Our work ensures that Cloudflare's network is fast, reliable, and scalable everywhere in the world.</p>
-<p>Within Network Strategy, the Edge Partner Program is on the front lines of this expansion. We build and manage strategic partnerships directly with Internet Service Providers (ISPs) to embed Cloudflare's infrastructure deep within their networks, bringing our services closer to end-users than ever before.</p>
-<p><strong>About the role</strong></p>
-<p>This is a foundational role at the heart of Cloudflare's network expansion strategy. As an ISP Partnerships Associate, you will be instrumental in growing and managing our portfolio of network partners. You will identify new partnership opportunities, manage relationships with existing partners, and use data-driven analysis to ensure our network edge is robust, efficient, and constantly growing. This position requires a unique blend of technical curiosity, strategic thinking, and relentless execution.</p>
-<p><strong>What you'll do&nbsp;</strong></p>
-<p>We are seeking an Associate to work on ISP partnerships. In this role, you will:&nbsp;</p>
+<p><strong>Location: Washington DC or Austin TX</strong></p>
+<p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</p>
+<p><strong>What you'll do</strong></p>
+<p>As a Software Engineer: Resiliency, you will be part of a Resiliency Organization responsible for developing and maintaining the systems that manage Cloudflare’s infrastructure at scale. We are looking for engineers to join the <strong>Maintenance Optimizer</strong> team and shape the future of infrastructure reliability. We're building a cutting-edge Maintenance Coordination System in Typescript &amp; Go that will be pivotal in guaranteeing our service level capacity, dynamically allocating hardware resources, and supporting our critical capacity SLOs. This is a unique opportunity to work on complex, globally distributed systems which underpin core infrastructure and all Cloudflare products. We ensure the seamless operation of our global network. You will play a key role in the development of the infrastructure that powers Cloudflare’s scale.</p>
+<p>You will collaborate with the team to understand business needs and develop technical solutions. You will thrive in a fast-paced iterative engineering environment and work closely with internal customers to understand their requirements.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><strong>Partnership Management &amp; Growth</strong>: Identify, research, and qualify potential new ISP partners that align with our strategic goals. You will also manage day-to-day communications and relationships with a portfolio of existing partners to ensure their long-term health and success.</li>
-	<li><strong>Data-Driven Analysis &amp; Planning</strong>: Analyze network traffic, performance data, and market trends to model capacity needs, justify expansion projects, and prioritize partnership opportunities. Your analysis will directly influence where and how we expand our network.</li>
-	<li><strong>Project Execution</strong>: Coordinate the end-to-end deployment lifecycle for new partner Points of Presence (PoPs), from initial contact and negotiation support to technical planning and implementation.</li>
-	<li><strong>Cross-Functional Collaboration</strong>: Serve as a key liaison between our external partners and internal teams, including Network Engineering, Capacity Planning, Data Center Strategy, and Infrastructure Operations, to ensure seamless project execution and alignment.</li>
-	<li><strong>Process &amp; Tooling Improvement</strong>: Contribute to the systems, tools, and processes that power our team. You will help build a scalable machine for tracking our partnership pipeline, managing projects, and reporting on our impact.</li>
+	<li>At least 4 years of hands-on software development experience on meaningfully complex systems.</li>
+	<li>Experience building both backend systems and frontend widgets.</li>
+	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
+	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
+	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
+	<li>Strong verbal and written English language skills.</li>
+	<li>Experience with DCIM, CMDB, IPAM, and other Data Center and Asset Lifecycle Management tools is a plus.</li>
+	<li>Experience with data ingestion and analysis - pulling metrics from hundreds of edge data centers.</li>
+	<li>Experience with graph theory - building a health graph on one of the world's largest physical networks.</li>
 </ul>
-<p><strong>Desirable skills, knowledge and experience</strong><strong>&nbsp;</strong></p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><strong>Exceptional Communication</strong>: strong written and verbal communication skills, with the ability to articulate technical concepts clearly to technical and non-technical stakeholders.</li>
-	<li><strong>Collaborative Influence</strong>: You are a natural collaborator with a proven ability to earn buy-in and align cross-functional teams toward a common goal, even without direct authority.</li>
-	<li><strong>Proactive Ownership</strong>: A self-starting mindset with a strong sense of ownership and the persistence to drive complex projects to completion. You are organized, detail-oriented, and thrive on turning chaos into a well-oiled process.</li>
-	<li><strong>Analytical Aptitude</strong>: Strong analytical and problem-solving abilities, with experience using data (e.g., in spreadsheets, databases) to inform decisions and build a business case.</li>
-	<li><strong>Technical Curiosity</strong>: A deep and genuine curiosity about how the Internet works, from physical infrastructure and data centers to routing protocols like BGP.</li>
-	<li><strong>Foundational Network Knowledge</strong>: Familiarity with Internet and networking concepts (e.g., IP addressing, BGP, peering, DNS). While deep expertise isn't required to start, a strong aptitude and eagerness to become a subject matter expert is essential.</li>
+	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $154,000 - 188,000.</span></li>
+	<li><span data-sheets-root="1">For Austin Texas based hires: Estimated annual salary of $137,000 - 167,000.</span></li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
