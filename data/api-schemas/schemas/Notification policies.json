@@ -861,6 +861,14 @@
 																},
 																"type": "array"
 															},
+															"type": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
 															"where": {
 																"description": "Usage depends on specific alert type",
 																"items": {
@@ -1638,6 +1646,14 @@
 															},
 															"type": "array"
 														},
+														"type": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
 														"where": {
 															"description": "Usage depends on specific alert type",
 															"items": {
@@ -2270,6 +2286,14 @@
 																	"type": "array"
 																},
 																"tunnel_name": {
+																	"description": "Usage depends on specific alert type",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": "array"
+																},
+																"type": {
 																	"description": "Usage depends on specific alert type",
 																	"items": {
 																		"type": "string",
@@ -2949,6 +2973,14 @@
 										"type": "array"
 									},
 									"tunnel_name": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"type": "array"
+									},
+									"type": {
 										"description": "Usage depends on specific alert type",
 										"items": {
 											"type": "string",
@@ -3807,6 +3839,14 @@
 										"type": "array"
 									},
 									"tunnel_name": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"type": "array"
+									},
+									"type": {
 										"description": "Usage depends on specific alert type",
 										"items": {
 											"type": "string",
