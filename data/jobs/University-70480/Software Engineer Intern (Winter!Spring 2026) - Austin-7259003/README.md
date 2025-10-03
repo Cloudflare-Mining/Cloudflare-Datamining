@@ -26,6 +26,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>Currently pursuing a degree or program in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</li>
+	<li>Open to recent graduates within last 6 months.&nbsp;</li>
 	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
 	<li>Curiosity, empathy and ability to get things done.</li>
 	<li>Ability to commit to a minimum 12 week summer internship.</li>
