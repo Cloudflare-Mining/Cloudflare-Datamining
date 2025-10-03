@@ -1,5 +1,12 @@
 # Change Log
 
+## 11.0.19
+
+### Patch Changes
+
+- Updated dependencies [c89b8aa9d2]
+  - @cloudflare/util-markdown@1.2.16
+
 ## 11.0.18
 
 ## 11.0.17

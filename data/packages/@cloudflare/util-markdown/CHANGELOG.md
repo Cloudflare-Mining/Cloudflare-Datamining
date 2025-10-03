@@ -1,110 +1,79 @@
 # Change Log
 
+## 1.2.16
+
+### Patch Changes
+
+- c89b8aa9d2: Update marked version and improve cache keys.
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [1.2.15](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.2.12...@cloudflare/util-markdown@1.2.15) (2021-10-28)
 
-
 ### Bug Fixes
 
-* **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
-
-
-
-
+- **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
 
 ## [1.2.12](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.2.11...@cloudflare/util-markdown@1.2.12) (2021-04-23)
 
 **Note:** Version bump only for package @cloudflare/util-markdown
 
-
-
-
-
 ## [1.2.11](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.2.9...@cloudflare/util-markdown@1.2.11) (2020-04-27)
 
 **Note:** Version bump only for package @cloudflare/util-markdown
-
-
-
-
 
 ## [1.2.9](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.2.7...@cloudflare/util-markdown@1.2.9) (2020-02-12)
 
 **Note:** Version bump only for package @cloudflare/util-markdown
 
-
-
-
-
 ## [1.2.7](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.2.1...@cloudflare/util-markdown@1.2.7) (2020-02-02)
-
 
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
 
 ## [1.2.6](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.2.1...@cloudflare/util-markdown@1.2.6) (2020-02-02)
 
-
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
 
 
       <a name="1.2.1"></a>
+
 ## [1.2.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.2.0...@cloudflare/util-markdown@1.2.1) (2019-02-03)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-markdown
 
       <a name="1.2.0"></a>
-# [1.2.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.1.1...@cloudflare/util-markdown@1.2.0) (2018-10-30)
 
+# [1.2.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.1.1...@cloudflare/util-markdown@1.2.0) (2018-10-30)
 
 ### Features
 
-* **stratus-core:** UI-1464 Renaming framework-core to stratus-core and ([63cb9f0](http://stash.cfops.it:7999/fe/stratus/commits/63cb9f0))
-
-
+- **stratus-core:** UI-1464 Renaming framework-core to stratus-core and ([63cb9f0](http://stash.cfops.it:7999/fe/stratus/commits/63cb9f0))
 
 
     <a name="1.1.1"></a>
+
 ## [1.1.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.1.0...@cloudflare/util-markdown@1.1.1) (2018-10-29)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-markdown
 
-  <a name="1.1.0"></a>
-# [1.1.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.0.13...@cloudflare/util-markdown@1.1.0) (2018-10-25)
+<a name="1.1.0"></a>
 
+# [1.1.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.0.13...@cloudflare/util-markdown@1.1.0) (2018-10-25)
 
 ### Features
 
-* **framework-core:** UI-1438 test cmd for framework-core ([132a932](http://stash.cfops.it:7999/fe/stratus/commits/132a932))
-
-
-
+- **framework-core:** UI-1438 test cmd for framework-core ([132a932](http://stash.cfops.it:7999/fe/stratus/commits/132a932))
 
 <a name="1.0.13"></a>
+
 ## [1.0.13](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-markdown@1.0.12...@cloudflare/util-markdown@1.0.13) (2018-10-12)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-markdown
 
@@ -156,8 +125,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* UI-836 fix babelrc and republish all packages
-([ee0c90d](http://stash.cfops.it:7999/fe/stratus/commits/ee0c90d))
+- UI-836 fix babelrc and republish all packages
+  ([ee0c90d](http://stash.cfops.it:7999/fe/stratus/commits/ee0c90d))
 
 <a name="1.0.2"></a>
 
@@ -177,8 +146,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **cf-util-markdown:** WWW-14995: Add option to disable github flavored
-markdown ([7349d56](http://stash.cfops.it:7999/www/cf-ux/commits/7349d56))
+- **cf-util-markdown:** WWW-14995: Add option to disable github flavored
+  markdown ([7349d56](http://stash.cfops.it:7999/www/cf-ux/commits/7349d56))
 
 <a name="3.2.5"></a>
 

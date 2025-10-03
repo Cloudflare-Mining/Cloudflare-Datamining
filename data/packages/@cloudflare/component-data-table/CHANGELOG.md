@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.0.20
+
+### Patch Changes
+
+- @cloudflare/component-pagination@11.0.19
+
 ## 7.0.19
 
 ### Patch Changes
