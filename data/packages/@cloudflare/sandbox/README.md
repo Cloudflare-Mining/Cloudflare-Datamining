@@ -72,7 +72,7 @@ npm install @cloudflare/sandbox
 1. **Create a Dockerfile** (temporary requirement, will be removed in future releases):
 
 ```dockerfile
-FROM docker.io/cloudflare/sandbox:0.3.2
+FROM docker.io/cloudflare/sandbox:0.3.3
 
 # Expose the ports you want to expose
 EXPOSE 3000
@@ -89,7 +89,7 @@ EXPOSE 3000
     {
       "class_name": "Sandbox",
       "image": "./Dockerfile",
-      "max_instances": 1
+      "max_instances": 20
     }
   ],
   "durable_objects": {
