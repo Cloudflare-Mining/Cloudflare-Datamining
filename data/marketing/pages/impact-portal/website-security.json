@@ -516,7 +516,7 @@
 					{
 						"contentfulId": "7mN5xU774uVOyVNYyS7Vrw",
 						"title": "Enable DNSSEC",
-						"copy": "[DNSSEC](https://www.cloudflare.com/dns/dnssec/how-dnssec-works/) creates a secure domain name system by adding cryptographic signatures to existing DNS records. These digital signatures are stored in DNS name servers alongside common record types like A, AAAA, MX, and CNAME. \n\nBy checking its associated signature, you can verify that a requested DNS record comes from its authoritative name server and was not altered en route, as opposed to a fake record injected in an [on-path attack](https://www.cloudflare.com/learning/security/threats/on-path-attack/).\n\nWe highly recommend [enabling DNSSEC](https://developers.cloudflare.com/dns/additional-options/dnssec/) to add a layer of authentication on top of your DNS for domains on Cloudflare.",
+						"copy": "[DNSSEC](https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works/) creates a secure domain name system by adding cryptographic signatures to existing DNS records. These digital signatures are stored in DNS name servers alongside common record types like A, AAAA, MX, and CNAME. \n\nBy checking its associated signature, you can verify that a requested DNS record comes from its authoritative name server and was not altered en route, as opposed to a fake record injected in an [on-path attack](https://www.cloudflare.com/learning/security/threats/on-path-attack/).\n\nWe highly recommend [enabling DNSSEC](https://developers.cloudflare.com/dns/additional-options/dnssec/) to add a layer of authentication on top of your DNS for domains on Cloudflare.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
