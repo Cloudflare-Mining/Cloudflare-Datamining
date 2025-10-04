@@ -1,7 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/pipelines/{pipeline_name}": {
-		"description": "Delete a pipeline.",
-		"operationId": "deleteV4AccountsByAccount_idPipelinesByPipeline_name",
+		"deprecated": true,
+		"description": "[DEPRECATED] Delete a pipeline. Use the new /pipelines/v1/pipelines endpoint instead.",
+		"operationId": "deleteV4AccountsByAccount_idPipelinesByPipeline_name_deprecated",
 		"parameters": [
 			{
 				"in": "path",
@@ -9,7 +10,7 @@
 				"required": true,
 				"schema": {
 					"description": "Specifies the public ID of the account.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
 					"type": "string"
 				}
 			},
@@ -28,7 +29,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Indicates a successfully deleted pipeline."
+				"description": "[DEPRECATED] Indicates a successfully deleted pipeline."
 			},
 			"4XX": {
 				"description": "Indicates an error in deleting a pipeline."
@@ -43,7 +44,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Pipeline",
+		"summary": "[DEPRECATED] Delete Pipeline",
 		"tags": [
 			"workers_pipelines_other"
 		],
@@ -57,9 +58,9 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_id}/pipelines": {
-		"description": "List, filter, and paginate pipelines in an account.",
-		"operationId": "getV4AccountsByAccount_idPipelines",
+	"DELETE /accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}": {
+		"description": "Delete Pipeline in Account.",
+		"operationId": "deleteV4AccountsByAccount_idPipelinesV1PipelinesByPipeline_id",
 		"parameters": [
 			{
 				"in": "path",
@@ -67,7 +68,183 @@
 				"required": true,
 				"schema": {
 					"description": "Specifies the public ID of the account.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "pipeline_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the pipeline.",
+					"example": "043e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Indicates a successfully deleted Pipeline."
+			},
+			"4XX": {
+				"description": "Indicates an error in listing Pipelines."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Pipelines",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"DELETE /accounts/{account_id}/pipelines/v1/sinks/{sink_id}": {
+		"description": "Delete Pipeline in Account.",
+		"operationId": "deleteV4AccountsByAccount_idPipelinesV1SinksBySink_id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "sink_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the publid ID of the sink.",
+					"example": "0223105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "force",
+				"schema": {
+					"description": "Delete sink forcefully, including deleting any dependent pipelines.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Indicates a successfully deleted Sink."
+			},
+			"4XX": {
+				"description": "Indicates an error in listing Sinks."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Sink",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"DELETE /accounts/{account_id}/pipelines/v1/streams/{stream_id}": {
+		"description": "Delete Stream in Account.",
+		"operationId": "deleteV4AccountsByAccount_idPipelinesV1StreamsByStream_id",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "force",
+				"schema": {
+					"description": "Delete stream forcefully, including deleting any dependent pipelines.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "stream_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the stream.",
+					"example": "033e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Indicates a successfully deleted Stream."
+			},
+			"4XX": {
+				"description": "Indicates an error in listing Streams."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Stream",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/pipelines": {
+		"deprecated": true,
+		"description": "[DEPRECATED] List, filter, and paginate pipelines in an account. Use the new /pipelines/v1/pipelines endpoint instead.",
+		"operationId": "getV4AccountsByAccount_idPipelines_deprecated",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
 					"type": "string"
 				}
 			},
@@ -137,7 +314,8 @@
 								},
 								"results": {
 									"items": {
-										"description": "Describes the configuration of a pipeline.",
+										"deprecated": true,
+										"description": "[DEPRECATED] Describes the configuration of a pipeline. Use the new streams/sinks/pipelines API instead.",
 										"properties": {
 											"destination": {
 												"properties": {
@@ -282,6 +460,8 @@
 													},
 													"oneOf": [
 														{
+															"deprecated": true,
+															"description": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
 															"properties": {
 																"authentication": {
 																	"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
@@ -328,6 +508,8 @@
 															"type": "object"
 														},
 														{
+															"deprecated": true,
+															"description": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
 															"properties": {
 																"format": {
 																	"description": "Specifies the format of source data.",
@@ -384,7 +566,7 @@
 						}
 					}
 				},
-				"description": "Lists the pipelines."
+				"description": "[DEPRECATED] Lists the pipelines. Use /pipelines/v1/pipelines instead."
 			},
 			"4XX": {
 				"content": {
@@ -447,7 +629,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Pipelines",
+		"summary": "[DEPRECATED] List Pipelines",
 		"tags": [
 			"workers_pipelines_other"
 		],
@@ -463,8 +645,9 @@
 		}
 	},
 	"GET /accounts/{account_id}/pipelines/{pipeline_name}": {
-		"description": "Get configuration of a pipeline.",
-		"operationId": "getV4AccountsByAccount_idPipelinesByPipeline_name",
+		"deprecated": true,
+		"description": "[DEPRECATED] Get configuration of a pipeline. Use the new /pipelines/v1/pipelines endpoint instead.",
+		"operationId": "getV4AccountsByAccount_idPipelinesByPipeline_name_deprecated",
 		"parameters": [
 			{
 				"in": "path",
@@ -472,7 +655,7 @@
 				"required": true,
 				"schema": {
 					"description": "Specifies the public ID of the account.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
 					"type": "string"
 				}
 			},
@@ -496,7 +679,8 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"description": "Describes the configuration of a pipeline.",
+									"deprecated": true,
+									"description": "[DEPRECATED] Describes the configuration of a pipeline. Use the new streams/sinks/pipelines API instead.",
 									"properties": {
 										"destination": {
 											"properties": {
@@ -641,6 +825,8 @@
 												},
 												"oneOf": [
 													{
+														"deprecated": true,
+														"description": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
 														"properties": {
 															"authentication": {
 																"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
@@ -687,6 +873,8 @@
 														"type": "object"
 													},
 													{
+														"deprecated": true,
+														"description": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
 														"properties": {
 															"format": {
 																"description": "Specifies the format of source data.",
@@ -740,7 +928,7 @@
 						}
 					}
 				},
-				"description": "Describes the configuration of a pipeline."
+				"description": "[DEPRECATED] Describes the configuration of a pipeline."
 			},
 			"404": {
 				"content": {
@@ -803,7 +991,3111 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Pipeline",
+		"summary": "[DEPRECATED] Get Pipeline",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write",
+			"Pipelines Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/pipelines/v1/pipelines": {
+		"description": "List/Filter Pipelines in Account.",
+		"operationId": "getV4AccountsByAccount_idPipelinesV1Pipelines",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"type": "string"
+											},
+											"id": {
+												"description": "Indicates a unique identifier for this pipeline.",
+												"example": "01234567890123457689012345678901",
+												"type": "string"
+											},
+											"modified_at": {
+												"type": "string"
+											},
+											"name": {
+												"description": "Indicates the name of the Pipeline.",
+												"example": "my_pipeline",
+												"maxLength": 128,
+												"minLength": 1,
+												"type": "string"
+											},
+											"sql": {
+												"description": "Specifies SQL for the Pipeline processing flow.",
+												"example": "insert into sink select * from source;",
+												"type": "string"
+											},
+											"status": {
+												"description": "Indicates the current status of the Pipeline.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"created_at",
+											"modified_at",
+											"sql",
+											"status"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"description": "Indicates the number of items on current page.",
+											"example": 1,
+											"type": "number"
+										},
+										"page": {
+											"description": "Indicates the current page number.",
+											"example": 0,
+											"type": "number"
+										},
+										"per_page": {
+											"description": "Indicates the number of items per page.",
+											"example": 10,
+											"type": "number"
+										},
+										"total_count": {
+											"description": "Indicates the total number of items.",
+											"example": 1,
+											"type": "number"
+										}
+									},
+									"required": [
+										"count",
+										"page",
+										"per_page",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"result_info"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates a successfully listed Pipelines."
+			},
+			"4XX": {
+				"description": "Indicates an error in listing Pipelines."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Pipelines",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write",
+			"Pipelines Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}": {
+		"description": "Get Pipelines Details.",
+		"operationId": "getV4AccountsByAccount_idPipelinesV1PipelinesByPipeline_id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "pipeline_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the pipeline.",
+					"example": "043e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"type": "string"
+										},
+										"id": {
+											"description": "Indicates a unique identifier for this pipeline.",
+											"example": "01234567890123457689012345678901",
+											"type": "string"
+										},
+										"modified_at": {
+											"type": "string"
+										},
+										"name": {
+											"description": "Indicates the name of the Pipeline.",
+											"example": "my_pipeline",
+											"maxLength": 128,
+											"minLength": 1,
+											"type": "string"
+										},
+										"sql": {
+											"description": "Specifies SQL for the Pipeline processing flow.",
+											"example": "insert into sink select * from source;",
+											"type": "string"
+										},
+										"status": {
+											"description": "Indicates the current status of the Pipeline.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"created_at",
+										"modified_at",
+										"sql",
+										"status"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates a successfully retrieved Pipeline."
+			},
+			"4XX": {
+				"description": "Indicates an error in retrieving Pipelines."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Pipeline Details",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write",
+			"Pipelines Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/pipelines/v1/sinks": {
+		"description": "List/Filter Sinks in Account.",
+		"operationId": "getV4AccountsByAccount_idPipelinesV1Sinks",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pipelineId",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"config": {
+												"description": "Defines the configuration of the R2 Sink.",
+												"oneOf": [
+													{
+														"additionalProperties": false,
+														"properties": {
+															"account_id": {
+																"description": "Cloudflare Account ID for the bucket",
+																"title": "Account ID",
+																"type": "string"
+															},
+															"bucket": {
+																"description": "R2 Bucket to write to",
+																"title": "Bucket",
+																"type": "string"
+															},
+															"credentials": {
+																"additionalProperties": false,
+																"properties": {
+																	"access_key_id": {
+																		"description": "Cloudflare Account ID for the bucket",
+																		"format": "var-str",
+																		"title": "Access Key ID",
+																		"type": "string"
+																	},
+																	"secret_access_key": {
+																		"description": "Cloudflare Account ID for the bucket",
+																		"format": "var-str",
+																		"title": "Access Key ID",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"access_key_id",
+																	"secret_access_key"
+																],
+																"title": "R2 Credentials",
+																"type": "object"
+															},
+															"file_naming": {
+																"additionalProperties": false,
+																"description": "Controls filename prefix/suffix and strategy.",
+																"properties": {
+																	"prefix": {
+																		"description": "The prefix to use in file name. i.e prefix-<uuid>.parquet",
+																		"title": "Filename Prefix",
+																		"type": "string"
+																	},
+																	"strategy": {
+																		"description": "Filename generation strategy.",
+																		"enum": [
+																			"serial",
+																			"uuid",
+																			"uuid_v7",
+																			"ulid"
+																		],
+																		"title": "Filename Strategy",
+																		"type": "string"
+																	},
+																	"suffix": {
+																		"description": "This will overwrite the default file suffix. i.e .parquet, use with caution",
+																		"title": "Filename Suffix",
+																		"type": "string"
+																	}
+																},
+																"title": "File Naming",
+																"type": "object"
+															},
+															"jurisdiction": {
+																"description": "Jurisdiction this bucket is hosted in",
+																"title": "Jurisdiction",
+																"type": "string"
+															},
+															"partitioning": {
+																"additionalProperties": false,
+																"description": "Data-layout partitioning for sinks.",
+																"properties": {
+																	"time_pattern": {
+																		"description": "The pattern of the date string",
+																		"example": "year=%Y/month=%m/day=%d/hour=%H",
+																		"title": "Time Partition Pattern",
+																		"type": "string"
+																	}
+																},
+																"title": "Partitioning Configuration",
+																"type": "object"
+															},
+															"path": {
+																"description": "Subpath within the bucket to write to",
+																"title": "Path",
+																"type": "string"
+															},
+															"rolling_policy": {
+																"additionalProperties": false,
+																"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+																"properties": {
+																	"file_size_bytes": {
+																		"description": "Files will be rolled after reaching this number of bytes",
+																		"format": "uint64",
+																		"minimum": 0,
+																		"title": "File Size",
+																		"type": "integer"
+																	},
+																	"inactivity_seconds": {
+																		"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																		"format": "uint64",
+																		"minimum": 1,
+																		"title": "Inactivity Seconds",
+																		"type": "integer"
+																	},
+																	"interval_seconds": {
+																		"description": "Number of seconds to wait before rolling over to a new file",
+																		"format": "uint64",
+																		"minimum": 1,
+																		"title": "Interval Seconds",
+																		"type": "integer"
+																	}
+																},
+																"title": "File Rolling Policy",
+																"type": "object"
+															}
+														},
+														"required": [
+															"account_id",
+															"bucket",
+															"credentials"
+														],
+														"title": "R2 Sink",
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"description": "R2 Data Catalog Sink",
+														"properties": {
+															"account_id": {
+																"description": "Cloudflare Account ID",
+																"example": "6791973bbe876d621f9e557f891e90b3",
+																"format": "uri",
+																"type": "string"
+															},
+															"bucket": {
+																"description": "The R2 Bucket that hosts this catalog",
+																"example": "my-bucket",
+																"type": "string"
+															},
+															"namespace": {
+																"description": "Table namespace",
+																"title": "Namespace",
+																"type": "string"
+															},
+															"rolling_policy": {
+																"additionalProperties": false,
+																"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+																"properties": {
+																	"file_size_bytes": {
+																		"description": "Files will be rolled after reaching this number of bytes",
+																		"format": "uint64",
+																		"minimum": 0,
+																		"title": "File Size",
+																		"type": "integer"
+																	},
+																	"inactivity_seconds": {
+																		"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																		"format": "uint64",
+																		"minimum": 1,
+																		"title": "Inactivity Seconds",
+																		"type": "integer"
+																	},
+																	"interval_seconds": {
+																		"description": "Number of seconds to wait before rolling over to a new file",
+																		"format": "uint64",
+																		"minimum": 1,
+																		"title": "Interval Seconds",
+																		"type": "integer"
+																	}
+																},
+																"title": "File Rolling Policy",
+																"type": "object"
+															},
+															"table_name": {
+																"description": "Table name",
+																"title": "Table Name",
+																"type": "string"
+															},
+															"token": {
+																"description": "Authentication token",
+																"example": "\"asdfkj2h34kjhkj\"",
+																"format": "var-str",
+																"type": "string"
+															}
+														},
+														"required": [
+															"account_id",
+															"bucket",
+															"token",
+															"table_name"
+														],
+														"title": "R2DataCatalogSinkTable",
+														"type": "object"
+													}
+												]
+											},
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"format": {
+												"discriminator": {
+													"propertyName": "type"
+												},
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"decimal_encoding": {
+																		"enum": [
+																			"number",
+																			"string",
+																			"bytes"
+																		],
+																		"type": "string"
+																	},
+																	"timestamp_format": {
+																		"enum": [
+																			"rfc3339",
+																			"unix_millis"
+																		],
+																		"type": "string"
+																	},
+																	"unstructured": {
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"json"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Json"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"compression": {
+																		"enum": [
+																			"uncompressed",
+																			"snappy",
+																			"gzip",
+																			"zstd",
+																			"lz4"
+																		],
+																		"type": "string"
+																	},
+																	"row_group_bytes": {
+																		"format": "int64",
+																		"minimum": 0,
+																		"nullable": true,
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"parquet"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Parquet"
+													}
+												]
+											},
+											"id": {
+												"description": "Indicates a unique identifier for this sink.",
+												"example": "01234567890123457689012345678901",
+												"type": "string"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"name": {
+												"description": "Defines the name of the Sink.",
+												"example": "my_sink",
+												"maxLength": 128,
+												"minLength": 1,
+												"type": "string"
+											},
+											"schema": {
+												"properties": {
+													"fields": {
+														"items": {
+															"allOf": [
+																{
+																	"discriminator": {
+																		"propertyName": "type"
+																	},
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"int32"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Int32",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"int64"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Int64",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"float32"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Float32",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"float64"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Float64",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"bool"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Bool",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"string"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "String",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"binary"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Binary",
+																			"type": "object"
+																		},
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"unit": {
+																							"enum": [
+																								"second",
+																								"millisecond",
+																								"microsecond",
+																								"nanosecond"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"type": {
+																							"enum": [
+																								"timestamp"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				}
+																			],
+																			"title": "Timestamp"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"json"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Json",
+																			"type": "object"
+																		},
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"fields": {
+																							"items": "[Circular ~.GET /accounts/{account_id}/pipelines/v1/sinks.responses.200.content.application/json.schema.properties.result.items.properties.schema.properties.fields.items]",
+																							"type": "array"
+																						},
+																						"name": {
+																							"nullable": true,
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"fields"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"type": {
+																							"enum": [
+																								"struct"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				}
+																			],
+																			"title": "Struct"
+																		},
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"items": "[Circular ~.GET /accounts/{account_id}/pipelines/v1/sinks.responses.200.content.application/json.schema.properties.result.items.properties.schema.properties.fields.items]"
+																					},
+																					"required": [
+																						"items"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"type": {
+																							"enum": [
+																								"list"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				}
+																			],
+																			"title": "List"
+																		}
+																	]
+																},
+																{
+																	"properties": {
+																		"metadata_key": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"required": {
+																			"type": "boolean"
+																		},
+																		"sql_name": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name"
+																	],
+																	"type": "object"
+																}
+															]
+														},
+														"type": "array"
+													},
+													"format": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"decimal_encoding": {
+																						"enum": [
+																							"number",
+																							"string",
+																							"bytes"
+																						],
+																						"type": "string"
+																					},
+																					"timestamp_format": {
+																						"enum": [
+																							"rfc3339",
+																							"unix_millis"
+																						],
+																						"type": "string"
+																					},
+																					"unstructured": {
+																						"type": "boolean"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"json"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Json"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"compression": {
+																						"enum": [
+																							"uncompressed",
+																							"snappy",
+																							"gzip",
+																							"zstd",
+																							"lz4"
+																						],
+																						"type": "string"
+																					},
+																					"row_group_bytes": {
+																						"format": "int64",
+																						"minimum": 0,
+																						"nullable": true,
+																						"type": "integer"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"parquet"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Parquet"
+																	}
+																]
+															}
+														]
+													},
+													"inferred": {
+														"nullable": true,
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"type": {
+												"description": "Specifies the type of sink.",
+												"enum": [
+													"r2",
+													"r2_data_catalog"
+												],
+												"example": "r2",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"created_at",
+											"modified_at",
+											"type"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"description": "Indicates the number of items on current page.",
+											"example": 1,
+											"type": "number"
+										},
+										"page": {
+											"description": "Indicates the current page number.",
+											"example": 0,
+											"type": "number"
+										},
+										"per_page": {
+											"description": "Indicates the number of items per page.",
+											"example": 10,
+											"type": "number"
+										},
+										"total_count": {
+											"description": "Indicates the total number of items.",
+											"example": 1,
+											"type": "number"
+										}
+									},
+									"required": [
+										"count",
+										"page",
+										"per_page",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"result_info"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates successfully listed Sinks."
+			},
+			"4XX": {
+				"description": "Indicates an error in listing Sinks."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Sinks",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write",
+			"Pipelines Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/pipelines/v1/sinks/{sink_id}": {
+		"description": "Get Sink Details.",
+		"operationId": "getV4AccountsByAccount_idPipelinesV1SinksBySink_id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "sink_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the publid ID of the sink.",
+					"example": "0223105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"config": {
+											"description": "Defines the configuration of the R2 Sink.",
+											"oneOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"account_id": {
+															"description": "Cloudflare Account ID for the bucket",
+															"title": "Account ID",
+															"type": "string"
+														},
+														"bucket": {
+															"description": "R2 Bucket to write to",
+															"title": "Bucket",
+															"type": "string"
+														},
+														"credentials": {
+															"additionalProperties": false,
+															"properties": {
+																"access_key_id": {
+																	"description": "Cloudflare Account ID for the bucket",
+																	"format": "var-str",
+																	"title": "Access Key ID",
+																	"type": "string"
+																},
+																"secret_access_key": {
+																	"description": "Cloudflare Account ID for the bucket",
+																	"format": "var-str",
+																	"title": "Access Key ID",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"access_key_id",
+																"secret_access_key"
+															],
+															"title": "R2 Credentials",
+															"type": "object"
+														},
+														"file_naming": {
+															"additionalProperties": false,
+															"description": "Controls filename prefix/suffix and strategy.",
+															"properties": {
+																"prefix": {
+																	"description": "The prefix to use in file name. i.e prefix-<uuid>.parquet",
+																	"title": "Filename Prefix",
+																	"type": "string"
+																},
+																"strategy": {
+																	"description": "Filename generation strategy.",
+																	"enum": [
+																		"serial",
+																		"uuid",
+																		"uuid_v7",
+																		"ulid"
+																	],
+																	"title": "Filename Strategy",
+																	"type": "string"
+																},
+																"suffix": {
+																	"description": "This will overwrite the default file suffix. i.e .parquet, use with caution",
+																	"title": "Filename Suffix",
+																	"type": "string"
+																}
+															},
+															"title": "File Naming",
+															"type": "object"
+														},
+														"jurisdiction": {
+															"description": "Jurisdiction this bucket is hosted in",
+															"title": "Jurisdiction",
+															"type": "string"
+														},
+														"partitioning": {
+															"additionalProperties": false,
+															"description": "Data-layout partitioning for sinks.",
+															"properties": {
+																"time_pattern": {
+																	"description": "The pattern of the date string",
+																	"example": "year=%Y/month=%m/day=%d/hour=%H",
+																	"title": "Time Partition Pattern",
+																	"type": "string"
+																}
+															},
+															"title": "Partitioning Configuration",
+															"type": "object"
+														},
+														"path": {
+															"description": "Subpath within the bucket to write to",
+															"title": "Path",
+															"type": "string"
+														},
+														"rolling_policy": {
+															"additionalProperties": false,
+															"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+															"properties": {
+																"file_size_bytes": {
+																	"description": "Files will be rolled after reaching this number of bytes",
+																	"format": "uint64",
+																	"minimum": 0,
+																	"title": "File Size",
+																	"type": "integer"
+																},
+																"inactivity_seconds": {
+																	"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Inactivity Seconds",
+																	"type": "integer"
+																},
+																"interval_seconds": {
+																	"description": "Number of seconds to wait before rolling over to a new file",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Interval Seconds",
+																	"type": "integer"
+																}
+															},
+															"title": "File Rolling Policy",
+															"type": "object"
+														}
+													},
+													"required": [
+														"account_id",
+														"bucket",
+														"credentials"
+													],
+													"title": "R2 Sink",
+													"type": "object"
+												},
+												{
+													"additionalProperties": false,
+													"description": "R2 Data Catalog Sink",
+													"properties": {
+														"account_id": {
+															"description": "Cloudflare Account ID",
+															"example": "6791973bbe876d621f9e557f891e90b3",
+															"format": "uri",
+															"type": "string"
+														},
+														"bucket": {
+															"description": "The R2 Bucket that hosts this catalog",
+															"example": "my-bucket",
+															"type": "string"
+														},
+														"namespace": {
+															"description": "Table namespace",
+															"title": "Namespace",
+															"type": "string"
+														},
+														"rolling_policy": {
+															"additionalProperties": false,
+															"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+															"properties": {
+																"file_size_bytes": {
+																	"description": "Files will be rolled after reaching this number of bytes",
+																	"format": "uint64",
+																	"minimum": 0,
+																	"title": "File Size",
+																	"type": "integer"
+																},
+																"inactivity_seconds": {
+																	"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Inactivity Seconds",
+																	"type": "integer"
+																},
+																"interval_seconds": {
+																	"description": "Number of seconds to wait before rolling over to a new file",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Interval Seconds",
+																	"type": "integer"
+																}
+															},
+															"title": "File Rolling Policy",
+															"type": "object"
+														},
+														"table_name": {
+															"description": "Table name",
+															"title": "Table Name",
+															"type": "string"
+														},
+														"token": {
+															"description": "Authentication token",
+															"example": "\"asdfkj2h34kjhkj\"",
+															"format": "var-str",
+															"type": "string"
+														}
+													},
+													"required": [
+														"account_id",
+														"bucket",
+														"token",
+														"table_name"
+													],
+													"title": "R2DataCatalogSinkTable",
+													"type": "object"
+												}
+											]
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"format": {
+											"discriminator": {
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"decimal_encoding": {
+																	"enum": [
+																		"number",
+																		"string",
+																		"bytes"
+																	],
+																	"type": "string"
+																},
+																"timestamp_format": {
+																	"enum": [
+																		"rfc3339",
+																		"unix_millis"
+																	],
+																	"type": "string"
+																},
+																"unstructured": {
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"json"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Json"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"compression": {
+																	"enum": [
+																		"uncompressed",
+																		"snappy",
+																		"gzip",
+																		"zstd",
+																		"lz4"
+																	],
+																	"type": "string"
+																},
+																"row_group_bytes": {
+																	"format": "int64",
+																	"minimum": 0,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"parquet"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Parquet"
+												}
+											]
+										},
+										"id": {
+											"description": "Indicates a unique identifier for this sink.",
+											"example": "01234567890123457689012345678901",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"description": "Defines the name of the Sink.",
+											"example": "my_sink",
+											"maxLength": 128,
+											"minLength": 1,
+											"type": "string"
+										},
+										"schema": {
+											"properties": {
+												"fields": {
+													"items": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"int32"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"int64"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"float32"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"float64"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"bool"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Bool",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"string"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "String",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"binary"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Binary",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"unit": {
+																						"enum": [
+																							"second",
+																							"millisecond",
+																							"microsecond",
+																							"nanosecond"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"timestamp"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Timestamp"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"json"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Json",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"fields": {
+																						"items": "[Circular ~.GET /accounts/{account_id}/pipelines/v1/sinks/{sink_id}.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]",
+																						"type": "array"
+																					},
+																					"name": {
+																						"nullable": true,
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"fields"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"struct"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Struct"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"items": "[Circular ~.GET /accounts/{account_id}/pipelines/v1/sinks/{sink_id}.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]"
+																				},
+																				"required": [
+																					"items"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"list"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "List"
+																	}
+																]
+															},
+															{
+																"properties": {
+																	"metadata_key": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"required": {
+																		"type": "boolean"
+																	},
+																	"sql_name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"format": {
+													"allOf": [
+														{
+															"discriminator": {
+																"propertyName": "type"
+															},
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"decimal_encoding": {
+																					"enum": [
+																						"number",
+																						"string",
+																						"bytes"
+																					],
+																					"type": "string"
+																				},
+																				"timestamp_format": {
+																					"enum": [
+																						"rfc3339",
+																						"unix_millis"
+																					],
+																					"type": "string"
+																				},
+																				"unstructured": {
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"json"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Json"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"compression": {
+																					"enum": [
+																						"uncompressed",
+																						"snappy",
+																						"gzip",
+																						"zstd",
+																						"lz4"
+																					],
+																					"type": "string"
+																				},
+																				"row_group_bytes": {
+																					"format": "int64",
+																					"minimum": 0,
+																					"nullable": true,
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"parquet"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Parquet"
+																}
+															]
+														}
+													]
+												},
+												"inferred": {
+													"nullable": true,
+													"type": "boolean"
+												}
+											},
+											"type": "object"
+										},
+										"type": {
+											"description": "Specifies the type of sink.",
+											"enum": [
+												"r2",
+												"r2_data_catalog"
+											],
+											"example": "r2",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"created_at",
+										"modified_at",
+										"type"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates that Sink was retrieved."
+			},
+			"4XX": {
+				"description": "Indicates an error in listing Sinks."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Sink Details",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write",
+			"Pipelines Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/pipelines/v1/streams": {
+		"description": "List/Filter Streams in Account.",
+		"operationId": "getV4AccountsByAccount_idPipelinesV1Streams",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pipelineId",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"endpoint": {
+												"description": "Indicates the endpoint URL of this stream.",
+												"example": "https://01234567890123457689012345678901.ingest.cloudflare.com/v1",
+												"format": "uri",
+												"type": "string"
+											},
+											"format": {
+												"discriminator": {
+													"propertyName": "type"
+												},
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"decimal_encoding": {
+																		"enum": [
+																			"number",
+																			"string",
+																			"bytes"
+																		],
+																		"type": "string"
+																	},
+																	"timestamp_format": {
+																		"enum": [
+																			"rfc3339",
+																			"unix_millis"
+																		],
+																		"type": "string"
+																	},
+																	"unstructured": {
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"json"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Json"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"compression": {
+																		"enum": [
+																			"uncompressed",
+																			"snappy",
+																			"gzip",
+																			"zstd",
+																			"lz4"
+																		],
+																		"type": "string"
+																	},
+																	"row_group_bytes": {
+																		"format": "int64",
+																		"minimum": 0,
+																		"nullable": true,
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"parquet"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Parquet"
+													}
+												]
+											},
+											"http": {
+												"properties": {
+													"authentication": {
+														"type": "boolean"
+													},
+													"cors": {
+														"description": "Specifies the CORS options for the HTTP endpoint.",
+														"example": {},
+														"properties": {
+															"origins": {
+																"items": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																},
+																"maxItems": 5,
+																"type": "array"
+															}
+														},
+														"type": "object"
+													},
+													"enabled": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"enabled",
+													"authentication"
+												],
+												"type": "object"
+											},
+											"id": {
+												"description": "Indicates a unique identifier for this stream.",
+												"example": "01234567890123457689012345678901",
+												"type": "string"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"name": {
+												"description": "Indicates the name of the Stream.",
+												"example": "my_stream",
+												"maxLength": 128,
+												"minLength": 1,
+												"type": "string"
+											},
+											"schema": {
+												"properties": {
+													"fields": {
+														"items": {
+															"allOf": [
+																{
+																	"discriminator": {
+																		"propertyName": "type"
+																	},
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"int32"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Int32",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"int64"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Int64",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"float32"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Float32",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"float64"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Float64",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"bool"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Bool",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"string"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "String",
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"binary"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Binary",
+																			"type": "object"
+																		},
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"unit": {
+																							"enum": [
+																								"second",
+																								"millisecond",
+																								"microsecond",
+																								"nanosecond"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"type": {
+																							"enum": [
+																								"timestamp"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				}
+																			],
+																			"title": "Timestamp"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"json"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"title": "Json",
+																			"type": "object"
+																		},
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"fields": {
+																							"items": "[Circular ~.GET /accounts/{account_id}/pipelines/v1/streams.responses.200.content.application/json.schema.properties.result.items.properties.schema.properties.fields.items]",
+																							"type": "array"
+																						},
+																						"name": {
+																							"nullable": true,
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"fields"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"type": {
+																							"enum": [
+																								"struct"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				}
+																			],
+																			"title": "Struct"
+																		},
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"items": "[Circular ~.GET /accounts/{account_id}/pipelines/v1/streams.responses.200.content.application/json.schema.properties.result.items.properties.schema.properties.fields.items]"
+																					},
+																					"required": [
+																						"items"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"type": {
+																							"enum": [
+																								"list"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				}
+																			],
+																			"title": "List"
+																		}
+																	]
+																},
+																{
+																	"properties": {
+																		"metadata_key": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"required": {
+																			"type": "boolean"
+																		},
+																		"sql_name": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name"
+																	],
+																	"type": "object"
+																}
+															]
+														},
+														"type": "array"
+													},
+													"format": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"decimal_encoding": {
+																						"enum": [
+																							"number",
+																							"string",
+																							"bytes"
+																						],
+																						"type": "string"
+																					},
+																					"timestamp_format": {
+																						"enum": [
+																							"rfc3339",
+																							"unix_millis"
+																						],
+																						"type": "string"
+																					},
+																					"unstructured": {
+																						"type": "boolean"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"json"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Json"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"compression": {
+																						"enum": [
+																							"uncompressed",
+																							"snappy",
+																							"gzip",
+																							"zstd",
+																							"lz4"
+																						],
+																						"type": "string"
+																					},
+																					"row_group_bytes": {
+																						"format": "int64",
+																						"minimum": 0,
+																						"nullable": true,
+																						"type": "integer"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"parquet"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Parquet"
+																	}
+																]
+															}
+														]
+													},
+													"inferred": {
+														"nullable": true,
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"version": {
+												"description": "Indicates the current version of this stream.",
+												"example": 3,
+												"type": "integer"
+											},
+											"worker_binding": {
+												"properties": {
+													"enabled": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"enabled"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"version",
+											"created_at",
+											"modified_at",
+											"endpoint",
+											"http",
+											"worker_binding"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"description": "Indicates the number of items on current page.",
+											"example": 1,
+											"type": "number"
+										},
+										"page": {
+											"description": "Indicates the current page number.",
+											"example": 0,
+											"type": "number"
+										},
+										"per_page": {
+											"description": "Indicates the number of items per page.",
+											"example": 10,
+											"type": "number"
+										},
+										"total_count": {
+											"description": "Indicates the total number of items.",
+											"example": 1,
+											"type": "number"
+										}
+									},
+									"required": [
+										"count",
+										"page",
+										"per_page",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"result_info"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates a successfully created Stream."
+			},
+			"4XX": {
+				"description": "Indicates an error in listing Streams."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Streams",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write",
+			"Pipelines Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/pipelines/v1/streams/{stream_id}": {
+		"description": "Get Stream Details.",
+		"operationId": "getV4AccountsByAccount_idPipelinesV1StreamsByStream_id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "stream_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the stream.",
+					"example": "033e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"endpoint": {
+											"description": "Indicates the endpoint URL of this stream.",
+											"example": "https://01234567890123457689012345678901.ingest.cloudflare.com/v1",
+											"format": "uri",
+											"type": "string"
+										},
+										"format": {
+											"discriminator": {
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"decimal_encoding": {
+																	"enum": [
+																		"number",
+																		"string",
+																		"bytes"
+																	],
+																	"type": "string"
+																},
+																"timestamp_format": {
+																	"enum": [
+																		"rfc3339",
+																		"unix_millis"
+																	],
+																	"type": "string"
+																},
+																"unstructured": {
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"json"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Json"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"compression": {
+																	"enum": [
+																		"uncompressed",
+																		"snappy",
+																		"gzip",
+																		"zstd",
+																		"lz4"
+																	],
+																	"type": "string"
+																},
+																"row_group_bytes": {
+																	"format": "int64",
+																	"minimum": 0,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"parquet"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Parquet"
+												}
+											]
+										},
+										"http": {
+											"properties": {
+												"authentication": {
+													"type": "boolean"
+												},
+												"cors": {
+													"description": "Specifies the CORS options for the HTTP endpoint.",
+													"example": {},
+													"properties": {
+														"origins": {
+															"items": {
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															},
+															"maxItems": 5,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"enabled": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"enabled",
+												"authentication"
+											],
+											"type": "object"
+										},
+										"id": {
+											"description": "Indicates a unique identifier for this stream.",
+											"example": "01234567890123457689012345678901",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"description": "Indicates the name of the Stream.",
+											"example": "my_stream",
+											"maxLength": 128,
+											"minLength": 1,
+											"type": "string"
+										},
+										"schema": {
+											"properties": {
+												"fields": {
+													"items": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"int32"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"int64"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"float32"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"float64"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"bool"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Bool",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"string"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "String",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"binary"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Binary",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"unit": {
+																						"enum": [
+																							"second",
+																							"millisecond",
+																							"microsecond",
+																							"nanosecond"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"timestamp"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Timestamp"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"json"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Json",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"fields": {
+																						"items": "[Circular ~.GET /accounts/{account_id}/pipelines/v1/streams/{stream_id}.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]",
+																						"type": "array"
+																					},
+																					"name": {
+																						"nullable": true,
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"fields"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"struct"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Struct"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"items": "[Circular ~.GET /accounts/{account_id}/pipelines/v1/streams/{stream_id}.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]"
+																				},
+																				"required": [
+																					"items"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"list"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "List"
+																	}
+																]
+															},
+															{
+																"properties": {
+																	"metadata_key": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"required": {
+																		"type": "boolean"
+																	},
+																	"sql_name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"format": {
+													"allOf": [
+														{
+															"discriminator": {
+																"propertyName": "type"
+															},
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"decimal_encoding": {
+																					"enum": [
+																						"number",
+																						"string",
+																						"bytes"
+																					],
+																					"type": "string"
+																				},
+																				"timestamp_format": {
+																					"enum": [
+																						"rfc3339",
+																						"unix_millis"
+																					],
+																					"type": "string"
+																				},
+																				"unstructured": {
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"json"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Json"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"compression": {
+																					"enum": [
+																						"uncompressed",
+																						"snappy",
+																						"gzip",
+																						"zstd",
+																						"lz4"
+																					],
+																					"type": "string"
+																				},
+																				"row_group_bytes": {
+																					"format": "int64",
+																					"minimum": 0,
+																					"nullable": true,
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"parquet"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Parquet"
+																}
+															]
+														}
+													]
+												},
+												"inferred": {
+													"nullable": true,
+													"type": "boolean"
+												}
+											},
+											"type": "object"
+										},
+										"version": {
+											"description": "Indicates the current version of this stream.",
+											"example": 3,
+											"type": "integer"
+										},
+										"worker_binding": {
+											"properties": {
+												"enabled": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"enabled"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"version",
+										"created_at",
+										"modified_at",
+										"endpoint",
+										"http",
+										"worker_binding"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates a successfully retrieved Stream."
+			},
+			"4XX": {
+				"description": "Indicates an error in retrieving Stream."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Stream Details",
 		"tags": [
 			"workers_pipelines_other"
 		],
@@ -819,8 +4111,9 @@
 		}
 	},
 	"POST /accounts/{account_id}/pipelines": {
-		"description": "Create a new pipeline.",
-		"operationId": "postV4AccountsByAccount_idPipelines",
+		"deprecated": true,
+		"description": "[DEPRECATED] Create a new pipeline. Use the new /pipelines/v1/pipelines endpoint instead.",
+		"operationId": "postV4AccountsByAccount_idPipelines_deprecated",
 		"parameters": [
 			{
 				"in": "path",
@@ -828,7 +4121,7 @@
 				"required": true,
 				"schema": {
 					"description": "Specifies the public ID of the account.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
 					"type": "string"
 				}
 			}
@@ -989,6 +4282,8 @@
 									},
 									"oneOf": [
 										{
+											"deprecated": true,
+											"description": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
 											"properties": {
 												"authentication": {
 													"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
@@ -1035,6 +4330,8 @@
 											"type": "object"
 										},
 										{
+											"deprecated": true,
+											"description": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
 											"properties": {
 												"format": {
 													"description": "Specifies the format of source data.",
@@ -1076,7 +4373,8 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"description": "Describes the configuration of a pipeline.",
+									"deprecated": true,
+									"description": "[DEPRECATED] Describes the configuration of a pipeline. Use the new streams/sinks/pipelines API instead.",
 									"properties": {
 										"destination": {
 											"properties": {
@@ -1221,6 +4519,8 @@
 												},
 												"oneOf": [
 													{
+														"deprecated": true,
+														"description": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
 														"properties": {
 															"authentication": {
 																"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
@@ -1267,6 +4567,8 @@
 														"type": "object"
 													},
 													{
+														"deprecated": true,
+														"description": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
 														"properties": {
 															"format": {
 																"description": "Specifies the format of source data.",
@@ -1320,7 +4622,7 @@
 						}
 					}
 				},
-				"description": "Indicates a successfully created pipeline."
+				"description": "[DEPRECATED] Indicates a successfully created pipeline. Use /pipelines/v1/pipelines instead."
 			},
 			"4XX": {
 				"content": {
@@ -1383,6 +4685,137 @@
 				"api_key": []
 			}
 		],
+		"summary": "[DEPRECATED] Create Pipeline",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/pipelines/v1/pipelines": {
+		"description": "Create a new Pipeline.",
+		"operationId": "postV4AccountsByAccount_idPipelinesV1Pipelines",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"name": {
+								"description": "Specifies the name of the Pipeline.",
+								"example": "my_pipeline",
+								"maxLength": 128,
+								"minLength": 1,
+								"type": "string"
+							},
+							"sql": {
+								"description": "Specifies SQL for the Pipeline processing flow.",
+								"example": "insert into sink select * from source;",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"sql"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"type": "string"
+										},
+										"id": {
+											"description": "Indicates a unique identifier for this pipeline.",
+											"example": "01234567890123457689012345678901",
+											"type": "string"
+										},
+										"modified_at": {
+											"type": "string"
+										},
+										"name": {
+											"description": "Indicates the name of the Pipeline.",
+											"example": "my_pipeline",
+											"maxLength": 128,
+											"minLength": 1,
+											"type": "string"
+										},
+										"sql": {
+											"description": "Specifies SQL for the Pipeline processing flow.",
+											"example": "insert into sink select * from source;",
+											"type": "string"
+										},
+										"status": {
+											"description": "Indicates the current status of the Pipeline.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"created_at",
+										"modified_at",
+										"sql",
+										"status"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates a successfully created Pipeline."
+			},
+			"4XX": {
+				"description": "Indicates an error in creating a Pipeline."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Create Pipeline",
 		"tags": [
 			"workers_pipelines_other"
@@ -1397,9 +4830,9 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{account_id}/pipelines/{pipeline_name}": {
-		"description": "Update an existing pipeline.",
-		"operationId": "putV4AccountsByAccount_idPipelinesByPipeline_name",
+	"POST /accounts/{account_id}/pipelines/v1/sinks": {
+		"description": "Create a new Sink.",
+		"operationId": "postV4AccountsByAccount_idPipelinesV1Sinks",
 		"parameters": [
 			{
 				"in": "path",
@@ -1407,7 +4840,2738 @@
 				"required": true,
 				"schema": {
 					"description": "Specifies the public ID of the account.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"config": {
+								"description": "Defines the configuration of the R2 Sink.",
+								"oneOf": [
+									{
+										"additionalProperties": false,
+										"properties": {
+											"account_id": {
+												"description": "Cloudflare Account ID for the bucket",
+												"title": "Account ID",
+												"type": "string"
+											},
+											"bucket": {
+												"description": "R2 Bucket to write to",
+												"title": "Bucket",
+												"type": "string"
+											},
+											"credentials": {
+												"additionalProperties": false,
+												"properties": {
+													"access_key_id": {
+														"description": "Cloudflare Account ID for the bucket",
+														"format": "var-str",
+														"title": "Access Key ID",
+														"type": "string"
+													},
+													"secret_access_key": {
+														"description": "Cloudflare Account ID for the bucket",
+														"format": "var-str",
+														"title": "Access Key ID",
+														"type": "string"
+													}
+												},
+												"required": [
+													"access_key_id",
+													"secret_access_key"
+												],
+												"title": "R2 Credentials",
+												"type": "object"
+											},
+											"file_naming": {
+												"additionalProperties": false,
+												"description": "Controls filename prefix/suffix and strategy.",
+												"properties": {
+													"prefix": {
+														"description": "The prefix to use in file name. i.e prefix-<uuid>.parquet",
+														"title": "Filename Prefix",
+														"type": "string"
+													},
+													"strategy": {
+														"description": "Filename generation strategy.",
+														"enum": [
+															"serial",
+															"uuid",
+															"uuid_v7",
+															"ulid"
+														],
+														"title": "Filename Strategy",
+														"type": "string"
+													},
+													"suffix": {
+														"description": "This will overwrite the default file suffix. i.e .parquet, use with caution",
+														"title": "Filename Suffix",
+														"type": "string"
+													}
+												},
+												"title": "File Naming",
+												"type": "object"
+											},
+											"jurisdiction": {
+												"description": "Jurisdiction this bucket is hosted in",
+												"title": "Jurisdiction",
+												"type": "string"
+											},
+											"partitioning": {
+												"additionalProperties": false,
+												"description": "Data-layout partitioning for sinks.",
+												"properties": {
+													"time_pattern": {
+														"description": "The pattern of the date string",
+														"example": "year=%Y/month=%m/day=%d/hour=%H",
+														"title": "Time Partition Pattern",
+														"type": "string"
+													}
+												},
+												"title": "Partitioning Configuration",
+												"type": "object"
+											},
+											"path": {
+												"description": "Subpath within the bucket to write to",
+												"title": "Path",
+												"type": "string"
+											},
+											"rolling_policy": {
+												"additionalProperties": false,
+												"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+												"properties": {
+													"file_size_bytes": {
+														"description": "Files will be rolled after reaching this number of bytes",
+														"format": "uint64",
+														"minimum": 0,
+														"title": "File Size",
+														"type": "integer"
+													},
+													"inactivity_seconds": {
+														"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+														"format": "uint64",
+														"minimum": 1,
+														"title": "Inactivity Seconds",
+														"type": "integer"
+													},
+													"interval_seconds": {
+														"description": "Number of seconds to wait before rolling over to a new file",
+														"format": "uint64",
+														"minimum": 1,
+														"title": "Interval Seconds",
+														"type": "integer"
+													}
+												},
+												"title": "File Rolling Policy",
+												"type": "object"
+											}
+										},
+										"required": [
+											"account_id",
+											"bucket",
+											"credentials"
+										],
+										"title": "R2 Sink",
+										"type": "object"
+									},
+									{
+										"additionalProperties": false,
+										"description": "R2 Data Catalog Sink",
+										"properties": {
+											"account_id": {
+												"description": "Cloudflare Account ID",
+												"example": "6791973bbe876d621f9e557f891e90b3",
+												"format": "uri",
+												"type": "string"
+											},
+											"bucket": {
+												"description": "The R2 Bucket that hosts this catalog",
+												"example": "my-bucket",
+												"type": "string"
+											},
+											"namespace": {
+												"description": "Table namespace",
+												"title": "Namespace",
+												"type": "string"
+											},
+											"rolling_policy": {
+												"additionalProperties": false,
+												"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+												"properties": {
+													"file_size_bytes": {
+														"description": "Files will be rolled after reaching this number of bytes",
+														"format": "uint64",
+														"minimum": 0,
+														"title": "File Size",
+														"type": "integer"
+													},
+													"inactivity_seconds": {
+														"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+														"format": "uint64",
+														"minimum": 1,
+														"title": "Inactivity Seconds",
+														"type": "integer"
+													},
+													"interval_seconds": {
+														"description": "Number of seconds to wait before rolling over to a new file",
+														"format": "uint64",
+														"minimum": 1,
+														"title": "Interval Seconds",
+														"type": "integer"
+													}
+												},
+												"title": "File Rolling Policy",
+												"type": "object"
+											},
+											"table_name": {
+												"description": "Table name",
+												"title": "Table Name",
+												"type": "string"
+											},
+											"token": {
+												"description": "Authentication token",
+												"example": "\"asdfkj2h34kjhkj\"",
+												"format": "var-str",
+												"type": "string"
+											}
+										},
+										"required": [
+											"account_id",
+											"bucket",
+											"token",
+											"table_name"
+										],
+										"title": "R2DataCatalogSinkTable",
+										"type": "object"
+									}
+								]
+							},
+							"format": {
+								"discriminator": {
+									"propertyName": "type"
+								},
+								"oneOf": [
+									{
+										"allOf": [
+											{
+												"properties": {
+													"decimal_encoding": {
+														"enum": [
+															"number",
+															"string",
+															"bytes"
+														],
+														"type": "string"
+													},
+													"timestamp_format": {
+														"enum": [
+															"rfc3339",
+															"unix_millis"
+														],
+														"type": "string"
+													},
+													"unstructured": {
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											{
+												"properties": {
+													"type": {
+														"enum": [
+															"json"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"type"
+												],
+												"type": "object"
+											}
+										],
+										"title": "Json"
+									},
+									{
+										"allOf": [
+											{
+												"properties": {
+													"compression": {
+														"enum": [
+															"uncompressed",
+															"snappy",
+															"gzip",
+															"zstd",
+															"lz4"
+														],
+														"type": "string"
+													},
+													"row_group_bytes": {
+														"format": "int64",
+														"minimum": 0,
+														"nullable": true,
+														"type": "integer"
+													}
+												},
+												"type": "object"
+											},
+											{
+												"properties": {
+													"type": {
+														"enum": [
+															"parquet"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"type"
+												],
+												"type": "object"
+											}
+										],
+										"title": "Parquet"
+									}
+								]
+							},
+							"name": {
+								"description": "Defines the name of the Sink.",
+								"example": "my_sink",
+								"maxLength": 128,
+								"minLength": 1,
+								"type": "string"
+							},
+							"schema": {
+								"properties": {
+									"fields": {
+										"items": {
+											"allOf": [
+												{
+													"discriminator": {
+														"propertyName": "type"
+													},
+													"oneOf": [
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"int32"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Int32",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"int64"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Int64",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"float32"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Float32",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"float64"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Float64",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"bool"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Bool",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"string"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "String",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"binary"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Binary",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"unit": {
+																			"enum": [
+																				"second",
+																				"millisecond",
+																				"microsecond",
+																				"nanosecond"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"timestamp"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "Timestamp"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"json"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Json",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"fields": {
+																			"items": "[Circular ~.POST /accounts/{account_id}/pipelines/v1/sinks.requestBody.content.application/json.schema.properties.schema.properties.fields.items]",
+																			"type": "array"
+																		},
+																		"name": {
+																			"nullable": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"fields"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"struct"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "Struct"
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"items": "[Circular ~.POST /accounts/{account_id}/pipelines/v1/sinks.requestBody.content.application/json.schema.properties.schema.properties.fields.items]"
+																	},
+																	"required": [
+																		"items"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"list"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "List"
+														}
+													]
+												},
+												{
+													"properties": {
+														"metadata_key": {
+															"nullable": true,
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														},
+														"required": {
+															"type": "boolean"
+														},
+														"sql_name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"name"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"type": "array"
+									},
+									"format": {
+										"allOf": [
+											{
+												"discriminator": {
+													"propertyName": "type"
+												},
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"decimal_encoding": {
+																		"enum": [
+																			"number",
+																			"string",
+																			"bytes"
+																		],
+																		"type": "string"
+																	},
+																	"timestamp_format": {
+																		"enum": [
+																			"rfc3339",
+																			"unix_millis"
+																		],
+																		"type": "string"
+																	},
+																	"unstructured": {
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"json"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Json"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"compression": {
+																		"enum": [
+																			"uncompressed",
+																			"snappy",
+																			"gzip",
+																			"zstd",
+																			"lz4"
+																		],
+																		"type": "string"
+																	},
+																	"row_group_bytes": {
+																		"format": "int64",
+																		"minimum": 0,
+																		"nullable": true,
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"parquet"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Parquet"
+													}
+												]
+											}
+										]
+									},
+									"inferred": {
+										"nullable": true,
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"type": {
+								"description": "Specifies the type of sink.",
+								"enum": [
+									"r2",
+									"r2_data_catalog"
+								],
+								"example": "r2",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"type"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"config": {
+											"oneOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"account_id": {
+															"description": "Cloudflare Account ID for the bucket",
+															"title": "Account ID",
+															"type": "string"
+														},
+														"bucket": {
+															"description": "R2 Bucket to write to",
+															"title": "Bucket",
+															"type": "string"
+														},
+														"credentials": {
+															"additionalProperties": false,
+															"properties": {
+																"access_key_id": {
+																	"description": "Cloudflare Account ID for the bucket",
+																	"format": "var-str",
+																	"title": "Access Key ID",
+																	"type": "string"
+																},
+																"secret_access_key": {
+																	"description": "Cloudflare Account ID for the bucket",
+																	"format": "var-str",
+																	"title": "Access Key ID",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"access_key_id",
+																"secret_access_key"
+															],
+															"title": "R2 Credentials",
+															"type": "object"
+														},
+														"file_naming": {
+															"additionalProperties": false,
+															"description": "Controls filename prefix/suffix and strategy.",
+															"properties": {
+																"prefix": {
+																	"description": "The prefix to use in file name. i.e prefix-<uuid>.parquet",
+																	"title": "Filename Prefix",
+																	"type": "string"
+																},
+																"strategy": {
+																	"description": "Filename generation strategy.",
+																	"enum": [
+																		"serial",
+																		"uuid",
+																		"uuid_v7",
+																		"ulid"
+																	],
+																	"title": "Filename Strategy",
+																	"type": "string"
+																},
+																"suffix": {
+																	"description": "This will overwrite the default file suffix. i.e .parquet, use with caution",
+																	"title": "Filename Suffix",
+																	"type": "string"
+																}
+															},
+															"title": "File Naming",
+															"type": "object"
+														},
+														"jurisdiction": {
+															"description": "Jurisdiction this bucket is hosted in",
+															"title": "Jurisdiction",
+															"type": "string"
+														},
+														"partitioning": {
+															"additionalProperties": false,
+															"description": "Data-layout partitioning for sinks.",
+															"properties": {
+																"time_pattern": {
+																	"description": "The pattern of the date string",
+																	"example": "year=%Y/month=%m/day=%d/hour=%H",
+																	"title": "Time Partition Pattern",
+																	"type": "string"
+																}
+															},
+															"title": "Partitioning Configuration",
+															"type": "object"
+														},
+														"path": {
+															"description": "Subpath within the bucket to write to",
+															"title": "Path",
+															"type": "string"
+														},
+														"rolling_policy": {
+															"additionalProperties": false,
+															"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+															"properties": {
+																"file_size_bytes": {
+																	"description": "Files will be rolled after reaching this number of bytes",
+																	"format": "uint64",
+																	"minimum": 0,
+																	"title": "File Size",
+																	"type": "integer"
+																},
+																"inactivity_seconds": {
+																	"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Inactivity Seconds",
+																	"type": "integer"
+																},
+																"interval_seconds": {
+																	"description": "Number of seconds to wait before rolling over to a new file",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Interval Seconds",
+																	"type": "integer"
+																}
+															},
+															"title": "File Rolling Policy",
+															"type": "object"
+														}
+													},
+													"required": [
+														"account_id",
+														"bucket",
+														"credentials"
+													],
+													"title": "R2 Sink",
+													"type": "object"
+												},
+												{
+													"additionalProperties": false,
+													"description": "R2 Data Catalog Sink",
+													"properties": {
+														"account_id": {
+															"description": "Cloudflare Account ID",
+															"example": "6791973bbe876d621f9e557f891e90b3",
+															"format": "uri",
+															"type": "string"
+														},
+														"bucket": {
+															"description": "The R2 Bucket that hosts this catalog",
+															"example": "my-bucket",
+															"type": "string"
+														},
+														"namespace": {
+															"description": "Table namespace",
+															"title": "Namespace",
+															"type": "string"
+														},
+														"rolling_policy": {
+															"additionalProperties": false,
+															"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+															"properties": {
+																"file_size_bytes": {
+																	"description": "Files will be rolled after reaching this number of bytes",
+																	"format": "uint64",
+																	"minimum": 0,
+																	"title": "File Size",
+																	"type": "integer"
+																},
+																"inactivity_seconds": {
+																	"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Inactivity Seconds",
+																	"type": "integer"
+																},
+																"interval_seconds": {
+																	"description": "Number of seconds to wait before rolling over to a new file",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Interval Seconds",
+																	"type": "integer"
+																}
+															},
+															"title": "File Rolling Policy",
+															"type": "object"
+														},
+														"table_name": {
+															"description": "Table name",
+															"title": "Table Name",
+															"type": "string"
+														},
+														"token": {
+															"description": "Authentication token",
+															"example": "\"asdfkj2h34kjhkj\"",
+															"format": "var-str",
+															"type": "string"
+														}
+													},
+													"required": [
+														"account_id",
+														"bucket",
+														"token",
+														"table_name"
+													],
+													"title": "R2DataCatalogSinkTable",
+													"type": "object"
+												}
+											]
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"format": {
+											"discriminator": {
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"decimal_encoding": {
+																	"enum": [
+																		"number",
+																		"string",
+																		"bytes"
+																	],
+																	"type": "string"
+																},
+																"timestamp_format": {
+																	"enum": [
+																		"rfc3339",
+																		"unix_millis"
+																	],
+																	"type": "string"
+																},
+																"unstructured": {
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"json"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Json"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"compression": {
+																	"enum": [
+																		"uncompressed",
+																		"snappy",
+																		"gzip",
+																		"zstd",
+																		"lz4"
+																	],
+																	"type": "string"
+																},
+																"row_group_bytes": {
+																	"format": "int64",
+																	"minimum": 0,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"parquet"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Parquet"
+												}
+											]
+										},
+										"id": {
+											"description": "Indicates a unique identifier for this sink.",
+											"example": "01234567890123457689012345678901",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"description": "Defines the name of the Sink.",
+											"example": "my_sink",
+											"maxLength": 128,
+											"minLength": 1,
+											"type": "string"
+										},
+										"schema": {
+											"properties": {
+												"fields": {
+													"items": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"int32"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"int64"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"float32"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"float64"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"bool"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Bool",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"string"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "String",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"binary"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Binary",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"unit": {
+																						"enum": [
+																							"second",
+																							"millisecond",
+																							"microsecond",
+																							"nanosecond"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"timestamp"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Timestamp"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"json"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Json",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"fields": {
+																						"items": "[Circular ~.POST /accounts/{account_id}/pipelines/v1/sinks.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]",
+																						"type": "array"
+																					},
+																					"name": {
+																						"nullable": true,
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"fields"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"struct"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Struct"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"items": "[Circular ~.POST /accounts/{account_id}/pipelines/v1/sinks.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]"
+																				},
+																				"required": [
+																					"items"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"list"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "List"
+																	}
+																]
+															},
+															{
+																"properties": {
+																	"metadata_key": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"required": {
+																		"type": "boolean"
+																	},
+																	"sql_name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"format": {
+													"allOf": [
+														{
+															"discriminator": {
+																"propertyName": "type"
+															},
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"decimal_encoding": {
+																					"enum": [
+																						"number",
+																						"string",
+																						"bytes"
+																					],
+																					"type": "string"
+																				},
+																				"timestamp_format": {
+																					"enum": [
+																						"rfc3339",
+																						"unix_millis"
+																					],
+																					"type": "string"
+																				},
+																				"unstructured": {
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"json"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Json"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"compression": {
+																					"enum": [
+																						"uncompressed",
+																						"snappy",
+																						"gzip",
+																						"zstd",
+																						"lz4"
+																					],
+																					"type": "string"
+																				},
+																				"row_group_bytes": {
+																					"format": "int64",
+																					"minimum": 0,
+																					"nullable": true,
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"parquet"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Parquet"
+																}
+															]
+														}
+													]
+												},
+												"inferred": {
+													"nullable": true,
+													"type": "boolean"
+												}
+											},
+											"type": "object"
+										},
+										"type": {
+											"description": "Specifies the type of sink.",
+											"enum": [
+												"r2",
+												"r2_data_catalog"
+											],
+											"example": "r2",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"created_at",
+										"modified_at",
+										"type"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates a successfully created Sink."
+			},
+			"4XX": {
+				"description": "Indicates an error in creating a Sink."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Sink",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/pipelines/v1/streams": {
+		"description": "Create a new Stream.",
+		"operationId": "postV4AccountsByAccount_idPipelinesV1Streams",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"format": {
+								"discriminator": {
+									"propertyName": "type"
+								},
+								"oneOf": [
+									{
+										"allOf": [
+											{
+												"properties": {
+													"decimal_encoding": {
+														"enum": [
+															"number",
+															"string",
+															"bytes"
+														],
+														"type": "string"
+													},
+													"timestamp_format": {
+														"enum": [
+															"rfc3339",
+															"unix_millis"
+														],
+														"type": "string"
+													},
+													"unstructured": {
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											{
+												"properties": {
+													"type": {
+														"enum": [
+															"json"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"type"
+												],
+												"type": "object"
+											}
+										],
+										"title": "Json"
+									},
+									{
+										"allOf": [
+											{
+												"properties": {
+													"compression": {
+														"enum": [
+															"uncompressed",
+															"snappy",
+															"gzip",
+															"zstd",
+															"lz4"
+														],
+														"type": "string"
+													},
+													"row_group_bytes": {
+														"format": "int64",
+														"minimum": 0,
+														"nullable": true,
+														"type": "integer"
+													}
+												},
+												"type": "object"
+											},
+											{
+												"properties": {
+													"type": {
+														"enum": [
+															"parquet"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"type"
+												],
+												"type": "object"
+											}
+										],
+										"title": "Parquet"
+									}
+								]
+							},
+							"http": {
+								"default": {
+									"authentication": false,
+									"enabled": true
+								},
+								"properties": {
+									"authentication": {
+										"type": "boolean"
+									},
+									"cors": {
+										"description": "Specifies the CORS options for the HTTP endpoint.",
+										"example": {},
+										"properties": {
+											"origins": {
+												"items": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"maxItems": 5,
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
+									"enabled": {
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"enabled",
+									"authentication"
+								],
+								"type": "object"
+							},
+							"name": {
+								"description": "Specifies the name of the Stream.",
+								"example": "my_stream",
+								"maxLength": 128,
+								"minLength": 1,
+								"type": "string"
+							},
+							"schema": {
+								"properties": {
+									"fields": {
+										"items": {
+											"allOf": [
+												{
+													"discriminator": {
+														"propertyName": "type"
+													},
+													"oneOf": [
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"int32"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Int32",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"int64"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Int64",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"float32"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Float32",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"float64"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Float64",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"bool"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Bool",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"string"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "String",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"binary"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Binary",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"unit": {
+																			"enum": [
+																				"second",
+																				"millisecond",
+																				"microsecond",
+																				"nanosecond"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"timestamp"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "Timestamp"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"json"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"title": "Json",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"fields": {
+																			"items": "[Circular ~.POST /accounts/{account_id}/pipelines/v1/streams.requestBody.content.application/json.schema.properties.schema.properties.fields.items]",
+																			"type": "array"
+																		},
+																		"name": {
+																			"nullable": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"fields"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"struct"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "Struct"
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"items": "[Circular ~.POST /accounts/{account_id}/pipelines/v1/streams.requestBody.content.application/json.schema.properties.schema.properties.fields.items]"
+																	},
+																	"required": [
+																		"items"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"list"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "List"
+														}
+													]
+												},
+												{
+													"properties": {
+														"metadata_key": {
+															"nullable": true,
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														},
+														"required": {
+															"type": "boolean"
+														},
+														"sql_name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"name"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"type": "array"
+									},
+									"format": {
+										"allOf": [
+											{
+												"discriminator": {
+													"propertyName": "type"
+												},
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"decimal_encoding": {
+																		"enum": [
+																			"number",
+																			"string",
+																			"bytes"
+																		],
+																		"type": "string"
+																	},
+																	"timestamp_format": {
+																		"enum": [
+																			"rfc3339",
+																			"unix_millis"
+																		],
+																		"type": "string"
+																	},
+																	"unstructured": {
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"json"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Json"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"compression": {
+																		"enum": [
+																			"uncompressed",
+																			"snappy",
+																			"gzip",
+																			"zstd",
+																			"lz4"
+																		],
+																		"type": "string"
+																	},
+																	"row_group_bytes": {
+																		"format": "int64",
+																		"minimum": 0,
+																		"nullable": true,
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"parquet"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Parquet"
+													}
+												]
+											}
+										]
+									},
+									"inferred": {
+										"nullable": true,
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"worker_binding": {
+								"default": {
+									"enabled": true
+								},
+								"properties": {
+									"enabled": {
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"enabled"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"endpoint": {
+											"description": "Indicates the endpoint URL of this stream.",
+											"example": "https://01234567890123457689012345678901.ingest.cloudflare.com/v1",
+											"format": "uri",
+											"type": "string"
+										},
+										"format": {
+											"discriminator": {
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"decimal_encoding": {
+																	"enum": [
+																		"number",
+																		"string",
+																		"bytes"
+																	],
+																	"type": "string"
+																},
+																"timestamp_format": {
+																	"enum": [
+																		"rfc3339",
+																		"unix_millis"
+																	],
+																	"type": "string"
+																},
+																"unstructured": {
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"json"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Json"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"compression": {
+																	"enum": [
+																		"uncompressed",
+																		"snappy",
+																		"gzip",
+																		"zstd",
+																		"lz4"
+																	],
+																	"type": "string"
+																},
+																"row_group_bytes": {
+																	"format": "int64",
+																	"minimum": 0,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"parquet"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Parquet"
+												}
+											]
+										},
+										"http": {
+											"properties": {
+												"authentication": {
+													"type": "boolean"
+												},
+												"cors": {
+													"description": "Specifies the CORS options for the HTTP endpoint.",
+													"example": {},
+													"properties": {
+														"origins": {
+															"items": {
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															},
+															"maxItems": 5,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"enabled": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"enabled",
+												"authentication"
+											],
+											"type": "object"
+										},
+										"id": {
+											"description": "Indicates a unique identifier for this stream.",
+											"example": "01234567890123457689012345678901",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"description": "Indicates the name of the Stream.",
+											"example": "my_stream",
+											"maxLength": 128,
+											"minLength": 1,
+											"type": "string"
+										},
+										"schema": {
+											"properties": {
+												"fields": {
+													"items": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"int32"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"int64"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"float32"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"float64"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"bool"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Bool",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"string"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "String",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"binary"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Binary",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"unit": {
+																						"enum": [
+																							"second",
+																							"millisecond",
+																							"microsecond",
+																							"nanosecond"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"timestamp"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Timestamp"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"json"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Json",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"fields": {
+																						"items": "[Circular ~.POST /accounts/{account_id}/pipelines/v1/streams.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]",
+																						"type": "array"
+																					},
+																					"name": {
+																						"nullable": true,
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"fields"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"struct"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Struct"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"items": "[Circular ~.POST /accounts/{account_id}/pipelines/v1/streams.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]"
+																				},
+																				"required": [
+																					"items"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"list"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "List"
+																	}
+																]
+															},
+															{
+																"properties": {
+																	"metadata_key": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"required": {
+																		"type": "boolean"
+																	},
+																	"sql_name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"format": {
+													"allOf": [
+														{
+															"discriminator": {
+																"propertyName": "type"
+															},
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"decimal_encoding": {
+																					"enum": [
+																						"number",
+																						"string",
+																						"bytes"
+																					],
+																					"type": "string"
+																				},
+																				"timestamp_format": {
+																					"enum": [
+																						"rfc3339",
+																						"unix_millis"
+																					],
+																					"type": "string"
+																				},
+																				"unstructured": {
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"json"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Json"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"compression": {
+																					"enum": [
+																						"uncompressed",
+																						"snappy",
+																						"gzip",
+																						"zstd",
+																						"lz4"
+																					],
+																					"type": "string"
+																				},
+																				"row_group_bytes": {
+																					"format": "int64",
+																					"minimum": 0,
+																					"nullable": true,
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"parquet"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Parquet"
+																}
+															]
+														}
+													]
+												},
+												"inferred": {
+													"nullable": true,
+													"type": "boolean"
+												}
+											},
+											"type": "object"
+										},
+										"version": {
+											"description": "Indicates the current version of this stream.",
+											"example": 3,
+											"type": "integer"
+										},
+										"worker_binding": {
+											"properties": {
+												"enabled": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"enabled"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"version",
+										"created_at",
+										"modified_at",
+										"endpoint",
+										"http",
+										"worker_binding"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates a successfully created Stream."
+			},
+			"4XX": {
+				"description": "Indicates an error in creating a Stream."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Stream",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/pipelines/v1/validate_sql": {
+		"description": "Validate Arroyo SQL.",
+		"operationId": "postV4AccountsByAccount_idPipelinesV1Validate_sql",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"sql": {
+								"description": "Specifies SQL to validate.",
+								"example": "insert into sink select * from source;",
+								"type": "string"
+							}
+						},
+						"required": [
+							"sql"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"graph": {
+											"properties": {
+												"edges": {
+													"items": {
+														"properties": {
+															"dest_id": {
+																"format": "int32",
+																"minimum": 0,
+																"type": "integer"
+															},
+															"edge_type": {
+																"type": "string"
+															},
+															"key_type": {
+																"type": "string"
+															},
+															"src_id": {
+																"format": "int32",
+																"minimum": 0,
+																"type": "integer"
+															},
+															"value_type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"src_id",
+															"dest_id",
+															"key_type",
+															"value_type",
+															"edge_type"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"nodes": {
+													"items": {
+														"properties": {
+															"description": {
+																"type": "string"
+															},
+															"node_id": {
+																"format": "int32",
+																"minimum": 0,
+																"type": "integer"
+															},
+															"operator": {
+																"type": "string"
+															},
+															"parallelism": {
+																"format": "int32",
+																"minimum": 0,
+																"type": "integer"
+															}
+														},
+														"required": [
+															"node_id",
+															"operator",
+															"description",
+															"parallelism"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"nodes",
+												"edges"
+											],
+											"type": "object"
+										},
+										"tables": {
+											"additionalProperties": {
+												"properties": {
+													"id": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"type": {
+														"type": "string"
+													},
+													"version": {
+														"type": "number"
+													}
+												},
+												"required": [
+													"id",
+													"version",
+													"type",
+													"name"
+												],
+												"type": "object"
+											},
+											"description": "Indicates tables involved in the processing.",
+											"type": "object"
+										}
+									},
+									"required": [
+										"tables"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates SQL validation success."
+			},
+			"4XX": {
+				"description": "Indicates SQL validation failed."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Validate SQL",
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/pipelines/{pipeline_name}": {
+		"deprecated": true,
+		"description": "[DEPRECATED] Update an existing pipeline. Use the new /pipelines/v1/pipelines endpoint instead.",
+		"operationId": "putV4AccountsByAccount_idPipelinesByPipeline_name_deprecated",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
 					"type": "string"
 				}
 			},
@@ -1579,6 +7743,8 @@
 									},
 									"oneOf": [
 										{
+											"deprecated": true,
+											"description": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
 											"properties": {
 												"authentication": {
 													"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
@@ -1625,6 +7791,8 @@
 											"type": "object"
 										},
 										{
+											"deprecated": true,
+											"description": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
 											"properties": {
 												"format": {
 													"description": "Specifies the format of source data.",
@@ -1666,7 +7834,8 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"description": "Describes the configuration of a pipeline.",
+									"deprecated": true,
+									"description": "[DEPRECATED] Describes the configuration of a pipeline. Use the new streams/sinks/pipelines API instead.",
 									"properties": {
 										"destination": {
 											"properties": {
@@ -1811,6 +7980,8 @@
 												},
 												"oneOf": [
 													{
+														"deprecated": true,
+														"description": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
 														"properties": {
 															"authentication": {
 																"description": "Specifies whether authentication is required to send to this pipeline via HTTP.",
@@ -1857,6 +8028,8 @@
 														"type": "object"
 													},
 													{
+														"deprecated": true,
+														"description": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
 														"properties": {
 															"format": {
 																"description": "Specifies the format of source data.",
@@ -1910,7 +8083,7 @@
 						}
 					}
 				},
-				"description": "Indicates a successfully updated pipeline."
+				"description": "[DEPRECATED] Indicates a successfully updated pipeline."
 			},
 			"4XX": {
 				"content": {
@@ -1973,7 +8146,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Pipeline",
+		"summary": "[DEPRECATED] Update Pipeline",
 		"tags": [
 			"workers_pipelines_other"
 		],
