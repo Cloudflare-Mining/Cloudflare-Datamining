@@ -8474,6 +8474,10 @@ type MediaTransformationOutputOptions = {
    */
   duration?: string;
   /**
+   * Number of frames in the spritesheet.
+   */
+  imageCount?: number;
+  /**
    * Output format for the generated media.
    */
   format?: "jpg" | "png" | "m4a";
