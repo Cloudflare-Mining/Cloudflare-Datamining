@@ -505,6 +505,27 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
+																			"managed_by": {
+																				"description": "Parent container details",
+																				"properties": {
+																					"parent_org_id": {
+																						"description": "ID of the parent Organization, if one exists",
+																						"example": "4536bcfad5faccb111b47003c79917fa",
+																						"maxLength": 32,
+																						"readOnly": true,
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"parent_org_name": {
+																						"description": "Name of the parent Organization, if one exists",
+																						"example": "Demo Parent Organization",
+																						"readOnly": true,
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
+																			},
 																			"name": {
 																				"description": "Account name",
 																				"example": "Demo Account",
@@ -985,6 +1006,27 @@
 																				"minLength": 32,
 																				"type": "string",
 																				"x-auditable": true
+																			},
+																			"managed_by": {
+																				"description": "Parent container details",
+																				"properties": {
+																					"parent_org_id": {
+																						"description": "ID of the parent Organization, if one exists",
+																						"example": "4536bcfad5faccb111b47003c79917fa",
+																						"maxLength": 32,
+																						"readOnly": true,
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"parent_org_name": {
+																						"description": "Name of the parent Organization, if one exists",
+																						"example": "Demo Parent Organization",
+																						"readOnly": true,
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"type": "object"
 																			},
 																			"name": {
 																				"description": "Account name",
@@ -1764,6 +1806,27 @@
 																	"minLength": 32,
 																	"type": "string",
 																	"x-auditable": true
+																},
+																"managed_by": {
+																	"description": "Parent container details",
+																	"properties": {
+																		"parent_org_id": {
+																			"description": "ID of the parent Organization, if one exists",
+																			"example": "4536bcfad5faccb111b47003c79917fa",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"parent_org_name": {
+																			"description": "Name of the parent Organization, if one exists",
+																			"example": "Demo Parent Organization",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
 																},
 																"name": {
 																	"description": "Account name",
@@ -2561,6 +2624,27 @@
 																	"minLength": 32,
 																	"type": "string",
 																	"x-auditable": true
+																},
+																"managed_by": {
+																	"description": "Parent container details",
+																	"properties": {
+																		"parent_org_id": {
+																			"description": "ID of the parent Organization, if one exists",
+																			"example": "4536bcfad5faccb111b47003c79917fa",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"parent_org_name": {
+																			"description": "Name of the parent Organization, if one exists",
+																			"example": "Demo Parent Organization",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
 																},
 																"name": {
 																	"description": "Account name",
