@@ -5,32 +5,25 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal or London, UK&nbsp;</strong></p>
+<p><strong>Available Location: Lisbon, Portugal&nbsp;</strong></p>
 <p><strong>What you’ll do</strong></p>
-<p>In this role, you’ll help build and maintain Data Security products as a Software Engineer. These products empower customers to gain deep visibility into Cloud/SaaS security opportunities and into trends in their network traffic and product use. As an engineer on the team, you will focus on building new functionality into our APIs and distributed code while ensuring the performance and reliability of our services which ingest millions of data points each day. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security and network visibility challenges for our customers.</p>
+<p>In this role you’ll help us build Access, a Zero Trust platform that secures self-hosted and SaaS applications by aggregating sources of user identity and trust, and enforcing rules on every request or login. As an engineer on the Access team, you will focus on our high-performance global edge network services that build those identities and enforce those rules. You will also contribute to the control plane API’s that configure those edge services. You will be joining a global team of bright, hard-working, and supportive engineers who really care about their craft.</p>
 <p><strong>Technologies we use:</strong></p>
 <ul>
-	<li>Products are written in Go, Python, and Typescript.</li>
-	<li>Code runs on Kubernetes, Cloudflare Workers, AWS, GCP, Azure.</li>
-	<li>We utilize Postgres as our data store, Redis as our cache, and Kafka as our message broker.</li>
+	<li>Access core edge services are written in Typescript and Rust and are deployed globally to 200+ data centers&nbsp;</li>
+	<li>Our REST API is written in Go, runs on Kubernetes, and uses Postgres as a data store.</li>
 	<li>Our frontend is written in Typescript and React.</li>
 	<li>For service monitoring we use Prometheus and Grafana.</li>
 	<li>For service logging we use Elasticsearch and Kibana.</li>
 	<li>For product analytics we use Clickhouse and BigQuery.&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>3+ years of professional experience building and managing reliable and performant software systems at scale, preferably with technologies like: Go, Python, Postgres</li>
-	<li>Passion for making the digital world a more secure place</li>
-	<li>Excellent debugging and optimization skills</li>
+	<li>Programming experience in Go and Typescript/Javascript.&nbsp;</li>
+	<li>Basic understanding of software security and encryption</li>
+	<li>Experience in designing and implementing secure and highly-available distributed systems</li>
 	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
 	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
-</ul>
-<p><strong>Bonus</strong></p>
-<ul>
-	<li>Frontend programming experience in Typescript/Javascript</li>
-	<li>Previous experience working with third-party API integrations</li>
-	<li>Previous experience working on security products</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
