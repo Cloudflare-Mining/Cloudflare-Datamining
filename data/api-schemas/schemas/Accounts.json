@@ -1185,7 +1185,7 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
+								"errors": {
 									"items": {
 										"properties": {
 											"code": {
@@ -1233,7 +1233,7 @@
 							},
 							"required": [
 								"success",
-								"error",
+								"errors",
 								"messages"
 							],
 							"type": "object"
@@ -1379,7 +1379,7 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
+								"errors": {
 									"items": {
 										"properties": {
 											"code": {
@@ -1427,7 +1427,7 @@
 							},
 							"required": [
 								"success",
-								"error",
+								"errors",
 								"messages"
 							],
 							"type": "object"
@@ -1846,15 +1846,80 @@
 			"required": true
 		},
 		"responses": {
-			"204": {
-				"description": "There is no content to send for this request, but the headers may be useful."
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"destination_organization_id": {
+											"type": "string"
+										},
+										"source_organization_id": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"account_id",
+										"source_organization_id",
+										"destination_organization_id"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The request has succeeded."
 			},
 			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
+								"errors": {
 									"items": {
 										"properties": {
 											"code": {
@@ -1902,7 +1967,7 @@
 							},
 							"required": [
 								"success",
-								"error",
+								"errors",
 								"messages"
 							],
 							"type": "object"
@@ -2035,7 +2100,7 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
+								"errors": {
 									"items": {
 										"properties": {
 											"code": {
@@ -2083,7 +2148,7 @@
 							},
 							"required": [
 								"success",
-								"error",
+								"errors",
 								"messages"
 							],
 							"type": "object"
@@ -2550,7 +2615,7 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
+								"errors": {
 									"items": {
 										"properties": {
 											"code": {
@@ -2598,7 +2663,7 @@
 							},
 							"required": [
 								"success",
-								"error",
+								"errors",
 								"messages"
 							],
 							"type": "object"

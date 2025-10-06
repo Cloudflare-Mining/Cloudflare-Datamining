@@ -576,7 +576,7 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
+								"errors": {
 									"items": {
 										"properties": {
 											"code": {
@@ -624,7 +624,7 @@
 							},
 							"required": [
 								"success",
-								"error",
+								"errors",
 								"messages"
 							],
 							"type": "object"
