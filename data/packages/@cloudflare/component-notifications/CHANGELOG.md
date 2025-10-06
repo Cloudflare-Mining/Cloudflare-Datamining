@@ -1,5 +1,11 @@
 # Change Log
 
+## 10.1.0
+
+### Minor Changes
+
+- dd17161fbd: Convert to TypeScript
+
 ## 10.0.18
 
 ## 10.0.17
