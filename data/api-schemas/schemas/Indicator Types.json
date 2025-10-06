@@ -1,5 +1,5 @@
 {
-	"GET /accounts/{account_id}/cloudforce-one/events/indicatorTypes": {
+	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicatorTypes": {
 		"operationId": "get_IndicatorTypesList",
 		"parameters": [
 			{
@@ -9,6 +9,16 @@
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset ID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset ID.",
 					"type": "string"
 				}
 			}

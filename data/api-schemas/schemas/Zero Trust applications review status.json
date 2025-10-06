@@ -1,7 +1,7 @@
 {
 	"GET /accounts/{account_id}/gateway/apps/review_status": {
-		"description": "Shows the current apps review status.",
-		"operationId": "zero-trust-app-review-list",
+		"description": "Shows the status you have assigned to your applications.",
+		"operationId": "zero-trust-applications-review-status-list",
 		"parameters": [
 			{
 				"in": "path",
@@ -90,51 +90,43 @@
 								{
 									"properties": {
 										"result": {
-											"items": {
-												"properties": {
-													"result": {
-														"properties": {
-															"approved_apps": {
-																"description": "Defines the list of \"approved\" app ids.",
-																"items": {
-																	"type": "integer"
-																},
-																"type": "array",
-																"x-stainless-collection-type": "set"
-															},
-															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															},
-															"in_review_apps": {
-																"description": "Defines the list of \"in review\" app ids.",
-																"items": {
-																	"type": "integer"
-																},
-																"type": "array",
-																"x-stainless-collection-type": "set"
-															},
-															"unapproved_apps": {
-																"description": "Defines the list of \"unapproved\" app ids.",
-																"items": {
-																	"type": "integer"
-																},
-																"type": "array",
-																"x-stainless-collection-type": "set"
-															},
-															"updated_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
+											"properties": {
+												"approved_apps": {
+													"description": "The list of application ids that are approved.",
+													"items": {
+														"type": "integer"
+													},
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												},
-												"type": "object"
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"in_review_apps": {
+													"description": "The list of application ids that are in review.",
+													"items": {
+														"type": "integer"
+													},
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"unapproved_apps": {
+													"description": "The list of application ids that are unapproved.",
+													"items": {
+														"type": "integer"
+													},
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
 											},
 											"type": "object"
 										}
@@ -147,7 +139,7 @@
 						}
 					}
 				},
-				"description": "Show Gateway App Review Status response."
+				"description": "List applications review status response."
 			},
 			"4XX": {
 				"content": {
@@ -224,51 +216,43 @@
 										{
 											"properties": {
 												"result": {
-													"items": {
-														"properties": {
-															"result": {
-																"properties": {
-																	"approved_apps": {
-																		"description": "Defines the list of \"approved\" app ids.",
-																		"items": {
-																			"type": "integer"
-																		},
-																		"type": "array",
-																		"x-stainless-collection-type": "set"
-																	},
-																	"created_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"in_review_apps": {
-																		"description": "Defines the list of \"in review\" app ids.",
-																		"items": {
-																			"type": "integer"
-																		},
-																		"type": "array",
-																		"x-stainless-collection-type": "set"
-																	},
-																	"unapproved_apps": {
-																		"description": "Defines the list of \"unapproved\" app ids.",
-																		"items": {
-																			"type": "integer"
-																		},
-																		"type": "array",
-																		"x-stainless-collection-type": "set"
-																	},
-																	"updated_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
+													"properties": {
+														"approved_apps": {
+															"description": "The list of application ids that are approved.",
+															"items": {
+																"type": "integer"
+															},
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
-														"type": "object"
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"in_review_apps": {
+															"description": "The list of application ids that are in review.",
+															"items": {
+																"type": "integer"
+															},
+															"type": "array",
+															"x-stainless-collection-type": "set"
+														},
+														"unapproved_apps": {
+															"description": "The list of application ids that are unapproved.",
+															"items": {
+																"type": "integer"
+															},
+															"type": "array",
+															"x-stainless-collection-type": "set"
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
 													},
 													"type": "object"
 												}
@@ -370,7 +354,7 @@
 						}
 					}
 				},
-				"description": "Show Gateway App Review Status failure."
+				"description": "List applications review status failure response."
 			}
 		},
 		"security": [
@@ -380,9 +364,9 @@
 				"api_token": []
 			}
 		],
-		"summary": "Shows the current apps review status.",
+		"summary": "List applications review statuses",
 		"tags": [
-			"Zero Trust App Review"
+			"Zero Trust applications review status"
 		],
 		"x-api-token-group": [
 			"Zero Trust Read",
@@ -390,8 +374,8 @@
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/apps/review_status": {
-		"description": "Updates a configured Zero Trust apps review list.",
-		"operationId": "zero-trust-app-review-update",
+		"description": "Updates the status of your applications.",
+		"operationId": "zero-trust-applications-review-status-update",
 		"parameters": [
 			{
 				"in": "path",
@@ -412,7 +396,7 @@
 					"schema": {
 						"properties": {
 							"approved_apps": {
-								"description": "Defines the list of \"approved\" app ids.",
+								"description": "The list of application ids that are approved.",
 								"items": {
 									"type": "integer"
 								},
@@ -420,7 +404,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"in_review_apps": {
-								"description": "Defines the list of \"in review\" app ids.",
+								"description": "The list of application ids that are in review.",
 								"items": {
 									"type": "integer"
 								},
@@ -428,7 +412,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"unapproved_apps": {
-								"description": "Defines the list of \"unapproved\" app ids.",
+								"description": "The list of application ids that are unapproved.",
 								"items": {
 									"type": "integer"
 								},
@@ -521,51 +505,43 @@
 								{
 									"properties": {
 										"result": {
-											"items": {
-												"properties": {
-													"result": {
-														"properties": {
-															"approved_apps": {
-																"description": "Defines the list of \"approved\" app ids.",
-																"items": {
-																	"type": "integer"
-																},
-																"type": "array",
-																"x-stainless-collection-type": "set"
-															},
-															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															},
-															"in_review_apps": {
-																"description": "Defines the list of \"in review\" app ids.",
-																"items": {
-																	"type": "integer"
-																},
-																"type": "array",
-																"x-stainless-collection-type": "set"
-															},
-															"unapproved_apps": {
-																"description": "Defines the list of \"unapproved\" app ids.",
-																"items": {
-																	"type": "integer"
-																},
-																"type": "array",
-																"x-stainless-collection-type": "set"
-															},
-															"updated_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
+											"properties": {
+												"approved_apps": {
+													"description": "The list of application ids that are approved.",
+													"items": {
+														"type": "integer"
+													},
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												},
-												"type": "object"
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"in_review_apps": {
+													"description": "The list of application ids that are in review.",
+													"items": {
+														"type": "integer"
+													},
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"unapproved_apps": {
+													"description": "The list of application ids that are unapproved.",
+													"items": {
+														"type": "integer"
+													},
+													"type": "array",
+													"x-stainless-collection-type": "set"
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
 											},
 											"type": "object"
 										}
@@ -578,7 +554,7 @@
 						}
 					}
 				},
-				"description": "Update Zero Trust app review response."
+				"description": "Update applications review status response."
 			},
 			"4XX": {
 				"content": {
@@ -655,51 +631,43 @@
 										{
 											"properties": {
 												"result": {
-													"items": {
-														"properties": {
-															"result": {
-																"properties": {
-																	"approved_apps": {
-																		"description": "Defines the list of \"approved\" app ids.",
-																		"items": {
-																			"type": "integer"
-																		},
-																		"type": "array",
-																		"x-stainless-collection-type": "set"
-																	},
-																	"created_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"in_review_apps": {
-																		"description": "Defines the list of \"in review\" app ids.",
-																		"items": {
-																			"type": "integer"
-																		},
-																		"type": "array",
-																		"x-stainless-collection-type": "set"
-																	},
-																	"unapproved_apps": {
-																		"description": "Defines the list of \"unapproved\" app ids.",
-																		"items": {
-																			"type": "integer"
-																		},
-																		"type": "array",
-																		"x-stainless-collection-type": "set"
-																	},
-																	"updated_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
+													"properties": {
+														"approved_apps": {
+															"description": "The list of application ids that are approved.",
+															"items": {
+																"type": "integer"
+															},
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														},
-														"type": "object"
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"in_review_apps": {
+															"description": "The list of application ids that are in review.",
+															"items": {
+																"type": "integer"
+															},
+															"type": "array",
+															"x-stainless-collection-type": "set"
+														},
+														"unapproved_apps": {
+															"description": "The list of application ids that are unapproved.",
+															"items": {
+																"type": "integer"
+															},
+															"type": "array",
+															"x-stainless-collection-type": "set"
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
 													},
 													"type": "object"
 												}
@@ -801,7 +769,7 @@
 						}
 					}
 				},
-				"description": "Update Zero Trust app review response failure."
+				"description": "Update applications review status failure response."
 			}
 		},
 		"security": [
@@ -811,9 +779,9 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Zero Trust Application Review",
+		"summary": "Update applications review status",
 		"tags": [
-			"Zero Trust App Review"
+			"Zero Trust applications review status"
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"

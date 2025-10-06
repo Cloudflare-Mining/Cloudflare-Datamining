@@ -1223,6 +1223,20 @@
 					"description": "The dataset ID to search within.",
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pageSize",
+				"schema": {
+					"type": "number"
+				}
 			}
 		],
 		"responses": {

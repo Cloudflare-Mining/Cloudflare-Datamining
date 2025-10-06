@@ -1,5 +1,5 @@
 {
-	"POST /accounts/{account_id}/cloudforce-one/events/indicatorTypes/create": {
+	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicatorTypes/create": {
 		"description": "Creates a new indicator type and initializes its dedicated Durable Object",
 		"operationId": "post_IndicatorTypeCreate",
 		"parameters": [
@@ -10,6 +10,16 @@
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset ID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset ID.",
 					"type": "string"
 				}
 			}

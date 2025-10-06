@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_id}/cloudforce-one/events/indicators/{indicator_id}": {
+	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"description": "Deletes a specific indicator by its UUID.",
 		"operationId": "delete_IndicatorDelete",
 		"parameters": [
@@ -10,6 +10,16 @@
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset ID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset ID.",
 					"type": "string"
 				}
 			},
@@ -95,7 +105,7 @@
 			"Cloudforce One Write"
 		]
 	},
-	"GET /accounts/{account_id}/cloudforce-one/events/indicators": {
+	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
 		"description": "Retrieves a paginated list of indicators for the account.",
 		"operationId": "get_IndicatorList",
 		"parameters": [
@@ -106,6 +116,17 @@
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset UUID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"format": "uuid",
 					"type": "string"
 				}
 			},
@@ -256,7 +277,7 @@
 			"Cloudforce One Read"
 		]
 	},
-	"GET /accounts/{account_id}/cloudforce-one/events/indicators/{indicator_id}": {
+	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"description": "Retrieves a specific indicator by its UUID.",
 		"operationId": "get_IndicatorRead",
 		"parameters": [
@@ -267,6 +288,16 @@
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset ID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset ID.",
 					"type": "string"
 				}
 			},
@@ -402,7 +433,7 @@
 			"Cloudforce One Read"
 		]
 	},
-	"GET /accounts/{account_id}/cloudforce-one/events/indicators/{indicator_type}/tags": {
+	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/tags": {
 		"description": "Returns all mirrored tags from the indicator dataset (DO mirror table). No pagination.",
 		"operationId": "get_IndicatorTagsList",
 		"parameters": [
@@ -417,12 +448,12 @@
 				}
 			},
 			{
-				"description": "Indicator type (e.g., domain, hash)",
+				"description": "Dataset ID.",
 				"in": "path",
-				"name": "indicator_type",
+				"name": "dataset_id",
 				"required": true,
 				"schema": {
-					"description": "Indicator type (e.g., domain, hash)",
+					"description": "Dataset ID.",
 					"type": "string"
 				}
 			}
@@ -571,7 +602,7 @@
 			"Cloudforce One Read"
 		]
 	},
-	"PATCH /accounts/{account_id}/cloudforce-one/events/indicators/{indicator_id}": {
+	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"description": "Updates an existing indicator's properties.",
 		"operationId": "patch_IndicatorUpdate",
 		"parameters": [
@@ -582,6 +613,16 @@
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset ID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset ID.",
 					"type": "string"
 				}
 			},
@@ -799,7 +840,7 @@
 			"Cloudforce One Write"
 		]
 	},
-	"POST /accounts/{account_id}/cloudforce-one/events/indicators/bulk": {
+	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/bulk": {
 		"description": "Creates multiple indicators at once with their respective types and related datasets.",
 		"operationId": "post_IndicatorCreateBulk",
 		"parameters": [
@@ -810,6 +851,17 @@
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset UUID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -947,7 +999,7 @@
 			"Cloudforce One Read"
 		]
 	},
-	"POST /accounts/{account_id}/cloudforce-one/events/indicators/create": {
+	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/create": {
 		"description": "Creates a new indicator with the specified type and related datasets.",
 		"operationId": "post_IndicatorCreate",
 		"parameters": [
@@ -958,6 +1010,17 @@
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset UUID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"format": "uuid",
 					"type": "string"
 				}
 			}

@@ -134,218 +134,7 @@
 			"Cloudforce One Write"
 		]
 	},
-	"GET /accounts/{account_id}/cloudforce-one/events/tags": {
-		"description": "Returns all Source-of-Truth tags for an account.",
-		"operationId": "get_TagList",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "page",
-				"schema": {
-					"type": "number"
-				}
-			},
-			{
-				"in": "query",
-				"name": "pageSize",
-				"schema": {
-					"type": "number"
-				}
-			},
-			{
-				"in": "query",
-				"name": "search",
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "categoryUuid",
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"pagination": {
-									"properties": {
-										"page": {
-											"type": "number"
-										},
-										"pageSize": {
-											"type": "number"
-										},
-										"totalCount": {
-											"type": "number"
-										},
-										"totalPages": {
-											"type": "number"
-										}
-									},
-									"required": [
-										"page",
-										"pageSize",
-										"totalCount",
-										"totalPages"
-									],
-									"type": "object"
-								},
-								"tags": {
-									"items": {
-										"properties": {
-											"activeDuration": {
-												"type": "string"
-											},
-											"actorCategory": {
-												"type": "string"
-											},
-											"aliasGroupNames": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"aliasGroupNamesInternal": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"analyticPriority": {
-												"type": "number"
-											},
-											"attributionConfidence": {
-												"type": "string"
-											},
-											"attributionOrganization": {
-												"type": "string"
-											},
-											"categoryName": {
-												"example": "Nation State",
-												"type": "string"
-											},
-											"externalReferenceLinks": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"internalDescription": {
-												"type": "string"
-											},
-											"motive": {
-												"type": "string"
-											},
-											"opsecLevel": {
-												"type": "string"
-											},
-											"originCountryISO": {
-												"type": "string"
-											},
-											"priority": {
-												"type": "number"
-											},
-											"sophisticationLevel": {
-												"type": "string"
-											},
-											"uuid": {
-												"example": "12345678-1234-1234-1234-1234567890ab",
-												"type": "string"
-											},
-											"value": {
-												"example": "APT28",
-												"type": "string"
-											}
-										},
-										"required": [
-											"uuid",
-											"value"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								}
-							},
-							"required": [
-								"tags",
-								"pagination"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns a paginated list of tags."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Lists all tags (SoT)",
-		"tags": [
-			"Tag"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		]
-	},
-	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/indicators": {
+	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/tags/{tag_uuid}/indicators": {
 		"description": "Returns indicators associated with the provided tag UUID across all indicator datasets, with pagination.",
 		"operationId": "get_TagIndicatorsList",
 		"parameters": [
@@ -366,6 +155,17 @@
 				"required": true,
 				"schema": {
 					"description": "Tag UUID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset UUID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"format": "uuid",
 					"type": "string"
 				}
 			},
@@ -608,6 +408,217 @@
 			}
 		],
 		"summary": "List indicators related to a tag",
+		"tags": [
+			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/tags": {
+		"description": "Returns all Source-of-Truth tags for an account.",
+		"operationId": "get_TagList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pageSize",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "categoryUuid",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"pagination": {
+									"properties": {
+										"page": {
+											"type": "number"
+										},
+										"pageSize": {
+											"type": "number"
+										},
+										"totalCount": {
+											"type": "number"
+										},
+										"totalPages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"pageSize",
+										"totalCount",
+										"totalPages"
+									],
+									"type": "object"
+								},
+								"tags": {
+									"items": {
+										"properties": {
+											"activeDuration": {
+												"type": "string"
+											},
+											"actorCategory": {
+												"type": "string"
+											},
+											"aliasGroupNames": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"aliasGroupNamesInternal": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"analyticPriority": {
+												"type": "number"
+											},
+											"attributionConfidence": {
+												"type": "string"
+											},
+											"attributionOrganization": {
+												"type": "string"
+											},
+											"categoryName": {
+												"example": "Nation State",
+												"type": "string"
+											},
+											"externalReferenceLinks": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"internalDescription": {
+												"type": "string"
+											},
+											"motive": {
+												"type": "string"
+											},
+											"opsecLevel": {
+												"type": "string"
+											},
+											"originCountryISO": {
+												"type": "string"
+											},
+											"priority": {
+												"type": "number"
+											},
+											"sophisticationLevel": {
+												"type": "string"
+											},
+											"uuid": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
+											},
+											"value": {
+												"example": "APT28",
+												"type": "string"
+											}
+										},
+										"required": [
+											"uuid",
+											"value"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"tags",
+								"pagination"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a paginated list of tags."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Lists all tags (SoT)",
 		"tags": [
 			"Tag"
 		],
