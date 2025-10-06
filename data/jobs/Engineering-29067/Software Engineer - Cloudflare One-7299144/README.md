@@ -5,7 +5,9 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
+<p><strong>Available Locations: Austin, Lisbon<br></strong></p>
+<p><strong>Hiring will be focused on those residing within the greater Austin, TX, London, UK, &amp; Lisbon, Portugal metro areas. It will be a hybrid role, with the expectation of 2 days per week in the office.</strong></p>
+<p><strong>Software Engineer, All Levels</strong></p>
 <h2><strong>Software Engineer – Cloudflare One</strong></h2>
 <p>Cloudflare is building the future of the Internet through global infrastructure and cutting-edge security solutions. As a Software Engineer on our Network Services and Zero Trust teams, you will contribute to mission-critical systems powering millions of websites and devices.</p>
 <h2><strong>About the Organization</strong></h2>
