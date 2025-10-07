@@ -1,0 +1,448 @@
+{
+	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables": {
+		"description": "Returns a list of tables in the specified namespace within an R2 catalog.\nSupports pagination for efficient traversal of large table collections.\n",
+		"operationId": "list-tables",
+		"parameters": [
+			{
+				"description": "Identifies the account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specifies the R2 bucket name.",
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The namespace identifier.\nFor nested namespaces, use %1F as separator (e.g., \"bronze%1Fanalytics\").\n",
+				"example": "bronze",
+				"in": "path",
+				"name": "namespace",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Opaque pagination token from a previous response.\nUse this to fetch the next page of results.\n",
+				"example": "MSYxNzU5NzU2MTI4NTU2Njk2JjAxOTliOWEzLTkxMmUtN2ZhMS05YzllLTg5MTAxMGQzYTg0MQ",
+				"in": "query",
+				"name": "page_token",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Maximum number of tables to return per page.\nDefaults to 100, maximum 1000.\n",
+				"example": 100,
+				"in": "query",
+				"name": "page_size",
+				"schema": {
+					"default": 100,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Whether to include table UUIDs in the response.\nSet to true to receive the table_uuids array.\n",
+				"example": true,
+				"in": "query",
+				"name": "return_uuids",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"identifiers": [
+									{
+										"name": "events",
+										"namespace": [
+											"bronze"
+										]
+									},
+									{
+										"name": "users",
+										"namespace": [
+											"bronze"
+										]
+									}
+								],
+								"next_page_token": null,
+								"table_uuids": [
+									"0199b9a1-28a0-71e0-a73e-b0fc32c8468e",
+									"0199b9a1-3c74-7731-bf53-d8c67ead079d"
+								]
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"description": "Contains errors if the API call was unsuccessful.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the error code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Contains informational messages.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the message code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Contains the message text.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Contains the list of tables with optional pagination.",
+											"properties": {
+												"identifiers": {
+													"description": "Lists tables in the namespace.",
+													"items": {
+														"description": "Specifies a unique table identifier within a catalog.",
+														"properties": {
+															"name": {
+																"description": "Specifies the table name.",
+																"example": "events",
+																"type": "string"
+															},
+															"namespace": {
+																"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
+																"example": [
+																	"bronze",
+																	"analytics"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"maxItems": 16,
+																"minItems": 1,
+																"type": "array"
+															}
+														},
+														"required": [
+															"namespace",
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"next_page_token": {
+													"description": "Use this opaque token to fetch the next page of results.\nA null or absent value indicates the last page.\n",
+													"example": "MSYxNzU5NzU2MTI4NTU2Njk2JjAxOTliOWEzLTkxMmUtN2ZhMS05YzllLTg5MTAxMGQzYTg0MQ",
+													"nullable": true,
+													"type": "string"
+												},
+												"table_uuids": {
+													"description": "Contains UUIDs for each table when return_uuids is true.\nThe order corresponds to the identifiers array.\n",
+													"example": [
+														"0199b9a1-28a0-71e0-a73e-b0fc32c8468e",
+														"0199b9a1-3c74-7731-bf53-d8c67ead079d"
+													],
+													"items": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											},
+											"required": [
+												"identifiers"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List of tables retrieved successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request (e.g., invalid page_size, malformed namespace)."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Authentication failed."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Catalog or namespace not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List tables in namespace",
+		"tags": [
+			"Table Management"
+		],
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write",
+			"Workers R2 Data Catalog Read"
+		]
+	}
+}
