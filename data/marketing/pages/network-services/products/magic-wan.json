@@ -191,9 +191,13 @@
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": null,
+						"includeVideo": true,
+						"streamVideoId": "442a9a1da34764354e75679f9e781408",
+						"streamOptions": [
+							"controls",
+							"captions",
+							"autoplay"
+						],
 						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
@@ -202,9 +206,14 @@
 						"streamThumbnails": null,
 						"sectionPadding": "tile--no-top-padding",
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": "Large",
-						"imagePosition": false,
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/DgTakIy4K4l08IT2WLCsK/5ea0ad8ec0967131a2c6932220f032ae/WAN_Globe_image.png"
+							},
+							"description": null
+						},
+						"imageSize": null,
+						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -213,12 +222,7 @@
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/lvSFPkaBuEfJaeUJ1hFkp/c2b92f2ec64660ddf3a606d15045a38b/WAN_Globe_image.png"
-							},
-							"description": "WAN Globe image"
-						},
+						"image": null,
 						"imageAssetFile": null
 					},
 					{
@@ -369,7 +373,7 @@
 						"image": null,
 						"imageAssetFile": {
 							"id": "4f96d6f7-6384-5ae5-9442-a82c92985eaf",
-							"altText": null,
+							"altText": "Connect your enterprise with Cloudflare Magic WAN to both pre-configured hardware or virtual appliances",
 							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
