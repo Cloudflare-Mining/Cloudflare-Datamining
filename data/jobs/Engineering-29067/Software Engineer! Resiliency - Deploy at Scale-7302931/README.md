@@ -5,29 +5,53 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Role Location: Lisbon, Portugal</strong></p>
-<p><strong>About the team&nbsp;&nbsp;</strong></p>
-<p>The Data Analytics &amp; Intelligence&nbsp;team at Cloudflare is responsible for building and managing the cloud data analytics platform. Our focus is on developing a centralized cloud data analytics platform using open source technologies for internal Business Partners and Machine Learning teams. The team aims to make data more accessible, meet Cloudflare's critical business needs, and provide self-service reporting and analytics tools to support current and new business initiatives.</p>
-<p><strong>About the role</strong></p>
-<p>In the role of Data Engineer, the primary responsibility is to contribute to building and improving a scalable petabyte-scale data lake and Cloud Enterprise Data Warehouse. This involves utilizing a modern tech stack from scratch with open source technologies. Success in this position requires a strong background in data engineering, combined with product and business acumen, to deliver scalable data pipelines and analytics solutions that empower advanced analytics through a user-friendly self-service interface.</p>
-<p><strong>What you will do</strong></p>
+<p><strong>Location: Washington DC or Austin TX</strong></p>
+<p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</p>
+<p>&nbsp;</p>
+<p><strong>What you'll do</strong></p>
+<p>As a Software Engineer: Release Manager, you will be part of the Resiliency Organization responsible for building and maintaining the platform that powers safe, reliable, and automated deployments across Cloudflare. We are looking for engineers to join the <strong>Deploy@Scale</strong> team and shape the future of deployment automation and release safety. The Release Manager platform is pivotal in ensuring service resiliency by orchestrating progressive deployments, supporting health-mediated rollouts, and automating release workflows at scale. Our mission is to make deployments seamless, predictable, and observable for all engineering teams across Cloudflare. This is a unique opportunity to work on complex, globally distributed systems that underpin every Cloudflare product. You will play a key role in advancing the infrastructure that enables fast, safe delivery of changes to production, directly impacting the reliability and velocity of Cloudflare’s global network</p>
+<p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Partner closely with internal stakeholders to gain a strong understanding of business and product data needs</li>
-	<li>Design, build and support scalable and reliable data solutions that can enable self-service reporting and advanced analytics using open source technologies</li>
-	<li>Develop technical tools and programming that leverage machine learning and big-data techniques to cleanse, organize and transform data and to maintain and update data structures and integrity on an automated basis</li>
-	<li>Design application components and evolve architecture: API/Services, data access, integration, application components, etc.</li>
-	<li>Analyze and support platform requirements for Data Science team</li>
-	<li>Implement automation tools and frameworks (CI/CD pipelines)</li>
-	<li>Build tools to automate the monitoring or workload and take proactive measure to scale the platform or to fix the problem&nbsp;</li>
-	<li>Mentor junior data engineers</li>
+	<li>At least 4 years of hands-on software development experience on meaningfully complex systems.</li>
+	<li>Experience building both backend systems and frontend widgets.</li>
+	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
+	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
+	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
+	<li>Strong verbal and written English language skills.</li>
 </ul>
-<p><strong>Examples of desired skills, knowledge, and experience&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Proven ability to work closely with business and product teams to ensure data solutions are aligned with business initiatives and are of high quality</li>
-	<li>2-5 years of development experience in Big Data space working with Petabytes of data and building large scale data solutions using any Cloud Platform, Apache Spark, Airflow, Scala, Golang, Python, etc</li>
-	<li>Experience with API design and development of RESTful web services or GraphQL is a plus</li>
-	<li>Working experience in Kubernetes, Docker etc. is a plus</li>
-	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required</li>
+	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $154,000 - 188,000.</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

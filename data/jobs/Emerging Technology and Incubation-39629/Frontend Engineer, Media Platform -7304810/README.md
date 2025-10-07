@@ -5,36 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin or San Francisco&nbsp;</strong></p>
-<p><strong>Position Overview</strong></p>
-<p>The Senior Marketing Operations &amp; Technology Manager will play a pivotal role in driving efficiency, scalability, and performance within the marketing organization at Cloudflare. This role focuses on ensuring operational excellence, optimizing processes, and delivering actionable insights to support marketing campaigns and strategies. You’ll partner closely with cross-functional teams, including demand generation/marketing, sales operations, and Enterprise IT, to ensure alignment and effectiveness.</p>
-<p><strong>Key Responsibilities</strong></p>
+<h3><strong>Available Locations: Austin, TX</strong></h3>
+<h3><strong>About the Department</strong></h3>
+<p>Media Platform is part of Emerging Technologies &amp; Incubation (ETI), where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3><strong>About the role</strong></h3>
+<p>We are seeking a skilled Frontend (UI) Platform Engineer to join our team. You’ll be responsible for all Media Platform components of the Cloudflare Dashboard: Images, Stream and Realtime. You will also build and maintain media-specific standalone UI components and applications, e.g. video players, media upload tools and web conferencing solutions. Media applications push performance and usability requirements to the limit.</p>
+<h3><strong>Technologies we use</strong></h3>
+<p>React, TypeScript, JavaScript (ES6+), React Router, PlayWright, Selenium, Vite, Webpack, Bazel, CI/CD tools, Go, RESTful APIs, HLS/DASH, WebRTC, MoQ.</p>
+<h3><strong>Qualifications</strong></h3>
 <ul>
-	<li>Process Optimization&nbsp;Develop and manage scalable workflows, systems, and processes to support marketing initiatives.</li>
-	<li>&nbsp;Oversee campaign execution frameworks (ABM, MQA, etc.) and ensure consistency across global teams.</li>
-	<li>Evaluate and improve lead management processes, including lead scoring, routing, and nurturing.&nbsp;Data &amp; Analytics Deliver actionable insights and recommendations to enhance campaign effectiveness and drive business outcomes.</li>
-	<li>Collaborate with the business intelligence team to integrate marketing data into enterprise reporting.&nbsp;</li>
-	<li>Technology Management&nbsp;Ensure tools are effectively integrated and utilized.</li>
-	<li>Evaluate and implement new technologies to enhance marketing capabilities and efficiency.&nbsp;</li>
-	<li>Collaboration &amp; Communication&nbsp;Partner with revenue operations and enablement teams to ensure seamless alignment between marketing and sales.</li>
-	<li>Work closely with demand generation, field, and product marketing teams to support campaign execution.&nbsp;Communicate operational performance and insights to leadership and stakeholders.<br><br></li>
+	<li>We want someone who understands and obsesses over front-end systems.</li>
+	<li>4+ years of experience in frontend engineering, specializing in JavaScript, TypeScript, and React.</li>
+	<li>Strong knowledge of UI infrastructure, CI/CD, and testing frameworks (e.g., Playwright, Cypress).</li>
+	<li>Proven ability to drive projects independently, from concept to implementation.</li>
 </ul>
-<p><strong>Qualifications</strong></p>
-<p><strong>Required:</strong></p>
+<h3><strong>Bonus skills</strong></h3>
 <ul>
-	<li>Bachelor's degree in marketing, business, or a related field; MBA preferred.</li>
-	<li>10+ years of experience in marketing operations at a high growth Enterprise SaaS organization.</li>
-	<li>Deep domain expertise with integrated B2B marketing, lead &amp; pipeline management, multi-touch attribution, email marketing, data strategy &amp; governance, and system integration.</li>
-	<li>&nbsp;Expertise in marketing automation platforms (e.g., Marketo, Salesforce, Demand base) and CRM systems.&nbsp;</li>
-	<li>Strong background in data analysis, performance measurement, and marketing attribution.</li>
+	<li>Video streaming and web playback.</li>
+	<li>Browser media APIs.</li>
+	<li>Realtime communication protocols and/or video conferencing, e.g. WebRTC.</li>
+	<li>Experience building and scaling large-scale web applications.</li>
 </ul>
-<p><strong>Preferred:</strong></p>
-<ul>
-	<li>Knowledge of cloud technology or cybersecurity industries.&nbsp;</li>
-	<li>Strong project management skills with the ability to manage multiple priorities simultaneously.&nbsp;</li>
-	<li>Exceptional communication and presentation skills.</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

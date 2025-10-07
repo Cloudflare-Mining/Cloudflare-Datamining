@@ -5,34 +5,46 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>Position Overview</strong></p>
-<p>The Marketing Operations and Technology team provides the platforms, people, and processes necessary for Global Marketing to plan, execute, and optimize global integrated campaigns at scale and accelerate visitors through stages of the buying cycle. We are looking to hire a Sr. Marketing Operations &amp; Technology PMO Manager who will play a pivotal role in driving efficiency, scalability, and performance at Cloudflare. You’ll partner closely with cross-functional teams within Marketing and in Partner, Legal, IT, Procurement, BI and Operations to ensure alignment and effectiveness.</p>
-<p><strong>Key Responsibilities</strong></p>
+<p><strong>Available Locations: NYC, SF, Austin TX</strong></p>
+<p><strong>About Product Management at Cloudflare&nbsp;</strong></p>
+<p>As a<strong> Product Manager at Cloudflare</strong>, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
+<p>As a Product Manager within the Application Performance team, you will own a critical part of our comprehensive platform that ensures web properties, applications, and networks are fast, reliable, and intelligent. This portfolio spans foundational capabilities like CDN optimization and Origin Shielding, advanced low-latency application delivery, and customer-facing data products built on real-world usage. You will set the strategic direction for how Cloudflare eliminates latency and provides the authoritative source of truth on performance for applications running across our global network.</p>
+<p><strong>About the role</strong></p>
+<p>As Product Manager <strong>on the Application Performance team</strong>, you’ll help shape a key part of our core product experience. This role requires a candidate who can navigate complex technical domains—from TCP/IP protocols and caching architectures to data analytics and user experience—and translate those into clear, marketable features. You will define the roadmap for one or more core services that impact every byte of traffic processed by Cloudflare. You will collaborate closely with engineering teams to leverage our massive network footprint and unique traffic insights to deliver features that fundamentally change how the internet operates, ultimately accelerating adoption for customers ranging from individual developers to the world's largest enterprises.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Process Optimization&nbsp;Develop and manage scalable workflows, systems, and processes to support marketing initiatives.</li>
-	<li>Oversee campaign execution frameworks and ensure consistency across global teams.&nbsp;Evaluate and improve lead management processes, including lead scoring, routing, and nurturing.</li>
-	<li>Data &amp; Analytics&nbsp;Deliver actionable insights and recommendations to enhance campaign effectiveness and drive business outcomes.</li>
-	<li>Collaborate with the business intelligence team to integrate marketing data into enterprise reporting.&nbsp;</li>
-	<li>Technology Management&nbsp;Ensure tools are effectively integrated and utilized.</li>
-	<li>Evaluate and implement new technologies to enhance marketing capabilities.</li>
-	<li>Project manage high visibility, cross-functional and transformative initiatives like AI.&nbsp;</li>
-	<li>Collaboration &amp; Communication&nbsp;Partner with revenue operations and enablement teams to ensure seamless alignment between marketing and sales. W</li>
-	<li>Work closely with demand generation, field, and product marketing teams to support campaign execution.</li>
-	<li>Communicate operational performance and insights to leadership and stakeholders.&nbsp;Develop annual and quarterly plans and ensure strategic projects are prioritized and executed on time, on budget and meeting intended goals.</li>
+	<li>Own your space. You will own the priorities and scope, partnering with a high performing engineering team focused on one of Cloudflare’s Application Performance products.&nbsp;</li>
+	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
+	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
+	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
+	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.</li>
 </ul>
-<p><strong>Qualifications</strong></p>
-<p><strong>Required:</strong></p>
+<h4>&nbsp;</h4>
+<h4>Examples of desirable skills, knowledge and experience</h4>
+<p>At Cloudflare, Product Managers are measured both on outcomes (“the what”) and how they accomplish results. Examples of desirable skills, knowledge and experience:</p>
 <ul>
-	<li>Bachelor's degree in marketing, business, or a related field; MBA preferred.</li>
-	<li>10+ years of experience in marketing operations at a high growth Enterprise SaaS organization.</li>
-	<li>Deep domain expertise with integrated B2B marketing, lead &amp; pipeline management, multi-touch attribution, email marketing, data strategy &amp; governance, and system integration.</li>
-	<li>Expertise in marketing automation platforms (e.g., Marketo, Salesforce, Demandbase) and CRM systems.</li>
-	<li>Strong background in data analysis, performance measurement, and marketing attribution.</li>
+	<li>5+ years of experience in product management, solutions engineering, or related roles</li>
+	<li>Familiarity with designing or contributing to habit-forming product experiences</li>
+	<li>Experience defining and tracking KPIs to measure product or user behavior impact</li>
+	<li>Strong collaboration skills and experience working with engineering and design teams</li>
+	<li>Comfort operating in fast-paced, evolving environments</li>
+	<li>A passion for user empathy and delivering customer-centric solutions</li>
+	<li>Excellent communication skills and attention to detail</li>
+	<li>Curiosity and a strong desire to learn technical topics, especially in security or observability</li>
+	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen is a key part of the role.</li>
 </ul>
-<p><strong>Preferred:</strong></p>
+<h4><strong>Bonus points</strong></h4>
 <ul>
-	<li>Knowledge of cloud technology or cybersecurity industries.&nbsp;Strong project management skills with the ability to manage multiple priorities simultaneously. Exceptional communication and presentation skills.</li>
+	<li>Prior experience as a Product Manager driving the roadmap for products focused on Edge infrastructure, high-performance web delivery, or network optimization</li>
+	<li>Prior experience delivering cloud infrastructure products at global scale.</li>
+	<li>Data fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $166,000- $202,000</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $158,000 - $193,000</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
