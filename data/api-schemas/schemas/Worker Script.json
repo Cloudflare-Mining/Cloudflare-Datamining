@@ -3471,7 +3471,6 @@
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
 																		"send_email": "#/components/schemas/workers_binding_kind_send_email",
 																		"service": "#/components/schemas/workers_binding_kind_service",
-																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 																		"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
@@ -4181,36 +4180,6 @@
 																				"description": "The kind of resource that the binding provides.",
 																				"enum": [
 																					"service"
-																				],
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		},
-																		"required": [
-																			"name",
-																			"type",
-																			"service"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"name": {
-																				"description": "A JavaScript variable name for the binding.",
-																				"example": "myBinding",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"service": {
-																				"description": "Name of Tail Worker to bind to.",
-																				"example": "my-worker",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"type": {
-																				"description": "The kind of resource that the binding provides.",
-																				"enum": [
-																					"tail_consumer"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -4526,7 +4495,6 @@
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
 																		"send_email": "#/components/schemas/workers_binding_kind_send_email",
 																		"service": "#/components/schemas/workers_binding_kind_service",
-																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 																		"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
@@ -5236,36 +5204,6 @@
 																				"description": "The kind of resource that the binding provides.",
 																				"enum": [
 																					"service"
-																				],
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		},
-																		"required": [
-																			"name",
-																			"type",
-																			"service"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"name": {
-																				"description": "A JavaScript variable name for the binding.",
-																				"example": "myBinding",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"service": {
-																				"description": "Name of Tail Worker to bind to.",
-																				"example": "my-worker",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"type": {
-																				"description": "The kind of resource that the binding provides.",
-																				"enum": [
-																					"tail_consumer"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -7425,7 +7363,6 @@
 															"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
 															"send_email": "#/components/schemas/workers_binding_kind_send_email",
 															"service": "#/components/schemas/workers_binding_kind_service",
-															"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 															"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 															"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 															"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
@@ -8135,36 +8072,6 @@
 																	"description": "The kind of resource that the binding provides.",
 																	"enum": [
 																		"service"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"required": [
-																"name",
-																"type",
-																"service"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"name": {
-																	"description": "A JavaScript variable name for the binding.",
-																	"example": "myBinding",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"service": {
-																	"description": "Name of Tail Worker to bind to.",
-																	"example": "my-worker",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "The kind of resource that the binding provides.",
-																	"enum": [
-																		"tail_consumer"
 																	],
 																	"type": "string",
 																	"x-auditable": true
@@ -8480,7 +8387,6 @@
 															"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
 															"send_email": "#/components/schemas/workers_binding_kind_send_email",
 															"service": "#/components/schemas/workers_binding_kind_service",
-															"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 															"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 															"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 															"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
@@ -9190,36 +9096,6 @@
 																	"description": "The kind of resource that the binding provides.",
 																	"enum": [
 																		"service"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"required": [
-																"name",
-																"type",
-																"service"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"name": {
-																	"description": "A JavaScript variable name for the binding.",
-																	"example": "myBinding",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"service": {
-																	"description": "Name of Tail Worker to bind to.",
-																	"example": "my-worker",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "The kind of resource that the binding provides.",
-																	"enum": [
-																		"tail_consumer"
 																	],
 																	"type": "string",
 																	"x-auditable": true
@@ -10129,7 +10005,6 @@
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
 																		"send_email": "#/components/schemas/workers_binding_kind_send_email",
 																		"service": "#/components/schemas/workers_binding_kind_service",
-																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 																		"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
@@ -10839,36 +10714,6 @@
 																				"description": "The kind of resource that the binding provides.",
 																				"enum": [
 																					"service"
-																				],
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		},
-																		"required": [
-																			"name",
-																			"type",
-																			"service"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"name": {
-																				"description": "A JavaScript variable name for the binding.",
-																				"example": "myBinding",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"service": {
-																				"description": "Name of Tail Worker to bind to.",
-																				"example": "my-worker",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"type": {
-																				"description": "The kind of resource that the binding provides.",
-																				"enum": [
-																					"tail_consumer"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -11184,7 +11029,6 @@
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
 																		"send_email": "#/components/schemas/workers_binding_kind_send_email",
 																		"service": "#/components/schemas/workers_binding_kind_service",
-																		"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 																		"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																		"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																		"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
@@ -11894,36 +11738,6 @@
 																				"description": "The kind of resource that the binding provides.",
 																				"enum": [
 																					"service"
-																				],
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		},
-																		"required": [
-																			"name",
-																			"type",
-																			"service"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"name": {
-																				"description": "A JavaScript variable name for the binding.",
-																				"example": "myBinding",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"service": {
-																				"description": "Name of Tail Worker to bind to.",
-																				"example": "my-worker",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"type": {
-																				"description": "The kind of resource that the binding provides.",
-																				"enum": [
-																					"tail_consumer"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -14155,7 +13969,6 @@
 													"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
 													"send_email": "#/components/schemas/workers_binding_kind_send_email",
 													"service": "#/components/schemas/workers_binding_kind_service",
-													"tail_consumer": "#/components/schemas/workers_binding_kind_tail_consumer",
 													"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 													"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 													"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
@@ -14865,36 +14678,6 @@
 															"description": "The kind of resource that the binding provides.",
 															"enum": [
 																"service"
-															],
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"name",
-														"type",
-														"service"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"name": {
-															"description": "A JavaScript variable name for the binding.",
-															"example": "myBinding",
-															"type": "string",
-															"x-auditable": true
-														},
-														"service": {
-															"description": "Name of Tail Worker to bind to.",
-															"example": "my-worker",
-															"type": "string",
-															"x-auditable": true
-														},
-														"type": {
-															"description": "The kind of resource that the binding provides.",
-															"enum": [
-																"tail_consumer"
 															],
 															"type": "string",
 															"x-auditable": true
