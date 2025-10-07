@@ -2611,6 +2611,7 @@
 	"security_rules.rules.client_side.form.create": "New content security rule",
 	"security_rules.rules.client_side.form.edit": "Edit content security rule",
 	"security_rules.rules.client_side.form.description": "Define the web resources (such as scripts) allowed on your applications through <0>Content Security Policy (CSP)</0> directives. Content security rules act as allowlists, where requests attempting to load resources not included in the rule can be blocked or logged.",
+	"security_rules.rules.ip_access.empty": "You have over 1,000 IP access rules. In order to manage these rules visit a <2>dedicated IP access rules page</2>. We recommend using our <0>custom rule template</0> to reduce the number of rules (<1>learn more</1>)",
 	"security_rules.rules.ip_access.title": "IP access rules",
 	"security_rules.rules.ip_access.tooltip": "Allow, block, or challenge traffic based on the visitor's IP address, country, or Autonomous System Number (ASN).",
 	"security_rules.rules.ip_access.description": "IP Access Rules can be based on IP address, IP address range, Autonomous System Number (ASN) or country.",

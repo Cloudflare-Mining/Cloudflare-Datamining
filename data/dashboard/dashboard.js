@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "88bdee6a-a8ad-5143-bf11-2ae16b4202fd")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "b2457cb0-d18e-5d7f-8aa2-938e18fe128e")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1250,10 +1250,10 @@
 					e.g.build = yn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "cbef2d3d92f2470f5907cff02f0cff8fe4ab1ff1",
-						dashVersion: "36420557",
+						commit: "ede1d7a275c01cfe62f368c5a5bec8e0e4dffaf3",
+						dashVersion: "36434378",
 						env: "production",
-						builtAt: 1759769007430,
+						builtAt: 1759825304150,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -31378,7 +31378,7 @@
 					botSettings: (0, n.BC)`${s}/security/bots`,
 					securitySettings: (0, n.BC)`${s}/security`,
 					botSettingsBotManagement: (0, n.BC)`${s}/security/bots/configure`,
-					botSettingsUnified: (0, n.BC)`${s}/security/detections/bot-traffic`,
+					botSettingsUnified: (0, n.BC)`${s}/security/settings?tabs=bot-traffic`,
 					wafCustomRules: (0, n.BC)`${s}/security/waf/custom-rules`
 				},
 				o = {
@@ -54073,7 +54073,7 @@ SOFTWARE.`,
 								componentProps: [{
 									display: "inline"
 								}, {
-									to: `/${f.account.id}/${f.name}/security/detections/bot-traffic`
+									to: `/${f.account.id}/${f.name}/security/settings?tabs=bot-traffic`
 								}]
 							}),
 							helperText: (0, r.jsx)(s.cC, {
@@ -86263,4 +86263,4 @@ button.border {
 	}
 ]);
 
-//# debugId=88bdee6a-a8ad-5143-bf11-2ae16b4202fd
+//# debugId=b2457cb0-d18e-5d7f-8aa2-938e18fe128e
