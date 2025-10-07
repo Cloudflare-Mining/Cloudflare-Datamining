@@ -5,55 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Hybrid - Atlanta, Austin, Denver and Toronto, ON&nbsp;</p>
-<h4><strong>About the Department</strong></h4>
-<p>Cloudflare’s Engineering Team builds and runs the software that handles about 10% of HTTP requests on the Internet today. We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</p>
-<h4><strong>What you'll do</strong></h4>
-<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
-<p>Cloudflare is looking for a full stack engineer on the Enterprise Readiness team to help us build the features for Large Scale Enterprise customers, our partners, and our internal admin tooling platform. The ideal candidates will have experience working with large-scale applications and a deep knowledge of system designs. You must care deeply not only about the quality of your and the team's code, but also the customer experience and developer experience. We’re looking for highly motivated individuals that are excited to join a team and work with product owners and other software engineers to build scalable frameworks and tooling to create awesome developer experiences and improve developer productivity.</p>
-<p>We are also strong believers in dog-fooding our own products. From cache configuration to Cloudflare Access to Cloudflare Workers, these are all tools in our frontend engineer's tool belt.&nbsp;</p>
-<p>Technologies we use include React, Javascript, TypeScript, Cypress, Go, PostgreSQL, Redis, Kubernetes, Kafka, Quicksilver</p>
-<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
-<ul>
-	<li>5+ years of professional experience building and managing software applications at large scale.</li>
-	<li>Strong knowledge of HTML, CSS, JavaScript and Typescript</li>
-	<li>Deep knowledge of at least one modern programming language such as Go, Rust, PHP with strong computer science fundamentals.</li>
-	<li>Experience in designing and architecting large-scale distributed systems.</li>
-	<li>Passion for Observability (experience with Prometheus, Grafana, and Kibana are a plus, but not required).</li>
-	<li>Solid knowledge of SQL and common relational database systems such as PostgreSQL.</li>
-	<li>Experience debugging, optimizing and identifying possible failures in a large-scale distributed system.</li>
-	<li>Experience with containers (Docker &amp; Kubernetes)&nbsp;</li>
-</ul>
-<h4><strong>Compensation</strong></h4>
-<p>Compensation may be adjusted depending on work location.</p>
-<h4><strong>Equity</strong></h4>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h4><strong>Benefits</strong></h4>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h4><strong>Health &amp; Welfare Benefits</strong></h4>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h4><strong>Financial Benefits</strong></h4>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h4><strong>Time Off</strong></h4>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p><strong>Available Location: Bengaluru, India</strong></p>
 <p>&nbsp;</p>
+<p><strong>About Cloudflare</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
+<p><strong>About the role</strong></p>
+<p>The Marketing Operations and Technology Team provides platforms, people, and processes necessary for Global Marketing to plan, execute, and optimize global integrated campaigns at scale and accelerate visitors through stages of the buying cycle. We are looking for a curious, self-motivated superstar to support the enablement of our analytical platforms that fuel our marketing initiatives.</p>
+<p>We're looking for a solution driven data architect who can go beyond simple tracking and reporting. You will facilitate collaboration across many stakeholders to ensure reporting requirements are met.&nbsp; If you are passionate about delivering best in class data solutions architecture that facilitates customer journey growth and analysis, we want to hear from you.</p>
+<h4><strong>Key responsibilities:</strong></h4>
+<ul>
+	<li><strong>Develop infrastructure to deliver actionable insights:</strong> Solution across multiple tool sets. including Adobe Analytics, GA4, Salesforce, and BigQuery.&nbsp; Leverage multipoint architecture to deliver robust dashboards to drive customer journey insights and segment creation for personalization activities.</li>
+	<li><strong>Stitch &amp; synthesize data:</strong> Query, extract, and blend large datasets from multiple sources including our web analytics platform, BI database, CRM, and marketing automation platforms.</li>
+	<li><strong>Champion data-driven culture:</strong> Advocate for data literacy within the marketing organization, proactively sharing insights in internal communication forums and helping stakeholders ask the right questions.</li>
+	<li><strong>Govern tag management:</strong> Implement tracking across our TMS platforms: Zaraz, GTM, Adobe Launch</li>
+	<li><strong>Pixel governance and management: </strong>Deliver requirements to marketing engineering teams for pixel deployment. Audit properties for pixel counts and relevance.</li>
+</ul>
+<h4><strong>Experience</strong></h4>
+<ul>
+	<li>6+ years experience working in a large B2B, D2C, SaaS, or enterprise cloud company</li>
+	<li>5+ years of experience in a data analytics role, preferably within marketing, web analytics, or product analytics</li>
+	<li>5+ years experience implementing data analytics tracking systems.</li>
+	<li>Deep, hands-on experience with at least one enterprise-level web analytics platform (e.g., Adobe Analytics, Google Analytics 4, etc.) in a very high web traffic environment</li>
+	<li>Experience with A/B/n testing implementations</li>
+	<li>Experience with data warehouses like BigQuery, Snowflake or similar</li>
+	<li>Proficiency in SQL for querying complex, large-scale datasets</li>
+	<li>Knowledge of statistical programming languages, such as Python or R is a plus</li>
+	<li>Familiarity with analyzing data from CRM (e.g., Salesforce) and Marketing Automation (e.g., Marketo) platforms to create a full-funnel view</li>
+	<li>Proven expertise in creating impactful dashboards and data visualizations using tools like Tableau, Looker Studio, etc</li>
+	<li>Exceptional communication and storytelling skills, with the ability to translate analytical findings into clear, concise, and actionable recommendations</li>
+	<li>Bachelor's degree in a quantitative field (e.g., Statistics, Economics, Computer Science, Mathematics) or equivalent practical experience is preferred</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
