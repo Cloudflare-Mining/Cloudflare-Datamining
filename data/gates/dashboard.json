@@ -93,6 +93,9 @@
 	"ai-gateway-log-push": {
 		"enabled": false
 	},
+	"ai-gateway-new-overview": {
+		"enabled": false
+	},
 	"ai-gateway-otel-integration": {
 		"enabled": true
 	},
@@ -695,6 +698,9 @@
 	},
 	"detection-modules": {
 		"enabled": true
+	},
+	"dev-dash-collapsed-header": {
+		"enabled": false
 	},
 	"dev-dash-do-studio": {
 		"enabled": true
@@ -1650,7 +1656,7 @@
 		]
 	},
 	"prg-plan-ribbon-copy-experiment": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"growing-projects",
