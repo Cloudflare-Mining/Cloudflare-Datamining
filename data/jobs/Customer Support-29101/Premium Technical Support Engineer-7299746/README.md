@@ -5,9 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Singapore, or Kuala Lumpur (Malaysia)</strong></p>
-<h3>About the Team</h3>
-<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<p><strong>Available Locations: Singapore, or Sydney, Australia</strong></p>
 <p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced Technical Support Engineer to join our team. You will work with our broad customer base on a variety of technical support issues ranging from troubleshooting network performance and security concerns to providing guidance on product configurations and best practices.</p>
 <ul>
 	<li>Serve as a trusted technical advisor, providing advanced support for enterprise customers using Cloudflare’s suite of products.</li>
@@ -24,27 +22,23 @@
 	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
 	<li>Strong customer service orientation and communication skills, both written and verbal, and you are fluent in English.</li>
 	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
-	<li>Motivated self-starter who always looking to expand your skill sets, you take initiatives and capable of learning new technologies / systems / features with little guidance</li>
-	<li>Solid grasp of problem solving with command line tools (dig/traceroute/curl/tcpdump)</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting language</li>
-	<li>Experience installing and configuring web servers like Apache, Nginx, and IIS</li>
+	<li>You are a motivated self-starter who always looking to expand your skill sets, you take initiatives and capable of learning new technologies / systems / features with little guidance</li>
+	<li>You have a solid grasp of problem solving with command line tools (dig/traceroute/curl/tcpdump)</li>
+	<li>You have experience writing scripts in Bash, Python, JavaScript, or other scripting language</li>
+	<li>You have experience installing and configuring web servers like Apache, Nginx, and IIS</li>
 	<li>Proficiency in networking fundamentals, including DNS, VPNs, firewalls, and traffic routing.</li>
 	<li>Experience supporting cloud platforms (AWS, Azure, GCP) and SaaS application integrations.</li>
-	<li>Familiarity with Cloudflare and have a site actively using our platform</li>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
 	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers.</li>
 	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience).</li>
 	<li>Relevant certifications such as CISSP, CCSP, GCIA, GCIH, GCFA or equivalent.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Bonus Points For</strong></p>
 <ul>
 	<li>Experience in a shift-based or global support environment.</li>
 	<li>Familiarity with SLA/KPI metrics and real-time queue management.</li>
 	<li>Prior exposure to ITIL or similar incident management frameworks.</li>
 </ul>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

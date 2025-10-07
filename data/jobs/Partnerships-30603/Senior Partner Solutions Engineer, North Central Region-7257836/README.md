@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="text-decoration: underline;"><strong>This is a hybrid role open to candidates based in either Austin or Chicago</strong></span></p>
+<p><span style="text-decoration: underline;"><strong>This is a remote role open to candidates based in Chicago, IL; Detroit, MI; or Minneapolis, MN.</strong></span></p>
 <hr>
 <p><strong>About Solutions Engineering at Cloudflare:</strong></p>
 <p>The Pre-Sales Solution Engineering organization owns the technical sale of the Cloudflare solution portfolio, ensuring maximal business value, fit-for-purpose solution design and adoption roadmap for our customers. Solutions Engineering is made up of individuals from a wide range of backgrounds - from Financial Consulting to Product Management, Customer Support to Software Engineering, and we are serious about building a diverse, experienced and curious team.&nbsp;</p>
@@ -39,7 +39,7 @@
 		<li>HTTP technologies including reverse proxy (e.g., WAF and CDN), forward proxy (secure web gateway), serverless application development.</li>
 	</ul>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
@@ -75,7 +75,7 @@
 </ul>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p></p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
