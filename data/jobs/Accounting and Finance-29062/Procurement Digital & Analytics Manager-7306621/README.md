@@ -7,10 +7,10 @@
 </div>
 <p><strong>Available Locations: Austin, TX</strong></p>
 <p><strong>About the role</strong></p>
-<p>We are seeking a highly motivated and detail-oriented Manager of Procurement Programs &amp; Analytics to be the engine of our Procurement Excellence function. As a foundational member of a growing team, you will partner directly with the Director to execute a high-impact portfolio of projects spanning system deployments, data analytics, change management, and governance.</p>
-<p>This is a hands-on role for a builder and an operator. You will be responsible for managing the day-to-day execution of our key initiatives, from global system rollouts. Your work will directly protect our annual savings, reduce manual reporting burdens, and accelerate our digital transformation journey.</p>
+<p>We are seeking a highly motivated and detail-oriented Procurement Digital &amp; Analytics Manager to be the engine of our Procurement Excellence function. As a foundational member of a growing team, you will partner directly with the Director to execute a high-impact portfolio of projects spanning system deployments, data analytics, change management, and governance.</p>
+<p>This role demands a proactive and operational mindset. The ideal candidate will possess a strong sense of urgency, a customer-centric focus, and concrete experience using coding or AI technologies to build robust automation. Your expertise will be directly applied to identifying and eliminating recurrent manual tasks and driving significant process improvements across our procurement landscape. As a builder and an operator, your work will directly protect annual savings, reduce manual reporting, and accelerate our digital transformation journey.</p>
 <p>If you thrive in a fast-paced environment and are passionate about using technology and data to solve complex problems, this is the perfect opportunity to make a tangible impact.</p>
-<h4><strong>What you'll do</strong></h4>
+<p><strong>What you'll do</strong></p>
 <h4><strong>Program &amp; Project Management (PMO):</strong></h4>
 <ul>
 	<li>Manage the end-to-end lifecycle of global deployments for our procurement platforms, including sprint prioritization, user acceptance testing (UAT), and governance reviews.</li>
