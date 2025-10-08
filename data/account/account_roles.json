@@ -1302,6 +1302,10 @@
 		"name": "Cloudflare Zero Trust Read Only",
 		"description": "Can access Cloudflare for Zero Trust read only mode.",
 		"permissions": {
+			"cf1_integration": {
+				"read": true,
+				"edit": false
+			},
 			"teams_device": {
 				"read": true,
 				"edit": false
@@ -1350,6 +1354,12 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"cf1_integration": {
+				"read": true,
+				"edit": true,
+				"ces_enroll": true,
+				"casb_enroll": true
+			},
 			"teams_device": {
 				"read": true,
 				"edit": false
@@ -1450,6 +1460,12 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"cf1_integration": {
+				"read": true,
+				"edit": true,
+				"ces_enroll": true,
+				"casb_enroll": true
+			},
 			"organization": {
 				"read": true,
 				"edit": true
@@ -2106,6 +2122,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"cf1_integration": {
+				"read": true,
+				"edit": false
+			},
 			"organization": {
 				"read": true,
 				"edit": false
@@ -2317,6 +2337,12 @@
 		"name": "Administrator",
 		"description": "Can access the full account and edit subscriptions. Cannot manage memberships nor billing profile.",
 		"permissions": {
+			"cf1_integration": {
+				"read": true,
+				"edit": true,
+				"ces_enroll": true,
+				"casb_enroll": true
+			},
 			"organization": {
 				"read": true,
 				"edit": true
