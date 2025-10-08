@@ -319,13 +319,57 @@
 															"findings": {
 																"items": {
 																	"properties": {
+																		"attachment": {
+																			"nullable": true,
+																			"type": "string"
+																		},
 																		"detail": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"detection": {
+																			"allOf": [
+																				{
+																					"enum": [
+																						"MALICIOUS",
+																						"MALICIOUS-BEC",
+																						"SUSPICIOUS",
+																						"SPOOF",
+																						"SPAM",
+																						"BULK",
+																						"ENCRYPTED",
+																						"EXTERNAL",
+																						"UNKNOWN",
+																						"NONE"
+																					],
+																					"type": "string"
+																				},
+																				{
+																					"nullable": true,
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"field": {
 																			"nullable": true,
 																			"type": "string"
 																		},
 																		"name": {
 																			"nullable": true,
 																			"type": "string"
+																		},
+																		"portion": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"reason": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"score": {
+																			"format": "double",
+																			"nullable": true,
+																			"type": "number"
 																		},
 																		"value": {
 																			"nullable": true,
@@ -890,13 +934,57 @@
 														"findings": {
 															"items": {
 																"properties": {
+																	"attachment": {
+																		"nullable": true,
+																		"type": "string"
+																	},
 																	"detail": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"detection": {
+																		"allOf": [
+																			{
+																				"enum": [
+																					"MALICIOUS",
+																					"MALICIOUS-BEC",
+																					"SUSPICIOUS",
+																					"SPOOF",
+																					"SPAM",
+																					"BULK",
+																					"ENCRYPTED",
+																					"EXTERNAL",
+																					"UNKNOWN",
+																					"NONE"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"nullable": true,
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"field": {
 																		"nullable": true,
 																		"type": "string"
 																	},
 																	"name": {
 																		"nullable": true,
 																		"type": "string"
+																	},
+																	"portion": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"reason": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"score": {
+																		"format": "double",
+																		"nullable": true,
+																		"type": "number"
 																	},
 																	"value": {
 																		"nullable": true,
