@@ -26,7 +26,8 @@
 <h4><strong>Examples of desirable skills, knowledge, and experience</strong></h4>
 <ul>
 	<li>3 ~ 7 years of product design experience, ideally designing technical tools for business.</li>
-	<li>Ability to quickly grasp technical domains, such as network services, and translate them into clear, intuitive user experiences</li>
+	<li>Ability to quickly grasp technical domains, such as network services, and translate them into clear, intuitive user experiences.</li>
+	<li>Experience or strong interest in designing data visualization experiences that simplify and communicate complex information.</li>
 	<li>Ability to advocate for user centered design and be the voice of customers.</li>
 	<li>Effective written and verbal communication skills.</li>
 </ul>

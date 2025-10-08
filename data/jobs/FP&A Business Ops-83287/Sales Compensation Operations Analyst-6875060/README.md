@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Mexico City, Mexico or Austin, TX</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
 <p><strong>About the role</strong></p>
 <p><strong>What You'll Do</strong></p>
 <p>We are looking for a Sales Compensation Analyst to join our team within the Finance &amp; Business Operations Function. As a key team member of a high-visibility organization, the Sales Compensation Operations Analyst will provide technical and operational assistance in support of Cloudflare’s Global Sales Compensation Program. Working closely with the existing Sales Compensation team and partnering with GTM Finance and Sales Operations, the Sales Compensation Analyst will play an active role in managing and testing the ICM platform, commissions calculations and validations, submission to payroll, and inquiry resolution.&nbsp;</p>
