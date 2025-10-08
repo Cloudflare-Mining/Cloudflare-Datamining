@@ -4049,6 +4049,27 @@
 										"result": {
 											"description": "Snapshot",
 											"properties": {
+												"bonds": {
+													"items": {
+														"description": "Snapshot Bond",
+														"properties": {
+															"name": {
+																"description": "Name of the network interface",
+																"type": "string"
+															},
+															"status": {
+																"description": "Current status of the network interface",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"status"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
 												"count_reclaim_failures": {
 													"description": "Count of failures to reclaim space",
 													"type": "number"
@@ -5096,6 +5117,10 @@
 																"description": "The tunnel interface name (i.e. xfrm1, xfrm3.99, etc.)",
 																"type": "string"
 															},
+															"probed_mtu": {
+																"description": "MTU as measured between the two ends of the tunnel",
+																"type": "number"
+															},
 															"tunnel_id": {
 																"description": "Tunnel identifier",
 																"type": "string"
@@ -5582,6 +5607,27 @@
 													"items": {
 														"description": "Snapshot",
 														"properties": {
+															"bonds": {
+																"items": {
+																	"description": "Snapshot Bond",
+																	"properties": {
+																		"name": {
+																			"description": "Name of the network interface",
+																			"type": "string"
+																		},
+																		"status": {
+																			"description": "Current status of the network interface",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"status"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
 															"count_reclaim_failures": {
 																"description": "Count of failures to reclaim space",
 																"type": "number"
@@ -6628,6 +6674,10 @@
 																		"interface_name": {
 																			"description": "The tunnel interface name (i.e. xfrm1, xfrm3.99, etc.)",
 																			"type": "string"
+																		},
+																		"probed_mtu": {
+																			"description": "MTU as measured between the two ends of the tunnel",
+																			"type": "number"
 																		},
 																		"tunnel_id": {
 																			"description": "Tunnel identifier",
