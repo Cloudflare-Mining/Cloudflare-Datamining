@@ -529,6 +529,7 @@
 																},
 																"propertyName": "type"
 															},
+															"nullable": true,
 															"oneOf": [
 																{
 																	"description": "A plaintext environment variable.",
@@ -583,9 +584,11 @@
 																	],
 																	"type": "object"
 																}
-															]
+															],
+															"type": "object"
 														},
 														"description": "Environment variables used for builds and Pages Functions.",
+														"nullable": true,
 														"type": "object"
 													},
 													"environment": {
@@ -699,14 +702,21 @@
 															"config": {
 																"properties": {
 																	"deployments_enabled": {
+																		"deprecated": true,
+																		"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
 																	},
 																	"owner": {
+																		"description": "The owner of the repository.",
+																		"example": "my-org",
 																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"path_excludes": {
+																		"default": [],
+																		"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
 																		"items": {
 																			"type": "string",
 																			"x-auditable": true
@@ -714,6 +724,10 @@
 																		"type": "array"
 																	},
 																	"path_includes": {
+																		"default": [
+																			"*"
+																		],
+																		"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
 																		"items": {
 																			"type": "string",
 																			"x-auditable": true
@@ -721,10 +735,13 @@
 																		"type": "array"
 																	},
 																	"pr_comments_enabled": {
+																		"description": "Whether to enable PR comments.",
 																		"type": "boolean",
 																		"x-auditable": true
 																	},
 																	"preview_branch_excludes": {
+																		"default": [],
+																		"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																		"items": {
 																			"type": "string",
 																			"x-auditable": true
@@ -732,6 +749,10 @@
 																		"type": "array"
 																	},
 																	"preview_branch_includes": {
+																		"default": [
+																			"*"
+																		],
+																		"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																		"items": {
 																			"type": "string",
 																			"x-auditable": true
@@ -739,6 +760,8 @@
 																		"type": "array"
 																	},
 																	"preview_deployment_setting": {
+																		"default": "all",
+																		"description": "Controls whether commits to preview branches trigger a preview deployment.",
 																		"enum": [
 																			"all",
 																			"none",
@@ -748,14 +771,19 @@
 																		"x-auditable": true
 																	},
 																	"production_branch": {
+																		"description": "The production branch of the repository.",
+																		"example": "main",
 																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"production_deployments_enabled": {
+																		"description": "Whether to trigger a production deployment on commits to the production branch.",
 																		"type": "boolean",
 																		"x-auditable": true
 																	},
 																	"repo_name": {
+																		"description": "The name of the repository.",
+																		"example": "my-repo",
 																		"type": "string",
 																		"x-auditable": true
 																	}
@@ -763,6 +791,12 @@
 																"type": "object"
 															},
 															"type": {
+																"description": "The source control management provider.",
+																"enum": [
+																	"github",
+																	"gitlab"
+																],
+																"example": "github",
 																"type": "string",
 																"x-auditable": true
 															}
@@ -1116,6 +1150,7 @@
 																		},
 																		"propertyName": "type"
 																	},
+																	"nullable": true,
 																	"oneOf": [
 																		{
 																			"description": "A plaintext environment variable.",
@@ -1170,9 +1205,11 @@
 																			],
 																			"type": "object"
 																		}
-																	]
+																	],
+																	"type": "object"
 																},
 																"description": "Environment variables used for builds and Pages Functions.",
+																"nullable": true,
 																"type": "object"
 															},
 															"environment": {
@@ -1286,14 +1323,21 @@
 																	"config": {
 																		"properties": {
 																			"deployments_enabled": {
+																				"deprecated": true,
+																				"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																				"type": "boolean",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
 																			},
 																			"owner": {
+																				"description": "The owner of the repository.",
+																				"example": "my-org",
 																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"path_excludes": {
+																				"default": [],
+																				"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
 																				"items": {
 																					"type": "string",
 																					"x-auditable": true
@@ -1301,6 +1345,10 @@
 																				"type": "array"
 																			},
 																			"path_includes": {
+																				"default": [
+																					"*"
+																				],
+																				"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
 																				"items": {
 																					"type": "string",
 																					"x-auditable": true
@@ -1308,10 +1356,13 @@
 																				"type": "array"
 																			},
 																			"pr_comments_enabled": {
+																				"description": "Whether to enable PR comments.",
 																				"type": "boolean",
 																				"x-auditable": true
 																			},
 																			"preview_branch_excludes": {
+																				"default": [],
+																				"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																				"items": {
 																					"type": "string",
 																					"x-auditable": true
@@ -1319,6 +1370,10 @@
 																				"type": "array"
 																			},
 																			"preview_branch_includes": {
+																				"default": [
+																					"*"
+																				],
+																				"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																				"items": {
 																					"type": "string",
 																					"x-auditable": true
@@ -1326,6 +1381,8 @@
 																				"type": "array"
 																			},
 																			"preview_deployment_setting": {
+																				"default": "all",
+																				"description": "Controls whether commits to preview branches trigger a preview deployment.",
 																				"enum": [
 																					"all",
 																					"none",
@@ -1335,14 +1392,19 @@
 																				"x-auditable": true
 																			},
 																			"production_branch": {
+																				"description": "The production branch of the repository.",
+																				"example": "main",
 																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"production_deployments_enabled": {
+																				"description": "Whether to trigger a production deployment on commits to the production branch.",
 																				"type": "boolean",
 																				"x-auditable": true
 																			},
 																			"repo_name": {
+																				"description": "The name of the repository.",
+																				"example": "my-repo",
 																				"type": "string",
 																				"x-auditable": true
 																			}
@@ -1350,6 +1412,12 @@
 																		"type": "object"
 																	},
 																	"type": {
+																		"description": "The source control management provider.",
+																		"enum": [
+																			"github",
+																			"gitlab"
+																		],
+																		"example": "github",
 																		"type": "string",
 																		"x-auditable": true
 																	}
@@ -1805,6 +1873,7 @@
 															},
 															"propertyName": "type"
 														},
+														"nullable": true,
 														"oneOf": [
 															{
 																"description": "A plaintext environment variable.",
@@ -1859,9 +1928,11 @@
 																],
 																"type": "object"
 															}
-														]
+														],
+														"type": "object"
 													},
 													"description": "Environment variables used for builds and Pages Functions.",
+													"nullable": true,
 													"type": "object"
 												},
 												"environment": {
@@ -1975,14 +2046,21 @@
 														"config": {
 															"properties": {
 																"deployments_enabled": {
+																	"deprecated": true,
+																	"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
 																},
 																"owner": {
+																	"description": "The owner of the repository.",
+																	"example": "my-org",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"path_excludes": {
+																	"default": [],
+																	"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -1990,6 +2068,10 @@
 																	"type": "array"
 																},
 																"path_includes": {
+																	"default": [
+																		"*"
+																	],
+																	"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -1997,10 +2079,13 @@
 																	"type": "array"
 																},
 																"pr_comments_enabled": {
+																	"description": "Whether to enable PR comments.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"preview_branch_excludes": {
+																	"default": [],
+																	"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -2008,6 +2093,10 @@
 																	"type": "array"
 																},
 																"preview_branch_includes": {
+																	"default": [
+																		"*"
+																	],
+																	"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -2015,6 +2104,8 @@
 																	"type": "array"
 																},
 																"preview_deployment_setting": {
+																	"default": "all",
+																	"description": "Controls whether commits to preview branches trigger a preview deployment.",
 																	"enum": [
 																		"all",
 																		"none",
@@ -2024,14 +2115,19 @@
 																	"x-auditable": true
 																},
 																"production_branch": {
+																	"description": "The production branch of the repository.",
+																	"example": "main",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"production_deployments_enabled": {
+																	"description": "Whether to trigger a production deployment on commits to the production branch.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"repo_name": {
+																	"description": "The name of the repository.",
+																	"example": "my-repo",
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -2039,6 +2135,12 @@
 															"type": "object"
 														},
 														"type": {
+															"description": "The source control management provider.",
+															"enum": [
+																"github",
+																"gitlab"
+															],
+															"example": "github",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -2348,6 +2450,7 @@
 																	},
 																	"propertyName": "type"
 																},
+																"nullable": true,
 																"oneOf": [
 																	{
 																		"description": "A plaintext environment variable.",
@@ -2402,9 +2505,11 @@
 																		],
 																		"type": "object"
 																	}
-																]
+																],
+																"type": "object"
 															},
 															"description": "Environment variables used for builds and Pages Functions.",
+															"nullable": true,
 															"type": "object"
 														},
 														"environment": {
@@ -2518,14 +2623,21 @@
 																"config": {
 																	"properties": {
 																		"deployments_enabled": {
+																			"deprecated": true,
+																			"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
 																		},
 																		"owner": {
+																			"description": "The owner of the repository.",
+																			"example": "my-org",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"path_excludes": {
+																			"default": [],
+																			"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -2533,6 +2645,10 @@
 																			"type": "array"
 																		},
 																		"path_includes": {
+																			"default": [
+																				"*"
+																			],
+																			"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -2540,10 +2656,13 @@
 																			"type": "array"
 																		},
 																		"pr_comments_enabled": {
+																			"description": "Whether to enable PR comments.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"preview_branch_excludes": {
+																			"default": [],
+																			"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -2551,6 +2670,10 @@
 																			"type": "array"
 																		},
 																		"preview_branch_includes": {
+																			"default": [
+																				"*"
+																			],
+																			"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -2558,6 +2681,8 @@
 																			"type": "array"
 																		},
 																		"preview_deployment_setting": {
+																			"default": "all",
+																			"description": "Controls whether commits to preview branches trigger a preview deployment.",
 																			"enum": [
 																				"all",
 																				"none",
@@ -2567,14 +2692,19 @@
 																			"x-auditable": true
 																		},
 																		"production_branch": {
+																			"description": "The production branch of the repository.",
+																			"example": "main",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"production_deployments_enabled": {
+																			"description": "Whether to trigger a production deployment on commits to the production branch.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"repo_name": {
+																			"description": "The name of the repository.",
+																			"example": "my-repo",
 																			"type": "string",
 																			"x-auditable": true
 																		}
@@ -2582,6 +2712,12 @@
 																	"type": "object"
 																},
 																"type": {
+																	"description": "The source control management provider.",
+																	"enum": [
+																		"github",
+																		"gitlab"
+																	],
+																	"example": "github",
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -3444,13 +3580,99 @@
 		"requestBody": {
 			"content": {
 				"multipart/form-data": {
+					"encoding": {
+						"_headers": {
+							"contentType": "text/plain"
+						},
+						"_redirects": {
+							"contentType": "text/plain"
+						},
+						"_routes.json": {
+							"contentType": "application/json"
+						},
+						"_worker.bundle": {
+							"contentType": "multipart/form-data"
+						},
+						"_worker.js": {
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript"
+						},
+						"functions-filepath-routing-config.json": {
+							"contentType": "application/json"
+						},
+						"manifest": {
+							"contentType": "application/json"
+						}
+					},
 					"schema": {
 						"properties": {
+							"_headers": {
+								"description": "Headers configuration file for the deployment.",
+								"format": "binary",
+								"type": "string"
+							},
+							"_redirects": {
+								"description": "Redirects configuration file for the deployment.",
+								"format": "binary",
+								"type": "string"
+							},
+							"_routes.json": {
+								"description": "Routes configuration file defining routing rules.",
+								"format": "binary",
+								"type": "string"
+							},
+							"_worker.bundle": {
+								"description": "Worker bundle file in multipart/form-data format. Mutually exclusive with `_worker.js`.\nCannot specify both `_worker.js` and `_worker.bundle` in the same request.\nMaximum size: 25 MiB.\n",
+								"format": "binary",
+								"type": "string"
+							},
+							"_worker.js": {
+								"description": "Worker JavaScript file. Mutually exclusive with `_worker.bundle`.\nCannot specify both `_worker.js` and `_worker.bundle` in the same request.\n",
+								"format": "binary",
+								"type": "string"
+							},
 							"branch": {
 								"description": "The branch to build the new deployment from. The `HEAD` of the branch will be used. If omitted, the production branch will be used by default.",
 								"example": "staging",
 								"type": "string",
 								"x-auditable": true
+							},
+							"commit_dirty": {
+								"description": "Boolean string indicating if the working directory has uncommitted changes.",
+								"enum": [
+									"true",
+									"false"
+								],
+								"example": "false",
+								"type": "string"
+							},
+							"commit_hash": {
+								"description": "Git commit SHA associated with this deployment.",
+								"example": "a1b2c3d4e5f6",
+								"type": "string"
+							},
+							"commit_message": {
+								"description": "Git commit message associated with this deployment.",
+								"example": "Update homepage",
+								"type": "string"
+							},
+							"functions-filepath-routing-config.json": {
+								"description": "Functions routing configuration file.",
+								"format": "binary",
+								"type": "string"
+							},
+							"manifest": {
+								"description": "JSON string containing a manifest of files to deploy. Maps file paths to their content hashes.\nRequired for direct upload deployments. Maximum 20,000 entries.\n",
+								"example": "{\"index.html\": \"abc123\", \"style.css\": \"def456\"}",
+								"type": "string"
+							},
+							"pages_build_output_dir": {
+								"description": "The build output directory path.",
+								"example": "dist",
+								"type": "string"
+							},
+							"wrangler_config_hash": {
+								"description": "Hash of the Wrangler configuration file used for this deployment.",
+								"type": "string"
 							}
 						},
 						"type": "object"
@@ -3654,6 +3876,7 @@
 															},
 															"propertyName": "type"
 														},
+														"nullable": true,
 														"oneOf": [
 															{
 																"description": "A plaintext environment variable.",
@@ -3708,9 +3931,11 @@
 																],
 																"type": "object"
 															}
-														]
+														],
+														"type": "object"
 													},
 													"description": "Environment variables used for builds and Pages Functions.",
+													"nullable": true,
 													"type": "object"
 												},
 												"environment": {
@@ -3824,14 +4049,21 @@
 														"config": {
 															"properties": {
 																"deployments_enabled": {
+																	"deprecated": true,
+																	"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
 																},
 																"owner": {
+																	"description": "The owner of the repository.",
+																	"example": "my-org",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"path_excludes": {
+																	"default": [],
+																	"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -3839,6 +4071,10 @@
 																	"type": "array"
 																},
 																"path_includes": {
+																	"default": [
+																		"*"
+																	],
+																	"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -3846,10 +4082,13 @@
 																	"type": "array"
 																},
 																"pr_comments_enabled": {
+																	"description": "Whether to enable PR comments.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"preview_branch_excludes": {
+																	"default": [],
+																	"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -3857,6 +4096,10 @@
 																	"type": "array"
 																},
 																"preview_branch_includes": {
+																	"default": [
+																		"*"
+																	],
+																	"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -3864,6 +4107,8 @@
 																	"type": "array"
 																},
 																"preview_deployment_setting": {
+																	"default": "all",
+																	"description": "Controls whether commits to preview branches trigger a preview deployment.",
 																	"enum": [
 																		"all",
 																		"none",
@@ -3873,14 +4118,19 @@
 																	"x-auditable": true
 																},
 																"production_branch": {
+																	"description": "The production branch of the repository.",
+																	"example": "main",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"production_deployments_enabled": {
+																	"description": "Whether to trigger a production deployment on commits to the production branch.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"repo_name": {
+																	"description": "The name of the repository.",
+																	"example": "my-repo",
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -3888,6 +4138,12 @@
 															"type": "object"
 														},
 														"type": {
+															"description": "The source control management provider.",
+															"enum": [
+																"github",
+																"gitlab"
+															],
+															"example": "github",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -4197,6 +4453,7 @@
 																	},
 																	"propertyName": "type"
 																},
+																"nullable": true,
 																"oneOf": [
 																	{
 																		"description": "A plaintext environment variable.",
@@ -4251,9 +4508,11 @@
 																		],
 																		"type": "object"
 																	}
-																]
+																],
+																"type": "object"
 															},
 															"description": "Environment variables used for builds and Pages Functions.",
+															"nullable": true,
 															"type": "object"
 														},
 														"environment": {
@@ -4367,14 +4626,21 @@
 																"config": {
 																	"properties": {
 																		"deployments_enabled": {
+																			"deprecated": true,
+																			"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
 																		},
 																		"owner": {
+																			"description": "The owner of the repository.",
+																			"example": "my-org",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"path_excludes": {
+																			"default": [],
+																			"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -4382,6 +4648,10 @@
 																			"type": "array"
 																		},
 																		"path_includes": {
+																			"default": [
+																				"*"
+																			],
+																			"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -4389,10 +4659,13 @@
 																			"type": "array"
 																		},
 																		"pr_comments_enabled": {
+																			"description": "Whether to enable PR comments.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"preview_branch_excludes": {
+																			"default": [],
+																			"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -4400,6 +4673,10 @@
 																			"type": "array"
 																		},
 																		"preview_branch_includes": {
+																			"default": [
+																				"*"
+																			],
+																			"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -4407,6 +4684,8 @@
 																			"type": "array"
 																		},
 																		"preview_deployment_setting": {
+																			"default": "all",
+																			"description": "Controls whether commits to preview branches trigger a preview deployment.",
 																			"enum": [
 																				"all",
 																				"none",
@@ -4416,14 +4695,19 @@
 																			"x-auditable": true
 																		},
 																		"production_branch": {
+																			"description": "The production branch of the repository.",
+																			"example": "main",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"production_deployments_enabled": {
+																			"description": "Whether to trigger a production deployment on commits to the production branch.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"repo_name": {
+																			"description": "The name of the repository.",
+																			"example": "my-repo",
 																			"type": "string",
 																			"x-auditable": true
 																		}
@@ -4431,6 +4715,12 @@
 																	"type": "object"
 																},
 																"type": {
+																	"description": "The source control management provider.",
+																	"enum": [
+																		"github",
+																		"gitlab"
+																	],
+																	"example": "github",
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -4889,6 +5179,7 @@
 															},
 															"propertyName": "type"
 														},
+														"nullable": true,
 														"oneOf": [
 															{
 																"description": "A plaintext environment variable.",
@@ -4943,9 +5234,11 @@
 																],
 																"type": "object"
 															}
-														]
+														],
+														"type": "object"
 													},
 													"description": "Environment variables used for builds and Pages Functions.",
+													"nullable": true,
 													"type": "object"
 												},
 												"environment": {
@@ -5059,14 +5352,21 @@
 														"config": {
 															"properties": {
 																"deployments_enabled": {
+																	"deprecated": true,
+																	"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
 																},
 																"owner": {
+																	"description": "The owner of the repository.",
+																	"example": "my-org",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"path_excludes": {
+																	"default": [],
+																	"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -5074,6 +5374,10 @@
 																	"type": "array"
 																},
 																"path_includes": {
+																	"default": [
+																		"*"
+																	],
+																	"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -5081,10 +5385,13 @@
 																	"type": "array"
 																},
 																"pr_comments_enabled": {
+																	"description": "Whether to enable PR comments.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"preview_branch_excludes": {
+																	"default": [],
+																	"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -5092,6 +5399,10 @@
 																	"type": "array"
 																},
 																"preview_branch_includes": {
+																	"default": [
+																		"*"
+																	],
+																	"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -5099,6 +5410,8 @@
 																	"type": "array"
 																},
 																"preview_deployment_setting": {
+																	"default": "all",
+																	"description": "Controls whether commits to preview branches trigger a preview deployment.",
 																	"enum": [
 																		"all",
 																		"none",
@@ -5108,14 +5421,19 @@
 																	"x-auditable": true
 																},
 																"production_branch": {
+																	"description": "The production branch of the repository.",
+																	"example": "main",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"production_deployments_enabled": {
+																	"description": "Whether to trigger a production deployment on commits to the production branch.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"repo_name": {
+																	"description": "The name of the repository.",
+																	"example": "my-repo",
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -5123,6 +5441,12 @@
 															"type": "object"
 														},
 														"type": {
+															"description": "The source control management provider.",
+															"enum": [
+																"github",
+																"gitlab"
+															],
+															"example": "github",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -5432,6 +5756,7 @@
 																	},
 																	"propertyName": "type"
 																},
+																"nullable": true,
 																"oneOf": [
 																	{
 																		"description": "A plaintext environment variable.",
@@ -5486,9 +5811,11 @@
 																		],
 																		"type": "object"
 																	}
-																]
+																],
+																"type": "object"
 															},
 															"description": "Environment variables used for builds and Pages Functions.",
+															"nullable": true,
 															"type": "object"
 														},
 														"environment": {
@@ -5602,14 +5929,21 @@
 																"config": {
 																	"properties": {
 																		"deployments_enabled": {
+																			"deprecated": true,
+																			"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
 																		},
 																		"owner": {
+																			"description": "The owner of the repository.",
+																			"example": "my-org",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"path_excludes": {
+																			"default": [],
+																			"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -5617,6 +5951,10 @@
 																			"type": "array"
 																		},
 																		"path_includes": {
+																			"default": [
+																				"*"
+																			],
+																			"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -5624,10 +5962,13 @@
 																			"type": "array"
 																		},
 																		"pr_comments_enabled": {
+																			"description": "Whether to enable PR comments.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"preview_branch_excludes": {
+																			"default": [],
+																			"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -5635,6 +5976,10 @@
 																			"type": "array"
 																		},
 																		"preview_branch_includes": {
+																			"default": [
+																				"*"
+																			],
+																			"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -5642,6 +5987,8 @@
 																			"type": "array"
 																		},
 																		"preview_deployment_setting": {
+																			"default": "all",
+																			"description": "Controls whether commits to preview branches trigger a preview deployment.",
 																			"enum": [
 																				"all",
 																				"none",
@@ -5651,14 +5998,19 @@
 																			"x-auditable": true
 																		},
 																		"production_branch": {
+																			"description": "The production branch of the repository.",
+																			"example": "main",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"production_deployments_enabled": {
+																			"description": "Whether to trigger a production deployment on commits to the production branch.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"repo_name": {
+																			"description": "The name of the repository.",
+																			"example": "my-repo",
 																			"type": "string",
 																			"x-auditable": true
 																		}
@@ -5666,6 +6018,12 @@
 																	"type": "object"
 																},
 																"type": {
+																	"description": "The source control management provider.",
+																	"enum": [
+																		"github",
+																		"gitlab"
+																	],
+																	"example": "github",
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -6124,6 +6482,7 @@
 															},
 															"propertyName": "type"
 														},
+														"nullable": true,
 														"oneOf": [
 															{
 																"description": "A plaintext environment variable.",
@@ -6178,9 +6537,11 @@
 																],
 																"type": "object"
 															}
-														]
+														],
+														"type": "object"
 													},
 													"description": "Environment variables used for builds and Pages Functions.",
+													"nullable": true,
 													"type": "object"
 												},
 												"environment": {
@@ -6294,14 +6655,21 @@
 														"config": {
 															"properties": {
 																"deployments_enabled": {
+																	"deprecated": true,
+																	"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
 																},
 																"owner": {
+																	"description": "The owner of the repository.",
+																	"example": "my-org",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"path_excludes": {
+																	"default": [],
+																	"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -6309,6 +6677,10 @@
 																	"type": "array"
 																},
 																"path_includes": {
+																	"default": [
+																		"*"
+																	],
+																	"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -6316,10 +6688,13 @@
 																	"type": "array"
 																},
 																"pr_comments_enabled": {
+																	"description": "Whether to enable PR comments.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"preview_branch_excludes": {
+																	"default": [],
+																	"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -6327,6 +6702,10 @@
 																	"type": "array"
 																},
 																"preview_branch_includes": {
+																	"default": [
+																		"*"
+																	],
+																	"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
@@ -6334,6 +6713,8 @@
 																	"type": "array"
 																},
 																"preview_deployment_setting": {
+																	"default": "all",
+																	"description": "Controls whether commits to preview branches trigger a preview deployment.",
 																	"enum": [
 																		"all",
 																		"none",
@@ -6343,14 +6724,19 @@
 																	"x-auditable": true
 																},
 																"production_branch": {
+																	"description": "The production branch of the repository.",
+																	"example": "main",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																"production_deployments_enabled": {
+																	"description": "Whether to trigger a production deployment on commits to the production branch.",
 																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"repo_name": {
+																	"description": "The name of the repository.",
+																	"example": "my-repo",
 																	"type": "string",
 																	"x-auditable": true
 																}
@@ -6358,6 +6744,12 @@
 															"type": "object"
 														},
 														"type": {
+															"description": "The source control management provider.",
+															"enum": [
+																"github",
+																"gitlab"
+															],
+															"example": "github",
 															"type": "string",
 															"x-auditable": true
 														}
@@ -6667,6 +7059,7 @@
 																	},
 																	"propertyName": "type"
 																},
+																"nullable": true,
 																"oneOf": [
 																	{
 																		"description": "A plaintext environment variable.",
@@ -6721,9 +7114,11 @@
 																		],
 																		"type": "object"
 																	}
-																]
+																],
+																"type": "object"
 															},
 															"description": "Environment variables used for builds and Pages Functions.",
+															"nullable": true,
 															"type": "object"
 														},
 														"environment": {
@@ -6837,14 +7232,21 @@
 																"config": {
 																	"properties": {
 																		"deployments_enabled": {
+																			"deprecated": true,
+																			"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
 																		},
 																		"owner": {
+																			"description": "The owner of the repository.",
+																			"example": "my-org",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"path_excludes": {
+																			"default": [],
+																			"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -6852,6 +7254,10 @@
 																			"type": "array"
 																		},
 																		"path_includes": {
+																			"default": [
+																				"*"
+																			],
+																			"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -6859,10 +7265,13 @@
 																			"type": "array"
 																		},
 																		"pr_comments_enabled": {
+																			"description": "Whether to enable PR comments.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"preview_branch_excludes": {
+																			"default": [],
+																			"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -6870,6 +7279,10 @@
 																			"type": "array"
 																		},
 																		"preview_branch_includes": {
+																			"default": [
+																				"*"
+																			],
+																			"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
@@ -6877,6 +7290,8 @@
 																			"type": "array"
 																		},
 																		"preview_deployment_setting": {
+																			"default": "all",
+																			"description": "Controls whether commits to preview branches trigger a preview deployment.",
 																			"enum": [
 																				"all",
 																				"none",
@@ -6886,14 +7301,19 @@
 																			"x-auditable": true
 																		},
 																		"production_branch": {
+																			"description": "The production branch of the repository.",
+																			"example": "main",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"production_deployments_enabled": {
+																			"description": "Whether to trigger a production deployment on commits to the production branch.",
 																			"type": "boolean",
 																			"x-auditable": true
 																		},
 																		"repo_name": {
+																			"description": "The name of the repository.",
+																			"example": "my-repo",
 																			"type": "string",
 																			"x-auditable": true
 																		}
@@ -6901,6 +7321,12 @@
 																	"type": "object"
 																},
 																"type": {
+																	"description": "The source control management provider.",
+																	"enum": [
+																		"github",
+																		"gitlab"
+																	],
+																	"example": "github",
 																	"type": "string",
 																	"x-auditable": true
 																}
