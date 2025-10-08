@@ -75,31 +75,6 @@
 	<li style="font-size: 10pt;"><span style="font-size: 10pt;"><strong>Data Driven Decisions:</strong> Measure truth, iterate based on evidence</span></li>
 	<li style="font-size: 10pt;"><span style="font-size: 10pt;"><strong>Inclusive Leadership:</strong> Build diverse teams where everyone can thrive</span></li>
 </ul>
-<h2><span style="font-size: 10pt;"><strong>Interview Process</strong></span></h2>
-<p><span style="font-size: 10pt;"><strong>Round 1: Leadership &amp; Vision</strong> (60 minutes)</span></p>
-<ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Your approach to building and scaling engineering teams</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Experience with mentorship and career development</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">How you balance delivery pressure with team wellbeing</span></li>
-</ul>
-<p><span style="font-size: 10pt;"><strong>Round 2: Technical Architecture</strong> (60 minutes)</span></p>
-<ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Design discussion: Building agents on Workers platform</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Deep dive into your experience with distributed systems</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Approach to technical debt and system evolution</span></li>
-</ul>
-<p><span style="font-size: 10pt;"><strong>Round 3: Team Collaboration</strong> (45 minutes)</span></p>
-<ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Cross functional partnership scenarios</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Conflict resolution and team dynamics</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Your experience driving engineering culture</span></li>
-</ul>
-<p><span style="font-size: 10pt;"><strong>Round 4: Values Alignment</strong> (45 minutes)</span></p>
-<ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Discussion with senior leadership</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Cloudflare's mission and your career goals</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Questions and next steps</span></li>
-</ul>
 <h2><span style="font-size: 10pt;"><strong>The Opportunity</strong></span></h2>
 <p><span style="font-size: 10pt;">This is more than a management role. It's a chance to build the future of AI powered customer service while developing the next generation of engineering leaders in India. Your team will set the standard for how companies worldwide think about automated support.</span></p>
 <p><span style="font-size: 10pt;">Join us in revolutionizing how millions of businesses interact with Cloudflare. Build something that matters, with a team that will define the future.</span></p>

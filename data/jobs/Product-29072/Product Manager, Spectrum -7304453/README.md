@@ -5,60 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: </strong>Austin, TX</p>
-<h4><strong>About the Department</strong></h4>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h4><strong>Role Summary</strong></h4>
-<p>The Cloudflare Escalation Engineer will perform deep, technical troubleshooting for complex, escalated issues. This role owns the customer escalation process and works with various Product and Engineering teams to identify product bugs, network problems, and platform issues. Escalation Engineers foster a close relationship with SRE, Network, Engineering and Product teams. They act as an escalation point, isolate/replicate problems, and gather technical information/expectation.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Available Locations: Lisbon or London (Hybrid)</strong></p>
+<p><strong>About Product Management at Cloudflare&nbsp;</strong></p>
+<p>As a<strong> Product Manager at Cloudflare</strong>, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
+<p>As a Product Manager within the Application Performance team, you will own a critical part of our comprehensive platform that ensures web properties, applications, and networks are fast, reliable, and intelligent. This portfolio spans foundational capabilities like CDN optimization and Origin Shielding, advanced low-latency application delivery, and customer-facing data products built on real-world usage. You will set the strategic direction for how Cloudflare eliminates latency and provides the authoritative source of truth on performance for applications running across our global network.</p>
+<p><strong>About the role</strong></p>
+<p>As Product Manager <strong>on the Application Performance team</strong>, you’ll help shape a key part of our core product experience. This role requires a candidate who can navigate complex technical domains—from TCP/IP protocols and caching architectures to data analytics and user experience—and translate those into clear, marketable features. You will define the roadmap for one or more core services that impact every byte of traffic processed by Cloudflare. You will collaborate closely with engineering teams to leverage our massive network footprint and unique traffic insights to deliver features that fundamentally change how the internet operates, ultimately accelerating adoption for customers ranging from individual developers to the world's largest enterprises.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Serve as a subject-matter expert in supporting network, routing and transport layer protocols such as BGP, OSPF, IPSec, GRE, TCP, UDP, etc.</li>
-	<li>Serve as a subject-matter expert in supporting Security products and technologies such as WAF, Firewall, IPS, DDoS, etc.</li>
-	<li>Collaborate closely with engineering and product teams to escalate issues, provide root cause analysis, and contribute to product improvements.</li>
-	<li>Create and maintain detailed knowledge base articles, troubleshooting guides, and technical documentation.</li>
-	<li>Provide coverage (shift rotation, including possibility of weekends and Pacific Time hours) for technical troubleshooting of escalated issues.</li>
-	<li>Triage Customer Escalation issues to find the quickest, most efficient path of resolution.</li>
-	<li>Work cross-functionally with various teams across the company, from engineering to sales.</li>
+	<li>Own your space. You will own the priorities and scope, partnering with a high performing engineering team focused on one of Cloudflare’s Application Performance products.&nbsp;</li>
+	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
+	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
+	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
+	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.</li>
 </ul>
-<h4><strong>Requirements</strong></h4>
+<h4>Examples of desirable skills, knowledge and experience</h4>
+<p>At Cloudflare, Product Managers are measured both on outcomes (“the what”) and how they accomplish results. Examples of desirable skills, knowledge and experience:</p>
 <ul>
-	<li>Minimum of <strong>3 years’ hands-on experience</strong> supporting enterprise network and/or security environments.</li>
-	<li>Strong foundation in networking and security principles, technologies, and troubleshooting, including:</li>
-	<ul>
-		<li>TCP/IP fundamentals, including OSI model, IPv4/IPv6 addressing, subnetting, routing, and switching</li>
-		<li>Common network protocols such as DNS, DHCP, HTTP/S, SNMP, SMTP, NTP, and FTP/SFTP</li>
-		<li>Routing protocols including BGP, OSPF, and EIGRP, with an understanding of path selection</li>
-		<li>Firewall concepts such as stateful/stateless inspection, rule sets, NAT, and ACLs</li>
-		<li>VPN technologies and encryption methods (IPSec, SSL/TLS)</li>
-		<li>Network segmentation and Zero Trust security models</li>
-		<li>Intrusion detection and prevention (IDS/IPS)</li>
-		<li>Endpoint and network threat mitigation strategies</li>
-		<li>Security incident response processes and basic forensic principles<br><br></li>
-	</ul>
-	<li>Proficiency in <strong>network troubleshooting</strong> using packet capture and analysis tools (e.g., Wireshark, tcpdump).</li>
-	<li><strong>Excellent verbal and written communication skills</strong>, with the ability to convey technical information clearly to both technical and non-technical audiences.</li>
-	<li>Demonstrated ability to <strong>manage multiple priorities and projects</strong> effectively in a fast-paced environment.</li>
+	<li>5+ years of experience in product management, solutions engineering, or related roles</li>
+	<li>Familiarity with designing or contributing to habit-forming product experiences</li>
+	<li>Experience defining and tracking KPIs to measure product or user behavior impact</li>
+	<li>Strong collaboration skills and experience working with engineering and design teams</li>
+	<li>Comfort operating in fast-paced, evolving environments</li>
+	<li>A passion for user empathy and delivering customer-centric solutions</li>
+	<li>Excellent communication skills and attention to detail</li>
+	<li>Curiosity and a strong desire to learn technical topics, especially in security or observability</li>
+	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen is a key part of the role.</li>
 </ul>
-<h4><strong>Core competencies (“Desired skills, knowledge and experience”)</strong></h4>
+<h4><strong>Bonus points</strong></h4>
 <ul>
-	<li>Extensive technical support experience.</li>
-	<li>Expertise in troubleshooting application protocols (L7 - DNS, HTTP, etc).</li>
-	<li>Expertise in troubleshooting network infrastructure (L3/L4).</li>
-	<li>Expert with Linux command line tools&nbsp; (curl, dig, git, traceroute, mtr).</li>
-	<li>Expert at analyzing data using tools like Grafana, Kibana, and SQL.</li>
-	<li>Able to clarify complex technical issues and coordinate efforts to resolve.</li>
-	<li>Able to identify and share/suggest process improvements.</li>
-	<li>Demonstrated leadership, prior mentoring experience.</li>
-	<li>Self-motivated, self-directed, strong relationship building, can positively influence the actions of others, team player.</li>
-	<li>Comfortable handling inbound and outbound customer calls.</li>
-</ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>You are familiar with Cloudflare and are actively using our platform.</li>
-	<li>Experience with regular expressions.</li>
-	<li>Knowledge of web programming (HTML, Javascript, PHP) and scripting (bash, Python).</li>
-	<li>Experience managing/configuring non-HTTP applications (email, DNS, FTP, SSH, etc).</li>
-	<li>Experience with cloud networking and security in AWS, Azure, or GCP.</li>
+	<li>Prior experience as a Product Manager driving the roadmap for products focused on Edge infrastructure, high-performance web delivery, or network optimization</li>
+	<li>Prior experience delivering cloud infrastructure products at global scale.</li>
+	<li>Data fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
