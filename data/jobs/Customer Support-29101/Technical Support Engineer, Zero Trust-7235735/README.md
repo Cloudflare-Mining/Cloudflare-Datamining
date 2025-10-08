@@ -16,22 +16,18 @@
 <ul>
 	<li>You have previous experience working as part of a team in a customer-facing role</li>
 	<li>You have experience solving troubleshooting and resolving Layer 3/4 networking issues, including routing, firewall, and transport-level connectivity problems</li>
-	<li>You understand how the Internet works</li>
 	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
 	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
-	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
 	<li>You are comfortable communicating through various support channels and always put the customer first</li>
 	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
 	<li>Flexibility to work holidays and rotational weekend shifts</li>
+	<li>You are fluent in English</li>
 </ul>
 <h4><strong>Bonus Points</strong></h4>
 <ul>
-	<li>You are fluent in English, Spanish, Portuguese, German, Japanese, French or Mandarin</li>
 	<li>You are familiar with Cloudflare Zero Trust products (Zero Trust / Access / Gateway / Tunnel, WARP client) and have a site actively using our platform</li>
 	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
-	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
 	<li>You are committed to gaining a deeper understanding of the following technologies: Zero Trust / Secure Web Gateway policies / Endpoint protections / security best practices (Certificates, Zero Trust, least privileged access etc)</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">

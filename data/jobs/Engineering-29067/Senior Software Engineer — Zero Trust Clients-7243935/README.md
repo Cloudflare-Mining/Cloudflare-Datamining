@@ -7,23 +7,20 @@
 </div>
 <p><strong>Available Locations: Austin TX, Denver CO</strong></p>
 <p><strong>About the role</strong></p>
-<p>We’re looking for a Senior Software Engineer to join our <a href="https://www.cloudflare.com/zero-trust/">Cloudflare One Client</a> team. You will be working on the cross-platform app and lower-level implementation of our <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/">Cloudflare One Client Desktop and Mobile Apps</a>, which protects devices by securely and privately sending traffic from those devices to Cloudflare’s global network, which can apply advanced web filtering and advanced Cloudflare One policies.</p>
+<p>We’re looking for a Senior Software Engineer to join our<a href="https://www.cloudflare.com/zero-trust/"> Cloudflare One Client</a> team. You will be working on the cross-platform app and lower-level implementation of our<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/"> Cloudflare One Client Desktop and Mobile Apps</a>, which protects devices by securely and privately sending traffic from those devices to Cloudflare’s global network, which can apply advanced filtering and Cloudflare One policies.</p>
 <h4><strong>What you'll do</strong></h4>
-<p>In your role, you will use <strong>cross-platform frameworks</strong> along with platform-native languages &amp; APIs to implement responsive and user-friendly apps that run on desktop and mobile platforms. You will also use <strong>Rust</strong> alongside platform-native languages and APIs to implement <strong>high-performance networking</strong> code for both our mobile and desktop apps.</p>
-<p>&nbsp;</p>
-<p>You’ll be expected to improve the code quality and to build solid, <strong>testable</strong>, and<strong> well-documented</strong> foundations. You will be most successful in this role if you have a good understanding of the <strong>intricacies of different platforms</strong> (mobile and desktop), experience working on <strong>multi-platform code</strong>, a decent understanding of <strong>lower-level operating system concepts</strong> (virtual memory, multi-threading, process lifecycle, etc.) and <strong>networking concepts &amp; protocols</strong> (VPNs, firewalls, TCP/IP, UDP, DNS, QUIC, H/3, proxying, etc.). You will also have to interact with other languages, such as Flutter, Swift, Java, Kotlin, C#, Rust, C++, C, and Python.</p>
-<p>&nbsp;</p>
-<p>As a Senior Software Engineer, you will be expected to lead the design and implementation of major development projects, working closely with our product managers and other teams to implement customer-impacting features. You will work on stimulating problems born out of the scale of our deployment, and the stringent quality, performance, and security requirements of our product.</p>
+<p>In your role, you will use <strong>cross-platform frameworks</strong> along with platform-native languages &amp; APIs to implement user-friendly apps that run on desktop and mobile platforms. You will also use <strong>Rust</strong> alongside platform-native languages and APIs to implement <strong>high-performance networking</strong> code for both our mobile and desktop apps.</p>
+<p>You will be most successful in this role if you have a good understanding of <strong>user-interface </strong>programming, the <strong>intricacies of different platforms</strong> (mobile and desktop), experience working on <strong>multi-platform code</strong>, a decent understanding of <strong>lower-level operating system concepts</strong> (virtual memory, multi-threading, process lifecycle, etc.) and <strong>networking concepts &amp; protocols</strong> (VPNs, TCP/IP, etc.). You will also have to interact with other languages, such as Flutter, Swift, Java, Kotlin, C#, Rust, C++, and C. You’ll be expected to improve the code quality and to build solid, <strong>testable</strong>, and<strong> well-documented</strong> foundations.&nbsp;</p>
+<p>As a Senior Software Engineer, you will be expected to lead the design and implementation of major development projects, working closely with our product managers, designers and other teams to implement customer-impacting features. You will work on stimulating problems born out of the scale of our deployment, and the stringent quality, performance, and security requirements of our product.</p>
 <h4><strong>Responsibilities</strong></h4>
 <ul>
+	<li>Experience with<strong> cross-platform programming</strong> (Flutter) and good familiarity and understanding of <strong>user-interface and core OS concepts</strong> of one or more platform (iOS, Android, macOS, Windows, Linux)</li>
+	<li>Great experience successfully using <strong>different typed programming languages</strong>, such as Swift, Kotlin, Java, C#, as well as<strong> lower-level languages</strong>, such as Rust, C, C++.</li>
 	<li>Excellent programming skills, with experience writing very <strong>high-quality and low-complexity</strong> code with thorough documentation.</li>
 	<li>Strong experience writing <strong>easily-testable</strong> and<strong> thoroughly-tested code</strong> (e.g. using dependency injection with the right abstractions)</li>
-	<li>Experience with<strong> cross-platform programming</strong> and good familiarity and understanding of <strong>user-interface and core OS concepts</strong> of one or more platform (macOS, Windows, Linux, iOS, Android)</li>
-	<li>Great experience successfully using&nbsp;<strong>different typed programming languages</strong>, such as Swift, Java, Kotlin, C#, as well as<strong> lower-level languages</strong>, such as Rust, C, C++.</li>
-	<li>Very comfortable writing&nbsp;<strong>multithreaded, asynchronous</strong> code</li>
-	<li>Strong experience with&nbsp;<strong>debugging</strong>, both at the <strong>application level</strong> and <strong>network-related problems</strong></li>
-	<li>An understanding of&nbsp;<strong>security concepts</strong>, such as VPNs, PKI, etc.</li>
-	<li>Empathetic, proactive, and constructive&nbsp;<strong>communication skills</strong>, verbal and written</li>
+	<li>Very comfortable writing <strong>multithreaded, asynchronous</strong> code</li>
+	<li>Strong experience with <strong>debugging</strong>, both at the <strong>application level</strong> and <strong>network-related problems</strong></li>
+	<li>An understanding of <strong>security concepts</strong>, such as VPNs, PKI, etc.</li>
 </ul>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
