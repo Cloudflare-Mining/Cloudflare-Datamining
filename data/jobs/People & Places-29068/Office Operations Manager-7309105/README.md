@@ -5,24 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Lisbon, Portugal | London, UK<br><br>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>What you'll do</strong><strong><br></strong></h3>
-<p>This is a newly found team focused on building out our brand-new vector database offering, designed to let you build full-stack, AI-powered applications entirely on Cloudflare’s global network. In this role, you will work with a top-notch engineering team to expand Cloudflare's capabilities by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
-<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Office Operations Manager - Austin</strong></p>
+<p><strong>About the role</strong></p>
+<p>The <strong>Places Team</strong> at Cloudflare is seeking an experienced and enthusiastic <strong>Office Operations Manager</strong> to lead and elevate the day-to-day operations of our Austin hub. In this role, you’ll be the go-to person for creating a smooth, welcoming, and highly functional workplace—partnering with global counterparts to share best practices and continuously enhance our spaces.</p>
+<p>You’ll gather feedback from employees and guests to shape how the office evolves, contribute to future buildouts, and collaborate with teams across IT, Legal, Physical Security, EBC, and more. You're comfortable navigating fast-paced environments, solving problems on the fly, and thinking creatively about how to improve systems and experiences. With a hospitality mindset and strong communication skills, you take pride in delivering excellent service and building a space that reflects our culture and values.</p>
+<p>This role reports to the <strong>Director, Global Workplace Experience &amp; Operations</strong>.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>5+ years experience working with distributed systems or developing on cloud platforms.</li>
-	<li>Experience managing high volume software applications.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Rust, or C++.</li>
-	<li>Strong expertise in Machine Learning, including experience with data processing and retrieval algorithms.</li>
+	<li><strong><em>Lead Onsite Operations:</em></strong> Own the day-to-day management of the workplace—from front desk services, greeting guests/employees/visiting employees, and mail handling to office supplies, swag, deliveries, and space readiness. You’ll make sure everything flows, looks great, and feels seamless for employees and visitors alike.</li>
+	<li><strong><em>Be the go-to for Vendors and Places Team:</em></strong><strong> </strong>Liaise with building management, building security, and external vendors (cleaning crews, caterers, property managers, etc.) to keep our operations running efficiently. Oversee vendor performance and contracts, lead RFPs when needed, and track workplace budgets responsibly.</li>
+	<li><strong><em>Create a World-Class Workplace Experience:</em></strong> Ensure our office is a functional, inspiring hub that reflects our culture and supports hybrid work. Act as the first point of contact for employee workplace needs, solving issues quickly and thoughtfully.</li>
+	<li><strong><em>Stay Connected Across Channels:</em></strong><strong> </strong>Maintain clear, responsive communication with the local team across platforms like chat, email, and in-person touchpoints—ensuring everyone stays informed, supported, and aligned on workplace updates and needs.</li>
+	<li><strong><em>Track and Report Workplace Metrics: </em></strong>Monitor key data points such as space utilization, occupancy, and service ticket volume to support data-driven decision-making and long-term planning.</li>
+	<li><strong><em>Support Workplace Programs: </em></strong>Help drive local implementation of global workplace programs—from our food program (think snack stocking, team lunches, and special food moments) and sustainability initiatives to employee engagement efforts.</li>
+	<li><strong><em>Support Internal Events &amp; Experiences:</em></strong> Plan and execute a range of onsite events—including team onsites, in-person weeks, executive briefings, customer meetings, and cultural moments—both independently and in collaboration with the Global Events &amp; Experiences team, ensuring each gathering is seamless, engaging, and reflective of our culture.</li>
+	<li><strong><em>Safety &amp; Compliance:</em></strong><strong> </strong>Partner with Security and Legal teams to maintain a safe and compliant workplace. Support emergency preparedness efforts, safety drills, and incident response protocols.</li>
+	<li><strong><em>Scale Smartly</em></strong><strong>: </strong>As the office grows, help onboard new team members, support hiring needs for workplace roles, and participate in long-term workplace planning.</li>
+	<li><strong><em>Support the Regional Places Team:</em></strong> Assist with administrative tasks such as responding to tickets, managing emails and inquiries, and providing holiday coverage to ensure seamless team operations across regions.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Familiarity with Vector Databases and associated Machine Learning Algorithms.</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in a large-scale Linux-based distributed system</li>
+	<li>Have <strong>5+ years of experience</strong> leading office operations teams, ideally in a fast-paced, high-growth environment</li>
+	<li>Are <strong>people-first and service-minded</strong>, with a friendly, professional presence that makes everyone feel welcome</li>
+	<li>Know how to <strong>juggle vendors, projects, and priorities</strong>—and still sweat the small stuff</li>
+	<li>Bring sharp <strong>budget management skills</strong> and make thoughtful, cost-effective decisions</li>
+	<li><strong>Communicate</strong> clearly and confidently across all levels and time zones using Google Workspace</li>
+	<li>Are highly <strong>organized</strong>, detail-oriented, and proactive—you spot what needs doing before anyone else does</li>
+	<li>Thrive in <strong>fast-moving environments</strong>, stay calm under pressure, and love finding creative solutions</li>
+	<li>Have experience <strong>collaborating cross-functionally</strong> with teams like IT, Security, People Ops, and more</li>
+	<li>Bring a <strong>hospitality mindset</strong> and a passion for building inspiring, functional spaces where people love to work</li>
+	<li>Able to commit to being <strong>onsite full-time, 5 days a week</strong></li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
