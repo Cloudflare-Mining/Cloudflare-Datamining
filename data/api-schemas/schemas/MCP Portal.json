@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_id}/ai-controls/mcp/portals/{id}": {
+	"DELETE /accounts/{account_id}/access/ai-controls/mcp/portals/{id}": {
 		"operationId": "mcp-portals-api-delete-portals",
 		"parameters": [
 			{
@@ -160,7 +160,7 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_id}/ai-controls/mcp/portals": {
+	"GET /accounts/{account_id}/access/ai-controls/mcp/portals": {
 		"operationId": "mcp-portals-api-list-portals",
 		"parameters": [
 			{
@@ -334,7 +334,7 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_id}/ai-controls/mcp/portals/{id}": {
+	"GET /accounts/{account_id}/access/ai-controls/mcp/portals/{id}": {
 		"operationId": "mcp-portals-api-fetch-gateways",
 		"parameters": [
 			{
@@ -644,7 +644,7 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_id}/ai-controls/mcp/portals": {
+	"POST /accounts/{account_id}/access/ai-controls/mcp/portals": {
 		"operationId": "mcp-portals-api-create-portals",
 		"parameters": [
 			{
@@ -907,7 +907,7 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{account_id}/ai-controls/mcp/portals/{id}": {
+	"PUT /accounts/{account_id}/access/ai-controls/mcp/portals/{id}": {
 		"operationId": "mcp-portals-api-update-portals",
 		"parameters": [
 			{

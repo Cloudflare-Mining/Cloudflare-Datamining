@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/gateway/apps/review_status": {
-		"description": "Shows the status you have assigned to your applications.",
+		"description": "Retrieve the statuses of your applications.",
 		"operationId": "zero-trust-applications-review-status-list",
 		"parameters": [
 			{
@@ -92,7 +92,7 @@
 										"result": {
 											"properties": {
 												"approved_apps": {
-													"description": "The list of application ids that are approved.",
+													"description": "Contains the ids of the approved applications.",
 													"items": {
 														"type": "integer"
 													},
@@ -106,7 +106,7 @@
 													"type": "string"
 												},
 												"in_review_apps": {
-													"description": "The list of application ids that are in review.",
+													"description": "Contains the ids of the applications in review.",
 													"items": {
 														"type": "integer"
 													},
@@ -114,7 +114,7 @@
 													"x-stainless-collection-type": "set"
 												},
 												"unapproved_apps": {
-													"description": "The list of application ids that are unapproved.",
+													"description": "Contains the ids of the unapproved applications.",
 													"items": {
 														"type": "integer"
 													},
@@ -218,7 +218,7 @@
 												"result": {
 													"properties": {
 														"approved_apps": {
-															"description": "The list of application ids that are approved.",
+															"description": "Contains the ids of the approved applications.",
 															"items": {
 																"type": "integer"
 															},
@@ -232,7 +232,7 @@
 															"type": "string"
 														},
 														"in_review_apps": {
-															"description": "The list of application ids that are in review.",
+															"description": "Contains the ids of the applications in review.",
 															"items": {
 																"type": "integer"
 															},
@@ -240,7 +240,7 @@
 															"x-stainless-collection-type": "set"
 														},
 														"unapproved_apps": {
-															"description": "The list of application ids that are unapproved.",
+															"description": "Contains the ids of the unapproved applications.",
 															"items": {
 																"type": "integer"
 															},
@@ -374,7 +374,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/apps/review_status": {
-		"description": "Updates the status of your applications.",
+		"description": "Update the statuses of your applications.",
 		"operationId": "zero-trust-applications-review-status-update",
 		"parameters": [
 			{
@@ -396,7 +396,7 @@
 					"schema": {
 						"properties": {
 							"approved_apps": {
-								"description": "The list of application ids that are approved.",
+								"description": "Contains the ids of the approved applications.",
 								"items": {
 									"type": "integer"
 								},
@@ -404,7 +404,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"in_review_apps": {
-								"description": "The list of application ids that are in review.",
+								"description": "Contains the ids of the applications in review.",
 								"items": {
 									"type": "integer"
 								},
@@ -412,7 +412,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"unapproved_apps": {
-								"description": "The list of application ids that are unapproved.",
+								"description": "Contains the ids of the unapproved applications.",
 								"items": {
 									"type": "integer"
 								},
@@ -507,7 +507,7 @@
 										"result": {
 											"properties": {
 												"approved_apps": {
-													"description": "The list of application ids that are approved.",
+													"description": "Contains the ids of the approved applications.",
 													"items": {
 														"type": "integer"
 													},
@@ -521,7 +521,7 @@
 													"type": "string"
 												},
 												"in_review_apps": {
-													"description": "The list of application ids that are in review.",
+													"description": "Contains the ids of the applications in review.",
 													"items": {
 														"type": "integer"
 													},
@@ -529,7 +529,7 @@
 													"x-stainless-collection-type": "set"
 												},
 												"unapproved_apps": {
-													"description": "The list of application ids that are unapproved.",
+													"description": "Contains the ids of the unapproved applications.",
 													"items": {
 														"type": "integer"
 													},
@@ -633,7 +633,7 @@
 												"result": {
 													"properties": {
 														"approved_apps": {
-															"description": "The list of application ids that are approved.",
+															"description": "Contains the ids of the approved applications.",
 															"items": {
 																"type": "integer"
 															},
@@ -647,7 +647,7 @@
 															"type": "string"
 														},
 														"in_review_apps": {
-															"description": "The list of application ids that are in review.",
+															"description": "Contains the ids of the applications in review.",
 															"items": {
 																"type": "integer"
 															},
@@ -655,7 +655,7 @@
 															"x-stainless-collection-type": "set"
 														},
 														"unapproved_apps": {
-															"description": "The list of application ids that are unapproved.",
+															"description": "Contains the ids of the unapproved applications.",
 															"items": {
 																"type": "integer"
 															},
@@ -779,7 +779,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update applications review status",
+		"summary": "Update applications review statuses",
 		"tags": [
 			"Zero Trust applications review status"
 		],

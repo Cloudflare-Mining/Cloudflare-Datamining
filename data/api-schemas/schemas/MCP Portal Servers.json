@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_id}/ai-controls/mcp/servers/{id}": {
+	"DELETE /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
 		"operationId": "mcp-portals-api-delete-servers",
 		"parameters": [
 			{
@@ -216,7 +216,7 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_id}/ai-controls/mcp/servers": {
+	"GET /accounts/{account_id}/access/ai-controls/mcp/servers": {
 		"operationId": "mcp-portals-api-list-servers",
 		"parameters": [
 			{
@@ -446,7 +446,7 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_id}/ai-controls/mcp/servers/{id}": {
+	"GET /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
 		"operationId": "mcp-portals-api-fetch-servers",
 		"parameters": [
 			{
@@ -663,7 +663,7 @@
 			"pro": true
 		}
 	},
-	"PATCH /accounts/{account_id}/ai-controls/mcp/servers/{id}/sync": {
+	"PATCH /accounts/{account_id}/access/ai-controls/mcp/servers/{id}/sync": {
 		"operationId": "mcp-portals-api-sync-server",
 		"parameters": [
 			{
@@ -780,7 +780,7 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_id}/ai-controls/mcp/servers": {
+	"POST /accounts/{account_id}/access/ai-controls/mcp/servers": {
 		"operationId": "mcp-portals-api-create-servers",
 		"parameters": [
 			{
@@ -1045,7 +1045,7 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{account_id}/ai-controls/mcp/servers/{id}": {
+	"PUT /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
 		"operationId": "mcp-portals-api-update-servers",
 		"parameters": [
 			{

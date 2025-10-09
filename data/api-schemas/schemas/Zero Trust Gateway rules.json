@@ -530,7 +530,7 @@
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"filters": {
-														"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+														"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 														"example": [
 															"http"
 														],
@@ -547,6 +547,8 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"maxItems": 1,
+														"minItems": 1,
 														"type": "array"
 													},
 													"id": {
@@ -1456,7 +1458,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"filters": {
-																"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+																"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 																"example": [
 																	"http"
 																],
@@ -1473,6 +1475,8 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"maxItems": 1,
+																"minItems": 1,
 																"type": "array"
 															},
 															"id": {
@@ -2480,7 +2484,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filters": {
-													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 													"example": [
 														"http"
 													],
@@ -2497,6 +2501,8 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"maxItems": 1,
+													"minItems": 1,
 													"type": "array"
 												},
 												"id": {
@@ -3373,7 +3379,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"filters": {
-															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 															"example": [
 																"http"
 															],
@@ -3390,6 +3396,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"maxItems": 1,
+															"minItems": 1,
 															"type": "array"
 														},
 														"id": {
@@ -4413,7 +4421,7 @@
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"filters": {
-														"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+														"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 														"example": [
 															"http"
 														],
@@ -4430,6 +4438,8 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"maxItems": 1,
+														"minItems": 1,
 														"type": "array"
 													},
 													"id": {
@@ -5339,7 +5349,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"filters": {
-																"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+																"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 																"example": [
 																	"http"
 																],
@@ -5356,6 +5366,8 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"maxItems": 1,
+																"minItems": 1,
 																"type": "array"
 															},
 															"id": {
@@ -6268,7 +6280,7 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"filters": {
-								"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+								"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 								"example": [
 									"http"
 								],
@@ -6285,6 +6297,8 @@
 									"type": "string",
 									"x-auditable": true
 								},
+								"maxItems": 1,
+								"minItems": 1,
 								"type": "array"
 							},
 							"identity": {
@@ -7103,7 +7117,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filters": {
-													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 													"example": [
 														"http"
 													],
@@ -7120,6 +7134,8 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"maxItems": 1,
+													"minItems": 1,
 													"type": "array"
 												},
 												"id": {
@@ -7996,7 +8012,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"filters": {
-															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 															"example": [
 																"http"
 															],
@@ -8013,6 +8029,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"maxItems": 1,
+															"minItems": 1,
 															"type": "array"
 														},
 														"id": {
@@ -9017,7 +9035,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filters": {
-													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 													"example": [
 														"http"
 													],
@@ -9034,6 +9052,8 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"maxItems": 1,
+													"minItems": 1,
 													"type": "array"
 												},
 												"id": {
@@ -9907,7 +9927,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"filters": {
-															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 															"example": [
 																"http"
 															],
@@ -9924,6 +9944,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"maxItems": 1,
+															"minItems": 1,
 															"type": "array"
 														},
 														"id": {
@@ -10845,7 +10867,7 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"filters": {
-								"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+								"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 								"example": [
 									"http"
 								],
@@ -10862,6 +10884,8 @@
 									"type": "string",
 									"x-auditable": true
 								},
+								"maxItems": 1,
+								"minItems": 1,
 								"type": "array"
 							},
 							"identity": {
@@ -11680,7 +11704,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filters": {
-													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 													"example": [
 														"http"
 													],
@@ -11697,6 +11721,8 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"maxItems": 1,
+													"minItems": 1,
 													"type": "array"
 												},
 												"id": {
@@ -12573,7 +12599,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"filters": {
-															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
 															"example": [
 																"http"
 															],
@@ -12590,6 +12616,8 @@
 																"type": "string",
 																"x-auditable": true
 															},
+															"maxItems": 1,
+															"minItems": 1,
 															"type": "array"
 														},
 														"id": {
