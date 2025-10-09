@@ -1,0 +1,1340 @@
+{
+	"DELETE /accounts/{account_id}/ai-controls/mcp/servers/{id}": {
+		"operationId": "mcp-portals-api-delete-servers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "server id",
+					"example": "my-mcp-server",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"auth_type": {
+											"enum": [
+												"oauth",
+												"bearer",
+												"unauthenticated"
+											],
+											"example": "unauthenticated",
+											"type": "string"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"description": {
+											"example": "This is one remote mcp server",
+											"maxLength": 512,
+											"nullable": true,
+											"type": "string"
+										},
+										"error": {
+											"type": "string"
+										},
+										"hostname": {
+											"example": "https://exmaple.com/mcp",
+											"format": "uri",
+											"type": "string"
+										},
+										"id": {
+											"description": "server id",
+											"example": "my-mcp-server",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"last_synced": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"name": {
+											"example": "My MCP Server",
+											"maxLength": 350,
+											"type": "string"
+										},
+										"prompts": {
+											"items": {
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"status": {
+											"default": "waiting",
+											"type": "string"
+										},
+										"tools": {
+											"items": {
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"hostname",
+										"auth_type",
+										"tools",
+										"prompts"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the Object if it was successfully deleted"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a MCP Server",
+		"tags": [
+			"MCP Portal Servers"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-controls/mcp/servers": {
+		"operationId": "mcp-portals-api-list-servers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Search by id, name",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"auth_type": {
+												"enum": [
+													"oauth",
+													"bearer",
+													"unauthenticated"
+												],
+												"example": "unauthenticated",
+												"type": "string"
+											},
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"created_by": {
+												"type": "string"
+											},
+											"description": {
+												"example": "This is one remote mcp server",
+												"maxLength": 512,
+												"nullable": true,
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"hostname": {
+												"example": "https://exmaple.com/mcp",
+												"format": "uri",
+												"type": "string"
+											},
+											"id": {
+												"description": "server id",
+												"example": "my-mcp-server",
+												"maxLength": 32,
+												"minLength": 1,
+												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+												"type": "string"
+											},
+											"last_synced": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"modified_by": {
+												"type": "string"
+											},
+											"name": {
+												"example": "My MCP Server",
+												"maxLength": 350,
+												"type": "string"
+											},
+											"prompts": {
+												"items": {
+													"additionalProperties": {
+														"anyOf": [
+															{
+																"type": "number"
+															},
+															{
+																"type": "string"
+															}
+														]
+													},
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"status": {
+												"default": "waiting",
+												"type": "string"
+											},
+											"tools": {
+												"items": {
+													"additionalProperties": {
+														"anyOf": [
+															{
+																"type": "number"
+															},
+															{
+																"type": "string"
+															}
+														]
+													},
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"hostname",
+											"auth_type",
+											"tools",
+											"prompts"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List objects"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List MCP Servers",
+		"tags": [
+			"MCP Portal Servers"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-controls/mcp/servers/{id}": {
+		"operationId": "mcp-portals-api-fetch-servers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "server id",
+					"example": "my-mcp-server",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"auth_type": {
+											"enum": [
+												"oauth",
+												"bearer",
+												"unauthenticated"
+											],
+											"example": "unauthenticated",
+											"type": "string"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"description": {
+											"example": "This is one remote mcp server",
+											"maxLength": 512,
+											"nullable": true,
+											"type": "string"
+										},
+										"error": {
+											"type": "string"
+										},
+										"hostname": {
+											"example": "https://exmaple.com/mcp",
+											"format": "uri",
+											"type": "string"
+										},
+										"id": {
+											"description": "server id",
+											"example": "my-mcp-server",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"last_synced": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"name": {
+											"example": "My MCP Server",
+											"maxLength": 350,
+											"type": "string"
+										},
+										"prompts": {
+											"items": {
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"status": {
+											"default": "waiting",
+											"type": "string"
+										},
+										"tools": {
+											"items": {
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"hostname",
+										"auth_type",
+										"tools",
+										"prompts"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a single object if found"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Read the details of a MCP Server",
+		"tags": [
+			"MCP Portal Servers"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /accounts/{account_id}/ai-controls/mcp/servers/{id}/sync": {
+		"operationId": "mcp-portals-api-sync-server",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "portal id",
+					"example": "my-mcp-portal",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": ""
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Sync MCP Server Capabilities",
+		"tags": [
+			"MCP Portal Servers"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai-controls/mcp/servers": {
+		"operationId": "mcp-portals-api-create-servers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"auth_credentials": {
+								"type": "string"
+							},
+							"auth_type": {
+								"enum": [
+									"oauth",
+									"bearer",
+									"unauthenticated"
+								],
+								"example": "unauthenticated",
+								"type": "string"
+							},
+							"description": {
+								"example": "This is one remote mcp server",
+								"maxLength": 512,
+								"nullable": true,
+								"type": "string"
+							},
+							"hostname": {
+								"example": "https://exmaple.com/mcp",
+								"format": "uri",
+								"type": "string"
+							},
+							"id": {
+								"description": "server id",
+								"example": "my-mcp-server",
+								"maxLength": 32,
+								"minLength": 1,
+								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+								"type": "string"
+							},
+							"name": {
+								"example": "My MCP Server",
+								"maxLength": 350,
+								"type": "string"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"hostname",
+							"auth_type"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"auth_type": {
+											"enum": [
+												"oauth",
+												"bearer",
+												"unauthenticated"
+											],
+											"example": "unauthenticated",
+											"type": "string"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"description": {
+											"example": "This is one remote mcp server",
+											"maxLength": 512,
+											"nullable": true,
+											"type": "string"
+										},
+										"error": {
+											"type": "string"
+										},
+										"hostname": {
+											"example": "https://exmaple.com/mcp",
+											"format": "uri",
+											"type": "string"
+										},
+										"id": {
+											"description": "server id",
+											"example": "my-mcp-server",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"last_synced": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"name": {
+											"example": "My MCP Server",
+											"maxLength": 350,
+											"type": "string"
+										},
+										"prompts": {
+											"items": {
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"status": {
+											"default": "waiting",
+											"type": "string"
+										},
+										"tools": {
+											"items": {
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"hostname",
+										"auth_type",
+										"tools",
+										"prompts"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created Object"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new MCP Server",
+		"tags": [
+			"MCP Portal Servers"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/ai-controls/mcp/servers/{id}": {
+		"operationId": "mcp-portals-api-update-servers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "server id",
+					"example": "my-mcp-server",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"auth_credentials": {
+								"type": "string"
+							},
+							"description": {
+								"example": "This is one remote mcp server",
+								"maxLength": 512,
+								"nullable": true,
+								"type": "string"
+							},
+							"name": {
+								"example": "My MCP Server",
+								"maxLength": 350,
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"auth_type": {
+											"enum": [
+												"oauth",
+												"bearer",
+												"unauthenticated"
+											],
+											"example": "unauthenticated",
+											"type": "string"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"description": {
+											"example": "This is one remote mcp server",
+											"maxLength": 512,
+											"nullable": true,
+											"type": "string"
+										},
+										"error": {
+											"type": "string"
+										},
+										"hostname": {
+											"example": "https://exmaple.com/mcp",
+											"format": "uri",
+											"type": "string"
+										},
+										"id": {
+											"description": "server id",
+											"example": "my-mcp-server",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"last_synced": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"name": {
+											"example": "My MCP Server",
+											"maxLength": 350,
+											"type": "string"
+										},
+										"prompts": {
+											"items": {
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"status": {
+											"default": "waiting",
+											"type": "string"
+										},
+										"tools": {
+											"items": {
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"hostname",
+										"auth_type",
+										"tools",
+										"prompts"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated Object"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a MCP Server",
+		"tags": [
+			"MCP Portal Servers"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

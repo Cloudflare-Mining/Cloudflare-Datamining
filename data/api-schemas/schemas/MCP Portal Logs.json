@@ -1,0 +1,418 @@
+{
+	"GET /accounts/{account_id}/ai-controls/mcp/logs": {
+		"operationId": "mcp-portals-api-list-logs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "portal_id",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "server_id",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"capability_name": {
+												"type": "string"
+											},
+											"created_at": {
+												"type": "integer"
+											},
+											"duration": {
+												"type": "integer"
+											},
+											"id": {
+												"type": "string"
+											},
+											"location_colo": {
+												"type": "string"
+											},
+											"location_region": {
+												"type": "string"
+											},
+											"metadata": {
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														}
+													]
+												},
+												"type": "object"
+											},
+											"portal_id": {
+												"type": "string"
+											},
+											"prompt_name": {
+												"type": "string"
+											},
+											"response_status": {
+												"enum": [
+													"success",
+													"error",
+													"cached"
+												],
+												"type": "string"
+											},
+											"server_id": {
+												"type": "string"
+											},
+											"session_id": {
+												"type": "string"
+											},
+											"session_id_server": {
+												"type": "string"
+											},
+											"tool_name": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"created_at",
+											"portal_id",
+											"server_id",
+											"session_id",
+											"session_id_server",
+											"duration",
+											"response_status",
+											"location_region",
+											"location_colo"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns list Logs"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List MCP Portal Logs",
+		"tags": [
+			"MCP Portal Logs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-controls/mcp/logs/{id}": {
+		"operationId": "mcp-portals-api-read-log",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"capability_name": {
+												"type": "string"
+											},
+											"created_at": {
+												"type": "integer"
+											},
+											"duration": {
+												"type": "integer"
+											},
+											"id": {
+												"type": "string"
+											},
+											"location_colo": {
+												"type": "string"
+											},
+											"location_region": {
+												"type": "string"
+											},
+											"metadata": {
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														}
+													]
+												},
+												"type": "object"
+											},
+											"portal_id": {
+												"type": "string"
+											},
+											"prompt_name": {
+												"type": "string"
+											},
+											"request": {
+												"type": "string"
+											},
+											"response": {
+												"type": "string"
+											},
+											"response_status": {
+												"enum": [
+													"success",
+													"error",
+													"cached"
+												],
+												"type": "string"
+											},
+											"server_id": {
+												"type": "string"
+											},
+											"session_id": {
+												"type": "string"
+											},
+											"session_id_server": {
+												"type": "string"
+											},
+											"tool_name": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"created_at",
+											"portal_id",
+											"server_id",
+											"session_id",
+											"session_id_server",
+											"duration",
+											"response_status",
+											"location_region",
+											"location_colo"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns list Logs"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Read the details of an MCP Portal Log",
+		"tags": [
+			"MCP Portal Logs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

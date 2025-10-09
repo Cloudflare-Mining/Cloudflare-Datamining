@@ -1,0 +1,1215 @@
+{
+	"DELETE /accounts/{account_id}/ai-controls/mcp/portals/{id}": {
+		"operationId": "mcp-portals-api-delete-portals",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "portal id",
+					"example": "my-mcp-portal",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"description": {
+											"example": "This is my custom MCP Portal",
+											"maxLength": 512,
+											"type": "string"
+										},
+										"hostname": {
+											"example": "exmaple.com",
+											"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$",
+											"type": "string"
+										},
+										"id": {
+											"description": "portal id",
+											"example": "my-mcp-portal",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"name": {
+											"example": "My MCP Portal",
+											"maxLength": 350,
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"hostname"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the Object if it was successfully deleted"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a MCP Portal",
+		"tags": [
+			"MCP Portal"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-controls/mcp/portals": {
+		"operationId": "mcp-portals-api-list-portals",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Search by id, name",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"created_by": {
+												"type": "string"
+											},
+											"description": {
+												"example": "This is my custom MCP Portal",
+												"maxLength": 512,
+												"type": "string"
+											},
+											"hostname": {
+												"example": "exmaple.com",
+												"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$",
+												"type": "string"
+											},
+											"id": {
+												"description": "portal id",
+												"example": "my-mcp-portal",
+												"maxLength": 32,
+												"minLength": 1,
+												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+												"type": "string"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"modified_by": {
+												"type": "string"
+											},
+											"name": {
+												"example": "My MCP Portal",
+												"maxLength": 350,
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"hostname"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List objects"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List MCP Portals",
+		"tags": [
+			"MCP Portal"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-controls/mcp/portals/{id}": {
+		"operationId": "mcp-portals-api-fetch-gateways",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "portal id",
+					"example": "my-mcp-portal",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"description": {
+											"example": "This is my custom MCP Portal",
+											"maxLength": 512,
+											"type": "string"
+										},
+										"hostname": {
+											"example": "exmaple.com",
+											"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$",
+											"type": "string"
+										},
+										"id": {
+											"description": "portal id",
+											"example": "my-mcp-portal",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"name": {
+											"example": "My MCP Portal",
+											"maxLength": 350,
+											"type": "string"
+										},
+										"servers": {
+											"items": {
+												"properties": {
+													"auth_type": {
+														"enum": [
+															"oauth",
+															"bearer",
+															"unauthenticated"
+														],
+														"example": "unauthenticated",
+														"type": "string"
+													},
+													"created_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"created_by": {
+														"type": "string"
+													},
+													"default_disabled": {
+														"default": false,
+														"type": "boolean"
+													},
+													"description": {
+														"example": "This is one remote mcp server",
+														"maxLength": 512,
+														"nullable": true,
+														"type": "string"
+													},
+													"error": {
+														"type": "string"
+													},
+													"hostname": {
+														"example": "https://exmaple.com/mcp",
+														"format": "uri",
+														"type": "string"
+													},
+													"id": {
+														"description": "server id",
+														"example": "my-mcp-server",
+														"maxLength": 32,
+														"minLength": 1,
+														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+														"type": "string"
+													},
+													"last_synced": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"modified_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"modified_by": {
+														"type": "string"
+													},
+													"name": {
+														"example": "My MCP Server",
+														"maxLength": 350,
+														"type": "string"
+													},
+													"on_behalf": {
+														"default": true,
+														"type": "boolean"
+													},
+													"prompts": {
+														"items": {
+															"additionalProperties": {
+																"anyOf": [
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"status": {
+														"default": "waiting",
+														"type": "string"
+													},
+													"tools": {
+														"items": {
+															"additionalProperties": {
+																"anyOf": [
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"updated_prompts": {
+														"items": {
+															"additionalProperties": {
+																"anyOf": [
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"updated_tools": {
+														"items": {
+															"additionalProperties": {
+																"anyOf": [
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "string"
+																	}
+																]
+															},
+															"type": "object"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"hostname",
+													"auth_type",
+													"tools",
+													"prompts",
+													"updated_tools",
+													"updated_prompts"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"hostname",
+										"servers"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a single object if found"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Read details of an MCP Portal",
+		"tags": [
+			"MCP Portal"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai-controls/mcp/portals": {
+		"operationId": "mcp-portals-api-create-portals",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"example": "This is my custom MCP Portal",
+								"maxLength": 512,
+								"type": "string"
+							},
+							"hostname": {
+								"example": "exmaple.com",
+								"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$",
+								"type": "string"
+							},
+							"id": {
+								"description": "portal id",
+								"example": "my-mcp-portal",
+								"maxLength": 32,
+								"minLength": 1,
+								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+								"type": "string"
+							},
+							"name": {
+								"example": "My MCP Portal",
+								"maxLength": 350,
+								"type": "string"
+							},
+							"servers": {
+								"items": {
+									"properties": {
+										"default_disabled": {
+											"default": false,
+											"type": "boolean"
+										},
+										"on_behalf": {
+											"default": true,
+											"type": "boolean"
+										},
+										"server_id": {
+											"description": "server id",
+											"example": "my-mcp-server",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"updated_prompts": {
+											"items": {
+												"properties": {
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"updated_tools": {
+											"items": {
+												"properties": {
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"server_id"
+									],
+									"type": "object"
+								},
+								"maxItems": 20,
+								"type": "array"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"hostname"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"description": {
+											"example": "This is my custom MCP Portal",
+											"maxLength": 512,
+											"type": "string"
+										},
+										"hostname": {
+											"example": "exmaple.com",
+											"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$",
+											"type": "string"
+										},
+										"id": {
+											"description": "portal id",
+											"example": "my-mcp-portal",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"name": {
+											"example": "My MCP Portal",
+											"maxLength": 350,
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"hostname"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created Object"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new MCP Portal",
+		"tags": [
+			"MCP Portal"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/ai-controls/mcp/portals/{id}": {
+		"operationId": "mcp-portals-api-update-portals",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "portal id",
+					"example": "my-mcp-portal",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"example": "This is my custom MCP Portal",
+								"maxLength": 512,
+								"type": "string"
+							},
+							"hostname": {
+								"example": "exmaple.com",
+								"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$",
+								"type": "string"
+							},
+							"name": {
+								"example": "My MCP Portal",
+								"maxLength": 350,
+								"type": "string"
+							},
+							"servers": {
+								"items": {
+									"properties": {
+										"default_disabled": {
+											"default": false,
+											"type": "boolean"
+										},
+										"on_behalf": {
+											"default": true,
+											"type": "boolean"
+										},
+										"server_id": {
+											"description": "server id",
+											"example": "my-mcp-server",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"updated_prompts": {
+											"items": {
+												"properties": {
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"updated_tools": {
+											"items": {
+												"properties": {
+													"description": {
+														"type": "string"
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"server_id"
+									],
+									"type": "object"
+								},
+								"maxItems": 20,
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"description": {
+											"example": "This is my custom MCP Portal",
+											"maxLength": 512,
+											"type": "string"
+										},
+										"hostname": {
+											"example": "exmaple.com",
+											"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$",
+											"type": "string"
+										},
+										"id": {
+											"description": "portal id",
+											"example": "my-mcp-portal",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"name": {
+											"example": "My MCP Portal",
+											"maxLength": 350,
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"hostname"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated Object"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a MCP Portal",
+		"tags": [
+			"MCP Portal"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

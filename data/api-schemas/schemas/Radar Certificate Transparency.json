@@ -743,6 +743,10 @@
 													],
 													"type": "string"
 												},
+												"avgThroughput": {
+													"description": "The average throughput of the CT log, measured in certificates per hour (certs/hour).",
+													"type": "number"
+												},
 												"description": {
 													"description": "A brief description of the certificate log.",
 													"example": "Google 'Argon2024' log",
@@ -750,6 +754,12 @@
 												},
 												"endExclusive": {
 													"description": "The end date and time for when the log will stop accepting certificates.",
+													"example": "2025-01-01T00:00:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"lastUpdate": {
+													"description": "Timestamp of the most recent update to the CT log.",
 													"example": "2025-01-01T00:00:00Z",
 													"format": "date-time",
 													"type": "string"
@@ -888,6 +898,20 @@
 													"format": "date-time",
 													"type": "string"
 												},
+												"submittableCertCount": {
+													"description": "Number of certificates that are eligible for inclusion to this log but have not been included yet. Based on certificates signed by trusted root CAs within the log's accepted date range.",
+													"example": "10",
+													"nullable": true,
+													"pattern": "^\\d+$",
+													"type": "string"
+												},
+												"submittedCertCount": {
+													"description": "Number of certificates already included in this CT log.",
+													"example": "10",
+													"nullable": true,
+													"pattern": "^\\d+$",
+													"type": "string"
+												},
 												"url": {
 													"description": "The URL for the certificate log.",
 													"example": "https://ct.googleapis.com/logs/us1/argon2024/",
@@ -905,6 +929,10 @@
 												"endExclusive",
 												"url",
 												"performance",
+												"avgThroughput",
+												"submittedCertCount",
+												"submittableCertCount",
+												"lastUpdate",
 												"related"
 											],
 											"type": "object"
