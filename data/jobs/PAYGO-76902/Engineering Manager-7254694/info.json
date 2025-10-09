@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7203471?gh_jid=7203471",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7254694?gh_jid=7254694",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3231781,
+	"internal_job_id": 3248141,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,14 +18,16 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4200 - Prod Engineering",
+			"value": "5510 - PAYGO",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"Denver, US",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -33,21 +35,22 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Engineering"
+				"Engineering",
+				"PAYGO"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7203471,
-	"updated_at": "2025-10-09T14:45:25-04:00",
-	"requisition_id": "662",
-	"title": "Senior Engineering Manager, Billing",
+	"id": 7254694,
+	"updated_at": "2025-10-09T16:08:04-04:00",
+	"requisition_id": null,
+	"title": "Engineering Manager",
 	"company_name": "Cloudflare",
-	"first_published": "2025-08-29T16:32:41-04:00",
+	"first_published": "2025-09-19T13:08:33-04:00",
 	"departments": [
 		{
-			"id": 39633,
-			"name": "Production Engineering",
+			"id": 76902,
+			"name": "PAYGO",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -57,6 +60,20 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		}
