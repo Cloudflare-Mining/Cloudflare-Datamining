@@ -1,5 +1,17 @@
 # Change Log
 
+## 7.0.21
+
+### Patch Changes
+
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-button@9.2.1
+  - @cloudflare/component-link@9.0.20
+  - @cloudflare/elements@4.0.4
+  - @cloudflare/component-loading@7.0.4
+  - @cloudflare/component-checkbox@6.0.4
+  - @cloudflare/component-pagination@11.0.20
+
 ## 7.0.20
 
 ### Patch Changes

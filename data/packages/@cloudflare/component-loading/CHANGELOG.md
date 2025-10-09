@@ -1,5 +1,13 @@
 # Change Log
 
+## 7.0.4
+
+### Patch Changes
+
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-visually-hidden@2.0.4
+  - @cloudflare/elements@4.0.4
+
 ## 7.0.3
 
 ### Patch Changes

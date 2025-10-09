@@ -1,5 +1,12 @@
 # Change Log
 
+## 4.0.19
+
+### Patch Changes
+
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-listener@5.0.19
+
 ## 4.0.18
 
 ### Patch Changes

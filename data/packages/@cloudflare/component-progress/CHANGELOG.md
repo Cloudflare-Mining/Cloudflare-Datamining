@@ -1,5 +1,13 @@
 # Change Log
 
+## 10.0.20
+
+### Patch Changes
+
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-link@9.0.20
+  - @cloudflare/component-visually-hidden@2.0.4
+
 ## 10.0.19
 
 ### Patch Changes

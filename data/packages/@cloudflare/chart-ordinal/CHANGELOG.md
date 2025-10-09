@@ -1,5 +1,13 @@
 # Change Log
 
+## 8.0.19
+
+### Patch Changes
+
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-visually-hidden@2.0.4
+  - @cloudflare/util-responsive@4.0.19
+
 ## 8.0.18
 
 ### Patch Changes

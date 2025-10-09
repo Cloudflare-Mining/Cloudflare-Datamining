@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.0.20
+
+### Patch Changes
+
+- @cloudflare/component-loading@7.0.4
+
 ## 11.0.19
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.0.19
+
+### Patch Changes
+
+- 218a1cec6b: Explicitly add children to component props
+  - @cloudflare/component-listbox@3.0.19
+
 ## 6.0.18
 
 ### Patch Changes

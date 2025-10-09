@@ -1,5 +1,13 @@
 # Change Log
 
+## 11.0.3
+
+### Patch Changes
+
+- 218a1cec6b: Explicitly add children to component props
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-tooltip@6.0.4
+
 ## 11.0.2
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # Change Log
 
+## 9.0.20
+
+### Patch Changes
+
+- 218a1cec6b: Explicitly add children to component props
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-button@9.2.1
+  - @cloudflare/component-checkbox@6.0.4
+
 ## 9.0.19
 
 ### Patch Changes

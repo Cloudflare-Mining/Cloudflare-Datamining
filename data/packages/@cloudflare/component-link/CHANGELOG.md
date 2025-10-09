@@ -1,5 +1,15 @@
 # Change Log
 
+## 9.0.20
+
+### Patch Changes
+
+- 218a1cec6b: Explicitly add children to component props
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-arrow-swivel@9.0.19
+  - @cloudflare/component-button@9.2.1
+  - @cloudflare/elements@4.0.4
+
 ## 9.0.19
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.0.4
+
+### Patch Changes
+
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-input@9.0.4
+
 ## 6.0.3
 
 ### Patch Changes

@@ -1,5 +1,21 @@
 # Change Log
 
+## 7.0.23
+
+### Patch Changes
+
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-button@9.2.1
+  - @cloudflare/component-input@9.0.4
+  - @cloudflare/elements@4.0.4
+  - @cloudflare/component-time-period-picker@7.2.17
+  - @cloudflare/component-search@9.0.19
+  - @cloudflare/util-responsive@4.0.19
+  - @cloudflare/component-checkbox@6.0.4
+  - @cloudflare/component-grid@4.0.19
+  - @cloudflare/component-listbox@3.0.19
+  - @cloudflare/component-select-2@8.0.19
+
 ## 7.0.22
 
 ### Patch Changes

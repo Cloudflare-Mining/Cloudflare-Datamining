@@ -1,5 +1,12 @@
 # Change Log
 
+## 3.0.19
+
+### Patch Changes
+
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/elements@4.0.4
+
 ## 3.0.18
 
 ## 3.0.17

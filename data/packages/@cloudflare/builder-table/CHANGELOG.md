@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.0.20
+
+### Patch Changes
+
+- @cloudflare/component-sortable@6.0.20
+- @cloudflare/component-table@11.0.19
+
 ## 5.0.19
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # Change Log
 
+## 10.1.4
+
+### Patch Changes
+
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-label@6.0.4
+  - @cloudflare/component-link@9.0.20
+  - @cloudflare/elements@4.0.4
+
 ## 10.1.3
 
 ### Patch Changes

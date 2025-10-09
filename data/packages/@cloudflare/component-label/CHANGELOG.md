@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.4
+
+### Patch Changes
+
+- 218a1cec6b: Explicitly add children to component props
+
 ## 6.0.3
 
 ## 6.0.2

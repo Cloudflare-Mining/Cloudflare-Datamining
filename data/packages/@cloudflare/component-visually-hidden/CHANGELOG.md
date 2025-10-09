@@ -1,5 +1,13 @@
 # Change Log
 
+## 2.0.4
+
+### Patch Changes
+
+- 218a1cec6b: Explicitly add children to component props
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/elements@4.0.4
+
 ## 2.0.3
 
 ### Patch Changes

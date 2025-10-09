@@ -1,5 +1,16 @@
 # @cloudflare/component-code-block
 
+## 6.0.20
+
+### Patch Changes
+
+- 218a1cec6b: Explicitly add children to component props
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-button@9.2.1
+  - @cloudflare/component-tooltip@6.0.4
+  - @cloudflare/component-visually-hidden@2.0.4
+  - @cloudflare/elements@4.0.4
+
 ## 6.0.19
 
 ### Patch Changes

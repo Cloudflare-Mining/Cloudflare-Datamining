@@ -1,5 +1,14 @@
 # Change Log
 
+## 11.0.19
+
+### Patch Changes
+
+- Updated dependencies [218a1cec6b]
+  - @cloudflare/component-arrow-swivel@9.0.19
+  - @cloudflare/elements@4.0.4
+  - @cloudflare/component-loading@7.0.4
+
 ## 11.0.18
 
 ### Patch Changes
