@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "c61de77d-4e2a-5e0b-96ce-c817e6c8eef2")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "671206f3-dc75-55cd-b0fe-6ec44e6422d5")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -1250,10 +1250,10 @@
 					e.g.build = Cn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "d8716c0f68907ffc4c5631702518f3e11d1d4257",
-						dashVersion: "36494494",
+						commit: "e14a0cab7501eb2e40d379c9f9f421d7758ddda4",
+						dashVersion: "36520682",
 						env: "production",
-						builtAt: 1760020625642,
+						builtAt: 1760107985209,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -34242,10 +34242,10 @@
 					return s
 				}
 			});
-			const n = (l, v) => l.replace(/@/g, v),
+			const n = (l, v) => l === "@" ? v : l,
 				s = (l, v) => {
-					const o = v.replace(".", "[.]");
-					return `${n(l,v).replace(new RegExp(`(.?${o}.?)$`,"i"),"")}.${v}`.replace(/(^\.+|\.+$)/m, "")
+					const o = v.replace(/\./g, "\\.");
+					return `${n(l,v).replace(/\.+$/,"").replace(new RegExp(`(.?${o}.?)$`,"i"),"")}.${v}`.replace(/(^\.+|\.+$)/m, "")
 				}
 		},
 		"../react/pages/dns/hooks/useZoneDnsSettings.ts": function(oe, R, e) {
@@ -75173,7 +75173,6 @@ SOFTWARE.`,
       line-height: 1.5;
       color: ${n.Rl.colors.gray[1]};
       background-color: ${n.Rl.colors.background};
-      font-family: ${n.Rl.fontFamily};
     }
 
     text {
@@ -75206,7 +75205,7 @@ SOFTWARE.`,
       font-size: 16px;
     }
 
-    h2, h3, h4, h5 h4, h5, h6 {
+    h2, h3, h4, h5, h6 {
       font-weight: 600;
     }
 
@@ -75219,7 +75218,6 @@ SOFTWARE.`,
     }
 
     button {
-      font-family: ${n.Rl.fontFamily};
       border: none;
     }
 
@@ -75235,20 +75233,12 @@ SOFTWARE.`,
     }
 
     pre {
-      border-radius: 3px;
       color: ${n.Rl.colors.gray[1]};
       display: block;
       font-size: 14px;
       margin: 2rem 0;
       overflow: auto;
-      padding: 0.5rem;
       width: 100%;
-    }
-
-    code, pre {
-      background-color: ${a?n.Rl.colors.gray[8]:n.Rl.colors.gray[9]};
-      border: 1px solid ${a?n.Rl.colors.gray[7]:n.Rl.colors.gray[8]};
-      font-family: monaco, courier, monospace;
     }
 
     section {
@@ -79244,10 +79234,8 @@ SOFTWARE.`,
 @layer theme, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
+    --font-sans: 'Inter Variable', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'Paper Mono', 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     --color-red-50: oklch(97.1% 0.013 17.38);
     --color-red-100: oklch(93.6% 0.032 17.717);
     --color-red-200: oklch(88.5% 0.062 18.334);
@@ -86327,6 +86315,77 @@ SOFTWARE.`,
 html.dark-mode {
   color-scheme: dark;
 }
+@font-face {
+  font-family: 'Inter Variable';
+  font-weight: 100 900;
+  font-display: swap;
+  src: local('Inter Variable'), url('/fonts/inter-variable.woff2');
+  font-named-instance: 'Regular';
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inter Variable';
+  font-weight: 100 900;
+  font-display: swap;
+  src: local('Inter Variable'), url('/fonts/inter-variable-italic.woff2');
+  font-named-instance: 'Italic';
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Paper Mono';
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url('/fonts/paper-mono-regular.woff2') format('woff2');
+}
+@layer base {
+  html, button, input, textarea, select, option, fieldset, legend, label, caption, th, td {
+    font-family: var(--font-sans);
+    --tw-leading: 1.5;
+    line-height: 1.5;
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
+    --tw-tracking: -.01em;
+    letter-spacing: -.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'calt';
+  }
+  pre {
+    border-radius: var(--radius-lg);
+    padding-inline: calc(var(--spacing) * 3);
+    padding-block: calc(var(--spacing) * 2);
+  }
+  pre, code {
+    background-color: var(--color-neutral-100);
+    font-family: var(--font-mono);
+    --tw-leading: var(--leading-normal);
+    line-height: var(--leading-normal);
+    --tw-tracking: var(--tracking-normal);
+    letter-spacing: var(--tracking-normal);
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-ring-color: var(--color-neutral-200);
+    &:where(.dark-mode, .dark-mode *) {
+      background-color: var(--color-neutral-900);
+    }
+    &:where(.dark-mode, .dark-mode *) {
+      --tw-ring-color: var(--color-neutral-800);
+    }
+  }
+  pre > code {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .font-heading {
+    font-variation-settings: 'opsz' 32;
+  }
+  .font-mono {
+    --tw-tracking: var(--tracking-normal);
+    letter-spacing: var(--tracking-normal);
+  }
+}
 button.text-base {
   font-size: var(--text-base);
   line-height: var(--tw-leading, var(--text-base--line-height));
@@ -86785,4 +86844,4 @@ button.border {
 	}
 ]);
 
-//# debugId=c61de77d-4e2a-5e0b-96ce-c817e6c8eef2
+//# debugId=671206f3-dc75-55cd-b0fe-6ec44e6422d5
