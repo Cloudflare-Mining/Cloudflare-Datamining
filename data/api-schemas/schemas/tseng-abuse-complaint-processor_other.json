@@ -450,6 +450,10 @@
 		"summary": "Retrieve an abuse report.",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read"
 		]
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_param}": {
@@ -1852,9 +1856,6 @@
 		"summary": "Submit the Abuse Report of a particular type",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
-		],
-		"x-api-token-group": [
-			"Trust and Safety Write"
 		]
 	}
 }
