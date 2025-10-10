@@ -5,33 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>This is a Hybrid role based in Mexico City</strong></h4>
-<h4><strong>What you'll do</strong></h4>
-<p>Cloudflare is growing our People team. Our focus is getting the best people to work at Cloudflare and then helping them to do their best work. We are looking for an energetic and motivated People Operations Specialist who’s ready to help a rapidly growing organization scale with efficiency and operational excellence.&nbsp; Your immediate focus area is supporting the Americas People team and all of our&nbsp; offices in the US, Canada, and Mexico, while collaborating with other People team members globally.&nbsp; Maintaining our People data with quality, accuracy and confidentiality is foundational to everything we do to support the organization, and this role is at the heart of that.&nbsp;&nbsp;</p>
-<p>Along the way you’ll have the opportunity to help with the implementation of automated solutions that transform how we manage our People data and programs.&nbsp; If this sounds exciting to you and you’re ready to roll up your sleeves in a fast-paced, dynamic environment with a growing, global company, we’d love to hear from you.&nbsp;&nbsp;</p>
-<h3><strong>Responsibilities</strong></h3>
+<p><strong>Available Locations: London or Lisbon</strong></p>
+<h3>About the team</h3>
+<p>We are a team of software engineers who build distributed systems critical to keeping Cloudflare’s network operating smoothly and efficiently.</p>
+<p>We work with the latest Linux network technologies and low-level details of network protocols. But we're also responsible for sophisticated automated control systems.&nbsp; The code we write runs on thousands of servers in hundreds of data centres around the world.</p>
+<p>As the scale of Cloudflare's network and the variety of services we offer continue to grow, so do the challenges we tackle.</p>
+<h3>What you'll do</h3>
+<p>You’ll participate in the<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/"> ongoing development of a load distribution system that works</a> at the scale of Cloudflare’s edge network. Millions of users and customers depend upon this system every hour of every day, even if it isn’t visible to them. You’ll take on challenging projects that require focus and determination, pragmatism and innovation, and careful consideration of risk. You’ll get to know the details of Cloudflare’s software and hardware infrastructure in order to design software that behaves well even when failures occur. You’ll collaborate with engineers across the company, from operations teams to the teams that build our customer-facing products. You’ll inspect the production behaviour of our systems, to check that they are working as intended and spot opportunities for improvement. You’ll be part of the on-call rota for the occasional cases when our operations teams need to escalate problems.&nbsp;&nbsp;</p>
+<p><strong>&nbsp;</strong></p>
+<p>What we are looking for</p>
+<p>We are looking for smart, innovative team players that have broad experience covering some or all of Linux kernel network stack development (particularly eBPF), complex distributed systems written in Go, understanding of Internet protocols and technologies like IP, TCP, UDP, QUIC, DNS, HTTPS, BGP - and the curiosity to learn more about these things. You will be in a team that questions everything to get to the most appropriate solution in a timely manner.</p>
+<p>People who excel in this role:</p>
 <ul>
-	<li>Administer end-to-end employee lifecycle transactions for the AMER region, including onboarding, transfers, organizational and compensation changes, and offboarding.<br><br></li>
-	<li>Generate, review, and update employment contracts and HR documentation in partnership with HR and legal.<br><br></li>
-	<li>Coordinate and process payroll activities in Mexico, partnering with payroll vendors to ensure accuracy, compliance, and timely execution.<br><br></li>
-	<li>Maintain and audit employee data in Workday and other HR systems, ensuring accuracy, consistency, and compliance with local regulations.<br><br><br></li>
-	<li>Respond to employee and manager inquiries through Zendesk and other channels, providing accurate and timely support.<br><br></li>
-	<li>Conduct regular and ad hoc audits to ensure compliance with labor laws, payroll accuracy, and internal policies.<br><br></li>
-	<li>Prepare and deliver Workday reports and analytics to support HR and business decision-making.<br><br></li>
-	<li>Partner with HR colleagues across the AMER region to align processes, share best practices, and support global initiatives.<br><br></li>
-	<li>Participate in HR projects, system implementations, and process improvement initiatives to enhance efficiency and employee experience.<br><br></li>
+	<li>Willing to write code in Go.</li>
+	<li>Relish opportunities to dive into new technologies, and a demonstrated ability to do so.</li>
+	<li>Awareness of networking concepts down to layer 2.</li>
+	<li>Commitment to high code quality standards, both individually and working as part of a team.</li>
+	<li>Comfortable understanding and working with complex distributed systems.</li>
+	<li>Understanding of techniques to manage risk when evolving critical systems.</li>
+	<li>Excellent communicator and team player.</li>
 </ul>
-<p><strong>Qualifications</strong></p>
+<p>Bonus Points:&nbsp;</p>
+<p>Skills the role requires; we’re happy to help you learn on the job, but prior experience is beneficial</p>
 <ul>
-	<li><strong>5+</strong>&nbsp;years of HR operations experience, with strong expertise in Mexico payroll processing and employment law.<br><br></li>
-	<li>Hands-on experience with employee lifecycle administration and HR documentation.<br><br></li>
-	<li>Experience working with HRIS systems (Workday strongly preferred).<br><br></li>
-	<li>Strong proficiency in Excel (pivot tables, VLOOKUPs, formulas) and experience analyzing HR and payroll data in collaboration with regional teams to support decision-making.<br><br></li>
-	<li>Strong understanding of compliance requirements for Mexico; familiarity with US and Canadian HR practices a plus.<br><br></li>
-	<li>Excellent organizational, analytical, and problem-solving skills with high attention to detail.<br><br></li>
-	<li>Strong communication and customer service skills, with the ability to support employees and managers.<br><br></li>
-	<li>Bilingual in Spanish and English required.<br><br></li>
-	<li>Ability to work independently while effectively collaborating with global and regional HR teams.</li>
+	<li>Experience with Linux kernel network stack development (eBPF).</li>
+	<li>Solid understanding of routing protocols, particularly BGP</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
