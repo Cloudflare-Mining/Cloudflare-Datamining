@@ -200,7 +200,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a MCP Server",
+		"summary": "Delete a MCP Server",
 		"tags": [
 			"MCP Portal Servers"
 		],
@@ -663,123 +663,6 @@
 			"pro": true
 		}
 	},
-	"PATCH /accounts/{account_id}/access/ai-controls/mcp/servers/{id}/sync": {
-		"operationId": "mcp-portals-api-sync-server",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "id",
-				"required": true,
-				"schema": {
-					"description": "portal id",
-					"example": "my-mcp-portal",
-					"maxLength": 32,
-					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "a86a8f5c339544d7bdc89926de14fb8c",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": ""
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"example": 7002,
-												"type": "number"
-											},
-											"message": {
-												"example": "Not Found",
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"success": {
-									"enum": [
-										false
-									],
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Not Found"
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Sync MCP Server Capabilities",
-		"tags": [
-			"MCP Portal Servers"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.mcp_portals"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/servers": {
 		"operationId": "mcp-portals-api-create-servers",
 		"parameters": [
@@ -1030,6 +913,123 @@
 			}
 		],
 		"summary": "Create a new MCP Server",
+		"tags": [
+			"MCP Portal Servers"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/access/ai-controls/mcp/servers/{id}/sync": {
+		"operationId": "mcp-portals-api-sync-server",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "portal id",
+					"example": "my-mcp-portal",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": ""
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Sync MCP Server Capabilities",
 		"tags": [
 			"MCP Portal Servers"
 		],
