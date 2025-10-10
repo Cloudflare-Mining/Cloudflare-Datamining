@@ -69,6 +69,16 @@
 					"default": false,
 					"type": "boolean"
 				}
+			},
+			{
+				"description": "Whether to include additional metadata (timestamps, locations).\nWhen true, response includes created_at, updated_at, metadata_locations, and locations arrays.\n",
+				"example": true,
+				"in": "query",
+				"name": "return_details",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
@@ -79,6 +89,34 @@
 							"errors": [],
 							"messages": [],
 							"result": {
+								"details": [
+									{
+										"created_at": "2025-10-07T10:00:00Z",
+										"identifier": {
+											"name": "events",
+											"namespace": [
+												"bronze"
+											]
+										},
+										"location": "s3://my-bucket/__r2_data_catalog/wh-id/table-id/",
+										"metadata_location": "s3://my-bucket/__r2_data_catalog/wh-id/table-id/metadata/v1.metadata.json",
+										"table_uuid": "0199b9a1-28a0-71e0-a73e-b0fc32c8468e",
+										"updated_at": "2025-10-07T15:00:00Z"
+									},
+									{
+										"created_at": "2025-10-07T10:30:00Z",
+										"identifier": {
+											"name": "users",
+											"namespace": [
+												"bronze"
+											]
+										},
+										"location": "s3://my-bucket/__r2_data_catalog/wh-id/table-id-2/",
+										"metadata_location": "s3://my-bucket/__r2_data_catalog/wh-id/table-id-2/metadata/v2.metadata.json",
+										"table_uuid": "0199b9a1-3c74-7731-bf53-d8c67ead079d",
+										"updated_at": "2025-10-07T16:00:00Z"
+									}
+								],
 								"identifiers": [
 									{
 										"name": "events",
@@ -165,6 +203,76 @@
 										"result": {
 											"description": "Contains the list of tables with optional pagination.",
 											"properties": {
+												"details": {
+													"description": "Contains detailed metadata for each table when return_details is true.\nEach object includes identifier, UUID, timestamps, and locations.\n",
+													"items": {
+														"description": "Contains table with metadata.",
+														"properties": {
+															"created_at": {
+																"description": "Indicates the creation timestamp in ISO 8601 format.",
+																"format": "date-time",
+																"nullable": true,
+																"type": "string"
+															},
+															"identifier": {
+																"description": "Specifies a unique table identifier within a catalog.",
+																"properties": {
+																	"name": {
+																		"description": "Specifies the table name.",
+																		"example": "events",
+																		"type": "string"
+																	},
+																	"namespace": {
+																		"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
+																		"example": [
+																			"bronze",
+																			"analytics"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"maxItems": 16,
+																		"minItems": 1,
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"namespace",
+																	"name"
+																],
+																"type": "object"
+															},
+															"location": {
+																"description": "Specifies the base S3 URI for table storage location.",
+																"nullable": true,
+																"type": "string"
+															},
+															"metadata_location": {
+																"description": "Contains the S3 URI to table metadata file. Null for staged tables.",
+																"nullable": true,
+																"type": "string"
+															},
+															"table_uuid": {
+																"description": "Contains the UUID that persists across renames.",
+																"format": "uuid",
+																"type": "string"
+															},
+															"updated_at": {
+																"description": "Shows the last update timestamp in ISO 8601 format. Null if never updated.",
+																"format": "date-time",
+																"nullable": true,
+																"type": "string"
+															}
+														},
+														"required": [
+															"identifier",
+															"table_uuid"
+														],
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												},
 												"identifiers": {
 													"description": "Lists tables in the namespace.",
 													"items": {

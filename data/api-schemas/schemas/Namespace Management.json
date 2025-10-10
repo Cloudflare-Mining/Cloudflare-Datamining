@@ -68,6 +68,16 @@
 					"default": false,
 					"type": "boolean"
 				}
+			},
+			{
+				"description": "Whether to include additional metadata (timestamps).\nWhen true, response includes created_at and updated_at arrays.\n",
+				"example": true,
+				"in": "query",
+				"name": "return_details",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
@@ -78,6 +88,32 @@
 							"errors": [],
 							"messages": [],
 							"result": {
+								"details": [
+									{
+										"created_at": "2025-10-07T10:00:00Z",
+										"namespace": [
+											"bronze"
+										],
+										"namespace_uuid": "0199b999-6869-7383-bb1f-d30e059d5326",
+										"updated_at": "2025-10-07T12:00:00Z"
+									},
+									{
+										"created_at": "2025-10-07T10:15:00Z",
+										"namespace": [
+											"silver"
+										],
+										"namespace_uuid": "0199b99b-2c88-73b3-8dbb-421e0e8f2757",
+										"updated_at": null
+									},
+									{
+										"created_at": "2025-10-07T10:30:00Z",
+										"namespace": [
+											"gold"
+										],
+										"namespace_uuid": "0199b99c-3d99-73c4-9dcc-532f1f9g3868",
+										"updated_at": "2025-10-07T11:00:00Z"
+									}
+								],
 								"namespace_uuids": [
 									"0199b999-6869-7383-bb1f-d30e059d5326",
 									"0199b99b-2c88-73b3-8dbb-421e0e8f2757",
@@ -162,6 +198,51 @@
 										"result": {
 											"description": "Contains the list of namespaces with optional pagination.",
 											"properties": {
+												"details": {
+													"description": "Contains detailed metadata for each namespace when return_details is true.\nEach object includes the namespace, UUID, and timestamps.\n",
+													"items": {
+														"description": "Contains namespace with metadata details.",
+														"properties": {
+															"created_at": {
+																"description": "Indicates the creation timestamp in ISO 8601 format.",
+																"format": "date-time",
+																"nullable": true,
+																"type": "string"
+															},
+															"namespace": {
+																"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
+																"example": [
+																	"bronze",
+																	"analytics"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"maxItems": 16,
+																"minItems": 1,
+																"type": "array"
+															},
+															"namespace_uuid": {
+																"description": "Contains the UUID that persists across renames.",
+																"format": "uuid",
+																"type": "string"
+															},
+															"updated_at": {
+																"description": "Shows the last update timestamp in ISO 8601 format. Null if never updated.",
+																"format": "date-time",
+																"nullable": true,
+																"type": "string"
+															}
+														},
+														"required": [
+															"namespace",
+															"namespace_uuid"
+														],
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												},
 												"namespace_uuids": {
 													"description": "Contains UUIDs for each namespace when return_uuids is true.\nThe order corresponds to the namespaces array.\n",
 													"example": [
