@@ -12,7 +12,7 @@
 	],
 	"internal_job_id": 3256933,
 	"location": {
-		"name": "Hybrid"
+		"name": "Distributed; Hybrid; In-Office"
 	},
 	"metadata": [
 		{
@@ -25,8 +25,13 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Germany",
 				"Lisbon, Portugal",
-				"London, UK"
+				"London, UK",
+				"New York, US",
+				"Toronto, Canada",
+				"UK",
+				"US"
 			],
 			"value_type": "multi_select"
 		},
@@ -40,7 +45,7 @@
 		}
 	],
 	"id": 7277050,
-	"updated_at": "2025-10-02T12:17:46-04:00",
+	"updated_at": "2025-10-10T08:43:03-04:00",
 	"requisition_id": null,
 	"title": "Data Scientist",
 	"company_name": "Cloudflare",
@@ -62,9 +67,44 @@
 			"parent_id": 74843
 		},
 		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
 			"id": 63782,
 			"name": "Lisbon, Portugal",
 			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 73335,
+			"name": "Toronto, ON",
+			"location": "Toronto, Ontario, Canada",
+			"child_ids": [],
+			"parent_id": 75883
+		},
+		{
+			"id": 75375,
+			"name": "Remote US",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 82439,
+			"name": "Remote Germany",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 82456,
+			"name": "Remote UK",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 74843
 		}
