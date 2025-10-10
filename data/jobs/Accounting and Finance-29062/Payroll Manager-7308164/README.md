@@ -5,11 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>Manager, EMEA and APAC Payroll – India (Bengaluru) / Portugal (Lisbon)<br>Location: Bengaluru, India or Lisbon, Portugal</p>
-<p><br>Team: Finance – Global Payroll<br>Reports to: Senior Manager, Global Payroll<br>At Cloudflare, we’re committed to delivering seamless and accurate payroll experience to our<br>global workforce. We’re looking for an experienced Payroll Manager to lead payroll operations<br>across our EMEA and APAC regions. In this role, you’ll oversee multi-country payrolls, manage<br>vendor relationships, ensure compliance with local regulations, and deliver a seamless payroll<br>experience for our employees. You’ll also play a key part in scaling processes, driving<br>automation, and supporting our global growth.</p>
-<p>What You’ll Do<br>Lead Payroll Operations: Oversee end-to-end payroll processing across multiple EMEA<br>and APAC countries.<br>Vendor and Compliance Management: Partner with payroll vendors to ensure accuracy,<br>timeliness, and compliance. Review and approve payroll outputs, reconciliations, and<br>funding. Stay on top of legislative changes and ensure payroll compliance in each country.<br>Strategic &amp;amp; Cross-Functional Collaboration: Lead the Payroll transformation work for<br>APAC and EMEA countries. Collaborate with HR, Accounting, Equity, and Benefits teams<br>on cross-functional processes. Support new country launches, acquisitions, and system<br>implementations.<br>Team &amp;amp; Process Improvement: Manage employee payroll queries and act as a regional<br>point of escalation. Identify opportunities to streamline, standardize, and automate payroll<br>processes</p>
-<p>What We’re Looking For<br> 8+ years of payroll experience, with strong exposure to both EMEA and APAC regions.<br> Proven experience managing multi-country payrolls and external vendors.<br> Solid understanding of regional payroll regulations and compliance requirements.<br> Strong problem-solving and analytical skills, with attention to detail.<br> Excellent communication and collaboration skills across geographies and functions.<br> Experience with global HRIS and payroll platforms (e.g., Workday, ADP Celergo) is a<br>plus.</p>
-<p>Preferred Qualifications<br> Experience leading payroll operations in a high-growth, multinational company.<br> Familiarity with SOX/internal controls, audits, and compliance frameworks.<br> Track record of implementing payroll process improvements and automation.<br> Ability to manage projects across multiple countries and time zones.<br> Professional payroll certifications (e.g., CIPP, CPP, GPA) or regional payroll<br>accreditation.<br> Comfort working in a fast-paced environment</p>
+<p class="gmail-p1"><strong>Manager, EMEA and APAC Payroll – India (Bengaluru) / Portugal (Lisbon)</strong></p>
+<p class="gmail-p2"><strong>Location:</strong>&nbsp;Bengaluru, India or Lisbon, Portugal<br><strong>Team:</strong>&nbsp;Finance – Global Payroll<br><strong>Reports to:</strong>&nbsp;Senior Manager, Global Payroll</p>
+<p class="gmail-p2">At&nbsp;<strong>Cloudflare</strong>, we’re committed to delivering seamless and accurate payroll experience to our global workforce. We’re looking for an experienced Payroll Manager to lead payroll operations across our EMEA and APAC regions. In this role, you’ll oversee multi-country payrolls, manage vendor relationships, ensure compliance with local regulations, and deliver a seamless payroll experience for our employees. You’ll also play a key part in scaling processes, driving automation, and supporting our global growth.</p>
+<p class="gmail-p1"><strong>What You’ll Do</strong></p>
+<p class="gmail-p4"><strong>Lead Payroll Operations</strong>: Oversee end-to-end payroll processing across multiple EMEA and APAC countries.</p>
+<p class="gmail-p4"><strong>Vendor and Compliance Management</strong>: Partner with payroll vendors to ensure accuracy, timeliness, and compliance. Review and approve payroll outputs, reconciliations, and funding. Stay on top of legislative changes and ensure payroll compliance in each country.</p>
+<p class="gmail-p4"><strong>Strategic &amp; Cross-Functional Collaboration</strong>: Lead the Payroll transformation work for APAC and EMEA countries. Collaborate with HR, Accounting, Equity, and Benefits teams on cross-functional processes. Support new country launches, acquisitions, and system implementations.</p>
+<p class="gmail-p4"><strong>Team &amp; Process Improvement</strong>: Manage employee payroll queries and act as a regional point of escalation. Identify opportunities to streamline, standardize, and automate payroll processes</p>
+<p class="gmail-p1"><strong>What We’re Looking For</strong></p>
+<ul class="gmail-ul1">
+	<li class="gmail-li1"><strong>8+ years</strong>&nbsp;of payroll experience, with strong exposure to both EMEA and APAC regions.</li>
+	<li class="gmail-li1">Proven experience managing multi-country payrolls and external vendors.</li>
+	<li class="gmail-li1">Solid understanding of regional payroll regulations and compliance requirements.</li>
+	<li class="gmail-li1">Strong problem-solving and analytical skills, with attention to detail.</li>
+	<li class="gmail-li1">Excellent communication and collaboration skills across geographies and functions.</li>
+	<li class="gmail-li1">Experience with global HRIS and payroll platforms (e.g., Workday, ADP Celergo) is a plus.</li>
+</ul>
+<p class="gmail-p2"><strong>Preferred Qualifications</strong></p>
+<ul class="gmail-ul1">
+	<li class="gmail-li1">Experience leading payroll operations in a high-growth, multinational company.</li>
+	<li class="gmail-li1">Familiarity with SOX/internal controls, audits, and compliance frameworks.</li>
+	<li class="gmail-li1">Track record of implementing payroll process improvements and automation.</li>
+	<li class="gmail-li1">Ability to manage projects across multiple countries and time zones.</li>
+	<li class="gmail-li1">Professional payroll certifications (e.g., CIPP, CPP, GPA) or regional payroll accreditation.</li>
+	<li class="gmail-li1">Comfort working in a fast-paced environment with shifting priorities.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
