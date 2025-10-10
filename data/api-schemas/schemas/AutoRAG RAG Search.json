@@ -128,7 +128,7 @@
 								]
 							},
 							"max_num_results": {
-								"default": 50,
+								"default": 10,
 								"maximum": 50,
 								"minimum": 1,
 								"type": "integer"
@@ -187,6 +187,31 @@
 										"maximum": 1,
 										"minimum": 0,
 										"type": "number"
+									}
+								},
+								"type": "object"
+							},
+							"reranking": {
+								"properties": {
+									"enabled": {
+										"default": false,
+										"type": "boolean"
+									},
+									"model": {
+										"anyOf": [
+											{
+												"enum": [
+													"@cf/baai/bge-reranker-base"
+												],
+												"type": "string"
+											},
+											{
+												"enum": [
+													""
+												],
+												"type": "string"
+											}
+										]
 									}
 								},
 								"type": "object"
@@ -513,6 +538,31 @@
 										"maximum": 1,
 										"minimum": 0,
 										"type": "number"
+									}
+								},
+								"type": "object"
+							},
+							"reranking": {
+								"properties": {
+									"enabled": {
+										"default": false,
+										"type": "boolean"
+									},
+									"model": {
+										"anyOf": [
+											{
+												"enum": [
+													"@cf/baai/bge-reranker-base"
+												],
+												"type": "string"
+											},
+											{
+												"enum": [
+													""
+												],
+												"type": "string"
+											}
+										]
 									}
 								},
 								"type": "object"
