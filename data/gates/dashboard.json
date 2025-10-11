@@ -484,12 +484,6 @@
 	"control-plane-large-orgs-memberships": {
 		"enabled": true
 	},
-	"control-plane-large-orgs-mobility": {
-		"enabled": false
-	},
-	"control-plane-large-orgs-navigation-improvements": {
-		"enabled": true
-	},
 	"control-plane-large-orgs-v1": {
 		"enabled": false
 	},
@@ -710,6 +704,9 @@
 	},
 	"dev-dash-do-studio": {
 		"enabled": true
+	},
+	"dev-dash-gray-background": {
+		"enabled": false
 	},
 	"dev-dash-hyperdrive-create": {
 		"enabled": true
@@ -1104,6 +1101,9 @@
 	"fractus-sessions-page": {
 		"enabled": true
 	},
+	"fractus-stratus-in-stratus": {
+		"enabled": false
+	},
 	"full-page-worker-creation": {
 		"enabled": true
 	},
@@ -1129,6 +1129,9 @@
 		"enabled": false
 	},
 	"google-one-tap-prompt-zero-trust-pages": {
+		"enabled": false
+	},
+	"grey-color-test-incident": {
 		"enabled": false
 	},
 	"gurjinder-feature-test": {
@@ -1807,7 +1810,7 @@
 		]
 	},
 	"r2-data-catalog-standalone-ui": {
-		"enabled": false
+		"enabled": true
 	},
 	"r2-onboarding-flow": {
 		"enabled": true,
