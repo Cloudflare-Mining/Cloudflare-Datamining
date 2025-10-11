@@ -6650,13 +6650,6 @@ type AiOptions = {
   prefix?: string;
   extraHeaders?: object;
 };
-type ConversionResponse = {
-  name: string;
-  mimeType: string;
-  format: "markdown";
-  tokens: number;
-  data: string;
-};
 type AiModelsSearchParams = {
   author?: string;
   hide_experimental?: boolean;
@@ -6713,6 +6706,7 @@ declare abstract class Ai<AiModelList extends AiModelListType = AiModels> {
         : AiModelList[Name]["postProcessedOutputs"]
   >;
   models(params?: AiModelsSearchParams): Promise<AiModelsSearchObject[]>;
+  toMarkdown(): ToMarkdownService;
   toMarkdown(
     files: {
       name: string;
@@ -8932,6 +8926,47 @@ declare module "cloudflare:sockets" {
     options?: SocketOptions,
   ): Socket;
   export { _connect as connect };
+}
+type ConversionResponse = {
+  name: string;
+  mimeType: string;
+} & (
+  | {
+      format: "markdown";
+      tokens: number;
+      data: string;
+    }
+  | {
+      format: "error";
+      error: string;
+    }
+);
+type SupportedFileFormat = {
+  mimeType: string;
+  extension: string;
+};
+declare abstract class ToMarkdownService {
+  transform(
+    files: {
+      name: string;
+      blob: Blob;
+    }[],
+    options?: {
+      gateway?: GatewayOptions;
+      extraHeaders?: object;
+    },
+  ): Promise<ConversionResponse[]>;
+  transform(
+    files: {
+      name: string;
+      blob: Blob;
+    },
+    options?: {
+      gateway?: GatewayOptions;
+      extraHeaders?: object;
+    },
+  ): Promise<ConversionResponse>;
+  supported(): Promise<SupportedFileFormat[]>;
 }
 declare namespace TailStream {
   interface Header {
