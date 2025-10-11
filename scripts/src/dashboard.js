@@ -233,7 +233,7 @@ async function writeFile(file, data, rootDir) {
 async function processInlineTranslation(file, code) {
 	const ast = parseLoose(code, {
 		sourceType: 'script',
-		ecmaVersion: 2020,
+		ecmaVersion: 2025,
 	});
 
 	let filename;
@@ -410,7 +410,7 @@ async function writeMeta(files, translations) {
 		try {
 			const ast = parseLoose(files[file], {
 				sourceType: 'script',
-				ecmaVersion: 2020,
+				ecmaVersion: 2025,
 			});
 			full(ast, (node) => {
 				if (node.type === 'StringLiteral' || node.type === 'Literal') {
@@ -504,7 +504,7 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 		}
 		const ast = parse(chunk.code, {
 			sourceType: 'script',
-			ecmaVersion: 2020,
+			ecmaVersion: 2025,
 		});
 		const recursiveImports = []; // sometimes things are imported recursively
 		// find webpack chunks
@@ -870,7 +870,7 @@ async function run() {
 	if (wantedChunks.navigation) {
 		const ast = parse(wantedChunks.navigation.code, {
 			sourceType: 'script',
-			ecmaVersion: 2020,
+			ecmaVersion: 2025,
 		});
 		full(ast, (node) => {
 			if (node.type === 'ObjectExpression') {
@@ -887,7 +887,7 @@ async function run() {
 			try {
 				const rawNavigationAST = parse(`const navigation = ${rawNavigation}`, {
 					sourceType: 'script',
-					ecmaVersion: 2020,
+					ecmaVersion: 2025,
 				});
 				// clean up references to other vals
 				// this will lose a bit of data, but we'll still get most of it
@@ -946,7 +946,7 @@ async function run() {
 	let dashInfo = null;
 	const ast = parse(wantedChunks.dashboard.code, {
 		sourceType: 'script',
-		ecmaVersion: 2020,
+		ecmaVersion: 2025,
 	});
 	full(ast, (node) => {
 		if (node.type === 'ObjectExpression') {

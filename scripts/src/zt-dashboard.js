@@ -273,7 +273,7 @@ async function generateDashboardStructure(wantedChunks, translations) {
 		try {
 			const ast = parseLoose(chunk.code, {
 				sourceType: 'script',
-				ecmaVersion: 2022,
+				ecmaVersion: 2025,
 			});
 			full(ast, (node) => {
 				if (node.type === 'StringLiteral' || node.type === 'Literal') {
@@ -372,7 +372,7 @@ async function run() {
 	if (wantedChunks.navigation) {
 		const ast = parse(wantedChunks.navigation.code, {
 			sourceType: 'script',
-			ecmaVersion: 2022,
+			ecmaVersion: 2025,
 		});
 		full(ast, (node) => {
 			if (node.type === 'ObjectExpression') {

@@ -30,7 +30,7 @@ async function run() {
 
 	// ast parser
 	const ast = parse(js, {
-		ecmaVersion: 2020,
+		ecmaVersion: 2025,
 		sourceType: 'module',
 	});
 	await fs.writeFile(path.resolve(dir, 'beacon.ast.json'), JSON.stringify(ast, null, 4));
