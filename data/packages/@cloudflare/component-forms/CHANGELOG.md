@@ -1,5 +1,15 @@
 # Change Log
 
+## 7.0.24
+
+### Patch Changes
+
+- Updated dependencies [600bf6a8fb]
+  - @cloudflare/component-button@9.2.2
+  - @cloudflare/component-time-period-picker@7.2.18
+  - @cloudflare/util-responsive@4.0.20
+  - @cloudflare/component-grid@4.0.20
+
 ## 7.0.23
 
 ### Patch Changes

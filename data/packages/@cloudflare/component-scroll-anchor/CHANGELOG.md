@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.5
+
+### Patch Changes
+
+- 600bf6a8fb: Fix incorrect types
+
 ## 2.0.4
 
 ### Patch Changes

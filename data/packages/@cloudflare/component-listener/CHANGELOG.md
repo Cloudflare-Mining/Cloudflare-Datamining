@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.20
+
+### Patch Changes
+
+- 600bf6a8fb: Fix incorrect types
+
 ## 5.0.19
 
 ### Patch Changes

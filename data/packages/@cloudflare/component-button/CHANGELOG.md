@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.2.2
+
+### Patch Changes
+
+- 600bf6a8fb: Fix incorrect types
+
 ## 9.2.1
 
 ### Patch Changes
