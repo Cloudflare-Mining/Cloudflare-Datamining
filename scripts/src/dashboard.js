@@ -159,7 +159,16 @@ async function getChunks() {
 		return;
 	}
 
-	const chunksObj = JSON.parse(chunkMatch[0]);
+	let chunksObj = {};
+	try {
+		chunksObj = JSON.parse(chunkMatch[0]);
+	} catch (err) {
+		console.warn('Failed to parse chunk list', err);
+		console.log('Trying to eval');
+		// try to eval it
+		// eslint-disable-next-line no-eval
+		chunksObj = eval('(function(){return ' + chunkMatch[0] + '})()');
+	}
 
 	return Object.values(chunksObj);
 }
