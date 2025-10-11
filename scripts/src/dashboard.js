@@ -26,7 +26,7 @@ const allVersions = await fs.readJson(path.resolve('../data/dashboard/versions.j
 
 const appScript = /((cf-)?app\.[\da-z]+\.js)/;
 const chunkIds = /(?:\w+\.\w+\((\d+)\)(?:, )?)/g;
-const chunks = /{(?:"\d+":"[\da-f]+",)+"\d+":"[\da-f]+"}/;
+const chunks = /{(?:"?[\de]+"?:"[\da-f]+",)+"?[\de]+"?:"[\da-f]+"}/;
 const dashVersion = /dashVersion: ?"([\da-f]+)",/;
 const likelyFiles = /\.(png|ico|svg)$/; // static assets that we want to extract properly
 const translationsSnippet = 'dash/intl/intl-translations/src/locale/en-US/';
