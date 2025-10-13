@@ -3012,7 +3012,12 @@
 							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
-							"contentfulAsset": null,
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4358EGlMsi1a2PXwYMIJxK/2895d7c88a0c9b951365dcd0f1a9e30c/BDES-7216_4x.png"
+								},
+								"description": ""
+							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
@@ -3217,6 +3222,114 @@
 						],
 						"sectionPadding": null,
 						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "6R7H2QnRrWax5OH4GDTIRr",
+						"title": "Resources",
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3ImeSV7KjNH9FJePlLSwIv",
+								"heading": "Blog",
+								"description": "Understand how Cloudflare's short-lived SSH certificates help bring zero trust principles to infrastructure.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6BtHTeVjUIjjFOJNDqOTwD",
+									"elementName": "Short-lived SSH access - link",
+									"standardText": null,
+									"text": "Read blog",
+									"url": "https://blog.cloudflare.com/intro-access-for-infrastructure-ssh/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
+									"altText": "Blog  thumbnail",
+									"title": "Blog  thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5Lcc76ZbSWYVA7MS5Eg0Bb",
+								"heading": "Blog",
+								"description": "Learn about Cloudflare's high-performance RDP proxy that provides clientless infrastructure access for unmanaged devices.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "71x3AkR48Yy5jHFchuLlDp",
+									"elementName": "Browser-based RDP access - link",
+									"standardText": null,
+									"text": "Read blog",
+									"url": "https://blog.cloudflare.com/browser-based-rdp/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
+									"altText": "Blog  thumbnail",
+									"title": "Blog  thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3Ns3onNGNAfhwdmF8XEExJ",
+								"heading": "Documentation",
+								"description": "See how to configure target resources (like SSH or RDP servers), access policies, command logging, and more.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "71jPUe4xoPpBd8KaVa6TV7",
+									"elementName": "How Access for Infrastructure works - link",
+									"standardText": null,
+									"text": "Read technical docs",
+									"url": "https://developers.cloudflare.com/cloudflare-one/applications/non-http/infrastructure-apps/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "4a1979f7-613d-5fb4-af4a-ac4fcb3c6e0e",
+									"altText": "Insight documentation illustration",
+									"title": "Insight documentation illustration",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Di6utb8PafW6HQim4yQH2/16d2c83d1220f12af1fb3db701d678dd/Insight_106x182__4_.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeHtml",
