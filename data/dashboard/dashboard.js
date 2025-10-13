@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "4c89e8a5-42d1-574c-8cc7-347deab9fdda")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "8560a4c9-c6e4-55cb-8cb9-5d55931e4281")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -902,10 +902,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "7af628f463d6bba8c542da122cecc8440af5ce6e",
-							dashVersion: "36554585",
+							commit: "f7d179667f9acf1a3836c1bfd083ea062603e4e6",
+							dashVersion: "36560641",
 							env: "production",
-							builtAt: 0x199ddd35f93,
+							builtAt: 0x199de8cda6d,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								node: "20.10.0",
@@ -43213,73 +43213,70 @@ export default {
 			"use strict";
 			n.d(t, {
 				CW: function() {
-					return x
+					return S
 				},
 				EI: function() {
-					return N
+					return R
 				},
 				EZ: function() {
-					return T
+					return C
 				},
 				GU: function() {
 					return f
 				},
 				HY: function() {
-					return I
+					return O
 				},
 				Hv: function() {
-					return C
+					return x
 				},
 				Ip: function() {
-					return R
+					return j
 				},
 				JM: function() {
-					return y
+					return h
 				},
 				Lj: function() {
-					return E
+					return w
 				},
 				V9: function() {
-					return k
+					return I
 				},
 				Xo: function() {
 					return m
 				},
-				ZF: function() {
-					return g
-				},
 				Zf: function() {
-					return b
+					return g
 				},
 				bQ: function() {
 					return p
 				},
 				dd: function() {
-					return S
+					return E
 				},
 				eK: function() {
-					return D
+					return L
 				},
 				is: function() {
-					return O
+					return T
 				},
 				l4: function() {
-					return h
-				},
-				m8: function() {
-					return j
-				},
-				qF: function() {
-					return P
-				},
-				qg: function() {
-					return A
-				},
-				rK: function() {
 					return v
 				},
-				yV: function() {
+				m8: function() {
+					return A
+				},
+				qF: function() {
+					return N
+				},
+				qg: function() {
+					return k
+				},
+				rK: function() {
 					return _
+				},
+				yV: function() {
+					return b
 				}
 			});
 			var r, o, a, i, l, s, c = n("../../../../node_modules/@cloudflare/cf.util.patterns/index.js"),
@@ -43288,27 +43285,26 @@ export default {
 			let p = ["dns", "firewall", "general_settings", "ssl_tls", "bots", "casb", "page_shield", "access", "api_shield", "turnstile"],
 				m = "https://api.cloudflare.com/client/v4",
 				f = "https://developers.cloudflare.com/security-center/app-security-reports/",
-				g = "https://docs.google.com/forms/d/e/1FAIpQLSfRZtjPKTHzV72l7clsMY5j8dFJ1EI2S0LiqCiT7g5uobbqfw/viewform",
-				b = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,63}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi),
-				_ = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,63}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi),
-				v = new RegExp(/^(?:[1-9]\d{1,5})(?:\.(?:[1-9]\d{1,5}))?$/),
-				h = new RegExp(/^-?[0-9a-f]+$/),
-				y = ((r = {}).ASN = "asn", r.IPv4 = "ipv4", r.IPv6 = "ipv6", r.URL = "url", r.URL_BRAND = "url-brand-protection", r.DOMAIN = "domain", r.HASH = "hash", r),
-				w = ((o = {}).ASN = "asns", o.IP = "ips", o.URL = "urls", o.DOMAIN = "domains", o.HASHES = "hashes", o),
-				E = ((a = {}).ASN = "asn", a.HTML = "html", a.FAVICON = "favicon", a.SCREENSHOT = "screenshot", a),
-				S = [{
+				g = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,63}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi),
+				b = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,63}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi),
+				_ = new RegExp(/^(?:[1-9]\d{1,5})(?:\.(?:[1-9]\d{1,5}))?$/),
+				v = new RegExp(/^-?[0-9a-f]+$/),
+				h = ((r = {}).ASN = "asn", r.IPv4 = "ipv4", r.IPv6 = "ipv6", r.URL = "url", r.URL_BRAND = "url-brand-protection", r.DOMAIN = "domain", r.HASH = "hash", r),
+				y = ((o = {}).ASN = "asns", o.IP = "ips", o.URL = "urls", o.DOMAIN = "domains", o.HASHES = "hashes", o),
+				w = ((a = {}).ASN = "asn", a.HTML = "html", a.FAVICON = "favicon", a.SCREENSHOT = "screenshot", a),
+				E = [{
 					regex: c.ipv4,
-					label: y.IPv4
+					label: h.IPv4
 				}, {
 					regex: c.ipv6,
-					label: y.IPv6
+					label: h.IPv6
 				}],
-				x = {
+				S = {
 					page: 1,
 					perPage: 10,
 					totalCount: 0
 				},
-				C = {
+				x = {
 					brandUrlInfo: (0, u.BC)`/accounts/${"accountId"}/brand-protection/url-info?internal_use=t&url=${encodeURIComponent("url")}`,
 					brandUrlScan: (0, u.BC)`/accounts/${"accountId"}/brand-protection/submit?internal_use=t&url=${"url"}`,
 					checkUrlScanInfo: (0, u.BC)`/accounts/${"accountId"}/urlscanner/scan?url=${"url"}`,
@@ -43326,99 +43322,99 @@ export default {
 					accountBlocks: (0, u.BC)`/accounts/${"accountId"}/blocks`,
 					accountBlocksRequestReview: (0, u.BC)`/accounts/${"accountId"}/blocks/review/request`
 				},
-				T = ((i = {}).QUEUED = "Queued", i.IN_PROGRESS = "InProgress", i.IN_POST_PROCESSING = "InPostProcessing", i.FINISHED = "Finished", i.FAILED = "Failed", i),
-				O = {
-					[T.QUEUED]: {
+				C = ((i = {}).QUEUED = "Queued", i.IN_PROGRESS = "InProgress", i.IN_POST_PROCESSING = "InPostProcessing", i.FINISHED = "Finished", i.FAILED = "Failed", i),
+				T = {
+					[C.QUEUED]: {
 						color: "gray",
 						label: "url-scanner.status.queued",
 						value: 25
 					},
-					[T.IN_PROGRESS]: {
+					[C.IN_PROGRESS]: {
 						color: "blue",
 						label: "url-scanner.status.in-progress",
 						value: 50
 					},
-					[T.IN_POST_PROCESSING]: {
+					[C.IN_POST_PROCESSING]: {
 						color: "violet",
 						label: "url-scanner.status.post-processing",
 						value: 75
 					},
-					[T.FINISHED]: {
+					[C.FINISHED]: {
 						color: "green",
 						label: "url-scanner.status.finished",
 						value: 100
 					},
-					[T.FAILED]: {
+					[C.FAILED]: {
 						color: "red",
 						label: "url-scanner.status.failed",
 						value: 0
 					}
 				},
-				I = [d.Xl.Desktop, d.Xl.Tablet, d.Xl.Mobile],
-				k = ((l = {}).GOOD = "good", l.NEW = "new", l.DEPRECATED = "deprecated", l),
-				A = {
+				O = [d.Xl.Desktop, d.Xl.Tablet, d.Xl.Mobile],
+				I = ((l = {}).GOOD = "good", l.NEW = "new", l.DEPRECATED = "deprecated", l),
+				k = {
 					"strict-transport-security": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security",
-						support: k.GOOD
+						support: I.GOOD
 					},
 					"x-frame-options": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options",
-						support: k.GOOD
+						support: I.GOOD
 					},
 					"x-content-type-options": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options",
-						support: k.GOOD
+						support: I.GOOD
 					},
 					"content-security-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP",
-						support: k.GOOD
+						support: I.GOOD
 					},
 					"referrer-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy",
-						support: k.GOOD
+						support: I.GOOD
 					},
 					"clear-site-data": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Clear-Site-Data",
-						support: k.GOOD
+						support: I.GOOD
 					},
 					"x-permitted-cross-domain-policies": {
 						info: "https://owasp.org/www-project-secure-headers/index.html#div-headers_x-permitted-cross-domain-policies",
-						support: k.GOOD
+						support: I.GOOD
 					},
 					"permissions-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy",
-						support: k.NEW
+						support: I.NEW
 					},
 					"cross-origin-embedder-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy",
-						support: k.NEW
+						support: I.NEW
 					},
 					"cross-origin-opener-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy",
-						support: k.NEW
+						support: I.NEW
 					},
 					"cross-origin-resource-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy",
-						support: k.NEW
+						support: I.NEW
 					},
 					"x-xss-protection": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection",
-						support: k.DEPRECATED
+						support: I.DEPRECATED
 					},
 					"feature-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy",
-						support: k.DEPRECATED
+						support: I.DEPRECATED
 					},
 					"expect-ct": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT",
-						support: k.DEPRECATED
+						support: I.DEPRECATED
 					},
 					"public-key-pins": {
 						info: "https://owasp.org/www-project-secure-headers/index.html#div-headers_public-key-pins",
-						support: k.DEPRECATED
+						support: I.DEPRECATED
 					}
 				},
-				j = {
+				A = {
 					csp: {
 						name: "url-scanner.security.violations.csp",
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP"
@@ -43432,34 +43428,34 @@ export default {
 						info: "https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity"
 					}
 				},
+				j = {
+					[y.ASN]: "url-scanner.indicators.table.asn",
+					[y.URL]: "url-scanner.indicators.table.urls",
+					[y.IP]: "url-scanner.indicators.table.ips",
+					[y.DOMAIN]: "url-scanner.indicators.table.domains",
+					[y.HASHES]: "url-scanner.indicators.table.hashes"
+				},
 				R = {
-					[w.ASN]: "url-scanner.indicators.table.asn",
-					[w.URL]: "url-scanner.indicators.table.urls",
-					[w.IP]: "url-scanner.indicators.table.ips",
-					[w.DOMAIN]: "url-scanner.indicators.table.domains",
-					[w.HASHES]: "url-scanner.indicators.table.hashes"
+					[w.ASN]: "url-scanner.related_scans.table.asn",
+					[w.HTML]: "url-scanner.related_scans.table.html",
+					[w.FAVICON]: "url-scanner.related_scans.table.favicon",
+					[w.SCREENSHOT]: "url-scanner.related_scans.table.screenshot"
 				},
 				N = {
-					[E.ASN]: "url-scanner.related_scans.table.asn",
-					[E.HTML]: "url-scanner.related_scans.table.html",
-					[E.FAVICON]: "url-scanner.related_scans.table.favicon",
-					[E.SCREENSHOT]: "url-scanner.related_scans.table.screenshot"
-				},
-				P = {
 					INVESTIGATE_TAB: "investigate-link",
 					INVESTIGATE_RECENT_TAB: "investigate-link-recent"
 				},
-				L = ((s = {}).CANCELED = "canceled", s.INCOMPLETE = "incomplete", s.COMPLETED = "completed", s),
-				D = {
-					[L.CANCELED]: {
+				P = ((s = {}).CANCELED = "canceled", s.INCOMPLETE = "incomplete", s.COMPLETED = "completed", s),
+				L = {
+					[P.CANCELED]: {
 						color: "red",
 						label: "url-scanner.downloads.status.canceled"
 					},
-					[L.INCOMPLETE]: {
+					[P.INCOMPLETE]: {
 						color: "orange",
 						label: "url-scanner.downloads.status.incomplete"
 					},
-					[L.COMPLETED]: {
+					[P.COMPLETED]: {
 						color: "green",
 						label: "url-scanner.downloads.status.completed"
 					}
@@ -43478,16 +43474,19 @@ export default {
 					return u
 				},
 				JH: function() {
-					return p
+					return m
+				},
+				Ky: function() {
+					return d
 				},
 				Mg: function() {
-					return f
+					return g
 				},
 				U3: function() {
 					return l
 				},
 				XE: function() {
-					return _
+					return v
 				},
 				az: function() {
 					return s
@@ -43496,19 +43495,22 @@ export default {
 					return i
 				},
 				d0: function() {
-					return d
+					return p
+				},
+				et: function() {
+					return y
 				},
 				n_: function() {
-					return v
+					return h
 				},
 				sd: function() {
-					return m
+					return f
 				},
 				sp: function() {
-					return g
+					return b
 				},
 				yM: function() {
-					return b
+					return _
 				}
 			});
 			var r = n("../../../../node_modules/@cloudflare/util-routes/es/index.js");
@@ -43520,16 +43522,25 @@ export default {
 				s = (0, r.BC)`/${"accountId"}/security-center/inventory`,
 				c = (0, r.BC)`/${"accountId"}/security-center/investigate`,
 				u = (0, r.BC)`/${"accountId"}/security-center/reports`,
-				d = (0, r.BC)`/${"accountId"}/security-center/brand-protection`,
-				p = (0, r.BC)`/${"accountId"}/security-center/brands/pattern/${"queryId"}`,
-				m = (0, r.BC)`/${"accountId"}/security-center/brand-protection/logos`,
-				f = (0, r.BC)`/${"accountId"}/security-center/brand-protection/logos/create`,
-				g = (0, r.BC)`/${"accountId"}/security-center/brand-protection/logos/${"logoId"}`,
-				b = (0, r.BC)`/${"accountId"}/security-center/miscategorizations`;
+				d = (0, r.BC)`/${"accountId"}/security-center/reports/legacy-reports`,
+				p = (0, r.BC)`/${"accountId"}/security-center/brand-protection`,
+				m = (0, r.BC)`/${"accountId"}/security-center/brands/pattern/${"queryId"}`,
+				f = (0, r.BC)`/${"accountId"}/security-center/brand-protection/logos`,
+				g = (0, r.BC)`/${"accountId"}/security-center/brand-protection/logos/create`,
+				b = (0, r.BC)`/${"accountId"}/security-center/brand-protection/logos/${"logoId"}`,
+				_ = (0, r.BC)`/${"accountId"}/security-center/miscategorizations`;
 			(0, r.BC)`/${"accountId"}/security-center/investigate/recently-scanned`, (0, r.BC)`/${"accountId"}/security-center/investigate/threat-feeds`;
-			let _ = (0, r.BC)`/${"accountId"}/security-center/threat-intelligence`,
-				v = (0, r.BC)`/${"accountId"}/security-center/threat-intelligence/emergency-incident`;
-			o.qF.INVESTIGATE_TAB, o.qF.INVESTIGATE_RECENT_TAB
+			let v = (0, r.BC)`/${"accountId"}/security-center/threat-intelligence`,
+				h = (0, r.BC)`/${"accountId"}/security-center/threat-intelligence/emergency-incident`;
+			o.qF.INVESTIGATE_TAB, o.qF.INVESTIGATE_RECENT_TAB;
+			let y = [{
+				title: "security_center.app_sec_report.reports",
+				url: "/",
+				labels: ["beta"]
+			}, {
+				title: "security_center.app_sec_report.legacy_reports",
+				url: "/legacy-reports"
+			}]
 		},
 		"../react/pages/security-center/tracking.ts": function(e, t, n) {
 			"use strict";
@@ -72687,4 +72698,4 @@ SOFTWARE.`,
 		}
 	}
 ]);
-//# debugId=4c89e8a5-42d1-574c-8cc7-347deab9fdda
+//# debugId=8560a4c9-c6e4-55cb-8cb9-5d55931e4281
