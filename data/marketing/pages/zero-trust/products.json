@@ -2657,7 +2657,7 @@
 					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
-						"menuTitle": "SSE & SASE",
+						"menuTitle": "SASE & workspace security",
 						"mobileOnlyMenuTitle": null,
 						"stickyNav": true,
 						"htmlId": null,
@@ -2769,11 +2769,11 @@
 					{
 						"contentfulId": "1o8tSpeCHewPlTAF9qnUaz",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare's SSE & SASE services",
+						"title": "SASE and workspace security services",
 						"titleSize": null,
-						"subtitle": "Zero Trust networking delivered from unified, cloud-native platform of security and connectivity services",
+						"subtitle": "Simple, secure access delivered from a unified, cloud-native platform of security and connectivity services",
 						"subtitleSize": null,
-						"copy": "Cloudflare products can help you secure corporate applications and web browsing, protect against email attacks, embrace cloud-based networking, and more.\n",
+						"copy": "Cloudflare products can help you secure internal  access and web browsing, protect against phishing threats, govern workforce usage of AI tools, simplify your corporate network, and more.\n",
 						"buttonColor": "blue",
 						"buttonColor2": null,
 						"buttonText1": "10-step guide to SASE",
@@ -2807,7 +2807,7 @@
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "show",
 						"backgroundColor": "white",
-						"textlayoutMode": null,
+						"textlayoutMode": "left medium",
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
@@ -2882,7 +2882,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Enforce default-deny, Zero Trust rules for users accessing all your applications, faster and safer than a VPN.",
+													"value": "Provide granular, least privilege access to internal applications, infrastructure, and AI agents.",
 													"marks": [],
 													"content": null
 												}
@@ -3077,7 +3077,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Easily secure SaaS tools, granularly control user access, and protect sensitive data.",
+													"value": "Scan SaaS apps and cloud environments for security risks, then take action on posture findings.",
 													"marks": [],
 													"content": null
 												}
@@ -3207,7 +3207,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Inspect HTTP/S traffic for sensitive data like PII and prevent exfiltration with allow or block policies.",
+													"value": "Inspect web, SaaS, email, and cloud traffic for sensitive data, like PII and IP, and enforce security policies to prevent data leaks.",
 													"marks": [],
 													"content": null
 												}
@@ -3272,7 +3272,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Connect and secure your branch offices, headquarters, data centers, cloud VPCs and SD-WANs using the Cloudflare network.",
+													"value": "Connect your branch offices, retail sites, cloud VPCs, and data centers with a simpler network architecture.",
 													"marks": [],
 													"content": null
 												}
@@ -3402,7 +3402,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Observability and forensics for Cloudflare logs.",
+													"value": "Unify observability and forensics for Cloudflare logs across both SASE and application services.",
 													"marks": [],
 													"content": null
 												}
@@ -3432,7 +3432,7 @@
 					},
 					{
 						"contentfulId": "MrjkZskJTBC8BaLHW8p2b",
-						"title": "Cloudflare's connectivity cloud simplifies hybrid work security",
+						"title": "Cloudflare's connectivity cloud simplifies SASE and workspace security",
 						"copy": "Our composable platform and network make it easier to secure any connection, so users on any device in any location can stay safe and productive using the Internet, applications, and infrastructure.",
 						"toggleText": null,
 						"button": [],
@@ -3495,11 +3495,83 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4QLbTrIRbwhDIOaqPzLyJt",
-								"title": "Composable architecture",
+								"title": "Simpler implementation",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Address a full range of security and networking requirements by capitalizing on extensive interoperability and customizable services.",
+								"description": "Add new apps and users quickly with unified management, flexible on-ramps, and intuitive automation through API and Terraform.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
+									"altText": "Ease of use blue",
+									"title": "Ease of use blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/447d1f23d1b8ac77e61e2819465f58fe/ease-of-use-toggle.svg"
+										},
+										"description": "Ease of use orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4A6yJKVKTTHbKxJgKFJvCw",
+								"title": "End user experience",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Deliver consistent, low-latency performance everywhere, with security services designed to run in all Cloudflare data centers.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+										},
+										"description": "Performance acceleration rocket orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "56Av3YwuW0cTJQjctBoJtH",
+								"title": "Agile architecture",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Enhance your SASE implementation more efficiently with one control plane and composable, cloud-native services that you can deploy in any order.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3530,84 +3602,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4A6yJKVKTTHbKxJgKFJvCw",
-								"title": "Performance",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Provide superior user experiences with a resilient global network that is approximately 50 ms from ~95% of Internet users.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "4fd99cc4-cde1-5f4e-8b21-4ec5e6a05307",
-									"altText": "Lightning bolt icon",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
-										},
-										"description": "Lightning bolt icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "56Av3YwuW0cTJQjctBoJtH",
-								"title": "Intelligence",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "We proxy ~20% of the web and block %{ThreatsBlockedPerDay} billion daily threats, helping you route traffic efficiently and catch more attacks.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ff31bfda-5ac0-5e67-bf9e-bd602f3d81ce",
-									"altText": "Innovation intelligence blue",
-									"title": "Innovation intelligence blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10Jn71GCDQVevOJja3TfLO/c87ebb5a5125cfeafaeec3473c091da4/innovation-intelligence.svg"
-										},
-										"description": "Thought bubble icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "3hdgMwHsTQFFIX7mgSDOrT",
-								"title": "One platform, one network",
+								"title": "Converged protection",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Consolidate secure access service edge (SASE) / Zero Trust capabilities on Cloudflare's unified platform and control plane for better total cost of ownership.",
+								"description": "Consolidate existing point solutions for public and private traffic, and accelerate your efforts to modernize security and networking.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
