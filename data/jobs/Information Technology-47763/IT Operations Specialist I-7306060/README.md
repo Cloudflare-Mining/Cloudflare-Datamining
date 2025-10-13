@@ -5,31 +5,51 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Job Locations: Mexico City, MX</strong></h4>
-<h4><strong>To the attention of candidates (Mexico City):&nbsp;</strong></h4>
-<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Sun-Thursday” or “Tues-Sat” 5-day working week schedule. &nbsp;Candidates MUST have right-to-work in Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
-<p><strong>About the Department</strong><br>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<p><strong>What You’ll do</strong><br>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work directly with our customers and cross-functionally to solve a variety of technical issues. This is a position where you will learn the inner workings of Cloudflare's products and gain a deeper understanding of internet technologies.</p>
-<p><strong>Skills, Knowledge, And Experience</strong></p>
+<p><strong>About the Role</strong></p>
+<p>As an <strong>IT Operations Specialist I (P2)</strong>, you will provide essential onsite IT support to employees and assist with daily IT operations at our corporate office. This role is fully onsite at our Bengaluru Office, 5 days a week, and ensures that employees have a smooth and reliable technology experience. You will help maintain IT systems, support conference room technology, and provide hands-on assistance for devices and user requests.</p>
+<p>This role reports to the <strong>IT Operations Manager</strong> and works closely with the IT Service Desk, IT Operations Support team, and the Places &amp; Office team.</p>
+<p><strong>Responsibilities</strong></p>
+<p><strong>Onsite IT Operations &amp; Office Support</strong></p>
 <ul>
-	<li>Experience: 2+ years of experience in a Technical Support role, Web Developer Support, or a similar position, with a proven track record of resolving diverse technical issues or&nbsp;foundational experience gained through a relevant degree and projects, internships, or academic coursework that demonstrates strong technical aptitude and problem-solving skills.</li>
-	<li>Community Engagement: Active participation in web development communities, with a demonstrated commitment to staying current with industry trends and sharing knowledge with peers.</li>
-	<li>Internet Fundamentals: Fundamental understanding of how the Internet works (OSI Model), with knowledge of Cloudflare's products that impact Layers 3, 4, and 7.</li>
-	<li>Technical Proficiency: Skilled in analyzing and troubleshooting DNS, SSL/TLS, HTTP, and optimizing website performance.</li>
-	<li>Tooling Expertise: Proficient in command line interfaces and experienced with tools such as browser developer tools, cURL, Git/Wrangler/npm, Postman, TCPDump/Wireshark, SSH, OpenSSL, and similar utilities.</li>
-	<li>Video Technology: Experienced with video encoding and streaming solutions, understanding the associated technical challenges.</li>
-	<li>Scripting Skills: Competent in writing scripts in Bash, Python, JavaScript, or other scripting languages.</li>
-	<li>Customer-Centric Communication: Comfortable communicating through various support channels, with a strong commitment to putting the customer first in every interaction.</li>
+	<ul>
+		<li>Act as the onsite IT support resource, responding to employee requests and incidents.</li>
+		<li>Ensure conference rooms, IT systems, and shared office equipment are functioning properly.</li>
+		<li>Assist with IT asset management, including device provisioning, check-in/check-out, and tracking.</li>
+		<li>Partner with IT and Security teams to follow access control and compliance policies.</li>
+	</ul>
 </ul>
-<p><strong>Bonus<br></strong></p>
+<p><strong>Conference Room &amp; Event Support</strong></p>
 <ul>
-	<li>You have a site actively using our platform</li>
-	<li>You are familiar with any of the following Cloudflare products: Cloudflare Workers, Stream, Pages, R2</li>
+	<ul>
+		<li>Provide setup and basic troubleshooting for conference room AV technology and video conferencing platforms (Zoom, Google Meet).</li>
+		<li>Assist with small to mid-sized corporate meetings and events, including setup and technical support.</li>
+		<li>Escalate complex AV or event issues to senior specialists or vendors as needed.</li>
+	</ul>
 </ul>
-<p><strong>Availability And Schedule Requirements<br></strong></p>
+<p><strong>Employee IT Support</strong></p>
 <ul>
-	<li>Flexibility to work varying work schedules including; <strong>Pacific time</strong>, holidays, weekends, more than 5 days in a row, or additional hours</li>
-	<li>Ability to work on-site as needed out of one of our US based offices</li>
+	<ul>
+		<li>Provide in-person support for hardware, software, and network connectivity issues.</li>
+		<li>Help employees with device setup, account access, and secure remote connectivity.</li>
+		<li>Deliver professional, customer-focused service when working with employees at all levels.</li>
+	</ul>
+</ul>
+<p><strong>Qualifications &amp; Skills</strong></p>
+<p><strong>Required:</strong></p>
+<ul>
+	<li>1–2 years of IT support or helpdesk experience in a corporate environment.</li>
+	<li>Strong troubleshooting skills for common hardware, software, and connectivity issues.</li>
+	<li>Familiarity with video conferencing platforms (Zoom, Google Meet).</li>
+	<li>Knowledge of IT asset management practices.</li>
+	<li>Excellent communication and customer service skills.</li>
+	<li>Associate’s degree in Information Technology, Computer Science, or related field (or equivalent experience).</li>
+</ul>
+<p><strong>Preferred:</strong></p>
+<ul>
+	<li>Experience with IT ticketing systems (e.g., Jira Service Management).</li>
+	<li>Familiarity with device management tools such as JAMF or Intune.</li>
+	<li>Basic understanding of IT security best practices.</li>
+	<li>Certifications such as CompTIA A+, ITIL 4 Foundation, or Microsoft 365 Fundamentals.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
