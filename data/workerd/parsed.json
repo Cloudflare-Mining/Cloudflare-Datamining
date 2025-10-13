@@ -3296,6 +3296,14 @@
 					"annotations": {
 						"compatEnableFlag": "enable_ctx_exports"
 					}
+				},
+				{
+					"name": "pythonExternalSDK",
+					"annotations": {
+						"compatDisableFlag": "disable_python_external_sdk",
+						"compatEnableFlag": "enable_python_external_sdk",
+						"experimental": "true"
+					}
 				}
 			]
 		},
