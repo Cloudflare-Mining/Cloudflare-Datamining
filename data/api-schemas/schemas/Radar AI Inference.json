@@ -703,7 +703,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AI Inference Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/methods/summary_v2/) instead."
 	},
 	"GET /radar/ai/inference/summary/task": {
 		"deprecated": true,
@@ -1029,7 +1030,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AI Inference Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/methods/summary_v2/) instead."
 	},
 	"GET /radar/ai/inference/timeseries_groups/{dimension}": {
 		"description": "Retrieves the distribution of unique accounts using Workers AI inference, grouped by the specified dimension over time.",
@@ -1844,7 +1846,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AI Inference Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/ai/inference/timeseries_groups/task": {
 		"deprecated": true,
@@ -2217,6 +2220,7 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AI Inference Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/methods/timeseries_groups_v2/) instead."
 	}
 }

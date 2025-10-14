@@ -862,7 +862,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/summary/dkim": {
 		"deprecated": true,
@@ -1281,7 +1282,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/summary/dmarc": {
 		"deprecated": true,
@@ -1700,7 +1702,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/summary/encrypted": {
 		"deprecated": true,
@@ -2113,7 +2116,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/summary/ip_version": {
 		"deprecated": true,
@@ -2526,7 +2530,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/summary/spf": {
 		"deprecated": true,
@@ -2945,7 +2950,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/{dimension}": {
 		"description": "Retrieves the distribution of email routing metrics grouped by dimension over time.",
@@ -3897,7 +3903,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/dkim": {
 		"deprecated": true,
@@ -4353,7 +4360,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/dmarc": {
 		"deprecated": true,
@@ -4809,7 +4817,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/encrypted": {
 		"deprecated": true,
@@ -5256,7 +5265,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/ip_version": {
 		"deprecated": true,
@@ -5703,7 +5713,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/spf": {
 		"deprecated": true,
@@ -6159,6 +6170,7 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	}
 }

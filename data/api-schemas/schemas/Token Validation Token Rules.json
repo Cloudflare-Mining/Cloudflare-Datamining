@@ -1,0 +1,3000 @@
+{
+	"DELETE /zones/{zone_id}/token_validation/rules/{rule_id}": {
+		"description": "Delete a zone token validation rule.",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-rules-delete",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a zone token validation rule",
+		"tags": [
+			"Token Validation Token Rules"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
+		]
+	},
+	"GET /zones/{zone_id}/token_validation/rules": {
+		"description": "List token validation rules",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-rules-list",
+		"parameters": [
+			{
+				"description": "Maximum number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Page number of paginated results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Select rules using any of these token configurations.",
+				"examples": {
+					"multipleIDs": {
+						"value": [
+							"f0963ed4-f3a1-4599-8a61-9e5658c865e0,3aad66bb-059d-4b3d-87e1-cdf4d406f412"
+						]
+					},
+					"multipleIDsExploded": {
+						"value": [
+							"f0963ed4-f3a1-4599-8a61-9e5658c865e0",
+							"3aad66bb-059d-4b3d-87e1-cdf4d406f412"
+						]
+					}
+				},
+				"in": "query",
+				"name": "token_configuration",
+				"schema": {
+					"items": {
+						"allOf": [
+							{
+								"minLength": 36,
+								"type": "string",
+								"x-auditable": true
+							},
+							{
+								"description": "UUID.",
+								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+								"maxLength": 36,
+								"type": "string",
+								"x-auditable": true
+							}
+						]
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action",
+				"schema": {
+					"description": "Action to take on requests that match operations included in `selector` and fail `expression`.",
+					"enum": [
+						"log",
+						"block"
+					],
+					"example": "log",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "enabled",
+				"schema": {
+					"description": "Toggle rule on or off.",
+					"example": true,
+					"type": "boolean",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Select rules with these IDs.",
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"allOf": [
+						{
+							"minLength": 36,
+							"type": "string",
+							"x-auditable": true
+						},
+						{
+							"description": "UUID.",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"type": "string",
+							"x-auditable": true
+						}
+					]
+				}
+			},
+			{
+				"description": "Select rules with these IDs.",
+				"in": "query",
+				"name": "rule_id",
+				"schema": {
+					"allOf": [
+						{
+							"minLength": 36,
+							"type": "string",
+							"x-auditable": true
+						},
+						{
+							"description": "UUID.",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"type": "string",
+							"x-auditable": true
+						}
+					]
+				}
+			},
+			{
+				"description": "Select rules with this host in `include`.",
+				"in": "query",
+				"name": "host",
+				"schema": {
+					"description": "RFC3986-compliant host.",
+					"example": "www.example.com",
+					"format": "hostname",
+					"maxLength": 255,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Select rules with this host in `include`.",
+				"in": "query",
+				"name": "hostname",
+				"schema": {
+					"description": "RFC3986-compliant host.",
+					"example": "www.example.com",
+					"format": "hostname",
+					"maxLength": 255,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "A Token Validation rule that can enforce security policies using JWT Tokens.",
+												"properties": {
+													"action": {
+														"description": "Action to take on requests that match operations included in `selector` and fail `expression`.",
+														"enum": [
+															"log",
+															"block"
+														],
+														"example": "log",
+														"type": "string",
+														"x-auditable": true
+													},
+													"created_at": {
+														"allOf": [
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															{
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															}
+														]
+													},
+													"description": {
+														"description": "A human-readable description that gives more details than `title`.",
+														"example": "Long description for Token Validation Rule",
+														"maxLength": 500,
+														"type": "string",
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Toggle rule on or off.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"expression": {
+														"description": "Rule expression. Requests that fail to match this expression will be subject to `action`.\n\nFor details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+														"example": "is_jwt_valid(\"52973293-cb04-4a97-8f55-e7d2ad1107dd\") or is_jwt_valid(\"46eab8d1-6376-45e3-968f-2c649d77d423\")",
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"allOf": [
+															{
+																"minLength": 36,
+																"type": "string",
+																"x-auditable": true
+															},
+															{
+																"description": "UUID.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"type": "string",
+																"x-auditable": true
+															}
+														]
+													},
+													"last_updated": {
+														"allOf": [
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															{
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															}
+														]
+													},
+													"modified_by": {
+														"example": "example-user@example.com",
+														"readOnly": true,
+														"type": "string"
+													},
+													"selector": {
+														"description": "Select operations covered by this rule.\n\nFor details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+														"properties": {
+															"exclude": {
+																"description": "Ignore operations that were otherwise included by `include`.",
+																"items": {
+																	"properties": {
+																		"operation_ids": {
+																			"description": "Excluded operation IDs.",
+																			"example": [
+																				"f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+																				"56828eae-035a-4396-ba07-51c66d680a04"
+																			],
+																			"items": {
+																				"allOf": [
+																					{
+																						"minLength": 36,
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					{
+																						"description": "UUID.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"maxLength": 36,
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				]
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"nullable": true,
+																"type": "array"
+															},
+															"include": {
+																"description": "Select all matching operations.",
+																"items": {
+																	"properties": {
+																		"host": {
+																			"description": "Included hostnames.",
+																			"example": [
+																				"v1.example.com",
+																				"v2.example.com"
+																			],
+																			"items": {
+																				"description": "RFC3986-compliant host.",
+																				"example": "www.example.com",
+																				"format": "hostname",
+																				"maxLength": 255,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"nullable": true,
+																"type": "array"
+															}
+														},
+														"type": "object"
+													},
+													"title": {
+														"description": "A human-readable name for the rule.",
+														"example": "Example Token Validation Rule",
+														"maxLength": 50,
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"title",
+													"description",
+													"action",
+													"enabled",
+													"expression",
+													"selector"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List token validation rules",
+		"tags": [
+			"Token Validation Token Rules"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
+		]
+	},
+	"GET /zones/{zone_id}/token_validation/rules/{rule_id}": {
+		"description": "Get a zone token validation rule.",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-rules-get",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A Token Validation rule that can enforce security policies using JWT Tokens.",
+											"properties": {
+												"action": {
+													"description": "Action to take on requests that match operations included in `selector` and fail `expression`.",
+													"enum": [
+														"log",
+														"block"
+													],
+													"example": "log",
+													"type": "string",
+													"x-auditable": true
+												},
+												"created_at": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"description": {
+													"description": "A human-readable description that gives more details than `title`.",
+													"example": "Long description for Token Validation Rule",
+													"maxLength": 500,
+													"type": "string",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Toggle rule on or off.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"expression": {
+													"description": "Rule expression. Requests that fail to match this expression will be subject to `action`.\n\nFor details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+													"example": "is_jwt_valid(\"52973293-cb04-4a97-8f55-e7d2ad1107dd\") or is_jwt_valid(\"46eab8d1-6376-45e3-968f-2c649d77d423\")",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"minLength": 36,
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"description": "UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"last_updated": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"modified_by": {
+													"example": "example-user@example.com",
+													"readOnly": true,
+													"type": "string"
+												},
+												"selector": {
+													"description": "Select operations covered by this rule.\n\nFor details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+													"properties": {
+														"exclude": {
+															"description": "Ignore operations that were otherwise included by `include`.",
+															"items": {
+																"properties": {
+																	"operation_ids": {
+																		"description": "Excluded operation IDs.",
+																		"example": [
+																			"f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+																			"56828eae-035a-4396-ba07-51c66d680a04"
+																		],
+																		"items": {
+																			"allOf": [
+																				{
+																					"minLength": 36,
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				{
+																					"description": "UUID.",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			]
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														},
+														"include": {
+															"description": "Select all matching operations.",
+															"items": {
+																"properties": {
+																	"host": {
+																		"description": "Included hostnames.",
+																		"example": [
+																			"v1.example.com",
+																			"v2.example.com"
+																		],
+																		"items": {
+																			"description": "RFC3986-compliant host.",
+																			"example": "www.example.com",
+																			"format": "hostname",
+																			"maxLength": 255,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"title": {
+													"description": "A human-readable name for the rule.",
+													"example": "Example Token Validation Rule",
+													"maxLength": 50,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"title",
+												"description",
+												"action",
+												"enabled",
+												"expression",
+												"selector"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a zone token validation rule",
+		"tags": [
+			"Token Validation Token Rules"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
+		]
+	},
+	"PATCH /zones/{zone_id}/token_validation/rules/{rule_id}": {
+		"description": "Edit a zone token validation rule.",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-rules-edit",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"action": {
+										"description": "Action to take on requests that match operations included in `selector` and fail `expression`.",
+										"enum": [
+											"log",
+											"block"
+										],
+										"example": "log",
+										"type": "string",
+										"x-auditable": true
+									},
+									"description": {
+										"description": "A human-readable description that gives more details than `title`.",
+										"example": "Long description for Token Validation Rule",
+										"maxLength": 500,
+										"type": "string",
+										"x-auditable": true
+									},
+									"enabled": {
+										"description": "Toggle rule on or off.",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"expression": {
+										"description": "Rule expression. Requests that fail to match this expression will be subject to `action`.\n\nFor details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+										"example": "is_jwt_valid(\"52973293-cb04-4a97-8f55-e7d2ad1107dd\") or is_jwt_valid(\"46eab8d1-6376-45e3-968f-2c649d77d423\")",
+										"type": "string",
+										"x-auditable": true
+									},
+									"selector": {
+										"description": "Select operations covered by this rule.\n\nFor details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+										"properties": {
+											"exclude": {
+												"description": "Ignore operations that were otherwise included by `include`.",
+												"items": {
+													"properties": {
+														"operation_ids": {
+															"description": "Excluded operation IDs.",
+															"example": [
+																"f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+																"56828eae-035a-4396-ba07-51c66d680a04"
+															],
+															"items": {
+																"allOf": [
+																	{
+																		"minLength": 36,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"description": "UUID.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																]
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"nullable": true,
+												"type": "array"
+											},
+											"include": {
+												"description": "Select all matching operations.",
+												"items": {
+													"properties": {
+														"host": {
+															"description": "Included hostnames.",
+															"example": [
+																"v1.example.com",
+																"v2.example.com"
+															],
+															"items": {
+																"description": "RFC3986-compliant host.",
+																"example": "www.example.com",
+																"format": "hostname",
+																"maxLength": 255,
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"nullable": true,
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
+									"title": {
+										"description": "A human-readable name for the rule.",
+										"example": "Example Token Validation Rule",
+										"maxLength": 50,
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"type": "object"
+							},
+							{
+								"properties": {
+									"position": {
+										"description": "Update rule order among zone rules.",
+										"oneOf": [
+											{
+												"properties": {
+													"index": {
+														"description": "Move rule to this position",
+														"example": 2,
+														"minimum": 1,
+														"type": "integer",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"index"
+												],
+												"type": "object"
+											},
+											{
+												"description": "Move rule to after rule with ID.",
+												"properties": {
+													"before": {
+														"description": "Move rule to before rule with this ID.",
+														"example": "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
+														"format": "uuid",
+														"maxLength": 36,
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											},
+											{
+												"description": "Move rule to before rule with ID.",
+												"properties": {
+													"after": {
+														"description": "Move rule to after rule with this ID.",
+														"example": "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
+														"format": "uuid",
+														"maxLength": 36,
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											}
+										],
+										"type": "object",
+										"writeOnly": true
+									}
+								},
+								"type": "object"
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A Token Validation rule that can enforce security policies using JWT Tokens.",
+											"properties": {
+												"action": {
+													"description": "Action to take on requests that match operations included in `selector` and fail `expression`.",
+													"enum": [
+														"log",
+														"block"
+													],
+													"example": "log",
+													"type": "string",
+													"x-auditable": true
+												},
+												"created_at": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"description": {
+													"description": "A human-readable description that gives more details than `title`.",
+													"example": "Long description for Token Validation Rule",
+													"maxLength": 500,
+													"type": "string",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Toggle rule on or off.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"expression": {
+													"description": "Rule expression. Requests that fail to match this expression will be subject to `action`.\n\nFor details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+													"example": "is_jwt_valid(\"52973293-cb04-4a97-8f55-e7d2ad1107dd\") or is_jwt_valid(\"46eab8d1-6376-45e3-968f-2c649d77d423\")",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"minLength": 36,
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"description": "UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"last_updated": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"modified_by": {
+													"example": "example-user@example.com",
+													"readOnly": true,
+													"type": "string"
+												},
+												"selector": {
+													"description": "Select operations covered by this rule.\n\nFor details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+													"properties": {
+														"exclude": {
+															"description": "Ignore operations that were otherwise included by `include`.",
+															"items": {
+																"properties": {
+																	"operation_ids": {
+																		"description": "Excluded operation IDs.",
+																		"example": [
+																			"f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+																			"56828eae-035a-4396-ba07-51c66d680a04"
+																		],
+																		"items": {
+																			"allOf": [
+																				{
+																					"minLength": 36,
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				{
+																					"description": "UUID.",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			]
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														},
+														"include": {
+															"description": "Select all matching operations.",
+															"items": {
+																"properties": {
+																	"host": {
+																		"description": "Included hostnames.",
+																		"example": [
+																			"v1.example.com",
+																			"v2.example.com"
+																		],
+																		"items": {
+																			"description": "RFC3986-compliant host.",
+																			"example": "www.example.com",
+																			"format": "hostname",
+																			"maxLength": 255,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"title": {
+													"description": "A human-readable name for the rule.",
+													"example": "Example Token Validation Rule",
+													"maxLength": 50,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"title",
+												"description",
+												"action",
+												"enabled",
+												"expression",
+												"selector"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Edit a zone token validation rule",
+		"tags": [
+			"Token Validation Token Rules"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
+		]
+	},
+	"POST /zones/{zone_id}/token_validation/rules": {
+		"description": "Create a token validation rule.",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-rules-create",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"description": "A Token Validation rule that can enforce security policies using JWT Tokens.",
+								"required": [
+									"title",
+									"description",
+									"action",
+									"enabled",
+									"expression",
+									"selector"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"action": {
+										"description": "Action to take on requests that match operations included in `selector` and fail `expression`.",
+										"enum": [
+											"log",
+											"block"
+										],
+										"example": "log",
+										"type": "string",
+										"x-auditable": true
+									},
+									"description": {
+										"description": "A human-readable description that gives more details than `title`.",
+										"example": "Long description for Token Validation Rule",
+										"maxLength": 500,
+										"type": "string",
+										"x-auditable": true
+									},
+									"enabled": {
+										"description": "Toggle rule on or off.",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"expression": {
+										"description": "Rule expression. Requests that fail to match this expression will be subject to `action`.\n\nFor details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+										"example": "is_jwt_valid(\"52973293-cb04-4a97-8f55-e7d2ad1107dd\") or is_jwt_valid(\"46eab8d1-6376-45e3-968f-2c649d77d423\")",
+										"type": "string",
+										"x-auditable": true
+									},
+									"selector": {
+										"description": "Select operations covered by this rule.\n\nFor details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+										"properties": {
+											"exclude": {
+												"description": "Ignore operations that were otherwise included by `include`.",
+												"items": {
+													"properties": {
+														"operation_ids": {
+															"description": "Excluded operation IDs.",
+															"example": [
+																"f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+																"56828eae-035a-4396-ba07-51c66d680a04"
+															],
+															"items": {
+																"allOf": [
+																	{
+																		"minLength": 36,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"description": "UUID.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																]
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"nullable": true,
+												"type": "array"
+											},
+											"include": {
+												"description": "Select all matching operations.",
+												"items": {
+													"properties": {
+														"host": {
+															"description": "Included hostnames.",
+															"example": [
+																"v1.example.com",
+																"v2.example.com"
+															],
+															"items": {
+																"description": "RFC3986-compliant host.",
+																"example": "www.example.com",
+																"format": "hostname",
+																"maxLength": 255,
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"nullable": true,
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
+									"title": {
+										"description": "A human-readable name for the rule.",
+										"example": "Example Token Validation Rule",
+										"maxLength": 50,
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"type": "object"
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A Token Validation rule that can enforce security policies using JWT Tokens.",
+											"properties": {
+												"action": {
+													"description": "Action to take on requests that match operations included in `selector` and fail `expression`.",
+													"enum": [
+														"log",
+														"block"
+													],
+													"example": "log",
+													"type": "string",
+													"x-auditable": true
+												},
+												"created_at": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"description": {
+													"description": "A human-readable description that gives more details than `title`.",
+													"example": "Long description for Token Validation Rule",
+													"maxLength": 500,
+													"type": "string",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Toggle rule on or off.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"expression": {
+													"description": "Rule expression. Requests that fail to match this expression will be subject to `action`.\n\nFor details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+													"example": "is_jwt_valid(\"52973293-cb04-4a97-8f55-e7d2ad1107dd\") or is_jwt_valid(\"46eab8d1-6376-45e3-968f-2c649d77d423\")",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"minLength": 36,
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"description": "UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"last_updated": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"modified_by": {
+													"example": "example-user@example.com",
+													"readOnly": true,
+													"type": "string"
+												},
+												"selector": {
+													"description": "Select operations covered by this rule.\n\nFor details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+													"properties": {
+														"exclude": {
+															"description": "Ignore operations that were otherwise included by `include`.",
+															"items": {
+																"properties": {
+																	"operation_ids": {
+																		"description": "Excluded operation IDs.",
+																		"example": [
+																			"f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+																			"56828eae-035a-4396-ba07-51c66d680a04"
+																		],
+																		"items": {
+																			"allOf": [
+																				{
+																					"minLength": 36,
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				{
+																					"description": "UUID.",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			]
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														},
+														"include": {
+															"description": "Select all matching operations.",
+															"items": {
+																"properties": {
+																	"host": {
+																		"description": "Included hostnames.",
+																		"example": [
+																			"v1.example.com",
+																			"v2.example.com"
+																		],
+																		"items": {
+																			"description": "RFC3986-compliant host.",
+																			"example": "www.example.com",
+																			"format": "hostname",
+																			"maxLength": 255,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"title": {
+													"description": "A human-readable name for the rule.",
+													"example": "Example Token Validation Rule",
+													"maxLength": 50,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"title",
+												"description",
+												"action",
+												"enabled",
+												"expression",
+												"selector"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a token validation rule",
+		"tags": [
+			"Token Validation Token Rules"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
+		]
+	},
+	"POST /zones/{zone_id}/token_validation/rules/preview": {
+		"description": "Preview operations covered by a Token Validation rule.\n\nThe API will return all operations on a zone annotated with an additional `state` field.\nOperations with an `included` `state` will be covered by a Token Validation Rule.\n",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-rules-preview",
+		"parameters": [
+			{
+				"description": "Maximum number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Page number of paginated results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"examples": {
+					"multiple": {
+						"value": [
+							"included,excluded"
+						]
+					},
+					"multipleExploded": {
+						"value": [
+							"included",
+							"excluded"
+						]
+					}
+				},
+				"in": "query",
+				"name": "state",
+				"schema": {
+					"items": {
+						"description": "Details how `selector` interacted with an operation:\n  - `included` operations are included by `selector` and will be covered by the Token Validation Rule\n  - `excluded` operations are excluded by `selector` and will not be covered by the Token Validation Rule\n  - `ignored` operations are not included by `selector` and will not be covered by the Token Validation Rule\n",
+						"enum": [
+							"included",
+							"excluded",
+							"ignored"
+						],
+						"example": "included",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter operations by host.",
+				"in": "query",
+				"name": "host",
+				"schema": {
+					"items": {
+						"description": "RFC3986-compliant host.",
+						"example": "www.example.com",
+						"format": "hostname",
+						"maxLength": 255,
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter operations by host.",
+				"in": "query",
+				"name": "hostname",
+				"schema": {
+					"items": {
+						"description": "RFC3986-compliant host.",
+						"example": "www.example.com",
+						"format": "hostname",
+						"maxLength": 255,
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter operations by method.",
+				"in": "query",
+				"name": "method",
+				"schema": {
+					"items": {
+						"description": "The HTTP method used to access the endpoint.",
+						"enum": [
+							"GET",
+							"POST",
+							"HEAD",
+							"OPTIONS",
+							"PUT",
+							"DELETE",
+							"CONNECT",
+							"PATCH",
+							"TRACE"
+						],
+						"example": "GET",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter operations by endpoint. Allows substring matching.",
+				"in": "query",
+				"name": "endpoint",
+				"schema": {
+					"items": {
+						"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+						"example": "/api/v1/users/{var1}",
+						"format": "uri-template",
+						"maxLength": 4096,
+						"pattern": "^/.*$",
+						"type": "string",
+						"x-auditable": true
+					},
+					"type": "array"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Select operations covered by this rule.\n\nFor details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
+						"properties": {
+							"exclude": {
+								"description": "Ignore operations that were otherwise included by `include`.",
+								"items": {
+									"properties": {
+										"operation_ids": {
+											"description": "Excluded operation IDs.",
+											"example": [
+												"f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+												"56828eae-035a-4396-ba07-51c66d680a04"
+											],
+											"items": {
+												"allOf": [
+													{
+														"minLength": 36,
+														"type": "string",
+														"x-auditable": true
+													},
+													{
+														"description": "UUID.",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"type": "string",
+														"x-auditable": true
+													}
+												]
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								},
+								"nullable": true,
+								"type": "array"
+							},
+							"include": {
+								"description": "Select all matching operations.",
+								"items": {
+									"properties": {
+										"host": {
+											"description": "Included hostnames.",
+											"example": [
+												"v1.example.com",
+												"v2.example.com"
+											],
+											"items": {
+												"description": "RFC3986-compliant host.",
+												"example": "www.example.com",
+												"format": "hostname",
+												"maxLength": 255,
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								},
+								"nullable": true,
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"available_hosts": {
+													"description": "All hostnames on zone used by operations",
+													"items": {
+														"description": "RFC3986-compliant host.",
+														"example": "www.example.com",
+														"format": "hostname",
+														"maxLength": 255,
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array",
+													"uniqueItems": true
+												},
+												"excluded": {
+													"description": "Number of operations with `excluded` `state`",
+													"example": 40,
+													"type": "integer",
+													"x-auditable": true
+												},
+												"ignored": {
+													"description": "Number of operations with `ignored` `state`",
+													"example": 10,
+													"type": "integer",
+													"x-auditable": true
+												},
+												"included": {
+													"description": "Number of operations with `included` `state`",
+													"example": 50,
+													"type": "integer",
+													"x-auditable": true
+												},
+												"operations": {
+													"items": {
+														"properties": {
+															"endpoint": {
+																"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+																"example": "/api/v1/users/{var1}",
+																"format": "uri-template",
+																"maxLength": 4096,
+																"pattern": "^/.*$",
+																"type": "string",
+																"x-auditable": true
+															},
+															"host": {
+																"description": "RFC3986-compliant host.",
+																"example": "www.example.com",
+																"format": "hostname",
+																"maxLength": 255,
+																"type": "string",
+																"x-auditable": true
+															},
+															"last_updated": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																]
+															},
+															"method": {
+																"description": "The HTTP method used to access the endpoint.",
+																"enum": [
+																	"GET",
+																	"POST",
+																	"HEAD",
+																	"OPTIONS",
+																	"PUT",
+																	"DELETE",
+																	"CONNECT",
+																	"PATCH",
+																	"TRACE"
+																],
+																"example": "GET",
+																"type": "string",
+																"x-auditable": true
+															},
+															"operation_id": {
+																"allOf": [
+																	{
+																		"minLength": 36,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"description": "UUID.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																]
+															},
+															"state": {
+																"description": "Details how `selector` interacted with an operation:\n  - `included` operations are included by `selector` and will be covered by the Token Validation Rule\n  - `excluded` operations are excluded by `selector` and will not be covered by the Token Validation Rule\n  - `ignored` operations are not included by `selector` and will not be covered by the Token Validation Rule\n",
+																"enum": [
+																	"included",
+																	"excluded",
+																	"ignored"
+																],
+																"example": "included",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"selected_hosts": {
+													"description": "Hostnames of `included` operations",
+													"items": {
+														"description": "RFC3986-compliant host.",
+														"example": "www.example.com",
+														"format": "hostname",
+														"maxLength": 255,
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array",
+													"uniqueItems": true
+												},
+												"total": {
+													"description": "Number of operations on zone",
+													"example": 100,
+													"type": "integer",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Preview operations covered by a Token Validation rule",
+		"tags": [
+			"Token Validation Token Rules"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
+		]
+	}
+}

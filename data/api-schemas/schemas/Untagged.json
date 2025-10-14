@@ -1316,5 +1316,212 @@
 				"x-auditable": true
 			}
 		}
+	],
+	"PARAMETERS /zones/{zone_id}/token_validation/config": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/token_validation/config/{config_id}": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		},
+		{
+			"description": "Token Configuration ID",
+			"example": "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",
+			"in": "path",
+			"name": "config_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"minLength": 36,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"description": "UUID.",
+						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+						"maxLength": 36,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/token_validation/config/{config_id}/credentials": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		},
+		{
+			"description": "Token Configuration ID",
+			"example": "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",
+			"in": "path",
+			"name": "config_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"minLength": 36,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"description": "UUID.",
+						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+						"maxLength": 36,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/token_validation/rules": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/token_validation/rules/{rule_id}": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		},
+		{
+			"description": "Token Validation Rule ID",
+			"example": "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",
+			"in": "path",
+			"name": "rule_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"minLength": 36,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"description": "UUID.",
+						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+						"maxLength": 36,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
+	"PARAMETERS /zones/{zone_id}/token_validation/rules/preview": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
 	]
 }

@@ -1,0 +1,2846 @@
+{
+	"DELETE /zones/{zone_id}/token_validation/config/{config_id}": {
+		"description": "Delete Token Configuration",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-config-delete",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"config_id": {
+													"allOf": [
+														{
+															"minLength": 36,
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"description": "UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Token Configuration",
+		"tags": [
+			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
+		]
+	},
+	"GET /zones/{zone_id}/token_validation/config": {
+		"description": "Lists all token validation configurations for this zone",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-config-list",
+		"parameters": [
+			{
+				"description": "Page number of paginated results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Maximum number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 5,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"allOf": [
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															{
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															}
+														]
+													},
+													"credentials": {
+														"properties": {
+															"keys": {
+																"items": {
+																	"description": "JSON representation of a JWKS key.",
+																	"example": {
+																		"alg": "ES256",
+																		"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
+																		"kty": "EC",
+																		"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
+																		"y": "lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY"
+																	},
+																	"oneOf": [
+																		{
+																			"allOf": [
+																				{
+																					"description": "Common properties of a JWT key.",
+																					"properties": {
+																						"kid": {
+																							"description": "Key ID",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"kid"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"alg": {
+																							"description": "Algorithm",
+																							"enum": [
+																								"ES256",
+																								"ES384"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"kty": {
+																							"description": "Key Type",
+																							"enum": [
+																								"EC"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"x": {
+																							"description": "X EC coordinate",
+																							"type": "string",
+																							"x-auditable": false
+																						},
+																						"y": {
+																							"description": "Y EC coordinate",
+																							"type": "string",
+																							"x-auditable": false
+																						}
+																					},
+																					"required": [
+																						"kty",
+																						"alg",
+																						"x",
+																						"y"
+																					],
+																					"type": "object"
+																				}
+																			],
+																			"description": "JSON representation of an EC key.",
+																			"type": "object"
+																		},
+																		{
+																			"allOf": [
+																				{
+																					"description": "Common properties of a JWT key.",
+																					"properties": {
+																						"kid": {
+																							"description": "Key ID",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"kid"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"alg": {
+																							"description": "Algorithm",
+																							"enum": [
+																								"RS256",
+																								"RS384",
+																								"RS512",
+																								"PS256",
+																								"PS384",
+																								"PS512"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"e": {
+																							"description": "RSA exponent",
+																							"type": "string",
+																							"x-auditable": false
+																						},
+																						"kty": {
+																							"description": "Key Type",
+																							"enum": [
+																								"RSA"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"n": {
+																							"description": "RSA modulus",
+																							"type": "string",
+																							"x-auditable": false
+																						}
+																					},
+																					"required": [
+																						"kty",
+																						"alg",
+																						"n",
+																						"e"
+																					],
+																					"type": "object"
+																				}
+																			],
+																			"description": "JSON representation of an RSA key.",
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																},
+																"maxItems": 4,
+																"minItems": 1,
+																"type": "array"
+															}
+														},
+														"type": "object"
+													},
+													"description": {
+														"example": "Long description for Token Validation Configuration",
+														"maxLength": 500,
+														"type": "string",
+														"x-auditable": true
+													},
+													"id": {
+														"allOf": [
+															{
+																"minLength": 36,
+																"type": "string",
+																"x-auditable": true
+															},
+															{
+																"description": "UUID.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"type": "string",
+																"x-auditable": true
+															}
+														]
+													},
+													"last_updated": {
+														"allOf": [
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															{
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															}
+														]
+													},
+													"title": {
+														"example": "Example Token Validation Configuration",
+														"maxLength": 50,
+														"type": "string",
+														"x-auditable": true
+													},
+													"token_sources": {
+														"example": [
+															"http.request.headers[\"x-auth\"][0]",
+															"http.request.cookies[\"Authorization\"][0]"
+														],
+														"items": {
+															"anyOf": [
+																{
+																	"description": "HTTP request header (must be lowercase)",
+																	"example": "http.request.headers[\"x-auth\"][0]",
+																	"pattern": "^http.request.headers\\[.*?\\]\\[\\d+\\]$",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"description": "HTTP request cookie",
+																	"example": "http.request.cookies[\"Authorization\"][0]",
+																	"pattern": "^http.request.cookies\\[.*?\\]\\[\\d+\\]$",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															]
+														},
+														"maxItems": 4,
+														"minItems": 1,
+														"type": "array"
+													},
+													"token_type": {
+														"enum": [
+															"JWT"
+														],
+														"example": "JWT",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List token validation configurations",
+		"tags": [
+			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
+		]
+	},
+	"GET /zones/{zone_id}/token_validation/config/{config_id}": {
+		"description": "Get a single Token Configuration",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-config-get",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"credentials": {
+													"properties": {
+														"keys": {
+															"items": {
+																"description": "JSON representation of a JWKS key.",
+																"example": {
+																	"alg": "ES256",
+																	"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
+																	"kty": "EC",
+																	"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
+																	"y": "lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY"
+																},
+																"oneOf": [
+																	{
+																		"allOf": [
+																			{
+																				"description": "Common properties of a JWT key.",
+																				"properties": {
+																					"kid": {
+																						"description": "Key ID",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kid"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"alg": {
+																						"description": "Algorithm",
+																						"enum": [
+																							"ES256",
+																							"ES384"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"kty": {
+																						"description": "Key Type",
+																						"enum": [
+																							"EC"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"x": {
+																						"description": "X EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					},
+																					"y": {
+																						"description": "Y EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					}
+																				},
+																				"required": [
+																					"kty",
+																					"alg",
+																					"x",
+																					"y"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "JSON representation of an EC key.",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"description": "Common properties of a JWT key.",
+																				"properties": {
+																					"kid": {
+																						"description": "Key ID",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kid"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"alg": {
+																						"description": "Algorithm",
+																						"enum": [
+																							"RS256",
+																							"RS384",
+																							"RS512",
+																							"PS256",
+																							"PS384",
+																							"PS512"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"e": {
+																						"description": "RSA exponent",
+																						"type": "string",
+																						"x-auditable": false
+																					},
+																					"kty": {
+																						"description": "Key Type",
+																						"enum": [
+																							"RSA"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"n": {
+																						"description": "RSA modulus",
+																						"type": "string",
+																						"x-auditable": false
+																					}
+																				},
+																				"required": [
+																					"kty",
+																					"alg",
+																					"n",
+																					"e"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "JSON representation of an RSA key.",
+																		"type": "object"
+																	}
+																],
+																"type": "object"
+															},
+															"maxItems": 4,
+															"minItems": 1,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"description": {
+													"example": "Long description for Token Validation Configuration",
+													"maxLength": 500,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"minLength": 36,
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"description": "UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"last_updated": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"title": {
+													"example": "Example Token Validation Configuration",
+													"maxLength": 50,
+													"type": "string",
+													"x-auditable": true
+												},
+												"token_sources": {
+													"example": [
+														"http.request.headers[\"x-auth\"][0]",
+														"http.request.cookies[\"Authorization\"][0]"
+													],
+													"items": {
+														"anyOf": [
+															{
+																"description": "HTTP request header (must be lowercase)",
+																"example": "http.request.headers[\"x-auth\"][0]",
+																"pattern": "^http.request.headers\\[.*?\\]\\[\\d+\\]$",
+																"type": "string",
+																"x-auditable": true
+															},
+															{
+																"description": "HTTP request cookie",
+																"example": "http.request.cookies[\"Authorization\"][0]",
+																"pattern": "^http.request.cookies\\[.*?\\]\\[\\d+\\]$",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
+													},
+													"maxItems": 4,
+													"minItems": 1,
+													"type": "array"
+												},
+												"token_type": {
+													"enum": [
+														"JWT"
+													],
+													"example": "JWT",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a single Token Configuration",
+		"tags": [
+			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Account API Gateway Read",
+			"Domain API Gateway",
+			"Domain API Gateway Read"
+		]
+	},
+	"PATCH /zones/{zone_id}/token_validation/config/{config_id}": {
+		"description": "Edit fields of an existing Token Configuration",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-config-edit",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"example": "Long description for Token Validation Configuration",
+								"maxLength": 500,
+								"type": "string",
+								"x-auditable": true
+							},
+							"title": {
+								"example": "Example Token Validation Configuration",
+								"maxLength": 50,
+								"type": "string",
+								"x-auditable": true
+							},
+							"token_sources": {
+								"example": [
+									"http.request.headers[\"x-auth\"][0]",
+									"http.request.cookies[\"Authorization\"][0]"
+								],
+								"items": {
+									"anyOf": [
+										{
+											"description": "HTTP request header (must be lowercase)",
+											"example": "http.request.headers[\"x-auth\"][0]",
+											"pattern": "^http.request.headers\\[.*?\\]\\[\\d+\\]$",
+											"type": "string",
+											"x-auditable": true
+										},
+										{
+											"description": "HTTP request cookie",
+											"example": "http.request.cookies[\"Authorization\"][0]",
+											"pattern": "^http.request.cookies\\[.*?\\]\\[\\d+\\]$",
+											"type": "string",
+											"x-auditable": true
+										}
+									]
+								},
+								"maxItems": 4,
+								"minItems": 1,
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"description": {
+													"example": "Long description for Token Validation Configuration",
+													"maxLength": 500,
+													"type": "string",
+													"x-auditable": true
+												},
+												"title": {
+													"example": "Example Token Validation Configuration",
+													"maxLength": 50,
+													"type": "string",
+													"x-auditable": true
+												},
+												"token_sources": {
+													"example": [
+														"http.request.headers[\"x-auth\"][0]",
+														"http.request.cookies[\"Authorization\"][0]"
+													],
+													"items": {
+														"anyOf": [
+															{
+																"description": "HTTP request header (must be lowercase)",
+																"example": "http.request.headers[\"x-auth\"][0]",
+																"pattern": "^http.request.headers\\[.*?\\]\\[\\d+\\]$",
+																"type": "string",
+																"x-auditable": true
+															},
+															{
+																"description": "HTTP request cookie",
+																"example": "http.request.cookies[\"Authorization\"][0]",
+																"pattern": "^http.request.cookies\\[.*?\\]\\[\\d+\\]$",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
+													},
+													"maxItems": 4,
+													"minItems": 1,
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Edit an existing Token Configuration",
+		"tags": [
+			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
+		]
+	},
+	"POST /zones/{zone_id}/token_validation/config": {
+		"description": "Create a new Token Validation configuration",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-config-create",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"credentials": {
+								"properties": {
+									"keys": {
+										"items": {
+											"description": "JSON representation of a JWKS key.",
+											"example": {
+												"alg": "ES256",
+												"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
+												"kty": "EC",
+												"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
+												"y": "lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY"
+											},
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"description": "Common properties of a JWT key.",
+															"properties": {
+																"kid": {
+																	"description": "Key ID",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"kid"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"alg": {
+																	"description": "Algorithm",
+																	"enum": [
+																		"ES256",
+																		"ES384"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"kty": {
+																	"description": "Key Type",
+																	"enum": [
+																		"EC"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"x": {
+																	"description": "X EC coordinate",
+																	"type": "string",
+																	"x-auditable": false
+																},
+																"y": {
+																	"description": "Y EC coordinate",
+																	"type": "string",
+																	"x-auditable": false
+																}
+															},
+															"required": [
+																"kty",
+																"alg",
+																"x",
+																"y"
+															],
+															"type": "object"
+														}
+													],
+													"description": "JSON representation of an EC key.",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"description": "Common properties of a JWT key.",
+															"properties": {
+																"kid": {
+																	"description": "Key ID",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"kid"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"alg": {
+																	"description": "Algorithm",
+																	"enum": [
+																		"RS256",
+																		"RS384",
+																		"RS512",
+																		"PS256",
+																		"PS384",
+																		"PS512"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"e": {
+																	"description": "RSA exponent",
+																	"type": "string",
+																	"x-auditable": false
+																},
+																"kty": {
+																	"description": "Key Type",
+																	"enum": [
+																		"RSA"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"n": {
+																	"description": "RSA modulus",
+																	"type": "string",
+																	"x-auditable": false
+																}
+															},
+															"required": [
+																"kty",
+																"alg",
+																"n",
+																"e"
+															],
+															"type": "object"
+														}
+													],
+													"description": "JSON representation of an RSA key.",
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										"maxItems": 4,
+										"minItems": 1,
+										"type": "array"
+									}
+								},
+								"type": "object"
+							},
+							"description": {
+								"example": "Long description for Token Validation Configuration",
+								"maxLength": 500,
+								"type": "string",
+								"x-auditable": true
+							},
+							"title": {
+								"example": "Example Token Validation Configuration",
+								"maxLength": 50,
+								"type": "string",
+								"x-auditable": true
+							},
+							"token_sources": {
+								"example": [
+									"http.request.headers[\"x-auth\"][0]",
+									"http.request.cookies[\"Authorization\"][0]"
+								],
+								"items": {
+									"anyOf": [
+										{
+											"description": "HTTP request header (must be lowercase)",
+											"example": "http.request.headers[\"x-auth\"][0]",
+											"pattern": "^http.request.headers\\[.*?\\]\\[\\d+\\]$",
+											"type": "string",
+											"x-auditable": true
+										},
+										{
+											"description": "HTTP request cookie",
+											"example": "http.request.cookies[\"Authorization\"][0]",
+											"pattern": "^http.request.cookies\\[.*?\\]\\[\\d+\\]$",
+											"type": "string",
+											"x-auditable": true
+										}
+									]
+								},
+								"maxItems": 4,
+								"minItems": 1,
+								"type": "array"
+							},
+							"token_type": {
+								"enum": [
+									"JWT"
+								],
+								"example": "JWT",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"title",
+							"description",
+							"token_sources",
+							"token_type",
+							"credentials"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"credentials": {
+													"properties": {
+														"keys": {
+															"items": {
+																"description": "JSON representation of a JWKS key.",
+																"example": {
+																	"alg": "ES256",
+																	"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
+																	"kty": "EC",
+																	"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
+																	"y": "lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY"
+																},
+																"oneOf": [
+																	{
+																		"allOf": [
+																			{
+																				"description": "Common properties of a JWT key.",
+																				"properties": {
+																					"kid": {
+																						"description": "Key ID",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kid"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"alg": {
+																						"description": "Algorithm",
+																						"enum": [
+																							"ES256",
+																							"ES384"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"kty": {
+																						"description": "Key Type",
+																						"enum": [
+																							"EC"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"x": {
+																						"description": "X EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					},
+																					"y": {
+																						"description": "Y EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					}
+																				},
+																				"required": [
+																					"kty",
+																					"alg",
+																					"x",
+																					"y"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "JSON representation of an EC key.",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"description": "Common properties of a JWT key.",
+																				"properties": {
+																					"kid": {
+																						"description": "Key ID",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kid"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"alg": {
+																						"description": "Algorithm",
+																						"enum": [
+																							"RS256",
+																							"RS384",
+																							"RS512",
+																							"PS256",
+																							"PS384",
+																							"PS512"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"e": {
+																						"description": "RSA exponent",
+																						"type": "string",
+																						"x-auditable": false
+																					},
+																					"kty": {
+																						"description": "Key Type",
+																						"enum": [
+																							"RSA"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"n": {
+																						"description": "RSA modulus",
+																						"type": "string",
+																						"x-auditable": false
+																					}
+																				},
+																				"required": [
+																					"kty",
+																					"alg",
+																					"n",
+																					"e"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "JSON representation of an RSA key.",
+																		"type": "object"
+																	}
+																],
+																"type": "object"
+															},
+															"maxItems": 4,
+															"minItems": 1,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"description": {
+													"example": "Long description for Token Validation Configuration",
+													"maxLength": 500,
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"minLength": 36,
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"description": "UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"last_updated": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													]
+												},
+												"title": {
+													"example": "Example Token Validation Configuration",
+													"maxLength": 50,
+													"type": "string",
+													"x-auditable": true
+												},
+												"token_sources": {
+													"example": [
+														"http.request.headers[\"x-auth\"][0]",
+														"http.request.cookies[\"Authorization\"][0]"
+													],
+													"items": {
+														"anyOf": [
+															{
+																"description": "HTTP request header (must be lowercase)",
+																"example": "http.request.headers[\"x-auth\"][0]",
+																"pattern": "^http.request.headers\\[.*?\\]\\[\\d+\\]$",
+																"type": "string",
+																"x-auditable": true
+															},
+															{
+																"description": "HTTP request cookie",
+																"example": "http.request.cookies[\"Authorization\"][0]",
+																"pattern": "^http.request.cookies\\[.*?\\]\\[\\d+\\]$",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
+													},
+													"maxItems": 4,
+													"minItems": 1,
+													"type": "array"
+												},
+												"token_type": {
+													"enum": [
+														"JWT"
+													],
+													"example": "JWT",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new Token Validation configuration",
+		"tags": [
+			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
+		]
+	},
+	"PUT /zones/{zone_id}/token_validation/config/{config_id}/credentials": {
+		"description": "Update Token Configuration credentials",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-config-credentials-update",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"keys": {
+								"items": {
+									"description": "JSON representation of a JWKS key.",
+									"example": {
+										"alg": "ES256",
+										"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
+										"kty": "EC",
+										"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
+										"y": "lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY"
+									},
+									"oneOf": [
+										{
+											"allOf": [
+												{
+													"description": "Common properties of a JWT key.",
+													"properties": {
+														"kid": {
+															"description": "Key ID",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"kid"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"alg": {
+															"description": "Algorithm",
+															"enum": [
+																"ES256",
+																"ES384"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"kty": {
+															"description": "Key Type",
+															"enum": [
+																"EC"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"x": {
+															"description": "X EC coordinate",
+															"type": "string",
+															"x-auditable": false
+														},
+														"y": {
+															"description": "Y EC coordinate",
+															"type": "string",
+															"x-auditable": false
+														}
+													},
+													"required": [
+														"kty",
+														"alg",
+														"x",
+														"y"
+													],
+													"type": "object"
+												}
+											],
+											"description": "JSON representation of an EC key.",
+											"type": "object"
+										},
+										{
+											"allOf": [
+												{
+													"description": "Common properties of a JWT key.",
+													"properties": {
+														"kid": {
+															"description": "Key ID",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"kid"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"alg": {
+															"description": "Algorithm",
+															"enum": [
+																"RS256",
+																"RS384",
+																"RS512",
+																"PS256",
+																"PS384",
+																"PS512"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"e": {
+															"description": "RSA exponent",
+															"type": "string",
+															"x-auditable": false
+														},
+														"kty": {
+															"description": "Key Type",
+															"enum": [
+																"RSA"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"n": {
+															"description": "RSA modulus",
+															"type": "string",
+															"x-auditable": false
+														}
+													},
+													"required": [
+														"kty",
+														"alg",
+														"n",
+														"e"
+													],
+													"type": "object"
+												}
+											],
+											"description": "JSON representation of an RSA key.",
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								"maxItems": 4,
+								"minItems": 1,
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"keys": {
+											"items": {
+												"description": "JSON representation of a JWKS key.",
+												"example": {
+													"alg": "ES256",
+													"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
+													"kty": "EC",
+													"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
+													"y": "lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY"
+												},
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"description": "Common properties of a JWT key.",
+																"properties": {
+																	"kid": {
+																		"description": "Key ID",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kid"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alg": {
+																		"description": "Algorithm",
+																		"enum": [
+																			"ES256",
+																			"ES384"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"kty": {
+																		"description": "Key Type",
+																		"enum": [
+																			"EC"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"x": {
+																		"description": "X EC coordinate",
+																		"type": "string",
+																		"x-auditable": false
+																	},
+																	"y": {
+																		"description": "Y EC coordinate",
+																		"type": "string",
+																		"x-auditable": false
+																	}
+																},
+																"required": [
+																	"kty",
+																	"alg",
+																	"x",
+																	"y"
+																],
+																"type": "object"
+															}
+														],
+														"description": "JSON representation of an EC key.",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"description": "Common properties of a JWT key.",
+																"properties": {
+																	"kid": {
+																		"description": "Key ID",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kid"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alg": {
+																		"description": "Algorithm",
+																		"enum": [
+																			"RS256",
+																			"RS384",
+																			"RS512",
+																			"PS256",
+																			"PS384",
+																			"PS512"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"e": {
+																		"description": "RSA exponent",
+																		"type": "string",
+																		"x-auditable": false
+																	},
+																	"kty": {
+																		"description": "Key Type",
+																		"enum": [
+																			"RSA"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"n": {
+																		"description": "RSA modulus",
+																		"type": "string",
+																		"x-auditable": false
+																	}
+																},
+																"required": [
+																	"kty",
+																	"alg",
+																	"n",
+																	"e"
+																],
+																"type": "object"
+															}
+														],
+														"description": "JSON representation of an RSA key.",
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"maxItems": 4,
+											"minItems": 1,
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Token Configuration credentials",
+		"tags": [
+			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
+		]
+	}
+}

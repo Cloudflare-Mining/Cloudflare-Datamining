@@ -1,0 +1,2690 @@
+{
+	"DELETE /accounts/{account_id}/connectivity/directory/services/{service_id}": {
+		"operationId": "connectivity-services-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "service_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successfully deleted connectivity service"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to delete connectivity service"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete connectivity service",
+		"tags": [
+			"Connectivity Services"
+		]
+	},
+	"GET /accounts/{account_id}/connectivity/directory/services": {
+		"operationId": "connectivity-services-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"title": "account_id",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "type",
+				"schema": {
+					"nullable": true,
+					"oneOf": [
+						{
+							"enum": [
+								"http"
+							],
+							"type": "string"
+						}
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Current page in the response",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"format": "int32",
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Max amount of entries returned per page",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 1000,
+					"format": "int32",
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"http": "#/components/schemas/infra_HttpServiceConfig"
+													},
+													"propertyName": "type"
+												},
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"created_at": {
+																		"example": "2024-01-15T09:30:00Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"host": {
+																		"oneOf": [
+																			{
+																				"example": {
+																					"ipv4": "10.0.0.1",
+																					"network": {
+																						"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																					}
+																				},
+																				"properties": {
+																					"ipv4": {
+																						"example": "10.0.0.1",
+																						"type": "string"
+																					},
+																					"network": {
+																						"properties": {
+																							"tunnel_id": {
+																								"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																								"format": "uuid",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"tunnel_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"ipv4",
+																					"network"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"example": {
+																					"ipv6": "fe80::1",
+																					"network": {
+																						"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																					}
+																				},
+																				"properties": {
+																					"ipv6": {
+																						"example": "fe80::1",
+																						"type": "string"
+																					},
+																					"network": {
+																						"properties": {
+																							"tunnel_id": {
+																								"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																								"format": "uuid",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"tunnel_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"ipv6",
+																					"network"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"example": {
+																					"ipv4": "10.0.0.1",
+																					"ipv6": "fe80::1",
+																					"network": {
+																						"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																					}
+																				},
+																				"properties": {
+																					"ipv4": {
+																						"example": "10.0.0.1",
+																						"type": "string"
+																					},
+																					"ipv6": {
+																						"example": "fe80::1",
+																						"type": "string"
+																					},
+																					"network": {
+																						"properties": {
+																							"tunnel_id": {
+																								"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																								"format": "uuid",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"tunnel_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"ipv4",
+																					"ipv6",
+																					"network"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"example": {
+																					"hostname": "example.com",
+																					"resolver_network": {
+																						"resolver_ips": [
+																							"10.0.0.1"
+																						],
+																						"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																					}
+																				},
+																				"properties": {
+																					"hostname": {
+																						"example": "example.com",
+																						"type": "string"
+																					},
+																					"resolver_network": {
+																						"properties": {
+																							"resolver_ips": {
+																								"items": {
+																									"type": "string"
+																								},
+																								"nullable": true,
+																								"type": "array"
+																							},
+																							"tunnel_id": {
+																								"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																								"format": "uuid",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"tunnel_id"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"hostname",
+																					"resolver_network"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	},
+																	"name": {
+																		"example": "web-server",
+																		"type": "string"
+																	},
+																	"service_id": {
+																		"example": "550e8400-e29b-41d4-a716-446655440000",
+																		"format": "uuid",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"type": {
+																		"enum": [
+																			"http"
+																		],
+																		"type": "string"
+																	},
+																	"updated_at": {
+																		"example": "2024-01-15T10:45:00Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"host"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"http_port": {
+																		"example": 8080,
+																		"format": "int32",
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"https_port": {
+																		"example": 8443,
+																		"format": "int32",
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"example": {
+															"host": {
+																"ipv4": "10.0.0.1",
+																"network": {
+																	"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																}
+															},
+															"http_port": 8080,
+															"https_port": 8443,
+															"name": "web-app",
+															"type": "http"
+														}
+													}
+												]
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully retrieved connectivity services"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to retrieve connectivity services"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List connectivity services",
+		"tags": [
+			"Connectivity Services"
+		]
+	},
+	"GET /accounts/{account_id}/connectivity/directory/services/{service_id}": {
+		"operationId": "connectivity-services-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "service_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"discriminator": {
+												"mapping": {
+													"http": "#/components/schemas/infra_HttpServiceConfig"
+												},
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2024-01-15T09:30:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"host": {
+																	"oneOf": [
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"hostname": "example.com",
+																				"resolver_network": {
+																					"resolver_ips": [
+																						"10.0.0.1"
+																					],
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"hostname": {
+																					"example": "example.com",
+																					"type": "string"
+																				},
+																				"resolver_network": {
+																					"properties": {
+																						"resolver_ips": {
+																							"items": {
+																								"type": "string"
+																							},
+																							"nullable": true,
+																							"type": "array"
+																						},
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"hostname",
+																				"resolver_network"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"name": {
+																	"example": "web-server",
+																	"type": "string"
+																},
+																"service_id": {
+																	"example": "550e8400-e29b-41d4-a716-446655440000",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"type": {
+																	"enum": [
+																		"http"
+																	],
+																	"type": "string"
+																},
+																"updated_at": {
+																	"example": "2024-01-15T10:45:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"host"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"http_port": {
+																	"example": 8080,
+																	"format": "int32",
+																	"minimum": 1,
+																	"nullable": true,
+																	"type": "integer"
+																},
+																"https_port": {
+																	"example": 8443,
+																	"format": "int32",
+																	"minimum": 1,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"example": {
+														"host": {
+															"ipv4": "10.0.0.1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"http_port": 8080,
+														"https_port": 8443,
+														"name": "web-app",
+														"type": "http"
+													}
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully retrieved connectivity service"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to retrieve connectivity service"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get connectivity service",
+		"tags": [
+			"Connectivity Services"
+		]
+	},
+	"POST /accounts/{account_id}/connectivity/directory/services": {
+		"operationId": "connectivity-services-post",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"title": "account_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"http-with-defaults": {
+							"summary": "HTTP service with defaults",
+							"value": {
+								"host": {
+									"hostname": "api.example.com",
+									"resolver_network": {
+										"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+									}
+								},
+								"name": "web-server",
+								"type": "http"
+							}
+						},
+						"http-with-hostname": {
+							"summary": "HTTP service with hostname",
+							"value": {
+								"host": {
+									"hostname": "api.example.com",
+									"resolver_network": {
+										"resolver_ips": [
+											"10.0.0.1",
+											"10.0.0.2"
+										],
+										"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+									}
+								},
+								"https_port": 443,
+								"name": "api-gateway",
+								"type": "http"
+							}
+						},
+						"http-with-ipv4": {
+							"summary": "HTTP service with IPv4 host",
+							"value": {
+								"host": {
+									"ipv4": "10.0.0.1",
+									"network": {
+										"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+									}
+								},
+								"http_port": 8080,
+								"https_port": 8443,
+								"name": "web-server",
+								"type": "http"
+							}
+						}
+					},
+					"schema": {
+						"discriminator": {
+							"mapping": {
+								"http": "#/components/schemas/infra_HttpServiceConfig"
+							},
+							"propertyName": "type"
+						},
+						"oneOf": [
+							{
+								"allOf": [
+									{
+										"properties": {
+											"created_at": {
+												"example": "2024-01-15T09:30:00Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
+											"host": {
+												"oneOf": [
+													{
+														"example": {
+															"ipv4": "10.0.0.1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv4": {
+																"example": "10.0.0.1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv4",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"ipv6": "fe80::1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv6": {
+																"example": "fe80::1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv6",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"ipv4": "10.0.0.1",
+															"ipv6": "fe80::1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv4": {
+																"example": "10.0.0.1",
+																"type": "string"
+															},
+															"ipv6": {
+																"example": "fe80::1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv4",
+															"ipv6",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"hostname": "example.com",
+															"resolver_network": {
+																"resolver_ips": [
+																	"10.0.0.1"
+																],
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"hostname": {
+																"example": "example.com",
+																"type": "string"
+															},
+															"resolver_network": {
+																"properties": {
+																	"resolver_ips": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"nullable": true,
+																		"type": "array"
+																	},
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"hostname",
+															"resolver_network"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"name": {
+												"example": "web-server",
+												"type": "string"
+											},
+											"service_id": {
+												"example": "550e8400-e29b-41d4-a716-446655440000",
+												"format": "uuid",
+												"readOnly": true,
+												"type": "string"
+											},
+											"type": {
+												"enum": [
+													"http"
+												],
+												"type": "string"
+											},
+											"updated_at": {
+												"example": "2024-01-15T10:45:00Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"type",
+											"host"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"http_port": {
+												"example": 8080,
+												"format": "int32",
+												"minimum": 1,
+												"nullable": true,
+												"type": "integer"
+											},
+											"https_port": {
+												"example": 8443,
+												"format": "int32",
+												"minimum": 1,
+												"nullable": true,
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									}
+								],
+								"example": {
+									"host": {
+										"ipv4": "10.0.0.1",
+										"network": {
+											"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+										}
+									},
+									"http_port": 8080,
+									"https_port": 8443,
+									"name": "web-app",
+									"type": "http"
+								}
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"http-service-created": {
+								"summary": "Successfully created HTTP service",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"created_at": "2024-01-15T09:30:00Z",
+										"host": {
+											"hostname": "api.example.com",
+											"resolver_network": {
+												"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+											}
+										},
+										"name": "web-server",
+										"service_id": "550e8400-e29b-41d4-a716-446655440000",
+										"type": "http",
+										"updated_at": "2024-01-15T09:30:00Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"discriminator": {
+												"mapping": {
+													"http": "#/components/schemas/infra_HttpServiceConfig"
+												},
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2024-01-15T09:30:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"host": {
+																	"oneOf": [
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"hostname": "example.com",
+																				"resolver_network": {
+																					"resolver_ips": [
+																						"10.0.0.1"
+																					],
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"hostname": {
+																					"example": "example.com",
+																					"type": "string"
+																				},
+																				"resolver_network": {
+																					"properties": {
+																						"resolver_ips": {
+																							"items": {
+																								"type": "string"
+																							},
+																							"nullable": true,
+																							"type": "array"
+																						},
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"hostname",
+																				"resolver_network"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"name": {
+																	"example": "web-server",
+																	"type": "string"
+																},
+																"service_id": {
+																	"example": "550e8400-e29b-41d4-a716-446655440000",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"type": {
+																	"enum": [
+																		"http"
+																	],
+																	"type": "string"
+																},
+																"updated_at": {
+																	"example": "2024-01-15T10:45:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"host"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"http_port": {
+																	"example": 8080,
+																	"format": "int32",
+																	"minimum": 1,
+																	"nullable": true,
+																	"type": "integer"
+																},
+																"https_port": {
+																	"example": 8443,
+																	"format": "int32",
+																	"minimum": 1,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"example": {
+														"host": {
+															"ipv4": "10.0.0.1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"http_port": 8080,
+														"https_port": 8443,
+														"name": "web-app",
+														"type": "http"
+													}
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully created connectivity service"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to create connectivity service"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create connectivity service",
+		"tags": [
+			"Connectivity Services"
+		]
+	},
+	"PUT /accounts/{account_id}/connectivity/directory/services/{service_id}": {
+		"operationId": "connectivity-services-put",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "service_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"discriminator": {
+							"mapping": {
+								"http": "#/components/schemas/infra_HttpServiceConfig"
+							},
+							"propertyName": "type"
+						},
+						"oneOf": [
+							{
+								"allOf": [
+									{
+										"properties": {
+											"created_at": {
+												"example": "2024-01-15T09:30:00Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
+											"host": {
+												"oneOf": [
+													{
+														"example": {
+															"ipv4": "10.0.0.1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv4": {
+																"example": "10.0.0.1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv4",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"ipv6": "fe80::1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv6": {
+																"example": "fe80::1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv6",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"ipv4": "10.0.0.1",
+															"ipv6": "fe80::1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"ipv4": {
+																"example": "10.0.0.1",
+																"type": "string"
+															},
+															"ipv6": {
+																"example": "fe80::1",
+																"type": "string"
+															},
+															"network": {
+																"properties": {
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"ipv4",
+															"ipv6",
+															"network"
+														],
+														"type": "object"
+													},
+													{
+														"example": {
+															"hostname": "example.com",
+															"resolver_network": {
+																"resolver_ips": [
+																	"10.0.0.1"
+																],
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"properties": {
+															"hostname": {
+																"example": "example.com",
+																"type": "string"
+															},
+															"resolver_network": {
+																"properties": {
+																	"resolver_ips": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"nullable": true,
+																		"type": "array"
+																	},
+																	"tunnel_id": {
+																		"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"tunnel_id"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"hostname",
+															"resolver_network"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"name": {
+												"example": "web-server",
+												"type": "string"
+											},
+											"service_id": {
+												"example": "550e8400-e29b-41d4-a716-446655440000",
+												"format": "uuid",
+												"readOnly": true,
+												"type": "string"
+											},
+											"type": {
+												"enum": [
+													"http"
+												],
+												"type": "string"
+											},
+											"updated_at": {
+												"example": "2024-01-15T10:45:00Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"type",
+											"host"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"http_port": {
+												"example": 8080,
+												"format": "int32",
+												"minimum": 1,
+												"nullable": true,
+												"type": "integer"
+											},
+											"https_port": {
+												"example": 8443,
+												"format": "int32",
+												"minimum": 1,
+												"nullable": true,
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									}
+								],
+								"example": {
+									"host": {
+										"ipv4": "10.0.0.1",
+										"network": {
+											"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+										}
+									},
+									"http_port": 8080,
+									"https_port": 8443,
+									"name": "web-app",
+									"type": "http"
+								}
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"discriminator": {
+												"mapping": {
+													"http": "#/components/schemas/infra_HttpServiceConfig"
+												},
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2024-01-15T09:30:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"host": {
+																	"oneOf": [
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"ipv4": "10.0.0.1",
+																				"ipv6": "fe80::1",
+																				"network": {
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"ipv4": {
+																					"example": "10.0.0.1",
+																					"type": "string"
+																				},
+																				"ipv6": {
+																					"example": "fe80::1",
+																					"type": "string"
+																				},
+																				"network": {
+																					"properties": {
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"ipv4",
+																				"ipv6",
+																				"network"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"hostname": "example.com",
+																				"resolver_network": {
+																					"resolver_ips": [
+																						"10.0.0.1"
+																					],
+																					"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+																				}
+																			},
+																			"properties": {
+																				"hostname": {
+																					"example": "example.com",
+																					"type": "string"
+																				},
+																				"resolver_network": {
+																					"properties": {
+																						"resolver_ips": {
+																							"items": {
+																								"type": "string"
+																							},
+																							"nullable": true,
+																							"type": "array"
+																						},
+																						"tunnel_id": {
+																							"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+																							"format": "uuid",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"tunnel_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"hostname",
+																				"resolver_network"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"name": {
+																	"example": "web-server",
+																	"type": "string"
+																},
+																"service_id": {
+																	"example": "550e8400-e29b-41d4-a716-446655440000",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"type": {
+																	"enum": [
+																		"http"
+																	],
+																	"type": "string"
+																},
+																"updated_at": {
+																	"example": "2024-01-15T10:45:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"host"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"http_port": {
+																	"example": 8080,
+																	"format": "int32",
+																	"minimum": 1,
+																	"nullable": true,
+																	"type": "integer"
+																},
+																"https_port": {
+																	"example": 8443,
+																	"format": "int32",
+																	"minimum": 1,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"example": {
+														"host": {
+															"ipv4": "10.0.0.1",
+															"network": {
+																"tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+															}
+														},
+														"http_port": 8080,
+														"https_port": 8443,
+														"name": "web-app",
+														"type": "http"
+													}
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully updated connectivity service"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to update connectivity service"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update connectivity service",
+		"tags": [
+			"Connectivity Services"
+		]
+	}
+}

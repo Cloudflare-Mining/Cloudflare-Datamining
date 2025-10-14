@@ -1003,7 +1003,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/summary/edns": {
 		"deprecated": true,
@@ -1498,7 +1499,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/summary/ip_version": {
 		"deprecated": true,
@@ -1993,7 +1995,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/summary/protocol": {
 		"deprecated": true,
@@ -2487,7 +2490,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/summary/query_type": {
 		"deprecated": true,
@@ -2887,7 +2891,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/summary/response_codes": {
 		"deprecated": true,
@@ -3357,7 +3362,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/timeseries": {
 		"description": "Retrieves the AS112 DNS queries over time.",
@@ -4972,7 +4978,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/timeseries_groups/edns": {
 		"deprecated": true,
@@ -5501,7 +5508,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/timeseries_groups/ip_version": {
 		"deprecated": true,
@@ -6030,7 +6038,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/timeseries_groups/protocol": {
 		"deprecated": true,
@@ -6564,7 +6573,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/timeseries_groups/query_type": {
 		"deprecated": true,
@@ -7020,7 +7030,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/timeseries_groups/response_codes": {
 		"deprecated": true,
@@ -7546,7 +7557,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/top/locations": {
 		"description": "Retrieves the top locations by AS112 DNS queries.",

@@ -182,6 +182,25 @@
 				"schema": {
 					"type": "number"
 				}
+			},
+			{
+				"in": "query",
+				"name": "indicatorType",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
+				"in": "query",
+				"name": "relatedEvent",
+				"schema": {
+					"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
 			}
 		],
 		"responses": {

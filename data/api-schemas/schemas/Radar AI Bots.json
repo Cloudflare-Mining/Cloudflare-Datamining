@@ -783,7 +783,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AI Bots Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/bots/methods/summary_v2/) instead."
 	},
 	"GET /radar/ai/bots/timeseries": {
 		"description": "Retrieves AI bots HTTP request volume over time.",
@@ -2130,6 +2131,7 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar AI Bots Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/bots/methods/timeseries_groups/) instead."
 	}
 }

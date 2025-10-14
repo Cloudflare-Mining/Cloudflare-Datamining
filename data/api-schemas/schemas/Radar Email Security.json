@@ -835,7 +835,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/dkim": {
 		"deprecated": true,
@@ -1239,7 +1240,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/dmarc": {
 		"deprecated": true,
@@ -1643,7 +1645,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/malicious": {
 		"deprecated": true,
@@ -2058,7 +2061,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/spam": {
 		"deprecated": true,
@@ -2473,7 +2477,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/spf": {
 		"deprecated": true,
@@ -2877,7 +2882,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/spoof": {
 		"deprecated": true,
@@ -3292,7 +3298,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/threat_category": {
 		"deprecated": true,
@@ -3721,7 +3728,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/tls_version": {
 		"deprecated": true,
@@ -4131,7 +4139,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/{dimension}": {
 		"description": "Retrieves the distribution of email security metrics grouped by dimension over time.",
@@ -5056,7 +5065,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/dkim": {
 		"deprecated": true,
@@ -5497,7 +5507,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/dmarc": {
 		"deprecated": true,
@@ -5938,7 +5949,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/malicious": {
 		"deprecated": true,
@@ -6387,7 +6399,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/spam": {
 		"deprecated": true,
@@ -6836,7 +6849,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/spf": {
 		"deprecated": true,
@@ -7277,7 +7291,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/spoof": {
 		"deprecated": true,
@@ -7726,7 +7741,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/threat_category": {
 		"deprecated": true,
@@ -8195,7 +8211,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/tls_version": {
 		"deprecated": true,
@@ -8645,7 +8662,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/top/tlds": {
 		"description": "Retrieves the top TLDs by number of email messages.",

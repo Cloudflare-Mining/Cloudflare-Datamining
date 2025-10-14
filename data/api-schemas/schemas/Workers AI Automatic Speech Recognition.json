@@ -1,4 +1,86 @@
 {
+	"GET /accounts/{account_id}/ai/run/@cf/deepgram/flux": {
+		"operationId": "workers-ai-post-websocket-run-cf-deepgram-flux",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"101": {
+				"description": "Returns a websocket connection"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Open Websocket connection with @cf/deepgram/flux model.",
+		"tags": [
+			"Workers AI Automatic Speech Recognition"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /accounts/{account_id}/ai/run/@cf/deepgram/nova-3": {
 		"operationId": "workers-ai-post-websocket-run-cf-deepgram-nova-3",
 		"parameters": [
@@ -150,6 +232,170 @@
 		"summary": "Open Websocket connection with @cf/deepgram/nova-3-internal model.",
 		"tags": [
 			"Workers AI Automatic Speech Recognition"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/deepgram/flux": {
+		"operationId": "workers-ai-post-run-cf-deepgram-flux",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"eager_eot_threshold": {
+								"description": "End-of-turn confidence required to fire an eager end-of-turn event. When set, enables EagerEndOfTurn and TurnResumed events. Valid Values 0.3 - 0.9.",
+								"type": "string"
+							},
+							"encoding": {
+								"description": "Encoding of the audio stream. Currently only supports raw signed little-endian 16-bit PCM.",
+								"enum": [
+									"linear16"
+								],
+								"type": "string"
+							},
+							"eot_threshold": {
+								"default": "0.7",
+								"description": "End-of-turn confidence required to finish a turn. Valid Values 0.5 - 0.9.",
+								"type": "string"
+							},
+							"eot_timeout_ms": {
+								"default": "5000",
+								"description": "A turn will be finished when this much time has passed after speech, regardless of EOT confidence.",
+								"pattern": "^[0-9]+$",
+								"type": "string"
+							},
+							"keyterm": {
+								"description": "Keyterm prompting can improve recognition of specialized terminology. Pass multiple keyterm query parameters to boost multiple keyterms.",
+								"type": "string"
+							},
+							"mip_opt_out": {
+								"default": "false",
+								"description": "Opts out requests from the Deepgram Model Improvement Program. Refer to Deepgram Docs for pricing impacts before setting this to true. https://dpgr.am/deepgram-mip",
+								"enum": [
+									"true",
+									"false"
+								],
+								"type": "string"
+							},
+							"sample_rate": {
+								"description": "Sample rate of the audio stream in Hz.",
+								"pattern": "^[0-9]+$",
+								"type": "string"
+							},
+							"tag": {
+								"description": "Label your requests for the purpose of identification during usage reporting",
+								"type": "string"
+							}
+						},
+						"required": [
+							"sample_rate",
+							"encoding"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/deepgram/flux model.",
+		"tags": [
+			"Workers AI Automatic Speech Recognition"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
