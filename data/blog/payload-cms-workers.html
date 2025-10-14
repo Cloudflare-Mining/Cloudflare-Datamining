@@ -50,14 +50,13 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI,
-      max: 1,
-      min: 0,
-      idleTimeoutMillis: 1,
+      maxUses: 1,
     },
   }),
   …
-});</code></pre>
-	<p>Of course, disabling connection pooling increases the overall latency, as each request needs to first establish a new connection with the database. To address this, we put <a href="https://developers.cloudflare.com/hyperdrive"><u>Hyperdrive</u></a> in front of it, which not only maintains a pool of connections across the Cloudflare network, by setting up a tunnel to the database server, but also adds a query cache, significantly improving the performance.</p>
+});
+</code></pre>
+	<p>Of course, disabling connection pooling increases the overall latency, as each request needs to first establish a new connection with the database. To address this, we put <a href="https://developers.cloudflare.com/hyperdrive"><u>Hyperdrive</u></a> in front of it, which not only maintains a pool of connections across the Cloudflare network, by setting up a tunnel to the database server, but also adds a query cache, significantly improving the performance. </p>
 	<pre class="language-TypeScript"><code class="language-TypeScript">import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { getCloudflareContext } from '@opennextjs/cloudflare';
@@ -69,13 +68,12 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString: cloudflare.env.HYPERDRIVE.connectionString,
-      max: 1,
-      min: 0,
-      idleTimeoutMillis: 1,
+      maxUses: 1,    
     },
   }),
   …
-});</code></pre>
+});
+</code></pre>
 
 	<div class="flex anchor relative">
 		<h3 id="database-with-d1">Database with D1</h3>
