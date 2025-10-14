@@ -5,32 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon or London - Hybrid</strong></p>
-<p><strong>About Product Experience (PX) team</strong></p>
-<p>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Senior Product Designer to join our team.</p>
-<p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Sr Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Product Designers to lead by example and coach the team into doing their best work.</p>
-<p>If you're a systems-thinking Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Locations: Austin, Lisbon, London</strong></p>
+<p>At Cloudflare, we’re building the most reliable network in the world.&nbsp; Come join us to make sure we’re building the network to be as reliable as it can be.</p>
+<p>As an Infrastructure Product Manager, you will evangelize and saturate automated communication of changes to Cloudflare’s infrastructure, develop and scale roadmaps for critical infrastructure platforms, ensuring world-class reliability and efficiency. You will manage stakeholder requirements to develop a long-term vision (2+ years) for these platforms, improve and create processes for seamless and rapid customer communication during incidents, build tools to automate incident communications and streamline the customer crediting process, enhance the rigor of existing Service Level Agreement (SLA) processes, and promote and implement automated communication for all changes to Cloudflare’s infrastructure.</p>
+<p>As a member of a growing team of product managers your responsibilities include:</p>
 <ul>
-	<li>Demonstrate talent and passion for designing end-to-end user experiences.</li>
-	<li>Distill complex problems into approachable steps through researching, sketching, and sharing ideas with your cross-functional team.</li>
-	<li>Creation of low and high fidelity user interface designs and prototypes using Figma.</li>
-	<li>Partner with product managers and engineering leaders to work through technical tradeoffs that affect product roadmaps.</li>
-	<li>Partner with other designers to collaborate on shared patterns, product vision, and design goals.</li>
-	<li>Facilitate design reviews with cross-functional teams.</li>
-	<li>Influence and contribute to the internal design process and team culture</li>
-	<li>Make time to mentor other designers on the team and share your craft, learning as you teach.</li>
-	<li>Find ways to grow design's impact, spending time to share design decisions throughout the organisation.</li>
+	<li>Develop the platform vision for your area. Ensure that it aligns with the overall product and company vision.</li>
+	<li>Evangelize the vision so that all stakeholders are aligned, have context and understand where we are going.</li>
+	<li>Represent the customer. Be the champion and voice of customers. Build intimate, personal customer relationships. Bring the customer's voice into the creation process.</li>
+	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
+	<li>Manage the roadmap. Make tough tactical prioritization decisions while helping the company think long-term. Build trust with stakeholders by maintaining an understandable, accurate roadmap.</li>
+	<li>Author use cases and prioritize requirements. Translate market observations and customer feedback into a prioritized product backlog.&nbsp; Author use cases based on specific real-world product applications and extrapolate detailed product requirements for the scenarios.</li>
+	<li>Collaborate across teams. We win or lose as a team. Product managers play a critical role in creating alignment between engineering teams and stakeholders. A collaborative attitude is essential to the job.</li>
+	<li>Develop new opportunities. With your finger on the pulse of the market, the customers and the engineering teams, you are uniquely positioned to discover and develop new opportunities.&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p>Examples of desirable skills, knowledge and experience</p>
+<p>The ideal candidate is customer-focused, methodical and thrives in a goal-oriented and data-driven environment. You have outstanding communication and collaboration skills and are able to work with a diverse group, get consensus, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details. You are data-driven and make decisions based on evidence, the voice of the customer, and define and execute on a set of measurable success criteria. You have a passion for building application infrastructure and want to solve the problems of performance, security, and reliability of the Internet.&nbsp;&nbsp;&nbsp;</p>
 <ul>
-	<li>Deep understanding of human-centered design.</li>
-	<li>8+ years working in professional UX or product design roles.</li>
-	<li>Effective visual, written, and verbal communication skills.</li>
-	<li>Technical expertise and an understanding of network services/developer tools are a plus.</li>
-	<li>If possible, please submit a 1-2 case studies or portfolio with your application</li>
+	<li>Experience presenting new products and features to customers – whether as a student, intern, developer, analyst or product manager. You are enthusiastic about taking something you have helped build and sharing it with the world</li>
+	<li>Strong customer and stakeholder empathy. You must be not only the voice of the customer, but at various times the voice of marketing, finance, engineering, support and ops. You must be able to channel many points of view</li>
+	<li>Exceptional communication, presentation, organizational and analytical skills</li>
+	<li>Demonstrated ability to lead, drive consensus and deliver in a matrix organization with multiple stakeholders</li>
+	<li>Must be able to define and manage complex process and/or product issues of a broad scope using independent judgment</li>
+	<li>Ability to communicate complex technical concepts to all audiences</li>
+	<li>Domain expertise (e.g. as a practitioner or technology provider) in several of: networks, distributed network applications, distributed systems, and real-time applications with heavy network reliance.</li>
 </ul>
-<p>&nbsp;</p>
+<p>Bonus Points</p>
+<ul>
+	<li>BS/MS in a technology- or business-related field</li>
+	<li>Passion and a strong understanding of the Internet and it’s underlying technologies</li>
+	<li>Deep knowledge of networking and industry standards</li>
+	<li>Distributed systems experience and building networks at scale</li>
+	<li>Experience in building, configuring or using cloud based network products</li>
+	<li>A solid understanding of RESTful API design &amp; documentation</li>
+	<li>Hands-on experience with command-line tools used for interacting with APIs, debugging and testing (e.g. curl, dig, etc.)</li>
+	<li>Scripting/programming experience (Python, Go, etc.) and/or experience with web frameworks</li>
+	<li>Previous product management experience</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
