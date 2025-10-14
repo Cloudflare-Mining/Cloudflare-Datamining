@@ -75,6 +75,34 @@
 	<li>Familiarity with Configuration Management Databases (CMDBs) and their integration with asset management.&nbsp;&nbsp;</li>
 	<li>Experience with ServiceNow Software and Hardware Asset Management modules.&nbsp;</li>
 </ul>
+<p><strong>Compensation<br><br><br></strong>Base compensation may vary based on location.<br><br>For candidates in Seattle, Washington DC, or New York City: $120,000 - 143,000<br>For candidates in Denver: $105,000 - 130,000<br><br></p>
+<p><strong>Equity</strong></p>
+<p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
+<p><strong>Benefits</strong></p>
+<p><span style="font-weight: 400;">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</span></p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Medical/Rx Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Dental Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Vision Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible Spending Accounts</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Commuter Spending Accounts</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fertility &amp; Family Forming Benefits</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">On-demand mental health support and Employee Assistance Program</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Global Travel Medical Insurance</span></li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Short and Long Term Disability Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Life &amp; Accident Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">401(k) Retirement Savings Plan</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee Stock Participation Plan</span></li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
