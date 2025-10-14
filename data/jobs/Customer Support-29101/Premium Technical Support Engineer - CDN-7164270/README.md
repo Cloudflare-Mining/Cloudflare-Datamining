@@ -5,35 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>About Us</strong><strong><br></strong><strong><br></strong>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
-<p><strong>What you’ll do</strong></p>
-<p>You will be on a team of passionate, talented engineers that are building critical features in Cloudflare One’s Zero Trust security platform. Throughout this product suite, we have offerings ranging from ZTNA (Zero Trust Network Architecture), to SWG (Secure Web Gateway), CASB (Cloud Access Security Broker), and many more that encompass a holistic platform to help secure some of the world’s most important and forward-looking organizations. This team spearheads a variety of innovative new product features across the whole product portfolio, and directly collaborates with many engineering teams while doing so.&nbsp;</p>
-<p>As an engineer on the team, you bring passion for building mission critical products and features, while thinking about the bigger picture of how your code will impact customers and advance their needs. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security and networking challenges for our customers.</p>
-<p><strong>Technologies we use:</strong></p>
+<p><strong>Available Location: Singapore or Kuala Lumpur (Malaysia)</strong></p>
+<h3><strong>About the Team</strong></h3>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h3><strong>What You'll Do</strong></h3>
+<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Technical </strong><strong>Support Engineer</strong><strong> for CDN </strong>to join our team. You will work with our largest and most technically sophisticated customers on a variety of technical support issues to ensure they can deploy and operate Cloudflare's CDN solutions with confidence.&nbsp;</p>
 <ul>
-	<li>Core backend and API services are written in Go, Rust, and Python.</li>
-	<li>Our frontend is written in Typescript and React.</li>
-	<li>We utilize Clickhouse, Postgres, and TimescaleDB as our data stores.</li>
-	<li>Redis is our cache.</li>
-	<li>Kafka plays a large role at Cloudflare and this team with message streaming.</li>
-	<li>For service monitoring we use Prometheus and Grafana.</li>
-	<li>For service logging we use Elasticsearch and Kibana.</li>
+	<li>Serve as a trusted technical advisor for our Premium customers, responding to and resolving inquiries and incidents related to CDN services, while delivering timely, high-quality and personalized assistance.</li>
+	<li>Work directly with customers to diagnose, troubleshoot and resolve complex technical issues involving DDoS mitigation, firewall rules, SSL/TLS, network confirmation, and other security configurations.</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
+	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
+	<li>Work with Engineering and Product teams to improve products and tools</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
+<h3><strong>What We're Looking For</strong></h3>
 <ul>
-	<li>3+ years of professional experience building and managing reliable and performant software systems at scale, preferably with technologies like: Go, Rust, Python, Typescript, Postgres, Clickhouse, Kafka, etc.</li>
-	<li>Passion for making the digital world a more secure place</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
-	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
+	<li>You have a minimum of 4 years experience working as a Technical Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
+	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
+	<li>Strong customer service orientation and communication skills, both written and verbal, fluent in English and preferably a second language like Mandarin, Hindi, Tamil, Korean or Japanese.</li>
+	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
+	<li>Strong understanding of network protocols, including TCP/IP, DNS, HTTP/S, and BGP, with a particular focus on anycast routing concepts and implementation, as well as tools such as iptables and looking glass.</li>
+	<li>Proven experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels, and performing packet capture analysis</li>
+	<li>Confident with command line and tools, including curl, dig, traceroute, openssl, git</li>
+	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
+	<li>You are competent writing scripts in Bash, Python, JavaScript or other scripting language</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
+	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience)</li>
+	<li>Relevant certifications such as CISSP, GCIA GCIH, GCFA, GCFE or equivalent</li>
 </ul>
-<p><strong>Bonus</strong></p>
-<ul>
-	<li>Frontend programming experience in Typescript/Javascript</li>
-	<li>Previous experience working on security products</li>
-</ul>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
