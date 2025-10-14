@@ -1,5 +1,16 @@
 # Change Log
 
+## 11.1.0
+
+### Minor Changes
+
+- 8717364756: Update types to work with react 18
+
+### Patch Changes
+
+- Updated dependencies [8717364756]
+  - @cloudflare/component-box@5.1.0
+
 ## 11.0.19
 
 ### Patch Changes

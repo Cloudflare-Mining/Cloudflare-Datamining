@@ -1,5 +1,14 @@
 # Change Log
 
+## 11.0.4
+
+### Patch Changes
+
+- Updated dependencies [8717364756]
+  - @cloudflare/component-box@5.1.0
+  - @cloudflare/component-text@5.1.0
+  - @cloudflare/chart-color-legend@6.0.4
+
 ## 11.0.3
 
 ### Patch Changes

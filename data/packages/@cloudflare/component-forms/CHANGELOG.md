@@ -1,5 +1,15 @@
 # Change Log
 
+## 7.0.25
+
+### Patch Changes
+
+- @cloudflare/component-input@9.0.5
+- @cloudflare/component-search@9.0.20
+- @cloudflare/component-select-2@8.0.20
+- @cloudflare/util-responsive@4.0.21
+- @cloudflare/component-grid@4.0.21
+
 ## 7.0.24
 
 ### Patch Changes

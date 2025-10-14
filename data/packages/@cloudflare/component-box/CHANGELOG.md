@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.0
+
+### Minor Changes
+
+- 8717364756: Update types to work with react 18
+
 ## 5.0.3
 
 ## 5.0.2

@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.0.21
+
+### Patch Changes
+
+- @cloudflare/util-responsive@4.0.21
+
 ## 8.0.20
 
 ### Patch Changes

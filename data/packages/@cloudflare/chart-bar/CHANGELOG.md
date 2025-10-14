@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.0.5
+
+### Patch Changes
+
+- Updated dependencies [8717364756]
+  - @cloudflare/component-text@5.1.0
+
 ## 6.0.4
 
 ### Patch Changes

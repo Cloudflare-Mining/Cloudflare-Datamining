@@ -1,5 +1,12 @@
 # Change Log
 
+## 4.0.21
+
+### Patch Changes
+
+- Updated dependencies [8717364756]
+  - @cloudflare/component-box@5.1.0
+
 ## 4.0.20
 
 ### Patch Changes
