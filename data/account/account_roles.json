@@ -1931,11 +1931,11 @@
 		"name": "Workers Platform Admin",
 		"description": "Can create, read, update and delete all resources in the Workers Platform.",
 		"permissions": {
-			"worker": {
+			"organization": {
 				"read": true,
 				"edit": true
 			},
-			"organization": {
+			"worker": {
 				"read": true,
 				"edit": true
 			},
