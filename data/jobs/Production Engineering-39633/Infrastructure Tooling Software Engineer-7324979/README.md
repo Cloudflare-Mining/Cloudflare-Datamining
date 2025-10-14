@@ -6,31 +6,32 @@
 	</div>
 </div>
 <h4><strong>About the department</strong></h4>
-<p>Cloudflare’s Resiliency Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. Resiliency Engineering ensures that all new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
-<p>The Infrastructure Tooling Team within Resiliency Engineering is responsible for defining, building and supporting tools and services used across Cloudflare to manage its infrastructure. These tools enable both Cloudflare’s daily operation and its relentless growth.</p>
+<p>Cloudflare’s Resiliency Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. Resiliency Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
+<p>The Infrastructure Tooling Team within the Resiliency Engineering organization is responsible for defining, building and supporting the tools that can be leveraged by the rest of the Infrastructure Engineering team to manage our infrastructure at scale.</p>
 <h4><strong>What you'll do</strong></h4>
-<p>In this role you’ll have an opportunity to work on our internal infrastructure control plane application "Zinc". Zinc is a Rust application that is used to manage our global fleet of servers and network devices. Zinc answers every device’s question: what am I, what do I do? The service is high performance, highly available, and is special in that it also shares few dependencies with most other Cloudflare services, since most systems have a dependency on Zinc.</p>
-<p>Your work on Zinc will directly affect the efficiency and resilience of Cloudflare's vast global server and network infrastructure. If you are passionate about optimizing and scaling globally distributed systems, this may be the team for you!</p>
-<p>Read more about Zinc in the Cloudflare blog: <a href="https://blog.cloudflare.com/redefining-fleet-management-at-cloudflare/">Redefining Fleet Management at Cloudflare</a>.</p>
+<p>In this role you’ll have an opportunity to work on our internal infra-control plan application "Zinc". On the Zinc team, you'll be building a critical component of the overall Cloudflare stack. Zinc is a Rust based application that is used to manage our global fleet of servers and network devices. Zinc must be high performance, highly available, and have few shared dependencies since nearly everything else has a dependency on Zinc.<br><br>If you like thinking about optimizing and scaling globally distributed systems, this may be the team for you!<br>More about Zinc in the Cloudflare blog:</p>
+<p><a href="https://blog.cloudflare.com/redefining-fleet-management-at-cloudflare/">https://blog.cloudflare.com/redefining-fleet-management-at-cloudflare/</a></p>
 <p>Because you’ll be solving problems of great significance, and<a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"> shaping the future of the Internet</a>, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>The ideal candidate for this position is curious, hard-working, and loves owning and improving critical infrastructure services.</p>
-<p>We're interested in candidates who bring:</p>
+<p>As an ideal candidate for this position, you are curious, hard-working, and passionate.</p>
+<p>A rough list of the skills we would love to see you bring:</p>
 <ul>
-	<li>Programming experience in Rust, Go, Python or similar languages. (If you’re not a Rust expert, you are willing to become one.)</li>
-	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
+	<li>Working in an infrastructure composed of emergent, planned, and adapted services.</li>
+	<li>Programming experience in Rust, Go, Python or similar language. You are either an expert in Rust or are willing to become one.</li>
+	<li>Experience (and love) for debugging to ensure the system works in all cases.</li>
 	<li>Experience with Distributed Systems at scale is a plus</li>
-	<li>Collaborates well with smart, driven, and highly technical users</li>
-	<li>Designing and building APIs. Also welcome: CLI, React apps, SDK, system integrations like wiki and chat, and more.</li>
-	<li>Great oral and written communications skills</li>
-	<li>Passion for solving challenging problems and learning complex systems</li>
-	<li>CS degree or equivalent experience</li>
+	<li>Designing and building APIs, CLIs, and web applications which are used constantly by critical infrastructure teams.</li>
+	<li>Great oral and written communications skills.</li>
+	<li>Strong desire to learn and improve.</li>
+	<li>Ready to participate in oncall rotations.</li>
+	<li>CS degree or equivalent experience.</li>
+	<li>Passion for solving unique problems and learning to understand complex systems.</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
 <ul>
-	<li style="font-weight: 400;"><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $187,000 - $229,000</span></li>
+	<li style="font-weight: 400;"><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $154,000 - $188,000</span></li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Equity</strong></p>
