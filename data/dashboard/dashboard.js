@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "3e162041-ccb5-5b1e-be44-7545e18e3d7c")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "ef32cfbe-3be4-5d3f-a8a3-4075f7c671a1")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -902,10 +902,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "b343743af07058ac2445bd22c0b2c16438ebc9af",
-							dashVersion: "36606242",
+							commit: "3acf0d847430f014eb5e7282c539d33486fc0261",
+							dashVersion: "36612946",
 							env: "production",
-							builtAt: 0x199e807da49,
+							builtAt: 0x199e91f7f5f,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								node: "20.10.0",
@@ -65875,11 +65875,14 @@ SOFTWARE.`,
 		"../react/pages/zoneless-workers/utils/useWorkerPlans.ts": function(e, t, n) {
 			"use strict";
 			n.d(t, {
-				X6: function() {
+				$u: function() {
 					return m
 				},
-				iz: function() {
+				X6: function() {
 					return f
+				},
+				iz: function() {
+					return g
 				},
 				k: function() {
 					return d
@@ -65914,12 +65917,20 @@ SOFTWARE.`,
 			function m() {
 				let e = (0, o.p4)(l.tJ);
 				return null == e ? void 0 : e.find(e => {
+					var t, n, r, o, a, i, l, s, u, d;
+					return e && ((null == (t = e.rate_plan) ? void 0 : t.id.toLowerCase()) === c.uD.Paid.toLowerCase() || (null == (n = e.rate_plan) ? void 0 : n.id.toLowerCase()) === c.uD.NoCost.toLowerCase() || (null == (r = e.rate_plan) ? void 0 : r.id.toLowerCase()) === c.uD.LegacyPaid.toLowerCase() || (null == (o = e.rate_plan) ? void 0 : o.id.toLowerCase()) === c.uD.LegacyEnterprise.toLowerCase() || (null == (a = e.rate_plan) ? void 0 : a.id.toLowerCase()) === c.uD.Enterprise.toLowerCase() || (null == (i = e.rate_plan) ? void 0 : i.id.toLowerCase()) === c.uD.EnterpriseTrial.toLowerCase() || (null == (l = e.rate_plan) ? void 0 : l.id.toLowerCase()) === c.uD.LegacyEnterpriseSSPaygo.toLowerCase() || (null == (s = e.rate_plan) ? void 0 : s.id.toLowerCase()) === c.uD.LegacyEnterpriseSSContract.toLowerCase() || (null == (u = e.rate_plan) ? void 0 : u.id.toLowerCase()) === c.uD.EnterpriseSSPaygo.toLowerCase() || (null == (d = e.rate_plan) ? void 0 : d.id.toLowerCase()) === c.uD.EnterpriseSSContract.toLowerCase())
+				})
+			}
+
+			function f() {
+				let e = (0, o.p4)(l.tJ);
+				return null == e ? void 0 : e.find(e => {
 					var t, n, r;
 					return e && ((null == (t = e.rate_plan) ? void 0 : t.id.toLowerCase()) === c.uD.Paid.toLowerCase() || (null == (n = e.rate_plan) ? void 0 : n.id.toLowerCase()) === c.uD.NoCost.toLowerCase() || (null == (r = e.rate_plan) ? void 0 : r.id.toLowerCase()) === c.uD.LegacyPaid.toLowerCase())
 				})
 			}
 
-			function f() {
+			function g() {
 				let e = (0, o.p4)(l.tJ),
 					t = (0, r.useCallback)(t => p(e, t), [e]),
 					n = (0, o.p4)(i.a),
@@ -72750,4 +72761,4 @@ SOFTWARE.`,
 		}
 	}
 ]);
-//# debugId=3e162041-ccb5-5b1e-be44-7545e18e3d7c
+//# debugId=ef32cfbe-3be4-5d3f-a8a3-4075f7c671a1
