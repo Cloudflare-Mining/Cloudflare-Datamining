@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Singapore, or Sydney, Australia</strong></p>
+<p><strong>Available Locations: Singapore, Kuala Lumpur, Malaysia, or Sydney, Australia</strong></p>
 <p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced Technical Support Engineer to join our team. You will work with our broad customer base on a variety of technical support issues ranging from troubleshooting network performance and security concerns to providing guidance on product configurations and best practices.</p>
 <ul>
 	<li>Serve as a trusted technical advisor, providing advanced support for enterprise customers using Cloudflare’s suite of products.</li>
