@@ -317,6 +317,10 @@
 		"name": "Email Security Readonly",
 		"description": "Read access to all of Email Security, cannot see raw email, take action on emails, or make submissions (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"cf1_integration": {
+				"read": true,
+				"edit": false
+			},
 			"ces_pra_report": {
 				"read": true,
 				"edit": false
@@ -374,6 +378,10 @@
 		"name": "Email Security Analyst",
 		"description": "Read access to all of Email Security including Settings, and can also action emails (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"cf1_integration": {
+				"read": true,
+				"edit": false
+			},
 			"ces_policies": {
 				"read": true,
 				"edit": false
@@ -429,6 +437,11 @@
 		"name": "Email Configuration Admin",
 		"description": "Write access to all of Email Security, except for mail preview, raw email, on-demand reports, actions on emails, submissions, submission transparency. (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"cf1_integration": {
+				"read": true,
+				"edit": true,
+				"ces_enroll": true
+			},
 			"ces_policies": {
 				"read": true,
 				"edit": true
@@ -477,6 +490,11 @@
 		"name": "Email Integration Admin",
 		"description": "Write access to Email Security account integration only",
 		"permissions": {
+			"cf1_integration": {
+				"read": true,
+				"edit": true,
+				"ces_enroll": true
+			},
 			"ces_pra_report": {
 				"read": true,
 				"edit": true

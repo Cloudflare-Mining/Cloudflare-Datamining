@@ -632,6 +632,22 @@
 		]
 	},
 	{
+		"id": "da5fe84b9c5446a0a5955b673fafa288",
+		"name": "CASB Read",
+		"description": "Grants read access to Cloudflare CASB",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "b9ed086b20864ad89c5aac24cdd02365",
+		"name": "CASB Write",
+		"description": "Grants write access to Cloudflare CASB",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "47b936e2027140c0a474cac8887b8c29",
 		"name": "CF Agents Read",
 		"description": "Grants read access to CF Agents",
