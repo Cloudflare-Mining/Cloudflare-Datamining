@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.0.22
+
+### Patch Changes
+
+- @cloudflare/component-link@9.0.22
+
 ## 7.0.21
 
 ### Patch Changes

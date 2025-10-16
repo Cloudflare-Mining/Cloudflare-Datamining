@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.0
+
+### Minor Changes
+
+- 2bec78b6cd: Correrctly type children props
+
 ## 2.0.5
 
 ### Patch Changes

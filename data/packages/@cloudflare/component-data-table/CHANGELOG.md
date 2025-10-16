@@ -1,5 +1,17 @@
 # Change Log
 
+## 7.1.0
+
+### Minor Changes
+
+- 2bec78b6cd: Correrctly type children props
+
+### Patch Changes
+
+- Updated dependencies [2bec78b6cd]
+  - @cloudflare/component-button@9.3.0
+  - @cloudflare/component-link@9.0.22
+
 ## 7.0.22
 
 ### Patch Changes
