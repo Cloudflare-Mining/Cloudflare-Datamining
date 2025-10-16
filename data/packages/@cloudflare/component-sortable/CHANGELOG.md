@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.0.23
+
+### Patch Changes
+
+- Updated dependencies [e902ffebaa]
+  - @cloudflare/component-button@9.3.1
+
 ## 6.0.22
 
 ### Patch Changes

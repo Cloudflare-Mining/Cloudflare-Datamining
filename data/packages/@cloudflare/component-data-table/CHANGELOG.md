@@ -1,5 +1,13 @@
 # Change Log
 
+## 7.1.1
+
+### Patch Changes
+
+- Updated dependencies [e902ffebaa]
+  - @cloudflare/component-button@9.3.1
+  - @cloudflare/component-link@9.0.23
+
 ## 7.1.0
 
 ### Minor Changes
