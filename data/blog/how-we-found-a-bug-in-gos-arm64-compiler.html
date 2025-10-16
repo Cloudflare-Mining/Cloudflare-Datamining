@@ -1,4 +1,5 @@
-<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zaMttyutjMsqHUuEpCss3/8b7eb27d92e5fc53f6541d04fe0b778f/Bug_Bounty.png" alt="">
+<div class="mb2 gray5">10 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/how-we-found-a-bug-in-gos-arm64-compiler">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zaMttyutjMsqHUuEpCss3/8b7eb27d92e5fc53f6541d04fe0b778f/Bug_Bounty.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Every second, 84 million HTTP requests are hitting Cloudflare across our fleet of data centers in 330 cities. It means that even the rarest of bugs can show up frequently. In fact, it was our scale that recently led us to discover a bug in Go's arm64 compiler which causes a race condition in the generated code.</p>
 	<p>This post breaks down how we first encountered the bug, investigated it, and ultimately drove to the root cause.</p>
