@@ -5,81 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Austin, San Francisco</strong></p>
-<h1>Program Manager, GTM Initiatives</h1>
-<h2>Role Overview</h2>
-<p>The Program Manager, GTM Initiatives will be a key driver of high-impact go-to-market programs. Reporting to the Chief of Staff to the President of Revenue, this role is responsible for helping design, track, and deliver critical initiatives with discipline and impact. The individual will collaborate across Sales, RevOps, Product, Marketing, and Customer Success to bridge strategy and execution, shaping GTM programs that translate leadership priorities into measurable business outcomes. Examples of initiatives include the Field Advisory Board, executive engagement programs, and other cross-functional efforts tied to revenue growth, efficiency, and customer success.</p>
-<h2>Key Responsibilities</h2>
+<h4><strong>Location: Singapore, Sydney</strong></h4>
+<h4><strong>About the Deal Desk Team</strong></h4>
+<p>The Deal Desk team is a critical component of the Finance function, acting as a strategic partner to the global Go-To-Market (GTM) organization. We are responsible for partnering with sales to structure, negotiate, and close complex commercial deals. We effectively balance a focus on deals that are profitable, compliant, and scalable while also keeping our customers’ best interest in mind. We are committed to leveraging technology and automation to improve our processes and provide a competitive advantage. We collaborate closely with Sales, Legal, and Operations to deliver innovative and effective deal structures that meet our customers' needs and align with our business and financial objectives.</p>
+<p><strong>What you’ll do</strong></p>
+<p>As the Deal Desk Regional Director, you will be a strategic leader responsible for overseeing the deal desk function for your designated region. You will be a player-coach, balancing hands-on deal support with high-level strategic planning and team leadership.</p>
 <ul>
-	<li>Partner closely with the Chief of Staff to design and operationalize GTM initiatives, ensuring programs are structured for impact and scalability.</li>
-	<li>Drive follow-through by tracking actions, holding owners accountable, and ensuring commitments are delivered on time.</li>
-	<li>Manage execution of flagship programs such as the Field Advisory Board and executive engagement, ensuring feedback and touchpoints translate into measurable outcomes.</li>
-	<li>Prioritize and coordinate executive involvement in opportunities and customer engagements to accelerate outcomes.</li>
-	<li>Collaborate with cross-functional teams (RevOps, Product, Sales, Marketing, Customer Success) to resolve dependencies and ensure smooth execution.</li>
-	<li>Build and maintain dashboards, trackers, and reporting mechanisms that provide visibility into GTM programs and outcomes, with periodic updates to senior leadership.</li>
-	<li>Lead process improvement and scaling efforts for initiatives that increase revenue performance, organizational efficiency, or customer satisfaction.<br><br></li>
+	<li>Strategic Leadership: Own the regional Deal Desk strategy, ensuring it aligns with global objectives and regional GTM priorities. You will be a key strategic partner to regional sales leadership on all deal-related matters.</li>
+	<li>Team Leadership &amp; Development: Lead, mentor, and manage a team of Deal Desk professionals. You will be responsible for their professional growth, performance management, and day-to-day guidance.</li>
+	<li>Complex Deal Execution: Personally engage on the most complex, high-value, or strategic deals in the region, providing hands-on support and expertise to your team and sales leaders.</li>
+	<li>Process Automation &amp; Improvement: Champion and drive the adoption of AI and automation tools to streamline the regional deal process. You will partner with global teams to identify and implement new technologies that improve efficiency and decision-making.</li>
+	<li>Cross-Functional Collaboration: Act as the primary liaison between regional sales, legal, finance, and operations teams. You will ensure consistent application of policies and a smooth flow of communication across the organization.</li>
+	<li>Reporting &amp; Analysis: Provide regional leadership with regular reporting and analysis on deal performance, profitability trends, and process efficiency, using data to inform strategic decisions.</li>
 </ul>
-<h2>Qualifications</h2>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>To succeed in this role, you should be a seasoned leader with deep commercial and financial expertise, a passion for technology, and a proven track record of managing high-performing teams.</p>
 <ul>
-	<li>5+ years of experience in sales operations, GTM program management, or revenue operations.</li>
-	<li>Demonstrated ability to design and structure cross-functional programs, not just execute them.</li>
-	<li>Strong organizational skills with proven ability to manage multiple initiatives simultaneously.</li>
-	<li>Skilled in stakeholder management with the ability to influence without direct authority.</li>
-	<li>Comfortable working with sales data and using it to prioritize and track execution.</li>
-	<li>Excellent communicator with the ability to translate strategic goals into actionable, well-structured plans.<br><br></li>
+	<li>Experience: You have 7+ years of experience in a Deal Desk role, with at least 3 years in a leadership or management position. Experience in a SaaS or technology company is required.</li>
+	<li>Leadership &amp; Coaching: Proven ability to build, lead, and mentor a team. You should be a strong coach who can empower others to succeed.</li>
+	<li>Financial Acumen: Deep understanding of SaaS metrics, pricing models, and financial concepts like ARR, Gross Margin, and profitability. Experience with revenue recognition principles (e.g., ASC 606) is a plus.</li>
+	<li>Process Automation Mindset: A strong track record of identifying and implementing process improvements, ideally through the use of technology, automation, or AI.</li>
+	<li>Problem-Solving: Exceptional problem-solving skills and the ability to navigate complex, ambiguous situations to achieve positive outcomes.</li>
+	<li>Communication &amp; Collaboration: Excellent communication and interpersonal skills. You can build trust and influence stakeholders at all levels, from individual contributors to executive leadership.</li>
 </ul>
-<h2>Impact of the Role</h2>
-<p>This role ensures that:</p>
-<ul>
-	<li>Strategic GTM initiatives are designed thoughtfully and executed rigorously.</li>
-	<li>Executive engagement is deployed purposefully in ways that accelerate revenue and strengthen customer relationships.</li>
-	<li>Cross-functional priorities are aligned, tracked, and delivered efficiently.</li>
-	<li>The Chief of Staff and GTM senior leadership team can focus on strategic direction while program execution and follow-through happen with consistency and discipline.</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p>&nbsp;</p>
-<ul>
-	<li>For San Francisco based hires: Estimated annual salary of $$156,000-$190,000</li>
-</ul>
-<p><br><br></p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p>&nbsp;</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>&nbsp;</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<p>&nbsp;</p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Financial Benefits</strong></p>
-<p>&nbsp;</p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Time Off</strong></p>
-<p>&nbsp;</p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p><br><br></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
