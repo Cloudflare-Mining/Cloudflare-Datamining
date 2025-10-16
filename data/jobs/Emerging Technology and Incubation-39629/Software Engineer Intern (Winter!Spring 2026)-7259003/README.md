@@ -35,7 +35,7 @@
 </ul>
 <p><strong>Important dates:</strong></p>
 <ul>
-	<li>Deadline to apply: October 15, 2026</li>
+	<li>Deadline to apply: October 19, 2026</li>
 	<li>Internship dates: January 12, 2026 - April 3, 2026 (12 week internship)</li>
 </ul>
 <div class="content-conclusion">
