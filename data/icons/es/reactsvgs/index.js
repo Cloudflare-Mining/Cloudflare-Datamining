@@ -13,6 +13,7 @@ import ArrowDown from './ArrowDown';
 import ArrowExternalLink from './ArrowExternalLink';
 import AutoRagOutline from './AutoRagOutline';
 import Backward from './Backward';
+import BoltSolid from './BoltSolid';
 import Bolt from './Bolt';
 import BookmarkOutline from './BookmarkOutline';
 import BookmarkSolid from './BookmarkSolid';
@@ -249,6 +250,7 @@ export default {
   'arrow-external-link': ArrowExternalLink,
   'auto-rag-outline': AutoRagOutline,
   backward: Backward,
+  'bolt-solid': BoltSolid,
   bolt: Bolt,
   'bookmark-outline': BookmarkOutline,
   'bookmark-solid': BookmarkSolid,

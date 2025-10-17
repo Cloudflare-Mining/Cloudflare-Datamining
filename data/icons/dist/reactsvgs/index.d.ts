@@ -15,6 +15,7 @@ declare const _default: {
     'arrow-external-link': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'auto-rag-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     backward: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'bolt-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     bolt: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'bookmark-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'bookmark-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
