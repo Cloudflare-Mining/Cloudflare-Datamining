@@ -5,34 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Lisbon, Portugal&nbsp;</p>
-<p><strong>About the team:&nbsp;</strong><br><br>The <strong>Order-to-Cash AR Accountant</strong> processes all facets of Cloudflare’s&nbsp;worldwide Billing and Accounts Receivable (A/R) functions. This role&nbsp;facilitates prompt, correct, and complete billing, collection, and cash&nbsp;application of Cloudflare receivables to support preparation of accurate&nbsp;financial statements, compliance with customer contracts, and optimization of&nbsp;cash flow. Additionally, this position participates in certain regulator&nbsp;compliance activities including sales tax assessment and reporting, and&nbsp;unclaimed property remittance.<br><br><strong>What You'll Do</strong></p>
+<h4><strong>Location: Singapore, Sydney</strong></h4>
+<h4><strong>About the Deal Desk Team</strong></h4>
+<p>The Deal Desk team is a critical component of the Finance function, acting as a strategic partner to the global Go-To-Market (GTM) organization. We are responsible for partnering with sales to structure, negotiate, and close complex commercial deals. We effectively balance a focus on deals that are profitable, compliant, and scalable while also keeping our customers’ best interest in mind. We are committed to leveraging technology and automation to improve our processes and provide a competitive advantage. We collaborate closely with Sales, Legal, and Operations to deliver innovative and effective deal structures that meet our customers' needs and align with our business and financial objectives.</p>
+<p><strong>What you’ll do</strong></p>
+<p>As the Deal Desk Regional Director, you will be a strategic leader responsible for overseeing the deal desk function for your designated region. You will be a player-coach, balancing hands-on deal support with high-level strategic planning and team leadership.</p>
 <ul>
-	<li>Direct preparation and issuance of customer invoices to ensure prompt and accurate billing in compliance with contract terms.</li>
-	<li>Oversee response to billing and A/R inquiries in a manner that cultivates a culture of exemplary customer service both internal and external.</li>
-	<li>Support Order-to-Cash Accounting team by running credit checks and monitoring credit worthiness of new and existing customers.</li>
-	<li>Participate in month-end close processes associated with Accounts Receivable to support timely and accurate preparation and delivery of financial statements.</li>
-	<li>Facilitate cash receipt and application processes to ensure prompt and accurate deposit of all funds and application to customer accounts.</li>
-	<li>Execute process for managing and refunding customer credit balances in a timely manner, partnering with Accounts Payable to escalate or resolve any A/R related unclaimed property issues.</li>
-	<li>Oversee maintenance of customer account information within Billing System(s) to ensure up-to-date address, terms, tax, and contact information.</li>
-	<li>Collaborate with cross-functional teams on various systems projects including selection, implementation, and upgrades to A/R and Billing systems.</li>
-	<li>Execute policies and procedures for Billing and A/R, driving toward implementation of best practices and business process improvements.</li>
-	<li>Support overall organization’s SOX compliance requirements through adherence to key controls and timely completion of reporting.<br><br><strong>Experience</strong></li>
-	<li>Bachelor’s degree required, with emphasis in Accounting or Finance preferred.</li>
-	<li>2+ years of experience in Billing and A/R functions in a high volume&nbsp;environment.</li>
-	<li>Exposure to international operations preferred.</li>
-	<li>Experience participating in system evaluation and implementation preferred.</li>
-	<li>Demonstrated effective written, verbal and interpersonal communication skills&nbsp;at all levels of the organization.</li>
-	<li>Creative problem solving skills coupled with good judgment.</li>
-	<li>Effective communication skills, verbal and written, in order to research, prepare&nbsp;and present information to Management, as well as effective communication&nbsp;skills with co-workers.</li>
-	<li>Critical thinking and strong analytical skills.</li>
-	<li>Ability to exercise sound judgment, provide leadership, and take initiative&nbsp;under minimal supervision.</li>
-	<li>Advanced Microsoft office skills.</li>
-	<li>Comfort in a fast paced work environment, with multiple concurrent projects and&nbsp;priorities.</li>
-	<li>Ability to plan, execute and deliver on projects in a timely manner; plus the&nbsp;ability to multitask on varying projects and initiatives.</li>
-	<li>Very high attention to detail; organized and thorough with a desire for&nbsp;continuous improvement.</li>
-	<li>Stellar work ethic.</li>
-	<li>CPA/CA a plus.</li>
+	<li>Strategic Leadership: Own the regional Deal Desk strategy, ensuring it aligns with global objectives and regional GTM priorities. You will be a key strategic partner to regional sales leadership on all deal-related matters.</li>
+	<li>Team Leadership &amp; Development: Lead, mentor, and manage a team of Deal Desk professionals. You will be responsible for their professional growth, performance management, and day-to-day guidance.</li>
+	<li>Complex Deal Execution: Personally engage on the most complex, high-value, or strategic deals in the region, providing hands-on support and expertise to your team and sales leaders.</li>
+	<li>Process Automation &amp; Improvement: Champion and drive the adoption of AI and automation tools to streamline the regional deal process. You will partner with global teams to identify and implement new technologies that improve efficiency and decision-making.</li>
+	<li>Cross-Functional Collaboration: Act as the primary liaison between regional sales, legal, finance, and operations teams. You will ensure consistent application of policies and a smooth flow of communication across the organization.</li>
+	<li>Reporting &amp; Analysis: Provide regional leadership with regular reporting and analysis on deal performance, profitability trends, and process efficiency, using data to inform strategic decisions.</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>To succeed in this role, you should be a seasoned leader with deep commercial and financial expertise, a passion for technology, and a proven track record of managing high-performing teams.</p>
+<ul>
+	<li>Experience: You have 7+ years of experience in a Deal Desk role, with at least 3 years in a leadership or management position. Experience in a SaaS or technology company is required.</li>
+	<li>Leadership &amp; Coaching: Proven ability to build, lead, and mentor a team. You should be a strong coach who can empower others to succeed.</li>
+	<li>Financial Acumen: Deep understanding of SaaS metrics, pricing models, and financial concepts like ARR, Gross Margin, and profitability. Experience with revenue recognition principles (e.g., ASC 606) is a plus.</li>
+	<li>Process Automation Mindset: A strong track record of identifying and implementing process improvements, ideally through the use of technology, automation, or AI.</li>
+	<li>Problem-Solving: Exceptional problem-solving skills and the ability to navigate complex, ambiguous situations to achieve positive outcomes.</li>
+	<li>Communication &amp; Collaboration: Excellent communication and interpersonal skills. You can build trust and influence stakeholders at all levels, from individual contributors to executive leadership.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
