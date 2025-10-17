@@ -1,28 +1,20 @@
 # @cloudflare/sandbox
 
-## 0.3.7
+## 0.4.1
 
 ### Patch Changes
 
-- [#98](https://github.com/cloudflare/sandbox-sdk/pull/98) [`d951819`](https://github.com/cloudflare/sandbox-sdk/commit/d951819b18e9cff9ce09851c6855f05039973b65) Thanks [@ghostwriternr](https://github.com/ghostwriternr)! - Bake wrangler, vite & opencode in base image
+- [#111](https://github.com/cloudflare/sandbox-sdk/pull/111) [`1b5496b`](https://github.com/cloudflare/sandbox-sdk/commit/1b5496bfceaee53c31911b409476ea87bebffe4c) Thanks [@threepointone](https://github.com/threepointone)! - trigger a release
 
-## 0.3.6
+## 0.4.0
 
-### Patch Changes
+### Minor Changes
 
-- [#90](https://github.com/cloudflare/sandbox-sdk/pull/90) [`66cc85b`](https://github.com/cloudflare/sandbox-sdk/commit/66cc85b679b466b3ffb1f00fbd697670fc186f06) Thanks [@eastlondoner](https://github.com/eastlondoner)! - set bun idletimeout
-
-## 0.3.5
+- [#95](https://github.com/cloudflare/sandbox-sdk/pull/95) [`7aee736`](https://github.com/cloudflare/sandbox-sdk/commit/7aee736bf07a4bf9020e2109bdaaa70214d52a01) Thanks [@ghostwriternr](https://github.com/ghostwriternr)! - Rewrite SDK with cleaner design patterns and tests. Remove the unnecessary isolation cruft and fix foundational issues with streaming, sessions, validations and error handling. Cover the SDK with unit & e2e tests.
 
 ### Patch Changes
 
-- [#88](https://github.com/cloudflare/sandbox-sdk/pull/88) [`46eb4e6`](https://github.com/cloudflare/sandbox-sdk/commit/46eb4e6b6c671b682fc74f83563ccf5f316011cb) Thanks [@ghostwriternr](https://github.com/ghostwriternr)! - Add binary file support with automatic MIME detection and streaming
-
-## 0.3.4
-
-### Patch Changes
-
-- [#86](https://github.com/cloudflare/sandbox-sdk/pull/86) [`feafd32`](https://github.com/cloudflare/sandbox-sdk/commit/feafd32a51f50dfaf4994bddcbfb56d46cada622) Thanks [@ghostwriternr](https://github.com/ghostwriternr)! - Fix session reuse to reuse existing healthy session
+- [#106](https://github.com/cloudflare/sandbox-sdk/pull/106) [`da947cd`](https://github.com/cloudflare/sandbox-sdk/commit/da947cd9543fc99831eefb1e8741fc905cb8fa42) Thanks [@jahands](https://github.com/jahands)! - fix examples failing to deploy and prevent committing node_modules
 
 ## 0.3.3
 
