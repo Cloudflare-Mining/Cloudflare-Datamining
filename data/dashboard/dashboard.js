@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "998e9a36-51a6-540e-bd21-c3b8fe149a2c")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "c3e6324c-ea4b-5ae3-bf7f-3ef053d3faf8")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -902,10 +902,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "2641b8789eb3a85cf841ce2bb4bf1b30ded1cfaa",
-							dashVersion: "36634095",
+							commit: "328500d5f5bce1ecef4992e69aa618a99617ce73",
+							dashVersion: "36651740",
 							env: "production",
-							builtAt: 0x199ee1bdf82,
+							builtAt: 0x199f2a91cc7,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								node: "20.10.0",
@@ -37210,7 +37210,7 @@
 					return u
 				},
 				dY: function() {
-					return M
+					return B
 				},
 				dq: function() {
 					return I
@@ -37234,10 +37234,13 @@
 					return v
 				},
 				qt: function() {
-					return D
+					return M
 				},
 				sk: function() {
 					return s
+				},
+				t7: function() {
+					return D
 				},
 				zh: function() {
 					return b
@@ -37335,7 +37338,8 @@
 				N = "DDoS L7 ruleset",
 				P = "Cloudflare L3/4 DDoS Ruleset",
 				L = "Cloudflare Firewall for AI Ruleset",
-				D = {
+				D = "Cloudflare Suspicious Hints Ruleset",
+				M = {
 					MANAGED: (0, r.BC)`managed`,
 					MANAGED_SELECT_RULESET: (0, r.BC)`managed/select-ruleset`,
 					MANAGED_DEPLOY_RULESET: (0, r.BC)`managed/deploy/${"rulesetId"}`,
@@ -37351,7 +37355,7 @@
 					SKIP_EDIT_SELECT_RULE: (0, r.BC)`managed/exception/${"ruleId"}/select-rule/${"rulesetId"}`,
 					SKIP_EDIT_SELECT_RULESET: (0, r.BC)`managed/exception/${"ruleId"}/select-ruleset`
 				},
-				M = {
+				B = {
 					magic_transit_ids_managed: "Magic Firewall - IDS"
 				}
 		},
@@ -50901,6 +50905,9 @@ SOFTWARE.`,
 				AL: function() {
 					return u
 				},
+				HA: function() {
+					return d
+				},
 				NC: function() {
 					return l
 				},
@@ -51015,6 +51022,16 @@ SOFTWARE.`,
 					tabs: [o.MQ.WebApplicationExploits],
 					filters: [o.MQ.Detections],
 					isGeneral: !1
+				},
+				d = {
+					id: o.At.SuspiciousHints,
+					titleKey: "settings.cards.suspicious-hints.title",
+					descriptionKey: "settings.cards.suspicious-hints.description",
+					oldDescription: ["WAF"],
+					documentationLink: "https://developers.cloudflare.com/waf/managed-rules/",
+					tabs: [o.MQ.WebApplicationExploits],
+					filters: [o.MQ.Detections],
+					isGeneral: !1
 				}
 		},
 		"../react/pages/security/detections/pages/root/components/new-settings/resources/types.ts": function(e, t, n) {
@@ -51033,7 +51050,7 @@ SOFTWARE.`,
 			});
 			let i = ((r = {}).WebApplicationExploits = "web-application-exploits", r.DdosAttacks = "ddos-attacks", r.BotTraffic = "bot-traffic", r.ApiAbuse = "api-abuse", r.ClientSideAbuse = "client-side-abuse", r.DomainSettings = "domain-settings", r.WebAssetsAndEndpoints = "web-assets-and-endpoints", r.RuleTemplates = "rule-templates", r.Detections = "detections", r.General = "general", r),
 				l = ((o = {}).Tab = "tabs", o.Filters = "filters", o.Search = "search", o.ID = "id", o),
-				s = ((a = {}).OptOut = "opt-out", a.AILabyrinth = "ai-labyrinth", a.BlockAIBots = "block-ai-bots", a.BrowserIntegrity = "browser-integrity", a.ChallengePassage = "challenge-passage", a.ClientCertificates = "client-certificates", a.CloudflareManagedRuleset = "cloudflare-managed-ruleset", a.CreateDeveloperPortal = "create-developer-portal", a.CustomFallthrough = "custom-fallthrough", a.EndpointDiscovery = "endpoint-discovery", a.FirewallAi = "firewall-ai", a.HttpDdos = "http-ddos", a.IpAccessRules = "ip-access-rules", a.IpLists = "ip-lists", a.JwtValidation = "jwt-validation", a.Labels = "labels", a.LeakedCredentialCheck = "leaked-credential-check", a.MaliciousUploadDetection = "malicious-upload-detection", a.ManagedRuleset = "managed-ruleset", a.Mtls = "mtls", a.NetworkDdos = "network-ddos", a.OwaspCore = "owasp-core", a.RateLimitAuthentication = "rate-limit-authentication", a.ReplaceInsecureJavascript = "replace-insecure-javascript", a.RobotsTxt = "robots-txt", a.SequenceDetection = "sequence-detection", a.SchemaDiscovery = "schema-discovery", a.SchemaValidation = "schema-validation", a.SecurityLevel = "security-level", a.SecurityTxt = "security-txt", a.SensitiveDataDetection = "sensitive-data-detection", a.SessionIdentifiers = "session-identifiers", a.SslDdos = "ssl-ddos", a.TokenConfigurations = "token-configurations", a.UserAgentBlocking = "user-agent-blocking", a.VolumetricAbuse = "volumetric-abuse", a.ZoneLockdown = "zone-lockdown", a.ContinuousScriptMonitoring = "continuous-script-monitoring", a.BotManagement = "bot-management", a.SuperBotFightMode = "super-bot-fight-mode", a.BotFightMode = "bot-fight-mode", a.ManagedRobotsTxt = "managed-robots-txt", a)
+				s = ((a = {}).OptOut = "opt-out", a.AILabyrinth = "ai-labyrinth", a.BlockAIBots = "block-ai-bots", a.BrowserIntegrity = "browser-integrity", a.ChallengePassage = "challenge-passage", a.ClientCertificates = "client-certificates", a.CloudflareManagedRuleset = "cloudflare-managed-ruleset", a.CreateDeveloperPortal = "create-developer-portal", a.CustomFallthrough = "custom-fallthrough", a.EndpointDiscovery = "endpoint-discovery", a.FirewallAi = "firewall-ai", a.HttpDdos = "http-ddos", a.IpAccessRules = "ip-access-rules", a.IpLists = "ip-lists", a.JwtValidation = "jwt-validation", a.Labels = "labels", a.LeakedCredentialCheck = "leaked-credential-check", a.MaliciousUploadDetection = "malicious-upload-detection", a.ManagedRuleset = "managed-ruleset", a.Mtls = "mtls", a.NetworkDdos = "network-ddos", a.OwaspCore = "owasp-core", a.RateLimitAuthentication = "rate-limit-authentication", a.ReplaceInsecureJavascript = "replace-insecure-javascript", a.RobotsTxt = "robots-txt", a.SequenceDetection = "sequence-detection", a.SchemaDiscovery = "schema-discovery", a.SchemaValidation = "schema-validation", a.SecurityLevel = "security-level", a.SecurityTxt = "security-txt", a.SensitiveDataDetection = "sensitive-data-detection", a.SessionIdentifiers = "session-identifiers", a.SslDdos = "ssl-ddos", a.TokenConfigurations = "token-configurations", a.UserAgentBlocking = "user-agent-blocking", a.VolumetricAbuse = "volumetric-abuse", a.ZoneLockdown = "zone-lockdown", a.ContinuousScriptMonitoring = "continuous-script-monitoring", a.BotManagement = "bot-management", a.SuperBotFightMode = "super-bot-fight-mode", a.BotFightMode = "bot-fight-mode", a.ManagedRobotsTxt = "managed-robots-txt", a.SuspiciousHints = "suspicious-hints", a)
 		},
 		"../react/pages/security/overview/resources/constants.ts": function(e, t, n) {
 			"use strict";
@@ -72761,4 +72778,4 @@ SOFTWARE.`,
 		}
 	}
 ]);
-//# debugId=998e9a36-51a6-540e-bd21-c3b8fe149a2c
+//# debugId=c3e6324c-ea4b-5ae3-bf7f-3ef053d3faf8
