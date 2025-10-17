@@ -1,0 +1,578 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ai/how-to-build-rag-pipelines/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "2Usa7p82Kcv3OzhREuw2Lz",
+				"urlSlug": "ai/how-to-build-rag-pipelines",
+				"metaTags": {
+					"metaTitle": "How to augment AI with RAG using internal data",
+					"metaDescription": "Retrieval-augmented generation, or RAG, augments traditional AI with internal data. Learn how to build RAG pipelines in your organization.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "5JjQb2yV1d1T7WTVZQkNEW",
+					"learningCenterName": "artificialintelligence",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+							"displayText": "What is artificial intelligence (AI)?",
+							"url": "/learning/ai/what-is-artificial-intelligence/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+							"displayText": "What is a large language model (LLM)?",
+							"url": "/learning/ai/what-is-large-language-model/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41JHcwdZJopZYPQOHjdkkE",
+							"name": "Machine learning",
+							"displayText": "Machine learning",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+									"displayText": "What is machine learning?",
+									"url": "/learning/ai/what-is-machine-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+									"displayText": "What is deep learning?",
+									"url": "/learning/ai/what-is-deep-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+									"displayText": "Neural networks",
+									"url": "/learning/ai/what-is-neural-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+									"displayText": "What is generative AI?",
+									"url": "/learning/ai/what-is-generative-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+									"displayText": "Predictive AI",
+									"url": "/learning/ai/what-is-predictive-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+									"displayText": "AI image generation",
+									"url": "/learning/ai/ai-image-generation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+									"displayText": "What is big data?",
+									"url": "/learning/ai/big-data/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+									"displayText": "What is agentic AI?",
+									"url": "/learning/ai/what-is-agentic-ai/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2WaoB1uAGPdfW9vr56U72B",
+							"name": "Glossary - AI subheader",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+									"displayText": "What are embeddings?",
+									"url": "/learning/ai/what-are-embeddings/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+									"displayText": "Vector database",
+									"url": "/learning/ai/what-is-vector-database/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "12RjN72z2wlElvMBzyICp9",
+									"displayText": "AI inference vs. training",
+									"url": "/learning/ai/inference-vs-training/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+									"displayText": "What is natural language processing (NLP)?",
+									"url": "/learning/ai/natural-language-processing-nlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+									"displayText": "Low-rank adaptation (LoRA)",
+									"url": "/learning/ai/what-is-lora/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+									"displayText": "AI hallucinations",
+									"url": "/learning/ai/what-are-ai-hallucinations/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+									"displayText": "AI quantization",
+									"url": "/learning/ai/what-is-quantization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+									"displayText": "OWASP Top 10 for LLMs",
+									"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+									"displayText": "AI data poisoning",
+									"url": "/learning/ai/data-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+									"displayText": "Retrieval augmented generation (RAG)",
+									"url": "/learning/ai/retrieval-augmented-generation-rag/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "13XGjbidrGmhw6y7WyyG4F",
+									"displayText": "Model Context Protocol (MCP)",
+									"url": "/learning/ai/what-is-model-context-protocol-mcp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+									"displayText": "History of AI",
+									"url": "/learning/ai/history-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+									"displayText": "What is vibe coding?",
+									"url": "/learning/ai/ai-vibe-coding/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+									"displayText": "Third wave of AI",
+									"url": "/learning/ai/evolution-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4nT7mPavmYUtr9EtXw1kVT",
+									"displayText": "AI for cybersecurity",
+									"url": "/learning/ai/ai-for-cybersecurity/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+									"displayText": "ChatGPT plugins",
+									"url": "/learning/ai/chatgpt-plugins/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4fHZ91razv1xm1g6m2sAcT",
+					"learningCenterName": "artificialintelligence",
+					"column1Title": "Artificial intelligence",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "504wIqF2RxToUI652YFAHo",
+						"name": "AI Footer - Artificial intelligence",
+						"displayText": "Artificial intelligence",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+								"displayText": "What is artificial intelligence (AI)?",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "12RjN72z2wlElvMBzyICp9",
+								"displayText": "AI inference vs. training",
+								"url": "/learning/ai/inference-vs-training/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+								"displayText": "History of AI",
+								"url": "/learning/ai/history-of-ai/"
+							}
+						]
+					},
+					"column2Title": "Machine learning",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4WbETih2OgXGNXGsvb7kMZ",
+						"name": "AI footer - Machine Learning",
+						"displayText": "Machine learning",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+								"displayText": "What is machine learning?",
+								"url": "/learning/ai/what-is-machine-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+								"displayText": "What is deep learning?",
+								"url": "/learning/ai/what-is-deep-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+								"displayText": "What is a large language model (LLM)?",
+								"url": "/learning/ai/what-is-large-language-model/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+								"displayText": "Low-rank adaptation (LoRA)",
+								"url": "/learning/ai/what-is-lora/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+								"displayText": "AI image generation",
+								"url": "/learning/ai/ai-image-generation/"
+							}
+						]
+					},
+					"column3Title": "Big data",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3q3KTRPkBi7rS3aDeQoMNn",
+						"name": "AI footer - Big Data",
+						"displayText": "Big data",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+								"displayText": "What are embeddings?",
+								"url": "/learning/ai/what-are-embeddings/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+								"displayText": "What is big data?",
+								"url": "/learning/ai/big-data/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1UCfw4v8J5rpL4BsVNlgVC",
+						"name": "AI footer - Glossary",
+						"displayText": "AI glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+								"displayText": "Vector database",
+								"url": "/learning/ai/what-is-vector-database/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+								"displayText": "Predictive AI",
+								"url": "/learning/ai/what-is-predictive-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+								"displayText": "ChatGPT plugins",
+								"url": "/learning/ai/chatgpt-plugins/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+								"displayText": "Neural networks",
+								"url": "/learning/ai/what-is-neural-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+								"displayText": "What is generative AI?",
+								"url": "/learning/ai/what-is-generative-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+								"displayText": "What is natural language processing (NLP)?",
+								"url": "/learning/ai/natural-language-processing-nlp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+								"displayText": "AI hallucinations",
+								"url": "/learning/ai/what-are-ai-hallucinations/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+								"displayText": "AI quantization",
+								"url": "/learning/ai/what-is-quantization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+								"displayText": "OWASP Top 10 for LLMs",
+								"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+								"displayText": "AI data poisoning",
+								"url": "/learning/ai/data-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+								"displayText": "Retrieval augmented generation (RAG)",
+								"url": "/learning/ai/retrieval-augmented-generation-rag/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+								"displayText": "What is agentic AI?",
+								"url": "/learning/ai/what-is-agentic-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+								"displayText": "Third wave of AI",
+								"url": "/learning/ai/evolution-of-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+								"displayText": "What is vibe coding?",
+								"url": "/learning/ai/ai-vibe-coding/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "13XGjbidrGmhw6y7WyyG4F",
+								"displayText": "Model Context Protocol (MCP)",
+								"url": "/learning/ai/what-is-model-context-protocol-mcp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4nT7mPavmYUtr9EtXw1kVT",
+								"displayText": "AI for cybersecurity",
+								"url": "/learning/ai/ai-for-cybersecurity/"
+							}
+						]
+					},
+					"column5Title": "Learning Center",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5kj4ISBExxQfI9CaYifpU9",
+						"name": "AI Learning Center footer",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							}
+						]
+					}
+				},
+				"header": "How to enhance AI models with RAG (retrieval-augmented generation)",
+				"blurbSubHeader": "Well-built retrieval-augmented generation (RAG) pipelines can help organizations turn dormant data into decisive business drivers.",
+				"objectivesHeader": "RAG for AI",
+				"objectivesList": [
+					"Define retrieval-augmented generation (RAG)",
+					"Build successful RAG pipelines",
+					"Identify the best ways to measure the success of a RAG pipeline"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+						"displayText": "Retrieval augmented generation (RAG)",
+						"url": "/learning/ai/retrieval-augmented-generation-rag/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+						"displayText": "What is a large language model (LLM)?",
+						"url": "/learning/ai/what-is-large-language-model/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+						"displayText": "Vector database",
+						"url": "/learning/ai/what-is-vector-database/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+						"displayText": "What are embeddings?",
+						"url": "/learning/ai/what-are-embeddings/"
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is retrieval-augmented generation (RAG) and why is it valuable?</h2>\n\n<p><a href=\"/learning/ai/retrieval-augmented-generation-rag/\">Retrieval-augmented generation (RAG)</a> is a technique used in the development of artificial intelligence (AI) that enhances <a href=\"/learning/ai/what-is-large-language-model/\">large language models (LLMs)</a> by giving them access to internal and external data sources that weren't included in their original training — for example, third-party research, product documentation, or a business's internal knowledge base.</p>\n\n<p>Using RAG, teams can query authoritative organizational knowledge and third-party resources in natural language to avoid interrupting colleagues or performing time-consuming searches across fragmented systems.</p>\n\n<p>Because the LLM uses supplemented data at runtime, hallucinations are less likely and everyone works from the same source of truth. The result is greater LLM accuracy courtesy of grounded, reliable information.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What steps are needed to build successful RAG pipelines?</h2>\n\n<p>RAG helps businesses enhance the <a href=\"/learning/ai/what-is-artificial-intelligence/\">AI models</a> they use, from vendors such as OpenAI or Anthropic, without the extra time, expense, and technical resources that would be required to retrain them on specific knowledge for the intended use case. Therefore, RAG democratizes LLM enhancement.</p>\n\n<p>Fortunately, building RAG pipelines doesn't require massive infrastructure or <a href=\"/learning/ai/what-is-deep-learning/\">deep machine-learning</a> expertise. So, getting started is easy. The simple three-part process starts with identifying use cases, selecting appropriate data sources, and creating the actual RAG pipeline.</p>\n\n<h3>Step 1: Conceive potential RAG use cases</h3>\n\n<p>First, determine what data sources would be most helpful for teams to access using natural language prompting. Focus on high-impact friction points, including resources that teams frequently reference for answers, systems where they often encounter bottlenecks, or processes where the same questions surface repeatedly.</p>\n\n<p>To find the most promising RAG use cases, ask internal teams the following questions:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>What common requests for institutional knowledge live in people's heads or in hard-to-access written documents?</strong> Examples include standard operating procedures and resolutions to common problems. With the help of RAG, a self-service billing assistant could answer common user questions like, \"Where can I download past invoices?\"\n\n  <li><strong>What questions are frequently escalated across teams?</strong> Queries about evolving technical policies, for instance, probably come up often. Using RAG, a customer-facing policy assistant can explain a company's refund policy.\n\n  <li><strong>What files or tasks require manual and repetitive queries in multiple places, such as Confluence, SharePoint, and internal wikis?</strong> A RAG-enabled compliance assistant could pull from HR guidelines to answer, \"What training modules are required for new hires in Europe?\"\n\n  <li><strong>What formal needs or requirements must be met?</strong> Responses to audits, request for proposals (RFPs), and compliance are common use cases. Thanks to RAG, a sales RFP assistant can pull from compliance-approved templates to generate RFP responses.\n\n  <li><strong>What information applies to everyone?</strong> Company training and onboarding documents are universally helpful, for instance. An interactive customer onboarding guide could leverage RAG to walk new users through training steps by retrieving the most current how-to materials.\n</ul>\n\n<p>Prioritize RAG use cases where combining generative reasoning with internal and external knowledge can solve tangible problems, reduce context-switching, eliminate repetitive tasks, and improve consistency across teams.</p>\n\n<h3>Step 2: Identify RAG-worthy data sources internally</h3>\n\n<p>RAG systems are only as strong as the data they retrieve. Therefore, the quality, completeness, governance, and structure of available data sources directly impacts response quality.</p>\n\n<p>RAG-worthy data checks the following boxes:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>It answers common questions:</strong> Ideal sources include product FAQs, policy documentation, internal process guides, and compliance mappings.\n  <li><strong>It's accurate and maintained:</strong> Look for documentation with clear ownership and a regular updating cadence.\n  <li><strong>It's structured enough for chunking:</strong> Markdown files, PDFs, HTML documents, JSON files, and wikis can all be broken into logical sections. If datasets include screenshots or image-based PDFs, tools like Cloudflare <a href=\"/developer-platform/products/workers-ai/\">Workers AI</a> can convert images into vectors that are then readable by LLMs.\n</ul>\n\n<p>Avoid data sources that introduce noise or inconsistency, including:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Data in unstructured and messy formats</strong> — for example, Slack threads or raw email chains — unless it's cleaned, vetted, and formatted\n  <li><strong>Datasets that are fluid and always changing</strong>, like dashboards with live metrics\n  <li><strong>Duplicate, conflicting, or outdated files</strong>, which can confuse retrieval and introduce error\n</ul>\n\n<p>Work with internal stakeholders and IT to inventory, deduplicate, and assign ongoing ownership to each data source.</p>\n\n<h3>Step 3: Build a RAG pipeline</h3>\n\n<p>Next, process and organize datasets into a structure that's suitable for semantic retrieval. A typical RAG workflow includes five parts: ingestion, embedding, vector database storage, query retrieval, and response generation.</p>\n\n<p><strong>1. Ingestion</strong></p>\n\n<p>Start by collecting relevant files and documents from shared repositories, storage buckets, or content systems. Then focus on:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Chunking:</strong> To enable precise retrieval, programmatically divide content into logical sections that create semantically coherent units (e.g., paragraphs, headings, FAQ items, and code blocks).\n  <li><strong>Normalization:</strong> Clean and standardize data across formats (e.g., PDFs to text, HTML to markdown).\n  <li><strong>Metadata tagging:</strong> Append useful metadata (e.g., owner, creation date, system) to support filtered retrieval.\n</ul>\n\n<p><strong>2. Embedding</strong></p>\n\n<p>Use an <a href=\"/learning/ai/what-are-embeddings/\">embedding model</a>, such as <a href=\"https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings\">BGE embedding models</a>, to convert each text chunk into a numerical vector that captures its semantic meaning.</p>\n\n<p><strong>3. Vector database storage</strong></p>\n\n<p>Store embeddings and all associated metadata in a scalable <a href=\"/learning/ai/what-is-vector-database/\">vector database</a>, such as <a href=\"https://developers.cloudflare.com/vectorize/\">Cloudflare Vectorize</a>. Doing so enables efficient querying and filtering for large-scale knowledge bases.</p>\n\n<p><strong>4. Query retrieval</strong></p>\n\n<p>When a user submits a prompt, the system: converts the query into a vector; searches the vector database for appropriate, semantically similar chunks; and applies filters based on metadata to fine-tune retrieval — for example, limiting access to specific information based on role or department</p>\n\n<p><strong>5. Response generation</strong></p>\n\n<p>Finally, retrieved chunks are injected into the prompt as additional context before being passed to the LLM. The LLM uses this context to generate a meaningful and accurate response that's grounded in internal and external data.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Should you partner with IT on RAG execution and deployment?</h2>\n\n<p>Standing up a valuable RAG pipeline is an all-hands-on-deck effort. However, it relies on IT to: lead execution; manage infrastructure like data pipelines, vector database scaling, and access control; and integrate systems.</p>\n\n<p>And yet, IT can't own the process alone. Start by aligning cross-functional teams, including IT, subject matter experts, and business stakeholders. Together, these teams should identify use cases and trusted data sources, define content authority standards, and assign ownership to ensure datasets remain accurate and updated.</p>\n\n<p>Apply access controls to restrict sensitive data by user role or business unit, and ensure encryption and compliance guardrails are in place across the system.</p>\n\n<p>Start with a pilot, iterate based on results, then scale across teams and domains.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What's the best way to measure the success of your RAG pipeline?</h2>\n\n<p>Build success metrics into the process from the start to evaluate RAG system effectiveness and business value.</p>\n\n<p>In particular, evaluate the system against KPIs like:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Retrieval accuracy:</strong> Are the right documents and answers surfaced?\n  <li><strong>Response relevance and factuality:</strong> Are users receiving current and trustworthy answers?\n  <li><strong>Latency:</strong> Are responses delivered in an acceptable timeframe?\n  <li><strong>User adoption and satisfaction:</strong> Are employees <em>actually</em> using the system and gaining efficiency?\n  <li><strong>Data governance:</strong> Are security and compliance guardrails maintained as new sources are added?\n</ul>\n\n<p>RAG evaluation often involves human-in-the-loop validation to check accuracy. To improve RAG pipeline implementation over time, continuously solicit user feedback, analyze performance metrics on query and retrieval logs, review content hygiene, and evaluate progress against business goals.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can you simplify RAG workflow creation?</h2>\n\n<p>Manually building a RAG pipeline requires stitching together storage, vector databases, embedding models, LLMs, and custom indexing / retrieval logic, as well as maintaining the system as data changes. It takes time and collaboration, and the complexity of these tasks can pull teams away from other high-impact projects. For some organizations, this makes RAG adoption impractical despite its potential benefits.</p>\n\n<p>Cloudflare <a href=\"https://developers.cloudflare.com/ai-search/\">AI Search (formerly AutoRAG)</a> can help.</p>\n\n<p>AI Search is a fully managed RAG pipeline built on Cloudflare's developer platform. In just four steps, users can connect data sources like corporate websites, ecommerce product catalogs, and developer documentation. AI Search handles ingestion, markdown conversion, chunking, embedding, and storage in Vectorize. It then performs semantic retrieval and generates responses with Workers AI.</p>\n\n<p>AI Search removes the heavy infrastructure burden of building RAG pipelines by automating scale, storage, and AI inference while ensuring internal data sources are accessed securely and appropriately within RAG systems. Plus, AI Search continuously reindexes data in the background, keeping answers fresh as internal sources are updated.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why should you use RAG?</h2>\n\n<p>Your organization's data is a massive strategic asset. Building a secure RAG pipeline makes this data accessible to team members and clients by augmenting corporate LLMs with the unique guidelines, processes, and knowledge base that differentiate your enterprise and market.</p>\n\n<p>Simply put: RAG enhances popular models with internal company knowledge and approved third-party resources for real-time AI advantage.</p>\n\n<p>Whether building manually or with AI Search, begin with the right use cases, curate high-quality data, and collaborate to deliver fast, accurate, grounded answers.</p>\n\n<p>Ready to get started? Build your own internal RAG in <a href=\"https://developers.cloudflare.com/ai-search/\">four easy steps</a>.</p>\n\n<h2>FAQs</h2>\n<h4>What is retrieval-augmented generation (RAG)? </h4>\n<p>Retrieval-augmented generation (RAG) is a method for improving large language models (LLMs) by providing them with access to internal and external data sources that were not part of their original training.</p>\n\n<h4>What are the main benefits of using RAG? </h4>\n<p>RAG allows teams to query organizational knowledge and third-party resources using natural language, which can help avoid interruptions to colleagues and reduce the time spent on manual searches. It also democratizes the enhancement of AI models from vendors like OpenAI or Anthropic, without the need for the time, expense, or technical resources required for full retraining.</p>\n\n<h4>What are the steps for building a RAG pipeline? </h4>\n<p>The steps for building a RAG pipeline are: conceiving potential use cases, identifying appropriate data sources, and building the actual RAG pipeline. Pipeline construction involves ingestion of content, using an embedding model to convert text into vectors, storing embeddings and metadata in a vector database, enabling query retrieval, and facilitating response generation. </p>\n\n<h4>What are some examples of high-impact use cases for RAG? </h4>\n<p>High-impact RAG use cases include creating: a self-service billing assistant, a customer-facing policy assistant, a compliance assistant for HR guidelines, a sales RFP assistant, and an interactive customer onboarding guide. These use cases can help solve tangible problems, reduce repetitive tasks, and improve consistency across teams.</p>\n\n<h4>What kind of data sources are suitable for a RAG system? </h4>\n<p>RAG-worthy data sources should be accurate, regularly maintained, and structured enough to be broken into logical sections, such as Markdown files, PDFs, HTML documents, or JSON files. They should also answer common questions, like product FAQs or internal process guides.</p>\n\n<h4>What are the five parts of a typical RAG workflow? </h4>\n<p>A typical RAG workflow consists of five parts: ingestion, embedding, vector database storage, query retrieval, and response generation.</p>\n\n<h4>How can you measure the success of a RAG pipeline? </h4>\n<p>The success of a RAG pipeline can be measured using key performance indicators (KPIs) such as retrieval accuracy, response relevance and factuality, latency, user adoption and satisfaction, and data governance. Continuous user feedback and performance metric analysis can help improve the implementation over time.</p>\n\n<h4>What is the benefit of using an embedding model in a RAG pipeline? </h4>\n<p>An embedding model, such as BGE embedding models, converts text chunks into numerical vectors that capture their semantic meaning. These vectors are then stored in a vector database for efficient querying and filtering.</p>\n\n<h4>What does Cloudflare AI Search do to simplify RAG workflow creation? </h4>\n<p>Cloudflare AI Search is a fully managed RAG pipeline that automates ingestion, chunking, embedding, and storage in Vectorize. It also handles semantic retrieval and response generation with Workers AI, which removes the need for manual infrastructure management.</p>\n\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is retrieval-augmented generation (RAG)?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Retrieval-augmented generation (RAG) is a method for improving large language models (LLMs) by providing them with access to internal and external data sources that were not part of their original training.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the main benefits of using RAG?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"RAG allows teams to query organizational knowledge and third-party resources using natural language, which can help avoid interruptions to colleagues and reduce the time spent on manual searches. It also democratizes the enhancement of AI models from vendors like OpenAI or Anthropic, without the need for the time, expense, or technical resources required for full retraining.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the steps for building a RAG pipeline?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"The steps for building a RAG pipeline are: conceiving potential use cases, identifying appropriate data sources, and building the actual RAG pipeline. Pipeline construction involves ingestion of content, using an embedding model to convert text into vectors, storing embeddings and metadata in a vector database, enabling query retrieval, and facilitating response generation. \"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are some examples of high-impact use cases for RAG?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"High-impact RAG use cases include creating: a self-service billing assistant, a customer-facing policy assistant, a compliance assistant for HR guidelines, a sales RFP assistant, and an interactive customer onboarding guide. These use cases can help solve tangible problems, reduce repetitive tasks, and improve consistency across teams.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What kind of data sources are suitable for a RAG system?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"RAG-worthy data sources should be accurate, regularly maintained, and structured enough to be broken into logical sections, such as Markdown files, PDFs, HTML documents, or JSON files. They should also answer common questions, like product FAQs or internal process guides.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the five parts of a typical RAG workflow?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"A typical RAG workflow consists of five parts: ingestion, embedding, vector database storage, query retrieval, and response generation.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How can you measure the success of a RAG pipeline?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"The success of a RAG pipeline can be measured using key performance indicators (KPIs) such as retrieval accuracy, response relevance and factuality, latency, user adoption and satisfaction, and data governance. Continuous user feedback and performance metric analysis can help improve the implementation over time.\"\n      }\n       },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is the benefit of using an embedding model in a RAG pipeline?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"An embedding model, such as BGE embedding models, converts text chunks into numerical vectors that capture their semantic meaning. These vectors are then stored in a vector database for efficient querying and filtering.\"\n      }\n       },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What does Cloudflare AI Search do to simplify RAG workflow creation?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Cloudflare AI Search is a fully managed RAG pipeline that automates ingestion, chunking, embedding, and storage in Vectorize. It also handles semantic retrieval and response generation with Workers AI, which removes the need for manual infrastructure management.\"\n      }\n    }\n  ]\n}\n</script>\n",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "English for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2Usa7p82Kcv3OzhREuw2Lz",
+			"pathname": "/learning/ai/how-to-build-rag-pipelines/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
