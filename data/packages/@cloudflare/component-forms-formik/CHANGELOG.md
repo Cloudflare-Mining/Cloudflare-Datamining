@@ -1,5 +1,13 @@
 # Change Log
 
+## 8.0.29
+
+### Patch Changes
+
+- @cloudflare/component-button@9.3.2
+- @cloudflare/component-forms@7.0.28
+- @cloudflare/component-listbox@3.0.20
+
 ## 8.0.28
 
 ### Patch Changes

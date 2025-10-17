@@ -1,5 +1,11 @@
 # @cloudflare/component-code-block
 
+## 6.0.24
+
+### Patch Changes
+
+- @cloudflare/component-button@9.3.2
+
 ## 6.0.23
 
 ### Patch Changes
