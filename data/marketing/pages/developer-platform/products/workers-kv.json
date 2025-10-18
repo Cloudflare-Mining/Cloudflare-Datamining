@@ -108,21 +108,7 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": {
-							"id": "9b7d7f2f-fea6-5060-a2d4-a79a102f6a6e",
-							"altText": "workers kv main image",
-							"title": "workers-kv-main-image-1",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7n8OYQf8Jn2pVfN9bOnI8j/258b9cdc97a708894d8fe614c9b110a1/BDES-5041_-_Workers-KV-serverless-applications.svg"
-								},
-								"description": "workers kv main image"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+						"imageAssetFile": null
 					},
 					{
 						"contentfulId": "7amZDKmmUh5xJzqtD0Eid1",
@@ -271,21 +257,7 @@
 							},
 							"description": "Customize Application Behavior"
 						},
-						"imageAssetFile": {
-							"id": "b3915b49-39d3-5de6-b335-28a9a290fab1",
-							"altText": "customize-app-behavior-v1",
-							"title": "customize-app-behavior-v1",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LC1KcKDF6QuOGC2qYk2si/f528760b98e424f4477b7cd04e535330/BDES-5041_-_Workers-KV-customize-application-behavior-spot-illustration.svg"
-								},
-								"description": "Customize Application Behavior"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
+						"imageAssetFile": null,
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
@@ -383,21 +355,7 @@
 							},
 							"description": "Remember Specific Bad Actors"
 						},
-						"imageAssetFile": {
-							"id": "009918a6-6f92-5d09-9ce8-81ea224cfab9",
-							"altText": "workerskv-bad-actors-v1",
-							"title": "workerskv-bad-actors-v1",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OgwrRgGPYCWcmeEcq6sM4/d65ce847ca229e50363703383af5e075/BDES-5041_-_Workers-KV-remember-specific-attackers-spot-illustration.svg"
-								},
-								"description": "Remember Specific Bad Actors"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
+						"imageAssetFile": null,
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
@@ -474,89 +432,6 @@
 						"description": null,
 						"featuresTextStyle": null,
 						"htmlId": null
-					},
-					{
-						"contentfulId": "DyPNZQleYyjz7rsw4jfrA",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": "plan-comparison",
-						"copy": null,
-						"title": null,
-						"subtitle": "Plans comparison",
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "73mV3v6d5SAcVHL1YMkwkm",
-								"title": "Included for free",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "- __1 GB__ - Key-value storage space\n- __100,000__ - Key-value reads per day\n- __1,000__ - Key-value writes per day\n- __1,000__ - Key-value deletes per day\n- __1,000__ - Key-value lists per day",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": true,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "24zjuMTTteeCddYAQB0xFY",
-								"title": "Included with Workers Paid",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "- __1 GB__ - Key-value storage space\n- __10M__ - Key-value reads per month\n- __1M__ - Key-value writes per month\n- __1M__ - Key-value deletes per month\n- __1M__ - Key-value lists per month",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": true,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5027JKWbm9b52DvtUjNeen",
-								"title": "Additional usage",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "- __$0.50 GB/month__ - Additional storage\n- __$0.50/ 1M__ - Additional key-value reads\n- __$5/ 1M__ - Additional key-value writes\n- __$5/ 1M__ - Additional key-value deletes\n- __$5/ 1M__ - Additional key-value lists",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": true,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
