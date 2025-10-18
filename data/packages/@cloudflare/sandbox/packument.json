@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/sandbox",
 	"dist-tags": {
-		"beta": "0.0.0-8c1f440",
-		"latest": "0.4.2"
+		"beta": "0.0.0-4572082",
+		"latest": "0.4.3"
 	},
 	"versions": {
 		"0.0.0-1c0902c": {
@@ -2509,15 +2509,84 @@
 				"@repo/shared": "^0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-dX537h/WXOv2klPNo8Ei9201hgtpfcbPC31c9zem1BdU9rn/8NsuWBr+btW1BfOEoonfvMyKd2iInZ4RHMiTRg==",
 				"shasum": "ac851e40119841d3c7e1144cb4ca2f40d787a7a6",
 				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.0.0-8c1f440.tgz",
 				"fileCount": 71,
-				"unpackedSize": 599468,
+				"integrity": "sha512-dX537h/WXOv2klPNo8Ei9201hgtpfcbPC31c9zem1BdU9rn/8NsuWBr+btW1BfOEoonfvMyKd2iInZ4RHMiTRg==",
+				"signatures": [
+					{
+						"sig": "MEQCIGSKNHiqElEhpOQ3NUftMv6E5MxrLisZWBDjOo4LA1MLAiBzu7305muy4MTZw54wZOpd8vc0auWENuj3+0l5HF9yzA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 599468
+			}
+		},
+		"0.0.0-2450ebd": {
+			"name": "@cloudflare/sandbox",
+			"version": "0.0.0-2450ebd",
+			"dependencies": {
+				"@cloudflare/containers": "^0.0.28"
+			},
+			"devDependencies": {
+				"@repo/shared": "^0.0.0"
+			},
+			"dist": {
+				"shasum": "b6f347bd721e96356708119b0034ecdb4bd831f5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.0.0-2450ebd.tgz",
+				"fileCount": 71,
+				"integrity": "sha512-G5uBLYsR4H/Fc5MpP0ufFWsXi682pNFz4qZsNYoIKnuDr+VuZnJ5BRyrkHBUYujOT7SJiTUuGPoE/sEF038uFQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICh/wxa9iqtNP0hGRQrx1hukARMla+I0BX0MOsZE4KMMAiAWa+sDyJWnHVHH9lp/bgxa3o7eUHYV91+y5dMJidWSsQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 599769
+			}
+		},
+		"0.4.3": {
+			"name": "@cloudflare/sandbox",
+			"version": "0.4.3",
+			"dependencies": {
+				"@cloudflare/containers": "^0.0.28"
+			},
+			"devDependencies": {
+				"@repo/shared": "^0.0.0"
+			},
+			"dist": {
+				"shasum": "f8c6233642151ba89ed35a25d46aa6e827f60aea",
+				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.4.3.tgz",
+				"fileCount": 72,
+				"integrity": "sha512-ODynUVKLID9viGLDDnFpWXNToy4vvN2WCQliJiWvtgBee8K1WiRDI3SYzUHFt3onV8kBHKjkoCbADQHOPBAllA==",
+				"signatures": [
+					{
+						"sig": "MEQCICfu19cqX01VDhVl+MaJBXo/WRtal9mcCFxnCv9snzLmAiAUEa4XXkAEPjPHHI6qbxgQh1XPQY0q77Z8laFK32YPqA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 602488
+			}
+		},
+		"0.0.0-4572082": {
+			"name": "@cloudflare/sandbox",
+			"version": "0.0.0-4572082",
+			"dependencies": {
+				"@cloudflare/containers": "^0.0.28"
+			},
+			"devDependencies": {
+				"@repo/shared": "^0.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-E6qt9O73/aUBPaVLb+EJPe9QvQnJfXIiK7RTEkUFsyW8+jh7X51JR1bxkwPx9H0LTDi9j/iV6i+lq3XafdlNLQ==",
+				"shasum": "213347c3fc968f592be5e16fc14af7eb7cce4162",
+				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.0.0-4572082.tgz",
+				"fileCount": 71,
+				"unpackedSize": 599769,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIGSKNHiqElEhpOQ3NUftMv6E5MxrLisZWBDjOo4LA1MLAiBzu7305muy4MTZw54wZOpd8vc0auWENuj3+0l5HF9yzA=="
+						"sig": "MEQCICH00KsdxQDySp5F+ZrLqwdWiOSELxdkFwHNn7LUbVeGAiBz5FVFQSs3OICn/3NXztGeFMpqEHqaQWS0AoBYxYITHg=="
 					}
 				]
 			}
