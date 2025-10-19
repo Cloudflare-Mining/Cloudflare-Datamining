@@ -1,6 +1,112 @@
 {
 	"models": [
 		{
+			"id": "fe8904cf-e20e-4884-b829-ed7cec0a01cb",
+			"source": 1,
+			"name": "@cf/pipecat-ai/smart-turn-v2",
+			"description": "An open source, community-driven, native audio turn detection model in 2nd version",
+			"task": {
+				"id": "ccb1ca5a-043d-41a7-8a3b-61017b2796fd",
+				"name": "Dumb Pipe",
+				"description": "Internal - Dumb Pipe models don't use tensors"
+			},
+			"created_at": "2025-08-04 10:08:04.219",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "async_queue",
+					"value": "true"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per audio minute",
+							"price": 0.00034,
+							"currency": "USD"
+						}
+					]
+				},
+				{
+					"property_id": "realtime",
+					"value": "true"
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"oneOf": [
+						{
+							"properties": {
+								"audio": {
+									"type": "object",
+									"description": "readable stream with audio data and content-type specified for that data",
+									"properties": {
+										"body": {
+											"type": "object"
+										},
+										"contentType": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"body",
+										"contentType"
+									]
+								},
+								"dtype": {
+									"type": "string",
+									"description": "type of data PCM data that's sent to the inference server as raw array",
+									"enum": [
+										"uint8",
+										"float32",
+										"float64"
+									]
+								}
+							},
+							"required": [
+								"audio"
+							]
+						},
+						{
+							"properties": {
+								"audio": {
+									"type": "string",
+									"description": "base64 encoded audio data"
+								},
+								"dtype": {
+									"type": "string",
+									"description": "type of data PCM data that's sent to the inference server as raw array",
+									"enum": [
+										"uint8",
+										"float32",
+										"float64"
+									]
+								}
+							},
+							"required": [
+								"audio"
+							]
+						}
+					]
+				},
+				"output": {
+					"type": "object",
+					"contentType": "application/json",
+					"properties": {
+						"is_complete": {
+							"type": "boolean",
+							"description": "if true, end-of-turn was detected"
+						},
+						"probability": {
+							"type": "number",
+							"description": "probability of the end-of-turn detection"
+						}
+					}
+				}
+			}
+		},
+		{
 			"id": "f9f2250b-1048-4a52-9910-d0bf976616a1",
 			"source": 1,
 			"name": "@cf/openai/gpt-oss-120b",
@@ -39,48 +145,106 @@
 			],
 			"schema": {
 				"input": {
-					"type": "object",
-					"title": "GPT_OSS_Responses",
-					"properties": {
-						"input": {
-							"anyOf": [
-								{
-									"type": "string"
-								},
-								{
-									"items": {},
-									"type": "array"
-								}
-							],
-							"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
-							"title": "Input"
-						},
-						"reasoning": {
+					"oneOf": [
+						{
 							"type": "object",
+							"title": "GPT_OSS_120B_Responses",
 							"properties": {
-								"effort": {
-									"type": "string",
-									"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
-									"enum": [
-										"low",
-										"medium",
-										"high"
-									]
+								"input": {
+									"anyOf": [
+										{
+											"type": "string"
+										},
+										{
+											"items": {},
+											"type": "array"
+										}
+									],
+									"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
 								},
-								"summary": {
-									"type": "string",
-									"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
-									"enum": [
-										"auto",
-										"concise",
-										"detailed"
-									]
+								"reasoning": {
+									"type": "object",
+									"properties": {
+										"effort": {
+											"type": "string",
+											"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
+											"enum": [
+												"low",
+												"medium",
+												"high"
+											]
+										},
+										"summary": {
+											"type": "string",
+											"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
+											"enum": [
+												"auto",
+												"concise",
+												"detailed"
+											]
+										}
+									}
 								}
-							}
+							},
+							"required": [
+								"input"
+							]
+						},
+						{
+							"type": "object",
+							"title": "GPT_OSS_120B_Responses_Async",
+							"properties": {
+								"requests": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"input": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"items": {},
+														"type": "array"
+													}
+												],
+												"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
+											},
+											"reasoning": {
+												"type": "object",
+												"properties": {
+													"effort": {
+														"type": "string",
+														"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
+														"enum": [
+															"low",
+															"medium",
+															"high"
+														]
+													},
+													"summary": {
+														"type": "string",
+														"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
+														"enum": [
+															"auto",
+															"concise",
+															"detailed"
+														]
+													}
+												}
+											}
+										},
+										"required": [
+											"input"
+										]
+									}
+								}
+							},
+							"required": [
+								"requests"
+							]
 						}
-					},
-					"required": [
-						"input"
 					]
 				},
 				"output": {
@@ -122,6 +286,10 @@
 				{
 					"property_id": "info",
 					"value": "https://huggingface.co/qwen/qwen1.5-0.5b-chat"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -555,6 +723,10 @@
 				{
 					"property_id": "async_queue",
 					"value": "true"
+				},
+				{
+					"property_id": "context_window",
+					"value": "60000"
 				},
 				{
 					"property_id": "price",
@@ -1354,6 +1526,10 @@
 				{
 					"property_id": "max_total_tokens",
 					"value": "4096"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -2699,6 +2875,10 @@
 				{
 					"property_id": "context_window",
 					"value": "4096"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -3136,6 +3316,10 @@
 				{
 					"property_id": "context_window",
 					"value": "4096"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -5231,6 +5415,10 @@
 				{
 					"property_id": "info",
 					"value": "https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -5644,6 +5832,83 @@
 							"type": "string",
 							"format": "binary"
 						}
+					]
+				}
+			}
+		},
+		{
+			"id": "bc2b61f6-7eb3-4cdf-94f5-ffc128bd6aa4",
+			"source": 1,
+			"name": "@cf/pfnet/plamo-embedding-1b",
+			"description": "PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Networks, Inc.\n\nIt can convert Japanese text input into numerical vectors and can be used for a wide range of applications, including information retrieval, text classification, and clustering.",
+			"task": {
+				"id": "0137cdcf-162a-4108-94f2-1ca59e8c65ee",
+				"name": "Text Embeddings",
+				"description": "Feature extraction models transform raw data into numerical features that can be processed while preserving the information in the original dataset. These models are ideal as part of building vector search applications or Retrieval Augmented Generation workflows with Large Language Models (LLM)."
+			},
+			"created_at": "2025-09-24 18:42:05.576",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.019,
+							"currency": "USD"
+						}
+					]
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"properties": {
+						"text": {
+							"oneOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							],
+							"description": "Input text to embed. Can be a single string or a list of strings."
+						}
+					},
+					"required": [
+						"text"
+					]
+				},
+				"output": {
+					"type": "object",
+					"properties": {
+						"data": {
+							"type": "array",
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "number"
+								}
+							},
+							"description": "Embedding vectors, where each vector is a list of floats."
+						},
+						"shape": {
+							"type": "array",
+							"items": {
+								"type": "integer"
+							},
+							"minItems": 2,
+							"maxItems": 2,
+							"description": "Shape of the embedding data as [number_of_embeddings, embedding_dimension]."
+						}
+					},
+					"required": [
+						"data",
+						"shape"
 					]
 				}
 			}
@@ -6125,6 +6390,10 @@
 				{
 					"property_id": "context_window",
 					"value": "15000"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -7215,6 +7484,480 @@
 			}
 		},
 		{
+			"id": "a2a2afba-b609-4325-8c41-5791ce962239",
+			"source": 1,
+			"name": "@cf/deepgram/flux",
+			"description": "Flux is the first conversational speech recognition model built specifically for voice agents.",
+			"task": {
+				"id": "dfce1c48-2a81-462e-a7fd-de97ce985207",
+				"name": "Automatic Speech Recognition",
+				"description": "Automatic speech recognition (ASR) models convert a speech signal, typically an audio input, to text."
+			},
+			"created_at": "2025-09-29 21:07:55.114",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "partner",
+					"value": "true"
+				},
+				{
+					"property_id": "realtime",
+					"value": "true"
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"properties": {
+						"encoding": {
+							"type": "string",
+							"description": "Encoding of the audio stream. Currently only supports raw signed little-endian 16-bit PCM.",
+							"enum": [
+								"linear16"
+							]
+						},
+						"sample_rate": {
+							"type": "string",
+							"description": "Sample rate of the audio stream in Hz.",
+							"pattern": "^[0-9]+$"
+						},
+						"eager_eot_threshold": {
+							"type": "string",
+							"description": "End-of-turn confidence required to fire an eager end-of-turn event. When set, enables EagerEndOfTurn and TurnResumed events. Valid Values 0.3 - 0.9."
+						},
+						"eot_threshold": {
+							"type": "string",
+							"description": "End-of-turn confidence required to finish a turn. Valid Values 0.5 - 0.9.",
+							"default": "0.7"
+						},
+						"eot_timeout_ms": {
+							"type": "string",
+							"description": "A turn will be finished when this much time has passed after speech, regardless of EOT confidence.",
+							"default": "5000",
+							"pattern": "^[0-9]+$"
+						},
+						"keyterm": {
+							"type": "string",
+							"description": "Keyterm prompting can improve recognition of specialized terminology. Pass multiple keyterm query parameters to boost multiple keyterms."
+						},
+						"mip_opt_out": {
+							"type": "string",
+							"description": "Opts out requests from the Deepgram Model Improvement Program. Refer to Deepgram Docs for pricing impacts before setting this to true. https://dpgr.am/deepgram-mip",
+							"enum": [
+								"true",
+								"false"
+							],
+							"default": "false"
+						},
+						"tag": {
+							"type": "string",
+							"description": "Label your requests for the purpose of identification during usage reporting"
+						}
+					},
+					"required": [
+						"sample_rate",
+						"encoding"
+					]
+				},
+				"output": {
+					"type": "object",
+					"description": "Output will be returned as websocket messages.",
+					"properties": {
+						"request_id": {
+							"type": "string",
+							"description": "The unique identifier of the request (uuid)"
+						},
+						"sequence_id": {
+							"type": "integer",
+							"description": "Starts at 0 and increments for each message the server sends to the client.",
+							"minimum": 0
+						},
+						"event": {
+							"type": "string",
+							"description": "The type of event being reported.",
+							"enum": [
+								"Update",
+								"StartOfTurn",
+								"EagerEndOfTurn",
+								"TurnResumed",
+								"EndOfTurn"
+							]
+						},
+						"turn_index": {
+							"type": "integer",
+							"description": "The index of the current turn",
+							"minimum": 0
+						},
+						"audio_window_start": {
+							"type": "number",
+							"description": "Start time in seconds of the audio range that was transcribed"
+						},
+						"audio_window_end": {
+							"type": "number",
+							"description": "End time in seconds of the audio range that was transcribed"
+						},
+						"transcript": {
+							"type": "string",
+							"description": "Text that was said over the course of the current turn"
+						},
+						"words": {
+							"type": "array",
+							"description": "The words in the transcript",
+							"items": {
+								"type": "object",
+								"required": [
+									"word",
+									"confidence"
+								],
+								"properties": {
+									"word": {
+										"type": "string",
+										"description": "The individual punctuated, properly-cased word from the transcript"
+									},
+									"confidence": {
+										"type": "number",
+										"description": "Confidence that this word was transcribed correctly"
+									}
+								}
+							}
+						},
+						"end_of_turn_confidence": {
+							"type": "number",
+							"description": "Confidence that no more speech is coming in this turn"
+						}
+					}
+				}
+			}
+		},
+		{
+			"id": "a226909f-eef8-4265-a3a0-90db0422762e",
+			"source": 1,
+			"name": "@cf/deepgram/nova-3",
+			"description": "Transcribe audio using Deepgram’s speech-to-text model",
+			"task": {
+				"id": "dfce1c48-2a81-462e-a7fd-de97ce985207",
+				"name": "Automatic Speech Recognition",
+				"description": "Automatic speech recognition (ASR) models convert a speech signal, typically an audio input, to text."
+			},
+			"created_at": "2025-06-05 16:05:15.199",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "async_queue",
+					"value": "true"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per audio minute",
+							"price": 0.0052,
+							"currency": "USD"
+						}
+					]
+				},
+				{
+					"property_id": "partner",
+					"value": "true"
+				},
+				{
+					"property_id": "realtime",
+					"value": "true"
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"properties": {
+						"audio": {
+							"type": "object",
+							"properties": {
+								"body": {
+									"type": "object"
+								},
+								"contentType": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"body",
+								"contentType"
+							]
+						},
+						"custom_topic_mode": {
+							"type": "string",
+							"enum": [
+								"extended",
+								"strict"
+							],
+							"description": "Sets how the model will interpret strings submitted to the custom_topic param. When strict, the model will only return topics submitted using the custom_topic param. When extended, the model will return its own detected topics in addition to those submitted using the custom_topic param."
+						},
+						"custom_topic": {
+							"type": "string",
+							"description": "Custom topics you want the model to detect within your input audio or text if present Submit up to 100"
+						},
+						"custom_intent_mode": {
+							"type": "string",
+							"description": "Sets how the model will interpret intents submitted to the custom_intent param. When strict, the model will only return intents submitted using the custom_intent param. When extended, the model will return its own detected intents in addition those submitted using the custom_intents param",
+							"enum": [
+								"extended",
+								"strict"
+							]
+						},
+						"custom_intent": {
+							"type": "string",
+							"description": "Custom intents you want the model to detect within your input audio if present"
+						},
+						"detect_entities": {
+							"type": "boolean",
+							"description": "Identifies and extracts key entities from content in submitted audio"
+						},
+						"detect_language": {
+							"type": "boolean",
+							"description": "Identifies the dominant language spoken in submitted audio"
+						},
+						"diarize": {
+							"type": "boolean",
+							"description": "Recognize speaker changes. Each word in the transcript will be assigned a speaker number starting at 0"
+						},
+						"dictation": {
+							"type": "boolean",
+							"description": "Identify and extract key entities from content in submitted audio"
+						},
+						"encoding": {
+							"type": "string",
+							"description": "Specify the expected encoding of your submitted audio",
+							"enum": [
+								"linear16",
+								"flac",
+								"mulaw",
+								"amr-nb",
+								"amr-wb",
+								"opus",
+								"speex",
+								"g729"
+							]
+						},
+						"extra": {
+							"type": "string",
+							"description": "Arbitrary key-value pairs that are attached to the API response for usage in downstream processing"
+						},
+						"filler_words": {
+							"type": "boolean",
+							"description": "Filler Words can help transcribe interruptions in your audio, like 'uh' and 'um'"
+						},
+						"keyterm": {
+							"type": "string",
+							"description": "Key term prompting can boost or suppress specialized terminology and brands."
+						},
+						"keywords": {
+							"type": "string",
+							"description": "Keywords can boost or suppress specialized terminology and brands."
+						},
+						"language": {
+							"type": "string",
+							"description": "The BCP-47 language tag that hints at the primary spoken language. Depending on the Model and API endpoint you choose only certain languages are available."
+						},
+						"measurements": {
+							"type": "boolean",
+							"description": "Spoken measurements will be converted to their corresponding abbreviations."
+						},
+						"mip_opt_out": {
+							"type": "boolean",
+							"description": "Opts out requests from the Deepgram Model Improvement Program. Refer to our Docs for pricing impacts before setting this to true. https://dpgr.am/deepgram-mip."
+						},
+						"mode": {
+							"type": "string",
+							"description": "Mode of operation for the model representing broad area of topic that will be talked about in the supplied audio",
+							"enum": [
+								"general",
+								"medical",
+								"finance"
+							]
+						},
+						"multichannel": {
+							"type": "boolean",
+							"description": "Transcribe each audio channel independently."
+						},
+						"numerals": {
+							"type": "boolean",
+							"description": "Numerals converts numbers from written format to numerical format."
+						},
+						"paragraphs": {
+							"type": "boolean",
+							"description": "Splits audio into paragraphs to improve transcript readability."
+						},
+						"profanity_filter": {
+							"type": "boolean",
+							"description": "Profanity Filter looks for recognized profanity and converts it to the nearest recognized non-profane word or removes it from the transcript completely."
+						},
+						"punctuate": {
+							"type": "boolean",
+							"description": "Add punctuation and capitalization to the transcript."
+						},
+						"redact": {
+							"type": "string",
+							"description": "Redaction removes sensitive information from your transcripts."
+						},
+						"replace": {
+							"type": "string",
+							"description": "Search for terms or phrases in submitted audio and replaces them."
+						},
+						"search": {
+							"type": "string",
+							"description": "Search for terms or phrases in submitted audio."
+						},
+						"sentiment": {
+							"type": "boolean",
+							"description": "Recognizes the sentiment throughout a transcript or text."
+						},
+						"smart_format": {
+							"type": "boolean",
+							"description": "Apply formatting to transcript output. When set to true, additional formatting will be applied to transcripts to improve readability."
+						},
+						"topics": {
+							"type": "boolean",
+							"description": "Detect topics throughout a transcript or text."
+						},
+						"utterances": {
+							"type": "boolean",
+							"description": "Segments speech into meaningful semantic units."
+						},
+						"utt_split": {
+							"type": "number",
+							"description": "Seconds to wait before detecting a pause between words in submitted audio."
+						},
+						"channels": {
+							"type": "number",
+							"description": "The number of channels in the submitted audio"
+						},
+						"interim_results": {
+							"type": "boolean",
+							"description": "Specifies whether the streaming endpoint should provide ongoing transcription updates as more audio is received. When set to true, the endpoint sends continuous updates, meaning transcription results may evolve over time. Note: Supported only for webosockets."
+						},
+						"endpointing": {
+							"type": "string",
+							"description": "Indicates how long model will wait to detect whether a speaker has finished speaking or pauses for a significant period of time. When set to a value, the streaming endpoint immediately finalizes the transcription for the processed time range and returns the transcript with a speech_final parameter set to true. Can also be set to false to disable endpointing"
+						},
+						"vad_events": {
+							"type": "boolean",
+							"description": "Indicates that speech has started. You'll begin receiving Speech Started messages upon speech starting. Note: Supported only for webosockets."
+						},
+						"utterance_end_ms": {
+							"type": "boolean",
+							"description": "Indicates how long model will wait to send an UtteranceEnd message after a word has been transcribed. Use with interim_results. Note: Supported only for webosockets."
+						}
+					},
+					"required": [
+						"audio"
+					]
+				},
+				"output": {
+					"type": "object",
+					"contentType": "application/json",
+					"properties": {
+						"results": {
+							"type": "object",
+							"properties": {
+								"channels": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"alternatives": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"confidence": {
+															"type": "number"
+														},
+														"transcript": {
+															"type": "string"
+														},
+														"words": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"confidence": {
+																		"type": "number"
+																	},
+																	"end": {
+																		"type": "number"
+																	},
+																	"start": {
+																		"type": "number"
+																	},
+																	"word": {
+																		"type": "string"
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"summary": {
+									"type": "object",
+									"properties": {
+										"result": {
+											"type": "string"
+										},
+										"short": {
+											"type": "string"
+										}
+									}
+								},
+								"sentiments": {
+									"type": "object",
+									"properties": {
+										"segments": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"text": {
+														"type": "string"
+													},
+													"start_word": {
+														"type": "number"
+													},
+													"end_word": {
+														"type": "number"
+													},
+													"sentiment": {
+														"type": "string"
+													},
+													"sentiment_score": {
+														"type": "number"
+													}
+												}
+											}
+										},
+										"average": {
+											"type": "object",
+											"properties": {
+												"sentiment": {
+													"type": "string"
+												},
+												"sentiment_score": {
+													"type": "number"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		{
 			"id": "9e087485-23dc-47fa-997d-f5bfafc0c7cc",
 			"source": 1,
 			"name": "@cf/black-forest-labs/flux-1-schnell",
@@ -7300,6 +8043,10 @@
 				{
 					"property_id": "info",
 					"value": "https://huggingface.co/TheBloke/DiscoLM_German_7b_v1-AWQ"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -8626,6 +9373,10 @@
 				{
 					"property_id": "info",
 					"value": "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-AWQ"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -9067,6 +9818,10 @@
 				{
 					"property_id": "info",
 					"value": "https://huggingface.co/qwen/qwen1.5-7b-chat-awq"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -9960,6 +10715,10 @@
 				{
 					"property_id": "info",
 					"value": "https://huggingface.co/TheBloke/Llama-2-13B-chat-AWQ"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -10580,6 +11339,10 @@
 				{
 					"property_id": "context_window",
 					"value": "4096"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				},
 				{
 					"property_id": "terms",
@@ -12000,6 +12763,454 @@
 			}
 		},
 		{
+			"id": "7952d0cc-cb00-4e10-be02-667565c2ee0f",
+			"source": 1,
+			"name": "@cf/ibm-granite/granite-4.0-h-micro",
+			"description": "Granite 4.0 instruct models deliver strong performance across benchmarks, achieving industry-leading results in key agentic tasks like instruction following and function calling. These efficiencies make the models well-suited for a wide range of use cases like retrieval-augmented generation (RAG), multi-agent workflows, and edge deployments.",
+			"task": {
+				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+				"name": "Text Generation",
+				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+			},
+			"created_at": "2025-10-07 18:46:29.436",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "131000"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.017,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 0.11,
+							"currency": "USD"
+						}
+					]
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"oneOf": [
+						{
+							"title": "Prompt",
+							"properties": {
+								"prompt": {
+									"type": "string",
+									"minLength": 1,
+									"description": "The input text prompt for the model to generate a response."
+								},
+								"lora": {
+									"type": "string",
+									"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model."
+								},
+								"response_format": {
+									"title": "JSON Mode",
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"enum": [
+												"json_object",
+												"json_schema"
+											]
+										},
+										"json_schema": {}
+									}
+								},
+								"raw": {
+									"type": "boolean",
+									"default": false,
+									"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
+								},
+								"stream": {
+									"type": "boolean",
+									"default": false,
+									"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events."
+								},
+								"max_tokens": {
+									"type": "integer",
+									"default": 256,
+									"description": "The maximum number of tokens to generate in the response."
+								},
+								"temperature": {
+									"type": "number",
+									"default": 0.6,
+									"minimum": 0,
+									"maximum": 5,
+									"description": "Controls the randomness of the output; higher values produce more random results."
+								},
+								"top_p": {
+									"type": "number",
+									"minimum": 0.001,
+									"maximum": 1,
+									"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
+								},
+								"top_k": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 50,
+									"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
+								},
+								"seed": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 9999999999,
+									"description": "Random seed for reproducibility of the generation."
+								},
+								"repetition_penalty": {
+									"type": "number",
+									"minimum": 0,
+									"maximum": 2,
+									"description": "Penalty for repeated tokens; higher values discourage repetition."
+								},
+								"frequency_penalty": {
+									"type": "number",
+									"minimum": -2,
+									"maximum": 2,
+									"description": "Decreases the likelihood of the model repeating the same lines verbatim."
+								},
+								"presence_penalty": {
+									"type": "number",
+									"minimum": -2,
+									"maximum": 2,
+									"description": "Increases the likelihood of the model introducing new topics."
+								}
+							},
+							"required": [
+								"prompt"
+							]
+						},
+						{
+							"title": "Messages",
+							"properties": {
+								"messages": {
+									"type": "array",
+									"description": "An array of message objects representing the conversation history.",
+									"items": {
+										"type": "object",
+										"properties": {
+											"role": {
+												"type": "string",
+												"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool')."
+											},
+											"content": {
+												"type": "string",
+												"description": "The content of the message as a string."
+											}
+										},
+										"required": [
+											"role",
+											"content"
+										]
+									}
+								},
+								"functions": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"code": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"code"
+										]
+									}
+								},
+								"tools": {
+									"type": "array",
+									"description": "A list of tools available for the assistant to use.",
+									"items": {
+										"type": "object",
+										"oneOf": [
+											{
+												"properties": {
+													"name": {
+														"type": "string",
+														"description": "The name of the tool. More descriptive the better."
+													},
+													"description": {
+														"type": "string",
+														"description": "A brief description of what the tool does."
+													},
+													"parameters": {
+														"type": "object",
+														"description": "Schema defining the parameters accepted by the tool.",
+														"properties": {
+															"type": {
+																"type": "string",
+																"description": "The type of the parameters object (usually 'object')."
+															},
+															"required": {
+																"type": "array",
+																"description": "List of required parameter names.",
+																"items": {
+																	"type": "string"
+																}
+															},
+															"properties": {
+																"type": "object",
+																"description": "Definitions of each parameter.",
+																"additionalProperties": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"description": "The data type of the parameter."
+																		},
+																		"description": {
+																			"type": "string",
+																			"description": "A description of the expected parameter."
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"description"
+																	]
+																}
+															}
+														},
+														"required": [
+															"type",
+															"properties"
+														]
+													}
+												},
+												"required": [
+													"name",
+													"description",
+													"parameters"
+												]
+											},
+											{
+												"properties": {
+													"type": {
+														"type": "string",
+														"description": "Specifies the type of tool (e.g., 'function')."
+													},
+													"function": {
+														"type": "object",
+														"description": "Details of the function tool.",
+														"properties": {
+															"name": {
+																"type": "string",
+																"description": "The name of the function."
+															},
+															"description": {
+																"type": "string",
+																"description": "A brief description of what the function does."
+															},
+															"parameters": {
+																"type": "object",
+																"description": "Schema defining the parameters accepted by the function.",
+																"properties": {
+																	"type": {
+																		"type": "string",
+																		"description": "The type of the parameters object (usually 'object')."
+																	},
+																	"required": {
+																		"type": "array",
+																		"description": "List of required parameter names.",
+																		"items": {
+																			"type": "string"
+																		}
+																	},
+																	"properties": {
+																		"type": "object",
+																		"description": "Definitions of each parameter.",
+																		"additionalProperties": {
+																			"type": "object",
+																			"properties": {
+																				"type": {
+																					"type": "string",
+																					"description": "The data type of the parameter."
+																				},
+																				"description": {
+																					"type": "string",
+																					"description": "A description of the expected parameter."
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"description"
+																			]
+																		}
+																	}
+																},
+																"required": [
+																	"type",
+																	"properties"
+																]
+															}
+														},
+														"required": [
+															"name",
+															"description",
+															"parameters"
+														]
+													}
+												},
+												"required": [
+													"type",
+													"function"
+												]
+											}
+										]
+									}
+								},
+								"response_format": {
+									"title": "JSON Mode",
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"enum": [
+												"json_object",
+												"json_schema"
+											]
+										},
+										"json_schema": {}
+									}
+								},
+								"raw": {
+									"type": "boolean",
+									"default": false,
+									"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
+								},
+								"stream": {
+									"type": "boolean",
+									"default": false,
+									"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events."
+								},
+								"max_tokens": {
+									"type": "integer",
+									"default": 256,
+									"description": "The maximum number of tokens to generate in the response."
+								},
+								"temperature": {
+									"type": "number",
+									"default": 0.6,
+									"minimum": 0,
+									"maximum": 5,
+									"description": "Controls the randomness of the output; higher values produce more random results."
+								},
+								"top_p": {
+									"type": "number",
+									"minimum": 0.001,
+									"maximum": 1,
+									"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
+								},
+								"top_k": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 50,
+									"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
+								},
+								"seed": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 9999999999,
+									"description": "Random seed for reproducibility of the generation."
+								},
+								"repetition_penalty": {
+									"type": "number",
+									"minimum": 0,
+									"maximum": 2,
+									"description": "Penalty for repeated tokens; higher values discourage repetition."
+								},
+								"frequency_penalty": {
+									"type": "number",
+									"minimum": -2,
+									"maximum": 2,
+									"description": "Decreases the likelihood of the model repeating the same lines verbatim."
+								},
+								"presence_penalty": {
+									"type": "number",
+									"minimum": -2,
+									"maximum": 2,
+									"description": "Increases the likelihood of the model introducing new topics."
+								}
+							},
+							"required": [
+								"messages"
+							]
+						}
+					]
+				},
+				"output": {
+					"oneOf": [
+						{
+							"type": "object",
+							"properties": {
+								"response": {
+									"type": "string",
+									"description": "The generated text response from the model"
+								},
+								"usage": {
+									"type": "object",
+									"description": "Usage statistics for the inference request",
+									"properties": {
+										"prompt_tokens": {
+											"type": "number",
+											"description": "Total number of tokens in input",
+											"default": 0
+										},
+										"completion_tokens": {
+											"type": "number",
+											"description": "Total number of tokens in output",
+											"default": 0
+										},
+										"total_tokens": {
+											"type": "number",
+											"description": "Total number of input and output tokens",
+											"default": 0
+										}
+									}
+								},
+								"tool_calls": {
+									"type": "array",
+									"description": "An array of tool calls requests made during the response generation",
+									"items": {
+										"type": "object",
+										"properties": {
+											"arguments": {
+												"type": "object",
+												"description": "The arguments passed to be passed to the tool call request"
+											},
+											"name": {
+												"type": "string",
+												"description": "The name of the tool to be called"
+											}
+										}
+									}
+								}
+							},
+							"required": [
+								"response"
+							]
+						},
+						{
+							"type": "string",
+							"format": "binary"
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "7912c0ab-542e-44b9-b9ee-3113d226a8b5",
 			"source": 1,
 			"name": "@cf/lykon/dreamshaper-8-lcm",
@@ -12092,6 +13303,99 @@
 					"contentType": "image/png",
 					"format": "binary",
 					"description": "The generated image in PNG format"
+				}
+			}
+		},
+		{
+			"id": "724608fa-983e-495d-b95c-340d6b7e78be",
+			"source": 1,
+			"name": "@cf/leonardo/phoenix-1.0",
+			"description": "Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional prompt adherence and coherent text.",
+			"task": {
+				"id": "3d6e1f35-341b-4915-a6c8-9a7142a9033a",
+				"name": "Text-to-Image",
+				"description": "Generates images from input text. These models can be used to generate and modify images based on text prompts."
+			},
+			"created_at": "2025-08-25 18:12:18.073",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per 512 by 512 tile",
+							"price": 0.0058,
+							"currency": "USD"
+						},
+						{
+							"unit": "per step",
+							"price": 0.00011,
+							"currency": "USD"
+						}
+					]
+				},
+				{
+					"property_id": "partner",
+					"value": "true"
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"properties": {
+						"prompt": {
+							"type": "string",
+							"minLength": 1,
+							"description": "A text description of the image you want to generate."
+						},
+						"guidance": {
+							"type": "number",
+							"default": 2,
+							"minimum": 2,
+							"maximum": 10,
+							"description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt"
+						},
+						"seed": {
+							"type": "integer",
+							"minimum": 0,
+							"description": "Random seed for reproducibility of the image generation"
+						},
+						"height": {
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 2048,
+							"default": 1024,
+							"description": "The height of the generated image in pixels"
+						},
+						"width": {
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 2048,
+							"default": 1024,
+							"description": "The width of the generated image in pixels"
+						},
+						"num_steps": {
+							"type": "integer",
+							"default": 25,
+							"minimum": 1,
+							"maximum": 50,
+							"description": "The number of diffusion steps; higher values can improve quality but take longer"
+						},
+						"negative_prompt": {
+							"type": "string",
+							"minLength": 1,
+							"description": "Specify what to exclude from the generated images"
+						}
+					},
+					"required": [
+						"prompt"
+					]
+				},
+				"output": {
+					"type": "string",
+					"contentType": "image/jpeg",
+					"format": "binary",
+					"description": "The generated image in JPEG format"
 				}
 			}
 		},
@@ -12229,6 +13533,10 @@
 				{
 					"property_id": "context_window",
 					"value": "4096"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -12781,6 +14089,117 @@
 			}
 		},
 		{
+			"id": "60920ed4-cf72-449a-a0f3-a38456b78262",
+			"source": 1,
+			"name": "@cf/ai4bharat/indictrans2-en-indic-1B",
+			"description": "IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages",
+			"task": {
+				"id": "f57d07cb-9087-487a-bbbf-bc3e17fecc4b",
+				"name": "Translation",
+				"description": "Translation models convert a sequence of text from one language to another."
+			},
+			"created_at": "2025-09-23 18:19:17.382",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.34,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 0.34,
+							"currency": "USD"
+						}
+					]
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"properties": {
+						"text": {
+							"oneOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							],
+							"description": "Input text to translate. Can be a single string or a list of strings."
+						},
+						"target_language": {
+							"type": "string",
+							"enum": [
+								"asm_Beng",
+								"awa_Deva",
+								"ben_Beng",
+								"bho_Deva",
+								"brx_Deva",
+								"doi_Deva",
+								"eng_Latn",
+								"gom_Deva",
+								"gon_Deva",
+								"guj_Gujr",
+								"hin_Deva",
+								"hne_Deva",
+								"kan_Knda",
+								"kas_Arab",
+								"kas_Deva",
+								"kha_Latn",
+								"lus_Latn",
+								"mag_Deva",
+								"mai_Deva",
+								"mal_Mlym",
+								"mar_Deva",
+								"mni_Beng",
+								"mni_Mtei",
+								"npi_Deva",
+								"ory_Orya",
+								"pan_Guru",
+								"san_Deva",
+								"sat_Olck",
+								"snd_Arab",
+								"snd_Deva",
+								"tam_Taml",
+								"tel_Telu",
+								"urd_Arab",
+								"unr_Deva"
+							],
+							"default": "hin_Deva",
+							"description": "Target langauge to translate to"
+						}
+					},
+					"required": [
+						"text",
+						"target_language"
+					]
+				},
+				"output": {
+					"type": "object",
+					"properties": {
+						"translations": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"description": "Translated texts"
+						}
+					},
+					"required": [
+						"translations"
+					]
+				}
+			}
+		},
+		{
 			"id": "60474554-f03b-4ff4-8ecc-c1b7c71d7b29",
 			"source": 2,
 			"name": "@hf/thebloke/deepseek-coder-6.7b-instruct-awq",
@@ -12800,6 +14219,10 @@
 				{
 					"property_id": "context_window",
 					"value": "4096"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				},
 				{
 					"property_id": "terms",
@@ -13874,6 +15297,10 @@
 					"value": "https://huggingface.co/deepseek-ai/deepseek-math-7b-instruct"
 				},
 				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
+				},
+				{
 					"property_id": "terms",
 					"value": "https://github.com/deepseek-ai/DeepSeek-Math/blob/main/LICENSE-MODEL"
 				}
@@ -14317,6 +15744,10 @@
 				{
 					"property_id": "info",
 					"value": "https://huggingface.co/tiiuae/falcon-7b-instruct"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -15355,6 +16786,1025 @@
 			}
 		},
 		{
+			"id": "41ca173f-72d5-4420-8915-49e835d2676e",
+			"source": 1,
+			"name": "@cf/aisingapore/gemma-sea-lion-v4-27b-it",
+			"description": "SEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.",
+			"task": {
+				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+				"name": "Text Generation",
+				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+			},
+			"created_at": "2025-09-23 19:27:30.468",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "128000"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.35,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 0.56,
+							"currency": "USD"
+						}
+					]
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"oneOf": [
+						{
+							"title": "Prompt",
+							"properties": {
+								"prompt": {
+									"type": "string",
+									"minLength": 1,
+									"description": "The input text prompt for the model to generate a response."
+								},
+								"lora": {
+									"type": "string",
+									"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model."
+								},
+								"response_format": {
+									"title": "JSON Mode",
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"enum": [
+												"json_object",
+												"json_schema"
+											]
+										},
+										"json_schema": {}
+									}
+								},
+								"raw": {
+									"type": "boolean",
+									"default": false,
+									"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
+								},
+								"stream": {
+									"type": "boolean",
+									"default": false,
+									"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events."
+								},
+								"max_tokens": {
+									"type": "integer",
+									"default": 2000,
+									"description": "The maximum number of tokens to generate in the response."
+								},
+								"temperature": {
+									"type": "number",
+									"default": 0.6,
+									"minimum": 0,
+									"maximum": 5,
+									"description": "Controls the randomness of the output; higher values produce more random results."
+								},
+								"top_p": {
+									"type": "number",
+									"minimum": 0.001,
+									"maximum": 1,
+									"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
+								},
+								"top_k": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 50,
+									"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
+								},
+								"seed": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 9999999999,
+									"description": "Random seed for reproducibility of the generation."
+								},
+								"repetition_penalty": {
+									"type": "number",
+									"minimum": 0,
+									"maximum": 2,
+									"description": "Penalty for repeated tokens; higher values discourage repetition."
+								},
+								"frequency_penalty": {
+									"type": "number",
+									"minimum": -2,
+									"maximum": 2,
+									"description": "Decreases the likelihood of the model repeating the same lines verbatim."
+								},
+								"presence_penalty": {
+									"type": "number",
+									"minimum": -2,
+									"maximum": 2,
+									"description": "Increases the likelihood of the model introducing new topics."
+								}
+							},
+							"required": [
+								"prompt"
+							]
+						},
+						{
+							"title": "Messages",
+							"properties": {
+								"messages": {
+									"type": "array",
+									"description": "An array of message objects representing the conversation history.",
+									"items": {
+										"type": "object",
+										"properties": {
+											"role": {
+												"type": "string",
+												"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool')."
+											},
+											"content": {
+												"type": "string",
+												"description": "The content of the message as a string."
+											}
+										},
+										"required": [
+											"role",
+											"content"
+										]
+									}
+								},
+								"functions": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"code": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"code"
+										]
+									}
+								},
+								"tools": {
+									"type": "array",
+									"description": "A list of tools available for the assistant to use.",
+									"items": {
+										"type": "object",
+										"oneOf": [
+											{
+												"properties": {
+													"name": {
+														"type": "string",
+														"description": "The name of the tool. More descriptive the better."
+													},
+													"description": {
+														"type": "string",
+														"description": "A brief description of what the tool does."
+													},
+													"parameters": {
+														"type": "object",
+														"description": "Schema defining the parameters accepted by the tool.",
+														"properties": {
+															"type": {
+																"type": "string",
+																"description": "The type of the parameters object (usually 'object')."
+															},
+															"required": {
+																"type": "array",
+																"description": "List of required parameter names.",
+																"items": {
+																	"type": "string"
+																}
+															},
+															"properties": {
+																"type": "object",
+																"description": "Definitions of each parameter.",
+																"additionalProperties": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"description": "The data type of the parameter."
+																		},
+																		"description": {
+																			"type": "string",
+																			"description": "A description of the expected parameter."
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"description"
+																	]
+																}
+															}
+														},
+														"required": [
+															"type",
+															"properties"
+														]
+													}
+												},
+												"required": [
+													"name",
+													"description",
+													"parameters"
+												]
+											},
+											{
+												"properties": {
+													"type": {
+														"type": "string",
+														"description": "Specifies the type of tool (e.g., 'function')."
+													},
+													"function": {
+														"type": "object",
+														"description": "Details of the function tool.",
+														"properties": {
+															"name": {
+																"type": "string",
+																"description": "The name of the function."
+															},
+															"description": {
+																"type": "string",
+																"description": "A brief description of what the function does."
+															},
+															"parameters": {
+																"type": "object",
+																"description": "Schema defining the parameters accepted by the function.",
+																"properties": {
+																	"type": {
+																		"type": "string",
+																		"description": "The type of the parameters object (usually 'object')."
+																	},
+																	"required": {
+																		"type": "array",
+																		"description": "List of required parameter names.",
+																		"items": {
+																			"type": "string"
+																		}
+																	},
+																	"properties": {
+																		"type": "object",
+																		"description": "Definitions of each parameter.",
+																		"additionalProperties": {
+																			"type": "object",
+																			"properties": {
+																				"type": {
+																					"type": "string",
+																					"description": "The data type of the parameter."
+																				},
+																				"description": {
+																					"type": "string",
+																					"description": "A description of the expected parameter."
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"description"
+																			]
+																		}
+																	}
+																},
+																"required": [
+																	"type",
+																	"properties"
+																]
+															}
+														},
+														"required": [
+															"name",
+															"description",
+															"parameters"
+														]
+													}
+												},
+												"required": [
+													"type",
+													"function"
+												]
+											}
+										]
+									}
+								},
+								"response_format": {
+									"title": "JSON Mode",
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"enum": [
+												"json_object",
+												"json_schema"
+											]
+										},
+										"json_schema": {}
+									}
+								},
+								"raw": {
+									"type": "boolean",
+									"default": false,
+									"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
+								},
+								"stream": {
+									"type": "boolean",
+									"default": false,
+									"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events."
+								},
+								"max_tokens": {
+									"type": "integer",
+									"default": 2000,
+									"description": "The maximum number of tokens to generate in the response."
+								},
+								"temperature": {
+									"type": "number",
+									"default": 0.6,
+									"minimum": 0,
+									"maximum": 5,
+									"description": "Controls the randomness of the output; higher values produce more random results."
+								},
+								"top_p": {
+									"type": "number",
+									"minimum": 0.001,
+									"maximum": 1,
+									"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
+								},
+								"top_k": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 50,
+									"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
+								},
+								"seed": {
+									"type": "integer",
+									"minimum": 1,
+									"maximum": 9999999999,
+									"description": "Random seed for reproducibility of the generation."
+								},
+								"repetition_penalty": {
+									"type": "number",
+									"minimum": 0,
+									"maximum": 2,
+									"description": "Penalty for repeated tokens; higher values discourage repetition."
+								},
+								"frequency_penalty": {
+									"type": "number",
+									"minimum": -2,
+									"maximum": 2,
+									"description": "Decreases the likelihood of the model repeating the same lines verbatim."
+								},
+								"presence_penalty": {
+									"type": "number",
+									"minimum": -2,
+									"maximum": 2,
+									"description": "Increases the likelihood of the model introducing new topics."
+								}
+							},
+							"required": [
+								"messages"
+							]
+						},
+						{
+							"title": "Async Batch",
+							"type": "object",
+							"properties": {
+								"requests": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"oneOf": [
+											{
+												"title": "Prompt",
+												"properties": {
+													"prompt": {
+														"type": "string",
+														"minLength": 1,
+														"description": "The input text prompt for the model to generate a response."
+													},
+													"lora": {
+														"type": "string",
+														"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model."
+													},
+													"response_format": {
+														"title": "JSON Mode",
+														"type": "object",
+														"properties": {
+															"type": {
+																"type": "string",
+																"enum": [
+																	"json_object",
+																	"json_schema"
+																]
+															},
+															"json_schema": {}
+														}
+													},
+													"raw": {
+														"type": "boolean",
+														"default": false,
+														"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
+													},
+													"stream": {
+														"type": "boolean",
+														"default": false,
+														"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events."
+													},
+													"max_tokens": {
+														"type": "integer",
+														"default": 256,
+														"description": "The maximum number of tokens to generate in the response."
+													},
+													"temperature": {
+														"type": "number",
+														"default": 0.6,
+														"minimum": 0,
+														"maximum": 5,
+														"description": "Controls the randomness of the output; higher values produce more random results."
+													},
+													"top_p": {
+														"type": "number",
+														"minimum": 0.001,
+														"maximum": 1,
+														"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
+													},
+													"top_k": {
+														"type": "integer",
+														"minimum": 1,
+														"maximum": 50,
+														"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
+													},
+													"seed": {
+														"type": "integer",
+														"minimum": 1,
+														"maximum": 9999999999,
+														"description": "Random seed for reproducibility of the generation."
+													},
+													"repetition_penalty": {
+														"type": "number",
+														"minimum": 0,
+														"maximum": 2,
+														"description": "Penalty for repeated tokens; higher values discourage repetition."
+													},
+													"frequency_penalty": {
+														"type": "number",
+														"minimum": -2,
+														"maximum": 2,
+														"description": "Decreases the likelihood of the model repeating the same lines verbatim."
+													},
+													"presence_penalty": {
+														"type": "number",
+														"minimum": -2,
+														"maximum": 2,
+														"description": "Increases the likelihood of the model introducing new topics."
+													}
+												},
+												"required": [
+													"prompt"
+												]
+											},
+											{
+												"title": "Messages",
+												"properties": {
+													"messages": {
+														"type": "array",
+														"description": "An array of message objects representing the conversation history.",
+														"items": {
+															"type": "object",
+															"properties": {
+																"role": {
+																	"type": "string",
+																	"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool')."
+																},
+																"content": {
+																	"type": "string",
+																	"description": "The content of the message as a string."
+																}
+															},
+															"required": [
+																"role",
+																"content"
+															]
+														}
+													},
+													"functions": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"name": {
+																	"type": "string"
+																},
+																"code": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"code"
+															]
+														}
+													},
+													"tools": {
+														"type": "array",
+														"description": "A list of tools available for the assistant to use.",
+														"items": {
+															"type": "object",
+															"oneOf": [
+																{
+																	"properties": {
+																		"name": {
+																			"type": "string",
+																			"description": "The name of the tool. More descriptive the better."
+																		},
+																		"description": {
+																			"type": "string",
+																			"description": "A brief description of what the tool does."
+																		},
+																		"parameters": {
+																			"type": "object",
+																			"description": "Schema defining the parameters accepted by the tool.",
+																			"properties": {
+																				"type": {
+																					"type": "string",
+																					"description": "The type of the parameters object (usually 'object')."
+																				},
+																				"required": {
+																					"type": "array",
+																					"description": "List of required parameter names.",
+																					"items": {
+																						"type": "string"
+																					}
+																				},
+																				"properties": {
+																					"type": "object",
+																					"description": "Definitions of each parameter.",
+																					"additionalProperties": {
+																						"type": "object",
+																						"properties": {
+																							"type": {
+																								"type": "string",
+																								"description": "The data type of the parameter."
+																							},
+																							"description": {
+																								"type": "string",
+																								"description": "A description of the expected parameter."
+																							}
+																						},
+																						"required": [
+																							"type",
+																							"description"
+																						]
+																					}
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"properties"
+																			]
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"description",
+																		"parameters"
+																	]
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"description": "Specifies the type of tool (e.g., 'function')."
+																		},
+																		"function": {
+																			"type": "object",
+																			"description": "Details of the function tool.",
+																			"properties": {
+																				"name": {
+																					"type": "string",
+																					"description": "The name of the function."
+																				},
+																				"description": {
+																					"type": "string",
+																					"description": "A brief description of what the function does."
+																				},
+																				"parameters": {
+																					"type": "object",
+																					"description": "Schema defining the parameters accepted by the function.",
+																					"properties": {
+																						"type": {
+																							"type": "string",
+																							"description": "The type of the parameters object (usually 'object')."
+																						},
+																						"required": {
+																							"type": "array",
+																							"description": "List of required parameter names.",
+																							"items": {
+																								"type": "string"
+																							}
+																						},
+																						"properties": {
+																							"type": "object",
+																							"description": "Definitions of each parameter.",
+																							"additionalProperties": {
+																								"type": "object",
+																								"properties": {
+																									"type": {
+																										"type": "string",
+																										"description": "The data type of the parameter."
+																									},
+																									"description": {
+																										"type": "string",
+																										"description": "A description of the expected parameter."
+																									}
+																								},
+																								"required": [
+																									"type",
+																									"description"
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"type",
+																						"properties"
+																					]
+																				}
+																			},
+																			"required": [
+																				"name",
+																				"description",
+																				"parameters"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"function"
+																	]
+																}
+															]
+														}
+													},
+													"response_format": {
+														"title": "JSON Mode",
+														"type": "object",
+														"properties": {
+															"type": {
+																"type": "string",
+																"enum": [
+																	"json_object",
+																	"json_schema"
+																]
+															},
+															"json_schema": {}
+														}
+													},
+													"raw": {
+														"type": "boolean",
+														"default": false,
+														"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
+													},
+													"stream": {
+														"type": "boolean",
+														"default": false,
+														"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events."
+													},
+													"max_tokens": {
+														"type": "integer",
+														"default": 256,
+														"description": "The maximum number of tokens to generate in the response."
+													},
+													"temperature": {
+														"type": "number",
+														"default": 0.6,
+														"minimum": 0,
+														"maximum": 5,
+														"description": "Controls the randomness of the output; higher values produce more random results."
+													},
+													"top_p": {
+														"type": "number",
+														"minimum": 0.001,
+														"maximum": 1,
+														"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
+													},
+													"top_k": {
+														"type": "integer",
+														"minimum": 1,
+														"maximum": 50,
+														"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
+													},
+													"seed": {
+														"type": "integer",
+														"minimum": 1,
+														"maximum": 9999999999,
+														"description": "Random seed for reproducibility of the generation."
+													},
+													"repetition_penalty": {
+														"type": "number",
+														"minimum": 0,
+														"maximum": 2,
+														"description": "Penalty for repeated tokens; higher values discourage repetition."
+													},
+													"frequency_penalty": {
+														"type": "number",
+														"minimum": -2,
+														"maximum": 2,
+														"description": "Decreases the likelihood of the model repeating the same lines verbatim."
+													},
+													"presence_penalty": {
+														"type": "number",
+														"minimum": -2,
+														"maximum": 2,
+														"description": "Increases the likelihood of the model introducing new topics."
+													}
+												},
+												"required": [
+													"messages"
+												]
+											}
+										]
+									}
+								}
+							},
+							"required": [
+								"requests"
+							]
+						}
+					]
+				},
+				"output": {
+					"oneOf": [
+						{
+							"type": "object",
+							"contentType": "application/json",
+							"title": "Chat Completion Response",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Unique identifier for the completion"
+								},
+								"object": {
+									"type": "string",
+									"enum": [
+										"chat.completion"
+									],
+									"description": "Object type identifier"
+								},
+								"created": {
+									"type": "number",
+									"description": "Unix timestamp of when the completion was created"
+								},
+								"model": {
+									"type": "string",
+									"description": "Model used for the completion"
+								},
+								"choices": {
+									"type": "array",
+									"description": "List of completion choices",
+									"items": {
+										"type": "object",
+										"properties": {
+											"index": {
+												"type": "number",
+												"description": "Index of the choice in the list"
+											},
+											"message": {
+												"type": "object",
+												"description": "The message generated by the model",
+												"properties": {
+													"role": {
+														"type": "string",
+														"description": "Role of the message author"
+													},
+													"content": {
+														"type": "string",
+														"description": "The content of the message"
+													},
+													"reasoning_content": {
+														"type": "string",
+														"description": "Internal reasoning content (if available)"
+													},
+													"tool_calls": {
+														"type": "array",
+														"description": "Tool calls made by the assistant",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"description": "Unique identifier for the tool call"
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"function"
+																	],
+																	"description": "Type of tool call"
+																},
+																"function": {
+																	"type": "object",
+																	"properties": {
+																		"name": {
+																			"type": "string",
+																			"description": "Name of the function to call"
+																		},
+																		"arguments": {
+																			"type": "string",
+																			"description": "JSON string of arguments for the function"
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"arguments"
+																	]
+																}
+															},
+															"required": [
+																"id",
+																"type",
+																"function"
+															]
+														}
+													}
+												},
+												"required": [
+													"role",
+													"content"
+												]
+											},
+											"finish_reason": {
+												"type": "string",
+												"description": "Reason why the model stopped generating"
+											},
+											"stop_reason": {
+												"type": [
+													"string",
+													"null"
+												],
+												"description": "Stop reason (may be null)"
+											},
+											"logprobs": {
+												"type": [
+													"object",
+													"null"
+												],
+												"description": "Log probabilities (if requested)"
+											}
+										}
+									}
+								},
+								"usage": {
+									"type": "object",
+									"description": "Usage statistics for the inference request",
+									"properties": {
+										"prompt_tokens": {
+											"type": "number",
+											"description": "Total number of tokens in input",
+											"default": 0
+										},
+										"completion_tokens": {
+											"type": "number",
+											"description": "Total number of tokens in output",
+											"default": 0
+										},
+										"total_tokens": {
+											"type": "number",
+											"description": "Total number of input and output tokens",
+											"default": 0
+										}
+									}
+								},
+								"prompt_logprobs": {
+									"type": [
+										"object",
+										"null"
+									],
+									"description": "Log probabilities for the prompt (if requested)"
+								}
+							}
+						},
+						{
+							"type": "object",
+							"contentType": "application/json",
+							"title": "Text Completion Response",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Unique identifier for the completion"
+								},
+								"object": {
+									"type": "string",
+									"enum": [
+										"text_completion"
+									],
+									"description": "Object type identifier"
+								},
+								"created": {
+									"type": "number",
+									"description": "Unix timestamp of when the completion was created"
+								},
+								"model": {
+									"type": "string",
+									"description": "Model used for the completion"
+								},
+								"choices": {
+									"type": "array",
+									"description": "List of completion choices",
+									"items": {
+										"type": "object",
+										"properties": {
+											"index": {
+												"type": "number",
+												"description": "Index of the choice in the list"
+											},
+											"text": {
+												"type": "string",
+												"description": "The generated text completion"
+											},
+											"finish_reason": {
+												"type": "string",
+												"description": "Reason why the model stopped generating"
+											},
+											"stop_reason": {
+												"type": [
+													"string",
+													"null"
+												],
+												"description": "Stop reason (may be null)"
+											},
+											"logprobs": {
+												"type": [
+													"object",
+													"null"
+												],
+												"description": "Log probabilities (if requested)"
+											},
+											"prompt_logprobs": {
+												"type": [
+													"object",
+													"null"
+												],
+												"description": "Log probabilities for the prompt (if requested)"
+											}
+										},
+										"required": [
+											"index",
+											"text",
+											"finish_reason"
+										]
+									}
+								},
+								"usage": {
+									"type": "object",
+									"description": "Usage statistics for the inference request",
+									"properties": {
+										"prompt_tokens": {
+											"type": "number",
+											"description": "Total number of tokens in input",
+											"default": 0
+										},
+										"completion_tokens": {
+											"type": "number",
+											"description": "Total number of tokens in output",
+											"default": 0
+										},
+										"total_tokens": {
+											"type": "number",
+											"description": "Total number of input and output tokens",
+											"default": 0
+										}
+									}
+								}
+							}
+						},
+						{
+							"type": "string",
+							"contentType": "text/event-stream",
+							"format": "binary"
+						},
+						{
+							"type": "object",
+							"contentType": "application/json",
+							"title": "Async response",
+							"properties": {
+								"request_id": {
+									"type": "string",
+									"description": "The async request id that can be used to obtain the results."
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "3dcb4f2d-26a8-412b-b6e3-2a368beff66b",
 			"source": 1,
 			"name": "@cf/meta/llama-3.1-8b-instruct-awq",
@@ -15936,6 +18386,10 @@
 				{
 					"property_id": "info",
 					"value": "https://huggingface.co/TheBloke/zephyr-7B-beta-AWQ"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -16818,6 +19272,10 @@
 				{
 					"property_id": "info",
 					"value": "https://huggingface.co/qwen/qwen1.5-1.8b-chat"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -18904,6 +21362,112 @@
 			}
 		},
 		{
+			"id": "1f55679f-009e-4456-aa4f-049a62b4b6a0",
+			"source": 1,
+			"name": "@cf/deepgram/aura-1",
+			"description": "Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.",
+			"task": {
+				"id": "b52660a1-9a95-4ab2-8b1d-f232be34604a",
+				"name": "Text-to-Speech",
+				"description": "Text-to-Speech (TTS) is the task of generating natural sounding speech given text input. TTS models can be extended to have a single model that generates speech for multiple speakers and multiple languages."
+			},
+			"created_at": "2025-08-27 01:18:18.880",
+			"tags": [],
+			"properties": [
+				{
+					"property_id": "async_queue",
+					"value": "true"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per audio minute",
+							"price": 0,
+							"currency": "USD"
+						}
+					]
+				},
+				{
+					"property_id": "partner",
+					"value": "true"
+				},
+				{
+					"property_id": "realtime",
+					"value": "true"
+				}
+			],
+			"schema": {
+				"input": {
+					"type": "object",
+					"properties": {
+						"speaker": {
+							"type": "string",
+							"enum": [
+								"angus",
+								"asteria",
+								"arcas",
+								"orion",
+								"orpheus",
+								"athena",
+								"luna",
+								"zeus",
+								"perseus",
+								"helios",
+								"hera",
+								"stella"
+							],
+							"default": "angus",
+							"description": "Speaker used to produce the audio."
+						},
+						"encoding": {
+							"type": "string",
+							"enum": [
+								"linear16",
+								"flac",
+								"mulaw",
+								"alaw",
+								"mp3",
+								"opus",
+								"aac"
+							],
+							"description": "Encoding of the output audio."
+						},
+						"container": {
+							"type": "string",
+							"enum": [
+								"none",
+								"wav",
+								"ogg"
+							],
+							"description": "Container specifies the file format wrapper for the output audio. The available options depend on the encoding type.."
+						},
+						"text": {
+							"type": "string",
+							"description": "The text content to be converted to speech"
+						},
+						"sample_rate": {
+							"type": "number",
+							"description": "Sample Rate specifies the sample rate for the output audio. Based on the encoding, different sample rates are supported. For some encodings, the sample rate is not configurable"
+						},
+						"bit_rate": {
+							"type": "number",
+							"description": "The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type."
+						}
+					},
+					"required": [
+						"text"
+					]
+				},
+				"output": {
+					"type": "string",
+					"contentType": "audio/mpeg",
+					"format": "binary",
+					"description": "The generated audio in MP3 format"
+				}
+			}
+		},
+		{
 			"id": "1dc9e589-df6b-4e66-ac9f-ceff42d64983",
 			"source": 1,
 			"name": "@cf/defog/sqlcoder-7b-2",
@@ -19790,439 +22354,6 @@
 			}
 		},
 		{
-			"id": "1a7b6ad6-9987-4bd3-a329-20ee8de93296",
-			"source": 2,
-			"name": "@hf/meta-llama/meta-llama-3-8b-instruct",
-			"description": "Generation over generation, Meta Llama 3 demonstrates state-of-the-art performance on a wide range of industry benchmarks and offers new capabilities, including improved reasoning.\t",
-			"task": {
-				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-				"name": "Text Generation",
-				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-			},
-			"created_at": "2024-05-22 18:21:04.371",
-			"tags": [],
-			"properties": [
-				{
-					"property_id": "context_window",
-					"value": "8192"
-				}
-			],
-			"schema": {
-				"input": {
-					"type": "object",
-					"oneOf": [
-						{
-							"title": "Prompt",
-							"properties": {
-								"prompt": {
-									"type": "string",
-									"minLength": 1,
-									"description": "The input text prompt for the model to generate a response."
-								},
-								"lora": {
-									"type": "string",
-									"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model."
-								},
-								"response_format": {
-									"title": "JSON Mode",
-									"type": "object",
-									"properties": {
-										"type": {
-											"type": "string",
-											"enum": [
-												"json_object",
-												"json_schema"
-											]
-										},
-										"json_schema": {}
-									}
-								},
-								"raw": {
-									"type": "boolean",
-									"default": false,
-									"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
-								},
-								"stream": {
-									"type": "boolean",
-									"default": false,
-									"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events."
-								},
-								"max_tokens": {
-									"type": "integer",
-									"default": 256,
-									"description": "The maximum number of tokens to generate in the response."
-								},
-								"temperature": {
-									"type": "number",
-									"default": 0.6,
-									"minimum": 0,
-									"maximum": 5,
-									"description": "Controls the randomness of the output; higher values produce more random results."
-								},
-								"top_p": {
-									"type": "number",
-									"minimum": 0.001,
-									"maximum": 1,
-									"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
-								},
-								"top_k": {
-									"type": "integer",
-									"minimum": 1,
-									"maximum": 50,
-									"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
-								},
-								"seed": {
-									"type": "integer",
-									"minimum": 1,
-									"maximum": 9999999999,
-									"description": "Random seed for reproducibility of the generation."
-								},
-								"repetition_penalty": {
-									"type": "number",
-									"minimum": 0,
-									"maximum": 2,
-									"description": "Penalty for repeated tokens; higher values discourage repetition."
-								},
-								"frequency_penalty": {
-									"type": "number",
-									"minimum": -2,
-									"maximum": 2,
-									"description": "Decreases the likelihood of the model repeating the same lines verbatim."
-								},
-								"presence_penalty": {
-									"type": "number",
-									"minimum": -2,
-									"maximum": 2,
-									"description": "Increases the likelihood of the model introducing new topics."
-								}
-							},
-							"required": [
-								"prompt"
-							]
-						},
-						{
-							"title": "Messages",
-							"properties": {
-								"messages": {
-									"type": "array",
-									"description": "An array of message objects representing the conversation history.",
-									"items": {
-										"type": "object",
-										"properties": {
-											"role": {
-												"type": "string",
-												"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool')."
-											},
-											"content": {
-												"type": "string",
-												"description": "The content of the message as a string."
-											}
-										},
-										"required": [
-											"role",
-											"content"
-										]
-									}
-								},
-								"functions": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"code": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"name",
-											"code"
-										]
-									}
-								},
-								"tools": {
-									"type": "array",
-									"description": "A list of tools available for the assistant to use.",
-									"items": {
-										"type": "object",
-										"oneOf": [
-											{
-												"properties": {
-													"name": {
-														"type": "string",
-														"description": "The name of the tool. More descriptive the better."
-													},
-													"description": {
-														"type": "string",
-														"description": "A brief description of what the tool does."
-													},
-													"parameters": {
-														"type": "object",
-														"description": "Schema defining the parameters accepted by the tool.",
-														"properties": {
-															"type": {
-																"type": "string",
-																"description": "The type of the parameters object (usually 'object')."
-															},
-															"required": {
-																"type": "array",
-																"description": "List of required parameter names.",
-																"items": {
-																	"type": "string"
-																}
-															},
-															"properties": {
-																"type": "object",
-																"description": "Definitions of each parameter.",
-																"additionalProperties": {
-																	"type": "object",
-																	"properties": {
-																		"type": {
-																			"type": "string",
-																			"description": "The data type of the parameter."
-																		},
-																		"description": {
-																			"type": "string",
-																			"description": "A description of the expected parameter."
-																		}
-																	},
-																	"required": [
-																		"type",
-																		"description"
-																	]
-																}
-															}
-														},
-														"required": [
-															"type",
-															"properties"
-														]
-													}
-												},
-												"required": [
-													"name",
-													"description",
-													"parameters"
-												]
-											},
-											{
-												"properties": {
-													"type": {
-														"type": "string",
-														"description": "Specifies the type of tool (e.g., 'function')."
-													},
-													"function": {
-														"type": "object",
-														"description": "Details of the function tool.",
-														"properties": {
-															"name": {
-																"type": "string",
-																"description": "The name of the function."
-															},
-															"description": {
-																"type": "string",
-																"description": "A brief description of what the function does."
-															},
-															"parameters": {
-																"type": "object",
-																"description": "Schema defining the parameters accepted by the function.",
-																"properties": {
-																	"type": {
-																		"type": "string",
-																		"description": "The type of the parameters object (usually 'object')."
-																	},
-																	"required": {
-																		"type": "array",
-																		"description": "List of required parameter names.",
-																		"items": {
-																			"type": "string"
-																		}
-																	},
-																	"properties": {
-																		"type": "object",
-																		"description": "Definitions of each parameter.",
-																		"additionalProperties": {
-																			"type": "object",
-																			"properties": {
-																				"type": {
-																					"type": "string",
-																					"description": "The data type of the parameter."
-																				},
-																				"description": {
-																					"type": "string",
-																					"description": "A description of the expected parameter."
-																				}
-																			},
-																			"required": [
-																				"type",
-																				"description"
-																			]
-																		}
-																	}
-																},
-																"required": [
-																	"type",
-																	"properties"
-																]
-															}
-														},
-														"required": [
-															"name",
-															"description",
-															"parameters"
-														]
-													}
-												},
-												"required": [
-													"type",
-													"function"
-												]
-											}
-										]
-									}
-								},
-								"response_format": {
-									"title": "JSON Mode",
-									"type": "object",
-									"properties": {
-										"type": {
-											"type": "string",
-											"enum": [
-												"json_object",
-												"json_schema"
-											]
-										},
-										"json_schema": {}
-									}
-								},
-								"raw": {
-									"type": "boolean",
-									"default": false,
-									"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
-								},
-								"stream": {
-									"type": "boolean",
-									"default": false,
-									"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events."
-								},
-								"max_tokens": {
-									"type": "integer",
-									"default": 256,
-									"description": "The maximum number of tokens to generate in the response."
-								},
-								"temperature": {
-									"type": "number",
-									"default": 0.6,
-									"minimum": 0,
-									"maximum": 5,
-									"description": "Controls the randomness of the output; higher values produce more random results."
-								},
-								"top_p": {
-									"type": "number",
-									"minimum": 0.001,
-									"maximum": 1,
-									"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
-								},
-								"top_k": {
-									"type": "integer",
-									"minimum": 1,
-									"maximum": 50,
-									"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
-								},
-								"seed": {
-									"type": "integer",
-									"minimum": 1,
-									"maximum": 9999999999,
-									"description": "Random seed for reproducibility of the generation."
-								},
-								"repetition_penalty": {
-									"type": "number",
-									"minimum": 0,
-									"maximum": 2,
-									"description": "Penalty for repeated tokens; higher values discourage repetition."
-								},
-								"frequency_penalty": {
-									"type": "number",
-									"minimum": -2,
-									"maximum": 2,
-									"description": "Decreases the likelihood of the model repeating the same lines verbatim."
-								},
-								"presence_penalty": {
-									"type": "number",
-									"minimum": -2,
-									"maximum": 2,
-									"description": "Increases the likelihood of the model introducing new topics."
-								}
-							},
-							"required": [
-								"messages"
-							]
-						}
-					]
-				},
-				"output": {
-					"oneOf": [
-						{
-							"type": "object",
-							"properties": {
-								"response": {
-									"type": "string",
-									"description": "The generated text response from the model"
-								},
-								"usage": {
-									"type": "object",
-									"description": "Usage statistics for the inference request",
-									"properties": {
-										"prompt_tokens": {
-											"type": "number",
-											"description": "Total number of tokens in input",
-											"default": 0
-										},
-										"completion_tokens": {
-											"type": "number",
-											"description": "Total number of tokens in output",
-											"default": 0
-										},
-										"total_tokens": {
-											"type": "number",
-											"description": "Total number of input and output tokens",
-											"default": 0
-										}
-									}
-								},
-								"tool_calls": {
-									"type": "array",
-									"description": "An array of tool calls requests made during the response generation",
-									"items": {
-										"type": "object",
-										"properties": {
-											"arguments": {
-												"type": "object",
-												"description": "The arguments passed to be passed to the tool call request"
-											},
-											"name": {
-												"type": "string",
-												"description": "The name of the tool to be called"
-											}
-										}
-									}
-								}
-							},
-							"required": [
-								"response"
-							]
-						},
-						{
-							"type": "string",
-							"format": "binary"
-						}
-					]
-				}
-			}
-		},
-		{
 			"id": "19bd38eb-bcda-4e53-bec2-704b4689b43a",
 			"source": 1,
 			"name": "@cf/facebook/bart-large-cnn",
@@ -20409,6 +22540,10 @@
 			"tags": [],
 			"properties": [
 				{
+					"property_id": "async_queue",
+					"value": "true"
+				},
+				{
 					"property_id": "context_window",
 					"value": "128000"
 				},
@@ -20430,48 +22565,106 @@
 			],
 			"schema": {
 				"input": {
-					"type": "object",
-					"title": "GPT_OSS_Responses",
-					"properties": {
-						"input": {
-							"anyOf": [
-								{
-									"type": "string"
-								},
-								{
-									"items": {},
-									"type": "array"
-								}
-							],
-							"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types",
-							"title": "Input"
-						},
-						"reasoning": {
+					"oneOf": [
+						{
 							"type": "object",
+							"title": "GPT_OSS_20B_Responses",
 							"properties": {
-								"effort": {
-									"type": "string",
-									"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
-									"enum": [
-										"low",
-										"medium",
-										"high"
-									]
+								"input": {
+									"anyOf": [
+										{
+											"type": "string"
+										},
+										{
+											"items": {},
+											"type": "array"
+										}
+									],
+									"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
 								},
-								"summary": {
-									"type": "string",
-									"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
-									"enum": [
-										"auto",
-										"concise",
-										"detailed"
-									]
+								"reasoning": {
+									"type": "object",
+									"properties": {
+										"effort": {
+											"type": "string",
+											"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
+											"enum": [
+												"low",
+												"medium",
+												"high"
+											]
+										},
+										"summary": {
+											"type": "string",
+											"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
+											"enum": [
+												"auto",
+												"concise",
+												"detailed"
+											]
+										}
+									}
 								}
-							}
+							},
+							"required": [
+								"input"
+							]
+						},
+						{
+							"type": "object",
+							"title": "GPT_OSS_20B_Responses_Async",
+							"properties": {
+								"requests": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"input": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"items": {},
+														"type": "array"
+													}
+												],
+												"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
+											},
+											"reasoning": {
+												"type": "object",
+												"properties": {
+													"effort": {
+														"type": "string",
+														"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
+														"enum": [
+															"low",
+															"medium",
+															"high"
+														]
+													},
+													"summary": {
+														"type": "string",
+														"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
+														"enum": [
+															"auto",
+															"concise",
+															"detailed"
+														]
+													}
+												}
+											}
+										},
+										"required": [
+											"input"
+										]
+									}
+								}
+							},
+							"required": [
+								"requests"
+							]
 						}
-					},
-					"required": [
-						"input"
 					]
 				},
 				"output": {
@@ -20486,6 +22679,72 @@
 							"format": "binary"
 						}
 					]
+				}
+			}
+		},
+		{
+			"id": "15631501-2742-4346-a469-22fe202188a2",
+			"source": 1,
+			"name": "@cf/google/embeddinggemma-300m",
+			"description": "EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages.",
+			"task": {
+				"id": "0137cdcf-162a-4108-94f2-1ca59e8c65ee",
+				"name": "Text Embeddings",
+				"description": "Feature extraction models transform raw data into numerical features that can be processed while preserving the information in the original dataset. These models are ideal as part of building vector search applications or Retrieval Augmented Generation workflows with Large Language Models (LLM)."
+			},
+			"created_at": "2025-09-04 16:38:44.980",
+			"tags": [],
+			"properties": [],
+			"schema": {
+				"input": {
+					"type": "object",
+					"properties": {
+						"text": {
+							"oneOf": [
+								{
+									"type": "string",
+									"description": "The text to embed",
+									"minLength": 1
+								},
+								{
+									"type": "array",
+									"description": "Batch of text values to embed",
+									"items": {
+										"type": "string",
+										"description": "The text to embed",
+										"minLength": 1
+									},
+									"maxItems": 100
+								}
+							]
+						}
+					},
+					"required": [
+						"text"
+					]
+				},
+				"output": {
+					"type": "object",
+					"contentType": "application/json",
+					"properties": {
+						"shape": {
+							"type": "array",
+							"items": {
+								"type": "number"
+							}
+						},
+						"data": {
+							"type": "array",
+							"description": "Embeddings of the requested text values",
+							"items": {
+								"type": "array",
+								"description": "Floating point embedding representation shaped by the embedding model",
+								"items": {
+									"type": "number"
+								}
+							}
+						}
+					}
 				}
 			}
 		},
@@ -21021,167 +23280,99 @@
 			}
 		},
 		{
-			"id": "09e0e83d-b055-49c9-81a5-c13250a176a7",
+			"id": "0e372c11-8720-46c9-a02d-666188a22dae",
 			"source": 1,
-			"name": "@cf/baai/omni-bge-base-en-v1.5",
-			"description": "BAAI general embedding (Base) model that transforms any given text into a 768-dimensional vector",
+			"name": "@cf/leonardo/lucid-origin",
+			"description": "Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive model to date. Whether you're generating images with sharp graphic design, stunning full-HD renders, or highly specific creative direction, it adheres closely to your prompts, renders text with accuracy, and supports a wide array of visual styles and aesthetics – from stylized concept art to crisp product mockups.\n",
 			"task": {
-				"id": "0137cdcf-162a-4108-94f2-1ca59e8c65ee",
-				"name": "Text Embeddings",
-				"description": "Feature extraction models transform raw data into numerical features that can be processed while preserving the information in the original dataset. These models are ideal as part of building vector search applications or Retrieval Augmented Generation workflows with Large Language Models (LLM)."
+				"id": "3d6e1f35-341b-4915-a6c8-9a7142a9033a",
+				"name": "Text-to-Image",
+				"description": "Generates images from input text. These models can be used to generate and modify images based on text prompts."
 			},
-			"created_at": "2025-08-24 11:06:58.799",
+			"created_at": "2025-08-25 19:21:28.770",
 			"tags": [],
 			"properties": [
 				{
-					"property_id": "async_queue",
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per 512 by 512 tile",
+							"price": 0.007,
+							"currency": "USD"
+						},
+						{
+							"unit": "per step",
+							"price": 0.00013,
+							"currency": "USD"
+						}
+					]
+				},
+				{
+					"property_id": "partner",
 					"value": "true"
-				},
-				{
-					"property_id": "info",
-					"value": "https://huggingface.co/BAAI/bge-base-en-v1.5"
-				},
-				{
-					"property_id": "max_input_tokens",
-					"value": "512"
-				},
-				{
-					"property_id": "output_dimensions",
-					"value": "768"
 				}
 			],
 			"schema": {
 				"input": {
 					"type": "object",
-					"oneOf": [
-						{
-							"properties": {
-								"text": {
-									"oneOf": [
-										{
-											"type": "string",
-											"description": "The text to embed",
-											"minLength": 1
-										},
-										{
-											"type": "array",
-											"description": "Batch of text values to embed",
-											"items": {
-												"type": "string",
-												"description": "The text to embed",
-												"minLength": 1
-											},
-											"maxItems": 100
-										}
-									]
-								},
-								"pooling": {
-									"type": "string",
-									"enum": [
-										"mean",
-										"cls"
-									],
-									"default": "mean",
-									"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy."
-								}
-							},
-							"required": [
-								"text"
-							]
+					"properties": {
+						"prompt": {
+							"type": "string",
+							"minLength": 1,
+							"description": "A text description of the image you want to generate."
 						},
-						{
-							"properties": {
-								"requests": {
-									"type": "array",
-									"description": "Batch of the embeddings requests to run using async-queue",
-									"items": {
-										"properties": {
-											"text": {
-												"oneOf": [
-													{
-														"type": "string",
-														"description": "The text to embed",
-														"minLength": 1
-													},
-													{
-														"type": "array",
-														"description": "Batch of text values to embed",
-														"items": {
-															"type": "string",
-															"description": "The text to embed",
-															"minLength": 1
-														},
-														"maxItems": 100
-													}
-												]
-											},
-											"pooling": {
-												"type": "string",
-												"enum": [
-													"mean",
-													"cls"
-												],
-												"default": "mean",
-												"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy."
-											}
-										},
-										"required": [
-											"text"
-										]
-									}
-								}
-							},
-							"required": [
-								"requests"
-							]
+						"guidance": {
+							"type": "number",
+							"default": 4.5,
+							"minimum": 0,
+							"maximum": 10,
+							"description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt"
+						},
+						"seed": {
+							"type": "integer",
+							"minimum": 0,
+							"description": "Random seed for reproducibility of the image generation"
+						},
+						"height": {
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 2500,
+							"default": 1120,
+							"description": "The height of the generated image in pixels"
+						},
+						"width": {
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 2500,
+							"default": 1120,
+							"description": "The width of the generated image in pixels"
+						},
+						"num_steps": {
+							"type": "integer",
+							"minimum": 1,
+							"maximum": 40,
+							"description": "The number of diffusion steps; higher values can improve quality but take longer"
+						},
+						"steps": {
+							"type": "integer",
+							"minimum": 1,
+							"maximum": 40,
+							"description": "The number of diffusion steps; higher values can improve quality but take longer"
 						}
+					},
+					"required": [
+						"prompt"
 					]
 				},
 				"output": {
-					"oneOf": [
-						{
-							"type": "object",
-							"contentType": "application/json",
-							"properties": {
-								"shape": {
-									"type": "array",
-									"items": {
-										"type": "number"
-									}
-								},
-								"data": {
-									"type": "array",
-									"description": "Embeddings of the requested text values",
-									"items": {
-										"type": "array",
-										"description": "Floating point embedding representation shaped by the embedding model",
-										"items": {
-											"type": "number"
-										}
-									}
-								},
-								"pooling": {
-									"type": "string",
-									"enum": [
-										"mean",
-										"cls"
-									],
-									"description": "The pooling method used in the embedding process."
-								}
-							}
-						},
-						{
-							"type": "object",
-							"contentType": "application/json",
-							"title": "Async response",
-							"properties": {
-								"request_id": {
-									"type": "string",
-									"description": "The async request id that can be used to obtain the results."
-								}
-							}
+					"type": "object",
+					"contentType": "application/json",
+					"properties": {
+						"image": {
+							"type": "string",
+							"description": "The generated image in Base64 format."
 						}
-					]
+					}
 				}
 			}
 		},
@@ -21209,6 +23400,10 @@
 				{
 					"property_id": "info",
 					"value": "https://huggingface.co/qwen/qwen1.5-14b-chat-awq"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
@@ -21650,6 +23845,10 @@
 				{
 					"property_id": "info",
 					"value": "https://huggingface.co/openchat/openchat-3.5-0106"
+				},
+				{
+					"property_id": "planned_deprecation_date",
+					"value": "2025-10-01"
 				}
 			],
 			"schema": {
