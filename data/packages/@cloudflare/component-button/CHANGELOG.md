@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.4.0
+
+### Minor Changes
+
+- 8de7ed6772: add the bolt-solid icon
+
 ## 9.3.2
 
 ## 9.3.1
