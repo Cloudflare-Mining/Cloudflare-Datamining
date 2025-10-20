@@ -1,5 +1,44 @@
 [
 	{
+		"id": "8f3dbb652cd75d015ea448e59daf8a97",
+		"name": "Load Balancing Account Read",
+		"description": "Can read Load Balancing resources such as Load Balancers, Monitors, Monitor Groups, Pools, and Health Checks.",
+		"permissions": {
+			"lb": {
+				"read": true,
+				"edit": false
+			},
+			"healthchecks": {
+				"read": true,
+				"edit": false
+			},
+			"domain": {
+				"read": true,
+				"edit": false
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "8e117fdd57cd531947dbdcfd82f7a1a1",
 		"name": "Email Security Policy Admin",
 		"description": "Write access to Email Security policies",
@@ -1838,7 +1877,7 @@
 	{
 		"id": "c61d4237ab1c08a3d11feb6bd5e91c5a",
 		"name": "Load Balancer",
-		"description": "Can edit Load Balancers, Pools, Origins, and Health Checks.",
+		"description": "Can edit Load Balancing resources such as Load Balancers, Monitors, Monitor Groups, Pools, and Health Checks.",
 		"permissions": {
 			"lb": {
 				"read": true,
