@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-darwin-arm64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251011.0"
+		"latest": "1.20251020.0"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -5834,15 +5834,41 @@
 			"name": "@cloudflare/workerd-darwin-arm64",
 			"version": "1.20251011.0",
 			"dist": {
-				"integrity": "sha512-1WuFBGwZd15p4xssGN/48OE2oqokIuc51YvHvyNivyV8IYnAs3G9bJNGWth1X7iMDPe4g44pZrKhRnISS2+5dA==",
 				"shasum": "ccc14011177a98a36249702c6a80ca594f996449",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20251011.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 97943228,
+				"integrity": "sha512-1WuFBGwZd15p4xssGN/48OE2oqokIuc51YvHvyNivyV8IYnAs3G9bJNGWth1X7iMDPe4g44pZrKhRnISS2+5dA==",
+				"signatures": [
+					{
+						"sig": "MEUCIDYVu3hzr1rvxRJT1DiEE8S5jOP5dGbhMhYh9zaiWRcDAiEA5KuyWChesRrel79+UDCt0is08ibw2xAbLsDvEoEvYe0=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 97943228
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251020.0": {
+			"name": "@cloudflare/workerd-darwin-arm64",
+			"version": "1.20251020.0",
+			"dist": {
+				"integrity": "sha512-6f/gP99cXoExcxa6M0/uqk75/ZjENJ+VvVm/opFZCQjXjIt4ZTG+9GxqZccm83aJ5LVbgrr3AipNbfridkK6fg==",
+				"shasum": "ff89cb5d55a367196fb6579df6ee267f7a5d5938",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20251020.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 99157052,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-arm64@1.20251020.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIDYVu3hzr1rvxRJT1DiEE8S5jOP5dGbhMhYh9zaiWRcDAiEA5KuyWChesRrel79+UDCt0is08ibw2xAbLsDvEoEvYe0="
+						"sig": "MEQCIHX551qNNV48r5kYsSe3ZUOfgWZr3J+MPglph2tsI6rwAiBX7MNid+CLPZsxzYiokGSlCfnoKgtkuXBAh7eZ5jF3Bg=="
 					}
 				]
 			},

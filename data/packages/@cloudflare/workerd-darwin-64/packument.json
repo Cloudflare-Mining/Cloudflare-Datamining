@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-darwin-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251011.0"
+		"latest": "1.20251020.0"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -5894,15 +5894,41 @@
 			"name": "@cloudflare/workerd-darwin-64",
 			"version": "1.20251011.0",
 			"dist": {
-				"integrity": "sha512-0DirVP+Z82RtZLlK2B+VhLOkk+ShBqDYO/jhcRw4oVlp0TOvk3cOVZChrt3+y3NV8Y/PYgTEywzLKFSziK4wCg==",
 				"shasum": "21c719140472d191bbc69a6e2b029ac7b74968de",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-64/-/workerd-darwin-64-1.20251011.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 102189303,
+				"integrity": "sha512-0DirVP+Z82RtZLlK2B+VhLOkk+ShBqDYO/jhcRw4oVlp0TOvk3cOVZChrt3+y3NV8Y/PYgTEywzLKFSziK4wCg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCrSjHT/VvpDydk/ph/lP6HJbKJ/BVZiEOEy2t1DNJW7AIgb1T3kR7pjvgaVGYS6akKK9CZejshSjWThgkXxITGKLs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 102189303
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251020.0": {
+			"name": "@cloudflare/workerd-darwin-64",
+			"version": "1.20251020.0",
+			"dist": {
+				"integrity": "sha512-uUu7kSVmuq3vBcuxHqzz8nrQa/cAP3aw9Z6m7FOI9JrVcztrE1Tpjlb2KvVRwMF6fx0QV5jG4sRH847Qkyv51w==",
+				"shasum": "da884fb5c4bc273b0d4b1e7f5f147765fb0042d5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-64/-/workerd-darwin-64-1.20251020.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 103818831,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-64@1.20251020.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCrSjHT/VvpDydk/ph/lP6HJbKJ/BVZiEOEy2t1DNJW7AIgb1T3kR7pjvgaVGYS6akKK9CZejshSjWThgkXxITGKLs="
+						"sig": "MEQCIFZgclEh40cy+K4zgf+zHGzINlDcEgeAsvsckDz55bqGAiB97f7zxNtoVWyUQDhMuYa2FVw0/4vTJ7lT12q/R5pvtw=="
 					}
 				]
 			},

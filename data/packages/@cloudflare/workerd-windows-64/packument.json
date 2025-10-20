@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-windows-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251011.0"
+		"latest": "1.20251020.0"
 	},
 	"versions": {
 		"0.20230404.0": {
@@ -5414,15 +5414,41 @@
 			"name": "@cloudflare/workerd-windows-64",
 			"version": "1.20251011.0",
 			"dist": {
-				"integrity": "sha512-RIXUQRchFdqEvaUqn1cXZXSKjpqMaSaVAkI5jNZ8XzAw/bw2bcdOVUtakrflgxDprltjFb0PTNtuss1FKtH9Jg==",
 				"shasum": "b188009fc84b637a224a0a81e0bef66db54741d5",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-windows-64/-/workerd-windows-64-1.20251011.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 83080819,
+				"integrity": "sha512-RIXUQRchFdqEvaUqn1cXZXSKjpqMaSaVAkI5jNZ8XzAw/bw2bcdOVUtakrflgxDprltjFb0PTNtuss1FKtH9Jg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCePItRTbfuZ70cnciLiK45nydeAsrb/eCmSSO0XxSs4gIhALE7KmRliZ61E71q3ypFOKUBX79FiLa8n4DF14TnBgUz",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 83080819
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251020.0": {
+			"name": "@cloudflare/workerd-windows-64",
+			"version": "1.20251020.0",
+			"dist": {
+				"integrity": "sha512-KfAJ+VIj4pHC9SOU+9Rff5MDBmE1tiG+C00vCJcDiyiZD+zlVZi/RHdtBWSRZ/ekVHstz+WLuq3jgPvAehJJbQ==",
+				"shasum": "aba37f2037acc8324cce92614543cc2a0378261f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-windows-64/-/workerd-windows-64-1.20251020.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 83339379,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-windows-64@1.20251020.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCePItRTbfuZ70cnciLiK45nydeAsrb/eCmSSO0XxSs4gIhALE7KmRliZ61E71q3ypFOKUBX79FiLa8n4DF14TnBgUz"
+						"sig": "MEUCICrm+64ZNWNJRmkXpsUTxRamNVJU04W8ZsFTxwjBvAKwAiEAvOqGdkvbHturCmXczfDey7oOfaq2zKHl9qlmAJpz/Mw="
 					}
 				]
 			},

@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-linux-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251011.0"
+		"latest": "1.20251020.0"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -5895,15 +5895,41 @@
 			"name": "@cloudflare/workerd-linux-64",
 			"version": "1.20251011.0",
 			"dist": {
-				"integrity": "sha512-BccMiBzFlWZyFghIw2szanmYJrJGBGHomw2y/GV6pYXChFzMGZkeCEMfmCyJj29xczZXxcZmUVJxNy4eJxO8QA==",
 				"shasum": "b4f987d7e64728da2b2ca6ac412df849265b3eec",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-linux-64/-/workerd-linux-64-1.20251011.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 116246501,
+				"integrity": "sha512-BccMiBzFlWZyFghIw2szanmYJrJGBGHomw2y/GV6pYXChFzMGZkeCEMfmCyJj29xczZXxcZmUVJxNy4eJxO8QA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC05DMyC5cr3PVA8JDCq49xm2DzeIVamoWe6N9fX8CRLQIhAI/xcg5XnZoxFXnlAVW3aCQZTYFNWQq8z+oWPFKeKOD9",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 116246501
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251020.0": {
+			"name": "@cloudflare/workerd-linux-64",
+			"version": "1.20251020.0",
+			"dist": {
+				"integrity": "sha512-dDoekkMleIDi2TwBfcMSLJfLLovSOW9GEkZFmesV77CXkxbDxxZcgZK/TIJDhW+17OZSLY7CEFdNaRNOEfn/KQ==",
+				"shasum": "610810d0a3e8c6ef60738d4ea7390740a569034f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-linux-64/-/workerd-linux-64-1.20251020.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 116974525,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-linux-64@1.20251020.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQC05DMyC5cr3PVA8JDCq49xm2DzeIVamoWe6N9fX8CRLQIhAI/xcg5XnZoxFXnlAVW3aCQZTYFNWQq8z+oWPFKeKOD9"
+						"sig": "MEUCIHuTXnBmS2HQFmz5/Fl2C5R9SatozPMd7tX2NjDtoDtGAiEA323RiSOgQa2m8hsuC0444ij4etusy3b9FxLViVmCwwM="
 					}
 				]
 			},
