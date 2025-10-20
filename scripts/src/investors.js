@@ -50,10 +50,15 @@ console.log('Getting SEC filings...');
 const secFilingsRes = await fetch(`https://cloudflare.net/feed/SECFiling.svc/GetEdgarFilingList?apiKey=${apiKey}&LanguageId=1&exchange=CIK&symbol=0001477333&formGroupIdList=&excludeNoDocuments=false&includeHtmlDocument=false&pageSize=-1&pageNumber=0&tagList=&includeTags=true&year=-1&excludeSelection=1`, { agent });
 if (!finanicalReportsRes.ok) {
 	console.log('Failed to get SEC filings');
-	// eslint-disable-next-line no-process-exit
 	process.exit(0);
 }
-const secFilingsResults = await secFilingsRes.json();
+let secFilingsResults;
+try {
+	secFilingsResults = await secFilingsRes.json();
+} catch (err) {
+	console.error('Error parsing SEC filings JSON:', err);
+	process.exit(0);
+}
 await fs.writeFile(path.resolve(secFilingsDir, '_index.json'), JSON.stringify(secFilingsResults, null, '\t'));
 
 // press releases
