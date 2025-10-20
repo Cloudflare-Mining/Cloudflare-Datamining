@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "ec6ceece-abe0-5aaf-bb44-07506c6352ce")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "cb872076-4aae-5720-a762-733d6f88c4c6")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -902,10 +902,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "c1ca945109415a799069de09eccba9c962766837",
-							dashVersion: "36686627",
+							commit: "e33ddf63c97f7fd3892243c2d55648f3cb9e5513",
+							dashVersion: "36697123",
 							env: "production",
-							builtAt: 0x19a023f49d8,
+							builtAt: 0x19a0399a05d,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								node: "20.10.0",
@@ -3688,7 +3688,9 @@
 								hasEnabledSidebarNavGroupings: n
 							})) : R && !e.viewedChanges.includes(m.IE) && !0 !== e.flags.hasEnabledSidebarNavGroupings && (e.flags.hasEnabledSidebarNavGroupings = !0, (0, c.Sp)({
 								hasEnabledSidebarNavGroupings: !0
-							})), a(e), N(e), t(e.darkMode)
+							})), i().identify({
+								hasEnabledSidebarNavGroupings: e.flags.hasEnabledSidebarNavGroupings
+							}), a(e), N(e), t(e.darkMode)
 						}
 					}).finally(() => S(!1)) : S(!1)
 				}, [k]), (0, r.useEffect)(() => {
@@ -3727,7 +3729,9 @@
 									flags: v({}, t.flags, {
 										hasEnabledSidebarNavGroupings: e
 									})
-								})), O(!1)
+								})), i().identify({
+									hasEnabledSidebarNavGroupings: e
+								}), O(!1)
 							},
 							toggleSecurityNavigation: async (e, t) => {
 								O(!0);
@@ -67407,6 +67411,7 @@ SOFTWARE.`,
 					hCaptchaDisplayed: p.eg.any.optional,
 					hasEnabledSecurityNavigation: p.eg.any.optional,
 					hasEnabledDefaultUnifiedSecurity: p.eg.any.optional,
+					hasEnabledSidebarNavGroupings: p.eg.boolean.optional,
 					isZoneEligibleForUnification: p.eg.any.optional,
 					header_modification: p.eg.any.optional,
 					hostname_count: p.eg.any.optional,
@@ -72014,4 +72019,4 @@ SOFTWARE.`,
 		}
 	}
 ]);
-//# debugId=ec6ceece-abe0-5aaf-bb44-07506c6352ce
+//# debugId=cb872076-4aae-5720-a762-733d6f88c4c6
