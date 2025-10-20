@@ -5,13 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations</strong>: Lisbon Portugal&nbsp;</p>
-<p><strong>About the Team:</strong></p>
-<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's technology and gain a deeper understanding of internet technologies. You will focus on providing support on our CDN and Developer Platform products: CDN, Stream, Workers, Pages etc.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>You have previous experience working as part of a team in a customer-facing role<br>You have experience solving HTTP, DNS and other networking-related problems<br>You have experience with a common web development language (for example, Javascript)<br>You understand how the Internet works<br>You have experience working in a support role where you thrived every time you resolved a ticket<br>You are comfortable communicating through various support channels and always put the customer first<br>You are a motivated self-starter and always looking to expand your existing skill set</p>
-<p><strong>Bonus Points</strong></p>
-<p>You are fluent in German, Japanese, French, Spanish, Portuguese or Mandarin<br>You are familiar with Cloudflare and have a site actively using our platform<br>You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump)<br>You are familiar with Nginx, Apache, IIS or any other web servers<br>You are committed to gaining a deeper understanding of the following technologies: DNS / &nbsp;CDN - Cache / SSL / Cloudflare Workers<br>You are familiar with Cloudflare and have a site actively using our platform<br>You have worked with PostgreSQL, MySQL, MS SQL or other database servers<br>You have experience with Cloudflare Workers or JavaScript&nbsp;<br>You have experience with Video encoding and streaming solutions</p>
+<p><strong>Available Locations: Austin, Lisbon, London</strong></p>
+<p><strong>Hiring will be focused on those residing within the greater Austin, TX, London, UK, &amp; Lisbon, Portugal metro areas. It will be a hybrid role, with the expectation of 2 days per week in the office.</strong></p>
+<p><strong>We're hiring Software Engineers at all levels. This is a single pipeline position.</strong></p>
+<p><strong>About the team</strong></p>
+<p>The Magic Cloud Networking team builds an orchestration framework that empowers customers to take public cloud resources (e.g., AWS / Azure / GCP) and securely connect them to Cloudflare’s global data-center footprint. Working with public cloud networking resources provides unique challenges—each cloud models networking very differently, customers can modify resources out-of-band of our orchestration system (“shadow IT operations”), resources can fail in opaque and varied ways outside of our control, etc.. To solve these issues, our orchestration platform must be resilient and scalable, while also affording flexibility to the unique constraints of each cloud. Powering this orchestration framework are a set of Go and Rust-based microservices running in our core data-centers, leveraging Cloudflare’s infrastructure excellence.</p>
+<p>We are a team of engineers who obsess over building reliable services which leverage Cloudflare’s unique architecture and global network footprint.</p>
+<p>You can read more about what we work on here:</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/introducing-magic-cloud-networking">https://blog.cloudflare.com/introducing-magic-cloud-networking</a></li>
+</ul>
+<p><strong>About the role</strong></p>
+<p>As a software engineer on the Magic Cloud Networking team, you will contribute to features that shape Cloudflare One’s use of multi-cloud networking. You will build solutions that improve performance, scalability, manageability, and security of customer cloud footprints as well as connect them to our global network. This work requires close collaboration with other teams while leveraging frameworks and libraries that power many Cloudflare products. Our technology stack includes Go, Rust, OpenTofu, Public Clouds (e.g., AWS / Azure / GCP), Kubernetes, Docker, and Prometheus. We're looking for determined, curious, empathetic engineers to join our team!</p>
+<p><strong>Desirable skills, knowledge, and experience</strong></p>
+<ul>
+	<li>Programming experience in Go or Rust</li>
+	<li>Familiarity with Layer 3 and Layer 4 networking; i.e, VPCs, transit gateways, BGP and GRE tunnels</li>
+	<li>Familiarity with network engineering and protocols used in data center switching and routing as well as Internet routing - BGP, BFP, OSPF, MPLS, etc</li>
+	<li>Experience building network orchestration platforms</li>
+	<li>Experience designing and integrating RESTful APIs and backend systems</li>
+	<li>Attention to detail and ability to solve complex customer problems</li>
+	<li>Own solutions end-to-end and driving the design, development, and deployment process</li>
+	<li>Able to work across teams and create common, sustainable solutions</li>
+	<li>Creative, open-minded, collaborative problem solver</li>
+	<li>Focus on clarity in written and verbal communication</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

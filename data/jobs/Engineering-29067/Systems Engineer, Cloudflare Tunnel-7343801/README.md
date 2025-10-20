@@ -5,39 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
-<p><strong>About the role</strong></p>
-<p>The Marketing Engineering team builds awareness by sharing how Cloudflare can make a positive impact for customers and prospects. This spans across all channels of client communication: our website, blog, emails, social media, events, ads, etc. We build the technology that allows internal customers to craft beautiful experiences and tell compelling stories about Cloudflare.</p>
-<p>This role entails a scope of developer work focused on the Adobe Experience Platform (AEP), particularly Adobe Customer Data Platform (CDP), Adobe Target, and Adobe Journey Optimizer (AJO).&nbsp; The selected candidate will work amongst a global engineering team, broader Marketing organization, and cross-team contributions to a personalized user journey.<br><br><strong>REQUIREMENTS</strong></p>
+<p><strong>Available Locations: Austin, Lisbon, London</strong></p>
+<p><strong>Hiring will be focused on those residing within the greater Austin, TX, London, UK, &amp; Lisbon, Portugal metro areas. It will be a hybrid role, with the expectation of 2 days per week in the office.</strong></p>
+<p><strong>We're hiring Software Engineers at all levels. This is a single pipeline position.</strong></p>
+<p><strong>Role Summary:</strong></p>
+<p>As a <strong>Software Engineer</strong> on the Cloudflare Tunnel team, you will be a key contributor to building and maintaining a product that securely connects any machine to the Cloudflare network. You will be responsible for building systems across our high-performance global edge network and in our centralized microservice cluster. In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our Tunnel and Zero Trust products, such as Cloudflared, WARP Connector and Zero Trust Network.</p>
+<p>You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Design and implement robust architectures for AEP, integrating martech tools and data to support personalized marketing strategies, customer journey analytics, and real-time offer management</li>
-	<li>Lead the technical aspects of Adobe solution implementations, including data modeling, data ingestion, and activation processes across channels within AEP and Adobe RT-CDP.</li>
-	<li>Collaborate with marketing, analytics, and IT teams to ensure Adobe solutions meet business requirements and are aligned with company objectives</li>
-	<li>Develop and maintain a deep understanding of AEP, AJO, CJA, and ODE capabilities, staying updated with new features and best practices</li>
-	<li>Provide technical leadership and mentorship to team members, fostering a culture of innovation and continuous improvement in the AEP ecosystem</li>
-	<li>Ensure data privacy and compliance standards are met within the Adobe ecosystem</li>
-	<li>Troubleshoot and resolve complex technical issues related to Adobe platform</li>
-	<li>Understanding of online marketing components, such as advanced targeting and personalization</li>
-	<li>Strong proficiency with analytical tools, including Google and Adobe Analytics</li>
-	<li>Strong understanding of SDLC methodologies</li>
-	<li>Suitable level of understand compliance requirements for GDPR, CCPA, CPRA, and CTDPA</li>
-	<li>In-depth knowledge of modern JavaScript frameworks, development patterns, and single page applications</li>
+	<li>Design, implement, and maintain the software systems that comprise Cloudflare Tunnel, including the cross-platform, open-source client and a high-performance service on Cloudflare's edge network.</li>
+	<li>Participate in all stages of the software development lifecycle, from designing and documenting systems to writing code, automated tests, and monitoring production deployments.</li>
+	<li>Collaborate with internal teams, including security, network engineering, SRE, and product management, to design scalable solutions to difficult technical problems.</li>
+	<li>Review work from your peers throughout all stages of the development lifecycle to ensure high-quality, maintainable code.</li>
+	<li>Mentor team members and work with support teams to ensure customer delight and bring out the best in everyone.</li>
+	<li>Debug issues in complex systems and contribute to the maintenance and improvement of operational health.</li>
+	<li>Work with a wide range of technologies and programming languages, including Go, Rust, and Typescript, as well as various databases (SQL and No-SQL), Docker, and Kubernetes.</li>
 </ul>
+<p><strong>Role Requirements</strong></p>
 <ul>
-	<li>3+ years experience in data architecture, integration, API management, and cross-platform activation</li>
-	<li>3+ years experience and a strong understanding of marketing technologies, digital analytics, customer data platforms, tag management, and cross-channel marketing strategies</li>
-	<li>Proven experience as an AEP Architect or similar role, with a strong portfolio of successful Adobe implementations</li>
-	<li>Demonstrated experience with headless architecture and headless CMSs like Contentful</li>
-</ul>
-<h4>&nbsp;</h4>
-<p><strong>BONUS QUALIFICATIONS</strong></p>
-<ul>
-	<li>Current peers and stakeholders consider you a subject matter expert in the Adobe playground</li>
-	<li>In-depth knowledge of Adobe Journey Optimizer (AJO), Customer Journey Analytics (CJA) or Adobe Analytics, and Offer Decisioning Engine (ODE)</li>
-	<li>Ideally, certifications in one or any of Adobe Experience Platform, Adobe Journey Optimizer, Customer Journey Analytics, and/or Offer Decisioning Engine are highly desirable</li>
-	<li>Active member of the Adobe Experience League communities</li>
-	<li>Passion for building and optimizing a personalized user experience, from freelance developer to CxO</li>
-	<li>Working knowledge of Cloudflare tools, including Zaraz, Dash, and Workers</li>
+	<li>3+ years of experience in backend software development with a focus on building&nbsp; secure and highly available distributed systems.</li>
+	<li>Strong programming skills in Go, Rust, C++, or a similar systems-level language.</li>
+	<li>Knowledge of modern Unix/Linux development and runtime environments.</li>
+	<li>Grasp of networking protocols in Layers 3-7 of the OSI Model and experience with network programming.</li>
+	<li>Familiarity with microservices and APIs, including RESTful design.</li>
+	<li>Basic understanding of software security and encryption principles.</li>
+	<li>Ability to debug and troubleshoot issues in complex distributed systems.</li>
+	<li>Experience with monitoring and logging tools like Prometheus and Grafana.</li>
+	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes.</li>
+	<li>Strong interpersonal and communication skills, demonstrating empathy, teamwork and a sense of ownership.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

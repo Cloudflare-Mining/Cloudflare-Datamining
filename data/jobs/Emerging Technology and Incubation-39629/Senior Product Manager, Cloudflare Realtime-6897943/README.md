@@ -5,39 +5,58 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
-<p><strong>About the role</strong></p>
-<p>The Marketing Engineering team builds awareness by sharing how Cloudflare can make a positive impact for customers and prospects. This spans across all channels of client communication: our website, blog, emails, social media, events, ads, etc. We build the technology that allows internal customers to craft beautiful experiences and tell compelling stories about Cloudflare.</p>
-<p>This role entails a scope of developer work focused on the Adobe Experience Platform (AEP), particularly Adobe Customer Data Platform (CDP), Adobe Target, and Adobe Journey Optimizer (AJO).&nbsp; The selected candidate will work amongst a global engineering team, broader Marketing organization, and cross-team contributions to a personalized user journey.<br><br><strong>REQUIREMENTS</strong></p>
+<p><strong>Available Locations: Austin, Lisbon, and London</strong></p>
+<div><strong>About The Role</strong><br>Cloudflare Realtime is a new and exciting suite of products designed to empower developers to build truly interactive applications with real-time audio, video, and AI experiences. This suite brings together our highly performant SFU (Selective Forwarding Unit), STUN, and TURN services, alongside the innovative RealtimeKit – a collection of mobile and web SDKs and server-side services (recording, coordination, transcription).<br>We are looking for a passionate and technically adept Product Manager to drive the strategy, roadmap, and execution for Cloudflare Realtime. You will be instrumental in shaping the future of real-time communication on our global network, making complex media capabilities accessible to developers of all skill levels.</div>
+<div><br><strong>What You’ll Do</strong><br>
+	<ul>
+		<li>Drive the strategy and roadmap for Cloudflare Realtime, including RealtimeKit, SFU, and TURN services.</li>
+		<li>Lead new product features from ideation through launch, and continuing through ongoing maintenance and support.</li>
+		<li>Guide internal and external teams on developing and integrating with Realtime services and SDKs.</li>
+		<li>Develop and nurture key external relationships with partners (e.g., Hugging Face) and open-source maintainers, ensuring their needs are heard and acted upon.</li>
+		<li>Partner closely with Product Marketing, Marketing, Community &amp; Developer Advocacy, Sales, and Customer Support to drive adoption and gather feedback from customers and prospects.</li>
+		<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders, and objectives, with a strong focus on delivering developer value.</li>
+		<li>Represent the company externally as needed, including meetings with customers, speaking at external events, and participating in relevant industry groups.</li>
+		<li>Deeply understand WebRTC and real-time communication challenges, translating complex technical concepts into intuitive developer experiences.</li>
+	</ul>
+	<strong>Examples Of Desirable Skills, Knowledge And Experience</strong><br>
+	<ul>
+		<li>Proven track record of shipping developer-facing products from ideation to launch, with 3+ years of professional experience working on technology products.</li>
+		<li>Strong knowledge of real-time communication technologies, including WebRTC, WebSockets, SFUs, and TURN servers.</li>
+		<li>Deep understanding of the developer journey, with a passion for building tools and SDKs that abstract complexity and enable rapid application development.</li>
+		<li>Developer focus – you enjoy working directly with developers, understanding their pain points, and helping them get their initial implementations off the ground.</li>
+		<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications, and can understand the impact of engineering decisions on the product.</li>
+		<li>A desire to sweat the details and ship great developer experiences, focusing on ease of use, clear documentation, and robust APIs.</li>
+		<li>A love for talking to developers at organizations both large and small on a daily basis to build and ship products that solve real problems.</li>
+		<li>Entrepreneurial mindset, thriving in a fast-paced and goal-driven environment.</li>
+		<li>Outstanding communication and collaboration skills, able to work with diverse groups, gain alignment, and drive product forward.</li>
+	</ul>
+</div>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Design and implement robust architectures for AEP, integrating martech tools and data to support personalized marketing strategies, customer journey analytics, and real-time offer management</li>
-	<li>Lead the technical aspects of Adobe solution implementations, including data modeling, data ingestion, and activation processes across channels within AEP and Adobe RT-CDP.</li>
-	<li>Collaborate with marketing, analytics, and IT teams to ensure Adobe solutions meet business requirements and are aligned with company objectives</li>
-	<li>Develop and maintain a deep understanding of AEP, AJO, CJA, and ODE capabilities, staying updated with new features and best practices</li>
-	<li>Provide technical leadership and mentorship to team members, fostering a culture of innovation and continuous improvement in the AEP ecosystem</li>
-	<li>Ensure data privacy and compliance standards are met within the Adobe ecosystem</li>
-	<li>Troubleshoot and resolve complex technical issues related to Adobe platform</li>
-	<li>Understanding of online marketing components, such as advanced targeting and personalization</li>
-	<li>Strong proficiency with analytical tools, including Google and Adobe Analytics</li>
-	<li>Strong understanding of SDLC methodologies</li>
-	<li>Suitable level of understand compliance requirements for GDPR, CCPA, CPRA, and CTDPA</li>
-	<li>In-depth knowledge of modern JavaScript frameworks, development patterns, and single page applications</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
+<p><strong>Financial Benefits</strong></p>
 <ul>
-	<li>3+ years experience in data architecture, integration, API management, and cross-platform activation</li>
-	<li>3+ years experience and a strong understanding of marketing technologies, digital analytics, customer data platforms, tag management, and cross-channel marketing strategies</li>
-	<li>Proven experience as an AEP Architect or similar role, with a strong portfolio of successful Adobe implementations</li>
-	<li>Demonstrated experience with headless architecture and headless CMSs like Contentful</li>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
 </ul>
-<h4>&nbsp;</h4>
-<p><strong>BONUS QUALIFICATIONS</strong></p>
+<p><strong>Time Off</strong></p>
 <ul>
-	<li>Current peers and stakeholders consider you a subject matter expert in the Adobe playground</li>
-	<li>In-depth knowledge of Adobe Journey Optimizer (AJO), Customer Journey Analytics (CJA) or Adobe Analytics, and Offer Decisioning Engine (ODE)</li>
-	<li>Ideally, certifications in one or any of Adobe Experience Platform, Adobe Journey Optimizer, Customer Journey Analytics, and/or Offer Decisioning Engine are highly desirable</li>
-	<li>Active member of the Adobe Experience League communities</li>
-	<li>Passion for building and optimizing a personalized user experience, from freelance developer to CxO</li>
-	<li>Working knowledge of Cloudflare tools, including Zaraz, Dash, and Workers</li>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

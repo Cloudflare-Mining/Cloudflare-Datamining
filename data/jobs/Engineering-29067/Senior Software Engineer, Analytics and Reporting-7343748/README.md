@@ -5,39 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
-<p><strong>About the role</strong></p>
-<p>The Marketing Engineering team builds awareness by sharing how Cloudflare can make a positive impact for customers and prospects. This spans across all channels of client communication: our website, blog, emails, social media, events, ads, etc. We build the technology that allows internal customers to craft beautiful experiences and tell compelling stories about Cloudflare.</p>
-<p>This role entails a scope of developer work focused on the Adobe Experience Platform (AEP), particularly Adobe Customer Data Platform (CDP), Adobe Target, and Adobe Journey Optimizer (AJO).&nbsp; The selected candidate will work amongst a global engineering team, broader Marketing organization, and cross-team contributions to a personalized user journey.<br><br><strong>REQUIREMENTS</strong></p>
+<p><strong>Available Locations: Austin, Lisbon, London<br></strong></p>
+<p><strong>Hiring will be focused on those residing within the greater Austin, TX, London, UK, &amp; Lisbon, Portugal metro areas. It will be a hybrid role, with the expectation of 2 days per week in the office.</strong></p>
+<p><strong>We're hiring Software Engineers at all levels. This is a single pipeline position.</strong></p>
+<h4>What you'll do</h4>
+<p>As a member of the Analytics and Reporting (ART) team within CF1 (Zero Trust), you will work alongside other engineers, designers, and product managers to develop and enhance Cloudflare's analytics and reporting capabilities. Your role will involve developing software applications that efficiently handle large-scale data analytics, deliver full-stack solutions that include data ingestion, storage, processing, and visualization layers, contribute to the architecture and continuous improvement of analytics platforms. You will see projects through from conception to deployment, delivering data-driven solutions that empower Cloudflare customers to harness the full potential of Zero Trust.&nbsp;</p>
+<p><strong>Technologies we use:</strong></p>
 <ul>
-	<li>Design and implement robust architectures for AEP, integrating martech tools and data to support personalized marketing strategies, customer journey analytics, and real-time offer management</li>
-	<li>Lead the technical aspects of Adobe solution implementations, including data modeling, data ingestion, and activation processes across channels within AEP and Adobe RT-CDP.</li>
-	<li>Collaborate with marketing, analytics, and IT teams to ensure Adobe solutions meet business requirements and are aligned with company objectives</li>
-	<li>Develop and maintain a deep understanding of AEP, AJO, CJA, and ODE capabilities, staying updated with new features and best practices</li>
-	<li>Provide technical leadership and mentorship to team members, fostering a culture of innovation and continuous improvement in the AEP ecosystem</li>
-	<li>Ensure data privacy and compliance standards are met within the Adobe ecosystem</li>
-	<li>Troubleshoot and resolve complex technical issues related to Adobe platform</li>
-	<li>Understanding of online marketing components, such as advanced targeting and personalization</li>
-	<li>Strong proficiency with analytical tools, including Google and Adobe Analytics</li>
-	<li>Strong understanding of SDLC methodologies</li>
-	<li>Suitable level of understand compliance requirements for GDPR, CCPA, CPRA, and CTDPA</li>
-	<li>In-depth knowledge of modern JavaScript frameworks, development patterns, and single page applications</li>
+	<li>ART core backend and API services are written in Go.</li>
+	<li>We deploy our solutions in Kubernetes environments.</li>
+	<li>We utilize Postgres, Clickhouse, and a number of cloud native data store technologies.</li>
+	<li>We use HTML, CSS, JavaScript, TypeScript for front-end development.</li>
+	<li>Kafka plays a large role at Cloudflare and this team with message streaming.</li>
+	<li>For service monitoring we use Prometheus and Grafana.</li>
+	<li>For service logging we use Sentry, Elasticsearch and Kibana.</li>
 </ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>3+ years experience in data architecture, integration, API management, and cross-platform activation</li>
-	<li>3+ years experience and a strong understanding of marketing technologies, digital analytics, customer data platforms, tag management, and cross-channel marketing strategies</li>
-	<li>Proven experience as an AEP Architect or similar role, with a strong portfolio of successful Adobe implementations</li>
-	<li>Demonstrated experience with headless architecture and headless CMSs like Contentful</li>
+	<li>3-5+ years of professional experience building and managing reliable and performant software systems at scale, preferably with some experience in our tech stack.</li>
+	<li>Experience in designing and architecting distributed systems.</li>
+	<li>Experience in designing and implementing REST APIs.</li>
+	<li>Experience in SQL, familiarity with common relational database concepts.</li>
+	<li>Familiarity with the web and technologies such as web browsers, HTTP, JavaScript.</li>
+	<li>Familiarity with Kubernetes, Kafka, Clickhouse.</li>
+	<li>Passion for making the digital world a more secure place.</li>
+	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
+	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
 </ul>
-<h4>&nbsp;</h4>
-<p><strong>BONUS QUALIFICATIONS</strong></p>
+<p><strong>Bonus</strong></p>
 <ul>
-	<li>Current peers and stakeholders consider you a subject matter expert in the Adobe playground</li>
-	<li>In-depth knowledge of Adobe Journey Optimizer (AJO), Customer Journey Analytics (CJA) or Adobe Analytics, and Offer Decisioning Engine (ODE)</li>
-	<li>Ideally, certifications in one or any of Adobe Experience Platform, Adobe Journey Optimizer, Customer Journey Analytics, and/or Offer Decisioning Engine are highly desirable</li>
-	<li>Active member of the Adobe Experience League communities</li>
-	<li>Passion for building and optimizing a personalized user experience, from freelance developer to CxO</li>
-	<li>Working knowledge of Cloudflare tools, including Zaraz, Dash, and Workers</li>
+	<li>Previous experience with building enterprise analytics products.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
