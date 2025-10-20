@@ -1,5 +1,68 @@
 [
 	{
+		"id": "308416ae9b24e806205c406d0a32c8ec",
+		"name": "Cloudflare CASB Read",
+		"description": "Can read Cloudflare CASB.",
+		"permissions": {
+			"cf1_integration": {
+				"read": true,
+				"edit": false
+			},
+			"cds": {
+				"read": true,
+				"edit": false
+			},
+			"casb": {
+				"read": true,
+				"edit": false
+			},
+			"teams": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "218ab9c58f4e8612b8f87d12f7d3a8e4",
+		"name": "Cloudflare CASB",
+		"description": "Can edit Cloudflare CASB.",
+		"permissions": {
+			"cf1_integration": {
+				"read": true,
+				"edit": true,
+				"casb_enroll": true
+			},
+			"cds": {
+				"read": true,
+				"edit": true
+			},
+			"casb": {
+				"read": true,
+				"edit": true
+			},
+			"teams": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "8f3dbb652cd75d015ea448e59daf8a97",
 		"name": "Load Balancing Account Read",
 		"description": "Can read Load Balancing resources such as Load Balancers, Monitors, Monitor Groups, Pools, and Health Checks.",
@@ -394,7 +457,7 @@
 				"read": true,
 				"edit": false
 			},
-			"teams": {
+			"casb": {
 				"read": true,
 				"edit": false
 			},
@@ -453,7 +516,7 @@
 				"read": true,
 				"edit": false
 			},
-			"teams": {
+			"casb": {
 				"read": true,
 				"edit": false
 			},
@@ -506,7 +569,7 @@
 				"read": true,
 				"edit": false
 			},
-			"teams": {
+			"casb": {
 				"read": true,
 				"edit": true
 			},
@@ -550,7 +613,7 @@
 				"read": true,
 				"edit": true
 			},
-			"teams": {
+			"casb": {
 				"read": true,
 				"edit": true
 			},
@@ -1388,6 +1451,10 @@
 				"read": true,
 				"edit": false
 			},
+			"casb": {
+				"read": true,
+				"edit": false
+			},
 			"access": {
 				"read": true,
 				"edit": false
@@ -1473,6 +1540,10 @@
 			"analytics": {
 				"read": true,
 				"edit": false
+			},
+			"casb": {
+				"read": true,
+				"edit": true
 			},
 			"access": {
 				"read": true,
@@ -1708,6 +1779,10 @@
 				"edit": true
 			},
 			"stream": {
+				"read": true,
+				"edit": true
+			},
+			"casb": {
 				"read": true,
 				"edit": true
 			},
@@ -2399,6 +2474,10 @@
 				"read": true,
 				"edit": false
 			},
+			"casb": {
+				"read": true,
+				"edit": false
+			},
 			"healthchecks": {
 				"read": true,
 				"edit": false
@@ -2628,6 +2707,10 @@
 				"edit": true
 			},
 			"page_shield": {
+				"read": true,
+				"edit": true
+			},
+			"casb": {
 				"read": true,
 				"edit": true
 			},
