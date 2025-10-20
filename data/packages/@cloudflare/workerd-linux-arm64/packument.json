@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-linux-arm64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251020.0"
+		"latest": "1.20251014.0"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -5814,21 +5814,41 @@
 			"name": "@cloudflare/workerd-linux-arm64",
 			"version": "1.20251020.0",
 			"dist": {
-				"integrity": "sha512-LUwUzFSPslkA0Ml+cHeutjtifBqDnip+x7n8hCRRTmL4e+srJVhrNjFPhS7V1SKHRK9alufsh9QjSgeML0E67Q==",
 				"shasum": "3c16062875b20c7b2d3af76464da838cd7430396",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-linux-arm64/-/workerd-linux-arm64-1.20251020.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 121097642,
+				"integrity": "sha512-LUwUzFSPslkA0Ml+cHeutjtifBqDnip+x7n8hCRRTmL4e+srJVhrNjFPhS7V1SKHRK9alufsh9QjSgeML0E67Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCoqLIki6QRfpCPyHPvv1xvTwi0fk8gBbUE+u5qMgDeRgIhAI7yzkACGw209P+C54iRLT2NYISkOYN8O/N/6tv1ffUY",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-linux-arm64@1.20251020.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
+				"unpackedSize": 121097642
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251014.0": {
+			"name": "@cloudflare/workerd-linux-arm64",
+			"version": "1.20251014.0",
+			"dist": {
+				"integrity": "sha512-S0881oSFSuUpB3SRO2NUO/IphSTyPktF3v/Wwet9CjgxbnAXF81qoWBU0deb/2yLlysso9yV5yvNInODSnrZ2w==",
+				"shasum": "49da824e67ed9161d9079f68875a8c6665457a20",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-linux-arm64/-/workerd-linux-arm64-1.20251014.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 120390130,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCoqLIki6QRfpCPyHPvv1xvTwi0fk8gBbUE+u5qMgDeRgIhAI7yzkACGw209P+C54iRLT2NYISkOYN8O/N/6tv1ffUY"
+						"sig": "MEUCIAEaE3QsHZGOkdxWnArSNwlZTFLFoq62/Tp2hizRMFBWAiEA1LBc7Lqb9CmCEqxoG9FCAUvosg8+zYt6q1bAjOXelz0="
 					}
 				]
 			},

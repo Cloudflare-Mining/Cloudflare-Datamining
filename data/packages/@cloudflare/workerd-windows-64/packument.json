@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-windows-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251020.0"
+		"latest": "1.20251014.0"
 	},
 	"versions": {
 		"0.20230404.0": {
@@ -5434,21 +5434,41 @@
 			"name": "@cloudflare/workerd-windows-64",
 			"version": "1.20251020.0",
 			"dist": {
-				"integrity": "sha512-KfAJ+VIj4pHC9SOU+9Rff5MDBmE1tiG+C00vCJcDiyiZD+zlVZi/RHdtBWSRZ/ekVHstz+WLuq3jgPvAehJJbQ==",
 				"shasum": "aba37f2037acc8324cce92614543cc2a0378261f",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-windows-64/-/workerd-windows-64-1.20251020.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 83339379,
+				"integrity": "sha512-KfAJ+VIj4pHC9SOU+9Rff5MDBmE1tiG+C00vCJcDiyiZD+zlVZi/RHdtBWSRZ/ekVHstz+WLuq3jgPvAehJJbQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICrm+64ZNWNJRmkXpsUTxRamNVJU04W8ZsFTxwjBvAKwAiEAvOqGdkvbHturCmXczfDey7oOfaq2zKHl9qlmAJpz/Mw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-windows-64@1.20251020.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
+				"unpackedSize": 83339379
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251014.0": {
+			"name": "@cloudflare/workerd-windows-64",
+			"version": "1.20251014.0",
+			"dist": {
+				"integrity": "sha512-8hXyZTkbVJxLx2Q+OCUaebBdDIKvjBeKIgO1TBYygW4spVWv7du0ap1yi8G7p2RcoHELEJerYJScCgypXWJeRQ==",
+				"shasum": "01204ff2d35b8d17c2e49e2f70c5c868afc8d50c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-windows-64/-/workerd-windows-64-1.20251014.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 83084915,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCICrm+64ZNWNJRmkXpsUTxRamNVJU04W8ZsFTxwjBvAKwAiEAvOqGdkvbHturCmXczfDey7oOfaq2zKHl9qlmAJpz/Mw="
+						"sig": "MEUCIQDQvL0nXZkxDW7xNcI77S9X4GiYXXnBf/USm/P4JdGe1gIgYmtzBQ3HyQD3BFytG/fn6OcRnBmaDyxlkIusLZI6gRs="
 					}
 				]
 			},

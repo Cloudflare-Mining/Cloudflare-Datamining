@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-darwin-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251020.0"
+		"latest": "1.20251014.0"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -5914,21 +5914,41 @@
 			"name": "@cloudflare/workerd-darwin-64",
 			"version": "1.20251020.0",
 			"dist": {
-				"integrity": "sha512-uUu7kSVmuq3vBcuxHqzz8nrQa/cAP3aw9Z6m7FOI9JrVcztrE1Tpjlb2KvVRwMF6fx0QV5jG4sRH847Qkyv51w==",
 				"shasum": "da884fb5c4bc273b0d4b1e7f5f147765fb0042d5",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-64/-/workerd-darwin-64-1.20251020.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 103818831,
+				"integrity": "sha512-uUu7kSVmuq3vBcuxHqzz8nrQa/cAP3aw9Z6m7FOI9JrVcztrE1Tpjlb2KvVRwMF6fx0QV5jG4sRH847Qkyv51w==",
+				"signatures": [
+					{
+						"sig": "MEQCIFZgclEh40cy+K4zgf+zHGzINlDcEgeAsvsckDz55bqGAiB97f7zxNtoVWyUQDhMuYa2FVw0/4vTJ7lT12q/R5pvtw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-64@1.20251020.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
+				"unpackedSize": 103818831
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251014.0": {
+			"name": "@cloudflare/workerd-darwin-64",
+			"version": "1.20251014.0",
+			"dist": {
+				"integrity": "sha512-Grf/LxZfJTOPvRsm1xkGZmQlXO08EOHD8N/ZHkTHnxbdQy34d7ce2jWVTqMhwPaEfcuYy/jX9p7HBlEXP4SH5A==",
+				"shasum": "8d4e9ee2582477666de4490a4921f76a3ac0ba41",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-64/-/workerd-darwin-64-1.20251014.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 102202439,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIFZgclEh40cy+K4zgf+zHGzINlDcEgeAsvsckDz55bqGAiB97f7zxNtoVWyUQDhMuYa2FVw0/4vTJ7lT12q/R5pvtw=="
+						"sig": "MEYCIQCncYkAAkjBhStOq1DKP92/xRiT6t7teP08a+Ps/aw7SwIhANJCBAjgV1ptge2drbYT8oZVIHa+gXe/rhcxSSVNPd/+"
 					}
 				]
 			},
