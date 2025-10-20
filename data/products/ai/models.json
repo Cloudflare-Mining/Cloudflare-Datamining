@@ -555,6 +555,16 @@
 				"value": "true"
 			},
 			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per 1k characters",
+						"price": 0.03,
+						"currency": "USD"
+					}
+				]
+			},
+			{
 				"property_id": "partner",
 				"value": "true"
 			},
@@ -859,6 +869,11 @@
 					{
 						"unit": "per audio minute",
 						"price": 0.0052,
+						"currency": "USD"
+					},
+					{
+						"unit": "per audio minute (websocket)",
+						"price": 0.0092,
 						"currency": "USD"
 					}
 				]
@@ -2131,6 +2146,16 @@
 				"value": "true"
 			},
 			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per 1k characters",
+						"price": 0.015,
+						"currency": "USD"
+					}
+				]
+			},
+			{
 				"property_id": "partner",
 				"value": "true"
 			},
@@ -2651,6 +2676,16 @@
 			{
 				"property_id": "async_queue",
 				"value": "true"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per 1k characters",
+						"price": 0.03,
+						"currency": "USD"
+					}
+				]
 			},
 			{
 				"property_id": "partner",
