@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Everywhere Security",
+				"pageName": "Everywhere Security ",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,7 +32,7 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "cybersecurity",
+				"relativePath": "/cybersecurity/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-01-26T22:16:55.346Z",
-					"updatedAt": "2025-08-27T16:12:52.715Z"
+					"updatedAt": "2025-10-21T00:14:50.118Z"
 				},
 				"contentfulId": "1oxTNE35eCzGRub0RB3k1i",
 				"contentTypeId": "page",
@@ -1051,11 +1051,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "7klAbfHzw3Eq2dmGyMvMpZ",
-								"title": "AI workloads protection — from models to inference",
+								"title": "AI workloads protection",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare's AI solutions — [AI Gateway](https://www.cloudflare.com/developer-platform/products/ai-gateway/), [Workers AI](https://www.cloudflare.com/developer-platform/products/workers-ai/), and [Firewall for AI](https://blog.cloudflare.com/firewall-for-ai/)  work in conjunction to enhance the security, scalability, and efficiency of AI workloads. ",
+								"description": "Cloudflare's AI Security Suite extends visibility, mitigates risk, and protects data across the AI your workforce uses, AI-enabled apps and workloads, and the AI you build.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -1707,6 +1707,39 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
+								"contentfulId": "2A8eTdup4AHeoR8KOC899A",
+								"heading": "Product brief",
+								"description": "Cloudflare AI Security Suite\n",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "4eMLusbZGDw2VtxiUg8pTW",
+									"elementName": "Modernize applications - Resource 4 - Link",
+									"standardText": null,
+									"text": "Read solution brief",
+									"url": "https://cfl.re/AI-security-suite-brief",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
 								"contentfulId": "45AeB9kiG3RYtfuhDflwnF",
 								"heading": "Webinar",
 								"description": "From complexity to clarity: The SASE roadmap to security & network unification",
@@ -1751,39 +1784,6 @@
 									"standardText": null,
 									"text": "Read the blog",
 									"url": "https://blog.cloudflare.com/cloudflare-for-ai-supporting-ai-adoption-at-scale-with-a-security-first-approach/",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
-									"altText": "Blog  thumbnail",
-									"title": "Blog  thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "2A8eTdup4AHeoR8KOC899A",
-								"heading": "Blog",
-								"description": "Keep AI interactions secure and risk-free with Guardrails in AI Gateway ",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "4eMLusbZGDw2VtxiUg8pTW",
-									"elementName": "Modernize applications - Resource 4 - Link",
-									"standardText": null,
-									"text": "Read the blog",
-									"url": "https://blog.cloudflare.com/guardrails-in-ai-gateway/",
 									"elementModal": null,
 									"openInNewTab": true,
 									"locale": "en-US"

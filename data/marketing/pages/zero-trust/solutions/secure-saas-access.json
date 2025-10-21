@@ -32,7 +32,7 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "zero-trust/solutions/secure-saas-access",
+				"relativePath": "/zero-trust/solutions/secure-saas-access/",
 				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-01-24T18:08:54.329Z",
-					"updatedAt": "2025-10-15T01:11:11.193Z"
+					"updatedAt": "2025-10-21T00:16:25.678Z"
 				},
 				"contentfulId": "362Bdc5Hu8qJabqKplPhqZ",
 				"contentTypeId": "page",
@@ -3667,13 +3667,49 @@
 						"copy": null,
 						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2dqyzChjnjyNJIDUy2HDex",
+								"title": "AI security with Cloudflare One",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "This guide will help address new security challenges and mitigate risks like shadow AI and data loss.",
+								"learnMoreUrl": "https://cfl.re/secure-workforce-AI-use-brief",
+								"learnMoreText": "Get solution brief",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "53285e36-459d-5279-946e-8e526afa81f9",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3F3HRodPOfxKys81t1nc9X/fb3ec231227bc2c0cc8c3b98a44107c2/Ebook-Thumbnail-template_6.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "FZIm1h4O5GPNx9tjUZJjg",
@@ -3692,52 +3728,16 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+									"id": "ff9d698a-66bf-5094-b7d7-7bf62575ff4a",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Z4hipNHc9TOSVquGr4Zbt/b2802774b9fb3c3372d4d97120e2f759/Blog_Thumbnail-template_1.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2dqyzChjnjyNJIDUy2HDex",
-								"title": "AI security with Cloudflare One",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "This guide will help address new security challenges and mitigate risks like shadow AI and data loss.",
-								"learnMoreUrl": "https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/",
-								"learnMoreText": "Begin learning path",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3749,11 +3749,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4yyGyYUqH0r7zDYxG3cZcC",
-								"title": "Combating shadow AI",
+								"title": "Secure workforce AI usage",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Increased use of AI tools presents unique challenges to public sector organizations. Discover how to avoid shadow AI risks and comply with new regulations.",
+								"description": "Empower your teams to use AI tools safely with protections enforced by Cloudflare's SASE platform",
 								"learnMoreUrl": "https://www.cloudflare.com/the-net/shadow-ai-government/",
 								"learnMoreText": "Read article",
 								"displayBorder": false,
@@ -3764,16 +3764,16 @@
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+									"id": "1cbe9891-f765-5970-8bab-f2c0e0d47531",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PPtiv2rsmyLgOkfL3l40F/4d508c3fe5d86acee54d718ea4bd126d/Report-Thumbnail-template_3.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null

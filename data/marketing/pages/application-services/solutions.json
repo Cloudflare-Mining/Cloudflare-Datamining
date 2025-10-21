@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-02-22T17:46:22.536Z",
-					"updatedAt": "2025-06-11T22:58:08.772Z"
+					"updatedAt": "2025-10-21T00:13:39.373Z"
 				},
 				"contentfulId": "4Z5Y9unzxzpjTEHB2T7KMp",
 				"contentTypeId": "page",
@@ -150,6 +150,12 @@
 								"subMenuItems": []
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4Bg16FqLSPki9fDAq8k7Hy",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0 auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Secure AI-powered apps — protect your public-facing AI apps and APIs from prompt injection and data leaks in real time.</span>\n        <a class=\"link-helper\" href=\"https://www.cloudflare.com/ai-security/\">\n            <strong>Learn more ></strong>\n        </a>\n    </div>\n</section>\n",
+						"htmlId": null
 					},
 					{
 						"contentfulId": "2QO3iKHiIgmXj7Ad9LurCz",
