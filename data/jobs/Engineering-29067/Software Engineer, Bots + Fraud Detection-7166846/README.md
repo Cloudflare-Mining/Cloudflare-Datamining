@@ -5,36 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>What You’ll Do</strong></p>
-<p>You will lead a team of passionate, talented engineers that are building critical features in Cloudflare One’s Zero Trust security platform. Throughout this product suite, we have offerings ranging from ZTNA (Zero Trust Network Architecture), to SWG (Secure Web Gateway), CASB (Cloud Access Security Broker), and many more that encompass a holistic platform to help secure some of the world’s most important and forward-looking organizations. Your team will directly spearhead a variety of innovative new product features across the whole product portfolio, and directly collaborate with many engineering teams while doing so. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
-<p>You bring a passion for meeting business needs with technically innovative solutions and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of past teams who respect you as both a technical leader and manager.</p>
-<p><strong>Technologies we use -&nbsp;</strong></p>
+<p><strong>Available Locations: Austin or NYC (NAMER), Lisbon or London (EMEA)</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>Cloudflare's Engineering Team is home to some of the industry's top engineers, dedicated to building and scaling innovative software that handles a huge proportion of the Internet. Our team responsible for Bots and Fraud Detection develops cutting-edge solutions to identify and mitigate malicious bot activities, ensuring the security and integrity of online applications. The team collaborates with product and other engineering teams to implement advanced fraud detection mechanisms and employ machine learning techniques to safeguard digital assets from evolving threats in the cybersecurity landscape.</p>
+<p><strong>What you'll do</strong></p>
+<p>Join Cloudflare's Bot and Fraud Detection team to tackle real-world security challenges, leveraging massive threat intelligence data through data science and machine learning. Design, build, and scale high-performance distributed software for one of Cloudflare's fastest-growing security products. Work with global data exceeding 50 million HTTP requests per second, utilizing a tech stack that includes Go, Python, JavaScript, Rust, Lua, Kafka, Kubernetes, ClickHouse, PostgreSQL, and Jupyter notebook. Make a meaningful impact in detecting and mitigating abusive HTTP L7 layer traffic worldwide.</p>
+<p><strong>What are we looking for?</strong></p>
+<p>&nbsp;</p>
 <ul>
-	<li>Core backend and API services are written in Go, Rust, and Python.</li>
-	<li>Our frontend is written in Typescript and React.</li>
-	<li>We utilize Clickhouse, Postgres, and TimescaleDB as our data stores.</li>
-	<li>Redis is our cache.</li>
-	<li>Kafka plays a large role at Cloudflare and this team with message streaming.</li>
-	<li>For service monitoring we use Prometheus and Grafana.</li>
-	<li>For service logging we use Elasticsearch and Kibana</li>
+	<li>Proficiency in designing, integrating, and optimizing distributed data processing pipelines</li>
+	<li>Strong coding skills in Go, Java, Python, or other high-performance languages</li>
+	<li>Experience in constructing and managing alerting and monitoring systems for data processing pipelines</li>
+	<li>Exceptional abilities in systems-level debugging</li>
+	<li>Preferred background or interest in Web Security, HTTP protocols, and JavaScript</li>
+	<li>Familiarity with advanced analytics encompassing machine learning, statistical inference, and AI.</li>
+	<li>Curiosity and empathy</li>
+	<li>Comfortable with tackling ambiguous problems and unblocking yourself</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience -&nbsp;</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>3+ years experience in engineering management</li>
-	<li>Solid foundation in computer science, with strong competencies in software design, and building large, distributed systems</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You’re as good at explaining “why” as you are “how”</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Comfortable managing teams/projects with competing priorities and short release cycles</li>
-	<li>Continued personal interest in software engineering with an approach of understanding and helping guide the technical implementation details</li>
-	<li>Ability to navigate technical and process hurdles necessary to drive complex projects across the finish line</li>
+	<li>Knowledge and experience with columnar database like Clickhouse.</li>
+	<li>Experience productionalizing ML models</li>
+	<li>Experience with cluster and configuration management systems such as Docker, Salt</li>
+	<li>Strong web security fundamentals</li>
+	<li>Previous experience in bot and fraud detection</li>
 </ul>
-<p><strong>Bonus</strong></p>
-<ul>
-	<li>Hands-on experience with pieces/all of our technology stack.</li>
-	<li>Previous experience working on security products.</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

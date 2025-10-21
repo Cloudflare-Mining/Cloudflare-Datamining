@@ -5,32 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: London, Lisbon, New York, Toronto, Remote UK, Remote Germany or Remote US&nbsp;</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>Our team's mission is to create advanced security solutions that enable our customers to filter out unwanted internet traffic. We achieve this by harnessing the vast amount of internet traffic data available to us and deriving deep, insightful analytics through the application of advanced machine learning techniques. Our focus is on developing machine learning models that can operate at a high volume and velocity with exceptional precision, performance, and scalability. One of our key challenges is creating and deploying models that can withstand a massive scale of 84 Million peak requests per second. Our flagship Machine Learning products - <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more/">BotsML</a>,&nbsp; <a href="https://blog.cloudflare.com/data-generation-and-sampling-strategies/">WAF Attack Score</a> and <a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield/">Page Shield ML</a> - represent cutting-edge examples of our work in this space.</p>
-<p>The team works in close collaboration with Product Managers, Software Engineers and others to collaboratively ship industry leading ML solutions. The core values to the team include empathy, resiliency, collaboration and ownership. The team measures their success on positive customer feedback, adoption and sustainability of our products.<strong><br></strong></p>
-<p><strong>Role Responsibilities</strong></p>
-<p>We are currently seeking a highly experienced Data Scientist with prior experience in text mining to join our Application Security team. In this role, you will work closely with our security experts to develop innovative solutions to improve our security capabilities. This hands-on position will be responsible for development and deployment of highly scalable Machine Learning models from the ground up. As a key member of our team, you will have the opportunity to work on cutting-edge projects that require advanced text mining techniques, and to collaborate with other highly skilled professionals to deliver outstanding results.&nbsp;</p>
-<p>Our ideal candidate will have a strong background in developing high-performance, enterprise-scale services and a proven track record of delivering exceptional performance while maintaining operational stability. As a high-visibility position, success in this role will depend on your ability to effectively combine your data and modeling skills with your security acumen</p>
-<p><strong>Role Requirements&nbsp;</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<p>&nbsp;</p>
+<p><strong>Available Locations: Lisbon or London (EMEA)</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>Cloudflare's Engineering Team is home to some of the industry's top engineers, dedicated to building and scaling innovative software that handles a huge proportion of the Internet. Our team responsible for Bots and Fraud Detection develops cutting-edge solutions to identify and mitigate malicious bot activities, ensuring the security and integrity of online applications. The team collaborates with product and other engineering teams to implement advanced fraud detection mechanisms and employ machine learning techniques to safeguard digital assets from evolving threats in the cybersecurity landscape.</p>
+<p><strong>What you'll do</strong></p>
+<p>Join Cloudflare's Bot and Fraud Detection team to tackle real-world security challenges, leveraging massive threat intelligence data through data science and machine learning. Design, build, and scale high-performance distributed software for one of Cloudflare's fastest-growing security products. Work with global data exceeding 50 million HTTP requests per second, utilizing a tech stack that includes Go, Python, JavaScript, Rust, Lua, Kafka, Kubernetes, ClickHouse, PostgreSQL, and Jupyter notebook. Make a meaningful impact in detecting and mitigating abusive HTTP L7 layer traffic worldwide.</p>
+<p><strong>What are we looking for?</strong></p>
 <ul>
-	<li><strong>5+ years</strong> of Data Science experience with proven industry experience in a large scale environment (PBs scale, globally distributed teams).&nbsp;</li>
-	<li>Proficient in Python and R for commercial software development, and experience working with databases like Postgres.</li>
-	<li>Excellent data analytical skills and ability to derive insights and propose models that lead to effective proof-of-concept (POC) development.</li>
-	<li>Ability to work closely with cross-functional teams including business, engineering, and product teams to ensure data initiatives are aligned with business objectives.</li>
-	<li>Strong communication and presentation skills catered to different audiences within the company.</li>
-	<li>Proven track record of applying data insights and machine learning in order to address business needs and drive revenue.&nbsp;</li>
-	<li>Demonstrated ability to deliver results while taking feedback and maintaining a collaborative work environment.</li>
-	<li>Proven ability to deliver performance (what) with the right behaviors (how)</li>
+	<li>Proficiency in designing, integrating, and optimizing distributed data processing pipelines</li>
+	<li>Strong coding skills in Go, Java, Python, or other high-performance languages</li>
+	<li>Experience in constructing and managing alerting and monitoring systems for data processing pipelines</li>
+	<li>Exceptional abilities in systems-level debugging</li>
+	<li>Preferred background or interest in Web Security, HTTP protocols, and JavaScript</li>
+	<li>Familiarity with advanced analytics encompassing machine learning, statistical inference, and AI.</li>
+	<li>Curiosity and empathy</li>
+	<li>Comfortable with tackling ambiguous problems and unblocking yourself</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Previous experience in developing efficient Machine Learning models with low latency (sub-millisecond) in a commercial setting</li>
-	<li>Proven experience in Machine Learning with text data in a commercial environment</li>
-	<li>Prior experience in Machine Learning for Web Security in a commercial setting</li>
-	<li>Prior publication record in Top Tier conferences like EMNLP, ACL</li>
+	<li>Knowledge and experience with columnar database like Clickhouse.</li>
+	<li>Experience productionalizing ML models</li>
+	<li>Experience with cluster and configuration management systems such as Docker, Salt</li>
+	<li>Strong web security fundamentals</li>
+	<li>Previous experience in bot and fraud detection</li>
 </ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
