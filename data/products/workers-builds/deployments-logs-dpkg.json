@@ -184,6 +184,21 @@
 		"short_description": "Linux Kernel Device Mapper userspace library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
+	"dns-root-data": {
+		"version": "2024071801~ubuntu0.24.04.1",
+		"short_description": "DNS root hints and DNSSEC trust anchor",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"dnsmasq": {
+		"version": "2.90-2ubuntu0.1",
+		"short_description": "Small caching DNS proxy and DHCP/TFTP server - system daemon",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"dnsmasq-base": {
+		"version": "2.90-2ubuntu0.1",
+		"short_description": "Small caching DNS proxy and DHCP/TFTP server - executable",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
 	"docker-buildx-plugin": {
 		"version": "0.29.1-1~ubuntu.24.04~noble",
 		"short_description": "Docker Buildx plugin extends build capabilities with BuildKit.",
@@ -205,7 +220,7 @@
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-compose-plugin": {
-		"version": "2.40.0-1~ubuntu.24.04~noble",
+		"version": "2.40.1-1~ubuntu.24.04~noble",
 		"short_description": "Docker Compose (V2) plugin for the Docker CLI.",
 		"author": "Docker <support@docker.com>"
 	},
@@ -488,6 +503,11 @@
 		"version": "3.23+nmu2ubuntu2",
 		"short_description": "utility to set/show the host name or domain name",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"ibverbs-providers:amd64": {
+		"version": "50.0-2ubuntu0.2",
+		"short_description": "User space provider drivers for libibverbs",
+		"author": "Benjamin Drung <bdrung@ubuntu.com>"
 	},
 	"icu-devtools": {
 		"version": "74.2-1ubuntu3.1",
@@ -1374,6 +1394,11 @@
 		"short_description": "Efficient and performance-portable SIMD wrapper (runtime files)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
+	"libibverbs1:amd64": {
+		"version": "50.0-2ubuntu0.2",
+		"short_description": "Library for direct userspace use of RDMA (InfiniBand/iWARP)",
+		"author": "Benjamin Drung <bdrung@ubuntu.com>"
+	},
 	"libice-dev:amd64": {
 		"version": "2:1.0.10-1build3",
 		"short_description": "X11 Inter-Client Exchange library (development headers)",
@@ -1769,6 +1794,16 @@
 		"short_description": "library implementing HTTP/2 protocol (shared library)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
+	"libnl-3-200:amd64": {
+		"version": "3.7.0-0.3build1.1",
+		"short_description": "library for dealing with netlink sockets",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libnl-route-3-200:amd64": {
+		"version": "3.7.0-0.3build1.1",
+		"short_description": "library for dealing with netlink sockets - route interface",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
 	"libnpth0t64:amd64": {
 		"version": "1.6-3.1build1",
 		"short_description": "replacement for GNU Pth using system threads",
@@ -1892,6 +1927,11 @@
 	"libpaper1:amd64": {
 		"version": "1.1.29build1",
 		"short_description": "library for handling paper characteristics",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpcap0.8t64:amd64": {
+		"version": "1.10.4-4.1ubuntu3",
+		"short_description": "system interface for user-level packet capture",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpciaccess0:amd64": {
@@ -2535,7 +2575,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"linux-libc-dev:amd64": {
-		"version": "6.8.0-85.85",
+		"version": "6.8.0-86.87",
 		"short_description": "Linux Kernel Headers for development",
 		"author": "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
 	},
@@ -2782,6 +2822,11 @@
 	"tar": {
 		"version": "1.35+dfsg-3build1",
 		"short_description": "GNU version of the tar archiving utility",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"tcpdump": {
+		"version": "4.99.4-3ubuntu4.24.04.1",
+		"short_description": "command-line network traffic analyzer",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"tzdata": {
