@@ -663,6 +663,376 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/deepgram/aura-2-en": {
+		"operationId": "workers-ai-post-run-cf-deepgram-aura-2-en",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"bit_rate": {
+								"description": "The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type.",
+								"type": "number"
+							},
+							"container": {
+								"description": "Container specifies the file format wrapper for the output audio. The available options depend on the encoding type..",
+								"enum": [
+									"none",
+									"wav",
+									"ogg"
+								],
+								"type": "string"
+							},
+							"encoding": {
+								"description": "Encoding of the output audio.",
+								"enum": [
+									"linear16",
+									"flac",
+									"mulaw",
+									"alaw",
+									"mp3",
+									"opus",
+									"aac"
+								],
+								"type": "string"
+							},
+							"sample_rate": {
+								"description": "Sample Rate specifies the sample rate for the output audio. Based on the encoding, different sample rates are supported. For some encodings, the sample rate is not configurable",
+								"type": "number"
+							},
+							"speaker": {
+								"default": "luna",
+								"description": "Speaker used to produce the audio.",
+								"enum": [
+									"amalthea",
+									"andromeda",
+									"apollo",
+									"arcas",
+									"aries",
+									"asteria",
+									"athena",
+									"atlas",
+									"aurora",
+									"callista",
+									"cora",
+									"cordelia",
+									"delia",
+									"draco",
+									"electra",
+									"harmonia",
+									"helena",
+									"hera",
+									"hermes",
+									"hyperion",
+									"iris",
+									"janus",
+									"juno",
+									"jupiter",
+									"luna",
+									"mars",
+									"minerva",
+									"neptune",
+									"odysseus",
+									"ophelia",
+									"orion",
+									"orpheus",
+									"pandora",
+									"phoebe",
+									"pluto",
+									"saturn",
+									"thalia",
+									"theia",
+									"vesta",
+									"zeus"
+								],
+								"type": "string"
+							},
+							"text": {
+								"description": "The text content to be converted to speech",
+								"type": "string"
+							}
+						},
+						"required": [
+							"text"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/deepgram/aura-2-en model.",
+		"tags": [
+			"Workers AI Text To Speech"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/deepgram/aura-2-es": {
+		"operationId": "workers-ai-post-run-cf-deepgram-aura-2-es",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"bit_rate": {
+								"description": "The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type.",
+								"type": "number"
+							},
+							"container": {
+								"description": "Container specifies the file format wrapper for the output audio. The available options depend on the encoding type..",
+								"enum": [
+									"none",
+									"wav",
+									"ogg"
+								],
+								"type": "string"
+							},
+							"encoding": {
+								"description": "Encoding of the output audio.",
+								"enum": [
+									"linear16",
+									"flac",
+									"mulaw",
+									"alaw",
+									"mp3",
+									"opus",
+									"aac"
+								],
+								"type": "string"
+							},
+							"sample_rate": {
+								"description": "Sample Rate specifies the sample rate for the output audio. Based on the encoding, different sample rates are supported. For some encodings, the sample rate is not configurable",
+								"type": "number"
+							},
+							"speaker": {
+								"default": "aquila",
+								"description": "Speaker used to produce the audio.",
+								"enum": [
+									"sirio",
+									"nestor",
+									"carina",
+									"celeste",
+									"alvaro",
+									"diana",
+									"aquila",
+									"selena",
+									"estrella",
+									"javier"
+								],
+								"type": "string"
+							},
+							"text": {
+								"description": "The text content to be converted to speech",
+								"type": "string"
+							}
+						},
+						"required": [
+							"text"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/deepgram/aura-2-es model.",
+		"tags": [
+			"Workers AI Text To Speech"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/myshell-ai/melotts": {
 		"operationId": "workers-ai-post-run-cf-myshell-ai-melotts",
 		"parameters": [
