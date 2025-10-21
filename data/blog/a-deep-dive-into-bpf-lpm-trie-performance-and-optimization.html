@@ -1,0 +1,196 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29PWgCn1cfUU5ReqLRXT9C/ff8b2bf9ade18e5bf17aedd957c359fe/image6.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>It started with a mysterious soft lockup message in production. A single, cryptic line that led us down a rabbit hole into the performance of one of the most fundamental data structures we use: the BPF LPM trie.</p>
+	<p>BPF trie maps (<a href="https://docs.ebpf.io/linux/map-type/BPF_MAP_TYPE_LPM_TRIE">BPF_MAP_TYPE_LPM_TRIE</a>) are heavily used for things like IP and IP+Port matching when routing network packets, ensuring your request passes through the right services before returning a result. The performance of this data structure is critical for serving our customers, but the speed of the current implementation leaves a lot to be desired. We’ve run into several bottlenecks when storing millions of entries in BPF LPM trie maps, such as entry lookup times taking hundreds of milliseconds to complete and freeing maps locking up a CPU for over 10 seconds. For instance, BPF maps are used when evaluating Cloudflare’s <a href="https://www.cloudflare.com/network-services/products/magic-firewall"><u>Magic Firewall</u></a> rules and these bottlenecks have even led to traffic packet loss for some customers.</p>
+	<p>This post gives a refresher of how tries and prefix matching work, benchmark results, and a list of the shortcomings of the current BPF LPM trie implementation.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-brief-recap-of-tries">A brief recap of tries</h2>
+		<a href="https://blog.cloudflare.com/#a-brief-recap-of-tries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If it’s been a while since you last looked at the trie data structure (or if you’ve never seen it before), a trie is a tree data structure (similar to a binary tree) that allows you to store and search for data for a given key and where each node stores some number of key bits.</p>
+	<p>Searches are performed by traversing a path, which essentially reconstructs the key from the traversal path, meaning nodes do not need to store their full key. This differs from a traditional binary search tree (BST) where the primary invariant is that the left child node has a key that is less than the current node and the right child has a key that is greater. BSTs require that each node store the full key so that a comparison can be made at each search step.</p>
+	<p>Here’s an example that shows how a BST might store values for the keys:</p>
+	<ul>
+		<li>
+			<p>ABC</p>
+		</li>
+		<li>
+			<p>ABCD</p>
+		</li>
+		<li>
+			<p>ABCDEFGH</p>
+		</li>
+		<li>
+			<p>DEF</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1uXt5qwpyq7VzrqxXlHFLj/99677afd73a98b9ce04d30209065499f/image4.png" alt="" class="kg-image" width="1313" height="1111" loading="lazy">
+	</figure>
+	<p>In comparison, a trie for storing the same set of keys might look like this.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TfFZmwekNAF18yWlOIVWh/58396a19e053bd1c02734a6a54eea18e/image8.png" alt="" class="kg-image" width="1589" height="1555" loading="lazy">
+	</figure>
+	<p>This way of splitting out bits is really memory-efficient when you have redundancy in your data, e.g. prefixes are common in your keys, because that shared data only requires a single set of nodes. It’s for this reason that tries are often used to efficiently store strings, e.g. dictionaries of words – storing the strings “ABC” and “ABCD” doesn’t require 3 bytes + 4 bytes (assuming ASCII), it only requires 3 bytes + 1 byte because “ABC” is shared by both (the exact number of bits required in the trie is implementation dependent).</p>
+	<p>Tries also allow more efficient searching. For instance, if you wanted to know whether the key “CAR” existed in the BST you are required to go to the right child of the root (the node with key “DEF”) and check its left child because this is where it would live if it existed. A trie is more efficient because it searches in prefix order. In this particular example, a trie knows at the root whether that key is in the trie or not.</p>
+	<p>This design makes tries perfectly suited for performing longest prefix matches and for working with IP routing using CIDR. CIDR was introduced to make more efficient use of the IP address space (no longer requiring that classes fall into 4 buckets of 8 bits) but comes with added complexity because now the network portion of an IP address can fall anywhere. Handling the CIDR scheme in IP routing tables requires matching on the longest (most specific) prefix in the table rather than performing a search for an exact match.</p>
+	<p>If searching a trie does a single-bit comparison at each node, that’s a binary trie. If searching compares more bits we call that a <b><i>multibit trie</i></b>. You can store anything you like in a trie, including IP and subnet addresses – it’s all just ones and zeroes.</p>
+	<p>Nodes in multibit tries use more memory than in binary tries, but since computers operate on multibit words anyhow, it’s more efficient from a microarchitecture perspective to use multibit tries because you can traverse through the bits faster, reducing the number of comparisons you need to make to search for your data. It’s a classic space vs time tradeoff.</p>
+	<p>There are other optimisations we can use with tries. The distribution of data that you store in a trie might not be uniform and there could be sparsely populated areas. For example, if you store the strings “A” and “BCDEFGHI” in a multibit trie, how many nodes do you expect to use? If you’re using ASCII, you could construct the binary trie with a root node and branch left for “A” or right for “B”. With 8-bit nodes, you’d need another 7 nodes to store “C”, “D”, “E”, “F”, “G”, “H", “I”.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LO6izFC5e06dRf9ra2roC/167ba5c4128fcebacc7b7a8eab199ea5/image5.png" alt="" class="kg-image" width="943" height="1578" loading="lazy">
+	</figure>
+	<p>Since there are no other strings in the trie, that’s pretty suboptimal. Once you hit the first level after matching on “B” you know there’s only one string in the trie with that prefix, and you can avoid creating all the other nodes by using <b><i>path compression</i></b>. Path compression replaces nodes “C”, “D”, “E” etc. with a single one such as “I”.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ADY3lNtF7NIgfUX7bX9vY/828a14e155d6530a4dc8cf3286ce8cc3/image13.png" alt="" class="kg-image" width="939" height="1165" loading="lazy">
+	</figure>
+	<p>If you traverse the tree and hit “I”, you still need to compare the search key with the bits you skipped (“CDEFGH”) to make sure your search key matches the string. Exactly how and where you store the skipped bits is implementation dependent – BPF LPM tries simply store the entire key in the leaf node. As your data becomes denser, path compression is less effective.</p>
+	<p>What if your data distribution is dense and, say, all the first 3 levels in a trie are fully populated? In that case you can use <b><i>level compression</i></b><i> </i>and replace all the nodes in those levels with a single node that has 2**3 children. This is how Level-Compressed Tries work which are used for <a href="https://vincent.bernat.ch/en/blog/2017-ipv4-route-lookup-linux">IP route lookup</a> in the Linux kernel (see <a href="https://elixir.bootlin.com/linux/v6.12.43/source/net/ipv4/fib_trie.c"><u>net/ipv4/fib_trie.c</u></a>).</p>
+	<p>There are other optimisations too, but this brief detour is sufficient for this post because the BPF LPM trie implementation in the kernel doesn’t fully use the three we just discussed.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-fast-are-bpf-lpm-trie-maps">How fast are BPF LPM trie maps?</h2>
+		<a href="https://blog.cloudflare.com/#how-fast-are-bpf-lpm-trie-maps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Here are some numbers from running <a href="https://lore.kernel.org/bpf/20250827140149.1001557-1-matt@readmodwrite.com"><u>BPF selftests benchmark</u></a> on AMD EPYC 9684X 96-Core machines. Here the trie has 10K entries, a 32-bit prefix length, and an entry for every key in the range [0, 10K).</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Operation</p>
+				</td>
+				<td>
+					<p>Throughput</p>
+				</td>
+				<td>
+					<p>Stddev</p>
+				</td>
+				<td>
+					<p>Latency</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>lookup</p>
+				</td>
+				<td>
+					<p>7.423M ops/s</p>
+				</td>
+				<td>
+					<p>0.023M ops/s</p>
+				</td>
+				<td>
+					<p>134.710 ns/op</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>update</p>
+				</td>
+				<td>
+					<p>2.643M ops/s</p>
+				</td>
+				<td>
+					<p>0.015M ops/s</p>
+				</td>
+				<td>
+					<p>378.310 ns/op</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>delete</p>
+				</td>
+				<td>
+					<p>0.712M ops/s</p>
+				</td>
+				<td>
+					<p>0.008M ops/s</p>
+				</td>
+				<td>
+					<p>1405.152 ns/op</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>free</p>
+				</td>
+				<td>
+					<p>0.573K ops/s</p>
+				</td>
+				<td>
+					<p>0.574K ops/s</p>
+				</td>
+				<td>
+					<p>1.743 ms/op</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>The time to free a BPF LPM trie with 10K entries is noticeably large. We recently ran into an issue where this took so long that it caused <a href="https://lore.kernel.org/lkml/20250616095532.47020-1-matt@readmodwrite.com"><u>soft lockup messages</u></a> to spew in production.</p>
+	<p>This benchmark gives some idea of worst case behaviour. Since the keys are so densely populated, path compression is completely ineffective. In the next section, we explore the lookup operation to understand the bottlenecks involved.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-are-bpf-lpm-tries-slow">Why are BPF LPM tries slow?</h2>
+		<a href="https://blog.cloudflare.com/#why-are-bpf-lpm-tries-slow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The LPM trie implementation in <a href="https://elixir.bootlin.com/linux/v6.12.43/source/kernel/bpf/lpm_trie.c"><u>kernel/bpf/lpm_trie.c</u></a> has a couple of the optimisations we discussed in the introduction. It is capable of multibit comparisons at leaf nodes, but since there are only two child pointers in each internal node, if your tree is densely populated with a lot of data that only differs by one bit, these multibit comparisons degrade into single bit comparisons.</p>
+	<p>Here’s an example. Suppose you store the numbers 0, 1, and 3 in a BPF LPM trie. You might hope that since these values fit in a single 32 or 64-bit machine word, you could use a single comparison to decide which next node to visit in the trie. But that’s only possible if your trie implementation has 3 child pointers in the current node (which, to be fair, most trie implementations do). In other words, you want to make a 3-way branching decision but since BPF LPM tries only have two children, you’re limited to a 2-way branch.</p>
+	<p>A diagram for this 2-child trie is given below.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ciL2t6aMyJHR2FfX41rNk/365abe47cf384729408cf9b98c65c0be/image9.png" alt="" class="kg-image" width="1313" height="1111" loading="lazy">
+	</figure>
+	<p>The leaf nodes are shown in green with the key, as a binary string, in the center. Even though a single 8-bit comparison is more than capable of figuring out which node has that key, the BPF LPM trie implementation resorts to inserting intermediate nodes (blue) to inject 2-way branching decisions into your path traversal because its parent (the orange root node in this case) only has 2 children. Once you reach a leaf node, BPF LPM tries can perform a multibit comparison to check the key. If a node supported pointers to more children, the above trie could instead look like this, allowing a 3-way branch and reducing the lookup time.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17VoWl8OY6tzcARKDKuSjS/b9200dbeddf13f101b7085a549742f95/image3.png" alt="" class="kg-image" width="1096" height="694" loading="lazy">
+	</figure>
+	<p>This 2-child design impacts the height of the trie. In the worst case, a completely full trie essentially becomes a binary search tree with height log2(nr_entries) and the height of the trie impacts how many comparisons are required to search for a key.</p>
+	<p>The above trie also shows how BPF LPM tries implement a form of path compression – you only need to insert an intermediate node where you have two nodes whose keys differ by a single bit. If instead of 3, you insert a key of 15 (0b1111), this won’t change the layout of the trie; you still only need a single node at the right child of the root.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ecfKSeoqN3bfBXmC9KHw5/3be952edea34d6b2cc867ba31ce14805/image12.png" alt="" class="kg-image" width="1313" height="1111" loading="lazy">
+	</figure>
+	<p>And finally, BPF LPM tries do not implement level compression. Again, this stems from the fact that nodes in the trie can only have 2 children. IP route tables tend to have many prefixes in common and you typically see densely packed tries at the upper levels which makes level compression very effective for tries containing IP routes.</p>
+	<p>Here’s a graph showing how the lookup throughput for LPM tries (measured in million ops/sec) degrades as the number of entries increases, from 1 entry up to 100K entries.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33I92exrEZTcUWOjxaBOqY/fb1de551b06e3272c8670d0117d738fa/image2.png" alt="" class="kg-image" width="1780" height="1102" loading="lazy">
+	</figure>
+	<p>Once you reach 1 million entries, throughput is around 1.5 million ops/sec, and continues to fall as the number of entries increases.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OhaAaI5Y2XJCofI9V39z/567a01b3335f29ef3b46ccdd74dc27e5/image1.png" alt="" class="kg-image" width="1780" height="1102" loading="lazy">
+	</figure>
+	<p>Why is this? Initially, this is because of the L1 dcache miss rate. All of those nodes that need to be traversed in the trie are potential cache miss opportunities.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Gx4fOLKmhUKHegybQU7sl/4936239213f0061d5cbc2f5d6b63fde6/image11.png" alt="" class="kg-image" width="1780" height="1102" loading="lazy">
+	</figure>
+	<p>As you can see from the graph, L1 dcache miss rate remains relatively steady and yet the throughput continues to decline. At around 80K entries, dTLB miss rate becomes the bottleneck.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Jy7aTN3Nyo2EsbSzw313n/d26871fa417ffe293adb47fe7f7dc56b/image7.png" alt="" class="kg-image" width="1780" height="1102" loading="lazy">
+	</figure>
+	<p>Because BPF LPM tries to dynamically allocate individual nodes from a freelist of kernel memory, these nodes can live at arbitrary addresses. Which means traversing a path through a trie almost certainly will incur cache misses and potentially dTLB misses. This gets worse as the number of entries, and height of the trie, increases.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6CB3MvSvSgH1T2eY7Xlei8/81ebe572592ca71529d79564a88993f0/image10.png" alt="" class="kg-image" width="1780" height="1102" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="where-do-we-go-from-here">Where do we go from here?</h2>
+		<a href="https://blog.cloudflare.com/#where-do-we-go-from-here" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>By understanding the current limitations of the BPF LPM trie, we can now work towards building a more performant and efficient solution for the future of the Internet.</p>
+	<p>We’ve already contributed these benchmarks to the upstream Linux kernel — but that’s only the start. We have plans to improve the performance of BPM LPM tries, particularly the lookup function which is heavily used for our workloads. This post covered a number of optimisations that are already used by the <a href="https://elixir.bootlin.com/linux/v6.12.43/source/net/ipv4/fib_trie.c"><u>net/ipv4/fib_trie.c</u></a> code, so a natural first step is to refactor that code so that a common Level Compressed trie implementation can be used. Expect future blog posts to explore this work in depth.</p>
+	<p>If you’re interested in looking at more performance numbers, <a href="https://wiki.cfdata.org/display/~jesper">Jesper Brouer</a> has recorded some here: <a href="https://github.com/xdp-project/xdp-project/blob/main/areas/bench/bench02_lpm-trie-lookup.org">https://github.com/xdp-project/xdp-project/blob/main/areas/bench/bench02_lpm-trie-lookup.org</a>.</p>
+	<h6><i>If the Linux kernel, performance, or optimising data structures excites you, </i><a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering&amp;location=default"><i>our engineering teams are hiring</i></a><i>.</i></h6>
+	<p></p>
+</div>
