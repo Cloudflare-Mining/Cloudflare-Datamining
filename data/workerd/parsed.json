@@ -3304,6 +3304,13 @@
 						"compatEnableFlag": "enable_python_external_sdk",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "fastJsgStruct",
+					"annotations": {
+						"compatDisableFlag": "disable_fast_jsg_struct",
+						"compatEnableFlag": "enable_fast_jsg_struct"
+					}
 				}
 			]
 		},
