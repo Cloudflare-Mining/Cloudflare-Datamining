@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-react-native-ui",
 	"dist-tags": {
-		"latest": "0.1.3",
-		"staging": "0.1.3-staging.6"
+		"staging": "0.1.3-staging.6",
+		"latest": "0.1.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -923,40 +923,40 @@
 			"version": "0.1.3",
 			"dependencies": {
 				"lodash": "^4.17.21",
-				"radio-buttons-react-native": "^1.0.4",
-				"react-native-element-dropdown": "^2.0.0",
-				"react-native-gifted-chat": "~2.4.0",
-				"react-native-svg-transformer": "^1.0.0",
+				"initials": "^3.0.1",
 				"react-native-switch": "^1.5.1",
-				"react-native-url-polyfill": "^1.3.0",
 				"abortcontroller-polyfill": "^1.4.0",
-				"initials": "^3.0.1"
+				"react-native-gifted-chat": "~2.4.0",
+				"react-native-url-polyfill": "^1.3.0",
+				"radio-buttons-react-native": "^1.0.4",
+				"react-native-svg-transformer": "^1.0.0",
+				"react-native-element-dropdown": "^2.0.0"
 			},
 			"peerDependencies": {
-				"@cloudflare/realtimekit-react-native": "*",
-				"@cloudflare/react-native-webrtc": "*",
 				"react": "*",
 				"react-native": "*",
-				"@react-native-documents/picker": "*",
-				"react-native-file-viewer": "*",
 				"react-native-fs": "*",
-				"react-native-safe-area-context": "*",
-				"react-native-sound-player": "*",
 				"react-native-svg": "*",
-				"react-native-webview": "*"
+				"react-native-webview": "*",
+				"react-native-file-viewer": "*",
+				"react-native-sound-player": "*",
+				"@react-native-documents/picker": "*",
+				"react-native-safe-area-context": "*",
+				"@cloudflare/react-native-webrtc": "*",
+				"@cloudflare/realtimekit-react-native": "*"
 			},
 			"dist": {
-				"integrity": "sha512-tDMQocGy7IGBhYzNKViY/QPt5Hv3sx67LlCccimLZmp1yZJL36iSMQoc6mHVHY1ZVQGleBEOmWebVLy7g20PVA==",
 				"shasum": "51357b705a289d99d18fbe91f779db8484ba1186",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-native-ui/-/realtimekit-react-native-ui-0.1.3.tgz",
 				"fileCount": 659,
-				"unpackedSize": 3445572,
+				"integrity": "sha512-tDMQocGy7IGBhYzNKViY/QPt5Hv3sx67LlCccimLZmp1yZJL36iSMQoc6mHVHY1ZVQGleBEOmWebVLy7g20PVA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCu1SELNvI4cUkcLvvKJVDY2dj7anjid4Lm0s/7qvfjfAIgHHewSSEBiaaJpd3YI2xQKxyW7NEOkY+69kW3W6l4AXU="
+						"sig": "MEUCIQCu1SELNvI4cUkcLvvKJVDY2dj7anjid4Lm0s/7qvfjfAIgHHewSSEBiaaJpd3YI2xQKxyW7NEOkY+69kW3W6l4AXU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 3445572
 			}
 		}
 	}

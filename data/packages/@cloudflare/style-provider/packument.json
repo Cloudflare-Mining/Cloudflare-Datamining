@@ -22971,38 +22971,38 @@
 			"name": "@cloudflare/style-provider",
 			"version": "4.0.3",
 			"dependencies": {
-				"cssbeautify": "^0.3.1",
 				"fela": "^11.6.1",
-				"fela-plugin-embedded": "^11.6.1",
-				"fela-plugin-fallback-value": "^11.6.1",
-				"fela-plugin-multiple-selectors": "https://github.com/1000hz/fela#release/fela-plugin-multiple-selectors@12.2.1-patch-1",
-				"fela-plugin-named-keys": "^11.6.1",
-				"fela-plugin-prefixer": "^11.6.1",
-				"fela-plugin-unit": "^11.6.1",
-				"fela-plugin-validator": "^11.6.1",
 				"fela-tools": "^11.6.1",
-				"inline-style-prefixer": "^5.1.0",
 				"prop-types": "^15.6.0",
-				"react-fela": "^11.6.1"
+				"react-fela": "^11.6.1",
+				"cssbeautify": "^0.3.1",
+				"fela-plugin-unit": "^11.6.1",
+				"fela-plugin-embedded": "^11.6.1",
+				"fela-plugin-prefixer": "^11.6.1",
+				"fela-plugin-validator": "^11.6.1",
+				"inline-style-prefixer": "^5.1.0",
+				"fela-plugin-named-keys": "^11.6.1",
+				"fela-plugin-fallback-value": "^11.6.1",
+				"fela-plugin-multiple-selectors": "https://github.com/1000hz/fela#release/fela-plugin-multiple-selectors@12.2.1-patch-1"
 			},
 			"peerDependencies": {
-				"@cloudflare/style-const": "^6.0.0",
-				"@cloudflare/style-container": "^8.0.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-test-renderer": "^16.0.0-0 || ^17.0.0-0"
+				"react-test-renderer": "^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^6.0.0",
+				"@cloudflare/style-container": "^8.0.0"
 			},
 			"dist": {
 				"shasum": "5b653e1bc470de683994c0127731e6c7f8df0684",
-				"integrity": "sha512-v3kqGOXukSOr0qoPB3wGDq6K4KTeqcqf2tBCdlaGOGqkNLZ7zVe5jWxS0hYmtKXbepnmTHXELW1UIzyCB4cdjQ==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/style-provider/-/style-provider-4.0.3.tgz",
 				"fileCount": 14,
-				"unpackedSize": 151221,
+				"integrity": "sha512-v3kqGOXukSOr0qoPB3wGDq6K4KTeqcqf2tBCdlaGOGqkNLZ7zVe5jWxS0hYmtKXbepnmTHXELW1UIzyCB4cdjQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIHnh+uSeYFDLJZpGGOxwr+6kswABSklUI0lKLjEil2FQAiEAlwgTMQO9Cah1tdvy2i3qrc5l6LhQi2N5gq9fA7Ey9GU="
+						"sig": "MEUCIHnh+uSeYFDLJZpGGOxwr+6kswABSklUI0lKLjEil2FQAiEAlwgTMQO9Cah1tdvy2i3qrc5l6LhQi2N5gq9fA7Ey9GU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 151221
 			},
 			"stratus": {
 				"srcDirectory": "./src",

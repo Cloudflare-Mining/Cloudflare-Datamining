@@ -1082,24 +1082,24 @@
 			"name": "@cloudflare/realtimekit-ui",
 			"version": "1.0.6-staging.6",
 			"dependencies": {
-				"@floating-ui/dom": "^1.7.4",
 				"hark": "^1.2.3",
 				"hls.js": "^1.5.17",
 				"lodash-es": "^4.17.21",
+				"@floating-ui/dom": "^1.7.4",
 				"resize-observer-polyfill": "^1.5.1"
 			},
 			"dist": {
-				"integrity": "sha512-3o8VTkPSCs63m+V+wsR5Gw1CBm9dwdLA5a3KcNlLruovM5g3tFiqwchxi0dNYTqGp3nbGgqKb7HP0v6ocr7Qsw==",
 				"shasum": "512b3e0d072185936bdc303dc2b49c3f30bc5b15",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.0.6-staging.6.tgz",
 				"fileCount": 1209,
-				"unpackedSize": 30335772,
+				"integrity": "sha512-3o8VTkPSCs63m+V+wsR5Gw1CBm9dwdLA5a3KcNlLruovM5g3tFiqwchxi0dNYTqGp3nbGgqKb7HP0v6ocr7Qsw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIBBpP1aIQNVZzNps1MgUV5G3nhuGbTvoL09JFAtYa4ziAiEAvFNOjFaqCqkG9wIWLo93xghzKKRDOtEm1t4f3XActHI="
+						"sig": "MEUCIBBpP1aIQNVZzNps1MgUV5G3nhuGbTvoL09JFAtYa4ziAiEAvFNOjFaqCqkG9wIWLo93xghzKKRDOtEm1t4f3XActHI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 30335772
 			}
 		}
 	}
