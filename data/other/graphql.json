@@ -660,11 +660,12 @@
 		"getResultVectorsAvgDurationMs": "The time in milliseconds it took to retrieve stored file embeddings",
 		"isStream": "Whether the search response was streamed or not (0 = false, 1 = true)",
 		"maxResults": "THe max number of results that can be returned",
-		"numChunksToRetrieve": "The time in milliseconds it took to generate embeddings for this search's query",
+		"numChunksToRetrieve": "The number of chunks to retrieve from the vector store, calculated based on the configured number of results to retrieve",
 		"numResults": "The number of returned results",
 		"querySizeTokens": "The size of the given query in tokens",
 		"rag": "AutoRAG Id",
 		"regenerateMarkdown": "Whether to this search implied regenerating markdown for returned results (0 = false, 1 = true)",
+		"rerankingDurationMs": "The time in milliseconds it took to re-rank results based on this search's query",
 		"rerankingModel": "The reranking model used in this search",
 		"rewriteDurationMs": "The time in milliseconds that it took to rewrite the query",
 		"rewriteInputSizeTokens": "The size in tokens of the rewritten input",
@@ -3769,6 +3770,17 @@
 		"__description": "Image unique transfromations per day",
 		"date": "The date uniques are calculated for",
 		"transformations": "Number of unique image transformations per day in sliding window"
+	},
+	"AccountImagesUniqueTransformationsAccumulatedSinceStartOfMonth": {
+		"__description": "Image unique transformations accumulated since start of month",
+		"date": "The date uniques are calculated for",
+		"transformations": "Accumulated number of unique image transformations since start of month per day in sliding window"
+	},
+	"AccountImagesUniqueTransformationsAccumulatedSinceStartOfMonthFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountImagesUniqueTransformationsAccumulatedSinceStartOfMonthOrderBy": {
+		"__description": ""
 	},
 	"AccountImagesUniqueTransformationsFilter_InputObject": {
 		"__description": ""
@@ -6974,6 +6986,7 @@
 		"hyperdriveQueriesAdaptiveGroups": "",
 		"imagesRequestsAdaptiveGroups": "",
 		"imagesUniqueTransformations": "",
+		"imagesUniqueTransformationsAccumulatedSinceStartOfMonth": "",
 		"kvOperationsAdaptiveGroups": "",
 		"kvStorageAdaptiveGroups": "",
 		"liveInputEventsAdaptive": "",
@@ -9099,7 +9112,6 @@
 		"errorDetail": "Detailed error message (if any)",
 		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
 		"from": "The sender email address of the source email",
-		"isEmailSending": "Is this event related to Email Sending?",
 		"isNDR": "Is this event related to a NDR (bounce) email?",
 		"isSpam": "Source email is spam",
 		"messageId": "The Message-ID header of the source email (if present)",
@@ -9139,7 +9151,6 @@
 		"dkim": "DKIM check status of the source email",
 		"dmarc": "DMARC check status of the source email",
 		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
-		"isEmailSending": "Is this event related to Email Sending?",
 		"isNDR": "Is this event related to a NDR (bounce) email?",
 		"isSpam": "Source email is spam",
 		"ruleMatched": "The UUID of the routing rule matched by the source email",
@@ -9156,6 +9167,69 @@
 		"__description": ""
 	},
 	"ZoneEmailRoutingAdaptiveOrderBy": {
+		"__description": ""
+	},
+	"ZoneEmailSendingAdaptive": {
+		"__description": "Raw email sending logs with adaptive sampling",
+		"arc": "ARC check status of the source email",
+		"datetime": "The date and time the source email was received",
+		"dkim": "DKIM check status of the source email",
+		"dmarc": "DMARC check status of the source email",
+		"errorDetail": "Detailed error message (if any)",
+		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
+		"from": "The sender email address of the source email",
+		"isNDR": "Is this event related to a NDR (bounce) email?",
+		"isSpam": "Source email is spam",
+		"messageId": "The Message-ID header of the source email (if present)",
+		"sampleInterval": "ABR sample interval",
+		"sessionId": "Unique identifier for the email log entry (note: retries for the same email may result in multiple log entries)",
+		"spamScore": "Spam score value",
+		"spamThreshold": "Spam threshold value",
+		"spf": "SPF check status of the source email",
+		"status": "The resulting outcome (action) for the email",
+		"subject": "The subject of the source email",
+		"to": "The recipient email address of the source email"
+	},
+	"ZoneEmailSendingAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneEmailSendingAdaptiveGroups": {
+		"__description": "Aggregated email sending logs with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of emails processed",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneEmailSendingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of emails processed, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"ZoneEmailSendingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"arc": "ARC check status of the source email",
+		"date": "The date the source email was received",
+		"datetimeFifteenMinutes": "The date and time the source email was received truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the source email was received truncated to five minutes",
+		"datetimeHour": "The date and time the source email was received truncated to the hour",
+		"datetimeMinute": "The date and time the source email was received truncated to the minute",
+		"dkim": "DKIM check status of the source email",
+		"dmarc": "DMARC check status of the source email",
+		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
+		"isNDR": "Is this event related to a NDR (bounce) email?",
+		"isSpam": "Source email is spam",
+		"sampleInterval": "ABR sample interval",
+		"spamScore": "Spam score value",
+		"spamThreshold": "Spam threshold value",
+		"spf": "SPF check status of the source email",
+		"status": "The resulting outcome (action) for the email"
+	},
+	"ZoneEmailSendingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneEmailSendingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneEmailSendingAdaptiveOrderBy": {
 		"__description": ""
 	},
 	"ZoneFilter_InputObject": {
@@ -10500,6 +10574,8 @@
 		"dnsAnalyticsAdaptiveGroups": "",
 		"emailRoutingAdaptive": "",
 		"emailRoutingAdaptiveGroups": "",
+		"emailSendingAdaptive": "",
+		"emailSendingAdaptiveGroups": "",
 		"firewallEventsAdaptive": "",
 		"firewallEventsAdaptiveByTimeGroups": "",
 		"firewallEventsAdaptiveGroups": "",
@@ -11273,6 +11349,7 @@
 		"hyperdriveQueriesAdaptiveGroups": "Hyperdrive query events with adaptive sampling.",
 		"imagesRequestsAdaptiveGroups": "A high-level summary of Cloudflare Images served to end users.",
 		"imagesUniqueTransformations": "Image unique transfromations per day",
+		"imagesUniqueTransformationsAccumulatedSinceStartOfMonth": "Image unique transformations accumulated since start of month",
 		"kvOperationsAdaptiveGroups": "KV operations data with adaptive sampling",
 		"kvStorageAdaptiveGroups": "KV stored data with adaptive sampling",
 		"liveInputEventsAdaptive": "Live input events with adaptive sampling",
@@ -11433,6 +11510,8 @@
 		"dnsAnalyticsAdaptiveGroups": "Analytics data for DNS queries",
 		"emailRoutingAdaptive": "Beta. Raw email routing logs with adaptive sampling",
 		"emailRoutingAdaptiveGroups": "Beta. Aggregated email routing logs with adaptive sampling",
+		"emailSendingAdaptive": "Raw email sending logs with adaptive sampling",
+		"emailSendingAdaptiveGroups": "Aggregated email sending logs with adaptive sampling",
 		"firewallEventsAdaptive": "Raw Firewall events with adaptive sampling",
 		"firewallEventsAdaptiveByTimeGroups": "Aggregated Firewall events with adaptive sampling grouped by time",
 		"firewallEventsAdaptiveGroups": "Aggregated Firewall events with adaptive sampling",
