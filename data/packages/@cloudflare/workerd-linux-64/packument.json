@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-linux-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251014.0"
+		"latest": "1.20251021.0"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -5941,15 +5941,41 @@
 			"name": "@cloudflare/workerd-linux-64",
 			"version": "1.20251014.0",
 			"dist": {
-				"integrity": "sha512-u28GeXDOeuzHMRgmeMlWpIOG31jUJZdpFztDpdHtp/W0M6n8fTljr4+CDc62F9cywul0SG+K7dx/0meZWFlt7A==",
 				"shasum": "b7d17a3521b5d3b35a1daab89e270cc2a77e7b7a",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-linux-64/-/workerd-linux-64-1.20251014.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 116264309,
+				"integrity": "sha512-u28GeXDOeuzHMRgmeMlWpIOG31jUJZdpFztDpdHtp/W0M6n8fTljr4+CDc62F9cywul0SG+K7dx/0meZWFlt7A==",
+				"signatures": [
+					{
+						"sig": "MEUCIAEa3knyoNszZtyzgmXLyFRGxUfL61wVrSW4PuAEcMb4AiEA2PjHLbDrhuHfaVazmGxzCV6+ktJj7haVHKJiSvpWq84=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 116264309
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251021.0": {
+			"name": "@cloudflare/workerd-linux-64",
+			"version": "1.20251021.0",
+			"dist": {
+				"integrity": "sha512-kLxoVr17zwPqygKT/cL3zlXfV9B7cw66tHjnTG/bvdg3yIKe1/XOU4WSNDzcND/fOuToMDBmVcVOLrQGbVKtlw==",
+				"shasum": "23a4866137f37e463dcdb9faf756a85158732c6d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-linux-64/-/workerd-linux-64-1.20251021.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 117124741,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-linux-64@1.20251021.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIAEa3knyoNszZtyzgmXLyFRGxUfL61wVrSW4PuAEcMb4AiEA2PjHLbDrhuHfaVazmGxzCV6+ktJj7haVHKJiSvpWq84="
+						"sig": "MEUCIFhf2fOkpUkavyWNIF1pu60vFQo2FBm+ALTqJLApa3rKAiEAvmh6rb8ookbh3x9HgukHv9w17qIRrtkGVQbywUQj9cE="
 					}
 				]
 			},

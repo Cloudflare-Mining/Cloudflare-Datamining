@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-darwin-arm64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251014.0"
+		"latest": "1.20251021.0"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -5880,15 +5880,41 @@
 			"name": "@cloudflare/workerd-darwin-arm64",
 			"version": "1.20251014.0",
 			"dist": {
-				"integrity": "sha512-JYwWoGYAk2wxBUZ3YfRhEKAgL2QBjDgQ186puSFRdz7ObrL7m+r4AObY1m/Hih5dc7GHjPyU5ZaD4DBLTJ3Njg==",
 				"shasum": "bb013b8a713b3f27482ae3ac181188bd8ef6ca82",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20251014.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 97964716,
+				"integrity": "sha512-JYwWoGYAk2wxBUZ3YfRhEKAgL2QBjDgQ186puSFRdz7ObrL7m+r4AObY1m/Hih5dc7GHjPyU5ZaD4DBLTJ3Njg==",
+				"signatures": [
+					{
+						"sig": "MEQCID+vkHbzNPb70rCCT3gw0KwJO2Mxrx9zXX3PKXLIS91NAiB9+6Hi61Uo8vGEnX+Rn1ZO3ouRMkKlcVYqgq6mFbdwZg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 97964716
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251021.0": {
+			"name": "@cloudflare/workerd-darwin-arm64",
+			"version": "1.20251021.0",
+			"dist": {
+				"integrity": "sha512-tnSEk8MVJ7Ty+MEeGr9YnawIbdxA98+FqtNB3xtkwXRgicidV7qUQGKPtOw2CjCc7rqtF6n4+Eu076ECXhhL+w==",
+				"shasum": "80637720c88b53d9777e3fd43ceeacb9805a89f7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20251021.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 99233596,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-arm64@1.20251021.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCID+vkHbzNPb70rCCT3gw0KwJO2Mxrx9zXX3PKXLIS91NAiB9+6Hi61Uo8vGEnX+Rn1ZO3ouRMkKlcVYqgq6mFbdwZg=="
+						"sig": "MEUCIDL3cT/h++YdNmPRdYscyrr46c3TLMM3tgNw64t5b3X/AiEA4fy1WZohxnY70oPi9TrzDIRsk5YOAS0rDH+8Vk6dnW8="
 					}
 				]
 			},
