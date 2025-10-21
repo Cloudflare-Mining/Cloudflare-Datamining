@@ -10,8 +10,6 @@ The Sandbox SDK lets you run untrusted code safely in isolated containers. Execu
 
 Perfect for AI code execution, interactive development environments, data analysis platforms, CI/CD systems, and any application that needs secure code execution at the edge.
 
-> **Note:** The latest published version of the SDK is on the [v03 branch](https://github.com/cloudflare/sandbox-sdk/tree/v03). This main branch is currently the development version and is not yet published.
-
 ## Getting Started
 
 ### Prerequisites
