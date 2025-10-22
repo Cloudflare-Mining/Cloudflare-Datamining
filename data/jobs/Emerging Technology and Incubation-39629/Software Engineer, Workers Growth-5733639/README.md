@@ -7,15 +7,13 @@
 </div>
 <h3><strong>Position Location: Austin, TX | Lisbon, Portugal | London, UK</strong></h3>
 <h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p class="diff-block-context"></p>
 <p class="diff-block-context">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p class="diff-context-placeholder">...</p>
 <p class="diff-block-context">The Workers Onboarding &amp; Integrations team aims to provide the best in class experience for Workers users to move fast and quickly bring ideas to life.</p>
 <h3 id="Jobdescription:SoftwareEngineerWorkersOnboarding&amp;Integrations-Whatyouwilldo" class="diff-block-target"><strong><span id="changed-diff-5" class="diff-html-changed">What you will do</span></strong></h3>
 <p class="diff-block-context">As a member of the Workers team, you will collaborate with Engineers, Designers, and Product Managers to design, build and support large scale, customer facing systems that push the boundaries of what is possible at Cloudflare's edge computing platform. You will drive projects from idea to release, delivering solutions at all layers of the software stack to empower the Cloudflare customers. You can expect to interact with a variety of languages and technologies including, but not limited to Go, JavaScript, Typescript, SQL, GraphQL, Rust, and C++.</p>
 <h3 id="Jobdescription:SoftwareEngineerWorkersOnboarding&amp;Integrations-RequisiteSkills" class="diff-block-target diff-block-context"><strong><span id="changed-diff-6" class="diff-html-changed">Requisite Skills</span></strong></h3>
 <ul class="diff-block-target diff-block-context">
-	<li><span id="removed-diff-0" class="diff-html-removed">2+ years professional software engineering experience</span></li>
+	<li><span id="removed-diff-0" class="diff-html-removed">3+ years professional software engineering experience</span></li>
 	<li><span class="diff-html-removed">Experience using </span><span id="added-diff-0" class="diff-html-added">Cloudflare Workers or Pages</span></li>
 	<li>Must have strong experience with Javascript and Typescript</li>
 	<li>Experience working in frontend frameworks such as React</li>
@@ -34,7 +32,7 @@
 	<li>Knowledge of OAuth and building integrations with third-parties</li>
 	<li>Has managed interns or mentored junior engineers</li>
 </ul>
-<p class="diff-block-context"></p>
+<p class="diff-block-context">&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

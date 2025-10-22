@@ -5,30 +5,55 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin or NYC (NAMER), Lisbon or London (EMEA)</strong></p>
-<h4><strong>About the department</strong></h4>
-<p>Cloudflare's Engineering Team is home to some of the industry's top engineers, dedicated to building and scaling innovative software that handles a huge proportion of the Internet. Our team responsible for Bots and Fraud Detection develops cutting-edge solutions to identify and mitigate malicious bot activities, ensuring the security and integrity of online applications. The team collaborates with product and other engineering teams to implement advanced fraud detection mechanisms and employ machine learning techniques to safeguard digital assets from evolving threats in the cybersecurity landscape.</p>
-<p><strong>What you'll do</strong></p>
-<p>Join Cloudflare's Bot and Fraud Detection team to tackle real-world security challenges, leveraging massive threat intelligence data through data science and machine learning. Design, build, and scale high-performance distributed software for one of Cloudflare's fastest-growing security products. Work with global data exceeding 50 million HTTP requests per second, utilizing a tech stack that includes Go, Python, JavaScript, Rust, Lua, Kafka, Kubernetes, ClickHouse, PostgreSQL, and Jupyter notebook. Make a meaningful impact in detecting and mitigating abusive HTTP L7 layer traffic worldwide.</p>
-<p><strong>What are we looking for?</strong></p>
-<p>&nbsp;</p>
+<p><strong>Job Location: </strong>Austin, TX</p>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>Role Summary</strong></h4>
+<p>The Cloudflare Escalation Engineer will perform deep, technical troubleshooting for complex, escalated issues. This role owns the customer escalation process and works with various Product and Engineering teams to identify product bugs, network problems, and platform issues. Escalation Engineers foster a close relationship with SRE, Network, Engineering and Product teams. They act as an escalation point, isolate/replicate problems, and gather technical information/expectation.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Proficiency in designing, integrating, and optimizing distributed data processing pipelines</li>
-	<li>Strong coding skills in Go, Java, Python, or other high-performance languages</li>
-	<li>Experience in constructing and managing alerting and monitoring systems for data processing pipelines</li>
-	<li>Exceptional abilities in systems-level debugging</li>
-	<li>Preferred background or interest in Web Security, HTTP protocols, and JavaScript</li>
-	<li>Familiarity with advanced analytics encompassing machine learning, statistical inference, and AI.</li>
-	<li>Curiosity and empathy</li>
-	<li>Comfortable with tackling ambiguous problems and unblocking yourself</li>
+	<li>Serve as a subject matter expert in supporting Application Performance and Developer Platform products such as <strong>Cache, Images, Cloudflare Pages, R2, D1, Rules, Speed, Stream, Workers</strong>, etc.&nbsp;</li>
+	<li>Collaborate closely with engineering and product teams to escalate issues, provide root cause analysis, and contribute to product improvements.</li>
+	<li>Create and maintain detailed knowledge base articles, troubleshooting guides, and technical documentation.</li>
+	<li>Provide coverage (shift rotation including possibility of weekends and Pacific Time hours) for technical troubleshooting of escalated issues&nbsp;</li>
+	<li>Triage Customer Escalation issues to find the quickest most efficient path of resolution</li>
+	<li>Work cross-functionally with various teams across the company from engineering to sales</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h4><strong>Requirements</strong></h4>
 <ul>
-	<li>Knowledge and experience with columnar database like Clickhouse.</li>
-	<li>Experience productionalizing ML models</li>
-	<li>Experience with cluster and configuration management systems such as Docker, Salt</li>
-	<li>Strong web security fundamentals</li>
-	<li>Previous experience in bot and fraud detection</li>
+	<li>Minimum of <strong>3 years’ hands-on experience</strong> supporting or engineering Application/Developer focused products.</li>
+	<li><strong>Web Technologies:</strong> In-depth understanding of HTTP/S, RESTful APIs, and common web frameworks.</li>
+	<li><strong>Front-end Performance:</strong> Knowledge of browser rendering, DOM manipulation, and optimization techniques for client-side applications.</li>
+	<li><strong>Back-end Performance:</strong> Familiarity with server-side architecture, database interactions, and API performance tuning.</li>
+	<li><strong>Developer Tools:</strong> Proficiency with tools like Chrome DevTools, curl, and IDE debuggers for diagnosing application issues.</li>
+	<li><strong>Cloud Platforms:</strong> Understanding of cloud-native architectures, containerization (Docker, Kubernetes), and serverless functions.</li>
+	<li><strong>Observability:</strong> Experience with monitoring, logging, and tracing tools (e.g. Sentry, Prometheus, Grafana, ELK stack, Jaeger) for application health and performance.</li>
+	<li><strong>Security Principles:</strong> Awareness of common application vulnerabilities (OWASP Top 10), secure coding practices, and API security.</li>
+	<li><strong>Developer Experience:</strong> Appreciation for developer workflows, SDKs, and API documentation.</li>
+	<li><strong>Performance Optimization:</strong> Knowledge of caching strategies, CDN concepts, and load balancing.</li>
+	<li>Proficiency in&nbsp;<strong>application troubleshooting</strong> using profiling and tracing tools (e.g., Dynatrace, New Relic, OpenTelemetry).</li>
+	<li><strong>Excellent verbal and written communication skills</strong>, with the ability to convey technical information clearly to both technical and non-technical audiences.</li>
+	<li>Demonstrated ability to manage multiple priorities and projects effectively in a fast-paced environment.</li>
+</ul>
+<h4><strong>Core competencies (“Desired skills, knowledge and experience”)</strong></h4>
+<ul>
+	<li>Extensive technical support experience</li>
+	<li>Expertise in troubleshooting application protocols (L7 - DNS, HTTP, etc)</li>
+	<li>Expertise in troubleshooting network infrastructure (L3/L4)</li>
+	<li>Expert with Linux command line tools&nbsp; (curl, dig, git, traceroute, mtr)</li>
+	<li>Expert at analyzing data using tools like grafana, kibana, and SQL</li>
+	<li>Able to clarify complex technical issues and coordinate efforts to resolve</li>
+	<li>Able to identify and share/suggest process improvements&nbsp;</li>
+	<li>Demonstrated leadership, prior mentoring experience</li>
+	<li>Self-motivated, self-directed, strong relationship building, can positively influence the actions of others, team player</li>
+	<li>Comfortable handling inbound and outbound customer calls</li>
+</ul>
+<h4><strong>Bonus Points</strong></h4>
+<ul>
+	<li>You are familiar with Cloudflare and are actively using our platform</li>
+	<li>Experience with regular expressions</li>
+	<li>Knowledge of web programming (HTML, Javascript, PHP) and scripting (bash, Python)</li>
+	<li>Experience managing/configuring non-HTTP applications (email, DNS, FTP, SSH, etc.)</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
