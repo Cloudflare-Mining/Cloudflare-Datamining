@@ -3311,6 +3311,14 @@
 						"compatDisableFlag": "disable_fast_jsg_struct",
 						"compatEnableFlag": "enable_fast_jsg_struct"
 					}
+				},
+				{
+					"name": "cacheReload",
+					"annotations": {
+						"compatDisableFlag": "cache_reload_disabled",
+						"compatEnableFlag": "cache_reload_enabled",
+						"experimental": "true"
+					}
 				}
 			]
 		},
