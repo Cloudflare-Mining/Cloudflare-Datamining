@@ -26,8 +26,9 @@
 	<li>Mentoring fellow team members on risk program initiatives&nbsp;</li>
 	<li>Some travel may be required to engage teammates and stakeholders in San Francisco, Austin, London, Lisbon, or other global Cloudflare locations.&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p><strong>Desirable skills, knowledge and experience.</strong></p>
 <ul>
+	<li>Total work experience of 10+yrs</li>
 	<li>Senior level experience typically gained in 4-8 years working in Security Governance, Risk, and Compliance&nbsp;</li>
 	<li>Experience conducting risk &amp; controls assessments and risk advisory</li>
 	<li>Experience with risk rating methodologies</li>
