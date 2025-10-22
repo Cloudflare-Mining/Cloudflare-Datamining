@@ -32,10 +32,10 @@
 	<p>Second, many of the DNS responses are generated on-demand. To mention just two use cases:</p>
 	<ul>
 		<li>
-			<p>Some of our DNS responses <a href="https://blog.cloudflare.com/dnssec-done-right">are based on location</a></p>
+			<p>Some of our DNS responses <a href="http://staging.blog.mrk.cfdata.org/dnssec-done-right">are based on location</a></p>
 		</li>
 		<li>
-			<p><a href="https://blog.cloudflare.com/black-lies">We are using black lies and DNS shotgun for DNSSEC</a></p>
+			<p><a href="http://staging.blog.mrk.cfdata.org/black-lies">We are using black lies and DNS shotgun for DNSSEC</a></p>
 		</li>
 	</ul>
 	<p>Storing data in modern databases and dynamically generating responses poses a fundamental problem to ANY.</p>
@@ -71,16 +71,16 @@
 	<p>Furthermore, since the "ANY" query can generate a large response, they were often used for DNS reflection attacks. Authoritative providers receive a spoofed ANY query and send the large answer to a target, potentially causing DoS damage. We have blogged about that many times:</p>
 	<ul>
 		<li>
-			<p><a href="https://blog.cloudflare.com/the-ddos-that-knocked-spamhaus-offline-and-ho">The DDoS that knocked Spamhaus offline</a></p>
+			<p><a href="http://staging.blog.mrk.cfdata.org/the-ddos-that-knocked-spamhaus-offline-and-ho">The DDoS that knocked Spamhaus offline</a></p>
 		</li>
 		<li>
-			<p><a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">Deep inside a DNS amplification attack</a></p>
+			<p><a href="http://staging.blog.mrk.cfdata.org/deep-inside-a-dns-amplification-ddos-attack">Deep inside a DNS amplification attack</a></p>
 		</li>
 		<li>
-			<p><a href="https://blog.cloudflare.com/reflections-on-reflections">Reflections on reflections</a></p>
+			<p><a href="http://staging.blog.mrk.cfdata.org/reflections-on-reflections">Reflections on reflections</a></p>
 		</li>
 		<li>
-			<p><a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">How the CPSC is inadvertently behind the largest attacks</a></p>
+			<p><a href="http://staging.blog.mrk.cfdata.org/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">How the CPSC is inadvertently behind the largest attacks</a></p>
 		</li>
 	</ul>
 	<p>The DoS problem with ANY is really old. Here is a discussion about a <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2013-May/010178.html">patch to bind tweaking ANY from 2013</a>.</p>
@@ -97,13 +97,13 @@
 	<p>In 2015 frustrated with the experience we announced we would like to stop giving responses to "ANY" queries and wrote a (controversial at a time) blog post:</p>
 	<ul>
 		<li>
-			<p><a href="https://blog.cloudflare.com/deprecating-dns-any-meta-query-type">Deprecating DNS ANY meta-query type</a></p>
+			<p><a href="http://staging.blog.mrk.cfdata.org/deprecating-dns-any-meta-query-type">Deprecating DNS ANY meta-query type</a></p>
 		</li>
 	</ul>
 	<p>A year later we followed up explaining possible solutions:</p>
 	<ul>
 		<li>
-			<p><a href="https://blog.cloudflare.com/what-happened-next-the-deprecation-of-any">What happened next - the deprecation of ANY</a></p>
+			<p><a href="http://staging.blog.mrk.cfdata.org/what-happened-next-the-deprecation-of-any">What happened next - the deprecation of ANY</a></p>
 		</li>
 	</ul>
 	<p>And here we come today! With <a href="https://tools.ietf.org/html/rfc8482">RFC8482</a> we have an RFC proposed standard clarifying that controversial query.</p>

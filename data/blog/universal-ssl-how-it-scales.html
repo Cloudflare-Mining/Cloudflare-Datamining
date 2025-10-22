@@ -49,12 +49,12 @@ RC4: 		0.0003%</code></pre>
 	<p>In our post about <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a>, we mentioned new work we did to improve session resumption. Resuming a TLS connection is not only faster in terms of latency—there is one less round-trip to the server—but it’s also more lightweight because the server can skip the expensive asymmetric cryptographic operations.</p>
 	<p>The TLS protocol has two ways to resume a session: session tickets and session IDs. In session ID resumption, the server stores the session information for reuse later. For session tickets, the session information is encrypted by a key known only by the server and sent to the client in the handshake in a “session ticket”. When the client wants to resume a session, it can send the session ticket to the server which can decrypt it and resume the session. By storing the connection information in a way that it can be reused later, the expensive parts of the handshake are not necessary.</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2014/Sep/session_resumption_with_session_ticket.jpg">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2014/Sep/session_resumption_with_session_ticket.jpg">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53uz7327RW3oJxRIyI7fi/18c27e58c26e577a2d6b11788d9679a8/session_resumption_with_session_ticket.jpg" alt="Session resumption with session tickets" class="kg-image" width="1297" height="605" loading="lazy">
 		</a>
 	</figure>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2014/Sep/session_resumption_with_session_id.jpg">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2014/Sep/session_resumption_with_session_id.jpg">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1t5PpxBOHyEB7u7xHsxOLb/328f51c12005622ec485536b12730828/session_resumption_with_session_id.jpg" alt="Session resumption with session IDs" class="kg-image" width="1334" height="518" loading="lazy">
 		</a>
 	</figure>

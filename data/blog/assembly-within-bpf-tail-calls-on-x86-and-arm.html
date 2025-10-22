@@ -52,7 +52,7 @@ uint64_t fib(uint64_t n)
 	</figure>
 	<p>Listing 3. <code>fib_cool.c</code> compiled for x86-64 and arm64</p>
 	<p>The “okay” variant, disappointingly, leads to <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-10-bpf-tail-call/fib_okay.x86-64.disasm">more instructions</a> than a listing can fit. It is a spaghetti of <a href="https://en.wikipedia.org/wiki/Basic_block">basic blocks</a>.</p><!--kg-card-begin: html-->
-	<p><a href="https://raw.githubusercontent.com/cloudflare/cloudflare-blog/master/2022-10-bpf-tail-call/fib_okay.dot.png" target="_blank"><img style="border-width: 0px; border-style: none;" src="/content/images/2022/10/image6.png" alt="" width="1000" height="161"></a></p><!--kg-card-end: html-->
+	<p><a href="https://raw.githubusercontent.com/cloudflare/cloudflare-blog/master/2022-10-bpf-tail-call/fib_okay.dot.png" target="_blank"><img style="border-width: 0px; border-style: none;" src="http://staging.blog.mrk.cfdata.org/content/images/2022/10/image6.png" alt="" width="1000" height="161"></a></p><!--kg-card-end: html-->
 	<p>But more importantly, it is not free of <a href="https://textbook.cs161.org/memory-safety/x86.html#29-x86-function-call-in-assembly">x86 call instructions</a>.</p>
 	<pre class="language-shell"><code class="language-shell">$ objdump -d fib_okay.o | grep call
  10c:   e8 00 00 00 00          call   111 &lt;fib+0x111&gt;

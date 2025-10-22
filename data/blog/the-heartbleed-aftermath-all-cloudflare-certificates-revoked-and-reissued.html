@@ -42,7 +42,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dpnaj0pPq5oAQcU254Alx/0d119b94a67a25a9c643a0b3209992ce/Screen_Shot_2014-04-17_at_15.04.27.png" alt="OpenSSL memory use" class="kg-image" width="120" height="1404" loading="lazy">
 
 	</figure>
-	<p>](<a href="https://blog.cloudflare.com/content/images/frame-26.png">/content/images/frame-26.png</a>)</p>
+	<p>](<a href="https://blog.cloudflare.com/content/images/frame-26.png">http://staging.blog.mrk.cfdata.org/content/images/frame-26.png</a>)</p>
 	<p>The remnants are what enabled Heartbleed to leak private keys. A great deal of the green (in use) memory is being used by OpenSSL as buffers (memory where requests and responses are handled). If some of that green memory near the yellow key remnants is used for a Heartbleed request the yellow memory may be copied into the Heartbleed response and the key may leak.</p>
 	<p>Here's what that looks like in memory:</p>
 	<p>(gdb) x/128xb 0xbd1560

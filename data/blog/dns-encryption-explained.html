@@ -168,7 +168,7 @@
 		<li style="padding-bottom:0">Android 9: <a href="https://android-developers.googleblog.com/2018/04/dns-over-tls-support-in-android-p.html">supports</a> DoT through its “Private DNS” feature. Modes:
 			<ul>
 				<li>Opportunistic mode (“Automatic”) is used by default. The resolver from network settings (typically DHCP) will be used.</li>
-				<li>Strict mode can be <a href="https://blog.cloudflare.com/enable-private-dns-with-1-1-1-1-on-android-9-pie">configured</a> by setting an explicit hostname. No IP address is allowed, the hostname is resolved using the default resolver and is also used for validating the certificate. (<a href="https://github.com/aosp-mirror/platform_frameworks_base/commit/a24d459a5d60c706472f9b620d079cd0a40a7279">Relevant source code</a>)</li>
+				<li>Strict mode can be <a href="http://staging.blog.mrk.cfdata.org/enable-private-dns-with-1-1-1-1-on-android-9-pie">configured</a> by setting an explicit hostname. No IP address is allowed, the hostname is resolved using the default resolver and is also used for validating the certificate. (<a href="https://github.com/aosp-mirror/platform_frameworks_base/commit/a24d459a5d60c706472f9b620d079cd0a40a7279">Relevant source code</a>)</li>
 			</ul>
 		</li>
 		<li>iOS and Android users can also install the <a href="https://1.1.1.1">1.1.1.1 app</a> to enable either DoH or DoT support in strict mode. Internally it uses the VPN programming interfaces to enable interception of unencrypted DNS traffic before it is forwarded over a secure channel.</li>

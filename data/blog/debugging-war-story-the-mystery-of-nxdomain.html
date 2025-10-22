@@ -57,13 +57,13 @@ func main() {
 }</code></pre>
 	<p>We run <code>net.LookupHost</code> in a loop with small pauses and log errors; that’s it. Packaging this into a <a href="https://www.docker.com">Docker</a> container and running on Marathon was an obvious choice for us, since that is how we run other services anyway. Logs get shipped to <a href="https://kafka.apache.org">Kafka</a> and then to <a href="https://www.elastic.co/products/kibana">Kibana</a>, where we can analyze them. Running this program on 65 machines doing lookups every 50ms shows the following error distribution (from high to low) across hosts:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2016/12/image01.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/12/image01.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sAJzwdZ6928uieteOs3if/5cbfd0ace54627052214ccf1439c9418/image01.png" alt="" class="kg-image" width="1484" height="528" loading="lazy">
 		</a>
 	</figure>
 	<p>We saw no strong correlation to racks or specific machines. Errors happened on many hosts, but not on all of them and in different time windows errors happen on different machines. Putting time on X axis and number of errors on Y axis showed the following:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2016/12/image00.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/12/image00.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dtzcTKyCg5QdgJLJaRLFT/cf51638f85c1b4c2a52f00b95fc84281/image00.png" alt="" class="kg-image" width="1579" height="208" loading="lazy">
 		</a>
 	</figure>

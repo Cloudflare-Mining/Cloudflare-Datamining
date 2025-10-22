@@ -63,14 +63,14 @@ Link: &lt;/images/empire.jpg&gt;; rel=preload; as=image</code></pre>
 	<p>To understand the effect of Server Push on the example I used Google Chrome Canary and loaded the page twice (once without the <code>Link</code> headers so that no push would occur and once with).</p>
 	<p>Here's the simple waterfall over HTTP/2 with no Server Push:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2016/05/Screen-Shot-2016-05-13-at-12-22-24-PM.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/05/Screen-Shot-2016-05-13-at-12-22-24-PM.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oN4WtS0666At1eTeB2Xkr/aa2a06fb0da68d4e5a068a944c1c6da9/Screen-Shot-2016-05-13-at-12-22-24-PM.png" alt="" class="kg-image" width="1181" height="388" loading="lazy">
 		</a>
 	</figure>
 	<p>The page load time was 651ms. You can see the initial page HTML load in 175ms followed by the two images.</p>
 	<p>How here's the waterfall with HTTP/2 Server Push:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2016/05/Screen-Shot-2016-05-13-at-12-20-58-PM.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/05/Screen-Shot-2016-05-13-at-12-20-58-PM.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2thpvABMv76ref5uY2LIhX/771d0c7d56cec749b84306fbbdd48ca7/Screen-Shot-2016-05-13-at-12-20-58-PM.png" alt="" class="kg-image" width="1171" height="366" loading="lazy">
 		</a>
 	</figure>

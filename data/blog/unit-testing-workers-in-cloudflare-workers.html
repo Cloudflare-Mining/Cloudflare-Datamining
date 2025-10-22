@@ -5,7 +5,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/V9gw5j3U7OqRNSvpw10sX/ce740ff0fdcf531a8242be039d699329/terminal-worker-1.png" alt="" class="kg-image" width="1198" height="750" loading="lazy">
 
 	</figure>
-	<p>We recently wrote about unit testing Cloudflare Workers within a mock environment using CloudWorker (a Node.js based mock Cloudflare Worker environment created by Dollar Shave Club's engineering team). <a href="https://blog.cloudflare.com/unit-testing-worker-functions">See Unit Testing Worker Functions.</a></p>
+	<p>We recently wrote about unit testing Cloudflare Workers within a mock environment using CloudWorker (a Node.js based mock Cloudflare Worker environment created by Dollar Shave Club's engineering team). <a href="http://staging.blog.mrk.cfdata.org/unit-testing-worker-functions">See Unit Testing Worker Functions.</a></p>
 	<p>Even though Cloudflare Workers deploy globally within seconds, software developers often choose to use local mock environments to have the fastest possible feedback loop while developing on their local machines. CloudWorker is perfect for this use case but as it is still a mock environment it does not guarantee an identical runtime or environment with all Cloudflare Worker APIs and features. This gap can make developers uneasy as they do not have 100% certainty that their tests will succeed in the production environment.</p>
 	<p>In this post, we're going to demonstrate how to generate a Cloudflare Worker compatible test harness which can execute mocha unit tests directly in the production Cloudflare environment.</p>
 	<div class="flex anchor relative">

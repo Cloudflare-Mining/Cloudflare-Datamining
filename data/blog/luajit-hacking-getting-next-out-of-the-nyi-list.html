@@ -103,7 +103,7 @@ end</code></pre>
 	<p>This tells us... well, a lot of things. If you look closely, you’ll see the same two traces, one is a loop, the second starts at <code>1/3</code> and returns to trace #1. Each one shows some bytecode instructions, an IR listing, and the final mcode. There are several options to turn on and off each listing, and more info like the registers allocated to some IR instructions, the “snapshot” structures that allow the interpreter to continue when a compiled trace exits, etc.</p>
 	<p>Now using loom:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2017/02/image00.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2017/02/image00.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2gsTyF05jZO2nJd8HvEec8/9deaa76956425f382f1e68aba1e9b13e/image00.png" alt="" class="kg-image" width="1913" height="1534" loading="lazy">
 		</a>
 	</figure>
@@ -342,14 +342,14 @@ typedef struct Node {
 	<p>So, how does it perform? These tests do a thousand loops over a 10,000 element table, first using <code>next()</code> and then <code>pairs()</code>, with a simple addition in the inner loop. To get <code>pairs()</code> compiled, I just disabled the <code>ISNEXT</code>/<code>ITERN</code> optimization, so it actually uses <code>next()</code>. In the third test the variable in the addition is initialized to <code>0ULL</code> instead of just <code>0</code>, triggering the use of FFI.</p>
 	<p>First test is with all 10,000 elements on sequential integers, making the table a valid sequence, so <code>ipairs()</code> (which is already compiled) can be used just as well:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2017/02/image02.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2017/02/image02.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4m2lJk0jSnK7D5qd81PEgz/15ad27baf4c66609632dd903b5829f05/image02.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
 		</a>
 	</figure>
 	<p>So, compiled <code>next()</code> is quite a lot faster, but the <code>pairs()</code> optimization in the interpreter is very fast. On the other hand, the smallest smell of FFI completely trashes interpreter performance, while making compiled code slightly tighter. Finally, <code>ipairs()</code> is faster, but a big part of it is because it stops on the first <code><b>nil</b></code>, while <code>next()</code> has to skip over every <code><b>nil</b></code> at the end of the array, which by default can be up to twice as big as the sequence itself.</p>
 	<p>Now with 5,000 (sequential) integer keys and 5,000 string keys. Of course, we can't use <code>ipairs()</code> here:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2017/02/image01.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2017/02/image01.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2c4yKNAwBjIqqQDz8Em4Hr/56cb0a4af36b3f68df25b36367d8e30a/image01.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
 		</a>
 	</figure>

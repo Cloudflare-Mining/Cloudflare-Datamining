@@ -95,7 +95,7 @@
 	</figure>
 	<p>This looked amazing, but it was rather low throughput nginx errors topic, containing literally string error messages from nginx. Our main target was <code>requests</code> HTTP log topic with <a href="https://capnproto.org">capnp</a> encoded messages that are much harder to compress. Naturally, we moved on to try out one <code>partition</code> of requests topic. First results were insanely good:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/5.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/5.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ziqP8gINUJ6THlURi989m/28ecfd3e722da5fdbe2cb5ab048cb80c/5.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
@@ -176,12 +176,12 @@
 	</table>
 	<p>Gzip sounded too expensive from the beginning (especially in Go), but Snappy should have been able to keep up. We profiled our producer, and it was spending just 2.4% of CPU time in Snappy compression, never saturating a single core:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/6.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/6.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6X1yjXYICcPKzHxKKdQ76K/73278df1829440a7456f32d574d93f1a/6.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/7.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/7.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57E71JTk6DPA6oo8SOLghQ/83edd6f2db81a83db4bd8762117eeb1d/7.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
@@ -457,62 +457,62 @@ Dec 29 23:18:59 mybroker kafka[33461]: INFO inPlaceAssignment = false, condition
 	<p>In production, we started small with Java based consumers and producers. Our first production topic was just 1Mbps and 600rps of nginx error logs. Messages there were very repetitive, and we were able to get whopping 8x decrease in size with batching records for just 1 second across 2 partitions.</p>
 	<p>This gave us some confidence to move onto next topic with <code>journald</code> logs encoded with JSON. Here we were able to reduce ingress from 300Mbps to just 50Mbps (yellow line on the graph):</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/8.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/8.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2MBwqqBM9fKfK5etewI3K8/a6c3e5154769721ace34e35448e0e9d8/8.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/10.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/10.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VRIDnquD9cRDxx9EpNliX/abed839321dde455854bea1c93a0fd76/10.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/11.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/11.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1S1GiVnOPIEaZi20vDdu7B/4e0b4a064af5e576f615b18618e22a14/11.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/12.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/12.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6F0xiuQrUHNiU2Q0VgaYtC/2176de2b39c4ec3493f06dae8a995ff2/12.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/13.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/13.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lvIkKRy1yrsTJNe4n4DEP/d2da438e3fbe1d9f40eb2e1347b684a7/13.png" alt="" class="kg-image" width="3104" height="1496" loading="lazy">
 		</a>
 	</figure>
 	<p>With all major topics in DNS cluster switched to Snappy we saw even better picture in terms of broker CPU usage:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/14.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/14.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ERRHln9aNu0pSoKSFFQkA/197e14bebbe7642b690f23363a5cdf1e/14.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/15.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/15.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7cfmeyd2Jch2ZfTquu14rW/63fd83ad46a6484dd8b7ebe446b21e09/15.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
 	<p>On the next graph you can see Kafka CPU usage as the purple line and producer CPU usage as the green line:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/16.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/16.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QWGl1NhwkYWMHl5Q5Lius/a4085495612071ae2a16a8aa9a675a05/16.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
 	<p>CPU usage of the producer did not go up substantially, which means most of the work is spent in non compression related tasks. Consumers did not see any increase in CPU usage either, which means we've got our 2.6x decrease in size practically for free.</p>
 	<p>It was time to hunt the biggest beast of all: <code>requests</code> topic with HTTP access logs. There we were doing up to 100Gbps and 7.5Mrps of ingress at peak (a lot more when big attacks are happening, but this was a quiet week):</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/17.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/17.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/695gJ4I1AIqDHKIH5phRKh/36940318a0b87aa698b4e088c60fc0c2/17.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
 	<p>With many smaller topics switched to Snappy already, we did not need to do anything special here. This is how it went:</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/18.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/18.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2b39JEnQP0w68PhPDkGjOz/b4f74fb90ed73a44aa8b05fca03a9de3/18.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/19.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/19.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KvLGzI0Rnk44SXDJb6JXT/cdb6ee681318809a65b8ef8a61229589/19.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
@@ -650,12 +650,12 @@ zlib 1.2.11 -9           3.63 MB/s   446 MB/s      235604  25.41 rrdns.recordbat
 	<p>We <a href="https://github.com/bobrik/kafka/commit/8b17836efda64dba1ebdc080e30ee2945793aef3">ported</a> the patch to Kafka 1.0.0 release and pushed it in production. After another round of smaller scale testing and with <a href="https://github.com/bobrik/sarama/commit/c36187fbafab5afe5c152d2012b05b9306196cdb">patched</a> clients we pushed Zstd into production for requests topic.</p>
 	<p>Graphs below include switch from no compression (before 2/9) to Snappy (2/9 to 2/17) to Zstandard (after 2/17):</p>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/20.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/20.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/466acpqo8HHXc9mml41SGp/178fefc55aa2e9d29a484169ee47c0ed/20.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
 	<figure class="kg-card kg-image-card ">
-		<a href="https://blog.cloudflare.com/content/images/2018/03/21.png">
+		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/03/21.png">
 			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HSguckI7mJln65401u5Y2/cd9e39e86898c214637e0cb0c865ae02/21.png" alt="" class="kg-image" width="3104" height="1980" loading="lazy">
 		</a>
 	</figure>
