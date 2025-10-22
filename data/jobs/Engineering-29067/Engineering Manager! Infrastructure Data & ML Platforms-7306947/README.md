@@ -5,46 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: NYC, SF, Austin TX</strong></p>
-<p><strong>About Product Management at Cloudflare&nbsp;</strong></p>
-<p>As a<strong> Senior Product Manager at Cloudflare</strong>, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
-<p>As a Senior Product Manager within the Application Performance team, you will own a critical part of our comprehensive platform that ensures web properties, applications, and networks are fast, reliable, and intelligent. This portfolio spans foundational capabilities like CDN optimization and Origin Shielding, advanced low-latency application delivery, and customer-facing data products built on real-world usage. You will set the strategic direction for how Cloudflare eliminates latency and provides the authoritative source of truth on performance for applications running across our global network.</p>
-<h4>About the role</h4>
-<p>As Senior Product Manager <strong>on the Application Performance team</strong>, you’ll help shape a key part of our core product experience. This role requires a candidate who can navigate complex technical domains—from TCP/IP protocols and caching architectures to data analytics and user experience—and translate those into clear, marketable features. You will define the roadmap for one or more core services that impact every byte of traffic processed by Cloudflare. You will collaborate closely with engineering teams to leverage our massive network footprint and unique traffic insights to deliver features that fundamentally change how the internet operates, ultimately accelerating adoption for customers ranging from individual developers to the world's largest enterprises.</p>
+<p><strong>Location: Washington, DC, NYC, San Francisco or Austin US&nbsp;</strong></p>
+<p><strong>About the dept.</strong></p>
+<p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</p>
+<p><strong>&nbsp;</strong></p>
 <p><strong>What you'll do</strong></p>
+<p>We are looking for an <strong>Engineering Manager</strong> to join Cloudflare who will be responsible for the data, tools, forecasts, and platforms that support Capacity Planning and other functions. You will lead a team of passionate and talented full stack and data engineers that develop the forecasts and visualizations that ensure we support demand growth while continually improving our operating margins.&nbsp;</p>
+<p>Working in partnership with Planners and Data Analysts from our Capacity Planning team, your team will build, operationalize, and scale the tools, data pipelines, forecast models and visualizations needed to optimize our infrastructure spend. You will also lead the engineers responsible for our <strong>Maintenance Optimizer</strong> application: a Maintenance Coordination System based on a Graph detailing every interface on every device, and all of their connections, for the entire Cloudflare network.</p>
+<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment. You have experience scaling machine learning models (<strong>forecasting at scale</strong>). You build great relationships with your (internal) customers and deeply understand their needs.&nbsp; Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.&nbsp;</p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Own your space. You will own the priorities and scope, partnering with a high performing engineering team focused on one of Cloudflare’s Application Performance products.&nbsp;</li>
-	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
-	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
-	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
-	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.&nbsp;</li>
-</ul>
-<h4>&nbsp;</h4>
-<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
-<p>At Cloudflare, Product Managers are measured both on outcomes (“the what”) and how they accomplish results. Examples of desirable skills, knowledge and experience:</p>
-<ul>
-	<li>5+ years of experience in product management, solutions engineering, or related roles</li>
-	<li>Familiarity with designing or contributing to habit-forming product experiences</li>
-	<li>Experience defining and tracking KPIs to measure product or user behavior impact</li>
-	<li>Strong collaboration skills and experience working with engineering and design teams</li>
-	<li>Comfort operating in fast-paced, evolving environments</li>
-	<li>A passion for user empathy and delivering customer-centric solutions</li>
-	<li>Excellent communication skills and attention to detail</li>
-	<li>Curiosity and a strong desire to learn technical topics, especially in security or observability</li>
-	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen is a key part of the role.</li>
-</ul>
-<h4><strong>Bonus points</strong></h4>
-<ul>
-	<li>Prior experience as a product manager for a team focused on driving the roadmap for products focused on Edge infrastructure, high-performance web delivery, or network optimization.</li>
-	<li>Prior experience delivering cloud infrastructure products at global scale.</li>
-	<li>Data fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>At least 3 years of management experience</li>
+	<li>At least 8 years of hands on software development experience on meaningfully complex systems</li>
+	<li>Comfortable leading and hiring a team that builds the backend bits and frontend widgets</li>
+	<li>Technical expert who can guide and develop the team in their architectural and coding skills</li>
+	<li>Ability to do deep code reviews that allow for ongoing employee development and technical excellence in the products you ship.</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>Comfortable managing teams/projections with tight deadlines and short release cycles</li>
+	<li>Strong verbal and written English language skills</li>
+	<li>Experience with operationalizing and scaling ML Forecasting models</li>
+	<li>Experience with DCIM, CMDB, IPAM, and other Data Center and Asset Lifecycle Management tools is a plus</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $202,000 - $246,000</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $192,000 - $234,000</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $225,000 - $275,000</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $213,000 - $261,000.</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
