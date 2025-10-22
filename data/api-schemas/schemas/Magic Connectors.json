@@ -142,6 +142,10 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"license_key": {
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"notes": {
 													"type": "string",
 													"x-auditable": true,
@@ -691,6 +695,10 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"license_key": {
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"notes": {
 														"type": "string",
 														"x-auditable": true,
@@ -1178,6 +1186,10 @@
 												"last_updated": {
 													"type": "string",
 													"x-auditable": true
+												},
+												"license_key": {
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"notes": {
 													"type": "string",
@@ -7115,33 +7127,52 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"activated": {
-								"type": "boolean",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
+						"allOf": [
+							{
+								"properties": {
+									"activated": {
+										"type": "boolean",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"interrupt_window_duration_hours": {
+										"type": "number",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"interrupt_window_hour_of_day": {
+										"type": "number",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"notes": {
+										"type": "string",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"timezone": {
+										"type": "string",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									}
+								},
+								"type": "object"
 							},
-							"interrupt_window_duration_hours": {
-								"type": "number",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
-							},
-							"interrupt_window_hour_of_day": {
-								"type": "number",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
-							},
-							"notes": {
-								"type": "string",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
-							},
-							"timezone": {
-								"type": "string",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
+							{
+								"properties": {
+									"provision_license": {
+										"description": "When true, regenerate license key for the connector.",
+										"type": "boolean",
+										"x-go-type": "maybe.Maybe[bool]",
+										"x-go-type-import": {
+											"path": "go.cfdata.org/mconn/api/maybe"
+										},
+										"x-go-type-skip-optional-pointer": true
+									}
+								},
+								"type": "object"
 							}
-						},
+						],
 						"type": "object"
 					}
 				}
@@ -7265,6 +7296,10 @@
 												"last_updated": {
 													"type": "string",
 													"x-auditable": true
+												},
+												"license_key": {
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"notes": {
 													"type": "string",
@@ -7666,7 +7701,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Edit Connector to update specific properties",
+		"summary": "Edit Connector to update specific properties or Re-provision License Key",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -7704,6 +7739,7 @@
 							{
 								"properties": {
 									"device": {
+										"description": "Exactly one of id, serial_number, or provision_license must be provided.",
 										"maxProperties": 1,
 										"minProperties": 1,
 										"properties": {
@@ -7711,6 +7747,10 @@
 												"type": "string",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
+											},
+											"provision_license": {
+												"description": "When true, create and provision a new licence key for the connector.",
+												"type": "boolean"
 											},
 											"serial_number": {
 												"type": "string",
@@ -7880,6 +7920,10 @@
 												"last_updated": {
 													"type": "string",
 													"x-auditable": true
+												},
+												"license_key": {
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"notes": {
 													"type": "string",
@@ -8396,33 +8440,52 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"activated": {
-								"type": "boolean",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
+						"allOf": [
+							{
+								"properties": {
+									"activated": {
+										"type": "boolean",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"interrupt_window_duration_hours": {
+										"type": "number",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"interrupt_window_hour_of_day": {
+										"type": "number",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"notes": {
+										"type": "string",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"timezone": {
+										"type": "string",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									}
+								},
+								"type": "object"
 							},
-							"interrupt_window_duration_hours": {
-								"type": "number",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
-							},
-							"interrupt_window_hour_of_day": {
-								"type": "number",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
-							},
-							"notes": {
-								"type": "string",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
-							},
-							"timezone": {
-								"type": "string",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
+							{
+								"properties": {
+									"provision_license": {
+										"description": "When true, regenerate license key for the connector.",
+										"type": "boolean",
+										"x-go-type": "maybe.Maybe[bool]",
+										"x-go-type-import": {
+											"path": "go.cfdata.org/mconn/api/maybe"
+										},
+										"x-go-type-skip-optional-pointer": true
+									}
+								},
+								"type": "object"
 							}
-						},
+						],
 						"type": "object"
 					}
 				}
@@ -8546,6 +8609,10 @@
 												"last_updated": {
 													"type": "string",
 													"x-auditable": true
+												},
+												"license_key": {
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"notes": {
 													"type": "string",
@@ -8947,7 +9014,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Replace Connector",
+		"summary": "Replace Connector or Re-provision License Key",
 		"tags": [
 			"Magic Connectors"
 		],
