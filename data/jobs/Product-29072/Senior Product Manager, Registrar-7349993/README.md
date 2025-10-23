@@ -7,32 +7,37 @@
 </div>
 <p><strong>Available Locations: Atlanta, US, Austin, US, Denver, US, New York, US, Seattle, US, Toronto, Canada, Washington DC, US, Lisbon, Portugal, London, UK</strong></p>
 <p><strong>About the Role</strong></p>
-<p>Cloudflare is seeking a high-impact and experienced product manager to join our Platform Tools team. The Platform Tools team builds both the platform and the tools that enables Cloudflare employees to be as efficient and productive as possible when supporting and shipping the products and features that Cloudflare customers rely upon. Your users include customer-facing teams – such as customer support, customer success, and solution engineers – as well as other product teams offering their tools on the platform.</p>
-<p><strong>Problems you may face:</strong></p>
+<p>Cloudflare Registrar is a core part of the Cloudflare experience, offering customers a simple and&nbsp; secure way to register and manage their domains. Using Cloudflare, customers register and renew domains at-cost and do not pay any mark up fees.</p>
+<p>As the product leader for Cloudflare Registrar, you will own the vision, strategy, and execution for this key service, directly contributing to Cloudflare's mission and growth. This is not a typical product manager role. Not only will you be responsible for the product strategy and vision, but also the overall success of the registrar business.</p>
+<p>Problems you may face:</p>
 <ul>
-	<li>How do we empower Cloudflare employees to solve customer problems quickly, reducing the operational burden that comes with rapid feature releases?</li>
-	<li>How can we deliver a best-in-class, secure platform for internal tools that enables engineering teams to easily build, use, and support their own solutions?</li>
-	<li>What is the best way to balance building broad platform "constructs" versus specific tooling requests to maximize impact on employee productivity and customer satisfaction?&nbsp;</li>
+	<li>How can we deliver a best-in-class domain registration and management experience that seamlessly integrates with Cloudflare's broader suite of security, performance, and reliability services?</li>
+	<li>How do we drive adoption and encourage domain transfers into Cloudflare, while also recognizing that registering a domain is often our customers’ first step in their Cloudflare journey?</li>
+	<li>How do we strategically position Cloudflare Registrar in a competitive market, leveraging our unique strengths while ensuring sustainable growth?</li>
+	<li>How can we streamline the complexities of domain transfers, renewals, and compliance across various TLDs and registry requirements?</li>
+	<li>How do we effectively manage the operations and financial performance of the Registrar business, working closely with finance and registry partners?</li>
 </ul>
-<p>As the Senior Product Manager for Product Platform Tools, you will be responsible for defining and executing the product roadmap for the platform capabilities that empower our customer support, customer success, and solution engineering teams. This high-impact role requires a strategic thinker with a strong technical acumen and high empathy for both internal users and external customers.</p>
+<p><strong>&nbsp;</strong></p>
+<p>As the Senior Product Manager for Registrar, you’ll partner closely with dedicated engineering, design, legal, compliance, finance, and go-to-market teams. You will own the Registrar business, collaborating extensively with Finance to ensure its financial health and strategic alignment. At the same time, you’ll be expected to contribute to a high-performance culture and citizenship at Cloudflare - sharing your knowledge and energy to accelerate the organization.</p>
 <p><strong>Key Competencies</strong></p>
 <p>We are looking for someone who is curious, customer-centered, can learn quickly, think creatively, and work cross-functionally. Key responsibilities include:</p>
 <ul>
-	<li><strong>Business &amp; Product Vision and Strategy:</strong> Define and communicate the vision, strategic direction, and goals for the Platform Tools initiatives.</li>
-	<li><strong>Roadmap Prioritization:</strong> Develop and maintain a product roadmap that optimizes both short-term wins with long-term version with investments in platform capabilities and&nbsp; customer experience improvements.</li>
-	<li><strong>Champion of the customer:</strong> Develop a deep understanding of the marketing technology landscape, growth best practices, and the needs and behaviors of Cloudflare's internal users and external customers.&nbsp;</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Act as a central point of contact between various product, engineering, security, legal, and support teams throughout the product lifecycle to successfully execute the roadmap and impact for customers.</li>
-	<li><strong>Data-informed Decisions:</strong> Define key metrics, establish tracking mechanisms, and analyze product performance to identify areas for improvement.</li>
+	<li><strong>Business &amp; Product Vision and Strategy:</strong> Define and communicate the vision, strategic direction, and goals for Cloudflare Registrar.</li>
+	<li><strong>Roadmap Prioritization:</strong> Develop and maintain a product roadmap that balances core registrar functionality, user experience improvements, new feature development, compliance requirements, integrations, and financial objectives.</li>
+	<li><strong>Operation and Financial Oversight:</strong> Work closely with finance and registry partners to manage costs, forecasting, and reporting for the Registrar business.</li>
+	<li><strong>Champion of the customer:</strong> Conduct qualitative user research through customer calls and surveys to understand the needs, workflows, and challenges of domain owners. Additionally, gather feedback internally from various channels and customer-facing teams to develop insights on customer challenges and new product requirements.</li>
+	<li><strong>Cross-functional Partnership:</strong> Collaborate with engineering, product design, and context experience design to draft and review product requirement documents, design specs, and engineering specs. Partner extensively with Finance, Legal, Compliance, Marketing, Sales, Customer Support, and Business Intelligence to ensure successful product launches, user adoption, regulatory adherence, and financial success.</li>
+	<li><strong>Data-informed Decisions:</strong> Create dashboards to analyze user behavior, registration/transfer/renewal funnels, experiment results, and key financial metrics (revenue, margin, costs). Collaborate with the business intelligence team to analyze backend metrics impacted by new features and business initiatives.</li>
 	<li><strong>First-class Execution:</strong> Gets things done and has a track record of driving excellence, impact, and managing complex projects end-to-end.</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Proven track record of successfully defining and launching impactful platform products and driving impact</li>
-	<li>Excellent analytical and problem-solving skills, with the ability to interpret data and translate it into actionable insights.</li>
-	<li>Data-fluency – There is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
-	<li>Engineering fluency – While it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
-	<li>Exceptional communication – Strong interpersonal skills with the ability to influence and build consensus across diverse teams.&nbsp;&nbsp;</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.</li>
+	<li>Strong history of impact</li>
+	<li>Experience managing a product line with P&amp;L responsibility and experience collaborating closely with finance teams&nbsp;</li>
+	<li>Deep understanding of the domain name system (DNS), ICANN policies, registry operations, and the broader domain registration industry.</li>
+	<li>Data-fluency - there is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
+	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;&nbsp;</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may vary based on location and level. This role is eligible to participate in Cloudflare's equity (RSU) program.&nbsp;</p>
@@ -40,6 +45,7 @@
 	<li>New York, Seattle, &amp; Washington D.C. estimated salary: $192,000 - $234,000 (Senior Level)</li>
 	<li>Austin &amp; Colorado estimated salary: $170,000 - $208,000 (Senior Level)</li>
 </ul>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
