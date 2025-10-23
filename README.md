@@ -1,44 +1,58 @@
-# Cloudflare Datamining
+# Cloudflare Data Mining
 
-## Intro
+## Overview
 
-This repository mines a lot of publicly available data from [Cloudflare](https://www.cloudflare.com/), including their customer dashboard, NPM/GitHub repos, marketing site, and more. Automated commits will be made frequently and will show how the data changes over time.
+This repository collects publicly available data related to [Cloudflare](https://www.cloudflare.com/). It aggregates information from sources like the Cloudflare customer dashboard, GitHub/NPM repositories, marketing site, and more. Automated commits are made frequently to track how the data evolves over time.
 
-Some of the data can be visualised on the [website](https://cfdata.lol).
+Some of the collected data can be visualized on the [website](https://cfdata.lol).  
 
-You can join the [Discord](https://discord.gg/Z94Hn6qVDm) for notifications of changes.
+You can also join the [Discord community](https://discord.gg/Z94Hn6qVDm) for notifications on updates.
 
-## Structure
-- Scripts are in `scripts`
-- Data is in `data`
+---
 
-## Data
+## Repository Structure
 
-- `account`: Tracks a free account's entitlements and flags
-- `api-schemas`: This extracts the API schemas from `api.cloudflare.com`, and tracks their changes over time.
-- `blog`: This tracks blog post content over time.
-- `cdn-cgi`: This tracks various changes to `cdn-cgi` endpoints on Cloudflare's CDN, as well as `request.cf` keys for any additions or changes. This also tracks component changes throughout Cloudflare's network and their different datacenters.
-- `coveo`: This tracks updates to the Coveo Cloudflare indexes, which are used for searching the blog, learning center, etc.
-- `dashboard-subroutes`: This extracts subroutes from the dashboard which can be useful for determining undocumented APIs.
-- `dashboard-translations`: This extracts the translations from the dashboard, and tracks their changes over time. This is useful for seeing new features and changes in the dashboard.
-- `dashboard`: This extracts other miscellaneous data from the dashboard, and tracks their changes over time, including URLs, generic strings/callees/regexes, etc.
-- `doh`: This tracks the DOH schema returned by 1.1.1.1
-- `domains`: This tracks domains that Cloudflare owns. It's not perfect, but it does pick up a lot of domains owned by Cloudflare.
-- `entitlements`: This isn't automated, but tracks a list of all known entitlements for accounts and zones.
-- `icons`: This tracks the `@cloudflare/component-icon` NPM package.
-- `gates`: This tracks the active gates used for A/B experiments on the dash, etc.
-- `github-repos`: This tracks updates, additions, etc. to all GitHub repos under the Cloudflare org.
-- `jobs`: This tracks Cloudflare job post listings, which can reveal upcoming projects.
-- `marketing`: This extracts the raw JSON data for the marketing site, cloudflare.com.
-- `other`: This tracks some other miscellaneous data (like IPs), not tracked by other scripts.
-- `packages`: This tracks updates and any new packages owned by Cloudflare.
-- `products`: This tracks specific products API endpoints and their response keys.
-- `registrar`: This tracks Cloudflare Registrar available TLDs and pricing over time.
-- `types`: This tracks the `@cloudflare/types` NPM package, which can be useful for spotting changes to new billing subscriptions, etc.
-- `workerd`: This tracks various capnp schemas from `workerd`
-- `zt-dashboard-translations`: This extracts the translations from the Zero Trust dashboard, and tracks their changes over time. This is useful for seeing new features and changes in the ZT dashboard.
-- `zt-dashboard`: This extracts other miscellaneous data from the Zero Trust dashboard, and tracks their changes over time.
+- **`scripts/`** – Contains all the scripts used to mine and process data.  
+- **`data/`** – Stores the structured data collected by the scripts.
+
+---
+
+## Types of Data Collected
+
+Here’s a breakdown of the data categories:
+
+- **`account`** – Tracks entitlements and flags for free Cloudflare accounts.  
+- **`api-schemas`** – Extracts API schemas from `api.cloudflare.com` and tracks changes over time.  
+- **`blog`** – Monitors blog content and detects updates.  
+- **`cdn-cgi`** – Tracks Cloudflare CDN endpoints and `request.cf` keys, as well as component changes across datacenters.  
+- **`coveo`** – Observes updates to Coveo Cloudflare indexes used for search on blogs, learning centers, etc.  
+- **`dashboard-subroutes`** – Extracts dashboard subroutes, helping identify undocumented APIs.  
+- **`dashboard-translations`** – Monitors translations from the dashboard to detect new features or updates.  
+- **`dashboard`** – Collects miscellaneous dashboard data, including URLs, regexes, and generic strings.  
+- **`doh`** – Tracks the DNS over HTTPS (DoH) schema from 1.1.1.1.  
+- **`domains`** – Monitors domains owned by Cloudflare. Not comprehensive, but captures many.  
+- **`entitlements`** – Maintains a list of known account and zone entitlements (not automated).  
+- **`icons`** – Tracks updates in the `@cloudflare/component-icon` NPM package.  
+- **`gates`** – Monitors active A/B experiment gates on the dashboard.  
+- **`github-repos`** – Tracks additions, updates, and changes in Cloudflare’s GitHub repositories.  
+- **`jobs`** – Monitors Cloudflare job postings, which can hint at upcoming projects.  
+- **`marketing`** – Extracts raw JSON from the main Cloudflare marketing site.  
+- **`other`** – Captures miscellaneous data like IPs that aren’t tracked elsewhere.  
+- **`packages`** – Tracks new and updated NPM packages owned by Cloudflare.  
+- **`products`** – Monitors product-specific API endpoints and response keys.  
+- **`registrar`** – Tracks Cloudflare Registrar TLDs and pricing over time.  
+- **`types`** – Observes updates in the `@cloudflare/types` NPM package, helpful for spotting new billing features.  
+- **`workerd`** – Tracks various `workerd` capnp schemas.  
+- **`zt-dashboard-translations`** – Monitors translations from the Zero Trust dashboard to detect new features.  
+- **`zt-dashboard`** – Collects other miscellaneous data from the Zero Trust dashboard.
+
+---
 
 ## Contributing
 
-PRs are welcome! If you have an interesting Cloudflare account and would like to contribute your account/zone entitlements to grow the known list, please send me a JSON dump of your entitlements either via Discord (`CherryJimbo#0001`) or [Twitter (X)](https://twitter.com/cherryjimbo?lang=de) (`@CherryJimbo`).
+Contributions are welcome! If you have an interesting Cloudflare account and want to contribute your account or zone entitlements:
+
+1. Export a JSON dump of your entitlements.  
+2. Share it via Discord: `CherryJimbo#0001` or Twitter/X: [@CherryJimbo](https://twitter.com/cherryjimbo?lang=de).  
+
+Pull requests for improvements, new scripts, or better data tracking are always appreciated.
