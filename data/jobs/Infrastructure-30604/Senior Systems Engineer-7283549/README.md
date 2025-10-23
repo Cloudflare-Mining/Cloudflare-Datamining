@@ -11,6 +11,7 @@
 <p>Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.</p>
 <p>We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behavior is and we are capable of determining and exposing anomalous behavior.</p>
 <p>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h4>&nbsp;</h4>
 <p><strong>About the Role</strong></p>
 <p>In this role, you can expect to:</p>
 <ul>
@@ -36,16 +37,16 @@
 	<li>Expertise in React, TypeScript, and modern front-end systems</li>
 	<li>Experience with modern JavaScript bundling tools like Webpack or Vite</li>
 	<li>Familiarity with RESTful APIs</li>
+	<li>Familiarity with backend software development in Go</li>
 	<li>Experience building and maintaining integration test suites with API mocks</li>
 	<li>Experience building and scaling large-scale web applications.</li>
 </ul>
 <p><strong>Why Join Us?</strong></p>
 <ul>
-	<li>Help us shape and improve our customers’ experience with Email Security</li>
+	<li>Help us shape and improve the engineering process within Cloudflare.</li>
 	<li>Shape best practices and drive impactful engineering change.</li>
 	<li>Work with modern technologies and solve large-scale challenges.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
