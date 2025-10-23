@@ -5,34 +5,25 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About the role</strong></p>
-<p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
-<p>The Enterprise Risk Data Science Lead will be a critical role in building our global data analytics, automation and continuous auditing strategy and program.&nbsp; Reporting directly to our Chief Audit Executive, this leader will identify and implement advanced audit capabilities using data, programming and other available toolsets.&nbsp; This role will be highly collaborative with leaders both within Internal Audit and across the business to develop and deliver data-driven audit and risk management solutions.&nbsp; This leader will have the energy and intellectual curiosity to continue to deepen technical capabilities and broaden subject matter expertise, asserting their mission in delivering data-driven, advance audit capabilities to the core of our team across all areas of audit, compliance and risk management.</p>
-<h4><strong>What you'll do</strong></h4>
+<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
+<p><strong>About The Role&nbsp;</strong></p>
+<p>We are looking for a talented Distributed Systems Engineer to join the Data Localization team. The team is building technologies that allow our customers to harness Cloudflare's massive and performant network to meet their federal Data Sovereignty standards as well as their internal regionalization policies.</p>
+<p>You will work on a range of microservices written mainly in Rust and Go. Technologies we use include Go, PostgreSQL, Docker, Kubernetes, Clickhouse and the usual Unix/Linux tools and workflows. We strive to build reliable, fault-tolerant systems that can operate at Cloudflare’s scale.</p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <ul>
-	<li>Applying a data-driven mindset, continue the build of our Internal Audit Data Solutions program that will deliver advanced audit capabilities including automation, continuous auditing and data analytics&nbsp;</li>
-	<li>Develop and implement AI-driven solutions using available tools, supporting our audit teams and audit operations</li>
-	<li>As a data champion, will elevate awareness within the IA team on the appropriate and possible uses of data in performing our assurance and advisory work</li>
-	<li>Lead and oversee data analytics initiatives within Internal Audit, leveraging advanced analytical techniques to enhance audit procedures and identify risks</li>
-	<li>Design and execute on data-driven testing of key controls throughout in-scope processes, systems and programs, elevating levels of assurance and coverage</li>
-	<li>Build&nbsp; relationships with key data leaders and owners, enabling timely access to data necessary to perform audit and risk project work</li>
-	<li>Leverage existing data points and structures to provide a more quantitative measure to key control and risk considerations and conclusions</li>
-	<li>Develop our continuous auditing program and architect solutions that can deliver control and business insight on a more real-time basis, driving action for improvement in targeted areas</li>
-	<li>Drive automation across audit, SOX and risk projects, unlocking efficiencies in our testing&nbsp;</li>
-	<li>Evaluate and recommend data tools, technologies and methodologies to enhance our audit capabilities and stay abreast of industry trends</li>
+	<li>5+ years of relevant professional experience with a technology company</li>
+	<li>Experience writing high-quality code in one or more system programming languages (Go, C/C++)</li>
+	<li>Experience building and operating distributed systems</li>
+	<li>Experience with modern Unix/Linux development and runtime environments</li>
+	<li>Excellent debugging skills and attention to details</li>
+	<li>Good understanding of TCP/IP and networking in general</li>
 </ul>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li>6 + years of experience in applying data analytics techniques (i.e. including automation, data-driven control testing) and the use of AI within internal audit and enterprise risk projects</li>
-	<li>Bachelor’s Degree or equivalent in Computer Science, Data Science, or Management Information Systems&nbsp;</li>
-	<li>Proven track record in delivering audit solutions through application of data analytics, scripting and programming skills (Python, R, SQL) as well as any relevant tools</li>
-	<li>Appropriate certifications/trainings relevant to Internal Audit (i.e. CPA, CISA, CIA, CISSP) and/or data tools (i.e. AWS Certified Data Analyst, Google Cloud Certified, etc.)&nbsp;</li>
-	<li>Strong experience in working through the full data analytics lifecycle from data acquisition to cleansing to scripting/programming to analysis to reporting</li>
-	<li>Experience in working with visualization tools (i.e. Tableau) to aid in reporting and presenting observations at a thematic level to executives and program leaders</li>
-	<li>Experience in building continuous audit capabilities and dashboards that will provide reliable and timely performance metrics on focused control points at the right level of detail allowing for management actions and measurement</li>
+	<li>Experience working with Go and/or Rust</li>
+	<li>Working knowledge of SQL and relational databases such as PostgreSQL</li>
+	<li>Designing and building APIs</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
