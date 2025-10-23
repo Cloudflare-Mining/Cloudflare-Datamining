@@ -5,38 +5,55 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas</strong></p>
-<h4><strong>About Us</strong></h4>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
-<h4><strong>What you'll do</strong></h4>
-<p>In this role, you’ll help us build <a href="https://www.cloudflare.com/zero-trust/products/browser-isolation/">Cloudflare Browser Isolation</a>, a secure remote browsing platform that protects users from security threats on the Internet. As an engineer on the Browser Isolation team, you will focus on designing, building, and scaling our Chromium-based distributed browsing engine. You will also contribute to the control plane that enables distributed Chromium-based browsers to deliver low-latency remote browsing for our users at scale across our global anycast network. You will solve problems of massive scale and significance, shaping the future of secure web browsing on the Internet.</p>
-<p><strong>Technologies we use:</strong></p>
+<p><strong>Available Location</strong></p>
+<p>Lisbon, Portugal</p>
+<p><strong>Job Title&nbsp;</strong></p>
+<p>Security Systems Reliability Engineer</p>
+<p><strong>About the Department</strong></p>
+<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Security Systems Reliability Engineering team supports tooling and infrastructure across the Security team.</p>
+<p><strong>About the Role</strong></p>
+<p>As a Security Systems Reliability Engineer, you will play a key role in designing, implementing, managing, and supporting infrastructure and security technologies.&nbsp; You will be responsible for ensuring systems are secure, highly available, fault tolerant, and scale to meet business needs.&nbsp;</p>
+<p>Work may include documenting new standard operating procedures, ensuring vendor recommended security baseline configurations are implemented, designing repeatable deployment patterns, performing disaster recovery testing, performing chaos testing, configuring new integrations, implementing new technologies, patching applications and operating systems, performing upgrades and other maintenance tasks, establishing integrations, documenting the as-built architecture, establishing monitoring and logging, and participating in investigations and service restorations.</p>
+<p>As part of our team, you will be expected to:</p>
 <ul>
-	<li>Our client is written in WebAssembly, Typescript, and WebGL</li>
-	<li>Our remote streaming technology is based on WebRTC and Skia (<a href="https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation/">read our blog to learn more</a>)</li>
-	<li>Our remote browser is based on Chromium and developed in C++</li>
-	<li>For our orchestration layer we use Nomad, Consul, Cloudflare Workers, Go and Typescript</li>
+	<li>Design, implement, and maintain secure infrastructure across various environments (non-production and production).</li>
+	<li>Ensure resilient and secure designs are implemented and maintained.</li>
+	<li>Drive continuous improvement while maintaining multiple environments.&nbsp;</li>
+	<li>Ensure systems meet performance expectations.</li>
+	<li>Engage in proactive risk management and incident response planning.</li>
+	<li>Develop or utilize automation to streamline repeatable tasks.</li>
+	<li>Ensure company data is managed in a secure and scalable manner.</li>
+	<li>Contribute to the creation and dissemination of knowledge about the designs within the company.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>Members of the Browser Isolation team contribute to all areas of the product. These include everything from making patches to Chromium, orchestrating tasks at the edge, and working on our build infrastructure. We’re looking for motivated engineers who are excited to work broadly across our technology and service stack<strong>.</strong></p>
+<p>Security Systems Reliability Engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
 <ul>
-	<li>3+ years of relevant experience required</li>
-	<li>Experience coding in multiple programming languages s.a. <strong>C++</strong>, <strong>Go</strong> and <strong>Typescript</strong></li>
-	<li>Familiarity with <strong>Linux/UNIX</strong> systems</li>
-	<li>Systems-level debugging and performance optimization</li>
-	<li>Ability to effectively navigate, understand, and contribute to large codebases</li>
-	<li>Solid foundation in computer science, with strong competencies in algorithms, data structures, software design, and building large, distributed systems</li>
-	<li>Ability to work under ambiguity and solve difficult problems</li>
+	<li>Bachelor's degree in Computer Science, Information Systems, Cybersecurity, related technical field, or equivalent practical experience</li>
+	<li>Experience performing the functions of a Site Reliability Engineer (SRE).</li>
+	<li>Ability to clearly communicate complex security requirements to stakeholders at all levels</li>
+	<li>Ability to navigate ambiguity, and provide clarity to complex situations</li>
+	<li>Extensive experience with deploying and administering Kubernetes in an enterprise environment.&nbsp;</li>
+	<li>Extensive experience developing and utilizing Terraform to deploy and update environments through infrastructure as code (IaC).&nbsp;</li>
+	<li>Extensive experience with deploying and administering Linux systems in an enterprise environment.&nbsp;</li>
+	<li>Extensive experience deploying and administering enterprise solutions in GCP, AWS or Azure.</li>
+	<li>Experience implementing, integrating, and supporting application security tools within a CI/CD pipeline environment.</li>
+	<li>Solid understanding of reliability engineering principles and a commitment to continuous improvement.</li>
+	<li>Experience writing scripts, leveraging automation, and creating infrastructure as code to streamline processes.</li>
+	<li>Advanced programming experience (Python, Golang, Bash, etc.)</li>
+	<li>Strong analytical skills focused on service availability with curiosity and thoroughness in problem-solving.</li>
+	<li>Ability to navigate ambiguity, bring clarity to complex situations, and collaborate effectively with various stakeholders.</li>
+	<li>Experience working with different security functions as part of a wider team</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Experience working in low-latency real time environments such as remote computer streaming, game engine architecture, high frequency trading, etc.&nbsp;</li>
-	<li>Experience with workload and container orchestration systems such as <strong>Nomad</strong>, <strong>Consul </strong>or <strong>Kubernetes</strong>.</li>
-	<li>Knowledge of <strong>logging, metrics, billing, and health check systems</strong> for large-scale distributed infrastructure.</li>
-	<li>Natural interest or experience in security products and security protocols</li>
+	<li>Strong Linux system experience from user-space to kernel-space</li>
+	<li>Cross-functional governance experience with programs like PCI-DSS, FedRAMP</li>
+	<li>Proficient in managing Application Security related technologies like Veracode, Checkmarx, SonarQube, Snyk, Semgrep, Fortify, or Coverity integrated into CI/CD pipelines.</li>
+	<li>Experience with deploying and administering Cloudflare products (access, tunnels, waf)&nbsp;</li>
+	<li>Experience working with large data platforms</li>
+	<li>Experience working with data classification schemas at scale</li>
+	<li>Experience working with organization wide business ecosystems (Google, Microsoft)</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
