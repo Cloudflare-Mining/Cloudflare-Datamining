@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "33e6b5be-284a-5f4a-82b6-071c34fd7aeb")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "70dc021e-67bb-575f-9389-14118832e233")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -905,10 +905,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "f05ae25364896ed0922696572b29827d14312544",
-							dashVersion: "36762731",
+							commit: "80d2fde4370c2101e7b6b3f3e7c9decafa2a099a",
+							dashVersion: "36770230",
 							env: "production",
-							builtAt: 0x19a119e7f6a,
+							builtAt: 0x19a125b90e8,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								node: "20.10.0",
@@ -6880,7 +6880,7 @@
 				b = (0, o.C)("billingTransactions").get`/accounts/${"accountId"}/billing/history`.apiFetch((0, r._)((0, r.F)(501))).on("success", e => e.payload ? e : i({}, e, {
 					payload: []
 				})),
-				_ = (0, o.C)("billingOutstandingTransactions").get`/accounts/${"accountId"}/billing/history`.apiFetch((0, r._)((0, r.F)(501))).on("success", e => e.payload ? e : i({}, e, {
+				_ = (0, o.C)("billingOutstandingTransactions").get`/accounts/${"accountId"}/billing/history?status=OPEN`.apiFetch((0, r._)((0, r.F)(501))).on("success", e => e.payload ? e : i({}, e, {
 					payload: []
 				})),
 				v = (0, o.C)("").post`/accounts/${"accountId"}/pay-invoice`;
@@ -72084,4 +72084,4 @@ SOFTWARE.`,
 		}
 	}
 ]);
-//# debugId=33e6b5be-284a-5f4a-82b6-071c34fd7aeb
+//# debugId=70dc021e-67bb-575f-9389-14118832e233
