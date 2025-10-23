@@ -277,6 +277,7 @@
 			"durable_object_fetch_requires_full_url": "boolean",
 			"dynamic_dispatch_tunnel_exceptions": "boolean",
 			"enable_ctx_exports": "boolean",
+			"enable_fast_jsg_struct": "boolean",
 			"enable_navigator_language": "boolean",
 			"enable_nodejs_console_module": "boolean",
 			"enable_nodejs_fs_module": "boolean",
@@ -6156,49 +6157,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -6843,49 +6802,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -8683,49 +8600,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -8933,6 +8808,210 @@
 							"listenerCount": "function",
 							"eventNames": "function"
 						}
+					},
+					"drop": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"_readableState": "object",
+							"_events": "object",
+							"_eventsCount": "number",
+							"_maxListeners": "undefined",
+							"_read": "function",
+							"_destroy": "function",
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"ReadableState": "undefined",
+							"_fromList": "undefined",
+							"toWeb": "undefined",
+							"fromWeb": "undefined",
+							"wrap": "function",
+							"from": "undefined",
+							"destroy": "function",
+							"_undestroy": "function",
+							"push": "function",
+							"unshift": "function",
+							"isPaused": "function",
+							"setEncoding": "function",
+							"read": "function",
+							"pipe": "function",
+							"unpipe": "function",
+							"on": "function",
+							"addListener": "function",
+							"removeListener": "function",
+							"off": "function",
+							"removeAllListeners": "function",
+							"resume": "function",
+							"pause": "function",
+							"iterator": "function",
+							"map": "function",
+							"asIndexedPairs": "function",
+							"drop": "function",
+							"filter": "function",
+							"flatMap": "function",
+							"take": "function",
+							"every": "function",
+							"forEach": "function",
+							"reduce": "function",
+							"toArray": "function",
+							"some": "function",
+							"find": "function",
+							"compose": "function",
+							"setMaxListeners": "function",
+							"getMaxListeners": "function",
+							"emit": "function",
+							"prependListener": "function",
+							"once": "function",
+							"prependOnceListener": "function",
+							"listeners": "function",
+							"rawListeners": "function",
+							"listenerCount": "function",
+							"eventNames": "function"
+						}
+					},
+					"filter": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"flatMap": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"take": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"_readableState": "object",
+							"_events": "object",
+							"_eventsCount": "number",
+							"_maxListeners": "undefined",
+							"_read": "function",
+							"_destroy": "function",
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"ReadableState": "undefined",
+							"_fromList": "undefined",
+							"toWeb": "undefined",
+							"fromWeb": "undefined",
+							"wrap": "function",
+							"from": "undefined",
+							"destroy": "function",
+							"_undestroy": "function",
+							"push": "function",
+							"unshift": "function",
+							"isPaused": "function",
+							"setEncoding": "function",
+							"read": "function",
+							"pipe": "function",
+							"unpipe": "function",
+							"on": "function",
+							"addListener": "function",
+							"removeListener": "function",
+							"off": "function",
+							"removeAllListeners": "function",
+							"resume": "function",
+							"pause": "function",
+							"iterator": "function",
+							"map": "function",
+							"asIndexedPairs": "function",
+							"drop": "function",
+							"filter": "function",
+							"flatMap": "function",
+							"take": "function",
+							"every": "function",
+							"forEach": "function",
+							"reduce": "function",
+							"toArray": "function",
+							"some": "function",
+							"find": "function",
+							"compose": "function",
+							"setMaxListeners": "function",
+							"getMaxListeners": "function",
+							"emit": "function",
+							"prependListener": "function",
+							"once": "function",
+							"prependOnceListener": "function",
+							"listeners": "function",
+							"rawListeners": "function",
+							"listenerCount": "function",
+							"eventNames": "function"
+						}
+					},
+					"every": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"forEach": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"reduce": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"toArray": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"some": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"find": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"compose": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_events": "undefined",
+					"_eventsCount": "number",
+					"_maxListeners": "undefined",
+					"setMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
 					}
 				},
 				"fromWeb": "function",
@@ -9103,49 +9182,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -9278,6 +9315,259 @@
 						"_prototype": {}
 					},
 					"iterator": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"map": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"asIndexedPairs": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"_readableState": "object",
+							"_events": "object",
+							"_eventsCount": "number",
+							"_maxListeners": "undefined",
+							"_read": "function",
+							"_destroy": "function",
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"ReadableState": "undefined",
+							"_fromList": "undefined",
+							"toWeb": "undefined",
+							"fromWeb": "undefined",
+							"wrap": "function",
+							"from": "undefined",
+							"destroy": "function",
+							"_undestroy": "function",
+							"push": "function",
+							"unshift": "function",
+							"isPaused": "function",
+							"setEncoding": "function",
+							"read": "function",
+							"pipe": "function",
+							"unpipe": "function",
+							"on": "function",
+							"addListener": "function",
+							"removeListener": "function",
+							"off": "function",
+							"removeAllListeners": "function",
+							"resume": "function",
+							"pause": "function",
+							"iterator": "function",
+							"map": "function",
+							"asIndexedPairs": "function",
+							"drop": "function",
+							"filter": "function",
+							"flatMap": "function",
+							"take": "function",
+							"every": "function",
+							"forEach": "function",
+							"reduce": "function",
+							"toArray": "function",
+							"some": "function",
+							"find": "function",
+							"compose": "function",
+							"setMaxListeners": "function",
+							"getMaxListeners": "function",
+							"emit": "function",
+							"prependListener": "function",
+							"once": "function",
+							"prependOnceListener": "function",
+							"listeners": "function",
+							"rawListeners": "function",
+							"listenerCount": "function",
+							"eventNames": "function"
+						}
+					},
+					"drop": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"_readableState": "object",
+							"_events": "object",
+							"_eventsCount": "number",
+							"_maxListeners": "undefined",
+							"_read": "function",
+							"_destroy": "function",
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"ReadableState": "undefined",
+							"_fromList": "undefined",
+							"toWeb": "undefined",
+							"fromWeb": "undefined",
+							"wrap": "function",
+							"from": "undefined",
+							"destroy": "function",
+							"_undestroy": "function",
+							"push": "function",
+							"unshift": "function",
+							"isPaused": "function",
+							"setEncoding": "function",
+							"read": "function",
+							"pipe": "function",
+							"unpipe": "function",
+							"on": "function",
+							"addListener": "function",
+							"removeListener": "function",
+							"off": "function",
+							"removeAllListeners": "function",
+							"resume": "function",
+							"pause": "function",
+							"iterator": "function",
+							"map": "function",
+							"asIndexedPairs": "function",
+							"drop": "function",
+							"filter": "function",
+							"flatMap": "function",
+							"take": "function",
+							"every": "function",
+							"forEach": "function",
+							"reduce": "function",
+							"toArray": "function",
+							"some": "function",
+							"find": "function",
+							"compose": "function",
+							"setMaxListeners": "function",
+							"getMaxListeners": "function",
+							"emit": "function",
+							"prependListener": "function",
+							"once": "function",
+							"prependOnceListener": "function",
+							"listeners": "function",
+							"rawListeners": "function",
+							"listenerCount": "function",
+							"eventNames": "function"
+						}
+					},
+					"filter": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"flatMap": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"take": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"_readableState": "object",
+							"_events": "object",
+							"_eventsCount": "number",
+							"_maxListeners": "undefined",
+							"_read": "function",
+							"_destroy": "function",
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"ReadableState": "undefined",
+							"_fromList": "undefined",
+							"toWeb": "undefined",
+							"fromWeb": "undefined",
+							"wrap": "function",
+							"from": "undefined",
+							"destroy": "function",
+							"_undestroy": "function",
+							"push": "function",
+							"unshift": "function",
+							"isPaused": "function",
+							"setEncoding": "function",
+							"read": "function",
+							"pipe": "function",
+							"unpipe": "function",
+							"on": "function",
+							"addListener": "function",
+							"removeListener": "function",
+							"off": "function",
+							"removeAllListeners": "function",
+							"resume": "function",
+							"pause": "function",
+							"iterator": "function",
+							"map": "function",
+							"asIndexedPairs": "function",
+							"drop": "function",
+							"filter": "function",
+							"flatMap": "function",
+							"take": "function",
+							"every": "function",
+							"forEach": "function",
+							"reduce": "function",
+							"toArray": "function",
+							"some": "function",
+							"find": "function",
+							"compose": "function",
+							"setMaxListeners": "function",
+							"getMaxListeners": "function",
+							"emit": "function",
+							"prependListener": "function",
+							"once": "function",
+							"prependOnceListener": "function",
+							"listeners": "function",
+							"rawListeners": "function",
+							"listenerCount": "function",
+							"eventNames": "function"
+						}
+					},
+					"every": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"forEach": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"reduce": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"toArray": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"some": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"find": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"compose": {
 						"__proto": "function",
 						"__type": "function",
 						"length": "number",
@@ -17241,41 +17531,7 @@
 					"localAddress": "undefined",
 					"localPort": "undefined",
 					"localFamily": "undefined",
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -18110,41 +18366,7 @@
 					"localAddress": "undefined",
 					"localPort": "undefined",
 					"localFamily": "undefined",
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -22057,56 +22279,7 @@
 				"length": "number",
 				"name": "string",
 				"_prototype": {
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -22746,49 +22919,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -23418,49 +23549,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -26526,41 +26615,7 @@
 					"localAddress": "undefined",
 					"localPort": "undefined",
 					"localFamily": "undefined",
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -27514,49 +27569,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -28176,49 +28189,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -28838,49 +28809,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -29500,49 +29429,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -30162,49 +30049,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -30824,49 +30669,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -31486,49 +31289,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -32148,49 +31909,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -32808,49 +32527,7 @@
 							"prototype": "undefined"
 						}
 					},
-					"write": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"cork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"uncork": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"setDefaultEncoding": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"_writev": {},
-					"end": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"destroy": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
+					"destroy": "undefined",
 					"_undestroy": {
 						"__proto": "function",
 						"__type": "function",
@@ -33476,13 +33153,7 @@
 					"prototype": "undefined",
 					"_write": "function",
 					"_read": "function",
-					"write": "function",
-					"cork": "function",
-					"uncork": "function",
-					"setDefaultEncoding": "function",
-					"_writev": "object",
-					"end": "function",
-					"destroy": "function",
+					"destroy": "undefined",
 					"_undestroy": "function",
 					"push": "function",
 					"unshift": "function",
@@ -33557,13 +33228,7 @@
 					"prototype": "undefined",
 					"_write": "function",
 					"_read": "function",
-					"write": "function",
-					"cork": "function",
-					"uncork": "function",
-					"setDefaultEncoding": "function",
-					"_writev": "object",
-					"end": "function",
-					"destroy": "function",
+					"destroy": "undefined",
 					"_undestroy": "function",
 					"push": "function",
 					"unshift": "function",
@@ -33638,13 +33303,7 @@
 					"prototype": "undefined",
 					"_write": "function",
 					"_read": "function",
-					"write": "function",
-					"cork": "function",
-					"uncork": "function",
-					"setDefaultEncoding": "function",
-					"_writev": "object",
-					"end": "function",
-					"destroy": "function",
+					"destroy": "undefined",
 					"_undestroy": "function",
 					"push": "function",
 					"unshift": "function",
@@ -33719,13 +33378,7 @@
 					"prototype": "undefined",
 					"_write": "function",
 					"_read": "function",
-					"write": "function",
-					"cork": "function",
-					"uncork": "function",
-					"setDefaultEncoding": "function",
-					"_writev": "object",
-					"end": "function",
-					"destroy": "function",
+					"destroy": "undefined",
 					"_undestroy": "function",
 					"push": "function",
 					"unshift": "function",
@@ -33800,13 +33453,7 @@
 					"prototype": "undefined",
 					"_write": "function",
 					"_read": "function",
-					"write": "function",
-					"cork": "function",
-					"uncork": "function",
-					"setDefaultEncoding": "function",
-					"_writev": "object",
-					"end": "function",
-					"destroy": "function",
+					"destroy": "undefined",
 					"_undestroy": "function",
 					"push": "function",
 					"unshift": "function",
@@ -33881,13 +33528,7 @@
 					"prototype": "undefined",
 					"_write": "function",
 					"_read": "function",
-					"write": "function",
-					"cork": "function",
-					"uncork": "function",
-					"setDefaultEncoding": "function",
-					"_writev": "object",
-					"end": "function",
-					"destroy": "function",
+					"destroy": "undefined",
 					"_undestroy": "function",
 					"push": "function",
 					"unshift": "function",
@@ -33962,13 +33603,7 @@
 					"prototype": "undefined",
 					"_write": "function",
 					"_read": "function",
-					"write": "function",
-					"cork": "function",
-					"uncork": "function",
-					"setDefaultEncoding": "function",
-					"_writev": "object",
-					"end": "function",
-					"destroy": "function",
+					"destroy": "undefined",
 					"_undestroy": "function",
 					"push": "function",
 					"unshift": "function",
@@ -34041,13 +33676,7 @@
 					"prototype": "undefined",
 					"_write": "function",
 					"_read": "function",
-					"write": "function",
-					"cork": "function",
-					"uncork": "function",
-					"setDefaultEncoding": "function",
-					"_writev": "object",
-					"end": "function",
-					"destroy": "function",
+					"destroy": "undefined",
 					"_undestroy": "function",
 					"push": "function",
 					"unshift": "function",
@@ -34120,13 +33749,7 @@
 					"prototype": "undefined",
 					"_write": "function",
 					"_read": "function",
-					"write": "function",
-					"cork": "function",
-					"uncork": "function",
-					"setDefaultEncoding": "function",
-					"_writev": "object",
-					"end": "function",
-					"destroy": "function",
+					"destroy": "undefined",
 					"_undestroy": "function",
 					"push": "function",
 					"unshift": "function",
