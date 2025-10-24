@@ -5,14 +5,15 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
 <p><strong>About The Role</strong></p>
-<p>A Security Operations Center (SOC) is typically something that a company will have to understand their systems' security risks and alert when any issues arise. We want to enable SOC teams to leverage Cloudflare data, logging, and events directly in Cloudflare's dashboard. This means we want to add new functionality to understand and react to any threats. This role is all about dealing with large amounts of data and helping customers understand it very quickly, as well as notifying customers about important happenings on that data.</p>
+<p>A Security Operations Center (SOC) is typically something that a company will have to understand their systems' security risks and alert when any issues arise. We want to enable SOC teams to leverage Cloudflare data, logging, and events directly in Cloudflare's dashboard. This means we want to add new functionality to understand and react to any threats. This role is all about dealing with large amounts of data and helping customers understand it very quickly, as well as notifying customers about important happenings on that data.&nbsp;</p>
+<p>You will be working on systems that span multiple disciplines from databases to queues to search. We'll be not only processing data as it streams through but also allowing customers to search recent records, take actions inline, and document their entire process. As one of the founding engineers on the team you'll have a large influence on the architecture and will help decide the features and functionality of the product.</p>
 <p>Cloudflare is a system spanning the globe, on a mission to make the Internet better, safer, and more powerful every day. As a Software Engineer at Cloudflare, you’ll work on the code that runs close to the end user, runs at a massive scale, and is deployed to<a href="https://www.cloudflare.com/network/"> 330+ cities</a> around the world.</p>
 <p><strong>Desirable skills, knowledge and experience</strong></p>
 <p>If you think some of the below list describes you (or what you aspire to be) we would love to talk to you. Also please note that while not listed as a requirement, we want to call out that this role will need the flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <ul>
 	<li>First and foremost curiosity and critical thinking</li>
+	<li>6+ years of experience</li>
 	<li>Experience (and love for) debugging to ensure the system works in all cases</li>
 	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
 	<li>Designing and building APIs</li>
@@ -22,7 +23,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <p>Some team-specific things we think are interesting and want to highlight.</p>
 <ul>
-	<li>5+ years of experience in understanding systems at the network protocol level, including the differences between what the specs say, and what actually happens on the Internet</li>
+	<li>Understanding systems at the network protocol level, including the differences between what the specs say, and what actually happens on the Internet</li>
 	<li>Strong systems level programming skills</li>
 	<li>Optimization of complex solutions</li>
 	<li>Experience with databases (we use PostgreSQL and Clickhouse)</li>
