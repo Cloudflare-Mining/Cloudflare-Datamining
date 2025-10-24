@@ -1,10 +1,6 @@
-<div class="mb2 gray5">2 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tSKyfZqzwOvbaNyEIX6Vb/83eaa071211214a1a92d775cb35d0de6/automated-origin-ca-for-kubernetes.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4s5opQqnm9CYxPPVpFcFMY/46bbd107213db09d6f0f4733569e51dc/image2-3.png" alt="" class="kg-image" width="651" height="323" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>In 2016, we launched the <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Cloudflare Origin CA</a>, a certificate authority optimized for making it easy to secure the connection between Cloudflare and an origin server. Running our own CA has allowed us to support fast issuance and renewal, simple and effective revocation, and wildcard certificates for our users.</p>
 	<p>Out of the box, managing TLS certificates and keys within Kubernetes can be challenging and error prone. The secret resources have to be constructed correctly, as components expect secrets with specific fields. Some forms of domain verification require manually rotating secrets to pass. Once you're successful, don't forget to renew before the certificate expires!</p>
 	<p><a href="https://cert-manager.io">cert-manager</a> is a project to fill this operational gap, providing Kubernetes resources that <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management">manage the lifecycle of a certificate.</a> Today we're releasing <a href="https://github.com/cloudflare/origin-ca-issuer">origin-ca-issuer</a>, an extension to cert-manager integrating with Cloudflare Origin CA to easily create and renew certificates for your account's domains.</p>

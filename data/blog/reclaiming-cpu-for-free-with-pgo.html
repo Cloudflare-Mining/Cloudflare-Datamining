@@ -1,10 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Eh9CutmKzzir3UkBhGbUb/8d917b01d8e3d1647a686421a036f103/reclaiming-cpu-for-free-with-pgo.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4l2RatJreRCXrOb56RseWa/2cdfe05ad883a8443eb19c31cdd03bf3/image2-4.png" alt="Reclaiming CPU for free with Go's Profile Guided Optimization" class="kg-image" width="918" height="463" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p><a href="https://tip.golang.org/doc/go1.20">Golang 1.20</a> introduced support for Profile Guided Optimization (PGO) to the go compiler. This allows guiding the compiler to introduce optimizations based on the real world behaviour of your system. In the Observability Team at Cloudflare, we maintain a few Go-based services that use thousands of cores worldwide, so even the 2-7% savings advertised would drastically reduce our CPU footprint, effectively for free. This would reduce the CPU usage for our internal services, freeing up those resources to serve customer requests, providing measurable improvements to our customer experience. In this post, I will cover the process we created for experimenting with PGO – collecting representative profiles across our production infrastructure and then deploying new PGO binaries and measuring the CPU savings.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-does-pgo-work">How does PGO work?</h3>

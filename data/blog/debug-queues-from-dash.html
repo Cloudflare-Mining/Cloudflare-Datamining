@@ -1,10 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40tCxq3DaScYSNKh2npa8K/1f73cadb0c82c40331db7953d3e6247a/debug-queues-from-dash.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5AI08WiMPWo4ApOmViaI7B/6ce3c621400658b0fbf1caa73ea1df35/image3-1.png" alt="Debug Queues from the dash: Send, list, and ack messages" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Today, August 11, 2023, we are excited to announce a new debugging workflow for Cloudflare Queues. Customers using Cloudflare Queues can now send, list, and acknowledge messages directly from the Cloudflare dashboard, enabling a more user-friendly way to interact with Queues. Though it can be difficult to debug asynchronous systems, it’s now easy to examine a queue’s state and test the full flow of information through a queue.</p>
 	<p>With <a href="https://developers.cloudflare.com/queues/learning/delivery-guarantees">guaranteed delivery</a>, <a href="https://developers.cloudflare.com/queues/learning/batching-retries">message batching</a>, <a href="https://developers.cloudflare.com/queues/learning/consumer-concurrency">consumer concurrency</a>, and more, Cloudflare Queues is a powerful tool to connect services reliably and efficiently. Queues integrate deeply with the existing Cloudflare Workers ecosystem, so developers can also leverage our many other products and services. Queues can be bound to producer Workers, which allow Workers to send messages to a queue, and to consumer Workers, which pull messages from the queue.</p>
 	<p>We’ve received feedback that while Queues are effective and performant, customers find it hard to debug them. After a message is sent to a queue from a producer worker, there’s no way to inspect the queue’s contents without a consumer worker. The limited transparency was frustrating, and the need to write a skeleton worker just to debug a queue was high-friction.</p>

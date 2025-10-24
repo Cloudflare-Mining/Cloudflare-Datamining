@@ -1,10 +1,6 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75B9sJHsMCbLQ5udcyg5jg/a7df06c2bd1884f04dbb6f6e892bf570/protecting-graphql-apis-from-malicious-queries.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wsTPMwgR0ehhizaI4Klep/a5c5686459deda262471c6c911e64114/image1-2.png" alt="Protecting GraphQL APIs from malicious queries" class="kg-image" width="1201" height="675" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Starting today, Cloudflare’s API Gateway can protect GraphQL APIs against malicious requests that may cause a denial of service to the origin. In particular, <a href="https://www.cloudflare.com/application-services/products/api-gateway">API Gateway</a> will now protect against two of the most common GraphQL abuse vectors: <b>deeply nested queries</b> and <b>queries that request more information</b> than they should.</p>
 	<p>Typical RESTful HTTP APIs contain tens or hundreds of endpoints. GraphQL APIs differ by typically only providing a single endpoint for clients to communicate with and offering highly flexible queries that can return variable amounts of data. While GraphQL’s power and usefulness rests on the flexibility to query an API about only the specific data you need, that same flexibility adds an increased risk of abuse. Abusive requests to a single GraphQL API can place disproportional load on the origin, abuse <a href="https://hygraph.com/blog/graphql-n-1-problem">the N+1 problem</a>, or exploit a recursive relationship between data dimensions. In order to add GraphQL security features to API Gateway, we needed to obtain visibility <i>inside</i> the requests so that we could apply different security settings based on request parameters. To achieve that visibility, we built our own GraphQL query parser. Read on to learn about how we built the parser and the security features it enabled.</p>
 	<div class="flex anchor relative">

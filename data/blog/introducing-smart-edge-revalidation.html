@@ -1,11 +1,7 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-smart-edge-revalidation">简体中文</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-smart-edge-revalidation">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36k19ToCe01UdAzWqOWw3D/e7814df4b5562e8933dd00d6b0f2f0d6/introducing-smart-edge-revalidation.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tHUj629zLCxHUHREMzKvS/3106b6fa9f6250036c6806e943b437b6/image1-31.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Today we’re excited to announce Smart Edge Revalidation. It was designed to ensure that compute resources are synchronized efficiently between our edge and a browser. Right now, as many as 30% of objects cached on Cloudflare’s edge do not have the HTTP response headers required for revalidation. This can result in unnecessary origin calls. Smart Edge Revalidation fixes this: it does the work to ensure that these headers are present, even when an origin doesn’t send them to us. The advantage of this? There’s less wasted bandwidth and compute for objects that do not need to be redownloaded. And there are faster browser page loads for users.</p>
 	<div class="flex anchor relative">
 		<h2 id="so-what-is-revalidation">So What Is Revalidation?</h2>

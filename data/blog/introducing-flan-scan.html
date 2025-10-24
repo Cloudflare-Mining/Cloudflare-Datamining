@@ -1,11 +1,7 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/introducing-flan-scan">Français</a>, <a href="https://blog.cloudflare.com/es-es/introducing-flan-scan">Español</a> and <a href="https://blog.cloudflare.com/de-de/introducing-flan-scan">Deutsch</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/introducing-flan-scan">Français</a>, <a href="https://blog.cloudflare.com/es-es/introducing-flan-scan">Español</a> and <a href="https://blog.cloudflare.com/de-de/introducing-flan-scan">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wDMUxdgYWjO7WTYMDaaIu/ac548664143a73f61265bd978769775a/introducing-flan-scan.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4b5oZ2Bb01blXADYYOolDv/1fca96ceba0a036118b9eb10dbe743b6/flan-scan-light_3x-1-.png" alt="" class="kg-image" width="2964" height="1494" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Today, we’re excited to open source <a href="https://github.com/cloudflare/flan">Flan Scan</a>, Cloudflare’s in-house lightweight network vulnerability scanner. Flan Scan is a thin wrapper around <a href="https://nmap.org">Nmap</a> that converts this popular open source tool into a vulnerability scanner with the added benefit of easy deployment.</p>
 	<p>We created Flan Scan after two unsuccessful attempts at using “industry standard” scanners for our compliance scans. A little over a year ago, we were paying a big vendor for their scanner until we realized it was one of our highest security costs and many of its features were not relevant to our setup. It became clear we were not getting our money’s worth. Soon after, we switched to an open source scanner and took on the task of managing its complicated setup. That made it difficult to deploy to our entire fleet of more than 190 data centers.</p>
 	<p>We had a deadline at the end of Q3 to complete an internal scan for our compliance requirements but no tool that met our needs. Given our history with existing scanners, we decided to set off on our own and build a scanner that worked for our setup. To design Flan Scan, we worked closely with our auditors to understand the requirements of such a tool. We needed a scanner that could accurately detect the services on our network and then lookup those services in a database of <a href="https://cve.mitre.org">CVEs</a> to find vulnerabilities relevant to our services. Additionally, unlike other scanners we had tried, our tool had to be easy to deploy across our entire network.</p>

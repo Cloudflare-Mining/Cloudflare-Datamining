@@ -1,10 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4riWaXewZq07DTmh5iKgml/ce9218030e0e7c4fc79f318b1838e7fa/adding-the-fallback-pool-to-the-load-balancing-ui.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EFNCvXRP4Lx1zDiBdZ394/29ccc07de1c47127e2985b7ae898ac2f/Loadbalancing-failover_3x-1.png" alt="" class="kg-image" width="2000" height="1046" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>The Cloudflare Load Balancer was <a href="https://blog.cloudflare.com/cloudflare-traffic">introduced</a> over three years ago to provide our customers with a powerful, easy to use tool to intelligently route traffic to their origins across the world. During the initial design process, one of the questions we had to answer was ‘where do we send traffic if all pools are down?’ We did not think it made sense just to drop the traffic, so we used the concept of a ‘fallback pool’ to send traffic to a ‘pool of last resort’ in the case that no pools were detected as available. While this may still result in an error, it gave an eyeball request a chance at being served successfully in case the pool was still up.</p>
 	<p>As a brief reminder, a <a href="https://www.cloudflare.com/learning/performance/what-is-load-balancing">load balancer</a> helps route traffic across your origin servers to ensure your overall infrastructure stays healthy and available. Load Balancers are made up of pools, which can be thought of as collections of servers in a particular location.</p>
 	<p>Over the past three years, we’ve made many updates to the dashboard. The new designs now support the fallback pool addition to the dashboard UI. The use of a fallback pool is incredibly helpful in a tight spot, but not having it viewable in the dashboard led to confusion around which pool was set as the fallback. Was there a fallback pool set at all? We want to be sure you have the tools to support your day-to-day work, while also ensuring our dashboard is usable and intuitive.</p>

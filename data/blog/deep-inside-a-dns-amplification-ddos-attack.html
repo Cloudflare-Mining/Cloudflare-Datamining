@@ -1,11 +1,6 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56oazFRUtOqQHhX5Zto7J0/602aeb8374e59ff5e7001c8d114844ea/deep-inside-a-dns-amplification-ddos-attack.gif" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FYBrVa8C0gIUsmIX7c2id/887acb7e433a3f965a88d2c2425bb593/amplification.gif.scaled500.gif" alt="Deep Inside a DNS Amplification DDoS
-Attack" class="kg-image" width="271" height="258" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>A few weeks ago I wrote about <a href="https://blog.cloudflare.com/65gbps-ddos-no-problem">DNS Amplification Attacks</a>. These attacks are some of the largest, as measured by the number of Gigabits per second (Gbps), that we see directed toward our network. For the last three weeks, one persistent attacker has been sending at least 20Gbps twenty-four hours a day as an attack against one of our customers.</p>
 	<p>That size of an attack is enough to cripple even a large web host. For CloudFlare, the nature of our network means that the attack, which gets diluted across all of our <a href="https://www.cloudflare.com/network-map">global data centers</a>, doesn't cause us harm. Even from a cost perspective, the attack doesn't end up adding to our bandwidth bill because of the way in which we're charged for wholesale bandwidth.</p>
 	<p>We buy a lot of bandwidth and we pay for the higher of our ingress (in-bound) or egress (out-bound) averaged over a month. Since we act as a caching proxy, under normal circumstances egress always exceeds ingress. When there's an attack, the two lines get closer together but rarely is an attack large enough to add to our overall bandwidth costs.</p>

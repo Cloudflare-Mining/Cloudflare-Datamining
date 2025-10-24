@@ -1,10 +1,6 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gQ56AradbZUduX3MhnUlA/f2fd66fdb518ecd268723de000f85760/getting-cloudflare-tunnels-to-connect-to-the-cloudflare-network-with-quic.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/366WVMjeTuNBtLg8XZbPqu/80fd49d50a5bb62fda05b8d891dde472/Untitled.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>I work on <i>Cloudflare Tunnel</i>, which lets customers quickly connect their private services and networks through the Cloudflare network without having to expose their public IPs or ports through their firewall. Tunnel is managed for users by <i>cloudflared</i>, a tool that runs on the same network as the private services. It proxies traffic for these services via Cloudflare, and users can then access these services securely through the Cloudflare network.</p>
 	<p>Recently, I was trying to get <i>Cloudflare Tunnel</i> to connect to the Cloudflare network using a UDP protocol, QUIC. While doing this, I ran into an interesting connectivity problem unique to UDP. In this post I will talk about how I went about debugging this connectivity issue beyond the land of firewalls, and how some interesting differences between UDP and TCP came into play when sending network packets.</p>
 	<div class="flex anchor relative">

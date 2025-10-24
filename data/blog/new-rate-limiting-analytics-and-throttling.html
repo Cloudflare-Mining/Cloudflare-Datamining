@@ -1,10 +1,6 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HMtOY5zFal3nJkBhqqsZt/11e4ef5a07c3c7c221472fa4bc23652a/new-rate-limiting-analytics-and-throttling.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/01PYrLDBsDALKQEIqzBC2P/4d61021b9090b0b7a9770fd11f72cd86/image1-6.png" alt="New! Rate Limiting analytics and throttling" class="kg-image" width="1999" height="1136" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p><a href="https://www.cloudflare.com/application-services/products/rate-limiting">Rate Limiting</a> rules are essential in the toolbox of security professionals as they are very effective in managing targeted volumetric attacks, <a href="https://www.cloudflare.com/learning/access-management/account-takeover">takeover attempts</a>, <a href="https://www.cloudflare.com/learning/bots/what-is-data-scraping">scraping bots</a>, or API abuse. Over the years we have received a lot of feature requests from users, but two stand out: suggesting rate limiting thresholds and implementing a throttle behavior. Today we released both to Enterprise customers!</p>
 	<p>When creating a rate limit rule, one of the common questions is “what rate should I put in to block malicious traffic without affecting legitimate users?”. If your traffic is authenticated, <a href="https://www.cloudflare.com/application-services/products/api-gateway">API Gateway</a> will suggest thresholds based on auth IDs (such a session-id, cookie, or API key). However, when you don’t have authentication headers, you will need to create IP-based rules (like for a ‘/login’ endpoint) and you are left guessing the threshold. From today, we provide analytics tools to determine what rate of requests can be used for your rule.</p>
 	<p>So far, a rate limit rule could be created with log, challenge, or block action. When ‘block’ is selected, all requests from the same source (for example, IP) were blocked for the timeout period. Sometimes this is not ideal, as you would rather selectively block/allow requests to enforce a maximum rate of requests without an outright temporary ban. When using throttle, a rule lets through enough requests to keep the request rate from individual clients below a customer-defined threshold.</p>

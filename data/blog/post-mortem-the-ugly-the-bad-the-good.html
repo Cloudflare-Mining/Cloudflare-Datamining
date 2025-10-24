@@ -1,10 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2kh4n01cdNNxnQbOx0zG0x/1b7b5c48ce385b25656f22735f8ee5b0/post-mortem-the-ugly-the-bad-the-good.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18cvhKrueXmA0KmOWIPTmC/38a15132b059ae40aa6c42298ee5a059/FUBAR.jpg.scaled500.jpg" alt="Post Mortem: The Ugly, the Bad &amp; the Good" class="kg-image" width="478" height="193" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Last night was not our finest hour. Around 07:30 GMT, we were finishing up a push of a new DNS infrastructure. The core of what this new update was built to do is make DNS updates even faster. Before it took about a minute for a change to your DNS settings to propagate to all our infrastructure, with the new DNS update it is almost instant. That is important to understand in order to understand what went wrong.</p>
 	<p>Making an update to the DNS requires changing underlying code deep in our system and taking servers offline while we do so. We scheduled the update for the quietest time on our network, which is around 07:00 GMT (around 11:00pm in San Francisco). The code had been running smoothly in our test environment and one data center for the last week so we were feeling pretty good. And, in fact, the push of the DNS update went smoothly and was ahead of schedule.</p>
 	<div class="flex anchor relative">

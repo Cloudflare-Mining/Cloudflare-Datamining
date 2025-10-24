@@ -1,11 +1,7 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/automatically-generated-types">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/automatically-generated-types">日本語</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/automatically-generated-types">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/automatically-generated-types">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zUk6Fr2qbkwljwleRZsn2/6d7658db0459eb2cb308d53fcd8b291f/automatically-generated-types.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5luRNkP1OxBKyt8RFYRyaZ/70a0db10bbabcac2ecdcd13080601704/image1-29.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Historically, keeping our Rust and TypeScript type repos up to date has been hard. They were manually generated, which means they ran the risk of being inaccurate or out of date. Until recently, the workers-types repository needed to be manually updated whenever the types changed. We also used to add type information for mostly complete browser APIs. This led to confusion when people would try to use browser APIs that aren’t supported by the Workers runtime they would compile but throw errors.</p>
 	<p>That all changed this summer when Brendan Coll, whilst he was interning with us, built an automated pipeline for generating them. It runs every time we build the Workers runtime, generating types for our TypeScript and Rust repositories. Now everything is up-to-date and accurate.</p>
 	<div class="flex anchor relative">

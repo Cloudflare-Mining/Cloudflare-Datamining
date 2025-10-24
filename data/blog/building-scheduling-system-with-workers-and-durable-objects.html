@@ -1,10 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1C6waWfup8WNAxRhRzJENn/9261d6f38b5106a6e244dec46776fc44/building-scheduling-system-with-workers-and-durable-objects.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fjdl7kWRa7MwLUn86agFI/c0523af4c465553a7152ba2d9cf483f9/Scheduling-system-with-Workers-and-Durable-Objects.png" alt="Building a scheduling system with Workers and Durable Objects" class="kg-image" width="1600" height="901" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>We rely on technology to help us on a daily basis – if you are not good at keeping track of time, your calendar can remind you when it's time to prepare for your next meeting. If you made a reservation at a really nice restaurant, you don't want to miss it! You appreciate the app to remind you a day before your plans the next evening.</p>
 	<p>However, who tells the application when it's the right time to send you a notification? For this, we generally rely on scheduled events. And when you are relying on them, you really want to make sure that they occur. Turns out, this can get difficult. The scheduler and storage backend need to be designed with scale in mind - otherwise you may hit limitations quickly.</p>
 	<p>Workers, Durable Objects, and Alarms are actually a perfect match for this type of workload. Thanks to the distributed architecture of Durable Objects and their storage, they are a reliable and scalable option. Each Durable Object has access to its own isolated storage and alarm scheduler, both being automatically replicated and failover in case of failures.</p>

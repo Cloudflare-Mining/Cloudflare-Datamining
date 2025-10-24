@@ -1,10 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Ssa8M6SygEeVJFriONRnH/5f42bfb9e0bd78d22e1b98c40fe74645/red-october-cloudflares-open-source-implementation-of-the-two-man-rule.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wtQ5zLe3DfKd7KPi460Hg/d74c7b41cab036b09e5d02a65ba6e7f5/The_Hunt_for_Red_October-1.jpg" alt="The Hunt for Red October" class="kg-image" width="480" height="206" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>At CloudFlare, we are always looking for better ways to secure the data we’re entrusted with. This means hardening our system against outside threats such as hackers, but it also means protecting against insider threats. According to a <a href="http://www.verizonenterprise.com/DBIR/2013">recent Verizon report</a>, insider threats account for around 14% of data breaches in 2013. While we perform background checks and carefully screen team members, we also implement technical barriers to protect the data with which we are entrusted.</p>
 	<p>One good information security practice is known as the “two-man rule.” It comes from military history, where a nuclear missile couldn’t be launched unless two people agreed and turned their launch keys simultaneously. This requirement was introduced in order to prevent one individual from accidentally (or intentionally) starting World War III.</p>
 	<p>To prevent the risk of rogue employees misusing sensitive data we built a service in Go to enforce the two-person rule. We call the service Red October after the famous scene from “The Hunt for Red October.” In line with <a href="https://blog.cloudflare.com/a-note-about-kerckhoffs-principle">our philosophy on security software</a>, we are open sourcing the technology so you can use it in your own organization (<a href="https://github.com/cloudflare/redoctober">here’s a link</a> to the public Github repo). If you are interested in the nitty-gritty details, read on.</p>

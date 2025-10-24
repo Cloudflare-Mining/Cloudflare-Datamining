@@ -1,10 +1,6 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MDYsVnbzwlNNqi8Z27Hni/42f182c9b5ad0670fdb991251b49c0ab/ocsp-stapling-how-cloudflare-just-made-ssl-30.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aEg5hWU8kbH6EqNQ8ubQ0/9ad3dabe7ded97e7cca48000588c7c9e/2009-cheetah-sprint_flip2.jpg" alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" class="kg-image" width="513" height="397" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p><a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> <a href="https://upload.wikimedia.org/wikipedia/commons/a/ab/2009-cheetah-sprint.jpg">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Yathin_sk">Yathin sk</a></p>
 	<p>This week CloudFlare is announcing several things we're doing to significantly improve the performance of SSL. Too few sites are secured with SSL. One of the reasons sites don't implement SSL is that it can slow down web performance. One of the less frequently discussed, but most significant, performance hits to SSL is the OCSP/CRL check. These checks make up 30% or more of the HTTPS overhead. That's painful.</p>
 	<p>The best solution to speed up OCSP/CRL performance is something called <a href="https://en.wikipedia.org/wiki/OCSP_stapling">OCSP Stapling</a>. CloudFlare is committed to making the Internet faster and safer so we just enabled OCSP Stapling network wide in order to speed up all HTTPS connectionsand making the decision to secure a site with SSL a no-brainer. So what is the OCSP/CRL check? Why does it slow down page loads so significantly? And how have we eliminated this performance tax on HTTP connections with OCSP Stapling? Read on to find out.</p>

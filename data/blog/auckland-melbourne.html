@@ -1,10 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gvD5yWt5PpUd5zowCvZb7/54101326717db60306b3a0ea19b583aa/auckland-melbourne.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2W5Y5EhCBeCYjD5Az5bAc2/b90ac90feb8ae17a9b9d3d1efc32457e/aus-nz.png" alt="" class="kg-image" width="640" height="307" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>The genesis of our 33rd and 34th data centers in Auckland and Melbourne started a short hop away in nearby Sydney. Prior to these deployments traffic from all of New Zealand and Australia's collective 23 million Internet users was routed through CloudFlare's <a href="https://blog.cloudflare.com/sydney-australia-cloudflares-15th-data-center">Sydney data center</a>. Even for those in faraway Perth, the time necessary to reach our Sydney PoP was a mere 55ms of <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip time (RTT)</a>. By comparison, the blink of an eye takes 300-400ms. In other words, latency wasn't exactly the pressing concern. The <i>real</i> concern was a failure scenario in our Sydney data center.</p>
 	<p>Fortunately, our entire architecture starts with an assumption: failure is going to happen. As a result, we plan for failure at every level and have designed a system to gracefully handle it when it occurs. Even though we now maintain multiple layers of redundancy—from power supplies and power circuits to line cards, routing engines and network providers—our ultimate level of redundancy is in the ability to fail out an entire data center in favor of another. In the past we've even written about how this might even play out in the case of a <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">global thermonuclear war</a>. In this instance, the challenge we set out to solve was not how to fail gracefully, but how to fail gracefully <i>without</i> materially increasing latency for the millions of applications that depend on our network in the Oceania region.</p>
 	<div class="flex anchor relative">

@@ -1,10 +1,6 @@
-<div class="mb2 gray5">10 min read</div>
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qzihHKbk2zBI7cXA7VAam/2436ee10d6cd43b409016f79bc3079dc/post-quantum-to-origins.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TRb09uVoQt8o6FQERO8D/6343f8220bb3e9e7599da155aa299c72/image3-36.png" alt="Cloudflare now uses post-quantum cryptography to talk to your origin server" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Quantum computers pose a <a href="https://blog.cloudflare.com/the-quantum-menace">serious threat</a> to security and privacy of the Internet: encrypted communication intercepted today can be decrypted <a href="https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later">in the future</a> by a sufficiently advanced quantum computer. To counter this <a href="https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later">store-now/decrypt-later</a> threat, cryptographers have been hard at work over the last decades proposing and vetting <a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography">post-quantum cryptography (PQC)</a>, cryptography that’s designed to withstand attacks of quantum computers. After a six-year public competition, in July 2022, the US National Institute of Standards and Technology (NIST), known for standardizing AES and SHA, announced <a href="https://pq-crystals.org/kyber/index.shtml">Kyber</a> as <a href="https://blog.cloudflare.com/nist-post-quantum-surprise">their pick</a> for post-quantum key agreement. Now the baton has been handed to Industry to deploy post-quantum key agreement to protect today’s communications from the threat of future decryption by a quantum computer.</p>
 	<p>Cloudflare operates as a reverse proxy between clients (“visitors”) and customers’ web servers (“origins”), so that we can protect origin sites from attacks and improve site performance. In this post we explain how we secure the connection from Cloudflare to <i>origin servers</i>. To put that in context, let’s have a look at the connection involved when visiting an uncached page on a website served through Cloudflare.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">

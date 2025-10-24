@@ -1,10 +1,6 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wKXAUkAucBD0pm1XIsFTG/0ff5b352d98602c3ba98cced4094b4a0/making-content-security-policies-csps-easy-with-page-shield.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6akJyZtMtOBYlR8vJf3qsP/cb12b04fb6b4541a24a7cdec5c4115d6/image3-4.png" alt="Making Content Security Policies (CSPs) easy with Page Shield" class="kg-image" width="1201" height="675" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Modern web applications are complex, often loading JavaScript libraries from tens of different sources and submitting data to just as many. This leads to a vast <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface area</a> and many attack types that hackers may leverage to target the user browser directly. <a href="https://en.wikipedia.org/wiki/Web_skimming">Magecart</a>, a category of <a href="https://www.cloudflare.com/learning/security/what-is-a-supply-chain-attack">supply chain attack</a>, is a good example.</p>
 	<p>To combat this, browser vendors (Google, Microsoft, Mozilla, etc.) have agreed on a standard that allows application owners to control browser behavior from a security perspective. This standard is called <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policies</a> (CSPs). Content Security Policies are implemented by application owners as a specially formatted HTTP response header that the browser then parses and enforces. This header can be used, for example, to enforce loading of JavaScript libraries only from a specific set of URLs. CSPs are good as they reduce the attack surface, but are hard to implement and manage, especially in a fast-paced development environment.</p>
 	<p>Starting today, <a href="https://developers.cloudflare.com/page-shield">Page Shield</a>, our client-side security product, supports all major CSP directives. We’ve also added better reporting, automated suggestions, and Page Shield specific user roles, making CSPs much easier to manage.</p>

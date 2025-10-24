@@ -1,10 +1,6 @@
-<div class="mb2 gray5">12 min read</div>
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1yF4wbvgNEpx8ROF2qYT3r/17486f895d9f69610eac858106bb9399/post-quantum-key-encapsulation.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Xf41q44DF2aceTz1qvh7L/d0e00bff1e8959ab4d497761697c9434/image4-12.png" alt="Blogpost about what is a Post-Quantum Key Encapsulation Mechanism (KEM)." class="kg-image" width="1800" height="1013" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>The Internet is accustomed to the fact that any two parties can exchange information securely without ever having to meet in advance. This magic is made possible by key exchange algorithms, which are core to certain protocols, such as the Transport Layer Security (TLS) protocol, that are used widely across the Internet.</p>
 	<p>Key exchange algorithms are an elegant solution to a vexing, seemingly impossible problem. Imagine a scenario where keys are transmitted in person: if <a href="https://en.wikipedia.org/wiki/Persephone">Persephone</a> wishes to send her mother <a href="https://en.wikipedia.org/wiki/Demeter">Demeter</a> a secret message, she can first generate a key, write it on a piece of paper and hand that paper to her mother, Demeter. Later, she can scramble the message with the key, and send the scrambled result to her mother, knowing that her mother will be able to unscramble the message since she is also in possession of the same key.</p>
 	<p>But what if Persephone is kidnapped (as <a href="https://www.perseus.tufts.edu/hopper/text?doc=HH+2+4">the story goes</a>) and cannot deliver this key in person? What if she can no longer write it on a piece of paper because someone (by chance <a href="https://en.wikipedia.org/wiki/Hades">Hades</a>, the kidnapper) might read that paper and use the key to decrypt any messages between them? Key exchange algorithms come to the rescue: Persephone can run a key exchange algorithm with Demeter, giving both Persephone and Demeter a <i>secret value</i> that is known only to them (no one else knows it) <i>even if</i> Hades is eavesdropping. This secret value can be used to encrypt messages that Hades cannot read.</p>

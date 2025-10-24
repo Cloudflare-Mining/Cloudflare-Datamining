@@ -1,10 +1,6 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6z1aLVaLecj3zYvgQABDuW/14b428c0caa6e1b5e5774a7a86b154cb/roughtime.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LuOycPiB3jk8df2H4FAZP/12883fd8be3e5d16242e103aa5286cac/Roughtime-.svg" alt="" class="kg-image" width="2112" height="768" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>When you visit a secure website, it offers you a TLS certificate that asserts its identity. Every certificate has an expiration date, and when it’s passed due, it is no longer valid. The idea is almost as old as the web itself: limiting the lifetime of certificates is meant to reduce the risk in case a TLS server’s secret key is compromised.</p>
 	<p>Certificates aren’t the only cryptographic artifacts that expire. When you visit a site protected by Cloudflare, we also tell you whether its certificate has been revoked (see our blog post on <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling">OCSP stapling</a>) — for example, due to the secret key being compromised — and this value (a so-called OCSP staple) has an expiration date, too.</p>
 	<p>Thus, to determine if a certificate is valid and hasn’t been revoked, your system needs to know the current time. Indeed, time is crucial for the security of TLS and myriad other protocols. To help keep clocks in sync, we are announcing a free, high-availability, and low-latency authenticated time service called <a href="https://roughtime.googlesource.com/roughtime">Roughtime</a>, available at <a href="https://roughtime.cloudflare.com">roughtime.cloudflare.com</a> on port 2002.</p>

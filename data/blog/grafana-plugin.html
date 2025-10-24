@@ -1,10 +1,6 @@
-<div class="mb2 gray5">2 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34L4fDcBqAxbFIvlktwj0z/246621de501e17f57a0bdf4fd3e09db7/grafana-plugin.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vFBUo0uSKXUOXUxWKGNkJ/2583055d05f295bf403e59386795643f/Screen-Shot-2017-02-09-at-11.34.40-AM.png" alt="" class="kg-image" width="1440" height="770" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Curious where your DNS traffic is coming from, how much DNS traffic is on your domain, and what records people are querying for that don’t exist? We now have a Grafana plugin for you.</p>
 	<p>Grafana is an open source data visualization tool that you can use to integrate data from many sources into one cohesive dashboard, and <a href="http://docs.grafana.org/alerting/rules">even use it to set up alerts</a>. We’re big Grafana fans here - we use Grafana internally for our ops metrics dashboards.</p>
 	<p>In the Cloudflare Grafana plugin, you can see the response code breakdown of your DNS traffic. During a random prefix flood, a common type of DNS DDoS attack where an attacker queries random subdomains to bypass DNS caches and overwhelm the origin nameservers, you will see the number of NXDOMAIN responses increase dramatically. It is also common during normal traffic to have a small amount of negative answers due to typos or clients searching for missing records.</p>

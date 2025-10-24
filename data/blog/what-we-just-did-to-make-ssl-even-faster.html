@@ -1,11 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eL6jLa9zDCZ1iUyEoqb4e/ff806f4db8fec61e3fbc6b3b8f37dd02/what-we-just-did-to-make-ssl-even-faster.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44RefHYwnbwus9dpJ5SNJd/1426527e338ae4022bf33888dfd9aa9d/we_love_ssl.png.scaled500.png" alt="What We Just Did to Make SSL Even
-Faster" class="kg-image" width="500" height="132" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>A little over a month ago, we published a couple of <a href="https://blog.cloudflare.com/cloudflare-works-with-globalsign-to-make-ssl">blog</a> <a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30">posts</a> about how we were making SSL faster. Specifically, we enabled OCSP stapling across our network. In brief, when you visit a page over HTTPS, your browser checks to see if the SSL certificate is still valid via a protocol called OCSP. Those checks can be slow so we took multiple steps to make them faster. The net effect was that, for browsers that supported OCSP stapling, visitors to HTTPS sites on CloudFlare would see about a 30% performance increase on their SSL handshakes.</p>
 	<p>That was the good news. What happened next was a number of people checked our SSL setup to validate our claims. While we had increased performance around OCSP checks, these investigations turned up a number of ways in which we weren't optimally deploying SSL. In particular, William Chan wrote a <a href="https://insouciant.org/tech/ssl-performance-case-study">blog post</a> looking at our SSL deployment and suggesting a number of things we could do to make it better.</p>
 	<p>We took this criticism to heart and today released an improved SSL process. Our goal is to provide the fastest, strongest SSL with the most ubiquitous browser support. Since a number of other cloud service providers are likely to face the same challenges, and since we haven't found anyone else that was automatically optimizing certificate bundles intelligently, we wanted to document what we did.</p>

@@ -1,10 +1,6 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dc7UIrh3t45twlr2FRmz6/c185f7a14ed6760ddfef362fbf80fd31/using-guzzle-and-phpunit-for-rest-api-testing.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HTQ0O0s7O5uAsOokDOOBA/3650bf54a9ec9b50700a7419d01abeb7/IMG_2787.jpg" alt="" class="kg-image" width="4032" height="3024" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>APIs are increasingly becoming the backbone of the modern internet - whether you're ordering food from an app on your phone or browsing a blog using a modern JavaScript framework, chances are those requests are flowing through an API. Given the need for APIs to evolve through refactoring and extension, having great automated tests allows you to develop fast without needing to slow down to run manual tests to work out what’s broken. Additionally, by having tests in place you’re able to firmly identify the requirements that your API should meet, your API tests effectively form a tangible and executable specification. API Testing offers an end-to-end mechanism of testing the behaviour of your API which has advantages in both reliability and also development productivity.</p>
 	<p>In this post I'll be demonstrating how you can test RESTful APIs in an automated fashion using PHP, by building a testing framework through creative use of two packages - Guzzle and PHPUnit. The resulting tests will be something you can run outside of your API as part of your deployment or CI (Continuous Integration) process.</p>
 	<p>Guzzle acts as a powerful HTTP client which we can use to simulate HTTP Requests against our API. Though PHPUnit acts as a Unit Test framework (based on XUnit), in this case we will be using this powerful testing framework to test the HTTP responses we get back from our APIs using Guzzle.</p>

@@ -1,10 +1,6 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fgl4YZHWdmHOEc69N6mnX/6064217c7bae1cba842f31cf24598f32/announcing-ddr-support.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hnzkTCPSRcLACUURaaSch/33641c6e3b9380597a8289612e092c6f/Screen-Shot-2022-03-08-at-11.36.08-AM-1.png" alt="" class="kg-image" width="2000" height="961" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p><a href="https://1.1.1.1">1.1.1.1</a> sees approximately 600 billion queries per day. However, proportionally, most queries sent to this resolver are over cleartext: 89% over UDP and TCP combined, and the remaining 11% are encrypted. We care about end-user privacy and would prefer to see all of these queries sent to us over an encrypted transport using DNS-over-TLS or DNS-over-HTTPS. Having a mechanism by which clients could discover support for encrypted protocols such as DoH or DoT will help drive this number up and lead to more name encryption on the Internet. That’s where <a href="https://datatracker.ietf.org/doc/html/draft-ietf-add-ddr-03">DDR</a> – or Discovery of Designated Resolvers – comes into play. As of today, 1.1.1.1 supports the latest version of <a href="https://datatracker.ietf.org/doc/html/draft-ietf-add-ddr-03">DDR</a> so clients can automatically upgrade non-secure UDP and TCP connections to secure connections. In this post, we’ll describe the motivations for DDR, how the mechanism works, and, importantly, how you can test it out as a client.</p>
 	<div class="flex anchor relative">
 		<h3 id="dns-transports-and-public-resolvers">DNS transports and public resolvers</h3>

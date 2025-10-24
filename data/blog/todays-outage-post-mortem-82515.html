@@ -1,10 +1,5 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3H8KeC3Lpnx1Ae5ejFrJdS/2652e504a47a6f31b6114179a1e7c581/todays-outage-post-mortem-82515.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4I6ryc1Kh5nyQ8zawXVluY/420c4b7cf0d06cc33bb305ee22825af3/cloudflare_outage.png.scaled500.png" alt="Today's Outage Post Mortem" class="kg-image" width="500" height="151" loading="lazy">
-
-	</figure>
 	<p>This morning at 09:47 UTC CloudFlare effectively dropped off the Internet. The outage affected all of CloudFlare's services including DNS and any services that rely on our web proxy. During the outage, anyone accessing CloudFlare.com or any site on CloudFlare's network would have received a <a href="https://www.cloudflare.com/learning/dns/common-dns-issues">DNS error</a>. Pings and Traceroutes to CloudFlare's network resulted in a "No Route to Host" error.</p>
 	<p>The cause of the outage was a system-wide failure of our edge routers. CloudFlare currently runs 23 data centers worldwide. These data centers are connected to the rest of the Internet using routers. These routers announce the path that, from any point on the Internet, packets should use to reach our network. When a router goes down, the routes to the network that sits behind the router are withdrawn from the rest of the Internet.</p>
 	<p>We regularly will shut down one or a small handful of routers when we are upgrading a facility. Because we use Anycast, traffic naturally fails to the next closest data center. However, this morning we encountered a bug that caused all of our routers to fail network wide.</p>

@@ -1,10 +1,6 @@
-<div class="mb2 gray5">10 min read</div>
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73TY3K8DifXIxRpIz0wpXA/479f12bdecc30cdbb80a843cdd844ed0/privacy-pass-v3.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/115kIQcQAjoVFKaUFIy2hU/84df256d7d1a70332d79880d6aee8635/image1-32.png" alt="privacy pass v3 logo" class="kg-image" width="1812" height="1008" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>In November 2017, we <a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass">released</a> our implementation of a privacy preserving protocol to let users prove that they are humans without enabling tracking. When you install <a href="https://privacypass.github.io">Privacy Pass’s browser extension</a>, you get tokens when you solve a Cloudflare CAPTCHA which can be used to avoid needing to solve one again... The redeemed token is cryptographically unlinkable to the token originally provided by the server. That is why Privacy Pass is privacy preserving.</p>
 	<p>In October 2019, Privacy Pass reached another milestone. We released <a href="https://blog.cloudflare.com/supporting-the-latest-version-of-the-privacy-pass-protocol">Privacy Pass Extension v2.0</a> that includes a <a href="https://www.hcaptcha.com/privacy-pass">new service provider</a> (hCaptcha) which provides a way to redeem a token not only with CAPTCHAs in the Cloudflare challenge pages but also hCaptcha CAPTCHAs in any website. When you encounter any hCaptcha CAPTCHA in any website, including the ones not behind Cloudflare, you can redeem a token to pass the CAPTCHA.</p>
 	<p>We believe Privacy Pass solves an important problem — balancing privacy and security for bot mitigation— but we think there’s more to be done in terms of both the <a href="https://github.com/privacypass/challenge-bypass-extension/tree/v3-rc">codebase</a> and the protocol. We improved the codebase by redesigning how the service providers interact with the core extension. At the same time, we made progress on the standardization at IETF and improved the protocol by adding metadata which allows us to do more fabulous things with Privacy Pass.</p>

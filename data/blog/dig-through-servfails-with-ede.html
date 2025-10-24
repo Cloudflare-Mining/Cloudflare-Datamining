@@ -1,10 +1,6 @@
-<div class="mb2 gray5">1 min read</div>
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zYfgiMz5SToXZ5RoAmebe/56428d033efad8fd3f352a956bd4657c/dig-through-servfails-with-ede.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73AmzJ5MxgfAYCg4mKf0cZ/11e0b6baf398a24bf9e6dd401418750f/download-2.png" alt="Dig through SERVFAILs with EDE" class="kg-image" width="1800" height="1013" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>It can be frustrating to get errors (SERVFAIL response codes) returned from your DNS queries. It can be even more frustrating if you don’t get enough information to understand why the error is occurring or what to do next. That’s why back in 2020, we <a href="https://blog.cloudflare.com/unwrap-the-servfail">launched support</a> for Extended DNS Error (EDE) Codes to 1.1.1.1.</p>
 	<p>As a quick refresher, EDE codes are a <a href="https://www.rfc-editor.org/rfc/rfc8914.html">proposed</a> IETF standard enabled by the Extension Mechanisms for DNS (EDNS) spec. The codes return extra information about DNS or <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec">DNSSEC</a> issues without touching the RCODE so that debugging is easier.</p>
 	<p>Now we’re happy to announce we will return more error code types and include additional helpful information to further improve your debugging experience. Let’s run through some examples of how these error codes can help you better understand the issues you may face.</p>

@@ -1,10 +1,6 @@
-<div class="mb2 gray5">10 min read</div>
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5OFIoNwSfuVrVI5RbqVOwu/97f354d394959acd5e013d11e5489cfd/a-story-about-af-xdp-network-namespaces-and-a-cookie.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gfMoLiwSE5HsgT3ta2ajk/0b7e143d925e51afc0fdc743ff40bd8f/Flowtrackd-network-namespaces-fix-1.png" alt="A story about AF_XDP, network namespaces and a cookie" class="kg-image" width="1801" height="1013" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>A crash in a development version of <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> (the daemon that powers our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/tcp-protection">Advanced TCP Protection</a>) highlighted the fact that <a href="https://www.mankier.com/3/libxdp">libxdp</a> (and specifically the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html">AF_XDP</a> part) was not Linux <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html">network namespace</a> aware.</p>
 	<p>This blogpost describes the debugging journey to find the bug, as well as a fix.</p>
 	<p><a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> is a volumetric denial of service defense mechanism that sits in the <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> customer’s data path and protects the network from complex randomized TCP floods. It does so by challenging TCP connection establishments and by verifying that TCP packets make sense in an ongoing flow.</p>

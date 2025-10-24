@@ -20,7 +20,7 @@
 		"excerpt": "We have rolled out automatic protection for all customers for the the newly announced vulnerability called httpoxy.",
 		"feature_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Ywa07sRrDYWhMkNvDmt8m/6ae284984b1a548e35e3a659afae53b2/cloudflare-sites-protected-from-httpoxy.jpg",
 		"featured": false,
-		"html": "\n            <figure class=\"kg-card kg-image-card \">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YPLqPkdHLqgrnw31cBbH5/fec8fd835f9a3b9459c7809c0fa3b238/2696992856_1bc2102e45_b.jpg\" alt=\"\" class=\"kg-image\" width=\"1024\" height=\"768\" loading=\"lazy\"/>\n            \n            </figure><p><a href=\"https://creativecommons.org/licenses/by/2.0/\">CC BY 2.0</a> <a href=\"https://www.flickr.com/photos/joeseggiola/2696992856/\">image</a> by <a href=\"https://www.flickr.com/photos/joeseggiola/\">Joe Seggiola</a></p><p>We have rolled out automatic protection for all customers for the the newly announced vulnerability called <a href=\"https://httpoxy.org/\">httpoxy</a>.</p><p>This vulnerability affects applications that use “classic” CGI execution models, and could lead to API token disclosure of the services that your application may talk to.</p><p>By default httpoxy requests are modified to be harmless and then request is allowed through, however customers who want to outright block those requests can also use the <a href=\"https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/\">Web Application Firewall</a> rule 100050 in CloudFlare Specials to block requests that could lead to the httpoxy vulnerability.</p>",
+		"html": "<p></p><p><a href=\"https://creativecommons.org/licenses/by/2.0/\">CC BY 2.0</a> <a href=\"https://www.flickr.com/photos/joeseggiola/2696992856/\">image</a> by <a href=\"https://www.flickr.com/photos/joeseggiola/\">Joe Seggiola</a></p><p>We have rolled out automatic protection for all customers for the the newly announced vulnerability called <a href=\"https://httpoxy.org/\">httpoxy</a>.</p><p>This vulnerability affects applications that use “classic” CGI execution models, and could lead to API token disclosure of the services that your application may talk to.</p><p>By default httpoxy requests are modified to be harmless and then request is allowed through, however customers who want to outright block those requests can also use the <a href=\"https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/\">Web Application Firewall</a> rule 100050 in CloudFlare Specials to block requests that could lead to the httpoxy vulnerability.</p>",
 		"id": "7fhu3hhIvJ0ihz7IwTdtml",
 		"localeList": {
 			"name": "CloudFlare sites protected from httpoxy Config",
@@ -90,7 +90,7 @@
 			}
 		],
 		"title": "CloudFlare sites protected from httpoxy",
-		"updated_at": "2024-10-10T00:41:25.976Z",
+		"updated_at": "2025-10-24T10:01:36.915Z",
 		"url": "https://blog.cloudflare.com/cloudflare-sites-protected-from-httpoxy"
 	},
 	"translations": {

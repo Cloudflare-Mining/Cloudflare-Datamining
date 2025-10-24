@@ -1,11 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53r59h2xYHZyKyNolCyVz0/b90f695570af5540cbd01b08d1d8b0b9/choosing-a-two-factor-authentication-system.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5s9uLk1HC2cAkrsiUM72GW/32d743c9c48fcb756fcb5de2acee865d/two-factor-token.jpg.scaled500.jpg" alt="Choosing a Two-Factor Authentication
-System" class="kg-image" width="500" height="335" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>We've been thinking about how to best implement two-factor authentication to better protect our customers' accounts for quite some time now. When, about 6 months ago, my account was <a href="https://blog.cloudflare.com/post-mortem-todays-attack-apparent-google-app">targeted by hackers</a> the importance of a good account security became clear. However, as my hacking case illustrates, two-factor authentication alone is not a complete answer.</p>
 	<p>At CloudFlare, we considered a number of different ways to implement two-factor authentication. We considered building it ourselves and using Twilio, or another similar service, to send authentication codes via SMS to our customers' mobile phones. The problem with that strategy is that it passes the supposedly secure authentication code through your mobile carrier's less-than-secure network. And, again, if there's a lesson to be learned from my own hacking case it's that mobile providers' security is not always the most robust.</p>
 	<p>We also considered some sort of fob-based two-factor system. Unfortunately, these are generally very expensive and therefore prohibitive for us to offer all our customers. We also considered solutions like Google's Authenticator. It's a well thought out system, and we have a ton of respect for the Google team, but we were nervous about handing another key to identity over to a company whose primary business is search and advertising. Not to mention a bit of a bad taste after a <a href="https://blog.cloudflare.com/the-four-critical-security-flaws-that-resulte">flaw in Google's own implementation of their two-factor authentication system</a> contributed to my hack.</p>

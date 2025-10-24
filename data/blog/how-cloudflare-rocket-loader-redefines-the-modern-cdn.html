@@ -1,10 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cL1pzAxSTzVmlhhaMZRtG/05392751136db950577593942627b615/how-cloudflare-rocket-loader-redefines-the-modern-cdn.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/unwSE3x740YVfOMvsByBK/cfa26395a096476510b34f97b3d96ee9/rocket.png.scaled500.png" alt="How CloudFlare Rocket Loader Redefines the Modern CDN" class="kg-image" width="500" height="500" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>At CloudFlare, we built our own CDN from the ground up. We used the latest technologies like solid state drives for screaming I/O and Anycast routing and geo load balancing to make it as fast and efficient as possible. But we didn't want our efforts to make the web faster to stop with the traditional CDN. There were two core problems we wanted to address. The first was that a website can no longer be thought of as served from a single web server in a single location. Websites are collections of multiple apps, widgets, and tags that include everything from the ad network code inserted on a page to include advertising to the Facebook Like button.</p>
 	<p>Anyone surfing the web has noticed the alert in the lower-left of your browser that says: "Waiting for _________ to load." In the past, if any one of these third party apps was slow to load, no matter what you did to improve your own site's performance, they could drag you down. While this lag is annoying on desktops, it's nearly impossible on a mobile device. Think of it this way: each one of those connections to another third party service is another opportunity for your mobile phone provider to screw up.</p>
 	<p>The second problem was that any script on a web page could potentially block it from rendering. The way browsers work, whenever a piece of script is encountered by default the browser needs to stop and wait for it to render before it can finish drawing the page. Again, we've all seen this: a site that the top part of the page loads, then it hangs while it waits for an ad, then the rest of the page fills in.</p>

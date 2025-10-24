@@ -1,10 +1,6 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51KTWjABI99BVsXo7TrSE2/781d869481ed46107cea4ecec32e6c0b/introducing-tls-client-auth.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12mn4x1CfmZwS8R7ThPMDo/89df1ac534cbf39fd0caf9c0dc3ad4e4/IOT_v3.1-1.png" alt="" class="kg-image" width="535" height="209" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>In a traditional TLS handshake, the client authenticates the server, and the server doesn’t know too much about the client. However, starting now, Cloudflare is offering enterprise customers TLS with client authentication, meaning that the server additionally authenticates that the client connecting to it is authorized to connect.</p>
 	<p>TLS Client Authentication is useful in cases where a server is keeping track of hundreds of thousands or millions of clients, as in IoT, or in a mobile app with millions of installs exchanging secure information. For example, an IoT company can issue a unique client certificate per device, and then limit connections to their IoT infrastructure to only their devices by blocking connections where the client doesn’t present a certificate signed by the company’s certificate authority.</p>
 	<p>Or in the case of a mobile banking app, where the bank wants to ensure customers’ secure financial data doesn’t get stolen by bots spoofing their mobile app, they can issue a unique certificate to every app install and in the TLS handshake validate requests are coming from their mobile app. Client authentication is also useful for VPNs, <a href="https://www.cloudflare.com/learning/network-layer/enterprise-networking">enterprise networks</a> or staging sites, where corporations and developers need to lock down connections to only laptops and phones owned by their employees and teammates.</p>

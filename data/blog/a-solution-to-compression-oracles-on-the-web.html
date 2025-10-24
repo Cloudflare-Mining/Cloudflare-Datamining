@@ -1,10 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Jue7zkh30orDAB2h8g3JS/20385b10ac1ebedfaf6f11f35403c8b2/a-solution-to-compression-oracles-on-the-web.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CF9rdyyaBeVuDQkAC1WG2/074b08b69ecbedd2e53a93e85879f375/Ressort_de_compression.jpg" alt="Spring" class="kg-image" width="638" height="365" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p><a href="https://commons.wikimedia.org/wiki/File:Ressort_de_compression.jpg">CC 3.0 by Jean-Jacques MILAN</a></p>
 	<p><i>This is a guest post by Blake Loring, a PhD student at Royal Holloway, University of London. Blake worked at Cloudflare as an intern in the summer of 2017.</i></p>
 	<p>Compression is often considered an essential tool when reducing the bandwidth usage of internet services. The impact that the use of such compression schemes can have on security, however, has often been overlooked. The recently detailed <a href="https://en.wikipedia.org/wiki/CRIME">CRIME</a>, <a href="http://breachattack.com">BREACH</a>, <a href="https://www.blackhat.com/eu-13/briefings.html#Beery">TIME</a> and <a href="https://www.blackhat.com/docs/us-16/materials/us-16-VanGoethem-HEIST-HTTP-Encrypted-Information-Can-Be-Stolen-Through-TCP-Windows-wp.pdf">HEIST</a> attacks on TLS have shown that if an attacker can make requests on behalf of a user then secret information can be extracted from encrypted messages using only the length of the response. Deciding whether an element of a web-page should be secret often depends on the content of the page, however there are some common elements of web-pages which should always remain secret such as <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-Site Request Forgery (CSRF)</a> tokens. Such tokens are used to ensure that malicious webpages cannot forge requests from a user by enforcing that any request must contain a secret token included in a previous response.</p>

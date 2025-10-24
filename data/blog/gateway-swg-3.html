@@ -1,10 +1,6 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Fl6BCQD53NaRjFv7ugAtL/34e59f9340e9eddfccadad25e1be6e51/gateway-swg-3.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DrYCWCue8cySRDqdf0nM3/5c14024116db5ac6fddeaefd565fd12c/Configure-identity-based-policies-in-Cloudflare-Gateway-blog-home-2.png" alt="" class="kg-image" width="1182" height="654" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>During Zero Trust Week in October, <a href="https://blog.cloudflare.com/gateway-swg">we released HTTP filtering</a> in Cloudflare Gateway, which expands protection beyond DNS threats to those at the HTTP layer as well. With this feature, Cloudflare WARP proxies all Internet traffic from an enrolled device to a data center in our network. Once there, Cloudflare Gateway enforces organization-wide rules to <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/secure-web-gateway/block-uploads">prevent data loss</a> and <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/secure-web-gateway/block-football">protect team members</a>.</p>
 	<p>However, rules are not one-size-fits-all. Corporate policies can vary between groups or even single users. For example, we heard from customers who want to stop users from uploading files to cloud storage services except for a specific department that works with partners. Beyond filtering, security teams asked for the ability to audit logs on a user-specific basis. If a user account was compromised, they needed to know what happened during that incident.</p>
 	<p>We’re excited to announce the ability for administrators to create policies based on a user’s identity and correlate that identity to activity in the Gateway HTTP logs. Your team can reuse the same identity provider integration configured in Cloudflare Access and start building policies tailored to your organization today.</p>
