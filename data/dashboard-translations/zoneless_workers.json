@@ -1795,6 +1795,7 @@
 	"zoneless_workers.workers_observability.metrics.time.apply": "Apply time range",
 	"zoneless_workers.workers_observability.metrics.time.invalid": "Invalid time",
 	"zoneless_workers.workers_observability.metrics.time.absolute": "Absolute time range",
+	"zoneless_workers.workers_observability.metrics.time.custom": "Custom",
 	"zoneless_workers.workers_observability.metrics.time.last": "Last",
 	"zoneless_workers.workers_observability.metrics.time.utc": "Coordinated Universal Time",
 	"zoneless_workers.workers_observability.metrics.time.recent.title": "Recently used time ranges",
@@ -2006,5 +2007,7 @@
 	"zoneless_workers.observability.pipelines.validation.endpoint_required": "Endpoint is required",
 	"zoneless_workers.observability.pipelines.validation.endpoint_invalid_url": "Must be a valid URL",
 	"zoneless_workers.observability.pipelines.validation.traces_endpoint_warning": "Warning: URL should end with \"/v1/traces\" for OTLP traces spec compatibility. Events might not arrive at the destination.",
-	"zoneless_workers.observability.pipelines.validation.logs_endpoint_warning": "Warning: URL should end with \"/v1/logs\" for OTLP logs spec compatibility. Events might not arrive at the destination."
+	"zoneless_workers.observability.pipelines.validation.logs_endpoint_warning": "Warning: URL should end with \"/v1/logs\" for OTLP logs spec compatibility. Events might not arrive at the destination.",
+	"zoneless_workers.extra_routes_count": "+%{count} routes",
+	"zoneless_workers.no_enabled_urls": "No URLs enabled"
 }
